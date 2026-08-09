@@ -1,7 +1,7 @@
 /**
  * Kalkulator Falakiah Engine: Sa'at al-Kawakib (ساعات الكواكب) & Chogadia Hisab
  * Developed for arifwidiyanto.web.id/falakiah
- * Fix: Full Timezone Awareness via Intl.DateTimeFormat (Solves Browser UTC/Local Discrepancy)
+ * Fix: Precise Astronomical Solar Time & Full Timezone Awareness (Intl.DateTimeFormat)
  */
 
 (function () {
@@ -156,7 +156,7 @@
             thNum: "الساعة",
             thName: "الكوكب الحاكم",
             thQuality: "الطبقة / الصفة",
-            thPlanet: "الخاصية والاستخدام",
+            thPlanet: "الخاصية واستخدام",
             thTime: "الوقت",
             thStatus: "الحالة",
             legendTitle: "دليل ساعات الكواكب والأوقات الفلكية",
@@ -331,6 +331,14 @@
         legendGrid: document.getElementById('legendGrid')
     };
 
+    // Helper for Local Date YYYY-MM-DD format (avoids toISOString UTC date shift bug)
+    function getLocalYmdStr(d) {
+        const y = d.getFullYear();
+        const m = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        return `${y}-${m}-${day}`;
+    }
+
     // NOAA Solar Calculations Algorithm (Returns Sunrise & Sunset in Minutes from 00:00 UTC)
     function getSunTimesUtc(lat, lon, dateObj) {
         const year = dateObj.getFullYear();
@@ -413,9 +421,10 @@
     // Timezone-aware Time Formatter using Intl.DateTimeFormat
     function formatTime(date) {
         if (!date) return '--:--';
+        const tz = currentCoords.timeZone || 'Asia/Jakarta';
         try {
             return new Intl.DateTimeFormat('en-GB', {
-                timeZone: currentCoords.timeZone || Intl.DateTimeFormat().resolvedOptions().timeZone,
+                timeZone: tz,
                 hour: '2-digit',
                 minute: '2-digit',
                 hour12: false
@@ -741,7 +750,17 @@
 
         function tick() {
             const now = new Date();
-            elements.liveClock.textContent = now.toLocaleTimeString();
+            try {
+                elements.liveClock.textContent = new Intl.DateTimeFormat('en-GB', {
+                    timeZone: currentCoords.timeZone || 'Asia/Jakarta',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                }).format(now) + ` (${currentCoords.timeZone.split('/')[1] || currentCoords.timeZone})`;
+            } catch (e) {
+                elements.liveClock.textContent = now.toLocaleTimeString();
+            }
             
             const data = calculateSchedule(selectedDate, currentCoords.lat, currentCoords.lon);
             if (data) {
@@ -784,8 +803,15 @@
     function init() {
         applyTheme(currentTheme);
 
-        const todayStr = selectedDate.toISOString().split('T')[0];
-        elements.dateInput.value = todayStr;
+        // Date Picker Default to Today (Local YYYY-MM-DD string)
+        elements.dateInput.value = getLocalYmdStr(selectedDate);
+
+        // Parse initial location select value right away
+        const initialVal = elements.locationSelect.value;
+        if (initialVal !== 'auto') {
+            const parts = initialVal.split(',');
+            setLocation(parts[0], parts[1], parts[2], elements.locationSelect.options[elements.locationSelect.selectedIndex].text);
+        }
 
         if (currentSystem === 'saat') {
             elements.btnModeSaat.classList.add('active');
@@ -827,7 +853,7 @@
 
         elements.btnToday.addEventListener('click', () => {
             selectedDate = new Date();
-            elements.dateInput.value = selectedDate.toISOString().split('T')[0];
+            elements.dateInput.value = getLocalYmdStr(selectedDate);
             renderApp();
         });
 
