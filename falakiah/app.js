@@ -1,7 +1,7 @@
 /**
  * Kalkulator Falakiah Engine: Sa'at al-Kawakib (ساعات الكواكب) & Chogadia Hisab
  * Developed for arifwidiyanto.web.id/falakiah
- * Fix: Precise UTC-to-Local Astronomical Solar Time & Timezone Offset Handling
+ * Fix: Full Timezone Awareness via Intl.DateTimeFormat (Solves Browser UTC/Local Discrepancy)
  */
 
 (function () {
@@ -297,7 +297,7 @@
     let currentTheme = localStorage.getItem('chogadia_theme') || 'dark';
     let selectedDate = new Date();
     let activeTab = 'day';
-    let currentCoords = { lat: -6.2088, lon: 106.8456, name: 'Jakarta, Indonesia' };
+    let currentCoords = { lat: -6.2088, lon: 106.8456, timeZone: 'Asia/Jakarta', name: 'Jakarta, Indonesia' };
     let timerInterval = null;
 
     // DOM Elements
@@ -410,6 +410,23 @@
         return { sunrise, sunset, nextSunrise };
     }
 
+    // Timezone-aware Time Formatter using Intl.DateTimeFormat
+    function formatTime(date) {
+        if (!date) return '--:--';
+        try {
+            return new Intl.DateTimeFormat('en-GB', {
+                timeZone: currentCoords.timeZone || Intl.DateTimeFormat().resolvedOptions().timeZone,
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+            }).format(date);
+        } catch (e) {
+            const h = String(date.getHours()).padStart(2, '0');
+            const m = String(date.getMinutes()).padStart(2, '0');
+            return `${h}:${m}`;
+        }
+    }
+
     // Calculation Router
     function calculateSchedule(dateObj, lat, lon) {
         const sun = getLocalDateTimes(dateObj, lat, lon);
@@ -509,14 +526,6 @@
         }
 
         return { sun, daySlots, nightSlots, daySlotMinutes: (daySlotMs / 60000).toFixed(1) };
-    }
-
-    // Helpers
-    function formatTime(date) {
-        if (!date) return '--:--';
-        const h = String(date.getHours()).padStart(2, '0');
-        const m = String(date.getMinutes()).padStart(2, '0');
-        return `${h}:${m}`;
     }
 
     function applyTheme(theme) {
@@ -745,9 +754,9 @@
     }
 
     // Location Handlers
-    function setLocation(lat, lon, name) {
-        currentCoords = { lat: parseFloat(lat), lon: parseFloat(lon), name: name };
-        elements.activeCoordsDisplay.textContent = `Lat: ${currentCoords.lat.toFixed(4)}, Lon: ${currentCoords.lon.toFixed(4)}`;
+    function setLocation(lat, lon, timeZone, name) {
+        currentCoords = { lat: parseFloat(lat), lon: parseFloat(lon), timeZone: timeZone || 'Asia/Jakarta', name: name };
+        elements.activeCoordsDisplay.textContent = `Lat: ${currentCoords.lat.toFixed(4)}, Lon: ${currentCoords.lon.toFixed(4)} (${currentCoords.timeZone})`;
         renderApp();
     }
 
@@ -760,11 +769,12 @@
         elements.activeCoordsDisplay.textContent = 'Mendeteksi posisi GPS...';
         navigator.geolocation.getCurrentPosition(
             (pos) => {
-                setLocation(pos.coords.latitude, pos.coords.longitude, 'Lokasi Saya (GPS)');
+                const userTz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Jakarta';
+                setLocation(pos.coords.latitude, pos.coords.longitude, userTz, 'Lokasi Saya (GPS)');
             },
             (err) => {
                 alert('Gagal mendeteksi lokasi GPS: ' + err.message);
-                elements.activeCoordsDisplay.textContent = `Lat: ${currentCoords.lat.toFixed(4)}, Lon: ${currentCoords.lon.toFixed(4)}`;
+                elements.activeCoordsDisplay.textContent = `Lat: ${currentCoords.lat.toFixed(4)}, Lon: ${currentCoords.lon.toFixed(4)} (${currentCoords.timeZone})`;
             },
             { timeout: 10000, enableHighAccuracy: true }
         );
@@ -827,7 +837,7 @@
                 getUserGPS();
             } else {
                 const parts = val.split(',');
-                setLocation(parts[0], parts[1], e.target.options[e.target.selectedIndex].text);
+                setLocation(parts[0], parts[1], parts[2], e.target.options[e.target.selectedIndex].text);
             }
         });
 
