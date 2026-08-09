@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chogadia Hisab & Kalkulator Falakiah - Waktu Baik & Ritme Kosmik</title>
+    <meta name="description" content="Aplikasi Kalkulator Chogadia Hisab & Horoskop Jam Planet Falakiah. Cari waktu baik (Shubh, Labh, Amrit) dan hindari waktu tidak menguntungkan secara presisi offline.">
+    <meta name="theme-color" content="#0b132b">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo-area">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-moon-stars"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Chogadia Hisab</h1>
+                    <span class="subtitle" id="txtSubtitle">Kalkulator Falakiah & Jam Planet</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <select id="langSelect" class="lang-select" aria-label="Pilih Bahasa">
+                    <option value="id">🇮🇩 Indonesia</option>
+                    <option value="en">🇬🇧 English</option>
+                    <option value="ar">🇸🇦 العربية</option>
+                </select>
+                <button id="themeToggle" class="btn-icon" title="Ubah Tema" aria-label="Ubah Tema">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Banner / Active Status Card -->
+        <section class="current-status-card" id="activeStatusCard">
+            <div class="status-top">
+                <span class="badge" id="dayNightBadge"><i class="fa-solid fa-sun"></i> Chogadia Siang</span>
+                <span class="live-clock" id="liveClock">00:00:00 WIB</span>
+            </div>
+            
+            <div class="status-main">
+                <div class="chogadia-badge-circle" id="chogadiaIconCircle">
+                    <i class="fa-solid fa-sparkles" id="chogadiaMainIcon"></i>
+                </div>
+                <div class="status-info">
+                    <span class="status-label" id="txtCurrentStatusLabel">Waktu Saat Ini:</span>
+                    <h2 class="chogadia-name" id="currentChogadiaName">Memuat...</h2>
+                    <div class="chogadia-quality" id="currentChogadiaQuality">
+                        <span class="quality-tag" id="qualityTag">MENGUNTUNGKAN</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="status-details">
+                <div class="detail-item">
+                    <i class="fa-regular fa-clock"></i>
+                    <div>
+                        <small id="txtTimeSlotLabel">Rentang Jam</small>
+                        <strong id="currentSlotRange">--:-- - --:--</strong>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-hourglass-half"></i>
+                    <div>
+                        <small id="txtRemainingLabel">Sisa Waktu Jam Ini</small>
+                        <strong id="countdownTimer">00 j 00 m 00 d</strong>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-planet-ring-sparkles"></i>
+                    <div>
+                        <small id="txtPlanetLabel">Pengaruh Planet</small>
+                        <strong id="currentPlanet">--</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="slotProgressBar"></div>
+            </div>
+        </section>
+
+        <!-- Controls / Location & Date Filter -->
+        <section class="controls-card">
+            <div class="control-row">
+                <!-- Location Picker -->
+                <div class="input-group">
+                    <label for="locationSelect" id="lblLocation">
+                        <i class="fa-solid fa-location-dot"></i> Lokasi & Koordinat
+                    </label>
+                    <div class="location-input-wrapper">
+                        <select id="locationSelect" class="custom-select">
+                            <option value="auto">📍 Deteksi Lokasi Otomatis (GPS)</option>
+                            <option value="-6.2088,106.8456,Asia/Jakarta" selected>🇮🇩 Jakarta, Indonesia</option>
+                            <option value="-7.2575,112.7521,Asia/Jakarta">🇮🇩 Surabaya, Indonesia</option>
+                            <option value="-6.9175,107.6191,Asia/Jakarta">🇮🇩 Bandung, Indonesia</option>
+                            <option value="-7.7956,110.3695,Asia/Jakarta">🇮🇩 Yogyakarta, Indonesia</option>
+                            <option value="-8.6705,115.2126,Asia/Makassar">🇮🇩 Denpasar (Bali), Indonesia</option>
+                            <option value="3.5952,98.6722,Asia/Jakarta">🇮🇩 Medan, Indonesia</option>
+                            <option value="-5.1477,119.4327,Asia/Makassar">🇮🇩 Makassar, Indonesia</option>
+                            <option value="21.4225,39.8262,Asia/Riyadh">🇸🇦 Makkah, Arab Saudi</option>
+                            <option value="24.5247,39.5692,Asia/Riyadh">🇸🇦 Madinah, Arab Saudi</option>
+                            <option value="19.0760,72.8777,Asia/Kolkata">🇮🇳 Mumbai, India</option>
+                            <option value="51.5074,-0.1278,Europe/London">🇬🇧 London, Inggris</option>
+                            <option value="40.7128,-74.0060,America/New_York">🇺🇸 New York, AS</option>
+                        </select>
+                        <button id="btnRefreshGps" class="btn-secondary" title="Perbarui GPS" aria-label="Perbarui GPS">
+                            <i class="fa-solid fa-crosshairs"></i>
+                        </button>
+                    </div>
+                    <small class="location-coord-text" id="activeCoordsDisplay">Lat: -6.2088, Lon: 106.8456</small>
+                </div>
+
+                <!-- Date Picker -->
+                <div class="input-group">
+                    <label for="dateInput" id="lblDate">
+                        <i class="fa-regular fa-calendar-days"></i> Tanggal
+                    </label>
+                    <div class="date-input-wrapper">
+                        <input type="date" id="dateInput" class="custom-input">
+                        <button id="btnToday" class="btn-secondary" id="txtBtnToday">Hari Ini</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sun Summary Box -->
+            <div class="sun-times-bar">
+                <div class="sun-time-item">
+                    <i class="fa-solid fa-sun-plant-wilt text-amber"></i>
+                    <div>
+                        <span id="txtSunriseLabel">Terbit (Sunrise)</span>
+                        <strong id="sunriseTime">06:00</strong>
+                    </div>
+                </div>
+                <div class="sun-divider"></div>
+                <div class="sun-time-item">
+                    <i class="fa-solid fa-moon text-indigo"></i>
+                    <div>
+                        <span id="txtSunsetLabel">Terbenam (Sunset)</span>
+                        <strong id="sunsetTime">18:00</strong>
+                    </div>
+                </div>
+                <div class="sun-divider"></div>
+                <div class="sun-time-item">
+                    <i class="fa-solid fa-cloud-sun"></i>
+                    <div>
+                        <span id="txtDayDurationLabel">Durasi Siang</span>
+                        <strong id="dayDuration">12 j 00 m</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Choghadia Schedule Tabs -->
+        <section class="schedule-section">
+            <div class="tab-header">
+                <button class="tab-btn active" id="tabDay" data-tab="day">
+                    <i class="fa-solid fa-sun"></i> <span id="txtTabDay">Chogadia Siang (8 Jam)</span>
+                </button>
+                <button class="tab-btn" id="tabNight" data-tab="night">
+                    <i class="fa-solid fa-moon"></i> <span id="txtTabNight">Chogadia Malam (8 Jam)</span>
+                </button>
+            </div>
+
+            <div class="table-container">
+                <table class="chogadia-table" id="chogadiaTable">
+                    <thead>
+                        <tr>
+                            <th id="thNum">#</th>
+                            <th id="thName">Nama Chogadia</th>
+                            <th id="thQuality">Kualitas</th>
+                            <th id="thPlanet">Planet</th>
+                            <th id="thTime">Rentang Waktu</th>
+                            <th id="thStatus">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="chogadiaTableBody">
+                        <!-- Dynamic Rows -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Information & Legend Section -->
+        <section class="info-card">
+            <h3 id="txtLegendTitle"><i class="fa-solid fa-book-open"></i> Panduan Kategori Chogadia & Kualitas</h3>
+            <div class="legend-grid">
+                <div class="legend-item q-excellent">
+                    <div class="legend-badge">AMRIT (Murnie)</div>
+                    <p id="descAmrit"><strong>Luar Biasa / Sangat Baik</strong> (Bulan/Chandra). Puncak energi positif. Sangat cocok untuk semua jenis pekerjaan, pekerjaan penting, memulai bisnis, perjalanan, dan upacara.</p>
+                </div>
+                <div class="legend-item q-good">
+                    <div class="legend-badge">SHUBH (Keberuntungan)</div>
+                    <p id="descShubh"><strong>Baik / Menguntungkan</strong> (Jupiter/Guru). Sangat baik untuk pernikahan, acara keagamaan, pendidikan, dan aktivitas keberkahan.</p>
+                </div>
+                <div class="legend-item q-good">
+                    <div class="legend-badge">LABH (Keuntungan)</div>
+                    <p id="descLabh"><strong>Baik / Keuntungan</strong> (Merkurius/Budh). Terbaik untuk transaksi finansial, perdagangan, belanja, dan memulai proyek usaha baru.</p>
+                </div>
+                <div class="legend-item q-neutral">
+                    <div class="legend-badge">CHAR (Dinamis)</div>
+                    <p id="descChar"><strong>Normal / Bergerak</strong> (Venus/Shukra). Bagus untuk perjalanan, kendaraan, aktivitas fisik, dan tugas yang butuh fleksibilitas.</p>
+                </div>
+                <div class="legend-item q-bad">
+                    <div class="legend-badge">UDVEG (Kecemasan)</div>
+                    <p id="descUdveg"><strong>Tidak Menguntungkan</strong> (Matahari/Surya). Membawa tekanan atau kecemasan. Sebaiknya hindari keputusan krusial atau kontrak penting.</p>
+                </div>
+                <div class="legend-item q-bad">
+                    <div class="legend-badge">ROG (Penyakit)</div>
+                    <p id="descRog"><strong>Tidak Menguntungkan</strong> (Mars/Mangal). Menyebabkan potensi rintangan atau pertengkaran. Hindari pengobatan baru atau nego alot.</p>
+                </div>
+                <div class="legend-item q-bad">
+                    <div class="legend-badge">KAAL (Kerugian)</div>
+                    <p id="descKaal"><strong>Sangat Tidak Menguntungkan</strong> (Saturnus/Rahu). Pengaruh negatif/konflik. Tunda aktivitas penting hingga jam berganti.</p>
+                </div>
+            </div>
+            <div class="note-box">
+                <i class="fa-solid fa-circle-info"></i>
+                <span id="txtDisclaimers">Aplikasi ini menghitung waktu Chogadia secara akurat berdasarkan posisi Astronomi Matahari (Terbit & Terbenam) di koordinat Anda (Tahun 1900–2100). Dapat bekerja sepenuhnya 100% Offline.</span>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>© <span id="yearSpan"></span> Chogadia Hisab Falakiah. Developed with ❤️ by <a href="https://arifwidiyanto.web.id" target="_blank" rel="noopener">Arif Widiyanto</a></p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        document.getElementById('yearSpan').textContent = new Date().getFullYear();
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(err => console.log('SW registration failed:', err));
+        }
+    </script>
+</body>
+</html>
