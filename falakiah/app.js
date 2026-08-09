@@ -1,5 +1,5 @@
 /**
- * Kalkulator Falakiah Engine: Sa'at al-Kawakib (ساعات الكواكب), 24h Dial Clock, Asmaul Husna Hikmah, Chogadia, Moon Phases, 28 Manazil, Hijri, Qibla & Hajat Finder
+ * Kalkulator Falakiah Engine 3D: Sa'at al-Kawakib (ساعات الكواكب), Three.js 3D Orbs, Deep Hikmah Database, 24h Dial Clock, Asmaul Husna, 28 Manazil, Hijri, Qibla & Hajat Finder
  * Developed for arifwidiyanto.web.id/falakiah
  */
 
@@ -14,7 +14,7 @@
             modeSaatDesc: "Ilmu Falak Hikmah Arabic (12 Jam Siang & 12 Jam Malam)",
             modeChogadiaTitle: "Chogadia Hisab (چوگھڑیا)",
             modeChogadiaDesc: "Sistem Bohra / Gujarati (8 Jam Siang & 8 Jam Malam)",
-            currentStatusLabel: "Jam Planet Saat Ini:",
+            currentStatusLabel: "Jam Planet Saat Ini (Klik untuk 3D Detail):",
             timeSlotLabel: "Rentang Jam Zamaniyah",
             remainingLabel: "Sisa Waktu Jam Ini",
             planetLabel: "Pengaruh & Sifat Planet",
@@ -54,7 +54,7 @@
             txtFinderTitle: "Pencari Jam Baik & Hajat (Best Hour Finder)",
             txtFinderSubtitle: "Filter jam planet berdasarkan kebutuhan hajat Anda hari ini:",
             txtDialTitle: "Visual Jam Kompas Falakiah 24h",
-            txtDialSubtitle: "Peta Visual 12 Jam Siang & 12 Jam Malam Realtime",
+            txtDialSubtitle: "Peta Visual 12 Jam Siang & 12 Jam Malam Realtime (Klik Node untuk 3D Detail)",
             txtAsmaLabel: "Asmaul Husna Penguat Jam Ini:",
             txtMetalLabel: "Logam / Unsur Tabi'at:",
             txtBtnNotify: "Notifikasi",
@@ -98,7 +98,7 @@
             modeSaatDesc: "Arabic Hikmah Astrology (12 Day & 12 Night Hours)",
             modeChogadiaTitle: "Chogadia Hisab (چوگھڑیا)",
             modeChogadiaDesc: "Bohra / Gujarati System (8 Day & 8 Night Slots)",
-            currentStatusLabel: "Current Planetary Hour:",
+            currentStatusLabel: "Current Planetary Hour (Click for 3D Detail):",
             timeSlotLabel: "Unequal Hour Window",
             remainingLabel: "Time Remaining",
             planetLabel: "Ruler & Quality",
@@ -138,7 +138,7 @@
             txtFinderTitle: "Best Hour & Purpose Finder",
             txtFinderSubtitle: "Filter planetary hours by your goal for today:",
             txtDialTitle: "24h Falakiah Dial Clock",
-            txtDialSubtitle: "Visual Realtime Map of 12 Day & 12 Night Hours",
+            txtDialSubtitle: "Visual Realtime Map of 12 Day & 12 Night Hours (Click Node for 3D Detail)",
             txtAsmaLabel: "Recommended Asmaul Husna:",
             txtMetalLabel: "Metal / Element:",
             txtBtnNotify: "Notify",
@@ -182,7 +182,7 @@
             modeSaatDesc: "حساب الفلك والعلماء (12 ساعة نهاراً و 12 ساعة ليلاً)",
             modeChogadiaTitle: "حساب الشوجاديا (چوگھڑیا)",
             modeChogadiaDesc: "نظام البهرة والغوجاراتي (8 فترات نهاراً و 8 ليلاً)",
-            currentStatusLabel: "ساعة الكوكب الحالية:",
+            currentStatusLabel: "ساعة الكوكب الحالية (انقر للتفاصيل ثلاثية الأبعاد):",
             timeSlotLabel: "النطاق الزمني للساعة الزمنية",
             remainingLabel: "الوقت المتبقي للساعة",
             planetLabel: "الكوكب الحاكم وصفاته",
@@ -262,97 +262,106 @@
         }
     };
 
-    // 2. Arabic Sa'at al-Kawakib Planet Definitions (Chaldean Order + Hikmah Asmaul Husna & Metals)
-    const CHALDEAN_PLANETS = [
-        {
-            id: 'Shani',
-            key: 'Shani',
-            quality: 'NAHAS_AKBAR',
-            class: 'q-kaal',
-            icon: 'fa-skull-crossbones',
-            asma: 'Ya Qahhar Ya Qadir (يا قهار يا قادر)',
-            metal: 'Timbal Hitam / Besi Tua (Lead) | Tabi\'at: Tanah 🪵',
-            efficacy_id: 'Nahas Akbar (Sangat Nahas). Rintangan & permusuhan. Cocok hanya untuk benteng diri & tolak bala.',
-            efficacy_en: 'Most Inauspicious. Obstacles & severe delays. Suitable for warding off harm.',
-            efficacy_ar: 'نحس أكبر. عقد العزائم والردع وتجنب الأمور الهامة.'
+    // DEEP FALAKIAH PLANET DATABASE (Hikmah, Angels, Abjad, Incense, Metals, Dos & Don'ts)
+    const DEEP_FALAK_PLANETS = {
+        Surya: {
+            arabic: 'الشمس (Syams / Sun)',
+            angel: 'Samsama-il (سمسمائيل)',
+            adad: '400 (أبجد: ش م س)',
+            incense: 'Cendana Merah, Gaharu Super & Amber (سندروس وعود)',
+            element: 'Api (Nari 🔥) - Panas & Kering',
+            metal: 'Emas Murni (Gold)',
+            day: 'Ahad (Minggu)',
+            colorHex: 0xfbbf24,
+            dos: 'Menghadap pimpinan/pejabat, memohon kenaikan jabatan, kewibawaan (Haibah), pengasihan umum, & hajat kehormatan.',
+            donts: 'Menghindari permusuhan, urusan rahasia, atau menyembunyikan sesuatu (karena Syams menyingkap rahasia).'
         },
-        {
-            id: 'Guru',
-            key: 'Guru',
-            quality: 'SAAD_AKBAR',
-            class: 'q-amrit',
-            icon: 'fa-star',
-            asma: 'Ya Kabir Ya Muta\'al (يا كبير يا متعال)',
-            metal: 'Timah Putih / Perunggu (Tin) | Tabi\'at: Udara 💨',
-            efficacy_id: 'Sa\'ad Akbar (Sangat Baik). Berkah, permohonan doa, nikah, memulai usaha besar, & ilmu spiritual.',
-            efficacy_en: 'Most Auspicious. Blessings, prayers, marriage, business launching & spiritual wisdom.',
-            efficacy_ar: 'سعد أكبر. مبارك للمحبة، الزواج، التجارة والدعاء.'
+        Chandra: {
+            arabic: 'القمر (Qamar / Moon)',
+            angel: 'Jibra-il (جبرائيل)',
+            adad: '340 (أبجد: ق م ر)',
+            incense: 'Gaharu Putih, Melati & Bukhur Jawa (عود أبيض ومسك)',
+            element: 'Air (Ma\'i 💧) - Dingin & Basah',
+            metal: 'Perak Murni (Silver)',
+            day: 'Itsnain (Senin)',
+            colorHex: 0x38bdf8,
+            dos: 'Memulai perjalanan laut/darat, bercocok tanam, minum obat, mahabbah kasih sayang, & kedamaian keluarga.',
+            donts: 'Menandatangani kontrak permanen atau usaha jangka panjang yang butuh stabilitas tinggi (sifat Bulan cepat berubah).'
         },
-        {
-            id: 'Mangal',
-            key: 'Mangal',
-            quality: 'NAHAS_ASGHAR',
-            class: 'q-udveg',
-            icon: 'fa-fire',
-            asma: 'Ya Aziz Ya Jabbar (يا عزيز يا جبار)',
-            metal: 'Besi / Tembaga Merah (Iron) | Tabi\'at: Api 🔥',
-            efficacy_id: 'Nahas Asghar (Kurang Baik). Emosi & pertengkaran. Cocok untuk keberanian, olahraga, & ketegasan.',
-            efficacy_en: 'Inauspicious. Anger & dispute risk. Suitable for courage, sports & firmness.',
-            efficacy_ar: 'نحس أصغر. تجنب الخصومات وناسب الأعمال القوية والرياضة.'
+        Mangal: {
+            arabic: 'المريخ (Mirrikh / Mars)',
+            angel: 'Rukya-il (رقيائيل)',
+            adad: '840 (أبجد: م ر ي خ)',
+            incense: 'Bukhur Kibrit (Belerang), Lada Hitam & Mustaka (كبريت ومستكي)',
+            element: 'Api (Nari 🔥) - Panas Terik',
+            metal: 'Besi Murni / Tembaga Merah (Iron)',
+            day: 'Tsulatsa (Selasa)',
+            colorHex: 0xef4444,
+            dos: 'Latihan fisik/olahraga, pembuktian keberanian, ketegasan hukum, & membuat pagar ghaib / benteng diri dari musuh.',
+            donts: 'Sangat dilarang melangsungkan pernikahan, melamar, transaksi damai, atau urusan kasih sayang (risiko konflik tinggi).'
         },
-        {
-            id: 'Surya',
-            key: 'Surya',
-            quality: 'SAAD_MUTAZIL',
-            class: 'q-labh',
-            icon: 'fa-sun',
-            asma: 'Ya Hayyu Ya Qayyum (يا حي يا قيوم)',
-            metal: 'Emas Murni (Gold) | Tabi\'at: Api 🔥',
-            efficacy_id: 'Sa\'ad & Wibawa. Menghadap pejabat/pimpinan, kewibawaan, keagungan & hajat penting.',
-            efficacy_en: 'Auspicious / Honor. Meeting officials, leadership, authority & high matters.',
-            efficacy_ar: 'سعد وشرف. للقاء الملوك والرؤساء والهيبة والجاه.'
+        Budh: {
+            arabic: 'عطارد (Utarid / Mercury)',
+            angel: 'Mikail (ميكائيل)',
+            adad: '289 (أبجد: ع ط ا ر د)',
+            incense: 'Mastaka, Jawi & Kapur Barus (مستكي وجاوي)',
+            element: 'Udara (Hawai 💨) - Panas & Basah',
+            metal: 'Raksa / Kuningan (Quicksilver)',
+            day: 'Arbi\'a (Rabu)',
+            colorHex: 0x8b5cf6,
+            dos: 'Menulis Wafaq/Azimat, membuat dokumen/kontrak bisnis, belajar, mengarang buku, & menghitung keuangan.',
+            donts: 'Hindari aktivitas yang membutuhkan kepastian emosional jangka panjang (sifat Utarid mudah terpengaruh).'
         },
-        {
-            id: 'Shukra',
-            key: 'Shukra',
-            quality: 'SAAD_ASGHAR',
-            class: 'q-shubh',
-            icon: 'fa-heart',
-            asma: 'Ya Jamil Ya Latif (يا جميل يا لطيف)',
-            metal: 'Tembaga Halus / Pirus (Copper) | Tabi\'at: Air 💧',
-            efficacy_id: 'Sa\'ad Asghar (Baik). Cinta, pernikahan, seni, pakaian baru, perhiasan, & mahabbah.',
-            efficacy_en: 'Auspicious. Love, marriage, arts, buying jewelry & attraction.',
-            efficacy_ar: 'سعد أصغر. للزواج، المحبة، الزينة والفنون.'
+        Guru: {
+            arabic: 'المشتري (Mushtari / Jupiter)',
+            angel: 'Sarfya-il (صرفيائيل)',
+            adad: '970 (أبجد: م ش ت ر ي)',
+            incense: 'Luban Jawi (Istirak), Gaharu Super & Cendana (لبان جاوي وعود)',
+            element: 'Udara (Hawai 💨) - Panas & Lembab',
+            metal: 'Timah Putih / Perunggu (Tin)',
+            day: 'Khamis (Kamis)',
+            colorHex: 0x10b981,
+            dos: 'Memulai bisnis besar, pernikahan, berdoa/kholwat, permohonan hajat rezeki, membeli perhiasan & konsultasi agama.',
+            donts: 'Dilarang keras melakukan perbuatan jahat, kedengkian, atau maksiat (risiko bumerang sangat kuat).'
         },
-        {
-            id: 'Budh',
-            key: 'Budh',
-            quality: 'MUTAZIL',
-            class: 'q-char',
-            icon: 'fa-pen-nib',
-            asma: 'Ya Alim Ya Hakim (يا عليم يا حكيم)',
-            metal: 'Raksa / Kuningan (Quicksilver) | Tabi\'at: Udara 💨',
-            efficacy_id: 'Mutazi\'l (Netral). Perdagangan, menulis wafaq/azimat, dokumen, perjanjian & belajar.',
-            efficacy_en: 'Neutral. Commerce, writing talismans/wafaq, contracts & studying.',
-            efficacy_ar: 'ممتزج. للكتابة، التجارة، العقود والعلم.'
+        Shukra: {
+            arabic: 'الزهرة (Zuhrah / Venus)',
+            angel: 'Aniya-il (عنيائيل)',
+            adad: '222 (أبجد: ز هـ ر ة)',
+            incense: 'Mawar, Merekah, Za\'faran & Musk Rose (مسك وورد)',
+            element: 'Air (Ma\'i 💧) - Lembut & Basah',
+            metal: 'Tembaga Halus / Batu Pirus (Copper)',
+            day: 'Jumu\'ah (Jumat)',
+            colorHex: 0xec4899,
+            dos: 'Pernikahan, melamar, mahabbah khusus, seni/musik, membeli pakaian baru, & merawat kecantikan/ketampanan.',
+            donts: 'Hindari aktivitas kekerasan, debat alot, perang hukum, atau ketegasan keras.'
         },
-        {
-            id: 'Chandra',
-            key: 'Chandra',
-            quality: 'MUTAZIL',
-            class: 'q-char',
-            icon: 'fa-moon',
-            asma: 'Ya Rahman Ya Rahim (يا رحمن يا رحيم)',
-            metal: 'Perak Murni (Silver) | Tabi\'at: Air 💧',
-            efficacy_id: 'Mutazi\'l (Netral / Dinamis). Perjalanan, bercocok tanam, minum obat, & hubungan publik.',
-            efficacy_en: 'Neutral / Dynamic. Travel, agriculture, medical treatment & public affairs.',
-            efficacy_ar: 'ممتزج / متحرّك. للسفر، العلاج، الزراعة والتواصل.'
+        Shani: {
+            arabic: 'زحل (Zuhal / Saturn)',
+            angel: 'Kasfya-il (كسفيائيل)',
+            adad: '44 (أبجد: ز ح ل)',
+            incense: 'Bukhur Qist, Harmal & Kulit Bawang (قسط وحرمل)',
+            element: 'Tanah (Turabi 🪵) - Dingin & Kering',
+            metal: 'Timbal Hitam / Besi Tua (Lead)',
+            day: 'Sabtu',
+            colorHex: 0x64748b,
+            dos: 'Membuat benteng ghaib tolak bala, mengunci hajat, menggali tanah/sumur, & pondasi bangunan tahan lama.',
+            donts: 'Dilarang keras melangsungkan pesta pernikahan, memulai proyek komersial baru, atau bepergian jauh.'
         }
+    };
+
+    const CHALDEAN_PLANETS = [
+        { id: 'Shani', key: 'Shani', quality: 'NAHAS_AKBAR', class: 'q-kaal', icon: 'fa-skull-crossbones', asma: 'Ya Qahhar Ya Qadir (يا قهار يا قادر)', metal: 'Timbal Hitam / Besi Tua (Lead) | Tabi\'at: Tanah 🪵', efficacy_id: 'Nahas Akbar (Sangat Nahas). Rintangan & permusuhan. Cocok hanya untuk benteng diri & tolak bala.', efficacy_en: 'Most Inauspicious. Obstacles & severe delays. Suitable for warding off harm.', efficacy_ar: 'نحس أكبر. عقد العزائم والردع وتجنب الأمور الهامة.' },
+        { id: 'Guru', key: 'Guru', quality: 'SAAD_AKBAR', class: 'q-amrit', icon: 'fa-star', asma: 'Ya Kabir Ya Muta\'al (يا كبير يا متعال)', metal: 'Timah Putih / Perunggu (Tin) | Tabi\'at: Udara 💨', efficacy_id: 'Sa\'ad Akbar (Sangat Baik). Berkah, permohonan doa, nikah, memulai usaha besar, & ilmu spiritual.', efficacy_en: 'Most Auspicious. Blessings, prayers, marriage, business launching & spiritual wisdom.', efficacy_ar: 'سعد أكبر. مبارك للمحبة، الزواج، التجارة والدعاء.' },
+        { id: 'Mangal', key: 'Mangal', quality: 'NAHAS_ASGHAR', class: 'q-udveg', icon: 'fa-fire', asma: 'Ya Aziz Ya Jabbar (يا عزيز يا جبار)', metal: 'Besi / Tembaga Merah (Iron) | Tabi\'at: Api 🔥', efficacy_id: 'Nahas Asghar (Kurang Baik). Emosi & pertengkaran. Cocok untuk keberanian, olahraga, & ketegasan.', efficacy_en: 'Inauspicious. Anger & dispute risk. Suitable for courage, sports & firmness.', efficacy_ar: 'نحس أصغر. تجنب الخصومات وناسب الأعمال القوية والرياضة.' },
+        { id: 'Surya', key: 'Surya', quality: 'SAAD_MUTAZIL', class: 'q-labh', icon: 'fa-sun', asma: 'Ya Hayyu Ya Qayyum (يا حي يا قيوم)', metal: 'Emas Murni (Gold) | Tabi\'at: Api 🔥', efficacy_id: 'Sa\'ad & Wibawa. Menghadap pejabat/pimpinan, kewibawaan, keagungan & hajat penting.', efficacy_en: 'Auspicious / Honor. Meeting officials, leadership, authority & high matters.', efficacy_ar: 'سعد وشرف. للقاء الملوك والرؤساء والهيبة والجاه.' },
+        { id: 'Shukra', key: 'Shukra', quality: 'SAAD_ASGHAR', class: 'q-shubh', icon: 'fa-heart', asma: 'Ya Jamil Ya Latif (يا جميل يا لطيف)', metal: 'Tembaga Halus / Pirus (Copper) | Tabi\'at: Air 💧', efficacy_id: 'Sa\'ad Asghar (Baik). Cinta, pernikahan, seni, pakaian baru, perhiasan, & mahabbah.', efficacy_en: 'Auspicious. Love, marriage, arts, buying jewelry & attraction.', efficacy_ar: 'سعد أصغر. للزواج، المحبة، الزينة والفنون.' },
+        { id: 'Budh', key: 'Budh', quality: 'MUTAZIL', class: 'q-char', icon: 'fa-pen-nib', asma: 'Ya Alim Ya Hakim (يا عليم يا حكيم)', metal: 'Raksa / Kuningan (Quicksilver) | Tabi\'at: Udara 💨', efficacy_id: 'Mutazi\'l (Netral). Perdagangan, menulis wafaq/azimat, dokumen, perjanjian & belajar.', efficacy_en: 'Neutral. Commerce, writing talismans/wafaq, contracts & studying.', efficacy_ar: 'ممتزج. للكتابة، التجارة، العقود والعلم.' },
+        { id: 'Chandra', key: 'Chandra', quality: 'MUTAZIL', class: 'q-char', icon: 'fa-moon', asma: 'Ya Rahman Ya Rahim (يا رحمن يا رحيم)', metal: 'Perak Murni (Silver) | Tabi\'at: Air 💧', efficacy_id: 'Mutazi\'l (Netral / Dinamis). Perjalanan, bercocok tanam, minum obat, & hubungan publik.', efficacy_en: 'Neutral / Dynamic. Travel, agriculture, medical treatment & public affairs.', efficacy_ar: 'ممتزج / متحرّك. للسفر، العلاج، الزراعة والتواصل.' }
     ];
 
     const SAAT_DAY_START_INDEX = [3, 6, 2, 5, 1, 4, 0];
 
-    // 3. Bohra / Gujarati Chogadia Definitions
     const CHOGADIYA_INFO = {
         Udveg: { quality: 'UDVEG', class: 'q-udveg', planet: 'Surya', icon: 'fa-sun', desc_id: 'Kecemasan/Tekanan. Hindari keputusan krusial.', asma: 'Ya Hayyu Ya Qayyum', metal: 'Matahari' },
         Char:  { quality: 'CHAR',  class: 'q-char',  planet: 'Shukra', icon: 'fa-wind', desc_id: 'Dinamis/Bergerak. Bagus untuk perjalanan & fisik.', asma: 'Ya Jamil Ya Latif', metal: 'Venus' },
@@ -367,7 +376,6 @@
     const DAY_START_RULERS = ['Udveg', 'Amrit', 'Rog', 'Labh', 'Shubh', 'Char', 'Kaal'];
     const NIGHT_START_RULERS = ['Shubh', 'Char', 'Kaal', 'Udveg', 'Amrit', 'Rog', 'Labh'];
 
-    // 4. 28 Manazil al-Qamar
     const MANAZIL_AL_QAMAR = [
         { id: 1,  name: 'Al-Syaratain (الشرطين)', range: '0°00\' - 13°20\' Aries', desc: 'Awal Baru & Ketegasan. Baik untuk memulai usaha & perjalanan.' },
         { id: 2,  name: 'Al-Butain (البطين)',     range: '13°20\' - 26°40\' Aries', desc: 'Pertumbuhan & Keberhasilan. Baik untuk perdagangan & pertanian.' },
@@ -433,6 +441,9 @@
     let lastActiveSlotName = '';
     let timerInterval = null;
 
+    // Three.js State
+    let scene, camera, renderer, planetMesh, animId;
+
     // DOM Elements
     const elements = {
         btnModeSaat: document.getElementById('btnModeSaat'),
@@ -454,6 +465,8 @@
         chogadiaTableBody: document.getElementById('chogadiaTableBody'),
         liveClock: document.getElementById('liveClock'),
         activeStatusCard: document.getElementById('activeStatusCard'),
+        btnStatusMain3d: document.getElementById('btnStatusMain3d'),
+        btnDialCenter3d: document.getElementById('btnDialCenter3d'),
         dayNightBadge: document.getElementById('dayNightBadge'),
         chogadiaIconCircle: document.getElementById('chogadiaIconCircle'),
         chogadiaMainIcon: document.getElementById('chogadiaMainIcon'),
@@ -490,7 +503,20 @@
         // Dial Clock Elements
         dialRing: document.getElementById('dialRing'),
         dialCenterPlanet: document.getElementById('dialCenterPlanet'),
-        dialCenterStatus: document.getElementById('dialCenterStatus')
+        dialCenterStatus: document.getElementById('dialCenterStatus'),
+        // Modal 3D Elements
+        planet3dModal: document.getElementById('planet3dModal'),
+        btnCloseModal: document.getElementById('btnCloseModal'),
+        mTitleName: document.getElementById('mTitleName'),
+        mTitleQuality: document.getElementById('mTitleQuality'),
+        mInfoAngel: document.getElementById('mInfoAngel'),
+        mInfoAdad: document.getElementById('mInfoAdad'),
+        mInfoAsma: document.getElementById('mInfoAsma'),
+        mInfoIncense: document.getElementById('mInfoIncense'),
+        mInfoMetal: document.getElementById('mInfoMetal'),
+        mInfoDay: document.getElementById('mInfoDay'),
+        mDosText: document.getElementById('mDosText'),
+        mDontsText: document.getElementById('mDontsText')
     };
 
     function getLocalYmdStr(d) {
@@ -593,6 +619,80 @@
             const m = String(date.getMinutes()).padStart(2, '0');
             return `${h}:${m}`;
         }
+    }
+
+    // --- Three.js WebGL 3D Interactive Renderer ---
+    function initThreeJS() {
+        const canvas = document.getElementById('canvas3d');
+        if (!canvas || typeof THREE === 'undefined') return;
+
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+        camera.position.z = 3.2;
+
+        renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+        renderer.setSize(160, 160);
+        renderer.setPixelRatio(window.devicePixelRatio || 1);
+
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+        scene.add(ambientLight);
+
+        const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
+        dirLight.position.set(5, 3, 5);
+        scene.add(dirLight);
+
+        const geometry = new THREE.SphereGeometry(1, 32, 32);
+        const material = new THREE.MeshStandardMaterial({
+            color: 0xfbbf24,
+            roughness: 0.3,
+            metalness: 0.2
+        });
+
+        planetMesh = new THREE.Mesh(geometry, material);
+        scene.add(planetMesh);
+
+        function animate() {
+            animId = requestAnimationFrame(animate);
+            if (planetMesh) {
+                planetMesh.rotation.y += 0.008;
+                planetMesh.rotation.x += 0.003;
+            }
+            renderer.render(scene, camera);
+        }
+        animate();
+    }
+
+    function update3DPlanetColor(colorHex) {
+        if (planetMesh && planetMesh.material) {
+            planetMesh.material.color.setHex(colorHex || 0xfbbf24);
+        }
+    }
+
+    function openPlanetModal(planetKey, qualityText, qualityClass) {
+        const deep = DEEP_FALAK_PLANETS[planetKey] || DEEP_FALAK_PLANETS['Surya'];
+        const t = TRANSLATIONS[currentLang] || TRANSLATIONS.id;
+
+        elements.mTitleName.textContent = deep.arabic;
+        elements.mTitleQuality.textContent = qualityText;
+        elements.mTitleQuality.className = `quality-tag ${qualityClass}`;
+
+        elements.mInfoAngel.textContent = deep.angel;
+        elements.mInfoAdad.textContent = deep.adad;
+        elements.mInfoAsma.textContent = deep.asma;
+        elements.mInfoIncense.textContent = deep.incense;
+        elements.mInfoMetal.textContent = `${deep.metal} | ${deep.element}`;
+        elements.mInfoDay.textContent = deep.day;
+
+        elements.mDosText.textContent = deep.dos;
+        elements.mDontsText.textContent = deep.donts;
+
+        update3DPlanetColor(deep.colorHex);
+
+        elements.planet3dModal.classList.add('active');
+    }
+
+    function closePlanetModal() {
+        elements.planet3dModal.classList.remove('active');
     }
 
     // --- Astronomy Plus Precise Astronomical Calculations ---
@@ -993,6 +1093,12 @@
                     <td><strong>${formatTime(slot.start)} - ${formatTime(slot.end)}</strong></td>
                     <td>${statusBadge}</td>
                 `;
+
+                // Add 3D Modal Click Trigger to Row
+                tr.addEventListener('click', () => {
+                    openPlanetModal(slot.name, qualityText, slot.info.class);
+                });
+
                 elements.chogadiaTableBody.appendChild(tr);
             });
         }
@@ -1006,7 +1112,7 @@
         const t = TRANSLATIONS[currentLang] || TRANSLATIONS.id;
         const slots = activeTab === 'day' ? data.daySlots : data.nightSlots;
         const n = slots.length;
-        const radius = 105; // px from center
+        const radius = 105;
 
         elements.dialRing.querySelectorAll('.dial-node').forEach(node => node.remove());
 
@@ -1018,6 +1124,7 @@
             const y = Math.round(radius * Math.sin(angle));
 
             const isActive = now >= slot.start && now < slot.end;
+            const qualityText = t.qualities[slot.info.quality];
 
             const node = document.createElement('div');
             node.className = `dial-node ${slot.info.class} ${isActive ? 'active' : ''}`;
@@ -1025,11 +1132,19 @@
             node.title = `${slot.index}. ${t.names[slot.name]} (${formatTime(slot.start)} - ${formatTime(slot.end)})`;
             node.innerHTML = `<span>${slot.index}</span>`;
 
+            node.addEventListener('click', () => {
+                openPlanetModal(slot.name, qualityText, slot.info.class);
+            });
+
             elements.dialRing.appendChild(node);
 
             if (isActive) {
                 elements.dialCenterPlanet.textContent = t.names[slot.name] || slot.name;
                 elements.dialCenterStatus.textContent = `#${slot.index} (${formatTime(slot.start)} - ${formatTime(slot.end)})`;
+
+                elements.btnDialCenter3d.onclick = () => {
+                    openPlanetModal(slot.name, qualityText, slot.info.class);
+                };
             }
         });
     }
@@ -1094,6 +1209,11 @@
                     <p>${eff}</p>
                     <small style="display:block; color:var(--accent-gold); margin-top:4px;"><strong>Zikir:</strong> ${p.asma}</small>
                 `;
+
+                item.addEventListener('click', () => {
+                    openPlanetModal(p.key, qualityText, p.class);
+                });
+
                 elements.legendGrid.appendChild(item);
             });
         } else {
@@ -1108,6 +1228,11 @@
                     <div class="legend-badge"><i class="fa-solid ${c.icon}"></i> ${nameText} - ${qualityText}</div>
                     <p>${c.desc_id}</p>
                 `;
+
+                item.addEventListener('click', () => {
+                    openPlanetModal(k, qualityText, c.class);
+                });
+
                 elements.legendGrid.appendChild(item);
             });
         }
@@ -1151,17 +1276,24 @@
         elements.chogadiaMainIcon.className = `fa-solid ${activeSlot.info.icon}`;
 
         const slotNameText = t.names[activeSlot.name] || activeSlot.name;
+        const qualityText = t.qualities[activeSlot.info.quality];
+
         elements.currentChogadiaName.textContent = slotNameText;
-        elements.qualityTag.textContent = t.qualities[activeSlot.info.quality];
+        elements.qualityTag.textContent = qualityText;
         elements.qualityTag.className = `quality-tag ${activeSlot.info.class}`;
 
         elements.currentSlotRange.textContent = `${formatTime(activeSlot.start)} - ${formatTime(activeSlot.end)}`;
         
-        let planetDetail = t.qualities[activeSlot.info.quality];
+        let planetDetail = qualityText;
         elements.currentPlanet.textContent = planetDetail;
 
         elements.displayActiveAsma.textContent = activeSlot.info.asma || '--';
         elements.displayActiveMetal.textContent = activeSlot.info.metal || '--';
+
+        // 3D Click trigger for main status card
+        elements.btnStatusMain3d.onclick = () => {
+            openPlanetModal(activeSlot.name, qualityText, activeSlot.info.class);
+        };
 
         const totalDurationMs = activeSlot.end.getTime() - activeSlot.start.getTime();
         const elapsedMs = now.getTime() - activeSlot.start.getTime();
@@ -1179,7 +1311,7 @@
 
         // Check for slot change notification
         if (lastActiveSlotName && lastActiveSlotName !== slotNameText) {
-            triggerSlotChangeNotification(slotNameText, t.qualities[activeSlot.info.quality]);
+            triggerSlotChangeNotification(slotNameText, qualityText);
         }
         lastActiveSlotName = slotNameText;
     }
@@ -1187,13 +1319,12 @@
     function triggerSlotChangeNotification(slotName, qualityText) {
         if (!isNotifyEnabled) return;
 
-        // Play Beep Tone via Web Audio API
         try {
             const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
             const osc = audioCtx.createOscillator();
             const gain = audioCtx.createGain();
             osc.type = 'sine';
-            osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5 tone
+            osc.frequency.setValueAtTime(587.33, audioCtx.currentTime);
             gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
             osc.connect(gain);
             gain.connect(audioCtx.destination);
@@ -1201,7 +1332,6 @@
             osc.stop(audioCtx.currentTime + 0.4);
         } catch (e) {}
 
-        // Desktop Notification
         if ('Notification' in window && Notification.permission === 'granted') {
             new Notification(`Pergantian Sa'at Planet Falakiah`, {
                 body: `Saat ini telah masuk jam ${slotName} [${qualityText}].`,
@@ -1323,6 +1453,7 @@
     // Initialization & Event Listeners
     function init() {
         applyTheme(currentTheme);
+        initThreeJS();
 
         // Date Picker Default to Today
         elements.dateInput.value = getLocalYmdStr(selectedDate);
@@ -1341,6 +1472,12 @@
             elements.btnModeChogadia.classList.add('active');
             elements.btnModeSaat.classList.remove('active');
         }
+
+        // Modal Close Button
+        elements.btnCloseModal.addEventListener('click', closePlanetModal);
+        elements.planet3dModal.addEventListener('click', (e) => {
+            if (e.target === elements.planet3dModal) closePlanetModal();
+        });
 
         // Notification Button
         if (isNotifyEnabled) {

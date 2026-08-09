@@ -9,7 +9,7 @@
     --border-color: rgba(255, 255, 255, 0.1);
     
     --accent-gold: #fbbf24;
-    --accent-gold-glow: rgba(251, 191, 36, 0.25);
+    --accent-gold-glow: rgba(251, 191, 36, 0.35);
     --accent-blue: #38bdf8;
     --accent-indigo: #6366f1;
     --accent-emerald: #10b981;
@@ -63,6 +63,7 @@ body {
     padding: 20px 12px;
     min-height: 100vh;
     transition: background-color 0.3s ease, color 0.3s ease;
+    perspective: 1000px;
 }
 
 .app-container {
@@ -257,6 +258,7 @@ body {
     align-items: center;
     gap: 20px;
     margin-bottom: 24px;
+    cursor: pointer;
 }
 
 .chogadia-badge-circle {
@@ -443,6 +445,7 @@ body {
     text-align: center;
     box-shadow: 0 0 15px var(--accent-gold-glow);
     z-index: 5;
+    cursor: pointer;
 }
 
 .dial-center span {
@@ -937,6 +940,7 @@ body {
 .chogadia-table td {
     padding: 14px;
     border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
 }
 
 .chogadia-table tbody tr {
@@ -968,6 +972,151 @@ body {
 .q-udveg { color: var(--color-udveg); background: var(--bg-udveg); }
 .q-rog { color: var(--color-rog); background: var(--bg-rog); }
 .q-kaal { color: var(--color-kaal); background: var(--bg-kaal); }
+
+/* NEW: 3D Glassmorphism Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(11, 19, 43, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    perspective: 1200px;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-3d-card {
+    width: 90%;
+    max-width: 580px;
+    background: linear-gradient(135deg, rgba(28, 37, 65, 0.85), rgba(21, 30, 56, 0.95));
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(251, 191, 36, 0.15);
+    transform: rotateY(-20deg) rotateX(10deg) scale(0.8) translateZ(-100px);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.modal-overlay.active .modal-3d-card {
+    transform: rotateY(0deg) rotateX(0deg) scale(1) translateZ(0);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.2s;
+    z-index: 10;
+}
+
+.modal-close-btn:hover {
+    background: var(--color-kaal);
+    color: #ffffff;
+}
+
+.planet-3d-stage {
+    width: 100%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#canvas3d {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    box-shadow: 0 0 35px var(--accent-gold-glow);
+}
+
+.modal-body-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modal-planet-title {
+    text-align: center;
+}
+
+.modal-planet-title h3 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--accent-gold);
+}
+
+.modal-planet-title small {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.modal-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    background: var(--bg-primary);
+    padding: 14px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.modal-info-item small {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+.modal-info-item strong {
+    font-size: 0.88rem;
+    color: var(--text-main);
+}
+
+.modal-dos-donts {
+    background: var(--bg-primary);
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.82rem;
+}
+
+.modal-dos-donts strong {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
 
 /* Legend & Info Card */
 .info-card {
@@ -1056,7 +1205,7 @@ body {
         padding: 0 !important;
     }
 
-    .app-header button, .app-header select, .mode-selector-card, .hijri-controls, .purpose-finder-card, .btn-secondary, #btnPrintPdf, #btnShareWa {
+    .app-header button, .app-header select, .mode-selector-card, .hijri-controls, .purpose-finder-card, .btn-secondary, #btnPrintPdf, #btnShareWa, .modal-overlay {
         display: none !important;
     }
 

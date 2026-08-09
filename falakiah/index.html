@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalkulator Falakiah - Jam Planet (Sa'at al-Kawakib) & Chogadia Hisab Presisi</title>
-    <meta name="description" content="Aplikasi Kalkulator Falakiah Lengkap & Presisi: Sa'at al-Kawakib (12 Jam Siang/Malam), Dial Clock 24H, Asmaul Husna Hikmah, Chogadia Hisab, Pencari Jam Baik, Fase Bulan, 28 Manazil al-Qamar, 12 Buruj & Waktu Sholat.">
+    <title>Kalkulator Falakiah - Jam Planet (Sa'at al-Kawakib) & Chogadia Hisab Presisi 3D</title>
+    <meta name="description" content="Aplikasi Kalkulator Falakiah Lengkap & Presisi 3D: Sa'at al-Kawakib (12 Jam Siang/Malam), Dial Clock 24H 3D, Detail Khadim Malaikat, Asmaul Husna, Incense Bukhur, Chogadia Hisab, Fase Bulan, 28 Manazil al-Qamar & Waktu Sholat.">
     <meta name="theme-color" content="#0b132b">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/svg+xml" href="icon.svg">
@@ -16,7 +16,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <link rel="stylesheet" href="styles.css?v=6.0">
+    <!-- Three.js for 3D Interactive Planet Orbs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css?v=7.0">
 </head>
 <body>
     <div class="app-container">
@@ -27,7 +30,7 @@
                     <i class="fa-solid fa-moon-stars"></i>
                 </div>
                 <div class="logo-text">
-                    <h1>Kalkulator Falakiah</h1>
+                    <h1>Kalkulator Falakiah 3D</h1>
                     <span class="subtitle" id="txtSubtitle">Jam Planet (ساعات الكواكب) & Chogadia</span>
                 </div>
             </div>
@@ -79,12 +82,12 @@
                 <span class="live-clock" id="liveClock">00:00:00 WIB</span>
             </div>
             
-            <div class="status-main">
+            <div class="status-main" id="btnStatusMain3d">
                 <div class="chogadia-badge-circle" id="chogadiaIconCircle">
                     <i class="fa-solid fa-sparkles" id="chogadiaMainIcon"></i>
                 </div>
                 <div class="status-info">
-                    <span class="status-label" id="txtCurrentStatusLabel">Jam Planet Saat Ini:</span>
+                    <span class="status-label" id="txtCurrentStatusLabel">Jam Planet Saat Ini (Klik untuk 3D Detail):</span>
                     <h2 class="chogadia-name" id="currentChogadiaName">Memuat...</h2>
                     <div class="chogadia-quality" id="currentChogadiaQuality">
                         <span class="quality-tag" id="qualityTag">SA'AD (SANGAT BAIK)</span>
@@ -120,7 +123,7 @@
                 <div class="progress-bar" id="slotProgressBar"></div>
             </div>
 
-            <!-- NEW: Active Planet Hikmah & Asmaul Husna Badge -->
+            <!-- Active Planet Hikmah & Asmaul Husna Badge -->
             <div class="active-hikmah-banner" id="activeHikmahBanner">
                 <div class="hikmah-item">
                     <i class="fa-solid fa-hands-praying text-amber"></i>
@@ -140,16 +143,16 @@
             </div>
         </section>
 
-        <!-- NEW: Interactive Falakiah Dial Clock (Visual Radial Hours) -->
+        <!-- Interactive Falakiah Dial Clock (Visual Radial Hours) -->
         <section class="dial-clock-card" id="dialClockCard">
             <div class="dial-header">
                 <h3><i class="fa-solid fa-compass-drafting text-amber"></i> <span id="txtDialTitle">Visual Jam Kompas Falakiah 24h</span></h3>
-                <small id="txtDialSubtitle">Peta Visual 12 Jam Siang & 12 Jam Malam Realtime</small>
+                <small id="txtDialSubtitle">Peta Visual 12 Jam Siang & 12 Jam Malam Realtime (Klik Node untuk 3D Detail)</small>
             </div>
             <div class="dial-container">
                 <div class="dial-ring" id="dialRing">
                     <!-- 12 or 24 Radial Nodes injected dynamically -->
-                    <div class="dial-center">
+                    <div class="dial-center" id="btnDialCenter3d">
                         <span id="dialCenterPlanet">--</span>
                         <small id="dialCenterStatus">AKTIF</small>
                     </div>
@@ -392,7 +395,59 @@
         </footer>
     </div>
 
-    <script src="app.js?v=6.0"></script>
+    <!-- NEW: 3D Interactive Planet Glassmorphism Modal Drawer -->
+    <div class="modal-overlay" id="planet3dModal">
+        <div class="modal-3d-card">
+            <button class="modal-close-btn" id="btnCloseModal"><i class="fa-solid fa-xmark"></i></button>
+            <div class="planet-3d-stage">
+                <canvas id="canvas3d"></canvas>
+            </div>
+            <div class="modal-body-details">
+                <div class="modal-planet-title">
+                    <h3 id="mTitleName">Syams (الشمس)</h3>
+                    <small id="mTitleQuality" class="quality-tag q-labh">SA'AD & WIBAWA</small>
+                </div>
+                <div class="modal-info-grid">
+                    <div class="modal-info-item">
+                        <small>Malaikat Pengawas (Khadim):</small>
+                        <strong id="mInfoAngel" class="text-amber">--</strong>
+                    </div>
+                    <div class="modal-info-item">
+                        <small>Hisab Abjad & Jumlah Adad:</small>
+                        <strong id="mInfoAdad" class="text-indigo">--</strong>
+                    </div>
+                    <div class="modal-info-item">
+                        <small>Asmaul Husna Zikir:</small>
+                        <strong id="mInfoAsma" class="text-amber">--</strong>
+                    </div>
+                    <div class="modal-info-item">
+                        <small>Wewangian Bukhur / Incense:</small>
+                        <strong id="mInfoIncense">--</strong>
+                    </div>
+                    <div class="modal-info-item">
+                        <small>Unsur Tabi'at & Logam:</small>
+                        <strong id="mInfoMetal">--</strong>
+                    </div>
+                    <div class="modal-info-item">
+                        <small>Hari Utama Penguasa:</small>
+                        <strong id="mInfoDay">--</strong>
+                    </div>
+                </div>
+                <div class="modal-dos-donts">
+                    <div>
+                        <strong class="text-emerald"><i class="fa-solid fa-circle-check"></i> Hajat Utama Disarankan (Dos):</strong>
+                        <p id="mDosText" style="color: var(--text-muted); margin-top:2px;">--</p>
+                    </div>
+                    <div>
+                        <strong class="text-amber"><i class="fa-solid fa-triangle-exclamation"></i> Hal Wajib Dihindari (Don'ts):</strong>
+                        <p id="mDontsText" style="color: var(--text-muted); margin-top:2px;">--</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js?v=7.0"></script>
     <script>
         document.getElementById('yearSpan').textContent = new Date().getFullYear();
         if ('serviceWorker' in navigator) {
