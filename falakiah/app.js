@@ -1,5 +1,5 @@
 /**
- * Kalkulator Falakiah Engine 3D: Sa'at al-Kawakib (ساعات الكواكب), Three.js 3D Orbs, Deep Hikmah Database, 24h Dial Clock, Asmaul Husna, 28 Manazil, Hijri, Qibla & Hajat Finder
+ * Kalkulator Falakiah Engine 3D: Sa'at al-Kawakib (ساعات الكواكب), Dual 3D WebGL/CSS Orbs, Deep Hikmah Database, 24h Dial Clock, Asmaul Husna, 28 Manazil, Hijri, Qibla & Hajat Finder
  * Developed for arifwidiyanto.web.id/falakiah
  */
 
@@ -273,6 +273,7 @@
             metal: 'Emas Murni (Gold)',
             day: 'Ahad (Minggu)',
             colorHex: 0xfbbf24,
+            colorCss: '#fbbf24',
             dos: 'Menghadap pimpinan/pejabat, memohon kenaikan jabatan, kewibawaan (Haibah), pengasihan umum, & hajat kehormatan.',
             donts: 'Menghindari permusuhan, urusan rahasia, atau menyembunyikan sesuatu (karena Syams menyingkap rahasia).'
         },
@@ -285,6 +286,7 @@
             metal: 'Perak Murni (Silver)',
             day: 'Itsnain (Senin)',
             colorHex: 0x38bdf8,
+            colorCss: '#38bdf8',
             dos: 'Memulai perjalanan laut/darat, bercocok tanam, minum obat, mahabbah kasih sayang, & kedamaian keluarga.',
             donts: 'Menandatangani kontrak permanen atau usaha jangka panjang yang butuh stabilitas tinggi (sifat Bulan cepat berubah).'
         },
@@ -297,6 +299,7 @@
             metal: 'Besi Murni / Tembaga Merah (Iron)',
             day: 'Tsulatsa (Selasa)',
             colorHex: 0xef4444,
+            colorCss: '#ef4444',
             dos: 'Latihan fisik/olahraga, pembuktian keberanian, ketegasan hukum, & membuat pagar ghaib / benteng diri dari musuh.',
             donts: 'Sangat dilarang melangsungkan pernikahan, melamar, transaksi damai, atau urusan kasih sayang (risiko konflik tinggi).'
         },
@@ -309,6 +312,7 @@
             metal: 'Raksa / Kuningan (Quicksilver)',
             day: 'Arbi\'a (Rabu)',
             colorHex: 0x8b5cf6,
+            colorCss: '#8b5cf6',
             dos: 'Menulis Wafaq/Azimat, membuat dokumen/kontrak bisnis, belajar, mengarang buku, & menghitung keuangan.',
             donts: 'Hindari aktivitas yang membutuhkan kepastian emosional jangka panjang (sifat Utarid mudah terpengaruh).'
         },
@@ -321,6 +325,7 @@
             metal: 'Timah Putih / Perunggu (Tin)',
             day: 'Khamis (Kamis)',
             colorHex: 0x10b981,
+            colorCss: '#10b981',
             dos: 'Memulai bisnis besar, pernikahan, berdoa/kholwat, permohonan hajat rezeki, membeli perhiasan & konsultasi agama.',
             donts: 'Dilarang keras melakukan perbuatan jahat, kedengkian, atau maksiat (risiko bumerang sangat kuat).'
         },
@@ -333,6 +338,7 @@
             metal: 'Tembaga Halus / Batu Pirus (Copper)',
             day: 'Jumu\'ah (Jumat)',
             colorHex: 0xec4899,
+            colorCss: '#ec4899',
             dos: 'Pernikahan, melamar, mahabbah khusus, seni/musik, membeli pakaian baru, & merawat kecantikan/ketampanan.',
             donts: 'Hindari aktivitas kekerasan, debat alot, perang hukum, atau ketegasan keras.'
         },
@@ -345,6 +351,7 @@
             metal: 'Timbal Hitam / Besi Tua (Lead)',
             day: 'Sabtu',
             colorHex: 0x64748b,
+            colorCss: '#64748b',
             dos: 'Membuat benteng ghaib tolak bala, mengunci hajat, menggali tanah/sumur, & pondasi bangunan tahan lama.',
             donts: 'Dilarang keras melangsungkan pesta pernikahan, memulai proyek komersial baru, atau bepergian jauh.'
         }
@@ -441,8 +448,8 @@
     let lastActiveSlotName = '';
     let timerInterval = null;
 
-    // Three.js State
-    let scene, camera, renderer, planetMesh, animId;
+    // Three.js & Dual 3D Engine State
+    let scene, camera, renderer, planetMesh, isWebGLSupported = false;
 
     // DOM Elements
     const elements = {
@@ -621,50 +628,68 @@
         }
     }
 
-    // --- Three.js WebGL 3D Interactive Renderer ---
+    // --- Dual 3D Engine: WebGL Three.js + Pure CSS 3D Orb Fallback ---
     function initThreeJS() {
         const canvas = document.getElementById('canvas3d');
         if (!canvas || typeof THREE === 'undefined') return;
 
-        scene = new THREE.Scene();
-        camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
-        camera.position.z = 3.2;
-
-        renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-        renderer.setSize(160, 160);
-        renderer.setPixelRatio(window.devicePixelRatio || 1);
-
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
-        scene.add(ambientLight);
-
-        const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
-        dirLight.position.set(5, 3, 5);
-        scene.add(dirLight);
-
-        const geometry = new THREE.SphereGeometry(1, 32, 32);
-        const material = new THREE.MeshStandardMaterial({
-            color: 0xfbbf24,
-            roughness: 0.3,
-            metalness: 0.2
-        });
-
-        planetMesh = new THREE.Mesh(geometry, material);
-        scene.add(planetMesh);
-
-        function animate() {
-            animId = requestAnimationFrame(animate);
-            if (planetMesh) {
-                planetMesh.rotation.y += 0.008;
-                planetMesh.rotation.x += 0.003;
+        try {
+            const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+            if (!gl) {
+                isWebGLSupported = false;
+                return;
             }
-            renderer.render(scene, camera);
+
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+            camera.position.z = 3.2;
+
+            renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true, context: gl });
+            renderer.setSize(160, 160);
+            renderer.setPixelRatio(window.devicePixelRatio || 1);
+
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+            scene.add(ambientLight);
+
+            const dirLight = new THREE.DirectionalLight(0xffffff, 1.4);
+            dirLight.position.set(5, 3, 5);
+            scene.add(dirLight);
+
+            const geometry = new THREE.SphereGeometry(1, 32, 32);
+            const material = new THREE.MeshStandardMaterial({
+                color: 0xfbbf24,
+                roughness: 0.35,
+                metalness: 0.2
+            });
+
+            planetMesh = new THREE.Mesh(geometry, material);
+            scene.add(planetMesh);
+
+            isWebGLSupported = true;
+
+            function animate() {
+                requestAnimationFrame(animate);
+                if (planetMesh) {
+                    planetMesh.rotation.y += 0.008;
+                    planetMesh.rotation.x += 0.003;
+                }
+                renderer.render(scene, camera);
+            }
+            animate();
+        } catch (e) {
+            isWebGLSupported = false;
         }
-        animate();
     }
 
-    function update3DPlanetColor(colorHex) {
-        if (planetMesh && planetMesh.material) {
+    function render3DPlanetOrb(colorHex, colorCss) {
+        const stage = document.querySelector('.planet-3d-stage');
+        if (!stage) return;
+
+        if (isWebGLSupported && planetMesh) {
             planetMesh.material.color.setHex(colorHex || 0xfbbf24);
+        } else {
+            // Render Pure CSS 3D Glowing Planet Orb Fallback
+            stage.innerHTML = `<div class="css-planet-orb" style="--orb-color: ${colorCss || '#fbbf24'};"></div>`;
         }
     }
 
@@ -686,7 +711,7 @@
         elements.mDosText.textContent = deep.dos;
         elements.mDontsText.textContent = deep.donts;
 
-        update3DPlanetColor(deep.colorHex);
+        render3DPlanetOrb(deep.colorHex, deep.colorCss);
 
         elements.planet3dModal.classList.add('active');
     }
@@ -1094,7 +1119,6 @@
                     <td>${statusBadge}</td>
                 `;
 
-                // Add 3D Modal Click Trigger to Row
                 tr.addEventListener('click', () => {
                     openPlanetModal(slot.name, qualityText, slot.info.class);
                 });
@@ -1290,7 +1314,6 @@
         elements.displayActiveAsma.textContent = activeSlot.info.asma || '--';
         elements.displayActiveMetal.textContent = activeSlot.info.metal || '--';
 
-        // 3D Click trigger for main status card
         elements.btnStatusMain3d.onclick = () => {
             openPlanetModal(activeSlot.name, qualityText, activeSlot.info.class);
         };
@@ -1309,7 +1332,6 @@
 
         elements.countdownTimer.textContent = `${String(rh).padStart(2, '0')} j ${String(rm).padStart(2, '0')} m ${String(rs).padStart(2, '0')} d`;
 
-        // Check for slot change notification
         if (lastActiveSlotName && lastActiveSlotName !== slotNameText) {
             triggerSlotChangeNotification(slotNameText, qualityText);
         }
@@ -1362,7 +1384,6 @@
         }
     }
 
-    // Share WhatsApp Summary
     function copyWhatsAppSummary() {
         const data = calculateSchedule(selectedDate, currentCoords.lat, currentCoords.lon);
         if (!data) return;

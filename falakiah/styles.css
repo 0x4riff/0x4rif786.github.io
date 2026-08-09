@@ -973,16 +973,16 @@ body {
 .q-rog { color: var(--color-rog); background: var(--bg-rog); }
 .q-kaal { color: var(--color-kaal); background: var(--bg-kaal); }
 
-/* NEW: 3D Glassmorphism Modal */
+/* 3D Glassmorphism Modal & CSS 3D Animated Orb Fallback */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(11, 19, 43, 0.75);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(11, 19, 43, 0.8);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     z-index: 9999;
     display: flex;
     align-items: center;
@@ -999,17 +999,18 @@ body {
 }
 
 .modal-3d-card {
-    width: 90%;
-    max-width: 580px;
-    background: linear-gradient(135deg, rgba(28, 37, 65, 0.85), rgba(21, 30, 56, 0.95));
-    border: 1px solid rgba(251, 191, 36, 0.3);
+    width: 92%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: linear-gradient(135deg, rgba(28, 37, 65, 0.9), rgba(21, 30, 56, 0.98));
+    border: 1px solid rgba(251, 191, 36, 0.35);
     border-radius: 24px;
     padding: 28px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(251, 191, 36, 0.15);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(251, 191, 36, 0.2);
     transform: rotateY(-20deg) rotateX(10deg) scale(0.8) translateZ(-100px);
     transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     gap: 18px;
@@ -1056,7 +1057,39 @@ body {
     width: 160px;
     height: 160px;
     border-radius: 50%;
-    box-shadow: 0 0 35px var(--accent-gold-glow);
+}
+
+/* Pure CSS 3D Glowing Planet Orb Fallback */
+.css-planet-orb {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #ffffff 0%, var(--orb-color, #fbbf24) 45%, #0b132b 90%);
+    box-shadow: inset -15px -15px 30px rgba(0, 0, 0, 0.8), 0 0 35px var(--orb-color, #fbbf24);
+    position: relative;
+    animation: rotateOrb 12s linear infinite;
+    overflow: hidden;
+}
+
+.css-planet-orb::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, transparent 40%, rgba(255, 255, 255, 0.15) 50%, transparent 60%);
+    animation: spinRings 8s linear infinite;
+}
+
+@keyframes rotateOrb {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes spinRings {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
 }
 
 .modal-body-details {
@@ -1088,6 +1121,12 @@ body {
     padding: 14px;
     border-radius: var(--radius-md);
     border: 1px solid var(--border-color);
+}
+
+@media (max-width: 480px) {
+    .modal-info-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .modal-info-item small {
@@ -1149,6 +1188,7 @@ body {
     border-radius: var(--radius-md);
     border: 1px solid var(--border-color);
     background: var(--bg-primary);
+    cursor: pointer;
 }
 
 .legend-badge {
