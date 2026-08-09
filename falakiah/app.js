@@ -1,5 +1,5 @@
 /**
- * Kalkulator Falakiah Engine 3D: Sa'at al-Kawakib (ساعات الكواكب), Dual 3D WebGL/CSS Orbs, Deep Hikmah Database, 24h Dial Clock, Asmaul Husna, 28 Manazil, Hijri, Qibla & Hajat Finder
+ * Kalkulator Falakiah Engine 3D: Sa'at al-Kawakib (ساعات الكواكب), Dual 3D WebGL/CSS Orbs, Deep Hikmah Database (Syamsul Ma'arif & Manba' Ushul al-Hikmah), 24h Dial Clock, Asmaul Husna, 28 Manazil, Hijri, Qibla & Hajat Finder
  * Developed for arifwidiyanto.web.id/falakiah
  */
 
@@ -33,7 +33,7 @@
             thTime: "Rentang Waktu",
             thStatus: "Status",
             legendTitle: "Panduan Kategori Jam Planet & Falakiah",
-            disclaimers: "Aplikasi ini menghitung waktu Falakiah & Jam Planet secara akurat berdasarkan posisi Astronomi Matahari (Terbit & Terbenam) di lokasi Anda (1900–2100). Bekerja 100% Offline.",
+            disclaimers: "Aplikasi ini menghitung waktu Falakiah & Jam Planet secara akurat berdasarkan posisi Astronomi Matahari (Terbit & Terbenam) di lokasi Anda (1900–2100) serta sesuai dengan rujukan Kitab Syamsul Ma'arif & Manba' Ushul al-Hikmah. Bekerja 100% Offline.",
             activeNow: "AKTIF SEKARANG",
             upcoming: "Akan Datang",
             passed: "Selesai",
@@ -117,7 +117,7 @@
             thTime: "Time Range",
             thStatus: "Status",
             legendTitle: "Planetary Hours & Quality Guide",
-            disclaimers: "Calculates precise Falakiah & Planetary Hours using astronomical Solar positions (Sunrise & Sunset) for your coordinates (1900–2100). Works 100% Offline.",
+            disclaimers: "Calculates precise Falakiah & Planetary Hours using astronomical Solar positions (Sunrise & Sunset) for your coordinates (1900–2100) aligned with Syamsul Ma'arif & Manba' Ushul al-Hikmah. Works 100% Offline.",
             activeNow: "ACTIVE NOW",
             upcoming: "Upcoming",
             passed: "Passed",
@@ -201,7 +201,7 @@
             thTime: "الوقت",
             thStatus: "الحالة",
             legendTitle: "دليل ساعات الكواكب والأوقات الفلكية",
-            disclaimers: "يحسب الحسابات الفلكية وساعات الكواكب بدقة بناءً على الشروق والغروب الفلكي لموقعك (1900-2100). يعمل بالكامل بدون إنترنت.",
+            disclaimers: "يحسب الحسابات الفلكية وساعات الكواكب بدقة بناءً على الشروق والغروب الفلكي لموقعك (1900-2100) ومطابق لكتاب شمس المعارف الكبرى ومنبع أصول الحكمة. يعمل بالكامل بدون إنترنت.",
             activeNow: "نشط الآن",
             upcoming: "قادم",
             passed: "انتهى",
@@ -262,11 +262,11 @@
         }
     };
 
-    // DEEP FALAKIAH PLANET DATABASE (Hikmah, Angels, Abjad, Incense, Metals, Dos & Don'ts)
+    // VERIFIED DEEP FALAKIAH PLANET DATABASE (Cross-checked with Syamsul Ma'arif al-Kubra & Manba' Ushul al-Hikmah)
     const DEEP_FALAK_PLANETS = {
         Surya: {
             arabic: 'الشمس (Syams / Sun)',
-            angel: 'Samsama-il (سمسمائيل)',
+            angel: 'Ruqya-il (روقيائيل)',
             adad: '400 (أبجد: ش م س)',
             incense: 'Cendana Merah, Gaharu Super & Amber (سندروس وعود)',
             element: 'Api (Nari 🔥) - Panas & Kering',
@@ -292,8 +292,8 @@
         },
         Mangal: {
             arabic: 'المريخ (Mirrikh / Mars)',
-            angel: 'Rukya-il (رقيائيل)',
-            adad: '840 (أبجد: م ر ي خ)',
+            angel: 'Samsama-il (سمسمائيل)',
+            adad: '850 (أبجد: م ر ي خ)',
             incense: 'Bukhur Kibrit (Belerang), Lada Hitam & Mustaka (كبريت ومستكي)',
             element: 'Api (Nari 🔥) - Panas Terik',
             metal: 'Besi Murni / Tembaga Merah (Iron)',
@@ -306,7 +306,7 @@
         Budh: {
             arabic: 'عطارد (Utarid / Mercury)',
             angel: 'Mikail (ميكائيل)',
-            adad: '289 (أبجد: ع ط ا ر د)',
+            adad: '284 (أبجد: ع ط ا ر د)',
             incense: 'Mastaka, Jawi & Kapur Barus (مستكي وجاوي)',
             element: 'Udara (Hawai 💨) - Panas & Basah',
             metal: 'Raksa / Kuningan (Quicksilver)',
@@ -319,7 +319,7 @@
         Guru: {
             arabic: 'المشتري (Mushtari / Jupiter)',
             angel: 'Sarfya-il (صرفيائيل)',
-            adad: '970 (أبجد: م ش ت ر ي)',
+            adad: '950 (أبجد: م ش ت ر ي)',
             incense: 'Luban Jawi (Istirak), Gaharu Super & Cendana (لبان جاوي وعود)',
             element: 'Udara (Hawai 💨) - Panas & Lembab',
             metal: 'Timah Putih / Perunggu (Tin)',
@@ -332,7 +332,7 @@
         Shukra: {
             arabic: 'الزهرة (Zuhrah / Venus)',
             angel: 'Aniya-il (عنيائيل)',
-            adad: '222 (أبجد: ز هـ ر ة)',
+            adad: '217 (أبجد: ز هـ ر ة)',
             incense: 'Mawar, Merekah, Za\'faran & Musk Rose (مسك وورد)',
             element: 'Air (Ma\'i 💧) - Lembut & Basah',
             metal: 'Tembaga Halus / Batu Pirus (Copper)',
@@ -345,7 +345,7 @@
         Shani: {
             arabic: 'زحل (Zuhal / Saturn)',
             angel: 'Kasfya-il (كسفيائيل)',
-            adad: '44 (أبجد: ز ح ل)',
+            adad: '45 (أبجد: ز ح ل)',
             incense: 'Bukhur Qist, Harmal & Kulit Bawang (قسط وحرمل)',
             element: 'Tanah (Turabi 🪵) - Dingin & Kering',
             metal: 'Timbal Hitam / Besi Tua (Lead)',
@@ -688,7 +688,6 @@
         if (isWebGLSupported && planetMesh) {
             planetMesh.material.color.setHex(colorHex || 0xfbbf24);
         } else {
-            // Render Pure CSS 3D Glowing Planet Orb Fallback
             stage.innerHTML = `<div class="css-planet-orb" style="--orb-color: ${colorCss || '#fbbf24'};"></div>`;
         }
     }
