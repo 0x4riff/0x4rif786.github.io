@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalkulator Falakiah - Jam Planet (Sa'at al-Kawakib) & Chogadia Hisab Presisi</title>
-    <meta name="description" content="Aplikasi Kalkulator Falakiah Lengkap & Presisi: Sa'at al-Kawakib (12 Jam Siang/Malam), Chogadia Hisab, Pencari Jam Baik/Hajat, Fase Bulan, 28 Manazil al-Qamar, 12 Buruj, Kalender Hijriah & Waktu Sholat.">
+    <meta name="description" content="Aplikasi Kalkulator Falakiah Lengkap & Presisi: Sa'at al-Kawakib (12 Jam Siang/Malam), Dial Clock 24H, Asmaul Husna Hikmah, Chogadia Hisab, Pencari Jam Baik, Fase Bulan, 28 Manazil al-Qamar, 12 Buruj & Waktu Sholat.">
     <meta name="theme-color" content="#0b132b">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/svg+xml" href="icon.svg">
@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <link rel="stylesheet" href="styles.css?v=5.0">
+    <link rel="stylesheet" href="styles.css?v=6.0">
 </head>
 <body>
     <div class="app-container">
@@ -32,6 +32,12 @@
                 </div>
             </div>
             <div class="header-actions">
+                <button id="btnNotifySound" class="btn-secondary" title="Aktifkan Notifikasi Suara">
+                    <i class="fa-solid fa-bell text-amber" id="iconNotify"></i> <span id="txtBtnNotify">Notifikasi</span>
+                </button>
+                <button id="btnPrintPdf" class="btn-secondary" title="Cetak / Download PDF">
+                    <i class="fa-solid fa-print"></i> <span id="txtBtnPrint">Cetak</span>
+                </button>
                 <button id="btnShareWa" class="btn-secondary" title="Salin Ringkasan WA">
                     <i class="fa-brands fa-whatsapp text-emerald"></i> <span id="txtBtnWa">Salin WA</span>
                 </button>
@@ -113,6 +119,42 @@
             <div class="progress-bar-container">
                 <div class="progress-bar" id="slotProgressBar"></div>
             </div>
+
+            <!-- NEW: Active Planet Hikmah & Asmaul Husna Badge -->
+            <div class="active-hikmah-banner" id="activeHikmahBanner">
+                <div class="hikmah-item">
+                    <i class="fa-solid fa-hands-praying text-amber"></i>
+                    <div>
+                        <small id="txtAsmaLabel">Asmaul Husna Penguat Jam Ini:</small>
+                        <strong id="displayActiveAsma">--</strong>
+                    </div>
+                </div>
+                <div class="hikmah-divider"></div>
+                <div class="hikmah-item">
+                    <i class="fa-solid fa-cube text-indigo"></i>
+                    <div>
+                        <small id="txtMetalLabel">Logam / Unsur Tabi'at:</small>
+                        <strong id="displayActiveMetal">--</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: Interactive Falakiah Dial Clock (Visual Radial Hours) -->
+        <section class="dial-clock-card" id="dialClockCard">
+            <div class="dial-header">
+                <h3><i class="fa-solid fa-compass-drafting text-amber"></i> <span id="txtDialTitle">Visual Jam Kompas Falakiah 24h</span></h3>
+                <small id="txtDialSubtitle">Peta Visual 12 Jam Siang & 12 Jam Malam Realtime</small>
+            </div>
+            <div class="dial-container">
+                <div class="dial-ring" id="dialRing">
+                    <!-- 12 or 24 Radial Nodes injected dynamically -->
+                    <div class="dial-center">
+                        <span id="dialCenterPlanet">--</span>
+                        <small id="dialCenterStatus">AKTIF</small>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Astronomy & Falakiah Plus Card -->
@@ -184,7 +226,7 @@
             </div>
         </section>
 
-        <!-- NEW: Best Hour Finder & Purpose Filter Section -->
+        <!-- Best Hour Finder & Purpose Filter Section -->
         <section class="purpose-finder-card">
             <div class="finder-header">
                 <h3><i class="fa-solid fa-wand-magic-sparkles text-amber"></i> <span id="txtFinderTitle">Pencari Jam Baik & Hajat (Best Hour Finder)</span></h3>
@@ -293,7 +335,7 @@
                             <th id="thNum">Jam ke-</th>
                             <th id="thName">Planet / Kawakib</th>
                             <th id="thQuality">Sifat / Kategori</th>
-                            <th id="thPlanet">Khasiat / Penggunaan Hikmah</th>
+                            <th id="thPlanet">Khasiat & Asmaul Husna</th>
                             <th id="thTime">Rentang Waktu</th>
                             <th id="thStatus">Status</th>
                         </tr>
@@ -305,7 +347,7 @@
             </div>
         </section>
 
-        <!-- NEW: 12 Buruj & 4 Elemen Tabi'at Card -->
+        <!-- 12 Buruj & 4 Elemen Tabi'at Card -->
         <section class="buruj-elements-card">
             <h3><i class="fa-solid fa-fire-flame-curved text-amber"></i> Ensiklopedia 12 Buruj & 4 Elemen Tabi'at Falakiah</h3>
             <div class="elements-grid">
@@ -350,7 +392,7 @@
         </footer>
     </div>
 
-    <script src="app.js?v=5.0"></script>
+    <script src="app.js?v=6.0"></script>
     <script>
         document.getElementById('yearSpan').textContent = new Date().getFullYear();
         if ('serviceWorker' in navigator) {

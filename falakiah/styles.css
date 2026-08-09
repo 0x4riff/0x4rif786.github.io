@@ -15,19 +15,19 @@
     --accent-emerald: #10b981;
     
     /* Quality status colors */
-    --color-amrit: #10b981; /* Green - Sa'ad Akbar / Amrit */
+    --color-amrit: #10b981;
     --bg-amrit: rgba(16, 185, 129, 0.15);
-    --color-shubh: #3b82f6; /* Blue - Sa'ad Asghar / Shubh */
+    --color-shubh: #3b82f6;
     --bg-shubh: rgba(59, 130, 246, 0.15);
-    --color-labh: #06b6d4; /* Cyan - Labh */
+    --color-labh: #06b6d4;
     --bg-labh: rgba(6, 182, 212, 0.15);
-    --color-char: #8b5cf6; /* Purple - Neutral / Mutazil */
+    --color-char: #8b5cf6;
     --bg-char: rgba(139, 92, 246, 0.15);
-    --color-udveg: #f59e0b; /* Amber - Udveg / Nahas Asghar */
+    --color-udveg: #f59e0b;
     --bg-udveg: rgba(245, 158, 11, 0.15);
-    --color-rog: #f97316; /* Orange - Rog */
+    --color-rog: #f97316;
     --bg-rog: rgba(249, 115, 22, 0.15);
-    --color-kaal: #ef4444; /* Red - Nahas Akbar / Kaal */
+    --color-kaal: #ef4444;
     --bg-kaal: rgba(239, 68, 68, 0.15);
 
     --radius-lg: 16px;
@@ -121,6 +121,7 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
+    flex-wrap: wrap;
 }
 
 .lang-select {
@@ -344,6 +345,144 @@ body {
     width: 0%;
     background: linear-gradient(90deg, var(--accent-gold), var(--accent-blue));
     transition: width 0.5s ease;
+}
+
+/* Active Hikmah Banner */
+.active-hikmah-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: var(--bg-primary);
+    padding: 12px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    margin-top: 14px;
+    gap: 12px;
+}
+
+.hikmah-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hikmah-item i {
+    font-size: 1.2rem;
+}
+
+.hikmah-item small {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+.hikmah-item strong {
+    font-size: 0.88rem;
+}
+
+.hikmah-divider {
+    width: 1px;
+    height: 24px;
+    background: var(--border-color);
+}
+
+/* Dial Clock Card */
+.dial-clock-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    box-shadow: var(--shadow-main);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.dial-header h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dial-header small {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+}
+
+.dial-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.dial-ring {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    border: 2px dashed var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle, var(--bg-card), var(--bg-primary));
+}
+
+.dial-center {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    border: 2px solid var(--accent-gold);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 0 15px var(--accent-gold-glow);
+    z-index: 5;
+}
+
+.dial-center span {
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: var(--text-main);
+    line-height: 1.2;
+}
+
+.dial-center small {
+    font-size: 0.68rem;
+    color: var(--accent-emerald);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.dial-node {
+    position: absolute;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 700;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.dial-node.active {
+    background: var(--accent-gold);
+    color: #0b132b;
+    border-color: #ffffff;
+    transform: scale(1.2);
+    box-shadow: 0 0 12px var(--accent-gold);
+    z-index: 4;
 }
 
 /* Astronomy Plus Card */
@@ -907,6 +1046,36 @@ body {
 
 .app-footer a:hover {
     text-decoration: underline;
+}
+
+/* Print Stylesheet for Clean PDF Exports */
+@media print {
+    body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        padding: 0 !important;
+    }
+
+    .app-header button, .app-header select, .mode-selector-card, .hijri-controls, .purpose-finder-card, .btn-secondary, #btnPrintPdf, #btnShareWa {
+        display: none !important;
+    }
+
+    .app-container {
+        max-width: 100% !important;
+        gap: 10px !important;
+    }
+
+    .current-status-card, .astronomy-plus-card, .controls-card, .schedule-section, .info-card, .buruj-elements-card, .dial-clock-card {
+        background: #ffffff !important;
+        color: #000000 !important;
+        border: 1px solid #cccccc !important;
+        box-shadow: none !important;
+    }
+
+    .chogadia-table th, .chogadia-table td {
+        border-bottom: 1px solid #dddddd !important;
+        color: #000000 !important;
+    }
 }
 
 /* Arabic Support */

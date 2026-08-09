@@ -1,5 +1,5 @@
 /**
- * Kalkulator Falakiah Engine: Sa'at al-Kawakib (ساعات الكواكب), Chogadia, Moon Phases, 28 Manazil, Hijri, Qibla & Hajat Finder
+ * Kalkulator Falakiah Engine: Sa'at al-Kawakib (ساعات الكواكب), 24h Dial Clock, Asmaul Husna Hikmah, Chogadia, Moon Phases, 28 Manazil, Hijri, Qibla & Hajat Finder
  * Developed for arifwidiyanto.web.id/falakiah
  */
 
@@ -29,7 +29,7 @@
             thNum: "Jam ke-",
             thName: "Planet / Kawakib",
             thQuality: "Sifat / Kategori",
-            thPlanet: "Khasiat & Hikmah",
+            thPlanet: "Khasiat & Asmaul Husna",
             thTime: "Rentang Waktu",
             thStatus: "Status",
             legendTitle: "Panduan Kategori Jam Planet & Falakiah",
@@ -53,6 +53,12 @@
             txtIsha: "Isya",
             txtFinderTitle: "Pencari Jam Baik & Hajat (Best Hour Finder)",
             txtFinderSubtitle: "Filter jam planet berdasarkan kebutuhan hajat Anda hari ini:",
+            txtDialTitle: "Visual Jam Kompas Falakiah 24h",
+            txtDialSubtitle: "Peta Visual 12 Jam Siang & 12 Jam Malam Realtime",
+            txtAsmaLabel: "Asmaul Husna Penguat Jam Ini:",
+            txtMetalLabel: "Logam / Unsur Tabi'at:",
+            txtBtnNotify: "Notifikasi",
+            txtBtnPrint: "Cetak",
             txtBtnWa: "Salin WA",
             qualities: {
                 SAAD_AKBAR: "Sa'ad Akbar (Sangat Baik)",
@@ -131,6 +137,12 @@
             txtIsha: "Isha",
             txtFinderTitle: "Best Hour & Purpose Finder",
             txtFinderSubtitle: "Filter planetary hours by your goal for today:",
+            txtDialTitle: "24h Falakiah Dial Clock",
+            txtDialSubtitle: "Visual Realtime Map of 12 Day & 12 Night Hours",
+            txtAsmaLabel: "Recommended Asmaul Husna:",
+            txtMetalLabel: "Metal / Element:",
+            txtBtnNotify: "Notify",
+            txtBtnPrint: "Print",
             txtBtnWa: "Copy WA",
             qualities: {
                 SAAD_AKBAR: "Sa'ad Akbar (Most Auspicious)",
@@ -209,6 +221,12 @@
             txtIsha: "العشاء",
             txtFinderTitle: "مستكشف الأوقات المباركة وقضاء الحوائج",
             txtFinderSubtitle: "اختر غايتك لعرض أفضل الساعات:",
+            txtDialTitle: "بوصلة ساعات الكواكب 24 ساعة",
+            txtDialSubtitle: "خريطة تفاعلية لساعات الليل والنهار",
+            txtAsmaLabel: "الأسماء الحسنى للساعة:",
+            txtMetalLabel: "المعدن والطبع:",
+            txtBtnNotify: "التنبيهات",
+            txtBtnPrint: "طباعة",
             txtBtnWa: "نسخ للواتساب",
             qualities: {
                 SAAD_AKBAR: "سعد أكبر (ممتاز جداً)",
@@ -244,7 +262,7 @@
         }
     };
 
-    // 2. Arabic Sa'at al-Kawakib Planet Definitions (Chaldean Order)
+    // 2. Arabic Sa'at al-Kawakib Planet Definitions (Chaldean Order + Hikmah Asmaul Husna & Metals)
     const CHALDEAN_PLANETS = [
         {
             id: 'Shani',
@@ -252,6 +270,8 @@
             quality: 'NAHAS_AKBAR',
             class: 'q-kaal',
             icon: 'fa-skull-crossbones',
+            asma: 'Ya Qahhar Ya Qadir (يا قهار يا قادر)',
+            metal: 'Timbal Hitam / Besi Tua (Lead) | Tabi\'at: Tanah 🪵',
             efficacy_id: 'Nahas Akbar (Sangat Nahas). Rintangan & permusuhan. Cocok hanya untuk benteng diri & tolak bala.',
             efficacy_en: 'Most Inauspicious. Obstacles & severe delays. Suitable for warding off harm.',
             efficacy_ar: 'نحس أكبر. عقد العزائم والردع وتجنب الأمور الهامة.'
@@ -262,6 +282,8 @@
             quality: 'SAAD_AKBAR',
             class: 'q-amrit',
             icon: 'fa-star',
+            asma: 'Ya Kabir Ya Muta\'al (يا كبير يا متعال)',
+            metal: 'Timah Putih / Perunggu (Tin) | Tabi\'at: Udara 💨',
             efficacy_id: 'Sa\'ad Akbar (Sangat Baik). Berkah, permohonan doa, nikah, memulai usaha besar, & ilmu spiritual.',
             efficacy_en: 'Most Auspicious. Blessings, prayers, marriage, business launching & spiritual wisdom.',
             efficacy_ar: 'سعد أكبر. مبارك للمحبة، الزواج، التجارة والدعاء.'
@@ -272,6 +294,8 @@
             quality: 'NAHAS_ASGHAR',
             class: 'q-udveg',
             icon: 'fa-fire',
+            asma: 'Ya Aziz Ya Jabbar (يا عزيز يا جبار)',
+            metal: 'Besi / Tembaga Merah (Iron) | Tabi\'at: Api 🔥',
             efficacy_id: 'Nahas Asghar (Kurang Baik). Emosi & pertengkaran. Cocok untuk keberanian, olahraga, & ketegasan.',
             efficacy_en: 'Inauspicious. Anger & dispute risk. Suitable for courage, sports & firmness.',
             efficacy_ar: 'نحس أصغر. تجنب الخصومات وناسب الأعمال القوية والرياضة.'
@@ -282,6 +306,8 @@
             quality: 'SAAD_MUTAZIL',
             class: 'q-labh',
             icon: 'fa-sun',
+            asma: 'Ya Hayyu Ya Qayyum (يا حي يا قيوم)',
+            metal: 'Emas Murni (Gold) | Tabi\'at: Api 🔥',
             efficacy_id: 'Sa\'ad & Wibawa. Menghadap pejabat/pimpinan, kewibawaan, keagungan & hajat penting.',
             efficacy_en: 'Auspicious / Honor. Meeting officials, leadership, authority & high matters.',
             efficacy_ar: 'سعد وشرف. للقاء الملوك والرؤساء والهيبة والجاه.'
@@ -292,6 +318,8 @@
             quality: 'SAAD_ASGHAR',
             class: 'q-shubh',
             icon: 'fa-heart',
+            asma: 'Ya Jamil Ya Latif (يا جميل يا لطيف)',
+            metal: 'Tembaga Halus / Pirus (Copper) | Tabi\'at: Air 💧',
             efficacy_id: 'Sa\'ad Asghar (Baik). Cinta, pernikahan, seni, pakaian baru, perhiasan, & mahabbah.',
             efficacy_en: 'Auspicious. Love, marriage, arts, buying jewelry & attraction.',
             efficacy_ar: 'سعد أصغر. للزواج، المحبة، الزينة والفنون.'
@@ -302,6 +330,8 @@
             quality: 'MUTAZIL',
             class: 'q-char',
             icon: 'fa-pen-nib',
+            asma: 'Ya Alim Ya Hakim (يا عليم يا حكيم)',
+            metal: 'Raksa / Kuningan (Quicksilver) | Tabi\'at: Udara 💨',
             efficacy_id: 'Mutazi\'l (Netral). Perdagangan, menulis wafaq/azimat, dokumen, perjanjian & belajar.',
             efficacy_en: 'Neutral. Commerce, writing talismans/wafaq, contracts & studying.',
             efficacy_ar: 'ممتزج. للكتابة، التجارة، العقود والعلم.'
@@ -312,6 +342,8 @@
             quality: 'MUTAZIL',
             class: 'q-char',
             icon: 'fa-moon',
+            asma: 'Ya Rahman Ya Rahim (يا رحمن يا رحيم)',
+            metal: 'Perak Murni (Silver) | Tabi\'at: Air 💧',
             efficacy_id: 'Mutazi\'l (Netral / Dinamis). Perjalanan, bercocok tanam, minum obat, & hubungan publik.',
             efficacy_en: 'Neutral / Dynamic. Travel, agriculture, medical treatment & public affairs.',
             efficacy_ar: 'ممتزج / متحرّك. للسفر، العلاج، الزراعة والتواصل.'
@@ -322,13 +354,13 @@
 
     // 3. Bohra / Gujarati Chogadia Definitions
     const CHOGADIYA_INFO = {
-        Udveg: { quality: 'UDVEG', class: 'q-udveg', planet: 'Surya', icon: 'fa-sun', desc_id: 'Kecemasan/Tekanan. Hindari keputusan krusial.' },
-        Char:  { quality: 'CHAR',  class: 'q-char',  planet: 'Shukra', icon: 'fa-wind', desc_id: 'Dinamis/Bergerak. Bagus untuk perjalanan & fisik.' },
-        Labh:  { quality: 'LABH',  class: 'q-labh',  planet: 'Budh',   icon: 'fa-chart-line', desc_id: 'Keuntungan/Bisnis. Terbaik untuk transaksi.' },
-        Amrit: { quality: 'AMRIT', class: 'q-amrit', planet: 'Chandra',icon: 'fa-droplet', desc_id: 'Sangat Baik. Puncak energi positif & berkah.' },
-        Kaal:  { quality: 'KAAL',  class: 'q-kaal',  planet: 'Shani',  icon: 'fa-skull-crossbones', desc_id: 'Kerugian/Bahaya. Tunda aktivitas penting.' },
-        Shubh: { quality: 'SHUBH', class: 'q-shubh', planet: 'Guru',   icon: 'fa-star', desc_id: 'Keberuntungan. Baik untuk nikah & ibadah.' },
-        Rog:   { quality: 'ROG',   class: 'q-rog',   planet: 'Mangal', icon: 'fa-biohazard', desc_id: 'Penyakit/Rintangan. Hindari pengobatan baru.' }
+        Udveg: { quality: 'UDVEG', class: 'q-udveg', planet: 'Surya', icon: 'fa-sun', desc_id: 'Kecemasan/Tekanan. Hindari keputusan krusial.', asma: 'Ya Hayyu Ya Qayyum', metal: 'Matahari' },
+        Char:  { quality: 'CHAR',  class: 'q-char',  planet: 'Shukra', icon: 'fa-wind', desc_id: 'Dinamis/Bergerak. Bagus untuk perjalanan & fisik.', asma: 'Ya Jamil Ya Latif', metal: 'Venus' },
+        Labh:  { quality: 'LABH',  class: 'q-labh',  planet: 'Budh',   icon: 'fa-chart-line', desc_id: 'Keuntungan/Bisnis. Terbaik untuk transaksi.', asma: 'Ya Alim Ya Hakim', metal: 'Merkurius' },
+        Amrit: { quality: 'AMRIT', class: 'q-amrit', planet: 'Chandra',icon: 'fa-droplet', desc_id: 'Sangat Baik. Puncak energi positif & berkah.', asma: 'Ya Rahman Ya Rahim', metal: 'Bulan' },
+        Kaal:  { quality: 'KAAL',  class: 'q-kaal',  planet: 'Shani',  icon: 'fa-skull-crossbones', desc_id: 'Kerugian/Bahaya. Tunda aktivitas penting.', asma: 'Ya Qahhar Ya Qadir', metal: 'Saturnus' },
+        Shubh: { quality: 'SHUBH', class: 'q-shubh', planet: 'Guru',   icon: 'fa-star', desc_id: 'Keberuntungan. Baik untuk nikah & ibadah.', asma: 'Ya Kabir Ya Muta\'al', metal: 'Jupiter' },
+        Rog:   { quality: 'ROG',   class: 'q-rog',   planet: 'Mangal', icon: 'fa-biohazard', desc_id: 'Penyakit/Rintangan. Hindari pengobatan baru.', asma: 'Ya Aziz Ya Jabbar', metal: 'Mars' }
     };
 
     const CHOGADIYA_CYCLE = ['Udveg', 'Char', 'Labh', 'Amrit', 'Kaal', 'Shubh', 'Rog'];
@@ -397,6 +429,8 @@
     let activeTab = 'day';
     let currentCoords = { lat: -6.2088, lon: 106.8456, timeZone: 'Asia/Jakarta', name: 'Jakarta, Indonesia' };
     let activeFilter = 'all';
+    let isNotifyEnabled = localStorage.getItem('falak_notify') === 'true';
+    let lastActiveSlotName = '';
     let timerInterval = null;
 
     // DOM Elements
@@ -405,6 +439,10 @@
         btnModeChogadia: document.getElementById('btnModeChogadia'),
         langSelect: document.getElementById('langSelect'),
         themeToggle: document.getElementById('themeToggle'),
+        btnNotifySound: document.getElementById('btnNotifySound'),
+        iconNotify: document.getElementById('iconNotify'),
+        txtBtnNotify: document.getElementById('txtBtnNotify'),
+        btnPrintPdf: document.getElementById('btnPrintPdf'),
         btnShareWa: document.getElementById('btnShareWa'),
         dateInput: document.getElementById('dateInput'),
         locationSelect: document.getElementById('locationSelect'),
@@ -425,6 +463,8 @@
         countdownTimer: document.getElementById('countdownTimer'),
         currentPlanet: document.getElementById('currentPlanet'),
         slotProgressBar: document.getElementById('slotProgressBar'),
+        displayActiveAsma: document.getElementById('displayActiveAsma'),
+        displayActiveMetal: document.getElementById('displayActiveMetal'),
         sunriseTime: document.getElementById('sunriseTime'),
         sunsetTime: document.getElementById('sunsetTime'),
         dayDuration: document.getElementById('dayDuration'),
@@ -446,10 +486,13 @@
         // Purpose Finder Elements
         purposePills: document.getElementById('purposePills'),
         finderResultBox: document.getElementById('finderResultBox'),
-        finderResultText: document.getElementById('finderResultText')
+        finderResultText: document.getElementById('finderResultText'),
+        // Dial Clock Elements
+        dialRing: document.getElementById('dialRing'),
+        dialCenterPlanet: document.getElementById('dialCenterPlanet'),
+        dialCenterStatus: document.getElementById('dialCenterStatus')
     };
 
-    // Helper for Local Date YYYY-MM-DD format
     function getLocalYmdStr(d) {
         const y = d.getFullYear();
         const m = String(d.getMonth() + 1).padStart(2, '0');
@@ -864,6 +907,12 @@
         document.getElementById('txtIsha').textContent = t.txtIsha;
         document.getElementById('txtFinderTitle').textContent = t.txtFinderTitle;
         document.getElementById('txtFinderSubtitle').textContent = t.txtFinderSubtitle;
+        document.getElementById('txtDialTitle').textContent = t.txtDialTitle;
+        document.getElementById('txtDialSubtitle').textContent = t.txtDialSubtitle;
+        document.getElementById('txtAsmaLabel').textContent = t.txtAsmaLabel;
+        document.getElementById('txtMetalLabel').textContent = t.txtMetalLabel;
+        document.getElementById('txtBtnNotify').textContent = t.txtBtnNotify;
+        document.getElementById('txtBtnPrint').textContent = t.txtBtnPrint;
         document.getElementById('txtBtnWa').textContent = t.txtBtnWa;
 
         renderApp();
@@ -882,6 +931,9 @@
 
         // Render Astronomy Plus Card
         renderAstronomyPlus(data.sun);
+
+        // Render Radial Dial Clock
+        renderDialClock(data);
 
         // Filter slots if Purpose Finder active
         let slots = activeTab === 'day' ? data.daySlots : data.nightSlots;
@@ -912,6 +964,9 @@
                     if (currentLang === 'ar') efficacyText = slot.info.efficacy_ar;
                     else if (currentLang === 'en') efficacyText = slot.info.efficacy_en;
                     else efficacyText = slot.info.efficacy_id;
+                    if (slot.info.asma) {
+                        efficacyText += `<br><strong class="text-amber"><i class="fa-solid fa-hands-praying"></i> Zikir: ${slot.info.asma}</strong>`;
+                    }
                 } else {
                     efficacyText = slot.info.desc_id;
                 }
@@ -945,6 +1000,38 @@
         renderLegend();
         updateActiveBanner(data, now);
         updateFinderRecommendation(data);
+    }
+
+    function renderDialClock(data) {
+        const t = TRANSLATIONS[currentLang] || TRANSLATIONS.id;
+        const slots = activeTab === 'day' ? data.daySlots : data.nightSlots;
+        const n = slots.length;
+        const radius = 105; // px from center
+
+        elements.dialRing.querySelectorAll('.dial-node').forEach(node => node.remove());
+
+        const now = new Date();
+
+        slots.forEach((slot, i) => {
+            const angle = (i * (2 * Math.PI / n)) - (Math.PI / 2);
+            const x = Math.round(radius * Math.cos(angle));
+            const y = Math.round(radius * Math.sin(angle));
+
+            const isActive = now >= slot.start && now < slot.end;
+
+            const node = document.createElement('div');
+            node.className = `dial-node ${slot.info.class} ${isActive ? 'active' : ''}`;
+            node.style.transform = `translate(${x}px, ${y}px)`;
+            node.title = `${slot.index}. ${t.names[slot.name]} (${formatTime(slot.start)} - ${formatTime(slot.end)})`;
+            node.innerHTML = `<span>${slot.index}</span>`;
+
+            elements.dialRing.appendChild(node);
+
+            if (isActive) {
+                elements.dialCenterPlanet.textContent = t.names[slot.name] || slot.name;
+                elements.dialCenterStatus.textContent = `#${slot.index} (${formatTime(slot.start)} - ${formatTime(slot.end)})`;
+            }
+        });
     }
 
     function updateFinderRecommendation(data) {
@@ -1005,6 +1092,7 @@
                 item.innerHTML = `
                     <div class="legend-badge"><i class="fa-solid ${p.icon}"></i> ${nameText} - ${qualityText}</div>
                     <p>${eff}</p>
+                    <small style="display:block; color:var(--accent-gold); margin-top:4px;"><strong>Zikir:</strong> ${p.asma}</small>
                 `;
                 elements.legendGrid.appendChild(item);
             });
@@ -1049,6 +1137,8 @@
             elements.currentSlotRange.textContent = `${formatTime(data.daySlots[0].start)} - ${formatTime(data.daySlots[0].end)}`;
             elements.countdownTimer.textContent = "--:--:--";
             elements.currentPlanet.textContent = t.qualities[data.daySlots[0].info.quality];
+            elements.displayActiveAsma.textContent = data.daySlots[0].info.asma || '--';
+            elements.displayActiveMetal.textContent = data.daySlots[0].info.metal || '--';
             elements.slotProgressBar.style.width = '0%';
             return;
         }
@@ -1060,7 +1150,8 @@
         elements.chogadiaIconCircle.className = `chogadia-badge-circle ${activeSlot.info.class}`;
         elements.chogadiaMainIcon.className = `fa-solid ${activeSlot.info.icon}`;
 
-        elements.currentChogadiaName.textContent = t.names[activeSlot.name] || activeSlot.name;
+        const slotNameText = t.names[activeSlot.name] || activeSlot.name;
+        elements.currentChogadiaName.textContent = slotNameText;
         elements.qualityTag.textContent = t.qualities[activeSlot.info.quality];
         elements.qualityTag.className = `quality-tag ${activeSlot.info.class}`;
 
@@ -1068,6 +1159,9 @@
         
         let planetDetail = t.qualities[activeSlot.info.quality];
         elements.currentPlanet.textContent = planetDetail;
+
+        elements.displayActiveAsma.textContent = activeSlot.info.asma || '--';
+        elements.displayActiveMetal.textContent = activeSlot.info.metal || '--';
 
         const totalDurationMs = activeSlot.end.getTime() - activeSlot.start.getTime();
         const elapsedMs = now.getTime() - activeSlot.start.getTime();
@@ -1082,6 +1176,60 @@
         const rs = remSec % 60;
 
         elements.countdownTimer.textContent = `${String(rh).padStart(2, '0')} j ${String(rm).padStart(2, '0')} m ${String(rs).padStart(2, '0')} d`;
+
+        // Check for slot change notification
+        if (lastActiveSlotName && lastActiveSlotName !== slotNameText) {
+            triggerSlotChangeNotification(slotNameText, t.qualities[activeSlot.info.quality]);
+        }
+        lastActiveSlotName = slotNameText;
+    }
+
+    function triggerSlotChangeNotification(slotName, qualityText) {
+        if (!isNotifyEnabled) return;
+
+        // Play Beep Tone via Web Audio API
+        try {
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5 tone
+            gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.4);
+        } catch (e) {}
+
+        // Desktop Notification
+        if ('Notification' in window && Notification.permission === 'granted') {
+            new Notification(`Pergantian Sa'at Planet Falakiah`, {
+                body: `Saat ini telah masuk jam ${slotName} [${qualityText}].`,
+                icon: 'icon.svg'
+            });
+        }
+    }
+
+    function toggleNotification() {
+        if (!isNotifyEnabled) {
+            if ('Notification' in window) {
+                Notification.requestPermission().then(perm => {
+                    isNotifyEnabled = true;
+                    localStorage.setItem('falak_notify', 'true');
+                    elements.iconNotify.className = 'fa-solid fa-bell text-emerald';
+                    alert('Notifikasi pergantian Sa\'at Planet berhasil diaktifkan!');
+                });
+            } else {
+                isNotifyEnabled = true;
+                localStorage.setItem('falak_notify', 'true');
+                elements.iconNotify.className = 'fa-solid fa-bell text-emerald';
+            }
+        } else {
+            isNotifyEnabled = false;
+            localStorage.setItem('falak_notify', 'false');
+            elements.iconNotify.className = 'fa-solid fa-bell-slash';
+            alert('Notifikasi dimatikan.');
+        }
     }
 
     // Share WhatsApp Summary
@@ -1193,6 +1341,15 @@
             elements.btnModeChogadia.classList.add('active');
             elements.btnModeSaat.classList.remove('active');
         }
+
+        // Notification Button
+        if (isNotifyEnabled) {
+            elements.iconNotify.className = 'fa-solid fa-bell text-emerald';
+        }
+        elements.btnNotifySound.addEventListener('click', toggleNotification);
+
+        // Print PDF Button
+        elements.btnPrintPdf.addEventListener('click', () => window.print());
 
         // WhatsApp Share
         elements.btnShareWa.addEventListener('click', copyWhatsAppSummary);
