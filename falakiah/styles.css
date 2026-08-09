@@ -428,24 +428,37 @@ body {
 .astro-body {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
 }
 
 .astro-row {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     font-size: 0.85rem;
+    gap: 12px;
 }
 
 .astro-row span {
     color: var(--text-muted);
+    white-space: nowrap;
 }
 
 .astro-row strong {
     color: var(--text-main);
     font-weight: 700;
+    text-align: right;
 }
+
+.astro-row small {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: normal;
+}
+
+.text-amber { color: var(--accent-gold); }
+.text-indigo { color: var(--accent-blue); }
 
 .prayer-grid {
     display: grid;

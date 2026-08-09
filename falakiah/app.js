@@ -1,5 +1,5 @@
 /**
- * Kalkulator Falakiah Engine: Sa'at al-Kawakib (ساعات الكواكب), Chogadia, Moon Phases, 28 Manazil, Hijri & Qibla
+ * Kalkulator Falakiah Engine: Sa'at al-Kawakib (ساعات الكواكب), Chogadia, Moon Phases, 28 Manazil (Ecliptic), Hijri & Qibla
  * Developed for arifwidiyanto.web.id/falakiah
  */
 
@@ -42,8 +42,8 @@
             txtAstroTitle: "Astronomi Falakiah, Bulan & Waktu Sholat",
             txtMoonHeader: "Fase Bulan & Hijriah",
             txtHijriDateLabel: "Tanggal Hijriah:",
-            txtMoonPhaseLabel: "Fase Bulan:",
-            txtManazilLabel: "Manazil al-Qamar (Rumah Bulan):",
+            txtMoonPhaseLabel: "Fase & Usia Bulan:",
+            txtManazilLabel: "Manazil al-Qamar & Buruj:",
             txtPrayerHeader: "Arah Kiblat & Sholat",
             txtFajr: "Subuh",
             txtSunrise: "Syuruq",
@@ -117,8 +117,8 @@
             txtAstroTitle: "Falakiah Astronomy, Moon & Prayer Times",
             txtMoonHeader: "Moon Phase & Hijri Calendar",
             txtHijriDateLabel: "Hijri Date:",
-            txtMoonPhaseLabel: "Moon Phase:",
-            txtManazilLabel: "Manazil al-Qamar (Lunar Mansion):",
+            txtMoonPhaseLabel: "Moon Phase & Age:",
+            txtManazilLabel: "Manazil al-Qamar & Zodiac:",
             txtPrayerHeader: "Qibla Direction & Prayers",
             txtFajr: "Fajr",
             txtSunrise: "Sunrise",
@@ -192,8 +192,8 @@
             txtAstroTitle: "الفلك والقمريات ومواقيت الصلاة",
             txtMoonHeader: "أطوار القمر والتقويم الهجري",
             txtHijriDateLabel: "التاريخ الهجري:",
-            txtMoonPhaseLabel: "طور القمر:",
-            txtManazilLabel: "منازل القمر:",
+            txtMoonPhaseLabel: "طور وعمر القمر:",
+            txtManazilLabel: "منازل القمر والبروج:",
             txtPrayerHeader: "اتجاه القبلة ومواقيت الصلاة",
             txtFajr: "الفجر",
             txtSunrise: "الشروق",
@@ -326,36 +326,51 @@
     const DAY_START_RULERS = ['Udveg', 'Amrit', 'Rog', 'Labh', 'Shubh', 'Char', 'Kaal'];
     const NIGHT_START_RULERS = ['Shubh', 'Char', 'Kaal', 'Udveg', 'Amrit', 'Rog', 'Labh'];
 
-    // 4. 28 Manazil al-Qamar (Lunar Mansions)
+    // 4. 28 Manazil al-Qamar (Astronomical Ecliptic Lunar Mansions: 13° 20' each)
     const MANAZIL_AL_QAMAR = [
-        { id: 1,  name: 'Al-Syaratain (الشرطين)', desc: 'Keberanian & Awal Baru. Baik untuk memulakan perjalanan & keberanian.' },
-        { id: 2,  name: 'Al-Butain (البطين)',     desc: 'Pertumbuhan & Keberhasilan. Baik untuk perdagangan & menanam.' },
-        { id: 3,  name: 'Al-Tsurayya (الثريا)',   desc: 'Keberkahan & Kemuliaan. Sangat baik untuk mahabbah & permohonan.' },
-        { id: 4,  name: 'Al-Dabaran (الدبران)',   desc: 'Ketegasan & Keberanian. Hindari perselisihan.' },
-        { id: 5,  name: 'Al-Haq\'ah (الهقعة)',    desc: 'Ilmu & Belajar. Baik untuk belajar, mengajar & menulis.' },
-        { id: 6,  name: 'Al-Han\'ah (الهنعة)',    desc: 'Kemesraan & Hubungan. Baik untuk persahabatan & nikah.' },
-        { id: 7,  name: 'Al-Dzira\' (الذراع)',    desc: 'Kelapangan & Kemenangan. Keuntungan dalam transaksi.' },
-        { id: 8,  name: 'Al-Natsrah (النثرة)',    desc: 'Kecerdasan & Kesembuhan. Baik untuk pengobatan.' },
-        { id: 9,  name: 'Al-Tarf (الطرف)',        desc: 'Kewaspadaan. Hindari keputusan emosional.' },
-        { id: 10, name: 'Al-Jabhah (الجبهة)',     desc: 'Kepemimpinan & Wibawa. Baik menghadap pimpinan.' },
-        { id: 11, name: 'Al-Zubrah (الزبرة)',     desc: 'Kekuatan & Pertolongan. Baik untuk kerjasama.' },
-        { id: 12, name: 'Al-Sarfah (الصرفة)',     desc: 'Perubahan & Transformasi. Perjalanan & pemindahan.' },
-        { id: 13, name: 'Al-Awwa (العواء)',       desc: 'Kelancaran Rezeki. Terbaik untuk perdagangan.' },
-        { id: 14, name: 'Al-Simak (السماك)',      desc: 'Kedamaian & Kedudukan Tinggi. Sangat diberkahi.' },
-        { id: 15, name: 'Al-Ghafr (الغفر)',       desc: 'Keselamatan & Perlindungan. Tolak bala & benteng.' },
-        { id: 16, name: 'Al-Zubana (الزبانا)',   desc: 'Keadilan & Keseimbangan. Penyelesaian sengketa.' },
-        { id: 17, name: 'Al-Iklil (الإكليل)',     desc: 'Mahkota & Kejayaan. Baik untuk memulai proyek besar.' },
-        { id: 18, name: 'Al-Qalb (القلب)',        desc: 'Puncak Energi Hati. Jaga emosi & fokus doa.' },
-        { id: 19, name: 'Al-Syaulah (الشولة)',    desc: 'Ketangkasan & Keberanian. Olahraga & latihan.' },
-        { id: 20, name: 'Al-Na\'aam (النعائم)',   desc: 'Keberuntungan Rezeki. Berkah usaha & belanja.' },
-        { id: 21, name: 'Al-Baldah (البلدة)',     desc: 'Ketenangan Rumah & Negeri. Renovasi & pemukiman.' },
-        { id: 22, name: 'Sa\'d al-Dhabih (سعد الذابح)', desc: 'Pengorbanan & Keteguhan. Fokus pada ibadah.' },
-        { id: 23, name: 'Sa\'d Bula\' (سعد بلع)', desc: 'Kesembuhan & Penyucian. Baik untuk kesehatan.' },
-        { id: 24, name: 'Sa\'d al-Su\'ud (سعد السعود)', desc: 'Puncak Keberuntungan & Kebahagiaan Utama.' },
-        { id: 25, name: 'Sa\'d al-Akhbiyah (سعد الأخبية)', desc: 'Pembukaan Rahasia & Rezeki Tersembunyi.' },
-        { id: 26, name: 'Al-Fargh al-Mukdam (الفرغ المقدم)', desc: 'Pemberian & Kemurahan Hati.' },
-        { id: 27, name: 'Al-Fargh al-Mu\'akhar (الفرغ المؤخر)', desc: 'Penyelesaian Tugas & Hasil Akhir.' },
-        { id: 28, name: 'Risha / Batn al-Hut (الرشاء)', desc: 'Kelimpahan Rezeki Laut & Perdagangan.' }
+        { id: 1,  name: 'Al-Syaratain (الشرطين)', range: '0°00\' - 13°20\' Aries', desc: 'Awal Baru & Ketegasan. Baik untuk memulai usaha & perjalanan.' },
+        { id: 2,  name: 'Al-Butain (البطين)',     range: '13°20\' - 26°40\' Aries', desc: 'Pertumbuhan & Keberhasilan. Baik untuk perdagangan & pertanian.' },
+        { id: 3,  name: 'Al-Tsurayya (الثريا)',   range: '26°40\' Ar - 10°00\' Tau', desc: 'Keberkahan & Kemuliaan. Sangat baik untuk mahabbah & doa.' },
+        { id: 4,  name: 'Al-Dabaran (الدبران)',   range: '10°00\' - 23°20\' Taurus', desc: 'Ketegasan & Keberanian. Hindari perselisihan emosional.' },
+        { id: 5,  name: 'Al-Haq\'ah (الهقعة)',    range: '23°20\' Tau - 6°40\' Gem', desc: 'Ilmu & Kebijaksanaan. Baik untuk belajar, mengajar & menulis.' },
+        { id: 6,  name: 'Al-Han\'ah (الهنعة)',    range: '6°40\' - 20°00\' Gemini', desc: 'Kemesraan & Perjanjian. Baik untuk persahabatan & nikah.' },
+        { id: 7,  name: 'Al-Dzira\' (الذراع)',    range: '20°00\' Gem - 3°20\' Can', desc: 'Kelapangan & Kemenangan. Keuntungan dalam bisnis & hajat.' },
+        { id: 8,  name: 'Al-Natsrah (النثرة)',    range: '3°20\' - 16°40\' Cancer', desc: 'Kecerdasan & Kesembuhan. Baik untuk pengobatan & kesehatan.' },
+        { id: 9,  name: 'Al-Tarf (الطرف)',        range: '16°40\' - 30°00\' Cancer', desc: 'Kewaspadaan & Ketelitian. Hindari keputusan emosional.' },
+        { id: 10, name: 'Al-Jabhah (الجبهة)',     range: '0°00\' - 13°20\' Leo', desc: 'Kepemimpinan & Wibawa. Sangat baik menghadap pimpinan/pejabat.' },
+        { id: 11, name: 'Al-Zubrah (الزبرة)',     range: '13°20\' - 26°40\' Leo', desc: 'Kekuatan & Pertolongan. Baik untuk kerjasama & benteng.' },
+        { id: 12, name: 'Al-Sarfah (الصرفة)',     range: '26°40\' Leo - 10°00\' Vir', desc: 'Perubahan & Transformasi. Perjalanan & pemindahan.' },
+        { id: 13, name: 'Al-Awwa (العواء)',       range: '10°00\' - 23°20\' Virgo', desc: 'Kelancaran Rezeki. Terbaik untuk perdagangan & belanja.' },
+        { id: 14, name: 'Al-Simak (السماك)',      range: '23°20\' Vir - 6°40\' Lib', desc: 'Kedamaian & Kedudukan Tinggi. Sangat diberkahi & damai.' },
+        { id: 15, name: 'Al-Ghafr (الغفر)',       range: '6°40\' - 20°00\' Libra', desc: 'Keselamatan & Perlindungan. Tolak bala & benteng diri.' },
+        { id: 16, name: 'Al-Zubana (الزبانا)',   range: '20°00\' Lib - 3°20\' Sco', desc: 'Keadilan & Keseimbangan. Penyelesaian sengketa & nego.' },
+        { id: 17, name: 'Al-Iklil (الإكليل)',     range: '3°20\' - 16°40\' Scorpio', desc: 'Mahkota & Kejayaan. Baik untuk memulai proyek besar.' },
+        { id: 18, name: 'Al-Qalb (القلب)',        range: '16°40\' - 30°00\' Scorpio', desc: 'Puncak Energi Hati. Jaga emosi & fokus khusyuk doa.' },
+        { id: 19, name: 'Al-Syaulah (الشولة)',    range: '0°00\' - 13°20\' Sag', desc: 'Ketangkasan & Keberanian. Olahraga & ketegasan.' },
+        { id: 20, name: 'Al-Na\'aam (النعائم)',   range: '13°20\' - 26°40\' Sag', desc: 'Keberuntungan Rezeki. Berkah dalam usaha & perjalanan.' },
+        { id: 21, name: 'Al-Baldah (البلدة)',     range: '26°40\' Sag - 10°00\' Cap', desc: 'Ketenangan Keturunan & Rumah. Pemukiman & ketenangan.' },
+        { id: 22, name: 'Sa\'d al-Dhabih (سعد الذابح)', range: '10°00\' - 23°20\' Cap', desc: 'Keteguhan & Ketahanan. Baik untuk kholwat & ibadah.' },
+        { id: 23, name: 'Sa\'d Bula\' (سعد بلع)', range: '23°20\' Cap - 6°40\' Aqu', desc: 'Kesembuhan & Penyucian. Baik untuk pengobatan.' },
+        { id: 24, name: 'Sa\'d al-Su\'ud (سعد السعود)', range: '6°40\' - 20°00\' Aqu', desc: 'Puncak Keberuntungan & Kebahagiaan Utama.' },
+        { id: 25, name: 'Sa\'d al-Akhbiyah (سعد الأخبية)', range: '20°00\' Aqu - 3°20\' Pis', desc: 'Pembukaan Rahasia & Rezeki Tersembunyi.' },
+        { id: 26, name: 'Al-Fargh al-Mukdam (الفرغ المقدم)', range: '3°20\' - 16°40\' Pis', desc: 'Kemurahan Hati & Rezeki Melimpah.' },
+        { id: 27, name: 'Al-Fargh al-Mu\'akhar (الفرغ المؤخر)', range: '16°40\' - 30°00\' Pis', desc: 'Penyelesaian Tugas & Hasil Akhir Usaha.' },
+        { id: 28, name: 'Risha / Batn al-Hut (الرشاء)', range: '26°40\' Pis - 0°00\' Ari', desc: 'Kelimpahan Rezeki Laut & Perdagangan.' }
+    ];
+
+    const ZODIACS_12 = [
+        { id: 'Hamal', name: 'Al-Hamal / Aries (الحمل)', elem: 'Api 🔥' },
+        { id: 'Taur', name: 'Al-Taur / Taurus (الثور)', elem: 'Tanah 🪵' },
+        { id: 'Jauza', name: 'Al-Jauza\' / Gemini (الجوزاء)', elem: 'Udara 💨' },
+        { id: 'Saratan', name: 'Al-Saratan / Cancer (السرطان)', elem: 'Air 💧' },
+        { id: 'Asad', name: 'Al-Asad / Leo (الأسد)', elem: 'Api 🔥' },
+        { id: 'Sunbulah', name: 'Al-Sunbulah / Virgo (السنبلة)', elem: 'Tanah 🪵' },
+        { id: 'Mizan', name: 'Al-Mizan / Libra (الميزان)', elem: 'Udara 💨' },
+        { id: 'Aqrab', name: 'Al-Aqrab / Scorpio (العقرب)', elem: 'Air 💧' },
+        { id: 'Qaus', name: 'Al-Qaus / Sagittarius (القوس)', elem: 'Api 🔥' },
+        { id: 'Jadi', name: 'Al-Jadi / Capricorn (الجدي)', elem: 'Tanah 🪵' },
+        { id: 'Dalu', name: 'Al-Dalu / Aquarius (الدلو)', elem: 'Udara 💨' },
+        { id: 'Hut', name: 'Al-Hut / Pisces (الحوت)', elem: 'Air 💧' }
     ];
 
     const HIJRI_MONTHS = [
@@ -523,10 +538,10 @@
         }
     }
 
-    // --- Astronomy Plus Calculations ---
+    // --- Astronomy Plus Precise Astronomical Calculations ---
 
-    // 1. Moon Phase & Illumination Calculation
-    function calculateMoonPhase(dateObj) {
+    // 1. Precise Ecliptic Moon Position, Illumination & 28 Manazil al-Qamar
+    function calculateMoonEclipticPosition(dateObj) {
         let year = dateObj.getFullYear();
         let month = dateObj.getMonth() + 1;
         let day = dateObj.getDate();
@@ -539,30 +554,56 @@
         const A = Math.floor(year / 100);
         const B = 2 - A + Math.floor(A / 4);
         const JD = Math.floor(365.25 * (year + 4716)) + Math.floor(30.6001 * (month + 1)) + day + B - 1524.5;
+        const d = JD - 2451545.0;
 
-        // Days since new moon on 2000-01-06 18:14 UTC (JD 2451549.5)
-        const daysSinceNew = JD - 2451549.5;
-        const newMoons = daysSinceNew / 29.53058867;
-        const phase = newMoons - Math.floor(newMoons); // 0.0 to 1.0
-        const ageDays = phase * 29.53058867;
-        const illum = (1 - Math.cos(phase * 2 * Math.PI)) / 2 * 100;
+        const L_sun = (280.466 + 0.98564736 * d) % 360;
+        const g_sun = (357.529 + 0.98560028 * d) % 360;
+        const lambda_sun = (L_sun + 1.915 * Math.sin(toRad(g_sun)) + 0.020 * Math.sin(toRad(2 * g_sun)) + 360) % 360;
 
-        let phaseName = 'Bulan Baru (New Moon)';
-        if (phase >= 0.03 && phase < 0.22) phaseName = 'Bulan Sabit Muda (Waxing Crescent)';
-        else if (phase >= 0.22 && phase < 0.28) phaseName = 'Kuartal Pertama (First Quarter)';
-        else if (phase >= 0.28 && phase < 0.47) phaseName = 'Bulan Cembung (Waxing Gibbous)';
-        else if (phase >= 0.47 && phase < 0.53) phaseName = 'Purnama (Full Moon)';
-        else if (phase >= 0.53 && phase < 0.72) phaseName = 'Bulan Cembung Tua (Waning Gibbous)';
-        else if (phase >= 0.72 && phase < 0.78) phaseName = 'Kuartal Akhir (Third Quarter)';
-        else if (phase >= 0.78 && phase < 0.97) phaseName = 'Bulan Sabit Tua (Waning Crescent)';
+        const L_moon = (218.316 + 13.176396 * d) % 360;
+        const M_moon = (134.963 + 13.064993 * d) % 360;
+        const D_moon = (297.850 + 12.190749 * d) % 360;
 
-        const manzilIdx = Math.floor(phase * 28) % 28;
+        const lambda_moon = (L_moon + 6.289 * Math.sin(toRad(M_moon)) -
+                             1.274 * Math.sin(toRad(M_moon - 2 * D_moon)) +
+                             0.658 * Math.sin(toRad(2 * D_moon)) -
+                             0.214 * Math.sin(toRad(2 * M_moon)) + 360) % 360;
+
+        // 28 Manazil al-Qamar: Each covers 360° / 28 = 13.333333° of Ecliptic Longitude
+        const manzilIdx = Math.floor(lambda_moon / 13.333333333) % 28;
         const manzil = MANAZIL_AL_QAMAR[manzilIdx];
 
-        return { phase, ageDays, illum, phaseName, manzil };
+        // 12 Zodiac Buruj: Each covers 30°
+        const zodiacIdx = Math.floor(lambda_moon / 30) % 12;
+        const zodiac = ZODIACS_12[zodiacIdx];
+
+        // Elongation & Illumination
+        const elongation = (lambda_moon - lambda_sun + 360) % 360;
+        const illumination = (1 - Math.cos(toRad(elongation))) / 2 * 100;
+        const moonAgeDays = (elongation / 360) * 29.53058867;
+
+        let phaseName = 'Bulan Baru (New Moon / Hilal Awal)';
+        if (elongation >= 10 && elongation < 80) phaseName = 'Bulan Sabit Muda (Waxing Crescent)';
+        else if (elongation >= 80 && elongation < 100) phaseName = 'Kuartal Pertama (First Quarter)';
+        else if (elongation >= 100 && elongation < 170) phaseName = 'Bulan Cembung (Waxing Gibbous)';
+        else if (elongation >= 170 && elongation < 190) phaseName = 'Purnama (Full Moon / Badr)';
+        else if (elongation >= 190 && elongation < 260) phaseName = 'Bulan Cembung Tua (Waning Gibbous)';
+        else if (elongation >= 260 && elongation < 280) phaseName = 'Kuartal Akhir (Third Quarter)';
+        else if (elongation >= 280 && elongation < 350) phaseName = 'Bulan Sabit Tua (Waning Crescent / Hilal Akhir)';
+
+        return {
+            lambda_sun,
+            lambda_moon,
+            manzil,
+            zodiac,
+            elongation,
+            illumination,
+            moonAgeDays,
+            phaseName
+        };
     }
 
-    // 2. Kuwaiti / Tabular Hijri Calendar Calculation
+    // 2. Kuwaiti / Tabular Hijri Calendar Calculation with Day Offset Adjustment
     function calculateHijriDate(dateObj, offset) {
         let year = dateObj.getFullYear();
         let month = dateObj.getMonth() + 1;
@@ -890,12 +931,14 @@
     function renderAstronomyPlus(sunInfo) {
         // 1. Hijri Date
         const hijri = calculateHijriDate(selectedDate, hijriOffset);
-        elements.displayHijriDate.textContent = `${hijri.day} ${hijri.monthName} ${hijri.year} H`;
+        let offsetBadge = hijriOffset !== 0 ? ` (${hijriOffset > 0 ? '+' : ''}${hijriOffset}d)` : '';
+        elements.displayHijriDate.innerHTML = `<strong>${hijri.day} ${hijri.monthName} ${hijri.year} H</strong> <small style="display:inline; opacity:0.8;">${offsetBadge} (Berganti saat Maghrib)</small>`;
 
-        // 2. Moon Phase & Manazil
-        const moon = calculateMoonPhase(selectedDate);
-        elements.displayMoonPhase.textContent = `${moon.phaseName} (${moon.illum.toFixed(1)}%)`;
-        elements.displayManazil.textContent = `Ke-${moon.manzil.id}: ${moon.manzil.name} - ${moon.manzil.desc}`;
+        // 2. Precise Ecliptic Moon & Manazil
+        const moon = calculateMoonEclipticPosition(selectedDate);
+        elements.displayMoonPhase.innerHTML = `<strong>${moon.phaseName}</strong> <small style="display:inline; opacity:0.9;">(${moon.illumination.toFixed(1)}% Terang, Umur ${moon.moonAgeDays.toFixed(1)} Hari)</small>`;
+
+        elements.displayManazil.innerHTML = `<strong>Ke-${moon.manzil.id}: ${moon.manzil.name}</strong> <small style="display:inline; opacity:0.9;">[Rentang: ${moon.manzil.range} | Zodiak: ${moon.zodiac.name}]</small><br><small style="display:block; color:var(--accent-gold); margin-top:2px;"><i class="fa-solid fa-sparkles"></i> <em>${moon.manzil.desc}</em></small>`;
 
         // 3. Qibla Direction Azimuth
         const qibla = calculateQiblaAzimuth(currentCoords.lat, currentCoords.lon);
