@@ -14,19 +14,19 @@
     --accent-indigo: #6366f1;
     
     /* Quality status colors */
-    --color-amrit: #10b981; /* Green */
+    --color-amrit: #10b981; /* Green - Sa'ad Akbar / Amrit */
     --bg-amrit: rgba(16, 185, 129, 0.15);
-    --color-shubh: #3b82f6; /* Blue */
+    --color-shubh: #3b82f6; /* Blue - Sa'ad Asghar / Shubh */
     --bg-shubh: rgba(59, 130, 246, 0.15);
-    --color-labh: #06b6d4; /* Cyan */
+    --color-labh: #06b6d4; /* Cyan - Labh */
     --bg-labh: rgba(6, 182, 212, 0.15);
-    --color-char: #8b5cf6; /* Purple/Neutral */
+    --color-char: #8b5cf6; /* Purple - Neutral / Mutazil */
     --bg-char: rgba(139, 92, 246, 0.15);
-    --color-udveg: #f59e0b; /* Amber/Warning */
+    --color-udveg: #f59e0b; /* Amber - Udveg / Nahas Asghar */
     --bg-udveg: rgba(245, 158, 11, 0.15);
-    --color-rog: #f97316; /* Orange */
+    --color-rog: #f97316; /* Orange - Rog */
     --bg-rog: rgba(249, 115, 22, 0.15);
-    --color-kaal: #ef4444; /* Red */
+    --color-kaal: #ef4444; /* Red - Nahas Akbar / Kaal */
     --bg-kaal: rgba(239, 68, 68, 0.15);
 
     --radius-lg: 16px;
@@ -65,7 +65,7 @@ body {
 }
 
 .app-container {
-    max-width: 900px;
+    max-width: 960px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -154,6 +154,64 @@ body {
     color: var(--accent-gold);
 }
 
+/* Mode Selector */
+.mode-selector-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 8px;
+    box-shadow: var(--shadow-main);
+}
+
+.mode-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+@media (max-width: 640px) {
+    .mode-buttons {
+        grid-template-columns: 1fr;
+    }
+}
+
+.mode-btn {
+    padding: 12px 16px;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-muted);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.25s ease;
+}
+
+.mode-btn strong {
+    display: block;
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.mode-btn small {
+    display: block;
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+.mode-btn i {
+    font-size: 1.4rem;
+}
+
+.mode-btn.active {
+    background: var(--bg-primary);
+    color: var(--accent-gold);
+    border-color: var(--accent-gold);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
 /* Current Status Card */
 .current-status-card {
     background: linear-gradient(145deg, var(--bg-secondary), var(--bg-card));
@@ -220,11 +278,10 @@ body {
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-
 }
 
 .chogadia-name {
-    font-size: 1.9rem;
+    font-size: 1.8rem;
     font-weight: 800;
     line-height: 1.1;
     margin: 2px 0 6px 0;
@@ -268,7 +325,7 @@ body {
 }
 
 .detail-item strong {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     font-weight: 700;
 }
 
@@ -455,7 +512,7 @@ body {
 .chogadia-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     text-align: left;
 }
 
@@ -590,5 +647,9 @@ body {
 }
 
 [lang="ar"] .chogadia-table {
+    text-align: right;
+}
+
+[lang="ar"] .mode-btn {
     text-align: right;
 }

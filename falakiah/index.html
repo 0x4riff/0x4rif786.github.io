@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chogadia Hisab & Kalkulator Falakiah - Waktu Baik & Ritme Kosmik</title>
-    <meta name="description" content="Aplikasi Kalkulator Chogadia Hisab & Horoskop Jam Planet Falakiah. Cari waktu baik (Shubh, Labh, Amrit) dan hindari waktu tidak menguntungkan secara presisi offline.">
+    <title>Kalkulator Falakiah - Jam Planet (Sa'at al-Kawakib) & Chogadia Hisab</title>
+    <meta name="description" content="Aplikasi Kalkulator Falakiah Presisi: Jam Planet Hikmah (Sa'at al-Kawakib 12 Jam Siang/Malam) & Chogadia Hisab Bohra (8 Jam). Hitung waktu baik (Sa'ad) & hindari waktu nahas secara otomatis & offline.">
     <meta name="theme-color" content="#0b132b">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/svg+xml" href="icon.svg">
@@ -27,8 +27,8 @@
                     <i class="fa-solid fa-moon-stars"></i>
                 </div>
                 <div class="logo-text">
-                    <h1>Chogadia Hisab</h1>
-                    <span class="subtitle" id="txtSubtitle">Kalkulator Falakiah & Jam Planet</span>
+                    <h1>Kalkulator Falakiah</h1>
+                    <span class="subtitle" id="txtSubtitle">Jam Planet (ساعات الكواكب) & Chogadia</span>
                 </div>
             </div>
             <div class="header-actions">
@@ -43,10 +43,30 @@
             </div>
         </header>
 
+        <!-- System Mode Selector (Sa'at al-Kawakib vs Chogadia) -->
+        <section class="mode-selector-card">
+            <div class="mode-buttons">
+                <button class="mode-btn active" id="btnModeSaat" data-mode="saat">
+                    <i class="fa-solid fa-star-and-crescent"></i>
+                    <div>
+                        <strong id="txtModeSaatTitle">Sa'at al-Kawakib (ساعات الكواكب)</strong>
+                        <small id="txtModeSaatDesc">Ilmu Falak Hikmah Arabic (12 Jam Siang & 12 Jam Malam)</small>
+                    </div>
+                </button>
+                <button class="mode-btn" id="btnModeChogadia" data-mode="chogadia">
+                    <i class="fa-solid fa-sun"></i>
+                    <div>
+                        <strong id="txtModeChogadiaTitle">Chogadia Hisab (چوگھڑیا)</strong>
+                        <small id="txtModeChogadiaDesc">Sistem Bohra / Gujarati (8 Jam Siang & 8 Jam Malam)</small>
+                    </div>
+                </button>
+            </div>
+        </section>
+
         <!-- Main Banner / Active Status Card -->
         <section class="current-status-card" id="activeStatusCard">
             <div class="status-top">
-                <span class="badge" id="dayNightBadge"><i class="fa-solid fa-sun"></i> Chogadia Siang</span>
+                <span class="badge" id="dayNightBadge"><i class="fa-solid fa-sun"></i> Nahar (Siang)</span>
                 <span class="live-clock" id="liveClock">00:00:00 WIB</span>
             </div>
             
@@ -55,10 +75,10 @@
                     <i class="fa-solid fa-sparkles" id="chogadiaMainIcon"></i>
                 </div>
                 <div class="status-info">
-                    <span class="status-label" id="txtCurrentStatusLabel">Waktu Saat Ini:</span>
+                    <span class="status-label" id="txtCurrentStatusLabel">Jam Planet Saat Ini:</span>
                     <h2 class="chogadia-name" id="currentChogadiaName">Memuat...</h2>
                     <div class="chogadia-quality" id="currentChogadiaQuality">
-                        <span class="quality-tag" id="qualityTag">MENGUNTUNGKAN</span>
+                        <span class="quality-tag" id="qualityTag">SA'AD (SANGAT BAIK)</span>
                     </div>
                 </div>
             </div>
@@ -67,7 +87,7 @@
                 <div class="detail-item">
                     <i class="fa-regular fa-clock"></i>
                     <div>
-                        <small id="txtTimeSlotLabel">Rentang Jam</small>
+                        <small id="txtTimeSlotLabel">Rentang Jam Zamaniyah</small>
                         <strong id="currentSlotRange">--:-- - --:--</strong>
                     </div>
                 </div>
@@ -81,7 +101,7 @@
                 <div class="detail-item">
                     <i class="fa-solid fa-planet-ring-sparkles"></i>
                     <div>
-                        <small id="txtPlanetLabel">Pengaruh Planet</small>
+                        <small id="txtPlanetLabel">Pengaruh & Sifat Planet</small>
                         <strong id="currentPlanet">--</strong>
                     </div>
                 </div>
@@ -130,7 +150,7 @@
                     </label>
                     <div class="date-input-wrapper">
                         <input type="date" id="dateInput" class="custom-input">
-                        <button id="btnToday" class="btn-secondary" id="txtBtnToday">Hari Ini</button>
+                        <button id="btnToday" class="btn-secondary">Hari Ini</button>
                     </div>
                 </div>
             </div>
@@ -156,21 +176,21 @@
                 <div class="sun-time-item">
                     <i class="fa-solid fa-cloud-sun"></i>
                     <div>
-                        <span id="txtDayDurationLabel">Durasi Siang</span>
-                        <strong id="dayDuration">12 j 00 m</strong>
+                        <span id="txtDayDurationLabel">Durasi 1 Jam Zamaniyah Siang</span>
+                        <strong id="dayDuration">60.0 m</strong>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Choghadia Schedule Tabs -->
+        <!-- Schedule Tabs -->
         <section class="schedule-section">
             <div class="tab-header">
                 <button class="tab-btn active" id="tabDay" data-tab="day">
-                    <i class="fa-solid fa-sun"></i> <span id="txtTabDay">Chogadia Siang (8 Jam)</span>
+                    <i class="fa-solid fa-sun"></i> <span id="txtTabDay">Siang / Nahar</span>
                 </button>
                 <button class="tab-btn" id="tabNight" data-tab="night">
-                    <i class="fa-solid fa-moon"></i> <span id="txtTabNight">Chogadia Malam (8 Jam)</span>
+                    <i class="fa-solid fa-moon"></i> <span id="txtTabNight">Malam / Lail</span>
                 </button>
             </div>
 
@@ -178,10 +198,10 @@
                 <table class="chogadia-table" id="chogadiaTable">
                     <thead>
                         <tr>
-                            <th id="thNum">#</th>
-                            <th id="thName">Nama Chogadia</th>
-                            <th id="thQuality">Kualitas</th>
-                            <th id="thPlanet">Planet</th>
+                            <th id="thNum">Jam ke-</th>
+                            <th id="thName">Planet / Kawakib</th>
+                            <th id="thQuality">Sifat / Kategori</th>
+                            <th id="thPlanet">Khasiat / Penggunaan Hikmah</th>
                             <th id="thTime">Rentang Waktu</th>
                             <th id="thStatus">Status</th>
                         </tr>
@@ -195,46 +215,19 @@
 
         <!-- Information & Legend Section -->
         <section class="info-card">
-            <h3 id="txtLegendTitle"><i class="fa-solid fa-book-open"></i> Panduan Kategori Chogadia & Kualitas</h3>
-            <div class="legend-grid">
-                <div class="legend-item q-excellent">
-                    <div class="legend-badge">AMRIT (Murnie)</div>
-                    <p id="descAmrit"><strong>Luar Biasa / Sangat Baik</strong> (Bulan/Chandra). Puncak energi positif. Sangat cocok untuk semua jenis pekerjaan, pekerjaan penting, memulai bisnis, perjalanan, dan upacara.</p>
-                </div>
-                <div class="legend-item q-good">
-                    <div class="legend-badge">SHUBH (Keberuntungan)</div>
-                    <p id="descShubh"><strong>Baik / Menguntungkan</strong> (Jupiter/Guru). Sangat baik untuk pernikahan, acara keagamaan, pendidikan, dan aktivitas keberkahan.</p>
-                </div>
-                <div class="legend-item q-good">
-                    <div class="legend-badge">LABH (Keuntungan)</div>
-                    <p id="descLabh"><strong>Baik / Keuntungan</strong> (Merkurius/Budh). Terbaik untuk transaksi finansial, perdagangan, belanja, dan memulai proyek usaha baru.</p>
-                </div>
-                <div class="legend-item q-neutral">
-                    <div class="legend-badge">CHAR (Dinamis)</div>
-                    <p id="descChar"><strong>Normal / Bergerak</strong> (Venus/Shukra). Bagus untuk perjalanan, kendaraan, aktivitas fisik, dan tugas yang butuh fleksibilitas.</p>
-                </div>
-                <div class="legend-item q-bad">
-                    <div class="legend-badge">UDVEG (Kecemasan)</div>
-                    <p id="descUdveg"><strong>Tidak Menguntungkan</strong> (Matahari/Surya). Membawa tekanan atau kecemasan. Sebaiknya hindari keputusan krusial atau kontrak penting.</p>
-                </div>
-                <div class="legend-item q-bad">
-                    <div class="legend-badge">ROG (Penyakit)</div>
-                    <p id="descRog"><strong>Tidak Menguntungkan</strong> (Mars/Mangal). Menyebabkan potensi rintangan atau pertengkaran. Hindari pengobatan baru atau nego alot.</p>
-                </div>
-                <div class="legend-item q-bad">
-                    <div class="legend-badge">KAAL (Kerugian)</div>
-                    <p id="descKaal"><strong>Sangat Tidak Menguntungkan</strong> (Saturnus/Rahu). Pengaruh negatif/konflik. Tunda aktivitas penting hingga jam berganti.</p>
-                </div>
+            <h3 id="txtLegendTitle"><i class="fa-solid fa-book-open"></i> Panduan Kategori Jam Planet & Falakiah</h3>
+            <div class="legend-grid" id="legendGrid">
+                <!-- Dynamic Legend based on Mode -->
             </div>
             <div class="note-box">
                 <i class="fa-solid fa-circle-info"></i>
-                <span id="txtDisclaimers">Aplikasi ini menghitung waktu Chogadia secara akurat berdasarkan posisi Astronomi Matahari (Terbit & Terbenam) di koordinat Anda (Tahun 1900–2100). Dapat bekerja sepenuhnya 100% Offline.</span>
+                <span id="txtDisclaimers">Aplikasi ini menghitung waktu Falakiah & Jam Planet secara akurat berdasarkan posisi Astronomi Matahari (Terbit & Terbenam) di lokasi Anda. Bekerja 100% Offline.</span>
             </div>
         </section>
 
         <!-- Footer -->
         <footer class="app-footer">
-            <p>© <span id="yearSpan"></span> Chogadia Hisab Falakiah. Developed with ❤️ by <a href="https://arifwidiyanto.web.id" target="_blank" rel="noopener">Arif Widiyanto</a></p>
+            <p>© <span id="yearSpan"></span> Falakiah & Jam Planet. Developed with ❤️ by <a href="https://arifwidiyanto.web.id" target="_blank" rel="noopener">Arif Widiyanto</a></p>
         </footer>
     </div>
 
