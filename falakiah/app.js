@@ -1,5 +1,5 @@
 /**
- * Kalkulator Falakiah Engine: Sa'at al-Kawakib (ساعات الكواكب), Chogadia, Moon Phases, 28 Manazil (Ecliptic), Hijri & Qibla
+ * Kalkulator Falakiah Engine: Sa'at al-Kawakib (ساعات الكواكب), Chogadia, Moon Phases, 28 Manazil, Hijri, Qibla & Hajat Finder
  * Developed for arifwidiyanto.web.id/falakiah
  */
 
@@ -51,6 +51,9 @@
             txtAsr: "Ashar",
             txtMaghrib: "Maghrib",
             txtIsha: "Isya",
+            txtFinderTitle: "Pencari Jam Baik & Hajat (Best Hour Finder)",
+            txtFinderSubtitle: "Filter jam planet berdasarkan kebutuhan hajat Anda hari ini:",
+            txtBtnWa: "Salin WA",
             qualities: {
                 SAAD_AKBAR: "Sa'ad Akbar (Sangat Baik)",
                 SAAD_ASGHAR: "Sa'ad Asghar (Baik)",
@@ -126,6 +129,9 @@
             txtAsr: "Asr",
             txtMaghrib: "Maghrib",
             txtIsha: "Isha",
+            txtFinderTitle: "Best Hour & Purpose Finder",
+            txtFinderSubtitle: "Filter planetary hours by your goal for today:",
+            txtBtnWa: "Copy WA",
             qualities: {
                 SAAD_AKBAR: "Sa'ad Akbar (Most Auspicious)",
                 SAAD_ASGHAR: "Sa'ad Asghar (Auspicious)",
@@ -201,6 +207,9 @@
             txtAsr: "العصر",
             txtMaghrib: "المغرب",
             txtIsha: "العشاء",
+            txtFinderTitle: "مستكشف الأوقات المباركة وقضاء الحوائج",
+            txtFinderSubtitle: "اختر غايتك لعرض أفضل الساعات:",
+            txtBtnWa: "نسخ للواتساب",
             qualities: {
                 SAAD_AKBAR: "سعد أكبر (ممتاز جداً)",
                 SAAD_ASGHAR: "سعد أصغر (جيد)",
@@ -326,7 +335,7 @@
     const DAY_START_RULERS = ['Udveg', 'Amrit', 'Rog', 'Labh', 'Shubh', 'Char', 'Kaal'];
     const NIGHT_START_RULERS = ['Shubh', 'Char', 'Kaal', 'Udveg', 'Amrit', 'Rog', 'Labh'];
 
-    // 4. 28 Manazil al-Qamar (Astronomical Ecliptic Lunar Mansions: 13° 20' each)
+    // 4. 28 Manazil al-Qamar
     const MANAZIL_AL_QAMAR = [
         { id: 1,  name: 'Al-Syaratain (الشرطين)', range: '0°00\' - 13°20\' Aries', desc: 'Awal Baru & Ketegasan. Baik untuk memulai usaha & perjalanan.' },
         { id: 2,  name: 'Al-Butain (البطين)',     range: '13°20\' - 26°40\' Aries', desc: 'Pertumbuhan & Keberhasilan. Baik untuk perdagangan & pertanian.' },
@@ -387,6 +396,7 @@
     let selectedDate = new Date();
     let activeTab = 'day';
     let currentCoords = { lat: -6.2088, lon: 106.8456, timeZone: 'Asia/Jakarta', name: 'Jakarta, Indonesia' };
+    let activeFilter = 'all';
     let timerInterval = null;
 
     // DOM Elements
@@ -395,6 +405,7 @@
         btnModeChogadia: document.getElementById('btnModeChogadia'),
         langSelect: document.getElementById('langSelect'),
         themeToggle: document.getElementById('themeToggle'),
+        btnShareWa: document.getElementById('btnShareWa'),
         dateInput: document.getElementById('dateInput'),
         locationSelect: document.getElementById('locationSelect'),
         btnRefreshGps: document.getElementById('btnRefreshGps'),
@@ -431,7 +442,11 @@
         timeDhuhr: document.getElementById('timeDhuhr'),
         timeAsr: document.getElementById('timeAsr'),
         timeMaghrib: document.getElementById('timeMaghrib'),
-        timeIsha: document.getElementById('timeIsha')
+        timeIsha: document.getElementById('timeIsha'),
+        // Purpose Finder Elements
+        purposePills: document.getElementById('purposePills'),
+        finderResultBox: document.getElementById('finderResultBox'),
+        finderResultText: document.getElementById('finderResultText')
     };
 
     // Helper for Local Date YYYY-MM-DD format
@@ -442,7 +457,7 @@
         return `${y}-${m}-${day}`;
     }
 
-    // NOAA Solar Calculations Algorithm (Returns Sunrise & Sunset in Minutes from 00:00 UTC)
+    // NOAA Solar Calculations Algorithm
     function getSunTimesUtc(lat, lon, dateObj) {
         const year = dateObj.getFullYear();
         let month = dateObj.getMonth() + 1;
@@ -483,7 +498,7 @@
                          0.5 * Math.pow(varY, 2) * Math.sin(4 * toRad(geomMeanLongSun)) -
                          1.25 * Math.pow(eccentEarthOrbit, 2) * Math.sin(2 * toRad(geomMeanAnomSun)));
 
-        const zenith = 90.8333; // 90° 50' standard atmospheric refraction
+        const zenith = 90.8333;
         const latR = toRad(lat);
         const decR = toRad(sunDeclin);
 
@@ -491,7 +506,7 @@
         if (cosHA > 1 || cosHA < -1) return null;
 
         const ha = toDeg(Math.acos(cosHA));
-        const solarNoonUtc = 720 - 4 * lon - eqOfTime; // minutes UTC from 00:00 UTC
+        const solarNoonUtc = 720 - 4 * lon - eqOfTime;
 
         const sunriseUtc = solarNoonUtc - ha * 4;
         const sunsetUtc = solarNoonUtc + ha * 4;
@@ -520,7 +535,6 @@
         return { sunrise, sunset, nextSunrise, rawSunUtc: sunUtc, utcBaseMs };
     }
 
-    // Timezone-aware Time Formatter using Intl.DateTimeFormat
     function formatTime(date) {
         if (!date) return '--:--';
         const tz = currentCoords.timeZone || 'Asia/Jakarta';
@@ -540,7 +554,6 @@
 
     // --- Astronomy Plus Precise Astronomical Calculations ---
 
-    // 1. Precise Ecliptic Moon Position, Illumination & 28 Manazil al-Qamar
     function calculateMoonEclipticPosition(dateObj) {
         let year = dateObj.getFullYear();
         let month = dateObj.getMonth() + 1;
@@ -569,15 +582,12 @@
                              0.658 * Math.sin(toRad(2 * D_moon)) -
                              0.214 * Math.sin(toRad(2 * M_moon)) + 360) % 360;
 
-        // 28 Manazil al-Qamar: Each covers 360° / 28 = 13.333333° of Ecliptic Longitude
         const manzilIdx = Math.floor(lambda_moon / 13.333333333) % 28;
         const manzil = MANAZIL_AL_QAMAR[manzilIdx];
 
-        // 12 Zodiac Buruj: Each covers 30°
         const zodiacIdx = Math.floor(lambda_moon / 30) % 12;
         const zodiac = ZODIACS_12[zodiacIdx];
 
-        // Elongation & Illumination
         const elongation = (lambda_moon - lambda_sun + 360) % 360;
         const illumination = (1 - Math.cos(toRad(elongation))) / 2 * 100;
         const moonAgeDays = (elongation / 360) * 29.53058867;
@@ -603,7 +613,6 @@
         };
     }
 
-    // 2. Kuwaiti / Tabular Hijri Calendar Calculation with Day Offset Adjustment
     function calculateHijriDate(dateObj, offset) {
         let year = dateObj.getFullYear();
         let month = dateObj.getMonth() + 1;
@@ -630,7 +639,6 @@
         return { day: hDay, monthName: HIJRI_MONTHS[hMonth - 1] || '', year: hYear };
     }
 
-    // 3. Qibla Direction Azimuth
     function calculateQiblaAzimuth(lat, lon) {
         const mLat = toRad(21.4225);
         const mLon = toRad(39.8262);
@@ -656,7 +664,6 @@
         return { degree: qDeg.toFixed(1), label: dirLabel };
     }
 
-    // 4. Prayer Times Calculation (Kemenag standard)
     function calculatePrayerTimes(sunInfo) {
         if (!sunInfo || !sunInfo.rawSunUtc) return null;
         const { solarNoonUtc, latR, decR } = sunInfo.rawSunUtc;
@@ -671,12 +678,12 @@
         const asrAlt = toDeg(Math.atan(1 / (1 + Math.tan(Math.abs(latR - decR)))));
         const haAsr = hourAngle(90 - asrAlt);
         const haSunrise = hourAngle(90.8333);
-        const haFajr = hourAngle(90 + 20); // Kemenag 20 deg
-        const haIsha = hourAngle(90 + 18); // Kemenag 18 deg
+        const haFajr = hourAngle(90 + 20);
+        const haIsha = hourAngle(90 + 18);
 
         const fajrUtc = haFajr ? solarNoonUtc - haFajr * 4 : null;
         const sunriseUtc = haSunrise ? solarNoonUtc - haSunrise * 4 : null;
-        const dhuhrUtc = solarNoonUtc + 2; // +2 min ihtiyati
+        const dhuhrUtc = solarNoonUtc + 2;
         const asrUtc = haAsr ? solarNoonUtc + haAsr * 4 : null;
         const maghribUtc = haSunrise ? solarNoonUtc + haSunrise * 4 : null;
         const ishaUtc = haIsha ? solarNoonUtc + haIsha * 4 : null;
@@ -855,6 +862,9 @@
         document.getElementById('txtAsr').textContent = t.txtAsr;
         document.getElementById('txtMaghrib').textContent = t.txtMaghrib;
         document.getElementById('txtIsha').textContent = t.txtIsha;
+        document.getElementById('txtFinderTitle').textContent = t.txtFinderTitle;
+        document.getElementById('txtFinderSubtitle').textContent = t.txtFinderSubtitle;
+        document.getElementById('txtBtnWa').textContent = t.txtBtnWa;
 
         renderApp();
     }
@@ -873,78 +883,102 @@
         // Render Astronomy Plus Card
         renderAstronomyPlus(data.sun);
 
-        // Render Table
-        const slots = activeTab === 'day' ? data.daySlots : data.nightSlots;
-        elements.chogadiaTableBody.innerHTML = '';
+        // Filter slots if Purpose Finder active
+        let slots = activeTab === 'day' ? data.daySlots : data.nightSlots;
+        if (activeFilter !== 'all') {
+            slots = slots.filter(s => s.info.quality === activeFilter);
+        }
 
+        // Render Table
+        elements.chogadiaTableBody.innerHTML = '';
         const now = new Date();
 
-        slots.forEach(slot => {
-            const tr = document.createElement('tr');
-            const isActive = now >= slot.start && now < slot.end;
+        if (slots.length === 0) {
+            elements.chogadiaTableBody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:20px; color:var(--text-muted);">Tidak ada jam ${activeFilter} pada sesi ${activeTab === 'day' ? 'Siang' : 'Malam'} ini. Silakan cek tab sebaliknya.</td></tr>`;
+        } else {
+            slots.forEach(slot => {
+                const tr = document.createElement('tr');
+                const isActive = now >= slot.start && now < slot.end;
 
-            if (isActive) {
-                tr.className = 'active-row';
-            }
+                if (isActive) {
+                    tr.className = 'active-row';
+                }
 
-            const qualityText = t.qualities[slot.info.quality];
-            const nameText = t.names[slot.name] || slot.name;
+                const qualityText = t.qualities[slot.info.quality];
+                const nameText = t.names[slot.name] || slot.name;
 
-            let efficacyText = '';
-            if (currentSystem === 'saat') {
-                if (currentLang === 'ar') efficacyText = slot.info.efficacy_ar;
-                else if (currentLang === 'en') efficacyText = slot.info.efficacy_en;
-                else efficacyText = slot.info.efficacy_id;
-            } else {
-                efficacyText = slot.info.desc_id;
-            }
+                let efficacyText = '';
+                if (currentSystem === 'saat') {
+                    if (currentLang === 'ar') efficacyText = slot.info.efficacy_ar;
+                    else if (currentLang === 'en') efficacyText = slot.info.efficacy_en;
+                    else efficacyText = slot.info.efficacy_id;
+                } else {
+                    efficacyText = slot.info.desc_id;
+                }
 
-            let statusBadge = '';
-            if (isActive) {
-                statusBadge = `<span class="badge-row-quality q-amrit"><i class="fa-solid fa-bolt"></i> ${t.activeNow}</span>`;
-            } else if (now > slot.end) {
-                statusBadge = `<span style="color:var(--text-muted); font-size:0.78rem;">${t.passed}</span>`;
-            } else {
-                statusBadge = `<span style="color:var(--text-muted); font-size:0.78rem;">${t.upcoming}</span>`;
-            }
+                let statusBadge = '';
+                if (isActive) {
+                    statusBadge = `<span class="badge-row-quality q-amrit"><i class="fa-solid fa-bolt"></i> ${t.activeNow}</span>`;
+                } else if (now > slot.end) {
+                    statusBadge = `<span style="color:var(--text-muted); font-size:0.78rem;">${t.passed}</span>`;
+                } else {
+                    statusBadge = `<span style="color:var(--text-muted); font-size:0.78rem;">${t.upcoming}</span>`;
+                }
 
-            tr.innerHTML = `
-                <td><strong>${slot.index}</strong></td>
-                <td>
-                    <div style="display:flex; align-items:center; gap:8px;">
-                        <i class="fa-solid ${slot.info.icon} ${slot.info.class}"></i>
-                        <strong>${nameText}</strong>
-                    </div>
-                </td>
-                <td><span class="badge-row-quality ${slot.info.class}">${qualityText}</span></td>
-                <td><small>${efficacyText}</small></td>
-                <td><strong>${formatTime(slot.start)} - ${formatTime(slot.end)}</strong></td>
-                <td>${statusBadge}</td>
-            `;
-            elements.chogadiaTableBody.appendChild(tr);
-        });
+                tr.innerHTML = `
+                    <td><strong>${slot.index}</strong></td>
+                    <td>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <i class="fa-solid ${slot.info.icon} ${slot.info.class}"></i>
+                            <strong>${nameText}</strong>
+                        </div>
+                    </td>
+                    <td><span class="badge-row-quality ${slot.info.class}">${qualityText}</span></td>
+                    <td><small>${efficacyText}</small></td>
+                    <td><strong>${formatTime(slot.start)} - ${formatTime(slot.end)}</strong></td>
+                    <td>${statusBadge}</td>
+                `;
+                elements.chogadiaTableBody.appendChild(tr);
+            });
+        }
 
         renderLegend();
         updateActiveBanner(data, now);
+        updateFinderRecommendation(data);
+    }
+
+    function updateFinderRecommendation(data) {
+        if (activeFilter === 'all') {
+            elements.finderResultBox.style.display = 'none';
+            return;
+        }
+
+        const t = TRANSLATIONS[currentLang] || TRANSLATIONS.id;
+        const allSlots = [...data.daySlots, ...data.nightSlots];
+        const matched = allSlots.filter(s => s.info.quality === activeFilter);
+
+        elements.finderResultBox.style.display = 'flex';
+        if (matched.length === 0) {
+            elements.finderResultText.textContent = `Tidak ditemukan jam kategori '${t.qualities[activeFilter]}' pada tanggal ini.`;
+        } else {
+            const listStr = matched.map(s => `${t.names[s.name]} (${formatTime(s.start)} - ${formatTime(s.end)})`).join(' | ');
+            elements.finderResultText.innerHTML = `<strong>Rekomendasi Jam Hari Ini (${t.qualities[activeFilter]}):</strong> ${listStr}`;
+        }
     }
 
     function renderAstronomyPlus(sunInfo) {
-        // 1. Hijri Date
         const hijri = calculateHijriDate(selectedDate, hijriOffset);
         let offsetBadge = hijriOffset !== 0 ? ` (${hijriOffset > 0 ? '+' : ''}${hijriOffset}d)` : '';
         elements.displayHijriDate.innerHTML = `<strong>${hijri.day} ${hijri.monthName} ${hijri.year} H</strong> <small style="display:inline; opacity:0.8;">${offsetBadge} (Berganti saat Maghrib)</small>`;
 
-        // 2. Precise Ecliptic Moon & Manazil
         const moon = calculateMoonEclipticPosition(selectedDate);
         elements.displayMoonPhase.innerHTML = `<strong>${moon.phaseName}</strong> <small style="display:inline; opacity:0.9;">(${moon.illumination.toFixed(1)}% Terang, Umur ${moon.moonAgeDays.toFixed(1)} Hari)</small>`;
 
         elements.displayManazil.innerHTML = `<strong>Ke-${moon.manzil.id}: ${moon.manzil.name}</strong> <small style="display:inline; opacity:0.9;">[Rentang: ${moon.manzil.range} | Zodiak: ${moon.zodiac.name}]</small><br><small style="display:block; color:var(--accent-gold); margin-top:2px;"><i class="fa-solid fa-sparkles"></i> <em>${moon.manzil.desc}</em></small>`;
 
-        // 3. Qibla Direction Azimuth
         const qibla = calculateQiblaAzimuth(currentCoords.lat, currentCoords.lon);
         elements.displayQiblaDegree.textContent = `${qibla.degree}° ${qibla.label}`;
 
-        // 4. Prayer Times
         const p = calculatePrayerTimes(sunInfo);
         if (p) {
             elements.timeFajr.textContent = formatTime(p.fajr);
@@ -1050,6 +1084,40 @@
         elements.countdownTimer.textContent = `${String(rh).padStart(2, '0')} j ${String(rm).padStart(2, '0')} m ${String(rs).padStart(2, '0')} d`;
     }
 
+    // Share WhatsApp Summary
+    function copyWhatsAppSummary() {
+        const data = calculateSchedule(selectedDate, currentCoords.lat, currentCoords.lon);
+        if (!data) return;
+        const t = TRANSLATIONS[currentLang] || TRANSLATIONS.id;
+        const hijri = calculateHijriDate(selectedDate, hijriOffset);
+        const moon = calculateMoonEclipticPosition(selectedDate);
+
+        let msg = `✨ *JADWAL KALKULATOR FALAKIAH & JAM PLANET* ✨\n`;
+        msg += `📍 *Lokasi:* ${currentCoords.name}\n`;
+        msg += `📅 *Masehi:* ${selectedDate.toLocaleDateString()}\n`;
+        msg += `🌙 *Hijriah:* ${hijri.day} ${hijri.monthName} ${hijri.year} H\n`;
+        msg += `🌕 *Fase Bulan:* ${moon.phaseName} (${moon.illumination.toFixed(1)}%)\n`;
+        msg += `⭐ *Manazil al-Qamar:* Ke-${moon.manzil.id}: ${moon.manzil.name}\n\n`;
+
+        msg += `☀️ *SA'AT SIANG (NAHAR):*\n`;
+        data.daySlots.forEach(s => {
+            msg += `• Jam ${s.index}: ${t.names[s.name]} [${t.qualities[s.info.quality]}] (${formatTime(s.start)} - ${formatTime(s.end)})\n`;
+        });
+
+        msg += `\n🌙 *SA'AT MALAM (LAIL):*\n`;
+        data.nightSlots.forEach(s => {
+            msg += `• Jam ${s.index}: ${t.names[s.name]} [${t.qualities[s.info.quality]}] (${formatTime(s.start)} - ${formatTime(s.end)})\n`;
+        });
+
+        msg += `\n🌐 *Hitung Presisi di:* https://arifwidiyanto.web.id/falakiah/`;
+
+        navigator.clipboard.writeText(msg).then(() => {
+            alert('Ringkasan Jadwal Falakiah berhasil disalin! Tinggal tempel (paste) ke WhatsApp.');
+        }).catch(err => {
+            alert('Gagal menyalin: ' + err.message);
+        });
+    }
+
     function startLiveClock() {
         if (timerInterval) clearInterval(timerInterval);
 
@@ -1125,6 +1193,20 @@
             elements.btnModeChogadia.classList.add('active');
             elements.btnModeSaat.classList.remove('active');
         }
+
+        // WhatsApp Share
+        elements.btnShareWa.addEventListener('click', copyWhatsAppSummary);
+
+        // Purpose Pills Event Listeners
+        const pills = elements.purposePills.querySelectorAll('.pill-btn');
+        pills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                pills.forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                activeFilter = pill.getAttribute('data-filter');
+                renderApp();
+            });
+        });
 
         // Hijri Controls
         elements.btnHijriPrev.addEventListener('click', () => {

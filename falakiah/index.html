@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalkulator Falakiah - Jam Planet (Sa'at al-Kawakib) & Chogadia Hisab</title>
-    <meta name="description" content="Aplikasi Kalkulator Falakiah Presisi: Jam Planet Hikmah (Sa'at al-Kawakib 12 Jam Siang/Malam), Chogadia Hisab, Fase Bulan, 28 Manazil al-Qamar, Kalender Hijriah & Waktu Sholat.">
+    <title>Kalkulator Falakiah - Jam Planet (Sa'at al-Kawakib) & Chogadia Hisab Presisi</title>
+    <meta name="description" content="Aplikasi Kalkulator Falakiah Lengkap & Presisi: Sa'at al-Kawakib (12 Jam Siang/Malam), Chogadia Hisab, Pencari Jam Baik/Hajat, Fase Bulan, 28 Manazil al-Qamar, 12 Buruj, Kalender Hijriah & Waktu Sholat.">
     <meta name="theme-color" content="#0b132b">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/svg+xml" href="icon.svg">
@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <link rel="stylesheet" href="styles.css?v=4.0">
+    <link rel="stylesheet" href="styles.css?v=5.0">
 </head>
 <body>
     <div class="app-container">
@@ -32,6 +32,9 @@
                 </div>
             </div>
             <div class="header-actions">
+                <button id="btnShareWa" class="btn-secondary" title="Salin Ringkasan WA">
+                    <i class="fa-brands fa-whatsapp text-emerald"></i> <span id="txtBtnWa">Salin WA</span>
+                </button>
                 <select id="langSelect" class="lang-select" aria-label="Pilih Bahasa">
                     <option value="id">🇮🇩 Indonesia</option>
                     <option value="en">🇬🇧 English</option>
@@ -181,6 +184,26 @@
             </div>
         </section>
 
+        <!-- NEW: Best Hour Finder & Purpose Filter Section -->
+        <section class="purpose-finder-card">
+            <div class="finder-header">
+                <h3><i class="fa-solid fa-wand-magic-sparkles text-amber"></i> <span id="txtFinderTitle">Pencari Jam Baik & Hajat (Best Hour Finder)</span></h3>
+                <small id="txtFinderSubtitle">Filter jam planet berdasarkan kebutuhan hajat Anda hari ini:</small>
+            </div>
+            <div class="purpose-pills" id="purposePills">
+                <button class="pill-btn active" data-filter="all">Semua Jam</button>
+                <button class="pill-btn" data-filter="SAAD_AKBAR"><i class="fa-solid fa-star"></i> Sa'ad Akbar (Doa & Berkah)</button>
+                <button class="pill-btn" data-filter="SAAD_ASGHAR"><i class="fa-solid fa-heart"></i> Sa'ad Asghar (Cinta & Mahabbah)</button>
+                <button class="pill-btn" data-filter="SAAD_MUTAZIL"><i class="fa-solid fa-crown"></i> Wibawa & Menghadap Pejabat</button>
+                <button class="pill-btn" data-filter="MUTAZIL"><i class="fa-solid fa-pen-nib"></i> Bisnis, Belajar & Wafaq</button>
+                <button class="pill-btn" data-filter="NAHAS_AKBAR"><i class="fa-solid fa-shield"></i> Benteng & Tolak Bala</button>
+            </div>
+            <div class="finder-result-box" id="finderResultBox" style="display: none;">
+                <i class="fa-solid fa-clock-rotate-left text-amber"></i>
+                <span id="finderResultText">Memuat rekomendasi jam...</span>
+            </div>
+        </section>
+
         <!-- Controls / Location & Date Filter -->
         <section class="controls-card">
             <div class="control-row">
@@ -282,6 +305,33 @@
             </div>
         </section>
 
+        <!-- NEW: 12 Buruj & 4 Elemen Tabi'at Card -->
+        <section class="buruj-elements-card">
+            <h3><i class="fa-solid fa-fire-flame-curved text-amber"></i> Ensiklopedia 12 Buruj & 4 Elemen Tabi'at Falakiah</h3>
+            <div class="elements-grid">
+                <div class="element-box elem-fire">
+                    <h4>🔥 Api (Nari / الناري)</h4>
+                    <small>Buruj: Aries (Hamal), Leo (Asad), Sagittarius (Qaus)</small>
+                    <p>Sifat: Panas & Kering. Semangat, keberanian, kewibawaan, keagungan & kepemimpinan.</p>
+                </div>
+                <div class="element-box elem-earth">
+                    <h4>🪵 Tanah (Turabi / الترابي)</h4>
+                    <small>Buruj: Taurus (Taur), Virgo (Sunbulah), Capricorn (Jadi)</small>
+                    <p>Sifat: Dingin & Kering. Keteguhan, kekayaan materi, pondasi usaha & stabilitas.</p>
+                </div>
+                <div class="element-box elem-air">
+                    <h4>💨 Udara (Hawai / الهوائي)</h4>
+                    <small>Buruj: Gemini (Jauza), Libra (Mizan), Aquarius (Dalu)</small>
+                    <p>Sifat: Panas & Basah. Kecerdasan, komunikasi, menulis wafaq, ilmu & perdagangan.</p>
+                </div>
+                <div class="element-box elem-water">
+                    <h4>💧 Air (Ma'i / المائي)</h4>
+                    <small>Buruj: Cancer (Saratan), Scorpio (Aqrab), Pisces (Hut)</small>
+                    <p>Sifat: Dingin & Basah. Ketenangan hati, pengobatan, mahabbah kasih sayang & rasa kasihan.</p>
+                </div>
+            </div>
+        </section>
+
         <!-- Information & Legend Section -->
         <section class="info-card">
             <h3 id="txtLegendTitle"><i class="fa-solid fa-book-open"></i> Panduan Kategori Jam Planet & Falakiah</h3>
@@ -300,7 +350,7 @@
         </footer>
     </div>
 
-    <script src="app.js?v=4.0"></script>
+    <script src="app.js?v=5.0"></script>
     <script>
         document.getElementById('yearSpan').textContent = new Date().getFullYear();
         if ('serviceWorker' in navigator) {

@@ -12,6 +12,7 @@
     --accent-gold-glow: rgba(251, 191, 36, 0.25);
     --accent-blue: #38bdf8;
     --accent-indigo: #6366f1;
+    --accent-emerald: #10b981;
     
     /* Quality status colors */
     --color-amrit: #10b981; /* Green - Sa'ad Akbar / Amrit */
@@ -459,6 +460,7 @@ body {
 
 .text-amber { color: var(--accent-gold); }
 .text-indigo { color: var(--accent-blue); }
+.text-emerald { color: var(--accent-emerald); }
 
 .prayer-grid {
     display: grid;
@@ -487,6 +489,130 @@ body {
     color: var(--accent-blue);
     font-weight: 700;
 }
+
+/* Purpose Finder Section */
+.purpose-finder-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 18px 20px;
+    box-shadow: var(--shadow-main);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.finder-header h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.finder-header small {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+}
+
+.purpose-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.pill-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: var(--bg-primary);
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pill-btn:hover, .pill-btn.active {
+    background: var(--bg-card-hover);
+    color: var(--accent-gold);
+    border-color: var(--accent-gold);
+    box-shadow: 0 2px 8px rgba(251, 191, 36, 0.15);
+}
+
+.finder-result-box {
+    background: var(--bg-primary);
+    border: 1px solid var(--accent-gold);
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-main);
+}
+
+/* 12 Buruj & Elements Card */
+.buruj-elements-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    box-shadow: var(--shadow-main);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.buruj-elements-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.elements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.element-box {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.element-box h4 {
+    font-size: 0.88rem;
+    font-weight: 700;
+}
+
+.element-box small {
+    font-size: 0.73rem;
+    color: var(--accent-blue);
+}
+
+.element-box p {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-top: 4px;
+}
+
+.elem-fire { border-left: 3px solid #ef4444; }
+.elem-earth { border-left: 3px solid #10b981; }
+.elem-air { border-left: 3px solid #38bdf8; }
+.elem-water { border-left: 3px solid #6366f1; }
 
 /* Controls Section */
 .controls-card {
