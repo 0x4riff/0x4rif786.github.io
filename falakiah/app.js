@@ -1,6 +1,7 @@
 /**
  * Kalkulator Falakiah Engine: Sa'at al-Kawakib (ساعات الكواكب) & Chogadia Hisab
  * Developed for arifwidiyanto.web.id/falakiah
+ * Fix: Precise UTC-to-Local Astronomical Solar Time & Timezone Offset Handling
  */
 
 (function () {
@@ -199,7 +200,7 @@
         }
     };
 
-    // 2. Arabic Sa'at al-Kawakib Planet Definitions (Chaldean Order: Saturn -> Jupiter -> Mars -> Sun -> Venus -> Mercury -> Moon)
+    // 2. Arabic Sa'at al-Kawakib Planet Definitions (Chaldean Order)
     const CHALDEAN_PLANETS = [
         {
             id: 'Shani',
@@ -273,8 +274,6 @@
         }
     ];
 
-    // Day 1st hour planet index in Chaldean array (0=Shani, 1=Guru, 2=Mangal, 3=Surya, 4=Shukra, 5=Budh, 6=Chandra)
-    // Sunday: Sun (3), Monday: Moon (6), Tuesday: Mars (2), Wednesday: Mercury (5), Thursday: Jupiter (1), Friday: Venus (4), Saturday: Saturn (0)
     const SAAT_DAY_START_INDEX = [3, 6, 2, 5, 1, 4, 0];
 
     // 3. Bohra / Gujarati Chogadia Definitions
@@ -293,11 +292,11 @@
     const NIGHT_START_RULERS = ['Shubh', 'Char', 'Kaal', 'Udveg', 'Amrit', 'Rog', 'Labh'];
 
     // State Variables
-    let currentSystem = localStorage.getItem('falak_system') || 'saat'; // 'saat' or 'chogadia'
+    let currentSystem = localStorage.getItem('falak_system') || 'saat';
     let currentLang = localStorage.getItem('chogadia_lang') || 'id';
     let currentTheme = localStorage.getItem('chogadia_theme') || 'dark';
     let selectedDate = new Date();
-    let activeTab = 'day'; // 'day' or 'night'
+    let activeTab = 'day';
     let currentCoords = { lat: -6.2088, lon: 106.8456, name: 'Jakarta, Indonesia' };
     let timerInterval = null;
 
@@ -332,8 +331,8 @@
         legendGrid: document.getElementById('legendGrid')
     };
 
-    // NOAA Solar Calculations Algorithm
-    function getSunTimes(lat, lon, dateObj) {
+    // NOAA Solar Calculations Algorithm (Returns Sunrise & Sunset in Minutes from 00:00 UTC)
+    function getSunTimesUtc(lat, lon, dateObj) {
         const year = dateObj.getFullYear();
         let month = dateObj.getMonth() + 1;
         let day = dateObj.getDate();
@@ -373,7 +372,7 @@
                          0.5 * Math.pow(varY, 2) * Math.sin(4 * toRad(geomMeanLongSun)) -
                          1.25 * Math.pow(eccentEarthOrbit, 2) * Math.sin(2 * toRad(geomMeanAnomSun)));
 
-        const zenith = 90.8333;
+        const zenith = 90.8333; // 90° 50' standard atmospheric refraction
         const latR = toRad(lat);
         const decR = toRad(sunDeclin);
 
@@ -381,7 +380,7 @@
         if (cosHA > 1 || cosHA < -1) return null;
 
         const ha = toDeg(Math.acos(cosHA));
-        const solarNoonUtc = 720 - 4 * lon - eqOfTime;
+        const solarNoonUtc = 720 - 4 * lon - eqOfTime; // minutes UTC from 00:00 UTC
 
         const sunriseUtc = solarNoonUtc - ha * 4;
         const sunsetUtc = solarNoonUtc + ha * 4;
@@ -393,20 +392,20 @@
     function toDeg(rad) { return rad * 180 / Math.PI; }
 
     function getLocalDateTimes(dateObj, lat, lon) {
-        const sunUtc = getSunTimes(lat, lon, dateObj);
+        const sunUtc = getSunTimesUtc(lat, lon, dateObj);
         if (!sunUtc) return null;
 
         const nextDate = new Date(dateObj);
         nextDate.setDate(nextDate.getDate() + 1);
-        const nextSunUtc = getSunTimes(lat, lon, nextDate);
+        const nextSunUtc = getSunTimesUtc(lat, lon, nextDate);
 
-        const baseDate = new Date(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate());
-        
-        const sunrise = new Date(baseDate.getTime() + sunUtc.sunriseUtc * 60 * 1000);
-        const sunset = new Date(baseDate.getTime() + sunUtc.sunsetUtc * 60 * 1000);
-        
-        const nextBaseDate = new Date(nextDate.getFullYear(), nextDate.getMonth(), nextDate.getDate());
-        const nextSunrise = new Date(nextBaseDate.getTime() + nextSunUtc.sunriseUtc * 60 * 1000);
+        // Build exact UTC timestamp (00:00:00 UTC of target date)
+        const utcBaseMs = Date.UTC(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate(), 0, 0, 0);
+        const nextUtcBaseMs = Date.UTC(nextDate.getFullYear(), nextDate.getMonth(), nextDate.getDate(), 0, 0, 0);
+
+        const sunrise = new Date(utcBaseMs + sunUtc.sunriseUtc * 60 * 1000);
+        const sunset = new Date(utcBaseMs + sunUtc.sunsetUtc * 60 * 1000);
+        const nextSunrise = new Date(nextUtcBaseMs + nextSunUtc.sunriseUtc * 60 * 1000);
 
         return { sunrise, sunset, nextSunrise };
     }
@@ -428,7 +427,6 @@
         const dayOfWeek = dateObj.getDay(); // 0=Sun, 1=Mon, ..., 6=Sat
         const startPlanetIndex = SAAT_DAY_START_INDEX[dayOfWeek];
 
-        // Day Slots (12 slots)
         const dayDurationMs = sun.sunset.getTime() - sun.sunrise.getTime();
         const daySlotMs = dayDurationMs / 12;
 
@@ -447,7 +445,6 @@
             });
         }
 
-        // Night Slots (12 slots) - Continuation of Chaldean order from hour 13
         const nightDurationMs = sun.nextSunrise.getTime() - sun.sunset.getTime();
         const nightSlotMs = nightDurationMs / 12;
 
@@ -473,7 +470,6 @@
     function calculateChogadia(dateObj, sun) {
         const dayOfWeek = dateObj.getDay();
 
-        // Day Slots (8 slots)
         const dayDurationMs = sun.sunset.getTime() - sun.sunrise.getTime();
         const daySlotMs = dayDurationMs / 8;
         const dayStartRuler = DAY_START_RULERS[dayOfWeek];
@@ -493,7 +489,6 @@
             });
         }
 
-        // Night Slots (8 slots)
         const nightDurationMs = sun.nextSunrise.getTime() - sun.sunset.getTime();
         const nightSlotMs = nightDurationMs / 8;
         const nightStartRuler = NIGHT_START_RULERS[dayOfWeek];
@@ -717,7 +712,6 @@
         let planetDetail = t.qualities[activeSlot.info.quality];
         elements.currentPlanet.textContent = planetDetail;
 
-        // Countdown & Progress
         const totalDurationMs = activeSlot.end.getTime() - activeSlot.start.getTime();
         const elapsedMs = now.getTime() - activeSlot.start.getTime();
         const remainingMs = Math.max(0, activeSlot.end.getTime() - now.getTime());
@@ -783,7 +777,6 @@
         const todayStr = selectedDate.toISOString().split('T')[0];
         elements.dateInput.value = todayStr;
 
-        // System Switcher
         if (currentSystem === 'saat') {
             elements.btnModeSaat.classList.add('active');
             elements.btnModeChogadia.classList.remove('active');
