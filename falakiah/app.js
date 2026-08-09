@@ -1,7 +1,6 @@
 /**
- * Kalkulator Falakiah Engine: Sa'at al-Kawakib (ساعات الكواكب) & Chogadia Hisab
+ * Kalkulator Falakiah Engine: Sa'at al-Kawakib (ساعات الكواكب), Chogadia, Moon Phases, 28 Manazil, Hijri & Qibla
  * Developed for arifwidiyanto.web.id/falakiah
- * Fix: Precise Astronomical Solar Time & Full Timezone Awareness (Intl.DateTimeFormat)
  */
 
 (function () {
@@ -40,6 +39,18 @@
             passed: "Selesai",
             dayMode: "Nahar (Siang)",
             nightMode: "Lail (Malam)",
+            txtAstroTitle: "Astronomi Falakiah, Bulan & Waktu Sholat",
+            txtMoonHeader: "Fase Bulan & Hijriah",
+            txtHijriDateLabel: "Tanggal Hijriah:",
+            txtMoonPhaseLabel: "Fase Bulan:",
+            txtManazilLabel: "Manazil al-Qamar (Rumah Bulan):",
+            txtPrayerHeader: "Arah Kiblat & Sholat",
+            txtFajr: "Subuh",
+            txtSunrise: "Syuruq",
+            txtDhuhr: "Dzuhur",
+            txtAsr: "Ashar",
+            txtMaghrib: "Maghrib",
+            txtIsha: "Isya",
             qualities: {
                 SAAD_AKBAR: "Sa'ad Akbar (Sangat Baik)",
                 SAAD_ASGHAR: "Sa'ad Asghar (Baik)",
@@ -103,6 +114,18 @@
             passed: "Passed",
             dayMode: "Daytime (Nahar)",
             nightMode: "Nighttime (Lail)",
+            txtAstroTitle: "Falakiah Astronomy, Moon & Prayer Times",
+            txtMoonHeader: "Moon Phase & Hijri Calendar",
+            txtHijriDateLabel: "Hijri Date:",
+            txtMoonPhaseLabel: "Moon Phase:",
+            txtManazilLabel: "Manazil al-Qamar (Lunar Mansion):",
+            txtPrayerHeader: "Qibla Direction & Prayers",
+            txtFajr: "Fajr",
+            txtSunrise: "Sunrise",
+            txtDhuhr: "Dhuhr",
+            txtAsr: "Asr",
+            txtMaghrib: "Maghrib",
+            txtIsha: "Isha",
             qualities: {
                 SAAD_AKBAR: "Sa'ad Akbar (Most Auspicious)",
                 SAAD_ASGHAR: "Sa'ad Asghar (Auspicious)",
@@ -156,7 +179,7 @@
             thNum: "الساعة",
             thName: "الكوكب الحاكم",
             thQuality: "الطبقة / الصفة",
-            thPlanet: "الخاصية واستخدام",
+            thPlanet: "الخاصية والاستخدام",
             thTime: "الوقت",
             thStatus: "الحالة",
             legendTitle: "دليل ساعات الكواكب والأوقات الفلكية",
@@ -166,6 +189,18 @@
             passed: "انتهى",
             dayMode: "النهار",
             nightMode: "الليل",
+            txtAstroTitle: "الفلك والقمريات ومواقيت الصلاة",
+            txtMoonHeader: "أطوار القمر والتقويم الهجري",
+            txtHijriDateLabel: "التاريخ الهجري:",
+            txtMoonPhaseLabel: "طور القمر:",
+            txtManazilLabel: "منازل القمر:",
+            txtPrayerHeader: "اتجاه القبلة ومواقيت الصلاة",
+            txtFajr: "الفجر",
+            txtSunrise: "الشروق",
+            txtDhuhr: "الظهر",
+            txtAsr: "العصر",
+            txtMaghrib: "المغرب",
+            txtIsha: "العشاء",
             qualities: {
                 SAAD_AKBAR: "سعد أكبر (ممتاز جداً)",
                 SAAD_ASGHAR: "سعد أصغر (جيد)",
@@ -291,10 +326,49 @@
     const DAY_START_RULERS = ['Udveg', 'Amrit', 'Rog', 'Labh', 'Shubh', 'Char', 'Kaal'];
     const NIGHT_START_RULERS = ['Shubh', 'Char', 'Kaal', 'Udveg', 'Amrit', 'Rog', 'Labh'];
 
+    // 4. 28 Manazil al-Qamar (Lunar Mansions)
+    const MANAZIL_AL_QAMAR = [
+        { id: 1,  name: 'Al-Syaratain (الشرطين)', desc: 'Keberanian & Awal Baru. Baik untuk memulakan perjalanan & keberanian.' },
+        { id: 2,  name: 'Al-Butain (البطين)',     desc: 'Pertumbuhan & Keberhasilan. Baik untuk perdagangan & menanam.' },
+        { id: 3,  name: 'Al-Tsurayya (الثريا)',   desc: 'Keberkahan & Kemuliaan. Sangat baik untuk mahabbah & permohonan.' },
+        { id: 4,  name: 'Al-Dabaran (الدبران)',   desc: 'Ketegasan & Keberanian. Hindari perselisihan.' },
+        { id: 5,  name: 'Al-Haq\'ah (الهقعة)',    desc: 'Ilmu & Belajar. Baik untuk belajar, mengajar & menulis.' },
+        { id: 6,  name: 'Al-Han\'ah (الهنعة)',    desc: 'Kemesraan & Hubungan. Baik untuk persahabatan & nikah.' },
+        { id: 7,  name: 'Al-Dzira\' (الذراع)',    desc: 'Kelapangan & Kemenangan. Keuntungan dalam transaksi.' },
+        { id: 8,  name: 'Al-Natsrah (النثرة)',    desc: 'Kecerdasan & Kesembuhan. Baik untuk pengobatan.' },
+        { id: 9,  name: 'Al-Tarf (الطرف)',        desc: 'Kewaspadaan. Hindari keputusan emosional.' },
+        { id: 10, name: 'Al-Jabhah (الجبهة)',     desc: 'Kepemimpinan & Wibawa. Baik menghadap pimpinan.' },
+        { id: 11, name: 'Al-Zubrah (الزبرة)',     desc: 'Kekuatan & Pertolongan. Baik untuk kerjasama.' },
+        { id: 12, name: 'Al-Sarfah (الصرفة)',     desc: 'Perubahan & Transformasi. Perjalanan & pemindahan.' },
+        { id: 13, name: 'Al-Awwa (العواء)',       desc: 'Kelancaran Rezeki. Terbaik untuk perdagangan.' },
+        { id: 14, name: 'Al-Simak (السماك)',      desc: 'Kedamaian & Kedudukan Tinggi. Sangat diberkahi.' },
+        { id: 15, name: 'Al-Ghafr (الغفر)',       desc: 'Keselamatan & Perlindungan. Tolak bala & benteng.' },
+        { id: 16, name: 'Al-Zubana (الزبانا)',   desc: 'Keadilan & Keseimbangan. Penyelesaian sengketa.' },
+        { id: 17, name: 'Al-Iklil (الإكليل)',     desc: 'Mahkota & Kejayaan. Baik untuk memulai proyek besar.' },
+        { id: 18, name: 'Al-Qalb (القلب)',        desc: 'Puncak Energi Hati. Jaga emosi & fokus doa.' },
+        { id: 19, name: 'Al-Syaulah (الشولة)',    desc: 'Ketangkasan & Keberanian. Olahraga & latihan.' },
+        { id: 20, name: 'Al-Na\'aam (النعائم)',   desc: 'Keberuntungan Rezeki. Berkah usaha & belanja.' },
+        { id: 21, name: 'Al-Baldah (البلدة)',     desc: 'Ketenangan Rumah & Negeri. Renovasi & pemukiman.' },
+        { id: 22, name: 'Sa\'d al-Dhabih (سعد الذابح)', desc: 'Pengorbanan & Keteguhan. Fokus pada ibadah.' },
+        { id: 23, name: 'Sa\'d Bula\' (سعد بلع)', desc: 'Kesembuhan & Penyucian. Baik untuk kesehatan.' },
+        { id: 24, name: 'Sa\'d al-Su\'ud (سعد السعود)', desc: 'Puncak Keberuntungan & Kebahagiaan Utama.' },
+        { id: 25, name: 'Sa\'d al-Akhbiyah (سعد الأخبية)', desc: 'Pembukaan Rahasia & Rezeki Tersembunyi.' },
+        { id: 26, name: 'Al-Fargh al-Mukdam (الفرغ المقدم)', desc: 'Pemberian & Kemurahan Hati.' },
+        { id: 27, name: 'Al-Fargh al-Mu\'akhar (الفرغ المؤخر)', desc: 'Penyelesaian Tugas & Hasil Akhir.' },
+        { id: 28, name: 'Risha / Batn al-Hut (الرشاء)', desc: 'Kelimpahan Rezeki Laut & Perdagangan.' }
+    ];
+
+    const HIJRI_MONTHS = [
+        'Muharram', 'Safar', 'Rabi\' al-Awwal', 'Rabi\' al-Thani',
+        'Jumada al-Ula', 'Jumada al-Akhirah', 'Rajab', 'Sha\'ban',
+        'Ramadan', 'Shawwal', 'Dhu al-Qa\'dah', 'Dhu al-Hijjah'
+    ];
+
     // State Variables
     let currentSystem = localStorage.getItem('falak_system') || 'saat';
     let currentLang = localStorage.getItem('chogadia_lang') || 'id';
     let currentTheme = localStorage.getItem('chogadia_theme') || 'dark';
+    let hijriOffset = parseInt(localStorage.getItem('hijri_offset') || '0', 10);
     let selectedDate = new Date();
     let activeTab = 'day';
     let currentCoords = { lat: -6.2088, lon: 106.8456, timeZone: 'Asia/Jakarta', name: 'Jakarta, Indonesia' };
@@ -328,10 +402,24 @@
         sunriseTime: document.getElementById('sunriseTime'),
         sunsetTime: document.getElementById('sunsetTime'),
         dayDuration: document.getElementById('dayDuration'),
-        legendGrid: document.getElementById('legendGrid')
+        legendGrid: document.getElementById('legendGrid'),
+        // Astronomy Plus Elements
+        btnHijriPrev: document.getElementById('btnHijriPrev'),
+        btnHijriReset: document.getElementById('btnHijriReset'),
+        btnHijriNext: document.getElementById('btnHijriNext'),
+        displayHijriDate: document.getElementById('displayHijriDate'),
+        displayMoonPhase: document.getElementById('displayMoonPhase'),
+        displayManazil: document.getElementById('displayManazil'),
+        displayQiblaDegree: document.getElementById('displayQiblaDegree'),
+        timeFajr: document.getElementById('timeFajr'),
+        timeSunrise: document.getElementById('timeSunrise'),
+        timeDhuhr: document.getElementById('timeDhuhr'),
+        timeAsr: document.getElementById('timeAsr'),
+        timeMaghrib: document.getElementById('timeMaghrib'),
+        timeIsha: document.getElementById('timeIsha')
     };
 
-    // Helper for Local Date YYYY-MM-DD format (avoids toISOString UTC date shift bug)
+    // Helper for Local Date YYYY-MM-DD format
     function getLocalYmdStr(d) {
         const y = d.getFullYear();
         const m = String(d.getMonth() + 1).padStart(2, '0');
@@ -393,7 +481,7 @@
         const sunriseUtc = solarNoonUtc - ha * 4;
         const sunsetUtc = solarNoonUtc + ha * 4;
 
-        return { sunriseUtc, sunsetUtc };
+        return { sunriseUtc, sunsetUtc, solarNoonUtc, latR, decR };
     }
 
     function toRad(deg) { return deg * Math.PI / 180; }
@@ -407,7 +495,6 @@
         nextDate.setDate(nextDate.getDate() + 1);
         const nextSunUtc = getSunTimesUtc(lat, lon, nextDate);
 
-        // Build exact UTC timestamp (00:00:00 UTC of target date)
         const utcBaseMs = Date.UTC(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate(), 0, 0, 0);
         const nextUtcBaseMs = Date.UTC(nextDate.getFullYear(), nextDate.getMonth(), nextDate.getDate(), 0, 0, 0);
 
@@ -415,7 +502,7 @@
         const sunset = new Date(utcBaseMs + sunUtc.sunsetUtc * 60 * 1000);
         const nextSunrise = new Date(nextUtcBaseMs + nextSunUtc.sunriseUtc * 60 * 1000);
 
-        return { sunrise, sunset, nextSunrise };
+        return { sunrise, sunset, nextSunrise, rawSunUtc: sunUtc, utcBaseMs };
     }
 
     // Timezone-aware Time Formatter using Intl.DateTimeFormat
@@ -436,6 +523,138 @@
         }
     }
 
+    // --- Astronomy Plus Calculations ---
+
+    // 1. Moon Phase & Illumination Calculation
+    function calculateMoonPhase(dateObj) {
+        let year = dateObj.getFullYear();
+        let month = dateObj.getMonth() + 1;
+        let day = dateObj.getDate();
+
+        if (month <= 2) {
+            year -= 1;
+            month += 12;
+        }
+
+        const A = Math.floor(year / 100);
+        const B = 2 - A + Math.floor(A / 4);
+        const JD = Math.floor(365.25 * (year + 4716)) + Math.floor(30.6001 * (month + 1)) + day + B - 1524.5;
+
+        // Days since new moon on 2000-01-06 18:14 UTC (JD 2451549.5)
+        const daysSinceNew = JD - 2451549.5;
+        const newMoons = daysSinceNew / 29.53058867;
+        const phase = newMoons - Math.floor(newMoons); // 0.0 to 1.0
+        const ageDays = phase * 29.53058867;
+        const illum = (1 - Math.cos(phase * 2 * Math.PI)) / 2 * 100;
+
+        let phaseName = 'Bulan Baru (New Moon)';
+        if (phase >= 0.03 && phase < 0.22) phaseName = 'Bulan Sabit Muda (Waxing Crescent)';
+        else if (phase >= 0.22 && phase < 0.28) phaseName = 'Kuartal Pertama (First Quarter)';
+        else if (phase >= 0.28 && phase < 0.47) phaseName = 'Bulan Cembung (Waxing Gibbous)';
+        else if (phase >= 0.47 && phase < 0.53) phaseName = 'Purnama (Full Moon)';
+        else if (phase >= 0.53 && phase < 0.72) phaseName = 'Bulan Cembung Tua (Waning Gibbous)';
+        else if (phase >= 0.72 && phase < 0.78) phaseName = 'Kuartal Akhir (Third Quarter)';
+        else if (phase >= 0.78 && phase < 0.97) phaseName = 'Bulan Sabit Tua (Waning Crescent)';
+
+        const manzilIdx = Math.floor(phase * 28) % 28;
+        const manzil = MANAZIL_AL_QAMAR[manzilIdx];
+
+        return { phase, ageDays, illum, phaseName, manzil };
+    }
+
+    // 2. Kuwaiti / Tabular Hijri Calendar Calculation
+    function calculateHijriDate(dateObj, offset) {
+        let year = dateObj.getFullYear();
+        let month = dateObj.getMonth() + 1;
+        let day = dateObj.getDate() + (offset || 0);
+
+        if (month <= 2) {
+            year -= 1;
+            month += 12;
+        }
+
+        const A = Math.floor(year / 100);
+        const B = 2 - A + Math.floor(A / 4);
+        const JD = Math.floor(365.25 * (year + 4716)) + Math.floor(30.6001 * (month + 1)) + day + B - 1524.5;
+
+        let l = Math.floor(JD) - 1948440 + 10632;
+        let n = Math.floor((l - 1) / 10631);
+        l = l - 10631 * n + 354;
+        let j = Math.floor((10985 - l) / 5316) * Math.floor((50 * l) / 17719) + Math.floor(l / 5670) * Math.floor((43 * l) / 15238);
+        l = l - Math.floor((30 - j) / 15) * Math.floor((17719 * j) / 50) - Math.floor(j / 16) * Math.floor((15238 * j) / 43) + 29;
+        let hMonth = Math.floor((24 * l) / 709);
+        let hDay = l - Math.floor((709 * hMonth) / 24);
+        let hYear = 30 * n + j - 30;
+
+        return { day: hDay, monthName: HIJRI_MONTHS[hMonth - 1] || '', year: hYear };
+    }
+
+    // 3. Qibla Direction Azimuth
+    function calculateQiblaAzimuth(lat, lon) {
+        const mLat = toRad(21.4225);
+        const mLon = toRad(39.8262);
+        const pLat = toRad(lat);
+        const pLon = toRad(lon);
+
+        const dLon = mLon - pLon;
+        const y = Math.sin(dLon);
+        const x = Math.cos(pLat) * Math.tan(mLat) - Math.sin(pLat) * Math.cos(dLon);
+        const qRad = Math.atan2(y, x);
+        const qDeg = (toDeg(qRad) + 360) % 360;
+
+        let dirLabel = 'BBL';
+        if (qDeg >= 337.5 || qDeg < 22.5) dirLabel = 'Utara';
+        else if (qDeg >= 22.5 && qDeg < 67.5) dirLabel = 'TL';
+        else if (qDeg >= 67.5 && qDeg < 112.5) dirLabel = 'Timur';
+        else if (qDeg >= 112.5 && qDeg < 157.5) dirLabel = 'Tenggara';
+        else if (qDeg >= 157.5 && qDeg < 202.5) dirLabel = 'Selatan';
+        else if (qDeg >= 202.5 && qDeg < 247.5) dirLabel = 'Barat Daya';
+        else if (qDeg >= 247.5 && qDeg < 292.5) dirLabel = 'Barat';
+        else dirLabel = 'BBL';
+
+        return { degree: qDeg.toFixed(1), label: dirLabel };
+    }
+
+    // 4. Prayer Times Calculation (Kemenag standard)
+    function calculatePrayerTimes(sunInfo) {
+        if (!sunInfo || !sunInfo.rawSunUtc) return null;
+        const { solarNoonUtc, latR, decR } = sunInfo.rawSunUtc;
+        const utcBaseMs = sunInfo.utcBaseMs;
+
+        function hourAngle(angle) {
+            const cosHA = (Math.cos(toRad(angle)) - Math.sin(latR) * Math.sin(decR)) / (Math.cos(latR) * Math.cos(decR));
+            if (cosHA > 1 || cosHA < -1) return null;
+            return toDeg(Math.acos(cosHA));
+        }
+
+        const asrAlt = toDeg(Math.atan(1 / (1 + Math.tan(Math.abs(latR - decR)))));
+        const haAsr = hourAngle(90 - asrAlt);
+        const haSunrise = hourAngle(90.8333);
+        const haFajr = hourAngle(90 + 20); // Kemenag 20 deg
+        const haIsha = hourAngle(90 + 18); // Kemenag 18 deg
+
+        const fajrUtc = haFajr ? solarNoonUtc - haFajr * 4 : null;
+        const sunriseUtc = haSunrise ? solarNoonUtc - haSunrise * 4 : null;
+        const dhuhrUtc = solarNoonUtc + 2; // +2 min ihtiyati
+        const asrUtc = haAsr ? solarNoonUtc + haAsr * 4 : null;
+        const maghribUtc = haSunrise ? solarNoonUtc + haSunrise * 4 : null;
+        const ishaUtc = haIsha ? solarNoonUtc + haIsha * 4 : null;
+
+        function toDate(minUtc) {
+            if (minUtc === null) return null;
+            return new Date(utcBaseMs + minUtc * 60 * 1000);
+        }
+
+        return {
+            fajr: toDate(fajrUtc),
+            sunrise: toDate(sunriseUtc),
+            dhuhr: toDate(dhuhrUtc),
+            asr: toDate(asrUtc),
+            maghrib: toDate(maghribUtc),
+            isha: toDate(ishaUtc)
+        };
+    }
+
     // Calculation Router
     function calculateSchedule(dateObj, lat, lon) {
         const sun = getLocalDateTimes(dateObj, lat, lon);
@@ -450,7 +669,7 @@
 
     // Sa'at al-Kawakib (12 Hours Day, 12 Hours Night)
     function calculateSaatAlKawakib(dateObj, sun) {
-        const dayOfWeek = dateObj.getDay(); // 0=Sun, 1=Mon, ..., 6=Sat
+        const dayOfWeek = dateObj.getDay();
         const startPlanetIndex = SAAT_DAY_START_INDEX[dayOfWeek];
 
         const dayDurationMs = sun.sunset.getTime() - sun.sunrise.getTime();
@@ -582,6 +801,20 @@
         document.getElementById('txtLegendTitle').childNodes[1].nodeValue = " " + t.legendTitle;
         document.getElementById('txtDisclaimers').textContent = t.disclaimers;
 
+        // Astronomy Plus Translations
+        document.getElementById('txtAstroTitle').childNodes[1].nodeValue = " " + t.txtAstroTitle;
+        document.getElementById('txtMoonHeader').childNodes[1].nodeValue = " " + t.txtMoonHeader;
+        document.getElementById('txtHijriDateLabel').textContent = t.txtHijriDateLabel;
+        document.getElementById('txtMoonPhaseLabel').textContent = t.txtMoonPhaseLabel;
+        document.getElementById('txtManazilLabel').textContent = t.txtManazilLabel;
+        document.getElementById('txtPrayerHeader').childNodes[1].nodeValue = " " + t.txtPrayerHeader;
+        document.getElementById('txtFajr').textContent = t.txtFajr;
+        document.getElementById('txtSunrise').textContent = t.txtSunrise;
+        document.getElementById('txtDhuhr').textContent = t.txtDhuhr;
+        document.getElementById('txtAsr').textContent = t.txtAsr;
+        document.getElementById('txtMaghrib').textContent = t.txtMaghrib;
+        document.getElementById('txtIsha').textContent = t.txtIsha;
+
         renderApp();
     }
 
@@ -595,6 +828,9 @@
         elements.sunriseTime.textContent = formatTime(data.sun.sunrise);
         elements.sunsetTime.textContent = formatTime(data.sun.sunset);
         elements.dayDuration.textContent = `${data.daySlotMinutes} m`;
+
+        // Render Astronomy Plus Card
+        renderAstronomyPlus(data.sun);
 
         // Render Table
         const slots = activeTab === 'day' ? data.daySlots : data.nightSlots;
@@ -649,6 +885,32 @@
 
         renderLegend();
         updateActiveBanner(data, now);
+    }
+
+    function renderAstronomyPlus(sunInfo) {
+        // 1. Hijri Date
+        const hijri = calculateHijriDate(selectedDate, hijriOffset);
+        elements.displayHijriDate.textContent = `${hijri.day} ${hijri.monthName} ${hijri.year} H`;
+
+        // 2. Moon Phase & Manazil
+        const moon = calculateMoonPhase(selectedDate);
+        elements.displayMoonPhase.textContent = `${moon.phaseName} (${moon.illum.toFixed(1)}%)`;
+        elements.displayManazil.textContent = `Ke-${moon.manzil.id}: ${moon.manzil.name} - ${moon.manzil.desc}`;
+
+        // 3. Qibla Direction Azimuth
+        const qibla = calculateQiblaAzimuth(currentCoords.lat, currentCoords.lon);
+        elements.displayQiblaDegree.textContent = `${qibla.degree}° ${qibla.label}`;
+
+        // 4. Prayer Times
+        const p = calculatePrayerTimes(sunInfo);
+        if (p) {
+            elements.timeFajr.textContent = formatTime(p.fajr);
+            elements.timeSunrise.textContent = formatTime(p.sunrise);
+            elements.timeDhuhr.textContent = formatTime(p.dhuhr);
+            elements.timeAsr.textContent = formatTime(p.asr);
+            elements.timeMaghrib.textContent = formatTime(p.maghrib);
+            elements.timeIsha.textContent = formatTime(p.isha);
+        }
     }
 
     function renderLegend() {
@@ -803,7 +1065,7 @@
     function init() {
         applyTheme(currentTheme);
 
-        // Date Picker Default to Today (Local YYYY-MM-DD string)
+        // Date Picker Default to Today
         elements.dateInput.value = getLocalYmdStr(selectedDate);
 
         // Parse initial location select value right away
@@ -820,6 +1082,23 @@
             elements.btnModeChogadia.classList.add('active');
             elements.btnModeSaat.classList.remove('active');
         }
+
+        // Hijri Controls
+        elements.btnHijriPrev.addEventListener('click', () => {
+            hijriOffset -= 1;
+            localStorage.setItem('hijri_offset', hijriOffset);
+            renderApp();
+        });
+        elements.btnHijriReset.addEventListener('click', () => {
+            hijriOffset = 0;
+            localStorage.setItem('hijri_offset', hijriOffset);
+            renderApp();
+        });
+        elements.btnHijriNext.addEventListener('click', () => {
+            hijriOffset += 1;
+            localStorage.setItem('hijri_offset', hijriOffset);
+            renderApp();
+        });
 
         elements.btnModeSaat.addEventListener('click', () => {
             currentSystem = 'saat';

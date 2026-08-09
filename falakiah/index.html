@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalkulator Falakiah - Jam Planet (Sa'at al-Kawakib) & Chogadia Hisab</title>
-    <meta name="description" content="Aplikasi Kalkulator Falakiah Presisi: Jam Planet Hikmah (Sa'at al-Kawakib 12 Jam Siang/Malam) & Chogadia Hisab Bohra (8 Jam). Hitung waktu baik (Sa'ad) & hindari waktu nahas secara otomatis & offline.">
+    <meta name="description" content="Aplikasi Kalkulator Falakiah Presisi: Jam Planet Hikmah (Sa'at al-Kawakib 12 Jam Siang/Malam), Chogadia Hisab, Fase Bulan, 28 Manazil al-Qamar, Kalender Hijriah & Waktu Sholat.">
     <meta name="theme-color" content="#0b132b">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/svg+xml" href="icon.svg">
@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <link rel="stylesheet" href="styles.css?v=2.1">
+    <link rel="stylesheet" href="styles.css?v=3.0">
 </head>
 <body>
     <div class="app-container">
@@ -109,6 +109,75 @@
 
             <div class="progress-bar-container">
                 <div class="progress-bar" id="slotProgressBar"></div>
+            </div>
+        </section>
+
+        <!-- NEW: Astronomy & Falakiah Plus Card -->
+        <section class="astronomy-plus-card" id="astronomyPlusCard">
+            <h3 class="astronomy-title" id="txtAstroTitle">
+                <i class="fa-solid fa-moon-cloud"></i> Astronomi Falakiah, Bulan & Waktu Sholat
+            </h3>
+            
+            <div class="astronomy-grid">
+                <!-- Moon & Hijri Box -->
+                <div class="astro-box">
+                    <div class="astro-header">
+                        <h4 id="txtMoonHeader"><i class="fa-solid fa-moon text-amber"></i> Fase Bulan & Hijriah</h4>
+                        <div class="hijri-controls">
+                            <button id="btnHijriPrev" class="btn-mini" title="Hijriah -1 Hari">-1d</button>
+                            <button id="btnHijriReset" class="btn-mini" title="Reset Hijriah">Reset</button>
+                            <button id="btnHijriNext" class="btn-mini" title="Hijriah +1 Hari">+1d</button>
+                        </div>
+                    </div>
+                    <div class="astro-body">
+                        <div class="astro-row">
+                            <span id="txtHijriDateLabel">Tanggal Hijriah:</span>
+                            <strong id="displayHijriDate">-- ------ ---- H</strong>
+                        </div>
+                        <div class="astro-row">
+                            <span id="txtMoonPhaseLabel">Fase Bulan:</span>
+                            <strong id="displayMoonPhase">-- (0%)</strong>
+                        </div>
+                        <div class="astro-row">
+                            <span id="txtManazilLabel">Manazil al-Qamar (Rumah Bulan):</span>
+                            <strong id="displayManazil">--</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Qibla & Prayer Times Box -->
+                <div class="astro-box">
+                    <div class="astro-header">
+                        <h4 id="txtPrayerHeader"><i class="fa-solid fa-compass text-indigo"></i> Arah Kiblat & Sholat</h4>
+                        <strong id="displayQiblaDegree" class="text-amber">--° BBL</strong>
+                    </div>
+                    <div class="prayer-grid">
+                        <div class="prayer-item">
+                            <small id="txtFajr">Subuh</small>
+                            <strong id="timeFajr">00:00</strong>
+                        </div>
+                        <div class="prayer-item">
+                            <small id="txtSunrise">Syuruq</small>
+                            <strong id="timeSunrise">00:00</strong>
+                        </div>
+                        <div class="prayer-item">
+                            <small id="txtDhuhr">Dzuhur</small>
+                            <strong id="timeDhuhr">00:00</strong>
+                        </div>
+                        <div class="prayer-item">
+                            <small id="txtAsr">Ashar</small>
+                            <strong id="timeAsr">00:00</strong>
+                        </div>
+                        <div class="prayer-item">
+                            <small id="txtMaghrib">Maghrib</small>
+                            <strong id="timeMaghrib">00:00</strong>
+                        </div>
+                        <div class="prayer-item">
+                            <small id="txtIsha">Isya</small>
+                            <strong id="timeIsha">00:00</strong>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -231,7 +300,7 @@
         </footer>
     </div>
 
-    <script src="app.js?v=2.1"></script>
+    <script src="app.js?v=3.0"></script>
     <script>
         document.getElementById('yearSpan').textContent = new Date().getFullYear();
         if ('serviceWorker' in navigator) {

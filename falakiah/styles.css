@@ -345,6 +345,136 @@ body {
     transition: width 0.5s ease;
 }
 
+/* Astronomy Plus Card */
+.astronomy-plus-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    box-shadow: var(--shadow-main);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.astronomy-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.astronomy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+@media (max-width: 768px) {
+    .astronomy-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.astro-box {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.astro-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+}
+
+.astro-header h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.hijri-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-mini {
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    border-radius: 4px;
+    background: var(--bg-secondary);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+}
+
+.btn-mini:hover {
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+}
+
+.astro-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.astro-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+}
+
+.astro-row span {
+    color: var(--text-muted);
+}
+
+.astro-row strong {
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+.prayer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.prayer-item {
+    background: var(--bg-secondary);
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.prayer-item small {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+.prayer-item strong {
+    display: block;
+    font-size: 0.88rem;
+    color: var(--accent-blue);
+    font-weight: 700;
+}
+
 /* Controls Section */
 .controls-card {
     background: var(--bg-secondary);
