@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalkulator Falakiah - Jam Planet (Sa'at al-Kawakib) & Chogadia Hisab Presisi 3D</title>
-    <meta name="description" content="Aplikasi Kalkulator Falakiah Lengkap & Presisi 3D: Sa'at al-Kawakib (12 Jam Siang/Malam), Abjad Hisab & Wafaq 3x3 Generator, Dial Clock 24H 3D, Detail Khadim Malaikat, Asmaul Husna, Incense Bukhur, Chogadia Hisab, Fase Bulan, 28 Manazil al-Qamar & Waktu Sholat.">
+    <meta name="description" content="Aplikasi Kalkulator Falakiah Lengkap & Presisi 3D: Sa'at al-Kawakib (12 Jam Siang/Malam), Abjad Hisab Arab, Khadim Malaikat Ulwi & Sufli, Matriks Wafaq 3x3 Angka Arab, Dial Clock 24H 3D, Chogadia Hisab, Fase Bulan, 28 Manazil al-Qamar & Waktu Sholat.">
     <meta name="theme-color" content="#0b132b">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/svg+xml" href="icon.svg">
@@ -19,7 +19,7 @@
     <!-- Three.js for 3D Interactive Planet Orbs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-    <link rel="stylesheet" href="styles.css?v=10.0">
+    <link rel="stylesheet" href="styles.css?v=11.0">
 </head>
 <body>
     <div class="app-container">
@@ -229,10 +229,10 @@
             </div>
         </section>
 
-        <!-- NEW: Abjad Hisab & Personal Wafaq 3x3 Generator Card -->
+        <!-- ENHANCED: Abjad Hisab Arab & Wafaq 3x3 Angka Arab Generator Card -->
         <section class="abjad-wafaq-card" id="abjadWafaqCard">
             <h3 class="astronomy-title">
-                <i class="fa-solid fa-calculator text-amber"></i> Kalkulator Abjad Hisab & Penyelaras Wafaq 3x3 Personal
+                <i class="fa-solid fa-calculator text-amber"></i> Kalkulator Abjad Hisab & Wafaq 3x3 Angka Arab
             </h3>
             
             <div class="abjad-grid">
@@ -240,18 +240,30 @@
                 <div class="astro-box">
                     <div class="input-group">
                         <label for="inputAbjadName">
-                            <i class="fa-solid fa-user-pen"></i> Masukkan Nama atau Kalimat Hajat (Latin / Arab):
+                            <i class="fa-solid fa-user-pen"></i> Masukkan Nama / Hajat (Latin / Huruf Arab):
                         </label>
                         <div class="abjad-input-wrapper">
-                            <input type="text" id="inputAbjadName" class="custom-input" placeholder="Misal: Arif Widiyanto" value="Arif Widiyanto">
-                            <button id="btnCalcAbjad" class="btn-secondary">Hitung Adad</button>
+                            <input type="text" id="inputAbjadName" class="custom-input" placeholder="Misal: Arif / عارف" value="Arif">
+                            <button id="btnCalcAbjad" class="btn-secondary">Hitung Abjad</button>
                         </div>
                     </div>
                     
                     <div class="astro-body" style="margin-top: 8px;">
                         <div class="astro-row">
+                            <span>Transliterasi Huruf Arab:</span>
+                            <strong id="displayArabicScript" class="text-amber" style="font-family:var(--font-arabic); font-size:1.2rem;">--</strong>
+                        </div>
+                        <div class="astro-row">
                             <span>Jumlah Adad (Hisab al-Jumal):</span>
-                            <strong id="displayAbjadTotal" class="text-amber">--</strong>
+                            <strong id="displayAbjadTotal" class="text-indigo">--</strong>
+                        </div>
+                        <div class="astro-row">
+                            <span>Malaikat Atas (Khadim Ulwi):</span>
+                            <strong id="displayAngelUlwi" class="text-amber" style="font-family:var(--font-arabic);">--</strong>
+                        </div>
+                        <div class="astro-row">
+                            <span>Penguasa Bawah (Khadim Sufli):</span>
+                            <strong id="displayAngelSufli" style="font-family:var(--font-arabic);">--</strong>
                         </div>
                         <div class="astro-row">
                             <span>Planet Penguasa Personal:</span>
@@ -264,11 +276,14 @@
                     </div>
                 </div>
 
-                <!-- Generated 3x3 Wafaq Matrix Stage -->
+                <!-- Generated 3x3 Wafaq Matrix Stage (Arabic Digits) -->
                 <div class="astro-box wafaq-stage">
                     <div class="astro-header" style="width: 100%;">
-                        <h4><i class="fa-solid fa-border-all text-amber"></i> Matriks Wafaq 3x3 (Buduh)</h4>
-                        <button id="btnCopyWafaq" class="btn-mini" title="Salin Angka Wafaq">Salin Wafaq</button>
+                        <h4><i class="fa-solid fa-border-all text-amber"></i> Matriks Wafaq 3x3 Buduh (Angka Arab)</h4>
+                        <div class="hijri-controls">
+                            <button id="btnToggleDigits" class="btn-mini" title="Ubah Angka Arab / Latin">Angka: Arab (١٢٣)</button>
+                            <button id="btnCopyWafaq" class="btn-mini" title="Salin Angka Wafaq">Salin</button>
+                        </div>
                     </div>
                     <table class="wafaq-table" id="wafaqTable">
                         <tbody>
@@ -278,7 +293,7 @@
                         </tbody>
                     </table>
                     <small style="color:var(--text-muted); font-size:0.75rem; text-align:center;">
-                        *Setiap baris, kolom, dan diagonal wafaq berjumlah pas sesuai nilai Adad nama Anda.
+                        *Tabel Wafaq Buduh Arab 3x3 disusun presisi sesuai kaidah Syamsul Ma'arif al-Kubra (+51 Ulwi, +319 Sufli).
                     </small>
                 </div>
             </div>
@@ -502,7 +517,7 @@
         </div>
     </div>
 
-    <script src="app.js?v=10.0"></script>
+    <script src="app.js?v=11.0"></script>
     <script>
         document.getElementById('yearSpan').textContent = new Date().getFullYear();
         if ('serviceWorker' in navigator) {

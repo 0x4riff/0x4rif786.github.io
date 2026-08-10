@@ -1,6 +1,7 @@
 /**
- * Kalkulator Falakiah Engine 3D: Sa'at al-Kawakib (ساعات الكواكب), Dual 3D WebGL/CSS Orbs, Abjad Hisab & 3x3 Wafaq Generator, Deep Hikmah Database, 24h Dial Clock, Asmaul Husna, 28 Manazil, Hijri, Qibla & Hajat Finder
+ * Kalkulator Falakiah Engine 3D: Sa'at al-Kawakib (ساعات الكواكب), Dual 3D WebGL/CSS Orbs, Abjad Hisab Arab, Khadim Ulwi & Sufli, 3x3 Wafaq Angka Arab, Deep Hikmah Database, 24h Dial Clock, Asmaul Husna, 28 Manazil, Hijri, Qibla & Hajat Finder
  * Developed for arifwidiyanto.web.id/falakiah
+ * Refactored v11.0: Added Arabic Name Transliteration, Khadim Ulwi (+51) & Sufli (+319), Eastern Arabic Numeral Wafaq Digits
  */
 
 (function () {
@@ -265,15 +266,82 @@
         }
     };
 
-    // ABJAD HISAB AL-JUMAL DICTIONARY
-    const ABJAD_MAP = {
-        'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 80, 'G': 3, 'H': 8, 'I': 10, 'J': 3,
-        'K': 20, 'L': 30, 'M': 40, 'N': 50, 'O': 6, 'P': 80, 'Q': 100, 'R': 200, 'S': 60,
-        'T': 9, 'U': 6, 'V': 6, 'W': 6, 'X': 60, 'Y': 10, 'Z': 7,
-        'ا': 1, 'أ': 1, 'ب': 2, 'ج': 3, 'د': 4, 'ه': 5, 'و': 6, 'ز': 7, 'ح': 8, 'ط': 9,
-        'ي': 10, 'ك': 20, 'ل': 30, 'م': 40, 'ن': 50, 'س': 60, 'ع': 70, 'ف': 80, 'ص': 90,
-        'ق': 100, 'ر': 200, 'ش': 300, 'ت': 400, 'ث': 500, 'خ': 600, 'ذ': 700, 'ض': 800, 'ظ': 900, 'غ': 1000
+    // ABJAD HISAB AL-JUMAL DICTIONARY & LATIN TO ARABIC TRANSLITERATION
+    const LATIN_TO_ARABIC_MAP = {
+        'A': 'ع', 'B': 'ب', 'C': 'ج', 'D': 'د', 'E': 'ي', 'F': 'ف', 'G': 'غ',
+        'H': 'ح', 'I': 'ي', 'J': 'ج', 'K': 'ك', 'L': 'ل', 'M': 'م', 'N': 'ن',
+        'O': 'و', 'P': 'ف', 'Q': 'ق', 'R': 'ر', 'S': 'س', 'T': 'ت', 'U': 'و',
+        'V': 'ف', 'W': 'و', 'X': 'س', 'Y': 'ي', 'Z': 'ز'
     };
+
+    const ARABIC_JUMAL = {
+        'ا': 1, 'أ': 1, 'إ': 1, 'آ': 1, 'ب': 2, 'ج': 3, 'د': 4, 'ه': 5, 'هـ': 5, 'و': 6, 'ز': 7,
+        'ح': 8, 'ط': 9, 'ي': 10, 'ى': 10, 'ك': 20, 'ل': 30, 'م': 40, 'ن': 50, 'س': 60,
+        'ع': 70, 'ف': 80, 'ص': 90, 'ق': 100, 'ر': 200, 'ش': 300, 'ت': 400, 'ث': 500,
+        'خ': 600, 'ذ': 700, 'ض': 800, 'ظ': 900, 'غ': 1000, 'ة': 5, 'ء': 1
+    };
+
+    const EASTERN_ARABIC_DIGITS = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+
+    function toEasternArabicDigits(num) {
+        return String(num).split('').map(d => EASTERN_ARABIC_DIGITS[parseInt(d)] || d).join('');
+    }
+
+    function latinToArabicScript(str) {
+        if (!str) return '';
+        let arabStr = '';
+        const upper = str.toUpperCase();
+        for (let i = 0; i < upper.length; i++) {
+            const c = upper[i];
+            if (ARABIC_JUMAL[c]) {
+                arabStr += c;
+            } else if (LATIN_TO_ARABIC_MAP[c]) {
+                arabStr += LATIN_TO_ARABIC_MAP[c];
+            }
+        }
+        return arabStr;
+    }
+
+    // Convert Number to Abjad Letters (Jumal Values)
+    function numToAbjadLetters(n) {
+        if (n <= 0) return '';
+        let result = '';
+
+        const HUNDREDS = [
+            { v: 1000, l: 'غ' }, { v: 900, l: 'ظ' }, { v: 800, l: 'ض' }, { v: 700, l: 'ذ' },
+            { v: 600, l: 'خ' }, { v: 500, l: 'ث' }, { v: 400, l: 'ت' }, { v: 300, l: 'ش' },
+            { v: 200, l: 'ر' }, { v: 100, l: 'ق' }
+        ];
+        const TENS = [
+            { v: 90, l: 'ص' }, { v: 80, l: 'ف' }, { v: 70, l: 'ع' }, { v: 60, l: 'س' },
+            { v: 50, l: 'ن' }, { v: 40, l: 'م' }, { v: 30, l: 'ل' }, { v: 20, l: 'ك' }, { v: 10, l: 'ي' }
+        ];
+        const UNITS = [
+            { v: 9, l: 'ط' }, { v: 8, l: 'ح' }, { v: 7, l: 'ز' }, { v: 6, l: 'و' },
+            { v: 5, l: 'ه' }, { v: 4, l: 'د' }, { v: 3, l: 'ج' }, { v: 2, l: 'ب' }, { v: 1, l: 'ا' }
+        ];
+
+        for (let h of HUNDREDS) {
+            while (n >= h.v) {
+                result += h.l;
+                n -= h.v;
+            }
+        }
+        for (let t of TENS) {
+            while (n >= t.v) {
+                result += t.l;
+                n -= t.v;
+            }
+        }
+        for (let u of UNITS) {
+            while (n >= u.v) {
+                result += u.l;
+                n -= u.v;
+            }
+        }
+
+        return result;
+    }
 
     const PLANET_MODULO_MAP = {
         0: 'Shani',   // Zuhal / Saturnus
@@ -473,6 +541,7 @@
     let currentLang = localStorage.getItem('chogadia_lang') || 'id';
     let currentTheme = localStorage.getItem('chogadia_theme') || 'dark';
     let hijriOffset = parseInt(localStorage.getItem('hijri_offset') || '0', 10);
+    let wafaqDigitMode = localStorage.getItem('wafaq_digit') || 'arabic'; // 'arabic' or 'latin'
     let selectedDate = new Date();
     let activeTab = 'day';
     let currentCoords = { lat: -6.2088, lon: 106.8456, timeZone: 'Asia/Jakarta', name: 'Jakarta, Indonesia' };
@@ -544,9 +613,13 @@
         // Abjad & Wafaq Elements
         inputAbjadName: document.getElementById('inputAbjadName'),
         btnCalcAbjad: document.getElementById('btnCalcAbjad'),
+        displayArabicScript: document.getElementById('displayArabicScript'),
         displayAbjadTotal: document.getElementById('displayAbjadTotal'),
+        displayAngelUlwi: document.getElementById('displayAngelUlwi'),
+        displayAngelSufli: document.getElementById('displayAngelSufli'),
         displayPersonalPlanet: document.getElementById('displayPersonalPlanet'),
         displayPersonalSync: document.getElementById('displayPersonalSync'),
+        btnToggleDigits: document.getElementById('btnToggleDigits'),
         btnCopyWafaq: document.getElementById('btnCopyWafaq'),
         wafaqTable: document.getElementById('wafaqTable'),
         // Dial Clock Elements
@@ -761,25 +834,36 @@
         elements.planet3dModal.classList.remove('active');
     }
 
-    // --- Abjad Hisab & 3x3 Wafaq Generator Engine ---
+    // --- Abjad Hisab Arab & 3x3 Wafaq Generator Engine (Refactored v11.0) ---
     function calculateAbjadAndWafaq(inputText) {
         if (!inputText || !inputText.trim()) return null;
-        const str = inputText.trim().toUpperCase();
+        
+        // 1. Convert Latin text to Arabic Script if needed
+        const arabScript = latinToArabicScript(inputText);
 
+        // 2. Calculate Hisab al-Jumal from Arabic characters
         let totalAdad = 0;
-        for (let i = 0; i < str.length; i++) {
-            const char = str[i];
-            if (ABJAD_MAP[char]) {
-                totalAdad += ABJAD_MAP[char];
+        for (let char of arabScript) {
+            if (ARABIC_JUMAL[char]) {
+                totalAdad += ARABIC_JUMAL[char];
             }
         }
 
-        if (totalAdad === 0) totalAdad = 100; // Fallback minimum default
+        if (totalAdad === 0) totalAdad = 351; // Default fallback
 
+        // 3. Khadim Malaikat Atas (Ulwi: +51 -> -a-il)
+        const ulwiVal = totalAdad + 51;
+        const ulwiName = numToAbjadLetters(ulwiVal) + 'آئِيل';
+
+        // 4. Khadim Penguasa Bawah (Sufli: +319 -> -tawsh)
+        const sufliVal = totalAdad + 319;
+        const sufliName = numToAbjadLetters(sufliVal) + 'طَوْش';
+
+        // 5. Personal Planet & Element (Modulo 7)
         const planetModKey = PLANET_MODULO_MAP[totalAdad % 7];
         const planetObj = DEEP_FALAK_PLANETS[planetModKey] || DEEP_FALAK_PLANETS['Surya'];
 
-        // Mathematical 3x3 Magic Square (Wafq Mutatsalits Buduh) for N >= 12
+        // 6. Mathematical 3x3 Magic Square (Wafq Mutatsalits Buduh)
         const N = Math.max(12, totalAdad);
         const S = N - 12;
         const B = Math.floor(S / 3);
@@ -804,7 +888,11 @@
         ];
 
         return {
+            inputText,
+            arabScript,
             totalAdad,
+            ulwiName,
+            sufliName,
             planetModKey,
             planetObj,
             grid
@@ -812,13 +900,17 @@
     }
 
     function renderAbjadAndWafaq() {
-        const val = elements.inputAbjadName.value || 'Arif Widiyanto';
+        const val = elements.inputAbjadName.value || 'Arif';
         const res = calculateAbjadAndWafaq(val);
         if (!res) return;
 
         const t = TRANSLATIONS[currentLang] || TRANSLATIONS.id;
 
+        elements.displayArabicScript.textContent = res.arabScript;
         elements.displayAbjadTotal.textContent = `${res.totalAdad}`;
+        elements.displayAngelUlwi.textContent = res.ulwiName;
+        elements.displayAngelSufli.textContent = res.sufliName;
+
         elements.displayPersonalPlanet.textContent = `${res.planetObj.arabic} (${res.planetObj.element})`;
 
         // Check if personal planet hour is active right now
@@ -844,12 +936,15 @@
             elements.displayPersonalSync.innerHTML = `<span style="color:var(--text-muted);">Netral / Tidak Aktif Jam Ini (Hari Penguasa: ${res.planetObj.day})</span>`;
         }
 
-        // Render 3x3 Wafaq Grid
+        // Render 3x3 Wafaq Grid (Arabic or Latin Digits based on Toggle)
         for (let r = 0; r < 3; r++) {
             for (let c = 0; c < 3; c++) {
                 const cellId = `w${r * 3 + c + 1}`;
                 const td = document.getElementById(cellId);
-                if (td) td.textContent = res.grid[r][c];
+                if (td) {
+                    const numVal = res.grid[r][c];
+                    td.textContent = wafaqDigitMode === 'arabic' ? toEasternArabicDigits(numVal) : numVal;
+                }
             }
         }
     }
@@ -1558,12 +1653,14 @@
     }
 
     function copyWafaqText() {
-        const val = elements.inputAbjadName.value || 'Arif Widiyanto';
+        const val = elements.inputAbjadName.value || 'Arif';
         const res = calculateAbjadAndWafaq(val);
         if (!res) return;
 
-        let str = `✨ WAFAQ 3X3 PERSONAL (${val}) ✨\n`;
+        let str = `✨ WAFAQ 3X3 PERSONAL BUDUH (${val} / ${res.arabScript}) ✨\n`;
         str += `Adad Hisab: ${res.totalAdad}\n`;
+        str += `Khadim Ulwi (Atas): ${res.ulwiName}\n`;
+        str += `Khadim Sufli (Bawah): ${res.sufliName}\n`;
         str += `Planet: ${res.planetObj.arabic}\n\n`;
         str += `[ ${res.grid[0][0]} ] [ ${res.grid[0][1]} ] [ ${res.grid[0][2]} ]\n`;
         str += `[ ${res.grid[1][0]} ] [ ${res.grid[1][1]} ] [ ${res.grid[1][2]} ]\n`;
@@ -1657,6 +1754,13 @@
             if (e.key === 'Enter') renderAbjadAndWafaq();
         });
         elements.btnCopyWafaq.addEventListener('click', copyWafaqText);
+
+        elements.btnToggleDigits.addEventListener('click', () => {
+            wafaqDigitMode = wafaqDigitMode === 'arabic' ? 'latin' : 'arabic';
+            localStorage.setItem('wafaq_digit', wafaqDigitMode);
+            elements.btnToggleDigits.textContent = `Angka: ${wafaqDigitMode === 'arabic' ? 'Arab (١٢٣)' : 'Latin (123)'}`;
+            renderAbjadAndWafaq();
+        });
 
         // Modal Close Button
         elements.btnCloseModal.addEventListener('click', closePlanetModal);
