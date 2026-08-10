@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalkulator Falakiah - Jam Planet (Sa'at al-Kawakib) & Chogadia Hisab Presisi 3D</title>
-    <meta name="description" content="Aplikasi Kalkulator Falakiah Lengkap & Presisi 3D: Sa'at al-Kawakib (12 Jam Siang/Malam), Abjad Hisab Arab, Penyelaras Wafaq 3x3 Berdasar Hajat & Elemen, Khadim Malaikat Ulwi & Sufli, Dial Clock 24H 3D, Chogadia Hisab, Fase Bulan, 28 Manazil al-Qamar & Waktu Sholat.">
+    <meta name="description" content="Aplikasi Kalkulator Falakiah Lengkap & Presisi 3D: Sa'at al-Kawakib (12 Jam Siang/Malam), Abjad Hisab Arab, Penyelaras Wafaq 3x3 Berdasar Hajat & Elemen, Tasbih Digital Interaktif, Unduh Kartu Wafaq Emas PNG, Khadim Malaikat Ulwi & Sufli, Dial Clock 24H 3D, Chogadia Hisab, Fase Bulan, 28 Manazil al-Qamar & Waktu Sholat.">
     <meta name="theme-color" content="#0b132b">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/svg+xml" href="icon.svg">
@@ -19,7 +19,7 @@
     <!-- Three.js for 3D Interactive Planet Orbs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-    <link rel="stylesheet" href="styles.css?v=12.0">
+    <link rel="stylesheet" href="styles.css?v=13.0">
 </head>
 <body>
     <div class="app-container">
@@ -290,13 +290,14 @@
                     </div>
                 </div>
 
-                <!-- Generated 3x3 Wafaq Matrix Stage (Arabic Digits & Purpose Formula) -->
+                <!-- Generated 3x3 Wafaq Matrix Stage & Actions -->
                 <div class="astro-box wafaq-stage">
                     <div class="astro-header" style="width: 100%;">
                         <h4 id="wafaqTitleHeader"><i class="fa-solid fa-border-all text-amber"></i> Wafaq Rezeki & Pelaris 3x3 (Buduh)</h4>
                         <div class="hijri-controls">
                             <button id="btnToggleDigits" class="btn-mini" title="Ubah Angka Arab / Latin">Angka: Arab (١٢٣)</button>
                             <button id="btnCopyWafaq" class="btn-mini" title="Salin Angka Wafaq">Salin</button>
+                            <button id="btnDownloadCardPng" class="btn-mini text-amber" title="Unduh Kartu Gambar Wafaq Emas PNG"><i class="fa-solid fa-download"></i> Gambar PNG</button>
                         </div>
                     </div>
                     <table class="wafaq-table" id="wafaqTable">
@@ -308,6 +309,30 @@
                     </table>
                     <div class="wafaq-purpose-note" id="wafaqPurposeNote" style="font-size:0.78rem; text-align:center; color:var(--accent-gold); margin-top:6px;">
                         *Formula Wafaq diselaraskan khusus untuk hajat rezeki & keberkahan usaha Anda.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: Interactive Tasbih Zikir Digital & Amalan Practice Counter -->
+        <section class="tasbih-card" id="tasbihCard">
+            <div class="tasbih-header">
+                <h3><i class="fa-solid fa-dhikr text-amber"></i> Counter Tasbih Zikir Digital & Panduan Amalan Jam Planet</h3>
+                <small>Penguat energi spritual & hajat Anda sesuai Asmaul Husna Jam Planet saat ini</small>
+            </div>
+            
+            <div class="tasbih-grid">
+                <div class="tasbih-target-info">
+                    <small>Asmaul Husna / Zikir Disarankan:</small>
+                    <h3 id="tasbihDhikrText" class="text-amber" style="font-family:var(--font-arabic); font-size:1.5rem; margin:4px 0;">يا رزاق يا غني</h3>
+                    <small id="tasbihTargetNote">Target Zikir: 308 Kali (Masa Jam Syams / Mushtari)</small>
+                </div>
+                
+                <div class="tasbih-counter-box">
+                    <div class="tasbih-display-number" id="tasbihCountDisplay">0</div>
+                    <div class="tasbih-actions">
+                        <button id="btnTasbihCount" class="btn-tasbih-count"><i class="fa-solid fa-hand-pointer"></i> TEKAN TASBIH (+1)</button>
+                        <button id="btnTasbihReset" class="btn-secondary"><i class="fa-solid fa-rotate-left"></i> Reset</button>
                     </div>
                 </div>
             </div>
@@ -531,7 +556,7 @@
         </div>
     </div>
 
-    <script src="app.js?v=12.0"></script>
+    <script src="app.js?v=13.0"></script>
     <script>
         document.getElementById('yearSpan').textContent = new Date().getFullYear();
         if ('serviceWorker' in navigator) {

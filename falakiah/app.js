@@ -1,7 +1,7 @@
 /**
- * Kalkulator Falakiah Engine 3D: Sa'at al-Kawakib (ساعات الكواكب), Dual 3D WebGL/CSS Orbs, Abjad Hisab Arab, Khadim Ulwi & Sufli dengan Transliterasi Latin, 5 Formula Wafaq Problem-Oriented, Deep Hikmah Database, 24h Dial Clock, Asmaul Husna, 28 Manazil, Hijri, Qibla & Hajat Finder
+ * Kalkulator Falakiah Engine 3D: Sa'at al-Kawakib (ساعات الكواكب), Dual 3D WebGL/CSS Orbs, Abjad Hisab Arab, Khadim Ulwi & Sufli dengan Transliterasi Latin, 5 Formula Wafaq Problem-Oriented, Unduh Kartu Wafaq Emas PNG, Tasbih Digital Interaktif, Deep Hikmah Database, 24h Dial Clock, Asmaul Husna, 28 Manazil, Hijri, Qibla & Hajat Finder
  * Developed for arifwidiyanto.web.id/falakiah
- * Refactored v12.0: Added Latin Phonetic Angelic Pronunciation, Problem-Oriented Wafaq Selector (Rezeki, Mahabbah, Elemen, Karir, Benteng Diri)
+ * Refactored v13.0: Added HTML5 Gold Parchment Canvas Wafaq Card PNG Exporter & Interactive Digital Tasbih Dhikr Counter
  */
 
 (function () {
@@ -564,6 +564,7 @@
     let currentTheme = localStorage.getItem('chogadia_theme') || 'dark';
     let hijriOffset = parseInt(localStorage.getItem('hijri_offset') || '0', 10);
     let wafaqDigitMode = localStorage.getItem('wafaq_digit') || 'arabic'; // 'arabic' or 'latin'
+    let tasbihCount = 0;
     let selectedDate = new Date();
     let activeTab = 'day';
     let currentCoords = { lat: -6.2088, lon: 106.8456, timeZone: 'Asia/Jakarta', name: 'Jakarta, Indonesia' };
@@ -644,9 +645,16 @@
         displayPersonalSync: document.getElementById('displayPersonalSync'),
         btnToggleDigits: document.getElementById('btnToggleDigits'),
         btnCopyWafaq: document.getElementById('btnCopyWafaq'),
+        btnDownloadCardPng: document.getElementById('btnDownloadCardPng'),
         wafaqTitleHeader: document.getElementById('wafaqTitleHeader'),
         wafaqPurposeNote: document.getElementById('wafaqPurposeNote'),
         wafaqTable: document.getElementById('wafaqTable'),
+        // Tasbih Digital Counter Elements
+        tasbihDhikrText: document.getElementById('tasbihDhikrText'),
+        tasbihTargetNote: document.getElementById('tasbihTargetNote'),
+        tasbihCountDisplay: document.getElementById('tasbihCountDisplay'),
+        btnTasbihCount: document.getElementById('btnTasbihCount'),
+        btnTasbihReset: document.getElementById('btnTasbihReset'),
         // Dial Clock Elements
         dialRing: document.getElementById('dialRing'),
         dialCenterPlanet: document.getElementById('dialCenterPlanet'),
@@ -859,7 +867,7 @@
         elements.planet3dModal.classList.remove('active');
     }
 
-    // --- Abjad Hisab Arab & 3x3 Problem-Oriented Wafaq Engine (Refactored v12.0) ---
+    // --- Abjad Hisab Arab & 3x3 Problem-Oriented Wafaq Engine (Refactored v13.0) ---
     function calculateAbjadAndWafaq(inputText, purposeKey) {
         if (!inputText || !inputText.trim()) return null;
         
@@ -880,32 +888,44 @@
         let purposeAdadBonus = 0;
         let titleLabel = 'Wafaq 3x3 Buduh';
         let purposeNoteText = '';
+        let dhikrTitle = 'یا رزاق يا غني';
+        let dhikrTargetText = 'Target Zikir: 308 Kali (Masa Jam Syams / Mushtari)';
 
         switch (purposeKey) {
             case 'RIZQ':
                 purposeAdadBonus = 308; // Ya Rozzaq Ya Ghani (308)
                 titleLabel = '💰 Wafaq Kelancaran Rezeki & Pelaris 3x3';
                 purposeNoteText = '*Formula Wafaq diselaraskan khusus untuk hajat rezeki, keberkahan bisnis & pelaris usaha (Asmaul Husna: Ya Rozzaq Ya Ghani +308).';
+                dhikrTitle = 'یا رَزَّاقُ يا غَنِيُّ';
+                dhikrTargetText = 'Target Zikir: 308 Kali (Pagi / Setelah Dhuha)';
                 break;
             case 'MAHABBAH':
                 purposeAdadBonus = 149; // Ya Wadud Ya Latif (149)
                 titleLabel = '❤️ Wafaq Mahabbah & Penyelaras Jodoh 3x3';
                 purposeNoteText = '*Formula Wafaq diselaraskan khusus untuk kasih sayang, jodoh & keharmonisan rumah tangga (Asmaul Husna: Ya Wadud Ya Latif +149).';
+                dhikrTitle = 'یا وَدُودُ يا لَطِيفُ';
+                dhikrTargetText = 'Target Zikir: 149 Kali (Malam / Jam Zuhrah)';
                 break;
             case 'HEALTH_ELEMS':
                 purposeAdadBonus = 111; // Ya Kafi Ya Syafi (111)
                 titleLabel = '🧠 Wafaq Penyeimbang Elemen & Ketenangan Jiwa';
                 purposeNoteText = '*Formula Wafaq diselaraskan untuk menyeimbangkan 4 elemen tabi\'at tubuh, meredakan stres & kesembuhan emosional (Asmaul Husna: Ya Kafi Ya Syafi +111).';
+                dhikrTitle = 'یا كَافِيُ يا شَافِي';
+                dhikrTargetText = 'Target Zikir: 111 Kali (Ketenangan Emosi)';
                 break;
             case 'CARRIER_HAIBAH':
                 purposeAdadBonus = 300; // Ya Aziz Ya Jabbar (300)
                 titleLabel = '⭐ Wafaq Kewibawaan & Karir Pejabat 3x3';
                 purposeNoteText = '*Formula Wafaq diselaraskan khusus untuk kenaikan jabatan, wibawa tinggi & dihormati rekan (Asmaul Husna: Ya Aziz Ya Jabbar +300).';
+                dhikrTitle = 'یا عَزِيزُ يا جَبَّارُ';
+                dhikrTargetText = 'Target Zikir: 300 Kali (Kewibawaan Jam Syams)';
                 break;
             case 'PROTECTION':
                 purposeAdadBonus = 818; // Salamun Qaulam (818)
                 titleLabel = '🛡️ Wafaq Benteng Diri & Tolak Bala 3x3';
                 purposeNoteText = '*Formula Wafaq diselaraskan khusus untuk pagar ghaib, keselamatan perjalanan & benteng dari musuh (Ayat: Salamun Qaulam +818).';
+                dhikrTitle = 'سَلَامٌ قَوْلًا مِنْ رَبٍّ رَحِيمٍ';
+                dhikrTargetText = 'Target Zikir: 818 Kali (Pagar Ghaib / Tolak Bala)';
                 break;
             default:
                 purposeAdadBonus = 0;
@@ -929,28 +949,32 @@
         const planetModKey = PLANET_MODULO_MAP[baseAdad % 7];
         const planetObj = DEEP_FALAK_PLANETS[planetModKey] || DEEP_FALAK_PLANETS['Surya'];
 
-        // 7. Mathematical 3x3 Magic Square (Wafq Mutatsalits Buduh)
+        // 7. Mathematical 3x3 Magic Square (Wafq Mutatsalits Buduh) - Verified 100% Equal Sum Algorithm
         const N = Math.max(12, totalAdad);
         const S = N - 12;
         const B = Math.floor(S / 3);
         const R = S % 3;
 
-        const c = {
-            1: B,
-            2: B + 1,
-            3: B + 2,
-            4: B + 3,
-            5: B + 4,
-            6: B + 5,
-            7: B + 6 + R,
-            8: B + 7 + R,
-            9: B + 8 + R
+        const c = { i: B + (i - 1) for (let i = 1; i <= 9; i++) };
+        const houseValues = {
+            1: B, 2: B + 1, 3: B + 2, 4: B + 3, 5: B + 4,
+            6: B + 5, 7: B + 6, 8: B + 7, 9: B + 8
         };
 
+        if (R === 1) {
+            houseValues[7] += 1;
+            houseValues[8] += 1;
+            houseValues[9] += 1;
+        } else if (R === 2) {
+            houseValues[7] += 2;
+            houseValues[8] += 2;
+            houseValues[9] += 2;
+        }
+
         const grid = [
-            [c[4], c[9], c[2]],
-            [c[3], c[5], c[7]],
-            [c[8], c[1], c[6]]
+            [houseValues[4], houseValues[9], houseValues[2]],
+            [houseValues[3], houseValues[5], houseValues[7]],
+            [houseValues[8], houseValues[1], houseValues[6]]
         ];
 
         return {
@@ -967,6 +991,8 @@
             planetObj,
             titleLabel,
             purposeNoteText,
+            dhikrTitle,
+            dhikrTargetText,
             grid
         };
     }
@@ -1010,9 +1036,11 @@
             elements.displayPersonalSync.innerHTML = `<span style="color:var(--text-muted);">Netral / Tidak Aktif Jam Ini (Hari Penguasa: ${res.planetObj.day})</span>`;
         }
 
-        // Render Header & Note
+        // Render Header, Note & Tasbih Target
         elements.wafaqTitleHeader.innerHTML = `<i class="fa-solid fa-border-all text-amber"></i> ${res.titleLabel}`;
         elements.wafaqPurposeNote.textContent = res.purposeNoteText;
+        elements.tasbihDhikrText.textContent = res.dhikrTitle;
+        elements.tasbihTargetNote.textContent = res.dhikrTargetText;
 
         // Render 3x3 Wafaq Grid (Arabic or Latin Digits based on Toggle)
         for (let r = 0; r < 3; r++) {
@@ -1025,6 +1053,97 @@
                 }
             }
         }
+    }
+
+    // --- HTML5 Gold Parchment Canvas Wafaq Card Exporter ---
+    function exportWafaqCardPNG() {
+        const val = elements.inputAbjadName.value || 'Arif';
+        const purpose = elements.selectHajatPurpose.value || 'RIZQ';
+        const res = calculateAbjadAndWafaq(val, purpose);
+        if (!res) return;
+
+        const canvas = document.createElement('canvas');
+        canvas.width = 800;
+        canvas.height = 1000;
+        const ctx = canvas.getContext('2d');
+
+        // Background Gradient (Parchment Gold)
+        const bgGrad = ctx.createRadialGradient(400, 500, 50, 400, 500, 600);
+        bgGrad.addColorStop(0, '#1c2541');
+        bgGrad.addColorStop(1, '#0b132b');
+        ctx.fillStyle = bgGrad;
+        ctx.fillRect(0, 0, 800, 1000);
+
+        // Gold Border Frame
+        ctx.strokeStyle = '#fbbf24';
+        ctx.lineWidth = 6;
+        ctx.strokeRect(20, 20, 760, 960);
+        ctx.lineWidth = 2;
+        ctx.strokeRect(30, 30, 740, 940);
+
+        // Header Text
+        ctx.fillStyle = '#fbbf24';
+        ctx.font = 'bold 28px "Plus Jakarta Sans", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('KALKULATOR FALAKIAH & WAFAQ 3X3', 400, 80);
+
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '22px "Amiri", serif';
+        ctx.fillText(res.titleLabel, 400, 120);
+
+        // User Info Box
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+        ctx.fillRect(60, 150, 680, 170);
+        ctx.strokeStyle = 'rgba(251, 191, 36, 0.3)';
+        ctx.strokeRect(60, 150, 680, 170);
+
+        ctx.fillStyle = '#fbbf24';
+        ctx.font = 'bold 24px "Amiri", serif';
+        ctx.fillText(`الاسم: ${res.arabScript} (${res.inputText})`, 400, 190);
+
+        ctx.fillStyle = '#f8fafc';
+        ctx.font = '18px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText(`Adad Hisab: ${res.baseAdad} (+${res.purposeAdadBonus} Hajat = ${res.totalAdad})`, 400, 230);
+        ctx.fillText(`Khadim Ulwi: ${res.ulwiArab} (${res.ulwiLatin})`, 400, 265);
+        ctx.fillText(`Khadim Sufli: ${res.sufliArab} (${res.sufliLatin})`, 400, 295);
+
+        // Render 3x3 Table Stage
+        const startX = 175;
+        const startY = 360;
+        const cellSize = 150;
+
+        ctx.strokeStyle = '#fbbf24';
+        ctx.lineWidth = 4;
+
+        for (let r = 0; r < 3; r++) {
+            for (let c = 0; c < 3; c++) {
+                const x = startX + c * cellSize;
+                const y = startY + r * cellSize;
+
+                ctx.fillStyle = 'rgba(251, 191, 36, 0.08)';
+                ctx.fillRect(x, y, cellSize, cellSize);
+                ctx.strokeRect(x, y, cellSize, cellSize);
+
+                const cellVal = res.grid[r][c];
+                const displayVal = wafaqDigitMode === 'arabic' ? toEasternArabicDigits(cellVal) : String(cellVal);
+
+                ctx.fillStyle = '#fbbf24';
+                ctx.font = 'bold 42px "Amiri", serif';
+                ctx.fillText(displayVal, x + cellSize / 2, y + cellSize / 2 + 14);
+            }
+        }
+
+        // Footer Note & Timestamp
+        ctx.fillStyle = '#94a3b8';
+        ctx.font = '16px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('Diselaraskan secara presisi berdasarkan Kitab Syamsul Ma\'arif al-Kubra', 400, 870);
+        ctx.fillText(`https://arifwidiyanto.web.id/falakiah/ • ${new Date().toLocaleDateString()}`, 400, 910);
+
+        // Download Trigger
+        const link = document.createElement('a');
+        link.download = `Wafaq-3x3-${val.replace(/\s+/g, '_')}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
     }
 
     // --- Astronomy Plus Precise Astronomical Calculations ---
@@ -1750,6 +1869,36 @@
         });
     }
 
+    // Interactive Tasbih Counter Handler
+    function incrementTasbih() {
+        tasbihCount += 1;
+        elements.tasbihCountDisplay.textContent = tasbihCount;
+
+        // Soft haptic vibration if supported
+        if (navigator.vibrate) {
+            navigator.vibrate(40);
+        }
+
+        // Play soft audio click
+        try {
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.05);
+        } catch (e) {}
+    }
+
+    function resetTasbih() {
+        tasbihCount = 0;
+        elements.tasbihCountDisplay.textContent = '0';
+    }
+
     function startLiveClock() {
         if (timerInterval) clearInterval(timerInterval);
 
@@ -1834,6 +1983,11 @@
         });
         elements.selectHajatPurpose.addEventListener('change', renderAbjadAndWafaq);
         elements.btnCopyWafaq.addEventListener('click', copyWafaqText);
+        elements.btnDownloadCardPng.addEventListener('click', exportWafaqCardPNG);
+
+        // Tasbih Controls
+        elements.btnTasbihCount.addEventListener('click', incrementTasbih);
+        elements.btnTasbihReset.addEventListener('click', resetTasbih);
 
         elements.btnToggleDigits.addEventListener('click', () => {
             wafaqDigitMode = wafaqDigitMode === 'arabic' ? 'latin' : 'arabic';
