@@ -1,6 +1,7 @@
 /**
  * Kalkulator Falakiah Engine 3D: Sa'at al-Kawakib (ساعات الكواكب), Dual 3D WebGL/CSS Orbs, Deep Hikmah Database (Syamsul Ma'arif & Manba' Ushul al-Hikmah), 24h Dial Clock, Asmaul Husna, 28 Manazil, Hijri, Qibla & Hajat Finder
  * Developed for arifwidiyanto.web.id/falakiah
+ * Refactored v9.0: Fixed Chogadia-to-Planet 3D Modal Mapping, Dynamic Labels, and Icon Rendering
  */
 
 (function () {
@@ -15,7 +16,7 @@
             modeChogadiaTitle: "Chogadia Hisab (چوگھڑیا)",
             modeChogadiaDesc: "Sistem Bohra / Gujarati (8 Jam Siang & 8 Jam Malam)",
             currentStatusLabel: "Jam Planet Saat Ini (Klik untuk 3D Detail):",
-            timeSlotLabel: "Rentang Jam Zamaniyah",
+            timeSlotLabel: "Rentang Jam / Segmen",
             remainingLabel: "Sisa Waktu Jam Ini",
             planetLabel: "Pengaruh & Sifat Planet",
             locationLabel: "Lokasi & Koordinat",
@@ -23,7 +24,8 @@
             btnToday: "Hari Ini",
             sunriseLabel: "Terbit (Sunrise)",
             sunsetLabel: "Terbenam (Sunset)",
-            dayDurationLabel: "Durasi 1 Jam Zamaniyah",
+            dayDurationLabelSaat: "Durasi 1 Jam Zamaniyah",
+            dayDurationLabelChogadia: "Durasi 1 Segmen Chogadia",
             tabDay: "Siang / Nahar",
             tabNight: "Malam / Lail",
             thNum: "Jam ke-",
@@ -83,13 +85,13 @@
                 Shukra: "Zuhrah / Venus (الزهرة)",
                 Budh: "Utarid / Merkurius (عطارد)",
                 Chandra: "Qamar / Bulan (القمر)",
-                Amrit: "Amrit (Murni)",
-                Shubh: "Shubh (Berkah)",
-                Labh: "Labh (Untung)",
-                Char: "Char (Dinamis)",
-                Udveg: "Udveg (Cemas)",
-                Rog: "Rog (Penyakit)",
-                Kaal: "Kaal (Bahaya)"
+                Amrit: "Amrit (Murni / Qamar)",
+                Shubh: "Shubh (Berkah / Guru)",
+                Labh: "Labh (Untung / Budh)",
+                Char: "Char (Dinamis / Shukra)",
+                Udveg: "Udveg (Cemas / Surya)",
+                Rog: "Rog (Penyakit / Mangal)",
+                Kaal: "Kaal (Bahaya / Shani)"
             }
         },
         en: {
@@ -107,7 +109,8 @@
             btnToday: "Today",
             sunriseLabel: "Sunrise",
             sunsetLabel: "Sunset",
-            dayDurationLabel: "Duration of 1 Zamaniyah Hour",
+            dayDurationLabelSaat: "Duration of 1 Zamaniyah Hour",
+            dayDurationLabelChogadia: "Duration of 1 Chogadia Slot",
             tabDay: "Daytime (Nahar)",
             tabNight: "Nighttime (Lail)",
             thNum: "Hour #",
@@ -191,7 +194,8 @@
             btnToday: "اليوم",
             sunriseLabel: "الشروق",
             sunsetLabel: "الغروب",
-            dayDurationLabel: "مدة الساعة الزمنية الواحدة",
+            dayDurationLabelSaat: "مدة الساعة الزمنية الواحدة",
+            dayDurationLabelChogadia: "مدة فترة الشوجاديا الواحدة",
             tabDay: "النهار",
             tabNight: "الليل",
             thNum: "الساعة",
@@ -262,7 +266,7 @@
         }
     };
 
-    // VERIFIED DEEP FALAKIAH PLANET DATABASE (Cross-checked with Syamsul Ma'arif al-Kubra & Manba' Ushul al-Hikmah)
+    // VERIFIED DEEP FALAKIAH PLANET DATABASE
     const DEEP_FALAK_PLANETS = {
         Surya: {
             arabic: 'الشمس (Syams / Sun)',
@@ -301,7 +305,7 @@
             colorHex: 0xef4444,
             colorCss: '#ef4444',
             dos: 'Latihan fisik/olahraga, pembuktian keberanian, ketegasan hukum, & membuat pagar ghaib / benteng diri dari musuh.',
-            donts: 'Sangat dilarang melangsungkan pernikahan, melamar, transaksi damai, atau urusan kasih sayang (risiko konflik tinggi).'
+            donts: 'Sangat dilarang melangsungkan pernikahan, melamar, atau perundingan damai (risiko konflik tinggi).'
         },
         Budh: {
             arabic: 'عطارد (Utarid / Mercury)',
@@ -313,7 +317,7 @@
             day: 'Arbi\'a (Rabu)',
             colorHex: 0x8b5cf6,
             colorCss: '#8b5cf6',
-            dos: 'Menulis Wafaq/Azimat, membuat dokumen/kontrak bisnis, belajar, mengarang buku, & menghitung keuangan.',
+            dos: 'Menulis Wafaq/azimat, membuat dokumen/kontrak bisnis, belajar, mengarang buku, & menghitung keuangan.',
             donts: 'Hindari aktivitas yang membutuhkan kepastian emosional jangka panjang (sifat Utarid mudah terpengaruh).'
         },
         Guru: {
@@ -352,9 +356,20 @@
             day: 'Sabtu',
             colorHex: 0x64748b,
             colorCss: '#64748b',
-            dos: 'Membuat benteng ghaib tolak bala, mengunci hajat, menggali tanah/sumur, & pondasi bangunan tahan lama.',
-            donts: 'Dilarang keras melangsungkan pesta pernikahan, memulai proyek komersial baru, atau bepergian jauh.'
+            dos: 'Membuat benteng ghaib tolak bala, mengunci hajat, menggali sumur/tanah, & pondasi bangunan tahan lama.',
+            donts: 'Dilarang keras melangsungkan pesta pernikahan, launching bisnis baru, atau perjalanan jauh.'
         }
+    };
+
+    // Mapping Chogadia names to Planet Key for 3D Modal
+    const CHOGADIYA_PLANET_MAP = {
+        Udveg: 'Surya',
+        Char: 'Shukra',
+        Labh: 'Budh',
+        Amrit: 'Chandra',
+        Kaal: 'Shani',
+        Shubh: 'Guru',
+        Rog: 'Mangal'
     };
 
     const CHALDEAN_PLANETS = [
@@ -370,13 +385,13 @@
     const SAAT_DAY_START_INDEX = [3, 6, 2, 5, 1, 4, 0];
 
     const CHOGADIYA_INFO = {
-        Udveg: { quality: 'UDVEG', class: 'q-udveg', planet: 'Surya', icon: 'fa-sun', desc_id: 'Kecemasan/Tekanan. Hindari keputusan krusial.', asma: 'Ya Hayyu Ya Qayyum', metal: 'Matahari' },
-        Char:  { quality: 'CHAR',  class: 'q-char',  planet: 'Shukra', icon: 'fa-wind', desc_id: 'Dinamis/Bergerak. Bagus untuk perjalanan & fisik.', asma: 'Ya Jamil Ya Latif', metal: 'Venus' },
-        Labh:  { quality: 'LABH',  class: 'q-labh',  planet: 'Budh',   icon: 'fa-chart-line', desc_id: 'Keuntungan/Bisnis. Terbaik untuk transaksi.', asma: 'Ya Alim Ya Hakim', metal: 'Merkurius' },
-        Amrit: { quality: 'AMRIT', class: 'q-amrit', planet: 'Chandra',icon: 'fa-droplet', desc_id: 'Sangat Baik. Puncak energi positif & berkah.', asma: 'Ya Rahman Ya Rahim', metal: 'Bulan' },
-        Kaal:  { quality: 'KAAL',  class: 'q-kaal',  planet: 'Shani',  icon: 'fa-skull-crossbones', desc_id: 'Kerugian/Bahaya. Tunda aktivitas penting.', asma: 'Ya Qahhar Ya Qadir', metal: 'Saturnus' },
-        Shubh: { quality: 'SHUBH', class: 'q-shubh', planet: 'Guru',   icon: 'fa-star', desc_id: 'Keberuntungan. Baik untuk nikah & ibadah.', asma: 'Ya Kabir Ya Muta\'al', metal: 'Jupiter' },
-        Rog:   { quality: 'ROG',   class: 'q-rog',   planet: 'Mangal', icon: 'fa-biohazard', desc_id: 'Penyakit/Rintangan. Hindari pengobatan baru.', asma: 'Ya Aziz Ya Jabbar', metal: 'Mars' }
+        Udveg: { quality: 'UDVEG', class: 'q-udveg', planet: 'Surya', icon: 'fa-sun', desc_id: 'Kecemasan/Tekanan. Hindari keputusan krusial.', asma: 'Ya Hayyu Ya Qayyum (Matahari)', metal: 'Emas Murni (Surya)' },
+        Char:  { quality: 'CHAR',  class: 'q-char',  planet: 'Shukra', icon: 'fa-wind', desc_id: 'Dinamis/Bergerak. Bagus untuk perjalanan & fisik.', asma: 'Ya Jamil Ya Latif (Venus)', metal: 'Tembaga (Shukra)' },
+        Labh:  { quality: 'LABH',  class: 'q-labh',  planet: 'Budh',   icon: 'fa-chart-line', desc_id: 'Keuntungan/Bisnis. Terbaik untuk transaksi.', asma: 'Ya Alim Ya Hakim (Merkurius)', metal: 'Kuningan (Budh)' },
+        Amrit: { quality: 'AMRIT', class: 'q-amrit', planet: 'Chandra',icon: 'fa-droplet', desc_id: 'Sangat Baik. Puncak energi positif & berkah.', asma: 'Ya Rahman Ya Rahim (Bulan)', metal: 'Perak (Chandra)' },
+        Kaal:  { quality: 'KAAL',  class: 'q-kaal',  planet: 'Shani',  icon: 'fa-skull-crossbones', desc_id: 'Kerugian/Bahaya. Tunda aktivitas penting.', asma: 'Ya Qahhar Ya Qadir (Saturnus)', metal: 'Timbal (Shani)' },
+        Shubh: { quality: 'SHUBH', class: 'q-shubh', planet: 'Guru',   icon: 'fa-star', desc_id: 'Keberuntungan. Baik untuk nikah & ibadah.', asma: 'Ya Kabir Ya Muta\'al (Jupiter)', metal: 'Timah (Guru)' },
+        Rog:   { quality: 'ROG',   class: 'q-rog',   planet: 'Mangal', icon: 'fa-biohazard', desc_id: 'Penyakit/Rintangan. Hindari pengobatan baru.', asma: 'Ya Aziz Ya Jabbar (Mars)', metal: 'Besi (Mangal)' }
     };
 
     const CHOGADIYA_CYCLE = ['Udveg', 'Char', 'Labh', 'Amrit', 'Kaal', 'Shubh', 'Rog'];
@@ -488,6 +503,7 @@
         sunriseTime: document.getElementById('sunriseTime'),
         sunsetTime: document.getElementById('sunsetTime'),
         dayDuration: document.getElementById('dayDuration'),
+        txtDayDurationLabel: document.getElementById('txtDayDurationLabel'),
         legendGrid: document.getElementById('legendGrid'),
         // Astronomy Plus Elements
         btnHijriPrev: document.getElementById('btnHijriPrev'),
@@ -692,9 +708,10 @@
         }
     }
 
-    function openPlanetModal(planetKey, qualityText, qualityClass) {
-        const deep = DEEP_FALAK_PLANETS[planetKey] || DEEP_FALAK_PLANETS['Surya'];
-        const t = TRANSLATIONS[currentLang] || TRANSLATIONS.id;
+    function openPlanetModal(slotNameKey, qualityText, qualityClass) {
+        // Resolve Chogadia or Planet Key
+        const targetPlanetKey = CHOGADIYA_PLANET_MAP[slotNameKey] || slotNameKey;
+        const deep = DEEP_FALAK_PLANETS[targetPlanetKey] || DEEP_FALAK_PLANETS['Surya'];
 
         elements.mTitleName.textContent = deep.arabic;
         elements.mTitleQuality.textContent = qualityText;
@@ -1004,7 +1021,9 @@
         elements.btnToday.textContent = t.btnToday;
         document.getElementById('txtSunriseLabel').textContent = t.sunriseLabel;
         document.getElementById('txtSunsetLabel').textContent = t.sunsetLabel;
-        document.getElementById('txtDayDurationLabel').textContent = t.dayDurationLabel;
+        
+        elements.txtDayDurationLabel.textContent = currentSystem === 'saat' ? t.dayDurationLabelSaat : t.dayDurationLabelChogadia;
+        
         document.getElementById('txtTabDay').textContent = t.tabDay;
         document.getElementById('txtTabNight').textContent = t.tabNight;
         document.getElementById('thNum').textContent = t.thNum;
@@ -1048,10 +1067,11 @@
 
         const t = TRANSLATIONS[currentLang] || TRANSLATIONS.id;
 
-        // Render Sun Bar
+        // Update Sun Bar & Dynamic Label
         elements.sunriseTime.textContent = formatTime(data.sun.sunrise);
         elements.sunsetTime.textContent = formatTime(data.sun.sunset);
         elements.dayDuration.textContent = `${data.daySlotMinutes} m`;
+        elements.txtDayDurationLabel.textContent = currentSystem === 'saat' ? t.dayDurationLabelSaat : t.dayDurationLabelChogadia;
 
         // Render Astronomy Plus Card
         renderAstronomyPlus(data.sun);
