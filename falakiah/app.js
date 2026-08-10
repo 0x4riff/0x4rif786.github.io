@@ -1,7 +1,7 @@
 /**
  * Kalkulator Falakiah Engine 3D: Sa'at al-Kawakib (ساعات الكواكب), Dual 3D WebGL/CSS Orbs, Abjad Hisab Arab, Khadim Ulwi & Sufli dengan Transliterasi Latin, 5 Formula Wafaq Problem-Oriented, Unduh Kartu Wafaq Emas PNG, Tasbih Digital Interaktif, Deep Hikmah Database, 24h Dial Clock, Asmaul Husna, 28 Manazil, Hijri, Qibla & Hajat Finder
  * Developed for arifwidiyanto.web.id/falakiah
- * Refactored v13.0: Added HTML5 Gold Parchment Canvas Wafaq Card PNG Exporter & Interactive Digital Tasbih Dhikr Counter
+ * Fixed v13.1: Syntax fix on Wafaq houseValues calculation loop
  */
 
 (function () {
@@ -867,7 +867,7 @@
         elements.planet3dModal.classList.remove('active');
     }
 
-    // --- Abjad Hisab Arab & 3x3 Problem-Oriented Wafaq Engine (Refactored v13.0) ---
+    // --- Abjad Hisab Arab & 3x3 Problem-Oriented Wafaq Engine (Refactored v13.1) ---
     function calculateAbjadAndWafaq(inputText, purposeKey) {
         if (!inputText || !inputText.trim()) return null;
         
@@ -955,11 +955,10 @@
         const B = Math.floor(S / 3);
         const R = S % 3;
 
-        const c = { i: B + (i - 1) for (let i = 1; i <= 9; i++) };
-        const houseValues = {
-            1: B, 2: B + 1, 3: B + 2, 4: B + 3, 5: B + 4,
-            6: B + 5, 7: B + 6, 8: B + 7, 9: B + 8
-        };
+        const houseValues = {};
+        for (let i = 1; i <= 9; i++) {
+            houseValues[i] = B + (i - 1);
+        }
 
         if (R === 1) {
             houseValues[7] += 1;
