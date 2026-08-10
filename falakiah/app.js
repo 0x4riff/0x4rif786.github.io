@@ -1,7 +1,7 @@
 /**
- * Kalkulator Falakiah Engine 3D: Sa'at al-Kawakib (ساعات الكواكب), Dual 3D WebGL/CSS Orbs, Abjad Hisab Arab, Khadim Ulwi & Sufli, 3x3 Wafaq Angka Arab, Deep Hikmah Database, 24h Dial Clock, Asmaul Husna, 28 Manazil, Hijri, Qibla & Hajat Finder
+ * Kalkulator Falakiah Engine 3D: Sa'at al-Kawakib (ساعات الكواكب), Dual 3D WebGL/CSS Orbs, Abjad Hisab Arab, Khadim Ulwi & Sufli dengan Transliterasi Latin, 5 Formula Wafaq Problem-Oriented, Deep Hikmah Database, 24h Dial Clock, Asmaul Husna, 28 Manazil, Hijri, Qibla & Hajat Finder
  * Developed for arifwidiyanto.web.id/falakiah
- * Refactored v11.0: Added Arabic Name Transliteration, Khadim Ulwi (+51) & Sufli (+319), Eastern Arabic Numeral Wafaq Digits
+ * Refactored v12.0: Added Latin Phonetic Angelic Pronunciation, Problem-Oriented Wafaq Selector (Rezeki, Mahabbah, Elemen, Karir, Benteng Diri)
  */
 
 (function () {
@@ -343,6 +343,28 @@
         return result;
     }
 
+    // Phonetic Latin Transliteration for Sufi Angelic names
+    function arabicNameToPhoneticLatin(nameStr, type) {
+        const MAP = {
+            'ا': 'A', 'ب': 'Ba', 'ج': 'Ja', 'د': 'Da', 'ه': 'Ha', 'و': 'Wa', 'ز': 'Za',
+            'ح': 'Ha', 'ط': 'Tha', 'ي': 'Ya', 'ك': 'Ka', 'ل': 'La', 'م': 'Ma', 'ن': 'Na',
+            'س': 'Sa', 'ع': 'A', 'ف': 'Fa', 'ص': 'Sha', 'ق': 'Qa', 'ر': 'Ra', 'ش': 'Sya',
+            'ت': 'Ta', 'ث': 'Tsa', 'خ': 'Kha', 'ذ': 'Dza', 'ض': 'Dha', 'ظ': 'Zha', 'غ': 'Gha'
+        };
+
+        let clean = nameStr.replace(/آئِيل|طَوْش/g, '');
+        let base = '';
+        for (let c of clean) {
+            if (MAP[c]) base += MAP[c];
+        }
+
+        if (type === 'ulwi') {
+            return base ? (base + "-ya'il") : "Ruqya-il";
+        } else {
+            return base ? (base + '-tawsh') : 'Thaythawsh';
+        }
+    }
+
     const PLANET_MODULO_MAP = {
         0: 'Shani',   // Zuhal / Saturnus
         1: 'Surya',   // Syams / Matahari
@@ -612,15 +634,18 @@
         finderResultText: document.getElementById('finderResultText'),
         // Abjad & Wafaq Elements
         inputAbjadName: document.getElementById('inputAbjadName'),
+        selectHajatPurpose: document.getElementById('selectHajatPurpose'),
         btnCalcAbjad: document.getElementById('btnCalcAbjad'),
         displayArabicScript: document.getElementById('displayArabicScript'),
         displayAbjadTotal: document.getElementById('displayAbjadTotal'),
         displayAngelUlwi: document.getElementById('displayAngelUlwi'),
         displayAngelSufli: document.getElementById('displayAngelSufli'),
-        displayPersonalPlanet: document.getElementById('displayPersonalPlanet'),
+        displayPersonalElem: document.getElementById('displayPersonalElem'),
         displayPersonalSync: document.getElementById('displayPersonalSync'),
         btnToggleDigits: document.getElementById('btnToggleDigits'),
         btnCopyWafaq: document.getElementById('btnCopyWafaq'),
+        wafaqTitleHeader: document.getElementById('wafaqTitleHeader'),
+        wafaqPurposeNote: document.getElementById('wafaqPurposeNote'),
         wafaqTable: document.getElementById('wafaqTable'),
         // Dial Clock Elements
         dialRing: document.getElementById('dialRing'),
@@ -721,7 +746,7 @@
 
         const sunrise = new Date(utcBaseMs + sunUtc.sunriseUtc * 60 * 1000);
         const sunset = new Date(utcBaseMs + sunUtc.sunsetUtc * 60 * 1000);
-        const nextSunrise = new Date(nextUtcBaseMs + nextSunUtc.sunriseUtc * 60 * 1000);
+        const nextSunrise = new Date(nextUtcBaseMs + nextSunUtc.sunsetUtc * 60 * 1000);
 
         return { sunrise, sunset, nextSunrise, rawSunUtc: sunUtc, utcBaseMs };
     }
@@ -834,36 +859,77 @@
         elements.planet3dModal.classList.remove('active');
     }
 
-    // --- Abjad Hisab Arab & 3x3 Wafaq Generator Engine (Refactored v11.0) ---
-    function calculateAbjadAndWafaq(inputText) {
+    // --- Abjad Hisab Arab & 3x3 Problem-Oriented Wafaq Engine (Refactored v12.0) ---
+    function calculateAbjadAndWafaq(inputText, purposeKey) {
         if (!inputText || !inputText.trim()) return null;
         
-        // 1. Convert Latin text to Arabic Script if needed
+        // 1. Convert Latin text to Arabic Script
         const arabScript = latinToArabicScript(inputText);
 
-        // 2. Calculate Hisab al-Jumal from Arabic characters
-        let totalAdad = 0;
+        // 2. Calculate Base Hisab al-Jumal from Arabic characters
+        let baseAdad = 0;
         for (let char of arabScript) {
             if (ARABIC_JUMAL[char]) {
-                totalAdad += ARABIC_JUMAL[char];
+                baseAdad += ARABIC_JUMAL[char];
             }
         }
 
-        if (totalAdad === 0) totalAdad = 351; // Default fallback
+        if (baseAdad === 0) baseAdad = 351; // Default fallback
 
-        // 3. Khadim Malaikat Atas (Ulwi: +51 -> -a-il)
+        // 3. Problem Purpose Offset Addition (Adad Asmaul Husna / Ayat)
+        let purposeAdadBonus = 0;
+        let titleLabel = 'Wafaq 3x3 Buduh';
+        let purposeNoteText = '';
+
+        switch (purposeKey) {
+            case 'RIZQ':
+                purposeAdadBonus = 308; // Ya Rozzaq Ya Ghani (308)
+                titleLabel = '💰 Wafaq Kelancaran Rezeki & Pelaris 3x3';
+                purposeNoteText = '*Formula Wafaq diselaraskan khusus untuk hajat rezeki, keberkahan bisnis & pelaris usaha (Asmaul Husna: Ya Rozzaq Ya Ghani +308).';
+                break;
+            case 'MAHABBAH':
+                purposeAdadBonus = 149; // Ya Wadud Ya Latif (149)
+                titleLabel = '❤️ Wafaq Mahabbah & Penyelaras Jodoh 3x3';
+                purposeNoteText = '*Formula Wafaq diselaraskan khusus untuk kasih sayang, jodoh & keharmonisan rumah tangga (Asmaul Husna: Ya Wadud Ya Latif +149).';
+                break;
+            case 'HEALTH_ELEMS':
+                purposeAdadBonus = 111; // Ya Kafi Ya Syafi (111)
+                titleLabel = '🧠 Wafaq Penyeimbang Elemen & Ketenangan Jiwa';
+                purposeNoteText = '*Formula Wafaq diselaraskan untuk menyeimbangkan 4 elemen tabi\'at tubuh, meredakan stres & kesembuhan emosional (Asmaul Husna: Ya Kafi Ya Syafi +111).';
+                break;
+            case 'CARRIER_HAIBAH':
+                purposeAdadBonus = 300; // Ya Aziz Ya Jabbar (300)
+                titleLabel = '⭐ Wafaq Kewibawaan & Karir Pejabat 3x3';
+                purposeNoteText = '*Formula Wafaq diselaraskan khusus untuk kenaikan jabatan, wibawa tinggi & dihormati rekan (Asmaul Husna: Ya Aziz Ya Jabbar +300).';
+                break;
+            case 'PROTECTION':
+                purposeAdadBonus = 818; // Salamun Qaulam (818)
+                titleLabel = '🛡️ Wafaq Benteng Diri & Tolak Bala 3x3';
+                purposeNoteText = '*Formula Wafaq diselaraskan khusus untuk pagar ghaib, keselamatan perjalanan & benteng dari musuh (Ayat: Salamun Qaulam +818).';
+                break;
+            default:
+                purposeAdadBonus = 0;
+                titleLabel = 'Wafaq 3x3 Buduh Personal';
+                purposeNoteText = '*Tabel Wafaq Buduh Arab 3x3 disusun presisi sesuai kaidah Syamsul Ma\'arif al-Kubra (+51 Ulwi, +319 Sufli).';
+        }
+
+        const totalAdad = baseAdad + purposeAdadBonus;
+
+        // 4. Khadim Malaikat Atas (Ulwi: +51 -> -a-il)
         const ulwiVal = totalAdad + 51;
-        const ulwiName = numToAbjadLetters(ulwiVal) + 'آئِيل';
+        const ulwiArab = numToAbjadLetters(ulwiVal) + 'آئِيل';
+        const ulwiLatin = arabicNameToPhoneticLatin(ulwiArab, 'ulwi');
 
-        // 4. Khadim Penguasa Bawah (Sufli: +319 -> -tawsh)
+        // 5. Khadim Penguasa Bawah (Sufli: +319 -> -tawsh)
         const sufliVal = totalAdad + 319;
-        const sufliName = numToAbjadLetters(sufliVal) + 'طَوْش';
+        const sufliArab = numToAbjadLetters(sufliVal) + 'طَوْش';
+        const sufliLatin = arabicNameToPhoneticLatin(sufliArab, 'sufli');
 
-        // 5. Personal Planet & Element (Modulo 7)
-        const planetModKey = PLANET_MODULO_MAP[totalAdad % 7];
+        // 6. Personal Planet & Element (Modulo 7)
+        const planetModKey = PLANET_MODULO_MAP[baseAdad % 7];
         const planetObj = DEEP_FALAK_PLANETS[planetModKey] || DEEP_FALAK_PLANETS['Surya'];
 
-        // 6. Mathematical 3x3 Magic Square (Wafq Mutatsalits Buduh)
+        // 7. Mathematical 3x3 Magic Square (Wafq Mutatsalits Buduh)
         const N = Math.max(12, totalAdad);
         const S = N - 12;
         const B = Math.floor(S / 3);
@@ -890,28 +956,36 @@
         return {
             inputText,
             arabScript,
+            baseAdad,
+            purposeAdadBonus,
             totalAdad,
-            ulwiName,
-            sufliName,
+            ulwiArab,
+            ulwiLatin,
+            sufliArab,
+            sufliLatin,
             planetModKey,
             planetObj,
+            titleLabel,
+            purposeNoteText,
             grid
         };
     }
 
     function renderAbjadAndWafaq() {
         const val = elements.inputAbjadName.value || 'Arif';
-        const res = calculateAbjadAndWafaq(val);
+        const purpose = elements.selectHajatPurpose.value || 'RIZQ';
+        const res = calculateAbjadAndWafaq(val, purpose);
         if (!res) return;
 
         const t = TRANSLATIONS[currentLang] || TRANSLATIONS.id;
 
         elements.displayArabicScript.textContent = res.arabScript;
-        elements.displayAbjadTotal.textContent = `${res.totalAdad}`;
-        elements.displayAngelUlwi.textContent = res.ulwiName;
-        elements.displayAngelSufli.textContent = res.sufliName;
+        elements.displayAbjadTotal.innerHTML = `${res.baseAdad} <small style="opacity:0.8; font-weight:normal;">(+${res.purposeAdadBonus} Hajat = ${res.totalAdad})</small>`;
+        
+        elements.displayAngelUlwi.innerHTML = `${res.ulwiArab} <small style="display:inline-block; font-family:var(--font-sans); color:var(--accent-gold); margin-left:4px;">(${res.ulwiLatin})</small>`;
+        elements.displayAngelSufli.innerHTML = `${res.sufliArab} <small style="display:inline-block; font-family:var(--font-sans); color:var(--text-muted); margin-left:4px;">(${res.sufliLatin})</small>`;
 
-        elements.displayPersonalPlanet.textContent = `${res.planetObj.arabic} (${res.planetObj.element})`;
+        elements.displayPersonalElem.textContent = `${res.planetObj.element}`;
 
         // Check if personal planet hour is active right now
         const data = calculateSchedule(selectedDate, currentCoords.lat, currentCoords.lon);
@@ -935,6 +1009,10 @@
         } else {
             elements.displayPersonalSync.innerHTML = `<span style="color:var(--text-muted);">Netral / Tidak Aktif Jam Ini (Hari Penguasa: ${res.planetObj.day})</span>`;
         }
+
+        // Render Header & Note
+        elements.wafaqTitleHeader.innerHTML = `<i class="fa-solid fa-border-all text-amber"></i> ${res.titleLabel}`;
+        elements.wafaqPurposeNote.textContent = res.purposeNoteText;
 
         // Render 3x3 Wafaq Grid (Arabic or Latin Digits based on Toggle)
         for (let r = 0; r < 3; r++) {
@@ -1654,13 +1732,14 @@
 
     function copyWafaqText() {
         const val = elements.inputAbjadName.value || 'Arif';
-        const res = calculateAbjadAndWafaq(val);
+        const purpose = elements.selectHajatPurpose.value || 'RIZQ';
+        const res = calculateAbjadAndWafaq(val, purpose);
         if (!res) return;
 
-        let str = `✨ WAFAQ 3X3 PERSONAL BUDUH (${val} / ${res.arabScript}) ✨\n`;
-        str += `Adad Hisab: ${res.totalAdad}\n`;
-        str += `Khadim Ulwi (Atas): ${res.ulwiName}\n`;
-        str += `Khadim Sufli (Bawah): ${res.sufliName}\n`;
+        let str = `✨ ${res.titleLabel.toUpperCase()} (${val} / ${res.arabScript}) ✨\n`;
+        str += `Adad Hisab: ${res.baseAdad} (+${res.purposeAdadBonus} = ${res.totalAdad})\n`;
+        str += `Khadim Ulwi (Malaikat): ${res.ulwiArab} (${res.ulwiLatin})\n`;
+        str += `Khadim Sufli (Penguasa): ${res.sufliArab} (${res.sufliLatin})\n`;
         str += `Planet: ${res.planetObj.arabic}\n\n`;
         str += `[ ${res.grid[0][0]} ] [ ${res.grid[0][1]} ] [ ${res.grid[0][2]} ]\n`;
         str += `[ ${res.grid[1][0]} ] [ ${res.grid[1][1]} ] [ ${res.grid[1][2]} ]\n`;
@@ -1753,6 +1832,7 @@
         elements.inputAbjadName.addEventListener('keyup', (e) => {
             if (e.key === 'Enter') renderAbjadAndWafaq();
         });
+        elements.selectHajatPurpose.addEventListener('change', renderAbjadAndWafaq);
         elements.btnCopyWafaq.addEventListener('click', copyWafaqText);
 
         elements.btnToggleDigits.addEventListener('click', () => {

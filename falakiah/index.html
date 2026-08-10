@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalkulator Falakiah - Jam Planet (Sa'at al-Kawakib) & Chogadia Hisab Presisi 3D</title>
-    <meta name="description" content="Aplikasi Kalkulator Falakiah Lengkap & Presisi 3D: Sa'at al-Kawakib (12 Jam Siang/Malam), Abjad Hisab Arab, Khadim Malaikat Ulwi & Sufli, Matriks Wafaq 3x3 Angka Arab, Dial Clock 24H 3D, Chogadia Hisab, Fase Bulan, 28 Manazil al-Qamar & Waktu Sholat.">
+    <meta name="description" content="Aplikasi Kalkulator Falakiah Lengkap & Presisi 3D: Sa'at al-Kawakib (12 Jam Siang/Malam), Abjad Hisab Arab, Penyelaras Wafaq 3x3 Berdasar Hajat & Elemen, Khadim Malaikat Ulwi & Sufli, Dial Clock 24H 3D, Chogadia Hisab, Fase Bulan, 28 Manazil al-Qamar & Waktu Sholat.">
     <meta name="theme-color" content="#0b132b">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/svg+xml" href="icon.svg">
@@ -19,7 +19,7 @@
     <!-- Three.js for 3D Interactive Planet Orbs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-    <link rel="stylesheet" href="styles.css?v=11.0">
+    <link rel="stylesheet" href="styles.css?v=12.0">
 </head>
 <body>
     <div class="app-container">
@@ -229,26 +229,40 @@
             </div>
         </section>
 
-        <!-- ENHANCED: Abjad Hisab Arab & Wafaq 3x3 Angka Arab Generator Card -->
+        <!-- PROBLEM-ORIENTED: Abjad Hisab Arab & Wafaq 3x3 Berdasar Hajat Spesifik -->
         <section class="abjad-wafaq-card" id="abjadWafaqCard">
             <h3 class="astronomy-title">
-                <i class="fa-solid fa-calculator text-amber"></i> Kalkulator Abjad Hisab & Wafaq 3x3 Angka Arab
+                <i class="fa-solid fa-calculator text-amber"></i> Penyelaras Wafaq 3x3 Khusus Hajat & Penyeimbang Elemen
             </h3>
             
             <div class="abjad-grid">
-                <!-- Input & Calculation Result -->
+                <!-- Input & Problem Purpose Selection -->
                 <div class="astro-box">
                     <div class="input-group">
                         <label for="inputAbjadName">
-                            <i class="fa-solid fa-user-pen"></i> Masukkan Nama / Hajat (Latin / Huruf Arab):
+                            <i class="fa-solid fa-user-pen"></i> Masukkan Nama Pengguna / Hajat (Latin / Huruf Arab):
                         </label>
                         <div class="abjad-input-wrapper">
                             <input type="text" id="inputAbjadName" class="custom-input" placeholder="Misal: Arif / عارف" value="Arif">
-                            <button id="btnCalcAbjad" class="btn-secondary">Hitung Abjad</button>
+                            <button id="btnCalcAbjad" class="btn-secondary">Hitung & Selaraskan</button>
                         </div>
                     </div>
+
+                    <!-- Problem Purpose Selector -->
+                    <div class="input-group" style="margin-top:10px;">
+                        <label for="selectHajatPurpose">
+                            <i class="fa-solid fa-bullseye-arrow text-amber"></i> Pilih Fokus Hajat / Masalah Utama Anda:
+                        </label>
+                        <select id="selectHajatPurpose" class="custom-select">
+                            <option value="RIZQ" selected>💰 Kelancaran Rezeki, Bisnis & Pelaris Usaha (Ya Rozzaq)</option>
+                            <option value="MAHABBAH">❤️ Keharmonisan, Mahabbah & Jodoh (Ya Wadud)</option>
+                            <option value="HEALTH_ELEMS">🧠 Ketenangan Jiwa, Stres & Penyeimbang Elemen diri</option>
+                            <option value="CARRIER_HAIBAH">⭐ Kewibawaan, Karir & Dihormati Orang (Ya Aziz)</option>
+                            <option value="PROTECTION">🛡️ Benteng Diri, Tolak Bala & Pagar Ghaib (Ya Qahhar)</option>
+                        </select>
+                    </div>
                     
-                    <div class="astro-body" style="margin-top: 8px;">
+                    <div class="astro-body" style="margin-top: 10px;">
                         <div class="astro-row">
                             <span>Transliterasi Huruf Arab:</span>
                             <strong id="displayArabicScript" class="text-amber" style="font-family:var(--font-arabic); font-size:1.2rem;">--</strong>
@@ -259,15 +273,15 @@
                         </div>
                         <div class="astro-row">
                             <span>Malaikat Atas (Khadim Ulwi):</span>
-                            <strong id="displayAngelUlwi" class="text-amber" style="font-family:var(--font-arabic);">--</strong>
+                            <strong id="displayAngelUlwi" class="text-amber">--</strong>
                         </div>
                         <div class="astro-row">
                             <span>Penguasa Bawah (Khadim Sufli):</span>
-                            <strong id="displayAngelSufli" style="font-family:var(--font-arabic);">--</strong>
+                            <strong id="displayAngelSufli">--</strong>
                         </div>
                         <div class="astro-row">
-                            <span>Planet Penguasa Personal:</span>
-                            <strong id="displayPersonalPlanet" class="text-indigo">--</strong>
+                            <span>Analisis Elemen Tabi'at Nama:</span>
+                            <strong id="displayPersonalElem" class="text-indigo">--</strong>
                         </div>
                         <div class="astro-row">
                             <span>Status Sinkronisasi Jam Hari Ini:</span>
@@ -276,10 +290,10 @@
                     </div>
                 </div>
 
-                <!-- Generated 3x3 Wafaq Matrix Stage (Arabic Digits) -->
+                <!-- Generated 3x3 Wafaq Matrix Stage (Arabic Digits & Purpose Formula) -->
                 <div class="astro-box wafaq-stage">
                     <div class="astro-header" style="width: 100%;">
-                        <h4><i class="fa-solid fa-border-all text-amber"></i> Matriks Wafaq 3x3 Buduh (Angka Arab)</h4>
+                        <h4 id="wafaqTitleHeader"><i class="fa-solid fa-border-all text-amber"></i> Wafaq Rezeki & Pelaris 3x3 (Buduh)</h4>
                         <div class="hijri-controls">
                             <button id="btnToggleDigits" class="btn-mini" title="Ubah Angka Arab / Latin">Angka: Arab (١٢٣)</button>
                             <button id="btnCopyWafaq" class="btn-mini" title="Salin Angka Wafaq">Salin</button>
@@ -292,9 +306,9 @@
                             <tr><td id="w7">--</td><td id="w8">--</td><td id="w9">--</td></tr>
                         </tbody>
                     </table>
-                    <small style="color:var(--text-muted); font-size:0.75rem; text-align:center;">
-                        *Tabel Wafaq Buduh Arab 3x3 disusun presisi sesuai kaidah Syamsul Ma'arif al-Kubra (+51 Ulwi, +319 Sufli).
-                    </small>
+                    <div class="wafaq-purpose-note" id="wafaqPurposeNote" style="font-size:0.78rem; text-align:center; color:var(--accent-gold); margin-top:6px;">
+                        *Formula Wafaq diselaraskan khusus untuk hajat rezeki & keberkahan usaha Anda.
+                    </div>
                 </div>
             </div>
         </section>
@@ -517,7 +531,7 @@
         </div>
     </div>
 
-    <script src="app.js?v=11.0"></script>
+    <script src="app.js?v=12.0"></script>
     <script>
         document.getElementById('yearSpan').textContent = new Date().getFullYear();
         if ('serviceWorker' in navigator) {
