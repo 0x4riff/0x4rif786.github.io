@@ -632,6 +632,64 @@ body {
     font-weight: 700;
 }
 
+/* NEW: Abjad Hisab & Personal Wafaq Card */
+.abjad-wafaq-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    box-shadow: var(--shadow-main);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.abjad-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+@media (max-width: 768px) {
+    .abjad-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.abjad-input-wrapper {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.wafaq-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.wafaq-table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    background: var(--bg-card);
+    border: 2px solid var(--accent-gold);
+    box-shadow: 0 0 20px var(--accent-gold-glow);
+}
+
+.wafaq-table td {
+    width: 52px;
+    height: 52px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid var(--accent-gold);
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--accent-gold);
+    font-family: monospace;
+}
+
 /* Purpose Finder Section */
 .purpose-finder-card {
     background: var(--bg-secondary);
@@ -1059,7 +1117,6 @@ body {
     border-radius: 50%;
 }
 
-/* Pure CSS 3D Glowing Planet Orb Fallback */
 .css-planet-orb {
     width: 140px;
     height: 140px;
@@ -1245,7 +1302,7 @@ body {
         padding: 0 !important;
     }
 
-    .app-header button, .app-header select, .mode-selector-card, .hijri-controls, .purpose-finder-card, .btn-secondary, #btnPrintPdf, #btnShareWa, .modal-overlay {
+    .app-header button, .app-header select, .mode-selector-card, .hijri-controls, .purpose-finder-card, .btn-secondary, #btnPrintPdf, #btnShareWa, .modal-overlay, .abjad-wafaq-card {
         display: none !important;
     }
 

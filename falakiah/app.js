@@ -1,7 +1,6 @@
 /**
- * Kalkulator Falakiah Engine 3D: Sa'at al-Kawakib (ساعات الكواكب), Dual 3D WebGL/CSS Orbs, Deep Hikmah Database (Syamsul Ma'arif & Manba' Ushul al-Hikmah), 24h Dial Clock, Asmaul Husna, 28 Manazil, Hijri, Qibla & Hajat Finder
+ * Kalkulator Falakiah Engine 3D: Sa'at al-Kawakib (ساعات الكواكب), Dual 3D WebGL/CSS Orbs, Abjad Hisab & 3x3 Wafaq Generator, Deep Hikmah Database, 24h Dial Clock, Asmaul Husna, 28 Manazil, Hijri, Qibla & Hajat Finder
  * Developed for arifwidiyanto.web.id/falakiah
- * Refactored v9.0: Fixed Chogadia-to-Planet 3D Modal Mapping, Dynamic Labels, and Icon Rendering
  */
 
 (function () {
@@ -266,6 +265,26 @@
         }
     };
 
+    // ABJAD HISAB AL-JUMAL DICTIONARY
+    const ABJAD_MAP = {
+        'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 80, 'G': 3, 'H': 8, 'I': 10, 'J': 3,
+        'K': 20, 'L': 30, 'M': 40, 'N': 50, 'O': 6, 'P': 80, 'Q': 100, 'R': 200, 'S': 60,
+        'T': 9, 'U': 6, 'V': 6, 'W': 6, 'X': 60, 'Y': 10, 'Z': 7,
+        'ا': 1, 'أ': 1, 'ب': 2, 'ج': 3, 'د': 4, 'ه': 5, 'و': 6, 'ز': 7, 'ح': 8, 'ط': 9,
+        'ي': 10, 'ك': 20, 'ل': 30, 'م': 40, 'ن': 50, 'س': 60, 'ع': 70, 'ف': 80, 'ص': 90,
+        'ق': 100, 'ر': 200, 'ش': 300, 'ت': 400, 'ث': 500, 'خ': 600, 'ذ': 700, 'ض': 800, 'ظ': 900, 'غ': 1000
+    };
+
+    const PLANET_MODULO_MAP = {
+        0: 'Shani',   // Zuhal / Saturnus
+        1: 'Surya',   // Syams / Matahari
+        2: 'Chandra', // Qamar / Bulan
+        3: 'Mangal',  // Mirrikh / Mars
+        4: 'Budh',    // Utarid / Merkurius
+        5: 'Guru',    // Mushtari / Jupiter
+        6: 'Shukra'   // Zuhrah / Venus
+    };
+
     // VERIFIED DEEP FALAKIAH PLANET DATABASE
     const DEEP_FALAK_PLANETS = {
         Surya: {
@@ -361,7 +380,6 @@
         }
     };
 
-    // Mapping Chogadia names to Planet Key for 3D Modal
     const CHOGADIYA_PLANET_MAP = {
         Udveg: 'Surya',
         Char: 'Shukra',
@@ -523,6 +541,14 @@
         purposePills: document.getElementById('purposePills'),
         finderResultBox: document.getElementById('finderResultBox'),
         finderResultText: document.getElementById('finderResultText'),
+        // Abjad & Wafaq Elements
+        inputAbjadName: document.getElementById('inputAbjadName'),
+        btnCalcAbjad: document.getElementById('btnCalcAbjad'),
+        displayAbjadTotal: document.getElementById('displayAbjadTotal'),
+        displayPersonalPlanet: document.getElementById('displayPersonalPlanet'),
+        displayPersonalSync: document.getElementById('displayPersonalSync'),
+        btnCopyWafaq: document.getElementById('btnCopyWafaq'),
+        wafaqTable: document.getElementById('wafaqTable'),
         // Dial Clock Elements
         dialRing: document.getElementById('dialRing'),
         dialCenterPlanet: document.getElementById('dialCenterPlanet'),
@@ -644,7 +670,7 @@
         }
     }
 
-    // --- Dual 3D Engine: WebGL Three.js + Pure CSS 3D Orb Fallback ---
+    // --- Dual 3D Engine ---
     function initThreeJS() {
         const canvas = document.getElementById('canvas3d');
         if (!canvas || typeof THREE === 'undefined') return;
@@ -709,7 +735,6 @@
     }
 
     function openPlanetModal(slotNameKey, qualityText, qualityClass) {
-        // Resolve Chogadia or Planet Key
         const targetPlanetKey = CHOGADIYA_PLANET_MAP[slotNameKey] || slotNameKey;
         const deep = DEEP_FALAK_PLANETS[targetPlanetKey] || DEEP_FALAK_PLANETS['Surya'];
 
@@ -734,6 +759,99 @@
 
     function closePlanetModal() {
         elements.planet3dModal.classList.remove('active');
+    }
+
+    // --- Abjad Hisab & 3x3 Wafaq Generator Engine ---
+    function calculateAbjadAndWafaq(inputText) {
+        if (!inputText || !inputText.trim()) return null;
+        const str = inputText.trim().toUpperCase();
+
+        let totalAdad = 0;
+        for (let i = 0; i < str.length; i++) {
+            const char = str[i];
+            if (ABJAD_MAP[char]) {
+                totalAdad += ABJAD_MAP[char];
+            }
+        }
+
+        if (totalAdad === 0) totalAdad = 100; // Fallback minimum default
+
+        const planetModKey = PLANET_MODULO_MAP[totalAdad % 7];
+        const planetObj = DEEP_FALAK_PLANETS[planetModKey] || DEEP_FALAK_PLANETS['Surya'];
+
+        // Mathematical 3x3 Magic Square (Wafq Mutatsalits Buduh) for N >= 12
+        const N = Math.max(12, totalAdad);
+        const S = N - 12;
+        const B = Math.floor(S / 3);
+        const R = S % 3;
+
+        const c = {
+            1: B,
+            2: B + 1,
+            3: B + 2,
+            4: B + 3,
+            5: B + 4,
+            6: B + 5,
+            7: B + 6 + R,
+            8: B + 7 + R,
+            9: B + 8 + R
+        };
+
+        const grid = [
+            [c[4], c[9], c[2]],
+            [c[3], c[5], c[7]],
+            [c[8], c[1], c[6]]
+        ];
+
+        return {
+            totalAdad,
+            planetModKey,
+            planetObj,
+            grid
+        };
+    }
+
+    function renderAbjadAndWafaq() {
+        const val = elements.inputAbjadName.value || 'Arif Widiyanto';
+        const res = calculateAbjadAndWafaq(val);
+        if (!res) return;
+
+        const t = TRANSLATIONS[currentLang] || TRANSLATIONS.id;
+
+        elements.displayAbjadTotal.textContent = `${res.totalAdad}`;
+        elements.displayPersonalPlanet.textContent = `${res.planetObj.arabic} (${res.planetObj.element})`;
+
+        // Check if personal planet hour is active right now
+        const data = calculateSchedule(selectedDate, currentCoords.lat, currentCoords.lon);
+        let isSyncedNow = false;
+        if (data) {
+            const now = new Date();
+            const allSlots = [...data.daySlots, ...data.nightSlots];
+            for (let s of allSlots) {
+                if (now >= s.start && now < s.end) {
+                    const activeKey = CHOGADIYA_PLANET_MAP[s.name] || s.name;
+                    if (activeKey === res.planetModKey) {
+                        isSyncedNow = true;
+                    }
+                    break;
+                }
+            }
+        }
+
+        if (isSyncedNow) {
+            elements.displayPersonalSync.innerHTML = `<span class="text-emerald">⚡ SANGAT SINKRON! Jam ${t.names[res.planetModKey] || res.planetModKey} Aktif Sekarang</span>`;
+        } else {
+            elements.displayPersonalSync.innerHTML = `<span style="color:var(--text-muted);">Netral / Tidak Aktif Jam Ini (Hari Penguasa: ${res.planetObj.day})</span>`;
+        }
+
+        // Render 3x3 Wafaq Grid
+        for (let r = 0; r < 3; r++) {
+            for (let c = 0; c < 3; c++) {
+                const cellId = `w${r * 3 + c + 1}`;
+                const td = document.getElementById(cellId);
+                if (td) td.textContent = res.grid[r][c];
+            }
+        }
     }
 
     // --- Astronomy Plus Precise Astronomical Calculations ---
@@ -1078,6 +1196,9 @@
 
         // Render Radial Dial Clock
         renderDialClock(data);
+
+        // Render Abjad Hisab & Wafaq
+        renderAbjadAndWafaq();
 
         // Filter slots if Purpose Finder active
         let slots = activeTab === 'day' ? data.daySlots : data.nightSlots;
@@ -1436,6 +1557,23 @@
         });
     }
 
+    function copyWafaqText() {
+        const val = elements.inputAbjadName.value || 'Arif Widiyanto';
+        const res = calculateAbjadAndWafaq(val);
+        if (!res) return;
+
+        let str = `✨ WAFAQ 3X3 PERSONAL (${val}) ✨\n`;
+        str += `Adad Hisab: ${res.totalAdad}\n`;
+        str += `Planet: ${res.planetObj.arabic}\n\n`;
+        str += `[ ${res.grid[0][0]} ] [ ${res.grid[0][1]} ] [ ${res.grid[0][2]} ]\n`;
+        str += `[ ${res.grid[1][0]} ] [ ${res.grid[1][1]} ] [ ${res.grid[1][2]} ]\n`;
+        str += `[ ${res.grid[2][0]} ] [ ${res.grid[2][1]} ] [ ${res.grid[2][2]} ]\n`;
+
+        navigator.clipboard.writeText(str).then(() => {
+            alert('Matriks Wafaq 3x3 berhasil disalin!');
+        });
+    }
+
     function startLiveClock() {
         if (timerInterval) clearInterval(timerInterval);
 
@@ -1512,6 +1650,13 @@
             elements.btnModeChogadia.classList.add('active');
             elements.btnModeSaat.classList.remove('active');
         }
+
+        // Abjad Hisab & Wafaq Controls
+        elements.btnCalcAbjad.addEventListener('click', renderAbjadAndWafaq);
+        elements.inputAbjadName.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') renderAbjadAndWafaq();
+        });
+        elements.btnCopyWafaq.addEventListener('click', copyWafaqText);
 
         // Modal Close Button
         elements.btnCloseModal.addEventListener('click', closePlanetModal);
