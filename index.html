@@ -1,310 +1,837 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arif Widiyanto — DevOps, Fullstack, AI Systems</title>
-  <meta name="description" content="Executive portfolio of Arif Widiyanto — DevOps engineer, fullstack developer, and AI-focused systems builder." />
-  <meta name="theme-color" content="#0b1020" />
-  <meta property="og:title" content="Arif Widiyanto — DevOps, Fullstack, AI Systems" />
-  <meta property="og:description" content="Executive portfolio of Arif Widiyanto — DevOps engineer, fullstack developer, and AI-focused systems builder." />
+  <title>Arif Widiyanto — DevOps Engineer, Fullstack Developer & Security Researcher</title>
+  <meta name="description" content="Portfolio of Arif Widiyanto, a security-minded DevOps Engineer, Fullstack Developer, and Security Researcher with 15+ years of hands-on IT experience." />
+  <meta name="theme-color" content="#090d16" />
+  <meta name="author" content="Arif Widiyanto" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://arifwidiyanto.web.id/" />
+
+  <!-- Open Graph & Twitter Cards -->
+  <meta property="og:title" content="Arif Widiyanto — DevOps Engineer & Fullstack Developer" />
+  <meta property="og:description" content="Hands-on experience across cloud infrastructure, application development, automation, and security research." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://widiyanto.co/assets/og-executive.png" />
-  <meta property="og:site_name" content="Arif Widiyanto" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <meta property="og:url" content="https://arifwidiyanto.web.id" />
+  <meta property="og:image" content="https://arifwidiyanto.web.id/assets/profile-linkedin.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Executive Fonts: Inter + Plus Jakarta Sans + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260406-1" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
+  <link rel="stylesheet" href="styles.css?v=20260818-V6-ENHANCED" />
+
+  <!-- Three.js Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-  <div class="page-bg"></div>
-  <div class="ambient ambient-1"></div>
-  <div class="ambient ambient-2"></div>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="#top">
-        <span class="brand-mark">AW</span>
-        <span class="brand-text">Arif Widiyanto</span>
+  <!-- Sleek AI & Automation Neural Canvas Layer -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <!-- Subtle Lighting Follower -->
+  <div class="cursor-glow" id="cursor-glow"></div>
+
+  <!-- Header / Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#top" class="nav-brand">
+        <div class="brand-avatar" aria-hidden="true">
+          <span class="avatar-mark">AW</span>
+        </div>
+        <div class="brand-info">
+          <span class="brand-name">Arif Widiyanto</span>
+          <span class="brand-title"><span class="status-indicator"></span> DevOps · Fullstack · Security</span>
+        </div>
       </a>
-      <nav class="nav-links">
-        <a href="#about">Profile</a>
-        <a href="#expertise">Capabilities</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
+
+      <nav class="nav-menu">
+        <a href="#about" class="nav-link">Overview</a>
+        <a href="#architecture" class="nav-link">Architecture</a>
+        <a href="#expertise" class="nav-link">Capabilities</a>
+        <a href="#projects" class="nav-link">Selected Work</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#contact" class="nav-link">Contact</a>
       </nav>
-      <a class="nav-cta" href="resume-arif-widiyanto-devops-fullstack.pdf" target="_blank" rel="noopener">View Resume</a>
+
+      <div class="nav-actions">
+        <a href="resume-arif-widiyanto-devops-fullstack.pdf" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
+          <i data-lucide="download"></i> Resume (PDF)
+        </a>
+        <a href="mailto:arifwidi786@gmail.com" class="btn btn-primary btn-sm">
+          <i data-lucide="mail"></i> Get In Touch
+        </a>
+      </div>
+
+      <button class="mobile-toggle" aria-label="Toggle menu" id="mobile-toggle">
+        <i data-lucide="menu"></i>
+      </button>
     </div>
   </header>
 
-  <main id="top">
-    <section class="hero section">
-      <div class="container hero-shell">
-        <div class="hero-grid executive-grid">
-          <div class="hero-copy">
-            <div class="eyebrow">
-              <span class="eyebrow-dot"></span>
-              Open to strategic technical roles, consulting, and execution-focused collaboration
-            </div>
-            <h1>
-              Engineering systems that are stable,
-              <span class="accent">scalable</span>,
-              and aligned with business outcomes.
-            </h1>
-            <p class="hero-lead executive-lead">
-              I am Arif Widiyanto — a DevOps and fullstack engineer with 15+ years of experience across infrastructure, application delivery, operations, and implementation. I help teams reduce friction, improve reliability, and execute technical work with clarity.
-            </p>
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="#contact">Start a Conversation</a>
-              <a class="btn btn-secondary" href="resume-arif-widiyanto-devops-fullstack.pdf" target="_blank" rel="noopener">Download Resume</a>
-            </div>
-            <div class="hero-meta executive-meta">
-              <div class="meta-item">
-                <span class="meta-label">Location</span>
-                <strong>Jakarta, Indonesia</strong>
-              </div>
-              <div class="meta-item">
-                <span class="meta-label">Primary Focus</span>
-                <strong>DevOps, Fullstack, AI Workflows</strong>
-              </div>
-              <div class="meta-item">
-                <span class="meta-label">Experience</span>
-                <strong>15+ years in IT and delivery</strong>
-              </div>
-            </div>
+  <main id="main-content">
+    <!-- HERO SECTION: ELEGANT EXECUTIVE ARCHITECT -->
+    <section id="top" class="hero-section">
+      <div class="hero-container">
+        
+        <div class="hero-content">
+          <div class="status-badge">
+            <span class="badge-dot"></span>
+            <span>OPEN TO DEVOPS & FULLSTACK OPPORTUNITIES</span>
           </div>
 
-          <aside class="hero-card executive-card reveal-up">
-            <div class="profile-photo-wrap">
-              <img src="assets/profile-linkedin.jpg" alt="Arif Widiyanto profile photo" />
-            </div>
-            <div class="profile-body">
-              <span class="profile-tag">DevOps Engineer · Fullstack Developer · Systems Builder</span>
-              <h2>Arif Widiyanto</h2>
-              <p>
-                Focused on reliability, automation, structured delivery, and practical technical execution for teams and businesses that value outcomes.
-              </p>
-              <div class="stat-grid executive-stats">
-                <div class="stat-card">
-                  <strong>15+</strong>
-                  <span>Years of experience</span>
-                </div>
-                <div class="stat-card">
-                  <strong>5+</strong>
-                  <span>Senior operational roles</span>
-                </div>
-                <div class="stat-card">
-                  <strong>11+</strong>
-                  <span>Professional certifications</span>
-                </div>
-              </div>
-              <div class="socials executive-socials">
-                <a href="mailto:arifwidi786@gmail.com">Email</a>
-                <a href="https://linkedin.com/in/arifwidiyanto" target="_blank" rel="noopener">LinkedIn</a>
-                <a href="https://github.com/0x4riff" target="_blank" rel="noopener">GitHub</a>
-              </div>
-            </div>
-          </aside>
-        </div>
+          <h1 class="hero-title">
+            Building <span class="text-gradient">Reliable Systems</span> with a Practical, Security-Minded Approach.
+          </h1>
 
-        <div class="trust-strip executive-strip reveal-up">
-          <div class="trust-item">
-            <span class="trust-label">Strategic value</span>
-            <strong>Business-aware technical execution</strong>
+          <p class="hero-description">
+            I am <strong>Arif Widiyanto</strong>, a DevOps Engineer, Fullstack Developer, and Security Researcher with <strong>15+ years of hands-on IT experience</strong>. I work across cloud infrastructure, application development, automation, and security—always focused on practical improvements and dependable operations.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-primary btn-lg">
+              <span>View Case Studies & Projects</span>
+              <i data-lucide="arrow-right"></i>
+            </a>
+            <a href="resume-arif-widiyanto-devops-fullstack.pdf" target="_blank" rel="noopener" class="btn btn-secondary btn-lg">
+              <i data-lucide="file-text"></i> Download CV
+            </a>
           </div>
-          <div class="trust-item">
-            <span class="trust-label">Operational standard</span>
-            <strong>Reliability, automation, and disciplined delivery</strong>
+
+          <div class="hero-proof" aria-label="What Arif helps teams achieve">
+            <span class="proof-label">Best fit for</span>
+            <span>Platform reliability</span><b>·</b><span>Delivery automation</span><b>·</b><span>AI-enabled operations</span>
           </div>
-          <div class="trust-item">
-            <span class="trust-label">Leadership style</span>
-            <strong>Structured, calm, and outcome-driven</strong>
-          </div>
-          <div class="trust-item">
-            <span class="trust-label">Technical range</span>
-            <strong>Infrastructure, development, and modern AI-assisted workflows</strong>
+
+          <!-- Executive Trust Indicators -->
+          <div class="hero-metrics">
+            <div class="metric-item">
+              <span class="metric-value counter" data-target="15">0</span><span class="metric-plus">+</span>
+              <span class="metric-label">Years Hands-on IT Experience</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+              <span class="metric-value">30%</span>
+              <span class="metric-label">AWS Cost Reduction Achieved</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+              <span class="metric-value counter" data-target="3">0</span><span class="metric-plus">+</span>
+              <span class="metric-label">Core Practice Areas</span>
+            </div>
           </div>
         </div>
 
-        <div class="achievement-strip reveal-up">
-          <div class="achievement-item">
-            <div class="achievement-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 6v12M6 12h12"/><circle cx="12" cy="12" r="9"/></svg>
+        <!-- EXECUTIVE PROFILE & ARCHITECTURE SNAPSHOT -->
+        <div class="hero-card-wrapper">
+          <div class="glass-card executive-card">
+            
+            <div class="card-header">
+              <div class="user-profile-header">
+                <img src="assets/profile-linkedin.jpg" alt="Arif Widiyanto" class="profile-thumb" onerror="this.src='https://ui-avatars.com/api/?name=Arif+Widiyanto&background=090D16&color=38BDF8&size=128'" />
+                <div>
+                  <h3 class="profile-name">Arif Widiyanto</h3>
+                  <span class="profile-role">DevOps Engineer & Fullstack Developer</span>
+                </div>
+              </div>
+              <span class="location-tag"><i data-lucide="map-pin"></i> Jakarta, ID</span>
             </div>
-            <span class="achievement-value">15+</span>
-            <span class="achievement-label">Years across IT, operations, and delivery</span>
-          </div>
-          <div class="achievement-item">
-            <div class="achievement-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M7 4v6M17 4v6M6 12h12v7H6z"/></svg>
+
+            <div class="expertise-tags">
+              <span class="chip"><i data-lucide="server"></i> Kubernetes / Docker</span>
+              <span class="chip"><i data-lucide="git-merge"></i> CI/CD Automation</span>
+              <span class="chip"><i data-lucide="cpu"></i> AI Systems / LLMs</span>
+              <span class="chip"><i data-lucide="cloud"></i> AWS & Infrastructure</span>
             </div>
-            <span class="achievement-value">Multi-role</span>
-            <span class="achievement-label">Experience spanning engineering, coordination, and implementation</span>
-          </div>
-          <div class="achievement-item">
-            <div class="achievement-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12l4 4L19 6"/></svg>
+
+            <!-- Interactive Architecture Tab Switcher Snippet -->
+            <div class="card-code-panel">
+              <div class="code-tab-bar">
+                <button class="code-tab-btn active" data-tab="terraform"><i data-lucide="file-code"></i> Terraform</button>
+                <button class="code-tab-btn" data-tab="docker"><i data-lucide="box"></i> Dockerfile</button>
+                <button class="code-tab-btn" data-tab="ai"><i data-lucide="bot"></i> OpenClaw AI</button>
+                <button class="copy-btn" id="copy-code-btn" title="Copy snippet"><i data-lucide="copy"></i></button>
+              </div>
+
+              <!-- Tab Content 1: Terraform -->
+              <div class="code-tab-content active" id="tab-terraform">
+                <pre class="code-content"><code id="code-snippet-1"><span class="k">module</span> <span class="s">"production_stack"</span> {
+  <span class="n">source</span>        = <span class="s">"./modules/high-availability"</span>
+  <span class="n">observability</span> = <span class="k">true</span>
+  <span class="n">auto_scaling</span>  = <span class="k">true</span>
+  <span class="n">security_mode</span> = <span class="s">"zero-trust"</span>
+  <span class="n">ai_agents</span>     = [<span class="s">"openclaw"</span>, <span class="s">"ollama-node"</span>]
+}</code></pre>
+              </div>
+
+              <!-- Tab Content 2: Dockerfile -->
+              <div class="code-tab-content" id="tab-docker">
+                <pre class="code-content"><code id="code-snippet-2"><span class="k">FROM</span> <span class="s">node:22-alpine</span> AS builder
+<span class="k">WORKDIR</span> <span class="s">/app</span>
+<span class="k">COPY</span> <span class="s">package*.json ./</span>
+<span class="k">RUN</span> <span class="n">npm ci --only=production</span>
+<span class="k">EXPOSE</span> <span class="s">3000</span>
+<span class="k">CMD</span> [<span class="s">"node"</span>, <span class="s">"server.js"</span>]</code></pre>
+              </div>
+
+              <!-- Tab Content 3: OpenClaw AI -->
+              <div class="code-tab-content" id="tab-ai">
+                <pre class="code-content"><code id="code-snippet-3"><span class="k">agent</span> <span class="s">"devops_orchestrator"</span> {
+  <span class="n">model</span>        = <span class="s">"ollama/llama3.3"</span>
+  <span class="n">capabilities</span> = [<span class="s">"ci_cd_monitor"</span>, <span class="s">"auto_fix"</span>]
+  <span class="n">trigger</span>      = <span class="s">"on_pipeline_failure"</span>
+  <span class="n">action</span>       = <span class="s">"deploy_hotfix_branch"</span>
+}</code></pre>
+              </div>
+
             </div>
-            <span class="achievement-value">Execution-first</span>
-            <span class="achievement-label">Focused on systems that are practical, stable, and outcome-driven</span>
+
           </div>
         </div>
+
       </div>
     </section>
 
-    <section id="about" class="section section-tight">
-      <div class="container section-grid executive-section-grid">
-        <div>
-          <span class="section-kicker">Profile</span>
-          <h2>Technical depth backed by execution discipline.</h2>
-        </div>
-        <div class="panel panel-rich reveal-up">
-          <p>
-            I work across infrastructure, application delivery, automation, and AI-assisted engineering workflows. My focus is not only on building technical solutions, but on ensuring those solutions remain practical, maintainable, and aligned with operational reality.
-          </p>
-          <p>
-            Having worked in engineering, coordination, implementation, and support-intensive environments, I bring a balanced perspective: technical depth, operational awareness, and the discipline required to deliver consistently.
-          </p>
-          <div class="mini-points executive-points">
-            <div class="mini-point"><span></span>Infrastructure thinking with business context</div>
-            <div class="mini-point"><span></span>Hands-on delivery with strong execution control</div>
-            <div class="mini-point"><span></span>Clear communication under operational pressure</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="expertise" class="section">
+    <!-- NEW ENHANCEMENT SECTION: SYSTEM ARCHITECTURE DIAGRAM -->
+    <section id="architecture" class="section bg-panel">
       <div class="container">
-        <div class="section-head executive-head">
+        <div class="section-head">
+          <span class="section-kicker">Systems Blueprint</span>
+          <h2 class="section-title">A Practical View of Infrastructure & Automation</h2>
+          <p class="section-desc">An interactive breakdown of how cloud infrastructure, CI/CD pipelines, and autonomous AI agents integrate seamlessly.</p>
+        </div>
+
+        <div class="topology-wrapper">
+          <div class="topology-grid">
+            
+            <div class="topology-card">
+              <div class="topo-icon cyan"><i data-lucide="globe"></i></div>
+              <h4>1. Ingress & Edge Layer</h4>
+              <p>Cloudflare DNS, SSL Termination, Nginx Reverse Proxy with DDoS Mitigation & Caching.</p>
+              <div class="topo-badge">Edge Gateway</div>
+            </div>
+
+            <div class="topo-arrow"><i data-lucide="arrow-right"></i></div>
+
+            <div class="topology-card">
+              <div class="topo-icon blue"><i data-lucide="server"></i></div>
+              <h4>2. Cluster & Microservices</h4>
+              <p>Docker Container Orchestration, Kubernetes Nodes, High-concurrency Node.js / Python API.</p>
+              <div class="topo-badge">Compute Layer</div>
+            </div>
+
+            <div class="topo-arrow"><i data-lucide="arrow-right"></i></div>
+
+            <div class="topology-card">
+              <div class="topo-icon purple"><i data-lucide="bot"></i></div>
+              <h4>3. AI Agent Orchestration</h4>
+              <p>OpenClaw Autonomous Workflows, Ollama Local Model Inference, Vector DB RAG Context.</p>
+              <div class="topo-badge">AI Systems</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUE PROPOSITION & OVERVIEW -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Professional Summary</span>
+          <h2 class="section-title">Hands-on Experience Across Systems, Software & Security</h2>
+          <p class="section-desc">I enjoy working across disciplines, learning from operational challenges, and turning that experience into practical improvements for teams and users.</p>
+        </div>
+
+        <div class="grid-four">
+          <div class="panel-card">
+            <div class="panel-icon blue">
+              <i data-lucide="server"></i>
+            </div>
+            <h3>DevOps & Cloud Operations</h3>
+            <p>Hands-on work with AWS EKS, Docker, Kubernetes, CI/CD, Nginx, Linux, and monitoring to support stable and efficient environments.</p>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-icon cyan">
+              <i data-lucide="code-2"></i>
+            </div>
+            <h3>Fullstack Development</h3>
+            <p>Building practical web applications and internal tools with React, Supabase, Node.js, REST APIs, and relational databases.</p>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-icon purple">
+              <i data-lucide="cpu"></i>
+            </div>
+            <h3>Automation & AI Integration</h3>
+            <p>Exploring n8n workflows, local LLM integration, and AI-assisted automation to reduce repetitive administrative and operational work.</p>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-icon emerald">
+              <i data-lucide="shield-check"></i>
+            </div>
+            <h3>Security Research</h3>
+            <p>Conducting responsible web and API security testing, documenting findings clearly, and recommending practical remediation steps.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE EXPERTISE & TECH ARSENAL -->
+    <section id="expertise" class="section bg-panel">
+      <div class="container">
+        <div class="section-head">
           <span class="section-kicker">Capabilities</span>
-          <h2>Where I add the most value.</h2>
-          <p class="section-note">A combination of infrastructure capability, software delivery, automation thinking, and practical execution.</p>
+          <h2 class="section-title">Tools & Technologies I Work With</h2>
+          <p class="section-desc">Selected tools and frameworks used to engineer modern, production-grade applications.</p>
         </div>
-        <div class="card-grid three">
-          <article class="panel feature-card reveal-up">
-            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 15l4 4L20 7"/><path d="M4 7h8"/></svg></div>
-            <span class="card-index">01</span>
-            <h3>DevOps & Infrastructure Operations</h3>
-            <p>Deployment workflows, systems stability, practical automation, and maintainable infrastructure execution.</p>
-          </article>
-          <article class="panel feature-card reveal-up">
-            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 8h8v8H8z"/><path d="M4 4h4M16 4h4M4 20h4M16 20h4"/></svg></div>
-            <span class="card-index">02</span>
-            <h3>Fullstack Product Delivery</h3>
-            <p>Web application development, backend systems, API implementation, and delivery-focused engineering.</p>
-          </article>
-          <article class="panel feature-card reveal-up">
-            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 4v10l-7 4-7-4V7l7-4z"/><path d="M9 12h6"/></svg></div>
-            <span class="card-index">03</span>
-            <h3>AI-Assisted Engineering Workflow</h3>
-            <p>Applied use of AI to accelerate analysis, debugging, scripting, and execution across technical work.</p>
-          </article>
-          <article class="panel feature-card reveal-up">
-            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z"/></svg></div>
-            <span class="card-index">04</span>
-            <h3>Security-Aware Operations</h3>
-            <p>Structured handling of access, transfers, controlled processes, and systems built with reliability in mind.</p>
-          </article>
-          <article class="panel feature-card reveal-up">
-            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16v12H4z"/><path d="M8 10h8M8 14h5"/></svg></div>
-            <span class="card-index">05</span>
-            <h3>Project & Delivery Coordination</h3>
-            <p>Connecting technical detail with planning, communication, and measurable execution across teams and workstreams.</p>
-          </article>
-          <article class="panel feature-card reveal-up">
-            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 17l5-5 4 4 7-8"/></svg></div>
-            <span class="card-index">06</span>
-            <h3>Analytical Problem Solving</h3>
-            <p>Root-cause analysis, troubleshooting, workflow optimization, and calm decision-making under technical pressure.</p>
-          </article>
+
+        <div class="stack-grid">
+          
+          <div class="stack-box">
+            <div class="stack-header">
+              <i data-lucide="cloud"></i>
+              <h3>Cloud & Infrastructure</h3>
+            </div>
+            <ul class="stack-list">
+              <li><i data-lucide="check"></i> <span><strong>Docker & Kubernetes:</strong> Containerization & Orchestration</span></li>
+              <li><i data-lucide="check"></i> <span><strong>AWS Cloud Services:</strong> EC2, S3, Route53, CloudFront, IAM</span></li>
+              <li><i data-lucide="check"></i> <span><strong>CI/CD Delivery:</strong> GitHub Actions, Automated Testing & Builds</span></li>
+              <li><i data-lucide="check"></i> <span><strong>Web Servers:</strong> Nginx, Reverse Proxies, SSL Certificates</span></li>
+              <li><i data-lucide="check"></i> <span><strong>Linux Admin:</strong> Systems Hardening, Shell Scripting (Bash)</span></li>
+            </ul>
+          </div>
+
+          <div class="stack-box">
+            <div class="stack-header">
+              <i data-lucide="code"></i>
+              <h3>Development & APIs</h3>
+            </div>
+            <ul class="stack-list">
+              <li><i data-lucide="check"></i> <span><strong>Languages:</strong> Python, TypeScript, JavaScript, SQL</span></li>
+              <li><i data-lucide="check"></i> <span><strong>Backend Runtimes:</strong> Node.js, Express, Async Python</span></li>
+              <li><i data-lucide="check"></i> <span><strong>Databases:</strong> PostgreSQL, MySQL, Redis, In-Memory Caching</span></li>
+              <li><i data-lucide="check"></i> <span><strong>API Architecture:</strong> RESTful APIs, WebSockets, Microservices</span></li>
+              <li><i data-lucide="check"></i> <span><strong>Version Control:</strong> Git, GitHub Workflows, Code Review</span></li>
+            </ul>
+          </div>
+
+          <div class="stack-box">
+            <div class="stack-header">
+              <i data-lucide="bot"></i>
+              <h3>AI & Intelligent Systems</h3>
+            </div>
+            <ul class="stack-list">
+              <li><i data-lucide="check"></i> <span><strong>Agent Orchestration:</strong> OpenClaw Autonomous Workflows</span></li>
+              <li><i data-lucide="check"></i> <span><strong>Local Inference:</strong> Ollama, Local Model Integration</span></li>
+              <li><i data-lucide="check"></i> <span><strong>Process Automation:</strong> AI Task Delegation & Data Pipelines</span></li>
+              <li><i data-lucide="check"></i> <span><strong>Applied Machine Learning:</strong> Practical LLM Tooling</span></li>
+            </ul>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <section id="experience" class="section">
+    <!-- SELECTED CASE STUDIES & PROJECTS -->
+    <section id="projects" class="section">
       <div class="container">
-        <div class="section-head executive-head">
-          <span class="section-kicker">Experience</span>
-          <h2>Career progression across operations and engineering.</h2>
-          <p class="section-note">A career built through hands-on responsibility in technical, operational, and implementation-heavy roles.</p>
+        <div class="section-head">
+          <span class="section-kicker">Case Studies</span>
+          <h2 class="section-title">Featured Production Deliverables</h2>
+          <p class="section-desc">Key technical projects highlighting architecture, implementation, and business impact.</p>
         </div>
-        <div class="timeline-modern executive-timeline">
-          <div class="timeline-line"></div>
-          <div class="timeline-item panel reveal-up">
-            <span class="timeline-year">2024 — 2025</span>
-            <h3>DevOps / Fullstack Developer</h3>
-            <p>Seven Event</p>
-          </div>
-          <div class="timeline-item panel reveal-up">
-            <span class="timeline-year">2020 — 2024</span>
-            <h3>IT Engineer</h3>
-            <p>Bajau Escorindo</p>
-          </div>
-          <div class="timeline-item panel reveal-up">
-            <span class="timeline-year">2014 — 2019</span>
-            <h3>IT Coordinator</h3>
-            <p>Torin Multi Investama</p>
-          </div>
-          <div class="timeline-item panel reveal-up">
-            <span class="timeline-year">2012 — 2014</span>
-            <h3>Research Support & IT Development</h3>
-            <p>AAA Sekurities</p>
-          </div>
-          <div class="timeline-item panel reveal-up">
-            <span class="timeline-year">2010 — 2012</span>
-            <h3>IT Specialist</h3>
-            <p>Arjuna Resources</p>
-          </div>
-          <div class="timeline-item panel reveal-up">
-            <span class="timeline-year">2009 — 2010</span>
-            <h3>IT Project Officer</h3>
-            <p>Jakarta Realty (Thamrin City)</p>
-          </div>
+
+        <div class="case-grid">
+
+          <!-- Project 1 -->
+          <article class="case-card">
+            <div class="case-badge">Live Enterprise Product</div>
+            <h3>AgentForge / AIWork Indonesia</h3>
+            <p class="case-desc">
+              Zero-code AI automation suite designed for business professionals. Enables non-IT users to deploy automated digital assistants, report generators, and task orchestrators seamlessly.
+            </p>
+
+            <div class="case-impact">
+              <div class="impact-item">
+                <strong>Zero Code</strong>
+                <span>User Onboarding</span>
+              </div>
+              <div class="impact-item">
+                <strong>Multi-Agent</strong>
+                <span>Task Execution</span>
+              </div>
+            </div>
+
+            <div class="case-tech">
+              <span>OpenClaw</span>
+              <span>Node.js</span>
+              <span>Vercel Edge</span>
+              <span>Tailwind CSS</span>
+            </div>
+
+            <a href="https://aiwork.biz.id" target="_blank" rel="noopener" class="case-link">
+              <span>Explore Live Platform</span> <i data-lucide="external-link"></i>
+            </a>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="case-card">
+            <div class="case-badge">High-Speed Financial Data</div>
+            <h3>Real-Time Market Ingestion & MT4 Bridge</h3>
+            <p class="case-desc">
+              High-frequency real-time financial market data ingestion bridge connecting streaming REST/WebSocket feeds directly to MetaTrader 4 HST & CSV file systems with sub-second EA candle rendering.
+            </p>
+
+            <div class="case-impact">
+              <div class="impact-item">
+                <strong>&lt; 1s Latency</strong>
+                <span>Data Ingestion</span>
+              </div>
+              <div class="impact-item">
+                <strong>Binary v401</strong>
+                <span>HST Direct Write</span>
+              </div>
+            </div>
+
+            <div class="case-tech">
+              <span>Python</span>
+              <span>MQL4</span>
+              <span>MetaTrader 4</span>
+              <span>AsyncIO</span>
+            </div>
+
+            <span class="case-status"><i data-lucide="check-circle"></i> Production Operational</span>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="case-card">
+            <div class="case-badge">DevOps Infrastructure</div>
+            <h3>AWS Container Operations & Monitoring</h3>
+            <p class="case-desc">
+              Managed containerized workloads on AWS EKS using Docker and Kubernetes, supported monitoring with Prometheus and Grafana, and improved resource allocation during live event operations.
+            </p>
+
+            <div class="case-impact">
+              <div class="impact-item">
+                <strong>30%</strong>
+                <span>AWS Cost Reduction</span>
+              </div>
+              <div class="impact-item">
+                <strong>Zero Downtime</strong>
+                <span>During Major Events</span>
+              </div>
+            </div>
+
+            <div class="case-tech">
+              <span>Docker</span>
+              <span>GitHub Actions</span>
+              <span>Nginx</span>
+              <span>Linux</span>
+            </div>
+
+            <span class="case-status"><i data-lucide="check-circle"></i> Resume-verified Experience</span>
+          </article>
+
         </div>
       </div>
     </section>
 
+    <!-- PROFESSIONAL EXPERIENCE TIMELINE -->
+    <section id="experience" class="section bg-panel">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Career Path</span>
+          <h2 class="section-title">15+ Years Professional Evolution</h2>
+          <p class="section-desc">A hands-on career spanning IT operations, systems support, development, cloud infrastructure, automation, and security research.</p>
+        </div>
+
+        <div class="timeline">
+          
+          <div class="timeline-row">
+            <div class="timeline-meta">
+              <span class="year">2024 — 2025</span>
+              <span class="company">Seven Event</span>
+            </div>
+            <div class="timeline-body">
+              <h3>DevOps / Fullstack Developer</h3>
+              <p>Managed containerized web environments, automated deployment routines, optimized database queries, and implemented modern fullstack features for high-traffic events.</p>
+            </div>
+          </div>
+
+          <div class="timeline-row">
+            <div class="timeline-meta">
+              <span class="year">2020 — 2024</span>
+              <span class="company">Bajau Escorindo</span>
+            </div>
+            <div class="timeline-body">
+              <h3>IT Engineer</h3>
+              <p>Provided core IT infrastructure support, network configuration, enterprise server deployment, troubleshooting, and system security management.</p>
+            </div>
+          </div>
+
+          <div class="timeline-row">
+            <div class="timeline-meta">
+              <span class="year">2014 — 2019</span>
+              <span class="company">Torin Multi Investama</span>
+            </div>
+            <div class="timeline-body">
+              <h3>IT Coordinator</h3>
+              <p>Led IT operations, managed multi-site infrastructure, coordinated software delivery initiatives, and maintained corporate server assets.</p>
+            </div>
+          </div>
+
+          <div class="timeline-row">
+            <div class="timeline-meta">
+              <span class="year">2012 — 2014</span>
+              <span class="company">AAA Sekurities</span>
+            </div>
+            <div class="timeline-body">
+              <h3>Research Support & IT Development</h3>
+              <p>Developed custom market data utilities, supported financial analyst software workflows, and maintained secure database servers.</p>
+            </div>
+          </div>
+
+          <div class="timeline-row">
+            <div class="timeline-meta">
+              <span class="year">2009 — 2012</span>
+              <span class="company">Arjuna Resources / Jakarta Realty</span>
+            </div>
+            <div class="timeline-body">
+              <h3>IT Specialist & Project Officer</h3>
+              <p>Overseeing system installations, technical infrastructure setups, hardware maintenance, and IT project coordination.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EXECUTIVE CONTACT WITH DIRECT FORM -->
     <section id="contact" class="section">
       <div class="container">
-        <div class="panel contact-panel contact-premium executive-contact reveal-up">
+        <div class="contact-box">
           <span class="section-kicker">Contact</span>
-          <h2>Open to meaningful technical work and strategic collaboration.</h2>
-          <p>
-            If you are looking for someone who can bridge infrastructure, software delivery, and practical execution with a business-aware mindset, I would be glad to discuss the opportunity.
+          <h2 class="contact-heading">Interested in Working Together?</h2>
+          <p class="contact-lead">
+            I am open to DevOps, fullstack development, security research, and automation opportunities where I can contribute, collaborate, and keep learning. Send a message below or reach out via email.
           </p>
-          <div class="contact-actions">
-            <a class="btn btn-primary" href="mailto:arifwidi786@gmail.com?subject=Project%20Inquiry%20for%20Arif%20Widiyanto">Email Me</a>
-            <a class="btn btn-secondary" href="https://linkedin.com/in/arifwidiyanto" target="_blank" rel="noopener">Connect on LinkedIn</a>
+
+          <!-- NEW ENHANCEMENT: QUICK CONTACT MODAL/FORM -->
+          <form class="contact-form" id="direct-contact-form" action="https://formspree.io/f/xknqgqpk" method="POST" onsubmit="handleFormSubmit(event)">
+            <div class="form-row">
+              <input type="text" name="name" placeholder="Your Name / Organization" aria-label="Your name or organization" required />
+              <input type="email" name="email" placeholder="Your Email Address" aria-label="Your email address" required />
+            </div>
+            <textarea name="message" rows="4" placeholder="Briefly describe your project or opportunity..." aria-label="Project or opportunity details" required></textarea>
+            <button type="submit" class="btn btn-primary btn-lg" id="form-submit-btn">
+              <i data-lucide="send"></i> Send Message Directly
+            </button>
+            <div class="form-feedback" id="form-feedback"></div>
+          </form>
+
+          <div class="contact-buttons-alt">
+            <a href="mailto:arifwidi786@gmail.com?subject=Project%20Inquiry%20-%20Arif%20Widiyanto" class="link-btn">
+              <i data-lucide="mail"></i> Or email directly: arifwidi786@gmail.com
+            </a>
+            <a href="https://linkedin.com/in/arifwidiyanto" target="_blank" rel="noopener" class="link-btn">
+              <i data-lucide="linkedin"></i> LinkedIn Profile
+            </a>
           </div>
-          <div class="contact-microcopy">Available for consulting, project-based collaboration, and high-responsibility technical roles.</div>
+
+          <div class="contact-subtext">
+            Based in Jakarta, Indonesia • GMT+7 | Open for Local & Global Remote Roles
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-wrap">
-      <p>© <span id="year"></span> Arif Widiyanto</p>
-      <p>Executive portfolio — built for clarity, trust, and modern technical positioning.</p>
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; <span id="year">2026</span> <strong>Arif Widiyanto</strong>. All rights reserved.</p>
+      <a href="#top" class="top-link">Back to top <i data-lucide="arrow-up"></i></a>
     </div>
   </footer>
 
+  <!-- ADVANCED 3D AI & AUTOMATION NEURAL NETWORK CANVAS SCRIPT -->
   <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Set Copyright Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
+    // -------------------------------------------------------------
+    // INTERACTIVE CODE SPEC TAB SWITCHER & COPY TO CLIPBOARD
+    // -------------------------------------------------------------
+    const codeTabBtns = document.querySelectorAll('.code-tab-btn');
+    const codeTabContents = document.querySelectorAll('.code-tab-content');
+    const copyCodeBtn = document.getElementById('copy-code-btn');
+
+    codeTabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetTab = btn.getAttribute('data-tab');
+        
+        codeTabBtns.forEach(b => b.classList.remove('active'));
+        codeTabContents.forEach(c => c.classList.remove('active'));
+
+        btn.classList.add('active');
+        document.getElementById(`tab-${targetTab}`).classList.add('active');
+      });
+    });
+
+    if (copyCodeBtn) {
+      copyCodeBtn.addEventListener('click', () => {
+        const activeTab = document.querySelector('.code-tab-content.active code');
+        if (activeTab) {
+          navigator.clipboard.writeText(activeTab.innerText);
+          copyCodeBtn.innerHTML = '<i data-lucide="check"></i>';
+          lucide.createIcons();
+          setTimeout(() => {
+            copyCodeBtn.innerHTML = '<i data-lucide="copy"></i>';
+            lucide.createIcons();
+          }, 2000);
         }
       });
-    }, { threshold: 0.12 });
+    }
 
-    document.querySelectorAll('.reveal-up').forEach((el) => observer.observe(el));
+    // -------------------------------------------------------------
+    // CONTACT FORM HANDLING
+    // -------------------------------------------------------------
+    function handleFormSubmit(e) {
+      const feedback = document.getElementById('form-feedback');
+      feedback.style.display = 'block';
+      feedback.className = 'form-feedback success';
+      feedback.innerText = 'Thank you! Your message has been sent successfully. Arif will respond shortly.';
+    }
+
+    // -------------------------------------------------------------
+    // ANIMATED NUMBER COUNTER FOR STATS
+    // -------------------------------------------------------------
+    const counters = document.querySelectorAll('.counter');
+    let counted = false;
+
+    function startCounters() {
+      if (counted) return;
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        let count = 0;
+        const speed = target / 30;
+
+        const updateCount = () => {
+          count += speed;
+          if (count < target) {
+            counter.innerText = Math.ceil(count);
+            setTimeout(updateCount, 40);
+          } else {
+            counter.innerText = target;
+          }
+        };
+        updateCount();
+      });
+      counted = true;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        startCounters();
+      }
+    }, { threshold: 0.5 });
+
+    const metricsEl = document.querySelector('.hero-metrics');
+    if (metricsEl) observer.observe(metricsEl);
+
+    // -------------------------------------------------------------
+    // THREE.JS 3D NEURAL NETWORK & AUTOMATION PIPELINE GRAPH
+    // -------------------------------------------------------------
+    const canvas = document.getElementById('webgl-canvas');
+    const scene = new THREE.Scene();
+
+    const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 0, 32);
+
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const aiGroup = new THREE.Group();
+
+    const nodeCount = 45;
+    const nodes = [];
+
+    const nodeGeometry = new THREE.SphereGeometry(0.25, 12, 12);
+    const nodeMaterial = new THREE.MeshBasicMaterial({
+      color: 0x38bdf8,
+      transparent: true,
+      opacity: 0.85
+    });
+
+    const coreGeometry = new THREE.IcosahedronGeometry(2.2, 2);
+    const coreMaterial = new THREE.MeshBasicMaterial({
+      color: 0x6366f1,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.4
+    });
+    const coreMesh = new THREE.Mesh(coreGeometry, coreMaterial);
+    coreMesh.position.set(12, 0, -2);
+    aiGroup.add(coreMesh);
+
+    const innerCoreGeom = new THREE.SphereGeometry(1.0, 16, 16);
+    const innerCoreMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.7 });
+    const innerCoreMesh = new THREE.Mesh(innerCoreGeom, innerCoreMat);
+    innerCoreMesh.position.set(12, 0, -2);
+    aiGroup.add(innerCoreMesh);
+
+    for (let i = 0; i < nodeCount; i++) {
+      const radius = 6 + Math.random() * 14;
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.random() * Math.PI - Math.PI / 2;
+
+      const x = 12 + radius * Math.cos(theta) * Math.cos(phi);
+      const y = radius * Math.sin(phi);
+      const z = -2 + radius * Math.sin(theta) * Math.cos(phi);
+
+      const mesh = new THREE.Mesh(nodeGeometry, nodeMaterial.clone());
+      mesh.position.set(x, y, z);
+      
+      mesh.userData = {
+        basePos: new THREE.Vector3(x, y, z),
+        speed: 0.2 + Math.random() * 0.5,
+        offset: Math.random() * Math.PI * 2
+      };
+
+      nodes.push(mesh);
+      aiGroup.add(mesh);
+    }
+
+    const lineMaterial = new THREE.LineBasicMaterial({
+      color: 0x38bdf8,
+      transparent: true,
+      opacity: 0.18
+    });
+
+    const linesGeometry = new THREE.BufferGeometry();
+    const maxConnections = nodeCount * nodeCount;
+    const linePositions = new Float32Array(maxConnections * 6);
+    linesGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+
+    const linesMesh = new THREE.LineSegments(linesGeometry, lineMaterial);
+    aiGroup.add(linesMesh);
+
+    scene.add(aiGroup);
+
+    let mouseX = 0, mouseY = 0;
+    let targetX = 0, targetY = 0;
+    const halfX = window.innerWidth / 2;
+    const halfY = window.innerHeight / 2;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = (e.clientX - halfX) * 0.0004;
+      mouseY = (e.clientY - halfY) * 0.0004;
+
+      const glow = document.getElementById('cursor-glow');
+      if (glow) {
+        glow.style.left = e.clientX + 'px';
+        glow.style.top = e.clientY + 'px';
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+
+      if (window.innerWidth < 992) {
+        aiGroup.position.set(-12, -10, -5);
+      } else {
+        aiGroup.position.set(0, 0, 0);
+      }
+    });
+
+    if (window.innerWidth < 992) {
+      aiGroup.position.set(-12, -10, -5);
+    }
+
+    const clock = new THREE.Clock();
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const elapsedTime = clock.getElapsedTime();
+
+      coreMesh.rotation.y = elapsedTime * 0.15;
+      coreMesh.rotation.x = elapsedTime * 0.1;
+      innerCoreMesh.rotation.y = -elapsedTime * 0.2;
+
+      let vertexIdx = 0;
+      const positions = linesGeometry.attributes.position.array;
+
+      for (let i = 0; i < nodes.length; i++) {
+        const node = nodes[i];
+        const { basePos, speed, offset } = node.userData;
+
+        node.position.x = basePos.x + Math.sin(elapsedTime * speed + offset) * 0.6;
+        node.position.y = basePos.y + Math.cos(elapsedTime * speed * 0.8 + offset) * 0.6;
+
+        const distToCore = node.position.distanceTo(coreMesh.position);
+        if (distToCore < 14) {
+          positions[vertexIdx++] = node.position.x;
+          positions[vertexIdx++] = node.position.y;
+          positions[vertexIdx++] = node.position.z;
+
+          positions[vertexIdx++] = coreMesh.position.x;
+          positions[vertexIdx++] = coreMesh.position.y;
+          positions[vertexIdx++] = coreMesh.position.z;
+        }
+
+        for (let j = i + 1; j < nodes.length; j++) {
+          const otherNode = nodes[j];
+          const dist = node.position.distanceTo(otherNode.position);
+
+          if (dist < 6.5) {
+            positions[vertexIdx++] = node.position.x;
+            positions[vertexIdx++] = node.position.y;
+            positions[vertexIdx++] = node.position.z;
+
+            positions[vertexIdx++] = otherNode.position.x;
+            positions[vertexIdx++] = otherNode.position.y;
+            positions[vertexIdx++] = otherNode.position.z;
+          }
+        }
+      }
+
+      linesGeometry.attributes.position.needsUpdate = true;
+      linesGeometry.setDrawRange(0, vertexIdx / 3);
+
+      targetX += (mouseX - targetX) * 0.05;
+      targetY += (mouseY - targetY) * 0.05;
+
+      camera.rotation.y = -targetX * 0.35;
+      camera.rotation.x = targetY * 0.35;
+
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    if (mobileToggle && navMenu) {
+      mobileToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+      });
+    }
   </script>
 </body>
 </html>
