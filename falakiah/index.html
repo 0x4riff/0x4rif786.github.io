@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalkulator Falakiah - Jam Planet (Sa'at al-Kawakib) & Chogadia Hisab Presisi 3D</title>
-    <meta name="description" content="Aplikasi Kalkulator Falakiah Lengkap & Presisi 3D: Sa'at al-Kawakib (12 Jam Siang/Malam), Abjad Hisab Arab, Penyelaras Wafaq 3x3 Berdasar Hajat & Elemen, Tasbih Digital Interaktif, Unduh Kartu Wafaq Emas PNG, Khadim Malaikat Ulwi & Sufli, Dial Clock 24H 3D, Chogadia Hisab, Fase Bulan, 28 Manazil al-Qamar & Waktu Sholat.">
+    <meta name="description" content="Kalkulator falakiah offline untuk jam planet, Chogadia, fase bulan, kiblat, waktu sholat, dan analisis hisab expert.">
     <meta name="theme-color" content="#0b132b">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/svg+xml" href="icon.svg">
@@ -228,93 +228,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- PROBLEM-ORIENTED: Abjad Hisab Arab & Wafaq 3x3 Berdasar Hajat Spesifik -->
-        <section class="abjad-wafaq-card" id="abjadWafaqCard">
-            <h3 class="astronomy-title">
-                <i class="fa-solid fa-calculator text-amber"></i> Penyelaras Wafaq 3x3 Khusus Hajat & Penyeimbang Elemen
-            </h3>
-            
-            <div class="abjad-grid">
-                <!-- Input & Problem Purpose Selection -->
-                <div class="astro-box">
-                    <div class="input-group">
-                        <label for="inputAbjadName">
-                            <i class="fa-solid fa-user-pen"></i> Masukkan Nama Pengguna / Hajat (Latin / Huruf Arab):
-                        </label>
-                        <div class="abjad-input-wrapper">
-                            <input type="text" id="inputAbjadName" class="custom-input" placeholder="Misal: Arif / عارف" value="Arif">
-                            <button id="btnCalcAbjad" class="btn-secondary">Hitung & Selaraskan</button>
-                        </div>
-                    </div>
-
-                    <!-- Problem Purpose Selector -->
-                    <div class="input-group" style="margin-top:10px;">
-                        <label for="selectHajatPurpose">
-                            <i class="fa-solid fa-bullseye-arrow text-amber"></i> Pilih Fokus Hajat / Masalah Utama Anda:
-                        </label>
-                        <select id="selectHajatPurpose" class="custom-select">
-                            <option value="RIZQ" selected>💰 Kelancaran Rezeki, Bisnis & Pelaris Usaha (Ya Rozzaq)</option>
-                            <option value="MAHABBAH">❤️ Keharmonisan, Mahabbah & Jodoh (Ya Wadud)</option>
-                            <option value="HEALTH_ELEMS">🧠 Ketenangan Jiwa, Stres & Penyeimbang Elemen diri</option>
-                            <option value="CARRIER_HAIBAH">⭐ Kewibawaan, Karir & Dihormati Orang (Ya Aziz)</option>
-                            <option value="PROTECTION">🛡️ Benteng Diri, Tolak Bala & Pagar Ghaib (Ya Qahhar)</option>
-                        </select>
-                    </div>
-                    
-                    <div class="astro-body" style="margin-top: 10px;">
-                        <div class="astro-row">
-                            <span>Transliterasi Huruf Arab:</span>
-                            <strong id="displayArabicScript" class="text-amber" style="font-family:var(--font-arabic); font-size:1.2rem;">--</strong>
-                        </div>
-                        <div class="astro-row">
-                            <span>Jumlah Adad (Hisab al-Jumal):</span>
-                            <strong id="displayAbjadTotal" class="text-indigo">--</strong>
-                        </div>
-                        <div class="astro-row">
-                            <span>Malaikat Atas (Khadim Ulwi):</span>
-                            <strong id="displayAngelUlwi" class="text-amber">--</strong>
-                        </div>
-                        <div class="astro-row">
-                            <span>Penguasa Bawah (Khadim Sufli):</span>
-                            <strong id="displayAngelSufli">--</strong>
-                        </div>
-                        <div class="astro-row">
-                            <span>Analisis Elemen Tabi'at Nama:</span>
-                            <strong id="displayPersonalElem" class="text-indigo">--</strong>
-                        </div>
-                        <div class="astro-row">
-                            <span>Status Sinkronisasi Jam Hari Ini:</span>
-                            <strong id="displayPersonalSync">--</strong>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Generated 3x3 Wafaq Matrix Stage & Actions -->
-                <div class="astro-box wafaq-stage">
-                    <div class="astro-header" style="width: 100%;">
-                        <h4 id="wafaqTitleHeader"><i class="fa-solid fa-border-all text-amber"></i> Wafaq Rezeki & Pelaris 3x3 (Buduh)</h4>
-                        <div class="hijri-controls">
-                            <button id="btnToggleDigits" class="btn-mini" title="Ubah Angka Arab / Latin">Angka: Arab (١٢٣)</button>
-                            <button id="btnCopyWafaq" class="btn-mini" title="Salin Angka Wafaq">Salin</button>
-                            <button id="btnDownloadCardPng" class="btn-mini text-amber" title="Unduh Kartu Gambar Wafaq Emas PNG"><i class="fa-solid fa-download"></i> Gambar PNG</button>
-                        </div>
-                    </div>
-                    <table class="wafaq-table" id="wafaqTable">
-                        <tbody>
-                            <tr><td id="w1">--</td><td id="w2">--</td><td id="w3">--</td></tr>
-                            <tr><td id="w4">--</td><td id="w5">--</td><td id="w6">--</td></tr>
-                            <tr><td id="w7">--</td><td id="w8">--</td><td id="w9">--</td></tr>
-                        </tbody>
-                    </table>
-                    <div class="wafaq-purpose-note" id="wafaqPurposeNote" style="font-size:0.78rem; text-align:center; color:var(--accent-gold); margin-top:6px;">
-                        *Formula Wafaq diselaraskan khusus untuk hajat rezeki & keberkahan usaha Anda.
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- NEW: Interactive Tasbih Zikir Digital & Amalan Practice Counter -->
         <section class="tasbih-card" id="tasbihCard">
             <div class="tasbih-header">
                 <h3><i class="fa-solid fa-dhikr text-amber"></i> Counter Tasbih Zikir Digital & Panduan Amalan Jam Planet</h3>
@@ -459,45 +372,6 @@
             </div>
         </section>
 
-        <!-- 12 Buruj & 4 Elemen Tabi'at Card -->
-        <section class="buruj-elements-card">
-            <h3><i class="fa-solid fa-fire-flame-curved text-amber"></i> Ensiklopedia 12 Buruj & 4 Elemen Tabi'at Falakiah</h3>
-            <div class="elements-grid">
-                <div class="element-box elem-fire">
-                    <h4>🔥 Api (Nari / الناري)</h4>
-                    <small>Buruj: Aries (Hamal), Leo (Asad), Sagittarius (Qaus)</small>
-                    <p>Sifat: Panas & Kering. Semangat, keberanian, kewibawaan, keagungan & kepemimpinan.</p>
-                </div>
-                <div class="element-box elem-earth">
-                    <h4>🪵 Tanah (Turabi / الترابي)</h4>
-                    <small>Buruj: Taurus (Taur), Virgo (Sunbulah), Capricorn (Jadi)</small>
-                    <p>Sifat: Dingin & Kering. Keteguhan, kekayaan materi, pondasi usaha & stabilitas.</p>
-                </div>
-                <div class="element-box elem-air">
-                    <h4>💨 Udara (Hawai / الهوائي)</h4>
-                    <small>Buruj: Gemini (Jauza), Libra (Mizan), Aquarius (Dalu)</small>
-                    <p>Sifat: Panas & Basah. Kecerdasan, komunikasi, menulis wafaq, ilmu & perdagangan.</p>
-                </div>
-                <div class="element-box elem-water">
-                    <h4>💧 Air (Ma'i / المائي)</h4>
-                    <small>Buruj: Cancer (Saratan), Scorpio (Aqrab), Pisces (Hut)</small>
-                    <p>Sifat: Dingin & Basah. Ketenangan hati, pengobatan, mahabbah kasih sayang & rasa kasihan.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Information & Legend Section -->
-        <section class="info-card">
-            <h3 id="txtLegendTitle"><i class="fa-solid fa-book-open"></i> Panduan Kategori Jam Planet & Falakiah</h3>
-            <div class="legend-grid" id="legendGrid">
-                <!-- Dynamic Legend based on Mode -->
-            </div>
-            <div class="note-box">
-                <i class="fa-solid fa-circle-info"></i>
-                <span id="txtDisclaimers">Aplikasi ini menghitung waktu Falakiah & Jam Planet secara akurat berdasarkan posisi Astronomi Matahari (Terbit & Terbenam) di lokasi Anda. Bekerja 100% Offline.</span>
-            </div>
-        </section>
-
         <!-- Footer -->
         <footer class="app-footer">
             <p>© <span id="yearSpan"></span> Falakiah & Jam Planet. Developed with ❤️ by <a href="https://arifwidiyanto.web.id" target="_blank" rel="noopener">Arif Widiyanto</a></p>
@@ -569,3 +443,4 @@
     </script>
 </body>
 </html>
+
