@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pelajaran 6: Masukkan Kekuatan AI + Pamerkan! — VibeKoding ✨</title>
+<meta name="description" content="Pelajaran 6 VibeKoding: menambah fitur AI ke prototipe (lewat API), lalu publish ke internet gratis dengan Vercel/GitHub Pages. Rayakan kemenangan pertamamu!"/>
+
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-1/lesson-6.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/vibekoding.css"/>
+</head>
+<body data-lesson="s1l6">
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="./" class="active"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../">VibeKoding</a> / <a href="./"><span lang="id">Level 1</span><span lang="en">Level 1</span></a> / <span lang="id">Pelajaran 6</span><span lang="en">Lesson 6</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">✨</div>
+      <div>
+        <h1><span lang="id">Kekuatan AI + <span class="grad-text">Pamerkan ke Dunia!</span> 🌍</span>
+        <span lang="en">AI Powers + <span class="grad-text">Show It to the World!</span> 🌍</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">⏱️ <span lang="id">~3 jam</span><span lang="en">~3 hours</span></span>
+          <span class="meta-chip">🎯 <span lang="id">Output: Produk live di internet</span><span lang="en">Output: Live product on the internet</span></span>
+          <span class="meta-chip">🏆 <span lang="id">Level selesai = tamat Level 1!</span><span lang="en">Finish = Level 1 complete!</span></span>
+        </div>
+      </div>
+    </div>
+    <div id="xp-box" style="max-width:420px;margin-top:26px">
+      <div class="small"><span lang="id">Progres pelajaranmu</span><span lang="en">Your lesson progress</span>: <b id="xp-pct">0%</b></div>
+      <div class="xp-bar"><i id="xp-fill"></i></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+
+    <div class="callout joke reveal">
+      <div class="t">😂 <span lang="id">Jokes Pembuka</span><span lang="en">Opening Joke</span></div>
+      <p><span lang="id">Produkmu sekarang kayak <b>kue enak yang cuma kamu yang tahu rasanya</b>. 🎂 Sayang banget, kan? Hari ini kita lakukan dua hal epik: (1) kasih produkmu <b>otak tambahan</b> berupa fitur AI, dan (2) <b>pamerkan ke seluruh dunia</b> secara gratis. Iya, gratis. Internet memang sebaik itu... kadang. 😌</span>
+      <span lang="en">Right now your product is like <b>a delicious cake only you know the taste of</b>. 🎂 Such a waste, right? Today we do two epic things: (1) give your product an <b>extra brain</b> with AI features, and (2) <b>show it to the whole world</b> for free. Yes, free. The internet can be that kind... sometimes. 😌</span></p>
+    </div>
+
+    <h2 class="reveal"><span lang="id">1. Apa Itu API? (Analogi Restoran 🍜)</span><span lang="en">1. What's an API? (The Restaurant Analogy 🍜)</span></h2>
+    <p class="reveal"><span lang="id">Untuk bikin aplikasi biasa bisa "ngobrol" dengan AI, kita butuh yang namanya <b>API</b> (Application Programming Interface). Nama serem, konsep gampang:</span>
+    <span lang="en">To make a regular app "talk" to AI, we need something called an <b>API</b> (Application Programming Interface). Scary name, easy concept:</span></p>
+    <div class="callout info reveal">
+      <div class="t">🍜 <span lang="id">API = Pelayan Restoran</span><span lang="en">API = The Restaurant Waiter</span></div>
+      <p><span lang="id">Di restoran: <b>kamu</b> (aplikasi) nggak masuk dapur sendiri. Kamu bilang pesanan ke <b>pelayan</b> (API), pelayan bawa ke <b>dapur</b> (server AI), lalu balik bawa <b>hidangan</b> (jawaban AI). Kamu nggak perlu tahu cara masaknya — kamu cuma perlu tahu cara mesannya. 📝➡️👨‍🍳➡️🍽️<br/><br/>
+      Untuk memakai pelayan ini, biasanya kamu dapat <b>API key</b> — semacam kartu member restoran. Jaga baik-baik, jangan dipamerin ke siapa pun! 🔑</span>
+      <span lang="en">In a restaurant: <b>you</b> (the app) don't walk into the kitchen yourself. You tell your order to the <b>waiter</b> (the API), the waiter brings it to the <b>kitchen</b> (the AI server), then comes back with the <b>dish</b> (the AI's answer). You don't need to know how it's cooked — just how to order. 📝➡️👨‍🍳➡️🍽️<br/><br/>
+      To use this waiter, you usually get an <b>API key</b> — like a restaurant membership card. Guard it carefully, never show it off to anyone! 🔑</span></p>
+    </div>
+    <div class="callout warn reveal">
+      <div class="t">⚠️ <span lang="id">Untuk Anak SMP: Izin Orang Tua Dulu!</span><span lang="en">For Middle Schoolers: Ask a Parent First!</span></div>
+      <p><span lang="id">Membuat akun API biasanya butuh email dan kadang kartu pembayaran (meski banyak yang gratis/kuota cuma-cuma). <b>Minta bantuan orang tua atau guru</b> untuk langkah ini. Mereka pasti bangga kok, anaknya bikin produk AI. 😇</span>
+      <span lang="en">Creating an API account usually needs an email and sometimes a payment card (though many are free/have free quota). <b>Ask a parent or teacher</b> for help with this step. They'll be proud — their kid is building an AI product. 😇</span></p>
+    </div>
+
+    <h2 class="reveal"><span lang="id">2. Tambahkan Fitur AI ke Produkmu 🧠✨</span><span lang="en">2. Add AI Features to Your Product 🧠✨</span></h2>
+    <p class="reveal"><span lang="id">Pilih satu fitur AI yang cocok dengan produkmu. Contoh untuk KasKu:</span>
+    <span lang="en">Pick one AI feature that fits your product. Example for KasKu:</span></p>
+    <div class="prompt-card reveal">
+      <div class="p-head"><b><span lang="id">💬 PROMPT INTEGRASI AI</span><span lang="en">💬 AI INTEGRATION PROMPT</span></b>
+        <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button></div>
+      <pre><span lang="id">Tambahkan fitur "Asisten Keuangan" ke aplikasi KasKu:
+- Tombol "Tanya AI 💡" di halaman laporan
+- Saat dipencet, kirim ringkasan transaksi bulan ini ke AI,
+  lalu tampilkan jawaban AI di kartu yang cantik
+- Contoh gaya jawaban: kasih 3 tips hemat yang lucu dan
+  relevan dengan pola pengeluaranku
+- Kalau API belum diatur, tampilkan pesan ramah, jangan error
+- Jelaskan ke aku di mana API key harus disimpan dan kenapa</span><span lang="en">Add a "Finance Assistant" feature to the KasKu app:
+- An "Ask AI 💡" button on the report page
+- When pressed, send this month's transaction summary to AI,
+  then show AI's answer in a beautiful card
+- Answer style: give 3 funny, relevant saving tips based
+  on my spending patterns
+- If the API isn't set up yet, show a friendly message, no errors
+- Explain where the API key should be stored and why</span></pre>
+    </div>
+    <p class="reveal"><span lang="id">Ide fitur AI lain buat produkmu: chatbot penjawab pertanyaan, perangkum teks, penerjemah, generator caption, penganalisis foto. Prinsipnya sama: <b>tombol → kirim data ke AI → tampilkan jawaban dengan cantik</b>. 🎀</span>
+    <span lang="en">Other AI feature ideas for your product: Q&amp;A chatbot, text summarizer, translator, caption generator, photo analyzer. The principle is the same: <b>button → send data to AI → display the answer beautifully</b>. 🎀</span></p>
+    <div class="callout tip reveal">
+      <div class="t">🔐 <span lang="id">Aturan Keamanan Nomor 1 (Serius!)</span><span lang="en">Security Rule #1 (Serious!)</span></div>
+      <p><span lang="id"><b>Jangan pernah menaruh API key di kode yang dibagikan ke publik</b>, dan jangan share API key-mu ke teman (kecuali emang gratis total). API key yang bocor bisa dipakai orang lain dan bikin tagihan membengkak. Kalau bocor: langsung hapus &amp; bikin yang baru. Ini pelajaran keamanan pertama di kariermu! 🕶️</span>
+      <span lang="en"><b>Never put an API key in publicly shared code</b>, and don't share your API key with friends (unless it's completely free). A leaked key can be used by others and balloon your bill. If leaked: revoke &amp; regenerate immediately. This is the first security lesson of your career! 🕶️</span></p>
+    </div>
+
+    <h2 class="reveal"><span lang="id">3. Publish: Dari Laptop ke Internet 🚀</span><span lang="en">3. Publish: From Laptop to the Internet 🚀</span></h2>
+    <p class="reveal"><span lang="id">Sekarang momen yang ditunggu: bikin produkmu bisa diakses siapa pun lewat link! Dua cara termudah (dan <b>gratis</b>):</span>
+    <span lang="en">Now the moment you've waited for: make your product reachable by anyone via a link! Two easiest ways (and <b>free</b>):</span></p>
+    <table class="reveal">
+      <tr><th><span lang="id">Cara</span><span lang="en">Method</span></th><th><span lang="id">Cocok Untuk</span><span lang="en">Best For</span></th><th><span lang="id">Gampangnya</span><span lang="en">Simplicity</span></th></tr>
+      <tr><td><b>Netlify Drop</b> (app.netlify.com/drop)</td><td><span lang="id">Web statis / HTML doang. DRAG &amp; DROP file, langsung dapat link. Selesai. 🤯</span><span lang="en">Static/HTML-only sites. DRAG &amp; DROP files, get a link instantly. Done. 🤯</span></td><td>⭐⭐⭐⭐⭐</td></tr>
+      <tr><td><b>GitHub Pages + Vercel</b></td><td><span lang="id">Yang mau belajar cara profesional (sekaligus belajar Git!).</span><span lang="en">Those who want the pro route (and learn Git along the way!).</span></td><td>⭐⭐⭐</td></tr>
+    </table>
+    <div class="prompt-card reveal">
+      <div class="p-head"><b><span lang="id">💬 MINTA AI JADI CO-PILOT DEPLOY-MU</span><span lang="en">💬 MAKE AI YOUR DEPLOY CO-PILOT</span></b>
+        <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button></div>
+      <pre><span lang="id">Aku pemula total. Aku punya aplikasi web sederhana
+[HTML statis / Node.js] di folder [nama folder].
+Pandaku publish ke internet GRATIS dengan langkah
+paling gampang. Jelaskan tiap langkah seperti ke
+anak SMP, dan beri tahu apa yang harus kulakukan
+kalau muncul error. Satu langkah demi satu langkah.</span><span lang="en">I'm a total beginner. I have a simple web app
+[static HTML / Node.js] in folder [folder name].
+Guide me to publish it on the internet for FREE
+using the easiest method. Explain each step like
+I'm in middle school, and tell me what to do if
+an error appears. One step at a time.</span></pre>
+    </div>
+    <p class="reveal"><span lang="id">Begitu dapat link, <b>kirim ke 5 orang</b>: keluarga, teman, guru, grup kelas. Minta mereka pakai dan kasih komentar. Setiap komentar = bahan bakar untuk versi berikutnya. ⛽</span>
+    <span lang="en">Once you get the link, <b>send it to 5 people</b>: family, friends, teachers, the class group. Ask them to use it and give feedback. Every comment = fuel for the next version. ⛽</span></p>
+
+    <h2 class="reveal"><span lang="id">4. Selamat! Kamu Resmi Product Engineer Junior 🎓</span><span lang="en">4. Congrats! You're Officially a Junior Product Engineer 🎓</span></h2>
+    <p class="reveal"><span lang="id">Coba lihat ke belakang, perjalananmu di Level 1:</span>
+    <span lang="en">Look back at your Level 1 journey:</span></p>
+    <div class="bento">
+      <div class="b-card reveal"><span class="emoji">🧭</span>
+        <h3><span lang="id">Paham Konsepnya</span><span lang="en">You Got the Concept</span></h3>
+        <p><span lang="id">Vibe coding, peranmu sebagai mandor ide, dan pola pikir product engineer.</span>
+        <span lang="en">Vibe coding, your role as idea foreman, and the product engineer mindset.</span></p></div>
+      <div class="b-card reveal"><span class="emoji">🐍</span>
+        <h3><span lang="id">Bikin Program Pertama</span><span lang="en">You Built Your First Program</span></h3>
+        <p><span lang="id">Game ular AI-native + modifikasimu sendiri. Program pertamamu!</span>
+        <span lang="en">An AI-native snake game + your own mods. Your first program!</span></p></div>
+      <div class="b-card reveal"><span class="emoji">🛠️</span>
+        <h3><span lang="id">Kuasai Alat &amp; Loop</span><span lang="en">You Mastered Tools &amp; the Loop</span></h3>
+        <p><span lang="id">AI IDE + loop belajar: tanya → coba → lapor → ulangi.</span>
+        <span lang="en">AI IDE + the learning loop: ask → try → report → repeat.</span></p></div>
+      <div class="b-card reveal"><span class="emoji">💡</span>
+        <h3><span lang="id">Nemu Masalah Nyata</span><span lang="en">You Found Real Problems</span></h3>
+        <p><span lang="id">Berburu ide, memvalidasi kebutuhan, memilih pemenang.</span>
+        <span lang="en">Idea hunting, validating needs, picking a winner.</span></p></div>
+      <div class="b-card reveal"><span class="emoji">🏗️</span>
+        <h3><span lang="id">Bangun Prototipe</span><span lang="en">You Built a Prototype</span></h3>
+        <p><span lang="id">Aplikasi multi-halaman dengan data tersimpan, dites orang lain.</span>
+        <span lang="en">A multi-page app with saved data, tested by others.</span></p></div>
+      <div class="b-card reveal"><span class="emoji">🌍</span>
+        <h3><span lang="id">Go Public!</span><span lang="en">You Went Public!</span></h3>
+        <p><span lang="id">Fitur AI terintegrasi + produk live di internet. GILA KEREN. 🔥</span>
+        <span lang="en">Integrated AI features + a live product on the internet. INSANELY COOL. 🔥</span></p></div>
+    </div>
+
+    <h2 class="reveal"><span lang="id">5. Misi Rahasiamu (Terakhir di Level 1!) 🕵️</span><span lang="en">5. Your Secret Mission (Last One in Level 1!) 🕵️</span></h2>
+    <div class="mission reveal">
+      <div class="t">🎯 <span lang="id">MISI LEVEL 1-F: Launching &amp; Feedback</span><span lang="en">MISSION LEVEL 1-F: Launch &amp; Feedback</span></div>
+      <ol>
+        <li><span lang="id">Publish produkmu dan kumpulkan <b>feedback dari minimal 5 orang</b>. 📮</span><span lang="en">Publish your product and collect <b>feedback from at least 5 people</b>. 📮</span></li>
+        <li><span lang="id">Perbaiki <b>1 hal</b> berdasarkan feedback paling sering. 🔧</span><span lang="en">Fix <b>one thing</b> based on the most common feedback. 🔧</span></li>
+        <li><span lang="id">Tulis cerita singkat 5 kalimat: apa yang kamu buat, masalah apa yang diselesaikan, dan apa yang kamu pelajari. Simpan — siapa tahu jadi cerita inspiratif versi kamu sendiri suatu hari nanti! ✍️</span><span lang="en">Write a 5-sentence story: what you built, what problem it solves, and what you learned. Keep it — who knows, it might become your own inspiring story someday! ✍️</span></li>
+        <li><span lang="id">🌟 Bonus: share ceritamu ke komunitas belajar/gurumu. Vibe coding itu olahraga tim! 🤝</span><span lang="en">🌟 Bonus: share your story with your learning community/teacher. Vibe coding is a team sport! 🤝</span></li>
+      </ol>
+    </div>
+
+    <h2 class="reveal"><span lang="id">6. Uji Pemahaman 🧪</span><span lang="en">6. Knowledge Check 🧪</span></h2>
+    <div class="quiz reveal">
+      <div class="q"><div class="question"><span lang="id">❓ Jelaskan API dengan analogi restoran!</span><span lang="en">❓ Explain API using the restaurant analogy!</span></span><span class="chev">▶</span>
+        <div class="answer"><span lang="id">API = <b>pelayan restoran</b>: menerima pesananmu (request), membawanya ke dapur (server AI), lalu mengembalikan hidangan (response) ke mejamu. Kamu nggak perlu tahu cara masaknya, cukup tahu cara memesan. 🍽️</span>
+        <span lang="en">API = <b>the restaurant waiter</b>: takes your order (request), brings it to the kitchen (AI server), and returns the dish (response) to your table. You don't need to know how it cooks, just how to order. 🍽️</span></div></div>
+      <div class="q"><div class="question"><span lang="id">❓ Kenapa API key harus dijaga rahasia?</span><span lang="en">❓ Why must an API key be kept secret?</span></span><span class="chev">▶</span>
+        <div class="answer"><span lang="id">Karena API key itu kayak <b>kunci rumah + dompet</b>: siapa pun yang pegang bisa memakai jatah (dan uang) akunmu. Kalau bocor: langsung cabut &amp; ganti baru. Never post it in public code, chats, or screenshots. 🔐</span>
+        <span lang="en">Because an API key is like a <b>house key + wallet</b>: anyone holding it can use your quota (and money). If leaked: revoke &amp; regenerate immediately. Never post it in public code, chats, or screenshots. 🔐</span></div></div>
+      <div class="q"><div class="question"><span lang="id">❓ Apa bedanya produk "jalan di laptop" dan "live di internet"?</span><span lang="en">❓ What's the difference between "works on laptop" and "live on the internet"?</span></span><span class="chev">▶</span>
+        <div class="answer"><span lang="id">Di laptop: cuma kamu yang bisa pakai. Live di internet: <b>siapa pun di dunia bisa mengakses lewat link</b> — artinya ada pengguna nyata, feedback nyata, dan (mungkin) nilai nyata. Inilah bedanya mainan dan produk. 🌍🆚🧸</span>
+        <span lang="en">On the laptop: only you can use it. Live on the internet: <b>anyone in the world can access it via a link</b> — meaning real users, real feedback, and (maybe) real value. That's the difference between a toy and a product. 🌍🆚🧸</span></div></div>
+    </div>
+
+    <div class="complete-row reveal">
+      <input type="checkbox" id="lesson-done"/>
+      <label for="lesson-done"><span lang="id">✅ PRODUKKU LIVE DI INTERNET! LEVEL 1 TAMAT! 🏆🎉</span><span lang="en">✅ MY PRODUCT IS LIVE ON THE INTERNET! LEVEL 1 COMPLETE! 🏆🎉</span></label>
+    </div>
+
+    <div class="callout joke reveal">
+      <div class="t">😂 <span lang="id">Jokes Penutup (Edisi Spesial Kelulusan)</span><span lang="en">Closing Joke (Graduation Special Edition)</span></div>
+      <p><span lang="id">Tahu nggak bedanya kamu dengan programmer zaman batu?<br/><br/>Mereka: ngetik kode 6 bulan, belum kelar, rambut rontok. 👨‍🦲<br/>Kamu: ngobrol dengan AI 6 hari, produk live, rambut tetap badai. 💁<br/><br/>Selamat lulus Level 1! Kalau kamu mau lanjut ke dunia full-stack yang "dewasa" (database sungguhan, backend, deployment pro), <b>Level 2</b> udah menunggu. Kalau mau istirahat dulu sambil pamerin produkmu ke nenek... itu juga strategi yang sangat valid. 👵💖</span>
+      <span lang="en">Know the difference between you and stone-age programmers?<br/><br/>Them: typing code for 6 months, still unfinished, hair falling out. 👨‍🦲<br/>You: chatting with AI for 6 days, product live, hair still fabulous. 💁<br/><br/>Congrats on finishing Level 1! If you want to enter the "grown-up" full-stack world (real databases, backend, pro deployment), <b>Level 2</b> is waiting. If you'd rather rest while showing your product to grandma... that's also a very valid strategy. 👵💖</span></p>
+    </div>
+
+    <div class="pager">
+      <a href="lesson-5.html"><span class="dir">← <span lang="id">Pelajaran Sebelumnya</span><span lang="en">Previous Lesson</span></span><b><span lang="id">🏗️ Bangun Prototipe Pertamamu</span><span lang="en">🏗️ Build Your First Prototype</span></b></a>
+      <a class="next" href="../stage-2/"><span class="dir"><span lang="id">Naik Level</span><span lang="en">Level Up</span> →</span><b><span lang="id">⚡ Level 2: Full-Stack Sungguhan</span><span lang="en">⚡ Level 2: Real Full-Stack</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Diadaptasi dari <a href="https://datawhalechina.github.io/easy-vibe/en/" target="_blank" rel="noopener">Easy-Vibe</a> oleh Datawhale · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></span>
+      <span lang="en">📜 Adapted from <a href="https://datawhalechina.github.io/easy-vibe/en/" target="_blank" rel="noopener">Easy-Vibe</a> by Datawhale · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../assets/vibekoding.js"></script>
+</body>
+</html>
