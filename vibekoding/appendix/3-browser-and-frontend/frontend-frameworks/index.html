@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>An Introduction to Frontend Frameworks — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: An Introduction to Frontend Frameworks. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/3-browser-and-frontend/frontend-frameworks/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">An Introduction to Frontend Frameworks</span><span lang="en">An Introduction to Frontend Frameworks</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">An Introduction to Frontend Frameworks</span><span lang="en">An Introduction to Frontend Frameworks</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: An Introduction to Frontend Frameworks.</span><span lang="en">Ensiklopedia VibeKoding: An Introduction to Frontend Frameworks.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">You've learned the basics of HTML, CSS, and JavaScript and can now build simple web pages. But as web functionality grows more complex, you may notice that writing raw JavaScript becomes hard to maintain — changing one thing requires touching many places, and collaboration often leads to conflicts.
+
+This is why we need frontend frameworks — they make code more organized, easier to maintain, and more efficient to develop. In vibecoding, AI writes most of the code for you. But you should at least be able to read different frameworks' code styles, understand their pros and cons, so the AI can help you choose the most suitable tech stack.
+
+By the end of this article, you'll be able to:
+- Understand why frontend technology keeps evolving
+- Know the characteristics of Vue, React, Svelte, and Angular
+- Grasp core concepts like "data-driven" and "component-based" development
+- Choose the right framework for your project</span><span lang="en">You've learned the basics of HTML, CSS, and JavaScript and can now build simple web pages. But as web functionality grows more complex, you may notice that writing raw JavaScript becomes hard to maintain — changing one thing requires touching many places, and collaboration often leads to conflicts.
+
+This is why we need frontend frameworks — they make code more organized, easier to maintain, and more efficient to develop. In vibecoding, AI writes most of the code for you. But you should at least be able to read different frameworks' code styles, understand their pros and cons, so the AI can help you choose the most suitable tech stack.
+
+By the end of this article, you'll be able to:
+- Understand why frontend technology keeps evolving
+- Know the characteristics of Vue, React, Svelte, and Angular
+- Grasp core concepts like "data-driven" and "component-based" development
+- Choose the right framework for your project</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will this article teach you?</b></span><span lang="en"><b>What will this article teach you?</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>What You'll Gain</th></tr>
+<tr><td><b>Chapter 1</b></td><td>Why care about frontend evolution</td><td>Understand what problems each evolution solves</td></tr>
+<tr><td><b>Chapter 2</b></td><td>The static web page era</td><td>Learn the earliest web development approaches</td></tr>
+<tr><td><b>Chapter 3</b></td><td>The jQuery era</td><td>Understand the pain points of "imperative" programming</td></tr>
+<tr><td><b>Chapter 4</b></td><td>The Vue/React era</td><td>Master "declarative" and "data-driven" thinking</td></tr>
+<tr><td><b>Chapter 5</b></td><td>Rendering strategies</td><td>Know the differences and use cases of CSR, SSR, and SSG</td></tr>
+<tr><td><b>Chapter 6</b></td><td>Engineering tooling</td><td>Understand the role of build tools like Webpack and Vite</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">Each chapter begins with "Why do we need this technology?" so you understand the logic behind each evolution.</span><span lang="en">Each chapter begins with "Why do we need this technology?" so you understand the logic behind each evolution.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Motivation for Caring About Frontend Evolution</span><span lang="en">1. Motivation for Caring About Frontend Evolution</span></h2>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Why are web pages getting more complex? Why does frontend technology keep evolving?</b> This question will guide you through the technological journey from simple web pages to modern web applications.</span><span lang="en"><b>Why are web pages getting more complex? Why does frontend technology keep evolving?</b> This question will guide you through the technological journey from simple web pages to modern web applications.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 From "Digital Poster" to "Desktop Application"</span><span lang="en">1.1 From "Digital Poster" to "Desktop Application"</span></h3>
+<p class="reveal"><span lang="id">Think about a <b>poster</b> you see on the street:</span><span lang="en">Think about a <b>poster</b> you see on the street:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ Has content (text, images)</span><span lang="en">✅ Has content (text, images)</span></li>
+<li><span lang="id">✅ Has design (colors, layout)</span><span lang="en">✅ Has design (colors, layout)</span></li>
+<li><span lang="id">❌ But if you talk to it, it won't respond</span><span lang="en">❌ But if you talk to it, it won't respond</span></li>
+<li><span lang="id">❌ If you tap somewhere, nothing happens</span><span lang="en">❌ If you tap somewhere, nothing happens</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>The earliest web pages</b> were just like these "digital posters": view-only, unchangeable, with fixed content.</span><span lang="en"><b>The earliest web pages</b> were just like these "digital posters": view-only, unchangeable, with fixed content.</span></p>
+<p class="reveal"><span lang="id"><b>Modern web pages</b> are completely different. They're like <b>desktop applications</b> (VS Code, Figma):</span><span lang="en"><b>Modern web pages</b> are completely different. They're like <b>desktop applications</b> (VS Code, Figma):</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ You can edit documents, draw, play games</span><span lang="en">✅ You can edit documents, draw, play games</span></li>
+<li><span lang="id">✅ They respond to your every action in real time</span><span lang="en">✅ They respond to your every action in real time</span></li>
+<li><span lang="id">✅ They can even work offline</span><span lang="en">✅ They can even work offline</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>The core reason for this transformation: web page functionality has become increasingly complex, requiring more efficient technologies and development approaches.</b></span><span lang="en"><b>The core reason for this transformation: web page functionality has become increasingly complex, requiring more efficient technologies and development approaches.</b></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 A Real-Life Analogy: Building a House</span><span lang="en">1.2 A Real-Life Analogy: Building a House</span></h3>
+<p class="reveal"><span lang="id">The evolution of frontend technology is like the evolution of house construction:</span><span lang="en">The evolution of frontend technology is like the evolution of house construction:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Era</th><th>🏠 House Analogy</th><th>Actual Characteristics</th><th>Pros & Cons</th></tr>
+<tr><td><b>2000s</b></td><td><b>Putting up posters</b></td><td>Static web pages — just write HTML</td><td>✅ Simple ❌ No interactivity</td></tr>
+<tr><td><b>2010s</b></td><td><b>Hiring workers for manual renovation</b></td><td>jQuery era — manually manipulate every element</td><td>✅ Interactive ❌ Messy code, hard to maintain</td></tr>
+<tr><td><b>2020s</b></td><td><b>Building with LEGO blocks</b></td><td>Vue/React era — component-based development</td><td>✅ Efficient, maintainable ❌ Learning curve</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Phase 1 → Phase 2</b>: From "can't move" to "can move." This is a qualitative leap — web pages become interactive, but at the cost of messy code.
+
+<b>Phase 2 → Phase 3</b>: From "usable" to "delightful." Component-based development makes code reusable like building blocks, dramatically improving development efficiency.
+
+<b>Core insight</b>: Technological evolution isn't "new for the sake of new" — it's about solving the pain points of the previous phase.</span><span lang="en"><b>Phase 1 → Phase 2</b>: From "can't move" to "can move." This is a qualitative leap — web pages become interactive, but at the cost of messy code.
+
+<b>Phase 2 → Phase 3</b>: From "usable" to "delightful." Component-based development makes code reusable like building blocks, dramatically improving development efficiency.
+
+<b>Core insight</b>: Technological evolution isn't "new for the sake of new" — it's about solving the pain points of the previous phase.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Phase 1: Static Web Pages and "Image Slicing" (2000s)</span><span lang="en">2. Phase 1: Static Web Pages and "Image Slicing" (2000s)</span></h2>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>What were the earliest web pages like? Why weren't frameworks needed back then?</b> Understanding the limitations of this phase helps you see why later evolutions were necessary.</span><span lang="en"><b>What were the earliest web pages like? Why weren't frameworks needed back then?</b> Understanding the limitations of this phase helps you see why later evolutions were necessary.</span></p>
+</div>
+<p class="reveal"><span lang="id"><FrontendEvolutionDemo /></span><span lang="en"><FrontendEvolutionDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 What Was ThOverview of Era Like</span><span lang="en">2.1 What Was ThOverview of Era Like</span></h3>
+<p class="reveal"><span lang="id"><b>Development approach</b>:</span><span lang="en"><b>Development approach</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Write a few HTML files</span><span lang="en">Write a few HTML files</span></li>
+<li><span lang="id">Embed some CSS and JavaScript</span><span lang="en">Embed some CSS and JavaScript</span></li>
+<li><span lang="id">Drag the files directly into a browser to see the result</span><span lang="en">Drag the files directly into a browser to see the result</span></li>
+<li><span lang="id">Upload the folder to a server to deploy</span><span lang="en">Upload the folder to a server to deploy</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Characteristics</b>:</span><span lang="en"><b>Characteristics</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ <b>Pros</b>: Simple and direct, no learning cost, write and run</span><span lang="en">✅ <b>Pros</b>: Simple and direct, no learning cost, write and run</span></li>
+<li><span lang="id">❌ <b>Cons</b>: No complex interactivity, code becomes messy as it grows</span><span lang="en">❌ <b>Cons</b>: No complex interactivity, code becomes messy as it grows</span></li>
+</ul>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+project/
+├── index.html
+├── login.html
+├── css/
+│   ├── bootstrap.css
+│   └── custom.css
+├── js/
+│   ├── jquery.js
+│   └── app.js
+└── images/
+</code>``
+
+<b>Problems encountered</b>:
+
+1. <b>Global variable pollution</b>: All variables live in the global namespace, easy to overwrite each other
+2. <b>Dependency management chaos</b>: JS files must be loaded in the correct order, otherwise errors occur
+3. <b>Code hard to reuse</b>: To reuse a feature, you can only copy and paste</span><span lang="en">``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+project/
+├── index.html
+├── login.html
+├── css/
+│   ├── bootstrap.css
+│   └── custom.css
+├── js/
+│   ├── jquery.js
+│   └── app.js
+└── images/
+</code>``
+
+<b>Problems encountered</b>:
+
+1. <b>Global variable pollution</b>: All variables live in the global namespace, easy to overwrite each other
+2. <b>Dependency management chaos</b>: JS files must be loaded in the correct order, otherwise errors occur
+3. <b>Code hard to reuse</b>: To reuse a feature, you can only copy and paste</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Overview of "Image Slicing"</span><span lang="en">2.2 Overview of "Image Slicing"</span></h3>
+<p class="reveal"><span lang="id">You may have heard the term "image slicing." It was the main task of early frontend work:</span><span lang="en">You may have heard the term "image slicing." It was the main task of early frontend work:</span></p>
+<p class="reveal"><span lang="id"><b>What is image slicing?</b></span><span lang="en"><b>What is image slicing?</b></span></p>
+<p class="reveal"><span lang="id">A designer creates a page layout in Photoshop → the frontend developer slices the design into small images → uses HTML to piece the images together into a page</span><span lang="en">A designer creates a page layout in Photoshop → the frontend developer slices the design into small images → uses HTML to piece the images together into a page</span></p>
+<p class="reveal"><span lang="id"><b>Why was it so slow?</b></span><span lang="en"><b>Why was it so slow?</b></span></p>
+<p class="reveal"><span lang="id">Every small image on a web page required a separate <b>network request</b> from the browser. More requests meant slower loading.</span><span lang="en">Every small image on a web page required a separate <b>network request</b> from the browser. More requests meant slower loading.</span></p>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>: Observe how image requests affect loading performance</span><span lang="en">👇 <b>Try it yourself</b>: Observe how image requests affect loading performance</span></p>
+<p class="reveal"><span lang="id"><SliceRequestDemo /></span><span lang="en"><SliceRequestDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">To reduce the number of requests, the "CSS sprite" technique emerged: combining many small images into one large image.
+
+The advantage was fewer requests; the downside was that creating and maintaining them was a hassle.
+
+The lesson from this phase: <b>too many requests is the enemy of performance</b>.</span><span lang="en">To reduce the number of requests, the "CSS sprite" technique emerged: combining many small images into one large image.
+
+The advantage was fewer requests; the downside was that creating and maintaining them was a hassle.
+
+The lesson from this phase: <b>too many requests is the enemy of performance</b>.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Phase 2: The jQuery Era — "Manual Labor" (2010s)</span><span lang="en">3. Phase 2: The jQuery Era — "Manual Labor" (2010s)</span></h2>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Why was jQuery needed? What problems did it solve, and what new problems did it create?</b> Understanding jQuery's limitations helps you appreciate the value of Vue/React.</span><span lang="en"><b>Why was jQuery needed? What problems did it solve, and what new problems did it create?</b> Understanding jQuery's limitations helps you appreciate the value of Vue/React.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Motivation for jQuerying Needed</span><span lang="en">3.1 Motivation for jQuerying Needed</span></h3>
+<p class="reveal"><span lang="id">As web pages grew more complex, the problems of vanilla JavaScript became apparent:</span><span lang="en">As web pages grew more complex, the problems of vanilla JavaScript became apparent:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">❌ <b>Verbose APIs</b>: Simple operations required lots of code</span><span lang="en">❌ <b>Verbose APIs</b>: Simple operations required lots of code</span></li>
+<li><span lang="id">❌ <b>Browser compatibility</b>: Different browsers had different APIs, requiring lots of compatibility code</span><span lang="en">❌ <b>Browser compatibility</b>: Different browsers had different APIs, requiring lots of compatibility code</span></li>
+<li><span lang="id">❌ <b>Weak selectors</b>: Finding elements was cumbersome</span><span lang="en">❌ <b>Weak selectors</b>: Finding elements was cumbersome</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>jQuery</b> was born. It made JavaScript simpler:</span><span lang="en"><b>jQuery</b> was born. It made JavaScript simpler:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Vanilla JavaScript (verbose)
+const element = document.getElementById(&#039;title&#039;)
+
+// jQuery (concise)
+const element = $(&#039;#title&#039;)</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 jQuery's Approach: Manually Modifying the Page</span><span lang="en">3.2 jQuery's Approach: Manually Modifying the Page</span></h3>
+<p class="reveal"><span lang="id">jQuery's core approach is <b>imperative</b>: you tell the browser "how to do it."</span><span lang="en">jQuery's core approach is <b>imperative</b>: you tell the browser "how to do it."</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Find the title element
+$(&#039;#title&#039;).text(&#039;New Title&#039;)
+
+// Find the button and disable it
+$(&#039;#submit-btn&#039;).attr(&#039;disabled&#039;, true)
+
+// Find the list and add an item
+$(&#039;ul&#039;).append(&#039;&lt;li&gt;New Item&lt;/li&gt;&#039;)</pre>
+</div>
+<p class="reveal"><span lang="id"><b>The problem</b>: You need to remember every element on the page, and every time data changes, you must manually update all related elements.</span><span lang="en"><b>The problem</b>: You need to remember every element on the page, and every time data changes, you must manually update all related elements.</span></p>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>: Compare jQuery and data-driven approaches</span><span lang="en">👇 <b>Try it yourself</b>: Compare jQuery and data-driven approaches</span></p>
+<p class="reveal"><span lang="id"><JQueryVsStateDemo /></span><span lang="en"><JQueryVsStateDemo /></span></p>
+
+<div class="callout warn reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div>
+  <p><span lang="id">Imagine you're building a shopping cart:
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+// User clicks "Add to Cart"
+function addToCart() {
+  cartCount++ // Data changes
+
+  // You have to manually update every related spot
+  $('#cart-count').text(cartCount) // Top-right badge
+  $('#cart-page-count').text(cartCount) // Cart page
+  $('#checkout-price').text(calculatePrice()) // Checkout button
+
+  // If you miss one spot, the page becomes inconsistent!
+}
+</code>``
+
+<b>This is the cost of "manual labor"</b>: error-prone and hard to maintain.</span><span lang="en">Imagine you're building a shopping cart:
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+// User clicks "Add to Cart"
+function addToCart() {
+  cartCount++ // Data changes
+
+  // You have to manually update every related spot
+  $('#cart-count').text(cartCount) // Top-right badge
+  $('#cart-page-count').text(cartCount) // Cart page
+  $('#checkout-price').text(calculatePrice()) // Checkout button
+
+  // If you miss one spot, the page becomes inconsistent!
+}
+</code>``
+
+<b>This is the cost of "manual labor"</b>: error-prone and hard to maintain.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 The Rise of Mobile: Responsive Design Emerges</span><span lang="en">3.3 The Rise of Mobile: Responsive Design Emerges</span></h3>
+<p class="reveal"><span lang="id">Another major shift in this phase: <b>phones and tablets became mainstream</b>.</span><span lang="en">Another major shift in this phase: <b>phones and tablets became mainstream</b>.</span></p>
+<p class="reveal"><span lang="id">Web pages had to adapt to different screens. This required <b>responsive layout</b>: the same HTML/CSS automatically adjusts layout based on screen width.</span><span lang="en">Web pages had to adapt to different screens. This required <b>responsive layout</b>: the same HTML/CSS automatically adjusts layout based on screen width.</span></p>
+<p class="reveal"><span lang="id"><b>The core of responsive layout: Media Queries</b></span><span lang="en"><b>The core of responsive layout: Media Queries</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>css</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>/* Desktop screens (wider than 640px) */
+@media (min-width: 640px) {
+  .container {
+    display: flex;
+  }
+}
+
+/* Mobile screens (narrower than 640px) */
+@media (max-width: 640px) {
+  .container {
+    display: block;
+  }
+}</pre>
+</div>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>: Resize your browser and observe responsive layout in action</span><span lang="en">👇 <b>Try it yourself</b>: Resize your browser and observe responsive layout in action</span></p>
+<p class="reveal"><span lang="id"><ResponsiveGridDemo /></span><span lang="en"><ResponsiveGridDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Imagine viewing the same photo in different rooms:
+
+- In a <b>large living room</b> (desktop screen), the photo can be displayed larger, with room for other decorations
+- In a <b>small bedroom</b> (phone screen), the photo needs to be smaller, and other decorations need to be put away
+
+<b>Responsive layout</b> is the "smart picture frame" that automatically adjusts how things are displayed based on the room size.</span><span lang="en">Imagine viewing the same photo in different rooms:
+
+- In a <b>large living room</b> (desktop screen), the photo can be displayed larger, with room for other decorations
+- In a <b>small bedroom</b> (phone screen), the photo needs to be smaller, and other decorations need to be put away
+
+<b>Responsive layout</b> is the "smart picture frame" that automatically adjusts how things are displayed based on the room size.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Phase 3: From "Manual Labor" to "Data-Driven" (Vue/React)</span><span lang="en">4. Phase 3: From "Manual Labor" to "Data-Driven" (Vue/React)</span></h2>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Why do we need Vue/React? What is the essential difference between them and jQuery?</b> Understanding "declarative" and "data-driven" is key to mastering modern frontend frameworks.</span><span lang="en"><b>Why do we need Vue/React? What is the essential difference between them and jQuery?</b> Understanding "declarative" and "data-driven" is key to mastering modern frontend frameworks.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Motivation for needing New Frameworks</span><span lang="en">4.1 Motivation for needing New Frameworks</span></h3>
+<p class="reveal"><span lang="id">The problems of the jQuery era accumulated to a tipping point:</span><span lang="en">The problems of the jQuery era accumulated to a tipping point:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Code becomes messy as it grows</b>: DOM operations everywhere, hard to maintain</span><span lang="en"><b>Code becomes messy as it grows</b>: DOM operations everywhere, hard to maintain</span></li>
+<li><span lang="id"><b>Prone to bugs</b>: Miss one update and the page becomes inconsistent</span><span lang="en"><b>Prone to bugs</b>: Miss one update and the page becomes inconsistent</span></li>
+<li><span lang="id"><b>Difficult collaboration</b>: Multiple people editing the same file leads to conflicts</span><span lang="en"><b>Difficult collaboration</b>: Multiple people editing the same file leads to conflicts</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Vue / React</b>'s core approach: <b>just change the data, and the page updates automatically</b>.</span><span lang="en"><b>Vue / React</b>'s core approach: <b>just change the data, and the page updates automatically</b>.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Vue/React's Approach: Declarative UI</span><span lang="en">4.2 Vue/React's Approach: Declarative UI</span></h3>
+<p class="reveal"><span lang="id"><b>jQuery (Imperative)</b>:</span><span lang="en"><b>jQuery (Imperative)</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// You tell the browser every step to take
+$(&#039;#title&#039;).text(&#039;New Title&#039;)
+$(&#039;#title&#039;).css(&#039;color&#039;, &#039;red&#039;)
+$(&#039;#title&#039;).show()</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Vue (Declarative)</b>:</span><span lang="en"><b>Vue (Declarative)</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// You just tell the browser &quot;what to display&quot;
+data() {
+  return {
+    title: &quot;New Title&quot;,
+    color: &quot;red&quot;,
+    visible: true
+  }
+}</pre>
+</div>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>: Compare imperative and declarative approaches</span><span lang="en">👇 <b>Try it yourself</b>: Compare imperative and declarative approaches</span></p>
+<p class="reveal"><span lang="id"><ImperativeVsDeclarativeDemo /></span><span lang="en"><ImperativeVsDeclarativeDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">It's like painting a picture:
+
+- <b>Imperative</b>: You tell the painter "pick up the brush, dip it in red paint, draw a circle at coordinates (10, 10)"
+- <b>Declarative</b>: You hand the painter a photo and say "paint it like this"
+
+Vue/React is "declarative": you describe "what the page should look like," and the framework handles "how to draw it."</span><span lang="en">It's like painting a picture:
+
+- <b>Imperative</b>: You tell the painter "pick up the brush, dip it in red paint, draw a circle at coordinates (10, 10)"
+- <b>Declarative</b>: You hand the painter a photo and say "paint it like this"
+
+Vue/React is "declarative": you describe "what the page should look like," and the framework handles "how to draw it."</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 Component-Based Development: Building Pages Like LEGO</span><span lang="en">4.3 Component-Based Development: Building Pages Like LEGO</span></h3>
+<p class="reveal"><span lang="id"><b>Vue / React</b>'s most powerful feature is <b>component-based development</b>: breaking the page into independent "building blocks."</span><span lang="en"><b>Vue / React</b>'s most powerful feature is <b>component-based development</b>: breaking the page into independent "building blocks."</span></p>
+<p class="reveal"><span lang="id">Imagine you're building with LEGO:</span><span lang="en">Imagine you're building with LEGO:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">You don't need to "carve every block from scratch" (write HTML/CSS from scratch)</span><span lang="en">You don't need to "carve every block from scratch" (write HTML/CSS from scratch)</span></li>
+<li><span lang="id">You just need to "assemble the blocks following the instructions" (combine components together)</span><span lang="en">You just need to "assemble the blocks following the instructions" (combine components together)</span></li>
+<li><span lang="id">Each block is <b>independent</b> and can be <b>reused</b> across different sets</span><span lang="en">Each block is <b>independent</b> and can be <b>reused</b> across different sets</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Benefits of components</b>:</span><span lang="en"><b>Benefits of components</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Reusability</b>: Write one "Product Card" component and use it 100 times</span><span lang="en"><b>Reusability</b>: Write one "Product Card" component and use it 100 times</span></li>
+<li><span lang="id"><b>Encapsulation</b>: Internal state of a component doesn't affect others</span><span lang="en"><b>Encapsulation</b>: Internal state of a component doesn't affect others</span></li>
+<li><span lang="id"><b>Maintainability</b>: Modify a component, and every place that uses it updates</span><span lang="en"><b>Maintainability</b>: Modify a component, and every place that uses it updates</span></li>
+</ul>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><ComponentName /></code> → This is a component
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">import xxx from './xxx.vue'</code> → Importing a component
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">props: {...}</code> → Parameters the component receives
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">emit('xxx')</code> → Component sending an event to its parent</span><span lang="en">- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><ComponentName /></code> → This is a component
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">import xxx from './xxx.vue'</code> → Importing a component
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">props: {...}</code> → Parameters the component receives
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">emit('xxx')</code> → Component sending an event to its parent</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.4 SPA: The Birth of Single-Page Applications</span><span lang="en">4.4 SPA: The Birth of Single-Page Applications</span></h3>
+<p class="reveal"><span lang="id">The <b>Vue / React</b> era brought another major shift: <b>from MPA to SPA</b>.</span><span lang="en">The <b>Vue / React</b> era brought another major shift: <b>from MPA to SPA</b>.</span></p>
+<p class="reveal"><span lang="id"><b>MPA (Multi-Page Application)</b>:</span><span lang="en"><b>MPA (Multi-Page Application)</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Click a link → full page refresh → see the new page</span><span lang="en">Click a link → full page refresh → see the new page</span></li>
+<li><span lang="id">Like <b>flipping through a book</b>: each time you turn a page, you close the old book and fetch a new one from the shelf</span><span lang="en">Like <b>flipping through a book</b>: each time you turn a page, you close the old book and fetch a new one from the shelf</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>SPA (Single-Page Application)</b>:</span><span lang="en"><b>SPA (Single-Page Application)</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Click a link → only the content area refreshes → the page itself doesn't reload</span><span lang="en">Click a link → only the content area refreshes → the page itself doesn't reload</span></li>
+<li><span lang="id">Like <b>switching chapters in the same book</b>: only erase the old content and write in the new</span><span lang="en">Like <b>switching chapters in the same book</b>: only erase the old content and write in the new</span></li>
+</ul>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>: Experience the difference between MPA and SPA</span><span lang="en">👇 <b>Try it yourself</b>: Experience the difference between MPA and SPA</span></p>
+<p class="reveal"><span lang="id"><RoutingModeDemo /></span><span lang="en"><RoutingModeDemo /></span></p>
+<p class="reveal"><span lang="id"><b>SPA advantages</b>:</span><span lang="en"><b>SPA advantages</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ <b>Smooth experience</b>: Fast page transitions</span><span lang="en">✅ <b>Smooth experience</b>: Fast page transitions</span></li>
+<li><span lang="id">✅ <b>Easy state management</b>: Form inputs and scroll positions are preserved</span><span lang="en">✅ <b>Easy state management</b>: Form inputs and scroll positions are preserved</span></li>
+<li><span lang="id">❌ <b>Initial load may be slow</b>: JavaScript must be downloaded first</span><span lang="en">❌ <b>Initial load may be slow</b>: JavaScript must be downloaded first</span></li>
+<li><span lang="id">❌ <b>SEO requires extra handling</b>: Search engines may not index content (needs SSR/SSG)</span><span lang="en">❌ <b>SEO requires extra handling</b>: Search engines may not index content (needs SSR/SSG)</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Rendering Strategies: From CSR to SSR/SSG</span><span lang="en">5. Rendering Strategies: From CSR to SSR/SSG</span></h2>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Is the page generated on the server or in the browser?</b> Different rendering strategies have different trade-offs — choosing the right one is critical for performance and SEO.</span><span lang="en"><b>Is the page generated on the server or in the browser?</b> Different rendering strategies have different trade-offs — choosing the right one is critical for performance and SEO.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>CSR (Client-Side Rendering)</b>:</span><span lang="en"><b>CSR (Client-Side Rendering)</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Browser downloads JavaScript → executes code → generates the page</span><span lang="en">Browser downloads JavaScript → executes code → generates the page</span></li>
+<li><span lang="id">Pros: Smooth interactions, low server load</span><span lang="en">Pros: Smooth interactions, low server load</span></li>
+<li><span lang="id">Cons: Slow initial load, poor for SEO</span><span lang="en">Cons: Slow initial load, poor for SEO</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>SSR (Server-Side Rendering)</b>:</span><span lang="en"><b>SSR (Server-Side Rendering)</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Server generates HTML → sends to browser → browser displays directly</span><span lang="en">Server generates HTML → sends to browser → browser displays directly</span></li>
+<li><span lang="id">Pros: Fast initial load, good for SEO</span><span lang="en">Pros: Fast initial load, good for SEO</span></li>
+<li><span lang="id">Cons: High server load, complex implementation</span><span lang="en">Cons: High server load, complex implementation</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>SSG (Static Site Generation)</b>:</span><span lang="en"><b>SSG (Static Site Generation)</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Generates HTML for all pages at build time</span><span lang="en">Generates HTML for all pages at build time</span></li>
+<li><span lang="id">Pros: Extremely fast, fully static, CDN-friendly</span><span lang="en">Pros: Extremely fast, fully static, CDN-friendly</span></li>
+<li><span lang="id">Cons: Not suitable for dynamic content</span><span lang="en">Cons: Not suitable for dynamic content</span></li>
+</ul>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>: Compare the characteristics of different rendering strategies</span><span lang="en">👇 <b>Try it yourself</b>: Compare the characteristics of different rendering strategies</span></p>
+<p class="reveal"><span lang="id"><RenderingStrategyDemo /></span><span lang="en"><RenderingStrategyDemo /></span></p>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">- <b>Content sites</b> (blogs, documentation): Prefer SSG
+- <b>Dynamic sites needing SEO</b> (e-commerce, news): Use SSR
+- <b>Admin dashboards</b>: Use CSR
+- <b>Mixed requirements</b>: Consider hybrid rendering with Nuxt/Next.js</span><span lang="en">- <b>Content sites</b> (blogs, documentation): Prefer SSG
+- <b>Dynamic sites needing SEO</b> (e-commerce, news): Use SSR
+- <b>Admin dashboards</b>: Use CSR
+- <b>Mixed requirements</b>: Consider hybrid rendering with Nuxt/Next.js</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Phase 4: Engineering and Build Tools (2015s–2020s)</span><span lang="en">6. Phase 4: Engineering and Build Tools (2015s–2020s)</span></h2>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Why does frontend need "engineering"? What do build tools actually do?</b> Understanding engineering helps you grasp the workflow of modern frontend projects.</span><span lang="en"><b>Why does frontend need "engineering"? What do build tools actually do?</b> Understanding engineering helps you grasp the workflow of modern frontend projects.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Motivation for needing "Engineering"</span><span lang="en">6.1 Motivation for needing "Engineering"</span></h3>
+<p class="reveal"><span lang="id">Frontend projects have grown too large to rely on "manually including scripts."</span><span lang="en">Frontend projects have grown too large to rely on "manually including scripts."</span></p>
+<p class="reveal"><span lang="id"><b>Engineering</b> means using tools and standards to make development more efficient, code more reliable, and collaboration smoother.</span><span lang="en"><b>Engineering</b> means using tools and standards to make development more efficient, code more reliable, and collaboration smoother.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Imagine cooking at home vs. running a restaurant:
+
+- <b>Cooking at home</b>: Cook whatever you want, very free-form
+- <b>Running a restaurant</b>: Requires standardized recipes, standardized procedures, unified ingredient sourcing
+
+Frontend development is the same:
+
+- <b>Small projects</b>: Write however you like
+- <b>Large projects</b>: Need unified code standards, automated tools, standardized processes</span><span lang="en">Imagine cooking at home vs. running a restaurant:
+
+- <b>Cooking at home</b>: Cook whatever you want, very free-form
+- <b>Running a restaurant</b>: Requires standardized recipes, standardized procedures, unified ingredient sourcing
+
+Frontend development is the same:
+
+- <b>Small projects</b>: Write however you like
+- <b>Large projects</b>: Need unified code standards, automated tools, standardized processes</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 Build Tools: Webpack → Vite</span><span lang="en">6.2 Build Tools: Webpack → Vite</span></h3>
+<p class="reveal"><span lang="id"><b>Webpack</b> (Traditional):</span><span lang="en"><b>Webpack</b> (Traditional):</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">How it works: <b>bundle first, then serve</b></span><span lang="en">How it works: <b>bundle first, then serve</b></span></li>
+<li><span lang="id">On startup: bundle all code → start the dev server</span><span lang="en">On startup: bundle all code → start the dev server</span></li>
+<li><span lang="id">Problem: <b>slow</b>. The bigger the project, the slower the startup (can take 30+ seconds)</span><span lang="en">Problem: <b>slow</b>. The bigger the project, the slower the startup (can take 30+ seconds)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Vite</b> (Modern):</span><span lang="en"><b>Vite</b> (Modern):</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">How it works: <b>compile on demand</b></span><span lang="en">How it works: <b>compile on demand</b></span></li>
+<li><span lang="id">On startup: no bundling, start the dev server directly</span><span lang="en">On startup: no bundling, start the dev server directly</span></li>
+<li><span lang="id">When the browser requests a file, compile it in real time</span><span lang="en">When the browser requests a file, compile it in real time</span></li>
+<li><span lang="id">Advantage: <b>fast</b>. Typically starts in under 1 second</span><span lang="en">Advantage: <b>fast</b>. Typically starts in under 1 second</span></li>
+</ul>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Comparison</th><th>Webpack</th><th>Vite</th><th>Improvement</th></tr>
+<tr><td>Cold start</td><td>30s+</td><td><1s</td><td><b>30x faster</b></td></tr>
+<tr><td>Hot reload</td><td>3–5s</td><td><100ms</td><td><b>30x faster</b></td></tr>
+<tr><td>Config file</td><td>Hundreds of lines</td><td>Dozens of lines</td><td><b>Drastically simplified</b></td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Webpack</b> is like <b>moving house with everything packed</b>: bundle everything first, then head out.
+
+<b>Vite</b> is like <b>traveling light</b>: only bring the essentials, buy what you need along the way.
+
+In development, most of the time you're only modifying a few files. Vite only compiles those files — of course it's fast.</span><span lang="en"><b>Webpack</b> is like <b>moving house with everything packed</b>: bundle everything first, then head out.
+
+<b>Vite</b> is like <b>traveling light</b>: only bring the essentials, buy what you need along the way.
+
+In development, most of the time you're only modifying a few files. Vite only compiles those files — of course it's fast.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Comparing Mainstream Frameworks</span><span lang="en">7. Comparing Mainstream Frameworks</span></h2>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>What are the characteristics of Vue, React, Svelte, and Angular? How do you choose the right framework?</b> Understanding their design philosophies and use cases helps you make informed decisions.</span><span lang="en"><b>What are the characteristics of Vue, React, Svelte, and Angular? How do you choose the right framework?</b> Understanding their design philosophies and use cases helps you make informed decisions.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.1 Four-Framework Comparison</span><span lang="en">7.1 Four-Framework Comparison</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Feature</th><th>Vue</th><th>React</th><th>Svelte</th><th>Angular</th></tr>
+<tr><td><b>Design Philosophy</b></td><td>Progressive framework</td><td>UI library</td><td>Compile-time framework</td><td>Complete platform</td></tr>
+<tr><td><b>Learning Curve</b></td><td>⭐⭐ Easy</td><td>⭐⭐⭐ Moderate</td><td>⭐⭐ Easy</td><td>⭐⭐⭐⭐ Steep</td></tr>
+<tr><td><b>Performance</b></td><td>Fast</td><td>Fast</td><td><b>Extremely fast</b></td><td>Fast</td></tr>
+<tr><td><b>Ecosystem</b></td><td>Mature</td><td><b>Most mature</b></td><td>Growing</td><td>Mature</td></tr>
+<tr><td><b>Bundle Size</b></td><td>Small</td><td>Medium</td><td><b>Smallest</b></td><td>Large</td></tr>
+<tr><td><b>Best For</b></td><td>Small-to-medium projects</td><td>Large projects</td><td>Performance-critical</td><td>Enterprise applications</td></tr>
+<tr><td><b>Backed By</b></td><td>Evan You (Independent)</td><td>Meta</td><td>Community</td><td>Google</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.2 Vue: Progressive Framework</span><span lang="en">7.2 Vue: Progressive Framework</span></h3>
+<p class="reveal"><span lang="id"><b>Core philosophy</b>: Adopt incrementally — use just a part or the full suite</span><span lang="en"><b>Core philosophy</b>: Adopt incrementally — use just a part or the full suite</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>vue</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;template&gt;
+  &lt;div&gt;{{ message }}&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      message: &#039;Hello Vue&#039;
+    }
+  }
+}
+&lt;/script&gt;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Pros</b>:</span><span lang="en"><b>Pros</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ Gentle learning curve, excellent Chinese documentation</span><span lang="en">✅ Gentle learning curve, excellent Chinese documentation</span></li>
+<li><span lang="id">✅ Intuitive template syntax, easy to understand</span><span lang="en">✅ Intuitive template syntax, easy to understand</span></li>
+<li><span lang="id">✅ Single-file components (.vue) with clear structure</span><span lang="en">✅ Single-file components (.vue) with clear structure</span></li>
+<li><span lang="id">✅ Great for rapid development</span><span lang="en">✅ Great for rapid development</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Cons</b>:</span><span lang="en"><b>Cons</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">❌ State management in large projects requires learning Vuex/Pinia</span><span lang="en">❌ State management in large projects requires learning Vuex/Pinia</span></li>
+<li><span lang="id">❌ Slightly less flexible than React</span><span lang="en">❌ Slightly less flexible than React</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Best for</b>:</span><span lang="en"><b>Best for</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Small-to-medium web applications</span><span lang="en">Small-to-medium web applications</span></li>
+<li><span lang="id">Rapid prototyping</span><span lang="en">Rapid prototyping</span></li>
+<li><span lang="id">Chinese-speaking teams (documentation-friendly)</span><span lang="en">Chinese-speaking teams (documentation-friendly)</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.3 React: UI Library</span><span lang="en">7.3 React: UI Library</span></h3>
+<p class="reveal"><span lang="id"><b>Core philosophy</b>: Focus only on the view layer; everything else is left to the community</span><span lang="en"><b>Core philosophy</b>: Focus only on the view layer; everything else is left to the community</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>jsx</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>function App() {
+  const [message, setMessage] = useState(&#039;Hello React&#039;)
+  return &lt;div&gt;{message}&lt;/div&gt;
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Pros</b>:</span><span lang="en"><b>Pros</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ Most mature ecosystem, rich component libraries</span><span lang="en">✅ Most mature ecosystem, rich component libraries</span></li>
+<li><span lang="id">✅ Flexible JSX syntax, powerful expressiveness</span><span lang="en">✅ Flexible JSX syntax, powerful expressiveness</span></li>
+<li><span lang="id">✅ Excellent virtual DOM performance</span><span lang="en">✅ Excellent virtual DOM performance</span></li>
+<li><span lang="id">✅ Great for large projects</span><span lang="en">✅ Great for large projects</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Cons</b>:</span><span lang="en"><b>Cons</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">❌ Steeper learning curve, requires grasping additional concepts</span><span lang="en">❌ Steeper learning curve, requires grasping additional concepts</span></li>
+<li><span lang="id">❌ Need to choose and combine various libraries yourself</span><span lang="en">❌ Need to choose and combine various libraries yourself</span></li>
+<li><span lang="id">❌ JSX requires compilation, can't run directly in the browser</span><span lang="en">❌ JSX requires compilation, can't run directly in the browser</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Best for</b>:</span><span lang="en"><b>Best for</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Large, complex applications</span><span lang="en">Large, complex applications</span></li>
+<li><span lang="id">Projects needing a rich ecosystem</span><span lang="en">Projects needing a rich ecosystem</span></li>
+<li><span lang="id">Cross-platform development (React Native)</span><span lang="en">Cross-platform development (React Native)</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.4 Svelte: Compile-Time Framework</span><span lang="en">7.4 Svelte: Compile-Time Framework</span></h3>
+<p class="reveal"><span lang="id"><b>Core philosophy</b>: No virtual DOM — compiles components into efficient native code at build time</span><span lang="en"><b>Core philosophy</b>: No virtual DOM — compiles components into efficient native code at build time</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>svelte</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;script&gt;
+  let message = &#039;Hello Svelte&#039;
+&lt;/script&gt;
+
+&lt;div&gt;{message}&lt;/div&gt;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Pros</b>:</span><span lang="en"><b>Pros</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ <b>Best performance</b> (no virtual DOM runtime overhead)</span><span lang="en">✅ <b>Best performance</b> (no virtual DOM runtime overhead)</span></li>
+<li><span lang="id">✅ Smallest bundle size</span><span lang="en">✅ Smallest bundle size</span></li>
+<li><span lang="id">✅ Simple and intuitive syntax</span><span lang="en">✅ Simple and intuitive syntax</span></li>
+<li><span lang="id">✅ Built-in reactive system</span><span lang="en">✅ Built-in reactive system</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Cons</b>:</span><span lang="en"><b>Cons</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">❌ Relatively smaller ecosystem</span><span lang="en">❌ Relatively smaller ecosystem</span></li>
+<li><span lang="id">❌ Community smaller than Vue/React</span><span lang="en">❌ Community smaller than Vue/React</span></li>
+<li><span lang="id">❌ Fewer third-party libraries</span><span lang="en">❌ Fewer third-party libraries</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Best for</b>:</span><span lang="en"><b>Best for</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Performance-critical applications</span><span lang="en">Performance-critical applications</span></li>
+<li><span lang="id">Bundle-size-sensitive projects</span><span lang="en">Bundle-size-sensitive projects</span></li>
+<li><span lang="id">Teams willing to try new technologies</span><span lang="en">Teams willing to try new technologies</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.5 Angular: Complete Platform</span><span lang="en">7.5 Angular: Complete Platform</span></h3>
+<p class="reveal"><span lang="id"><b>Core philosophy</b>: Provides a complete, out-of-the-box solution</span><span lang="en"><b>Core philosophy</b>: Provides a complete, out-of-the-box solution</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>typescript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>@Component({
+  selector: &#039;app-root&#039;,
+  template: &#039;&lt;div&gt;{{ message }}&lt;/div&gt;&#039;
+})
+export class AppComponent {
+  message = &#039;Hello Angular&#039;
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Pros</b>:</span><span lang="en"><b>Pros</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ Full-featured — routing, HTTP, forms all included</span><span lang="en">✅ Full-featured — routing, HTTP, forms all included</span></li>
+<li><span lang="id">✅ Native TypeScript support</span><span lang="en">✅ Native TypeScript support</span></li>
+<li><span lang="id">✅ Great for large teams and projects</span><span lang="en">✅ Great for large teams and projects</span></li>
+<li><span lang="id">✅ Consistent code standards</span><span lang="en">✅ Consistent code standards</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Cons</b>:</span><span lang="en"><b>Cons</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">❌ Steep learning curve</span><span lang="en">❌ Steep learning curve</span></li>
+<li><span lang="id">❌ Many concepts, high complexity</span><span lang="en">❌ Many concepts, high complexity</span></li>
+<li><span lang="id">❌ Large bundle size</span><span lang="en">❌ Large bundle size</span></li>
+<li><span lang="id">❌ Not suitable for small projects</span><span lang="en">❌ Not suitable for small projects</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Best for</b>:</span><span lang="en"><b>Best for</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Large enterprise applications</span><span lang="en">Large enterprise applications</span></li>
+<li><span lang="id">Teams requiring strict standards</span><span lang="en">Teams requiring strict standards</span></li>
+<li><span lang="id">Projects already on a TypeScript stack</span><span lang="en">Projects already on a TypeScript stack</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8. Summary: The Essence of Evolution</span><span lang="en">8. Summary: The Essence of Evolution</span></h2>
+<p class="reveal"><span lang="id">Frontend technology evolution is essentially about solving two problems:</span><span lang="en">Frontend technology evolution is essentially about solving two problems:</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">8.1 Efficiency: From Manual to Automatic</span><span lang="en">8.1 Efficiency: From Manual to Automatic</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Era</th><th>Development Approach</th><th>Efficiency</th></tr>
+<tr><td><b>2000s</b></td><td>Hand-written HTML/CSS/JS</td><td>⭐</td></tr>
+<tr><td><b>2010s</b></td><td>jQuery + manual DOM manipulation</td><td>⭐⭐</td></tr>
+<tr><td><b>2020s</b></td><td>Vue/React + data-driven</td><td>⭐⭐⭐</td></tr>
+<tr><td><b>Today</b></td><td>Component-based + engineering + automation</td><td>⭐⭐⭐⭐⭐</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">8.2 Scale: From Individual to Team</span><span lang="en">8.2 Scale: From Individual to Team</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Era</th><th>Project Scale</th><th>Collaboration Style</th></tr>
+<tr><td><b>2000s</b></td><td>A few files</td><td>One person can maintain</td></tr>
+<tr><td><b>2010s</b></td><td>Dozens of files</td><td>Small team, prone to conflicts</td></tr>
+<tr><td><b>2020s</b></td><td>Hundreds of files</td><td>Medium team, needs standards</td></tr>
+<tr><td><b>Today</b></td><td>Thousands of files</td><td>Large team, needs full engineering system</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">9. Learning Roadmap</span><span lang="en">9. Learning Roadmap</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">9.1 If You're a Complete Beginner</span><span lang="en">9.1 If You're a Complete Beginner</span></h3>
+<p class="reveal"><span lang="id"><b>Step 1: HTML/CSS/JavaScript Fundamentals</b></span><span lang="en"><b>Step 1: HTML/CSS/JavaScript Fundamentals</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Understand the three pillars of the web</span><span lang="en">Understand the three pillars of the web</span></li>
+<li><span lang="id">Be able to write simple static pages</span><span lang="en">Be able to write simple static pages</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Step 2: Learn a Framework (Vue Recommended)</b></span><span lang="en"><b>Step 2: Learn a Framework (Vue Recommended)</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Understand the "data-driven" mindset</span><span lang="en">Understand the "data-driven" mindset</span></li>
+<li><span lang="id">Master component-based development</span><span lang="en">Master component-based development</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Step 3: Build a Real Project</b></span><span lang="en"><b>Step 3: Build a Real Project</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Create a complete single-page application</span><span lang="en">Create a complete single-page application</span></li>
+<li><span lang="id">Get familiar with routing, state management, and API calls</span><span lang="en">Get familiar with routing, state management, and API calls</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">9.2 If You Have Some Experience</span><span lang="en">9.2 If You Have Some Experience</span></h3>
+<p class="reveal"><span lang="id"><b>Advanced directions</b>:</span><span lang="en"><b>Advanced directions</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Engineering</b>: Learn Vite/Webpack, understand the build process</span><span lang="en"><b>Engineering</b>: Learn Vite/Webpack, understand the build process</span></li>
+<li><span lang="id"><b>Performance Optimization</b>: Learn lazy loading, code splitting, caching strategies</span><span lang="en"><b>Performance Optimization</b>: Learn lazy loading, code splitting, caching strategies</span></li>
+<li><span lang="id"><b>TypeScript</b>: Add types to your code for greater reliability</span><span lang="en"><b>TypeScript</b>: Add types to your code for greater reliability</span></li>
+<li><span lang="id"><b>Server-Side Rendering</b>: Learn Nuxt/Next.js to solve SEO and initial-load issues</span><span lang="en"><b>Server-Side Rendering</b>: Learn Nuxt/Next.js to solve SEO and initial-load issues</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">10. What You Should Now Be Able to Recognize</span><span lang="en">10. What You Should Now Be Able to Recognize</span></h2>
+<p class="reveal"><span lang="id">After reading this chapter, you should be able to:</span><span lang="en">After reading this chapter, you should be able to:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ Understand the trajectory and reasons behind frontend technology evolution</span><span lang="en">✅ Understand the trajectory and reasons behind frontend technology evolution</span></li>
+<li><span lang="id">✅ Distinguish the characteristics of Vue, React, Svelte, and Angular</span><span lang="en">✅ Distinguish the characteristics of Vue, React, Svelte, and Angular</span></li>
+<li><span lang="id">✅ Understand the difference between "imperative" and "declarative"</span><span lang="en">✅ Understand the difference between "imperative" and "declarative"</span></li>
+<li><span lang="id">✅ Grasp the core idea of "data-driven" development</span><span lang="en">✅ Grasp the core idea of "data-driven" development</span></li>
+<li><span lang="id">✅ Know the value of component-based development</span><span lang="en">✅ Know the value of component-based development</span></li>
+<li><span lang="id">✅ Understand the use cases of CSR, SSR, and SSG</span><span lang="en">✅ Understand the use cases of CSR, SSR, and SSG</span></li>
+<li><span lang="id">✅ Understand the role of build tools (Webpack, Vite)</span><span lang="en">✅ Understand the role of build tools (Webpack, Vite)</span></li>
+<li><span lang="id">✅ Choose the right framework and tech stack for your project</span><span lang="en">✅ Choose the right framework and tech stack for your project</span></li>
+</ul>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">When using AI for your projects, you can tell it things like:
+
+- "This is a blog site that needs SEO — use Nuxt (Vue's SSR framework)"
+- "This is an admin dashboard — use Vue + Element Plus, no SSR needed"
+- "This is a performance-critical web app — consider using Svelte"
+- "The project is already on React — continue with the React ecosystem"</span><span lang="en">When using AI for your projects, you can tell it things like:
+
+- "This is a blog site that needs SEO — use Nuxt (Vue's SSR framework)"
+- "This is an admin dashboard — use Vue + Element Plus, no SSR needed"
+- "This is a performance-critical web app — consider using Svelte"
+- "The project is already on React — continue with the React ecosystem"</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Glossary</span><span lang="en">Glossary</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Term</th><th>English</th><th>Plain-English Explanation</th></tr>
+<tr><td><b>DOM</b></td><td>Document Object Model</td><td>Represents the page as an object tree, readable and writable by JS.</td></tr>
+<tr><td><b>jQuery</b></td><td>—</td><td>An early popular JS library that simplified DOM manipulation.</td></tr>
+<tr><td><b>Vue/React</b></td><td>—</td><td>Modern frontend frameworks using data-driven and component-based development.</td></tr>
+<tr><td><b>Component</b></td><td>Component</td><td>A reusable UI unit, such as a button, card, or navigation bar.</td></tr>
+<tr><td><b>MPA</b></td><td>Multi-Page Application</td><td>Each navigation reloads the entire page.</td></tr>
+<tr><td><b>SPA</b></td><td>Single-Page Application</td><td>Loads once; subsequent navigations don't refresh the page.</td></tr>
+<tr><td><b>Routing</b></td><td>Routing</td><td>The rules and process for managing navigation between pages.</td></tr>
+<tr><td><b>SSR</b></td><td>Server-Side Rendering</td><td>The server generates HTML and sends it to the browser.</td></tr>
+<tr><td><b>SSG</b></td><td>Static Site Generation</td><td>Pages are pre-rendered as static HTML at build time.</td></tr>
+<tr><td><b>CSR</b></td><td>Client-Side Rendering</td><td>The browser generates the page via JavaScript.</td></tr>
+<tr><td><b>Webpack</b></td><td>—</td><td>Traditional bundler — bundles first, then serves.</td></tr>
+<tr><td><b>Vite</b></td><td>—</td><td>Modern build tool — compiles on demand, extremely fast.</td></tr>
+<tr><td><b>Responsive</b></td><td>Responsive Design</td><td>Design that automatically adapts to different screen sizes.</td></tr>
+<tr><td><b>Media Query</b></td><td>Media Query</td><td>CSS conditional statements that apply different styles based on screen width.</td></tr>
+<tr><td><b>Imperative</b></td><td>Imperative</td><td>Telling the program "how to do it."</td></tr>
+<tr><td><b>Declarative</b></td><td>Declarative</td><td>Telling the program "what you want."</td></tr>
+<tr><td><b>Data-Driven</b></td><td>Data-Driven</td><td>Only modify the data; the UI updates automatically.</td></tr>
+<tr><td><b>Tree Shaking</b></td><td>—</td><td>Automatically removes unused code to reduce bundle size.</td></tr>
+<tr><td><b>Code Splitting</b></td><td>Code Splitting</td><td>Splitting code into smaller chunks, loaded on demand.</td></tr>
+</table></div>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../3-browser-and-frontend/frontend-framework-nature/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">3-browser-and-frontend/frontend-framework-nature</span><span lang="en">3-browser-and-frontend/frontend-framework-nature</span></b></a>
+      <a class="next" href="../../3-browser-and-frontend/frontend-project-architecture/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">3-browser-and-frontend/frontend-project-architecture</span><span lang="en">3-browser-and-frontend/frontend-project-architecture</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Membangun Mini Program WeChat Ringan — VibeKoding 💬</title>
+<meta name="description" content="Modul master Level 3 VibeKoding: Membangun Mini Program WeChat Ringan. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-3/cross-platform/wechat-miniprogram/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../stage-3/"><span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></a> / <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">💬</div>
+      <div>
+        <h1><span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul master Level 3 VibeKoding: Membangun Mini Program WeChat Ringan.</span><span lang="en">Modul master Level 3 VibeKoding: Membangun Mini Program WeChat Ringan.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">In this tutorial, we will complete a full closed loop: from an idea in your mind to a real mini program that can be searched and opened by QR code inside WeChat.</span><span lang="en">In this tutorial, we will complete a full closed loop: from an idea in your mind to a real mini program that can be searched and opened by QR code inside WeChat.</span></p>
+<p class="reveal"><span lang="id">Before we start building, we need to establish two basic understandings.</span><span lang="en">Before we start building, we need to establish two basic understandings.</span></p>
+<p class="reveal"><span lang="id">The first is <b>essence</b>: what exactly is a WeChat mini program? How is it different from a normal app or website? Why do so many products choose this format? Only when you understand the core logic can you judge whether your idea fits a mini program.</span><span lang="en">The first is <b>essence</b>: what exactly is a WeChat mini program? How is it different from a normal app or website? Why do so many products choose this format? Only when you understand the core logic can you judge whether your idea fits a mini program.</span></p>
+<p class="reveal"><span lang="id">The second is <b>path</b>: when you say "I want to build a mini program," what does the full path from zero to launch look like? What are the key nodes on that path - what to think about during ideation, how to set up environment, how AI-assisted development improves efficiency, what pitfalls appear in simulator debugging, and what test accounts vs formal release each solve. If you run through this process mentally first, you will not get lost during implementation.</span><span lang="en">The second is <b>path</b>: when you say "I want to build a mini program," what does the full path from zero to launch look like? What are the key nodes on that path - what to think about during ideation, how to set up environment, how AI-assisted development improves efficiency, what pitfalls appear in simulator debugging, and what test accounts vs formal release each solve. If you run through this process mentally first, you will not get lost during implementation.</span></p>
+<p class="reveal"><span lang="id">After these two questions are clear, we can formally enter development. Let us start with the first question: what exactly is a WeChat mini program?</span><span lang="en">After these two questions are clear, we can formally enter development. Let us start with the first question: what exactly is a WeChat mini program?</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.1 WeChat Mini Program</span><span lang="en">1.1 WeChat Mini Program</span></h2>
+<p class="reveal"><span lang="id">A WeChat mini program can be seen as an app living inside WeChat. You do not need to search in an app store, download, or install. Users can search by name in WeChat, scan a QR code, or open a shared card and use it immediately. After use, they just close it. It does not permanently occupy phone home screen or storage.</span><span lang="en">A WeChat mini program can be seen as an app living inside WeChat. You do not need to search in an app store, download, or install. Users can search by name in WeChat, scan a QR code, or open a shared card and use it immediately. After use, they just close it. It does not permanently occupy phone home screen or storage.</span></p>
+<p class="reveal"><span lang="id">For regular users, mini programs solve many "small tasks": checking delivery, ordering coffee, viewing orders, playing a quick game. Fast startup and unified entry inside WeChat are its biggest experience traits.</span><span lang="en">For regular users, mini programs solve many "small tasks": checking delivery, ordering coffee, viewing orders, playing a quick game. Fast startup and unified entry inside WeChat are its biggest experience traits.</span></p>
+<p class="reveal"><span lang="id">For companies and developers, mini programs are a searchable and shareable "small app format." As long as you register on WeChat Official Platform, complete settings, and pass review, your mini program can open to all WeChat users. Compared with traditional apps, it is easier to get the first batch of users because people are already used to doing many tasks in WeChat.</span><span lang="en">For companies and developers, mini programs are a searchable and shareable "small app format." As long as you register on WeChat Official Platform, complete settings, and pass review, your mini program can open to all WeChat users. Compared with traditional apps, it is easier to get the first batch of users because people are already used to doing many tasks in WeChat.</span></p>
+<p class="reveal"><span lang="id">In this tutorial, we will not build a complex business system. We choose a classic example: Snake game. It is small and logically clear, yet includes the complete elements a mini program should have: multiple pages, simple interactions, state changes, score recording, etc. It is perfect as your first project.</span><span lang="en">In this tutorial, we will not build a complex business system. We choose a classic example: Snake game. It is small and logically clear, yet includes the complete elements a mini program should have: multiple pages, simple interactions, state changes, score recording, etc. It is perfect as your first project.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.2 WeChat Mini Program Development</span><span lang="en">1.2 WeChat Mini Program Development</span></h2>
+<p class="reveal"><span lang="id">After understanding "what mini programs are," the next question is: what does developing one actually involve?</span><span lang="en">After understanding "what mini programs are," the next question is: what does developing one actually involve?</span></p>
+<p class="reveal"><span lang="id">You need a clear goal (for example, a Snake game users can play anytime), design the interface users will see, define what should happen under different actions, and finally publish it.</span><span lang="en">You need a clear goal (for example, a Snake game users can play anytime), design the interface users will see, define what should happen under different actions, and finally publish it.</span></p>
+<p class="reveal"><span lang="id">In traditional development, programmers usually lead all these steps and write a lot of code. In AI-assisted development, this can be split more clearly: you explain what you want, and AI helps with most implementation details. That means for beginners, the most important skill is no longer memorizing syntax, but clearly describing requirements and understanding AI output.</span><span lang="en">In traditional development, programmers usually lead all these steps and write a lot of code. In AI-assisted development, this can be split more clearly: you explain what you want, and AI helps with most implementation details. That means for beginners, the most important skill is no longer memorizing syntax, but clearly describing requirements and understanding AI output.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.3 Several Ways to Develop WeChat Mini Programs</span><span lang="en">1.3 Several Ways to Develop WeChat Mini Programs</span></h2>
+<p class="reveal"><span lang="id">In real projects, people use different technical routes. To avoid overwhelming you with terms at the beginning, we will only do a rough classification so you understand the common paths.</span><span lang="en">In real projects, people use different technical routes. To avoid overwhelming you with terms at the beginning, we will only do a rough classification so you understand the common paths.</span></p>
+<p class="reveal"><span lang="id">The first way is using official native capabilities directly. After creating a project in WeChat DevTools, you will see a fixed set of file types used to describe page structure, styles, and logic. This way stays close to official docs and gives strong control, but for first-time frontend learners, the learning curve is a bit steeper.</span><span lang="en">The first way is using official native capabilities directly. After creating a project in WeChat DevTools, you will see a fixed set of file types used to describe page structure, styles, and logic. This way stays close to official docs and gives strong control, but for first-time frontend learners, the learning curve is a bit steeper.</span></p>
+<p class="reveal"><span lang="id">The second way is using cross-end frameworks, such as uni-app. You mainly write web-like code locally (for example <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.vue</code> files), and the framework converts this code to formats WeChat mini programs can run. The advantage is unified structure. If you later publish to other platforms (such as H5 or App), changes are relatively smaller.</span><span lang="en">The second way is using cross-end frameworks, such as uni-app. You mainly write web-like code locally (for example <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.vue</code> files), and the framework converts this code to formats WeChat mini programs can run. The advantage is unified structure. If you later publish to other platforms (such as H5 or App), changes are relatively smaller.</span></p>
+<p class="reveal"><span lang="id">Based on these two methods, this tutorial focuses on mini program SOP using AI-assisted tools. For example, open the whole project in Trae and tell built-in AI directly: "Please add a homepage with title and button in this file" or "Please create a game page that shows snake and score." AI will generate new code snippets or modify/refactor existing code based on current project context.</span><span lang="en">Based on these two methods, this tutorial focuses on mini program SOP using AI-assisted tools. For example, open the whole project in Trae and tell built-in AI directly: "Please add a homepage with title and button in this file" or "Please create a game page that shows snake and score." AI will generate new code snippets or modify/refactor existing code based on current project context.</span></p>
+<p class="reveal"><span lang="id">These three ways are not mutually exclusive. You can absolutely build in a uni-app project while using Trae AI for most coding work. The key is not picking one method, but knowing where you are now and what tools are available.</span><span lang="en">These three ways are not mutually exclusive. You can absolutely build in a uni-app project while using Trae AI for most coding work. The key is not picking one method, but knowing where you are now and what tools are available.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.4 WeChat Mini Program Steps Covered in This Article (High-level Preview)</span><span lang="en">1.4 WeChat Mini Program Steps Covered in This Article (High-level Preview)</span></h2>
+<p class="reveal"><span lang="id">This tutorial follows a rhythm from <b>environment to final product</b>. Around the Snake example and Trae vibecoding style, we split the process into a reusable route. In later chapters, you will go through these stages:</span><span lang="en">This tutorial follows a rhythm from <b>environment to final product</b>. Around the Snake example and Trae vibecoding style, we split the process into a reusable route. In later chapters, you will go through these stages:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Build conceptual foundation: understand what mini programs are, what common development methods exist, and who this Snake mini program is for and in what scenarios it is used.</span><span lang="en">Build conceptual foundation: understand what mini programs are, what common development methods exist, and who this Snake mini program is for and in what scenarios it is used.</span></li>
+<li><span lang="id">Prepare environment: register mini program account, install HBuilderX, Trae, and WeChat DevTools, then create a basic project skeleton with HBuilderX that can run in WeChat DevTools and show the simplest page first.</span><span lang="en">Prepare environment: register mini program account, install HBuilderX, Trae, and WeChat DevTools, then create a basic project skeleton with HBuilderX that can run in WeChat DevTools and show the simplest page first.</span></li>
+<li><span lang="id">Enter formal development: open project in Trae, use vibecoding dialog with AI to generate homepage and game page layout step by step, and implement core gameplay such as snake movement, eating food, and game over.</span><span lang="en">Enter formal development: open project in Trae, use vibecoding dialog with AI to generate homepage and game page layout step by step, and implement core gameplay such as snake movement, eating food, and game over.</span></li>
+<li><span lang="id">After core features run, learn to use AI as a "debugging and refactoring partner": ask it to diagnose bugs, tidy structure when code gets messy, and gradually add details such as start/pause, high-score record, and UI polishing.</span><span lang="en">After core features run, learn to use AI as a "debugging and refactoring partner": ask it to diagnose bugs, tidy structure when code gets messy, and gradually add details such as start/pause, high-score record, and UI polishing.</span></li>
+<li><span lang="id">Enter publishing: build project into WeChat-recognizable version, preview and test on real devices in WeChat DevTools, launch first with test account and experience version for process validation, then complete filing and review before formal release so others can search and play your mini program.</span><span lang="en">Enter publishing: build project into WeChat-recognizable version, preview and test on real devices in WeChat DevTools, launch first with test account and experience version for process validation, then complete filing and review before formal release so others can search and play your mini program.</span></li>
+</ul>
+<p class="reveal"><span lang="id">This section only draws the full map and does not expand commands or code details yet. For now, remember these 5 steps: <b>Understand -> Setup environment -> Vibecoding development -> Debug and polish -> Build and release</b>. Later chapters will zoom into each step, showing what to prepare, what to say to AI, and what results you should see on screen at each stage.</span><span lang="en">This section only draws the full map and does not expand commands or code details yet. For now, remember these 5 steps: <b>Understand -> Setup environment -> Vibecoding development -> Debug and polish -> Build and release</b>. Later chapters will zoom into each step, showing what to prepare, what to say to AI, and what results you should see on screen at each stage.</span></p>
+<p class="reveal"><span lang="id">Before writing any line of code, let us prepare the environment first.</span><span lang="en">Before writing any line of code, let us prepare the environment first.</span></p>
+<p class="reveal"><span lang="id">The goal of this part is to make sure you no longer get stuck on <b>where to download tools and why things cannot run</b>, so you can focus directly on AI dialog and requirement implementation.</span><span lang="en">The goal of this part is to make sure you no longer get stuck on <b>where to download tools and why things cannot run</b>, so you can focus directly on AI dialog and requirement implementation.</span></p>
+<p class="reveal"><span lang="id">If you can open a browser, download files, and double-click installers, you can complete this section.</span><span lang="en">If you can open a browser, download files, and double-click installers, you can complete this section.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.1 Three Tools Used in This Tutorial</span><span lang="en">2.1 Three Tools Used in This Tutorial</span></h2>
+<p class="reveal"><span lang="id">For Snake mini program development, we use three tools together, each with different responsibilities:</span><span lang="en">For Snake mini program development, we use three tools together, each with different responsibilities:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">The first is Trae. Think of it as an AI-integrated code editor. It can open project files like a normal IDE and also let you chat with AI in natural language to generate, modify, and explain code. Most "build mini program with AI" operations in this tutorial happen in Trae. Download latest version from https://www.trae.cn .</span><span lang="en">The first is Trae. Think of it as an AI-integrated code editor. It can open project files like a normal IDE and also let you chat with AI in natural language to generate, modify, and explain code. Most "build mini program with AI" operations in this tutorial happen in Trae. Download latest version from https://www.trae.cn .</span></li>
+<li><span lang="id">The second is HBuilderX. It has strong support for Vue and uni-app, and offers ready-made mini program templates. We use it to "one-click generate" a base mini program project - this is laying the foundation before handing it to Trae + AI for further iteration. Download from https://www.dcloud.io/hbuilderx.html .</span><span lang="en">The second is HBuilderX. It has strong support for Vue and uni-app, and offers ready-made mini program templates. We use it to "one-click generate" a base mini program project - this is laying the foundation before handing it to Trae + AI for further iteration. Download from https://www.dcloud.io/hbuilderx.html .</span></li>
+<li><span lang="id">The third is WeChat DevTools. This official tool is used to develop and preview mini programs. It runs your project on desktop and supports real-device debugging on mobile. Download from https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html .</span><span lang="en">The third is WeChat DevTools. This official tool is used to develop and preview mini programs. It runs your project on desktop and supports real-device debugging on mobile. Download from https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html .</span></li>
+</ul>
+<p class="reveal"><span lang="id">In short: HBuilderX creates base project quickly, Trae helps you code with AI, and WeChat DevTools shows the actual running mini program.</span><span lang="en">In short: HBuilderX creates base project quickly, Trae helps you code with AI, and WeChat DevTools shows the actual running mini program.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.2 Register WeChat Official Platform Account and Get AppID</span><span lang="en">2.2 Register WeChat Official Platform Account and Get AppID</span></h2>
+<p class="reveal"><span lang="id">With tools ready, you still need a <b>mini program identity</b>, which is created on WeChat Official Platform.</span><span lang="en">With tools ready, you still need a <b>mini program identity</b>, which is created on WeChat Official Platform.</span></p>
+<p class="reveal"><span lang="id">If you have never registered a mini program before, follow this order:</span><span lang="en">If you have never registered a mini program before, follow this order:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Enter https://mp.weixin.qq.com in your browser, open WeChat Official Platform, and login by scanning QR code with WeChat.</span><span lang="en">Enter https://mp.weixin.qq.com in your browser, open WeChat Official Platform, and login by scanning QR code with WeChat.</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Choose "Mini Program" on homepage and complete registration prompts, including email, phone number, and entity type (individual or enterprise).</span><span lang="en">Choose "Mini Program" on homepage and complete registration prompts, including email, phone number, and entity type (individual or enterprise).</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">After successful registration, enter backend, find "Development Management" or "Development Settings," and you will see a unique ID named AppID. This is your mini program identity and will be used in project config later.</span><span lang="en">After successful registration, enter backend, find "Development Management" or "Development Settings," and you will see a unique ID named AppID. This is your mini program identity and will be used in project config later.</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<p class="reveal"><span lang="id">It is recommended to save AppID where easy to find. In later sections, we will fill this value directly to map local project to your online mini program.</span><span lang="en">It is recommended to save AppID where easy to find. In later sections, we will fill this value directly to map local project to your online mini program.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.3 Install WeChat DevTools</span><span lang="en">2.3 Install WeChat DevTools</span></h2>
+<p class="reveal"><span lang="id">Next we need a place to actually run and preview mini programs. That is exactly what WeChat DevTools is for.</span><span lang="en">Next we need a place to actually run and preview mini programs. That is exactly what WeChat DevTools is for.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Visit download page https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html .</span><span lang="en">Visit download page https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html .</span></li>
+</ul>
+<p class="reveal"><span lang="id">On this page you will see versions for different operating systems. Usually choose the stable version matching your system, such as Windows 64-bit or macOS.</span><span lang="en">On this page you will see versions for different operating systems. Usually choose the stable version matching your system, such as Windows 64-bit or macOS.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">After download, double-click installer and follow wizard step by step. If unsure, keep default options.</span><span lang="en">After download, double-click installer and follow wizard step by step. If unsure, keep default options.</span></li>
+<li><span lang="id">After installation, launch WeChat DevTools from desktop or start menu. On first launch, it shows a QR code and asks you to scan with WeChat. Scan and authorize to enter main interface.</span><span lang="en">After installation, launch WeChat DevTools from desktop or start menu. On first launch, it shows a QR code and asks you to scan with WeChat. Scan and authorize to enter main interface.</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<p class="reveal"><span lang="id">Later, after project files are ready in Trae, we will import the built mini program into WeChat DevTools and view real running results here.</span><span lang="en">Later, after project files are ready in Trae, we will import the built mini program into WeChat DevTools and view real running results here.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.4 Prepare Trae and HBuilderX</span><span lang="en">2.4 Prepare Trae and HBuilderX</span></h2>
+<p class="reveal"><span lang="id">Finally, install the two tools used for actual coding: Trae and HBuilderX.</span><span lang="en">Finally, install the two tools used for actual coding: Trae and HBuilderX.</span></p>
+<p class="reveal"><span lang="id">You can <b>install Trae first</b>. Visit https://www.trae.cn in browser and download the right version for your OS. Installation is like normal software: double-click installer and follow prompts. After install, you get an IDE that can open local folders, inspect code, and chat with AI. All later vibecoding steps happen here.</span><span lang="en">You can <b>install Trae first</b>. Visit https://www.trae.cn in browser and download the right version for your OS. Installation is like normal software: double-click installer and follow prompts. After install, you get an IDE that can open local folders, inspect code, and chat with AI. All later vibecoding steps happen here.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Then install HBuilderX</b>. Visit https://www.dcloud.io/hbuilderx.html and download your OS package. HBuilderX is lightweight and starts quickly. After install, you can briefly look at interface; no need deep feature study now. In later chapters, we use it to create a uni-app mini program template as project starting point.</span><span lang="en"><b>Then install HBuilderX</b>. Visit https://www.dcloud.io/hbuilderx.html and download your OS package. HBuilderX is lightweight and starts quickly. After install, you can briefly look at interface; no need deep feature study now. In later chapters, we use it to create a uni-app mini program template as project starting point.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<p class="reveal"><span lang="id">After finishing this section, your environment is complete: you have a mini program account + AppID, a runtime preview tool, and an AI coding IDE. Next we start from <b>creating the first project skeleton</b> and make these tools really run.</span><span lang="en">After finishing this section, your environment is complete: you have a mini program account + AppID, a runtime preview tool, and an AI coding IDE. Next we start from <b>creating the first project skeleton</b> and make these tools really run.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.5 Prepare Base Files</span><span lang="en">2.5 Prepare Base Files</span></h2>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Click "New Project".</span><span lang="en">Click "New Project".</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Choose default template, set mini program name, select storage path, then click create in lower-right corner:</span><span lang="en">Choose default template, set mini program name, select storage path, then click create in lower-right corner:</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Creation success screen appears:</span><span lang="en">Creation success screen appears:</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Then find this folder in file system, open it in Trae, and you will see foundation files are all ready:</span><span lang="en">Then find this folder in file system, open it in Trae, and you will see foundation files are all ready:</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<p class="reveal"><span lang="id">In the first two parts, we already clarified "what mini programs are" and "how to set up tools and environment." From this section, we enter hands-on practice: not just concepts, but AI actually helping you build Snake mini program from zero.</span><span lang="en">In the first two parts, we already clarified "what mini programs are" and "how to set up tools and environment." From this section, we enter hands-on practice: not just concepts, but AI actually helping you build Snake mini program from zero.</span></p>
+<p class="reveal"><span lang="id">In this section, you will walk through a complete SOP for the development phase, roughly including:</span><span lang="en">In this section, you will walk through a complete SOP for the development phase, roughly including:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Open current project in Trae and give AI your first complete instruction so it designs and implements a runnable Snake version based on current skeleton.</span><span lang="en">Open current project in Trae and give AI your first complete instruction so it designs and implements a runnable Snake version based on current skeleton.</span></li>
+<li><span lang="id">Let Trae modify real project files directly, not only output "example code," and learn to use rollback to restore previous state when needed.</span><span lang="en">Let Trae modify real project files directly, not only output "example code," and learn to use rollback to restore previous state when needed.</span></li>
+<li><span lang="id">Return to HBuilderX and WeChat DevTools, run to mini program simulator, and play this version in simulator to switch from "code perspective" to "user perspective."</span><span lang="en">Return to HBuilderX and WeChat DevTools, run to mini program simulator, and play this version in simulator to switch from "code perspective" to "user perspective."</span></li>
+<li><span lang="id">Based on play results, keep proposing modifications in natural language and let AI iterate controls from button-based to joystick-based, while experiencing a full loop of "find issue -> describe issue -> AI fixes -> verify again."</span><span lang="en">Based on play results, keep proposing modifications in natural language and let AI iterate controls from button-based to joystick-based, while experiencing a full loop of "find issue -> describe issue -> AI fixes -> verify again."</span></li>
+</ul>
+<p class="reveal"><span lang="id">You can choose to design every page and button before development.</span><span lang="en">You can choose to design every page and button before development.</span></p>
+<p class="reveal"><span lang="id">But for complete beginners, interface and interaction design itself is also a new domain (later we will show AI-assisted design). So in this round we intentionally use another way: start first - let AI generate a runnable version, then refine gradually by viewing effects and chatting in natural language.</span><span lang="en">But for complete beginners, interface and interaction design itself is also a new domain (later we will show AI-assisted design). So in this round we intentionally use another way: start first - let AI generate a runnable version, then refine gradually by viewing effects and chatting in natural language.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.1 Explain Requirements Clearly in One Shot: Give Trae the First "Master Prompt"</span><span lang="en">3.1 Explain Requirements Clearly in One Shot: Give Trae the First "Master Prompt"</span></h2>
+<p class="reveal"><span lang="id">After opening prepared mini program project in Trae, I did not rush to edit a specific line. Instead, I told built-in AI assistant:</span><span lang="en">After opening prepared mini program project in Trae, I did not rush to edit a specific line. Instead, I told built-in AI assistant:</span></p>
+<p class="reveal"><span lang="id"><b>I gave AI a command: based on current framework, build a Snake mini program. Please design this mini program and write me a prompt.</b></span><span lang="en"><b>I gave AI a command: based on current framework, build a Snake mini program. Please design this mini program and write me a prompt.</b></span></p>
+<p class="reveal"><span lang="id">In other words, I did not ask it to "write one function step by step." I first threw out a complete goal, let AI help plan, and AI not only planned but also directly landed the first implementation.</span><span lang="en">In other words, I did not ask it to "write one function step by step." I first threw out a complete goal, let AI help plan, and AI not only planned but also directly landed the first implementation.</span></p>
+<p class="reveal"><span lang="id">After receiving this instruction, Trae reads current project structure, determines where to add pages and where to add logic, and directly modifies project files/code. You do not need to hand-write code or manually create/modify folders.</span><span lang="en">After receiving this instruction, Trae reads current project structure, determines where to add pages and where to add logic, and directly modifies project files/code. You do not need to hand-write code or manually create/modify folders.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.2 Let AI Modify Real Code Automatically, Not Manual Coding</span><span lang="en">3.2 Let AI Modify Real Code Automatically, Not Manual Coding</span></h2>
+<p class="reveal"><span lang="id">When you execute this instruction in Trae, AI enters a "project editing" flow. During this process, you can observe key points:</span><span lang="en">When you execute this instruction in Trae, AI enters a "project editing" flow. During this process, you can observe key points:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">It explains its thinking in chat area, for example which directories it will add pages to and how it will organize game logic.</span><span lang="en">It explains its thinking in chat area, for example which directories it will add pages to and how it will organize game logic.</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">It directly edits real project files, instead of only giving "sample code" for copy-paste.</span><span lang="en">It directly edits real project files, instead of only giving "sample code" for copy-paste.</span></li>
+<li><span lang="id">After finishing, Trae outputs a short summary telling you what files were changed and what was done.</span><span lang="en">After finishing, Trae outputs a short summary telling you what files were changed and what was done.</span></li>
+</ul>
+<p class="reveal"><span lang="id">If you are not satisfied with this round (or think something is wrong), no need to panic. Trae provides rollback in the top-left outside chat box. You can restore project state before this instruction with one click - like a safety undo key.</span><span lang="en">If you are not satisfied with this round (or think something is wrong), no need to panic. Trae provides rollback in the top-left outside chat box. You can restore project state before this instruction with one click - like a safety undo key.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.3 View Effects in HBuilderX and WeChat DevTools</span><span lang="en">3.3 View Effects in HBuilderX and WeChat DevTools</span></h2>
+<p class="reveal"><span lang="id">After AI completes the first development round, code has been written into project, but you still have not seen real player-side effect.</span><span lang="en">After AI completes the first development round, code has been written into project, but you still have not seen real player-side effect.</span></p>
+<p class="reveal"><span lang="id">Next we need to run it.</span><span lang="en">Next we need to run it.</span></p>
+<p class="reveal"><span lang="id">Specific operation: go back to HBuilderX, find top menu "Run," select "Run to Mini Program Simulator" -> "WeChat DevTools." This triggers project build and opens result in WeChat DevTools.</span><span lang="en">Specific operation: go back to HBuilderX, find top menu "Run," select "Run to Mini Program Simulator" -> "WeChat DevTools." This triggers project build and opens result in WeChat DevTools.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<p class="reveal"><span lang="id">The output panel at bottom shows build process. If final state is "ready" with no errors, build is successful. Then switch to WeChat DevTools to check UI and features of this version.</span><span lang="en">The output panel at bottom shows build process. If final state is "ready" with no errors, build is successful. Then switch to WeChat DevTools to check UI and features of this version.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<p class="reveal"><span lang="id">In most cases, HBuilderX auto-opens WeChat DevTools and you can directly see updated mini program. If not auto-opened, do this:</span><span lang="en">In most cases, HBuilderX auto-opens WeChat DevTools and you can directly see updated mini program. If not auto-opened, do this:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Stop current run in HBuilderX first.</span><span lang="en">Stop current run in HBuilderX first.</span></li>
+<li><span lang="id">Launch WeChat DevTools manually and keep it open.</span><span lang="en">Launch WeChat DevTools manually and keep it open.</span></li>
+<li><span lang="id">Back in HBuilderX, click "Run -> Run to Mini Program Simulator -> WeChat DevTools" again.</span><span lang="en">Back in HBuilderX, click "Run -> Run to Mini Program Simulator -> WeChat DevTools" again.</span></li>
+</ul>
+<p class="reveal"><span lang="id">Then you can see the vibecoding mini program in WeChat DevTools:</span><span lang="en">Then you can see the vibecoding mini program in WeChat DevTools:</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.4 Use Natural Language to Repeatedly Adjust Until Satisfied</span><span lang="en">3.4 Use Natural Language to Repeatedly Adjust Until Satisfied</span></h2>
+<p class="reveal"><span lang="id">In this practice, AI initially generated a button-controlled Snake: four direction buttons on screen, and snake changes direction when clicked. It is fully playable, but I personally prefer joystick control. For your adjustment requests (not only features, but also UI design and layout; once experienced, you can even ask AI to integrate external model APIs or databases), again: you only need to describe requirements in natural language.</span><span lang="en">In this practice, AI initially generated a button-controlled Snake: four direction buttons on screen, and snake changes direction when clicked. It is fully playable, but I personally prefer joystick control. For your adjustment requests (not only features, but also UI design and layout; once experienced, you can even ask AI to integrate external model APIs or databases), again: you only need to describe requirements in natural language.</span></p>
+<p class="reveal"><span lang="id">This is the core advantage of vibecoding: you do not have to dig into code for event binding or coordinate logic. You directly tell AI what you want. For example, in Trae chat you can write:</span><span lang="en">This is the core advantage of vibecoding: you do not have to dig into code for event binding or coordinate logic. You directly tell AI what you want. For example, in Trae chat you can write:</span></p>
+<p class="reveal"><span lang="id">Replace buttons with joystick control. When user releases joystick, snake should keep moving in current direction until next joystick action.</span><span lang="en">Replace buttons with joystick control. When user releases joystick, snake should keep moving in current direction until next joystick action.</span></p>
+<p class="reveal"><span lang="id">As long as requirement is clear, AI will automatically locate target files and modify control styles, interaction bindings, and direction handling logic.</span><span lang="en">As long as requirement is clear, AI will automatically locate target files and modify control styles, interaction bindings, and direction handling logic.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<p class="reveal"><span lang="id">After modification, return to WeChat DevTools to check.</span><span lang="en">After modification, return to WeChat DevTools to check.</span></p>
+<p class="reveal"><span lang="id">If changes are not visible immediately, click "Run" in DevTools or refresh preview window to apply latest build. If still not updated, stop run in HBuilderX and run to simulator again, then you can see updated mini program:</span><span lang="en">If changes are not visible immediately, click "Run" in DevTools or refresh preview window to apply latest build. If still not updated, stop run in HBuilderX and run to simulator again, then you can see updated mini program:</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.5 What If Problems Appear: Keep Communicating in Natural Language</span><span lang="en">3.5 What If Problems Appear: Keep Communicating in Natural Language</span></h2>
+<p class="reveal"><span lang="id">AI-generated versions are not always perfect at first. You may encounter:</span><span lang="en">AI-generated versions are not always perfect at first. You may encounter:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">runtime errors and app fails to open;</span><span lang="en">runtime errors and app fails to open;</span></li>
+<li><span lang="id">features mostly correct, but details differ from your expectation;</span><span lang="en">features mostly correct, but details differ from your expectation;</span></li>
+<li><span lang="id">UI usable but still not visually pleasing or convenient enough.</span><span lang="en">UI usable but still not visually pleasing or convenient enough.</span></li>
+</ul>
+<p class="reveal"><span lang="id">At these moments, no need to blindly edit code yourself. Describe problems directly to Trae AI assistant in natural language, for example:</span><span lang="en">At these moments, no need to blindly edit code yourself. Describe problems directly to Trae AI assistant in natural language, for example:</span></p>
+<p class="reveal"><span lang="id">"Joystick control works now, but snake sometimes suddenly stops. Please check current implementation."</span><span lang="en">"Joystick control works now, but snake sometimes suddenly stops. Please check current implementation."</span></p>
+<p class="reveal"><span lang="id">Or: "Game is playable now, but interface feels crowded. I want more vertical spacing on mobile. Please adjust layout."</span><span lang="en">Or: "Game is playable now, but interface feels crowded. I want more vertical spacing on mobile. Please adjust layout."</span></p>
+<p class="reveal"><span lang="id">AI will use current project context + your description, then provide and apply code changes directly. If result becomes worse or direction is wrong, you can still rollback to previous stable version and try another wording.</span><span lang="en">AI will use current project context + your description, then provide and apply code changes directly. If result becomes worse or direction is wrong, you can still rollback to previous stable version and try another wording.</span></p>
+<p class="reveal"><span lang="id">Through several such rounds, you can polish from "rough first version" to a joystick-based Snake closer to your preference.</span><span lang="en">Through several such rounds, you can polish from "rough first version" to a joystick-based Snake closer to your preference.</span></p>
+<p class="reveal"><span lang="id">For example, I gave a style reference image and asked AI to adjust UI style accordingly:</span><span lang="en">For example, I gave a style reference image and asked AI to adjust UI style accordingly:</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.6 Final Result and Section Summary</span><span lang="en">3.6 Final Result and Section Summary</span></h2>
+<p class="reveal"><span lang="id">After repeated rounds of <b>natural language description -> AI modification -> preview in WeChat DevTools -> continue micro-adjustment</b>, I finally got this result:</span><span lang="en">After repeated rounds of <b>natural language description -> AI modification -> preview in WeChat DevTools -> continue micro-adjustment</b>, I finally got this result:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">complete game page;</span><span lang="en">complete game page;</span></li>
+<li><span lang="id">snake moves smoothly and eats food;</span><span lang="en">snake moves smoothly and eats food;</span></li>
+<li><span lang="id">joystick control supported;</span><span lang="en">joystick control supported;</span></li>
+<li><span lang="id">runs correctly in mini program simulator.</span><span lang="en">runs correctly in mini program simulator.</span></li>
+</ul>
+<p class="reveal"><span lang="id">Final product examples:</span><span lang="en">Final product examples:</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<p class="reveal"><span lang="id">In this section, you have seen a complete closed loop:</span><span lang="en">In this section, you have seen a complete closed loop:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">In Trae, one clear instruction let AI build first Snake mini program version;</span><span lang="en">In Trae, one clear instruction let AI build first Snake mini program version;</span></li>
+<li><span lang="id">With HBuilderX + WeChat DevTools, validate real effect from user perspective;</span><span lang="en">With HBuilderX + WeChat DevTools, validate real effect from user perspective;</span></li>
+<li><span lang="id">Keep proposing modifications in natural language, let AI handle feature and UI optimization;</span><span lang="en">Keep proposing modifications in natural language, let AI handle feature and UI optimization;</span></li>
+<li><span lang="id">When issues appear, use rollback + rerun to keep process safe.</span><span lang="en">When issues appear, use rollback + rerun to keep process safe.</span></li>
+</ul>
+<p class="reveal"><span lang="id">Next, you can use same rhythm for your own ideas: not limited to Snake, but also utility mini programs, event pages, or real business prototypes. Your main task is to think clearly and describe clearly. Let AI and tools handle the rest.</span><span lang="en">Next, you can use same rhythm for your own ideas: not limited to Snake, but also utility mini programs, event pages, or real business prototypes. Your main task is to think clearly and describe clearly. Let AI and tools handle the rest.</span></p>
+<p class="reveal"><span lang="id">In the previous three chapters, we completed the full flow from <b>environment setup</b> -> <b>AI-assisted development</b> -> <b>running Snake in local simulator</b>.</span><span lang="en">In the previous three chapters, we completed the full flow from <b>environment setup</b> -> <b>AI-assisted development</b> -> <b>running Snake in local simulator</b>.</span></p>
+<p class="reveal"><span lang="id">From this chapter, the key question becomes: <b>how to really publish this work to WeChat, so it is not just a toy, but a usable mini program?</b></span><span lang="en">From this chapter, the key question becomes: <b>how to really publish this work to WeChat, so it is not just a toy, but a usable mini program?</b></span></p>
+<p class="reveal"><span lang="id">To reduce difficulty, we first take the <b>shortest closed loop</b>: publish only as a <b>test/experience version</b> for yourself and a few teammates. After function and experience are stable, then proceed to formal public release.</span><span lang="en">To reduce difficulty, we first take the <b>shortest closed loop</b>: publish only as a <b>test/experience version</b> for yourself and a few teammates. After function and experience are stable, then proceed to formal public release.</span></p>
+<p class="reveal"><span lang="id">This chapter first covers 4.1 to complete the shortest path for <b>experience-version launch</b>. Formal release for all users is explained in 4.2.</span><span lang="en">This chapter first covers 4.1 to complete the shortest path for <b>experience-version launch</b>. Formal release for all users is explained in 4.2.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4.1 Shortest SOP - Launch as Experience Version</span><span lang="en">4.1 Shortest SOP - Launch as Experience Version</span></h2>
+<p class="reveal"><span lang="id">Goal of this subsection is only one thing: let you open your Snake mini program in WeChat as an <b>experience version</b>.</span><span lang="en">Goal of this subsection is only one thing: let you open your Snake mini program in WeChat as an <b>experience version</b>.</span></p>
+<p class="reveal"><span lang="id">The whole flow is four tasks:</span><span lang="en">The whole flow is four tasks:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Find and confirm your AppID in WeChat Official Platform.</span><span lang="en">Find and confirm your AppID in WeChat Official Platform.</span></li>
+<li><span lang="id">Configure this AppID in your project.</span><span lang="en">Configure this AppID in your project.</span></li>
+<li><span lang="id">Upload current version in WeChat DevTools.</span><span lang="en">Upload current version in WeChat DevTools.</span></li>
+<li><span lang="id">Return to Official Platform and set this uploaded version as "Experience Version."</span><span lang="en">Return to Official Platform and set this uploaded version as "Experience Version."</span></li>
+</ul>
+<p class="reveal"><span lang="id">Let us go in this order.</span><span lang="en">Let us go in this order.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1.1 Confirm AppID in WeChat Official Platform</span><span lang="en">4.1.1 Confirm AppID in WeChat Official Platform</span></h3>
+<p class="reveal"><span lang="id">First step: confirm your mini program AppID in WeChat Official Platform.</span><span lang="en">First step: confirm your mini program AppID in WeChat Official Platform.</span></p>
+<p class="reveal"><span lang="id">You already did this once in <b>Section 2 Environment Setup</b>. Here we use it for real.</span><span lang="en">You already did this once in <b>Section 2 Environment Setup</b>. Here we use it for real.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Visit <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://mp.weixin.qq.com</code> and log into your mini program backend.</span><span lang="en">Visit <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://mp.weixin.qq.com</code> and log into your mini program backend.</span></li>
+<li><span lang="id">Find "Development Management" in left menu, then enter "Development Settings."</span><span lang="en">Find "Development Management" in left menu, then enter "Development Settings."</span></li>
+<li><span lang="id">At top, find "Developer ID" area. There is a line "AppID (Mini Program ID)" - this is your unique ID.</span><span lang="en">At top, find "Developer ID" area. There is a line "AppID (Mini Program ID)" - this is your unique ID.</span></li>
+</ul>
+<p class="reveal"><span lang="id">This ID must exactly match project config. Otherwise WeChat sees it as another app identity and preview/publish will fail.</span><span lang="en">This ID must exactly match project config. Otherwise WeChat sees it as another app identity and preview/publish will fail.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1.2 Fill AppID in Project</span><span lang="en">4.1.2 Fill AppID in Project</span></h3>
+<p class="reveal"><span lang="id">Second step: write this AppID into project configuration so local build maps to your official mini program account.</span><span lang="en">Second step: write this AppID into project configuration so local build maps to your official mini program account.</span></p>
+<p class="reveal"><span lang="id">If your project uses uni-app template, do this:</span><span lang="en">If your project uses uni-app template, do this:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Open HBuilderX and load Snake project.</span><span lang="en">Open HBuilderX and load Snake project.</span></li>
+<li><span lang="id">Find <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">manifest.json</code> in file tree and open it.</span><span lang="en">Find <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">manifest.json</code> in file tree and open it.</span></li>
+<li><span lang="id">Scroll to "WeChat Mini Program Configuration," and you will see an input such as "WeChat Mini Program AppID."</span><span lang="en">Scroll to "WeChat Mini Program Configuration," and you will see an input such as "WeChat Mini Program AppID."</span></li>
+<li><span lang="id">Paste AppID copied from Official Platform exactly, then save file.</span><span lang="en">Paste AppID copied from Official Platform exactly, then save file.</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<p class="reveal"><span lang="id">Now your local project has claimed this mini program identity. Next, when you upload from WeChat DevTools, it will be recorded under this AppID.</span><span lang="en">Now your local project has claimed this mini program identity. Next, when you upload from WeChat DevTools, it will be recorded under this AppID.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1.3 Upload a Version in WeChat DevTools</span><span lang="en">4.1.3 Upload a Version in WeChat DevTools</span></h3>
+<p class="reveal"><span lang="id">We have already run project into WeChat DevTools to preview simulator.</span><span lang="en">We have already run project into WeChat DevTools to preview simulator.</span></p>
+<p class="reveal"><span lang="id">Now we do: "package current code as a version and upload to server."</span><span lang="en">Now we do: "package current code as a version and upload to server."</span></p>
+<p class="reveal"><span lang="id">Steps:</span><span lang="en">Steps:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">In top-right toolbar of WeChat DevTools, click "Upload."</span><span lang="en">In top-right toolbar of WeChat DevTools, click "Upload."</span></li>
+<li><span lang="id">In popup, fill two key fields:</span><span lang="en">In popup, fill two key fields:</span></li>
+<li><span lang="id">Version number: for example <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1.0.0</code> (digits and dots only).</span><span lang="en">Version number: for example <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1.0.0</code> (digits and dots only).</span></li>
+<li><span lang="id">Project note: short description, such as "Completed core gameplay."</span><span lang="en">Project note: short description, such as "Completed core gameplay."</span></li>
+<li><span lang="id">Confirm and click "Upload." Output panel shows build process. If all steps turn green and upload completes, this version is successfully submitted to WeChat server.</span><span lang="en">Confirm and click "Upload." Output panel shows build process. If all steps turn green and upload completes, this version is successfully submitted to WeChat server.</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1.4 Set Uploaded Version as Experience Version in Backend</span><span lang="en">4.1.4 Set Uploaded Version as Experience Version in Backend</span></h3>
+<p class="reveal"><span lang="id">Upload only sends code to WeChat side. You still need to tell system "this is an experience version."</span><span lang="en">Upload only sends code to WeChat side. You still need to tell system "this is an experience version."</span></p>
+<p class="reveal"><span lang="id">Final step: go back to Official Platform backend and complete loop.</span><span lang="en">Final step: go back to Official Platform backend and complete loop.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Open <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://mp.weixin.qq.com</code> and enter mini program backend.</span><span lang="en">Open <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://mp.weixin.qq.com</code> and enter mini program backend.</span></li>
+<li><span lang="id">In left menu, find "Management" -> "Version Management."</span><span lang="en">In left menu, find "Management" -> "Version Management."</span></li>
+<li><span lang="id">In "Development Version" section, you should see the uploaded version: version <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1.0.0</code>, your note, and just-uploaded timestamp.</span><span lang="en">In "Development Version" section, you should see the uploaded version: version <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1.0.0</code>, your note, and just-uploaded timestamp.</span></li>
+<li><span lang="id">On the right side of this row, use dropdown/action button to choose "Set as Experience Version," confirm action. Before this step, ensure your main category is configured on homepage/category settings.</span><span lang="en">On the right side of this row, use dropdown/action button to choose "Set as Experience Version," confirm action. Before this step, ensure your main category is configured on homepage/category settings.</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<p class="reveal"><span lang="id">After completion, this version becomes your mini program "Experience Version." You can generate experience QR code in backend, or add yourself/team as experience members, then scan in WeChat for real-device testing.</span><span lang="en">After completion, this version becomes your mini program "Experience Version." You can generate experience QR code in backend, or add yourself/team as experience members, then scan in WeChat for real-device testing.</span></p>
+<p class="reveal"><span lang="id">At this point, we have finished the shortest loop from local project to test launch:</span><span lang="en">At this point, we have finished the shortest loop from local project to test launch:</span></p>
+<p class="reveal"><span lang="id">You do not need to open to all WeChat users immediately. In a safe range, run real mini program in real WeChat environment first. That is enough for feature testing, feedback collection, and iteration.</span><span lang="en">You do not need to open to all WeChat users immediately. In a safe range, run real mini program in real WeChat environment first. That is enough for feature testing, feedback collection, and iteration.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4.2 Formal Launch of Mini Program</span><span lang="en">4.2 Formal Launch of Mini Program</span></h2>
+<p class="reveal"><span lang="id">After experience version runs well, you can already play this Snake mini program in your own WeChat.</span><span lang="en">After experience version runs well, you can already play this Snake mini program in your own WeChat.</span></p>
+<p class="reveal"><span lang="id">Next step is moving from limited experience users to a fully public WeChat mini program.</span><span lang="en">Next step is moving from limited experience users to a fully public WeChat mini program.</span></p>
+<p class="reveal"><span lang="id">Break this into steps: complete basic info, choose category, finish filing, then submit review. Follow this order:</span><span lang="en">Break this into steps: complete basic info, choose category, finish filing, then submit review. Follow this order:</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2.1 Enter Mini Program Release Flow</span><span lang="en">4.2.1 Enter Mini Program Release Flow</span></h3>
+<p class="reveal"><span lang="id">First go back to WeChat Official Platform backend and log in.</span><span lang="en">First go back to WeChat Official Platform backend and log in.</span></p>
+<p class="reveal"><span lang="id">In left navigation find entries related to "Version Management / Release" (UI may vary slightly over time). You will find "Mini Program Release Flow."</span><span lang="en">In left navigation find entries related to "Version Management / Release" (UI may vary slightly over time). You will find "Mini Program Release Flow."</span></p>
+<p class="reveal"><span lang="id">After entering, top area shows a progress bar. Below it lists steps such as:</span><span lang="en">After entering, top area shows a progress bar. Below it lists steps such as:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Mini Program Information</span><span lang="en">Mini Program Information</span></li>
+<li><span lang="id">Mini Program Category</span><span lang="en">Mini Program Category</span></li>
+<li><span lang="id">Operation Information / Filing</span><span lang="en">Operation Information / Filing</span></li>
+<li><span lang="id">WeChat Verification (depending on entity type)</span><span lang="en">WeChat Verification (depending on entity type)</span></li>
+</ul>
+<p class="reveal"><span lang="id">At beginning progress is 0%. As each step is completed, system updates automatically.</span><span lang="en">At beginning progress is 0%. As each step is completed, system updates automatically.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2.2 Fill Basic Mini Program Information</span><span lang="en">4.2.2 Fill Basic Mini Program Information</span></h3>
+<p class="reveal"><span lang="id">First step is completing your mini program "business card," which is what users first see in WeChat.</span><span lang="en">First step is completing your mini program "business card," which is what users first see in WeChat.</span></p>
+<p class="reveal"><span lang="id">On "Mini Program Information" page, you usually need to fill/confirm:</span><span lang="en">On "Mini Program Information" page, you usually need to fill/confirm:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Mini program name</span><span lang="en">Mini program name</span></li>
+</ul>
+<p class="reveal"><span lang="id">This appears in search results and app header. It has length limits and naming rules. Choose a name that describes function and is easy to remember.</span><span lang="en">This appears in search results and app header. It has length limits and naming rules. Choose a name that describes function and is easy to remember.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Description / intro</span><span lang="en">Description / intro</span></li>
+</ul>
+<p class="reveal"><span lang="id">Use one or two sentences to explain what this mini program does, for example: "A Snake game developed with AI-assisted coding, suitable for quick casual play."</span><span lang="en">Use one or two sentences to explain what this mini program does, for example: "A Snake game developed with AI-assisted coding, suitable for quick casual play."</span></p>
+<p class="reveal"><span lang="id">Keep description consistent with real functionality and avoid exaggerated marketing text.</span><span lang="en">Keep description consistent with real functionality and avoid exaggerated marketing text.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Icon and screenshots</span><span lang="en">Icon and screenshots</span></li>
+<li><span lang="id">Icon usually requires square image with PNG/JPG support and size/pixel limits (check page rules). Use simple, high-contrast icon.</span><span lang="en">Icon usually requires square image with PNG/JPG support and size/pixel limits (check page rules). Use simple, high-contrast icon.</span></li>
+<li><span lang="id">Upload several screenshots such as homepage, game page, settings page. They help users understand content.</span><span lang="en">Upload several screenshots such as homepage, game page, settings page. They help users understand content.</span></li>
+<li><span lang="id">Other required fields</span><span lang="en">Other required fields</span></li>
+</ul>
+<p class="reveal"><span lang="id">Such as tags and service region, fill according to prompts.</span><span lang="en">Such as tags and service region, fill according to prompts.</span></p>
+<p class="reveal"><span lang="id">Only one principle: all information must match real functionality of your Snake mini program.</span><span lang="en">Only one principle: all information must match real functionality of your Snake mini program.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<p class="reveal"><span lang="id">After all fields are done, click Save or Next. First step in release flow is complete.</span><span lang="en">After all fields are done, click Save or Next. First step in release flow is complete.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2.3 Select Mini Program Service Category</span><span lang="en">4.2.3 Select Mini Program Service Category</span></h3>
+<p class="reveal"><span lang="id">After basic information, wizard guides you to "Mini Program Category."</span><span lang="en">After basic information, wizard guides you to "Mini Program Category."</span></p>
+<p class="reveal"><span lang="id">Category is your app's classification in WeChat, affects review route and later display/operation.</span><span lang="en">Category is your app's classification in WeChat, affects review route and later display/operation.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<p class="reveal"><span lang="id">On this page you will see "Add Category." Click it and choose proper category in system category tree, for example:</span><span lang="en">On this page you will see "Add Category." Click it and choose proper category in system category tree, for example:</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Choose "Education" as top-level category;</span><span lang="en">Choose "Education" as top-level category;</span></li>
+<li><span lang="id">Then choose more specific subcategory such as "Education Tools / Teaching Assistant." In this example, education tools are selected as learning aid for vibecoding.</span><span lang="en">Then choose more specific subcategory such as "Education Tools / Teaching Assistant." In this example, education tools are selected as learning aid for vibecoding.</span></li>
+</ul>
+<p class="reveal"><span lang="id">In your own project, simply choose the closest category by real use case.</span><span lang="en">In your own project, simply choose the closest category by real use case.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<p class="reveal"><span lang="id">After confirming category, click Save. If page shows "category created successfully" and displays your new item, this step is complete.</span><span lang="en">After confirming category, click Save. If page shows "category created successfully" and displays your new item, this step is complete.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2.4 Complete Filing Information</span><span lang="en">4.2.4 Complete Filing Information</span></h3>
+<p class="reveal"><span lang="id">Next, release flow asks for "Operation Information / Filing." This verifies responsible entity behind mini program.</span><span lang="en">Next, release flow asks for "Operation Information / Filing." This verifies responsible entity behind mini program.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<p class="reveal"><span lang="id">Under individual entity example, flow usually includes:</span><span lang="en">Under individual entity example, flow usually includes:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Select filing type</span><span lang="en">Select filing type</span></li>
+</ul>
+<p class="reveal"><span lang="id">Choose among types such as "Individual" or "Enterprise," consistent with your registration entity.</span><span lang="en">Choose among types such as "Individual" or "Enterprise," consistent with your registration entity.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Fill entity information</span><span lang="en">Fill entity information</span></li>
+</ul>
+<p class="reveal"><span lang="id">Include name, ID type, ID number, etc. This must match registration information, otherwise review may reject.</span><span lang="en">Include name, ID type, ID number, etc. This must match registration information, otherwise review may reject.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Upload supporting documents</span><span lang="en">Upload supporting documents</span></li>
+</ul>
+<p class="reveal"><span lang="id">Usually requires ID photos or other proof files, with specific format/size/clarity requirements shown on page. Prepare and upload clear files.</span><span lang="en">Usually requires ID photos or other proof files, with specific format/size/clarity requirements shown on page. Prepare and upload clear files.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<p class="reveal"><span lang="id">After submission, system enters "under review" and shows a message like "Information submitted, please wait." This may take some time. You can check progress anytime in backend.</span><span lang="en">After submission, system enters "under review" and shows a message like "Information submitted, please wait." This may take some time. You can check progress anytime in backend.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2.5 Submit for Review and Wait for Formal Release</span><span lang="en">4.2.5 Submit for Review and Wait for Formal Release</span></h3>
+<p class="reveal"><span lang="id">When "Mini Program Information," "Category," and "Operation Information/Filing" are all completed, do final action: submit for review.</span><span lang="en">When "Mini Program Information," "Category," and "Operation Information/Filing" are all completed, do final action: submit for review.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Return to release-flow overview page and confirm all items show completed, with progress close to 100%.</span><span lang="en">Return to release-flow overview page and confirm all items show completed, with progress close to 100%.</span></li>
+<li><span lang="id">Click "Submit for Review" (or similar button) to submit current development version to WeChat review team.</span><span lang="en">Click "Submit for Review" (or similar button) to submit current development version to WeChat review team.</span></li>
+<li><span lang="id">In "Version Management," this version status becomes "Under Review." After approval it becomes "Published" or available for "Go Live."</span><span lang="en">In "Version Management," this version status becomes "Under Review." After approval it becomes "Published" or available for "Go Live."</span></li>
+</ul>
+<p class="reveal"><span lang="id">If filing review fails, developers may receive a call specifying failed parts.</span><span lang="en">If filing review fails, developers may receive a call specifying failed parts.</span></p>
+<p class="reveal"><span lang="id">For filing, you may receive verification code and verification link from Ministry of Industry and Information Technology. Open link and fill code + personal info (verification valid for 1 day). If filing passes, you receive email and SMS notice with filing number.</span><span lang="en">For filing, you may receive verification code and verification link from Ministry of Industry and Information Technology. Open link and fill code + personal info (verification valid for 1 day). If filing passes, you receive email and SMS notice with filing number.</span></p>
+<p class="reveal"><span lang="id">WeChat verification: individual usually pays 30 CNY, enterprise around 300 CNY. Fee is non-refundable regardless of approval result. You may receive verification notice and confirmation call.</span><span lang="en">WeChat verification: individual usually pays 30 CNY, enterprise around 300 CNY. Fee is non-refundable regardless of approval result. You may receive verification notice and confirmation call.</span></p>
+<p class="reveal"><span lang="id">When submitting review, upload operation video/screens and fill required info. Then click "Submit Release" for formal launch.</span><span lang="en">When submitting review, upload operation video/screens and fill required info. Then click "Submit Release" for formal launch.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Membangun Mini Program WeChat Ringan</span><span lang="en">Membangun Mini Program WeChat Ringan</span></p>
+</div>
+<p class="reveal"><span lang="id">At this point, you have completed a full <b>0-to-1</b> mini program development loop: from understanding mini programs, to installing Trae, HBuilderX, and WeChat DevTools; from giving AI your idea and letting it "move bricks" in code, to playing first Snake version in simulator; then packaging as experience version, finishing filing/review, and making it truly usable in WeChat - you have personally run through the full chain once.</span><span lang="en">At this point, you have completed a full <b>0-to-1</b> mini program development loop: from understanding mini programs, to installing Trae, HBuilderX, and WeChat DevTools; from giving AI your idea and letting it "move bricks" in code, to playing first Snake version in simulator; then packaging as experience version, finishing filing/review, and making it truly usable in WeChat - you have personally run through the full chain once.</span></p>
+<p class="reveal"><span lang="id">More importantly, you did not achieve this by memorizing syntax. You achieved it by clearly expressing requirements + communicating effectively with AI. You have already experienced this: <b>one natural-language instruction can let AI satisfy your development needs very effectively</b>. This capability is not limited to Snake. It can transfer to any mini program you want to build later - tools, event pages, educational apps, or real work projects.</span><span lang="en">More importantly, you did not achieve this by memorizing syntax. You achieved it by clearly expressing requirements + communicating effectively with AI. You have already experienced this: <b>one natural-language instruction can let AI satisfy your development needs very effectively</b>. This capability is not limited to Snake. It can transfer to any mini program you want to build later - tools, event pages, educational apps, or real work projects.</span></p>
+<p class="reveal"><span lang="id">If we summarize into a <b>general SOP</b>, it is only five steps:</span><span lang="en">If we summarize into a <b>general SOP</b>, it is only five steps:</span></p>
+<p class="reveal"><span lang="id"><b>Clarify one small requirement -> build project skeleton in Trae -> use vibecoding + AI to create first version -> repeatedly play-test and improve in WeChat DevTools -> upload, file, review, and launch.</b></span><span lang="en"><b>Clarify one small requirement -> build project skeleton in Trae -> use vibecoding + AI to create first version -> repeatedly play-test and improve in WeChat DevTools -> upload, file, review, and launch.</b></span></p>
+<p class="reveal"><span lang="id">Each time you repeat these five steps, you gain another real mini program that can be opened and shared, and another layer of confidence that "I can use AI to turn ideas into products."</span><span lang="en">Each time you repeat these five steps, you gain another real mini program that can be opened and shared, and another layer of confidence that "I can use AI to turn ideas into products."</span></p>
+<p class="reveal"><span lang="id">Next, you can keep polishing this Snake app, or close it and start a blank project from your own idea. No matter what you build, remember one thing: you are no longer just someone who "wants to build something." You are already a vibecoding developer who has run the full workflow. The rest is repetition until this capability becomes habit.</span><span lang="en">Next, you can keep polishing this Snake app, or close it and start a blank project from your own idea. No matter what you build, remember one thing: you are no longer just someone who "wants to build something." You are already a vibecoding developer who has run the full workflow. The rest is repetition until this capability becomes habit.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">https://zhuanlan.zhihu.com/p/1889401120939567074</span><span lang="en">https://zhuanlan.zhihu.com/p/1889401120939567074</span></li>
+<li><span lang="id">https://blog.csdn.net/2401_87407347/article/details/155193007</span><span lang="en">https://blog.csdn.net/2401_87407347/article/details/155193007</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../cross-platform/choose-platform/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Cara Memilih Platform yang Tepat untuk Idemu</span><span lang="en">Cara Memilih Platform yang Tepat untuk Idemu</span></b></a>
+      <a class="next" href="../../cross-platform/wechat-miniprogram-backend/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Mini Program dengan Backend Cloud & Database</span><span lang="en">Mini Program dengan Backend Cloud & Database</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

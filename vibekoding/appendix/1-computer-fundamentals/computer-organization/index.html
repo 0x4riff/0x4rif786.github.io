@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Computer Organization Principles — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Computer Organization Principles. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/1-computer-fundamentals/computer-organization/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Computer Organization Principles</span><span lang="en">Computer Organization Principles</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Computer Organization Principles</span><span lang="en">Computer Organization Principles</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Computer Organization Principles.</span><span lang="en">Ensiklopedia VibeKoding: Computer Organization Principles.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>After building a CPU from transistors, how do computers form a complete system?</b> In the previous chapter, we started from transistors and built adders, registers, arithmetic units, and finally assembled the CPU core. But a CPU alone is not enough — it needs to work in coordination with memory and I/O devices, requires buses to connect components, and needs an instruction set to drive operations. This chapter shifts our perspective from inside the CPU to the entire computer system, providing an in-depth understanding of the Von Neumann architecture, instruction sets, storage hierarchy, buses, and I/O principles.</span><span lang="en"><b>After building a CPU from transistors, how do computers form a complete system?</b> In the previous chapter, we started from transistors and built adders, registers, arithmetic units, and finally assembled the CPU core. But a CPU alone is not enough — it needs to work in coordination with memory and I/O devices, requires buses to connect components, and needs an instruction set to drive operations. This chapter shifts our perspective from inside the CPU to the entire computer system, providing an in-depth understanding of the Von Neumann architecture, instruction sets, storage hierarchy, buses, and I/O principles.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn from this article?</b></span><span lang="en"><b>What will you learn from this article?</b></span></p>
+<p class="reveal"><span lang="id">After completing this chapter, you will gain:</span><span lang="en">After completing this chapter, you will gain:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>System perspective</b>: Understand how CPU, memory, and I/O work together — no longer just an isolated hardware enthusiast</span><span lang="en"><b>System perspective</b>: Understand how CPU, memory, and I/O work together — no longer just an isolated hardware enthusiast</span></li>
+<li><span lang="id"><b>Hardware terminology</b>: Master hardcore concepts like instruction cycles, pipelines, CPI, and cache hit rates</span><span lang="en"><b>Hardware terminology</b>: Master hardcore concepts like instruction cycles, pipelines, CPI, and cache hit rates</span></li>
+<li><span lang="id"><b>Performance thinking</b>: Understand bottlenecks and optimization approaches in computer organization</span><span lang="en"><b>Performance thinking</b>: Understand bottlenecks and optimization approaches in computer organization</span></li>
+<li><span lang="id"><b>Foundation for further learning</b>: Build a professional foundation for operating systems, computer architecture, and embedded development</span><span lang="en"><b>Foundation for further learning</b>: Build a professional foundation for operating systems, computer architecture, and embedded development</span></li>
+</ul>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Core Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>Von Neumann Architecture</td><td>Stored program, five major components, data path</td></tr>
+<tr><td><b>Chapter 2</b></td><td>Instruction Set Architecture</td><td>Instruction format, addressing modes, CISC vs RISC</td></tr>
+<tr><td><b>Chapter 3</b></td><td>CPU Control Unit</td><td>Control unit, micro-operations, instruction cycle</td></tr>
+<tr><td><b>Chapter 4</b></td><td>Storage Hierarchy</td><td>Cache, main memory, virtual memory, paging</td></tr>
+<tr><td><b>Chapter 5</b></td><td>Bus and I/O</td><td>Bus arbitration, DMA, interrupt mechanism</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. Big Picture: Computer Hardware System</span><span lang="en">0. Big Picture: Computer Hardware System</span></h2>
+<p class="reveal"><span lang="id">In the previous chapter "From Transistors to CPU," we understood how the CPU works internally — from fetch, decode, execute to write-back. But the CPU itself is just an execution unit. To make a computer truly "usable," a series of peripheral components must work together.</span><span lang="en">In the previous chapter "From Transistors to CPU," we understood how the CPU works internally — from fetch, decode, execute to write-back. But the CPU itself is just an execution unit. To make a computer truly "usable," a series of peripheral components must work together.</span></p>
+<p class="reveal"><span lang="id"><CpuArchitectureDemo /></span><span lang="en"><CpuArchitectureDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Layer 1: CPU Core</b>
+  Responsible for instruction execution, including the control unit (issuing control signals) and the arithmetic unit (performing arithmetic and logic operations)
+
+- <b>Layer 2: Register File</b>
+  High-speed storage units inside the CPU, including general-purpose registers and special-purpose registers (PC, IR, MAR, MDR, etc.)
+
+- <b>Layer 3: Main Memory</b>
+  Memory for storing programs and data, accessed by the CPU through address and data buses
+
+- <b>Layer 4: I/O Devices</b>
+  Input and output devices connected to the system bus through I/O controllers
+
+- <b>Layer 5: System Bus</b>
+  Data channels connecting CPU, memory, and I/O, including address bus, data bus, and control bus</span><span lang="en">- <b>Layer 1: CPU Core</b>
+  Responsible for instruction execution, including the control unit (issuing control signals) and the arithmetic unit (performing arithmetic and logic operations)
+
+- <b>Layer 2: Register File</b>
+  High-speed storage units inside the CPU, including general-purpose registers and special-purpose registers (PC, IR, MAR, MDR, etc.)
+
+- <b>Layer 3: Main Memory</b>
+  Memory for storing programs and data, accessed by the CPU through address and data buses
+
+- <b>Layer 4: I/O Devices</b>
+  Input and output devices connected to the system bus through I/O controllers
+
+- <b>Layer 5: System Bus</b>
+  Data channels connecting CPU, memory, and I/O, including address bus, data bus, and control bus</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Von Neumann Architecture: The Foundation of Modern Computers</span><span lang="en">1. Von Neumann Architecture: The Foundation of Modern Computers</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 The Stored-Program Principle</span><span lang="en">1.1 The Stored-Program Principle</span></h3>
+<p class="reveal"><span lang="id">In 1945, mathematician John von Neumann proposed the groundbreaking <b>stored-program</b> architecture concept. This idea laid the foundation for modern computers.</span><span lang="en">In 1945, mathematician John von Neumann proposed the groundbreaking <b>stored-program</b> architecture concept. This idea laid the foundation for modern computers.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Stored Program</b>: The program itself, as a special kind of data, is stored in memory just like ordinary data. The CPU can read and execute program instructions stored in memory the same way it reads and writes data.</span><span lang="en"><b>Stored Program</b>: The program itself, as a special kind of data, is stored in memory just like ordinary data. The CPU can read and execute program instructions stored in memory the same way it reads and writes data.</span></p>
+</div>
+<p class="reveal"><span lang="id">This means:</span><span lang="en">This means:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Early computers</b>: Programs were implemented through fixed wiring; changing a program required re-soldering circuits</span><span lang="en"><b>Early computers</b>: Programs were implemented through fixed wiring; changing a program required re-soldering circuits</span></li>
+<li><span lang="id"><b>Von Neumann architecture</b>: Programs are stored in memory; changing a program only requires modifying the memory contents</span><span lang="en"><b>Von Neumann architecture</b>: Programs are stored in memory; changing a program only requires modifying the memory contents</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 Five Major Components</span><span lang="en">1.2 Five Major Components</span></h3>
+<p class="reveal"><span lang="id">The Von Neumann architecture divides a computer into five core components:</span><span lang="en">The Von Neumann architecture divides a computer into five core components:</span></p>
+<p class="reveal"><span lang="id"><RegisterDemo /></span><span lang="en"><RegisterDemo /></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Component</th><th>English</th><th>Function</th><th>Main Composition</th></tr>
+<tr><td><b>Arithmetic Unit</b></td><td>ALU (Arithmetic Logic Unit)</td><td>Performs arithmetic and logic operations</td><td>Adders, shifters, comparators</td></tr>
+<tr><td><b>Control Unit</b></td><td>CU (Control Unit)</td><td>Directs and coordinates all components</td><td>Instruction register, decoder, timing generator</td></tr>
+<tr><td><b>Memory</b></td><td>Memory</td><td>Stores programs and data</td><td>Memory Address Register (MAR), Memory Data Register (MDR)</td></tr>
+<tr><td><b>Input Devices</b></td><td>Input</td><td>Information input</td><td>Keyboard, mouse, scanner</td></tr>
+<tr><td><b>Output Devices</b></td><td>Output</td><td>Information output</td><td>Monitor, printer</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.3 Data Path</span><span lang="en">1.3 Data Path</span></h3>
+<p class="reveal"><span lang="id">The <b>Data Path</b> is the route through which data flows between functional components. Inside the CPU, the data path connects:</span><span lang="en">The <b>Data Path</b> is the route through which data flows between functional components. Inside the CPU, the data path connects:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Register file</span><span lang="en">Register file</span></li>
+<li><span lang="id">Arithmetic Logic Unit (ALU)</span><span lang="en">Arithmetic Logic Unit (ALU)</span></li>
+<li><span lang="id">Memory Data Register (MDR)</span><span lang="en">Memory Data Register (MDR)</span></li>
+</ul>
+<p class="reveal"><span lang="id">The width of the data path (how many bits can be transferred at once) directly affects computer performance.</span><span lang="en">The width of the data path (how many bits can be transferred at once) directly affects computer performance.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.4 The Von Neumann Bottleneck</span><span lang="en">1.4 The Von Neumann Bottleneck</span></h3>
+<p class="reveal"><span lang="id">The Von Neumann architecture has a famous <b>performance bottleneck</b>:</span><span lang="en">The Von Neumann architecture has a famous <b>performance bottleneck</b>:</span></p>
+<p class="reveal"><span lang="id">> The data transfer speed between CPU and memory is far lower than the CPU's processing speed.</span><span lang="en">> The data transfer speed between CPU and memory is far lower than the CPU's processing speed.</span></p>
+<p class="reveal"><span lang="id">This causes the CPU to frequently be in an idle "waiting for data" state. Many optimization techniques in modern computers revolve around this problem:</span><span lang="en">This causes the CPU to frequently be in an idle "waiting for data" state. Many optimization techniques in modern computers revolve around this problem:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Optimization Technique</th><th>Principle</th></tr>
+<tr><td><b>Cache</b></td><td>Place small, high-speed storage near the CPU</td></tr>
+<tr><td><b>Instruction Pipeline</b></td><td>Allow multiple instructions to be in different stages simultaneously</td></tr>
+<tr><td><b>Superscalar</b></td><td>Issue multiple instructions in the same clock cycle</td></tr>
+<tr><td><b>Multi-core Parallelism</b></td><td>Multiple CPU cores share computing tasks</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Instruction Set Architecture: The Interface Between CPU and Software</span><span lang="en">2. Instruction Set Architecture: The Interface Between CPU and Software</span></h2>
+<p class="reveal"><span lang="id">In the previous section, we learned the core idea of the Von Neumann architecture: <b>programs are stored in memory just like data</b>. But this raises a key question — what does a "program" stored in memory actually look like? How does the CPU understand it?</span><span lang="en">In the previous section, we learned the core idea of the Von Neumann architecture: <b>programs are stored in memory just like data</b>. But this raises a key question — what does a "program" stored in memory actually look like? How does the CPU understand it?</span></p>
+<p class="reveal"><span lang="id">The answer is the <b>Instruction Set Architecture (ISA)</b>. If the CPU is a service, then the instruction set is its <b>API documentation</b> — it defines all the commands the CPU can understand, the format of each command, and the data range each command can operate on. Every line of code you write is ultimately translated by the compiler into a sequence of calls to this "API."</span><span lang="en">The answer is the <b>Instruction Set Architecture (ISA)</b>. If the CPU is a service, then the instruction set is its <b>API documentation</b> — it defines all the commands the CPU can understand, the format of each command, and the data range each command can operate on. Every line of code you write is ultimately translated by the compiler into a sequence of calls to this "API."</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 From Code to Instructions: Instruction Encoding and Execution</span><span lang="en">2.1 From Code to Instructions: Instruction Encoding and Execution</span></h3>
+<p class="reveal"><span lang="id">First, let's establish a holistic understanding: the code you write in an editor and what the CPU actually executes are separated by several layers of translation.</span><span lang="en">First, let's establish a holistic understanding: the code you write in an editor and what the CPU actually executes are separated by several layers of translation.</span></p>
+<p class="reveal"><span lang="id"><CodeToInstructionDemo /></span><span lang="en"><CodeToInstructionDemo /></span></p>
+<p class="reveal"><span lang="id">This translation chain is key to understanding instruction sets:</span><span lang="en">This translation chain is key to understanding instruction sets:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Layer</th><th>Content</th><th>Who Can Understand It</th></tr>
+<tr><td>High-level language</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">int a = 10 + 5;</code></td><td>Humans</td></tr>
+<tr><td>Assembly language</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">MOV R1, #10</code> / <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ADD R3, R1, R2</code></td><td>Humans (with training)</td></tr>
+<tr><td>Machine code</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">0001 0001 0000 1010</code></td><td>CPU</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- When you see a compilation error, you know it occurred at the "high-level language → assembly" step
+- When you see a runtime crash, you know the problem is at the CPU instruction execution stage
+- When understanding performance optimization, you know what optimizations the compiler makes during "translation"
+- When choosing a CPU architecture (x86 vs ARM), you know the difference is in the "instruction set API"</span><span lang="en">- When you see a compilation error, you know it occurred at the "high-level language → assembly" step
+- When you see a runtime crash, you know the problem is at the CPU instruction execution stage
+- When understanding performance optimization, you know what optimizations the compiler makes during "translation"
+- When choosing a CPU architecture (x86 vs ARM), you know the difference is in the "instruction set API"</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Instruction Formats</span><span lang="en">2.2 Instruction Formats</span></h3>
+<p class="reveal"><span lang="id">Now that we know code gets translated into instructions, the next question is: <b>what is the internal structure of an instruction?</b></span><span lang="en">Now that we know code gets translated into instructions, the next question is: <b>what is the internal structure of an instruction?</b></span></p>
+<p class="reveal"><span lang="id">Each machine instruction is essentially a string of binary digits, but it has a strict internal format. The two most core parts are:</span><span lang="en">Each machine instruction is essentially a string of binary digits, but it has a strict internal format. The two most core parts are:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Opcode</b>: Tells the CPU "what to do" — add? jump? or read memory?</span><span lang="en"><b>Opcode</b>: Tells the CPU "what to do" — add? jump? or read memory?</span></li>
+<li><span lang="id"><b>Operand</b>: Tells the CPU "what to do it to" — which register? which memory address? what constant?</span><span lang="en"><b>Operand</b>: Tells the CPU "what to do it to" — which register? which memory address? what constant?</span></li>
+</ul>
+<p class="reveal"><span lang="id">Just as a sentence has a "verb + object" structure, an instruction has an "operation + target" structure:</span><span lang="en">Just as a sentence has a "verb + object" structure, an instruction has an "operation + target" structure:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Instruction:  ADD  R3, R1, R2
+              ───  ──────────
+              Opcode  Operands
+              (do addition) (R3 = R1 + R2)</pre>
+</div>
+<p class="reveal"><span lang="id">Based on the number of operands, instruction formats range from simple to complex in four types:</span><span lang="en">Based on the number of operands, instruction formats range from simple to complex in four types:</span></p>
+<p class="reveal"><span lang="id"><InstructionFormatDemo /></span><span lang="en"><InstructionFormatDemo /></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Format</th><th>Structure</th><th>Example</th><th>Use Case</th></tr>
+<tr><td>Zero-address</td><td>Opcode only</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">RET</code> (return)</td><td>Stack machines; operands implicit at stack top</td></tr>
+<tr><td>One-address</td><td>Opcode + 1 address</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">INC R1</code> (increment R1 by 1)</td><td>Single-operand operations</td></tr>
+<tr><td>Two-address</td><td>Opcode + 2 addresses</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">MOV R1, R2</code></td><td>Most common; data transfer and operations</td></tr>
+<tr><td>Three-address</td><td>Opcode + 3 addresses</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ADD R3, R1, R2</code></td><td>Preserves source operands</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">This is a <b>trade-off between space and flexibility</b>. Zero-address instructions are the shortest (saving memory) but require extra stack operations; three-address instructions are the most flexible (preserving source data) but occupy more bits. Different CPU architectures choose different combinations of instruction formats.</span><span lang="en">This is a <b>trade-off between space and flexibility</b>. Zero-address instructions are the shortest (saving memory) but require extra stack operations; three-address instructions are the most flexible (preserving source data) but occupy more bits. Different CPU architectures choose different combinations of instruction formats.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 Addressing Modes</span><span lang="en">2.3 Addressing Modes</span></h3>
+<p class="reveal"><span lang="id">An instruction tells the CPU to "do addition," but where are the two numbers for the addition? They might be written directly in the instruction, in a register, or at some memory address. <b>Addressing modes</b> are the rules that tell the CPU "where to find the operands."</span><span lang="en">An instruction tells the CPU to "do addition," but where are the two numbers for the addition? They might be written directly in the instruction, in a register, or at some memory address. <b>Addressing modes</b> are the rules that tell the CPU "where to find the operands."</span></p>
+<p class="reveal"><span lang="id">Using a real-life analogy of "finding someone":</span><span lang="en">Using a real-life analogy of "finding someone":</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Addressing Mode</th><th>Analogy</th><th>Instruction Example</th><th>Description</th></tr>
+<tr><td><b>Immediate addressing</b></td><td>The person is standing right in front of you</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">MOV R1, #100</code></td><td>Data is written directly in the instruction; fastest</td></tr>
+<tr><td><b>Register addressing</b></td><td>Call an internal extension to reach a colleague</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">MOV R1, R2</code></td><td>Data is in a CPU register; very fast</td></tr>
+<tr><td><b>Direct addressing</b></td><td>Know the address, go directly to the door</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">MOV R1, [0x1000]</code></td><td>Memory address is written in the instruction</td></tr>
+<tr><td><b>Indirect addressing</b></td><td>Ask the front desk "which room is Zhang San in?"</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">MOV R1, [R2]</code></td><td>The register contains an address; requires one extra lookup</td></tr>
+<tr><td><b>Indexed addressing</b></td><td>"Building 3 + Floor 5" to calculate the room</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">MOV R1, [R2+10]</code></td><td>Base address + offset; used for array access</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><AddressingModeDemo /></span><span lang="en"><AddressingModeDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Different scenarios require different "find data" strategies:
+- <b>Constant assignment</b> (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">x = 100</code>) → Immediate addressing; data is right in the instruction
+- <b>Variable operations</b> (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">a + b</code>) → Register addressing; data already loaded into registers
+- <b>Array access</b> (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">arr[i]</code>) → Indexed addressing; base address + index offset
+- <b>Pointer operations</b> (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">*ptr</code>) → Indirect addressing; register holds the address
+
+When you write <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">arr[i]</code>, you don't think about addressing modes, but the compiler automatically selects the most appropriate one.</span><span lang="en">Different scenarios require different "find data" strategies:
+- <b>Constant assignment</b> (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">x = 100</code>) → Immediate addressing; data is right in the instruction
+- <b>Variable operations</b> (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">a + b</code>) → Register addressing; data already loaded into registers
+- <b>Array access</b> (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">arr[i]</code>) → Indexed addressing; base address + index offset
+- <b>Pointer operations</b> (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">*ptr</code>) → Indirect addressing; register holds the address
+
+When you write <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">arr[i]</code>, you don't think about addressing modes, but the compiler automatically selects the most appropriate one.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.4 The CPU's Capability List — Instruction Categories</span><span lang="en">2.4 The CPU's Capability List — Instruction Categories</span></h3>
+<p class="reveal"><span lang="id">Now that we know instruction formats and addressing modes, the last question is: <b>what exactly can the CPU do?</b></span><span lang="en">Now that we know instruction formats and addressing modes, the last question is: <b>what exactly can the CPU do?</b></span></p>
+<p class="reveal"><span lang="id">All instructions can be grouped into six categories that cover everything a computer can do:</span><span lang="en">All instructions can be grouped into six categories that cover everything a computer can do:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Type</th><th>What It Does</th><th>Representative Instructions</th><th>Maps to Your Code</th></tr>
+<tr><td><b>Data Transfer</b></td><td>Move data around</td><td>MOV, LOAD, STORE</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">let x = y</code>, function parameter passing</td></tr>
+<tr><td><b>Arithmetic</b></td><td>Addition, subtraction, multiplication, division</td><td>ADD, SUB, MUL, DIV</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">a + b</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count++</code></td></tr>
+<tr><td><b>Logic</b></td><td>Bitwise operations</td><td>AND, OR, NOT, XOR</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">flags & 0xFF</code>, permission checks</td></tr>
+<tr><td><b>Shift</b></td><td>Shift left/right</td><td>SHL, SHR</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">x << 2</code> (equivalent to multiplying by 4)</td></tr>
+<tr><td><b>Control Transfer</b></td><td>Jumps and calls</td><td>JMP, CALL, RET</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">if</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">for</code>, function calls</td></tr>
+<tr><td><b>Input/Output</b></td><td>Communicate with peripherals</td><td>IN, OUT</td><td>Read keyboard, write to screen</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">All the code you write — no matter how complex the business logic or how flashy the UI animations — is ultimately broken down into combinations of these six basic operation types. The CPU's "intelligence" lies not in how complex its individual operations are, but in its ability to execute these simple operations billions of times per second.</span><span lang="en">All the code you write — no matter how complex the business logic or how flashy the UI animations — is ultimately broken down into combinations of these six basic operation types. The CPU's "intelligence" lies not in how complex its individual operations are, but in its ability to execute these simple operations billions of times per second.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.5 Two Design Philosophies: CISC vs RISC</span><span lang="en">2.5 Two Design Philosophies: CISC vs RISC</span></h3>
+<p class="reveal"><span lang="id">There is a fundamental divide in instruction set design: <b>should each instruction be as powerful as possible, or as simple as possible?</b></span><span lang="en">There is a fundamental divide in instruction set design: <b>should each instruction be as powerful as possible, or as simple as possible?</b></span></p>
+<p class="reveal"><span lang="id">This divide created two camps that directly affect every device you use today:</span><span lang="en">This divide created two camps that directly affect every device you use today:</span></p>
+<p class="reveal"><span lang="id"><CISCvsRISCDemo /></span><span lang="en"><CISCvsRISCDemo /></span></p>
+<p class="reveal"><span lang="id">An analogy to understand this:</span><span lang="en">An analogy to understand this:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>CISC is like a Swiss Army knife</b>: One tool integrates scissors, a bottle opener, a screwdriver... lots of functions but each one may not be the best</span><span lang="en"><b>CISC is like a Swiss Army knife</b>: One tool integrates scissors, a bottle opener, a screwdriver... lots of functions but each one may not be the best</span></li>
+<li><span lang="id"><b>RISC is like a professional tool set</b>: Each tool does only one thing, but does it fast and well</span><span lang="en"><b>RISC is like a professional tool set</b>: Each tool does only one thing, but does it fast and well</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>x86 (CISC)</b> has dominated the PC and server market for 40 years, accumulating a massive software ecosystem. Switching architectures means all software must be recompiled
+- <b>ARM (RISC)</b> dominates mobile devices thanks to its low-power advantage. Phone batteries are small; every milliwatt counts
+- <b>Apple Silicon</b> proved that RISC can also deliver high performance — the M-series chips surpassed x86 competitors in both performance and power efficiency
+- <b>RISC-V</b> is an open-source RISC architecture rapidly rising in IoT, education, and AI chip sectors</span><span lang="en">- <b>x86 (CISC)</b> has dominated the PC and server market for 40 years, accumulating a massive software ecosystem. Switching architectures means all software must be recompiled
+- <b>ARM (RISC)</b> dominates mobile devices thanks to its low-power advantage. Phone batteries are small; every milliwatt counts
+- <b>Apple Silicon</b> proved that RISC can also deliver high performance — the M-series chips surpassed x86 competitors in both performance and power efficiency
+- <b>RISC-V</b> is an open-source RISC architecture rapidly rising in IoT, education, and AI chip sectors</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">> <b>Summary</b>: The instruction set is the bridge between software and hardware. Your code is translated by the compiler into instructions, which tell the CPU what to do and to whom through opcodes and operands. Addressing modes determine where data comes from. Different instruction set designs (CISC/RISC) determine the CPU's performance characteristics and applicable scenarios.</span><span lang="en">> <b>Summary</b>: The instruction set is the bridge between software and hardware. Your code is translated by the compiler into instructions, which tell the CPU what to do and to whom through opcodes and operands. Addressing modes determine where data comes from. Different instruction set designs (CISC/RISC) determine the CPU's performance characteristics and applicable scenarios.</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> Now we know the "static structure" of instructions — what they look like and what types exist. The next question is: <b>how does the CPU execute these instructions step by step internally?</b> That's the control unit's job.</span><span lang="en">> Now we know the "static structure" of instructions — what they look like and what types exist. The next question is: <b>how does the CPU execute these instructions step by step internally?</b> That's the control unit's job.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Control Unit: The CPU's Control Logic</span><span lang="en">3. Control Unit: The CPU's Control Logic</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Components of the Control Unit</span><span lang="en">3.1 Components of the Control Unit</span></h3>
+<p class="reveal"><span lang="id">The control unit is the "brain" of the CPU, responsible for coordinating all components to work according to instruction requirements:</span><span lang="en">The control unit is the "brain" of the CPU, responsible for coordinating all components to work according to instruction requirements:</span></p>
+<p class="reveal"><span lang="id"><ControllerDemo /></span><span lang="en"><ControllerDemo /></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Component</th><th>Function</th></tr>
+<tr><td><b>Program Counter (PC)</b></td><td>Stores the address of the next instruction</td></tr>
+<tr><td><b>Instruction Register (IR)</b></td><td>Stores the currently executing instruction</td></tr>
+<tr><td><b>Instruction Decoder</b></td><td>Parses the instruction's opcode and operands</td></tr>
+<tr><td><b>Timing Generator</b></td><td>Generates clock beat signals to control component timing</td></tr>
+<tr><td><b>Micro-operation Sequence Generator</b></td><td>Generates the series of control signals needed to execute instructions</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><PSWFlagDemo /></span><span lang="en"><PSWFlagDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Instruction Cycle</span><span lang="en">3.2 Instruction Cycle</span></h3>
+<p class="reveal"><span lang="id">The CPU executes an instruction through a complete <b>instruction cycle</b>, typically including:</span><span lang="en">The CPU executes an instruction through a complete <b>instruction cycle</b>, typically including:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Fetch Cycle</b>: Read instruction from memory into IR</span><span lang="en"><b>Fetch Cycle</b>: Read instruction from memory into IR</span></li>
+<li><span lang="id"><b>Decode Cycle</b>: Parse the instruction's meaning</span><span lang="en"><b>Decode Cycle</b>: Parse the instruction's meaning</span></li>
+<li><span lang="id"><b>Execute Cycle</b>: Perform the operation</span><span lang="en"><b>Execute Cycle</b>: Perform the operation</span></li>
+<li><span lang="id"><b>Memory Access Cycle</b>: Access memory if needed</span><span lang="en"><b>Memory Access Cycle</b>: Access memory if needed</span></li>
+<li><span lang="id"><b>Write-Back Cycle</b>: Write the result back to a register or memory</span><span lang="en"><b>Write-Back Cycle</b>: Write the result back to a register or memory</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Micro-Operations</span><span lang="en">3.3 Micro-Operations</span></h3>
+<p class="reveal"><span lang="id"><b>Micro-operations</b> are the most basic operations driven by control signals. For example, the "fetch" phase can be decomposed into the following micro-operations:</span><span lang="en"><b>Micro-operations</b> are the most basic operations driven by control signals. For example, the "fetch" phase can be decomposed into the following micro-operations:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Beat</th><th>Micro-Operation</th><th>Control Signals</th></tr>
+<tr><td>T1</td><td>PC → MAR</td><td>PCout, MARin</td></tr>
+<tr><td>T2</td><td>MEM → MDR</td><td>MEMout, MDRin</td></tr>
+<tr><td>T3</td><td>MDR → IR</td><td>MDRout, IRin</td></tr>
+<tr><td>T4</td><td>PC + 1 → PC</td><td>PC+1, PCin</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.4 Hardwired vs. Microprogrammed Control</span><span lang="en">3.4 Hardwired vs. Microprogrammed Control</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Feature</th><th>Hardwired Control</th><th>Microprogrammed Control</th></tr>
+<tr><td><b>Implementation</b></td><td>Combinational logic circuits</td><td>Microinstruction sequences (firmware)</td></tr>
+<tr><td><b>Speed</b></td><td>Fast</td><td>Slightly slower</td></tr>
+<tr><td><b>Design difficulty</b></td><td>Complex</td><td>Simpler</td></tr>
+<tr><td><b>Flexibility</b></td><td>Poor (changes require circuit redesign)</td><td>Good (just modify the microprogram)</td></tr>
+<tr><td><b>Typical applications</b></td><td>RISC processors</td><td>Early CISC processors</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Storage Hierarchy and Cache Principles</span><span lang="en">4. Storage Hierarchy and Cache Principles</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Storage Hierarchy Structure</span><span lang="en">4.1 Storage Hierarchy Structure</span></h3>
+<p class="reveal"><span lang="id">A computer's storage devices form a pyramid structure:</span><span lang="en">A computer's storage devices form a pyramid structure:</span></p>
+<p class="reveal"><span lang="id"><StorageHierarchyDemo /></span><span lang="en"><StorageHierarchyDemo /></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Level</th><th>Storage Type</th><th>Access Time</th><th>Typical Capacity</th><th>Location</th></tr>
+<tr><td><b>Registers</b></td><td>SRAM</td><td><1ns</td><td>A few KB</td><td>Inside CPU</td></tr>
+<tr><td><b>L1 Cache</b></td><td>SRAM</td><td>~1ns</td><td>32-64KB</td><td>Near CPU core</td></tr>
+<tr><td><b>L2 Cache</b></td><td>SRAM</td><td>~3-10ns</td><td>256KB-1MB</td><td>On CPU chip</td></tr>
+<tr><td><b>L3 Cache</b></td><td>SRAM</td><td>~10-20ns</td><td>2-16MB</td><td>On CPU chip / shared</td></tr>
+<tr><td><b>Main Memory (RAM)</b></td><td>DRAM</td><td>~50-100ns</td><td>8-64GB</td><td>On motherboard</td></tr>
+<tr><td><b>SSD</b></td><td>Flash</td><td>~10-100μs</td><td>256GB-2TB</td><td>On motherboard</td></tr>
+<tr><td><b>HDD</b></td><td>Magnetic disk</td><td>~5-10ms</td><td>1-10TB</td><td>Inside case</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">If CPU accessing L1 cache is like <b>grabbing a piece of paper from your desk</b>:
+- Accessing main memory → Taking the elevator to a convenience store downstairs to buy paper
+- Accessing SSD → Driving to another city to buy paper
+- Accessing HDD → Flying to another country to buy paper
+
+The speed difference can be <b>millions of times</b>!</span><span lang="en">If CPU accessing L1 cache is like <b>grabbing a piece of paper from your desk</b>:
+- Accessing main memory → Taking the elevator to a convenience store downstairs to buy paper
+- Accessing SSD → Driving to another city to buy paper
+- Accessing HDD → Flying to another country to buy paper
+
+The speed difference can be <b>millions of times</b>!</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Cache Principles</span><span lang="en">4.2 Cache Principles</span></h3>
+<p class="reveal"><span lang="id"><b>Cache</b> is fast storage located between the CPU and main memory. Its core idea is based on two locality principles:</span><span lang="en"><b>Cache</b> is fast storage located between the CPU and main memory. Its core idea is based on two locality principles:</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Temporal locality</b>: If data was just accessed, it's likely to be accessed again soon
+- <b>Spatial locality</b>: If data was accessed, nearby data is likely to be accessed too</span><span lang="en">- <b>Temporal locality</b>: If data was just accessed, it's likely to be accessed again soon
+- <b>Spatial locality</b>: If data was accessed, nearby data is likely to be accessed too</span></p>
+</div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">How Cache Works</span><span lang="en">How Cache Works</span></h4>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Hit</b>: The data the CPU needs is in the cache; read directly</span><span lang="en"><b>Hit</b>: The data the CPU needs is in the cache; read directly</span></li>
+<li><span lang="id"><b>Miss</b>: The data is not in the cache; must be loaded from main memory</span><span lang="en"><b>Miss</b>: The data is not in the cache; must be loaded from main memory</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Hit rate = Number of hits / Total number of accesses
+Average access time = Hit rate × Cache time + (1 - Hit rate) × Memory time</pre>
+</div>
+<p class="reveal"><span lang="id"><CacheDemo /></span><span lang="en"><CacheDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 Cache Mapping Methods</span><span lang="en">4.3 Cache Mapping Methods</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Method</th><th>Principle</th><th>Advantage</th><th>Disadvantage</th></tr>
+<tr><td><b>Direct-mapped</b></td><td>Each memory block can only go to one fixed location</td><td>Simple and fast</td><td>High conflict rate</td></tr>
+<tr><td><b>Set-associative</b></td><td>Each memory block can go to N locations (N-way)</td><td>Balances speed and hit rate</td><td>More complex implementation</td></tr>
+<tr><td><b>Fully associative</b></td><td>Any location</td><td>Lowest conflict rate</td><td>Hardest to implement (requires comparing all tags)</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.4 Virtual Memory</span><span lang="en">4.4 Virtual Memory</span></h3>
+<p class="reveal"><span lang="id"><b>Virtual memory</b> is an important abstraction provided by the operating system:</span><span lang="en"><b>Virtual memory</b> is an important abstraction provided by the operating system:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Each process thinks it has a complete virtual address space</span><span lang="en">Each process thinks it has a complete virtual address space</span></li>
+<li><span lang="id">The operating system translates virtual addresses to physical addresses</span><span lang="en">The operating system translates virtual addresses to physical addresses</span></li>
+<li><span lang="id">Infrequently used pages can be swapped out to disk (swap space)</span><span lang="en">Infrequently used pages can be swapped out to disk (swap space)</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Think of virtual memory as <b>a hotel managing rooms</b>:
+- You (the process) think the entire building is yours
+- In reality, the hotel (OS) only assigns you the rooms you currently need
+- Unused rooms get "swapped out" to storage (disk)
+- Needed rooms can be "swapped in" at any time</span><span lang="en">Think of virtual memory as <b>a hotel managing rooms</b>:
+- You (the process) think the entire building is yours
+- In reality, the hotel (OS) only assigns you the rooms you currently need
+- Unused rooms get "swapped out" to storage (disk)
+- Needed rooms can be "swapped in" at any time</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Bus and I/O Systems</span><span lang="en">5. Bus and I/O Systems</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 System Bus</span><span lang="en">5.1 System Bus</span></h3>
+<p class="reveal"><span lang="id">A <b>Bus</b> is the data channel connecting computer components:</span><span lang="en">A <b>Bus</b> is the data channel connecting computer components:</span></p>
+<p class="reveal"><span lang="id"><BusSystemDemo /></span><span lang="en"><BusSystemDemo /></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Bus Type</th><th>Function</th><th>Direction</th><th>Typical Width</th></tr>
+<tr><td><b>Address Bus</b></td><td>Transfers memory addresses</td><td>Unidirectional (CPU→Memory)</td><td>32-bit/64-bit</td></tr>
+<tr><td><b>Data Bus</b></td><td>Transfers data</td><td>Bidirectional</td><td>32-bit/64-bit</td></tr>
+<tr><td><b>Control Bus</b></td><td>Transfers control signals</td><td>Bidirectional</td><td>Multiple signal lines</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Bus Arbitration</span><span lang="en">5.2 Bus Arbitration</span></h3>
+<p class="reveal"><span lang="id">When multiple devices simultaneously request bus access, an <b>arbitration</b> mechanism determines who goes first:</span><span lang="en">When multiple devices simultaneously request bus access, an <b>arbitration</b> mechanism determines who goes first:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Arbitration Method</th><th>Description</th></tr>
+<tr><td><b>Centralized arbitration</b></td><td>A central arbiter makes the decision</td></tr>
+<tr><td><b>Distributed arbitration</b></td><td>Devices negotiate among themselves</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 I/O Device Access Methods</span><span lang="en">5.3 I/O Device Access Methods</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Method</th><th>Principle</th><th>Advantage</th><th>Disadvantage</th></tr>
+<tr><td><b>Programmed I/O (Polling)</b></td><td>CPU polls I/O status</td><td>Simple</td><td>Low CPU utilization</td></tr>
+<tr><td><b>Interrupt-driven I/O</b></td><td>I/O device actively notifies CPU when done</td><td>CPU can work in parallel</td><td>Interrupt handling has overhead</td></tr>
+<tr><td><b>DMA</b></td><td>I/O device accesses memory directly</td><td>CPU not involved at all</td><td>Requires a DMA controller</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><IOMethodDemo /></span><span lang="en"><IOMethodDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.4 DMA Principles</span><span lang="en">5.4 DMA Principles</span></h3>
+<p class="reveal"><span lang="id"><b>DMA (Direct Memory Access)</b> allows I/O devices to exchange data directly with memory:</span><span lang="en"><b>DMA (Direct Memory Access)</b> allows I/O devices to exchange data directly with memory:</span></p>
+<p class="reveal"><span lang="id"><NetworkOverviewDemo /></span><span lang="en"><NetworkOverviewDemo /></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Without DMA</b>: The CPU participates in the entire data transfer process and can't do anything else</span><span lang="en"><b>Without DMA</b>: The CPU participates in the entire data transfer process and can't do anything else</span></li>
+<li><span lang="id"><b>With DMA</b>: The CPU tells the DMA controller "transfer from where to where, how much," then goes to do other tasks. The DMA notifies the CPU when complete</span><span lang="en"><b>With DMA</b>: The CPU tells the DMA controller "transfer from where to where, how much," then goes to do other tasks. The DMA notifies the CPU when complete</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">This is like <b>ordering food delivery</b>:
+- <b>Without DMA</b>: You go to the supermarket yourself, buy groceries, go home, wash vegetables, and cook (involved in the entire process)
+- <b>With DMA</b>: You place an order by phone, and the delivery person brings it straight to your kitchen (someone else handles it; you just "receive the goods" at the end)</span><span lang="en">This is like <b>ordering food delivery</b>:
+- <b>Without DMA</b>: You go to the supermarket yourself, buy groceries, go home, wash vegetables, and cook (involved in the entire process)
+- <b>With DMA</b>: You place an order by phone, and the delivery person brings it straight to your kitchen (someone else handles it; you just "receive the goods" at the end)</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.5 Interrupt Mechanism</span><span lang="en">5.5 Interrupt Mechanism</span></h3>
+<p class="reveal"><span lang="id"><b>Interrupts</b> are a very important mechanism in computer systems:</span><span lang="en"><b>Interrupts</b> are a very important mechanism in computer systems:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">After an I/O device completes an operation, it sends an <b>interrupt request</b> to the CPU</span><span lang="en">After an I/O device completes an operation, it sends an <b>interrupt request</b> to the CPU</span></li>
+<li><span lang="id">The CPU, currently executing an instruction, responds to the interrupt after completing the current instruction</span><span lang="en">The CPU, currently executing an instruction, responds to the interrupt after completing the current instruction</span></li>
+<li><span lang="id">The CPU saves its current state and jumps to the interrupt handler</span><span lang="en">The CPU saves its current state and jumps to the interrupt handler</span></li>
+<li><span lang="id">After handling is complete, it restores the state and continues execution</span><span lang="en">After handling is complete, it restores the state and continues execution</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. CPU Performance Optimization: Pipeline Technology</span><span lang="en">6. CPU Performance Optimization: Pipeline Technology</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Instruction Pipeline</span><span lang="en">6.1 Instruction Pipeline</span></h3>
+<p class="reveal"><span lang="id"><b>Instruction pipelining</b> is a parallel technique that maximizes CPU efficiency:</span><span lang="en"><b>Instruction pipelining</b> is a parallel technique that maximizes CPU efficiency:</span></p>
+<p class="reveal"><span lang="id"><PipelineDemo /></span><span lang="en"><PipelineDemo /></span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">How Pipelining Works</span><span lang="en">How Pipelining Works</span></h4>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Sequential execution (5 instructions, 15 cycles):
+Instr 1: IF→ID→EX→MEM→WB
+Instr 2:            IF→ID→EX→MEM→WB
+Instr 3:                         IF→ID→EX→MEM→WB
+...
+
+Pipeline execution (5 instructions, 9 cycles):
+Instr 1: IF→ID→EX→MEM→WB
+Instr 2:    IF→ID→EX→MEM→WB
+Instr 3:       IF→ID→EX→MEM→WB
+...</pre>
+</div>
+<p class="reveal"><span lang="id">Ideally, CPI (cycles per instruction) for N instructions ≈ 1</span><span lang="en">Ideally, CPI (cycles per instruction) for N instructions ≈ 1</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 Pipeline Hazards</span><span lang="en">6.2 Pipeline Hazards</span></h3>
+<p class="reveal"><span lang="id">While pipelining improves performance, it also introduces <b>hazard</b> problems:</span><span lang="en">While pipelining improves performance, it also introduces <b>hazard</b> problems:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Type</th><th>Cause</th><th>Solution</th></tr>
+<tr><td><b>Structural hazard</b></td><td>Hardware resource conflict</td><td>Add hardware / stagger execution</td></tr>
+<tr><td><b>Data hazard</b></td><td>Later instruction needs the result of an earlier one</td><td>Data forwarding / bubbles / scheduling</td></tr>
+<tr><td><b>Control hazard</b></td><td>Branch instructions change execution flow</td><td>Delay slots / branch prediction</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Summary: The Computer Execution Model</span><span lang="en">7. Summary: The Computer Execution Model</span></h2>
+<p class="reveal"><span lang="id">Let's connect the entire process using professional terminology:</span><span lang="en">Let's connect the entire process using professional terminology:</span></p>
+<p class="reveal"><span lang="id">> <b>After a program starts, the operating system loads the executable file from disk into memory. The CPU's fetch unit (IF) reads instructions from memory into the instruction register (IR) via the address bus. The control unit decodes the instruction (ID), and after identifying the operation type, generates the corresponding control signals. The arithmetic unit (EX) performs arithmetic and logic operations. If memory access is needed, it accesses memory (MEM) via the data bus, and finally the result is written back (WB) to a register or memory. The entire process is driven by the clock, with micro-operation sequences generated by the control unit coordinating all components to work in an orderly manner.</b></span><span lang="en">> <b>After a program starts, the operating system loads the executable file from disk into memory. The CPU's fetch unit (IF) reads instructions from memory into the instruction register (IR) via the address bus. The control unit decodes the instruction (ID), and after identifying the operation type, generates the corresponding control signals. The arithmetic unit (EX) performs arithmetic and logic operations. If memory access is needed, it accesses memory (MEM) via the data bus, and finally the result is written back (WB) to a register or memory. The entire process is driven by the clock, with micro-operation sequences generated by the control unit coordinating all components to work in an orderly manner.</b></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Topic</th><th>Recommended Resources</th></tr>
+<tr><td>Computer Architecture</td><td><i>Computer Organization and Design: The Hardware/Software Interface</i> - Patterson & Hennessy</td></tr>
+<tr><td>CPU Microarchitecture</td><td><i>Computer Systems: A Programmer's Perspective</i> - Bryant & O'Hallaron</td></tr>
+<tr><td>Instruction Set Architecture</td><td>ARMv8 Architecture Manual, Intel x64 Manual</td></tr>
+<tr><td>Cache Principles</td><td>Cache Coherence Protocol (MESI), Cache Write Policies</td></tr>
+<tr><td>Operating Systems</td><td>Next chapter: "Operating Systems"</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Next Steps</span><span lang="en">Next Steps</span></h2>
+<p class="reveal"><span lang="id">Now that you've mastered the professional knowledge of computer organization, you can continue learning:</span><span lang="en">Now that you've mastered the professional knowledge of computer organization, you can continue learning:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>[Operating Systems](./operating-systems.md)</b>: Understand how programs run on an operating system, and how processes, threads, and memory management are implemented</span><span lang="en"><b>[Operating Systems](./operating-systems.md)</b>: Understand how programs run on an operating system, and how processes, threads, and memory management are implemented</span></li>
+<li><span lang="id"><b>[Data Encoding, Storage, and Transmission](./data-encoding-storage.md)</b>: Deepen your understanding of how data is represented in computers</span><span lang="en"><b>[Data Encoding, Storage, and Transmission](./data-encoding-storage.md)</b>: Deepen your understanding of how data is represented in computers</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../1-computer-fundamentals/computer-networks/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">1-computer-fundamentals/computer-networks</span><span lang="en">1-computer-fundamentals/computer-networks</span></b></a>
+      <a class="next" href="../../1-computer-fundamentals/data-encoding-storage/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">1-computer-fundamentals/data-encoding-storage</span><span lang="en">1-computer-fundamentals/data-encoding-storage</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

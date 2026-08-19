@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Fundamentals of Security Thinking: Offense and Defense — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Fundamentals of Security Thinking: Offense and Defense. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/9-engineering-excellence/security-thinking/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Fundamentals of Security Thinking: Offense and Defense</span><span lang="en">Fundamentals of Security Thinking: Offense and Defense</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Fundamentals of Security Thinking: Offense and Defense</span><span lang="en">Fundamentals of Security Thinking: Offense and Defense</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Fundamentals of Security Thinking: Offense and Defense.</span><span lang="en">Ensiklopedia VibeKoding: Fundamentals of Security Thinking: Offense and Defense.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Is your website secure?</b> Many developers think "security is the security team's job" — until their own project gets attacked and user data is leaked. Security is not optional; it's a fundamental skill for every developer.
+
+This chapter helps you build a security mindset and understand the most common web security threats and defense methods.</span><span lang="en"><b>Is your website secure?</b> Many developers think "security is the security team's job" — until their own project gets attacked and user data is leaked. Security is not optional; it's a fundamental skill for every developer.
+
+This chapter helps you build a security mindset and understand the most common web security threats and defense methods.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn in this article?</b></span><span lang="en"><b>What will you learn in this article?</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Core Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>Security mindset model</td><td>Thinking like an attacker</td></tr>
+<tr><td><b>Chapter 2</b></td><td>Common web attacks</td><td>XSS, SQL Injection, CSRF</td></tr>
+<tr><td><b>Chapter 3</b></td><td>Defense strategies</td><td>Input validation, output encoding, access control</td></tr>
+<tr><td><b>Chapter 4</b></td><td>Security checklist</td><td>Pre-launch security self-audit</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">After reading this chapter, you will have basic security awareness and be able to identify and defend against the most common web security threats.</span><span lang="en">After reading this chapter, you will have basic security awareness and be able to identify and defend against the most common web security threats.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. The Big Picture: Why Developers Need to Understand Security</span><span lang="en">0. The Big Picture: Why Developers Need to Understand Security</span></h2>
+<p class="reveal"><span lang="id">Imagine you built a house — fully functional, beautifully decorated — but forgot to install locks. Security vulnerabilities are the "forgotten locks" of the code world.</span><span lang="en">Imagine you built a house — fully functional, beautifully decorated — but forgot to install locks. Security vulnerabilities are the "forgotten locks" of the code world.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Least Privilege</b>: Grant only necessary permissions — not a single bit more
+- <b>Defense in Depth</b>: Don't rely on a single line of defense; set up multiple layers
+- <b>Never Trust Input</b>: All data from external sources could be malicious
+- <b>Secure by Default</b>: Default configurations should be secure, not convenient</span><span lang="en">- <b>Least Privilege</b>: Grant only necessary permissions — not a single bit more
+- <b>Defense in Depth</b>: Don't rely on a single line of defense; set up multiple layers
+- <b>Never Trust Input</b>: All data from external sources could be malicious
+- <b>Secure by Default</b>: Default configurations should be secure, not convenient</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Common Web Attacks</span><span lang="en">1. Common Web Attacks</span></h2>
+<p class="reveal"><span lang="id">Use the interactive component below to understand the three most common web attack principles (for educational purposes only):</span><span lang="en">Use the interactive component below to understand the three most common web attack principles (for educational purposes only):</span></p>
+<p class="reveal"><span lang="id"><WebSecurityDemo /></span><span lang="en"><WebSecurityDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 XSS (Cross-Site Scripting)</span><span lang="en">1.1 XSS (Cross-Site Scripting)</span></h3>
+<p class="reveal"><span lang="id">An attacker injects malicious scripts into a web page. When other users visit the page, the script executes in their browser.</span><span lang="en">An attacker injects malicious scripts into a web page. When other users visit the page, the script executes in their browser.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Dangerous: directly inserting user input into HTML
+element.innerHTML = userInput
+// If userInput is &lt;script&gt;malicious code&lt;/script&gt;, it will execute
+
+// Safe: use textContent or escaping
+element.textContent = userInput
+// Or use framework&#039;s auto-escaping (Vue&#039;s {{ }}, React&#039;s JSX)</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Defense Essentials</b>:</span><span lang="en"><b>Defense Essentials</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Escape HTML special characters on output (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">></code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">&</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">'</code>)</span><span lang="en">Escape HTML special characters on output (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">></code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">&</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">'</code>)</span></li>
+<li><span lang="id">Use modern frameworks' built-in auto-escaping mechanisms</span><span lang="en">Use modern frameworks' built-in auto-escaping mechanisms</span></li>
+<li><span lang="id">Set the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Content-Security-Policy</code> HTTP header</span><span lang="en">Set the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Content-Security-Policy</code> HTTP header</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 SQL Injection</span><span lang="en">1.2 SQL Injection</span></h3>
+<p class="reveal"><span lang="id">An attacker crafts special input to manipulate the logic of SQL queries.</span><span lang="en">An attacker crafts special input to manipulate the logic of SQL queries.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Dangerous: string concatenation for SQL
+const query = `SELECT * FROM users WHERE name = &#039;${userInput}&#039;`
+// If userInput is &#039; OR &#039;1&#039;=&#039;1, it will return all users
+
+// Safe: use parameterized queries
+const query = &#039;SELECT * FROM users WHERE name = ?&#039;
+db.execute(query, [userInput])</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Defense Essentials</b>:</span><span lang="en"><b>Defense Essentials</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Always use parameterized queries / prepared statements</span><span lang="en">Always use parameterized queries / prepared statements</span></li>
+<li><span lang="id">Use ORM frameworks (e.g., Prisma, Sequelize)</span><span lang="en">Use ORM frameworks (e.g., Prisma, Sequelize)</span></li>
+<li><span lang="id">Restrict database account permissions</span><span lang="en">Restrict database account permissions</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.3 CSRF (Cross-Site Request Forgery)</span><span lang="en">1.3 CSRF (Cross-Site Request Forgery)</span></h3>
+<p class="reveal"><span lang="id">An attacker tricks a logged-in user into visiting a malicious page, leveraging the user's login state to send requests.</span><span lang="en">An attacker tricks a logged-in user into visiting a malicious page, leveraging the user's login state to send requests.</span></p>
+<p class="reveal"><span lang="id"><b>Defense Essentials</b>:</span><span lang="en"><b>Defense Essentials</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Use CSRF Tokens</span><span lang="en">Use CSRF Tokens</span></li>
+<li><span lang="id">Check <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Referer</code> / <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Origin</code> headers</span><span lang="en">Check <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Referer</code> / <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Origin</code> headers</span></li>
+<li><span lang="id">Use POST instead of GET for critical operations</span><span lang="en">Use POST instead of GET for critical operations</span></li>
+<li><span lang="id">Set <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SameSite</code> attribute on cookies</span><span lang="en">Set <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SameSite</code> attribute on cookies</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Defense Strategies</span><span lang="en">2. Defense Strategies</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Input Validation</span><span lang="en">2.1 Input Validation</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Whitelist validation: only allow expected formats
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+}
+
+// Length limits
+function isValidUsername(name) {
+  return name.length &gt;= 2 &amp;&amp; name.length &lt;= 50
+}</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Sensitive Data Protection</span><span lang="en">2.2 Sensitive Data Protection</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Data Type</th><th>Protection Measures</th></tr>
+<tr><td>Passwords</td><td>bcrypt/argon2 hashing, never store in plaintext</td></tr>
+<tr><td>API keys</td><td>Environment variables, never commit to code repositories</td></tr>
+<tr><td>User data</td><td>HTTPS transmission, encrypted storage</td></tr>
+<tr><td>Session tokens</td><td>HttpOnly + Secure + SameSite cookies</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 HTTP Security Headers</span><span lang="en">2.3 HTTP Security Headers</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Content-Security-Policy: default-src &#039;self&#039;
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=31536000</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Security Checklist</span><span lang="en">3. Security Checklist</span></h2>
+<p class="reveal"><span lang="id">Before going live, use the interactive component below to check your project's security status:</span><span lang="en">Before going live, use the interactive component below to check your project's security status:</span></p>
+<p class="reveal"><span lang="id"><SecurityChecklistDemo /></span><span lang="en"><SecurityChecklistDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Development Phase</span><span lang="en">3.1 Development Phase</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[ ] All user input is validated and escaped</span><span lang="en">[ ] All user input is validated and escaped</span></li>
+<li><span lang="id">[ ] Parameterized queries are used, no SQL concatenation</span><span lang="en">[ ] Parameterized queries are used, no SQL concatenation</span></li>
+<li><span lang="id">[ ] Passwords are hashed using algorithms like bcrypt</span><span lang="en">[ ] Passwords are hashed using algorithms like bcrypt</span></li>
+<li><span lang="id">[ ] Sensitive configuration is managed through environment variables</span><span lang="en">[ ] Sensitive configuration is managed through environment variables</span></li>
+<li><span lang="id">[ ] <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.env</code> file is added to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.gitignore</code></span><span lang="en">[ ] <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.env</code> file is added to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.gitignore</code></span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Deployment Phase</span><span lang="en">3.2 Deployment Phase</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[ ] HTTPS is enabled</span><span lang="en">[ ] HTTPS is enabled</span></li>
+<li><span lang="id">[ ] Security HTTP headers are configured</span><span lang="en">[ ] Security HTTP headers are configured</span></li>
+<li><span lang="id">[ ] Debug mode and verbose error messages are disabled</span><span lang="en">[ ] Debug mode and verbose error messages are disabled</span></li>
+<li><span lang="id">[ ] Database uses a least-privilege account</span><span lang="en">[ ] Database uses a least-privilege account</span></li>
+<li><span lang="id">[ ] Dependencies are regularly updated (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm audit</code>)</span><span lang="en">[ ] Dependencies are regularly updated (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm audit</code>)</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. AI-Powered: Using LLMs to Enhance Security</span><span lang="en">4. AI-Powered: Using LLMs to Enhance Security</span></h2>
+<p class="reveal"><span lang="id">LLMs can act as your "security consultant" — helping you audit code vulnerabilities and generate security solutions.</span><span lang="en">LLMs can act as your "security consultant" — helping you audit code vulnerabilities and generate security solutions.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Code Security Audit</span><span lang="en">4.1 Code Security Audit</span></h3>
+<p class="reveal"><span lang="id">> <b>Prompt</b>:</span><span lang="en">> <b>Prompt</b>:</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<p class="reveal"><span lang="id">> Please perform a security audit on the following code, checking for:</span><span lang="en">> Please perform a security audit on the following code, checking for:</span></p>
+<p class="reveal"><span lang="id">> - XSS vulnerabilities (unescaped user input)</span><span lang="en">> - XSS vulnerabilities (unescaped user input)</span></p>
+<p class="reveal"><span lang="id">> - SQL injection (string-concatenated queries)</span><span lang="en">> - SQL injection (string-concatenated queries)</span></p>
+<p class="reveal"><span lang="id">> - CSRF risks (missing token verification)</span><span lang="en">> - CSRF risks (missing token verification)</span></p>
+<p class="reveal"><span lang="id">> - Sensitive data leakage (hardcoded keys, plaintext passwords)</span><span lang="en">> - Sensitive data leakage (hardcoded keys, plaintext passwords)</span></p>
+<p class="reveal"><span lang="id">> For each issue, provide risk level, specific location, and remediation.</span><span lang="en">> For each issue, provide risk level, specific location, and remediation.</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> [Paste your code]</span><span lang="en">> [Paste your code]</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Generating Security Configurations</span><span lang="en">4.2 Generating Security Configurations</span></h3>
+<p class="reveal"><span lang="id">> <b>Prompt</b>:</span><span lang="en">> <b>Prompt</b>:</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<p class="reveal"><span lang="id">> My project uses Express.js + PostgreSQL and is about to go live.</span><span lang="en">> My project uses Express.js + PostgreSQL and is about to go live.</span></p>
+<p class="reveal"><span lang="id">> Please generate a complete security configuration checklist, including:</span><span lang="en">> Please generate a complete security configuration checklist, including:</span></p>
+<p class="reveal"><span lang="id">> - HTTP security header configuration code</span><span lang="en">> - HTTP security header configuration code</span></p>
+<p class="reveal"><span lang="id">> - CORS configuration</span><span lang="en">> - CORS configuration</span></p>
+<p class="reveal"><span lang="id">> - Secure database connection settings</span><span lang="en">> - Secure database connection settings</span></p>
+<p class="reveal"><span lang="id">> - Environment variable management solution</span><span lang="en">> - Environment variable management solution</span></p>
+<p class="reveal"><span lang="id">> Provide ready-to-use code snippets.</span><span lang="en">> Provide ready-to-use code snippets.</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 Explaining Vulnerability Principles</span><span lang="en">4.3 Explaining Vulnerability Principles</span></h3>
+<p class="reveal"><span lang="id">> <b>Prompt</b>:</span><span lang="en">> <b>Prompt</b>:</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<p class="reveal"><span lang="id">> Explain the complete flow of a CSRF attack with a concrete example:</span><span lang="en">> Explain the complete flow of a CSRF attack with a concrete example:</span></p>
+<p class="reveal"><span lang="id">> 1. How the attacker constructs the malicious page</span><span lang="en">> 1. How the attacker constructs the malicious page</span></p>
+<p class="reveal"><span lang="id">> 2. Why the browser automatically includes cookies</span><span lang="en">> 2. Why the browser automatically includes cookies</span></p>
+<p class="reveal"><span lang="id">> 3. How the server defends using CSRF tokens</span><span lang="en">> 3. How the server defends using CSRF tokens</span></p>
+<p class="reveal"><span lang="id">> Demonstrate the complete attack and defense process with code.</span><span lang="en">> Demonstrate the complete attack and defense process with code.</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">AI security audits cannot replace professional security testing. Treat them as a first-pass screening — critical systems still require professional security team audits.</span><span lang="en">AI security audits cannot replace professional security testing. Treat them as a first-pass screening — critical systems still require professional security team audits.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Summary</span><span lang="en">5. Summary</span></h2>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Security Mindset</b>: Never trust external input, least privilege, defense in depth</span><span lang="en"><b>Security Mindset</b>: Never trust external input, least privilege, defense in depth</span></li>
+<li><span lang="id"><b>Common Attacks</b>: XSS, SQL Injection, CSRF are the most frequent web security threats</span><span lang="en"><b>Common Attacks</b>: XSS, SQL Injection, CSRF are the most frequent web security threats</span></li>
+<li><span lang="id"><b>Defense Strategies</b>: Input validation, output encoding, parameterized queries, security HTTP headers</span><span lang="en"><b>Defense Strategies</b>: Input validation, output encoding, parameterized queries, security HTTP headers</span></li>
+<li><span lang="id"><b>Security Habits</b>: Run through a security checklist before launch, audit dependencies regularly</span><span lang="en"><b>Security Habits</b>: Run through a security checklist before launch, audit dependencies regularly</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Security is not a one-time task but a habit that runs through the entire development process. It's like wearing a seatbelt when driving — not because you expect an accident, but because it's basic safety awareness. <b>When writing every line of code, ask yourself: what would happen if this input were malicious?</b></span><span lang="en">Security is not a one-time task but a habit that runs through the entire development process. It's like wearing a seatbelt when driving — not because you expect an accident, but because it's basic safety awareness. <b>When writing every line of code, ask yourself: what would happen if this input were malicious?</b></span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>OWASP Top 10</b>: The top ten web application security risks — every developer should know them.</span><span lang="en"><b>OWASP Top 10</b>: The top ten web application security risks — every developer should know them.</span></li>
+<li><span lang="id"><b>Practical Tools</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm audit</code> to check dependency vulnerabilities and ESLint security plugins to check code.</span><span lang="en"><b>Practical Tools</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm audit</code> to check dependency vulnerabilities and ESLint security plugins to check code.</span></li>
+<li><span lang="id"><b>Deep Dive</b>: Learn about HTTPS principles, JWT security practices, and OAuth 2.0 security considerations.</span><span lang="en"><b>Deep Dive</b>: Learn about HTTPS principles, JWT security practices, and OAuth 2.0 security considerations.</span></li>
+<li><span lang="id"><b>Security Community</b>: Follow security advisories and patch known vulnerabilities promptly.</span><span lang="en"><b>Security Community</b>: Follow security advisories and patch known vulnerabilities promptly.</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../9-engineering-excellence/open-source-collaboration/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">9-engineering-excellence/open-source-collaboration</span><span lang="en">9-engineering-excellence/open-source-collaboration</span></b></a>
+      <a class="next" href="../../9-engineering-excellence/technical-writing/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">9-engineering-excellence/technical-writing</span><span lang="en">9-engineering-excellence/technical-writing</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

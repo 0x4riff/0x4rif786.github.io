@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aplikasi iOS dengan SwiftUI &amp; Apple Ecosystem — VibeKoding 🍎</title>
+<meta name="description" content="Modul master Level 3 VibeKoding: Aplikasi iOS dengan SwiftUI &amp; Apple Ecosystem. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-3/cross-platform/ios-app/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../stage-3/"><span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></a> / <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">🍎</div>
+      <div>
+        <h1><span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul master Level 3 VibeKoding: Aplikasi iOS dengan SwiftUI & Apple Ecosystem.</span><span lang="en">Modul master Level 3 VibeKoding: Aplikasi iOS dengan SwiftUI & Apple Ecosystem.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Chapter 1: What an iOS App and iOS App Development Are</span><span lang="en">Chapter 1: What an iOS App and iOS App Development Are</span></h2>
+<p class="reveal"><span lang="id">In this tutorial, we will complete a full closed loop: <b>from an idea in your mind to a real iOS app that can be successfully installed and run on an iPhone.</b></span><span lang="en">In this tutorial, we will complete a full closed loop: <b>from an idea in your mind to a real iOS app that can be successfully installed and run on an iPhone.</b></span></p>
+<p class="reveal"><span lang="id">For this tutorial, you should at least have:</span><span lang="en">For this tutorial, you should at least have:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">A Mac running a relatively recent macOS</span><span lang="en">A Mac running a relatively recent macOS</span></li>
+<li><span lang="id">An iPhone running a relatively recent iOS version, with developer mode enabled</span><span lang="en">An iPhone running a relatively recent iOS version, with developer mode enabled</span></li>
+<li><span lang="id">Xcode successfully installed</span><span lang="en">Xcode successfully installed</span></li>
+<li><span lang="id">Trae installed and opened</span><span lang="en">Trae installed and opened</span></li>
+<li><span lang="id">A usable Apple ID</span><span lang="en">A usable Apple ID</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 iOS App</span><span lang="en">1.1 iOS App</span></h3>
+<p class="reveal"><span lang="id">An iOS App is a native application running on the iPhone operating system. It launches quickly, feels smooth, and can deeply use system features such as notifications, camera, and local storage.</span><span lang="en">An iOS App is a native application running on the iPhone operating system. It launches quickly, feels smooth, and can deeply use system features such as notifications, camera, and local storage.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 iOS App Development</span><span lang="en">1.2 iOS App Development</span></h3>
+<p class="reveal"><span lang="id">At its core, building an iOS App only involves a few things:</span><span lang="en">At its core, building an iOS App only involves a few things:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Clarify the problem your app is solving</span><span lang="en">Clarify the problem your app is solving</span></li>
+<li><span lang="id">Design the interface users can see and operate</span><span lang="en">Design the interface users can see and operate</span></li>
+<li><span lang="id">Define how the app behaves under different actions</span><span lang="en">Define how the app behaves under different actions</span></li>
+<li><span lang="id">Build the app correctly and install it on an iPhone</span><span lang="en">Build the app correctly and install it on an iPhone</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.3 Common Ways to Build iOS Apps</span><span lang="en">1.3 Common Ways to Build iOS Apps</span></h3>
+<p class="reveal"><span lang="id">In real development, there is more than one way to build an iOS App. We will not go deep here, but only provide an overall understanding.</span><span lang="en">In real development, there is more than one way to build an iOS App. We will not go deep here, but only provide an overall understanding.</span></p>
+<p class="reveal"><span lang="id">The first way is Apple's official native approach: create a project in Xcode and use Swift and SwiftUI to build the interface and logic.</span><span lang="en">The first way is Apple's official native approach: create a project in Xcode and use Swift and SwiftUI to build the interface and logic.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">The second way is to use cross-platform frameworks, such as React Native and Flutter, and adapt one codebase to multiple platforms.</span><span lang="en">The second way is to use cross-platform frameworks, such as React Native and Flutter, and adapt one codebase to multiple platforms.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">Based on the approaches above, this tutorial chooses: <b>native SwiftUI development as the foundation, with AI tools doing the majority of the coding work</b>.</span><span lang="en">Based on the approaches above, this tutorial chooses: <b>native SwiftUI development as the foundation, with AI tools doing the majority of the coding work</b>.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.4 iOS App Development Steps Covered in This Tutorial (High-Level Preview)</span><span lang="en">1.4 iOS App Development Steps Covered in This Tutorial (High-Level Preview)</span></h3>
+<p class="reveal"><span lang="id">The sample app used in this tutorial is <b>FridgeChef</b>.</span><span lang="en">The sample app used in this tutorial is <b>FridgeChef</b>.</span></p>
+<p class="reveal"><span lang="id">The user enters the ingredients currently available in the fridge, and the app uses a real AI API to generate a feasible recipe, then saves the result locally for later review. This example fully covers the core parts of a real iOS application, including UI input and display, network requests, data parsing, local storage, and final installation and running on a real device.</span><span lang="en">The user enters the ingredients currently available in the fridge, and the app uses a real AI API to generate a feasible recipe, then saves the result locally for later review. This example fully covers the core parts of a real iOS application, including UI input and display, network requests, data parsing, local storage, and final installation and running on a real device.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">The overall idea from prototype to native app</span><span lang="en">The overall idea from prototype to native app</span></li>
+</ul>
+<p class="reveal"><span lang="id">In implementation, this tutorial adopts a staged approach. We will first use AI to quickly generate an interface prototype with HTML and CSS, confirm the layout structure and information hierarchy in the browser, and then migrate it into SwiftUI.</span><span lang="en">In implementation, this tutorial adopts a staged approach. We will first use AI to quickly generate an interface prototype with HTML and CSS, confirm the layout structure and information hierarchy in the browser, and then migrate it into SwiftUI.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Overall development flow preview</span><span lang="en">Overall development flow preview</span></li>
+</ul>
+<p class="reveal"><span lang="id">Overall, the following chapters will go through these stages in order:</span><span lang="en">Overall, the following chapters will go through these stages in order:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Build basic understanding</span><span lang="en">Build basic understanding</span></li>
+</ul>
+<p class="reveal"><span lang="id">Understand the shape of an iOS app, common development methods, and what problem this sample app solves.</span><span lang="en">Understand the shape of an iOS app, common development methods, and what problem this sample app solves.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Complete environment setup</span><span lang="en">Complete environment setup</span></li>
+</ul>
+<p class="reveal"><span lang="id">Prepare a Mac and an iPhone, update the systems, install Xcode and Trae, and create a basic iOS project that can run successfully in the simulator.</span><span lang="en">Prepare a Mac and an iPhone, update the systems, install Xcode and Trae, and create a basic iOS project that can run successfully in the simulator.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Enter formal development</span><span lang="en">Enter formal development</span></li>
+</ul>
+<p class="reveal"><span lang="id">Open the project in Trae and gradually generate the UI and basic interaction through conversation with AI, turning the app from an empty shell into something usable.</span><span lang="en">Open the project in Trae and gradually generate the UI and basic interaction through conversation with AI, turning the app from an empty shell into something usable.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Debug and organize</span><span lang="en">Debug and organize</span></li>
+</ul>
+<p class="reveal"><span lang="id">When compilation errors appear or behavior does not match expectations, let AI help troubleshoot; when the structure becomes messy, use AI to refactor and simplify it.</span><span lang="en">When compilation errors appear or behavior does not match expectations, let AI help troubleshoot; when the structure becomes messy, use AI to refactor and simplify it.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Run on a real device</span><span lang="en">Run on a real device</span></li>
+</ul>
+<p class="reveal"><span lang="id">Configure signing, install the app on a real iPhone, and complete one full verification from code to hardware.</span><span lang="en">Configure signing, install the app on a real iPhone, and complete one full verification from code to hardware.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Chapter 2: Development Environment Preparation</span><span lang="en">Chapter 2: Development Environment Preparation</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Required Devices and Systems</span><span lang="en">2.1 Required Devices and Systems</span></h3>
+<p class="reveal"><span lang="id">In this practice, two pieces of hardware are irreplaceable: a Mac and an iPhone.</span><span lang="en">In this practice, two pieces of hardware are irreplaceable: a Mac and an iPhone.</span></p>
+<p class="reveal"><span lang="id">At the same time, both devices should be running <b>a relatively recent official system version</b>.</span><span lang="en">At the same time, both devices should be running <b>a relatively recent official system version</b>.</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">2.1.1 Mac</span><span lang="en">2.1.1 Mac</span></h4>
+<p class="reveal"><span lang="id">iOS apps can only be developed and compiled on macOS. This is a hard requirement of Apple's platform.</span><span lang="en">iOS apps can only be developed and compiled on macOS. This is a hard requirement of Apple's platform.</span></p>
+<p class="reveal"><span lang="id">To ensure Xcode can be installed and used normally, it is recommended that you update macOS to a relatively recent official version first. You can check and update from <b>System Settings -> General -> Software Update</b>.</span><span lang="en">To ensure Xcode can be installed and used normally, it is recommended that you update macOS to a relatively recent official version first. You can check and update from <b>System Settings -> General -> Software Update</b>.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">2.1.2 Real iPhone Device</span><span lang="en">2.1.2 Real iPhone Device</span></h4>
+<p class="reveal"><span lang="id">In addition to the Mac, this tutorial also requires a real iPhone for verifying whether the app can be installed and launched correctly.</span><span lang="en">In addition to the Mac, this tutorial also requires a real iPhone for verifying whether the app can be installed and launched correctly.</span></p>
+<p class="reveal"><span lang="id">To keep the debugging process smooth, the iPhone should also run a relatively recent iOS version. You can check and update from <b>Settings -> General -> Software Update</b>.</span><span lang="en">To keep the debugging process smooth, the iPhone should also run a relatively recent iOS version. You can check and update from <b>Settings -> General -> Software Update</b>.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">Later in development, this iPhone will be connected to the Mac by cable for real-device debugging.</span><span lang="en">Later in development, this iPhone will be connected to the Mac by cable for real-device debugging.</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">2.1.3 Enable Developer Mode on iPhone</span><span lang="en">2.1.3 Enable Developer Mode on iPhone</span></h4>
+<p class="reveal"><span lang="id">To install and run debug apps from Xcode on a real device, you need to enable developer mode on the iPhone.</span><span lang="en">To install and run debug apps from Xcode on a real device, you need to enable developer mode on the iPhone.</span></p>
+<p class="reveal"><span lang="id">Steps:</span><span lang="en">Steps:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Open <b>Settings</b></span><span lang="en">Open <b>Settings</b></span></li>
+<li><span lang="id">Enter <b>Privacy & Security</b></span><span lang="en">Enter <b>Privacy & Security</b></span></li>
+<li><span lang="id">Scroll to the bottom and find <b>Developer Mode</b></span><span lang="en">Scroll to the bottom and find <b>Developer Mode</b></span></li>
+<li><span lang="id">Turn it on, then restart the device as prompted</span><span lang="en">Turn it on, then restart the device as prompted</span></li>
+<li><span lang="id">After restart, unlock the device and confirm enabling developer mode</span><span lang="en">After restart, unlock the device and confirm enabling developer mode</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">If your iPhone has never been connected to Xcode or other development tools before, you may find that <b>Developer Mode</b> does not appear under <b>Privacy & Security</b>. This is not a system issue - it simply means developer mode has not yet been triggered.</span><span lang="en">If your iPhone has never been connected to Xcode or other development tools before, you may find that <b>Developer Mode</b> does not appear under <b>Privacy & Security</b>. This is not a system issue - it simply means developer mode has not yet been triggered.</span></p>
+<p class="reveal"><span lang="id">In that case, you can make it appear by following these steps:</span><span lang="en">In that case, you can make it appear by following these steps:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Open <b>Settings -> Privacy & Security -> Analytics & Improvements</b></span><span lang="en">Open <b>Settings -> Privacy & Security -> Analytics & Improvements</b></span></li>
+<li><span lang="id">Turn on <b>Share With App Developers</b></span><span lang="en">Turn on <b>Share With App Developers</b></span></li>
+<li><span lang="id">Go back one level, enter <b>Privacy & Security</b> again, and scroll to the bottom</span><span lang="en">Go back one level, enter <b>Privacy & Security</b> again, and scroll to the bottom</span></li>
+<li><span lang="id">You should now see <b>Developer Mode</b>, then enable it and restart the device</span><span lang="en">You should now see <b>Developer Mode</b>, then enable it and restart the device</span></li>
+</ul>
+<p class="reveal"><span lang="id">After completing the above steps, developer mode only needs to be enabled once. Future real-device debugging with Xcode will not require repeating this configuration.</span><span lang="en">After completing the above steps, developer mode only needs to be enabled once. Future real-device debugging with Xcode will not require repeating this configuration.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Required Software</span><span lang="en">2.2 Required Software</span></h3>
+<p class="reveal"><span lang="id">After devices and systems are ready, you still need to install the software used for development. This tutorial only uses two categories of tools: the official iOS development tool and the AI-assisted development tool.</span><span lang="en">After devices and systems are ready, you still need to install the software used for development. This tutorial only uses two categories of tools: the official iOS development tool and the AI-assisted development tool.</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">2.2.1 Xcode</span><span lang="en">2.2.1 Xcode</span></h4>
+<p class="reveal"><span lang="id">Xcode is Apple's official development tool for iOS. In this tutorial, it is mainly used to create iOS projects, compile Swift / SwiftUI code, and run the app on the simulator or a real device.</span><span lang="en">Xcode is Apple's official development tool for iOS. In this tutorial, it is mainly used to create iOS projects, compile Swift / SwiftUI code, and run the app on the simulator or a real device.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">Xcode can be found and installed directly from the App Store. After installation, when you open it for the first time, you will see the welcome screen. Later project creation starts from there.</span><span lang="en">Xcode can be found and installed directly from the App Store. After installation, when you open it for the first time, you will see the welcome screen. Later project creation starts from there.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">2.2.2 Trae</span><span lang="en">2.2.2 Trae</span></h4>
+<p class="reveal"><span lang="id">Trae is the main environment where development work is performed in this tutorial. You will place the whole iOS project into Trae and collaborate with AI through dialog to complete development.</span><span lang="en">Trae is the main environment where development work is performed in this tutorial. You will place the whole iOS project into Trae and collaborate with AI through dialog to complete development.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 Apple ID and Development Debugging Notes</span><span lang="en">2.3 Apple ID and Development Debugging Notes</span></h3>
+<p class="reveal"><span lang="id">On the iOS platform, in order for an app to be installed on a real device, it must go through developer signing. This tutorial does not require you to pay for Apple Developer Program membership. A personal Apple ID is enough.</span><span lang="en">On the iOS platform, in order for an app to be installed on a real device, it must go through developer signing. This tutorial does not require you to pay for Apple Developer Program membership. A personal Apple ID is enough.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.4 Checklist Before Moving On</span><span lang="en">2.4 Checklist Before Moving On</span></h3>
+<p class="reveal"><span lang="id">Before entering the next chapter, you can compare your current state with the checklist below.</span><span lang="en">Before entering the next chapter, you can compare your current state with the checklist below.</span></p>
+<p class="reveal"><span lang="id">You should now already have:</span><span lang="en">You should now already have:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">A Mac running a relatively recent macOS</span><span lang="en">A Mac running a relatively recent macOS</span></li>
+<li><span lang="id">An iPhone running a relatively recent iOS version with developer mode enabled</span><span lang="en">An iPhone running a relatively recent iOS version with developer mode enabled</span></li>
+<li><span lang="id">Xcode successfully installed</span><span lang="en">Xcode successfully installed</span></li>
+<li><span lang="id">Trae installed and opened</span><span lang="en">Trae installed and opened</span></li>
+<li><span lang="id">A usable Apple ID</span><span lang="en">A usable Apple ID</span></li>
+</ul>
+<p class="reveal"><span lang="id">If all of these are ready, you can continue and create your first iOS app.</span><span lang="en">If all of these are ready, you can continue and create your first iOS app.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Chapter 3: Create the First iOS Project</span><span lang="en">Chapter 3: Create the First iOS Project</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Use Xcode to Create a New Project</span><span lang="en">3.1 Use Xcode to Create a New Project</span></h3>
+<p class="reveal"><span lang="id">Open Xcode. On the welcome screen, choose to create a new project.</span><span lang="en">Open Xcode. On the welcome screen, choose to create a new project.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">Click <b>Create new project</b> to enter the project template selection screen.</span><span lang="en">Click <b>Create new project</b> to enter the project template selection screen.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Choose App Template and Tech Stack</span><span lang="en">3.2 Choose App Template and Tech Stack</span></h3>
+<p class="reveal"><span lang="id">On the template selection screen, use the following configuration:</span><span lang="en">On the template selection screen, use the following configuration:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Platform: iOS</span><span lang="en">Platform: iOS</span></li>
+<li><span lang="id">Application type: App</span><span lang="en">Application type: App</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">Click <b>Next</b> to enter the project information configuration screen.</span><span lang="en">Click <b>Next</b> to enter the project information configuration screen.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Configure Project Information</span><span lang="en">3.3 Configure Project Information</span></h3>
+<p class="reveal"><span lang="id">On the project information screen, just fill in the basic settings:</span><span lang="en">On the project information screen, just fill in the basic settings:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Product Name: app name (for example <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">FridgeChef</code>)</span><span lang="en">Product Name: app name (for example <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">FridgeChef</code>)</span></li>
+<li><span lang="id">Team: choose your personal Apple ID</span><span lang="en">Team: choose your personal Apple ID</span></li>
+<li><span lang="id">Organization Identifier: reverse-domain format (for example <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">com.example</code>)</span><span lang="en">Organization Identifier: reverse-domain format (for example <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">com.example</code>)</span></li>
+<li><span lang="id">Bundle Identifier: generated automatically, keep default</span><span lang="en">Bundle Identifier: generated automatically, keep default</span></li>
+<li><span lang="id">Testing System: Swift Testing with XCTest UI Tests</span><span lang="en">Testing System: Swift Testing with XCTest UI Tests</span></li>
+<li><span lang="id">Storage: choose Core Data (for later saving recipe history)</span><span lang="en">Storage: choose Core Data (for later saving recipe history)</span></li>
+<li><span lang="id">Leave the other options at default</span><span lang="en">Leave the other options at default</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">Click <b>Next</b> and choose the project storage location.</span><span lang="en">Click <b>Next</b> and choose the project storage location.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.4 Recognize the Project Structure After Creation</span><span lang="en">3.4 Recognize the Project Structure After Creation</span></h3>
+<p class="reveal"><span lang="id">After the project is created, Xcode will automatically open the workspace. At this point, you do not need to understand every file. You only need to recognize a few key parts.</span><span lang="en">After the project is created, Xcode will automatically open the workspace. At this point, you do not need to understand every file. You only need to recognize a few key parts.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">In the default project, you will see:</span><span lang="en">In the default project, you will see:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">A folder named after the project</span><span lang="en">A folder named after the project</span></li>
+<li><span lang="id">A Swift file ending with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">App</code> (the application entry)</span><span lang="en">A Swift file ending with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">App</code> (the application entry)</span></li>
+<li><span lang="id">A <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ContentView.swift</code> file (the default page)</span><span lang="en">A <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ContentView.swift</code> file (the default page)</span></li>
+</ul>
+<p class="reveal"><span lang="id">This is already the smallest runnable iOS App.</span><span lang="en">This is already the smallest runnable iOS App.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.5 Run the First iOS App</span><span lang="en">3.5 Run the First iOS App</span></h3>
+<p class="reveal"><span lang="id">Before changing any code, run the original project directly.</span><span lang="en">Before changing any code, run the original project directly.</span></p>
+<p class="reveal"><span lang="id">In the top toolbar of Xcode, keep the default iPhone simulator selected, then click the <b>Run</b> button on the top left.</span><span lang="en">In the top toolbar of Xcode, keep the default iPhone simulator selected, then click the <b>Run</b> button on the top left.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">If everything is normal, the simulator will show a blank app that can start successfully. The first compilation may take a relatively long time. In later chapters, we reduce waiting time by using HTML prototypes first.</span><span lang="en">If everything is normal, the simulator will show a blank app that can start successfully. The first compilation may take a relatively long time. In later chapters, we reduce waiting time by using HTML prototypes first.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">To stop the app, click <b>Stop</b> next to the Run button.</span><span lang="en">To stop the app, click <b>Stop</b> next to the Run button.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.6 What You Have Actually Achieved at This Stage</span><span lang="en">3.6 What You Have Actually Achieved at This Stage</span></h3>
+<p class="reveal"><span lang="id">Even though the interface is still simple, you have already completed several key confirmations:</span><span lang="en">Even though the interface is still simple, you have already completed several key confirmations:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">The project can compile successfully</span><span lang="en">The project can compile successfully</span></li>
+<li><span lang="id">The simulator can run the app correctly</span><span lang="en">The simulator can run the app correctly</span></li>
+<li><span lang="id">The development process has already been proven to work end-to-end</span><span lang="en">The development process has already been proven to work end-to-end</span></li>
+</ul>
+<p class="reveal"><span lang="id">This means that future problems will mainly focus on <b>the code and logic themselves</b>, rather than environment issues.</span><span lang="en">This means that future problems will mainly focus on <b>the code and logic themselves</b>, rather than environment issues.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.7 Hand the Project Over to Trae</span><span lang="en">3.7 Hand the Project Over to Trae</span></h3>
+<p class="reveal"><span lang="id">Starting from the next section, the main development work will gradually move into Trae.</span><span lang="en">Starting from the next section, the main development work will gradually move into Trae.</span></p>
+<p class="reveal"><span lang="id">What you need to do is simple: <b>open the iOS project folder you just created in Trae.</b></span><span lang="en">What you need to do is simple: <b>open the iOS project folder you just created in Trae.</b></span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Chapter 4: AI-Assisted Development Practice - Build FridgeChef from Scratch</span><span lang="en">Chapter 4: AI-Assisted Development Practice - Build FridgeChef from Scratch</span></h2>
+<p class="reveal"><span lang="id">This chapter is the core part of the entire tutorial.</span><span lang="en">This chapter is the core part of the entire tutorial.</span></p>
+<p class="reveal"><span lang="id">This tutorial does not use the traditional route of "write SwiftUI first, repeatedly compile, and keep tweaking previews." Instead, we use a more efficient flow:</span><span lang="en">This tutorial does not use the traditional route of "write SwiftUI first, repeatedly compile, and keep tweaking previews." Instead, we use a more efficient flow:</span></p>
+<p class="reveal"><span lang="id"><b>first use \<i>\</b></i>HTML\<b><i>\</i> to quickly validate the interface structure, then migrate the confirmed result into SwiftUI, and finally gradually complete business logic, local data, and interaction details.</b></span><span lang="en"><b>first use \<i>\</b></i>HTML\<b><i>\</i> to quickly validate the interface structure, then migrate the confirmed result into SwiftUI, and finally gradually complete business logic, local data, and interaction details.</b></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Stage One: Requirement Clarification</span><span lang="en">4.1 Stage One: Requirement Clarification</span></h3>
+<p class="reveal"><span lang="id">Before writing code, the first step is not building pages - it is clarifying what we are building. <b>Let AI first act like a \<i>\</b></i>product manager\<b><i>\</i> and organize the requirements into a structured specification document.</b></span><span lang="en">Before writing code, the first step is not building pages - it is clarifying what we are building. <b>Let AI first act like a \<i>\</b></i>product manager\<b><i>\</i> and organize the requirements into a structured specification document.</b></span></p>
+<p class="reveal"><span lang="id">In Trae's chat window, enter the following instruction. Trae will generate a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">REQUIREMENTS.md</code> file in the project root, describing the functionality and structure of the whole app.</span><span lang="en">In Trae's chat window, enter the following instruction. Trae will generate a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">REQUIREMENTS.md</code> file in the project root, describing the functionality and structure of the whole app.</span></p>
+<p class="reveal"><span lang="id">📋 <b>Prompt to copy:</b></span><span lang="en">📋 <b>Prompt to copy:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>We are now going to develop an iOS App called &quot;FridgeChef&quot;.
+
+1. Core concept
+This is an AI assistant that solves the problem of &quot;I don&#039;t know what to cook with the leftover ingredients in my fridge.&quot;
+Users input the ingredients they currently have, and the app calls a large model to generate a practical recipe.
+
+2. Core functions
+- Home page:
+  Show a prominent &quot;Start Cooking&quot; entry, and below it display historical recipe records in card or list form.
+- Input page:
+  Users input ingredients, supporting text input or simple quick tags.
+- Result page:
+  Display the AI-generated recipe, including dish name, ingredient list, and cooking steps.
+
+3. Technical requirements
+- Use SwiftUI
+- Save data locally (Core Data)
+- Support basic page navigation and state updates
+
+Please help me organize this into a clear, structured REQUIREMENTS.md document from the perspective of a product manager, and save it in the project root.</pre>
+</div>
+<p class="reveal"><span lang="id">After generation, quickly read through the document and confirm whether the function points match your expectations.</span><span lang="en">After generation, quickly read through the document and confirm whether the function points match your expectations.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Stage Two: Visual Prototype</span><span lang="en">4.2 Stage Two: Visual Prototype</span></h3>
+<p class="reveal"><span lang="id">Let AI quickly draw a high-fidelity interface prototype using <b>HTML\<i>\</b></i> + \<b><i>\</i>CSS</b>, so we can confirm the overall layout and style first. Continue by entering this in Trae:</span><span lang="en">Let AI quickly draw a high-fidelity interface prototype using <b>HTML\<i>\</b></i> + \<b><i>\</i>CSS</b>, so we can confirm the overall layout and style first. Continue by entering this in Trae:</span></p>
+<p class="reveal"><span lang="id">📋 <b>Prompt to copy:</b></span><span lang="en">📋 <b>Prompt to copy:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>The requirements are confirmed.
+Please use HTML + Tailwind CSS to generate a high-fidelity interface prototype for me.
+
+Design style: Neo-Pop
+Colors:
+- Background: light cream #FFFDF5
+- Accent colors: acid green #CCFF00, hot pink
+
+Visual characteristics:
+- 3px thick black borders
+- Hard shadow without blur (offset 4px)
+- Large rounded cards, overall sticker / comic feeling
+
+Layout requirements:
+- Home page should use a Bento Grid-like layout
+- Include two screens: home page and input page
+
+Please generate a single-file index.html and simulate an iPhone screen ratio around the content.</pre>
+</div>
+<p class="reveal"><span lang="id">After generation, find <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">index.html</code> in the file list and open it directly in a browser.</span><span lang="en">After generation, find <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">index.html</code> in the file list and open it directly in a browser.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">At this stage, the point is not whether every detail is perfect. The point is whether <b>the page structure is reasonable, the main elements are complete, and the overall direction is correct.</b></span><span lang="en">At this stage, the point is not whether every detail is perfect. The point is whether <b>the page structure is reasonable, the main elements are complete, and the overall direction is correct.</b></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 Stage Three: Native Recreation</span><span lang="en">4.3 Stage Three: Native Recreation</span></h3>
+<p class="reveal"><span lang="id">Once the HTML prototype is finalized, <b>translate the confirmed interface into SwiftUI.</b></span><span lang="en">Once the HTML prototype is finalized, <b>translate the confirmed interface into SwiftUI.</b></span></p>
+<p class="reveal"><span lang="id">Steps:</span><span lang="en">Steps:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Upload the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">index.html</code> file (or a browser screenshot) into Trae</span><span lang="en">Upload the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">index.html</code> file (or a browser screenshot) into Trae</span></li>
+<li><span lang="id">Tell AI to generate SwiftUI code based on it</span><span lang="en">Tell AI to generate SwiftUI code based on it</span></li>
+</ul>
+<p class="reveal"><span lang="id">📋 <b>Prompt to copy:</b></span><span lang="en">📋 <b>Prompt to copy:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>[index.html uploaded]
+
+Please read the layout and style of this HTML file.
+
+Task: recreate this interface in the current project using SwiftUI.
+
+Requirements:
+1. Encapsulate a NeoPopStyle modifier including background color, thick border, and hard shadow
+2. Create HomeView.swift for the home layout
+3. Create InputView.swift for the input page
+4. Use Mock Data for now, and make sure it can display correctly in Xcode Preview and simulator</pre>
+</div>
+<p class="reveal"><span lang="id">After it finishes, open Xcode and run the simulator. You will see an iOS app that already has a complete visual structure.</span><span lang="en">After it finishes, open Xcode and run the simulator. You will see an iOS app that already has a complete visual structure.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.4 Stage Four: Connect the AI API</span><span lang="en">4.4 Stage Four: Connect the AI API</span></h3>
+<p class="reveal"><span lang="id">Once the interface is done, the app is still only a display layer. Next we need to connect real AI capability. In this tutorial we use the large-model service provided by <b>SiliconFlow</b>:</span><span lang="en">Once the interface is done, the app is still only a display layer. Next we need to connect real AI capability. In this tutorial we use the large-model service provided by <b>SiliconFlow</b>:</span></p>
+<p class="reveal"><span lang="id">[https://cloud.siliconflow.cn](https://cloud.siliconflow.cn/)</span><span lang="en">[https://cloud.siliconflow.cn](https://cloud.siliconflow.cn/)</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">SiliconFlow provides an API compatible with the OpenAI API specification, so it is very convenient to call from an iOS project using standard network requests.</span><span lang="en">SiliconFlow provides an API compatible with the OpenAI API specification, so it is very convenient to call from an iOS project using standard network requests.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">Before starting, you need to register an account on the site and create an API Key.</span><span lang="en">Before starting, you need to register an account on the site and create an API Key.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">This Key will be used for later model calls.</span><span lang="en">This Key will be used for later model calls.</span></p>
+<p class="reveal"><span lang="id">📋 <b>Prompt to copy:</b></span><span lang="en">📋 <b>Prompt to copy:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Now we need to connect AI capability.
+
+Please create APIService.swift.
+
+Configuration:
+- Base URL: https://api.siliconflow.cn/v1
+- Model: Qwen/Qwen2.5-7B-Instruct
+- API Key: define it as a variable for now, I will fill it later
+
+Functions:
+- Write a generateRecipe(ingredients: [String]) method
+- The System Prompt must strictly require the model to return pure JSON only
+- JSON fields should include: dishName, ingredients, steps
+
+Also define a RecipeModel struct for parsing the returned data.</pre>
+</div>
+<p class="reveal"><span lang="id">After the code is generated, fill in your own Key inside <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">APIService.swift</code>.</span><span lang="en">After the code is generated, fill in your own Key inside <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">APIService.swift</code>.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.5 Stage Five: Core Data Local Storage</span><span lang="en">4.5 Stage Five: Core Data Local Storage</span></h3>
+<p class="reveal"><span lang="id">To let the app remember the recipes it has generated, we need to bring in local data storage. This stage is divided into two steps.</span><span lang="en">To let the app remember the recipes it has generated, we need to bring in local data storage. This stage is divided into two steps.</span></p>
+<p class="reveal"><span lang="id"><b>Step 1: manually configure Core Data in Xcode</b></span><span lang="en"><b>Step 1: manually configure Core Data in Xcode</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Open <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">FridgeChef.xcdatamodeld</code></span><span lang="en">Open <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">FridgeChef.xcdatamodeld</code></span></li>
+<li><span lang="id">Create a new Entity named <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">RecipeEntity</code></span><span lang="en">Create a new Entity named <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">RecipeEntity</code></span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Add the following attributes:</span><span lang="en">Add the following attributes:</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">id</code>: <b>UUID</b></span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">id</code>: <b>UUID</b></span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">name</code>: <b>String</b></span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">name</code>: <b>String</b></span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">cookTime</code>: <b>String</b></span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">cookTime</code>: <b>String</b></span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">difficulty</code>: <b>String</b></span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">difficulty</code>: <b>String</b></span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">desc</code>: <b>String</b></span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">desc</code>: <b>String</b></span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">timestamp</code>: <b>Date</b></span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">timestamp</code>: <b>Date</b></span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">colorIndex</code>: <b>Integer 16</b></span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">colorIndex</code>: <b>Integer 16</b></span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Step 2: let AI write the logic code</b></span><span lang="en"><b>Step 2: let AI write the logic code</b></span></p>
+<p class="reveal"><span lang="id">📋 <b>Prompt to copy:</b></span><span lang="en">📋 <b>Prompt to copy:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>I have finished configuring the Core Data Entity.
+
+Entity: RecipeEntity
+Attributes: id, name, difficulty, timestamp, colorindex, cookTime, desc
+
+Please complete the following tasks:
+1. Save data into Core Data after recipe generation succeeds
+2. Use FetchRequest on the home page to read historical records and display them in reverse chronological order
+3. When the database is empty, show a friendly empty-state message</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.6 Stage Six: Generate an App Icon</span><span lang="en">4.6 Stage Six: Generate an App Icon</span></h3>
+<p class="reveal"><span lang="id">The final step is to prepare a proper icon for the app. Here we use <b>Lovart</b> to generate the icon asset: [https://www.lovart.ai/zh](https://www.lovart.ai/zh)</span><span lang="en">The final step is to prepare a proper icon for the app. Here we use <b>Lovart</b> to generate the icon asset: [https://www.lovart.ai/zh](https://www.lovart.ai/zh)</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">📋 <b>Prompt to copy into Lovart:</b></span><span lang="en">📋 <b>Prompt to copy into Lovart:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Subject: A cute anthropomorphic fridge character with a happy face
+Style: Minimalistic App Icon, Neo-pop style, thick black outlines, vector art
+Colors: Acid green (#CCFF00) and deep blue
+Background: Solid cream color
+Negative Prompt: Text, realistic details, 3D render, complex background</pre>
+</div>
+<p class="reveal"><span lang="id">After generation, crop the image to 1024x1024 and drag it into <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Assets.xcassets</code> -> <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">AppIcon</code> in Xcode.</span><span lang="en">After generation, crop the image to 1024x1024 and drag it into <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Assets.xcassets</code> -> <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">AppIcon</code> in Xcode.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">Run the app again, and you will now see a complete, recognizable, real iOS application.</span><span lang="en">Run the app again, and you will now see a complete, recognizable, real iOS application.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.7 Stage Seven: Advanced Experience Upgrade</span><span lang="en">4.7 Stage Seven: Advanced Experience Upgrade</span></h3>
+<p class="reveal"><span lang="id">Once the functionality is stable, if you want to further improve the visual style, you only need to describe the effect you want to AI, let it generate a new design proposal, and then migrate the confirmed result into SwiftUI.</span><span lang="en">Once the functionality is stable, if you want to further improve the visual style, you only need to describe the effect you want to AI, let it generate a new design proposal, and then migrate the confirmed result into SwiftUI.</span></p>
+<p class="reveal"><span lang="id">📋 Reference Prompt:</span><span lang="en">📋 Reference Prompt:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>The app&#039;s functionality is already complete, but I want to try a more visually impactful UI style.
+Please first generate a new design draft in HTML + Tailwind CSS for me, with the file name design_v2.html.
+
+Design style: Neo-Pop (dopamine style)
+Color requirements:
+Use Deep Royal Blue as the full-screen background
+Use Acid Green (#CCFF00) as the accent color
+
+Visual feel:
+All cards should use a 3px thick black border
+Use a hard shadow without transparency blur, shifted down-right
+
+Layout requirements:
+Keep the home page structure unchanged
+Use pill-shaped buttons and input boxes
+
+Please generate the full code so I can preview it in a browser.</pre>
+</div>
+<p class="reveal"><span lang="id">After it is generated, open this HTML file in a browser.</span><span lang="en">After it is generated, open this HTML file in a browser.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">Once the HTML version is finalized, you can begin modifying the iOS project.</span><span lang="en">Once the HTML version is finalized, you can begin modifying the iOS project.</span></p>
+<p class="reveal"><span lang="id">📋 Reference Prompt:</span><span lang="en">📋 Reference Prompt:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>[design_v2.html uploaded]
+Please analyze the visual style of this HTML and migrate it into the current iOS project.
+
+Task requirements:
+Create a new NeoPopStyle.swift file
+Encapsulate a neoPopBlue() style modifier
+
+The modifier needs to include:
+- rounded corners
+- thick black border
+- opaque hard shadow
+
+Refactor HomeView:
+- change the background to Deep Royal Blue
+- use Acid Green for the primary button
+- use white background for historical record cards
+- make sure text remains clear and readable on the dark background
+
+Please provide the full modified code.</pre>
+</div>
+<p class="reveal"><span lang="id">Click Run in Xcode again. If everything works, you should see:</span><span lang="en">Click Run in Xcode again. If everything works, you should see:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">the functionality is exactly the same as before</span><span lang="en">the functionality is exactly the same as before</span></li>
+<li><span lang="id">the visual style has changed significantly</span><span lang="en">the visual style has changed significantly</span></li>
+<li><span lang="id">the overall app quality feels noticeably upgraded</span><span lang="en">the overall app quality feels noticeably upgraded</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Chapter 5: Running, Debugging, and Error Handling</span><span lang="en">Chapter 5: Running, Debugging, and Error Handling</span></h2>
+<p class="reveal"><span lang="id">In the previous chapter, you completed the core functionality and successfully ran the app in the simulator.</span><span lang="en">In the previous chapter, you completed the core functionality and successfully ran the app in the simulator.</span></p>
+<p class="reveal"><span lang="id">But for an iOS app, true completion is not just "compiles successfully" - it is <b>stable operation, and knowing how to handle problems when they appear</b>.</span><span lang="en">But for an iOS app, true completion is not just "compiles successfully" - it is <b>stable operation, and knowing how to handle problems when they appear</b>.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Run the App in Xcode</span><span lang="en">5.1 Run the App in Xcode</span></h3>
+<p class="reveal"><span lang="id">First, make sure the project can run correctly in Xcode.</span><span lang="en">First, make sure the project can run correctly in Xcode.</span></p>
+<p class="reveal"><span lang="id">In the top-left of Xcode, select the run device and keep the default iPhone simulator. Click the <b>Run</b> button to compile and run. If everything is normal, the app will launch in the simulator and display the interface built in Chapter 4.</span><span lang="en">In the top-left of Xcode, select the run device and keep the default iPhone simulator. Click the <b>Run</b> button to compile and run. If everything is normal, the app will launch in the simulator and display the interface built in Chapter 4.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Run the App on a Real Device</span><span lang="en">5.2 Run the App on a Real Device</span></h3>
+<p class="reveal"><span lang="id">Connect your iPhone to the Mac using a cable.</span><span lang="en">Connect your iPhone to the Mac using a cable.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">When connecting for the first time, the phone will show <b>Trust This Computer?</b> Tap trust and enter the unlock passcode.</span><span lang="en">When connecting for the first time, the phone will show <b>Trust This Computer?</b> Tap trust and enter the unlock passcode.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">In Xcode's device list, select your iPhone, then click <b>Run</b> again.</span><span lang="en">In Xcode's device list, select your iPhone, then click <b>Run</b> again.</span></p>
+<p class="reveal"><span lang="id">At this point, you should be able to see the <b>FridgeChef</b> icon on your phone's home screen, and open and use it normally.</span><span lang="en">At this point, you should be able to see the <b>FridgeChef</b> icon on your phone's home screen, and open and use it normally.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">This step marks the completion of one full iOS development closed loop.</span><span lang="en">This step marks the completion of one full iOS development closed loop.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 Where iOS Development Errors Usually Come From</span><span lang="en">5.3 Where iOS Development Errors Usually Come From</span></h3>
+<p class="reveal"><span lang="id">In real development, <b>encountering errors is normal</b>, not an exception.</span><span lang="en">In real development, <b>encountering errors is normal</b>, not an exception.</span></p>
+<p class="reveal"><span lang="id">Common issues usually come from these categories:</span><span lang="en">Common issues usually come from these categories:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Compilation errors</b></span><span lang="en"><b>Compilation errors</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">Swift syntax, type mismatches, missing parameters, etc. Xcode will directly highlight them in red.</span><span lang="en">Swift syntax, type mismatches, missing parameters, etc. Xcode will directly highlight them in red.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Runtime errors</b></span><span lang="en"><b>Runtime errors</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">The app compiles, but crashes during execution - for example, array out of bounds or force-unwrapping a nil value.</span><span lang="en">The app compiles, but crashes during execution - for example, array out of bounds or force-unwrapping a nil value.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Permission or configuration errors</b></span><span lang="en"><b>Permission or configuration errors</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">Network requests blocked by the system, missing Info.plist configuration, signing issues, etc.</span><span lang="en">Network requests blocked by the system, missing Info.plist configuration, signing issues, etc.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Logic errors</b></span><span lang="en"><b>Logic errors</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">The app does not crash, but the behavior is wrong - for example, buttons not responding or data not refreshing.</span><span lang="en">The app does not crash, but the behavior is wrong - for example, buttons not responding or data not refreshing.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">When any error appears, you only need to <b>copy the full error message exactly as it is into Trae's chat box.</b> With awareness of the project context, Trae can help you do the debugging.</span><span lang="en">When any error appears, you only need to <b>copy the full error message exactly as it is into Trae's chat box.</b> With awareness of the project context, Trae can help you do the debugging.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.4 Common Real-device Debugging Errors and Solutions</span><span lang="en">5.4 Common Real-device Debugging Errors and Solutions</span></h3>
+<p class="reveal"><span lang="id">Errors during real-device debugging are very common. These problems are usually not caused by code itself, but by device trust, security rules, or signing configuration. If the app cannot run on your iPhone smoothly, you can check this section first.</span><span lang="en">Errors during real-device debugging are very common. These problems are usually not caused by code itself, but by device trust, security rules, or signing configuration. If the app cannot run on your iPhone smoothly, you can check this section first.</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">1. Signing and registration problems</span><span lang="en">1. Signing and registration problems</span></h4>
+<p class="reveal"><span lang="id"><b>Common symptoms:</b></span><span lang="en"><b>Common symptoms:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Xcode shows red errors like</span><span lang="en">Xcode shows red errors like</span></li>
+</ul>
+<p class="reveal"><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"Communication with Apple failed"</code></span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"Communication with Apple failed"</code></span></p>
+<p class="reveal"><span lang="id">or</span><span lang="en">or</span></p>
+<p class="reveal"><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"No profiles for 'com.xxx.xxx' were found"</code></span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"No profiles for 'com.xxx.xxx' were found"</code></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Or it says</span><span lang="en">Or it says</span></li>
+</ul>
+<p class="reveal"><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"Your team has no devices which are compatible"</code></span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"Your team has no devices which are compatible"</code></span></p>
+<p class="reveal"><span lang="id"><b>Cause:</b></span><span lang="en"><b>Cause:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">The Bundle Identifier is not unique or valid</span><span lang="en">The Bundle Identifier is not unique or valid</span></li>
+<li><span lang="id">The current iPhone has not yet been registered under your Apple ID for development</span><span lang="en">The current iPhone has not yet been registered under your Apple ID for development</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Solution:</b></span><span lang="en"><b>Solution:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Modify the Bundle Identifier</b></span><span lang="en"><b>Modify the Bundle Identifier</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">In Xcode project settings, change the Bundle Identifier to something more unique, such as:</span><span lang="en">In Xcode project settings, change the Bundle Identifier to something more unique, such as:</span></p>
+<p class="reveal"><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">com.yourname.FridgeChef</code></span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">com.yourname.FridgeChef</code></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Let Xcode auto-register the device</b></span><span lang="en"><b>Let Xcode auto-register the device</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">In the error prompt, click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Try Again</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Register Device</code>, and let Xcode complete the device registration and certificate configuration automatically.</span><span lang="en">In the error prompt, click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Try Again</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Register Device</code>, and let Xcode complete the device registration and certificate configuration automatically.</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">2. Device pairing and connection problems</span><span lang="en">2. Device pairing and connection problems</span></h4>
+<p class="reveal"><span lang="id"><b>Common symptoms:</b></span><span lang="en"><b>Common symptoms:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Xcode shows</span><span lang="en">Xcode shows</span></li>
+</ul>
+<p class="reveal"><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"Device is not available because pairing is in progress"</code></span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"Device is not available because pairing is in progress"</code></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Or it says</span><span lang="en">Or it says</span></li>
+</ul>
+<p class="reveal"><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"Device Locked"</code></span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"Device Locked"</code></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Or you already tapped Trust, but Xcode still remains stuck</span><span lang="en">Or you already tapped Trust, but Xcode still remains stuck</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Cause:</b></span><span lang="en"><b>Cause:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">The iPhone is still locked</span><span lang="en">The iPhone is still locked</span></li>
+<li><span lang="id">The pairing process has not fully completed</span><span lang="en">The pairing process has not fully completed</span></li>
+<li><span lang="id">Xcode has not refreshed the connection state</span><span lang="en">Xcode has not refreshed the connection state</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Solution:</b></span><span lang="en"><b>Solution:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Unlock the phone</span><span lang="en">Unlock the phone</span></li>
+</ul>
+<p class="reveal"><span lang="id">Make sure the iPhone is unlocked and stays on the home screen.</span><span lang="en">Make sure the iPhone is unlocked and stays on the home screen.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Finish the trust process</span><span lang="en">Finish the trust process</span></li>
+</ul>
+<p class="reveal"><span lang="id">When the phone pops up <b>Trust This Computer?</b>, tap <b>Trust</b> and <b>enter the lock-screen passcode</b>.</span><span lang="en">When the phone pops up <b>Trust This Computer?</b>, tap <b>Trust</b> and <b>enter the lock-screen passcode</b>.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Refresh the connection state</span><span lang="en">Refresh the connection state</span></li>
+</ul>
+<p class="reveal"><span lang="id">If it is still stuck, unplug the cable, wait 2-3 seconds, and reconnect. If necessary, restart Xcode and try again.</span><span lang="en">If it is still stuck, unplug the cable, wait 2-3 seconds, and reconnect. If necessary, restart Xcode and try again.</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">3. The app installs but cannot open</span><span lang="en">3. The app installs but cannot open</span></h4>
+<p class="reveal"><span lang="id"><b>Common symptom:</b></span><span lang="en"><b>Common symptom:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">The app icon already appears on the iPhone home screen</span><span lang="en">The app icon already appears on the iPhone home screen</span></li>
+<li><span lang="id">The system shows</span><span lang="en">The system shows</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Untrusted Developer</b></span><span lang="en"><b>Untrusted Developer</b></span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Cause:</b></span><span lang="en"><b>Cause:</b></span></p>
+<p class="reveal"><span lang="id">This is an iOS security mechanism. Debug apps installed with a personal Apple ID require manual trust authorization.</span><span lang="en">This is an iOS security mechanism. Debug apps installed with a personal Apple ID require manual trust authorization.</span></p>
+<p class="reveal"><span lang="id"><b>Solution:</b></span><span lang="en"><b>Solution:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Open <b>Settings</b></span><span lang="en">Open <b>Settings</b></span></li>
+<li><span lang="id">Enter <b>General</b></span><span lang="en">Enter <b>General</b></span></li>
+<li><span lang="id">Tap <b>VPN & Device Management</b></span><span lang="en">Tap <b>VPN & Device Management</b></span></li>
+<li><span lang="id">Under <b>Developer App</b>, find your Apple ID</span><span lang="en">Under <b>Developer App</b>, find your Apple ID</span></li>
+<li><span lang="id">Tap <b>Trust</b>, then confirm again</span><span lang="en">Tap <b>Trust</b>, then confirm again</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">After that, return to the home screen and tap the app again. It should now run normally.</span><span lang="en">After that, return to the home screen and tap the app again. It should now run normally.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Chapter 6: If You Want to Publish the App to the App Store</span><span lang="en">Chapter 6: If You Want to Publish the App to the App Store</span></h2>
+<p class="reveal"><span lang="id">In this tutorial, what we mainly completed is the full closed loop for a <b>personal development and debugging version of an app</b>: from creating the project, implementing functions, and debugging, all the way to successfully installing and using it on a real device.</span><span lang="en">In this tutorial, what we mainly completed is the full closed loop for a <b>personal development and debugging version of an app</b>: from creating the project, implementing functions, and debugging, all the way to successfully installing and using it on a real device.</span></p>
+<p class="reveal"><span lang="id">If you want to go further and formally publish the app to the <b>Apple App Store</b> so that all users can download and use it, then you need to enter a more formal release process. Since that process involves a paid developer account, review rules, and compliance requirements, and is not the main practical focus of this tutorial, the following content is only provided as an <b>overall reference and roadmap</b>.</span><span lang="en">If you want to go further and formally publish the app to the <b>Apple App Store</b> so that all users can download and use it, then you need to enter a more formal release process. Since that process involves a paid developer account, review rules, and compliance requirements, and is not the main practical focus of this tutorial, the following content is only provided as an <b>overall reference and roadmap</b>.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">> The following content references Apple's official review requirements and public experience discussions (including original Zhihu sharing). Links are listed below. If any link becomes unavailable, you can search by title or keyword to find the original source.</span><span lang="en">> The following content references Apple's official review requirements and public experience discussions (including original Zhihu sharing). Links are listed below. If any link becomes unavailable, you can search by title or keyword to find the original source.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Apple Developer Program</span><span lang="en">6.1 Apple Developer Program</span></h3>
+<p class="reveal"><span lang="id">To publish an app to the App Store, you must join Apple's paid developer program:</span><span lang="en">To publish an app to the App Store, you must join Apple's paid developer program:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Apple Developer Program</b> (USD $99 per year)</span><span lang="en"><b>Apple Developer Program</b> (USD $99 per year)</span></li>
+<li><span lang="id">Official site: [https://developer.apple.com/](https://developer.apple.com/)</span><span lang="en">Official site: [https://developer.apple.com/](https://developer.apple.com/)</span></li>
+</ul>
+<p class="reveal"><span lang="id">After joining, you can use <b>App Store Connect</b> to create the app entry, manage versions, and publish formally.</span><span lang="en">After joining, you can use <b>App Store Connect</b> to create the app entry, manage versions, and publish formally.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 App Store Connect: Create the App Entry</span><span lang="en">6.2 App Store Connect: Create the App Entry</span></h3>
+<p class="reveal"><span lang="id">In App Store Connect, you need to create a complete app record, including but not limited to:</span><span lang="en">In App Store Connect, you need to create a complete app record, including but not limited to:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">App name and Bundle ID</span><span lang="en">App name and Bundle ID</span></li>
+<li><span lang="id">Description, keywords, and privacy policy link</span><span lang="en">Description, keywords, and privacy policy link</span></li>
+<li><span lang="id">App icon, screenshots, and preview materials</span><span lang="en">App icon, screenshots, and preview materials</span></li>
+<li><span lang="id">Pricing and distribution region settings</span><span lang="en">Pricing and distribution region settings</span></li>
+</ul>
+<p class="reveal"><span lang="id">All this information must be completed before submission can proceed.</span><span lang="en">All this information must be completed before submission can proceed.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.3 Build and Submit for Review</span><span lang="en">6.3 Build and Submit for Review</span></h3>
+<p class="reveal"><span lang="id">After the metadata is ready, you need to:</span><span lang="en">After the metadata is ready, you need to:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Use the paid developer account in Xcode to sign a Release build</span><span lang="en">Use the paid developer account in Xcode to sign a Release build</span></li>
+<li><span lang="id">Build and upload the formal version</span><span lang="en">Build and upload the formal version</span></li>
+<li><span lang="id">Submit it for review in App Store Connect</span><span lang="en">Submit it for review in App Store Connect</span></li>
+</ul>
+<p class="reveal"><span lang="id">After submission, the app enters Apple's review queue. The review time is typically 1-3 days, depending on the case.</span><span lang="en">After submission, the app enters Apple's review queue. The review time is typically 1-3 days, depending on the case.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.4 Review Rules and Common Reasons for Rejection</span><span lang="en">6.4 Review Rules and Common Reasons for Rejection</span></h3>
+<p class="reveal"><span lang="id">Apple mainly reviews apps from the following aspects:</span><span lang="en">Apple mainly reviews apps from the following aspects:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">functionality and stability</span><span lang="en">functionality and stability</span></li>
+<li><span lang="id">privacy and data compliance</span><span lang="en">privacy and data compliance</span></li>
+<li><span lang="id">consistency between metadata and actual functionality</span><span lang="en">consistency between metadata and actual functionality</span></li>
+<li><span lang="id">whether there is infringement or misleading behavior</span><span lang="en">whether there is infringement or misleading behavior</span></li>
+</ul>
+<p class="reveal"><span lang="id">If the app does not meet requirements, the review will be rejected and Apple will provide a specific reason. The developer then needs to modify the app and resubmit.</span><span lang="en">If the app does not meet requirements, the review will be rejected and Apple will provide a specific reason. The developer then needs to modify the app and resubmit.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.5 What to Do After Rejection</span><span lang="en">6.5 What to Do After Rejection</span></h3>
+<p class="reveal"><span lang="id">If the app is rejected, you can:</span><span lang="en">If the app is rejected, you can:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">modify the code or description according to the feedback</span><span lang="en">modify the code or description according to the feedback</span></li>
+<li><span lang="id">resubmit the version</span><span lang="en">resubmit the version</span></li>
+<li><span lang="id">communicate with the review team through App Store Connect</span><span lang="en">communicate with the review team through App Store Connect</span></li>
+</ul>
+<p class="reveal"><span lang="id">This is a very common part of the publishing process and does not mean the project has failed.</span><span lang="en">This is a very common part of the publishing process and does not mean the project has failed.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Reference sources</span><span lang="en">Reference sources</span></h3>
+<p class="reveal"><span lang="id">The following content references Apple's official documentation and public experience sharing:</span><span lang="en">The following content references Apple's official documentation and public experience sharing:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">App Store Review Guidelines (Apple official)</span><span lang="en">App Store Review Guidelines (Apple official)</span></li>
+</ul>
+<p class="reveal"><span lang="id">[https://developer.apple.com/app-store/review/guidelines/](https://developer.apple.com/app-store/review/guidelines/?utm_source=chatgpt.com)</span><span lang="en">[https://developer.apple.com/app-store/review/guidelines/](https://developer.apple.com/app-store/review/guidelines/?utm_source=chatgpt.com)</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Official guide to submitting for review</span><span lang="en">Official guide to submitting for review</span></li>
+</ul>
+<p class="reveal"><span lang="id">[https://developer.apple.com/cn/help/app-store-connect/manage-submissions-to-app-review/submit-for-review](https://developer.apple.com/cn/help/app-store-connect/manage-submissions-to-app-review/submit-for-review?utm_source=chatgpt.com)</span><span lang="en">[https://developer.apple.com/cn/help/app-store-connect/manage-submissions-to-app-review/submit-for-review](https://developer.apple.com/cn/help/app-store-connect/manage-submissions-to-app-review/submit-for-review?utm_source=chatgpt.com)</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Full illustrated guide to iOS App Store publishing and review pitfalls (Zhihu)</span><span lang="en">Full illustrated guide to iOS App Store publishing and review pitfalls (Zhihu)</span></li>
+</ul>
+<p class="reveal"><span lang="id">[https://zhuanlan.zhihu.com/p/146128612](https://zhuanlan.zhihu.com/p/146128612)</span><span lang="en">[https://zhuanlan.zhihu.com/p/146128612](https://zhuanlan.zhihu.com/p/146128612)</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Chapter 7: Summary</span><span lang="en">Chapter 7: Summary</span></h2>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></p>
+</div>
+<p class="reveal"><span lang="id">Congrats! At this point, you have personally walked through the complete iOS app development process from 0 to 1. From setting up the environment, running the project, and then gradually landing interface, functionality, data, and real-device testing, all the key stages have been completed smoothly. More importantly, you did not get here by memorizing Swift syntax - you handed most of the implementation to AI. No matter what your background is, every attempt like this makes you more fluent, and you will realize that iOS development is not as difficult as it once seemed. Even if you could not write a single line of code before, you can still build your own app.</span><span lang="en">Congrats! At this point, you have personally walked through the complete iOS app development process from 0 to 1. From setting up the environment, running the project, and then gradually landing interface, functionality, data, and real-device testing, all the key stages have been completed smoothly. More importantly, you did not get here by memorizing Swift syntax - you handed most of the implementation to AI. No matter what your background is, every attempt like this makes you more fluent, and you will realize that iOS development is not as difficult as it once seemed. Even if you could not write a single line of code before, you can still build your own app.</span></p>
+<p class="reveal"><span lang="id">Looking back, the whole process is not actually that complicated: decide what you want to build, use HTML to test the interface quickly, convert it into SwiftUI, connect the API and local data, and then run through debugging once. Based on this, in the future you can also casually build a personal alarm clock, a minimal todo list, or even a chatbot that speaks in the tone of your favorite celebrity.</span><span lang="en">Looking back, the whole process is not actually that complicated: decide what you want to build, use HTML to test the interface quickly, convert it into SwiftUI, connect the API and local data, and then run through debugging once. Based on this, in the future you can also casually build a personal alarm clock, a minimal todo list, or even a chatbot that speaks in the tone of your favorite celebrity.</span></p>
+<p class="reveal"><span lang="id">This is exactly the most important thing that this tutorial - and easy-vibe - wants to teach you. I am looking forward to the newest creations from all of you future vibe coding masters, and to the day I get dazzled by your work.</span><span lang="en">This is exactly the most important thing that this tutorial - and easy-vibe - wants to teach you. I am looking forward to the newest creations from all of you future vibe coding masters, and to the day I get dazzled by your work.</span></p>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../cross-platform/android-app/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></b></a>
+      <a class="next" href="../../cross-platform/react-native-expo/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Aplikasi Store Inspection: React Native & Expo</span><span lang="en">Aplikasi Store Inspection: React Native & Expo</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of Kubernetes Orchestration — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Kubernetes Orchestration. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/7-infrastructure-and-operations/kubernetes/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Kubernetes Orchestration</span><span lang="en">Principles of Kubernetes Orchestration</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of Kubernetes Orchestration</span><span lang="en">Principles of Kubernetes Orchestration</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Kubernetes Orchestration.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Kubernetes Orchestration.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Docker solved the "packaging" problem, and Kubernetes solves the "management" problem.</b> When you have dozens or hundreds of containers that need deployment, scaling, and fault recovery, manual management is impractical. Kubernetes (K8s) is the "operating system" for containers, automating the deployment, scaling, and operations of containerized applications.</span><span lang="en"><b>Docker solved the "packaging" problem, and Kubernetes solves the "management" problem.</b> When you have dozens or hundreds of containers that need deployment, scaling, and fault recovery, manual management is impractical. Kubernetes (K8s) is the "operating system" for containers, automating the deployment, scaling, and operations of containerized applications.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn from this article?</b></span><span lang="en"><b>What will you learn from this article?</b></span></p>
+<p class="reveal"><span lang="id">After completing this chapter, you will gain:</span><span lang="en">After completing this chapter, you will gain:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Architecture understanding</b>: Master the composition of the K8s control plane and worker nodes</span><span lang="en"><b>Architecture understanding</b>: Master the composition of the K8s control plane and worker nodes</span></li>
+<li><span lang="id"><b>Core resources</b>: Become familiar with core concepts like Pod, Deployment, and Service</span><span lang="en"><b>Core resources</b>: Become familiar with core concepts like Pod, Deployment, and Service</span></li>
+<li><span lang="id"><b>Declarative management</b>: Understand the philosophy of "declare desired state, system automatically converges"</span><span lang="en"><b>Declarative management</b>: Understand the philosophy of "declare desired state, system automatically converges"</span></li>
+<li><span lang="id"><b>Operations capabilities</b>: Learn about rolling updates, auto-scaling, health checks, and other mechanisms</span><span lang="en"><b>Operations capabilities</b>: Learn about rolling updates, auto-scaling, health checks, and other mechanisms</span></li>
+<li><span lang="id"><b>Hands-on introduction</b>: Deploy a complete application using kubectl and YAML</span><span lang="en"><b>Hands-on introduction</b>: Deploy a complete application using kubectl and YAML</span></li>
+</ul>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Core Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>Why K8s is Needed</td><td>Challenges of container orchestration</td></tr>
+<tr><td><b>Chapter 2</b></td><td>K8s Architecture</td><td>Control plane, worker nodes, etcd</td></tr>
+<tr><td><b>Chapter 3</b></td><td>Core Resources</td><td>Pod, Deployment, Service, Ingress</td></tr>
+<tr><td><b>Chapter 4</b></td><td>Declarative Management</td><td>YAML, kubectl, control loops</td></tr>
+<tr><td><b>Chapter 5</b></td><td>Operations Practices</td><td>Rolling updates, HPA, health checks</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Motivation for Kubernetesing</span><span lang="en">1. Motivation for Kubernetesing</span></h2>
+<p class="reveal"><span lang="id">Docker makes packaging and running individual containers simple, but when you face the following scenarios, manual management becomes inadequate:</span><span lang="en">Docker makes packaging and running individual containers simple, but when you face the following scenarios, manual management becomes inadequate:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Challenge</th><th>Description</th><th>K8s Solution</th></tr>
+<tr><td>Multi-instance deployment</td><td>A service needs 10 replicas running</td><td>Deployment automatically manages replica counts</td></tr>
+<tr><td>Fault recovery</td><td>A container crashes and needs automatic restart</td><td>Controllers automatically detect and recreate Pods</td></tr>
+<tr><td>Service discovery</td><td>Container IPs change; how to find each other?</td><td>Service provides stable DNS and IP</td></tr>
+<tr><td>Rolling updates</td><td>Can't stop service when updating versions</td><td>Gradually replace old Pods with zero downtime</td></tr>
+<tr><td>Elastic scaling</td><td>Auto-scale during traffic peaks</td><td>HPA automatically adjusts replica count based on CPU/memory</td></tr>
+<tr><td>Resource scheduling</td><td>Place containers on the most suitable machines</td><td>Scheduler intelligently schedules</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">You don't tell K8s "start 3 containers" (imperative). Instead, you tell it "I want 3 replicas running" (declarative). K8s continuously monitors to ensure the actual state matches your declared desired state. If a Pod crashes, it automatically creates a new one to replace it.</span><span lang="en">You don't tell K8s "start 3 containers" (imperative). Instead, you tell it "I want 3 replicas running" (declarative). K8s continuously monitors to ensure the actual state matches your declared desired state. If a Pod crashes, it automatically creates a new one to replace it.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Kubernetes Architecture</span><span lang="en">2. Kubernetes Architecture</span></h2>
+<p class="reveal"><span lang="id">A K8s cluster consists of a Control Plane and Worker Nodes.</span><span lang="en">A K8s cluster consists of a Control Plane and Worker Nodes.</span></p>
+<p class="reveal"><span lang="id"><K8sArchitectureDemo /></span><span lang="en"><K8sArchitectureDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Complete Path of a Request</span><span lang="en">Complete Path of a Request</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>User Request → Ingress Controller → Service → kube-proxy → Pod (Container)
+                                              ↑
+                                    Endpoint list (maintained by Service)</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Core Resource Objects</span><span lang="en">3. Core Resource Objects</span></h2>
+<p class="reveal"><span lang="id">K8s describes the cluster's desired state through various "resource objects."</span><span lang="en">K8s describes the cluster's desired state through various "resource objects."</span></p>
+<p class="reveal"><span lang="id"><K8sWorkloadsDemo /></span><span lang="en"><K8sWorkloadsDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Resource Object Categories</span><span lang="en">Resource Object Categories</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Category</th><th>Resources</th><th>Purpose</th></tr>
+<tr><td>Workloads</td><td>Pod, Deployment, StatefulSet, DaemonSet, Job</td><td>Run applications</td></tr>
+<tr><td>Networking</td><td>Service, Ingress, NetworkPolicy</td><td>Service discovery and traffic management</td></tr>
+<tr><td>Configuration</td><td>ConfigMap, Secret</td><td>Configuration and sensitive data management</td></tr>
+<tr><td>Storage</td><td>PersistentVolume, PersistentVolumeClaim</td><td>Persistent storage</td></tr>
+<tr><td>Scheduling</td><td>Node, Namespace, ResourceQuota</td><td>Resource isolation and limits</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Declarative Management and kubectl</span><span lang="en">4. Declarative Management and kubectl</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Reconciliation Loop</span><span lang="en">Reconciliation Loop</span></h3>
+<p class="reveal"><span lang="id">K8s's core working mechanism is the reconciliation loop:</span><span lang="en">K8s's core working mechanism is the reconciliation loop:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Observe → Diff → Act → Observe...
+     ↓          ↓        ↓
+  Read actual   Compare   Execute
+  state         with      corrective
+                desired   actions
+                state</pre>
+</div>
+<p class="reveal"><span lang="id">You declare <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">replicas: 3</code>. The controller discovers only 2 Pods running and creates 1 new one. This loop executes every few seconds, ensuring the system always converges toward the desired state.</span><span lang="en">You declare <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">replicas: 3</code>. The controller discovers only 2 Pods running and creates 1 new one. This loop executes every few seconds, ensuring the system always converges toward the desired state.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Common kubectl Commands</span><span lang="en">Common kubectl Commands</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Command</th><th>Purpose</th><th>Example</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">kubectl apply -f</code></td><td>Apply YAML configuration</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">kubectl apply -f deployment.yaml</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">kubectl get</code></td><td>List resources</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">kubectl get pods -o wide</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">kubectl describe</code></td><td>View resource details</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">kubectl describe pod my-app-xxx</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">kubectl logs</code></td><td>View Pod logs</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">kubectl logs -f my-app-xxx</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">kubectl exec</code></td><td>Enter Pod terminal</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">kubectl exec -it my-app-xxx -- sh</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">kubectl delete</code></td><td>Delete resources</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">kubectl delete -f deployment.yaml</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">kubectl scale</code></td><td>Manual scaling</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">kubectl scale deploy my-app --replicas=5</code></td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">kubectl create</code> is imperative — "create this resource," and will error if it already exists. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">kubectl apply</code> is declarative — "ensure the resource is in this state," creating if it doesn't exist or updating if it does. In production, you should always use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">apply</code>.</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">kubectl create</code> is imperative — "create this resource," and will error if it already exists. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">kubectl apply</code> is declarative — "ensure the resource is in this state," creating if it doesn't exist or updating if it does. In production, you should always use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">apply</code>.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Operations Practices</span><span lang="en">5. Operations Practices</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Rolling Updates and Rollbacks</span><span lang="en">5.1 Rolling Updates and Rollbacks</span></h3>
+<p class="reveal"><span lang="id">Deployment uses a rolling update strategy by default: gradually creating new version Pods while gradually terminating old version Pods.</span><span lang="en">Deployment uses a rolling update strategy by default: gradually creating new version Pods while gradually terminating old version Pods.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>yaml</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1        # At most create 1 extra Pod
+      maxUnavailable: 0   # No Pods allowed to be unavailable</pre>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Operation</th><th>Command</th></tr>
+<tr><td>Update image</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">kubectl set image deploy/my-app app=my-app:2.0</code></td></tr>
+<tr><td>View update status</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">kubectl rollout status deploy/my-app</code></td></tr>
+<tr><td>View revision history</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">kubectl rollout history deploy/my-app</code></td></tr>
+<tr><td>Rollback to previous version</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">kubectl rollout undo deploy/my-app</code></td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Auto Scaling (HPA)</span><span lang="en">5.2 Auto Scaling (HPA)</span></h3>
+<p class="reveal"><span lang="id">HPA (Horizontal Pod Autoscaler) automatically adjusts the number of Pod replicas based on CPU, memory, or custom metrics.</span><span lang="en">HPA (Horizontal Pod Autoscaler) automatically adjusts the number of Pod replicas based on CPU, memory, or custom metrics.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>yaml</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: my-app-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: my-app
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 Health Checks (Probes)</span><span lang="en">5.3 Health Checks (Probes)</span></h3>
+<p class="reveal"><span lang="id">K8s monitors Pod health through three types of probes:</span><span lang="en">K8s monitors Pod health through three types of probes:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Probe</th><th>Purpose</th><th>Failure Consequence</th></tr>
+<tr><td>livenessProbe</td><td>Detect if container is alive</td><td>Restart container</td></tr>
+<tr><td>readinessProbe</td><td>Detect if container is ready</td><td>Remove from Service, don't receive traffic</td></tr>
+<tr><td>startupProbe</td><td>Detect if container has finished starting</td><td>Don't run other probes during startup</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Without health check probes configured, K8s can only determine health by whether the process exists. But often the process is still running while the service is no longer responding (like deadlocks, edge of OOM). Configuring livenessProbe allows K8s to automatically restart these "zombie" containers.</span><span lang="en">Without health check probes configured, K8s can only determine health by whether the process exists. But often the process is still running while the service is no longer responding (like deadlocks, edge of OOM). Configuring livenessProbe allows K8s to automatically restart these "zombie" containers.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary</span><span lang="en">Summary</span></h2>
+<p class="reveal"><span lang="id">Kubernetes is the de facto standard for container orchestration, and understanding its core concepts is the foundation of cloud-native development.</span><span lang="en">Kubernetes is the de facto standard for container orchestration, and understanding its core concepts is the foundation of cloud-native development.</span></p>
+<p class="reveal"><span lang="id">Key takeaways from this chapter:</span><span lang="en">Key takeaways from this chapter:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Declarative management</b>: Tell K8s "what I want," not "how to do it" — the control loop automatically converges</span><span lang="en"><b>Declarative management</b>: Tell K8s "what I want," not "how to do it" — the control loop automatically converges</span></li>
+<li><span lang="id"><b>Layered architecture</b>: Control plane makes decisions, worker nodes execute, etcd stores state</span><span lang="en"><b>Layered architecture</b>: Control plane makes decisions, worker nodes execute, etcd stores state</span></li>
+<li><span lang="id"><b>Core resources</b>: Pod (smallest unit), Deployment (replica management), Service (service discovery), Ingress (external entry point)</span><span lang="en"><b>Core resources</b>: Pod (smallest unit), Deployment (replica management), Service (service discovery), Ingress (external entry point)</span></li>
+<li><span lang="id"><b>Operations automation</b>: Rolling updates with zero downtime, HPA elastic scaling, automatic fault recovery with probes</span><span lang="en"><b>Operations automation</b>: Rolling updates with zero downtime, HPA elastic scaling, automatic fault recovery with probes</span></li>
+<li><span lang="id"><b>Configuration separation</b>: ConfigMap and Secret decouple configuration from images</span><span lang="en"><b>Configuration separation</b>: ConfigMap and Secret decouple configuration from images</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[Kubernetes Official Documentation](https://kubernetes.io/docs/) - The most authoritative reference</span><span lang="en">[Kubernetes Official Documentation](https://kubernetes.io/docs/) - The most authoritative reference</span></li>
+<li><span lang="id">[Kubernetes the Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way) - Build a K8s cluster from scratch manually</span><span lang="en">[Kubernetes the Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way) - Build a K8s cluster from scratch manually</span></li>
+<li><span lang="id">[The Illustrated Children's Guide to Kubernetes](https://www.cncf.io/phippy/) - CNCF's fun beginner's guide</span><span lang="en">[The Illustrated Children's Guide to Kubernetes](https://www.cncf.io/phippy/) - CNCF's fun beginner's guide</span></li>
+<li><span lang="id">[Kubernetes Patterns](https://www.oreilly.com/library/view/kubernetes-patterns-2nd/9781098131678/) - K8s design patterns</span><span lang="en">[Kubernetes Patterns](https://www.oreilly.com/library/view/kubernetes-patterns-2nd/9781098131678/) - K8s design patterns</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../7-infrastructure-and-operations/infrastructure-as-code/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">7-infrastructure-and-operations/infrastructure-as-code</span><span lang="en">7-infrastructure-and-operations/infrastructure-as-code</span></b></a>
+      <a class="next" href="../../7-infrastructure-and-operations/linux-basics/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">7-infrastructure-and-operations/linux-basics</span><span lang="en">7-infrastructure-and-operations/linux-basics</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

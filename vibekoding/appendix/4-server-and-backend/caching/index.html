@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of Caching: Strategies and Patterns — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Caching: Strategies and Patterns. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/4-server-and-backend/caching/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Caching: Strategies and Patterns</span><span lang="en">Principles of Caching: Strategies and Patterns</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of Caching: Strategies and Patterns</span><span lang="en">Principles of Caching: Strategies and Patterns</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Caching: Strategies and Patterns.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Caching: Strategies and Patterns.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Why do some websites load in 50 milliseconds while others take 5 seconds?</b> It's like asking: why does grabbing a book from your backpack take 1 second, while going to the library to find it takes 10 minutes? The answer is — caching. This chapter will take you deep into the core principles, design patterns, and practical techniques of caching, so you can boost your system performance by 100x.</span><span lang="en"><b>Why do some websites load in 50 milliseconds while others take 5 seconds?</b> It's like asking: why does grabbing a book from your backpack take 1 second, while going to the library to find it takes 10 minutes? The answer is — caching. This chapter will take you deep into the core principles, design patterns, and practical techniques of caching, so you can boost your system performance by 100x.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Motivation for Cachinging</span><span lang="en">1. Motivation for Cachinging</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 The Evolution from "Query Every Time" to "Remember Frequently Used Data"</span><span lang="en">1.1 The Evolution from "Query Every Time" to "Remember Frequently Used Data"</span></h3>
+<p class="reveal"><span lang="id">In the early days of computing, programmers would query the hard drive or database every time they needed data. It's like flipping through a textbook to look up a formula for every single math problem — accurate, but terribly inefficient. As systems scaled, this "query every time" approach began to expose serious problems: database CPU spiking to 95%, response times ballooning from 100 milliseconds to 8 seconds, and eventually, complete system collapse.</span><span lang="en">In the early days of computing, programmers would query the hard drive or database every time they needed data. It's like flipping through a textbook to look up a formula for every single math problem — accurate, but terribly inefficient. As systems scaled, this "query every time" approach began to expose serious problems: database CPU spiking to 95%, response times ballooning from 100 milliseconds to 8 seconds, and eventually, complete system collapse.</span></p>
+<p class="reveal"><span lang="id">This is like a student who runs from the dorm to the library to look up references for every class, 50 trips a day, eventually collapsing from exhaustion halfway there. The solution is simple: keep a notebook of commonly used formulas in your backpack, and check the backpack first instead of running to the library every time. Caching is the computer system's "formula notebook" — it stores frequently used data in a fast-access location so the system doesn't have to go to the "library" (the database) every time.</span><span lang="en">This is like a student who runs from the dorm to the library to look up references for every class, 50 trips a day, eventually collapsing from exhaustion halfway there. The solution is simple: keep a notebook of commonly used formulas in your backpack, and check the backpack first instead of running to the library every time. Caching is the computer system's "formula notebook" — it stores frequently used data in a fast-access location so the system doesn't have to go to the "library" (the database) every time.</span></p>
+<p class="reveal"><span lang="id"><div style="display: flex; gap: 20px; margin: 20px 0;"></span><span lang="en"><div style="display: flex; gap: 20px; margin: 20px 0;"></span></p>
+<p class="reveal"><span lang="id"><div style="flex: 1; padding: 16px; border: 1px solid #e4e7ed; border-radius: 12px;"></span><span lang="en"><div style="flex: 1; padding: 16px; border: 1px solid #e4e7ed; border-radius: 12px;"></span></p>
+<p class="reveal"><span lang="id"><b>🐌 Without Cache</b></span><span lang="en"><b>🐌 Without Cache</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Every request hits the database</span><span lang="en">Every request hits the database</span></li>
+<li><span lang="id">Database CPU usage at 95%</span><span lang="en">Database CPU usage at 95%</span></li>
+<li><span lang="id">Response time 5–8 seconds</span><span lang="en">Response time 5–8 seconds</span></li>
+<li><span lang="id">System prone to crashes</span><span lang="en">System prone to crashes</span></li>
+</ul>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"><div style="flex: 1; padding: 16px; border: 1px solid #e4e7ed; border-radius: 12px;"></span><span lang="en"><div style="flex: 1; padding: 16px; border: 1px solid #e4e7ed; border-radius: 12px;"></span></p>
+<p class="reveal"><span lang="id"><b>🚀 With Cache</b></span><span lang="en"><b>🚀 With Cache</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">95% of requests return directly</span><span lang="en">95% of requests return directly</span></li>
+<li><span lang="id">Database CPU usage < 20%</span><span lang="en">Database CPU usage < 20%</span></li>
+<li><span lang="id">Response time 50 milliseconds</span><span lang="en">Response time 50 milliseconds</span></li>
+<li><span lang="id">System runs stably</span><span lang="en">System runs stably</span></li>
+</ul>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"><b>This is the core problem caching solves: by storing copies of frequently used data, it reduces access to slow storage (the database), making the system faster and more stable.</b></span><span lang="en"><b>This is the core problem caching solves: by storing copies of frequently used data, it reduces access to slow storage (the database), making the system faster and more stable.</b></span></p>
+<p class="reveal"><span lang="id"><CachePerformanceComparisonDemo /></span><span lang="en"><CachePerformanceComparisonDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 Case: Caching Is a Lifesaver</span><span lang="en">1.2 Case: Caching Is a Lifesaver</span></h3>
+<p class="reveal"><span lang="id">You might be thinking: "My system is fine right now, why design for caching in advance?" Let me tell you a real story so you understand why caching is not "optional" but "mandatory."</span><span lang="en">You might be thinking: "My system is fine right now, why design for caching in advance?" Let me tell you a real story so you understand why caching is not "optional" but "mandatory."</span></p>
+
+<div class="callout warn reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div>
+  <p><span lang="id">Ah-Qiang was a full-stack engineer at a startup building a social app. Early on, with only a few hundred users, the system ran smoothly. Ah-Qiang figured there was no need for caching — just query the database directly.
+
+Six months later, the user base grew to 100,000. One day, a celebrity posted on the app, and 100,000 users flooded in instantly. The database buckled: CPU hit 100%, response time went from 100ms to 30 seconds, and the entire app crashed, causing massive user churn.
+
+Post-mortem: if there had been a simple caching layer (like Redis) to cache the trending posts, database load would have dropped by at least 95%, and the system would have easily weathered the traffic spike.
+
+Ah-Qiang learned a hard lesson: <b>caching is not a nice-to-have; it's a lifeline for high-concurrency systems. Going without caching is like driving without a seatbelt — fine most of the time, but fatal when things go wrong.</b></span><span lang="en">Ah-Qiang was a full-stack engineer at a startup building a social app. Early on, with only a few hundred users, the system ran smoothly. Ah-Qiang figured there was no need for caching — just query the database directly.
+
+Six months later, the user base grew to 100,000. One day, a celebrity posted on the app, and 100,000 users flooded in instantly. The database buckled: CPU hit 100%, response time went from 100ms to 30 seconds, and the entire app crashed, causing massive user churn.
+
+Post-mortem: if there had been a simple caching layer (like Redis) to cache the trending posts, database load would have dropped by at least 95%, and the system would have easily weathered the traffic spike.
+
+Ah-Qiang learned a hard lesson: <b>caching is not a nice-to-have; it's a lifeline for high-concurrency systems. Going without caching is like driving without a seatbelt — fine most of the time, but fatal when things go wrong.</b></span></p>
+</div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">The value of caching isn't just "faster" — more importantly, it's "protection." It protects the database from being overwhelmed and keeps the system stable under high traffic. When designing a system, don't wait until something breaks to think about caching — make it a core part of your architecture from day one.</span><span lang="en">The value of caching isn't just "faster" — more importantly, it's "protection." It protects the database from being overwhelmed and keeps the system stable under high traffic. When designing a system, don't wait until something breaks to think about caching — make it a core part of your architecture from day one.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Core Concepts: Overview of Caching</span><span lang="en">2. Core Concepts: Overview of Caching</span></h2>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Simply put, <b>a cache is a storage space for data copies</b>. It's like sticking a sticky note on your desk with frequently dialed phone numbers, so you don't have to scroll through your phone's contact list every time.
+
+<b>Three key points</b>:
+1. <b>Copy</b>: Data in the cache is a copy of the original data (in the database), not the primary data
+2. <b>Fast access</b>: Caches are typically in memory, which is 100,000 times faster to read than a hard drive
+3. <b>Limited capacity</b>: Cache space is finite — it can only store the most frequently used data
+
+So, <b>caching is trading space for time</b> — sacrificing some memory space in exchange for blazing-fast data access.</span><span lang="en">Simply put, <b>a cache is a storage space for data copies</b>. It's like sticking a sticky note on your desk with frequently dialed phone numbers, so you don't have to scroll through your phone's contact list every time.
+
+<b>Three key points</b>:
+1. <b>Copy</b>: Data in the cache is a copy of the original data (in the database), not the primary data
+2. <b>Fast access</b>: Caches are typically in memory, which is 100,000 times faster to read than a hard drive
+3. <b>Limited capacity</b>: Cache space is finite — it can only store the most frequently used data
+
+So, <b>caching is trading space for time</b> — sacrificing some memory space in exchange for blazing-fast data access.</span></p>
+</div>
+<p class="reveal"><span lang="id">Before diving into specific technologies, we need to clarify a few core concepts. To help you understand, we'll use a "student's backpack" as an analogy for a caching system.</span><span lang="en">Before diving into specific technologies, we need to clarify a few core concepts. To help you understand, we'll use a "student's backpack" as an analogy for a caching system.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Understanding Core Caching Concepts Through the "Backpack Analogy"</span><span lang="en">2.1 Understanding Core Caching Concepts Through the "Backpack Analogy"</span></h3>
+<p class="reveal"><span lang="id">Imagine you're a student who needs to look up various references every day. This process is strikingly similar to how a caching system works:</span><span lang="en">Imagine you're a student who needs to look up various references every day. This process is strikingly similar to how a caching system works:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Concept</th><th>🎒 Backpack Analogy</th><th>Technical Meaning</th><th>Real-World Example</th></tr>
+<tr><td><b>Cache Hit</b></td><td>The formula you need is right there on your sticky note</td><td>The requested data is found in the cache</td><td>Querying user info — it's in Redis, returned directly</td></tr>
+<tr><td><b>Cache Miss</b></td><td>The sticky note doesn't have it; you have to flip through the book</td><td>The requested data is not in the cache</td><td>Querying user info — not in Redis, must query the database</td></tr>
+<tr><td><b>Hit Ratio</b></td><td>Out of 100 formula lookups, 95 are on the sticky note</td><td>The proportion of cache hits</td><td>95% hit ratio means 95% of requests never touch the database</td></tr>
+<tr><td><b>TTL (Time To Live)</b></td><td>Write "tear off in 3 days" on the sticky note</td><td>The cache entry's expiration time</td><td>Set user info cache to expire automatically after 30 minutes</td></tr>
+<tr><td><b>Eviction</b></td><td>Backpack is full — toss the oldest sticky note</td><td>Deleting old data when the cache is full</td><td>Redis memory is full — auto-delete the least-used data</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Cache Hit vs. Cache Miss</span><span lang="en">2.2 Cache Hit vs. Cache Miss</span></h3>
+<p class="reveal"><span lang="id">The performance difference between a cache hit and a cache miss is enormous. Let's look at the concrete numbers:</span><span lang="en">The performance difference between a cache hit and a cache miss is enormous. Let's look at the concrete numbers:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Operation</th><th>Response Time</th><th>Relative Speed</th><th>Suitable Scenario</th></tr>
+<tr><td><b>CPU L1 Cache</b></td><td>~0.5 ns</td><td>Fastest (baseline)</td><td>Internal CPU operations</td></tr>
+<tr><td><b>Memory Read</b></td><td>~100 ns</td><td>200× slower</td><td>Local cache (e.g., Caffeine)</td></tr>
+<tr><td><b>Redis Query</b></td><td>~1 ms</td><td>2,000,000× slower</td><td>Distributed cache</td></tr>
+<tr><td><b>MySQL Query</b></td><td>~10 ms</td><td>20,000,000× slower</td><td>Disk-based database query</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>The performance gap is staggering</b>: memory operations are 100,000 times faster than MySQL queries! It's like the difference between grabbing a book from your desk (1 second) and going to the library to find it (100,000 seconds, or about 28 hours).
+
+<b>Three-tier performance ladder</b>:
+1. <b>Local cache (memory)</b>: Fastest, but small capacity — ideal for hot data
+2. <b>Redis cache</b>: Medium speed, large capacity — ideal for distributed scenarios
+3. <b>Database</b>: Slowest, but unlimited capacity — the ultimate source of truth
+
+<b>Practical takeaway</b>: Your system should serve over 95% of requests from the cache layer, with fewer than 5% needing to hit the database. This keeps database load low and overall system performance high.</span><span lang="en"><b>The performance gap is staggering</b>: memory operations are 100,000 times faster than MySQL queries! It's like the difference between grabbing a book from your desk (1 second) and going to the library to find it (100,000 seconds, or about 28 hours).
+
+<b>Three-tier performance ladder</b>:
+1. <b>Local cache (memory)</b>: Fastest, but small capacity — ideal for hot data
+2. <b>Redis cache</b>: Medium speed, large capacity — ideal for distributed scenarios
+3. <b>Database</b>: Slowest, but unlimited capacity — the ultimate source of truth
+
+<b>Practical takeaway</b>: Your system should serve over 95% of requests from the cache layer, with fewer than 5% needing to hit the database. This keeps database load low and overall system performance high.</span></p>
+</div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">Let's compare the two scenarios with code:
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+// Scenario: querying user information
+
+// ===== Cache Hit =====
+// 1. Check Redis cache first
+const userFromCache = await redis.get('user:123')
+if (userFromCache) {
+  // Hit! Return directly, ~1 millisecond
+  return JSON.parse(userFromCache)
+}
+
+// ===== Cache Miss =====
+// 2. Not in cache, query the database
+const userFromDB = await db.query('SELECT * FROM users WHERE id = 123')
+// Miss! Must query database, ~10 milliseconds, 10× slower
+
+// 3. Write to cache after querying, so next time it hits
+await redis.set('user:123', JSON.stringify(userFromDB), 'EX', 1800)
+return userFromDB
+</code>``
+
+<b>Key points</b>:
+- Cache hit: returns in 1 millisecond — excellent user experience
+- Cache miss: returns in 10 milliseconds — slightly worse user experience
+- <b>The value of caching</b>: turning misses into hits yields a 10× performance improvement</span><span lang="en">Let's compare the two scenarios with code:
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+// Scenario: querying user information
+
+// ===== Cache Hit =====
+// 1. Check Redis cache first
+const userFromCache = await redis.get('user:123')
+if (userFromCache) {
+  // Hit! Return directly, ~1 millisecond
+  return JSON.parse(userFromCache)
+}
+
+// ===== Cache Miss =====
+// 2. Not in cache, query the database
+const userFromDB = await db.query('SELECT * FROM users WHERE id = 123')
+// Miss! Must query database, ~10 milliseconds, 10× slower
+
+// 3. Write to cache after querying, so next time it hits
+await redis.set('user:123', JSON.stringify(userFromDB), 'EX', 1800)
+return userFromDB
+</code>``
+
+<b>Key points</b>:
+- Cache hit: returns in 1 millisecond — excellent user experience
+- Cache miss: returns in 10 milliseconds — slightly worse user experience
+- <b>The value of caching</b>: turning misses into hits yields a 10× performance improvement</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 The Cache Lifecycle</span><span lang="en">2.3 The Cache Lifecycle</span></h3>
+<p class="reveal"><span lang="id">A cache entry goes through a complete lifecycle from creation to destruction. Understanding this process is crucial for designing caching systems.</span><span lang="en">A cache entry goes through a complete lifecycle from creation to destruction. Understanding this process is crucial for designing caching systems.</span></p>
+<p class="reveal"><span lang="id"><b>Four phases</b>:</span><span lang="en"><b>Four phases</b>:</span></p>
+<p class="reveal"><span lang="id"><b>Phase 1: Write</b></span><span lang="en"><b>Phase 1: Write</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Active write</b>: Preload hot data into the cache at system startup (cache preheating)</span><span lang="en"><b>Active write</b>: Preload hot data into the cache at system startup (cache preheating)</span></li>
+<li><span lang="id"><b>Lazy load</b>: Load from the database and write to cache on first access (most common)</span><span lang="en"><b>Lazy load</b>: Load from the database and write to cache on first access (most common)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Phase 2: Hit / Miss</b></span><span lang="en"><b>Phase 2: Hit / Miss</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Every request checks the cache first</span><span lang="en">Every request checks the cache first</span></li>
+<li><span lang="id">Hit → return directly; miss → query the database</span><span lang="en">Hit → return directly; miss → query the database</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Phase 3: Expiration</b></span><span lang="en"><b>Phase 3: Expiration</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>TTL (Time To Live)</b>: Set a lifespan for the cache entry (e.g., 30 minutes)</span><span lang="en"><b>TTL (Time To Live)</b>: Set a lifespan for the cache entry (e.g., 30 minutes)</span></li>
+<li><span lang="id">Upon expiration, the cache entry is automatically invalidated; the next access must reload</span><span lang="en">Upon expiration, the cache entry is automatically invalidated; the next access must reload</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Phase 4: Eviction</b></span><span lang="en"><b>Phase 4: Eviction</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Cache space is limited — when full, old data must be deleted</span><span lang="en">Cache space is limited — when full, old data must be deleted</span></li>
+<li><span lang="id">Common eviction strategies:</span><span lang="en">Common eviction strategies:</span></li>
+<li><span lang="id"><b>LRU (Least Recently Used)</b>: Evict the data that hasn't been accessed for the longest time (most common)</span><span lang="en"><b>LRU (Least Recently Used)</b>: Evict the data that hasn't been accessed for the longest time (most common)</span></li>
+<li><span lang="id"><b>LFU (Least Frequently Used)</b>: Evict the data with the lowest access frequency</span><span lang="en"><b>LFU (Least Frequently Used)</b>: Evict the data with the lowest access frequency</span></li>
+<li><span lang="id"><b>FIFO (First In First Out)</b>: Evict the earliest-written data</span><span lang="en"><b>FIFO (First In First Out)</b>: Evict the earliest-written data</span></li>
+</ul>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>:</span><span lang="en">👇 <b>Try it yourself</b>:</span></p>
+<p class="reveal"><span lang="id">The demo below illustrates the cache lifecycle. Click "Add Cache" and observe how cache entries go through the full process of write, hit, expiration, and eviction:</span><span lang="en">The demo below illustrates the cache lifecycle. Click "Add Cache" and observe how cache entries go through the full process of write, hit, expiration, and eviction:</span></p>
+<p class="reveal"><span lang="id"><CacheLifecycleDemo /></span><span lang="en"><CacheLifecycleDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. The Evolution of Caching: From Single-Machine to Distributed</span><span lang="en">3. The Evolution of Caching: From Single-Machine to Distributed</span></h2>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Just like you keep reference materials in different places when studying: the most frequently used on your desk (sticky notes), commonly used in your backpack (notebook), and all materials in the library (stacks).
+
+<b>Caching systems work the same way</b>:
+- <b>Local cache (desk)</b>: Fastest, small capacity — for super-hot data
+- <b>Distributed cache (public locker)</b>: Fairly fast, large capacity — for commonly used data
+- <b>Database (library)</b>: Slowest, unlimited capacity — for all data
+
+<b>Why layer them?</b> Because different tiers have different performance and cost characteristics. Combining them wisely yields the optimal result.</span><span lang="en">Just like you keep reference materials in different places when studying: the most frequently used on your desk (sticky notes), commonly used in your backpack (notebook), and all materials in the library (stacks).
+
+<b>Caching systems work the same way</b>:
+- <b>Local cache (desk)</b>: Fastest, small capacity — for super-hot data
+- <b>Distributed cache (public locker)</b>: Fairly fast, large capacity — for commonly used data
+- <b>Database (library)</b>: Slowest, unlimited capacity — for all data
+
+<b>Why layer them?</b> Because different tiers have different performance and cost characteristics. Combining them wisely yields the optimal result.</span></p>
+</div>
+<p class="reveal"><span lang="id">Now that we've covered the concepts, let's look at a real case study: how an e-commerce system evolved from "no cache" to a "multi-level caching architecture." This case study will give you a more intuitive understanding of why cache design matters.</span><span lang="en">Now that we've covered the concepts, let's look at a real case study: how an e-commerce system evolved from "no cache" to a "multi-level caching architecture." This case study will give you a more intuitive understanding of why cache design matters.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Stage 1: The No-Cache Era — Database Running Naked</span><span lang="en">3.1 Stage 1: The No-Cache Era — Database Running Naked</span></h3>
+<p class="reveal"><span lang="id"><b>Background</b>: In the early days, with only a few hundred users, all requests hit the database directly with no caching layer.</span><span lang="en"><b>Background</b>: In the early days, with only a few hundred users, all requests hit the database directly with no caching layer.</span></p>
+<p class="reveal"><span lang="id"><b>Tech stack</b>:</span><span lang="en"><b>Tech stack</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Database: MySQL</span><span lang="en">Database: MySQL</span></li>
+<li><span lang="id">No cache: no Redis, no local cache</span><span lang="en">No cache: no Redis, no local cache</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>System architecture</b>:</span><span lang="en"><b>System architecture</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>User Request → Application Server → MySQL Database</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Characteristics of this stage</b>:</span><span lang="en"><b>Characteristics of this stage</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ <b>Pros</b>: Simple architecture, fast to develop</span><span lang="en">✅ <b>Pros</b>: Simple architecture, fast to develop</span></li>
+<li><span lang="id">❌ <b>Cons</b>: Heavy database load, poor performance, collapses beyond a thousand users</span><span lang="en">❌ <b>Cons</b>: Heavy database load, poor performance, collapses beyond a thousand users</span></li>
+</ul>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id"><b>Code example</b> (querying the database every time):
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+// Get product details — query the database every single time
+async function getProduct(productId) {
+  // Direct database query, no caching whatsoever
+  const product = await db.query(
+    'SELECT * FROM products WHERE id = ?',
+    [productId]
+  )
+  return product
+}
+</code>``
+
+<b>Problems encountered</b>:
+1. <b>Database CPU spikes</b>: Every request hits the database, CPU usage 80%+
+2. <b>Slow responses</b>: Complex queries take 50–100 ms — poor user experience
+3. <b>Poor concurrency</b>: Database QPS (queries per second) capped at 2000 — anything more and it collapses
+4. <b>Hot product bottleneck</b>: Trending product detail pages are queried relentlessly; the database becomes the bottleneck
+
+<b>Temporary workarounds at the time</b>:
+- Buy more expensive servers (more CPU, more RAM) — costly, limited effect
+- Database read/write separation — relieves read pressure, but write pressure remains
+- SQL optimization — 20–30% improvement, but doesn't solve the fundamental problem</span><span lang="en"><b>Code example</b> (querying the database every time):
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+// Get product details — query the database every single time
+async function getProduct(productId) {
+  // Direct database query, no caching whatsoever
+  const product = await db.query(
+    'SELECT * FROM products WHERE id = ?',
+    [productId]
+  )
+  return product
+}
+</code>``
+
+<b>Problems encountered</b>:
+1. <b>Database CPU spikes</b>: Every request hits the database, CPU usage 80%+
+2. <b>Slow responses</b>: Complex queries take 50–100 ms — poor user experience
+3. <b>Poor concurrency</b>: Database QPS (queries per second) capped at 2000 — anything more and it collapses
+4. <b>Hot product bottleneck</b>: Trending product detail pages are queried relentlessly; the database becomes the bottleneck
+
+<b>Temporary workarounds at the time</b>:
+- Buy more expensive servers (more CPU, more RAM) — costly, limited effect
+- Database read/write separation — relieves read pressure, but write pressure remains
+- SQL optimization — 20–30% improvement, but doesn't solve the fundamental problem</span></p>
+</div>
+<p class="reveal"><span lang="id">This "running naked" model works when users < 1,000, but as the user base grows to 10,000 or 100,000, the database begins to crash frequently, and the team urgently needs to introduce caching.</span><span lang="en">This "running naked" model works when users < 1,000, but as the user base grows to 10,000 or 100,000, the database begins to crash frequently, and the team urgently needs to introduce caching.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Stage 2: Introducing Redis Cache — 10× Performance Improvement</span><span lang="en">3.2 Stage 2: Introducing Redis Cache — 10× Performance Improvement</span></h3>
+<p class="reveal"><span lang="id"><b>Background</b>: Users grew to 10,000; the database couldn't keep up. The team decided to introduce Redis as a caching layer.</span><span lang="en"><b>Background</b>: Users grew to 10,000; the database couldn't keep up. The team decided to introduce Redis as a caching layer.</span></p>
+<p class="reveal"><span lang="id"><b>Tech stack</b>:</span><span lang="en"><b>Tech stack</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Database: MySQL</span><span lang="en">Database: MySQL</span></li>
+<li><span lang="id">Cache: Redis (single instance)</span><span lang="en">Cache: Redis (single instance)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>System architecture</b>:</span><span lang="en"><b>System architecture</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>User Request → Application Server → Redis Cache (query DB only on miss) → MySQL Database</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Characteristics of this stage</b>:</span><span lang="en"><b>Characteristics of this stage</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ <b>Pros</b>: 10× performance improvement, 90% reduction in database load</span><span lang="en">✅ <b>Pros</b>: 10× performance improvement, 90% reduction in database load</span></li>
+<li><span lang="id">❌ <b>Cons</b>: Redis single point of failure, potential cache-database inconsistency</span><span lang="en">❌ <b>Cons</b>: Redis single point of failure, potential cache-database inconsistency</span></li>
+</ul>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id"><b>Code example</b> (adding Redis cache):
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+// Get product details — check Redis first, fall back to database
+async function getProduct(productId) {
+  // 1. Check Redis cache first
+  const cacheKey = </code>product:${productId}<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+  const cached = await redis.get(cacheKey)
+
+  if (cached) {
+    // Cache hit! Return directly, ~1 millisecond
+    return JSON.parse(cached)
+  }
+
+  // 2. Cache miss, query the database
+  const product = await db.query(
+    'SELECT * FROM products WHERE id = ?',
+    [productId]
+  )
+
+  // 3. Write to Redis after querying, set 30-minute TTL
+  await redis.setex(
+    cacheKey,
+    1800,  // 30 minutes = 1800 seconds
+    JSON.stringify(product)
+  )
+
+  return product
+}
+</code>``
+
+<b>Performance comparison</b>:
+
+| Scenario | Without Cache | With Redis Cache | Improvement |
+|------|-------|--------------|---------|
+| Regular product query | 50ms | 5ms (on cache hit) | <b>10×</b> |
+| Hot product query | 80ms | 1ms (95% hit rate) | <b>80×</b> |
+| Database QPS | 2000 (at capacity) | 200 (90% intercepted by cache) | <b>10× less DB load</b> |
+| Max system concurrency | 2,000 users | 20,000 users | <b>10×</b> |
+
+<b>Improvements achieved</b>:
+1. <b>Response speed</b>: On cache hit, response time drops from 50ms to 1–5ms
+2. <b>Concurrency capacity</b>: System can support 20,000 users, up from 2,000
+3. <b>Database load</b>: 90% of requests intercepted by Redis, DB CPU drops from 80% to 20%
+4. <b>User experience</b>: Noticeably faster page loads, fewer user complaints
+
+<b>New challenges</b>:
+1. <b>Cache consistency</b>: Product price changes, the database is updated, but the cache still holds the old value
+2. <b>Cache penetration</b>: Malicious queries for non-existent product IDs (e.g., id=-1) punch through to the database every time
+3. <b>Cache avalanche</b>: After a system restart, all caches expire simultaneously, flooding the database with requests
+4. <b>Redis single point of failure</b>: If Redis goes down, all requests hit the database directly — the system may collapse
+
+<b>Solutions</b>:
+- <b>Cache consistency</b>: When updating the database, delete the cache synchronously
+- <b>Cache penetration</b>: Cache non-existent data too (with an empty value and a short TTL, e.g., 5 minutes)
+- <b>Cache avalanche</b>: Add a random offset to cache TTLs to avoid simultaneous expiration</span><span lang="en"><b>Code example</b> (adding Redis cache):
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+// Get product details — check Redis first, fall back to database
+async function getProduct(productId) {
+  // 1. Check Redis cache first
+  const cacheKey = </code>product:${productId}<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+  const cached = await redis.get(cacheKey)
+
+  if (cached) {
+    // Cache hit! Return directly, ~1 millisecond
+    return JSON.parse(cached)
+  }
+
+  // 2. Cache miss, query the database
+  const product = await db.query(
+    'SELECT * FROM products WHERE id = ?',
+    [productId]
+  )
+
+  // 3. Write to Redis after querying, set 30-minute TTL
+  await redis.setex(
+    cacheKey,
+    1800,  // 30 minutes = 1800 seconds
+    JSON.stringify(product)
+  )
+
+  return product
+}
+</code>``
+
+<b>Performance comparison</b>:
+
+| Scenario | Without Cache | With Redis Cache | Improvement |
+|------|-------|--------------|---------|
+| Regular product query | 50ms | 5ms (on cache hit) | <b>10×</b> |
+| Hot product query | 80ms | 1ms (95% hit rate) | <b>80×</b> |
+| Database QPS | 2000 (at capacity) | 200 (90% intercepted by cache) | <b>10× less DB load</b> |
+| Max system concurrency | 2,000 users | 20,000 users | <b>10×</b> |
+
+<b>Improvements achieved</b>:
+1. <b>Response speed</b>: On cache hit, response time drops from 50ms to 1–5ms
+2. <b>Concurrency capacity</b>: System can support 20,000 users, up from 2,000
+3. <b>Database load</b>: 90% of requests intercepted by Redis, DB CPU drops from 80% to 20%
+4. <b>User experience</b>: Noticeably faster page loads, fewer user complaints
+
+<b>New challenges</b>:
+1. <b>Cache consistency</b>: Product price changes, the database is updated, but the cache still holds the old value
+2. <b>Cache penetration</b>: Malicious queries for non-existent product IDs (e.g., id=-1) punch through to the database every time
+3. <b>Cache avalanche</b>: After a system restart, all caches expire simultaneously, flooding the database with requests
+4. <b>Redis single point of failure</b>: If Redis goes down, all requests hit the database directly — the system may collapse
+
+<b>Solutions</b>:
+- <b>Cache consistency</b>: When updating the database, delete the cache synchronously
+- <b>Cache penetration</b>: Cache non-existent data too (with an empty value and a short TTL, e.g., 5 minutes)
+- <b>Cache avalanche</b>: Add a random offset to cache TTLs to avoid simultaneous expiration</span></p>
+</div>
+<p class="reveal"><span lang="id">After introducing Redis, system performance improved dramatically, but new problems emerged. The team began researching how to solve these cache-related issues.</span><span lang="en">After introducing Redis, system performance improved dramatically, but new problems emerged. The team began researching how to solve these cache-related issues.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Stage 3: Multi-Level Cache Architecture — Another 5× Performance Boost</span><span lang="en">3.3 Stage 3: Multi-Level Cache Architecture — Another 5× Performance Boost</span></h3>
+<p class="reveal"><span lang="id"><b>Background</b>: Users grew to 100,000. Even Redis caching started becoming a bottleneck (single-instance Redis QPS caps at ~100,000). The team decided to introduce multi-level caching.</span><span lang="en"><b>Background</b>: Users grew to 100,000. Even Redis caching started becoming a bottleneck (single-instance Redis QPS caps at ~100,000). The team decided to introduce multi-level caching.</span></p>
+<p class="reveal"><span lang="id"><b>Tech stack</b>:</span><span lang="en"><b>Tech stack</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">L1 Cache: Application-local cache (Caffeine)</span><span lang="en">L1 Cache: Application-local cache (Caffeine)</span></li>
+<li><span lang="id">L2 Cache: Redis cluster</span><span lang="en">L2 Cache: Redis cluster</span></li>
+<li><span lang="id">Database: MySQL primary-replica cluster</span><span lang="en">Database: MySQL primary-replica cluster</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>System architecture</b>:</span><span lang="en"><b>System architecture</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>User Request → CDN Cache (static assets) → Application Server
+                                               ↓
+                                 L1: Local Cache (Caffeine) → Miss → L2: Redis → Miss → MySQL</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Characteristics of this stage</b>:</span><span lang="en"><b>Characteristics of this stage</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ <b>Pros</b>: Ultimate performance (local cache takes only ~0.1 ms), high availability (Redis downtime doesn't affect hot data)</span><span lang="en">✅ <b>Pros</b>: Ultimate performance (local cache takes only ~0.1 ms), high availability (Redis downtime doesn't affect hot data)</span></li>
+<li><span lang="id">❌ <b>Cons</b>: Complex architecture, difficult to guarantee consistency across cache tiers</span><span lang="en">❌ <b>Cons</b>: Complex architecture, difficult to guarantee consistency across cache tiers</span></li>
+</ul>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id"><b>Code example</b> (local cache + Redis two-level caching):
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+// Using Caffeine local cache
+const caffeine = require('caffeine')
+const localCache = new caffeine.Cache({
+  max: 1000,              // Max 1000 entries
+  ttl: 30,                // 30-second TTL
+})
+
+// Get product details — two-level caching
+async function getProduct(productId) {
+  const cacheKey = </code>product:${productId}<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+  // L1: Check local cache first (fastest, ~0.1 ms)
+  const localCached = localCache.get(cacheKey)
+  if (localCached) {
+    console.log('L1 hit')
+    return localCached
+  }
+
+  // L2: Local cache miss, check Redis (fast, ~1 ms)
+  const redisCached = await redis.get(cacheKey)
+  if (redisCached) {
+    console.log('L2 hit, backfilling L1')
+    const product = JSON.parse(redisCached)
+    // Backfill local cache
+    localCache.set(cacheKey, product)
+    return product
+  }
+
+  // L3: Redis also missed, query database (slowest, ~10 ms)
+  console.log('L3 hit, backfilling L2 and L1')
+  const product = await db.query(
+    'SELECT * FROM products WHERE id = ?',
+    [productId]
+  )
+
+  // Backfill Redis (30-minute TTL)
+  await redis.setex(cacheKey, 1800, JSON.stringify(product))
+  // Backfill local cache
+  localCache.set(cacheKey, product)
+
+  return product
+}
+</code>``
+
+<b>Multi-level cache performance comparison</b>:
+
+| Cache Tier | Response Time | Hit Rate | Suitable Data |
+|---------|---------|--------|--------------|
+| <b>L1: Local Cache</b> | ~0.1 ms | 70% (super-hot) | Hot products, system config, user sessions |
+| <b>L2: Redis Cache</b> | ~1 ms | 25% (warm) | Most product data, comment aggregates |
+| <b>L3: Database</b> | ~10 ms | 5% (cold data) | Complete product catalog |
+
+<b>Overall performance improvement</b>:
+- <b>Average response time</b>: 5ms (Stage 2) → 1ms (Stage 3), <b>another 5× improvement</b>
+- <b>Max system concurrency</b>: 20,000 users (Stage 2) → 100,000 users (Stage 3), <b>5× improvement</b>
+- <b>Database QPS</b>: 200 (Stage 2) → 50 (Stage 3), <b>another 4× reduction</b>
+
+<b>New problems solved at this stage</b>:
+1. <b>Local cache consistency</b>: Multiple app instances may have inconsistent local caches (Instance A has the old price cached, Instance B has the new one)
+   - <b>Solution</b>: Set a short local cache TTL (30 seconds) to minimize the inconsistency window
+2. <b>Cache preheating</b>: After a system restart, the local cache is empty — massive requests punch through to Redis
+   - <b>Solution</b>: Actively load hot data into the local cache at system startup</span><span lang="en"><b>Code example</b> (local cache + Redis two-level caching):
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+// Using Caffeine local cache
+const caffeine = require('caffeine')
+const localCache = new caffeine.Cache({
+  max: 1000,              // Max 1000 entries
+  ttl: 30,                // 30-second TTL
+})
+
+// Get product details — two-level caching
+async function getProduct(productId) {
+  const cacheKey = </code>product:${productId}<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+  // L1: Check local cache first (fastest, ~0.1 ms)
+  const localCached = localCache.get(cacheKey)
+  if (localCached) {
+    console.log('L1 hit')
+    return localCached
+  }
+
+  // L2: Local cache miss, check Redis (fast, ~1 ms)
+  const redisCached = await redis.get(cacheKey)
+  if (redisCached) {
+    console.log('L2 hit, backfilling L1')
+    const product = JSON.parse(redisCached)
+    // Backfill local cache
+    localCache.set(cacheKey, product)
+    return product
+  }
+
+  // L3: Redis also missed, query database (slowest, ~10 ms)
+  console.log('L3 hit, backfilling L2 and L1')
+  const product = await db.query(
+    'SELECT * FROM products WHERE id = ?',
+    [productId]
+  )
+
+  // Backfill Redis (30-minute TTL)
+  await redis.setex(cacheKey, 1800, JSON.stringify(product))
+  // Backfill local cache
+  localCache.set(cacheKey, product)
+
+  return product
+}
+</code>``
+
+<b>Multi-level cache performance comparison</b>:
+
+| Cache Tier | Response Time | Hit Rate | Suitable Data |
+|---------|---------|--------|--------------|
+| <b>L1: Local Cache</b> | ~0.1 ms | 70% (super-hot) | Hot products, system config, user sessions |
+| <b>L2: Redis Cache</b> | ~1 ms | 25% (warm) | Most product data, comment aggregates |
+| <b>L3: Database</b> | ~10 ms | 5% (cold data) | Complete product catalog |
+
+<b>Overall performance improvement</b>:
+- <b>Average response time</b>: 5ms (Stage 2) → 1ms (Stage 3), <b>another 5× improvement</b>
+- <b>Max system concurrency</b>: 20,000 users (Stage 2) → 100,000 users (Stage 3), <b>5× improvement</b>
+- <b>Database QPS</b>: 200 (Stage 2) → 50 (Stage 3), <b>another 4× reduction</b>
+
+<b>New problems solved at this stage</b>:
+1. <b>Local cache consistency</b>: Multiple app instances may have inconsistent local caches (Instance A has the old price cached, Instance B has the new one)
+   - <b>Solution</b>: Set a short local cache TTL (30 seconds) to minimize the inconsistency window
+2. <b>Cache preheating</b>: After a system restart, the local cache is empty — massive requests punch through to Redis
+   - <b>Solution</b>: Actively load hot data into the local cache at system startup</span></p>
+</div>
+<p class="reveal"><span lang="id">Multi-level cache architectures are widely used by large internet companies (like Taobao, JD.com) and can support millions of QPS.</span><span lang="en">Multi-level cache architectures are widely used by large internet companies (like Taobao, JD.com) and can support millions of QPS.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.4 Cache Architecture Evolution Panorama</span><span lang="en">3.4 Cache Architecture Evolution Panorama</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Stage</th><th>Architecture</th><th>Response Time</th><th>Max Concurrency</th><th>Key Change</th></tr>
+<tr><td><b>Stage 1: No Cache</b></td><td>App → Database</td><td>50ms</td><td>2,000 users</td><td>Database running naked, poor performance</td></tr>
+<tr><td><b>Stage 2: Single-Level Cache</b></td><td>App → Redis → Database</td><td>5ms</td><td>20,000 users</td><td>Redis introduced, 10× performance boost</td></tr>
+<tr><td><b>Stage 3: Multi-Level Cache</b></td><td>App → Local Cache → Redis → Database</td><td>1ms</td><td>100,000 users</td><td>Local cache + Redis, another 5× boost</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Stage 1 → Stage 2</b>: A qualitative leap. Introducing Redis brings a 10× performance improvement and 90% reduction in database load. This is the critical step from "barely working" to "good enough."
+
+<b>Stage 2 → Stage 3</b>: Extreme optimization. Adding local cache brings another 5× improvement. This is the progression from "good enough" to "excellent," suited for ultra-high-traffic scenarios.
+
+<b>Practical recommendations</b>:
+- <b>Users < 10,000</b>: Stage 1 (no cache) suffices, but introducing Redis (Stage 2) is recommended
+- <b>Users 10,000–100,000</b>: Stage 2 (Redis cache) is the optimal choice
+- <b>Users > 100,000</b>: Consider Stage 3 (multi-level cache), but be mindful of the consistency complexity
+
+<b>In summary</b>: Cache architecture evolution isn't just about "adding more cache layers" — it's about <b>choosing the right architecture for your traffic scale</b>. Over-engineering adds unnecessary complexity; under-engineering leads to performance bottlenecks.</span><span lang="en"><b>Stage 1 → Stage 2</b>: A qualitative leap. Introducing Redis brings a 10× performance improvement and 90% reduction in database load. This is the critical step from "barely working" to "good enough."
+
+<b>Stage 2 → Stage 3</b>: Extreme optimization. Adding local cache brings another 5× improvement. This is the progression from "good enough" to "excellent," suited for ultra-high-traffic scenarios.
+
+<b>Practical recommendations</b>:
+- <b>Users < 10,000</b>: Stage 1 (no cache) suffices, but introducing Redis (Stage 2) is recommended
+- <b>Users 10,000–100,000</b>: Stage 2 (Redis cache) is the optimal choice
+- <b>Users > 100,000</b>: Consider Stage 3 (multi-level cache), but be mindful of the consistency complexity
+
+<b>In summary</b>: Cache architecture evolution isn't just about "adding more cache layers" — it's about <b>choosing the right architecture for your traffic scale</b>. Over-engineering adds unnecessary complexity; under-engineering leads to performance bottlenecks.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. The Three Classic Cache Problems: Penetration, Breakdown, and Avalanche</span><span lang="en">4. The Three Classic Cache Problems: Penetration, Breakdown, and Avalanche</span></h2>
+<p class="reveal"><span lang="id">In practice, caching introduces three classic problems. If you don't understand them, your system could suddenly collapse at some point. Let's use everyday analogies to understand these problems.</span><span lang="en">In practice, caching introduces three classic problems. If you don't understand them, your system could suddenly collapse at some point. Let's use everyday analogies to understand these problems.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Cache Penetration: Querying Non-Existent Data</span><span lang="en">4.1 Cache Penetration: Querying Non-Existent Data</span></h3>
+<p class="reveal"><span lang="id"><b>Problem definition</b>: Querying <b>data that doesn't exist</b> (e.g., id=-1). It's not in the cache (because it was never stored), and it's not in the database — so every request punches straight through to the database.</span><span lang="en"><b>Problem definition</b>: Querying <b>data that doesn't exist</b> (e.g., id=-1). It's not in the cache (because it was never stored), and it's not in the database — so every request punches straight through to the database.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Imagine you're at a library looking for a book. You ask the librarian: "Do you have 'The Nonexistent Book'?"
+
+<b>Normal flow</b>:
+- The librarian checks the catalog: "No such book"
+- You leave
+
+<b>Cache penetration scenario</b>:
+- You come the 1st time, the librarian checks the database: "No," tells you
+- You come the 2nd time, the librarian checks the database again: "No"
+- You come the 100th time, the librarian still checks the database: "No"
+
+<b>Problem</b>: The librarian (database) is exhausted — every query hits the database, even though the answer is always "no."
+
+<b>Solution</b>: The librarian remembers that "'The Nonexistent Book' doesn't exist." Next time you ask, they say "no" immediately without checking the database. This is <b>caching a null object</b>.</span><span lang="en">Imagine you're at a library looking for a book. You ask the librarian: "Do you have 'The Nonexistent Book'?"
+
+<b>Normal flow</b>:
+- The librarian checks the catalog: "No such book"
+- You leave
+
+<b>Cache penetration scenario</b>:
+- You come the 1st time, the librarian checks the database: "No," tells you
+- You come the 2nd time, the librarian checks the database again: "No"
+- You come the 100th time, the librarian still checks the database: "No"
+
+<b>Problem</b>: The librarian (database) is exhausted — every query hits the database, even though the answer is always "no."
+
+<b>Solution</b>: The librarian remembers that "'The Nonexistent Book' doesn't exist." Next time you ask, they say "no" immediately without checking the database. This is <b>caching a null object</b>.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Real-world scenarios</b>:</span><span lang="en"><b>Real-world scenarios</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Malicious attackers construct massive numbers of non-existent IDs for querying (e.g., id=-1, id=999999999)</span><span lang="en">Malicious attackers construct massive numbers of non-existent IDs for querying (e.g., id=-1, id=999999999)</span></li>
+<li><span lang="id">Crawlers traversing non-existent resource paths (e.g., /api/products/invalid-id)</span><span lang="en">Crawlers traversing non-existent resource paths (e.g., /api/products/invalid-id)</span></li>
+<li><span lang="id">Business logic errors leading to queries for invalid data</span><span lang="en">Business logic errors leading to queries for invalid data</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Solution 1: Cache Null Objects</b></span><span lang="en"><b>Solution 1: Cache Null Objects</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>async function getProduct(productId) {
+  const cacheKey = `product:${productId}`
+
+  // 1. Check cache first
+  const cached = await redis.get(cacheKey)
+  if (cached !== null) {
+    // Note: cached could be the string &quot;null&quot;
+    if (cached === &#039;null&#039;) {
+      // Cached &quot;null object&quot; — the database doesn&#039;t have this data
+      return null
+    }
+    return JSON.parse(cached)
+  }
+
+  // 2. Query the database
+  const product = await db.query(
+    &#039;SELECT * FROM products WHERE id = ?&#039;,
+    [productId]
+  )
+
+  // 3. Even if the database has nothing, cache &quot;null&quot; with a short TTL (e.g., 5 minutes)
+  if (!product) {
+    await redis.setex(cacheKey, 300, &#039;null&#039;)
+    return null
+  }
+
+  // 4. Data found, cache normally
+  await redis.setex(cacheKey, 1800, JSON.stringify(product))
+  return product
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Solution 2: Bloom Filter</b></span><span lang="en"><b>Solution 2: Bloom Filter</b></span></p>
+<p class="reveal"><span lang="id">A Bloom filter is a tool for "quickly determining whether data exists" — it's like a "super index":</span><span lang="en">A Bloom filter is a tool for "quickly determining whether data exists" — it's like a "super index":</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Imagine you have a "magic black box":
+- You ask it: "Does product ID 123 exist?"
+- It says: "<b>Definitely not</b>" → then it truly doesn't exist — no need to query the database
+- It says: "<b>Might exist</b>" → then go query the database to confirm
+
+<b>Characteristics</b>:
+- <b>No false negatives</b>: If it says something doesn't exist, it truly doesn't
+- <b>Possible false positives</b>: If it says something might exist, it might actually not (low probability, tunable)
+
+<b>Value</b>: A Bloom filter can intercept 99% of "doesn't exist" requests before they even reach the cache, protecting the database.</span><span lang="en">Imagine you have a "magic black box":
+- You ask it: "Does product ID 123 exist?"
+- It says: "<b>Definitely not</b>" → then it truly doesn't exist — no need to query the database
+- It says: "<b>Might exist</b>" → then go query the database to confirm
+
+<b>Characteristics</b>:
+- <b>No false negatives</b>: If it says something doesn't exist, it truly doesn't
+- <b>Possible false positives</b>: If it says something might exist, it might actually not (low probability, tunable)
+
+<b>Value</b>: A Bloom filter can intercept 99% of "doesn't exist" requests before they even reach the cache, protecting the database.</span></p>
+</div>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Using a Bloom filter
+const { BloomFilter } = require(&#039;bloom-filters&#039;)
+
+// Initialize Bloom filter (assuming up to 1 million product IDs)
+const bloomFilter = new BloomFilter(1000000, 0.01)  // 1% false positive rate
+
+// At system startup, add all product IDs to the Bloom filter
+async function initBloomFilter() {
+  const allIds = await db.query(&#039;SELECT id FROM products&#039;)
+  allIds.forEach(row =&gt; {
+    bloomFilter.add(row.id)
+  })
+}
+
+// Before querying a product, check with the Bloom filter first
+async function getProduct(productId) {
+  // 1. Check with Bloom filter first
+  if (!bloomFilter.has(productId)) {
+    // Definitely doesn&#039;t exist — return null, no need to query the database
+    console.log(&#039;Bloom filter intercept: product does not exist&#039;)
+    return null
+  }
+
+  // 2. Bloom filter says &quot;might exist&quot; — check cache
+  const cached = await redis.get(`product:${productId}`)
+  if (cached) {
+    return JSON.parse(cached)
+  }
+
+  // 3. Cache miss — query database
+  const product = await db.query(
+    &#039;SELECT * FROM products WHERE id = ?&#039;,
+    [productId]
+  )
+
+  if (!product) {
+    // Bloom filter false positive (very low probability) — actually doesn&#039;t exist
+    await redis.setex(`product:${productId}`, 300, &#039;null&#039;)
+    return null
+  }
+
+  // 4. Data found, write to cache
+  await redis.setex(`product:${productId}`, 1800, JSON.stringify(product))
+  return product
+}</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Cache Breakdown: Hot Data Expiration</span><span lang="en">4.2 Cache Breakdown: Hot Data Expiration</span></h3>
+<p class="reveal"><span lang="id"><b>Problem definition</b>: A piece of <b>hot data</b> (like a trending product or hot news) expires in the cache (TTL runs out). At that moment, a flood of concurrent requests all arrive simultaneously and all query the database, causing a sudden spike in database load.</span><span lang="en"><b>Problem definition</b>: A piece of <b>hot data</b> (like a trending product or hot news) expires in the cache (TTL runs out). At that moment, a flood of concurrent requests all arrive simultaneously and all query the database, causing a sudden spike in database load.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Imagine the library has a copy of "Harry Potter" — super popular, 100 people want to borrow it.
+
+<b>Normal situation</b>:
+- The library keeps "Harry Potter" at the "checkout counter" (cache)
+- Everyone grabs it directly from the counter — no need to search the shelves
+
+<b>Cache breakdown scenario</b>:
+- The copy of "Harry Potter" at the checkout counter expires (gets returned to the shelves)
+- 100 people come to borrow it at the same time, find the counter empty
+- All 100 rush to the shelves (database)
+- The shelf manager (database) gets overwhelmed
+
+<b>Problem</b>: It's not a "non-existent book" — it's a "super popular book" that suddenly vanished from the cache, causing a massive surge of requests to hit the database simultaneously.</span><span lang="en">Imagine the library has a copy of "Harry Potter" — super popular, 100 people want to borrow it.
+
+<b>Normal situation</b>:
+- The library keeps "Harry Potter" at the "checkout counter" (cache)
+- Everyone grabs it directly from the counter — no need to search the shelves
+
+<b>Cache breakdown scenario</b>:
+- The copy of "Harry Potter" at the checkout counter expires (gets returned to the shelves)
+- 100 people come to borrow it at the same time, find the counter empty
+- All 100 rush to the shelves (database)
+- The shelf manager (database) gets overwhelmed
+
+<b>Problem</b>: It's not a "non-existent book" — it's a "super popular book" that suddenly vanished from the cache, causing a massive surge of requests to hit the database simultaneously.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Real-world scenarios</b>:</span><span lang="en"><b>Real-world scenarios</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">A trending hashtag on Weibo expires — tens of thousands visit simultaneously</span><span lang="en">A trending hashtag on Weibo expires — tens of thousands visit simultaneously</span></li>
+<li><span lang="id">Celebrity gossip news cache expires — fans swarm in</span><span lang="en">Celebrity gossip news cache expires — fans swarm in</span></li>
+<li><span lang="id">Flash sale inventory data expires at the start of the event</span><span lang="en">Flash sale inventory data expires at the start of the event</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Solution 1: Mutex Lock</b></span><span lang="en"><b>Solution 1: Mutex Lock</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>async function getProduct(productId) {
+  const cacheKey = `product:${productId}`
+
+  // 1. Check cache first
+  const cached = await redis.get(cacheKey)
+  if (cached) {
+    return JSON.parse(cached)
+  }
+
+  // 2. Cache miss — acquire distributed lock
+  const lockKey = `lock:${productId}`
+  const lock = await redis.set(lockKey, &#039;1&#039;, &#039;NX&#039;, &#039;EX&#039;, 10)  // 10-second lock
+
+  if (lock === &#039;OK&#039;) {
+    // 3. Lock acquired — query database
+    console.log(&#039;Lock acquired, querying database&#039;)
+    const product = await db.query(
+      &#039;SELECT * FROM products WHERE id = ?&#039;,
+      [productId]
+    )
+
+    // 4. Write to cache
+    await redis.setex(cacheKey, 1800, JSON.stringify(product))
+
+    // 5. Release lock
+    await redis.del(lockKey)
+    return product
+  } else {
+    // 6. Lock not acquired — wait 50ms and retry
+    console.log(&#039;Lock not acquired, waiting and retrying&#039;)
+    await new Promise(resolve =&gt; setTimeout(resolve, 50))
+    return getProduct(productId)  // Recursive retry
+  }
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Solution 2: Logical Expiration</b></span><span lang="en"><b>Solution 2: Logical Expiration</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>async function getProduct(productId) {
+  const cacheKey = `product:${productId}`
+
+  // 1. Check cache
+  const cached = await redis.get(cacheKey)
+  if (cached) {
+    const data = JSON.parse(cached)
+
+    // 2. Check logical expiration time
+    if (Date.now() &lt; data.expireTime) {
+      // Not expired — return directly
+      return data.product
+    } else {
+      // 3. Logically expired — rebuild cache asynchronously while returning old data
+      console.log(&#039;Logically expired, rebuilding cache asynchronously&#039;)
+      rebuildCacheAsync(productId)  // Async rebuild
+      return data.product  // Return old data
+    }
+  }
+
+  // 4. Cache doesn&#039;t exist (first load) — query database synchronously
+  const product = await db.query(
+    &#039;SELECT * FROM products WHERE id = ?&#039;,
+    [productId]
+  )
+
+  // 5. Write to cache (including logical expiration time)
+  const cacheData = {
+    product: product,
+    expireTime: Date.now() + 30 * 60 * 1000  // Logically expires in 30 minutes
+  }
+  await redis.set(cacheKey, JSON.stringify(cacheData))
+
+  return product
+}
+
+// Async cache rebuild
+async function rebuildCacheAsync(productId) {
+  const lockKey = `rebuild:${productId}`
+  const lock = await redis.set(lockKey, &#039;1&#039;, &#039;NX&#039;, &#039;EX&#039;, 10)
+
+  if (lock === &#039;OK&#039;) {
+    console.log(&#039;Async cache rebuild started&#039;)
+    const product = await db.query(
+      &#039;SELECT * FROM products WHERE id = ?&#039;,
+      [productId]
+    )
+
+    const cacheData = {
+      product: product,
+      expireTime: Date.now() + 30 * 60 * 1000
+    }
+    await redis.set(`product:${productId}`, JSON.stringify(cacheData))
+    await redis.del(lockKey)
+    console.log(&#039;Async cache rebuild complete&#039;)
+  }
+}</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 Cache Avalanche: Mass Simultaneous Expiration</span><span lang="en">4.3 Cache Avalanche: Mass Simultaneous Expiration</span></h3>
+<p class="reveal"><span lang="id"><b>Problem definition</b>: A large amount of cached data <b>expires at the same moment</b> (or Redis goes down), causing all requests to punch through to the database simultaneously and overwhelm it instantly.</span><span lang="en"><b>Problem definition</b>: A large amount of cached data <b>expires at the same moment</b> (or Redis goes down), causing all requests to punch through to the database simultaneously and overwhelm it instantly.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Imagine the library's "checkout counter" (cache) has 1,000 books.
+
+<b>Normal situation</b>:
+- The return dates for these books are scattered: some due today, some tomorrow, some the day after
+- Only a few dozen books expire each day — the manager (database) can handle it easily
+
+<b>Cache avalanche scenario</b>:
+- After a system restart, the manager sets all 1,000 books to "due in 30 days"
+- 30 days later, all 1,000 books expire at the same time
+- 1,000 people come to borrow at once, find the counter empty
+- All 1,000 rush to the shelves
+- The shelf manager (database) gets overwhelmed instantly
+
+<b>Problem</b>: It's not about a single book — it's about <b>mass data expiring simultaneously</b>, causing a sudden, massive spike in database pressure.</span><span lang="en">Imagine the library's "checkout counter" (cache) has 1,000 books.
+
+<b>Normal situation</b>:
+- The return dates for these books are scattered: some due today, some tomorrow, some the day after
+- Only a few dozen books expire each day — the manager (database) can handle it easily
+
+<b>Cache avalanche scenario</b>:
+- After a system restart, the manager sets all 1,000 books to "due in 30 days"
+- 30 days later, all 1,000 books expire at the same time
+- 1,000 people come to borrow at once, find the counter empty
+- All 1,000 rush to the shelves
+- The shelf manager (database) gets overwhelmed instantly
+
+<b>Problem</b>: It's not about a single book — it's about <b>mass data expiring simultaneously</b>, causing a sudden, massive spike in database pressure.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Real-world scenarios</b>:</span><span lang="en"><b>Real-world scenarios</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">After a system restart, all caches rebuild from scratch with identical TTLs (e.g., 30 minutes)</span><span lang="en">After a system restart, all caches rebuild from scratch with identical TTLs (e.g., 30 minutes)</span></li>
+<li><span lang="id">A scheduled job bulk-refreshes caches with the same expiration time</span><span lang="en">A scheduled job bulk-refreshes caches with the same expiration time</span></li>
+<li><span lang="id">The cache service (Redis) goes down or experiences a network partition</span><span lang="en">The cache service (Redis) goes down or experiences a network partition</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Solution 1: Random TTL</b></span><span lang="en"><b>Solution 1: Random TTL</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>async function getProduct(productId) {
+  const cacheKey = `product:${productId}`
+
+  const cached = await redis.get(cacheKey)
+  if (cached) {
+    return JSON.parse(cached)
+  }
+
+  const product = await db.query(
+    &#039;SELECT * FROM products WHERE id = ?&#039;,
+    [productId]
+  )
+
+  // Key: add a random offset (±5 minutes) to the base TTL (30 minutes)
+  const baseTTL = 1800  // 30 minutes
+  const randomOffset = Math.floor(Math.random() * 600) - 300  // -5 to +5 minutes
+  const finalTTL = baseTTL + randomOffset
+
+  console.log(`Cache TTL: ${finalTTL} seconds (${Math.floor(finalTTL / 60)} minutes)`)
+  await redis.setex(cacheKey, finalTTL, JSON.stringify(product))
+
+  return product
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Solution 2: Cache Preheating</b></span><span lang="en"><b>Solution 2: Cache Preheating</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// At system startup, proactively load hot data into the cache
+async function cacheWarmup() {
+  console.log(&#039;Starting cache preheating...&#039;)
+
+  // 1. Query the top 1,000 hottest products (sorted by view count)
+  const hotProducts = await db.query(`
+    SELECT * FROM products
+    ORDER BY view_count DESC
+    LIMIT 1000
+  `)
+
+  // 2. Batch-write to Redis
+  for (const product of hotProducts) {
+    const cacheKey = `product:${product.id}`
+    const ttl = 1800 + Math.floor(Math.random() * 600)  // 30 minutes ± 5 minutes
+    await redis.setex(cacheKey, ttl, JSON.stringify(product))
+  }
+
+  console.log(`Cache preheating complete, loaded ${hotProducts.length} hot products`)
+}
+
+// Execute at application startup
+cacheWarmup()</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Solution 3: Circuit Breaker with Fallback</b></span><span lang="en"><b>Solution 3: Circuit Breaker with Fallback</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Use a circuit breaker to protect the database
+const CircuitBreaker = require(&#039;opossum&#039;)
+
+// Configure the circuit breaker
+const dbQueryBreaker = new CircuitBreaker(
+  async (productId) =&gt; {
+    return await db.query(&#039;SELECT * FROM products WHERE id = ?&#039;, [productId])
+  },
+  {
+    timeout: 3000,  // 3-second timeout
+    errorThresholdPercentage: 50,  // Trip when error rate exceeds 50%
+    resetTimeout: 30000  // Attempt recovery after 30 seconds
+  }
+)
+
+// Fallback handling when the circuit is open
+dbQueryBreaker.fallback(() =&gt; {
+  console.log(&#039;Database circuit open, returning fallback data&#039;)
+  return {
+    id: productId,
+    name: &#039;Service is busy, please try again later&#039;,
+    status: &#039;degraded&#039;
+  }
+})
+
+async function getProduct(productId) {
+  const cacheKey = `product:${productId}`
+
+  const cached = await redis.get(cacheKey)
+  if (cached) {
+    return JSON.parse(cached)
+  }
+
+  // Query database through the circuit breaker
+  const product = await dbQueryBreaker.fire(productId)
+
+  if (product.status === &#039;degraded&#039;) {
+    return product  // Return fallback data
+  }
+
+  await redis.setex(cacheKey, 1800, JSON.stringify(product))
+  return product
+}</pre>
+</div>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>:</span><span lang="en">👇 <b>Try it yourself</b>:</span></p>
+<p class="reveal"><span lang="id">The demo below compares the scenarios and solutions for cache penetration, breakdown, and avalanche:</span><span lang="en">The demo below compares the scenarios and solutions for cache penetration, breakdown, and avalanche:</span></p>
+<p class="reveal"><span lang="id"><CacheProblemsDemo /></span><span lang="en"><CacheProblemsDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Cache Consistency Strategies: Keeping Cache and Database in Sync</span><span lang="en">5. Cache Consistency Strategies: Keeping Cache and Database in Sync</span></h2>
+<p class="reveal"><span lang="id">A cache is, by nature, a copy of data. There's always a window of inconsistency between the copy and the original data (the database). How to control this window is the core challenge of cache design.</span><span lang="en">A cache is, by nature, a copy of data. There's always a window of inconsistency between the copy and the original data (the database). How to control this window is the core challenge of cache design.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Motivation for Caching and Database Become Inconsistent</span><span lang="en">5.1 Motivation for Caching and Database Become Inconsistent</span></h3>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Imagine you've written on a sticky note: "Xiao Ming's phone: 123456" — this is a copy of your address book (the database).
+
+<b>Inconsistency scenario</b>:
+- You update your address book, changing Xiao Ming's number to "7654321"
+- But you forget to update the sticky note
+- Next time you look up the number, you check the sticky note — still the old "123456"
+
+<b>The problem</b>: The sticky note (cache) and the address book (database) are out of sync.
+
+<b>The cause</b>: The original data was updated, but the copy wasn't synced. In computer systems, this happens because "updating the database" and "updating the cache" are two independent operations with a time gap between them, during which other operations can interfere.</span><span lang="en">Imagine you've written on a sticky note: "Xiao Ming's phone: 123456" — this is a copy of your address book (the database).
+
+<b>Inconsistency scenario</b>:
+- You update your address book, changing Xiao Ming's number to "7654321"
+- But you forget to update the sticky note
+- Next time you look up the number, you check the sticky note — still the old "123456"
+
+<b>The problem</b>: The sticky note (cache) and the address book (database) are out of sync.
+
+<b>The cause</b>: The original data was updated, but the copy wasn't synced. In computer systems, this happens because "updating the database" and "updating the cache" are two independent operations with a time gap between them, during which other operations can interfere.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>A real concurrency scenario</b>:</span><span lang="en"><b>A real concurrency scenario</b>:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Time</th><th>Thread A (updating user age)</th><th>Thread B (querying user)</th><th>Database</th><th>Cache</th></tr>
+<tr><td>T1</td><td>Starts updating database</td><td>-</td><td>age=20</td><td>age=20</td></tr>
+<tr><td>T2</td><td>Database updated to age=25</td><td>Queries cache, hits age=20</td><td>age=25</td><td>age=20 ❌</td></tr>
+<tr><td>T3</td><td>Deletes cache</td><td>-</td><td>age=25</td><td>-</td></tr>
+<tr><td>T4</td><td>-</td><td>-</td><td>age=25</td><td>Loads age=25 from DB ✅</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>The problem</b>: At time T2, Thread B reads the old value 20 from the cache, while the database already has 25. This is <b>cache inconsistency</b>.</span><span lang="en"><b>The problem</b>: At time T2, Thread B reads the old value 20 from the cache, while the database already has 25. This is <b>cache inconsistency</b>.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Best Practice: Update the Database First, Then Delete the Cache</span><span lang="en">5.2 Best Practice: Update the Database First, Then Delete the Cache</span></h3>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">You might wonder: why not just "update the cache" directly instead of "deleting the cache"?
+
+<b>Problems with updating the cache</b>:
+- Under concurrent updates, Thread A might update the cache first, then Thread B updates the database but the cache doesn't get updated
+- Updating the cache can be expensive (e.g., it may require aggregating data from multiple tables)
+- If the data gets deleted right after updating, the effort is wasted
+
+<b>Advantages of deleting the cache</b>:
+- The next query automatically loads the latest data from the database (lazy loading)
+- Avoids dirty data caused by concurrent updates
+- Simple and reliable — the industry best practice</span><span lang="en">You might wonder: why not just "update the cache" directly instead of "deleting the cache"?
+
+<b>Problems with updating the cache</b>:
+- Under concurrent updates, Thread A might update the cache first, then Thread B updates the database but the cache doesn't get updated
+- Updating the cache can be expensive (e.g., it may require aggregating data from multiple tables)
+- If the data gets deleted right after updating, the effort is wasted
+
+<b>Advantages of deleting the cache</b>:
+- The next query automatically loads the latest data from the database (lazy loading)
+- Avoids dirty data caused by concurrent updates
+- Simple and reliable — the industry best practice</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Standard flow</b>:</span><span lang="en"><b>Standard flow</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Update product information
+async function updateProduct(productId, updateData) {
+  // 1. Update the database first
+  await db.query(
+    &#039;UPDATE products SET name = ?, price = ? WHERE id = ?&#039;,
+    [updateData.name, updateData.price, productId]
+  )
+
+  // 2. Then delete the cache (not update it!)
+  await redis.del(`product:${productId}`)
+
+  // 3. On the next query, cache miss triggers automatic reload of the latest data
+  console.log(&#039;Update complete, cache deleted&#039;)
+}</pre>
+</div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">Comparing three update strategies:
+
+<b>Strategy 1: Update cache first, then database</b> ❌ Not Recommended
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+// Problem: if the DB update fails, cache holds the new value, DB holds the old — inconsistent
+await redis.set('product:1', newProduct)  // Cache update succeeds
+await db.query('UPDATE products SET ...')  // Database update fails!
+// Result: cache has new value, database has old value — permanently inconsistent!
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Strategy 2: Delete cache first, then update database</b> ❌ Not Recommended
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+// Problem: between delete and update, another thread queries and loads old data into cache
+await redis.del('product:1')  // Cache deleted
+// At this moment, Thread B queries, finds no cache, queries DB (still old value), writes to cache
+await db.query('UPDATE products SET ...')  // Database updated
+// Result: cache has old value, database has new value — inconsistent!
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Strategy 3: Update database first, then delete cache</b> ✅ Recommended
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+// Advantage: the DB update acquires a row lock — other threads must wait, avoiding dirty data
+await db.query('UPDATE products SET ...')  // Update database (acquires row lock)
+await redis.del('product:1')  // Delete cache
+// Even if cache deletion fails, the next query just goes back to the source — no lingering dirty data
+</code>``
+
+<b>Why is Strategy 3 optimal?</b>
+1. <b>Database lock protection</b>: The update operation acquires a row lock — other read/write operations must wait
+2. <b>Low impact of deletion failure</b>: Even if cache deletion fails, it just means the next read will hit the source — no dirty data
+3. <b>Simple and reliable</b>: No additional complex logic needed</span><span lang="en">Comparing three update strategies:
+
+<b>Strategy 1: Update cache first, then database</b> ❌ Not Recommended
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+// Problem: if the DB update fails, cache holds the new value, DB holds the old — inconsistent
+await redis.set('product:1', newProduct)  // Cache update succeeds
+await db.query('UPDATE products SET ...')  // Database update fails!
+// Result: cache has new value, database has old value — permanently inconsistent!
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Strategy 2: Delete cache first, then update database</b> ❌ Not Recommended
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+// Problem: between delete and update, another thread queries and loads old data into cache
+await redis.del('product:1')  // Cache deleted
+// At this moment, Thread B queries, finds no cache, queries DB (still old value), writes to cache
+await db.query('UPDATE products SET ...')  // Database updated
+// Result: cache has old value, database has new value — inconsistent!
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Strategy 3: Update database first, then delete cache</b> ✅ Recommended
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+// Advantage: the DB update acquires a row lock — other threads must wait, avoiding dirty data
+await db.query('UPDATE products SET ...')  // Update database (acquires row lock)
+await redis.del('product:1')  // Delete cache
+// Even if cache deletion fails, the next query just goes back to the source — no lingering dirty data
+</code>``
+
+<b>Why is Strategy 3 optimal?</b>
+1. <b>Database lock protection</b>: The update operation acquires a row lock — other read/write operations must wait
+2. <b>Low impact of deletion failure</b>: Even if cache deletion fails, it just means the next read will hit the source — no dirty data
+3. <b>Simple and reliable</b>: No additional complex logic needed</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 Delayed Double-Delete: Consistency Guarantee for Extreme Scenarios</span><span lang="en">5.3 Delayed Double-Delete: Consistency Guarantee for Extreme Scenarios</span></h3>
+<p class="reveal"><span lang="id"><b>Scenario</b>: Under high concurrency, even "update DB first, then delete cache" has a tiny probability of inconsistency. Delayed double-delete maximizes consistency through two deletions.</span><span lang="en"><b>Scenario</b>: Under high concurrency, even "update DB first, then delete cache" has a tiny probability of inconsistency. Delayed double-delete maximizes consistency through two deletions.</span></p>
+<p class="reveal"><span lang="id"><b>Flow</b>:</span><span lang="en"><b>Flow</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>1. Delete cache
+2. Update database
+3. Wait for a period (e.g., 500ms)
+4. Delete cache again</pre>
+</div>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>async function updateProduct(productId, updateData) {
+  const cacheKey = `product:${productId}`
+
+  // 1. First cache deletion
+  await redis.del(cacheKey)
+
+  // 2. Update database
+  await db.query(
+    &#039;UPDATE products SET name = ?, price = ? WHERE id = ?&#039;,
+    [updateData.name, updateData.price, productId]
+  )
+
+  // 3. Wait 500ms (let other threads&#039; queries complete)
+  await new Promise(resolve =&gt; setTimeout(resolve, 500))
+
+  // 4. Second cache deletion (remove old data possibly loaded by other threads)
+  await redis.del(cacheKey)
+
+  console.log(&#039;Delayed double-delete complete, data synced&#039;)
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Comparison of three consistency strategies</b>:</span><span lang="en"><b>Comparison of three consistency strategies</b>:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Strategy</th><th>Consistency Level</th><th>Performance Impact</th><th>Complexity</th><th>Suitable Scenario</th></tr>
+<tr><td><b>Update DB first, then delete cache</b></td><td>Eventual consistency (inconsistency window < 100ms)</td><td>Low</td><td>Low</td><td>Most scenarios; recommended as the default</td></tr>
+<tr><td><b>Delayed double-delete</b></td><td>Strong eventual consistency (inconsistency window < 10ms)</td><td>Medium (500ms delay)</td><td>Medium</td><td>Scenarios requiring higher consistency (e.g., finance, inventory)</td></tr>
+<tr><td><b>Delete cache first, then update DB</b></td><td>Weak (large inconsistency window)</td><td>Low</td><td>Low</td><td>❌ Not recommended; prone to inconsistency</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>:</span><span lang="en">👇 <b>Try it yourself</b>:</span></p>
+<p class="reveal"><span lang="id">The demo below compares the effects of the three consistency strategies. Click "Update Data" and observe how cache and database consistency changes:</span><span lang="en">The demo below compares the effects of the three consistency strategies. Click "Update Data" and observe how cache and database consistency changes:</span></p>
+<p class="reveal"><span lang="id"><CacheConsistencyDemo /></span><span lang="en"><CacheConsistencyDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Hands-On: Building a Complete Caching System</span><span lang="en">6. Hands-On: Building a Complete Caching System</span></h2>
+<p class="reveal"><span lang="id">Now that we've covered the principles, let's look at a real case study: how to design a complete caching system for an e-commerce product detail page.</span><span lang="en">Now that we've covered the principles, let's look at a real case study: how to design a complete caching system for an e-commerce product detail page.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Business Scenario Analysis</span><span lang="en">6.1 Business Scenario Analysis</span></h3>
+<p class="reveal"><span lang="id"><b>Requirement</b>: Users visit a product detail page that needs to display basic product info, price, inventory, reviews, and more.</span><span lang="en"><b>Requirement</b>: Users visit a product detail page that needs to display basic product info, price, inventory, reviews, and more.</span></p>
+<p class="reveal"><span lang="id"><b>Characteristics</b>:</span><span lang="en"><b>Characteristics</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Read-heavy, write-light</b>: 100 reads for every 1 write (100:1 read/write ratio)</span><span lang="en"><b>Read-heavy, write-light</b>: 100 reads for every 1 write (100:1 read/write ratio)</span></li>
+<li><span lang="id"><b>Hotspot concentration</b>: 20% of products drive 80% of traffic</span><span lang="en"><b>Hotspot concentration</b>: 20% of products drive 80% of traffic</span></li>
+<li><span lang="id"><b>Data complexity</b>: Basic product info + price + inventory + review aggregates</span><span lang="en"><b>Data complexity</b>: Basic product info + price + inventory + review aggregates</span></li>
+<li><span lang="id"><b>Consistency requirements</b>: Price and inventory require strong consistency; everything else can be eventually consistent</span><span lang="en"><b>Consistency requirements</b>: Price and inventory require strong consistency; everything else can be eventually consistent</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Performance targets</b>:</span><span lang="en"><b>Performance targets</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">P99 response time < 100ms (99% of requests return within 100ms)</span><span lang="en">P99 response time < 100ms (99% of requests return within 100ms)</span></li>
+<li><span lang="id">Peak database QPS < 5,000</span><span lang="en">Peak database QPS < 5,000</span></li>
+<li><span lang="id">Cache hit ratio > 95%</span><span lang="en">Cache hit ratio > 95%</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 Architecture Design</span><span lang="en">6.2 Architecture Design</span></h3>
+<p class="reveal"><span lang="id"><b>Multi-level cache architecture</b>:</span><span lang="en"><b>Multi-level cache architecture</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>User Request
+  ↓
+CDN Cache (static assets: images, CSS, JS)
+  ↓ Miss
+Nginx Local Cache (aggregated product info)
+  ↓ Miss
+Application Server
+  ↓
+  ├─ L1: Local Cache (Caffeine, hot products)
+  │   ↓ Miss
+  ├─ L2: Redis Cache (all product data)
+  │   ↓ Miss
+  └─ L3: MySQL Database (complete dataset)</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.3 Core Code Implementation</span><span lang="en">6.3 Core Code Implementation</span></h3>
+<p class="reveal"><span lang="id"><b>Complete multi-level cache implementation (simplified)</b>:</span><span lang="en"><b>Complete multi-level cache implementation (simplified)</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>const caffeine = require(&#039;caffeine&#039;)
+
+// L1: Local cache (30-second TTL)
+const localCache = new caffeine.Cache({
+  max: 1000,
+  ttl: 30,
+})
+
+// Get product details (multi-level cache)
+async function getProduct(productId) {
+  const cacheKey = `product:${productId}`
+
+  // L1: Local cache (~0.1 ms)
+  const localCached = localCache.get(cacheKey)
+  if (localCached) {
+    console.log(&#039;L1 hit&#039;)
+    return localCached
+  }
+
+  // L2: Redis cache (~1 ms)
+  const redisCached = await redis.get(cacheKey)
+  if (redisCached) {
+    console.log(&#039;L2 hit, backfilling L1&#039;)
+    const product = JSON.parse(redisCached)
+    localCache.set(cacheKey, product)
+    return product
+  }
+
+  // L3: Database (~10 ms, with distributed lock to prevent breakdown)
+  const lockKey = `lock:${productId}`
+  const lock = await redis.set(lockKey, &#039;1&#039;, &#039;NX&#039;, &#039;EX&#039;, 10)
+
+  if (lock === &#039;OK&#039;) {
+    console.log(&#039;L3 hit, querying database&#039;)
+    const product = await db.query(
+      &#039;SELECT * FROM products WHERE id = ?&#039;,
+      [productId]
+    )
+
+    if (product) {
+      // Write to Redis (30 minutes + random TTL)
+      const ttl = 1800 + Math.floor(Math.random() * 600) - 300
+      await redis.setex(cacheKey, ttl, JSON.stringify(product))
+      // Backfill local cache
+      localCache.set(cacheKey, product)
+    }
+
+    await redis.del(lockKey)
+    return product
+  } else {
+    // Lock not acquired — wait and retry
+    await new Promise(resolve =&gt; setTimeout(resolve, 50))
+    return getProduct(productId)
+  }
+}
+
+// Update product info (update DB first, then delete cache)
+async function updateProduct(productId, updateData) {
+  const cacheKey = `product:${productId}`
+
+  // 1. Update database
+  await db.query(
+    &#039;UPDATE products SET name = ?, price = ? WHERE id = ?&#039;,
+    [updateData.name, updateData.price, productId]
+  )
+
+  // 2. Delete local cache
+  localCache.del(cacheKey)
+
+  // 3. Delete Redis cache
+  await redis.del(cacheKey)
+
+  console.log(&#039;Update complete, cache deleted&#039;)
+}</pre>
+</div>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>:</span><span lang="en">👇 <b>Try it yourself</b>:</span></p>
+<p class="reveal"><span lang="id">The demo below shows the complete workflow of a multi-level caching system. Click "Query Product" and observe how requests flow through the cache tiers:</span><span lang="en">The demo below shows the complete workflow of a multi-level caching system. Click "Query Product" and observe how requests flow through the cache tiers:</span></p>
+<p class="reveal"><span lang="id"><EcommerceCacheArchitectureDemo /></span><span lang="en"><EcommerceCacheArchitectureDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Summary and Learning Path</span><span lang="en">7. Summary and Learning Path</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.1 Core Knowledge Review</span><span lang="en">7.1 Core Knowledge Review</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Concept</th><th>One-Line Explanation</th><th>Problem Solved</th><th>Practical Tip</th></tr>
+<tr><td><b>Cache Hit</b></td><td>Data found in the cache</td><td>10–100× performance improvement</td><td>Target hit ratio > 95%</td></tr>
+<tr><td><b>Cache Penetration</b></td><td>Querying non-existent data hits the DB every time</td><td>Database dragged down by malicious queries</td><td>Bloom filter + cache null objects</td></tr>
+<tr><td><b>Cache Breakdown</b></td><td>Hot data expires, massive requests hit the DB</td><td>Sudden spike in database pressure</td><td>Mutex lock + logical expiration</td></tr>
+<tr><td><b>Cache Avalanche</b></td><td>Mass simultaneous data expiration</td><td>Database overwhelmed</td><td>Random TTL + cache preheating</td></tr>
+<tr><td><b>Multi-Level Cache</b></td><td>Local cache + Redis + Database</td><td>Ultimate performance optimization</td><td>L1 local cache 70% hit rate, L2 Redis 25% hit rate</td></tr>
+<tr><td><b>Cache Consistency</b></td><td>Keeping cache and database in sync</td><td>Data accuracy</td><td>Update DB first, then delete cache</td></tr>
+<tr><td><b>Delayed Double-Delete</b></td><td>Delete cache before and after the update</td><td>Consistency in extreme scenarios</td><td>Wait 500ms before the second delete</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.2 Recommended Learning Path</span><span lang="en">7.2 Recommended Learning Path</span></h3>
+<p class="reveal"><span lang="id"><b>Phase 1: Understand the Principles (1–2 days)</b></span><span lang="en"><b>Phase 1: Understand the Principles (1–2 days)</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Grasp the essence of caching (data copies, trading space for time)</span><span lang="en">Grasp the essence of caching (data copies, trading space for time)</span></li>
+<li><span lang="id">Understand core concepts: hit ratio, TTL, eviction</span><span lang="en">Understand core concepts: hit ratio, TTL, eviction</span></li>
+<li><span lang="id">Learn the performance differences between storage media (memory vs. disk)</span><span lang="en">Learn the performance differences between storage media (memory vs. disk)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Phase 2: Master the Basics (2–3 days)</b></span><span lang="en"><b>Phase 2: Master the Basics (2–3 days)</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Learn to use Redis for caching (SET, GET, SETEX commands)</span><span lang="en">Learn to use Redis for caching (SET, GET, SETEX commands)</span></li>
+<li><span lang="id">Implement simple cache read/write logic (check cache first, query database on miss)</span><span lang="en">Implement simple cache read/write logic (check cache first, query database on miss)</span></li>
+<li><span lang="id">Understand why you "delete cache on update" rather than "update cache"</span><span lang="en">Understand why you "delete cache on update" rather than "update cache"</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Phase 3: Solve the Classic Problems (1 week)</b></span><span lang="en"><b>Phase 3: Solve the Classic Problems (1 week)</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Solve cache penetration: implement a Bloom filter or cache null objects</span><span lang="en">Solve cache penetration: implement a Bloom filter or cache null objects</span></li>
+<li><span lang="id">Solve cache breakdown: implement a mutex lock or logical expiration</span><span lang="en">Solve cache breakdown: implement a mutex lock or logical expiration</span></li>
+<li><span lang="id">Solve cache avalanche: implement random TTL and cache preheating</span><span lang="en">Solve cache avalanche: implement random TTL and cache preheating</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Phase 4: Multi-Level Caching (1–2 weeks)</b></span><span lang="en"><b>Phase 4: Multi-Level Caching (1–2 weeks)</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Introduce local caching (Caffeine/Guava)</span><span lang="en">Introduce local caching (Caffeine/Guava)</span></li>
+<li><span lang="id">Design a local cache + Redis two-tier architecture</span><span lang="en">Design a local cache + Redis two-tier architecture</span></li>
+<li><span lang="id">Handle consistency issues across cache tiers</span><span lang="en">Handle consistency issues across cache tiers</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Phase 5: Production-Grade Practice (ongoing)</b></span><span lang="en"><b>Phase 5: Production-Grade Practice (ongoing)</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Design a complete product detail page caching system</span><span lang="en">Design a complete product detail page caching system</span></li>
+<li><span lang="id">Set up monitoring (cache hit ratio, response time)</span><span lang="en">Set up monitoring (cache hit ratio, response time)</span></li>
+<li><span lang="id">Perform load testing and performance tuning</span><span lang="en">Perform load testing and performance tuning</span></li>
+</ul>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">Caching is the cornerstone of high-concurrency systems. From Taobao's product detail pages to Weibo's trending topics, from WeChat Moments to Douyin's video feeds — every high-performance system has a carefully designed caching architecture behind it.
+
+Understanding caching isn't just about learning a technology — it's about grasping the architectural mindset of <b>trading space for time and using copies to protect the primary data</b>. When you truly master caching, your system performance will leap from "barely working" to "good," and ultimately to "excellent."
+
+I hope this article helps you build a complete understanding of caching systems. When you encounter performance problems in real projects, you'll be able to ask yourself: "Can caching solve this?"</span><span lang="en">Caching is the cornerstone of high-concurrency systems. From Taobao's product detail pages to Weibo's trending topics, from WeChat Moments to Douyin's video feeds — every high-performance system has a carefully designed caching architecture behind it.
+
+Understanding caching isn't just about learning a technology — it's about grasping the architectural mindset of <b>trading space for time and using copies to protect the primary data</b>. When you truly master caching, your system performance will leap from "barely working" to "good," and ultimately to "excellent."
+
+I hope this article helps you build a complete understanding of caching systems. When you encounter performance problems in real projects, you'll be able to ask yourself: "Can caching solve this?"</span></p>
+</div>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../4-server-and-backend/backend-project-architecture/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">4-server-and-backend/backend-project-architecture</span><span lang="en">4-server-and-backend/backend-project-architecture</span></b></a>
+      <a class="next" href="../../4-server-and-backend/client-languages/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">4-server-and-backend/client-languages</span><span lang="en">4-server-and-backend/client-languages</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Progressive Web App (PWA): Web Rasa Native Offline — VibeKoding 🌐</title>
+<meta name="description" content="Modul master Level 3 VibeKoding: Progressive Web App (PWA): Web Rasa Native Offline. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-3/cross-platform/pwa-local-app/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../stage-3/"><span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></a> / <span lang="id">Progressive Web App (PWA): Web Rasa Native Offline</span><span lang="en">Progressive Web App (PWA): Web Rasa Native Offline</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">🌐</div>
+      <div>
+        <h1><span lang="id">Progressive Web App (PWA): Web Rasa Native Offline</span><span lang="en">Progressive Web App (PWA): Web Rasa Native Offline</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul master Level 3 VibeKoding: Progressive Web App (PWA): Web Rasa Native Offline.</span><span lang="en">Modul master Level 3 VibeKoding: Progressive Web App (PWA): Web Rasa Native Offline.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">In this tutorial, we will complete a full closed loop: <b>from an ordinary web project to a "real app" that can be installed on a desktop and a phone home screen and still works when offline.</b> You will personally turn a React app into a PWA, deploy it online, and install it on your phone for testing.</span><span lang="en">In this tutorial, we will complete a full closed loop: <b>from an ordinary web project to a "real app" that can be installed on a desktop and a phone home screen and still works when offline.</b> You will personally turn a React app into a PWA, deploy it online, and install it on your phone for testing.</span></p>
+<p class="reveal"><span lang="id">What we are going to build is a <b>Tomato Farm</b> app - a PWA that perfectly combines the Pomodoro technique with a farming game. You earn points through 25 minutes of focused work, then use those points to buy seeds and plant crops. As your level increases, you unlock more farmland and better seeds. Most importantly, it keeps working even without internet, and all data is stored locally.</span><span lang="en">What we are going to build is a <b>Tomato Farm</b> app - a PWA that perfectly combines the Pomodoro technique with a farming game. You earn points through 25 minutes of focused work, then use those points to buy seeds and plant crops. As your level increases, you unlock more farmland and better seeds. Most importantly, it keeps working even without internet, and all data is stored locally.</span></p>
+<p class="reveal"><span lang="id">For this tutorial, you should at least have:</span><span lang="en">For this tutorial, you should at least have:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">A computer (Windows or Mac)</span><span lang="en">A computer (Windows or Mac)</span></li>
+<li><span lang="id">A Node.js environment (version 18.0 or above)</span><span lang="en">A Node.js environment (version 18.0 or above)</span></li>
+<li><span lang="id">Your AI coding assistant (Cursor / Trae / Claude Code, etc.)</span><span lang="en">Your AI coding assistant (Cursor / Trae / Claude Code, etc.)</span></li>
+<li><span lang="id">A phone (for testing mobile installation)</span><span lang="en">A phone (for testing mobile installation)</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.1 Definition of PWA</span><span lang="en">1.1 Definition of PWA</span></h2>
+<p class="reveal"><span lang="id"><b>PWA (Progressive Web App)</b> is a special kind of website. Through <b>Service Worker</b> technology, it gains the ability to "cache and take over itself."</span><span lang="en"><b>PWA (Progressive Web App)</b> is a special kind of website. Through <b>Service Worker</b> technology, it gains the ability to "cache and take over itself."</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Why ordinary websites cannot work offline, but PWAs can</span><span lang="en">Why ordinary websites cannot work offline, but PWAs can</span></h3>
+<p class="reveal"><span lang="id">An ordinary website needs to download HTML, CSS, and JS files from the server every time it opens, so if the network is down, it simply cannot load. A PWA, on the other hand, uses a <b>Service Worker</b> (a JS script running in the browser background) to cache these files locally on the first visit. After that, even if the network is disconnected, the Service Worker can read files directly from local cache and display the page normally.</span><span lang="en">An ordinary website needs to download HTML, CSS, and JS files from the server every time it opens, so if the network is down, it simply cannot load. A PWA, on the other hand, uses a <b>Service Worker</b> (a JS script running in the browser background) to cache these files locally on the first visit. After that, even if the network is disconnected, the Service Worker can read files directly from local cache and display the page normally.</span></p>
+<p class="reveal"><span lang="id"><b>A simple analogy</b>: an ordinary website is like borrowing a book from a library every time (you must have internet), while a PWA is like buying the book and putting it on your own bookshelf (after the first download, you can still read it offline).</span><span lang="en"><b>A simple analogy</b>: an ordinary website is like borrowing a book from a library every time (you must have internet), while a PWA is like buying the book and putting it on your own bookshelf (after the first download, you can still read it offline).</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">PWA vs Ordinary Website vs Native App</span><span lang="en">PWA vs Ordinary Website vs Native App</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Feature</th><th>Ordinary Website</th><th>PWA</th><th>Native App</th></tr>
+<tr><td><b>Installation</b></td><td>Not needed</td><td>Optional (add to home screen)</td><td>Must download from app store</td></tr>
+<tr><td><b>Offline use</b></td><td>❌ No</td><td>✅ Yes (after caching)</td><td>✅ Yes</td></tr>
+<tr><td><b>Update method</b></td><td>Auto refresh</td><td>Auto / background update</td><td>Manual user update</td></tr>
+<tr><td><b>Size</b></td><td>None</td><td>A few hundred KB to a few MB</td><td>Tens of MB or more</td></tr>
+<tr><td><b>Development cost</b></td><td>Low</td><td>Low (one codebase)</td><td>High (separate iOS / Android)</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>One-sentence summary</b>: a PWA is "a webpage that can store its own files" - it has the lightness of a website (no installation required, auto-updating) and the experience of a native app (offline support, installable to desktop/home screen).</span><span lang="en"><b>One-sentence summary</b>: a PWA is "a webpage that can store its own files" - it has the lightness of a website (no installation required, auto-updating) and the experience of a native app (offline support, installable to desktop/home screen).</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Progressive Web App (PWA): Web Rasa Native Offline</span><span lang="en">Progressive Web App (PWA): Web Rasa Native Offline</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.2 Why Choose PWA?</span><span lang="en">1.2 Why Choose PWA?</span></h2>
+<p class="reveal"><span lang="id">In the Vibe Coding era, PWA is one of the most cost-effective "cross-platform solutions":</span><span lang="en">In the Vibe Coding era, PWA is one of the most cost-effective "cross-platform solutions":</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Comparison Dimension</th><th>Native App</th><th>PWA</th></tr>
+<tr><td>Development cost</td><td>Must develop iOS / Android / desktop separately</td><td>One codebase for all platforms</td></tr>
+<tr><td>Installation</td><td>Must go to app store</td><td>Install directly in browser, instant</td></tr>
+<tr><td>Update method</td><td>Users must update manually</td><td>Auto updates, invisible to user</td></tr>
+<tr><td>Package size</td><td>Often tens of MB</td><td>Usually only a few hundred KB</td></tr>
+<tr><td>Offline support</td><td>Built in naturally</td><td>Supported through Service Worker</td></tr>
+<tr><td>Best scenarios</td><td>Deep hardware access needed (AR / Bluetooth, etc.)</td><td>Content display, tools, lightweight apps</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>One-sentence summary</b>: if your app does not need AR through camera or Bluetooth hardware access, PWA is almost the easiest choice.</span><span lang="en"><b>One-sentence summary</b>: if your app does not need AR through camera or Bluetooth hardware access, PWA is almost the easiest choice.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.5 Tutorial Roadmap</span><span lang="en">1.5 Tutorial Roadmap</span></h2>
+<p class="reveal"><span lang="id">To make the learning process less boring, this tutorial revolves around a fun and practical case - <b>Tomato Farm</b>. It is a Pomodoro farming game that combines focused work with gamified rewards. Together with the Vibe Coding mode of AI coding assistants, we will break the process from zero to phone installation into a reusable route:</span><span lang="en">To make the learning process less boring, this tutorial revolves around a fun and practical case - <b>Tomato Farm</b>. It is a Pomodoro farming game that combines focused work with gamified rewards. Together with the Vibe Coding mode of AI coding assistants, we will break the process from zero to phone installation into a reusable route:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Build understanding and environment</b>: understand what PWA is, install Node.js and an AI coding assistant, and make sure the toolchain is smooth.</span><span lang="en"><b>Build understanding and environment</b>: understand what PWA is, install Node.js and an AI coding assistant, and make sure the toolchain is smooth.</span></li>
+<li><span lang="id"><b>Build the project skeleton</b>: create a React + TypeScript project that can run locally.</span><span lang="en"><b>Build the project skeleton</b>: create a React + TypeScript project that can run locally.</span></li>
+<li><span lang="id"><b>AI iterative development</b>: through conversation with AI, build Pomodoro countdown, farming system, level system, SVG crop rendering, and more.</span><span lang="en"><b>AI iterative development</b>: through conversation with AI, build Pomodoro countdown, farming system, level system, SVG crop rendering, and more.</span></li>
+<li><span lang="id"><b>PWA configuration and offline testing</b>: add Service Worker and Manifest, then verify offline support.</span><span lang="en"><b>PWA configuration and offline testing</b>: add Service Worker and Manifest, then verify offline support.</span></li>
+<li><span lang="id"><b>Deployment and phone installation</b>: deploy to Vercel to get an HTTPS URL, then install and use it on a phone.</span><span lang="en"><b>Deployment and phone installation</b>: deploy to Vercel to get an HTTPS URL, then install and use it on a phone.</span></li>
+</ul>
+<p class="reveal"><span lang="id">This section only gives the big picture, without expanding the exact commands. For now, just remember the main line: <b>Environment setup -> Skeleton building -> AI description and generation -> PWA configuration -> Deployment delivery</b>. In the next chapters, we will walk through each step with you.</span><span lang="en">This section only gives the big picture, without expanding the exact commands. For now, just remember the main line: <b>Environment setup -> Skeleton building -> AI description and generation -> PWA configuration -> Deployment delivery</b>. In the next chapters, we will walk through each step with you.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.1 Tools Used in This Tutorial</span><span lang="en">2.1 Tools Used in This Tutorial</span></h2>
+<p class="reveal"><span lang="id">During the whole development process we use three tools together, and they take the roles of "design," "construction," and "acceptance."</span><span lang="en">During the whole development process we use three tools together, and they take the roles of "design," "construction," and "acceptance."</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>AI coding assistant (Cursor / Trae / Claude Code)</b>: this is your <b>AI coding partner</b>. In Vibe Coding mode, we no longer need to write code line by line. Instead, we mainly tell AI in natural language what functionality we want, and it handles code generation and modification.</span><span lang="en"><b>AI coding assistant (Cursor / Trae / Claude Code)</b>: this is your <b>AI coding partner</b>. In Vibe Coding mode, we no longer need to write code line by line. Instead, we mainly tell AI in natural language what functionality we want, and it handles code generation and modification.</span></li>
+<li><span lang="id"><b>Node.js + Vite</b>: these are the <b>project build factory</b>. Node.js provides the JavaScript runtime, and Vite is a next-generation frontend build tool with extremely fast speed, especially suitable for building PWAs.</span><span lang="en"><b>Node.js + Vite</b>: these are the <b>project build factory</b>. Node.js provides the JavaScript runtime, and Vite is a next-generation frontend build tool with extremely fast speed, especially suitable for building PWAs.</span></li>
+<li><span lang="id"><b>A phone</b>: this acts as the <b>test device</b> to verify the running result. You can directly access the deployed PWA in the browser on your phone and test the real installation and offline functionality.</span><span lang="en"><b>A phone</b>: this acts as the <b>test device</b> to verify the running result. You can directly access the deployed PWA in the browser on your phone and test the real installation and offline functionality.</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.2 Install Node.js</span><span lang="en">2.2 Install Node.js</span></h2>
+<p class="reveal"><span lang="id">Node.js is the basic environment for PWA development. Visit the official website [https://nodejs.org](https://nodejs.org) and download the <b>LTS (Long Term Support)</b> version (this tutorial is based on Node.js 18.x or above).</span><span lang="en">Node.js is the basic environment for PWA development. Visit the official website [https://nodejs.org](https://nodejs.org) and download the <b>LTS (Long Term Support)</b> version (this tutorial is based on Node.js 18.x or above).</span></p>
+<p class="reveal"><span lang="id">After download, install it like ordinary software by double-clicking the installer and keeping default options.</span><span lang="en">After download, install it like ordinary software by double-clicking the installer and keeping default options.</span></p>
+<p class="reveal"><span lang="id">After installation, open the terminal (CMD / PowerShell on Windows, Terminal on Mac) and run:</span><span lang="en">After installation, open the terminal (CMD / PowerShell on Windows, Terminal on Mac) and run:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>node --version
+npm --version</pre>
+</div>
+<p class="reveal"><span lang="id">If you see version outputs such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">v18.17.0</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">9.6.7</code>, it means installation is successful.</span><span lang="en">If you see version outputs such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">v18.17.0</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">9.6.7</code>, it means installation is successful.</span></p>
+<p class="reveal"><span lang="id"><!-- 0 --></span><span lang="en"><!-- 0 --></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.3 Install the AI Coding Assistant</span><span lang="en">2.3 Install the AI Coding Assistant</span></h2>
+<p class="reveal"><span lang="id">The AI coding assistant is the main battlefield of <b>Vibe Coding</b>. You can simply understand it as an <b>"editor with a super AI built in."</b></span><span lang="en">The AI coding assistant is the main battlefield of <b>Vibe Coding</b>. You can simply understand it as an <b>"editor with a super AI built in."</b></span></p>
+<p class="reveal"><span lang="id"><b>Recommended choices:</b></span><span lang="en"><b>Recommended choices:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Trae</b>: visit [https://www.trae.cn](https://www.trae.cn) and download the matching version for your OS</span><span lang="en"><b>Trae</b>: visit [https://www.trae.cn](https://www.trae.cn) and download the matching version for your OS</span></li>
+<li><span lang="id"><b>Cursor</b>: visit [https://cursor.sh](https://cursor.sh) and install it</span><span lang="en"><b>Cursor</b>: visit [https://cursor.sh](https://cursor.sh) and install it</span></li>
+<li><span lang="id"><b>Claude Code</b>: if you are already using Claude, you can use Claude Code directly</span><span lang="en"><b>Claude Code</b>: if you are already using Claude, you can use Claude Code directly</span></li>
+</ul>
+<p class="reveal"><span lang="id">The installation process is very simple, just like installing normal software. After preparing this tool, in later practice we no longer need to stare at boring code windows. Instead, we will open the project here and use natural language in the chat box to ask AI to write code and fix bugs.</span><span lang="en">The installation process is very simple, just like installing normal software. After preparing this tool, in later practice we no longer need to stare at boring code windows. Instead, we will open the project here and use natural language in the chat box to ask AI to write code and fix bugs.</span></p>
+<p class="reveal"><span lang="id"><!-- 0 --></span><span lang="en"><!-- 0 --></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.4 Create a New Project</span><span lang="en">2.4 Create a New Project</span></h2>
+<p class="reveal"><span lang="id">Open your AI coding assistant and enter the following Prompt in the chat box:</span><span lang="en">Open your AI coding assistant and enter the following Prompt in the chat box:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please help me create a React project named tomato-farm-pwa for building a Tomato Farm app.
+It needs to support TypeScript, and also include PWA functionality (the kind that can be installed to a phone home screen).</pre>
+</div>
+<p class="reveal"><span lang="id">AI will automatically perform the following steps:</span><span lang="en">AI will automatically perform the following steps:</span></p>
+<p class="reveal"><span lang="id"><b>Step 1: Create the project</b></span><span lang="en"><b>Step 1: Create the project</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>npm create vite@latest tomato-farm-pwa -- --template react-ts</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 2: Enter the project and install dependencies</b></span><span lang="en"><b>Step 2: Enter the project and install dependencies</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>cd tomato-farm-pwa
+npm install</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 3: Install the PWA plugin</b></span><span lang="en"><b>Step 3: Install the PWA plugin</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>npm install vite-plugin-pwa -D</pre>
+</div>
+<p class="reveal"><span lang="id">After AI finishes, your project structure will roughly look like this:</span><span lang="en">After AI finishes, your project structure will roughly look like this:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>tomato-farm-pwa/
+├── public/              # Static assets (icons, SVG materials go here)
+├── src/
+│   ├── App.tsx          # Main component
+│   ├── main.tsx         # Entry file
+│   └── App.css          # Styles
+├── index.html           # HTML entry
+├── vite.config.ts       # Vite config (PWA config goes here)
+├── package.json
+└── tsconfig.json</pre>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.5 Understand the Project Structure</span><span lang="en">2.5 Understand the Project Structure</span></h2>
+<p class="reveal"><span lang="id">After the project is created, we need to understand the role of several key files:</span><span lang="en">After the project is created, we need to understand the role of several key files:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>File / Directory</th><th>Purpose</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">src/App.tsx</code></td><td>Main application component, where the core page logic is written</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">src/main.tsx</code></td><td>Application entry file, responsible for mounting the React app</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">vite.config.ts</code></td><td>Vite configuration file, where the core PWA config is written</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">public/</code></td><td>Static asset directory, where PWA icons and SVG materials go</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">index.html</code></td><td>HTML entry file, usually does not need modification</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">As beginners, we mainly need to care about three parts:</span><span lang="en">As beginners, we mainly need to care about three parts:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">App.tsx</code>: controls program behavior and decides "what appears on screen"</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">App.tsx</code>: controls program behavior and decides "what appears on screen"</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">vite.config.ts</code>: configures PWA behavior and decides "how the app is installed and cached"</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">vite.config.ts</code>: configures PWA behavior and decides "how the app is installed and cached"</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">public/</code>: stores the app icons and assets</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">public/</code>: stores the app icons and assets</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.6 Prepare App Icons</span><span lang="en">2.6 Prepare App Icons</span></h2>
+<p class="reveal"><span lang="id">PWA needs icons before it can be installed. At minimum, we need two PNG images in <b>192x192</b> and <b>512x512</b> sizes.</span><span lang="en">PWA needs icons before it can be installed. At minimum, we need two PNG images in <b>192x192</b> and <b>512x512</b> sizes.</span></p>
+<p class="reveal"><span lang="id">You can ask AI to generate them:</span><span lang="en">You can ask AI to generate them:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please help me generate two app icons with sizes 192x192 and 512x512.
+Use a green gradient background and draw a red tomato in the middle. Save them in the public folder.</pre>
+</div>
+<p class="reveal"><span lang="id">Or you can also create your own icons with any design tool (Figma, Canva) and put them into the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">public/</code> directory.</span><span lang="en">Or you can also create your own icons with any design tool (Figma, Canva) and put them into the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">public/</code> directory.</span></p>
+<p class="reveal"><span lang="id"><!-- 0 --></span><span lang="en"><!-- 0 --></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.7 Configure <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">vite-plugin-pwa</code></span><span lang="en">2.7 Configure <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">vite-plugin-pwa</code></span></h2>
+<p class="reveal"><span lang="id">This is the most critical step. Open <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">vite.config.ts</code> and ask AI to configure the PWA plugin:</span><span lang="en">This is the most critical step. Open <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">vite.config.ts</code> and ask AI to configure the PWA plugin:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please help me change vite.config.ts into a PWA configuration so the webpage can be installed to a phone home screen:
+- The app name is &quot;Tomato Farm&quot;, with a green theme
+- Use icon-192.png and icon-512.png from the public directory as icons
+- Enable automatic updates
+- Cache all js, css, html, and image files so the app can work offline</pre>
+</div>
+<p class="reveal"><span lang="id">AI will generate a configuration similar to this:</span><span lang="en">AI will generate a configuration similar to this:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>typescript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>import { defineConfig } from &#039;vite&#039;
+import react from &#039;@vitejs/plugin-react&#039;
+import { VitePWA } from &#039;vite-plugin-pwa&#039;
+
+export default defineConfig({
+  plugins: [
+    react(),
+    VitePWA({
+      registerType: &#039;autoUpdate&#039;,
+      manifest: {
+        name: &#039;Tomato Farm&#039;,
+        short_name: &#039;Tomato Farm&#039;,
+        description: &#039;Focus, plant, and grow&#039;,
+        theme_color: &#039;#4CAF50&#039;,
+        background_color: &#039;#ffffff&#039;,
+        display: &#039;standalone&#039;,
+        icons: [
+          {
+            src: &#039;/icon-192.png&#039;,
+            sizes: &#039;192x192&#039;,
+            type: &#039;image/png&#039;
+          },
+          {
+            src: &#039;/icon-512.png&#039;,
+            sizes: &#039;512x512&#039;,
+            type: &#039;image/png&#039;
+          }
+        ]
+      },
+      workbox: {
+        globPatterns: [&#039;**/*.{js,css,html,ico,png,svg}&#039;]
+      }
+    })
+  ]
+})</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Key configuration explanation:</b></span><span lang="en"><b>Key configuration explanation:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">registerType: 'autoUpdate'</code>: when you publish a new version, the app will update automatically the next time users open it, without manual operation.</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">registerType: 'autoUpdate'</code>: when you publish a new version, the app will update automatically the next time users open it, without manual operation.</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">display: 'standalone'</code>: after installation, it runs in its own window, without browser address bar, and feels like a native app.</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">display: 'standalone'</code>: after installation, it runs in its own window, without browser address bar, and feels like a native app.</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">workbox.globPatterns</code>: tells the Service Worker which file types should be cached and still accessible offline.</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">workbox.globPatterns</code>: tells the Service Worker which file types should be cached and still accessible offline.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><!-- 0 --></span><span lang="en"><!-- 0 --></span></p>
+<p class="reveal"><span lang="id">In the previous two chapters, we already understood what a PWA is and completed the environment setup. From this section onward, we stop talking only in theory and move into hands-on practice. We will use Vibe Coding mode to build a fun and practical app from scratch - <b>Tomato Farm</b>. It perfectly combines the Pomodoro technique with gamified incentives and covers the core elements of PWA development: <b>UI interaction (Pomodoro timer), data storage (points and crops), and offline capability (Service Worker caching).</b></span><span lang="en">In the previous two chapters, we already understood what a PWA is and completed the environment setup. From this section onward, we stop talking only in theory and move into hands-on practice. We will use Vibe Coding mode to build a fun and practical app from scratch - <b>Tomato Farm</b>. It perfectly combines the Pomodoro technique with gamified incentives and covers the core elements of PWA development: <b>UI interaction (Pomodoro timer), data storage (points and crops), and offline capability (Service Worker caching).</b></span></p>
+<p class="reveal"><span lang="id">Now, let us send the first instruction to AI.</span><span lang="en">Now, let us send the first instruction to AI.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.1 The First "Master Prompt": From Zero to One</span><span lang="en">3.1 The First "Master Prompt": From Zero to One</span></h2>
+<p class="reveal"><span lang="id">In Vibe Coding mode, we do not need to follow the traditional approach of first creating layout files and then writing logic code. What we need to do is <b>describe the requirements clearly in one shot and let AI generate the first runnable version</b>.</span><span lang="en">In Vibe Coding mode, we do not need to follow the traditional approach of first creating layout files and then writing logic code. What we need to do is <b>describe the requirements clearly in one shot and let AI generate the first runnable version</b>.</span></p>
+<p class="reveal"><span lang="id">Open the project directory we just created in your AI coding assistant, and enter the following Prompt:</span><span lang="en">Open the project directory we just created in your AI coding assistant, and enter the following Prompt:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please help me write the main page for the Tomato Farm app, with the following functions:
+
+**Pomodoro Timer**
+- A 25-minute countdown timer with start, pause, and reset
+- Show remaining time and a progress bar
+- Give the user 10 points after completing one focus session
+
+**Farming System**
+- 3 plots of farmland, but initially only the first one is available; the later ones are unlocked after leveling up
+- A shop to buy seeds: carrot costs 5 points, tomato 10 points, corn 15 points
+- After buying seeds and planting them, crops slowly grow, and when mature they can be harvested for points
+
+**Level System**
+- Level by total points: 0-100 points = Beginner Farmer, 100-300 = Skilled Farmer, above 300 = Farm Master
+- Unlock new land and better seeds after leveling up
+
+**UI Design**
+- Top shows level, points, and upgrade progress bar
+- Middle shows the Pomodoro countdown
+- Below is the farmland grid
+- Bottom has the shop button
+- Use a green theme and make it look fresh and cute
+- Must adapt to phone screens
+
+**Data Saving**
+- All data (points, level, farmland state) must be saved, and refreshing the page should not lose it</pre>
+</div>
+<p class="reveal"><span lang="id">After sending it, you will see AI start reasoning and analyzing your project structure. A few seconds later, it will directly generate the complete code for <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">App.tsx</code>.</span><span lang="en">After sending it, you will see AI start reasoning and analyzing your project structure. A few seconds later, it will directly generate the complete code for <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">App.tsx</code>.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">From its response, we can see its reasoning logic and interaction logic</span><span lang="en">From its response, we can see its reasoning logic and interaction logic</span></li>
+<li><span lang="id">We can directly see which code it changed</span><span lang="en">We can directly see which code it changed</span></li>
+<li><span lang="id">If we are not satisfied, we can roll back to the previous version</span><span lang="en">If we are not satisfied, we can roll back to the previous version</span></li>
+</ul>
+<p class="reveal"><span lang="id"><!-- 0 --></span><span lang="en"><!-- 0 --></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.2 Run and Preview (Local Development Server)</span><span lang="en">3.2 Run and Preview (Local Development Server)</span></h2>
+<p class="reveal"><span lang="id">Now AI has completed the first round of development, but remember: what we see in the coding assistant is still just code "blueprints," not a truly interactive app. We need to start a local development server so we can actually run the code and view the real effect.</span><span lang="en">Now AI has completed the first round of development, but remember: what we see in the coding assistant is still just code "blueprints," not a truly interactive app. We need to start a local development server so we can actually run the code and view the real effect.</span></p>
+<p class="reveal"><span lang="id">Run this in the terminal of your AI coding assistant:</span><span lang="en">Run this in the terminal of your AI coding assistant:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>npm run dev</pre>
+</div>
+<p class="reveal"><span lang="id">After a few seconds, the terminal will show output like this:</span><span lang="en">After a few seconds, the terminal will show output like this:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>  VITE v5.0.0  ready in 300 ms
+
+  -&gt;  Local:   http://localhost:5173/
+  -&gt;  Network: use --host to expose
+  -&gt;  press h + enter to show help</pre>
+</div>
+<p class="reveal"><span lang="id">Open <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">http://localhost:5173/</code> in your browser, and you should see:</span><span lang="en">Open <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">http://localhost:5173/</code> in your browser, and you should see:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">level, points, and a progress bar at the top</span><span lang="en">level, points, and a progress bar at the top</span></li>
+<li><span lang="id">a Pomodoro countdown in the middle</span><span lang="en">a Pomodoro countdown in the middle</span></li>
+<li><span lang="id">farmland area below</span><span lang="en">farmland area below</span></li>
+<li><span lang="id">a shop button at the bottom</span><span lang="en">a shop button at the bottom</span></li>
+</ul>
+<p class="reveal"><span lang="id">Try clicking the "Start Focus" button and see if the countdown works properly. Click on a farmland tile and see if you can buy seeds and plant them. This is the first version of your PWA app.</span><span lang="en">Try clicking the "Start Focus" button and see if the countdown works properly. Click on a farmland tile and see if you can buy seeds and plant them. This is the first version of your PWA app.</span></p>
+<p class="reveal"><span lang="id"><!-- 0 --></span><span lang="en"><!-- 0 --></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.3 Optimization Iteration (Add SVG Crops and Animation)</span><span lang="en">3.3 Optimization Iteration (Add SVG Crops and Animation)</span></h2>
+<p class="reveal"><span lang="id">At this point, our app already has a basic shape: Pomodoro timer, farming system, and leveling system. But it may still look rough, with crops perhaps shown only as text or simple blocks. Next, we will add beautiful SVG crops and growth animation to make the Tomato Farm come alive.</span><span lang="en">At this point, our app already has a basic shape: Pomodoro timer, farming system, and leveling system. But it may still look rough, with crops perhaps shown only as text or simple blocks. Next, we will add beautiful SVG crops and growth animation to make the Tomato Farm come alive.</span></p>
+<p class="reveal"><span lang="id"><b>This is exactly where Vibe Coding becomes so attractive.</b> In traditional development, drawing SVG graphics and building complex growth animations can be a nightmare for beginners. You not only need to handle SVG path drawing, but also calculate animation curves. In Vibe Coding mode, you do not need to worry about those low-level details. You just tell AI like a director: "Give the crops nicer SVG graphics and make them grow with animation," and the complex code appears almost instantly.</span><span lang="en"><b>This is exactly where Vibe Coding becomes so attractive.</b> In traditional development, drawing SVG graphics and building complex growth animations can be a nightmare for beginners. You not only need to handle SVG path drawing, but also calculate animation curves. In Vibe Coding mode, you do not need to worry about those low-level details. You just tell AI like a director: "Give the crops nicer SVG graphics and make them grow with animation," and the complex code appears almost instantly.</span></p>
+<p class="reveal"><span lang="id"><b>Step 1: Prepare SVG crop assets</b></span><span lang="en"><b>Step 1: Prepare SVG crop assets</b></span></p>
+<p class="reveal"><span lang="id">You can ask AI to draw SVG directly in code, or prepare SVG files and put them under <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">public/</code>. In this tutorial, we recommend letting AI generate SVG code directly because it is more flexible.</span><span lang="en">You can ask AI to draw SVG directly in code, or prepare SVG files and put them under <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">public/</code>. In this tutorial, we recommend letting AI generate SVG code directly because it is more flexible.</span></p>
+<p class="reveal"><span lang="id"><b>Step 2: Send an iteration instruction</b></span><span lang="en"><b>Step 2: Send an iteration instruction</b></span></p>
+<p class="reveal"><span lang="id">Return to the AI coding assistant and enter the following Prompt:</span><span lang="en">Return to the AI coding assistant and enter the following Prompt:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please make the crops look better and add growth animation:
+
+**Crop graphics**
+- Carrot: orange body with green leaves
+- Tomato: red round shape with little green leaves
+- Corn: yellow corn cob with green outer leaves
+Just use simple shapes
+
+**Growth animation**
+- When first planted, it starts as a small sprout and gradually grows to maturity
+- Show 3 stages
+
+**Harvest effect**
+- When clicking a mature crop, play a simple harvest animation
+- Show how many points were gained
+
+**Overall polish**
+- Farmland tiles should have borders and background color
+- Crops should appear centered in the tile
+- Overall style should feel a little cuter</pre>
+</div>
+<p class="reveal"><span lang="id">AI will modify the code again and handle the SVG rendering and animation logic. After it finishes, refresh the browser, and you should see better crop graphics and smooth growth animations.</span><span lang="en">AI will modify the code again and handle the SVG rendering and animation logic. After it finishes, refresh the browser, and you should see better crop graphics and smooth growth animations.</span></p>
+<p class="reveal"><span lang="id"><!-- 0 --></span><span lang="en"><!-- 0 --></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.4 Add Sound Effects and Notifications (Optional)</span><span lang="en">3.4 Add Sound Effects and Notifications (Optional)</span></h2>
+<p class="reveal"><span lang="id">If you want Tomato Farm to feel more immersive, you can also add sound effects and notifications. This also only needs a simple Prompt:</span><span lang="en">If you want Tomato Farm to feel more immersive, you can also add sound effects and notifications. This also only needs a simple Prompt:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please add sound effects and notifications to Tomato Farm:
+
+**Sound effects**
+- Play a &quot;ding&quot; when focus starts
+- Play a victory sound when focus is completed
+- Also add matching sound effects for planting and harvesting
+
+**Notifications**
+- Show &quot;Congratulations, you finished a focus session!&quot; after a focus cycle ends
+- Show &quot;Congratulations, you leveled up to XX!&quot; when leveling up
+- Show &quot;You unlocked a new farmland plot!&quot; when new land is unlocked
+
+You can implement this with simple audio files or the Web Audio API</pre>
+</div>
+<p class="reveal"><span lang="id">AI will help you add sound effects and notifications, making the Tomato Farm more lively and enjoyable.</span><span lang="en">AI will help you add sound effects and notifications, making the Tomato Farm more lively and enjoyable.</span></p>
+<p class="reveal"><span lang="id"><!-- 0 --></span><span lang="en"><!-- 0 --></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4.1 Build and Preview</span><span lang="en">4.1 Build and Preview</span></h2>
+<p class="reveal"><span lang="id">The PWA Service Worker only takes effect in production builds (it will not register in development mode). So we need to build first, then preview:</span><span lang="en">The PWA Service Worker only takes effect in production builds (it will not register in development mode). So we need to build first, then preview:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please help me run these commands:
+1. npm run build (build production version)
+2. npm run preview (start local preview server)</pre>
+</div>
+<p class="reveal"><span lang="id">After build, Vite will generate all files in the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dist/</code> directory, including the auto-generated <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sw.js</code> (Service Worker) and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">manifest.webmanifest</code>.</span><span lang="en">After build, Vite will generate all files in the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dist/</code> directory, including the auto-generated <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sw.js</code> (Service Worker) and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">manifest.webmanifest</code>.</span></p>
+<p class="reveal"><span lang="id">Once the preview server starts, open the address shown in the terminal (usually <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">http://localhost:4173</code>).</span><span lang="en">Once the preview server starts, open the address shown in the terminal (usually <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">http://localhost:4173</code>).</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4.2 Install the PWA on Desktop</span><span lang="en">4.2 Install the PWA on Desktop</span></h2>
+<p class="reveal"><span lang="id">After opening the preview URL, you will notice an <b>install icon</b> appears on the right side of the browser address bar (usually a small download arrow or "+" sign).</span><span lang="en">After opening the preview URL, you will notice an <b>install icon</b> appears on the right side of the browser address bar (usually a small download arrow or "+" sign).</span></p>
+<p class="reveal"><span lang="id"><b>Chrome / Edge installation steps:</b></span><span lang="en"><b>Chrome / Edge installation steps:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Click the install icon on the right side of the address bar</span><span lang="en">Click the install icon on the right side of the address bar</span></li>
+<li><span lang="id">Click <b>Install</b> in the popup dialog</span><span lang="en">Click <b>Install</b> in the popup dialog</span></li>
+<li><span lang="id">The PWA will open in a standalone window, and a shortcut will be created on your desktop / Start Menu / Dock</span><span lang="en">The PWA will open in a standalone window, and a shortcut will be created on your desktop / Start Menu / Dock</span></li>
+</ul>
+<p class="reveal"><span lang="id">The installed PWA looks just like a native desktop app - no address bar, no tabs, with its own window and icon. Now you can open Tomato Farm anytime and begin your focus-and-farming journey.</span><span lang="en">The installed PWA looks just like a native desktop app - no address bar, no tabs, with its own window and icon. Now you can open Tomato Farm anytime and begin your focus-and-farming journey.</span></p>
+<p class="reveal"><span lang="id"><!-- 0 --></span><span lang="en"><!-- 0 --></span></p>
+<p class="reveal"><span lang="id"><b>macOS Safari installation steps:</b></span><span lang="en"><b>macOS Safari installation steps:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Open the PWA URL in Safari</span><span lang="en">Open the PWA URL in Safari</span></li>
+<li><span lang="id">Click <b>File -> Add to Dock</b> from the menu bar</span><span lang="en">Click <b>File -> Add to Dock</b> from the menu bar</span></li>
+<li><span lang="id">The PWA icon will appear in the Dock</span><span lang="en">The PWA icon will appear in the Dock</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4.3 Test Offline Capability</span><span lang="en">4.3 Test Offline Capability</span></h2>
+<p class="reveal"><span lang="id">This is the coolest part of PWA. Let us verify whether offline mode really works:</span><span lang="en">This is the coolest part of PWA. Let us verify whether offline mode really works:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Make sure the PWA has been opened in the browser at least once (so the Service Worker can cache resources)</span><span lang="en">Make sure the PWA has been opened in the browser at least once (so the Service Worker can cache resources)</span></li>
+<li><span lang="id"><b>Disconnect the network</b> (turn off Wi-Fi or unplug the cable)</span><span lang="en"><b>Disconnect the network</b> (turn off Wi-Fi or unplug the cable)</span></li>
+<li><span lang="id">Refresh the page - you will find that <b>Tomato Farm still loads normally!</b></span><span lang="en">Refresh the page - you will find that <b>Tomato Farm still loads normally!</b></span></li>
+<li><span lang="id">Start a Pomodoro session - after it finishes you gain points, buy seeds, plant crops - and all the data is still saved normally in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localStorage</code></span><span lang="en">Start a Pomodoro session - after it finishes you gain points, buy seeds, plant crops - and all the data is still saved normally in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localStorage</code></span></li>
+</ul>
+<p class="reveal"><span lang="id">You can also open Chrome DevTools (F12) -> Application -> Service Workers to inspect Service Worker status and cached resource lists.</span><span lang="en">You can also open Chrome DevTools (F12) -> Application -> Service Workers to inspect Service Worker status and cached resource lists.</span></p>
+<p class="reveal"><span lang="id"><!-- 0 --></span><span lang="en"><!-- 0 --></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4.4 Data Persistence and Sync Options</span><span lang="en">4.4 Data Persistence and Sync Options</span></h2>
+<p class="reveal"><span lang="id">Now your Tomato Farm can already run offline, and all data is saved in the browser's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localStorage</code>. But there is one key problem: <b>if the user switches devices or clears browser data, all farm data will be lost</b>. For serious production apps, we need to think about data persistence and cross-device synchronization.</span><span lang="en">Now your Tomato Farm can already run offline, and all data is saved in the browser's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localStorage</code>. But there is one key problem: <b>if the user switches devices or clears browser data, all farm data will be lost</b>. For serious production apps, we need to think about data persistence and cross-device synchronization.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.4.1 Limitations of Local Storage</span><span lang="en">4.4.1 Limitations of Local Storage</span></h3>
+<p class="reveal"><span lang="id">The <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localStorage</code> we are currently using has several obvious limitations:</span><span lang="en">The <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localStorage</code> we are currently using has several obvious limitations:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Limitation</th><th>Description</th></tr>
+<tr><td><b>Device-bound</b></td><td>Data is only stored in the current browser on the current device; switching devices means losing it</td></tr>
+<tr><td><b>Limited capacity</b></td><td>Usually only 5-10MB of storage space</td></tr>
+<tr><td><b>Easy to lose</b></td><td>Clearing browser data or uninstalling the PWA causes data loss</td></tr>
+<tr><td><b>Cannot sync</b></td><td>Progress on phone cannot sync to desktop</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">If your Tomato Farm is just a personal tool, this may not be a problem. But if you want users to invest long term and accumulate data, a more reliable solution is needed.</span><span lang="en">If your Tomato Farm is just a personal tool, this may not be a problem. But if you want users to invest long term and accumulate data, a more reliable solution is needed.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.4.2 Option 1: Cloud Sync (Recommended)</span><span lang="en">4.4.2 Option 1: Cloud Sync (Recommended)</span></h3>
+<p class="reveal"><span lang="id">The most reliable solution is synchronizing data to a cloud database. For PWAs, <b>Supabase</b> is an excellent choice - it provides a PostgreSQL database, real-time subscriptions, and authentication, and also offers a free tier.</span><span lang="en">The most reliable solution is synchronizing data to a cloud database. For PWAs, <b>Supabase</b> is an excellent choice - it provides a PostgreSQL database, real-time subscriptions, and authentication, and also offers a free tier.</span></p>
+<p class="reveal"><span lang="id"><b>Implementation idea:</b></span><span lang="en"><b>Implementation idea:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>User login</b>: use email or social login to establish user identity</span><span lang="en"><b>User login</b>: use email or social login to establish user identity</span></li>
+<li><span lang="id"><b>Automatic data sync</b>: every operation automatically saves to the cloud</span><span lang="en"><b>Automatic data sync</b>: every operation automatically saves to the cloud</span></li>
+<li><span lang="id"><b>Offline-first</b>: the app still works when offline, then syncs automatically when the network returns</span><span lang="en"><b>Offline-first</b>: the app still works when offline, then syncs automatically when the network returns</span></li>
+<li><span lang="id"><b>Cross-device sync</b>: progress on phone is available immediately on desktop</span><span lang="en"><b>Cross-device sync</b>: progress on phone is available immediately on desktop</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Prompt example:</b></span><span lang="en"><b>Prompt example:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please help me migrate Tomato Farm data storage from localStorage to Supabase cloud sync:
+
+**Functional requirements**
+- Add user login (email + password or Google login)
+- Save user data (points, level, farmland state) to Supabase database
+- Still work offline, and automatically sync when the network recovers
+- Support multi-device sync, so crops planted on the phone can also be seen on desktop
+
+**Tech stack**
+- Use @supabase/supabase-js client
+- Implement optimistic updates (update UI first, then sync to cloud)
+- Add a simple sync status indicator</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Pros:</b></span><span lang="en"><b>Pros:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Data will not be lost; users only need to log in again when switching devices</span><span lang="en">Data will not be lost; users only need to log in again when switching devices</span></li>
+<li><span lang="id">Free tier is enough for personal projects</span><span lang="en">Free tier is enough for personal projects</span></li>
+<li><span lang="id">Supports real-time subscriptions, giving good multi-device sync experience</span><span lang="en">Supports real-time subscriptions, giving good multi-device sync experience</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Cons:</b></span><span lang="en"><b>Cons:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Requires user registration/login, adding usage friction</span><span lang="en">Requires user registration/login, adding usage friction</span></li>
+<li><span lang="id">Needs network connection to perform syncing</span><span lang="en">Needs network connection to perform syncing</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.4.3 Option 2: Export / Import Backup</span><span lang="en">4.4.3 Option 2: Export / Import Backup</span></h3>
+<p class="reveal"><span lang="id">If you do not want to add a backend service, a simpler compromise is <b>manual backup and restore</b>.</span><span lang="en">If you do not want to add a backend service, a simpler compromise is <b>manual backup and restore</b>.</span></p>
+<p class="reveal"><span lang="id"><b>Implementation idea:</b></span><span lang="en"><b>Implementation idea:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Export</b>: package farm data as a JSON file and let users download it</span><span lang="en"><b>Export</b>: package farm data as a JSON file and let users download it</span></li>
+<li><span lang="id"><b>Import</b>: users can select a previously exported JSON file to restore data</span><span lang="en"><b>Import</b>: users can select a previously exported JSON file to restore data</span></li>
+<li><span lang="id"><b>Automatic reminder</b>: remind users to back up periodically</span><span lang="en"><b>Automatic reminder</b>: remind users to back up periodically</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Prompt example:</b></span><span lang="en"><b>Prompt example:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please add data backup functionality to Tomato Farm:
+
+**Export**
+- Add an &quot;Export Data&quot; button on the settings page
+- Package all data in localStorage into a JSON file
+- Automatically download it to the user&#039;s device
+
+**Import**
+- Add an &quot;Import Data&quot; button that accepts a JSON file
+- Validate file format before restoring
+- Show a warning before import because it overwrites current data
+
+**Automatic reminders**
+- If the user has not backed up for over 7 days, show a friendly reminder</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Pros:</b></span><span lang="en"><b>Pros:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Simple to implement, no backend service required</span><span lang="en">Simple to implement, no backend service required</span></li>
+<li><span lang="id">Users fully control their own data</span><span lang="en">Users fully control their own data</span></li>
+<li><span lang="id">Can transfer across devices by sharing the exported file</span><span lang="en">Can transfer across devices by sharing the exported file</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Cons:</b></span><span lang="en"><b>Cons:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Requires manual operation, so the experience is not smooth</span><span lang="en">Requires manual operation, so the experience is not smooth</span></li>
+<li><span lang="id">If the user forgets to back up, data can still be lost</span><span lang="en">If the user forgets to back up, data can still be lost</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.4.4 Option 3: Browser Extension Sync (For Chrome Users)</span><span lang="en">4.4.4 Option 3: Browser Extension Sync (For Chrome Users)</span></h3>
+<p class="reveal"><span lang="id">If your PWA mainly targets Chrome users, you can consider <b>Chrome Storage Sync API</b>. This is a cross-device synced storage service provided by Chrome, where data automatically syncs with the user's Google account.</span><span lang="en">If your PWA mainly targets Chrome users, you can consider <b>Chrome Storage Sync API</b>. This is a cross-device synced storage service provided by Chrome, where data automatically syncs with the user's Google account.</span></p>
+<p class="reveal"><span lang="id"><b>Note:</b> this requires packaging the PWA as a Chrome extension as well, which is more suitable for developers with technical experience.</span><span lang="en"><b>Note:</b> this requires packaging the PWA as a Chrome extension as well, which is more suitable for developers with technical experience.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.4.5 Recommended Choice Strategy</span><span lang="en">4.4.5 Recommended Choice Strategy</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Scenario</th><th>Recommended Solution</th></tr>
+<tr><td>Personal lightweight tool</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localStorage</code> only is enough</td></tr>
+<tr><td>Want to avoid data loss, but do not want too much complexity</td><td>Export / import backup</td></tr>
+<tr><td>Official product with better user experience</td><td>Supabase cloud sync</td></tr>
+<tr><td>Mainly for Chrome users</td><td>Chrome Storage Sync</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>For an app like Tomato Farm, my suggestion is:</b></span><span lang="en"><b>For an app like Tomato Farm, my suggestion is:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>MVP stage</b>: start with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localStorage</code> to verify the product idea quickly</span><span lang="en"><b>MVP stage</b>: start with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localStorage</code> to verify the product idea quickly</span></li>
+<li><span lang="id"><b>Iteration stage</b>: add export / import backup so users have a data safety net</span><span lang="en"><b>Iteration stage</b>: add export / import backup so users have a data safety net</span></li>
+<li><span lang="id"><b>Mature stage</b>: integrate Supabase to achieve real cloud synchronization</span><span lang="en"><b>Mature stage</b>: integrate Supabase to achieve real cloud synchronization</span></li>
+</ul>
+<p class="reveal"><span lang="id">Remember: <b>progressive enhancement</b> is the core philosophy of PWA. First make the app run, then gradually add more advanced capabilities.</span><span lang="en">Remember: <b>progressive enhancement</b> is the core philosophy of PWA. First make the app run, then gradually add more advanced capabilities.</span></p>
+<p class="reveal"><span lang="id"><!-- 0 --></span><span lang="en"><!-- 0 --></span></p>
+<p class="reveal"><span lang="id">PWA must run under HTTPS in order to work correctly. The good news is that mainstream deployment platforms now provide free HTTPS automatically. We will use <b>Vercel</b> as an example (you could also use Netlify or GitHub Pages).</span><span lang="en">PWA must run under HTTPS in order to work correctly. The good news is that mainstream deployment platforms now provide free HTTPS automatically. We will use <b>Vercel</b> as an example (you could also use Netlify or GitHub Pages).</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5.1 Deploy to Vercel</span><span lang="en">5.1 Deploy to Vercel</span></h2>
+<p class="reveal"><span lang="id"><b>Step 1: Install the deployment tool</b></span><span lang="en"><b>Step 1: Install the deployment tool</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please help me install Vercel&#039;s deployment tool</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 2: Deploy the project</b></span><span lang="en"><b>Step 2: Deploy the project</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please help me deploy this project to Vercel. The project name is tomato-farm-pwa</pre>
+</div>
+<p class="reveal"><span lang="id">AI will handle the deployment steps automatically. You only need to:</span><span lang="en">AI will handle the deployment steps automatically. You only need to:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">choose your account</span><span lang="en">choose your account</span></li>
+<li><span lang="id">confirm creating a new project</span><span lang="en">confirm creating a new project</span></li>
+<li><span lang="id">keep the other options at default</span><span lang="en">keep the other options at default</span></li>
+</ul>
+<p class="reveal"><span lang="id">After waiting a few dozen seconds, Vercel will automatically build and deploy your project. When done, you will get an HTTPS URL like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://tomato-farm-pwa.vercel.app</code>.</span><span lang="en">After waiting a few dozen seconds, Vercel will automatically build and deploy your project. When done, you will get an HTTPS URL like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://tomato-farm-pwa.vercel.app</code>.</span></p>
+<p class="reveal"><span lang="id"><!-- 0 --></span><span lang="en"><!-- 0 --></span></p>
+<p class="reveal"><span lang="id"><b>Step 3: Verify the PWA</b></span><span lang="en"><b>Step 3: Verify the PWA</b></span></p>
+<p class="reveal"><span lang="id">Open the deployed URL in your browser, and you should see:</span><span lang="en">Open the deployed URL in your browser, and you should see:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">an install icon appear on the right side of the address bar</span><span lang="en">an install icon appear on the right side of the address bar</span></li>
+<li><span lang="id">in DevTools -> Application -> Manifest, your configured app info such as the name "Tomato Farm"</span><span lang="en">in DevTools -> Application -> Manifest, your configured app info such as the name "Tomato Farm"</span></li>
+<li><span lang="id">in the Service Workers tab, the Service Worker shown as activated</span><span lang="en">in the Service Workers tab, the Service Worker shown as activated</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5.2 Deploy with GitHub Pages (Alternative)</span><span lang="en">5.2 Deploy with GitHub Pages (Alternative)</span></h2>
+<p class="reveal"><span lang="id">If you prefer GitHub Pages, you need additional path configuration:</span><span lang="en">If you prefer GitHub Pages, you need additional path configuration:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please help me modify the config so the project can be deployed to GitHub Pages.
+My repository name is tomato-farm-pwa, so please adjust the path configuration accordingly.</pre>
+</div>
+<p class="reveal"><span lang="id">Then push the build output to the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">gh-pages</code> branch of your GitHub repository.</span><span lang="en">Then push the build output to the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">gh-pages</code> branch of your GitHub repository.</span></p>
+<p class="reveal"><span lang="id">This is the most exciting part - turning your Tomato Farm webpage into an "app" on your phone.</span><span lang="en">This is the most exciting part - turning your Tomato Farm webpage into an "app" on your phone.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6.1 Install on Android</span><span lang="en">6.1 Install on Android</span></h2>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Open your deployed Tomato Farm PWA URL in the <b>Chrome browser</b> on your phone</span><span lang="en">Open your deployed Tomato Farm PWA URL in the <b>Chrome browser</b> on your phone</span></li>
+<li><span lang="id">Chrome may automatically show an <b>"Add to Home screen"</b> prompt banner - just click it</span><span lang="en">Chrome may automatically show an <b>"Add to Home screen"</b> prompt banner - just click it</span></li>
+<li><span lang="id">If it does not show automatically, tap the <b>three-dot menu</b> in the top-right corner -> <b>Install app</b> or <b>Add to Home screen</b></span><span lang="en">If it does not show automatically, tap the <b>three-dot menu</b> in the top-right corner -> <b>Install app</b> or <b>Add to Home screen</b></span></li>
+<li><span lang="id">Confirm installation, and a Tomato Farm app icon will appear on your phone's home screen</span><span lang="en">Confirm installation, and a Tomato Farm app icon will appear on your phone's home screen</span></li>
+</ul>
+<p class="reveal"><span lang="id">Open it and you will notice it runs in full-screen mode, without the browser address bar or navigation buttons, looking almost exactly like a native app. Now you can start focusing and farming anytime.</span><span lang="en">Open it and you will notice it runs in full-screen mode, without the browser address bar or navigation buttons, looking almost exactly like a native app. Now you can start focusing and farming anytime.</span></p>
+<p class="reveal"><span lang="id"><!-- 0 --></span><span lang="en"><!-- 0 --></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6.2 Install on iPhone</span><span lang="en">6.2 Install on iPhone</span></h2>
+<p class="reveal"><span lang="id">On iOS, PWA can only be installed through the <b>Safari</b> browser (other browsers do not support installation):</span><span lang="en">On iOS, PWA can only be installed through the <b>Safari</b> browser (other browsers do not support installation):</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Open your deployed Tomato Farm PWA URL in <b>Safari</b></span><span lang="en">Open your deployed Tomato Farm PWA URL in <b>Safari</b></span></li>
+<li><span lang="id">Tap the <b>Share</b> button at the bottom (square with an upward arrow)</span><span lang="en">Tap the <b>Share</b> button at the bottom (square with an upward arrow)</span></li>
+<li><span lang="id">In the menu, choose <b>Add to Home Screen</b></span><span lang="en">In the menu, choose <b>Add to Home Screen</b></span></li>
+<li><span lang="id">Give the app a name and tap <b>Add</b></span><span lang="en">Give the app a name and tap <b>Add</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">Starting from iOS 26, all websites added to the home screen will open in standalone app mode by default, which is a major improvement.</span><span lang="en">Starting from iOS 26, all websites added to the home screen will open in standalone app mode by default, which is a major improvement.</span></p>
+<p class="reveal"><span lang="id"><!-- 0 --></span><span lang="en"><!-- 0 --></span></p>
+<p class="reveal"><span lang="id">> <b>Known limitations on iOS:</b></span><span lang="en">> <b>Known limitations on iOS:</b></span></p>
+<p class="reveal"><span lang="id">> * Push notifications require iOS 16.4 or above, and the PWA must already be added to the home screen</span><span lang="en">> * Push notifications require iOS 16.4 or above, and the PWA must already be added to the home screen</span></p>
+<p class="reveal"><span lang="id">> * Background Sync is not supported</span><span lang="en">> * Background Sync is not supported</span></p>
+<p class="reveal"><span lang="id">> * Storage space is more limited than on Android</span><span lang="en">> * Storage space is more limited than on Android</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6.3 Audit Your PWA with Lighthouse</span><span lang="en">6.3 Audit Your PWA with Lighthouse</span></h2>
+<p class="reveal"><span lang="id">Google provides a tool called <b>Lighthouse</b>, which can score your PWA. Open Chrome DevTools (F12) -> Lighthouse -> check "Progressive Web App" -> click "Analyze page load."</span><span lang="en">Google provides a tool called <b>Lighthouse</b>, which can score your PWA. Open Chrome DevTools (F12) -> Lighthouse -> check "Progressive Web App" -> click "Analyze page load."</span></p>
+<p class="reveal"><span lang="id">A qualified Tomato Farm PWA should get a full score in the PWA category. If not, Lighthouse will tell you the exact reasons and suggest fixes.</span><span lang="en">A qualified Tomato Farm PWA should get a full score in the PWA category. If not, Lighthouse will tell you the exact reasons and suggest fixes.</span></p>
+<p class="reveal"><span lang="id"><!-- 0 --></span><span lang="en"><!-- 0 --></span></p>
+<p class="reveal"><span lang="id">Congratulations! You have successfully built a Pomodoro farming PWA that can be installed on both desktop and mobile. Let us review what we did:</span><span lang="en">Congratulations! You have successfully built a Pomodoro farming PWA that can be installed on both desktop and mobile. Let us review what we did:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Created a Tomato Farm web app with Vite + React</span><span lang="en">Created a Tomato Farm web app with Vite + React</span></li>
+<li><span lang="id">Added Service Worker and Manifest via <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">vite-plugin-pwa</code></span><span lang="en">Added Service Worker and Manifest via <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">vite-plugin-pwa</code></span></li>
+<li><span lang="id">Deployed it to Vercel to get an HTTPS URL</span><span lang="en">Deployed it to Vercel to get an HTTPS URL</span></li>
+<li><span lang="id">Successfully installed it on both desktop and mobile, and tested offline capability</span><span lang="en">Successfully installed it on both desktop and mobile, and tested offline capability</span></li>
+</ul>
+<p class="reveal"><span lang="id">Now your Tomato Farm PWA can already achieve:</span><span lang="en">Now your Tomato Farm PWA can already achieve:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Focus farming</b>: help users stay focused through the Pomodoro mechanism</span><span lang="en"><b>Focus farming</b>: help users stay focused through the Pomodoro mechanism</span></li>
+<li><span lang="id"><b>Gamified rewards</b>: use planting, leveling, and unlocking to motivate repeated use</span><span lang="en"><b>Gamified rewards</b>: use planting, leveling, and unlocking to motivate repeated use</span></li>
+<li><span lang="id"><b>Offline usability</b>: even with no network, users can still focus, plant, and manage their farm</span><span lang="en"><b>Offline usability</b>: even with no network, users can still focus, plant, and manage their farm</span></li>
+<li><span lang="id"><b>Cross-platform installation</b>: develop once and install on multiple kinds of devices</span><span lang="en"><b>Cross-platform installation</b>: develop once and install on multiple kinds of devices</span></li>
+</ul>
+<p class="reveal"><span lang="id">The charm of PWA is its "progressiveness" - you do not need to make it perfect at the very beginning. First make the website installable and available offline, then gradually add advanced capabilities such as push notifications and background sync.</span><span lang="en">The charm of PWA is its "progressiveness" - you do not need to make it perfect at the very beginning. First make the website installable and available offline, then gradually add advanced capabilities such as push notifications and background sync.</span></p>
+<p class="reveal"><span lang="id"><b>Advanced directions:</b></span><span lang="en"><b>Advanced directions:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Push notifications</b>: use Push API + Notification API to remind users when a Pomodoro finishes, or when crops are ready to harvest</span><span lang="en"><b>Push notifications</b>: use Push API + Notification API to remind users when a Pomodoro finishes, or when crops are ready to harvest</span></li>
+<li><span lang="id"><b>Background sync</b>: use Background Sync API to sync farm data to the cloud after the network returns</span><span lang="en"><b>Background sync</b>: use Background Sync API to sync farm data to the cloud after the network returns</span></li>
+<li><span lang="id"><b>Smarter caching strategies</b>: use different Workbox strategies such as CacheFirst, NetworkFirst, and StaleWhileRevalidate for different kinds of assets</span><span lang="en"><b>Smarter caching strategies</b>: use different Workbox strategies such as CacheFirst, NetworkFirst, and StaleWhileRevalidate for different kinds of assets</span></li>
+<li><span lang="id"><b>Publish to app stores</b>: use [PWA Builder](https://www.pwabuilder.com/) to package the Tomato Farm PWA into an Android APK or Microsoft Store app</span><span lang="en"><b>Publish to app stores</b>: use [PWA Builder](https://www.pwabuilder.com/) to package the Tomato Farm PWA into an Android APK or Microsoft Store app</span></li>
+<li><span lang="id"><b>Social features</b>: add a friend system so users can visit each other's farms and exchange crops</span><span lang="en"><b>Social features</b>: add a friend system so users can visit each other's farms and exchange crops</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b><i>One codebase, all platforms - this is the power of PWA. Focus, plant, and grow!</b></i></span><span lang="en"><b><i>One codebase, all platforms - this is the power of PWA. Focus, plant, and grow!</b></i></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[Vite PWA Official Docs](https://vite-pwa-org.netlify.app/guide/)</span><span lang="en">[Vite PWA Official Docs](https://vite-pwa-org.netlify.app/guide/)</span></li>
+<li><span lang="id">[Google PWA Development Guide](https://web.dev/progressive-web-apps/)</span><span lang="en">[Google PWA Development Guide](https://web.dev/progressive-web-apps/)</span></li>
+<li><span lang="id">[MDN Web App Manifest Docs](https://developer.mozilla.org/en-US/docs/Web/Manifest)</span><span lang="en">[MDN Web App Manifest Docs](https://developer.mozilla.org/en-US/docs/Web/Manifest)</span></li>
+<li><span lang="id">[Workbox Caching Strategies Overview](https://developer.chrome.com/docs/workbox/caching-strategies-overview/)</span><span lang="en">[Workbox Caching Strategies Overview](https://developer.chrome.com/docs/workbox/caching-strategies-overview/)</span></li>
+<li><span lang="id">[PWA Builder - Publish PWA to App Stores](https://www.pwabuilder.com/)</span><span lang="en">[PWA Builder - Publish PWA to App Stores](https://www.pwabuilder.com/)</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../cross-platform/flutter-app/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Flutter & Dart: Satu Kode untuk iOS & Android</span><span lang="en">Flutter & Dart: Satu Kode untuk iOS & Android</span></b></a>
+      <a class="next" href="../../cross-platform/browser-ai-extension/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Ekstensi Asisten Browser AI (Chrome / Edge)</span><span lang="en">Ekstensi Asisten Browser AI (Chrome / Edge)</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

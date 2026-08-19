@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of Web Performance Optimization — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Web Performance Optimization. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/3-browser-and-frontend/web-performance/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Web Performance Optimization</span><span lang="en">Principles of Web Performance Optimization</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of Web Performance Optimization</span><span lang="en">Principles of Web Performance Optimization</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Web Performance Optimization.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Web Performance Optimization.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Why is your webpage loading slowly, with users furiously complaining about lag?</b> It's like asking: why is the restaurant slow to serve, with customers growing impatient? This chapter will take you deep into the core concepts of frontend performance optimization, making your web pages "fly."</span><span lang="en"><b>Why is your webpage loading slowly, with users furiously complaining about lag?</b> It's like asking: why is the restaurant slow to serve, with customers growing impatient? This chapter will take you deep into the core concepts of frontend performance optimization, making your web pages "fly."</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Motivation for the "Performance Optimization"</span><span lang="en">1. Motivation for the "Performance Optimization"</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 From Functional to Excellent: The Evolution of Performance Optimization</span><span lang="en">1.1 From Functional to Excellent: The Evolution of Performance Optimization</span></h3>
+<p class="reveal"><span lang="id">Web pages ten years ago were extremely simple — a single page might be just a few KB, and loading speed was virtually instant. Back then, we didn't need to consider performance optimization at all — because the problem hadn't appeared yet.</span><span lang="en">Web pages ten years ago were extremely simple — a single page might be just a few KB, and loading speed was virtually instant. Back then, we didn't need to consider performance optimization at all — because the problem hadn't appeared yet.</span></p>
+<p class="reveal"><span lang="id">But things are completely different now. Modern web page complexity has grown exponentially: an e-commerce homepage might have dozens of high-resolution images, a social platform might load thousands of posts simultaneously, and an admin dashboard might contain dozens of interactive components. Behind these "rich" features lie massive codebases and resource sizes — without proper optimization, the user experience will be terrible.</span><span lang="en">But things are completely different now. Modern web page complexity has grown exponentially: an e-commerce homepage might have dozens of high-resolution images, a social platform might load thousands of posts simultaneously, and an admin dashboard might contain dozens of interactive components. Behind these "rich" features lie massive codebases and resource sizes — without proper optimization, the user experience will be terrible.</span></p>
+<p class="reveal"><span lang="id"><div style="display: flex; gap: 20px; margin: 20px 0;"></span><span lang="en"><div style="display: flex; gap: 20px; margin: 20px 0;"></span></p>
+<p class="reveal"><span lang="id"><div style="flex: 1; padding: 16px; border: 1px solid #e4e7ed; border-radius: 12px;"></span><span lang="en"><div style="flex: 1; padding: 16px; border: 1px solid #e4e7ed; border-radius: 12px;"></span></p>
+<p class="reveal"><span lang="id"><b>👴 Web Pages Ten Years Ago</b></span><span lang="en"><b>👴 Web Pages Ten Years Ago</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Single page only a few KB to tens of KB</span><span lang="en">Single page only a few KB to tens of KB</span></li>
+<li><span lang="id">Only text and a few images</span><span lang="en">Only text and a few images</span></li>
+<li><span lang="id">Users barely noticed loading delays</span><span lang="en">Users barely noticed loading delays</span></li>
+<li><span lang="id">No performance optimization needed</span><span lang="en">No performance optimization needed</span></li>
+</ul>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"><div style="flex: 1; padding: 16px; border: 1px solid #e4e7ed; border-radius: 12px;"></span><span lang="en"><div style="flex: 1; padding: 16px; border: 1px solid #e4e7ed; border-radius: 12px;"></span></p>
+<p class="reveal"><span lang="id"><b>🚀 Modern Web Pages</b></span><span lang="en"><b>🚀 Modern Web Pages</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Single page could be several MB or larger</span><span lang="en">Single page could be several MB or larger</span></li>
+<li><span lang="id">Has high-res images, videos, interactive components</span><span lang="en">Has high-res images, videos, interactive components</span></li>
+<li><span lang="id">Slow loading, laggy scrolling, unresponsive clicks</span><span lang="en">Slow loading, laggy scrolling, unresponsive clicks</span></li>
+<li><span lang="id">Performance optimization is mandatory</span><span lang="en">Performance optimization is mandatory</span></li>
+</ul>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"><b>This is the problem "performance optimization" aims to solve: make users wait less, make interactions smoother.</b></span><span lang="en"><b>This is the problem "performance optimization" aims to solve: make users wait less, make interactions smoother.</b></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 Case: You Need to Understand Performance Optimization</span><span lang="en">1.2 Case: You Need to Understand Performance Optimization</span></h3>
+<p class="reveal"><span lang="id">You might say: "Networks are so fast and devices are so good now — do we still need to consider performance optimization?" Let me tell you a real story, and you'll understand why this knowledge is so important.</span><span lang="en">You might say: "Networks are so fast and devices are so good now — do we still need to consider performance optimization?" Let me tell you a real story, and you'll understand why this knowledge is so important.</span></p>
+
+<div class="callout warn reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div>
+  <p><span lang="id">Xiao Wang is a newly hired frontend engineer responsible for developing the company's e-commerce homepage. He used the latest Vue 3 and the most popular UI library, with fully featured functionality. Everything worked fine when he tested on his high-performance work computer.
+
+But the day after launch, the customer service department exploded — large numbers of users complained that "the website is too laggy," "images won't load," and "clicking buttons takes forever with no response." Xiao Wang opened his development machine to test, and everything was smooth. He couldn't understand where the problem was.
+
+Later, he asked a senior colleague to help diagnose the issue. The senior told him to use an ordinary laptop connected to a regular 4G network, then test his website. Xiao Wang was shocked: the homepage took over ten seconds to load, scrolling through the list was as choppy as a slideshow, and clicking buttons took several seconds to respond.
+
+It turned out that Xiao Wang's development environment was a top-spec MacBook Pro + gigabit fiber, while most users used ordinary devices + mobile networks. His code contained dozens of uncompressed high-resolution images, he imported the entire UI library but only used a few components, and he did heavy synchronous computations during rendering.
+
+The solution was actually not complicated: compress images, import components on demand, move computations to background threads, and use virtual lists. After these changes, the homepage load time dropped from over ten seconds to 2 seconds, scrolling became very smooth, and user complaints disappeared immediately.
+
+Xiao Wang learned an important lesson from then on: <b>Without understanding performance optimization, code that runs blazingly fast on your own computer might be completely unusable on users' devices.</b></span><span lang="en">Xiao Wang is a newly hired frontend engineer responsible for developing the company's e-commerce homepage. He used the latest Vue 3 and the most popular UI library, with fully featured functionality. Everything worked fine when he tested on his high-performance work computer.
+
+But the day after launch, the customer service department exploded — large numbers of users complained that "the website is too laggy," "images won't load," and "clicking buttons takes forever with no response." Xiao Wang opened his development machine to test, and everything was smooth. He couldn't understand where the problem was.
+
+Later, he asked a senior colleague to help diagnose the issue. The senior told him to use an ordinary laptop connected to a regular 4G network, then test his website. Xiao Wang was shocked: the homepage took over ten seconds to load, scrolling through the list was as choppy as a slideshow, and clicking buttons took several seconds to respond.
+
+It turned out that Xiao Wang's development environment was a top-spec MacBook Pro + gigabit fiber, while most users used ordinary devices + mobile networks. His code contained dozens of uncompressed high-resolution images, he imported the entire UI library but only used a few components, and he did heavy synchronous computations during rendering.
+
+The solution was actually not complicated: compress images, import components on demand, move computations to background threads, and use virtual lists. After these changes, the homepage load time dropped from over ten seconds to 2 seconds, scrolling became very smooth, and user complaints disappeared immediately.
+
+Xiao Wang learned an important lesson from then on: <b>Without understanding performance optimization, code that runs blazingly fast on your own computer might be completely unusable on users' devices.</b></span></p>
+</div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">Performance optimization is not optional — it's an essential skill. You need to think from the user's perspective: they use ordinary devices and ordinary networks. If your code doesn't run well on their devices, it means you need to optimize.</span><span lang="en">Performance optimization is not optional — it's an essential skill. You need to think from the user's perspective: they use ordinary devices and ordinary networks. If your code doesn't run well on their devices, it means you need to optimize.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Core Concepts: Loading, Rendering, Interaction</span><span lang="en">2. Core Concepts: Loading, Rendering, Interaction</span></h2>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Loading, rendering, and interaction are the three core stages of a user visiting a webpage — each stage can become a performance bottleneck.
+
+When a user visits your webpage, they go through:
+1. <b>Loading</b> → Download HTML/CSS/JS/images from the server to the browser
+2. <b>Rendering</b> → Convert the downloaded content into a page the user can see
+3. <b>Interaction</b> → Respond to user clicks, scrolls, and other actions
+
+So, <b>performance optimization is about making all three of these stages faster</b>. Understanding them lets you know where performance bottlenecks are and what methods to use for optimization.</span><span lang="en">Loading, rendering, and interaction are the three core stages of a user visiting a webpage — each stage can become a performance bottleneck.
+
+When a user visits your webpage, they go through:
+1. <b>Loading</b> → Download HTML/CSS/JS/images from the server to the browser
+2. <b>Rendering</b> → Convert the downloaded content into a page the user can see
+3. <b>Interaction</b> → Respond to user clicks, scrolls, and other actions
+
+So, <b>performance optimization is about making all three of these stages faster</b>. Understanding them lets you know where performance bottlenecks are and what methods to use for optimization.</span></p>
+</div>
+<p class="reveal"><span lang="id">Before diving into specific optimization techniques, we need to clarify these core concepts. To help you better understand, we'll use a restaurant analogy to illustrate their relationships.</span><span lang="en">Before diving into specific optimization techniques, we need to clarify these core concepts. To help you better understand, we'll use a restaurant analogy to illustrate their relationships.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Understanding the Three Stages with a Restaurant Analogy</span><span lang="en">2.1 Understanding the Three Stages with a Restaurant Analogy</span></h3>
+<p class="reveal"><span lang="id">Imagine going to a restaurant for a meal — this process is surprisingly similar to visiting a webpage:</span><span lang="en">Imagine going to a restaurant for a meal — this process is surprisingly similar to visiting a webpage:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Stage</th><th>🍽️ Restaurant Analogy</th><th>Actual Function</th><th>Concrete Example</th></tr>
+<tr><td><b>Loading</b></td><td>Transporting ingredients from warehouse to kitchen</td><td>Downloading HTML/CSS/JS/images from server to browser</td><td>User opens webpage, browser starts downloading resources</td></tr>
+<tr><td><b>Rendering</b></td><td>Chef processing ingredients into dishes</td><td>Browser converting code into a visible page</td><td>Browser parsing HTML, calculating layout, painting the page</td></tr>
+<tr><td><b>Interaction</b></td><td>Waiter responding to customer requests</td><td>Browser responding to clicks, scrolls, and other actions</td><td>User clicks a button, page provides feedback</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Loading: Ingredient Transport</span><span lang="en">2.2 Loading: Ingredient Transport</span></h3>
+<p class="reveal"><span lang="id">Loading is the process of downloading all the resources a webpage needs (HTML, CSS, JavaScript, images, fonts, etc.) from the server to the browser. This process is like transporting ingredients from a warehouse to the kitchen — if transport is slow or there are too many ingredients, the kitchen just has to wait.</span><span lang="en">Loading is the process of downloading all the resources a webpage needs (HTML, CSS, JavaScript, images, fonts, etc.) from the server to the browser. This process is like transporting ingredients from a warehouse to the kitchen — if transport is slow or there are too many ingredients, the kitchen just has to wait.</span></p>
+<p class="reveal"><span lang="id"><b>Why is loading slow?</b> There are three main reasons: first, resource size is too large — a single uncompressed high-resolution image might be 5MB, equivalent to downloading a novel; second, network latency — if the server is overseas or the user is on a mobile network, every request takes a long time; finally, too many requests — browsers have a limit on simultaneous downloads, so too many resources have to queue up.</span><span lang="en"><b>Why is loading slow?</b> There are three main reasons: first, resource size is too large — a single uncompressed high-resolution image might be 5MB, equivalent to downloading a novel; second, network latency — if the server is overseas or the user is on a mobile network, every request takes a long time; finally, too many requests — browsers have a limit on simultaneous downloads, so too many resources have to queue up.</span></p>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">After a user types a URL in the browser address bar and presses Enter, the following happens in sequence:
+
+1. <b>DNS Resolution</b>: Convert the domain name (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">www.example.com</code>) to an IP address (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">192.168.1.1</code>), like looking up a restaurant's address in a phone book
+2. <b>TCP Connection</b>: Browser establishes a connection with the server, like dialing before making a phone call
+3. <b>TLS Handshake</b>: Establish a secure connection (HTTPS), like verifying the other party's identity
+4. <b>Request Resources</b>: Browser requests the HTML file from the server
+5. <b>Parse HTML</b>: Browser parses HTML, discovers it needs CSS, JS, images, etc., and continues requesting
+6. <b>Download Resources</b>: Downloads all needed resources locally
+7. <b>Begin Rendering</b>: After download is complete, starts rendering the page
+
+Steps 1-4 are called "Time to First Byte" (TTFB), and steps 5-7 are the actual resource download time.</span><span lang="en">After a user types a URL in the browser address bar and presses Enter, the following happens in sequence:
+
+1. <b>DNS Resolution</b>: Convert the domain name (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">www.example.com</code>) to an IP address (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">192.168.1.1</code>), like looking up a restaurant's address in a phone book
+2. <b>TCP Connection</b>: Browser establishes a connection with the server, like dialing before making a phone call
+3. <b>TLS Handshake</b>: Establish a secure connection (HTTPS), like verifying the other party's identity
+4. <b>Request Resources</b>: Browser requests the HTML file from the server
+5. <b>Parse HTML</b>: Browser parses HTML, discovers it needs CSS, JS, images, etc., and continues requesting
+6. <b>Download Resources</b>: Downloads all needed resources locally
+7. <b>Begin Rendering</b>: After download is complete, starts rendering the page
+
+Steps 1-4 are called "Time to First Byte" (TTFB), and steps 5-7 are the actual resource download time.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Common loading optimization techniques:</b></span><span lang="en"><b>Common loading optimization techniques:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Compress resources</b>: Make files smaller (Gzip, Brotli compression)</span><span lang="en"><b>Compress resources</b>: Make files smaller (Gzip, Brotli compression)</span></li>
+<li><span lang="id"><b>Use CDN</b>: Store files on servers closer to users</span><span lang="en"><b>Use CDN</b>: Store files on servers closer to users</span></li>
+<li><span lang="id"><b>Lazy loading</b>: Only load content users can see; load the rest when users scroll</span><span lang="en"><b>Lazy loading</b>: Only load content users can see; load the rest when users scroll</span></li>
+<li><span lang="id"><b>Code splitting</b>: Split large files into small files, load on demand</span><span lang="en"><b>Code splitting</b>: Split large files into small files, load on demand</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 Rendering: Chef Cooking</span><span lang="en">2.3 Rendering: Chef Cooking</span></h3>
+<p class="reveal"><span lang="id">Rendering is the process of converting downloaded HTML, CSS, and JavaScript into a page the user can see. This process is like a chef processing ingredients into dishes — if the process is complex with many steps, serving will be slow.</span><span lang="en">Rendering is the process of converting downloaded HTML, CSS, and JavaScript into a page the user can see. This process is like a chef processing ingredients into dishes — if the process is complex with many steps, serving will be slow.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">You may have heard the term "rendering" — what exactly is it?
+
+<b>Simply put, rendering is the process of turning code into visuals.</b>
+
+What the browser does includes:
+1. <b>Parse HTML</b> → Generate DOM tree (page structure)
+2. <b>Parse CSS</b> → Generate CSSOM tree (page styles)
+3. <b>Merge</b> → Generate render tree (combination of structure and styles)
+4. <b>Layout</b> → Calculate each element's position and size
+5. <b>Paint</b> → Draw the elements
+6. <b>Composite</b> → Merge multiple layers into the final image
+
+This process is very complex — any problem in any step can cause page lag.</span><span lang="en">You may have heard the term "rendering" — what exactly is it?
+
+<b>Simply put, rendering is the process of turning code into visuals.</b>
+
+What the browser does includes:
+1. <b>Parse HTML</b> → Generate DOM tree (page structure)
+2. <b>Parse CSS</b> → Generate CSSOM tree (page styles)
+3. <b>Merge</b> → Generate render tree (combination of structure and styles)
+4. <b>Layout</b> → Calculate each element's position and size
+5. <b>Paint</b> → Draw the elements
+6. <b>Composite</b> → Merge multiple layers into the final image
+
+This process is very complex — any problem in any step can cause page lag.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Why is rendering slow?</b> There are two main reasons: first, the page is too complex — if a page has tens of thousands of DOM nodes, the browser's layout calculation and painting will be very time-consuming; second, frequent page modifications — if JavaScript code frequently modifies the DOM, it causes the browser to repeatedly recalculate layout and repaint, consuming significant performance.</span><span lang="en"><b>Why is rendering slow?</b> There are two main reasons: first, the page is too complex — if a page has tens of thousands of DOM nodes, the browser's layout calculation and painting will be very time-consuming; second, frequent page modifications — if JavaScript code frequently modifies the DOM, it causes the browser to repeatedly recalculate layout and repaint, consuming significant performance.</span></p>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id"><b>Complete rendering flow</b>:
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+HTML (string)
+    ↓
+[Parse HTML] → Generate DOM tree
+    ↓
+DOM tree (page structure)
+
+CSS (stylesheet)
+    ↓
+[Parse CSS] → Generate CSSOM tree
+    ↓
+CSSOM tree (page styles)
+
+DOM tree + CSSOM tree
+    ↓
+[Merge] → Generate render tree
+    ↓
+Render tree (elements to render)
+    ↓
+[Layout] → Calculate each element's position and size
+    ↓
+[Paint] → Fill colors, draw text
+    ↓
+[Composite] → Merge multiple layers
+    ↓
+Final image
+</code>``
+
+<b>Critical Rendering Path</b>: The browser needs to render the first screen content as quickly as possible, making users feel "the website is fast." This is called "Critical Rendering Path optimization."</span><span lang="en"><b>Complete rendering flow</b>:
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+HTML (string)
+    ↓
+[Parse HTML] → Generate DOM tree
+    ↓
+DOM tree (page structure)
+
+CSS (stylesheet)
+    ↓
+[Parse CSS] → Generate CSSOM tree
+    ↓
+CSSOM tree (page styles)
+
+DOM tree + CSSOM tree
+    ↓
+[Merge] → Generate render tree
+    ↓
+Render tree (elements to render)
+    ↓
+[Layout] → Calculate each element's position and size
+    ↓
+[Paint] → Fill colors, draw text
+    ↓
+[Composite] → Merge multiple layers
+    ↓
+Final image
+</code>``
+
+<b>Critical Rendering Path</b>: The browser needs to render the first screen content as quickly as possible, making users feel "the website is fast." This is called "Critical Rendering Path optimization."</span></p>
+</div>
+<p class="reveal"><span lang="id">👇 <b>Try it out</b>:</span><span lang="en">👇 <b>Try it out</b>:</span></p>
+<p class="reveal"><span lang="id">The demo below shows how the browser renders a page. Click "Next" to observe each stage of rendering:</span><span lang="en">The demo below shows how the browser renders a page. Click "Next" to observe each stage of rendering:</span></p>
+<p class="reveal"><span lang="id"><PerformanceOverviewDemo /></span><span lang="en"><PerformanceOverviewDemo /></span></p>
+<p class="reveal"><span lang="id"><b>Common rendering optimization techniques:</b></span><span lang="en"><b>Common rendering optimization techniques:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Reduce reflows and repaints</b>: Avoid frequent DOM modifications, use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">transform</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">opacity</code> instead of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">top</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">width</code></span><span lang="en"><b>Reduce reflows and repaints</b>: Avoid frequent DOM modifications, use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">transform</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">opacity</code> instead of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">top</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">width</code></span></li>
+<li><span lang="id"><b>Virtual lists</b>: Only render visible area content, significant performance improvement for large datasets</span><span lang="en"><b>Virtual lists</b>: Only render visible area content, significant performance improvement for large datasets</span></li>
+<li><span lang="id"><b>CSS animations</b>: Use CSS animations instead of JavaScript animations for better performance</span><span lang="en"><b>CSS animations</b>: Use CSS animations instead of JavaScript animations for better performance</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.4 Interaction: Waiter Response</span><span lang="en">2.4 Interaction: Waiter Response</span></h3>
+<p class="reveal"><span lang="id">Interaction is the process of the browser responding to user actions (clicks, scrolls, input, etc.). This process is like a waiter responding to customer requests — if the waiter is too busy, customers have to wait.</span><span lang="en">Interaction is the process of the browser responding to user actions (clicks, scrolls, input, etc.). This process is like a waiter responding to customer requests — if the waiter is too busy, customers have to wait.</span></p>
+<p class="reveal"><span lang="id"><b>Why does interaction lag?</b> The main reason is <b>the main thread is blocked</b>. The browser's JavaScript is single-threaded — if code is executing complex calculations, it can't respond to user actions, causing page lag.</span><span lang="en"><b>Why does interaction lag?</b> The main reason is <b>the main thread is blocked</b>. The browser's JavaScript is single-threaded — if code is executing complex calculations, it can't respond to user actions, causing page lag.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">The browser has multiple threads, but only one is responsible for executing JavaScript, rendering pages, and responding to user actions — the <b>main thread</b>.
+
+Think of the main thread as a <b>busy waiter</b> who needs to do many things:
+- Execute JavaScript code (calculate data, call APIs)
+- Render pages (layout, paint)
+- Respond to user actions (click buttons, scroll pages)
+
+The problem is: <b>there's only one of them</b>. If they're executing complex JavaScript calculations (like processing 10,000 data items), and the user clicks a button, they can't respond immediately — they must wait until the calculation is done. This is the root cause of <b>lag</b>.
+
+<b>Solutions</b>:
+- Move complex calculations to Web Workers (background threads)
+- Use time slicing to split large tasks into small ones
+- Avoid synchronous complex operations, use async instead</span><span lang="en">The browser has multiple threads, but only one is responsible for executing JavaScript, rendering pages, and responding to user actions — the <b>main thread</b>.
+
+Think of the main thread as a <b>busy waiter</b> who needs to do many things:
+- Execute JavaScript code (calculate data, call APIs)
+- Render pages (layout, paint)
+- Respond to user actions (click buttons, scroll pages)
+
+The problem is: <b>there's only one of them</b>. If they're executing complex JavaScript calculations (like processing 10,000 data items), and the user clicks a button, they can't respond immediately — they must wait until the calculation is done. This is the root cause of <b>lag</b>.
+
+<b>Solutions</b>:
+- Move complex calculations to Web Workers (background threads)
+- Use time slicing to split large tasks into small ones
+- Avoid synchronous complex operations, use async instead</span></p>
+</div>
+<p class="reveal"><span lang="id">👇 <b>Try it out</b>:</span><span lang="en">👇 <b>Try it out</b>:</span></p>
+<p class="reveal"><span lang="id">The demo below compares synchronous computation and Web Workers. Click "Start Calculation" and observe whether the page lags:</span><span lang="en">The demo below compares synchronous computation and Web Workers. Click "Start Calculation" and observe whether the page lags:</span></p>
+<p class="reveal"><span lang="id"><PerformanceMetricsDemo /></span><span lang="en"><PerformanceMetricsDemo /></span></p>
+<p class="reveal"><span lang="id"><b>Common interaction optimization techniques:</b></span><span lang="en"><b>Common interaction optimization techniques:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Debounce and throttle</b>: Limit event trigger frequency (e.g., scroll events, input events)</span><span lang="en"><b>Debounce and throttle</b>: Limit event trigger frequency (e.g., scroll events, input events)</span></li>
+<li><span lang="id"><b>Web Workers</b>: Move complex calculations to background threads, don't block the main thread</span><span lang="en"><b>Web Workers</b>: Move complex calculations to background threads, don't block the main thread</span></li>
+<li><span lang="id"><b>Time slicing</b>: Split large tasks into small ones, giving the browser a chance to respond to user actions</span><span lang="en"><b>Time slicing</b>: Split large tasks into small ones, giving the browser a chance to respond to user actions</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Practice: A Team's Performance Optimization Evolution</span><span lang="en">3. Practice: A Team's Performance Optimization Evolution</span></h2>
+<p class="reveal"><span lang="id">Having covered so many concepts, let's look at a real-world case: how a startup evolved from "completely ignoring performance" to "systematic performance optimization" step by step. Through this case, you'll more intuitively understand what problems performance optimization solves.</span><span lang="en">Having covered so many concepts, let's look at a real-world case: how a startup evolved from "completely ignoring performance" to "systematic performance optimization" step by step. Through this case, you'll more intuitively understand what problems performance optimization solves.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Evolution Overview</span><span lang="en">3.1 Evolution Overview</span></h3>
+<p class="reveal"><span lang="id">The table below shows the four stages of performance optimization — you can see how optimization techniques, tools, and metrics evolved step by step:</span><span lang="en">The table below shows the four stages of performance optimization — you can see how optimization techniques, tools, and metrics evolved step by step:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Stage</th><th>Optimization Techniques</th><th>Monitoring Tools</th><th>Core Metrics</th><th>Key Change</th></tr>
+<tr><td><b>Stage 1: Primitive Era</b></td><td>None (not considered)</td><td>None (by feel)</td><td>None</td><td>No performance awareness at all, just make it run</td></tr>
+<tr><td><b>Stage 2: Manual Optimization</b></td><td>Compress images, reduce requests</td><td>Browser Network panel</td><td>Page load time</td><td>Started becoming aware, but methods were primitive</td></tr>
+<tr><td><b>Stage 3: Systematic Optimization</b></td><td>Code splitting, lazy loading, virtual lists</td><td>Lighthouse, Performance panel</td><td>FCP, LCP, TBT</td><td>Using professional tools with clear optimization targets</td></tr>
+<tr><td><b>Stage 4: Continuous Optimization</b></td><td>Performance budgets, CI/CD checks</td><td>RUM, Lighthouse CI</td><td>INP, CLS, full-chain monitoring</td><td>Integrating performance into the development process</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Let's interpret each row:
+
+<b>Stage 1 → Stage 2</b>: From "no awareness" to "awareness." This is a critical step — developers start realizing performance is an issue and try to optimize. But optimization methods are fairly primitive, mainly relying on feel and experience.
+
+<b>Stage 2 → Stage 3</b>: From "manual" to "systematic." This is a qualitative leap — starting to use professional tools (Lighthouse, Performance panel) to diagnose performance issues, using scientific methods (code splitting, lazy loading) for optimization, rather than relying on feel.
+
+<b>Stage 3 → Stage 4</b>: From "one-time optimization" to "continuous optimization." When performance optimization becomes part of the development process, you need to establish monitoring systems (RUM, real user monitoring), set performance budgets during development, and prevent regression.
+
+<b>In summary</b>: Performance optimization evolution is not just about "using more techniques" — it's an <b>upgrade in mindset</b> — from reactive to proactive, from feeling-based to data-driven, from one-time optimization to continuous improvement.</span><span lang="en">Let's interpret each row:
+
+<b>Stage 1 → Stage 2</b>: From "no awareness" to "awareness." This is a critical step — developers start realizing performance is an issue and try to optimize. But optimization methods are fairly primitive, mainly relying on feel and experience.
+
+<b>Stage 2 → Stage 3</b>: From "manual" to "systematic." This is a qualitative leap — starting to use professional tools (Lighthouse, Performance panel) to diagnose performance issues, using scientific methods (code splitting, lazy loading) for optimization, rather than relying on feel.
+
+<b>Stage 3 → Stage 4</b>: From "one-time optimization" to "continuous optimization." When performance optimization becomes part of the development process, you need to establish monitoring systems (RUM, real user monitoring), set performance budgets during development, and prevent regression.
+
+<b>In summary</b>: Performance optimization evolution is not just about "using more techniques" — it's an <b>upgrade in mindset</b> — from reactive to proactive, from feeling-based to data-driven, from one-time optimization to continuous improvement.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Stage 1: Primitive Era — Completely Unconsidered</span><span lang="en">3.2 Stage 1: Primitive Era — Completely Unconsidered</span></h3>
+<p class="reveal"><span lang="id">Why call it the "primitive era"? Because at this stage, performance was not considered at all — just make it run. The team had only 3 people building a simple corporate website with a small project that seemed to have no problems.</span><span lang="en">Why call it the "primitive era"? Because at this stage, performance was not considered at all — just make it run. The team had only 3 people building a simple corporate website with a small project that seemed to have no problems.</span></p>
+<p class="reveal"><span lang="id">But as the project grew larger and user count increased, problems started to surface.</span><span lang="en">But as the project grew larger and user count increased, problems started to surface.</span></p>
+<p class="reveal"><span lang="id"><b>Development approach</b>:</span><span lang="en"><b>Development approach</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Optimization techniques</b>: None — developed directly, no performance consideration</span><span lang="en"><b>Optimization techniques</b>: None — developed directly, no performance consideration</span></li>
+<li><span lang="id"><b>Monitoring tools</b>: None — judged speed by feel</span><span lang="en"><b>Monitoring tools</b>: None — judged speed by feel</span></li>
+<li><span lang="id"><b>Core metrics</b>: None</span><span lang="en"><b>Core metrics</b>: None</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Characteristics of this stage</b>:</span><span lang="en"><b>Characteristics of this stage</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ <b>Pros</b>: Fast development, no extra learning cost</span><span lang="en">✅ <b>Pros</b>: Fast development, no extra learning cost</span></li>
+<li><span lang="id">❌ <b>Cons</b>: Poor user experience, unusable on slow networks</span><span lang="en">❌ <b>Cons</b>: Poor user experience, unusable on slow networks</span></li>
+</ul>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id"><b>Specific problems encountered</b>:
+
+1. <b>Images too large</b>: PM uploaded a 5MB homepage banner image — mobile network users waited 1 minute to open the page
+2. <b>No compression</b>: CSS and JS files had zero compression — 3x the size of compressed versions
+3. <b>No caching</b>: Every visit re-downloaded all resources, even returning users had to wait
+4. <b>Synchronous loading</b>: All JS files loaded synchronously in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><head></code>, blocking page rendering
+
+<b>User feedback</b>:
+- "Why won't your website open?"
+- "Images take forever to load, it's just blank"
+- "Clicking buttons does nothing, is the website broken?"
+
+<b>Temporary solution at the time</b>:
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">html
+<!-- Use a loading overlay to "trick" users -->
+<div id="loading">Loading...</div>
+<script>
+  // Only remove overlay after page loads
+  window.onload = function() {
+    document.getElementById('loading').style.display = 'none'
+  }
+</script>
+</code>``
+
+This was pure self-deception — the page was still slow, users just couldn't see it.</span><span lang="en"><b>Specific problems encountered</b>:
+
+1. <b>Images too large</b>: PM uploaded a 5MB homepage banner image — mobile network users waited 1 minute to open the page
+2. <b>No compression</b>: CSS and JS files had zero compression — 3x the size of compressed versions
+3. <b>No caching</b>: Every visit re-downloaded all resources, even returning users had to wait
+4. <b>Synchronous loading</b>: All JS files loaded synchronously in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><head></code>, blocking page rendering
+
+<b>User feedback</b>:
+- "Why won't your website open?"
+- "Images take forever to load, it's just blank"
+- "Clicking buttons does nothing, is the website broken?"
+
+<b>Temporary solution at the time</b>:
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">html
+<!-- Use a loading overlay to "trick" users -->
+<div id="loading">Loading...</div>
+<script>
+  // Only remove overlay after page loads
+  window.onload = function() {
+    document.getElementById('loading').style.display = 'none'
+  }
+</script>
+</code>``
+
+This was pure self-deception — the page was still slow, users just couldn't see it.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Stage 2: Manual Optimization — Becoming Aware</span><span lang="en">3.3 Stage 2: Manual Optimization — Becoming Aware</span></h3>
+<p class="reveal"><span lang="id">Problems from the primitive era accumulated to a point where the team finally decided to start performance optimization. This was an important turning point — from "completely ignoring" to "consciously optimizing."</span><span lang="en">Problems from the primitive era accumulated to a point where the team finally decided to start performance optimization. This was an important turning point — from "completely ignoring" to "consciously optimizing."</span></p>
+<p class="reveal"><span lang="id">But optimization at this stage was fairly primitive, mainly relying on simple techniques like compressing images and merging files.</span><span lang="en">But optimization at this stage was fairly primitive, mainly relying on simple techniques like compressing images and merging files.</span></p>
+<p class="reveal"><span lang="id"><b>Development approach</b>:</span><span lang="en"><b>Development approach</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Optimization techniques</b>: Manually compress images, merge CSS/JS files, reduce HTTP requests</span><span lang="en"><b>Optimization techniques</b>: Manually compress images, merge CSS/JS files, reduce HTTP requests</span></li>
+<li><span lang="id"><b>Monitoring tools</b>: Browser Network panel, simple timing logs</span><span lang="en"><b>Monitoring tools</b>: Browser Network panel, simple timing logs</span></li>
+<li><span lang="id"><b>Core metrics</b>: Page load time (manually timed with a stopwatch)</span><span lang="en"><b>Core metrics</b>: Page load time (manually timed with a stopwatch)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Characteristics of this stage</b>:</span><span lang="en"><b>Characteristics of this stage</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ <b>Pros</b>: Noticeable improvement, users stopped complaining frantically</span><span lang="en">✅ <b>Pros</b>: Noticeable improvement, users stopped complaining frantically</span></li>
+<li><span lang="id">❌ <b>Cons</b>: Unsystematic optimization, easy to regress, lacks quantitative metrics</span><span lang="en">❌ <b>Cons</b>: Unsystematic optimization, easy to regress, lacks quantitative metrics</span></li>
+</ul>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id"><b>Manual optimization techniques</b>:
+
+1. <b>Manually compress images</b>:
+   - Use Photoshop to manually "Save for Web" on each image
+   - Convert PNG to JPEG (lossy compression, but much smaller)
+   - Reduce image dimensions (e.g., shrink a 2000px-wide image to 800px)
+
+2. <b>Manually merge files</b>:
+   ``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">html
+   <!-- Before: 10 JS files = 10 requests -->
+   <script src="utils.js"></script>
+   <script src="api.js"></script>
+   <script src="component-a.js"></script>
+   <script src="component-b.js"></script>
+   ...（6 more）
+
+   <!-- After: 1 merged JS file = 1 request -->
+   <script src="all.js"></script>
+   </code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+3. <b>Move CSS/JS to bottom of page</b>:
+   </code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">html
+   <body>
+     <!-- Page content -->
+     <h1>Welcome</h1>
+
+     <!-- Optimization: put CSS/JS last -->
+     <link rel="stylesheet" href="#">
+     <script src="app.js"></script>
+   </body>
+   </code>``
+
+<b>Improvements achieved</b>:
+- Image size reduced from 5MB to 500KB (90% reduction)
+- HTTP requests reduced from 30 to 5
+- Page load time reduced from 30 seconds to 8 seconds
+
+<b>New pain points</b>:
+1. <b>High manual workload</b>: Every update requires manually compressing images and merging files
+2. <b>Easy to forget</b>: New team members don't know to optimize, upload raw images directly
+3. <b>Lack of quantification</b>: Only know "it got faster," but not exactly how much faster</span><span lang="en"><b>Manual optimization techniques</b>:
+
+1. <b>Manually compress images</b>:
+   - Use Photoshop to manually "Save for Web" on each image
+   - Convert PNG to JPEG (lossy compression, but much smaller)
+   - Reduce image dimensions (e.g., shrink a 2000px-wide image to 800px)
+
+2. <b>Manually merge files</b>:
+   ``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">html
+   <!-- Before: 10 JS files = 10 requests -->
+   <script src="utils.js"></script>
+   <script src="api.js"></script>
+   <script src="component-a.js"></script>
+   <script src="component-b.js"></script>
+   ...（6 more）
+
+   <!-- After: 1 merged JS file = 1 request -->
+   <script src="all.js"></script>
+   </code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+3. <b>Move CSS/JS to bottom of page</b>:
+   </code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">html
+   <body>
+     <!-- Page content -->
+     <h1>Welcome</h1>
+
+     <!-- Optimization: put CSS/JS last -->
+     <link rel="stylesheet" href="#">
+     <script src="app.js"></script>
+   </body>
+   </code>``
+
+<b>Improvements achieved</b>:
+- Image size reduced from 5MB to 500KB (90% reduction)
+- HTTP requests reduced from 30 to 5
+- Page load time reduced from 30 seconds to 8 seconds
+
+<b>New pain points</b>:
+1. <b>High manual workload</b>: Every update requires manually compressing images and merging files
+2. <b>Easy to forget</b>: New team members don't know to optimize, upload raw images directly
+3. <b>Lack of quantification</b>: Only know "it got faster," but not exactly how much faster</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.4 Stage 3: Systematic Optimization — Using Tools and Data</span><span lang="en">3.4 Stage 3: Systematic Optimization — Using Tools and Data</span></h3>
+<p class="reveal"><span lang="id">Stage 2 problems (high manual workload, lack of quantification) troubled the team for a long time. Then the team discovered professional tools like Lighthouse and the Performance panel, entering the systematic optimization era.</span><span lang="en">Stage 2 problems (high manual workload, lack of quantification) troubled the team for a long time. Then the team discovered professional tools like Lighthouse and the Performance panel, entering the systematic optimization era.</span></p>
+<p class="reveal"><span lang="id">The core of this stage is <b>data-driven optimization</b> — first diagnose problems with tools, find performance bottlenecks, then optimize with targeted solutions.</span><span lang="en">The core of this stage is <b>data-driven optimization</b> — first diagnose problems with tools, find performance bottlenecks, then optimize with targeted solutions.</span></p>
+<p class="reveal"><span lang="id"><b>Development approach</b>:</span><span lang="en"><b>Development approach</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Optimization techniques</b>: Code splitting, lazy loading, virtual lists, automatic image compression</span><span lang="en"><b>Optimization techniques</b>: Code splitting, lazy loading, virtual lists, automatic image compression</span></li>
+<li><span lang="id"><b>Monitoring tools</b>: Lighthouse, Chrome Performance panel, WebPageTest</span><span lang="en"><b>Monitoring tools</b>: Lighthouse, Chrome Performance panel, WebPageTest</span></li>
+<li><span lang="id"><b>Core metrics</b>: FCP (First Contentful Paint), LCP (Largest Contentful Paint), TBT (Total Blocking Time)</span><span lang="en"><b>Core metrics</b>: FCP (First Contentful Paint), LCP (Largest Contentful Paint), TBT (Total Blocking Time)</span></li>
+</ul>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id"><b>Using Lighthouse to diagnose problems</b>:
+
+Lighthouse is an automated performance testing tool developed by Google that provides comprehensive performance reports and optimization suggestions.
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">bash
+# Test a webpage with Lighthouse
+lighthouse https://www.example.com --view
+</code>``
+
+Lighthouse provides:
+- <b>Performance score</b> (0-100)
+- <b>Core metrics</b> (FCP, LCP, CLS, TBT, INP)
+- <b>Optimization suggestions</b> (e.g., "Enable text compression," "Remove unused JavaScript")
+
+<b>Key metrics explained</b>:
+
+| Metric | Full Name | Meaning | Ideal Value |
+|------|------|------|--------|
+| <b>FCP</b> | First Contentful Paint | Time to first content paint (when user sees first piece of content) | <1.8s |
+| <b>LCP</b> | Largest Contentful Paint | Time to largest content paint (when main content finishes loading) | <2.5s |
+| <b>TBT</b> | Total Blocking Time | Total time the main thread is blocked | <200ms |
+| <b>CLS</b> | Cumulative Layout Shift | Cumulative layout shift (how much page elements jump around) | <0.1 |</span><span lang="en"><b>Using Lighthouse to diagnose problems</b>:
+
+Lighthouse is an automated performance testing tool developed by Google that provides comprehensive performance reports and optimization suggestions.
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">bash
+# Test a webpage with Lighthouse
+lighthouse https://www.example.com --view
+</code>``
+
+Lighthouse provides:
+- <b>Performance score</b> (0-100)
+- <b>Core metrics</b> (FCP, LCP, CLS, TBT, INP)
+- <b>Optimization suggestions</b> (e.g., "Enable text compression," "Remove unused JavaScript")
+
+<b>Key metrics explained</b>:
+
+| Metric | Full Name | Meaning | Ideal Value |
+|------|------|------|--------|
+| <b>FCP</b> | First Contentful Paint | Time to first content paint (when user sees first piece of content) | <1.8s |
+| <b>LCP</b> | Largest Contentful Paint | Time to largest content paint (when main content finishes loading) | <2.5s |
+| <b>TBT</b> | Total Blocking Time | Total time the main thread is blocked | <200ms |
+| <b>CLS</b> | Cumulative Layout Shift | Cumulative layout shift (how much page elements jump around) | <0.1 |</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Characteristics of this stage</b>:</span><span lang="en"><b>Characteristics of this stage</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ <b>Pros</b>: Targeted optimization, good results, quantitative metrics</span><span lang="en">✅ <b>Pros</b>: Targeted optimization, good results, quantitative metrics</span></li>
+<li><span lang="id">❌ <b>Cons</b>: Requires learning tools and metrics, has some learning curve</span><span lang="en">❌ <b>Cons</b>: Requires learning tools and metrics, has some learning curve</span></li>
+</ul>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id"><b>1. Code Splitting</b>:
+
+Split large files into small ones and load on demand. For example, when users visit the homepage, only load the code needed for the homepage. When they click "About Us," then load the About page code.
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">js
+// Before: all code in one file, loaded at once
+import About from './views/About.vue'
+import Contact from './views/Contact.vue'
+// ... 10 more pages
+
+// After: lazy loading, load when visited
+const About = () => import('./views/About.vue')
+const Contact = () => import('./views/Contact.vue')
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Effect</b>: Homepage code volume reduced by 70%, first screen time dropped from 5 seconds to 1.5 seconds.
+
+<b>2. Image Lazy Loading</b>:
+
+Only load images the user can see; load other images when scrolled into the viewport.
+
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">html
+<!-- Modern browsers support native lazy loading -->
+<img src="placeholder.jpg" data-src="real-image.jpg" loading="lazy" />
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Effect</b>: Homepage image count loaded dropped from 20 to 3, saving 80% bandwidth.
+
+<b>3. Virtual Scrolling</b>:
+
+When rendering 10,000 data items, don't actually create 10,000 DOM nodes — only render the 20 items in the visible area, dynamically replacing them on scroll.
+
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">vue
+<!-- Using vue-virtual-scroller component -->
+<RecycleScroller
+  :items="items"
+  :item-size="50"
+  key-field="id"
+>
+  <template #default="{ item }">
+    <div>{{ item.name }}</div>
+  </template>
+</RecycleScroller>
+</code>``
+
+<b>Effect</b>: 10,000 items went from "frozen" to "smooth scrolling," memory usage reduced by 95%.</span><span lang="en"><b>1. Code Splitting</b>:
+
+Split large files into small ones and load on demand. For example, when users visit the homepage, only load the code needed for the homepage. When they click "About Us," then load the About page code.
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">js
+// Before: all code in one file, loaded at once
+import About from './views/About.vue'
+import Contact from './views/Contact.vue'
+// ... 10 more pages
+
+// After: lazy loading, load when visited
+const About = () => import('./views/About.vue')
+const Contact = () => import('./views/Contact.vue')
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Effect</b>: Homepage code volume reduced by 70%, first screen time dropped from 5 seconds to 1.5 seconds.
+
+<b>2. Image Lazy Loading</b>:
+
+Only load images the user can see; load other images when scrolled into the viewport.
+
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">html
+<!-- Modern browsers support native lazy loading -->
+<img src="placeholder.jpg" data-src="real-image.jpg" loading="lazy" />
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Effect</b>: Homepage image count loaded dropped from 20 to 3, saving 80% bandwidth.
+
+<b>3. Virtual Scrolling</b>:
+
+When rendering 10,000 data items, don't actually create 10,000 DOM nodes — only render the 20 items in the visible area, dynamically replacing them on scroll.
+
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">vue
+<!-- Using vue-virtual-scroller component -->
+<RecycleScroller
+  :items="items"
+  :item-size="50"
+  key-field="id"
+>
+  <template #default="{ item }">
+    <div>{{ item.name }}</div>
+  </template>
+</RecycleScroller>
+</code>``
+
+<b>Effect</b>: 10,000 items went from "frozen" to "smooth scrolling," memory usage reduced by 95%.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.5 Stage 4: Continuous Optimization — Integrating Performance into the Development Process</span><span lang="en">3.5 Stage 4: Continuous Optimization — Integrating Performance into the Development Process</span></h3>
+<p class="reveal"><span lang="id">When tools and methods matured, the team started focusing on deeper issues: how to prevent performance regression? How to make performance part of the development process?</span><span lang="en">When tools and methods matured, the team started focusing on deeper issues: how to prevent performance regression? How to make performance part of the development process?</span></p>
+<p class="reveal"><span lang="id">The core of this stage is <b>establishing performance monitoring and budget systems</b> — not optimizing after launch, but preventing performance issues during development.</span><span lang="en">The core of this stage is <b>establishing performance monitoring and budget systems</b> — not optimizing after launch, but preventing performance issues during development.</span></p>
+<p class="reveal"><span lang="id"><b>Development approach</b>:</span><span lang="en"><b>Development approach</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Optimization techniques</b>: Performance budgets, Lighthouse CI, Real User Monitoring (RUM)</span><span lang="en"><b>Optimization techniques</b>: Performance budgets, Lighthouse CI, Real User Monitoring (RUM)</span></li>
+<li><span lang="id"><b>Monitoring tools</b>: Lighthouse CI, WebPageTest API, Google Analytics</span><span lang="en"><b>Monitoring tools</b>: Lighthouse CI, WebPageTest API, Google Analytics</span></li>
+<li><span lang="id"><b>Core metrics</b>: INP (Interaction latency), CLS (Layout shift), full-chain monitoring</span><span lang="en"><b>Core metrics</b>: INP (Interaction latency), CLS (Layout shift), full-chain monitoring</span></li>
+</ul>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id"><b>1. Set performance budgets</b>:
+
+Set limits in build configuration — throw errors when exceeded, preventing "accidentally introducing large files."
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">js
+// vite.config.js
+export default defineConfig({
+  build: {
+    rollupOptions: {
+      output: {
+        // Limit individual files to 200KB
+        chunkFileNames: 'js/[name]-[hash].js',
+      }
+    },
+    // Warn when exceeding 200KB
+    chunkSizeWarningLimit: 200
+  }
+})
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>2. Lighthouse CI</b>:
+
+Automatically run Lighthouse tests on every code submission — if performance scores drop, block the merge.
+
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">yaml
+# .github/workflows/lighthouse.yml
+name: Lighthouse CI
+on: [pull_request]
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v9
+        with:
+          urls: |
+            https://staging.example.com
+          budgetPath: ./budget.json
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>3. Real User Monitoring (RUM)</b>:
+
+Collect performance data from real users' browsers, not just from development environment testing.
+
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">js
+// Send performance data to server
+const perfData = performance.getEntriesByType('navigation')[0]
+const lcp = performance.getEntriesByType('largest-contentful-paint')[0]
+
+fetch('/api/perf', {
+  method: 'POST',
+  body: JSON.stringify({
+    fcp: perfData.loadEventEnd - perfData.fetchStart,
+    lcp: lcp.renderTime || lcp.loadTime,
+    url: window.location.href
+  })
+})
+</code>``
+
+<b>Effects</b>:
+- Can detect performance regression promptly (e.g., a commit causing LCP to jump from 2s to 5s)
+- Can understand real user experience (not the "ideal state" of development environment)
+- Can target optimization for the slowest 10% of users</span><span lang="en"><b>1. Set performance budgets</b>:
+
+Set limits in build configuration — throw errors when exceeded, preventing "accidentally introducing large files."
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">js
+// vite.config.js
+export default defineConfig({
+  build: {
+    rollupOptions: {
+      output: {
+        // Limit individual files to 200KB
+        chunkFileNames: 'js/[name]-[hash].js',
+      }
+    },
+    // Warn when exceeding 200KB
+    chunkSizeWarningLimit: 200
+  }
+})
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>2. Lighthouse CI</b>:
+
+Automatically run Lighthouse tests on every code submission — if performance scores drop, block the merge.
+
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">yaml
+# .github/workflows/lighthouse.yml
+name: Lighthouse CI
+on: [pull_request]
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v9
+        with:
+          urls: |
+            https://staging.example.com
+          budgetPath: ./budget.json
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>3. Real User Monitoring (RUM)</b>:
+
+Collect performance data from real users' browsers, not just from development environment testing.
+
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">js
+// Send performance data to server
+const perfData = performance.getEntriesByType('navigation')[0]
+const lcp = performance.getEntriesByType('largest-contentful-paint')[0]
+
+fetch('/api/perf', {
+  method: 'POST',
+  body: JSON.stringify({
+    fcp: perfData.loadEventEnd - perfData.fetchStart,
+    lcp: lcp.renderTime || lcp.loadTime,
+    url: window.location.href
+  })
+})
+</code>``
+
+<b>Effects</b>:
+- Can detect performance regression promptly (e.g., a commit causing LCP to jump from 2s to 5s)
+- Can understand real user experience (not the "ideal state" of development environment)
+- Can target optimization for the slowest 10% of users</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What does this stage involve?</b></span><span lang="en"><b>What does this stage involve?</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Performance budgets</b>: Limit file sizes, request counts, alert when exceeded</span><span lang="en"><b>Performance budgets</b>: Limit file sizes, request counts, alert when exceeded</span></li>
+<li><span lang="id"><b>CI/CD checks</b>: Automatically test performance on every code submission, block merge on regression</span><span lang="en"><b>CI/CD checks</b>: Automatically test performance on every code submission, block merge on regression</span></li>
+<li><span lang="id"><b>Real user monitoring</b>: Collect real users' performance data for continuous improvement</span><span lang="en"><b>Real user monitoring</b>: Collect real users' performance data for continuous improvement</span></li>
+<li><span lang="id"><b>Regular performance reports</b>: Generate weekly/monthly performance trend reports</span><span lang="en"><b>Regular performance reports</b>: Generate weekly/monthly performance trend reports</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Common Performance Bottlenecks and Solutions</span><span lang="en">4. Common Performance Bottlenecks and Solutions</span></h2>
+<p class="reveal"><span lang="id">Having covered so much theory, let's look at the most common performance issues in actual development and how to solve them.</span><span lang="en">Having covered so much theory, let's look at the most common performance issues in actual development and how to solve them.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Slow Image Loading</span><span lang="en">4.1 Slow Image Loading</span></h3>
+<p class="reveal"><span lang="id"><b>Symptoms</b>: Images take forever to load, or the page jumps during loading.</span><span lang="en"><b>Symptoms</b>: Images take forever to load, or the page jumps during loading.</span></p>
+<p class="reveal"><span lang="id"><b>Causes</b>:</span><span lang="en"><b>Causes</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Image files are too large (high-resolution originals)</span><span lang="en">Image files are too large (high-resolution originals)</span></li>
+<li><span lang="id">Image dimensions are too large (2000px-wide image displayed at 200px)</span><span lang="en">Image dimensions are too large (2000px-wide image displayed at 200px)</span></li>
+<li><span lang="id">No lazy loading (loading all images at once)</span><span lang="en">No lazy loading (loading all images at once)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Solutions</b>:</span><span lang="en"><b>Solutions</b>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Use modern image formats</b> (WebP, AVIF):</span><span lang="en"><b>Use modern image formats</b> (WebP, AVIF):</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>html</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;!-- Modern: WebP format, 30-70% smaller --&gt;
+&lt;picture&gt;
+  &lt;source srcset=&quot;image.webp&quot; type=&quot;image/webp&quot;&gt;
+  &lt;img src=&quot;image.jpg&quot; alt=&quot;Image&quot;&gt;
+&lt;/picture&gt;</pre>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Responsive images</b> (load different sizes based on device):</span><span lang="en"><b>Responsive images</b> (load different sizes based on device):</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>html</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;!-- Small devices load small images, large devices load large images --&gt;
+&lt;img
+  src=&quot;image-800.jpg&quot;
+  srcset=&quot;image-400.jpg 400w,
+          image-800.jpg 800w,
+          image-1200.jpg 1200w&quot;
+  sizes=&quot;(max-width: 600px) 400px,
+         (max-width: 1200px) 800px,
+         1200px&quot;
+  alt=&quot;Responsive image&quot;&gt;</pre>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Lazy loading</b> (load when user scrolls to):</span><span lang="en"><b>Lazy loading</b> (load when user scrolls to):</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>html</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;!-- Modern: native lazy loading --&gt;
+&lt;img src=&quot;placeholder.jpg&quot; data-src=&quot;real-image.jpg&quot; loading=&quot;lazy&quot; /&gt;</pre>
+</div>
+<p class="reveal"><span lang="id">👇 <b>Try it out</b>:</span><span lang="en">👇 <b>Try it out</b>:</span></p>
+<p class="reveal"><span lang="id">The demo below compares lazy loading vs. no lazy loading. Observe the network requests:</span><span lang="en">The demo below compares lazy loading vs. no lazy loading. Observe the network requests:</span></p>
+<p class="reveal"><span lang="id"><ImageOptimizationDemo /></span><span lang="en"><ImageOptimizationDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Slow First Screen Loading</span><span lang="en">4.2 Slow First Screen Loading</span></h3>
+<p class="reveal"><span lang="id"><b>Symptoms</b>: User opens webpage, blank screen for a long time.</span><span lang="en"><b>Symptoms</b>: User opens webpage, blank screen for a long time.</span></p>
+<p class="reveal"><span lang="id"><b>Causes</b>:</span><span lang="en"><b>Causes</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Loading too much unnecessary code</span><span lang="en">Loading too much unnecessary code</span></li>
+<li><span lang="id">Critical rendering path is blocked</span><span lang="en">Critical rendering path is blocked</span></li>
+<li><span lang="id">No code splitting</span><span lang="en">No code splitting</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Solutions</b>:</span><span lang="en"><b>Solutions</b>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Code Splitting</b>:</span><span lang="en"><b>Code Splitting</b>:</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>js</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Route lazy loading: load when visited
+const routes = [
+  {
+    path: &#039;/about&#039;,
+    component: () =&gt; import(&#039;./views/About.vue&#039;)  // Only load when visiting /about
+  }
+]</pre>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Preload critical resources</b> (Preload):</span><span lang="en"><b>Preload critical resources</b> (Preload):</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>html</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;!-- Tell the browser early: these resources are important, prioritize them --&gt;
+&lt;link rel=&quot;preload&quot; href=&quot;critical.css&quot; as=&quot;style&quot;&gt;
+&lt;link rel=&quot;preload&quot; href=&quot;hero-image.jpg&quot; as=&quot;image&quot;&gt;</pre>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Inline critical CSS</b>:</span><span lang="en"><b>Inline critical CSS</b>:</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>html</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;!-- Embed first-screen CSS directly in HTML --&gt;
+&lt;style&gt;
+  /* First-screen critical styles */
+  .hero { background: #000; color: #fff; }
+&lt;/style&gt;</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 Scroll Lag</span><span lang="en">4.3 Scroll Lag</span></h3>
+<p class="reveal"><span lang="id"><b>Symptoms</b>: Page stutters during scrolling, not smooth.</span><span lang="en"><b>Symptoms</b>: Page stutters during scrolling, not smooth.</span></p>
+<p class="reveal"><span lang="id"><b>Causes</b>:</span><span lang="en"><b>Causes</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Too many DOM nodes rendered (e.g., 10,000 data items)</span><span lang="en">Too many DOM nodes rendered (e.g., 10,000 data items)</span></li>
+<li><span lang="id">Complex calculations in scroll event listeners</span><span lang="en">Complex calculations in scroll event listeners</span></li>
+<li><span lang="id">Frequently triggering layout calculations</span><span lang="en">Frequently triggering layout calculations</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Solutions</b>:</span><span lang="en"><b>Solutions</b>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Virtual Scrolling</b>:</span><span lang="en"><b>Virtual Scrolling</b>:</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>vue</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;!-- Only render visible area content --&gt;
+&lt;RecycleScroller
+  :items=&quot;10000&quot;
+  :item-size=&quot;50&quot;
+&gt;
+  &lt;template #default=&quot;{ item }&quot;&gt;
+    &lt;div&gt;{{ item.name }}&lt;/div&gt;
+  &lt;/template&gt;
+&lt;/RecycleScroller&gt;</pre>
+</div>
+<p class="reveal"><span lang="id">👇 <b>Try it out</b>:</span><span lang="en">👇 <b>Try it out</b>:</span></p>
+<p class="reveal"><span lang="id">The demo below compares regular lists vs. virtual lists:</span><span lang="en">The demo below compares regular lists vs. virtual lists:</span></p>
+<p class="reveal"><span lang="id"><VirtualScrollingDemo /></span><span lang="en"><VirtualScrollingDemo /></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Throttle scroll events</b> (Throttle):</span><span lang="en"><b>Throttle scroll events</b> (Throttle):</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>js</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Limit scroll event trigger frequency (at most once per 100ms)
+const throttledScroll = throttle(() =&gt; {
+  updatePosition()
+}, 100)
+
+window.addEventListener(&#039;scroll&#039;, throttledScroll)</pre>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Use CSS <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">will-change</code></b>:</span><span lang="en"><b>Use CSS <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">will-change</code></b>:</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>css</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>/* Tell the browser early: this element will change, prepare accordingly */
+.scroll-container {
+  will-change: transform;
+}</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.4 Slow Click Response</span><span lang="en">4.4 Slow Click Response</span></h3>
+<p class="reveal"><span lang="id"><b>Symptoms</b>: After clicking a button, takes several seconds to respond.</span><span lang="en"><b>Symptoms</b>: After clicking a button, takes several seconds to respond.</span></p>
+<p class="reveal"><span lang="id"><b>Causes</b>:</span><span lang="en"><b>Causes</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Complex calculations in click event handlers (blocking the main thread)</span><span lang="en">Complex calculations in click event handlers (blocking the main thread)</span></li>
+<li><span lang="id">No debounce (user clicks rapidly multiple times, triggering multiple calculations)</span><span lang="en">No debounce (user clicks rapidly multiple times, triggering multiple calculations)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Solutions</b>:</span><span lang="en"><b>Solutions</b>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Debounce click events</b> (Debounce):</span><span lang="en"><b>Debounce click events</b> (Debounce):</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>js</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Only execute 300ms after user stops clicking
+const debouncedClick = debounce(() =&gt; {
+  submitForm()
+}, 300)
+
+button.addEventListener(&#039;click&#039;, debouncedClick)</pre>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Use Web Workers</b> (move calculations to background threads):</span><span lang="en"><b>Use Web Workers</b> (move calculations to background threads):</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>js</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Main thread
+const worker = new Worker(&#039;calculator.js&#039;)
+button.addEventListener(&#039;click&#039;, () =&gt; {
+  worker.postMessage({ data: largeData })
+})
+
+worker.onmessage = (e) =&gt; {
+  // Calculation complete, show result
+  showResult(e.data.result)
+}
+
+// calculator.js (Worker thread)
+self.onmessage = (e) =&gt; {
+  const result = heavyCalculation(e.data.data)
+  self.postMessage({ result })
+}</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Performance Monitoring Tools</span><span lang="en">5. Performance Monitoring Tools</span></h2>
+<p class="reveal"><span lang="id">Performance optimization is not a one-time task — it requires continuous monitoring. Here are commonly used tools.</span><span lang="en">Performance optimization is not a one-time task — it requires continuous monitoring. Here are commonly used tools.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Browser Developer Tools</span><span lang="en">5.1 Browser Developer Tools</span></h3>
+<p class="reveal"><span lang="id"><b>Chrome DevTools</b> is the most commonly used performance analysis tool:</span><span lang="en"><b>Chrome DevTools</b> is the most commonly used performance analysis tool:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Network panel</b>: View resource loading status</span><span lang="en"><b>Network panel</b>: View resource loading status</span></li>
+<li><span lang="id"><b>Performance panel</b>: Analyze runtime performance (FPS, main thread activity)</span><span lang="en"><b>Performance panel</b>: Analyze runtime performance (FPS, main thread activity)</span></li>
+<li><span lang="id"><b>Lighthouse</b>: One-click performance report generation</span><span lang="en"><b>Lighthouse</b>: One-click performance report generation</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">1. Open Chrome DevTools (F12)
+2. Switch to the Performance panel
+3. Click the "Record" button
+4. Interact with the webpage (scroll, click, etc.)
+5. Click "Stop" to stop recording
+6. Analyze results: look at FPS (frame rate), main thread activity, long tasks, etc.</span><span lang="en">1. Open Chrome DevTools (F12)
+2. Switch to the Performance panel
+3. Click the "Record" button
+4. Interact with the webpage (scroll, click, etc.)
+5. Click "Stop" to stop recording
+6. Analyze results: look at FPS (frame rate), main thread activity, long tasks, etc.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Lighthouse</span><span lang="en">5.2 Lighthouse</span></h3>
+<p class="reveal"><span lang="id"><b>Lighthouse</b> is an automated performance testing tool developed by Google:</span><span lang="en"><b>Lighthouse</b> is an automated performance testing tool developed by Google:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Command line usage
+lighthouse https://www.example.com --view
+
+# Or use in Chrome DevTools
+# Open DevTools → Lighthouse → Click &quot;Analyze page load&quot;</pre>
+</div>
+<p class="reveal"><span lang="id">Lighthouse provides:</span><span lang="en">Lighthouse provides:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Performance score (0-100)</span><span lang="en">Performance score (0-100)</span></li>
+<li><span lang="id">Core metrics (FCP, LCP, CLS, TBT, INP)</span><span lang="en">Core metrics (FCP, LCP, CLS, TBT, INP)</span></li>
+<li><span lang="id">Optimization suggestions (sorted by impact)</span><span lang="en">Optimization suggestions (sorted by impact)</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 WebPageTest</span><span lang="en">5.3 WebPageTest</span></h3>
+<p class="reveal"><span lang="id"><b>WebPageTest</b> is an online performance testing tool that can test from multiple locations and devices:</span><span lang="en"><b>WebPageTest</b> is an online performance testing tool that can test from multiple locations and devices:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Visit https://www.webpagetest.org
+# Enter URL, select test location and device, click &quot;Start Test&quot;</pre>
+</div>
+<p class="reveal"><span lang="id">WebPageTest provides:</span><span lang="en">WebPageTest provides:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Waterfall chart: Timeline of each resource loading</span><span lang="en">Waterfall chart: Timeline of each resource loading</span></li>
+<li><span lang="id">Video comparison: Loading process videos before and after optimization</span><span lang="en">Video comparison: Loading process videos before and after optimization</span></li>
+<li><span lang="id">Optimization suggestions</span><span lang="en">Optimization suggestions</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Performance Optimization Checklist</span><span lang="en">6. Performance Optimization Checklist</span></h2>
+<p class="reveal"><span lang="id">Below is a practical performance optimization checklist. You can optimize your webpage in this order:</span><span lang="en">Below is a practical performance optimization checklist. You can optimize your webpage in this order:</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Loading Optimization</span><span lang="en">6.1 Loading Optimization</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ <b>Compress images</b>: Use WebP format, compression quality 80-85%</span><span lang="en">✅ <b>Compress images</b>: Use WebP format, compression quality 80-85%</span></li>
+<li><span lang="id">✅ <b>Responsive images</b>: Load different image sizes based on device</span><span lang="en">✅ <b>Responsive images</b>: Load different image sizes based on device</span></li>
+<li><span lang="id">✅ <b>Lazy loading</b>: Lazy load images and components, only load visible content</span><span lang="en">✅ <b>Lazy loading</b>: Lazy load images and components, only load visible content</span></li>
+<li><span lang="id">✅ <b>Code splitting</b>: Split code by route, load on demand</span><span lang="en">✅ <b>Code splitting</b>: Split code by route, load on demand</span></li>
+<li><span lang="id">✅ <b>Compress code</b>: Enable Gzip/Brotli compression</span><span lang="en">✅ <b>Compress code</b>: Enable Gzip/Brotli compression</span></li>
+<li><span lang="id">✅ <b>Use CDN</b>: Put static resources on CDN for faster downloads</span><span lang="en">✅ <b>Use CDN</b>: Put static resources on CDN for faster downloads</span></li>
+<li><span lang="id">✅ <b>Preload critical resources</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><link rel="preload"></code></span><span lang="en">✅ <b>Preload critical resources</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><link rel="preload"></code></span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 Rendering Optimization</span><span lang="en">6.2 Rendering Optimization</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ <b>Reduce reflows and repaints</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">transform</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">opacity</code> instead of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">top</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">width</code></span><span lang="en">✅ <b>Reduce reflows and repaints</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">transform</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">opacity</code> instead of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">top</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">width</code></span></li>
+<li><span lang="id">✅ <b>Virtual lists</b>: Use virtual scrolling for large datasets</span><span lang="en">✅ <b>Virtual lists</b>: Use virtual scrolling for large datasets</span></li>
+<li><span lang="id">✅ <b>CSS animations</b>: Prefer CSS animations over JavaScript animations</span><span lang="en">✅ <b>CSS animations</b>: Prefer CSS animations over JavaScript animations</span></li>
+<li><span lang="id">✅ <b>Optimize critical rendering path</b>: Inline critical CSS, defer non-critical CSS</span><span lang="en">✅ <b>Optimize critical rendering path</b>: Inline critical CSS, defer non-critical CSS</span></li>
+<li><span lang="id">✅ <b>Avoid @import</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">@import</code> blocks rendering, use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><link></code> instead</span><span lang="en">✅ <b>Avoid @import</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">@import</code> blocks rendering, use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><link></code> instead</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.3 Interaction Optimization</span><span lang="en">6.3 Interaction Optimization</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ <b>Debounce and throttle</b>: Use debounce/throttle for scroll, input, resize events</span><span lang="en">✅ <b>Debounce and throttle</b>: Use debounce/throttle for scroll, input, resize events</span></li>
+<li><span lang="id">✅ <b>Web Workers</b>: Move complex calculations to background threads</span><span lang="en">✅ <b>Web Workers</b>: Move complex calculations to background threads</span></li>
+<li><span lang="id">✅ <b>Time slicing</b>: Split large tasks into small ones, avoid long tasks</span><span lang="en">✅ <b>Time slicing</b>: Split large tasks into small ones, avoid long tasks</span></li>
+<li><span lang="id">✅ <b>Avoid synchronous layout</b>: Don't read layout properties (like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">offsetHeight</code>) in loops</span><span lang="en">✅ <b>Avoid synchronous layout</b>: Don't read layout properties (like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">offsetHeight</code>) in loops</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.4 Caching Optimization</span><span lang="en">6.4 Caching Optimization</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ <b>HTTP caching</b>: Configure Cache-Control and ETag</span><span lang="en">✅ <b>HTTP caching</b>: Configure Cache-Control and ETag</span></li>
+<li><span lang="id">✅ <b>Service Worker</b>: Cache static resources, enable offline access</span><span lang="en">✅ <b>Service Worker</b>: Cache static resources, enable offline access</span></li>
+<li><span lang="id">✅ <b>LocalStorage</b>: Cache API data, reduce requests</span><span lang="en">✅ <b>LocalStorage</b>: Cache API data, reduce requests</span></li>
+<li><span lang="id">✅ <b>Memory caching</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Map</code>/<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Object</code> to cache calculation results</span><span lang="en">✅ <b>Memory caching</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Map</code>/<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Object</code> to cache calculation results</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.5 Monitoring Optimization</span><span lang="en">6.5 Monitoring Optimization</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ <b>Lighthouse CI</b>: Automatically test performance on every code submission</span><span lang="en">✅ <b>Lighthouse CI</b>: Automatically test performance on every code submission</span></li>
+<li><span lang="id">✅ <b>Real user monitoring</b>: Collect real users' performance data</span><span lang="en">✅ <b>Real user monitoring</b>: Collect real users' performance data</span></li>
+<li><span lang="id">✅ <b>Performance budgets</b>: Set file size limits, alert when exceeded</span><span lang="en">✅ <b>Performance budgets</b>: Set file size limits, alert when exceeded</span></li>
+<li><span lang="id">✅ <b>Regular performance reports</b>: Generate weekly/monthly performance trend reports</span><span lang="en">✅ <b>Regular performance reports</b>: Generate weekly/monthly performance trend reports</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Summary</span><span lang="en">7. Summary</span></h2>
+<p class="reveal"><span lang="id">Let's review the core concepts of frontend performance optimization with a table:</span><span lang="en">Let's review the core concepts of frontend performance optimization with a table:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Concept</th><th>One-sentence Explanation</th><th>Problem Solved</th><th>Common Techniques</th></tr>
+<tr><td><b>Loading optimization</b></td><td>Make resource downloads faster</td><td>Slow first screen, long wait times</td><td>Compress images, CDN, code splitting, lazy loading</td></tr>
+<tr><td><b>Rendering optimization</b></td><td>Make page "painting" faster</td><td>Laggy scrolling, slow clicks</td><td>Virtual lists, reduce reflows/repaints, CSS animations</td></tr>
+<tr><td><b>Interaction optimization</b></td><td>Make responses faster</td><td>No click response, laggy operations</td><td>Debounce/throttle, Web Workers, time slicing</td></tr>
+<tr><td><b>Caching optimization</b></td><td>Avoid redundant downloads</td><td>Slow repeat visits</td><td>HTTP caching, Service Worker, LocalStorage</td></tr>
+<tr><td><b>Monitoring optimization</b></td><td>Continuously discover issues</td><td>Performance regression</td><td>Lighthouse, RUM, performance budgets</td></tr>
+</table></div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">Performance optimization is a continuously evolving topic. Tools will change, but the core philosophy remains: <b>think from the user's perspective — make wait times shorter and interactions smoother.</b>
+
+With these fundamental principles understood, no matter how technology evolves, you'll be able to quickly adapt and respond with confidence.
+
+I hope this article helps you build a comprehensive understanding of frontend performance optimization. When you encounter performance issues in real projects, you'll know where to start, how to diagnose, and how to solve them.</span><span lang="en">Performance optimization is a continuously evolving topic. Tools will change, but the core philosophy remains: <b>think from the user's perspective — make wait times shorter and interactions smoother.</b>
+
+With these fundamental principles understood, no matter how technology evolves, you'll be able to quickly adapt and respond with confidence.
+
+I hope this article helps you build a comprehensive understanding of frontend performance optimization. When you encounter performance issues in real projects, you'll know where to start, how to diagnose, and how to solve them.</span></p>
+</div>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../3-browser-and-frontend/typescript/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">3-browser-and-frontend/typescript</span><span lang="en">3-browser-and-frontend/typescript</span></b></a>
+      <a class="next" href="../../4-server-and-backend/api-design/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">4-server-and-backend/api-design</span><span lang="en">4-server-and-backend/api-design</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

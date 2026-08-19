@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>An Introduction to Open-Source Collaboration — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: An Introduction to Open-Source Collaboration. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/9-engineering-excellence/open-source-collaboration/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">An Introduction to Open-Source Collaboration</span><span lang="en">An Introduction to Open-Source Collaboration</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">An Introduction to Open-Source Collaboration</span><span lang="en">An Introduction to Open-Source Collaboration</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: An Introduction to Open-Source Collaboration.</span><span lang="en">Ensiklopedia VibeKoding: An Introduction to Open-Source Collaboration.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Want to contribute to open source but don't know where to start?</b> Open source is more than "using other people's code for free" — it's a way of collaborating and a career accelerator. One high-quality open source contribution can be more convincing than ten personal projects on your resume.
+
+This chapter walks you through the complete open source collaboration process, from finding projects to submitting PRs, and helps you take your first step in open source contribution.</span><span lang="en"><b>Want to contribute to open source but don't know where to start?</b> Open source is more than "using other people's code for free" — it's a way of collaborating and a career accelerator. One high-quality open source contribution can be more convincing than ten personal projects on your resume.
+
+This chapter walks you through the complete open source collaboration process, from finding projects to submitting PRs, and helps you take your first step in open source contribution.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn in this article?</b></span><span lang="en"><b>What will you learn in this article?</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Core Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>Open source contribution process</td><td>The complete chain from Fork to PR</td></tr>
+<tr><td><b>Chapter 2</b></td><td>Open source licenses</td><td>Differences between licenses</td></tr>
+<tr><td><b>Chapter 3</b></td><td>Collaboration etiquette</td><td>How to be a welcomed contributor</td></tr>
+<tr><td><b>Chapter 4</b></td><td>Contributing from scratch</td><td>Finding beginner-friendly projects</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">After reading this chapter, you will master the complete process and etiquette of open source collaboration, and have the confidence to submit contributions to any open source project.</span><span lang="en">After reading this chapter, you will master the complete process and etiquette of open source collaboration, and have the confidence to submit contributions to any open source project.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. The Big Picture: The Value of Open Source</span><span lang="en">0. The Big Picture: The Value of Open Source</span></h2>
+<p class="reveal"><span lang="id">Open source is more than code sharing — it's a <b>global collaboration model</b>. Linux, React, Vue, Node.js — these world-changing projects are all open source.</span><span lang="en">Open source is more than code sharing — it's a <b>global collaboration model</b>. Linux, React, Vue, Node.js — these world-changing projects are all open source.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Technical Growth</b>: Read excellent code, receive expert reviews
+- <b>Career Development</b>: Open source contributions are the best technical calling card
+- <b>Community Belonging</b>: Become a member of the global developer community
+- <b>Giving Back</b>: The tools you use every day need people to maintain them</span><span lang="en">- <b>Technical Growth</b>: Read excellent code, receive expert reviews
+- <b>Career Development</b>: Open source contributions are the best technical calling card
+- <b>Community Belonging</b>: Become a member of the global developer community
+- <b>Giving Back</b>: The tools you use every day need people to maintain them</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Open Source Contribution Process</span><span lang="en">1. Open Source Contribution Process</span></h2>
+<p class="reveal"><span lang="id">Use the interactive component below to step through the complete process from Fork to Merge:</span><span lang="en">Use the interactive component below to step through the complete process from Fork to Merge:</span></p>
+<p class="reveal"><span lang="id"><OpenSourceWorkflowDemo /></span><span lang="en"><OpenSourceWorkflowDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 Process Overview</span><span lang="en">1.1 Process Overview</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Fork → Clone → Branch → Commit → Push → PR → Review → Merge</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 Key Steps in Detail</span><span lang="en">1.2 Key Steps in Detail</span></h3>
+<p class="reveal"><span lang="id"><b>Create a feature branch</b>: Never develop directly on main.</span><span lang="en"><b>Create a feature branch</b>: Never develop directly on main.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>git checkout -b fix/typo-in-readme</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Write clear commit messages</b>: Follow the project's commit conventions.</span><span lang="en"><b>Write clear commit messages</b>: Follow the project's commit conventions.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>git commit -m &quot;fix: correct typo in README install command&quot;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Create a Pull Request</b>: The PR description should include:</span><span lang="en"><b>Create a Pull Request</b>: The PR description should include:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">What changed and why</span><span lang="en">What changed and why</span></li>
+<li><span lang="id">Related issue number (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Fixes #123</code>)</span><span lang="en">Related issue number (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Fixes #123</code>)</span></li>
+<li><span lang="id">How to test your changes</span><span lang="en">How to test your changes</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Open Source Licenses</span><span lang="en">2. Open Source Licenses</span></h2>
+<p class="reveal"><span lang="id">Use the interactive component below to compare common open source licenses:</span><span lang="en">Use the interactive component below to compare common open source licenses:</span></p>
+<p class="reveal"><span lang="id"><LicenseComparisonDemo /></span><span lang="en"><LicenseComparisonDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Common Licenses</span><span lang="en">2.1 Common Licenses</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>License</th><th>Characteristics</th><th>Notable Projects</th></tr>
+<tr><td><b>MIT</b></td><td>Most permissive, almost no restrictions</td><td>React, Vue, jQuery</td></tr>
+<tr><td><b>Apache 2.0</b></td><td>Must retain copyright notice, includes patent grant</td><td>Android, Kubernetes</td></tr>
+<tr><td><b>GPL</b></td><td>Derivative works must also be open source</td><td>Linux, WordPress</td></tr>
+<tr><td><b>BSD</b></td><td>Similar to MIT, with slight differences</td><td>FreeBSD, Flask</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Approach to choosing</span><span lang="en">2.2 Approach to choosing</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Want more people to use it</b>: Choose MIT</span><span lang="en"><b>Want more people to use it</b>: Choose MIT</span></li>
+<li><span lang="id"><b>Want to protect patents</b>: Choose Apache 2.0</span><span lang="en"><b>Want to protect patents</b>: Choose Apache 2.0</span></li>
+<li><span lang="id"><b>Want to ensure derivatives stay open source</b>: Choose GPL</span><span lang="en"><b>Want to ensure derivatives stay open source</b>: Choose GPL</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Collaboration Etiquette</span><span lang="en">3. Collaboration Etiquette</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Etiquette for Filing Issues</span><span lang="en">3.1 Etiquette for Filing Issues</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>markdown</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;!-- Bad --&gt;
+Title: It doesn&#039;t work
+Content: Your stuff has bugs
+
+&lt;!-- Good --&gt;
+Title: v2.1.0 login page shows white screen on Safari 17
+Content:
+- Environment: macOS 14.2, Safari 17.2
+- Steps to reproduce: 1. Open login page 2. Enter credentials 3. Click login
+- Expected behavior: Redirect to home page
+- Actual behavior: White screen, console error TypeError: xxx
+- Screenshot: [attached]</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Etiquette for Submitting PRs</span><span lang="en">3.2 Etiquette for Submitting PRs</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Read <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CONTRIBUTING.md</code> first to understand the project's contribution guidelines</span><span lang="en">Read <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CONTRIBUTING.md</code> first to understand the project's contribution guidelines</span></li>
+<li><span lang="id">One PR should do one thing only — don't mix multiple changes</span><span lang="en">One PR should do one thing only — don't mix multiple changes</span></li>
+<li><span lang="id">Keep PRs small and focused for easier review</span><span lang="en">Keep PRs small and focused for easier review</span></li>
+<li><span lang="id">Be patient waiting for review and respond to feedback politely</span><span lang="en">Be patient waiting for review and respond to feedback politely</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Reviewing Others' Code</span><span lang="en">3.3 Reviewing Others' Code</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Acknowledge what's done well first, then suggest improvements</span><span lang="en">Acknowledge what's done well first, then suggest improvements</span></li>
+<li><span lang="id">Ask rather than command: "Have you considered using approach X here?"</span><span lang="en">Ask rather than command: "Have you considered using approach X here?"</span></li>
+<li><span lang="id">Give reasons and alternatives, not just "not good"</span><span lang="en">Give reasons and alternatives, not just "not good"</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Contributing from Scratch</span><span lang="en">4. Contributing from Scratch</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Beginner-Friendly Contribution Types</span><span lang="en">4.1 Beginner-Friendly Contribution Types</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Type</th><th>Difficulty</th><th>Description</th></tr>
+<tr><td>Fix documentation errors</td><td>Low</td><td>Typos, outdated links, unclear instructions</td></tr>
+<tr><td>Translation</td><td>Low</td><td>Translate documentation into other languages</td></tr>
+<tr><td>Add tests</td><td>Medium</td><td>Write tests for uncovered code</td></tr>
+<tr><td>Fix bugs tagged <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">good first issue</code></td><td>Medium</td><td>Beginner-friendly issues marked by project maintainers</td></tr>
+<tr><td>New features</td><td>High</td><td>Discuss the approach in an Issue first, get approval before starting</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Finding the Right Project</span><span lang="en">4.2 Finding the Right Project</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Start with tools you use daily</span><span lang="en">Start with tools you use daily</span></li>
+<li><span lang="id">Search for <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">good first issue</code> labels on GitHub</span><span lang="en">Search for <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">good first issue</code> labels on GitHub</span></li>
+<li><span lang="id">Check project activity (are there recent maintainers?)</span><span lang="en">Check project activity (are there recent maintainers?)</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. AI-Powered: Using LLMs to Accelerate Open Source Contributions</span><span lang="en">5. AI-Powered: Using LLMs to Accelerate Open Source Contributions</span></h2>
+<p class="reveal"><span lang="id">LLMs can help you quickly understand unfamiliar codebases, write high-quality PR descriptions, and even assist with code reviews.</span><span lang="en">LLMs can help you quickly understand unfamiliar codebases, write high-quality PR descriptions, and even assist with code reviews.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Quickly Understanding Unfamiliar Codebases</span><span lang="en">5.1 Quickly Understanding Unfamiliar Codebases</span></h3>
+<p class="reveal"><span lang="id">> <b>Prompt</b>:</span><span lang="en">> <b>Prompt</b>:</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<p class="reveal"><span lang="id">> I just cloned an open source project. Please analyze the following</span><span lang="en">> I just cloned an open source project. Please analyze the following</span></p>
+<p class="reveal"><span lang="id">> directory structure, explain the responsibility of each directory/file,</span><span lang="en">> directory structure, explain the responsibility of each directory/file,</span></p>
+<p class="reveal"><span lang="id">> and describe the overall architecture and data flow.</span><span lang="en">> and describe the overall architecture and data flow.</span></p>
+<p class="reveal"><span lang="id">> I want to fix a login-related bug — where should I start looking?</span><span lang="en">> I want to fix a login-related bug — where should I start looking?</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> [Paste tree command output or directory structure]</span><span lang="en">> [Paste tree command output or directory structure]</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Writing PR Descriptions</span><span lang="en">5.2 Writing PR Descriptions</span></h3>
+<p class="reveal"><span lang="id">> <b>Prompt</b>:</span><span lang="en">> <b>Prompt</b>:</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<p class="reveal"><span lang="id">> Based on the following git diff, write a Pull Request description including:</span><span lang="en">> Based on the following git diff, write a Pull Request description including:</span></p>
+<p class="reveal"><span lang="id">> - Title (concise, stating what changed)</span><span lang="en">> - Title (concise, stating what changed)</span></p>
+<p class="reveal"><span lang="id">> - Change description (why and what changed)</span><span lang="en">> - Change description (why and what changed)</span></p>
+<p class="reveal"><span lang="id">> - Testing method (how to verify the change is correct)</span><span lang="en">> - Testing method (how to verify the change is correct)</span></p>
+<p class="reveal"><span lang="id">> - Related issue (if any)</span><span lang="en">> - Related issue (if any)</span></p>
+<p class="reveal"><span lang="id">> Write in English with a professional and friendly tone.</span><span lang="en">> Write in English with a professional and friendly tone.</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> [Paste git diff output]</span><span lang="en">> [Paste git diff output]</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 Assisting with Document Translation</span><span lang="en">5.3 Assisting with Document Translation</span></h3>
+<p class="reveal"><span lang="id">> <b>Prompt</b>:</span><span lang="en">> <b>Prompt</b>:</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<p class="reveal"><span lang="id">> Translate the following Chinese technical document into English, with these requirements:</span><span lang="en">> Translate the following Chinese technical document into English, with these requirements:</span></p>
+<p class="reveal"><span lang="id">> 1. Use industry-standard English expressions for technical terms</span><span lang="en">> 1. Use industry-standard English expressions for technical terms</span></p>
+<p class="reveal"><span lang="id">> 2. Do not translate code comments and variable names</span><span lang="en">> 2. Do not translate code comments and variable names</span></p>
+<p class="reveal"><span lang="id">> 3. Keep Markdown formatting unchanged</span><span lang="en">> 3. Keep Markdown formatting unchanged</span></p>
+<p class="reveal"><span lang="id">> 4. Natural and fluent tone, not machine-translated</span><span lang="en">> 4. Natural and fluent tone, not machine-translated</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> [Paste Chinese document]</span><span lang="en">> [Paste Chinese document]</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">When using AI to write PR descriptions, make sure you understand every line of change. Reviewers may ask why you made a certain change — if you can't answer, it means you haven't truly understood it yet.</span><span lang="en">When using AI to write PR descriptions, make sure you understand every line of change. Reviewers may ask why you made a certain change — if you can't answer, it means you haven't truly understood it yet.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Summary</span><span lang="en">6. Summary</span></h2>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Process</b>: Fork → Branch → Commit → PR → Review → Merge</span><span lang="en"><b>Process</b>: Fork → Branch → Commit → PR → Review → Merge</span></li>
+<li><span lang="id"><b>Licenses</b>: MIT is most permissive, GPL is most strict — choose based on your needs</span><span lang="en"><b>Licenses</b>: MIT is most permissive, GPL is most strict — choose based on your needs</span></li>
+<li><span lang="id"><b>Etiquette</b>: Clear issues, focused PRs, polite communication</span><span lang="en"><b>Etiquette</b>: Clear issues, focused PRs, polite communication</span></li>
+<li><span lang="id"><b>Getting Started</b>: Start with documentation fixes and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">good first issue</code> labels</span><span lang="en"><b>Getting Started</b>: Start with documentation fixes and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">good first issue</code> labels</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">The essence of open source is <b>collaboration</b>. Technical skills are important, but communication skills and collaboration awareness are equally crucial. A friendly, well-described PR is more welcome than a perfectly coded but rudely communicated one. <b>Your first PR doesn't need to be perfect — it just needs to be your first step.</b></span><span lang="en">The essence of open source is <b>collaboration</b>. Technical skills are important, but communication skills and collaboration awareness are equally crucial. A friendly, well-described PR is more welcome than a perfectly coded but rudely communicated one. <b>Your first PR doesn't need to be perfect — it just needs to be your first step.</b></span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Getting Started Guide</b>: GitHub's Open Source Guide is the best resource for open source beginners.</span><span lang="en"><b>Getting Started Guide</b>: GitHub's Open Source Guide is the best resource for open source beginners.</span></li>
+<li><span lang="id"><b>Practical Advice</b>: Find a project you like, star it first, then read the code, and eventually find an opportunity to contribute.</span><span lang="en"><b>Practical Advice</b>: Find a project you like, star it first, then read the code, and eventually find an opportunity to contribute.</span></li>
+<li><span lang="id"><b>Community Participation</b>: Join open source events like Hacktoberfest for community support.</span><span lang="en"><b>Community Participation</b>: Join open source events like Hacktoberfest for community support.</span></li>
+<li><span lang="id"><b>Maintainer's Perspective</b>: Understand the workload and pressure of maintainers — be a considerate contributor.</span><span lang="en"><b>Maintainer's Perspective</b>: Understand the workload and pressure of maintainers — be a considerate contributor.</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../9-engineering-excellence/design-patterns/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">9-engineering-excellence/design-patterns</span><span lang="en">9-engineering-excellence/design-patterns</span></b></a>
+      <a class="next" href="../../9-engineering-excellence/security-thinking/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">9-engineering-excellence/security-thinking</span><span lang="en">9-engineering-excellence/security-thinking</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

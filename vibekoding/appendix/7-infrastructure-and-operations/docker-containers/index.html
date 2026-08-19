@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>An Introduction to Docker Containerization — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: An Introduction to Docker Containerization. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/7-infrastructure-and-operations/docker-containers/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">An Introduction to Docker Containerization</span><span lang="en">An Introduction to Docker Containerization</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">An Introduction to Docker Containerization</span><span lang="en">An Introduction to Docker Containerization</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: An Introduction to Docker Containerization.</span><span lang="en">Ensiklopedia VibeKoding: An Introduction to Docker Containerization.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>"It works on my machine" is the most classic developer excuse, and Docker makes that excuse disappear completely.</b> Containerization technology packages an application and all its dependencies into a standardized unit, ensuring consistent execution across any environment. It is the cornerstone of modern software delivery.</span><span lang="en"><b>"It works on my machine" is the most classic developer excuse, and Docker makes that excuse disappear completely.</b> Containerization technology packages an application and all its dependencies into a standardized unit, ensuring consistent execution across any environment. It is the cornerstone of modern software delivery.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn from this article?</b></span><span lang="en"><b>What will you learn from this article?</b></span></p>
+<p class="reveal"><span lang="id">After completing this chapter, you will gain:</span><span lang="en">After completing this chapter, you will gain:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Core concepts</b>: Understand the three core concepts of images, containers, and registries</span><span lang="en"><b>Core concepts</b>: Understand the three core concepts of images, containers, and registries</span></li>
+<li><span lang="id"><b>Architecture comparison</b>: Understand the fundamental difference between containers and virtual machines</span><span lang="en"><b>Architecture comparison</b>: Understand the fundamental difference between containers and virtual machines</span></li>
+<li><span lang="id"><b>Hands-on skills</b>: Master Dockerfile writing and common commands</span><span lang="en"><b>Hands-on skills</b>: Master Dockerfile writing and common commands</span></li>
+<li><span lang="id"><b>Orchestration basics</b>: Learn to manage multi-service applications with Docker Compose</span><span lang="en"><b>Orchestration basics</b>: Learn to manage multi-service applications with Docker Compose</span></li>
+<li><span lang="id"><b>Best practices</b>: Learn about image optimization, security hardening, and other production-grade practices</span><span lang="en"><b>Best practices</b>: Learn about image optimization, security hardening, and other production-grade practices</span></li>
+</ul>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Core Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>Why Containers Are Needed</td><td>Environment consistency, resource efficiency, standardized delivery</td></tr>
+<tr><td><b>Chapter 2</b></td><td>Core Concepts</td><td>Image, Container, Registry, Dockerfile</td></tr>
+<tr><td><b>Chapter 3</b></td><td>Docker Lifecycle</td><td>Write, Build, Push, Run, Manage</td></tr>
+<tr><td><b>Chapter 4</b></td><td>Docker Compose</td><td>Multi-service orchestration, networks, volumes</td></tr>
+<tr><td><b>Chapter 5</b></td><td>Best Practices</td><td>Image optimization, security, multi-stage builds</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Motivation for Containersing</span><span lang="en">1. Motivation for Containersing</span></h2>
+<p class="reveal"><span lang="id">Before containers, deploying an application required manually installing runtimes, configuring environment variables, and handling dependency conflicts on servers. Differences between environments (development, testing, production) were breeding grounds for bugs.</span><span lang="en">Before containers, deploying an application required manually installing runtimes, configuring environment variables, and handling dependency conflicts on servers. Differences between environments (development, testing, production) were breeding grounds for bugs.</span></p>
+<p class="reveal"><span lang="id"><DockerArchitectureDemo /></span><span lang="en"><DockerArchitectureDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">What Problems Do Containers Solve</span><span lang="en">What Problems Do Containers Solve</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Problem</th><th>Traditional Approach</th><th>Container Approach</th></tr>
+<tr><td>Inconsistent environments</td><td>"It works on my machine"</td><td>Package all dependencies, consistent everywhere</td></tr>
+<tr><td>Dependency conflicts</td><td>App A needs Node 14, App B needs Node 18</td><td>Each container has an independent environment</td></tr>
+<tr><td>Resource waste</td><td>Each VM has a full OS</td><td>Share kernel, MB-level overhead</td></tr>
+<tr><td>Slow deployment</td><td>Manual install and configure</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">docker run</code> — one command</td></tr>
+<tr><td>Difficult scaling</td><td>Create new VM, install environment, deploy</td><td>Start new containers in seconds</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Containers are not lightweight virtual machines. Their essence is <b>isolated processes</b>. The Linux kernel implements containers through two mechanisms:
+- <b>Namespaces</b>: Isolate a process's view (PID, network, filesystem, etc.)
+- <b>Cgroups</b>: Limit a process's resource usage (CPU, memory, IO)
+
+Processes inside a container are fundamentally no different from ordinary processes on the host machine — they're just "locked in a room where they can't see the outside."</span><span lang="en">Containers are not lightweight virtual machines. Their essence is <b>isolated processes</b>. The Linux kernel implements containers through two mechanisms:
+- <b>Namespaces</b>: Isolate a process's view (PID, network, filesystem, etc.)
+- <b>Cgroups</b>: Limit a process's resource usage (CPU, memory, IO)
+
+Processes inside a container are fundamentally no different from ordinary processes on the host machine — they're just "locked in a room where they can't see the outside."</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Core Concepts</span><span lang="en">2. Core Concepts</span></h2>
+<p class="reveal"><span lang="id">The Docker world revolves around three core concepts: Image, Container, and Registry.</span><span lang="en">The Docker world revolves around three core concepts: Image, Container, and Registry.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Concept</th><th>Analogy</th><th>Description</th></tr>
+<tr><td>Image</td><td>Class / Template</td><td>Read-only application template containing code, runtime, libraries, and configuration</td></tr>
+<tr><td>Container</td><td>Instance / Object</td><td>Running instance of an image, read-write, with independent lifecycle</td></tr>
+<tr><td>Registry</td><td>App Store</td><td>Service for storing and distributing images (Docker Hub, ACR, ECR)</td></tr>
+<tr><td>Dockerfile</td><td>Recipe / Blueprint</td><td>Text file defining how to build an image</td></tr>
+<tr><td>Volume</td><td>External Hard Drive</td><td>Persistent data; data survives container deletion</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Image Layer Structure</span><span lang="en">Image Layer Structure</span></h3>
+<p class="reveal"><span lang="id">Docker images are composed of multiple read-only layers stacked together. Each Dockerfile instruction creates one layer:</span><span lang="en">Docker images are composed of multiple read-only layers stacked together. Each Dockerfile instruction creates one layer:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>┌─────────────────────────┐
+│  CMD [&quot;node&quot;, &quot;app.js&quot;] │  ← Startup command layer
+├─────────────────────────┤
+│  COPY . /app            │  ← Application code layer (changes frequently)
+├─────────────────────────┤
+│  RUN npm install        │  ← Dependency installation layer (changes occasionally)
+├─────────────────────────┤
+│  FROM node:18-alpine    │  ← Base image layer (rarely changes)
+└─────────────────────────┘</pre>
+</div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Docker caches each layer. If a layer hasn't changed, the cache is reused during builds. Therefore, in Dockerfiles, you should place <b>instructions that change infrequently at the top</b> (like installing dependencies) and <b>instructions that change frequently at the bottom</b> (like copying code). This way, most builds hit the cache and are much faster.</span><span lang="en">Docker caches each layer. If a layer hasn't changed, the cache is reused during builds. Therefore, in Dockerfiles, you should place <b>instructions that change infrequently at the top</b> (like installing dependencies) and <b>instructions that change frequently at the bottom</b> (like copying code). This way, most builds hit the cache and are much faster.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Docker Lifecycle</span><span lang="en">3. Docker Lifecycle</span></h2>
+<p class="reveal"><span lang="id">From writing a Dockerfile to running a container, Docker's workflow is a clear pipeline.</span><span lang="en">From writing a Dockerfile to running a container, Docker's workflow is a clear pipeline.</span></p>
+<p class="reveal"><span lang="id"><DockerLifecycleDemo /></span><span lang="en"><DockerLifecycleDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Dockerfile Common Instructions Reference</span><span lang="en">Dockerfile Common Instructions Reference</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Instruction</th><th>Purpose</th><th>Example</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">FROM</code></td><td>Specify base image</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">FROM node:18-alpine</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">WORKDIR</code></td><td>Set working directory</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">WORKDIR /app</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">COPY</code></td><td>Copy files into image</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">COPY package.json ./</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">RUN</code></td><td>Execute commands during build</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">RUN npm install</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ENV</code></td><td>Set environment variables</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ENV NODE_ENV=production</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">EXPOSE</code></td><td>Declare port (documentation only)</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">EXPOSE 3000</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CMD</code></td><td>Container startup command</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CMD ["node", "app.js"]</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ENTRYPOINT</code></td><td>Container entry point (harder to override)</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ENTRYPOINT ["nginx"]</code></td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Docker Compose: Multi-Service Orchestration</span><span lang="en">4. Docker Compose: Multi-Service Orchestration</span></h2>
+<p class="reveal"><span lang="id">Real projects typically involve more than one container. A web application might need: application server + database + Redis + Nginx. Docker Compose uses a single YAML file to define and manage multiple containers.</span><span lang="en">Real projects typically involve more than one container. A web application might need: application server + database + Redis + Nginx. Docker Compose uses a single YAML file to define and manage multiple containers.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">docker-compose.yml Example</span><span lang="en">docker-compose.yml Example</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>yaml</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>version: &#039;3.8&#039;
+services:
+  app:
+    build: .
+    ports:
+      - &quot;3000:3000&quot;
+    environment:
+      - DB_HOST=db
+      - REDIS_HOST=redis
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres:15-alpine
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=secret
+
+  redis:
+    image: redis:7-alpine
+
+volumes:
+  db-data:</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Compose Core Concepts</span><span lang="en">Compose Core Concepts</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Concept</th><th>Description</th><th>Example</th></tr>
+<tr><td>services</td><td>Define individual container services</td><td>app, db, redis</td></tr>
+<tr><td>volumes</td><td>Persistent data volumes</td><td>db-data stores database files</td></tr>
+<tr><td>networks</td><td>Custom networks (auto-created by default)</td><td>Services access each other by service name</td></tr>
+<tr><td>depends_on</td><td>Startup order dependencies</td><td>app depends on db and redis</td></tr>
+<tr><td>environment</td><td>Environment variables</td><td>Database password, connection address</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">In Docker Compose, the service name is the hostname. The app container can directly access the database using <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">db:5432</code> and Redis using <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">redis:6379</code> without knowing IP addresses. This is thanks to Docker's built-in DNS.</span><span lang="en">In Docker Compose, the service name is the hostname. The app container can directly access the database using <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">db:5432</code> and Redis using <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">redis:6379</code> without knowing IP addresses. This is thanks to Docker's built-in DNS.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Best Practices</span><span lang="en">5. Best Practices</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Multi-stage Build</span><span lang="en">5.1 Multi-stage Build</span></h3>
+<p class="reveal"><span lang="id">Multi-stage builds are a powerful tool for optimizing image size. The build stage installs all tools and dependencies, while the final stage only retains the files needed at runtime.</span><span lang="en">Multi-stage builds are a powerful tool for optimizing image size. The build stage installs all tools and dependencies, while the final stage only retains the files needed at runtime.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>dockerfile</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Build stage
+FROM node:18-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+# Runtime stage
+FROM node:18-alpine
+WORKDIR /app
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+EXPOSE 3000
+CMD [&quot;node&quot;, &quot;dist/server.js&quot;]</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Image Optimization Checklist</span><span lang="en">5.2 Image Optimization Checklist</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Optimization</th><th>Approach</th><th>Effect</th></tr>
+<tr><td>Choose small base images</td><td>Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">alpine</code> instead of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ubuntu</code></td><td>Image from ~200MB down to ~50MB</td></tr>
+<tr><td>Merge RUN instructions</td><td>Connect multiple commands with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">&&</code></td><td>Reduce image layers</td></tr>
+<tr><td>Use .dockerignore</td><td>Exclude node_modules, .git, etc.</td><td>Speed up builds, reduce context</td></tr>
+<tr><td>Multi-stage builds</td><td>Separate build and runtime environments</td><td>Final image doesn't contain build tools</td></tr>
+<tr><td>Pin version numbers</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">node:18.17-alpine</code> instead of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">node:latest</code></td><td>Reproducible builds</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 Security Practices</span><span lang="en">5.3 Security Practices</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Practice</th><th>Description</th></tr>
+<tr><td>Don't run as root</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">USER node</code> to specify a non-root user</td></tr>
+<tr><td>Scan for vulnerabilities</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">docker scout</code> or Trivy to scan images</td></tr>
+<tr><td>Least privilege</td><td>Only install necessary packages, no debug tools</td></tr>
+<tr><td>Don't hardcode secrets</td><td>Use environment variables or Docker Secrets</td></tr>
+<tr><td>Regularly update base images</td><td>Fix security vulnerabilities promptly</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary</span><span lang="en">Summary</span></h2>
+<p class="reveal"><span lang="id">Docker containerization is the infrastructure of modern software delivery, and understanding it is crucial for any developer.</span><span lang="en">Docker containerization is the infrastructure of modern software delivery, and understanding it is crucial for any developer.</span></p>
+<p class="reveal"><span lang="id">Key takeaways from this chapter:</span><span lang="en">Key takeaways from this chapter:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Containers vs VMs</b>: Containers share the host kernel, are lighter and faster, but slightly weaker isolation than VMs</span><span lang="en"><b>Containers vs VMs</b>: Containers share the host kernel, are lighter and faster, but slightly weaker isolation than VMs</span></li>
+<li><span lang="id"><b>Core trio</b>: Image (template), Container (instance), Registry (distribution)</span><span lang="en"><b>Core trio</b>: Image (template), Container (instance), Registry (distribution)</span></li>
+<li><span lang="id"><b>Dockerfile</b>: Layered builds, leverage caching, place rarely-changing instructions first</span><span lang="en"><b>Dockerfile</b>: Layered builds, leverage caching, place rarely-changing instructions first</span></li>
+<li><span lang="id"><b>Docker Compose</b>: Define multi-service applications with YAML, service names are hostnames</span><span lang="en"><b>Docker Compose</b>: Define multi-service applications with YAML, service names are hostnames</span></li>
+<li><span lang="id"><b>Production practices</b>: Multi-stage builds reduce image size, alpine base images, run as non-root</span><span lang="en"><b>Production practices</b>: Multi-stage builds reduce image size, alpine base images, run as non-root</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[Docker Official Documentation](https://docs.docker.com/) - The most authoritative reference</span><span lang="en">[Docker Official Documentation](https://docs.docker.com/) - The most authoritative reference</span></li>
+<li><span lang="id">[Docker Getting Started](https://docs.docker.com/get-started/) - Official beginner's tutorial</span><span lang="en">[Docker Getting Started](https://docs.docker.com/get-started/) - Official beginner's tutorial</span></li>
+<li><span lang="id">[Dockerfile Best Practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) - Official best practices guide</span><span lang="en">[Dockerfile Best Practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) - Official best practices guide</span></li>
+<li><span lang="id">[Docker Compose Documentation](https://docs.docker.com/compose/) - Complete Compose reference</span><span lang="en">[Docker Compose Documentation](https://docs.docker.com/compose/) - Complete Compose reference</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../7-infrastructure-and-operations/dns-https/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">7-infrastructure-and-operations/dns-https</span><span lang="en">7-infrastructure-and-operations/dns-https</span></b></a>
+      <a class="next" href="../../7-infrastructure-and-operations/gateway-proxy/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">7-infrastructure-and-operations/gateway-proxy</span><span lang="en">7-infrastructure-and-operations/gateway-proxy</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

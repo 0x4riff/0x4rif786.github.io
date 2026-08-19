@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of Data Visualization — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Data Visualization. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/5-data/data-visualization/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Data Visualization</span><span lang="en">Principles of Data Visualization</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of Data Visualization</span><span lang="en">Principles of Data Visualization</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Data Visualization.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Data Visualization.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>A good chart is worth a thousand rows of data.</b> Data visualization transforms abstract numbers into intuitive visual representations, allowing people to understand the story behind the data in seconds. From Excel charts to Grafana monitoring dashboards, visualization is everywhere.</span><span lang="en"><b>A good chart is worth a thousand rows of data.</b> Data visualization transforms abstract numbers into intuitive visual representations, allowing people to understand the story behind the data in seconds. From Excel charts to Grafana monitoring dashboards, visualization is everywhere.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn in this article?</b></span><span lang="en"><b>What will you learn in this article?</b></span></p>
+<p class="reveal"><span lang="id">After completing this chapter, you will gain:</span><span lang="en">After completing this chapter, you will gain:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Chart Selection</b>: Choose the most appropriate chart type based on your data purpose</span><span lang="en"><b>Chart Selection</b>: Choose the most appropriate chart type based on your data purpose</span></li>
+<li><span lang="id"><b>Visualization Principles</b>: Master the core design principles of data visualization</span><span lang="en"><b>Visualization Principles</b>: Master the core design principles of data visualization</span></li>
+<li><span lang="id"><b>Dashboard Design</b>: Understand layout patterns for different types of dashboards</span><span lang="en"><b>Dashboard Design</b>: Understand layout patterns for different types of dashboards</span></li>
+<li><span lang="id"><b>Tool Ecosystem</b>: Familiarize yourself with the positioning and selection of mainstream visualization tools</span><span lang="en"><b>Tool Ecosystem</b>: Familiarize yourself with the positioning and selection of mainstream visualization tools</span></li>
+<li><span lang="id"><b>Common Pitfalls</b>: Avoid misleading charts and common visualization mistakes</span><span lang="en"><b>Common Pitfalls</b>: Avoid misleading charts and common visualization mistakes</span></li>
+</ul>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Key Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>Chart Type Selection</td><td>Comparison, trends, proportions, distributions, relationships</td></tr>
+<tr><td><b>Chapter 2</b></td><td>Visualization Design Principles</td><td>Data-ink ratio, consistency, readability</td></tr>
+<tr><td><b>Chapter 3</b></td><td>Dashboard Layout</td><td>Overview, comparison, drill-down, real-time</td></tr>
+<tr><td><b>Chapter 4</b></td><td>Tool Selection</td><td>ECharts, D3, Grafana, Metabase</td></tr>
+<tr><td><b>Chapter 5</b></td><td>Common Pitfalls</td><td>Truncated axes, 3D pie charts, color misuse</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. The Big Picture: Why Visualization Matters</span><span lang="en">0. The Big Picture: Why Visualization Matters</span></h2>
+<p class="reveal"><span lang="id">The human brain processes visual information much faster than text. A line chart lets you quickly see that "sales dropped last month," while the same information presented in a table might require row-by-row comparison to reach the same conclusion.</span><span lang="en">The human brain processes visual information much faster than text. A line chart lets you quickly see that "sales dropped last month," while the same information presented in a table might require row-by-row comparison to reach the same conclusion.</span></p>
+<p class="reveal"><span lang="id">The core value of visualization:</span><span lang="en">The core value of visualization:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Discover patterns</b>: Trends, cycles, and outliers are immediately apparent in charts</span><span lang="en"><b>Discover patterns</b>: Trends, cycles, and outliers are immediately apparent in charts</span></li>
+<li><span lang="id"><b>Support decision-making</b>: Enable non-technical people to understand data and participate in decisions</span><span lang="en"><b>Support decision-making</b>: Enable non-technical people to understand data and participate in decisions</span></li>
+<li><span lang="id"><b>Communication efficiency</b>: A picture is worth a thousand words, reducing ambiguity in data interpretation</span><span lang="en"><b>Communication efficiency</b>: A picture is worth a thousand words, reducing ambiguity in data interpretation</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">The goal of visualization is to <b>convey information</b>, not to show off. A plain but accurate bar chart is far more valuable than a flashy but hard-to-understand 3D chart.</span><span lang="en">The goal of visualization is to <b>convey information</b>, not to show off. A plain but accurate bar chart is far more valuable than a flashy but hard-to-understand 3D chart.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Chart Type Selection: Tell the Right Story with the Right Chart</span><span lang="en">1. Chart Type Selection: Tell the Right Story with the Right Chart</span></h2>
+<p class="reveal"><span lang="id">The first step in choosing a chart is not "what chart do I like," but "what information do I want to convey." Different data purposes correspond to different optimal chart types.</span><span lang="en">The first step in choosing a chart is not "what chart do I like," but "what information do I want to convey." Different data purposes correspond to different optimal chart types.</span></p>
+<p class="reveal"><span lang="id"><ChartTypeSelectorDemo /></span><span lang="en"><ChartTypeSelectorDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Chart Selection Quick Reference</span><span lang="en">Chart Selection Quick Reference</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Data Purpose</th><th>Recommended Chart</th><th>Not Recommended</th><th>Reason</th></tr>
+<tr><td>Compare magnitudes</td><td>Bar chart, Column chart</td><td>Pie chart</td><td>The human eye is more sensitive to length differences than angle differences</td></tr>
+<tr><td>Show trends</td><td>Line chart, Area chart</td><td>Bar chart</td><td>The continuity of a line implies temporal continuity</td></tr>
+<tr><td>Show proportions</td><td>Pie chart (≤5 categories), Stacked bar chart</td><td>3D pie chart</td><td>3D perspective distorts area proportions</td></tr>
+<tr><td>Show distributions</td><td>Histogram, Box plot</td><td>Line chart</td><td>Distributions require viewing frequency, not trends</td></tr>
+<tr><td>Show relationships</td><td>Scatter plot, Bubble chart</td><td>Bar chart</td><td>The relationship between two continuous variables requires two-dimensional space</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>One variable</b> → Histogram (distribution) or number card (KPI)
+- <b>Two variables</b> → Line chart (time vs. value) or scatter plot (value vs. value)
+- <b>Multiple categories</b> → Bar chart (comparison) or pie chart (proportion, ≤5 categories)
+- <b>Multiple dimensions</b> → Radar chart or parallel coordinates plot</span><span lang="en">- <b>One variable</b> → Histogram (distribution) or number card (KPI)
+- <b>Two variables</b> → Line chart (time vs. value) or scatter plot (value vs. value)
+- <b>Multiple categories</b> → Bar chart (comparison) or pie chart (proportion, ≤5 categories)
+- <b>Multiple dimensions</b> → Radar chart or parallel coordinates plot</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Visualization Design Principles: Visual Encoding Principles</span><span lang="en">2. Visualization Design Principles: Visual Encoding Principles</span></h2>
+<p class="reveal"><span lang="id">Good visualization is not about being "pretty" but about being "understandable." Several classic principles proposed by Edward Tufte in <i>The Visual Display of Quantitative Information</i> remain important references for visualization design today.</span><span lang="en">Good visualization is not about being "pretty" but about being "understandable." Several classic principles proposed by Edward Tufte in <i>The Visual Display of Quantitative Information</i> remain important references for visualization design today.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Principle</th><th>Description</th><th>Anti-pattern</th></tr>
+<tr><td>Data-ink ratio</td><td>The proportion of "ink" used to display data in a chart should be as high as possible</td><td>Excessive gridlines, decorative elements</td></tr>
+<tr><td>Minimize non-data elements</td><td>Remove visual elements that convey no information</td><td>3D effects, shadows, gradient backgrounds</td></tr>
+<tr><td>Consistent scale</td><td>Start axes from zero with uniform tick marks; if truncating an axis, clearly indicate it</td><td>Y-axis starting at 95 without explanation</td></tr>
+<tr><td>Sensible color use</td><td>Use color to encode information, not for decoration</td><td>Rainbow colors for ordinal data</td></tr>
+<tr><td>Clear labeling</td><td>Title, axis labels, legend, and units are all indispensable</td><td>No units, no time range</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Data-Ink Ratio</span><span lang="en">2.1 Data-Ink Ratio</span></h3>
+<p class="reveal"><span lang="id">> The proportion of "ink" used to express data in a chart relative to the total "ink" should be as high as possible.</span><span lang="en">> The proportion of "ink" used to express data in a chart relative to the total "ink" should be as high as possible.</span></p>
+<p class="reveal"><span lang="id">Simply put: <b>remove everything that doesn't convey information</b>.</span><span lang="en">Simply put: <b>remove everything that doesn't convey information</b>.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Should Remove</th><th>Should Keep</th></tr>
+<tr><td>3D effects, shadows, gradients</td><td>Data points, axis labels</td></tr>
+<tr><td>Excessive gridlines</td><td>Key reference lines (e.g., target values)</td></tr>
+<tr><td>Decorative icons</td><td>Legends (when there are multiple series)</td></tr>
+<tr><td>Flashy background colors</td><td>Clear titles and units</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Consistency Principle</span><span lang="en">2.2 Consistency Principle</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Color consistency</b>: Use the same color for the same dimension across different charts, e.g., "revenue" is always blue</span><span lang="en"><b>Color consistency</b>: Use the same color for the same dimension across different charts, e.g., "revenue" is always blue</span></li>
+<li><span lang="id"><b>Scale consistency</b>: Axes should start from 0 whenever possible, unless there's a good reason and clear annotation</span><span lang="en"><b>Scale consistency</b>: Axes should start from 0 whenever possible, unless there's a good reason and clear annotation</span></li>
+<li><span lang="id"><b>Time consistency</b>: Intervals on the time axis should be uniform; don't plot unevenly spaced time points as if they were evenly spaced</span><span lang="en"><b>Time consistency</b>: Intervals on the time axis should be uniform; don't plot unevenly spaced time points as if they were evenly spaced</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 Readability Principle</span><span lang="en">2.3 Readability Principle</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Titles should state conclusions</b>: Not "Monthly Sales" but "Sales Have Declined for 3 Consecutive Months"</span><span lang="en"><b>Titles should state conclusions</b>: Not "Monthly Sales" but "Sales Have Declined for 3 Consecutive Months"</span></li>
+<li><span lang="id"><b>Annotate key points</b>: Add annotations at outliers and inflection points to guide the reader's attention</span><span lang="en"><b>Annotate key points</b>: Add annotations at outliers and inflection points to guide the reader's attention</span></li>
+<li><span lang="id"><b>Control information density</b>: Each chart should convey 1-2 core messages; don't cram too much in</span><span lang="en"><b>Control information density</b>: Each chart should convey 1-2 core messages; don't cram too much in</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">1. <b>Same metric, same color</b>: Revenue should always be blue across all charts, not sometimes blue and sometimes green
+2. <b>Sequential data uses gradients</b>: Temperature from low to high uses a blue→red gradient, not discrete colors
+3. <b>Consider colorblind-friendliness</b>: Approximately 8% of males have red-green color blindness; avoid relying solely on red and green to distinguish critical information</span><span lang="en">1. <b>Same metric, same color</b>: Revenue should always be blue across all charts, not sometimes blue and sometimes green
+2. <b>Sequential data uses gradients</b>: Temperature from low to high uses a blue→red gradient, not discrete colors
+3. <b>Consider colorblind-friendliness</b>: Approximately 8% of males have red-green color blindness; avoid relying solely on red and green to distinguish critical information</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Dashboard Layout: Different Scenarios, Different Patterns</span><span lang="en">3. Dashboard Layout: Different Scenarios, Different Patterns</span></h2>
+<p class="reveal"><span lang="id">A dashboard is an organic combination of multiple charts. A good dashboard doesn't just pile charts together—it selects an appropriate layout pattern based on the use case.</span><span lang="en">A dashboard is an organic combination of multiple charts. A good dashboard doesn't just pile charts together—it selects an appropriate layout pattern based on the use case.</span></p>
+<p class="reveal"><span lang="id"><DashboardLayoutDemo /></span><span lang="en"><DashboardLayoutDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Four Common Layout Patterns</span><span lang="en">Four Common Layout Patterns</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Layout Pattern</th><th>Core Structure</th><th>Use Case</th><th>Design Points</th></tr>
+<tr><td>Overview</td><td>KPI cards + trend charts + detail tables</td><td>Executive daily reports, operations dashboards</td><td>Place core metrics at the top; key numbers visible at a glance</td></tr>
+<tr><td>Comparison analysis</td><td>Symmetric left-right layout</td><td>A/B testing, year-over-year analysis</td><td>Keep comparison dimensions consistent, highlight differences</td></tr>
+<tr><td>Drill-down analysis</td><td>Progressive expansion from summary to detail</td><td>Sales analysis, user behavior analysis</td><td>Support click interactions, layer-by-layer exploration</td></tr>
+<tr><td>Real-time monitoring</td><td>Large numbers + real-time curves + alert status</td><td>Double Eleven big screens, server monitoring</td><td>Auto-refresh, dark background, suitable for projection</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5 Principles of Dashboard Design</span><span lang="en">5 Principles of Dashboard Design</span></h3>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>First ask "who is looking"</b>: The CEO views strategic metrics, operations views process metrics, engineers view technical metrics</span><span lang="en"><b>First ask "who is looking"</b>: The CEO views strategic metrics, operations views process metrics, engineers view technical metrics</span></li>
+<li><span lang="id"><b>5-second rule</b>: Users should understand the dashboard's core information within 5 seconds</span><span lang="en"><b>5-second rule</b>: Users should understand the dashboard's core information within 5 seconds</span></li>
+<li><span lang="id"><b>Information hierarchy</b>: Place the most important content in the upper-left, secondary content below</span><span lang="en"><b>Information hierarchy</b>: Place the most important content in the upper-left, secondary content below</span></li>
+<li><span lang="id"><b>Minimize scrolling</b>: Display core content on one screen; avoid making users scroll to see critical data</span><span lang="en"><b>Minimize scrolling</b>: Display core content on one screen; avoid making users scroll to see critical data</span></li>
+<li><span lang="id"><b>Whitespace</b>: Don't fill every inch of space; appropriate whitespace makes the visual experience more comfortable</span><span lang="en"><b>Whitespace</b>: Don't fill every inch of space; appropriate whitespace makes the visual experience more comfortable</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Dashboard</b>: Real-time/near-real-time, interactive, oriented toward monitoring and quick decision-making
+- <b>Report</b>: Generated periodically (daily/weekly/monthly), static, oriented toward detailed analysis and archival
+
+These two are not replacements for each other but complements. Dashboards identify problems; reports analyze them in depth.</span><span lang="en">- <b>Dashboard</b>: Real-time/near-real-time, interactive, oriented toward monitoring and quick decision-making
+- <b>Report</b>: Generated periodically (daily/weekly/monthly), static, oriented toward detailed analysis and archival
+
+These two are not replacements for each other but complements. Dashboards identify problems; reports analyze them in depth.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Tool Selection: From Code Libraries to BI Platforms</span><span lang="en">4. Tool Selection: From Code Libraries to BI Platforms</span></h2>
+<p class="reveal"><span lang="id">Visualization tools can be divided into three tiers: code-level chart libraries, data analysis chart libraries, and BI platforms. Which one to choose depends on requirements complexity, interaction needs, and team technical capabilities.</span><span lang="en">Visualization tools can be divided into three tiers: code-level chart libraries, data analysis chart libraries, and BI platforms. Which one to choose depends on requirements complexity, interaction needs, and team technical capabilities.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Code-Level Chart Libraries</span><span lang="en">4.1 Code-Level Chart Libraries</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Tool</th><th>Language/Platform</th><th>Features</th><th>Use Case</th></tr>
+<tr><td>ECharts</td><td>JavaScript</td><td>Ready to use, rich chart types, excellent documentation</td><td>Embedded charts in business systems</td></tr>
+<tr><td>D3.js</td><td>JavaScript</td><td>Low-level flexibility, can customize any visualization</td><td>Highly customized data visualization</td></tr>
+<tr><td>Chart.js</td><td>JavaScript</td><td>Lightweight and simple, quick to get started</td><td>Simple chart requirements</td></tr>
+<tr><td>Matplotlib</td><td>Python</td><td>Standard scientific computing library, static charts</td><td>Data analysis, paper figures</td></tr>
+<tr><td>Plotly</td><td>Python/JS</td><td>Interactive charts, 3D support</td><td>Data exploration, Jupyter Notebook</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 BI Platforms (No-Code / Low-Code)</span><span lang="en">4.2 BI Platforms (No-Code / Low-Code)</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Tool</th><th>Positioning</th><th>Core Strength</th><th>Suitable Team</th></tr>
+<tr><td>Grafana</td><td>Monitoring visualization</td><td>Strong time-series support, alerting integration</td><td>Ops/SRE teams</td></tr>
+<tr><td>Metabase</td><td>Lightweight BI</td><td>Open source and free, create charts from SQL</td><td>Small to mid teams building quickly</td></tr>
+<tr><td>Apache Superset</td><td>Enterprise BI</td><td>Open source, supports big data sources</td><td>Companies with data teams</td></tr>
+<tr><td>Tableau</td><td>Commercial BI</td><td>Drag-and-drop, excellent visualization</td><td>Business analysts</td></tr>
+<tr><td>Power BI</td><td>Commercial BI</td><td>Strong integration with Microsoft ecosystem</td><td>Enterprises using the Microsoft stack</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Developers embedding charts in products</b> → ECharts or Chart.js (for simple scenarios)
+- <b>Data analysts doing exploratory analysis</b> → Plotly + Jupyter or Metabase
+- <b>Ops monitoring dashboards</b> → Grafana (the de facto standard)
+- <b>Business teams doing self-service analytics</b> → Metabase (open source) or Tableau (commercial)
+- <b>Need high customization</b> → D3.js (steep learning curve, but most flexible)</span><span lang="en">- <b>Developers embedding charts in products</b> → ECharts or Chart.js (for simple scenarios)
+- <b>Data analysts doing exploratory analysis</b> → Plotly + Jupyter or Metabase
+- <b>Ops monitoring dashboards</b> → Grafana (the de facto standard)
+- <b>Business teams doing self-service analytics</b> → Metabase (open source) or Tableau (commercial)
+- <b>Need high customization</b> → D3.js (steep learning curve, but most flexible)</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Common Pitfalls: These Charts Are Lying to You</span><span lang="en">5. Common Pitfalls: These Charts Are Lying to You</span></h2>
+<p class="reveal"><span lang="id">Data visualization is a double-edged sword: used well, it reveals truth; used poorly, it creates illusions. Below are the most common visualization pitfalls that every data practitioner should be able to recognize.</span><span lang="en">Data visualization is a double-edged sword: used well, it reveals truth; used poorly, it creates illusions. Below are the most common visualization pitfalls that every data practitioner should be able to recognize.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Truncated Axes</span><span lang="en">5.1 Truncated Axes</span></h3>
+<p class="reveal"><span lang="id">Changing the Y-axis starting point from 0 to a large number makes tiny differences look like massive changes.</span><span lang="en">Changing the Y-axis starting point from 0 to a large number makes tiny differences look like massive changes.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Scenario</th><th>Actual Difference</th><th>Visual Perception</th></tr>
+<tr><td>Y-axis starts at 0</td><td>Product A: 98 points, Product B: 95 points</td><td>Small gap</td></tr>
+<tr><td>Y-axis starts at 90</td><td>Same data</td><td>A appears to be several times larger than B</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>When is truncation acceptable?</b> When absolute values are large but changes are small (e.g., stock price from 100 to 105), truncation is reasonable, but it must be clearly labeled.</span><span lang="en"><b>When is truncation acceptable?</b> When absolute values are large but changes are small (e.g., stock price from 100 to 105), truncation is reasonable, but it must be clearly labeled.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 The 3D Pie Chart Perspective Trap</span><span lang="en">5.2 The 3D Pie Chart Perspective Trap</span></h3>
+<p class="reveal"><span lang="id">3D perspective makes sectors closer to the viewer appear larger. A 25% sector can look like 35% under a 3D viewing angle.</span><span lang="en">3D perspective makes sectors closer to the viewer appear larger. A 25% sector can look like 35% under a 3D viewing angle.</span></p>
+<p class="reveal"><span lang="id"><b>Solution</b>: Never use 3D pie charts. Use regular pie charts or donut charts, or simply use bar charts.</span><span lang="en"><b>Solution</b>: Never use 3D pie charts. Use regular pie charts or donut charts, or simply use bar charts.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 Color Misuse</span><span lang="en">5.3 Color Misuse</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Wrong Practice</th><th>Correct Practice</th></tr>
+<tr><td>Using red-green to represent data</td><td>Using blue-orange and other colorblind-safe palettes</td></tr>
+<tr><td>Different colors for each category</td><td>Using shades of the same color family for the same series</td></tr>
+<tr><td>Encoding continuous data with color but no legend</td><td>Always provide a color legend and value labels</td></tr>
+<tr><td>Insufficient contrast between background and data colors</td><td>Ensure WCAG AA level contrast</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.4 Other Common Mistakes</span><span lang="en">5.4 Other Common Mistakes</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Pitfall</th><th>Problem</th><th>Fix</th></tr>
+<tr><td>Dual Y-axes</td><td>Two unrelated metrics sharing the X-axis implies causation</td><td>Split into two charts, or explicitly state no causal relationship</td></tr>
+<tr><td>Area misrepresentation</td><td>Using a circle's radius instead of area to represent values</td><td>When values double, area should double, not radius</td></tr>
+<tr><td>Uneven time axis</td><td>January, March, and December spaced equally</td><td>Arrange by actual time proportions</td></tr>
+<tr><td>Too many categories</td><td>Pie chart with 15 sectors</td><td>Use bar charts for more than 5 categories, or group into "Other"</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">The purpose of visualization is to <b>aid understanding</b>, not to <b>manipulate perception</b>. Ask yourself every time you create a chart:
+
+- If I were the reader, would this chart lead me to a wrong conclusion?
+- Am I hiding unfavorable data?
+- Are the axes, scales, and colors presenting the data fairly?</span><span lang="en">The purpose of visualization is to <b>aid understanding</b>, not to <b>manipulate perception</b>. Ask yourself every time you create a chart:
+
+- If I were the reader, would this chart lead me to a wrong conclusion?
+- Am I hiding unfavorable data?
+- Are the axes, scales, and colors presenting the data fairly?</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary</span><span lang="en">Summary</span></h2>
+<p class="reveal"><span lang="id">Data visualization is the "last mile" of delivering data value. No matter how good the analysis is, if it cannot be correctly understood, it's as if the analysis never happened.</span><span lang="en">Data visualization is the "last mile" of delivering data value. No matter how good the analysis is, if it cannot be correctly understood, it's as if the analysis never happened.</span></p>
+<p class="reveal"><span lang="id">Let's review the key takeaways from this chapter:</span><span lang="en">Let's review the key takeaways from this chapter:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Choose the right chart</b>: Select chart types based on data purpose (comparison, trends, proportions, distributions, relationships)</span><span lang="en"><b>Choose the right chart</b>: Select chart types based on data purpose (comparison, trends, proportions, distributions, relationships)</span></li>
+<li><span lang="id"><b>Design principles</b>: High data-ink ratio, consistency, and readability are the three core principles</span><span lang="en"><b>Design principles</b>: High data-ink ratio, consistency, and readability are the three core principles</span></li>
+<li><span lang="id"><b>Dashboard layout</b>: Overview, comparison, drill-down, and real-time patterns cover most scenarios</span><span lang="en"><b>Dashboard layout</b>: Overview, comparison, drill-down, and real-time patterns cover most scenarios</span></li>
+<li><span lang="id"><b>Tool selection</b>: From ECharts to Grafana, choose based on team capability and requirements complexity</span><span lang="en"><b>Tool selection</b>: From ECharts to Grafana, choose based on team capability and requirements complexity</span></li>
+<li><span lang="id"><b>Avoid pitfalls</b>: Truncated axes, 3D pie charts, and color misuse are the most common misleading techniques</span><span lang="en"><b>Avoid pitfalls</b>: Truncated axes, 3D pie charts, and color misuse are the most common misleading techniques</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[The Visual Display of Quantitative Information](https://www.edwardtufte.com/tufte/books_vdqi) - Edward Tufte's visualization classic</span><span lang="en">[The Visual Display of Quantitative Information](https://www.edwardtufte.com/tufte/books_vdqi) - Edward Tufte's visualization classic</span></li>
+<li><span lang="id">[ECharts Official Documentation](https://echarts.apache.org/zh/index.html) - The most popular charting library</span><span lang="en">[ECharts Official Documentation](https://echarts.apache.org/zh/index.html) - The most popular charting library</span></li>
+<li><span lang="id">[D3.js](https://d3js.org/) - Powerful low-level visualization library</span><span lang="en">[D3.js](https://d3js.org/) - Powerful low-level visualization library</span></li>
+<li><span lang="id">[Grafana](https://grafana.com/) - The de facto standard for monitoring visualization</span><span lang="en">[Grafana](https://grafana.com/) - The de facto standard for monitoring visualization</span></li>
+<li><span lang="id">[From Data to Viz](https://www.data-to-viz.com/) - Chart type selection decision tree</span><span lang="en">[From Data to Viz](https://www.data-to-viz.com/) - Chart type selection decision tree</span></li>
+<li><span lang="id">[ColorBrewer](https://colorbrewer2.org/) - Colorblind-safe color scheme tool</span><span lang="en">[ColorBrewer](https://colorbrewer2.org/) - Colorblind-safe color scheme tool</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../5-data/data-tracking/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">5-data/data-tracking</span><span lang="en">5-data/data-tracking</span></b></a>
+      <a class="next" href="../../5-data/database-fundamentals/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">5-data/database-fundamentals</span><span lang="en">5-data/database-fundamentals</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aplikasi Android dengan Jetpack Compose &amp; Kotlin — VibeKoding 🤖</title>
+<meta name="description" content="Modul master Level 3 VibeKoding: Aplikasi Android dengan Jetpack Compose &amp; Kotlin. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-3/cross-platform/android-app/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../stage-3/"><span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></a> / <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">🤖</div>
+      <div>
+        <h1><span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul master Level 3 VibeKoding: Aplikasi Android dengan Jetpack Compose & Kotlin.</span><span lang="en">Modul master Level 3 VibeKoding: Aplikasi Android dengan Jetpack Compose & Kotlin.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">In this tutorial, we will complete a full closed loop: <b>from an idea in your mind to a real app that can be successfully installed and run on an Android phone.</b></span><span lang="en">In this tutorial, we will complete a full closed loop: <b>from an idea in your mind to a real app that can be successfully installed and run on an Android phone.</b></span></p>
+<p class="reveal"><span lang="id">For this tutorial, you should at least have:</span><span lang="en">For this tutorial, you should at least have:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">A computer with decent performance (Windows or Mac)</span><span lang="en">A computer with decent performance (Windows or Mac)</span></li>
+<li><span lang="id">An Android phone (optional; if you do not have one, we will use an emulator)</span><span lang="en">An Android phone (optional; if you do not have one, we will use an emulator)</span></li>
+<li><span lang="id">Android Studio installed (for building)</span><span lang="en">Android Studio installed (for building)</span></li>
+<li><span lang="id">Trae installed and registered (for AI coding)</span><span lang="en">Trae installed and registered (for AI coding)</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.1 Definition of Android App</span><span lang="en">1.1 Definition of Android App</span></h2>
+<p class="reveal"><span lang="id">An Android App is a native application that runs on the Android operating system. Unlike mini programs, it does not depend on a host like WeChat. It runs directly at the system level. It has its own home-screen icon, launches quickly, feels smooth, and can deeply access system-level features such as Bluetooth, sensors, and background services.</span><span lang="en">An Android App is a native application that runs on the Android operating system. Unlike mini programs, it does not depend on a host like WeChat. It runs directly at the system level. It has its own home-screen icon, launches quickly, feels smooth, and can deeply access system-level features such as Bluetooth, sensors, and background services.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.2 Android App Development</span><span lang="en">1.2 Android App Development</span></h2>
+<p class="reveal"><span lang="id">Android development refers to the whole process of building such applications. In the Vibe Coding development mode used in this tutorial, with <b>AI-assisted programming</b>, the developer's role shifts from "code writer" to "product architect":</span><span lang="en">Android development refers to the whole process of building such applications. In the Vibe Coding development mode used in this tutorial, with <b>AI-assisted programming</b>, the developer's role shifts from "code writer" to "product architect":</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>You (architect / PM)</b>: responsible for business logic design, prompt writing, and final acceptance of the result.</span><span lang="en"><b>You (architect / PM)</b>: responsible for business logic design, prompt writing, and final acceptance of the result.</span></li>
+<li><span lang="id"><b>Trae (AI engineer)</b>: responsible for executing instructions, converting natural language into standard Kotlin code and Jetpack Compose layouts, and handling syntax errors and logic details.</span><span lang="en"><b>Trae (AI engineer)</b>: responsible for executing instructions, converting natural language into standard Kotlin code and Jetpack Compose layouts, and handling syntax errors and logic details.</span></li>
+<li><span lang="id"><b>Android Studio (build factory)</b>: responsible for providing the compile environment, packaging code into a runnable app, and offering emulator previews.</span><span lang="en"><b>Android Studio (build factory)</b>: responsible for providing the compile environment, packaging code into a runnable app, and offering emulator previews.</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.3 Common Ways to Build Android Apps</span><span lang="en">1.3 Common Ways to Build Android Apps</span></h2>
+<p class="reveal"><span lang="id">In real development, there is more than one way to build Android apps. We will not go deep here, but only provide an overall understanding.</span><span lang="en">In real development, there is more than one way to build Android apps. We will not go deep here, but only provide an overall understanding.</span></p>
+<p class="reveal"><span lang="id"><b>The first way: Native Development</b></span><span lang="en"><b>The first way: Native Development</b></span></p>
+<p class="reveal"><span lang="id">This is Google's official and recommended route. You directly use <b>Kotlin</b> and <b>Jetpack Compose</b> to develop. Its advantage is the best performance and full access to phone hardware.</span><span lang="en">This is Google's official and recommended route. You directly use <b>Kotlin</b> and <b>Jetpack Compose</b> to develop. Its advantage is the best performance and full access to phone hardware.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>The second way: Cross-Platform Development</b></span><span lang="en"><b>The second way: Cross-Platform Development</b></span></p>
+<p class="reveal"><span lang="id">For example Flutter or React Native. The core idea is "write one codebase and generate both Android and iOS apps."</span><span lang="en">For example Flutter or React Native. The core idea is "write one codebase and generate both Android and iOS apps."</span></p>
+<p class="reveal"><span lang="id"><b>The third way: Hybrid Development</b></span><span lang="en"><b>The third way: Hybrid Development</b></span></p>
+<p class="reveal"><span lang="id">In essence, this is wrapping a webpage inside an app shell. This is fast to develop, but the experience and smoothness are usually not as good as a native app, and it is difficult to build a polished, immersive small tool this way.</span><span lang="en">In essence, this is wrapping a webpage inside an app shell. This is fast to develop, but the experience and smoothness are usually not as good as a native app, and it is difficult to build a polished, immersive small tool this way.</span></p>
+<p class="reveal"><span lang="id"><b>This tutorial's choice: native development (</b> <b>Kotlin + Compose)</b> combined with AI tools for coding.</span><span lang="en"><b>This tutorial's choice: native development (</b> <b>Kotlin + Compose)</b> combined with AI tools for coding.</span></p>
+<p class="reveal"><span lang="id">The reason is simple: native Jetpack Compose code has a very clear structure and is highly suitable for AI to understand and generate. We do not need to handwrite code from scratch. Instead, we guide Trae with natural language to generate high-quality native code.</span><span lang="en">The reason is simple: native Jetpack Compose code has a very clear structure and is highly suitable for AI to understand and generate. We do not need to handwrite code from scratch. Instead, we guide Trae with natural language to generate high-quality native code.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.4 Android App Development Steps Covered in This Tutorial</span><span lang="en">1.4 Android App Development Steps Covered in This Tutorial</span></h2>
+<p class="reveal"><span lang="id">To keep the learning process interesting, this tutorial revolves around a relaxing but technically representative case - <b>Electronic Wooden Fish</b>. We combine Trae's Vibe Coding mode with a route you can reuse repeatedly:</span><span lang="en">To keep the learning process interesting, this tutorial revolves around a relaxing but technically representative case - <b>Electronic Wooden Fish</b>. We combine Trae's Vibe Coding mode with a route you can reuse repeatedly:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Build understanding and environment</b>: understand what Android apps are, install Android Studio and Trae, and configure China-friendly mirrors so the toolchain works smoothly.</span><span lang="en"><b>Build understanding and environment</b>: understand what Android apps are, install Android Studio and Trae, and configure China-friendly mirrors so the toolchain works smoothly.</span></li>
+<li><span lang="id"><b>Build the project skeleton</b>: create a blank Android project that can successfully run in the emulator.</span><span lang="en"><b>Build the project skeleton</b>: create a blank Android project that can successfully run in the emulator.</span></li>
+<li><span lang="id"><b>AI iterative development</b>: open the project in Trae, then through conversation with AI, gradually implement the wooden fish image, tap animation, sound effects, floating text, and more.</span><span lang="en"><b>AI iterative development</b>: open the project in Trae, then through conversation with AI, gradually implement the wooden fish image, tap animation, sound effects, floating text, and more.</span></li>
+<li><span lang="id"><b>Real-device debugging and polishing</b>: move beyond the emulator, install the app on your actual phone, experience real vibration feedback, and let AI help investigate bugs.</span><span lang="en"><b>Real-device debugging and polishing</b>: move beyond the emulator, install the app on your actual phone, experience real vibration feedback, and let AI help investigate bugs.</span></li>
+<li><span lang="id"><b>Packaging and publishing</b>: generate a formal APK and understand how to share or release it.</span><span lang="en"><b>Packaging and publishing</b>: generate a formal APK and understand how to share or release it.</span></li>
+</ul>
+<p class="reveal"><span lang="id">This section only draws the big picture and does not expand all commands yet. For now, just remember the main line: <b>environment setup -> skeleton building -> AI description and generation -> real-device polishing -> packaging and delivery</b>. In the next chapters, we will take you through each step.</span><span lang="en">This section only draws the big picture and does not expand all commands yet. For now, just remember the main line: <b>environment setup -> skeleton building -> AI description and generation -> real-device polishing -> packaging and delivery</b>. In the next chapters, we will take you through each step.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.1 Tools Used in This Tutorial</span><span lang="en">2.1 Tools Used in This Tutorial</span></h2>
+<p class="reveal"><span lang="id">During the whole development process, we use three tools together, playing the roles of "design," "construction," and "acceptance."</span><span lang="en">During the whole development process, we use three tools together, playing the roles of "design," "construction," and "acceptance."</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Trae</b>: this is your <b>AI coding partner</b>. In Vibe Coding mode, we no longer need to type code line by line. Instead, we mainly tell AI in natural language what we want, and it handles code generation and modification.</span><span lang="en"><b>Trae</b>: this is your <b>AI coding partner</b>. In Vibe Coding mode, we no longer need to type code line by line. Instead, we mainly tell AI in natural language what we want, and it handles code generation and modification.</span></li>
+<li><span lang="id"><b>Android Studio</b>: this is Google's official <b>app build factory</b>. Although it has many buttons, in this tutorial we mainly use it to create the project skeleton and compile Trae-generated code into something installable on a phone.</span><span lang="en"><b>Android Studio</b>: this is Google's official <b>app build factory</b>. Although it has many buttons, in this tutorial we mainly use it to create the project skeleton and compile Trae-generated code into something installable on a phone.</span></li>
+<li><span lang="id"><b>An Android device</b>: this acts as the <b>test terminal</b> for viewing the result. You can connect it to your computer for real-device debugging and feel real vibration feedback. If you do not have one, Android Studio's built-in <b>Emulator</b> can simulate a virtual phone perfectly, which is enough for early development.</span><span lang="en"><b>An Android device</b>: this acts as the <b>test terminal</b> for viewing the result. You can connect it to your computer for real-device debugging and feel real vibration feedback. If you do not have one, Android Studio's built-in <b>Emulator</b> can simulate a virtual phone perfectly, which is enough for early development.</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.2 Download Trae</span><span lang="en">2.2 Download Trae</span></h2>
+<p class="reveal"><span lang="id">Trae is our main battlefield for <b>Vibe Coding</b>. You can think of it simply as an <b>"AI-powered code editor."</b></span><span lang="en">Trae is our main battlefield for <b>Vibe Coding</b>. You can think of it simply as an <b>"AI-powered code editor."</b></span></p>
+<p class="reveal"><span lang="id">Visit the official website [https://www.trae.cn](https://www.trae.cn), download the version matching your computer system (Windows or Mac), and install it just like ordinary software by double-clicking the installer and following the prompts. Once this tool is ready, in later practice we will stop staring at boring code windows and instead open the project here and tell AI what to build using natural language.</span><span lang="en">Visit the official website [https://www.trae.cn](https://www.trae.cn), download the version matching your computer system (Windows or Mac), and install it just like ordinary software by double-clicking the installer and following the prompts. Once this tool is ready, in later practice we will stop staring at boring code windows and instead open the project here and tell AI what to build using natural language.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.3 Download Android Studio</span><span lang="en">2.3 Download Android Studio</span></h2>
+<p class="reveal"><span lang="id">We need Android Studio to provide the Android SDK and emulator required for running the app. Visit the official download page [https://developer.android.com/studio?hl=zh-cn](https://developer.android.com/studio?hl=zh-cn) and download the package for your operating system (this tutorial is based on <b>2025.2.3</b>). After downloading, install it like normal software, keeping the default options throughout.</span><span lang="en">We need Android Studio to provide the Android SDK and emulator required for running the app. Visit the official download page [https://developer.android.com/studio?hl=zh-cn](https://developer.android.com/studio?hl=zh-cn) and download the package for your operating system (this tutorial is based on <b>2025.2.3</b>). After downloading, install it like normal software, keeping the default options throughout.</span></p>
+<p class="reveal"><span lang="id"><b>Special reminder for beginners:</b></span><span lang="en"><b>Special reminder for beginners:</b></span></p>
+<p class="reveal"><span lang="id">Although modern versions of Android Studio have greatly simplified configuration, it still depends on the <b>JDK (Java Development Kit)</b> under the hood. If this is your first time doing development, or if you encounter errors related to environment variables or SDK configuration during installation, do not panic. You can refer to this detailed setup guide: [Android Studio 2024 setup: SDK and Gradle configuration](https://blog.csdn.net/keiraee/article/details/142321644?ops_request_misc=elastic_search_misc&request_id=a2b858d1f665095c53afa9114ad8864d&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-2-142321644-null-null.142^v102^pc_search_result_base4&utm_term=android%20studio%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE&spm=1018.2226.3001.4187)</span><span lang="en">Although modern versions of Android Studio have greatly simplified configuration, it still depends on the <b>JDK (Java Development Kit)</b> under the hood. If this is your first time doing development, or if you encounter errors related to environment variables or SDK configuration during installation, do not panic. You can refer to this detailed setup guide: [Android Studio 2024 setup: SDK and Gradle configuration](https://blog.csdn.net/keiraee/article/details/142321644?ops_request_misc=elastic_search_misc&request_id=a2b858d1f665095c53afa9114ad8864d&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-2-142321644-null-null.142^v102^pc_search_result_base4&utm_term=android%20studio%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE&spm=1018.2226.3001.4187)</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.4 Create a New Project</span><span lang="en">2.4 Create a New Project</span></h2>
+<p class="reveal"><span lang="id">Open Android Studio and click <b>New Project</b> on the welcome screen.</span><span lang="en">Open Android Studio and click <b>New Project</b> on the welcome screen.</span></p>
+<p class="reveal"><span lang="id"><b>Step 1: Choose a template</b></span><span lang="en"><b>Step 1: Choose a template</b></span></p>
+<p class="reveal"><span lang="id">In the template list, select <b>Empty Activity</b> (notice the Jetpack Compose icon on it).</span><span lang="en">In the template list, select <b>Empty Activity</b> (notice the Jetpack Compose icon on it).</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Step 2: Fill in project configuration</b></span><span lang="en"><b>Step 2: Fill in project configuration</b></span></p>
+<p class="reveal"><span lang="id">Then you will see a configuration form. Fill it roughly as follows and keep the rest at default:</span><span lang="en">Then you will see a configuration form. Fill it roughly as follows and keep the rest at default:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th><b>Field</b></th><th><b>Recommended Value</b></th><th><b>Explanation</b></th></tr>
+<tr><td><b>Name</b></td><td>My Application 1</td><td>App name shown on the phone home screen</td></tr>
+<tr><td><b>Package name</b></td><td>com.example.myapplication1</td><td>Unique app identifier</td></tr>
+<tr><td><b>Save location</b></td><td>Custom path (for example <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">E:\AndroidProjects\Myapplication1</code>)</td><td>Project storage location; not recommended to place on C drive</td></tr>
+<tr><td><b>Minimum SDK</b></td><td>API 30</td><td>Covers over 90% of active devices while balancing compatibility and features</td></tr>
+<tr><td><b>Language</b></td><td>Kotlin (recommended)</td><td>Kotlin is Google's officially recommended language, cleaner and safer</td></tr>
+</table></div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Step 3: Wait for project build</b></span><span lang="en"><b>Step 3: Wait for project build</b></span></p>
+<p class="reveal"><span lang="id">Click <b>Finish</b>. Android Studio will automatically download dependencies and build the project (you will see a progress bar in the bottom-right corner).</span><span lang="en">Click <b>Finish</b>. Android Studio will automatically download dependencies and build the project (you will see a progress bar in the bottom-right corner).</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">_Note: the first project creation may take several minutes. Wait patiently until the bottom progress finishes and the project file tree is fully loaded on the left._</span><span lang="en">_Note: the first project creation may take several minutes. Wait patiently until the bottom progress finishes and the project file tree is fully loaded on the left._</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.5 Dependency Configuration: Gradle Download and Gradle Repository Mirrors</span><span lang="en">2.5 Dependency Configuration: Gradle Download and Gradle Repository Mirrors</span></h2>
+<p class="reveal"><span lang="id">> This is one of the few steps in the Vibe Coding workflow where <b>manual operation</b> is recommended. Although AI can also help modify config, environment configuration touches low-level files, so manual changes are more reliable.</span><span lang="en">> This is one of the few steps in the Vibe Coding workflow where <b>manual operation</b> is recommended. Although AI can also help modify config, environment configuration touches low-level files, so manual changes are more reliable.</span></p>
+<p class="reveal"><span lang="id">Why do we need to modify the configuration?</span><span lang="en">Why do we need to modify the configuration?</span></p>
+<p class="reveal"><span lang="id">By default, Android Studio connects to overseas servers, so downloading build tools and dependencies may take an hour or even fail. After switching to domestic mirrors, it often finishes within a few minutes. <b>This is a one-time task that pays off forever.</b></span><span lang="en">By default, Android Studio connects to overseas servers, so downloading build tools and dependencies may take an hour or even fail. After switching to domestic mirrors, it often finishes within a few minutes. <b>This is a one-time task that pays off forever.</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Preparation</b></span><span lang="en"><b>Preparation</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">If the bottom-right status bar of Android Studio is currently showing a progress bar like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Gradle Building...</code>, pause the ongoing dependency download first to avoid file conflicts.</span><span lang="en">If the bottom-right status bar of Android Studio is currently showing a progress bar like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Gradle Building...</code>, pause the ongoing dependency download first to avoid file conflicts.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Speed up Gradle download</b></span><span lang="en"><b>Speed up Gradle download</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">In the project file tree on the left, expand <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">gradle</code> -> <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">wrapper</code>, then open <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">gradle-wrapper.properties</code>. Change the download source to Tencent's mirror:</span><span lang="en">In the project file tree on the left, expand <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">gradle</code> -> <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">wrapper</code>, then open <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">gradle-wrapper.properties</code>. Change the download source to Tencent's mirror:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>distributionUrl=https\://mirrors.cloud.tencent.com/gradle/gradle-8.7-bin.zip</pre>
+</div>
+<p class="reveal"><span lang="id">Be careful: you only need to replace <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">services.gradle.org/distributions</code> with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">mirrors.cloud.tencent.com/gradle</code>. Do not change anything else.</span><span lang="en">Be careful: you only need to replace <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">services.gradle.org/distributions</code> with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">mirrors.cloud.tencent.com/gradle</code>. Do not change anything else.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Speed up dependency repository download</b></span><span lang="en"><b>Speed up dependency repository download</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">Then, open <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">settings.gradle.kts</code> in the project root, and replace the content inside the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">repositories</code> block with the following:</span><span lang="en">Then, open <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">settings.gradle.kts</code> in the project root, and replace the content inside the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">repositories</code> block with the following:</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<p class="reveal"><span lang="id">Replace the highlighted section with this code (latest source list as of 2025-02-21):</span><span lang="en">Replace the highlighted section with this code (latest source list as of 2025-02-21):</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>json</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>        // Aliyun mirrors (covering Maven Central, Google, JCenter, etc.)
+        maven { setUrl(&quot;https://maven.aliyun.com/repository/public/&quot;) }
+        maven { setUrl(&quot;https://maven.aliyun.com/repository/google/&quot;) }
+        maven { setUrl(&quot;https://maven.aliyun.com/repository/jcenter/&quot;) }
+        maven { setUrl(&quot;https://maven.aliyun.com/repository/gradle-plugin/&quot;) }
+        // Huawei Cloud mirror
+        maven { setUrl(&quot;https://repo.huaweicloud.com/repository/maven/&quot;) }
+        // Tencent Cloud mirror
+        maven { setUrl(&quot;https://mirrors.cloud.tencent.com/nexus/repository/maven-public/&quot;) }
+        // NetEase mirror
+        maven { setUrl(&quot;https://mirrors.163.com/maven/repository/maven-public/&quot;) }</pre>
+</div>
+<p class="reveal"><span lang="id">It should then look like the screenshot below:</span><span lang="en">It should then look like the screenshot below:</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Save and apply changes</b></span><span lang="en"><b>Save and apply changes</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">At this point, save the file and click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Try Again</code> in the top-right corner. Android Studio will re-run the download. Wait a few minutes. When the console shows <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">BUILD SUCCESSFUL</code>, it means the environment setup is fully complete and we are ready to start coding.</span><span lang="en">At this point, save the file and click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Try Again</code> in the top-right corner. Android Studio will re-run the download. Wait a few minutes. When the console shows <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">BUILD SUCCESSFUL</code>, it means the environment setup is fully complete and we are ready to start coding.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.6 Understand the Project Structure</span><span lang="en">2.6 Understand the Project Structure</span></h2>
+<p class="reveal"><span lang="id">After project creation succeeds, the <b>Project</b> panel will appear on the left. Switch to the <b>Android</b> view (default), and you will see key directories like this:</span><span lang="en">After project creation succeeds, the <b>Project</b> panel will appear on the left. Switch to the <b>Android</b> view (default), and you will see key directories like this:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>app/
+├── manifests/
+│   └── AndroidManifest.xml            &lt;- app &quot;ID card&quot;, declares app name and entry Activity (MainActivity)
+│
+├── java/
+│   └── com.example.myapplication1/
+│       ├── MainActivity.kt            &lt;- app entry, builds UI with Jetpack Compose
+│       │
+│       └── ui/                        &lt;- controls the overall UI style (colors, fonts)
+├── res/
+│   ├── drawable/                      &lt;- image resources (for example ic_launcher.png)
+│   ├── mipmap/                        &lt;- app icon
+│   ├── values/                        &lt;- text, color, theme styles
+│   │   ├── colors.xml
+│   │   ├── strings.xml
+│   │   └── themes.xml
+│   └── xml/                           &lt;- system-related config files (not UI)
+└── build.gradle (Module: app)         &lt;- app build config (usually untouched at beginner stage)</pre>
+</div>
+<p class="reveal"><span lang="id">As beginners, we usually only need to focus on three files:</span><span lang="en">As beginners, we usually only need to focus on three files:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">MainActivity.kt</code>: controls behavior and decides "what appears on the screen"</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">MainActivity.kt</code>: controls behavior and decides "what appears on the screen"</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">AndroidManifest.xml</code>: registers components and decides "where the app starts"</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">AndroidManifest.xml</code>: registers components and decides "where the app starts"</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Theme.kt</code>: defines the visual appearance</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Theme.kt</code>: defines the visual appearance</span></li>
+</ul>
+<p class="reveal"><span lang="id">In the first two chapters, we already understood what Android apps are and sharpened the two key tools: Trae and Android Studio. From this section on, we leave paper discussion and enter real practice. We will adopt Vibe Coding mode to build a very popular stress-relief app from scratch - <b>Electronic Wooden Fish</b>. It fits the "Vibe" theme well (simple and relaxing), while also covering three core parts of Android development: <b>UI interaction (tapping), data storage (merit count), and multimedia (sound effects)</b>.</span><span lang="en">In the first two chapters, we already understood what Android apps are and sharpened the two key tools: Trae and Android Studio. From this section on, we leave paper discussion and enter real practice. We will adopt Vibe Coding mode to build a very popular stress-relief app from scratch - <b>Electronic Wooden Fish</b>. It fits the "Vibe" theme well (simple and relaxing), while also covering three core parts of Android development: <b>UI interaction (tapping), data storage (merit count), and multimedia (sound effects)</b>.</span></p>
+<p class="reveal"><span lang="id">Now, follow along and send the first instruction to AI.</span><span lang="en">Now, follow along and send the first instruction to AI.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.1 The First "Master Prompt": From Zero to One</span><span lang="en">3.1 The First "Master Prompt": From Zero to One</span></h2>
+<p class="reveal"><span lang="id">In Vibe Coding mode, we do not need to first create layout files and then write logic code as in traditional development. What we need to do is <b>describe the requirements clearly in one shot and let AI generate the first runnable prototype</b>.</span><span lang="en">In Vibe Coding mode, we do not need to first create layout files and then write logic code as in traditional development. What we need to do is <b>describe the requirements clearly in one shot and let AI generate the first runnable prototype</b>.</span></p>
+<p class="reveal"><span lang="id">Open the project directory we just created in Trae, and in the chat panel on the right, enter the following Prompt:</span><span lang="en">Open the project directory we just created in Trae, and in the chat panel on the right, enter the following Prompt:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>You are a senior Android development expert. Please rewrite the current MainActivity.kt and turn it into an &quot;Electronic Wooden Fish&quot; app. Requirements:
+1. The screen background is black.
+2. Display a wooden fish graphic in the center of the screen, moderate in size, in white.
+3. Show a line of white text above it: &quot;Merit: 0&quot;.
+4. When the wooden fish in the center is tapped, the number increases by 1 and a simple scale animation effect appears (simulating the feeling of knocking).
+5. Use Jetpack Compose.</pre>
+</div>
+<p class="reveal"><span lang="id">After sending it, Trae will begin analyzing your project structure. A few seconds later, it will directly generate the full code for <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">MainActivity.kt</code>.</span><span lang="en">After sending it, Trae will begin analyzing your project structure. A few seconds later, it will directly generate the full code for <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">MainActivity.kt</code>.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">From its response, we can see its reasoning logic and interaction logic</span><span lang="en">From its response, we can see its reasoning logic and interaction logic</span></li>
+<li><span lang="id">We can directly see which parts of the code were rewritten</span><span lang="en">We can directly see which parts of the code were rewritten</span></li>
+<li><span lang="id">If we are not satisfied with the result, we can roll back to the previous version</span><span lang="en">If we are not satisfied with the result, we can roll back to the previous version</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.2 Run and Preview (Emulator Debugging)</span><span lang="en">3.2 Run and Preview (Emulator Debugging)</span></h2>
+<p class="reveal"><span lang="id">At this point, AI has completed the first round of development. But remember, what we see in Trae is only code "blueprints," not a real interactive app. Trae itself cannot directly run Android apps, so we need to rely on the <b>Virtual Device emulator</b> provided by Android Studio. It is like turning your computer screen into a virtual Android phone, allowing us to install the code immediately and view the real result.</span><span lang="en">At this point, AI has completed the first round of development. But remember, what we see in Trae is only code "blueprints," not a real interactive app. Trae itself cannot directly run Android apps, so we need to rely on the <b>Virtual Device emulator</b> provided by Android Studio. It is like turning your computer screen into a virtual Android phone, allowing us to install the code immediately and view the real result.</span></p>
+<p class="reveal"><span lang="id">Next, let us configure this "virtual phone."</span><span lang="en">Next, let us configure this "virtual phone."</span></p>
+<p class="reveal"><span lang="id"><b>Step 1: Create the emulator</b></span><span lang="en"><b>Step 1: Create the emulator</b></span></p>
+<p class="reveal"><span lang="id">Back in Android Studio, find and click <b>Device Manager</b> in the right toolbar. If you cannot find it, open it from <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">View -> Tool Windows -> Device Manager</code>.</span><span lang="en">Back in Android Studio, find and click <b>Device Manager</b> in the right toolbar. If you cannot find it, open it from <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">View -> Tool Windows -> Device Manager</code>.</span></p>
+<p class="reveal"><span lang="id">In the panel, click <b>Add a new device</b>, then choose <b>Create Virtual Device</b> to enter the device selection window.</span><span lang="en">In the panel, click <b>Add a new device</b>, then choose <b>Create Virtual Device</b> to enter the device selection window.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<p class="reveal"><span lang="id">In the hardware selection window, choose <b>Phone</b> and then <b>Smart Phone</b> (medium screen size), or any other device profile you prefer such as Pixel, then click <b>Next</b>.</span><span lang="en">In the hardware selection window, choose <b>Phone</b> and then <b>Smart Phone</b> (medium screen size), or any other device profile you prefer such as Pixel, then click <b>Next</b>.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Step 2: Configure the system image</b></span><span lang="en"><b>Step 2: Configure the system image</b></span></p>
+<p class="reveal"><span lang="id">In the <b>System Image</b> dialog, select <b>API 36.1</b>. If it has not been downloaded yet, click <b>Download</b> first, then select it after download is complete, and click <b>Finish</b>.</span><span lang="en">In the <b>System Image</b> dialog, select <b>API 36.1</b>. If it has not been downloaded yet, click <b>Download</b> first, then select it after download is complete, and click <b>Finish</b>.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Step 3: Start the emulator</b></span><span lang="en"><b>Step 3: Start the emulator</b></span></p>
+<p class="reveal"><span lang="id">After successful creation, your new phone will appear in the device manager list. Click the <b>triangle play button</b> on the right. After a short wait, a phone-shaped window will pop up - this is your Android emulator.</span><span lang="en">After successful creation, your new phone will appear in the device manager list. Click the <b>triangle play button</b> on the right. After a short wait, a phone-shaped window will pop up - this is your Android emulator.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Step 4: Run the app</b></span><span lang="en"><b>Step 4: Run the app</b></span></p>
+<p class="reveal"><span lang="id">Now comes the magic moment. Make sure the emulator has started and is showing the desktop, then click the prominent <b>green Run triangle</b> in the top toolbar of Android Studio (or use shortcut <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Shift + F10</code>). Android Studio will automatically compile the code written by Trae, package it as an app, and install it into the emulator.</span><span lang="en">Now comes the magic moment. Make sure the emulator has started and is showing the desktop, then click the prominent <b>green Run triangle</b> in the top toolbar of Android Studio (or use shortcut <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Shift + F10</code>). Android Studio will automatically compile the code written by Trae, package it as an app, and install it into the emulator.</span></p>
+<p class="reveal"><span lang="id">Within seconds, you should see the emulator screen light up, showing a white wooden fish graphic in the center with the text "Merit: 0" above it. Try tapping it and see whether the number increases and the animation works. This is your first Android app.</span><span lang="en">Within seconds, you should see the emulator screen light up, showing a white wooden fish graphic in the center with the text "Merit: 0" above it. Try tapping it and see whether the number increases and the animation works. This is your first Android app.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.3 Optimization Iteration (Add Assets and Sound)</span><span lang="en">3.3 Optimization Iteration (Add Assets and Sound)</span></h2>
+<p class="reveal"><span lang="id">At this stage, our app already has a basic shape: tapping increases the number. But it is still just a "mute" white geometric shape, lacking fun. Next, we will make the Electronic Wooden Fish much more immersive by adding a real image and knock sound effect.</span><span lang="en">At this stage, our app already has a basic shape: tapping increases the number. But it is still just a "mute" white geometric shape, lacking fun. Next, we will make the Electronic Wooden Fish much more immersive by adding a real image and knock sound effect.</span></p>
+<p class="reveal"><span lang="id"><b>This is exactly the most attractive part of Vibe Coding mode.</b> In traditional development, adding sound effects and more complex animations is often a beginner's nightmare. You need to manage <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">MediaPlayer</code> resource loading and releasing (otherwise memory leaks may happen), and also calculate animation curves. In Vibe Coding mode, you do not need to care about these low-level details at all. You only need to tell AI like a director: "change the prop and add a sound effect when tapped," and the implementation appears immediately.</span><span lang="en"><b>This is exactly the most attractive part of Vibe Coding mode.</b> In traditional development, adding sound effects and more complex animations is often a beginner's nightmare. You need to manage <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">MediaPlayer</code> resource loading and releasing (otherwise memory leaks may happen), and also calculate animation curves. In Vibe Coding mode, you do not need to care about these low-level details at all. You only need to tell AI like a director: "change the prop and add a sound effect when tapped," and the implementation appears immediately.</span></p>
+<p class="reveal"><span lang="id"><b>Step 1: Prepare assets</b></span><span lang="en"><b>Step 1: Prepare assets</b></span></p>
+<p class="reveal"><span lang="id">You need one wooden fish image (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">png</code>) and one knock sound effect (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">mp3</code>).</span><span lang="en">You need one wooden fish image (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">png</code>) and one knock sound effect (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">mp3</code>).</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Image asset</b>: copy the prepared <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">white_muyu.png</code> into <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">app/src/main/res/drawable</code></span><span lang="en"><b>Image asset</b>: copy the prepared <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">white_muyu.png</code> into <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">app/src/main/res/drawable</code></span></li>
+<li><span lang="id"><b>Audio asset</b>: in Android Studio, right-click the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">res</code> folder in the left project panel, choose <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">New -> Android Resource Directory</code>, select <b>raw</b> as the resource type, click OK, then copy <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">voice.mp3</code> into the new <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">res/raw</code> folder. _(Note: if you plan commercial release, make sure you have legal rights to all assets.)_</span><span lang="en"><b>Audio asset</b>: in Android Studio, right-click the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">res</code> folder in the left project panel, choose <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">New -> Android Resource Directory</code>, select <b>raw</b> as the resource type, click OK, then copy <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">voice.mp3</code> into the new <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">res/raw</code> folder. _(Note: if you plan commercial release, make sure you have legal rights to all assets.)_</span></li>
+</ul>
+<p class="reveal"><span lang="id">Here are the image and sound assets I found for you. If it is inconvenient for you to search for your own, you can directly use them.</span><span lang="en">Here are the image and sound assets I found for you. If it is inconvenient for you to search for your own, you can directly use them.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<p class="reveal"><span lang="id">Knock sound download link: https://www.aigei.com/s?q=%E6%9C%A8%E9%B1%BC&type=sound</span><span lang="en">Knock sound download link: https://www.aigei.com/s?q=%E6%9C%A8%E9%B1%BC&type=sound</span></p>
+<p class="reveal"><span lang="id">Choose the first 1-second sound effect.</span><span lang="en">Choose the first 1-second sound effect.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Step 2: Send the iteration instruction</b></span><span lang="en"><b>Step 2: Send the iteration instruction</b></span></p>
+<p class="reveal"><span lang="id">After the assets are ready, go back to Trae. Trae will modify the code again and handle the audio-loading and animation logic for you. You only need to tell it which assets to use. Enter this Prompt:</span><span lang="en">After the assets are ready, go back to Trae. Trae will modify the code again and handle the audio-loading and animation logic for you. You only need to tell it which assets to use. Enter this Prompt:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>I have added the assets. The image path is res/drawable/white_muyu.png and the sound effect path is res/raw/voice.mp3. Please update the code:
+1. Replace the wooden fish icon in the center with my image.
+2. Play the knocking sound every time the wooden fish is tapped.
+3. When tapped, show a temporary &quot;+1&quot; text above the wooden fish, then let it float upward and disappear (like floating score text in games).</pre>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Step 3: Verify the result</b></span><span lang="en"><b>Step 3: Verify the result</b></span></p>
+<p class="reveal"><span lang="id">After Trae finishes modifying the code, return to Android Studio and click the green Run button again (Re-run) to restart the emulator. At this point, your app will feel transformed. Try tapping continuously - you should hear a crisp "tok tok" sound and see the floating "Merit +1" text jumping out. This completes the key transition from "demo" to "product."</span><span lang="en">After Trae finishes modifying the code, return to Android Studio and click the green Run button again (Re-run) to restart the emulator. At this point, your app will feel transformed. Try tapping continuously - you should hear a crisp "tok tok" sound and see the floating "Merit +1" text jumping out. This completes the key transition from "demo" to "product."</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.4 What If Bugs Appear? (Debugging Loop with AI)</span><span lang="en">3.4 What If Bugs Appear? (Debugging Loop with AI)</span></h2>
+<p class="reveal"><span lang="id">AI-generated code is not guaranteed to be perfect on the first try, just like top engineers also cannot promise bug-free code in one shot. But in Vibe Coding mode, bugs are no longer a wall blocking you; they become stepping stones in your collaboration with AI.</span><span lang="en">AI-generated code is not guaranteed to be perfect on the first try, just like top engineers also cannot promise bug-free code in one shot. But in Vibe Coding mode, bugs are no longer a wall blocking you; they become stepping stones in your collaboration with AI.</span></p>
+<p class="reveal"><span lang="id"><b>Case 1: the app crashes</b></span><span lang="en"><b>Case 1: the app crashes</b></span></p>
+<p class="reveal"><span lang="id">Suppose the app crashes immediately after clicking Run, or tapping the wooden fish does not play sound. Traditionally, you would need to search for the error code, browse dozens of technical forums, and read lots of difficult English posts. In Vibe Coding mode, you only need to do one thing - <b>be a courier</b>.</span><span lang="en">Suppose the app crashes immediately after clicking Run, or tapping the wooden fish does not play sound. Traditionally, you would need to search for the error code, browse dozens of technical forums, and read lots of difficult English posts. In Vibe Coding mode, you only need to do one thing - <b>be a courier</b>.</span></p>
+<p class="reveal"><span lang="id"><b>Steps:</b></span><span lang="en"><b>Steps:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Open the log</b>: find the <b>Logcat</b> panel at the bottom of Android Studio (the small cat icon).</span><span lang="en"><b>Open the log</b>: find the <b>Logcat</b> panel at the bottom of Android Studio (the small cat icon).</span></li>
+<li><span lang="id"><b>Locate the error</b>: you will see scrolling logs, and the <b>red lines</b> are usually the key errors.</span><span lang="en"><b>Locate the error</b>: you will see scrolling logs, and the <b>red lines</b> are usually the key errors.</span></li>
+<li><span lang="id"><b>Copy and paste</b>: select the red English error text, copy it, and paste it into Trae: "I got this error while running. Please help me fix it."</span><span lang="en"><b>Copy and paste</b>: select the red English error text, copy it, and paste it into Trae: "I got this error while running. Please help me fix it."</span></li>
+<li><span lang="id">AI may immediately tell you something like: "This happened because vibration permission was not declared in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">AndroidManifest.xml</code>," and then give you the fixed code. You just click Apply and move on.</span><span lang="en">AI may immediately tell you something like: "This happened because vibration permission was not declared in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">AndroidManifest.xml</code>," and then give you the fixed code. You just click Apply and move on.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Case 2: the app runs, but the experience feels bad</b></span><span lang="en"><b>Case 2: the app runs, but the experience feels bad</b></span></p>
+<p class="reveal"><span lang="id">Sometimes the app does not crash, but still feels unsatisfying. For example, when tapping the wooden fish very quickly, you may notice that new "+1" animations do not show up until the previous "+1" fully disappears. That makes the feedback feel laggy and not satisfying. You do not need to study multi-threading or animation queues yourself. You only need to clearly describe that discomfort to AI.</span><span lang="en">Sometimes the app does not crash, but still feels unsatisfying. For example, when tapping the wooden fish very quickly, you may notice that new "+1" animations do not show up until the previous "+1" fully disappears. That makes the feedback feel laggy and not satisfying. You do not need to study multi-threading or animation queues yourself. You only need to clearly describe that discomfort to AI.</span></p>
+<p class="reveal"><span lang="id">Send this "advanced instruction" to Trae:</span><span lang="en">Send this "advanced instruction" to Trae:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please modify the current animation logic to solve the &quot;fast tapping does not trigger&quot; problem.
+Current issue: it seems there is only one animation state, so I have to wait until the previous &quot;+1&quot; completely disappears before another click responds.
+Requirements:
+1. Replace the single animation state with a mutableStateListOf-based list.
+2. Every time the wooden fish is tapped, add a new &quot;+1&quot; instance immediately to the list (with its own ID and initial position), regardless of whether the previous animation has finished.
+3. In the UI, iterate through this list so each &quot;+1&quot; runs its own upward-floating + fade-out animation independently.
+4. After a &quot;+1&quot; animation finishes, automatically remove it from the list to prevent memory leaks.
+Please directly provide the updated MainActivity.kt code.</pre>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.5 Final Result Showcase</span><span lang="en">3.5 Final Result Showcase</span></h2>
+<p class="reveal"><span lang="id">In the previous steps, we already completed an Electronic Wooden Fish that can be seen and heard. To make it closer to a publishable app, we will use one final iteration to add <b>touch feedback</b> and <b>customization</b>. We will implement two core features: first, <b>vibration feedback</b>, so every tap gets a physical response from the phone motor and greatly improves immersion; second, <b>custom text</b>, allowing users to modify the text on screen, for example changing "Merit +1" to "Salary +1" or "Trouble -1".</span><span lang="en">In the previous steps, we already completed an Electronic Wooden Fish that can be seen and heard. To make it closer to a publishable app, we will use one final iteration to add <b>touch feedback</b> and <b>customization</b>. We will implement two core features: first, <b>vibration feedback</b>, so every tap gets a physical response from the phone motor and greatly improves immersion; second, <b>custom text</b>, allowing users to modify the text on screen, for example changing "Merit +1" to "Salary +1" or "Trouble -1".</span></p>
+<p class="reveal"><span lang="id">Send the following carefully designed Prompt to Trae. It will handle the dialog logic, state switching, and hardware interaction in one pass:</span><span lang="en">Send the following carefully designed Prompt to Trae. It will handle the dialog logic, state switching, and hardware interaction in one pass:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Role: You are an Android Jetpack Compose expert.
+Task: Please add &quot;custom text&quot; and &quot;vibration feedback&quot; to the existing Electronic Wooden Fish app.
+Requirements:
+1. Haptic Feedback
+Whenever the user taps the wooden fish, in addition to sound and animation, call the phone&#039;s haptic feedback (using LocalHapticFeedback.current) to give a light tactile response.
+2. Custom Text Feature (UI and interaction)
+Entry: Add a small edit icon next to the top text such as &quot;Merit +1&quot; (you can use Icons.Default.Edit).
+Dialog logic: When the icon is tapped, show a dialog (Dialog/AlertDialog).
+    Dialog title: &quot;Modify Content&quot;
+    Input: Allow the user to enter the text they want to accumulate (default is &quot;Merit&quot;)
+    Value choice: Below the input, provide two options (for example RadioButton or toggle) so the user can choose &quot;+1&quot; or &quot;-1&quot;
+    Save button: After clicking save, close the dialog and apply the new settings to the home screen
+    Data refresh: If the user updates the content, reset the top counter to 0 and start counting from zero again
+3. Effect update
+After saving, both the top counter text and the floating animation text shown when tapping the wooden fish should change to the user&#039;s custom format.
+    The floating text size should not exceed the size of the top counter text
+    Example: if the user enters &quot;Salary&quot; and chooses &quot;+1&quot;, the top counter logic becomes +1 and the floating text becomes &quot;Salary+1&quot;
+    If the user enters &quot;Trouble&quot; and chooses &quot;-1&quot;, the top counter logic becomes -1 and the floating text becomes &quot;Trouble-1&quot;
+4. Technical requirements:
+Make sure the new state (text and number) correctly affects the animation.
+Please directly provide the full updated MainActivity.kt while keeping the previous sound and animation logic unchanged.</pre>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<p class="reveal"><span lang="id">The emulator is convenient, but it cannot simulate real phone vibration or fully reflect real touch latency. To get the most accurate "feel," we need to install the app on a real Android phone. Below are two connection methods you can choose from:</span><span lang="en">The emulator is convenient, but it cannot simulate real phone vibration or fully reflect real touch latency. To get the most accurate "feel," we need to install the app on a real Android phone. Below are two connection methods you can choose from:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Wireless debugging (Wi-Fi)</b>: no data cable required, convenient for daily checking. But your computer and phone must be on the <b>same Wi-Fi network</b>.</span><span lang="en"><b>Wireless debugging (Wi-Fi)</b>: no data cable required, convenient for daily checking. But your computer and phone must be on the <b>same Wi-Fi network</b>.</span></li>
+<li><span lang="id"><b>USB wired debugging</b>: more stable and less likely to disconnect, suitable when the network is poor or initial installation fails.</span><span lang="en"><b>USB wired debugging</b>: more stable and less likely to disconnect, suitable when the network is poor or initial installation fails.</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4.1 Wireless Debugging</span><span lang="en">4.1 Wireless Debugging</span></h2>
+<p class="reveal"><span lang="id">This is the most convenient method on Android 11 and above.</span><span lang="en">This is the most convenient method on Android 11 and above.</span></p>
+<p class="reveal"><span lang="id"><b>Step 1: Prepare the phone</b></span><span lang="en"><b>Step 1: Prepare the phone</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Make sure the phone and computer are on the <b>same Wi-Fi</b>.</span><span lang="en">Make sure the phone and computer are on the <b>same Wi-Fi</b>.</span></li>
+<li><span lang="id">Open <b>Developer options</b> and enable <b>Wireless debugging</b>.</span><span lang="en">Open <b>Developer options</b> and enable <b>Wireless debugging</b>.</span></li>
+<li><span lang="id">Tap <b>Wireless debugging</b> to enter details, then choose <b>Pair device with QR code</b>. Your phone will open a scanner view.</span><span lang="en">Tap <b>Wireless debugging</b> to enter details, then choose <b>Pair device with QR code</b>. Your phone will open a scanner view.</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Step 2: Pair on the computer</b></span><span lang="en"><b>Step 2: Pair on the computer</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Back in Android Studio, click the device selector in the top toolbar.</span><span lang="en">Back in Android Studio, click the device selector in the top toolbar.</span></li>
+<li><span lang="id">Choose <b>Pair Devices Using Wi-Fi</b> from the dropdown.</span><span lang="en">Choose <b>Pair Devices Using Wi-Fi</b> from the dropdown.</span></li>
+<li><span lang="id">A QR code will pop up on screen.</span><span lang="en">A QR code will pop up on screen.</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Step 3: Scan to connect</b></span><span lang="en"><b>Step 3: Scan to connect</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Use your phone to scan the QR code on your computer screen.</span><span lang="en">Use your phone to scan the QR code on your computer screen.</span></li>
+<li><span lang="id">Both the phone and computer should show "pairing successful."</span><span lang="en">Both the phone and computer should show "pairing successful."</span></li>
+<li><span lang="id">At this point, Android Studio's top device bar will automatically display your phone model (for example <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Google Pixel 8</code>).</span><span lang="en">At this point, Android Studio's top device bar will automatically display your phone model (for example <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Google Pixel 8</code>).</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Run the app by clicking ▶️ Run</span><span lang="en">Run the app by clicking ▶️ Run</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4.2 USB Wired Debugging</span><span lang="en">4.2 USB Wired Debugging</span></h2>
+<p class="reveal"><span lang="id">If wireless connection is unstable, or your network is complicated, plugging in with a cable is always the most reliable solution. Although it is less convenient, it gives the fastest transfer speed and almost never disconnects.</span><span lang="en">If wireless connection is unstable, or your network is complicated, plugging in with a cable is always the most reliable solution. Although it is less convenient, it gives the fastest transfer speed and almost never disconnects.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2.1 Prepare USB Driver in Android Studio (Windows only)</span><span lang="en">4.2.1 Prepare USB Driver in Android Studio (Windows only)</span></h3>
+<p class="reveal"><span lang="id">Mac users can skip this step, because macOS usually recognizes the phone directly. Windows users need to make sure the computer can recognize the Android phone, which usually means installing Google's USB driver:</span><span lang="en">Mac users can skip this step, because macOS usually recognizes the phone directly. Windows users need to make sure the computer can recognize the Android phone, which usually means installing Google's USB driver:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">In Android Studio, click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Tools -> SDK Manager</code> (or find it under <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Settings -> Languages & Frameworks -> Android SDK</code>)</span><span lang="en">In Android Studio, click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Tools -> SDK Manager</code> (or find it under <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Settings -> Languages & Frameworks -> Android SDK</code>)</span></li>
+<li><span lang="id">Switch to the <b>SDK Tools</b> tab</span><span lang="en">Switch to the <b>SDK Tools</b> tab</span></li>
+<li><span lang="id">Check <b>Google USB Driver</b> and click <b>Apply</b> to download and install it</span><span lang="en">Check <b>Google USB Driver</b> and click <b>Apply</b> to download and install it</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2.2 Download the Same SDK Version as Your Real Device</span><span lang="en">4.2.2 Download the Same SDK Version as Your Real Device</span></h3>
+<p class="reveal"><span lang="id"><b>Step 1: Check the phone's Android version</b></span><span lang="en"><b>Step 1: Check the phone's Android version</b></span></p>
+<p class="reveal"><span lang="id">Using an OPPO phone as an example: open Settings -> About phone -> check Android version (in the example it is Android 12).</span><span lang="en">Using an OPPO phone as an example: open Settings -> About phone -> check Android version (in the example it is Android 12).</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Step 2: Download that Android platform version in Android Studio</b></span><span lang="en"><b>Step 2: Download that Android platform version in Android Studio</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">In Android Studio, click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Tools -> SDK Manager</code></span><span lang="en">In Android Studio, click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Tools -> SDK Manager</code></span></li>
+<li><span lang="id">Stay in the default <b>SDK Platforms</b> tab</span><span lang="en">Stay in the default <b>SDK Platforms</b> tab</span></li>
+<li><span lang="id">Select Android 12.0 and click Apply to download</span><span lang="en">Select Android 12.0 and click Apply to download</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2.3 Enable Developer Mode on the Phone</span><span lang="en">4.2.3 Enable Developer Mode on the Phone</span></h3>
+<p class="reveal"><span lang="id">Open your phone settings, go into developer options, and turn on <b>USB debugging</b>.</span><span lang="en">Open your phone settings, go into developer options, and turn on <b>USB debugging</b>.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2.4 Install the USB Driver Authorization on the Phone</span><span lang="en">4.2.4 Install the USB Driver Authorization on the Phone</span></h3>
+<p class="reveal"><span lang="id">At this point, pick up your phone. It should show an important security dialog: "Allow USB debugging?" Make sure to check <b>Always allow</b> and then tap <b>Allow</b> or <b>OK</b>. This is the key authorization that gives the computer control for debugging.</span><span lang="en">At this point, pick up your phone. It should show an important security dialog: "Allow USB debugging?" Make sure to check <b>Always allow</b> and then tap <b>Allow</b> or <b>OK</b>. This is the key authorization that gives the computer control for debugging.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2.5 Run the App on the Phone</span><span lang="en">4.2.5 Run the App on the Phone</span></h3>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">In Android Studio's top device selector, you should now see your phone model (for example <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">OPPO-PDKM00</code>)</span><span lang="en">In Android Studio's top device selector, you should now see your phone model (for example <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">OPPO-PDKM00</code>)</span></li>
+<li><span lang="id">Click ▶️ Run. Your phone will show the "Allow USB debugging?" dialog; check "Always allow" and confirm</span><span lang="en">Click ▶️ Run. Your phone will show the "Allow USB debugging?" dialog; check "Always allow" and confirm</span></li>
+<li><span lang="id">The app will automatically install and launch</span><span lang="en">The app will automatically install and launch</span></li>
+</ul>
+<p class="reveal"><span lang="id">Now try tapping the wooden fish on your phone and feel the real vibration motor response. This is the full Vibe Coding experience.</span><span lang="en">Now try tapping the wooden fish on your phone and feel the real vibration motor response. This is the full Vibe Coding experience.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<p class="reveal"><span lang="id">The code is done, and the real-device test also works. Now we need to "take the app out" of Android Studio and turn it into a file you can send to friends for installation. This process is called <b>packaging</b>. In Android development, packaging has two completely different modes, and we choose based on the usage scenario.</span><span lang="en">The code is done, and the real-device test also works. Now we need to "take the app out" of Android Studio and turn it into a file you can send to friends for installation. This process is called <b>packaging</b>. In Android development, packaging has two completely different modes, and we choose based on the usage scenario.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5.1 Package the Debug Version (for Quick Sharing)</span><span lang="en">5.1 Package the Debug Version (for Quick Sharing)</span></h2>
+<p class="reveal"><span lang="id">If you only want to share the app with friends for a quick try, or send it to test phones for verification, the <b>Debug version</b> is the fastest option. It is like a "draft" - fully functional, but not formally signed, so it cannot be submitted to app stores.</span><span lang="en">If you only want to share the app with friends for a quick try, or send it to test phones for verification, the <b>Debug version</b> is the fastest option. It is like a "draft" - fully functional, but not formally signed, so it cannot be submitted to app stores.</span></p>
+<p class="reveal"><span lang="id"><b>The steps are very simple:</b> in the top menu of Android Studio, find <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Build</code>, hover over <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Generate App Bundles or APKs</code>, and click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Generate APKs</code> from the submenu.</span><span lang="en"><b>The steps are very simple:</b> in the top menu of Android Studio, find <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Build</code>, hover over <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Generate App Bundles or APKs</code>, and click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Generate APKs</code> from the submenu.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<p class="reveal"><span lang="id">Wait about 5 seconds depending on project size. In the bottom-right console area of Android Studio, a prompt will appear. Click the blue <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">locate</code> link and the output folder will open automatically. The file named <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">app-debug.apk</code> is the package we want.</span><span lang="en">Wait about 5 seconds depending on project size. In the bottom-right console area of Android Studio, a prompt will appear. Click the blue <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">locate</code> link and the output folder will open automatically. The file named <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">app-debug.apk</code> is the package we want.</span></p>
+<p class="reveal"><span lang="id">You can directly send it through WeChat or QQ to any Android phone, and the recipient can install and use it. Note that debug is not a release version.</span><span lang="en">You can directly send it through WeChat or QQ to any Android phone, and the recipient can install and use it. Note that debug is not a release version.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5.2 Package the Release Version</span><span lang="en">5.2 Package the Release Version</span></h2>
+<p class="reveal"><span lang="id">If you want to publish the app to an app store (such as Google Play or Huawei AppGallery), or avoid the "unsafe app" warning during installation, then you must package a <b>Release version</b>. This version requires a unique <b>digital signature</b>, which is like an anti-counterfeit seal proving that you developed this app and that it has not been tampered with.</span><span lang="en">If you want to publish the app to an app store (such as Google Play or Huawei AppGallery), or avoid the "unsafe app" warning during installation, then you must package a <b>Release version</b>. This version requires a unique <b>digital signature</b>, which is like an anti-counterfeit seal proving that you developed this app and that it has not been tampered with.</span></p>
+<p class="reveal"><span lang="id">> Core purpose of signing</span><span lang="en">> Core purpose of signing</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> - Determine the publisher's identity: because an app with the same package name can replace an installed program, signing prevents that from being abused</span><span lang="en">> - Determine the publisher's identity: because an app with the same package name can replace an installed program, signing prevents that from being abused</span></p>
+<p class="reveal"><span lang="id">> - Ensure app integrity: the signing process covers every file in the package, ensuring they are not replaced afterward</span><span lang="en">> - Ensure app integrity: the signing process covers every file in the package, ensuring they are not replaced afterward</span></p>
+<p class="reveal"><span lang="id">Android app signing is like attaching a seal. After the seal is attached, the app and the developer are locked together: the app is yours, and you are responsible for it. Others cannot impersonate you, and you cannot impersonate others.</span><span lang="en">Android app signing is like attaching a seal. After the seal is attached, the app and the developer are locked together: the app is yours, and you are responsible for it. Others cannot impersonate you, and you cannot impersonate others.</span></p>
+<p class="reveal"><span lang="id"><b>Step 1: Start the signing wizard</b></span><span lang="en"><b>Step 1: Start the signing wizard</b></span></p>
+<p class="reveal"><span lang="id">In the top menu, select <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Build</code>, then click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Generate Signed Bundle / APK</code>. In the popup window, you will face two choices:</span><span lang="en">In the top menu, select <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Build</code>, then click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Generate Signed Bundle / APK</code>. In the popup window, you will face two choices:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Android App Bundle (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.aab</code>): required by Google Play, smaller in size, but cannot be directly installed on a phone</span><span lang="en">Android App Bundle (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.aab</code>): required by Google Play, smaller in size, but cannot be directly installed on a phone</span></li>
+<li><span lang="id">APK: standard install package, can be installed directly</span><span lang="en">APK: standard install package, can be installed directly</span></li>
+</ul>
+<p class="reveal"><span lang="id">_For demonstration, we choose APK first and click Next._</span><span lang="en">_For demonstration, we choose APK first and click Next._</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Step 2: Create a digital key (KeyStore)</b></span><span lang="en"><b>Step 2: Create a digital key (KeyStore)</b></span></p>
+<p class="reveal"><span lang="id">This is where beginners get stuck most often. Because this is your first release packaging, you need to create a new <b>keystore</b>. Click <b>Create new</b> below <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Key store path</code>.</span><span lang="en">This is where beginners get stuck most often. Because this is your first release packaging, you need to create a new <b>keystore</b>. Click <b>Create new</b> below <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Key store path</code>.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<p class="reveal"><span lang="id">In the popup, fill in the required information, similar to registering an account. We strongly recommend that the keystore password and key alias password be <b>the same</b>, and that you <b>write them down carefully</b>. If you lose this password, your app can never be updated again in the future.</span><span lang="en">In the popup, fill in the required information, similar to registering an account. We strongly recommend that the keystore password and key alias password be <b>the same</b>, and that you <b>write them down carefully</b>. If you lose this password, your app can never be updated again in the future.</span></p>
+<p class="reveal"><span lang="id">After finishing, click OK. You will return to the previous screen, and the key information you just filled in will already be populated automatically.</span><span lang="en">After finishing, click OK. You will return to the previous screen, and the key information you just filled in will already be populated automatically.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Step 3: Generate the formal package</b></span><span lang="en"><b>Step 3: Generate the formal package</b></span></p>
+<p class="reveal"><span lang="id">Click Next, choose <b>release</b> under Build Variants, and finally click <b>Create</b>.</span><span lang="en">Click Next, choose <b>release</b> under Build Variants, and finally click <b>Create</b>.</span></p>
+<p class="reveal"><span lang="id">After a short wait, Android Studio will again show a "Generate Signed APK" success prompt in the bottom-right corner. Click <b>locate</b>, and this time you will see the digitally signed formal package in the folder (usually named <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">app-release.apk</code>). This file is the final product you deliver as a developer.</span><span lang="en">After a short wait, Android Studio will again show a "Generate Signed APK" success prompt in the bottom-right corner. Click <b>locate</b>, and this time you will see the digitally signed formal package in the folder (usually named <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">app-release.apk</code>). This file is the final product you deliver as a developer.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<p class="reveal"><span lang="id">When your app development is finished and the Release package is ready, the next step is to publish it so more people can download and use it. Right now, the main distribution channels are divided into two categories: <b>domestic Android app stores</b> and <b>overseas app stores (Google Play)</b>.</span><span lang="en">When your app development is finished and the Release package is ready, the next step is to publish it so more people can download and use it. Right now, the main distribution channels are divided into two categories: <b>domestic Android app stores</b> and <b>overseas app stores (Google Play)</b>.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6.1 Publish to Domestic Markets</span><span lang="en">6.1 Publish to Domestic Markets</span></h2>
+<p class="reveal"><span lang="id">The Android ecosystem in mainland China is special. There is no single official store (because Google Play is not directly accessible). Instead, the market is split between <b>phone-maker app stores</b> and <b>third-party platforms</b>. The major <b>manufacturer stores</b> include Huawei, Xiaomi, OPPO, vivo, Meizu, Samsung, etc. Since they are preinstalled on devices, they have the largest traffic. The main <b>third-party platforms</b> include Tencent MyApp and 360 Mobile Assistant.</span><span lang="en">The Android ecosystem in mainland China is special. There is no single official store (because Google Play is not directly accessible). Instead, the market is split between <b>phone-maker app stores</b> and <b>third-party platforms</b>. The major <b>manufacturer stores</b> include Huawei, Xiaomi, OPPO, vivo, Meizu, Samsung, etc. Since they are preinstalled on devices, they have the largest traffic. The main <b>third-party platforms</b> include Tencent MyApp and 360 Mobile Assistant.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1.1 The Core Difficulty: The "Roadblock" for Individual Developers</span><span lang="en">6.1.1 The Core Difficulty: The "Roadblock" for Individual Developers</span></h3>
+<p class="reveal"><span lang="id">Before registering an account, there is one very important thing you must know: <b>domestic app markets are very strict with individual developers</b>.</span><span lang="en">Before registering an account, there is one very important thing you must know: <b>domestic app markets are very strict with individual developers</b>.</span></p>
+<p class="reveal"><span lang="id">At present, almost all major domestic app stores (Huawei, Xiaomi, OV, MyApp, etc.) <b>require</b> a <i>Software Copyright Registration Certificate</i> for submission.</span><span lang="en">At present, almost all major domestic app stores (Huawei, Xiaomi, OV, MyApp, etc.) <b>require</b> a <i>Software Copyright Registration Certificate</i> for submission.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>What is it?</b> It is a legal document proving that the app belongs to you.</span><span lang="en"><b>What is it?</b> It is a legal document proving that the app belongs to you.</span></li>
+<li><span lang="id"><b>Cost to obtain it</b>: you need to apply through the copyright bureau. Doing it yourself usually takes 2-3 months; using an agency for faster processing may cost from several hundred to over a thousand RMB.</span><span lang="en"><b>Cost to obtain it</b>: you need to apply through the copyright bureau. Doing it yourself usually takes 2-3 months; using an agency for faster processing may cost from several hundred to over a thousand RMB.</span></li>
+<li><span lang="id"><b>Current reality</b>: without this certificate, your app will very likely fail review, or you may not even be able to create the app entry. In addition, categories such as news, finance, and healthcare may also require ICP filing or other qualifications.</span><span lang="en"><b>Current reality</b>: without this certificate, your app will very likely fail review, or you may not even be able to create the app entry. In addition, categories such as news, finance, and healthcare may also require ICP filing or other qualifications.</span></li>
+</ul>
+<p class="reveal"><span lang="id">So if your app is just a personal practice project or small tool, and you do not want to spend time and money applying for this certificate, I suggest jumping directly to Section 6.2 and considering Google Play instead, or simply sharing the APK file with friends directly.</span><span lang="en">So if your app is just a personal practice project or small tool, and you do not want to spend time and money applying for this certificate, I suggest jumping directly to Section 6.2 and considering Google Play instead, or simply sharing the APK file with friends directly.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1.2 Register a Developer Account</span><span lang="en">6.1.2 Register a Developer Account</span></h3>
+<p class="reveal"><span lang="id">If you have already prepared the required qualifications, or have decided to publish in domestic markets, the first step is account registration. The process is similar across major platforms, usually requiring ID verification for individuals or business license verification for companies.</span><span lang="en">If you have already prepared the required qualifications, or have decided to publish in domestic markets, the first step is account registration. The process is similar across major platforms, usually requiring ID verification for individuals or business license verification for companies.</span></p>
+<p class="reveal"><span lang="id">Below are the developer platform URLs for major app markets:</span><span lang="en">Below are the developer platform URLs for major app markets:</span></p>
+<p class="reveal"><span lang="id">Tencent Open Platform: https://open.tencent.com/</span><span lang="en">Tencent Open Platform: https://open.tencent.com/</span></p>
+<p class="reveal"><span lang="id">360 Open Platform: http://dev.360.cn</span><span lang="en">360 Open Platform: http://dev.360.cn</span></p>
+<p class="reveal"><span lang="id">Baidu Developer Platform: http://app.baidu.com</span><span lang="en">Baidu Developer Platform: http://app.baidu.com</span></p>
+<p class="reveal"><span lang="id">Xiaomi Open Platform: https://dev.mi.com</span><span lang="en">Xiaomi Open Platform: https://dev.mi.com</span></p>
+<p class="reveal"><span lang="id">Huawei Developer Alliance: http://developer.huawei.com/consumer/cn</span><span lang="en">Huawei Developer Alliance: http://developer.huawei.com/consumer/cn</span></p>
+<p class="reveal"><span lang="id">Alibaba Developer Platform: http://open.uc.cn</span><span lang="en">Alibaba Developer Platform: http://open.uc.cn</span></p>
+<p class="reveal"><span lang="id">Alibaba distribution integrates Wandoujia, Ali Jiuyou, PP Assistant, UC App Store, Shenma Search, and YunOS App Store. You only need to register one Alibaba developer account.</span><span lang="en">Alibaba distribution integrates Wandoujia, Ali Jiuyou, PP Assistant, UC App Store, Shenma Search, and YunOS App Store. You only need to register one Alibaba developer account.</span></p>
+<p class="reveal"><span lang="id">Samsung Developer Platform: http://support-cn.samsung.com/App/DeveloperChina/Home/Index</span><span lang="en">Samsung Developer Platform: http://support-cn.samsung.com/App/DeveloperChina/Home/Index</span></p>
+<p class="reveal"><span lang="id">OPPO Developer Alliance: http://open.oppomobile.com</span><span lang="en">OPPO Developer Alliance: http://open.oppomobile.com</span></p>
+<p class="reveal"><span lang="id">vivo Developer Alliance: https://dev.vivo.com.cn</span><span lang="en">vivo Developer Alliance: https://dev.vivo.com.cn</span></p>
+<p class="reveal"><span lang="id">Lenovo Open Platform: http://open.lenovo.com</span><span lang="en">Lenovo Open Platform: http://open.lenovo.com</span></p>
+<p class="reveal"><span lang="id">Meizu Developer Alliance: http://open.flyme.cn</span><span lang="en">Meizu Developer Alliance: http://open.flyme.cn</span></p>
+<p class="reveal"><span lang="id">Gionee Developer Alliance: https://open.appgionee.com</span><span lang="en">Gionee Developer Alliance: https://open.appgionee.com</span></p>
+<p class="reveal"><span lang="id"><b>Using Tencent MyApp as an example:</b> visit the Tencent Open Platform and click register. It is recommended to log in directly with a QQ account. Note that once a QQ account is bound, it is difficult to unbind, so it is better to use a dedicated work QQ account. Follow the prompts, choose "Individual Developer" or "Enterprise Developer," upload your ID photos, and complete face verification. After passing verification, click <b>Create App</b> to start.</span><span lang="en"><b>Using Tencent MyApp as an example:</b> visit the Tencent Open Platform and click register. It is recommended to log in directly with a QQ account. Note that once a QQ account is bound, it is difficult to unbind, so it is better to use a dedicated work QQ account. Follow the prompts, choose "Individual Developer" or "Enterprise Developer," upload your ID photos, and complete face verification. After passing verification, click <b>Create App</b> to start.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1.3 Submission Flow and Required Materials</span><span lang="en">6.1.3 Submission Flow and Required Materials</span></h3>
+<p class="reveal"><span lang="id">After account review is approved, you can create the app and submit it for review. You need to prepare the following "four-piece set":</span><span lang="en">After account review is approved, you can create the app and submit it for review. You need to prepare the following "four-piece set":</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Installation package</b>: the <b>Release APK</b> packaged in Chapter 5</span><span lang="en"><b>Installation package</b>: the <b>Release APK</b> packaged in Chapter 5</span></li>
+<li><span lang="id"><b>Text information</b>:</span><span lang="en"><b>Text information</b>:</span></li>
+<li><span lang="id"><b>App name</b>: must not contain sensitive words</span><span lang="en"><b>App name</b>: must not contain sensitive words</span></li>
+<li><span lang="id"><b>One-line intro</b>: within 20 Chinese characters, simple and direct (for example: "A relaxing electronic wooden fish app")</span><span lang="en"><b>One-line intro</b>: within 20 Chinese characters, simple and direct (for example: "A relaxing electronic wooden fish app")</span></li>
+<li><span lang="id"><b>Detailed description</b>: 200+ Chinese characters introducing the app's functions and usage scenarios</span><span lang="en"><b>Detailed description</b>: 200+ Chinese characters introducing the app's functions and usage scenarios</span></li>
+<li><span lang="id"><b>Visual materials</b>:</span><span lang="en"><b>Visual materials</b>:</span></li>
+<li><span lang="id"><b>App icon</b>: high-definition PNG, usually 512x512</span><span lang="en"><b>App icon</b>: high-definition PNG, usually 512x512</span></li>
+<li><span lang="id"><b>App screenshots</b>: prepare 4-5 clear screenshots of the app in use, preferably covering the main pages, usually in consistent size such as 1080x1920</span><span lang="en"><b>App screenshots</b>: prepare 4-5 clear screenshots of the app in use, preferably covering the main pages, usually in consistent size such as 1080x1920</span></li>
+<li><span lang="id"><b>Qualification document</b>: upload a scanned copy of your Software Copyright Registration Certificate</span><span lang="en"><b>Qualification document</b>: upload a scanned copy of your Software Copyright Registration Certificate</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Submission and review:</b> after filling in all information and uploading the APK, click <b>Submit for Review</b>. The review cycle is usually 1-3 business days. During that period, pay attention to email or SMS. Reviewers may reject the submission because screenshots are unclear, descriptions are not standardized, or required qualifications are missing. In that case, you revise according to the feedback and resubmit.</span><span lang="en"><b>Submission and review:</b> after filling in all information and uploading the APK, click <b>Submit for Review</b>. The review cycle is usually 1-3 business days. During that period, pay attention to email or SMS. Reviewers may reject the submission because screenshots are unclear, descriptions are not standardized, or required qualifications are missing. In that case, you revise according to the feedback and resubmit.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6.2 Publish to Overseas Market (Google Play)</span><span lang="en">6.2 Publish to Overseas Market (Google Play)</span></h2>
+<p class="reveal"><span lang="id">If you do not want to deal with the complexity of software copyright certificates and filings in domestic app stores, or if your target audience is global, Google Play is the best choice for individual developers.</span><span lang="en">If you do not want to deal with the complexity of software copyright certificates and filings in domestic app stores, or if your target audience is global, Google Play is the best choice for individual developers.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2.1 Preparation</span><span lang="en">6.2.1 Preparation</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Google account</b>: a normal Gmail account is enough</span><span lang="en"><b>Google account</b>: a normal Gmail account is enough</span></li>
+<li><span lang="id"><b>$25 registration fee</b>: this is a <b>one-time lifetime fee</b>, and requires a credit card that supports USD payments (Visa / Mastercard)</span><span lang="en"><b>$25 registration fee</b>: this is a <b>one-time lifetime fee</b>, and requires a credit card that supports USD payments (Visa / Mastercard)</span></li>
+<li><span lang="id"><b>Reliable network access</b>: you need to be able to access Google Play Console smoothly</span><span lang="en"><b>Reliable network access</b>: you need to be able to access Google Play Console smoothly</span></li>
+<li><span lang="id"><b>Formal installation package</b>: note that Google Play requires the <b>.aab</b> (Android App Bundle) format, not APK. In Android Studio, choose Android App Bundle during packaging. The steps are almost identical to packaging APK.</span><span lang="en"><b>Formal installation package</b>: note that Google Play requires the <b>.aab</b> (Android App Bundle) format, not APK. In Android Studio, choose Android App Bundle during packaging. The steps are almost identical to packaging APK.</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2.2 Google Play Console Release Process (Overview)</span><span lang="en">6.2.2 Google Play Console Release Process (Overview)</span></h3>
+<p class="reveal"><span lang="id">Because Google Play registration and payment still have some entry barriers (such as the need for an overseas credit card), this tutorial does not currently provide step-by-step screenshots. But here is the common four-step process:</span><span lang="en">Because Google Play registration and payment still have some entry barriers (such as the need for an overseas credit card), this tutorial does not currently provide step-by-step screenshots. But here is the common four-step process:</span></p>
+<p class="reveal"><span lang="id"><b>Step 1: Create an app and enter the console</b></span><span lang="en"><b>Step 1: Create an app and enter the console</b></span></p>
+<p class="reveal"><span lang="id">Click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Create app</code>, fill in the app name (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Electronic Wooden Fish</code>), choose English as the language, choose App and Free as the app type, then check the agreement. After that, you will have access to the backend.</span><span lang="en">Click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Create app</code>, fill in the app name (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Electronic Wooden Fish</code>), choose English as the language, choose App and Free as the app type, then check the agreement. After that, you will have access to the backend.</span></p>
+<p class="reveal"><span lang="id"><b>Step 2: Decorate the store page</b></span><span lang="en"><b>Step 2: Decorate the store page</b></span></p>
+<p class="reveal"><span lang="id">This is the user's first impression. You need to upload the prepared app <b>icon</b> (512x512) and a <b>feature graphic</b> (1024x500). As for the English description, you can simply ask Trae: <b>"Please help me write an English description for publishing Electronic Wooden Fish on Google Play, in a light and relaxing tone."</b> AI usually writes it more naturally than a direct translation.</span><span lang="en">This is the user's first impression. You need to upload the prepared app <b>icon</b> (512x512) and a <b>feature graphic</b> (1024x500). As for the English description, you can simply ask Trae: <b>"Please help me write an English description for publishing Electronic Wooden Fish on Google Play, in a light and relaxing tone."</b> AI usually writes it more naturally than a direct translation.</span></p>
+<p class="reveal"><span lang="id"><b>Step 3: Privacy and content rating</b></span><span lang="en"><b>Step 3: Privacy and content rating</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Privacy policy: search for "App Privacy Policy Generator" and generate a free link to paste in</span><span lang="en">Privacy policy: search for "App Privacy Policy Generator" and generate a free link to paste in</span></li>
+<li><span lang="id">Content rating: fill out a simple questionnaire (for example, whether there is violence or gambling). Electronic Wooden Fish usually gets a general 3+ rating.</span><span lang="en">Content rating: fill out a simple questionnaire (for example, whether there is violence or gambling). Electronic Wooden Fish usually gets a general 3+ rating.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Step 4: Upload and publish</b></span><span lang="en"><b>Step 4: Upload and publish</b></span></p>
+<p class="reveal"><span lang="id">Under the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Production</code> menu, click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Create new release</code>, upload your <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.aab</code> file, save, and submit for review. Google Play review is usually fast (1-3 days). Once approved, your app can be downloaded worldwide.</span><span lang="en">Under the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Production</code> menu, click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Create new release</code>, upload your <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.aab</code> file, save, and submit for review. Google Play review is usually fast (1-3 days). Once approved, your app can be downloaded worldwide.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<p class="reveal"><span lang="id">_If you have already completed developer account registration, this video tutorial can guide you through the rest of the process:_ [Full workflow: uploading an Android app to Google Play](https://www.bilibili.com/video/BV16REQzGEnk/?share_source=weixin&vd_source=b42f227a4f2d413fbde18499d83227cf)</span><span lang="en">_If you have already completed developer account registration, this video tutorial can guide you through the rest of the process:_ [Full workflow: uploading an Android app to Google Play](https://www.bilibili.com/video/BV16REQzGEnk/?share_source=weixin&vd_source=b42f227a4f2d413fbde18499d83227cf)</span></p>
+<p class="reveal"><span lang="id">That brings us to the end of the tutorial. Looking at the Electronic Wooden Fish you personally created on your phone, I wonder how you feel now.</span><span lang="en">That brings us to the end of the tutorial. Looking at the Electronic Wooden Fish you personally created on your phone, I wonder how you feel now.</span></p>
+<p class="reveal"><span lang="id">As someone trained in software engineering, I actually feel quite emotional in today's fast-developing AI era. In the past, we worked through thick programming books, learned complex syntax, struggled with environment setup, and spent half of our day fighting red error messages. But times have changed, and now we are increasingly learning how to direct AI.</span><span lang="en">As someone trained in software engineering, I actually feel quite emotional in today's fast-developing AI era. In the past, we worked through thick programming books, learned complex syntax, struggled with environment setup, and spent half of our day fighting red error messages. But times have changed, and now we are increasingly learning how to direct AI.</span></p>
+<p class="reveal"><span lang="id">Through this Vibe Coding practice, you have already experienced the full Android app development process. The technical barrier is indeed getting lower. We no longer need to grind through dry code all the time, and can spend more energy on deciding <b>what to build</b>. But no matter how strong the tools are, they are still just tools. Do not let this app gather dust on your phone. Keep tinkering with it, break it and fix it again. Only when you start having your own ideas and bringing them to life do you truly cross the threshold.</span><span lang="en">Through this Vibe Coding practice, you have already experienced the full Android app development process. The technical barrier is indeed getting lower. We no longer need to grind through dry code all the time, and can spend more energy on deciding <b>what to build</b>. But no matter how strong the tools are, they are still just tools. Do not let this app gather dust on your phone. Keep tinkering with it, break it and fix it again. Only when you start having your own ideas and bringing them to life do you truly cross the threshold.</span></p>
+<p class="reveal"><span lang="id">If this tutorial helped you feel that "building an app is not actually that hard," then I am honored to have helped bring one more new-generation builder into the development world.</span><span lang="en">If this tutorial helped you feel that "building an app is not actually that hard," then I am honored to have helped bring one more new-generation builder into the development world.</span></p>
+<p class="reveal"><span lang="id">I am really looking forward to your next creation. Keep going!</span><span lang="en">I am really looking forward to your next creation. Keep going!</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Aplikasi Android dengan Jetpack Compose & Kotlin</span><span lang="en">Aplikasi Android dengan Jetpack Compose & Kotlin</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>_Hope you have fun in the world of Android development!_</b></span><span lang="en"><b>_Hope you have fun in the world of Android development!_</b></span></p>
+<p class="reveal"><span lang="id">CSDN: [How to package/build an Android Studio project (2024-03-04)](https://blog.csdn.net/GenuineMonster/article/details/136443130?ops_request_misc=&request_id=&biz_id=102&utm_term=android%20studio%20%E6%89%93%E5%8C%85%20APK%20%E5%B9%B6%E5%88%86%E4%BA%AB&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-136443130.142^v102^pc_search_result_base4&spm=1018.2226.3001.4187)</span><span lang="en">CSDN: [How to package/build an Android Studio project (2024-03-04)](https://blog.csdn.net/GenuineMonster/article/details/136443130?ops_request_misc=&request_id=&biz_id=102&utm_term=android%20studio%20%E6%89%93%E5%8C%85%20APK%20%E5%B9%B6%E5%88%86%E4%BA%AB&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-136443130.142^v102^pc_search_result_base4&spm=1018.2226.3001.4187)</span></p>
+<p class="reveal"><span lang="id">CSDN: [Android Studio installation and configuration](https://blog.csdn.net/Changersh/article/details/149838228?ops_request_misc=&request_id=&biz_id=102&utm_term=android%20studio%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-149838228.142^v102^pc_search_result_base4&spm=1018.2226.3001.4187)</span><span lang="en">CSDN: [Android Studio installation and configuration](https://blog.csdn.net/Changersh/article/details/149838228?ops_request_misc=&request_id=&biz_id=102&utm_term=android%20studio%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-149838228.142^v102^pc_search_result_base4&spm=1018.2226.3001.4187)</span></p>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../cross-platform/wechat-miniprogram-backend/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Mini Program dengan Backend Cloud & Database</span><span lang="en">Mini Program dengan Backend Cloud & Database</span></b></a>
+      <a class="next" href="../../cross-platform/ios-app/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

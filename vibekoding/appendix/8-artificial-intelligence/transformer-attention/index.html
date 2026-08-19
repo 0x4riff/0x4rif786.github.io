@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of Transformers and Attention Mechanisms — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Transformers and Attention Mechanisms. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/8-artificial-intelligence/transformer-attention/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Transformers and Attention Mechanisms</span><span lang="en">Principles of Transformers and Attention Mechanisms</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of Transformers and Attention Mechanisms</span><span lang="en">Principles of Transformers and Attention Mechanisms</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Transformers and Attention Mechanisms.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Transformers and Attention Mechanisms.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">In 2017, Google introduced the Transformer architecture in their paper "Attention Is All You Need," fundamentally changing the landscape of natural language processing. It abandoned traditional recurrent neural networks (RNNs) and relied solely on the attention mechanism to achieve stronger performance and higher training efficiency. Today, nearly all large language models — GPT, BERT, T5, LLaMA — are built upon the Transformer.</span><span lang="en">In 2017, Google introduced the Transformer architecture in their paper "Attention Is All You Need," fundamentally changing the landscape of natural language processing. It abandoned traditional recurrent neural networks (RNNs) and relied solely on the attention mechanism to achieve stronger performance and higher training efficiency. Today, nearly all large language models — GPT, BERT, T5, LLaMA — are built upon the Transformer.</span></p>
+<p class="reveal"><span lang="id"><TransformerQuickStartDemo /></span><span lang="en"><TransformerQuickStartDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. The Struggles of RNNs and the Breakthrough of Transformers</span><span lang="en">1. The Struggles of RNNs and the Breakthrough of Transformers</span></h2>
+<p class="reveal"><span lang="id">Before Transformers, the dominant approach for processing sequential data (such as text and speech) was recurrent neural networks (RNNs) and their variants like LSTM and GRU. These models used recurrent structures to process elements in a sequence one by one, maintaining a hidden state to remember historical information.</span><span lang="en">Before Transformers, the dominant approach for processing sequential data (such as text and speech) was recurrent neural networks (RNNs) and their variants like LSTM and GRU. These models used recurrent structures to process elements in a sequence one by one, maintaining a hidden state to remember historical information.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 Three Fatal Flaws of RNNs</span><span lang="en">1.1 Three Fatal Flaws of RNNs</span></h3>
+<p class="reveal"><span lang="id"><b>Sequential dependency, no parallelism</b>: RNNs must wait for the previous time step to finish before processing the next word. This leads to extremely slow training and prevents full utilization of modern GPU parallel computing capabilities.</span><span lang="en"><b>Sequential dependency, no parallelism</b>: RNNs must wait for the previous time step to finish before processing the next word. This leads to extremely slow training and prevents full utilization of modern GPU parallel computing capabilities.</span></p>
+<p class="reveal"><span lang="id"><b>Long-range dependency decay</b>: Even improved LSTMs gradually "forget" early information when processing long texts. For example, in a 500-word article, the model struggles to remember key information mentioned at the beginning.</span><span lang="en"><b>Long-range dependency decay</b>: Even improved LSTMs gradually "forget" early information when processing long texts. For example, in a 500-word article, the model struggles to remember key information mentioned at the beginning.</span></p>
+<p class="reveal"><span lang="id"><b>Vanishing/exploding gradients</b>: During backpropagation, gradients must pass through time steps layer by layer, making them prone to vanishing or exploding, leading to unstable training.</span><span lang="en"><b>Vanishing/exploding gradients</b>: During backpropagation, gradients must pass through time steps layer by layer, making them prone to vanishing or exploding, leading to unstable training.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 The Revolutionary Breakthrough of Transformers</span><span lang="en">1.2 The Revolutionary Breakthrough of Transformers</span></h3>
+<p class="reveal"><span lang="id">Through the <b>Self-Attention mechanism</b>, Transformers allow the model to "see the entire sequence at a glance," directly computing relationships between any two positions without passing information step by step.</span><span lang="en">Through the <b>Self-Attention mechanism</b>, Transformers allow the model to "see the entire sequence at a glance," directly computing relationships between any two positions without passing information step by step.</span></p>
+<p class="reveal"><span lang="id"><RnnVsTransformerDemo /></span><span lang="en"><RnnVsTransformerDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Parallel computation</b>: Attention for all positions can be computed simultaneously, increasing training speed by tens of times
+- <b>Global perspective</b>: Directly captures long-range dependencies without sequence length limitations
+- <b>Scalability</b>: Clean, unified architecture that is easy to stack into deeper networks</span><span lang="en">- <b>Parallel computation</b>: Attention for all positions can be computed simultaneously, increasing training speed by tens of times
+- <b>Global perspective</b>: Directly captures long-range dependencies without sequence length limitations
+- <b>Scalability</b>: Clean, unified architecture that is easy to stack into deeper networks</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Complete Transformer Architecture: From Overall to Detail</span><span lang="en">2. Complete Transformer Architecture: From Overall to Detail</span></h2>
+<p class="reveal"><span lang="id">The complete Transformer architecture consists of an <b>Encoder</b> and a <b>Decoder</b>, responsible for understanding input and generating output respectively.</span><span lang="en">The complete Transformer architecture consists of an <b>Encoder</b> and a <b>Decoder</b>, responsible for understanding input and generating output respectively.</span></p>
+<p class="reveal"><span lang="id"><TransformerArchitectureDemo /></span><span lang="en"><TransformerArchitectureDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Encoder</span><span lang="en">2.1 Encoder</span></h3>
+<p class="reveal"><span lang="id">Take the sentence "The balance in the bank account is insufficient" as an example. When the model processes the word "balance," it automatically computes relevance with other words:</span><span lang="en">Take the sentence "The balance in the bank account is insufficient" as an example. When the model processes the word "balance," it automatically computes relevance with other words:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">"balance" and "account" are highly relevant (0.35)</span><span lang="en">"balance" and "account" are highly relevant (0.35)</span></li>
+<li><span lang="id">"balance" and "bank" are moderately relevant (0.20)</span><span lang="en">"balance" and "bank" are moderately relevant (0.20)</span></li>
+<li><span lang="id">"balance" and function words like "the," "in" have low relevance (0.05-0.10)</span><span lang="en">"balance" and function words like "the," "in" have low relevance (0.05-0.10)</span></li>
+</ul>
+<p class="reveal"><span lang="id">This relevance is not manually specified but automatically learned by the model from large amounts of data.</span><span lang="en">This relevance is not manually specified but automatically learned by the model from large amounts of data.</span></p>
+<p class="reveal"><span lang="id"><SelfAttentionDemo /></span><span lang="en"><SelfAttentionDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 The Attention Computation Process</span><span lang="en">2.2 The Attention Computation Process</span></h3>
+<p class="reveal"><span lang="id">The self-attention mechanism is implemented through three key steps:</span><span lang="en">The self-attention mechanism is implemented through three key steps:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Generate Q, K, V vectors</b>: Each word passes through three different linear transformations to produce Query, Key, and Value vectors</span><span lang="en"><b>Generate Q, K, V vectors</b>: Each word passes through three different linear transformations to produce Query, Key, and Value vectors</span></li>
+<li><span lang="id"><b>Compute attention weights</b>: Use Query to compute dot products with all Keys to obtain similarity scores</span><span lang="en"><b>Compute attention weights</b>: Use Query to compute dot products with all Keys to obtain similarity scores</span></li>
+<li><span lang="id"><b>Weighted sum</b>: Use attention weights to compute a weighted sum of Value vectors to produce the final output</span><span lang="en"><b>Weighted sum</b>: Use attention weights to compute a weighted sum of Value vectors to produce the final output</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Query, Key, Value: The Three Musketeers of Attention</span><span lang="en">3. Query, Key, Value: The Three Musketeers of Attention</span></h2>
+<p class="reveal"><span lang="id">The Transformer attention mechanism draws inspiration from information retrieval, mapping each word to three different vector spaces.</span><span lang="en">The Transformer attention mechanism draws inspiration from information retrieval, mapping each word to three different vector spaces.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 The Roles of the Three Vectors</span><span lang="en">3.1 The Roles of the Three Vectors</span></h3>
+<p class="reveal"><span lang="id"><b>Query</b>: Represents "what am I looking for." The current word's query intent, used to match against other words' Keys.</span><span lang="en"><b>Query</b>: Represents "what am I looking for." The current word's query intent, used to match against other words' Keys.</span></p>
+<p class="reveal"><span lang="id"><b>Key</b>: Represents "what am I." Each word's feature identifier, used to be retrieved by Queries.</span><span lang="en"><b>Key</b>: Represents "what am I." Each word's feature identifier, used to be retrieved by Queries.</span></p>
+<p class="reveal"><span lang="id"><b>Value</b>: Represents "what is my content." The actual information to be passed, weighted and summed according to attention weights.</span><span lang="en"><b>Value</b>: Represents "what is my content." The actual information to be passed, weighted and summed according to attention weights.</span></p>
+<p class="reveal"><span lang="id">The ingenuity of this design lies in the fact that <b>similarity computation (Q·K) and information transfer (V) are decoupled</b>. The model can learn that "which words to attend to" and "what information to extract after attending" are two independent problems.</span><span lang="en">The ingenuity of this design lies in the fact that <b>similarity computation (Q·K) and information transfer (V) are decoupled</b>. The model can learn that "which words to attend to" and "what information to extract after attending" are two independent problems.</span></p>
+<p class="reveal"><span lang="id"><QKVMechanismDemo /></span><span lang="en"><QKVMechanismDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Attention Computation Formula</span><span lang="en">3.2 Attention Computation Formula</span></h3>
+<p class="reveal"><span lang="id">The complete attention computation formula is:</span><span lang="en">The complete attention computation formula is:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Attention(Q, K, V) = softmax(QK^T / √d_k) V</pre>
+</div>
+<p class="reveal"><span lang="id">Where:</span><span lang="en">Where:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">QK^T</code>: Computes the dot product of Query and Key to obtain a similarity matrix</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">QK^T</code>: Computes the dot product of Query and Key to obtain a similarity matrix</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">√d_k</code>: Scaling factor to prevent dot product values from becoming too large, which would cause softmax gradient vanishing</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">√d_k</code>: Scaling factor to prevent dot product values from becoming too large, which would cause softmax gradient vanishing</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">softmax</code>: Converts similarities into a probability distribution (attention weights)</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">softmax</code>: Converts similarities into a probability distribution (attention weights)</span></li>
+<li><span lang="id">Finally multiplied with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">V</code>: Uses attention weights to compute a weighted sum of Values</span><span lang="en">Finally multiplied with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">V</code>: Uses attention weights to compute a weighted sum of Values</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Multi-Head Attention: Understanding Semantics from Multiple Perspectives</span><span lang="en">4. Multi-Head Attention: Understanding Semantics from Multiple Perspectives</span></h2>
+<p class="reveal"><span lang="id">A single attention head can only capture one type of dependency. To allow the model to understand sentences from multiple perspectives, Transformers introduced <b>Multi-Head Attention</b>.</span><span lang="en">A single attention head can only capture one type of dependency. To allow the model to understand sentences from multiple perspectives, Transformers introduced <b>Multi-Head Attention</b>.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 How Multi-Head Works</span><span lang="en">4.1 How Multi-Head Works</span></h3>
+<p class="reveal"><span lang="id">Multi-head attention projects the input into multiple different subspaces, with each "head" independently computing attention, then concatenating all head outputs together.</span><span lang="en">Multi-head attention projects the input into multiple different subspaces, with each "head" independently computing attention, then concatenating all head outputs together.</span></p>
+<p class="reveal"><span lang="id">Typical Transformers use 8 or 16 attention heads, with each head potentially focusing on different linguistic phenomena:</span><span lang="en">Typical Transformers use 8 or 16 attention heads, with each head potentially focusing on different linguistic phenomena:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Syntax heads</b>: Identify grammatical relationships like subject-verb-object, modifiers</span><span lang="en"><b>Syntax heads</b>: Identify grammatical relationships like subject-verb-object, modifiers</span></li>
+<li><span lang="id"><b>Semantic heads</b>: Capture word meaning correlations (e.g., "bank" and "account")</span><span lang="en"><b>Semantic heads</b>: Capture word meaning correlations (e.g., "bank" and "account")</span></li>
+<li><span lang="id"><b>Positional heads</b>: Focus on local dependencies between adjacent words</span><span lang="en"><b>Positional heads</b>: Focus on local dependencies between adjacent words</span></li>
+<li><span lang="id"><b>Coreference heads</b>: Resolve pronoun references (e.g., "he" pointing to "John")</span><span lang="en"><b>Coreference heads</b>: Resolve pronoun references (e.g., "he" pointing to "John")</span></li>
+<li><span lang="id"><b>Sentiment heads</b>: Identify positive/negative connotations and emotional tendencies</span><span lang="en"><b>Sentiment heads</b>: Identify positive/negative connotations and emotional tendencies</span></li>
+<li><span lang="id"><b>Entity heads</b>: Recognize named entities like person names and place names</span><span lang="en"><b>Entity heads</b>: Recognize named entities like person names and place names</span></li>
+</ul>
+<p class="reveal"><span lang="id"><MultiHeadAttentionDemo /></span><span lang="en"><MultiHeadAttentionDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Advantages of Multiple Heads</span><span lang="en">4.2 Advantages of Multiple Heads</span></h3>
+<p class="reveal"><span lang="id"><b>Stronger expressiveness</b>: Different heads can capture different types of dependencies, avoiding the limitations of a single perspective.</span><span lang="en"><b>Stronger expressiveness</b>: Different heads can capture different types of dependencies, avoiding the limitations of a single perspective.</span></p>
+<p class="reveal"><span lang="id"><b>Parallel computation</b>: Multiple heads can compute simultaneously without increasing computation time.</span><span lang="en"><b>Parallel computation</b>: Multiple heads can compute simultaneously without increasing computation time.</span></p>
+<p class="reveal"><span lang="id"><b>Better robustness</b>: Even if some heads fail to learn effectively, others can still provide useful information.</span><span lang="en"><b>Better robustness</b>: Even if some heads fail to learn effectively, others can still provide useful information.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+MultiHead(Q, K, V) = Concat(head_1, ..., head_h) W^O
+where head_i = Attention(QW_i^Q, KW_i^K, VW_i^V)
+</code>``
+Each head has independent weight matrices W^Q, W^K, W^V, and finally all head outputs are fused through W^O.</span><span lang="en">``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+MultiHead(Q, K, V) = Concat(head_1, ..., head_h) W^O
+where head_i = Attention(QW_i^Q, KW_i^K, VW_i^V)
+</code>``
+Each head has independent weight matrices W^Q, W^K, W^V, and finally all head outputs are fused through W^O.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Complete Transformer Architecture: Encoder and Decoder</span><span lang="en">5. Complete Transformer Architecture: Encoder and Decoder</span></h2>
+<p class="reveal"><span lang="id">The complete Transformer architecture consists of an <b>Encoder</b> and a <b>Decoder</b>, responsible for understanding input and generating output respectively.</span><span lang="en">The complete Transformer architecture consists of an <b>Encoder</b> and a <b>Decoder</b>, responsible for understanding input and generating output respectively.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Encoder</span><span lang="en">5.1 Encoder</span></h3>
+<p class="reveal"><span lang="id">The encoder is composed of multiple layers (typically 6-12) of identical structure stacked together, with each layer containing two sublayers:</span><span lang="en">The encoder is composed of multiple layers (typically 6-12) of identical structure stacked together, with each layer containing two sublayers:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Multi-head self-attention layer</b>: Captures dependencies within the input sequence</span><span lang="en"><b>Multi-head self-attention layer</b>: Captures dependencies within the input sequence</span></li>
+<li><span lang="id"><b>Feed-forward neural network</b>: Performs independent non-linear transformations on each position</span><span lang="en"><b>Feed-forward neural network</b>: Performs independent non-linear transformations on each position</span></li>
+</ul>
+<p class="reveal"><span lang="id">Each sublayer is followed by a <b>residual connection</b> and <b>layer normalization</b>, ensuring training stability for deep networks.</span><span lang="en">Each sublayer is followed by a <b>residual connection</b> and <b>layer normalization</b>, ensuring training stability for deep networks.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Decoder</span><span lang="en">5.2 Decoder</span></h3>
+<p class="reveal"><span lang="id">The decoder is also composed of multiple stacked layers, but each layer has three sublayers:</span><span lang="en">The decoder is also composed of multiple stacked layers, but each layer has three sublayers:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Masked multi-head self-attention</b>: Can only see words before the current position, preventing "cheating"</span><span lang="en"><b>Masked multi-head self-attention</b>: Can only see words before the current position, preventing "cheating"</span></li>
+<li><span lang="id"><b>Cross-attention</b>: Connects the encoder and decoder, allowing the decoder to attend to the input sequence</span><span lang="en"><b>Cross-attention</b>: Connects the encoder and decoder, allowing the decoder to attend to the input sequence</span></li>
+<li><span lang="id"><b>Feed-forward neural network</b>: Same as in the encoder</span><span lang="en"><b>Feed-forward neural network</b>: Same as in the encoder</span></li>
+</ul>
+<p class="reveal"><span lang="id"><TransformerArchitectureDemo /></span><span lang="en"><TransformerArchitectureDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 Modern Variants: Encoder-Only vs Decoder-Only</span><span lang="en">5.3 Modern Variants: Encoder-Only vs Decoder-Only</span></h3>
+<p class="reveal"><span lang="id">Although the original Transformer includes both encoder and decoder, modern large language models typically use only one of them:</span><span lang="en">Although the original Transformer includes both encoder and decoder, modern large language models typically use only one of them:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Architecture Type</th><th>Representative Models</th><th>Suitable Tasks</th></tr>
+<tr><td><b>Encoder-Only</b></td><td>BERT, RoBERTa</td><td>Text classification, named entity recognition, question answering</td></tr>
+<tr><td><b>Decoder-Only</b></td><td>GPT, LLaMA, Claude</td><td>Text generation, dialogue, code completion</td></tr>
+<tr><td><b>Encoder-Decoder</b></td><td>T5, BART</td><td>Translation, summarization, text rewriting</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">The GPT model family uses an <b>autoregressive generation</b> approach, predicting the next word one at a time. The decoder-only architecture is naturally suited for such generation tasks and offers a simpler structure that is easier to scale to hundreds of billions of parameters.</span><span lang="en">The GPT model family uses an <b>autoregressive generation</b> approach, predicting the next word one at a time. The decoder-only architecture is naturally suited for such generation tasks and offers a simpler structure that is easier to scale to hundreds of billions of parameters.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Positional Encoding: Telling the Model Word Order</span><span lang="en">6. Positional Encoding: Telling the Model Word Order</span></h2>
+<p class="reveal"><span lang="id">The self-attention mechanism of Transformers is inherently <b>position-agnostic</b> — it treats a sentence as a set of words without caring about word order. But word order is crucial for semantics: "I love you" and "You love me" mean completely different things!</span><span lang="en">The self-attention mechanism of Transformers is inherently <b>position-agnostic</b> — it treats a sentence as a set of words without caring about word order. But word order is crucial for semantics: "I love you" and "You love me" mean completely different things!</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 The Necessity of Positional Encoding</span><span lang="en">6.1 The Necessity of Positional Encoding</span></h3>
+<p class="reveal"><span lang="id">To allow the model to perceive positional information, Transformers add <b>Positional Encoding</b> to the input embeddings. Positional encoding is a vector with the same dimension as word embeddings, directly added to them.</span><span lang="en">To allow the model to perceive positional information, Transformers add <b>Positional Encoding</b> to the input embeddings. Positional encoding is a vector with the same dimension as word embeddings, directly added to them.</span></p>
+<p class="reveal"><span lang="id"><PositionalEncodingDemo /></span><span lang="en"><PositionalEncodingDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 Sinusoidal Positional Encoding</span><span lang="en">6.2 Sinusoidal Positional Encoding</span></h3>
+<p class="reveal"><span lang="id">The original Transformer uses fixed sine and cosine functions to generate positional encodings:</span><span lang="en">The original Transformer uses fixed sine and cosine functions to generate positional encodings:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>PE(pos, 2i) = sin(pos / 10000^(2i/d))
+PE(pos, 2i+1) = cos(pos / 10000^(2i/d))</pre>
+</div>
+<p class="reveal"><span lang="id">Advantages of this design:</span><span lang="en">Advantages of this design:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Uniqueness</b>: Each position has a unique encoding</span><span lang="en"><b>Uniqueness</b>: Each position has a unique encoding</span></li>
+<li><span lang="id"><b>Relative position</b>: The model can learn relative distance relationships</span><span lang="en"><b>Relative position</b>: The model can learn relative distance relationships</span></li>
+<li><span lang="id"><b>Extrapolation</b>: Can handle sequences longer than those seen during training</span><span lang="en"><b>Extrapolation</b>: Can handle sequences longer than those seen during training</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.3 Modern Positional Encoding Schemes</span><span lang="en">6.3 Modern Positional Encoding Schemes</span></h3>
+<p class="reveal"><span lang="id">As research has deepened, more positional encoding schemes have emerged:</span><span lang="en">As research has deepened, more positional encoding schemes have emerged:</span></p>
+<p class="reveal"><span lang="id"><b>Learnable positional encoding</b>: BERT and GPT treat positional encodings as trainable parameters rather than fixed functions.</span><span lang="en"><b>Learnable positional encoding</b>: BERT and GPT treat positional encodings as trainable parameters rather than fixed functions.</span></p>
+<p class="reveal"><span lang="id"><b>Relative positional encoding</b>: T5 and DeBERTa encode relative distances between words rather than absolute positions.</span><span lang="en"><b>Relative positional encoding</b>: T5 and DeBERTa encode relative distances between words rather than absolute positions.</span></p>
+<p class="reveal"><span lang="id"><b>Rotary Position Embedding (RoPE)</b>: Used by LLaMA and GPT-NeoX, injects positional information by rotating Q and K vectors, offering better extrapolation performance.</span><span lang="en"><b>Rotary Position Embedding (RoPE)</b>: Used by LLaMA and GPT-NeoX, injects positional information by rotating Q and K vectors, offering better extrapolation performance.</span></p>
+<p class="reveal"><span lang="id"><b>ALiBi</b>: Achieves position awareness by adding a bias term to attention scores, requiring no additional parameters.</span><span lang="en"><b>ALiBi</b>: Achieves position awareness by adding a bias term to attention scores, requiring no additional parameters.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. The Impact and Future of Transformers</span><span lang="en">7. The Impact and Future of Transformers</span></h2>
+<p class="reveal"><span lang="id">The emergence of Transformers is not just the birth of a new architecture, but a paradigm shift in AI research as a whole.</span><span lang="en">The emergence of Transformers is not just the birth of a new architecture, but a paradigm shift in AI research as a whole.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.1 A Unified Pre-training Paradigm</span><span lang="en">7.1 A Unified Pre-training Paradigm</span></h3>
+<p class="reveal"><span lang="id">Transformers have made "pre-training + fine-tuning" the standard workflow in NLP. By pre-training on massive amounts of unlabeled text, models learn universal language representations and can then adapt to various downstream tasks with only a small amount of labeled data.</span><span lang="en">Transformers have made "pre-training + fine-tuning" the standard workflow in NLP. By pre-training on massive amounts of unlabeled text, models learn universal language representations and can then adapt to various downstream tasks with only a small amount of labeled data.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.2 A Universal Cross-Modal Architecture</span><span lang="en">7.2 A Universal Cross-Modal Architecture</span></h3>
+<p class="reveal"><span lang="id">The success of Transformers is not limited to text. They have been successfully applied to:</span><span lang="en">The success of Transformers is not limited to text. They have been successfully applied to:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Computer vision</b>: Vision Transformer (ViT) surpasses CNNs in image classification</span><span lang="en"><b>Computer vision</b>: Vision Transformer (ViT) surpasses CNNs in image classification</span></li>
+<li><span lang="id"><b>Speech recognition</b>: Whisper uses Transformers for multilingual speech-to-text</span><span lang="en"><b>Speech recognition</b>: Whisper uses Transformers for multilingual speech-to-text</span></li>
+<li><span lang="id"><b>Protein structure prediction</b>: AlphaFold 2 uses Transformers to predict protein 3D structures</span><span lang="en"><b>Protein structure prediction</b>: AlphaFold 2 uses Transformers to predict protein 3D structures</span></li>
+<li><span lang="id"><b>Reinforcement learning</b>: Decision Transformer transforms RL problems into sequence modeling</span><span lang="en"><b>Reinforcement learning</b>: Decision Transformer transforms RL problems into sequence modeling</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.3 The Cornerstone of the Large Model Era</span><span lang="en">7.3 The Cornerstone of the Large Model Era</span></h3>
+<p class="reveal"><span lang="id">From GPT-3's 175 billion parameters to GPT-4's trillions of parameters, Transformers have demonstrated astonishing scalability. Their parallel computation characteristics allow us to train unprecedentedly large models and observe <b>emergent abilities</b> — when models become large enough, they spontaneously "grasp" capabilities like reasoning, coding, and multilingualism.</span><span lang="en">From GPT-3's 175 billion parameters to GPT-4's trillions of parameters, Transformers have demonstrated astonishing scalability. Their parallel computation characteristics allow us to train unprecedentedly large models and observe <b>emergent abilities</b> — when models become large enough, they spontaneously "grasp" capabilities like reasoning, coding, and multilingualism.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.4 Future Challenges and Directions</span><span lang="en">7.4 Future Challenges and Directions</span></h3>
+<p class="reveal"><span lang="id">Despite the tremendous success of Transformers, challenges remain:</span><span lang="en">Despite the tremendous success of Transformers, challenges remain:</span></p>
+<p class="reveal"><span lang="id"><b>Computational complexity</b>: Self-attention has O(n²) complexity, resulting in enormous computation for long texts.</span><span lang="en"><b>Computational complexity</b>: Self-attention has O(n²) complexity, resulting in enormous computation for long texts.</span></p>
+<p class="reveal"><span lang="id"><b>Long-text modeling</b>: Although theoretically capable of handling arbitrary lengths, it is practically constrained by memory and computational resources.</span><span lang="en"><b>Long-text modeling</b>: Although theoretically capable of handling arbitrary lengths, it is practically constrained by memory and computational resources.</span></p>
+<p class="reveal"><span lang="id"><b>Interpretability</b>: While attention weights provide some interpretability, the decision process of deep networks remains a black box.</span><span lang="en"><b>Interpretability</b>: While attention weights provide some interpretability, the decision process of deep networks remains a black box.</span></p>
+<p class="reveal"><span lang="id">Current research directions include:</span><span lang="en">Current research directions include:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Efficient Transformers</b>: Linformer, Performer, Flash Attention, etc., reducing complexity</span><span lang="en"><b>Efficient Transformers</b>: Linformer, Performer, Flash Attention, etc., reducing complexity</span></li>
+<li><span lang="id"><b>Long-context modeling</b>: Sparse Attention, Sliding Window, Memory mechanisms</span><span lang="en"><b>Long-context modeling</b>: Sparse Attention, Sliding Window, Memory mechanisms</span></li>
+<li><span lang="id"><b>Multimodal fusion</b>: Native multimodal architectures that uniformly process text, images, and audio</span><span lang="en"><b>Multimodal fusion</b>: Native multimodal architectures that uniformly process text, images, and audio</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8. Conclusion</span><span lang="en">8. Conclusion</span></h2>
+<p class="reveal"><span lang="id">The introduction of Transformers and attention mechanisms marks a complete shift in deep learning from "handcrafted features" to "end-to-end learning." It not only resolved the technical bottlenecks of RNNs but, more importantly, provided a clean, universal, and scalable architecture that has become the cornerstone of the large model era.</span><span lang="en">The introduction of Transformers and attention mechanisms marks a complete shift in deep learning from "handcrafted features" to "end-to-end learning." It not only resolved the technical bottlenecks of RNNs but, more importantly, provided a clean, universal, and scalable architecture that has become the cornerstone of the large model era.</span></p>
+<p class="reveal"><span lang="id">Understanding Transformers is understanding the core of modern AI. From BERT's bidirectional encoding to GPT's autoregressive generation to unified multimodal representations, all these breakthroughs stand on the shoulders of the Transformer.</span><span lang="en">Understanding Transformers is understanding the core of modern AI. From BERT's bidirectional encoding to GPT's autoregressive generation to unified multimodal representations, all these breakthroughs stand on the shoulders of the Transformer.</span></p>
+<p class="reveal"><span lang="id">As computing power advances and algorithms improve, Transformers will continue to evolve, driving AI toward ever more powerful and general capabilities.</span><span lang="en">As computing power advances and algorithms improve, Transformers will continue to evolve, driving AI toward ever more powerful and general capabilities.</span></p>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../8-artificial-intelligence/speech-synthesis-recognition/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">8-artificial-intelligence/speech-synthesis-recognition</span><span lang="en">8-artificial-intelligence/speech-synthesis-recognition</span></b></a>
+      <a class="next" href="../../9-engineering-excellence/code-quality-refactoring/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">9-engineering-excellence/code-quality-refactoring</span><span lang="en">9-engineering-excellence/code-quality-refactoring</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Data Structures: An Introduction — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Data Structures: An Introduction. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/1-computer-fundamentals/data-structures/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Data Structures: An Introduction</span><span lang="en">Data Structures: An Introduction</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Data Structures: An Introduction</span><span lang="en">Data Structures: An Introduction</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Data Structures: An Introduction.</span><span lang="en">Ensiklopedia VibeKoding: Data Structures: An Introduction.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Programs = Data Structures + Algorithms.</b> Previously, we learned how the CPU executes instructions and how the operating system manages resources. But the core objects that programs handle are <b>data</b> — user information, product lists, social relationships... How this data is organized in memory directly determines whether a program is fast or slow. You may have wondered: why do some programs process tens of thousands of records quickly while others freeze with just a few hundred? The answer often lies in <b>the choice of data structures</b>.</span><span lang="en"><b>Programs = Data Structures + Algorithms.</b> Previously, we learned how the CPU executes instructions and how the operating system manages resources. But the core objects that programs handle are <b>data</b> — user information, product lists, social relationships... How this data is organized in memory directly determines whether a program is fast or slow. You may have wondered: why do some programs process tens of thousands of records quickly while others freeze with just a few hundred? The answer often lies in <b>the choice of data structures</b>.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn from this article?</b></span><span lang="en"><b>What will you learn from this article?</b></span></p>
+<p class="reveal"><span lang="id">After completing this chapter, you will gain:</span><span lang="en">After completing this chapter, you will gain:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Intuitive judgment</b>: When you see a requirement, the right data structure automatically comes to mind</span><span lang="en"><b>Intuitive judgment</b>: When you see a requirement, the right data structure automatically comes to mind</span></li>
+<li><span lang="id"><b>Performance analysis perspective</b>: Determine whether a performance bottleneck is due to wrong data structure choice or inefficient algorithms</span><span lang="en"><b>Performance analysis perspective</b>: Determine whether a performance bottleneck is due to wrong data structure choice or inefficient algorithms</span></li>
+<li><span lang="id"><b>Trade-off thinking</b>: Understand "trading space for time" vs "trading time for space" — know that there's no perfect data structure</span><span lang="en"><b>Trade-off thinking</b>: Understand "trading space for time" vs "trading time for space" — know that there's no perfect data structure</span></li>
+<li><span lang="id"><b>Code reading ability</b>: Terms like HashMap, Stack, Queue will no longer be foreign</span><span lang="en"><b>Code reading ability</b>: Terms like HashMap, Stack, Queue will no longer be foreign</span></li>
+<li><span lang="id"><b>Foundation for further learning</b>: Build a foundation for database indexes, caching systems, search engines, and other technologies</span><span lang="en"><b>Foundation for further learning</b>: Build a foundation for database indexes, caching systems, search engines, and other technologies</span></li>
+</ul>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Core Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>Big Picture</td><td>Four major data structure categories, classification criteria</td></tr>
+<tr><td><b>Chapter 2</b></td><td>Linear Structures</td><td>Arrays, linked lists, stacks, queues</td></tr>
+<tr><td><b>Chapter 3</b></td><td>Hash Tables</td><td>Hash functions, collision handling, O(1) lookup</td></tr>
+<tr><td><b>Chapter 4</b></td><td>Tree Structures</td><td>Binary trees, file system trees, DOM trees</td></tr>
+<tr><td><b>Chapter 5</b></td><td>Graph Structures</td><td>Directed graphs, undirected graphs, traversal algorithms</td></tr>
+<tr><td><b>Chapter 6</b></td><td>Performance Comparison</td><td>Time complexity, space complexity</td></tr>
+<tr><td><b>Chapter 7</b></td><td>Selection Guide</td><td>Scenario analysis, decision flow</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Big Picture: Data Structures Overview</span><span lang="en">1. Big Picture: Data Structures Overview</span></h2>
+<p class="reveal"><span lang="id">Imagine you need to organize a pile of books:</span><span lang="en">Imagine you need to organize a pile of books:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Piled on the floor</b>: To find a book, you have to flip through one by one — this is the most primitive storage</span><span lang="en"><b>Piled on the floor</b>: To find a book, you have to flip through one by one — this is the most primitive storage</span></li>
+<li><span lang="id"><b>Arranged by number on shelves</b>: Go directly to the corresponding position to grab it — this is an <b>array</b></span><span lang="en"><b>Arranged by number on shelves</b>: Go directly to the corresponding position to grab it — this is an <b>array</b></span></li>
+<li><span lang="id"><b>Sorted by category into cabinets</b>: First determine the cabinet, then find the book — this is a <b>hash table</b></span><span lang="en"><b>Sorted by category into cabinets</b>: First determine the cabinet, then find the book — this is a <b>hash table</b></span></li>
+<li><span lang="id"><b>Sorted alphabetically on multi-level shelves</b>: Eliminate half each time — this is a <b>tree</b></span><span lang="en"><b>Sorted alphabetically on multi-level shelves</b>: Eliminate half each time — this is a <b>tree</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">Different organizational methods result in vastly different book-finding efficiency. <b>A data structure is the "organization method" for data</b> — it determines how data is stored, found, and modified.</span><span lang="en">Different organizational methods result in vastly different book-finding efficiency. <b>A data structure is the "organization method" for data</b> — it determines how data is stored, found, and modified.</span></p>
+<p class="reveal"><span lang="id"><DataStructureOverviewDemo /></span><span lang="en"><DataStructureOverviewDemo /></span></p>
+<p class="reveal"><span lang="id">All data structures can be categorized into four major types:</span><span lang="en">All data structures can be categorized into four major types:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Type</th><th>Data Relationship</th><th>Typical Examples</th><th>Real-life Analogy</th></tr>
+<tr><td><b>Linear</b></td><td>One-to-one, arranged in a line</td><td>Arrays, linked lists, stacks, queues</td><td>Train cars, checkout lines</td></tr>
+<tr><td><b>Hash</b></td><td>Key→Value mapping</td><td>Hash tables, dictionaries, sets</td><td>Library index cards</td></tr>
+<tr><td><b>Tree</b></td><td>One-to-many, hierarchical</td><td>Binary trees, B-trees, heaps</td><td>Family trees, folder structures</td></tr>
+<tr><td><b>Graph</b></td><td>Many-to-many, networked</td><td>Directed graphs, undirected graphs</td><td>Subway maps, social networks</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Because <b>there is no universal data structure</b>. Each one is a trade-off between "lookup speed," "insertion speed," and "memory usage." Just as you wouldn't use a backpack to move furniture or a truck to deliver a single letter — choosing the right tool makes all the difference.</span><span lang="en">Because <b>there is no universal data structure</b>. Each one is a trade-off between "lookup speed," "insertion speed," and "memory usage." Just as you wouldn't use a backpack to move furniture or a truck to deliver a single letter — choosing the right tool makes all the difference.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Linear Structures: The Most Basic Organization</span><span lang="en">2. Linear Structures: The Most Basic Organization</span></h2>
+<p class="reveal"><span lang="id">Linear structures are the most intuitive way to organize data — data items are arranged one after another, like train cars. But different "connection methods" and "operation endpoints" produce four variants, each with its own strengths.</span><span lang="en">Linear structures are the most intuitive way to organize data — data items are arranged one after another, like train cars. But different "connection methods" and "operation endpoints" produce four variants, each with its own strengths.</span></p>
+<p class="reveal"><span lang="id"><LinearStructuresDemo /></span><span lang="en"><LinearStructuresDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Arrays vs Linked Lists: Two Fundamentally Different Storage Methods</span><span lang="en">2.1 Arrays vs Linked Lists: Two Fundamentally Different Storage Methods</span></h3>
+<p class="reveal"><span lang="id">Arrays and linked lists are the two most basic linear structures. Their core difference lies in <b>memory layout</b>:</span><span lang="en">Arrays and linked lists are the two most basic linear structures. Their core difference lies in <b>memory layout</b>:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Comparison</th><th>Array</th><th>Linked List</th></tr>
+<tr><td><b>Memory layout</b></td><td>One continuous block</td><td>Scattered, connected by pointers</td></tr>
+<tr><td><b>Access nth element</b></td><td>Calculate address directly, O(1)</td><td>Search from the head one by one, O(n)</td></tr>
+<tr><td><b>Insert in the middle</b></td><td>Must shift all subsequent elements, O(n)</td><td>Just change two pointers, O(1)</td></tr>
+<tr><td><b>Size</b></td><td>Fixed at creation</td><td>Can grow at any time</td></tr>
+<tr><td><b>Real-life analogy</b></td><td>A row of numbered lockers</td><td>A chain of treasure hunt clues</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Known data volume, frequent access by position</b> → Array (e.g., student grade tables, pixel matrices)
+- <b>Unknown data volume, frequent insertion/deletion</b> → Linked list (e.g., playlists, undo history)
+- <b>Not sure?</b> → Start with an array. In most scenarios, arrays' cache-friendly nature provides greater performance advantages</span><span lang="en">- <b>Known data volume, frequent access by position</b> → Array (e.g., student grade tables, pixel matrices)
+- <b>Unknown data volume, frequent insertion/deletion</b> → Linked list (e.g., playlists, undo history)
+- <b>Not sure?</b> → Start with an array. In most scenarios, arrays' cache-friendly nature provides greater performance advantages</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Stacks and Queues: Linear Structures with "Rules"</span><span lang="en">2.2 Stacks and Queues: Linear Structures with "Rules"</span></h3>
+<p class="reveal"><span lang="id">Stacks and queues are essentially arrays or linked lists, just with <b>restricted operation methods</b>. It may seem like reduced functionality, but this restriction gives them specific purposes:</span><span lang="en">Stacks and queues are essentially arrays or linked lists, just with <b>restricted operation methods</b>. It may seem like reduced functionality, but this restriction gives them specific purposes:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Structure</th><th>Rule</th><th>Operations</th><th>Analogy</th><th>Where in Your Code?</th></tr>
+<tr><td><b>Stack</b></td><td>Last In, First Out (LIFO)</td><td>push / pop</td><td>A stack of plates</td><td>Function call stack, browser back button, Ctrl+Z undo</td></tr>
+<tr><td><b>Queue</b></td><td>First In, First Out (FIFO)</td><td>enqueue / dequeue</td><td>Waiting in line for tickets</td><td>Task scheduling, message queues, print queues</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Imagine a stack with only two operations — "place plate" and "remove plate." You'll never get the order wrong. <b>Restriction brings certainty, and certainty brings reliability.</b> The function call stack relies on "last in, first out" to ensure the most recently called function returns first. If random access to intermediate functions were allowed, programs would be chaotic.</span><span lang="en">Imagine a stack with only two operations — "place plate" and "remove plate." You'll never get the order wrong. <b>Restriction brings certainty, and certainty brings reliability.</b> The function call stack relies on "last in, first out" to ensure the most recently called function returns first. If random access to intermediate functions were allowed, programs would be chaotic.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Hash Tables: The Fastest Lookup</span><span lang="en">3. Hash Tables: The Fastest Lookup</span></h2>
+<p class="reveal"><span lang="id">Linear structures aren't fast enough for lookups — arrays require O(n) traversal, and even sorted binary search is O(log n). Is there a structure that can achieve <b>O(1) direct lookup</b>? Yes — the hash table.</span><span lang="en">Linear structures aren't fast enough for lookups — arrays require O(n) traversal, and even sorted binary search is O(log n). Is there a structure that can achieve <b>O(1) direct lookup</b>? Yes — the hash table.</span></p>
+<p class="reveal"><span lang="id"><HashTableDemo /></span><span lang="en"><HashTableDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 The Core Idea of Hash Tables</span><span lang="en">3.1 The Core Idea of Hash Tables</span></h3>
+<p class="reveal"><span lang="id">The principle of hash tables is actually quite simple:</span><span lang="en">The principle of hash tables is actually quite simple:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">You provide a <b>key</b> (e.g., "apple")</span><span lang="en">You provide a <b>key</b> (e.g., "apple")</span></li>
+<li><span lang="id">A <b>hash function</b> computes a number from the key (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">hash("apple") = 3</code>)</span><span lang="en">A <b>hash function</b> computes a number from the key (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">hash("apple") = 3</code>)</span></li>
+<li><span lang="id">Go directly to position 3 in the array — no traversal needed, one step and you're there</span><span lang="en">Go directly to position 3 in the array — no traversal needed, one step and you're there</span></li>
+</ul>
+<p class="reveal"><span lang="id">This is like a library's index system: instead of searching shelf by shelf, you check the index card to find the book's exact location.</span><span lang="en">This is like a library's index system: instead of searching shelf by shelf, you check the index card to find the book's exact location.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Hash Collision Resolution Methods</span><span lang="en">3.2 Hash Collision Resolution Methods</span></h3>
+<p class="reveal"><span lang="id">Two different keys may compute the same index — this is called a <b>hash collision</b>. Like two books having the same index number pointing to the same location.</span><span lang="en">Two different keys may compute the same index — this is called a <b>hash collision</b>. Like two books having the same index number pointing to the same location.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Resolution Method</th><th>Principle</th><th>Analogy</th></tr>
+<tr><td><b>Chaining</b></td><td>Store multiple values at the same position using a linked list</td><td>Put multiple books in the same cabinet</td></tr>
+<tr><td><b>Open addressing</b></td><td>If there's a collision, look for the next empty slot</td><td>If the cabinet is full, use the adjacent one</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Hash Table Performance</span><span lang="en">3.3 Hash Table Performance</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Operation</th><th>Average Case</th><th>Worst Case (All Collisions)</th></tr>
+<tr><td><b>Lookup</b></td><td>O(1)</td><td>O(n)</td></tr>
+<tr><td><b>Insert</b></td><td>O(1)</td><td>O(n)</td></tr>
+<tr><td><b>Delete</b></td><td>O(1)</td><td>O(n)</td></tr>
+</table></div>
+
+<div class="callout warn reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div>
+  <p><span lang="id">When all keys map to the same index, the hash table degrades into a linked list and all operations become O(n). Prevention: choose a good hash function + dynamic resizing (expand when the load factor exceeds a threshold).</span><span lang="en">When all keys map to the same index, the hash table degrades into a linked list and all operations become O(n). Prevention: choose a good hash function + dynamic resizing (expand when the load factor exceeds a threshold).</span></p>
+</div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- JavaScript <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">{}</code> objects and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Map</code> → Hash table
+- Python <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dict</code> → Hash table
+- Java <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">HashMap</code> → Hash table
+- Database indexes → Also use hashing at the底层
+
+Every time you write <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">user["name"]</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">map.get("key")</code>, a hash table is working behind the scenes.</span><span lang="en">- JavaScript <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">{}</code> objects and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Map</code> → Hash table
+- Python <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dict</code> → Hash table
+- Java <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">HashMap</code> → Hash table
+- Database indexes → Also use hashing at the底层
+
+Every time you write <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">user["name"]</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">map.get("key")</code>, a hash table is working behind the scenes.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Tree Structures: Expressing Hierarchical Relationships</span><span lang="en">4. Tree Structures: Expressing Hierarchical Relationships</span></h2>
+<p class="reveal"><span lang="id">Hash tables are fast for lookups, but data is unordered. If you need <b>both fast lookup and ordered data</b>, you need tree structures.</span><span lang="en">Hash tables are fast for lookups, but data is unordered. If you need <b>both fast lookup and ordered data</b>, you need tree structures.</span></p>
+<p class="reveal"><span lang="id">The core characteristic of a tree: each node can have multiple "children" but only one "parent" (except the root node). This one-to-many hierarchical relationship is everywhere in the real world.</span><span lang="en">The core characteristic of a tree: each node can have multiple "children" but only one "parent" (except the root node). This one-to-many hierarchical relationship is everywhere in the real world.</span></p>
+<p class="reveal"><span lang="id"><TreeStructureDemo /></span><span lang="en"><TreeStructureDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Binary Search Trees: Ordered Trees</span><span lang="en">4.1 Binary Search Trees: Ordered Trees</span></h3>
+<p class="reveal"><span lang="id">A binary search tree has one simple but powerful rule: <b>left is smaller, right is larger</b>.</span><span lang="en">A binary search tree has one simple but powerful rule: <b>left is smaller, right is larger</b>.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">All values in the left subtree < root node</span><span lang="en">All values in the left subtree < root node</span></li>
+<li><span lang="id">All values in the right subtree > root node</span><span lang="en">All values in the right subtree > root node</span></li>
+</ul>
+<p class="reveal"><span lang="id">When searching, each comparison eliminates half the nodes, with time complexity O(log n). Like the number guessing game — "Is it bigger or smaller than 50?" "Bigger." "Bigger or smaller than 75?" — eliminating half each time.</span><span lang="en">When searching, each comparison eliminates half the nodes, with time complexity O(log n). Like the number guessing game — "Is it bigger or smaller than 50?" "Bigger." "Bigger or smaller than 75?" — eliminating half each time.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Balanced Trees: Preventing Degradation</span><span lang="en">4.2 Balanced Trees: Preventing Degradation</span></h3>
+<p class="reveal"><span lang="id">Binary search trees have a problem: if data is inserted in order (1, 2, 3, 4, 5), the tree degenerates into a linked list and lookups return to O(n). Balanced trees avoid this by automatically adjusting the structure:</span><span lang="en">Binary search trees have a problem: if data is inserted in order (1, 2, 3, 4, 5), the tree degenerates into a linked list and lookups return to O(n). Balanced trees avoid this by automatically adjusting the structure:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Type</th><th>Balancing Strategy</th><th>Characteristics</th><th>Typical Applications</th></tr>
+<tr><td><b>AVL Tree</b></td><td>Strict balance (height difference ≤ 1)</td><td>Fastest lookups, slightly slower insertions/deletions</td><td>Scenarios requiring frequent lookups</td></tr>
+<tr><td><b>Red-Black Tree</b></td><td>Approximate balance</td><td>Good overall performance</td><td>Java TreeMap, Linux kernel</td></tr>
+<tr><td><b>B-Tree</b></td><td>Multi-way balance; one node stores multiple values</td><td>Reduces disk I/O</td><td>Database indexes</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>File system</b>: Nested folders are tree structures
+- <b>HTML DOM</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><html></code> → <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><body></code> → <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><div></code> → <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><p></code> is a tree
+- <b>Database indexes</b>: B+ trees enable lookups across millions of records with only 3-4 disk reads
+- <b>JSON/XML</b>: Nested data formats are essentially trees</span><span lang="en">- <b>File system</b>: Nested folders are tree structures
+- <b>HTML DOM</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><html></code> → <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><body></code> → <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><div></code> → <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><p></code> is a tree
+- <b>Database indexes</b>: B+ trees enable lookups across millions of records with only 3-4 disk reads
+- <b>JSON/XML</b>: Nested data formats are essentially trees</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Graph Structures: Networks of Complex Relationships</span><span lang="en">5. Graph Structures: Networks of Complex Relationships</span></h2>
+<p class="reveal"><span lang="id">Trees can only represent "one-to-many" hierarchical relationships. But many real-world relationships are "many-to-many" — your friends also have friends, and there are multiple routes between cities. A structure where <b>any node can potentially connect to any other node</b> is a graph.</span><span lang="en">Trees can only represent "one-to-many" hierarchical relationships. But many real-world relationships are "many-to-many" — your friends also have friends, and there are multiple routes between cities. A structure where <b>any node can potentially connect to any other node</b> is a graph.</span></p>
+<p class="reveal"><span lang="id"><GraphStructureDemo /></span><span lang="en"><GraphStructureDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Three Types of Graphs</span><span lang="en">5.1 Three Types of Graphs</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Type</th><th>Characteristics</th><th>Analogy</th><th>Typical Applications</th></tr>
+<tr><td><b>Undirected graph</b></td><td>Edges have no direction; A→B equals B→A</td><td>WeChat friends (mutual)</td><td>Social networks, communication networks</td></tr>
+<tr><td><b>Directed graph</b></td><td>Edges have direction; A→B is not the same as B→A</td><td>Weibo follows (one-way)</td><td>Web page links, dependency relationships</td></tr>
+<tr><td><b>Weighted graph</b></td><td>Edges have weights (distance, cost, etc.)</td><td>Highways between cities (with mileages)</td><td>Map navigation, shortest path</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Graph Traversal</span><span lang="en">5.2 Graph Traversal</span></h3>
+<p class="reveal"><span lang="id">Graph traversal is more complex than linear structures because there may be cycles (A→B→C→A), requiring tracking of "visited" nodes:</span><span lang="en">Graph traversal is more complex than linear structures because there may be cycles (A→B→C→A), requiring tracking of "visited" nodes:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Traversal Method</th><th>Strategy</th><th>Analogy</th><th>Use Cases</th></tr>
+<tr><td><b>BFS (Breadth-First)</b></td><td>Visit all neighbors first, then neighbors' neighbors</td><td>Ripples spreading in water</td><td>Shortest path, level-order traversal</td></tr>
+<tr><td><b>DFS (Depth-First)</b></td><td>Go as deep as possible on one path, backtrack when stuck</td><td>Navigating a maze</td><td>Path search, connectivity checking</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Map navigation</b>: Cities are nodes, roads are edges; navigation finds the shortest path in the graph
+- <b>Social networks</b>: Users are nodes, follows/friendships are edges; "People you may know" is graph algorithm recommendations
+- <b>Package managers</b>: npm/pip dependency relationships are directed graphs; <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm install</code> performs topological sorting of the graph</span><span lang="en">- <b>Map navigation</b>: Cities are nodes, roads are edges; navigation finds the shortest path in the graph
+- <b>Social networks</b>: Users are nodes, follows/friendships are edges; "People you may know" is graph algorithm recommendations
+- <b>Package managers</b>: npm/pip dependency relationships are directed graphs; <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm install</code> performs topological sorting of the graph</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Performance Comparison: One Table to See All Data Structures</span><span lang="en">6. Performance Comparison: One Table to See All Data Structures</span></h2>
+<p class="reveal"><span lang="id">After learning so many data structures, how do their performances actually compare? The interactive comparison below will help you build intuition:</span><span lang="en">After learning so many data structures, how do their performances actually compare? The interactive comparison below will help you build intuition:</span></p>
+<p class="reveal"><span lang="id"><DataStructureDemo /></span><span lang="en"><DataStructureDemo /></span></p>
+<p class="reveal"><span lang="id"><b>Core Performance Comparison Table:</b></span><span lang="en"><b>Core Performance Comparison Table:</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Data Structure</th><th>Access</th><th>Search</th><th>Insert</th><th>Delete</th><th>Space</th></tr>
+<tr><td><b>Array</b></td><td>O(1)</td><td>O(n)</td><td>O(n)</td><td>O(n)</td><td>O(n)</td></tr>
+<tr><td><b>Linked List</b></td><td>O(n)</td><td>O(n)</td><td>O(1)</td><td>O(1)</td><td>O(n)</td></tr>
+<tr><td><b>Stack/Queue</b></td><td>O(n)</td><td>O(n)</td><td>O(1)</td><td>O(1)</td><td>O(n)</td></tr>
+<tr><td><b>Hash Table</b></td><td>—</td><td>O(1)</td><td>O(1)</td><td>O(1)</td><td>O(n)</td></tr>
+<tr><td><b>Binary Search Tree</b></td><td>—</td><td>O(log n)</td><td>O(log n)</td><td>O(log n)</td><td>O(n)</td></tr>
+<tr><td><b>Graph</b></td><td>—</td><td>O(V+E)</td><td>O(1)</td><td>O(E)</td><td>O(V+E)</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>O(1)</b>: Regardless of data volume, operation time is constant — fastest
+- <b>O(log n)</b>: Doubling the data adds only one step — very fast
+- <b>O(n)</b>: Doubling the data doubles the time — average
+- <b>O(V+E)</b>: Depends on the number of vertices and edges — specific to graphs
+
+Note: These are all <b>average cases</b>. In the worst case, hash tables degrade to O(n), and binary search trees also degrade to O(n).</span><span lang="en">- <b>O(1)</b>: Regardless of data volume, operation time is constant — fastest
+- <b>O(log n)</b>: Doubling the data adds only one step — very fast
+- <b>O(n)</b>: Doubling the data doubles the time — average
+- <b>O(V+E)</b>: Depends on the number of vertices and edges — specific to graphs
+
+Note: These are all <b>average cases</b>. In the worst case, hash tables degrade to O(n), and binary search trees also degrade to O(n).</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Selection Guide: Data Structure Application Scenarios</span><span lang="en">7. Selection Guide: Data Structure Application Scenarios</span></h2>
+<p class="reveal"><span lang="id">After learning so many data structures, how do you choose when facing actual requirements? The key is to <b>start from the requirements</b> and ask yourself a few questions:</span><span lang="en">After learning so many data structures, how do you choose when facing actual requirements? The key is to <b>start from the requirements</b> and ask yourself a few questions:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>What's the most frequent operation?</b> Lookup? Insertion? Deletion? Traversal?</span><span lang="en"><b>What's the most frequent operation?</b> Lookup? Insertion? Deletion? Traversal?</span></li>
+<li><span lang="id"><b>What's the relationship between data items?</b> One-to-one? One-to-many? Many-to-many?</span><span lang="en"><b>What's the relationship between data items?</b> One-to-one? One-to-many? Many-to-many?</span></li>
+<li><span lang="id"><b>How much data?</b> The optimal choice for dozens vs. millions of records may be completely different</span><span lang="en"><b>How much data?</b> The optimal choice for dozens vs. millions of records may be completely different</span></li>
+<li><span lang="id"><b>Does order matter?</b> Do you need to traverse data in a specific order?</span><span lang="en"><b>Does order matter?</b> Do you need to traverse data in a specific order?</span></li>
+</ul>
+<p class="reveal"><span lang="id"><DataStructureSelectorDemo /></span><span lang="en"><DataStructureSelectorDemo /></span></p>
+<p class="reveal"><span lang="id"><b>Quick Decision Flow:</b></span><span lang="en"><b>Quick Decision Flow:</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Your Need</th><th>Recommended Structure</th><th>Reason</th></tr>
+<tr><td>Fast access by position</td><td>Array</td><td>O(1) random access</td></tr>
+<tr><td>Frequent insertion/deletion in the middle</td><td>Linked list</td><td>O(1) insert/delete without moving elements</td></tr>
+<tr><td>Last in, first out (undo, recursion)</td><td>Stack</td><td>LIFO semantics naturally match</td></tr>
+<tr><td>First in, first out (task queue)</td><td>Queue</td><td>FIFO semantics naturally match</td></tr>
+<tr><td>Fast lookup by key</td><td>Hash table</td><td>O(1) average lookup</td></tr>
+<tr><td>Ordered data + fast lookup</td><td>Binary search tree</td><td>O(log n) lookup while maintaining order</td></tr>
+<tr><td>Complex many-to-many relationships</td><td>Graph</td><td>Can express connections between any nodes</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>80% of scenarios</b> are fine with arrays and hash tables
+- Consider <b>trees</b> when you need ordering
+- Consider <b>graphs</b> when relationships are complex
+- <b>Not sure?</b> Start with the simplest and switch when you hit performance issues. Premature optimization is the root of all evil</span><span lang="en">- <b>80% of scenarios</b> are fine with arrays and hash tables
+- Consider <b>trees</b> when you need ordering
+- Consider <b>graphs</b> when relationships are complex
+- <b>Not sure?</b> Start with the simplest and switch when you hit performance issues. Premature optimization is the root of all evil</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary</span><span lang="en">Summary</span></h2>
+<p class="reveal"><span lang="id">> Data structures are the skeleton of programs. <b>Arrays</b> are like a row of numbered lockers — fastest for retrieving items by position; <b>linked lists</b> are like a chain of treasure hunt clues — most flexible for insertions and deletions; <b>hash tables</b> are like a library index — fastest for finding things by name; <b>trees</b> are like family trees — expressing hierarchical relationships while maintaining order; <b>graphs</b> are like subway maps — expressing arbitrarily complex networked relationships. There's no best data structure, only the most appropriate one — the key is understanding the strengths and costs of each structure and making trade-offs based on actual requirements.</span><span lang="en">> Data structures are the skeleton of programs. <b>Arrays</b> are like a row of numbered lockers — fastest for retrieving items by position; <b>linked lists</b> are like a chain of treasure hunt clues — most flexible for insertions and deletions; <b>hash tables</b> are like a library index — fastest for finding things by name; <b>trees</b> are like family trees — expressing hierarchical relationships while maintaining order; <b>graphs</b> are like subway maps — expressing arbitrarily complex networked relationships. There's no best data structure, only the most appropriate one — the key is understanding the strengths and costs of each structure and making trade-offs based on actual requirements.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Topic</th><th>Recommended Resources</th></tr>
+<tr><td>Data structure visualization</td><td>[VisuAlgo](https://visualgo.net/) - Animated demonstrations of various data structures and algorithms</td></tr>
+<tr><td>Algorithms and data structures</td><td><i>Grokking Algorithms</i> by Aditya Bhargava — illustrated and beginner-friendly</td></tr>
+<tr><td>In-depth understanding</td><td><i>Data Structures and Algorithm Analysis</i> by Mark Allen Weiss</td></tr>
+<tr><td>Practice problems</td><td>[LeetCode](https://leetcode.com/) - Practice categorized by data structure</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Next Steps</span><span lang="en">Next Steps</span></h2>
+<p class="reveal"><span lang="id">Now that you've mastered the core knowledge of data structures, you can continue learning:</span><span lang="en">Now that you've mastered the core knowledge of data structures, you can continue learning:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>[Introduction to Algorithms](./algorithm-thinking.md)</b>: Learn to solve problems using sorting, searching, recursion, dynamic programming, and other algorithmic paradigms</span><span lang="en"><b>[Introduction to Algorithms](./algorithm-thinking.md)</b>: Learn to solve problems using sorting, searching, recursion, dynamic programming, and other algorithmic paradigms</span></li>
+<li><span lang="id"><b>[Programming Languages](./programming-languages.md)</b>: Understand how different programming languages implement these data structures</span><span lang="en"><b>[Programming Languages](./programming-languages.md)</b>: Understand how different programming languages implement these data structures</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../1-computer-fundamentals/data-encoding-storage/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">1-computer-fundamentals/data-encoding-storage</span><span lang="en">1-computer-fundamentals/data-encoding-storage</span></b></a>
+      <a class="next" href="../../1-computer-fundamentals/operating-systems/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">1-computer-fundamentals/operating-systems</span><span lang="en">1-computer-fundamentals/operating-systems</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

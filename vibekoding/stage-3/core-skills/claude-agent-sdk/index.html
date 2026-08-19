@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Claude Agent SDK: Membangun Agen Otonom Sendiri — VibeKoding 🧬</title>
+<meta name="description" content="Modul master Level 3 VibeKoding: Claude Agent SDK: Membangun Agen Otonom Sendiri. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-3/core-skills/claude-agent-sdk/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../stage-3/"><span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></a> / <span lang="id">Claude Agent SDK: Membangun Agen Otonom Sendiri</span><span lang="en">Claude Agent SDK: Membangun Agen Otonom Sendiri</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">🧬</div>
+      <div>
+        <h1><span lang="id">Claude Agent SDK: Membangun Agen Otonom Sendiri</span><span lang="en">Claude Agent SDK: Membangun Agen Otonom Sendiri</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul master Level 3 VibeKoding: Claude Agent SDK: Membangun Agen Otonom Sendiri.</span><span lang="en">Modul master Level 3 VibeKoding: Claude Agent SDK: Membangun Agen Otonom Sendiri.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Introduction</span><span lang="en">Introduction</span></h2>
+<p class="reveal"><span lang="id">You may already have used Claude's basic API: send one message, get one reply, just like chatting. But if you want Claude to help you read files, run commands, search code, fix bugs, verify the result itself, and continue iterating, this kind of "autonomous work" is not something the basic API can do.</span><span lang="en">You may already have used Claude's basic API: send one message, get one reply, just like chatting. But if you want Claude to help you read files, run commands, search code, fix bugs, verify the result itself, and continue iterating, this kind of "autonomous work" is not something the basic API can do.</span></p>
+<p class="reveal"><span lang="id">Claude Agent SDK is built exactly for this scenario. It packages all of Claude Code's capabilities - reading and writing files, executing commands, searching code, editing files, browsing the web - into a programmable library. You do not need to write the tool-calling loop yourself. Claude can execute tools autonomously and iterate autonomously until the task is truly completed.</span><span lang="en">Claude Agent SDK is built exactly for this scenario. It packages all of Claude Code's capabilities - reading and writing files, executing commands, searching code, editing files, browsing the web - into a programmable library. You do not need to write the tool-calling loop yourself. Claude can execute tools autonomously and iterate autonomously until the task is truly completed.</span></p>
+<p class="reveal"><span lang="id">One-sentence summary: the basic SDK is "you ask, it answers"; the Agent SDK is "you assign, it works."</span><span lang="en">One-sentence summary: the basic SDK is "you ask, it answers"; the Agent SDK is "you assign, it works."</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">What Is the Difference from the Basic SDK?</span><span lang="en">What Is the Difference from the Basic SDK?</span></h2>
+<p class="reveal"><span lang="id">Look at the code first, and the difference is obvious:</span><span lang="en">Look at the code first, and the difference is obvious:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Basic anthropic SDK: you must write your own loop to handle tool calls
+import anthropic
+
+client = anthropic.Anthropic()
+response = client.messages.create(
+    model=&quot;claude-sonnet-4-6&quot;,
+    max_tokens=1024,
+    messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Fix the bug in auth.py&quot;}],
+    tools=[...]  # You must define tools yourself
+)
+# Claude asks to call some tool
+while response.stop_reason == &quot;tool_use&quot;:
+    result = your_tool_executor(response.tool_use)  # You must execute it yourself
+    response = client.messages.create(tool_result=result, **params)  # You must feed it back yourself</pre>
+</div>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Agent SDK: one block and done, Claude reads files, finds bugs, and edits code by itself
+from claude_agent_sdk import query, ClaudeAgentOptions
+
+async for message in query(
+    prompt=&quot;Fix the bug in auth.py&quot;,
+    options=ClaudeAgentOptions(allowed_tools=[&quot;Read&quot;, &quot;Edit&quot;, &quot;Bash&quot;]),
+):
+    print(message)  # Claude reads files, locates issues, and edits code by itself</pre>
+</div>
+<p class="reveal"><span lang="id">The difference is clear:</span><span lang="en">The difference is clear:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Comparison Item</th><th>Basic anthropic SDK</th><th>Claude Agent SDK</th></tr>
+<tr><td>Tool execution</td><td>You implement it</td><td>Claude handles it</td></tr>
+<tr><td>Tool loop</td><td>You implement it</td><td>Built-in agent loop</td></tr>
+<tr><td>Built-in tools</td><td>None, all self-defined</td><td>Read/write files, Bash, search, and more out of the box</td></tr>
+<tr><td>Context management</td><td>You maintain it</td><td>Auto compression and auto management</td></tr>
+<tr><td>Best for</td><td>Chat, generation, simple tool use</td><td>Autonomously completing complex tasks</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">How Is It Different from Other Agent Frameworks?</span><span lang="en">How Is It Different from Other Agent Frameworks?</span></h2>
+<p class="reveal"><span lang="id">There are many Agent frameworks on the market - LangChain, LlamaIndex, CrewAI, AutoGPT, and more. What is unique about Claude Agent SDK compared with them?</span><span lang="en">There are many Agent frameworks on the market - LangChain, LlamaIndex, CrewAI, AutoGPT, and more. What is unique about Claude Agent SDK compared with them?</span></p>
+<p class="reveal"><span lang="id">> 📚 <b>For a detailed comparison, see the appendix</b>: [Mainstream Agent Framework Comparison](/en/appendix/8-artificial-intelligence/ai-agents.html)</span><span lang="en">> 📚 <b>For a detailed comparison, see the appendix</b>: [Mainstream Agent Framework Comparison](/en/appendix/8-artificial-intelligence/ai-agents.html)</span></p>
+<p class="reveal"><span lang="id">In short:</span><span lang="en">In short:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Framework</th><th>Best-Fit Scenario</th></tr>
+<tr><td><b>Claude Agent SDK</b></td><td>Let Claude autonomously complete coding, file operations, and command execution</td></tr>
+<tr><td><b>LangChain</b></td><td>Build complex general AI apps with highly customized flows</td></tr>
+<tr><td><b>CrewAI</b></td><td>Simulate multi-role collaboration scenarios (virtual teams, role-playing)</td></tr>
+<tr><td><b>LlamaIndex</b></td><td>Build knowledge-base QA systems that connect enterprise data with LLMs</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Installation and Configuration</span><span lang="en">Installation and Configuration</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Installation</span><span lang="en">Installation</span></h3>
+<p class="reveal"><span lang="id">Python needs 3.10+, and TypeScript needs Node.js 18+:</span><span lang="en">Python needs 3.10+, and TypeScript needs Node.js 18+:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Python
+pip install claude-agent-sdk
+
+# TypeScript
+npm install @anthropic-ai/claude-agent-sdk</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Authentication</span><span lang="en">Authentication</span></h3>
+<p class="reveal"><span lang="id">Just set the API key environment variable:</span><span lang="en">Just set the API key environment variable:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>export ANTHROPIC_API_KEY=your-api-key</pre>
+</div>
+<p class="reveal"><span lang="id">Cloud-platform authentication is also supported:</span><span lang="en">Cloud-platform authentication is also supported:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">AWS Bedrock: set <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE_CODE_USE_BEDROCK=1</code> + AWS credentials</span><span lang="en">AWS Bedrock: set <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE_CODE_USE_BEDROCK=1</code> + AWS credentials</span></li>
+<li><span lang="id">Google Vertex AI: set <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE_CODE_USE_VERTEX=1</code> + GCP credentials</span><span lang="en">Google Vertex AI: set <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE_CODE_USE_VERTEX=1</code> + GCP credentials</span></li>
+<li><span lang="id">Microsoft Azure: set <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE_CODE_USE_FOUNDRY=1</code> + Azure credentials</span><span lang="en">Microsoft Azure: set <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE_CODE_USE_FOUNDRY=1</code> + Azure credentials</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Custom API Endpoint</span><span lang="en">Custom API Endpoint</span></h3>
+<p class="reveal"><span lang="id">If you use a proxy, gateway, or self-hosted API endpoint, you can change the default API URL through the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">env</code> parameter:</span><span lang="en">If you use a proxy, gateway, or self-hosted API endpoint, you can change the default API URL through the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">env</code> parameter:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>from claude_agent_sdk import query, ClaudeAgentOptions
+
+async for message in query(
+    prompt=&quot;Hello&quot;,
+    options=ClaudeAgentOptions(
+        env={
+            &quot;ANTHROPIC_BASE_URL&quot;: &quot;https://your-proxy.example.com&quot;,
+            &quot;ANTHROPIC_API_KEY&quot;: &quot;your-api-key&quot;,
+        }
+    ),
+):
+    print(message)</pre>
+</div>
+<p class="reveal"><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ClaudeAgentOptions</code> does not have a direct <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">base_url</code> parameter, but the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">env</code> field can pass arbitrary environment variables into the underlying Claude Code CLI. Common environment variables:</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ClaudeAgentOptions</code> does not have a direct <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">base_url</code> parameter, but the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">env</code> field can pass arbitrary environment variables into the underlying Claude Code CLI. Common environment variables:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Environment Variable</th><th>Purpose</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ANTHROPIC_BASE_URL</code></td><td>Custom API endpoint (proxy, gateway)</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ANTHROPIC_API_KEY</code></td><td>API key</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ANTHROPIC_AUTH_TOKEN</code></td><td>Alternative auth token</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ANTHROPIC_CUSTOM_HEADERS</code></td><td>Custom request headers</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Core Concepts</span><span lang="en">Core Concepts</span></h2>
+<p class="reveal"><span lang="id">The Agent SDK runtime principle can be summarized in one sentence: <b>collect context -> execute actions -> verify results -> repeat</b>.</span><span lang="en">The Agent SDK runtime principle can be summarized in one sentence: <b>collect context -> execute actions -> verify results -> repeat</b>.</span></p>
+<p class="reveal"><span lang="id">This is exactly how human developers work: read code first, then modify code, then run tests and check results. If it is wrong, keep iterating. Agent SDK automates this loop.</span><span lang="en">This is exactly how human developers work: read code first, then modify code, then run tests and check results. If it is wrong, keep iterating. Agent SDK automates this loop.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Two Usage Modes</span><span lang="en">Two Usage Modes</span></h3>
+<p class="reveal"><span lang="id"><b>Mode 1: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">query()</code> function - stateless, suitable for one-off tasks</b></span><span lang="en"><b>Mode 1: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">query()</code> function - stateless, suitable for one-off tasks</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>import asyncio
+from claude_agent_sdk import query, ClaudeAgentOptions
+
+async def main():
+    async for message in query(
+        prompt=&quot;What files are in this directory?&quot;,
+        options=ClaudeAgentOptions(allowed_tools=[&quot;Bash&quot;, &quot;Glob&quot;]),
+    ):
+        if hasattr(message, &quot;result&quot;):
+            print(message.result)
+
+asyncio.run(main())</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Mode 2: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ClaudeSDKClient</code> - stateful, suitable for multi-turn conversation</b></span><span lang="en"><b>Mode 2: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ClaudeSDKClient</code> - stateful, suitable for multi-turn conversation</b></span></p>
+<p class="reveal"><span lang="id">Use this when you need to preserve context and interact across multiple turns. For example, first ask Claude to read one module, then ask it to find all call sites of that module - in the second turn it still remembers what it read in the first turn.</span><span lang="en">Use this when you need to preserve context and interact across multiple turns. For example, first ask Claude to read one module, then ask it to find all call sites of that module - in the second turn it still remembers what it read in the first turn.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>import asyncio
+from claude_agent_sdk import query, ClaudeAgentOptions
+
+async def main():
+    session_id = None
+
+    # Turn 1: read the auth module
+    async for message in query(
+        prompt=&quot;Read the authentication module code&quot;,
+        options=ClaudeAgentOptions(allowed_tools=[&quot;Read&quot;, &quot;Glob&quot;]),
+    ):
+        if hasattr(message, &quot;subtype&quot;) and message.subtype == &quot;init&quot;:
+            session_id = message.session_id
+
+    # Turn 2: continue based on previous context
+    async for message in query(
+        prompt=&quot;Find all places that call it&quot;,
+        options=ClaudeAgentOptions(resume=session_id),
+    ):
+        if hasattr(message, &quot;result&quot;):
+            print(message.result)
+
+asyncio.run(main())</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Built-in Tools: Ready to Use</span><span lang="en">Built-in Tools: Ready to Use</span></h2>
+<p class="reveal"><span lang="id">This is one of the best parts of Agent SDK - you do not need to implement any tools yourself, Claude can use them directly:</span><span lang="en">This is one of the best parts of Agent SDK - you do not need to implement any tools yourself, Claude can use them directly:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Tool</th><th>Capability</th><th>Typical Use</th></tr>
+<tr><td>Read</td><td>Read files</td><td>View code, read configs</td></tr>
+<tr><td>Write</td><td>Create files</td><td>Generate new files</td></tr>
+<tr><td>Edit</td><td>Precise file edits</td><td>Bug fixes, refactoring</td></tr>
+<tr><td>Bash</td><td>Run terminal commands</td><td>Run tests, install dependencies, git operations</td></tr>
+<tr><td>Glob</td><td>Pattern-based file search</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><b>/<i>.py</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">src/</b>/</i>.ts</code></td></tr>
+<tr><td>Grep</td><td>Regex content search</td><td>Find function definitions, TODOs</td></tr>
+<tr><td>WebSearch</td><td>Search web pages</td><td>Look up docs, find approaches</td></tr>
+<tr><td>WebFetch</td><td>Fetch web content</td><td>Read online docs</td></tr>
+<tr><td>Task</td><td>Launch sub-agents</td><td>Parallelize sub-tasks</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">allowed_tools</code> to control which tools the agent can use:</span><span lang="en">Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">allowed_tools</code> to control which tools the agent can use:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Read-only agent: can inspect but cannot modify
+options = ClaudeAgentOptions(
+    allowed_tools=[&quot;Read&quot;, &quot;Glob&quot;, &quot;Grep&quot;],
+    permission_mode=&quot;bypassPermissions&quot;
+)
+
+# Full agent: can read, write, and execute commands
+options = ClaudeAgentOptions(
+    allowed_tools=[&quot;Read&quot;, &quot;Write&quot;, &quot;Edit&quot;, &quot;Bash&quot;, &quot;Glob&quot;, &quot;Grep&quot;]
+)</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Advanced Features</span><span lang="en">Advanced Features</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Hooks: Insert Your Own Logic at Key Points</span><span lang="en">Hooks: Insert Your Own Logic at Key Points</span></h3>
+<p class="reveal"><span lang="id">Hooks let you inject custom code at critical moments of agent execution - for example, logging, intercepting risky operations, and auditing file changes.</span><span lang="en">Hooks let you inject custom code at critical moments of agent execution - for example, logging, intercepting risky operations, and auditing file changes.</span></p>
+<p class="reveal"><span lang="id">Supported hook types include: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">PreToolUse</code> (before tool execution), <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">PostToolUse</code> (after tool execution), <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Stop</code> (when the agent stops), <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SessionStart</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SessionEnd</code>, and more.</span><span lang="en">Supported hook types include: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">PreToolUse</code> (before tool execution), <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">PostToolUse</code> (after tool execution), <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Stop</code> (when the agent stops), <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SessionStart</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SessionEnd</code>, and more.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>from datetime import datetime
+from claude_agent_sdk import query, ClaudeAgentOptions, HookMatcher
+
+# Record an audit log every time a file is modified
+async def log_file_change(input_data, tool_use_id, context):
+    file_path = input_data.get(&quot;tool_input&quot;, {}).get(&quot;file_path&quot;, &quot;unknown&quot;)
+    with open(&quot;./audit.log&quot;, &quot;a&quot;) as f:
+        f.write(f&quot;{datetime.now()}: modified {file_path}\n&quot;)
+    return {}
+
+async def main():
+    async for message in query(
+        prompt=&quot;Refactor utils.py for better readability&quot;,
+        options=ClaudeAgentOptions(
+            permission_mode=&quot;acceptEdits&quot;,
+            hooks={
+                &quot;PostToolUse&quot;: [
+                    HookMatcher(matcher=&quot;Edit|Write&quot;, hooks=[log_file_change])
+                ]
+            },
+        ),
+    ):
+        if hasattr(message, &quot;result&quot;):
+            print(message.result)</pre>
+</div>
+<p class="reveal"><span lang="id">Real-world uses:</span><span lang="en">Real-world uses:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Audit logging: record every operation performed by the agent</span><span lang="en">Audit logging: record every operation performed by the agent</span></li>
+<li><span lang="id">Security interception: block modifications to critical files</span><span lang="en">Security interception: block modifications to critical files</span></li>
+<li><span lang="id">Notification push: send messages when agent tasks complete</span><span lang="en">Notification push: send messages when agent tasks complete</span></li>
+<li><span lang="id">Cost monitoring: count tool calls and token usage</span><span lang="en">Cost monitoring: count tool calls and token usage</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Sub-Agents: Split Big Tasks Across Specialists</span><span lang="en">Sub-Agents: Split Big Tasks Across Specialists</span></h3>
+<p class="reveal"><span lang="id">When a task is complex enough, you can define multiple specialized sub-agents and let the main agent delegate sub-tasks to them. Each sub-agent has its own instructions and tool permissions, isolated from each other.</span><span lang="en">When a task is complex enough, you can define multiple specialized sub-agents and let the main agent delegate sub-tasks to them. Each sub-agent has its own instructions and tool permissions, isolated from each other.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>from claude_agent_sdk import query, ClaudeAgentOptions, AgentDefinition
+
+async for message in query(
+    prompt=&quot;Use the code-reviewer agent to review this project&#039;s code quality&quot;,
+    options=ClaudeAgentOptions(
+        allowed_tools=[&quot;Read&quot;, &quot;Glob&quot;, &quot;Grep&quot;, &quot;Task&quot;],
+        agents={
+            &quot;code-reviewer&quot;: AgentDefinition(
+                description=&quot;Professional code reviewer responsible for quality and security reviews&quot;,
+                prompt=&quot;Analyze code quality, identify potential issues, and provide improvement suggestions.&quot;,
+                tools=[&quot;Read&quot;, &quot;Glob&quot;, &quot;Grep&quot;],
+            ),
+            &quot;test-writer&quot;: AgentDefinition(
+                description=&quot;Testing specialist responsible for writing unit tests&quot;,
+                prompt=&quot;Write unit tests for functions that are missing tests.&quot;,
+                tools=[&quot;Read&quot;, &quot;Write&quot;, &quot;Bash&quot;],
+            ),
+        },
+    ),
+):
+    if hasattr(message, &quot;result&quot;):
+        print(message.result)</pre>
+</div>
+<p class="reveal"><span lang="id">Messages from sub-agents include a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">parent_tool_use_id</code> field, making it easy to track which messages came from which sub-agent.</span><span lang="en">Messages from sub-agents include a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">parent_tool_use_id</code> field, making it easy to track which messages came from which sub-agent.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">MCP Integration: Connect to the Outside World</span><span lang="en">MCP Integration: Connect to the Outside World</span></h3>
+<p class="reveal"><span lang="id">Through Model Context Protocol (MCP), your agent can connect to external systems such as databases, browsers, and third-party APIs. The community already provides [hundreds of MCP servers](https://github.com/modelcontextprotocol/servers) you can use directly.</span><span lang="en">Through Model Context Protocol (MCP), your agent can connect to external systems such as databases, browsers, and third-party APIs. The community already provides [hundreds of MCP servers](https://github.com/modelcontextprotocol/servers) you can use directly.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Connect Playwright so the agent can operate a browser
+async for message in query(
+    prompt=&quot;Open example.com and describe what you see&quot;,
+    options=ClaudeAgentOptions(
+        mcp_servers={
+            &quot;playwright&quot;: {
+                &quot;command&quot;: &quot;npx&quot;,
+                &quot;args&quot;: [&quot;@playwright/mcp@latest&quot;]
+            }
+        }
+    ),
+):
+    if hasattr(message, &quot;result&quot;):
+        print(message.result)</pre>
+</div>
+<p class="reveal"><span lang="id">Common MCP integration scenarios:</span><span lang="en">Common MCP integration scenarios:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Playwright: browser automation, scraping pages, filling forms</span><span lang="en">Playwright: browser automation, scraping pages, filling forms</span></li>
+<li><span lang="id">PostgreSQL/MySQL: direct database querying and operations</span><span lang="en">PostgreSQL/MySQL: direct database querying and operations</span></li>
+<li><span lang="id">Slack/Email: sending notifications and messages</span><span lang="en">Slack/Email: sending notifications and messages</span></li>
+<li><span lang="id">GitHub: operating PRs, Issues, and repositories</span><span lang="en">GitHub: operating PRs, Issues, and repositories</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">What Can You Build with It? Practical Scenarios</span><span lang="en">What Can You Build with It? Practical Scenarios</span></h2>
+<p class="reveal"><span lang="id">After understanding features, the most important question is: what can this actually do? Below are real scenarios validated by the community.</span><span lang="en">After understanding features, the most important question is: what can this actually do? Below are real scenarios validated by the community.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Scenario 1: Automatic Bug-Fix Agent</span><span lang="en">Scenario 1: Automatic Bug-Fix Agent</span></h3>
+<p class="reveal"><span lang="id">Give it a bug description, and it can find code, locate the issue, fix it, and run tests to verify:</span><span lang="en">Give it a bug description, and it can find code, locate the issue, fix it, and run tests to verify:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>async for message in query(
+    prompt=&quot;Users report occasional HTTP 500 errors during login. Investigate and fix code under src/auth/&quot;,
+    options=ClaudeAgentOptions(
+        allowed_tools=[&quot;Read&quot;, &quot;Edit&quot;, &quot;Bash&quot;, &quot;Glob&quot;, &quot;Grep&quot;],
+        permission_mode=&quot;acceptEdits&quot;,
+    ),
+):
+    print(message)</pre>
+</div>
+<p class="reveal"><span lang="id">Claude will grep logs, read related code, find the bug, modify code, and run tests to confirm the fix.</span><span lang="en">Claude will grep logs, read related code, find the bug, modify code, and run tests to confirm the fix.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Scenario 2: Code Review Agent</span><span lang="en">Scenario 2: Code Review Agent</span></h3>
+<p class="reveal"><span lang="id">Build a read-only code review agent that audits quality without making any modifications:</span><span lang="en">Build a read-only code review agent that audits quality without making any modifications:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>async for message in query(
+    prompt=&quot;Review code under src/ with focus on security vulnerabilities, performance issues, and coding conventions&quot;,
+    options=ClaudeAgentOptions(
+        allowed_tools=[&quot;Read&quot;, &quot;Glob&quot;, &quot;Grep&quot;],
+        permission_mode=&quot;bypassPermissions&quot;,
+    ),
+):
+    if hasattr(message, &quot;result&quot;):
+        print(message.result)</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Scenario 3: CI/CD Integration</span><span lang="en">Scenario 3: CI/CD Integration</span></h3>
+<p class="reveal"><span lang="id">In a CI pipeline, let the agent analyze failing tests and attempt automatic fixes:</span><span lang="en">In a CI pipeline, let the agent analyze failing tests and attempt automatic fixes:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>async for message in query(
+    prompt=&quot;Run npm test, analyze failing test cases, and fix the code so all tests pass&quot;,
+    options=ClaudeAgentOptions(
+        allowed_tools=[&quot;Read&quot;, &quot;Edit&quot;, &quot;Bash&quot;, &quot;Glob&quot;],
+        max_turns=20,
+    ),
+):
+    print(message)</pre>
+</div>
+<p class="reveal"><span lang="id">This is a major advantage of Agent SDK over CLI - CLI is good when a human sits at the terminal, while SDK is ideal for embedding into automated workflows.</span><span lang="en">This is a major advantage of Agent SDK over CLI - CLI is good when a human sits at the terminal, while SDK is ideal for embedding into automated workflows.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Scenario 4: Research Agent</span><span lang="en">Scenario 4: Research Agent</span></h3>
+<p class="reveal"><span lang="id">Let the agent search the web, read documentation, synthesize information, and produce a report:</span><span lang="en">Let the agent search the web, read documentation, synthesize information, and produce a report:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>async for message in query(
+    prompt=&quot;Research mainstream Python Web frameworks in 2026. Compare FastAPI, Django, and Litestar, then write a technical selection report to report.md&quot;,
+    options=ClaudeAgentOptions(
+        allowed_tools=[&quot;WebSearch&quot;, &quot;WebFetch&quot;, &quot;Write&quot;],
+    ),
+):
+    print(message)</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Scenario 5: Full-Stack Agent with Browser Capability</span><span lang="en">Scenario 5: Full-Stack Agent with Browser Capability</span></h3>
+<p class="reveal"><span lang="id">By connecting Playwright through MCP, the agent can not only write code but also open a browser to verify results:</span><span lang="en">By connecting Playwright through MCP, the agent can not only write code but also open a browser to verify results:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>async for message in query(
+    prompt=&quot;Fix the homepage style issue, then open a browser and take screenshots to verify the result&quot;,
+    options=ClaudeAgentOptions(
+        allowed_tools=[&quot;Read&quot;, &quot;Edit&quot;, &quot;Bash&quot;],
+        mcp_servers={
+            &quot;playwright&quot;: {
+                &quot;command&quot;: &quot;npx&quot;,
+                &quot;args&quot;: [&quot;@playwright/mcp@latest&quot;]
+            }
+        },
+    ),
+):
+    print(message)</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Scenario Quick Reference</span><span lang="en">Scenario Quick Reference</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Scenario</th><th>Core Tools</th><th>Difficulty</th></tr>
+<tr><td>Auto bug fixing</td><td>Read, Edit, Bash, Grep</td><td>Beginner</td></tr>
+<tr><td>Code review</td><td>Read, Glob, Grep</td><td>Beginner</td></tr>
+<tr><td>CI/CD auto-fix</td><td>Read, Edit, Bash</td><td>Intermediate</td></tr>
+<tr><td>Technical research report</td><td>WebSearch, WebFetch, Write</td><td>Beginner</td></tr>
+<tr><td>Browser automation</td><td>MCP (Playwright)</td><td>Intermediate</td></tr>
+<tr><td>Multi-agent collaboration</td><td>Task + AgentDefinition</td><td>Advanced</td></tr>
+<tr><td>Database operations</td><td>MCP (PostgreSQL/MySQL)</td><td>Intermediate</td></tr>
+<tr><td>Email/notification assistant</td><td>MCP (Slack/Email)</td><td>Intermediate</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">When Should You Use Agent SDK?</span><span lang="en">When Should You Use Agent SDK?</span></h2>
+<p class="reveal"><span lang="id">Not every scenario needs Agent SDK. Choosing the right tool matters:</span><span lang="en">Not every scenario needs Agent SDK. Choosing the right tool matters:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>What You Want to Do</th><th>Recommended Tool</th></tr>
+<tr><td>Simple chat, text generation, translation</td><td>Basic <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">anthropic</code> SDK</td></tr>
+<tr><td>One-shot tool use (weather lookup, arithmetic)</td><td>Basic <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">anthropic</code> SDK</td></tr>
+<tr><td>Autonomously complete multi-step development tasks</td><td>Agent SDK</td></tr>
+<tr><td>Embed into CI/CD pipelines</td><td>Agent SDK</td></tr>
+<tr><td>Build apps that operate on a file system</td><td>Agent SDK</td></tr>
+<tr><td>Daily interactive development</td><td>Claude Code CLI</td></tr>
+<tr><td>One-off quick tasks</td><td>Claude Code CLI</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">In short: if your task requires Claude to "work hands-on" by itself (reading files, editing code, running commands), use Agent SDK. If you only need Q&A, the basic SDK is enough.</span><span lang="en">In short: if your task requires Claude to "work hands-on" by itself (reading files, editing code, running commands), use Agent SDK. If you only need Q&A, the basic SDK is enough.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Enterprise Practice: Building a Code-Quality Guardrail Pipeline</span><span lang="en">Enterprise Practice: Building a Code-Quality Guardrail Pipeline</span></h2>
+<p class="reveal"><span lang="id">The previous scenarios all used one agent for one job. In real enterprise environments, what you need is a full pipeline - multiple agents chained together, each stage with clear input/output, plus auditing, rollback, and notifications.</span><span lang="en">The previous scenarios all used one agent for one job. In real enterprise environments, what you need is a full pipeline - multiple agents chained together, each stage with clear input/output, plus auditing, rollback, and notifications.</span></p>
+<p class="reveal"><span lang="id">Now we will build a real scenario: after each PR submission, automatically trigger <b>code review -> security scan -> auto-fix -> test verification -> report generation</b> as a complete pipeline.</span><span lang="en">Now we will build a real scenario: after each PR submission, automatically trigger <b>code review -> security scan -> auto-fix -> test verification -> report generation</b> as a complete pipeline.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Architecture Design</span><span lang="en">Architecture Design</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>PR submitted
+  │
+  ▼
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│  Code Review │───▶│ Security Scan│───▶│   Auto Fix   │
+│    Agent     │    │    Agent     │    │    Agent     │
+│ (read-only)  │    │ (read-only)  │    │ (writable)   │
+└─────────────┘    └─────────────┘    └─────────────┘
+                                            │
+                                            ▼
+                                     ┌─────────────┐    ┌─────────────┐
+                                     │ Test Verify  │───▶│ Report Build │
+                                     │    Agent     │    │    Agent     │
+                                     │   (Bash)     │    │   (Write)    │
+                                     └─────────────┘    └─────────────┘
+                                                              │
+                                                              ▼
+                                                       Slack notification</pre>
+</div>
+<p class="reveal"><span lang="id">Core idea: <b>each agent does one thing, permissions are minimized, and results are passed in sequence</b>.</span><span lang="en">Core idea: <b>each agent does one thing, permissions are minimized, and results are passed in sequence</b>.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Step 1: Define the Pipeline Framework</span><span lang="en">Step 1: Define the Pipeline Framework</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>import asyncio
+import json
+from datetime import datetime
+from claude_agent_sdk import query, ClaudeAgentOptions, HookMatcher
+
+# Audit log: record every operation by every agent
+audit_log = []
+
+async def audit_hook(input_data, tool_use_id, context):
+    audit_log.append({
+        &quot;time&quot;: datetime.now().isoformat(),
+        &quot;tool&quot;: input_data.get(&quot;tool_name&quot;),
+        &quot;input&quot;: input_data.get(&quot;tool_input&quot;, {}),
+    })
+    return {}
+
+# Shared hook config: all agents share audit capability
+audit_hooks = {
+    &quot;PostToolUse&quot;: [HookMatcher(matcher=&quot;.*&quot;, hooks=[audit_hook])]
+}</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Step 2: Code Review Agent (Read-Only)</span><span lang="en">Step 2: Code Review Agent (Read-Only)</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>async def run_code_review(pr_diff: str) -&gt; str:
+    &quot;&quot;&quot;Read-only agent, reviews code quality and outputs a structured report&quot;&quot;&quot;
+    result_text = &quot;&quot;
+    async for message in query(
+        prompt=f&quot;&quot;&quot;Review the following PR diff from these dimensions:
+1. Code conventions: naming, formatting, comments
+2. Logic issues: edge cases, null pointer risks, race conditions
+3. Performance risks: N+1 queries, memory leaks, unnecessary loops
+4. Maintainability: oversized functions, unclear responsibilities, magic numbers
+
+PR Diff:
+{pr_diff}
+
+Output JSON format: {{&quot;issues&quot;: [{{&quot;severity&quot;: &quot;high/medium/low&quot;, &quot;file&quot;: &quot;...&quot;, &quot;line&quot;: ..., &quot;description&quot;: &quot;...&quot;}}], &quot;summary&quot;: &quot;...&quot;}}&quot;&quot;&quot;,
+        options=ClaudeAgentOptions(
+            allowed_tools=[&quot;Read&quot;, &quot;Glob&quot;, &quot;Grep&quot;],
+            permission_mode=&quot;bypassPermissions&quot;,
+            hooks=audit_hooks,
+            max_turns=10,
+        ),
+    ):
+        if hasattr(message, &quot;result&quot;):
+            result_text = message.result
+    return result_text</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Step 3: Security Scan Agent (Read-Only)</span><span lang="en">Step 3: Security Scan Agent (Read-Only)</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>async def run_security_scan() -&gt; str:
+    &quot;&quot;&quot;Read-only agent focused on vulnerability scanning&quot;&quot;&quot;
+    result_text = &quot;&quot;
+    async for message in query(
+        prompt=&quot;&quot;&quot;Scan the project code for security vulnerabilities:
+1. SQL injection, XSS, CSRF
+2. Hardcoded keys or credentials
+3. Insecure dependency versions
+4. Missing permission checks
+
+Output JSON: {{&quot;vulnerabilities&quot;: [{{&quot;severity&quot;: &quot;critical/high/medium&quot;, &quot;type&quot;: &quot;...&quot;, &quot;file&quot;: &quot;...&quot;, &quot;description&quot;: &quot;...&quot;, &quot;fix_suggestion&quot;: &quot;...&quot;}}]}}&quot;&quot;&quot;,
+        options=ClaudeAgentOptions(
+            allowed_tools=[&quot;Read&quot;, &quot;Glob&quot;, &quot;Grep&quot;, &quot;Bash&quot;],
+            permission_mode=&quot;bypassPermissions&quot;,
+            hooks=audit_hooks,
+            max_turns=15,
+        ),
+    ):
+        if hasattr(message, &quot;result&quot;):
+            result_text = message.result
+    return result_text</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Step 4: Auto-Fix Agent (Writable)</span><span lang="en">Step 4: Auto-Fix Agent (Writable)</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>async def run_auto_fix(review_result: str, security_result: str) -&gt; str:
+    &quot;&quot;&quot;Writable agent that auto-fixes code based on review and scan results&quot;&quot;&quot;
+    result_text = &quot;&quot;
+    async for message in query(
+        prompt=f&quot;&quot;&quot;Fix code according to the following review results:
+
+Code review report:
+{review_result}
+
+Security scan report:
+{security_result}
+
+Fix rules:
+1. Only fix issues with severity high or critical
+2. Run related tests after each change to ensure no existing functionality is broken
+3. Do not refactor unrelated code, apply minimal fixes only
+4. Output the list of modified files after completion&quot;&quot;&quot;,
+        options=ClaudeAgentOptions(
+            allowed_tools=[&quot;Read&quot;, &quot;Edit&quot;, &quot;Bash&quot;, &quot;Glob&quot;, &quot;Grep&quot;],
+            permission_mode=&quot;acceptEdits&quot;,
+            hooks=audit_hooks,
+            max_turns=30,
+        ),
+    ):
+        if hasattr(message, &quot;result&quot;):
+            result_text = message.result
+    return result_text</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Step 5: Test Verification + Report Generation</span><span lang="en">Step 5: Test Verification + Report Generation</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>async def run_test_and_report(fix_result: str) -&gt; str:
+    &quot;&quot;&quot;Run tests and generate final report&quot;&quot;&quot;
+    result_text = &quot;&quot;
+    async for message in query(
+        prompt=f&quot;&quot;&quot;Execute these actions:
+1. Run the full test suite (npm test or pytest)
+2. Compute test pass rate
+3. Generate a Markdown quality report into pr-report.md, including:
+   - Count of issues found in code review and severity distribution
+   - Number of security vulnerabilities
+   - Auto-fix changes: {fix_result}
+   - Test pass rate
+   - Final conclusion: whether merge is recommended&quot;&quot;&quot;,
+        options=ClaudeAgentOptions(
+            allowed_tools=[&quot;Read&quot;, &quot;Bash&quot;, &quot;Write&quot;, &quot;Glob&quot;],
+            hooks=audit_hooks,
+            max_turns=15,
+        ),
+    ):
+        if hasattr(message, &quot;result&quot;):
+            result_text = message.result
+    return result_text</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Step 6: Chain the Whole Pipeline</span><span lang="en">Step 6: Chain the Whole Pipeline</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>import subprocess
+
+async def run_pipeline():
+    &quot;&quot;&quot;Full PR quality-guard pipeline&quot;&quot;&quot;
+    print(&quot;🔍 Stage 1/4: code review...&quot;)
+    pr_diff = subprocess.run(
+        [&quot;git&quot;, &quot;diff&quot;, &quot;main...HEAD&quot;], capture_output=True, text=True
+    ).stdout
+    review_result = await run_code_review(pr_diff)
+
+    print(&quot;🛡️ Stage 2/4: security scan...&quot;)
+    security_result = await run_security_scan()
+
+    print(&quot;🔧 Stage 3/4: auto-fix...&quot;)
+    fix_result = await run_auto_fix(review_result, security_result)
+
+    print(&quot;✅ Stage 4/4: test verification + report generation...&quot;)
+    report = await run_test_and_report(fix_result)
+
+    # Save audit log
+    with open(&quot;audit-log.json&quot;, &quot;w&quot;) as f:
+        json.dump(audit_log, f, indent=2, ensure_ascii=False)
+
+    print(f&quot;Pipeline finished, audit log saved ({len(audit_log)} operation records)&quot;)
+    return report
+
+asyncio.run(run_pipeline())</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Enterprise Design Thinking</span><span lang="en">Enterprise Design Thinking</span></h3>
+<p class="reveal"><span lang="id">This pipeline reflects several key enterprise design principles:</span><span lang="en">This pipeline reflects several key enterprise design principles:</span></p>
+<p class="reveal"><span lang="id"><b>Least privilege</b>: code-review and security-scan agents are read-only and cannot accidentally modify code. Only the auto-fix agent has write permission, and even that is constrained by <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">acceptEdits</code>.</span><span lang="en"><b>Least privilege</b>: code-review and security-scan agents are read-only and cannot accidentally modify code. Only the auto-fix agent has write permission, and even that is constrained by <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">acceptEdits</code>.</span></p>
+<p class="reveal"><span lang="id"><b>Auditable</b>: every step of every agent is logged through Hooks. If anything goes wrong, you can trace which agent did what and when.</span><span lang="en"><b>Auditable</b>: every step of every agent is logged through Hooks. If anything goes wrong, you can trace which agent did what and when.</span></p>
+<p class="reveal"><span lang="id"><b>Result chaining</b>: each agent's output becomes the next agent's input. Review results feed auto-fix; auto-fix results feed test verification. Every stage has a clear input/output contract.</span><span lang="en"><b>Result chaining</b>: each agent's output becomes the next agent's input. Review results feed auto-fix; auto-fix results feed test verification. Every stage has a clear input/output contract.</span></p>
+<p class="reveal"><span lang="id"><b>Cost control</b>: every agent has a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">max_turns</code> limit to prevent runaway loops. In production, you can also add <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">max_budget_usd</code> for budget control.</span><span lang="en"><b>Cost control</b>: every agent has a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">max_turns</code> limit to prevent runaway loops. In production, you can also add <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">max_budget_usd</code> for budget control.</span></p>
+<p class="reveal"><span lang="id"><b>Extensibility</b>: want another stage, such as a "documentation-check agent" or "performance benchmark agent"? Add a new function and insert it into the pipeline.</span><span lang="en"><b>Extensibility</b>: want another stage, such as a "documentation-check agent" or "performance benchmark agent"? Add a new function and insert it into the pipeline.</span></p>
+<p class="reveal"><span lang="id">This model can be embedded directly into GitHub Actions or GitLab CI, automatically triggered on each PR, truly achieving "AI-driven code quality guardrails."</span><span lang="en">This model can be embedded directly into GitHub Actions or GitLab CI, automatically triggered on each PR, truly achieving "AI-driven code quality guardrails."</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Error Handling</span><span lang="en">Error Handling</span></h2>
+<p class="reveal"><span lang="id">Agent SDK provides clear exception types so you can build robust fault tolerance in production:</span><span lang="en">Agent SDK provides clear exception types so you can build robust fault tolerance in production:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>from claude_agent_sdk import query, CLINotFoundError, ProcessError
+
+try:
+    async for msg in query(prompt=&quot;Analyze code&quot;):
+        print(msg)
+except CLINotFoundError:
+    print(&quot;Claude Code CLI is not installed. Please install it first.&quot;)
+except ProcessError as e:
+    print(f&quot;Process exited unexpectedly with exit code: {e.exit_code}&quot;)</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary</span><span lang="en">Summary</span></h2>
+<p class="reveal"><span lang="id">The core value of Claude Agent SDK is upgrading "model reasoning" into "controlled execution." It does not just generate text. It can truly complete tasks inside an auditable, constrained tool system.</span><span lang="en">The core value of Claude Agent SDK is upgrading "model reasoning" into "controlled execution." It does not just generate text. It can truly complete tasks inside an auditable, constrained tool system.</span></p>
+<p class="reveal"><span lang="id">Remember a line from Anthropic's official blog: the Agent SDK design philosophy is "give the agent a computer and let it work like a human."</span><span lang="en">Remember a line from Anthropic's official blog: the Agent SDK design philosophy is "give the agent a computer and let it work like a human."</span></p>
+<p class="reveal"><span lang="id">A good agent application = clear tool design + explicit task boundaries + appropriate human supervision. Tools give the agent capability, boundaries give it constraints, and supervision gives you confidence. None of the three can be missing.</span><span lang="en">A good agent application = clear tool design + explicit task boundaries + appropriate human supervision. Tools give the agent capability, boundaries give it constraints, and supervision gives you confidence. None of the three can be missing.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">References</span><span lang="en">References</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Official Resources</span><span lang="en">Official Resources</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[Agent SDK Official Docs](https://platform.claude.com/docs/en/agent-sdk/overview) - the most authoritative reference</span><span lang="en">[Agent SDK Official Docs](https://platform.claude.com/docs/en/agent-sdk/overview) - the most authoritative reference</span></li>
+<li><span lang="id">[GitHub - claude-agent-sdk-python](https://github.com/anthropics/claude-code-sdk-python) - Python SDK source</span><span lang="en">[GitHub - claude-agent-sdk-python](https://github.com/anthropics/claude-code-sdk-python) - Python SDK source</span></li>
+<li><span lang="id">[GitHub - claude-agent-sdk-typescript](https://github.com/anthropics/claude-agent-sdk-typescript) - TypeScript SDK source</span><span lang="en">[GitHub - claude-agent-sdk-typescript](https://github.com/anthropics/claude-agent-sdk-typescript) - TypeScript SDK source</span></li>
+<li><span lang="id">[Agent SDK Demo Projects](https://github.com/anthropics/claude-agent-sdk-demos) - email assistant, research agent, and more</span><span lang="en">[Agent SDK Demo Projects](https://github.com/anthropics/claude-agent-sdk-demos) - email assistant, research agent, and more</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Blogs and Tutorials</span><span lang="en">Blogs and Tutorials</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[Building agents with the Claude Agent SDK](https://claude.com/blog/building-agents-with-the-claude-agent-sdk) - Anthropic engineering blog on design philosophy and architecture</span><span lang="en">[Building agents with the Claude Agent SDK](https://claude.com/blog/building-agents-with-the-claude-agent-sdk) - Anthropic engineering blog on design philosophy and architecture</span></li>
+<li><span lang="id">[Claude Agent SDK Python Study Guide](https://redreamality.com/blog/claude-agent-sdk-python-) - Chinese-friendly full tutorial from zero</span><span lang="en">[Claude Agent SDK Python Study Guide](https://redreamality.com/blog/claude-agent-sdk-python-) - Chinese-friendly full tutorial from zero</span></li>
+<li><span lang="id">[Claude Agent SDK Full Tutorial](https://blog.wenhaofree.com/en/posts/articles/claude-agent-sdk-tutorial/) - practical guide to tool systems, Agent Loop, and controlled execution</span><span lang="en">[Claude Agent SDK Full Tutorial](https://blog.wenhaofree.com/en/posts/articles/claude-agent-sdk-tutorial/) - practical guide to tool systems, Agent Loop, and controlled execution</span></li>
+<li><span lang="id">[12 Practical Agent SDK Scenarios](https://skywork.ai/blog/claude-agent-sdk-use-cases-2025/) - covers coding, data, automation, and more</span><span lang="en">[12 Practical Agent SDK Scenarios](https://skywork.ai/blog/claude-agent-sdk-use-cases-2025/) - covers coding, data, automation, and more</span></li>
+<li><span lang="id">[Step-by-Step Agent Tutorial](https://skywork.ai/blog/how-to-use-claude-agent-sdk-step-by-step-ai-agent-tutorial/) - TypeScript + Python dual-track tutorial</span><span lang="en">[Step-by-Step Agent Tutorial](https://skywork.ai/blog/how-to-use-claude-agent-sdk-step-by-step-ai-agent-tutorial/) - TypeScript + Python dual-track tutorial</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../core-skills/mobile-development/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Remote Development Claude Code dari Smartphone</span><span lang="en">Remote Development Claude Code dari Smartphone</span></b></a>
+      <a class="next" href="../../core-skills/superpowers/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Claude Code Superpowers untuk Kode Kelas Industri</span><span lang="en">Claude Code Superpowers untuk Kode Kelas Industri</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

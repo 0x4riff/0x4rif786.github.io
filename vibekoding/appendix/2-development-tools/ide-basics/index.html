@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Fundamentals of Integrated Development Environment (IDE) — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Fundamentals of Integrated Development Environment (IDE). - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/2-development-tools/ide-basics/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Fundamentals of Integrated Development Environment (IDE)</span><span lang="en">Fundamentals of Integrated Development Environment (IDE)</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Fundamentals of Integrated Development Environment (IDE)</span><span lang="en">Fundamentals of Integrated Development Environment (IDE)</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Fundamentals of Integrated Development Environment (IDE).</span><span lang="en">Ensiklopedia VibeKoding: Fundamentals of Integrated Development Environment (IDE).</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">This chapter will take you deep into the core productivity tool for programmers—the <b>Integrated Development Environment (IDE)</b>. We'll start from the design philosophy of IDEs, analyze their core components one by one, and demonstrate their working principles through a virtual IDE.</span><span lang="en">This chapter will take you deep into the core productivity tool for programmers—the <b>Integrated Development Environment (IDE)</b>. We'll start from the design philosophy of IDEs, analyze their core components one by one, and demonstrate their working principles through a virtual IDE.</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">What to Do Criteria for You Don't Understand Something (How to solve problems)</span><span lang="en">What to Do Criteria for You Don't Understand Something (How to solve problems)</span></h2>
+<p class="reveal"><span lang="id">In the process of learning and using an IDE, you may encounter various buttons, menus, or code errors that you don't understand. At this time, <b>don't panic—using an AI assistant is the most efficient solution</b>.</span><span lang="en">In the process of learning and using an IDE, you may encounter various buttons, menus, or code errors that you don't understand. At this time, <b>don't panic—using an AI assistant is the most efficient solution</b>.</span></p>
+<p class="reveal"><span lang="id"><b>Recommended Approach: Screenshot and Ask AI</b></span><span lang="en"><b>Recommended Approach: Screenshot and Ask AI</b></span></p>
+<p class="reveal"><span lang="id">Modern AIs (such as ChatGPT, Claude, DeepSeek, etc.) have powerful image recognition capabilities. When you encounter unfamiliar interface elements or complex code snippets:</span><span lang="en">Modern AIs (such as ChatGPT, Claude, DeepSeek, etc.) have powerful image recognition capabilities. When you encounter unfamiliar interface elements or complex code snippets:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Screenshot</b>: Capture the part you don't understand (such as a strange icon or a complex configuration code).</span><span lang="en"><b>Screenshot</b>: Capture the part you don't understand (such as a strange icon or a complex configuration code).</span></li>
+<li><span lang="id"><b>Ask</b>: Send the image to AI and ask: "What is this? What's it for?" or "What does xxx do in this code?"</span><span lang="en"><b>Ask</b>: Send the image to AI and ask: "What is this? What's it for?" or "What does xxx do in this code?"</span></li>
+<li><span lang="id"><b>Follow up</b>: If AI's answer is too technical to understand, continue asking: "Please explain it in plain language, preferably with a real-life example."</span><span lang="en"><b>Follow up</b>: If AI's answer is too technical to understand, continue asking: "Please explain it in plain language, preferably with a real-life example."</span></li>
+</ul>
+<p class="reveal"><span lang="id"><AiHelpDemo /></span><span lang="en"><AiHelpDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. Introduction: Motivation for needing an IDE</span><span lang="en">0. Introduction: Motivation for needing an IDE</span></h2>
+<p class="reveal"><span lang="id">In the software development process, programmers need to frequently write code, manage files, compile and run programs, debug errors, and so on. If all these operations needed to be completed in different independent software (for example, using Notepad to write code, command line to compile, and file folders to manage files), efficiency would be extremely low and error-prone.</span><span lang="en">In the software development process, programmers need to frequently write code, manage files, compile and run programs, debug errors, and so on. If all these operations needed to be completed in different independent software (for example, using Notepad to write code, command line to compile, and file folders to manage files), efficiency would be extremely low and error-prone.</span></p>
+<p class="reveal"><span lang="id">The core value of an <b>IDE (Integrated Development Environment)</b> lies in <b>integration</b>. It integrates various tools needed for software development (editor, compiler, debugger, file manager, etc.) into a unified graphical interface, providing a one-stop working experience.</span><span lang="en">The core value of an <b>IDE (Integrated Development Environment)</b> lies in <b>integration</b>. It integrates various tools needed for software development (editor, compiler, debugger, file manager, etc.) into a unified graphical interface, providing a one-stop working experience.</span></p>
+<p class="reveal"><span lang="id"><b>VS Code is one of the most popular IDEs.</b> Although it is essentially a lightweight code editor, through its powerful plugin system, it has all the core functions of an IDE (code editing, debugging, version control, etc.), and is therefore widely regarded as the preferred IDE for modern frontend and full-stack development.</span><span lang="en"><b>VS Code is one of the most popular IDEs.</b> Although it is essentially a lightweight code editor, through its powerful plugin system, it has all the core functions of an IDE (code editing, debugging, version control, etc.), and is therefore widely regarded as the preferred IDE for modern frontend and full-stack development.</span></p>
+<p class="reveal"><span lang="id">In short, IDEs aim to maximize developer productivity and reduce the time cost of switching between different tools.</span><span lang="en">In short, IDEs aim to maximize developer productivity and reduce the time cost of switching between different tools.</span></p>
+<p class="reveal"><span lang="id">> 🔗 <b>Resource Downloads</b>:</span><span lang="en">> 🔗 <b>Resource Downloads</b>:</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> - [VS Code Official Download](https://code.visualstudio.com/Download)</span><span lang="en">> - [VS Code Official Download](https://code.visualstudio.com/Download)</span></p>
+<p class="reveal"><span lang="id">> - [VS Code Web Version Experience](https://vscode.dev/)</span><span lang="en">> - [VS Code Web Version Experience](https://vscode.dev/)</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> <b>VS Code (Visual Studio Code)</b> is a free, open-source, cross-platform code editor developed by Microsoft. With its <b>lightweight nature, rich plugins, and fast startup speed</b>, it has become one of the most popular development tools worldwide. Whether you're writing Python, JavaScript, or C++, VS Code can become the most suitable "tool" for you through plugin installation.</span><span lang="en">> <b>VS Code (Visual Studio Code)</b> is a free, open-source, cross-platform code editor developed by Microsoft. With its <b>lightweight nature, rich plugins, and fast startup speed</b>, it has become one of the most popular development tools worldwide. Whether you're writing Python, JavaScript, or C++, VS Code can become the most suitable "tool" for you through plugin installation.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Core Interface Analysis</span><span lang="en">1. Core Interface Analysis</span></h2>
+<p class="reveal"><span lang="id">The interface layout of modern IDEs (taking VS Code as an example) has been carefully designed and usually contains the following four core areas:</span><span lang="en">The interface layout of modern IDEs (taking VS Code as an example) has been carefully designed and usually contains the following four core areas:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Sidebar: Resource Management</b></span><span lang="en"><b>Sidebar: Resource Management</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">Displays the project's file tree, supports creating, renaming, moving, and deleting files, providing a global view and quick access to the project structure.</span><span lang="en">Displays the project's file tree, supports creating, renaming, moving, and deleting files, providing a global view and quick access to the project structure.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Editor Area: Code Creation</b></span><span lang="en"><b>Editor Area: Code Creation</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">The core area for writing and modifying code. Supports syntax highlighting, intelligent code completion, syntax checking, and other functions, providing an efficient and intelligent code writing environment.</span><span lang="en">The core area for writing and modifying code. Supports syntax highlighting, intelligent code completion, syntax checking, and other functions, providing an efficient and intelligent code writing environment.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Bottom Panel: Execution and Feedback</b></span><span lang="en"><b>Bottom Panel: Execution and Feedback</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">Interacts with the underlying system and views running results. Includes Terminal, Output, etc., used for executing commands, viewing logs, and debugging.</span><span lang="en">Interacts with the underlying system and views running results. Includes Terminal, Output, etc., used for executing commands, viewing logs, and debugging.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Activity Bar: Function Navigation</b></span><span lang="en"><b>Activity Bar: Function Navigation</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">Located on the far left of the interface, containing icons for file explorer, search, Git management, etc., used to quickly switch between different work contexts (such as "writing code" and "submitting code").</span><span lang="en">Located on the far left of the interface, containing icons for file explorer, search, Git management, etc., used to quickly switch between different work contexts (such as "writing code" and "submitting code").</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Interactive Demo: Functional Experience</span><span lang="en">2. Interactive Demo: Functional Experience</span></h2>
+<p class="reveal"><span lang="id">Seeing is believing. To let you truly feel the convenience of an IDE, we have prepared a <b>virtual VS Code environment</b> for you.</span><span lang="en">Seeing is believing. To let you truly feel the convenience of an IDE, we have prepared a <b>virtual VS Code environment</b> for you.</span></p>
+<p class="reveal"><span lang="id"><b>Please try the following operations</b>:</span><span lang="en"><b>Please try the following operations</b>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Click the <b>"▶ Start Auto Tour"</b> button in the upper right corner to follow the cursor and learn about each area.</span><span lang="en">Click the <b>"▶ Start Auto Tour"</b> button in the upper right corner to follow the cursor and learn about each area.</span></li>
+<li><span lang="id"><b>Free Exploration</b>: Click the icons on the left to switch views, or click file names to open code.</span><span lang="en"><b>Free Exploration</b>: Click the icons on the left to switch views, or click file names to open code.</span></li>
+<li><span lang="id"><b>Experience Integration</b>: You'll find that file management, code editing, and terminal running are all seamlessly connected within the same window.</span><span lang="en"><b>Experience Integration</b>: You'll find that file management, code editing, and terminal running are all seamlessly connected within the same window.</span></li>
+<li><span lang="id"><b>Install Plugins</b>: Select <b>"Extensions Installation"</b> mode from the dropdown menu to experience how to install Python plugins in a virtual store.</span><span lang="en"><b>Install Plugins</b>: Select <b>"Extensions Installation"</b> mode from the dropdown menu to experience how to install Python plugins in a virtual store.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><ClientOnly></span><span lang="en"><ClientOnly></span></p>
+<p class="reveal"><span lang="id"><VirtualVSCodeDemo /></span><span lang="en"><VirtualVSCodeDemo /></span></p>
+<p class="reveal"><span lang="id"></ClientOnly></span><span lang="en"></ClientOnly></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Core Mechanism: Motivation for VSing Code Do Everything</span><span lang="en">3. Core Mechanism: Motivation for VSing Code Do Everything</span></h2>
+<p class="reveal"><span lang="id">You might be curious: Why can the same software write Python, C++, and do web development? How does it do it?</span><span lang="en">You might be curious: Why can the same software write Python, C++, and do web development? How does it do it?</span></p>
+<p class="reveal"><span lang="id">Actually, VS Code's design philosophy can be summarized in one sentence: <b>"Minimalist core, pluggable capabilities."</b></span><span lang="en">Actually, VS Code's design philosophy can be summarized in one sentence: <b>"Minimalist core, pluggable capabilities."</b></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Minimalist Core: Just a "Canvas"</span><span lang="en">3.1 Minimalist Core: Just a "Canvas"</span></h3>
+<p class="reveal"><span lang="id">Imagine, the VS Code you just downloaded, if no plugins are installed, actually <b>doesn't understand programming</b>.</span><span lang="en">Imagine, the VS Code you just downloaded, if no plugins are installed, actually <b>doesn't understand programming</b>.</span></p>
+<p class="reveal"><span lang="id">At this point, it is essentially just a <b>powerful text editor</b>.</span><span lang="en">At this point, it is essentially just a <b>powerful text editor</b>.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">It is responsible for displaying text (rendering).</span><span lang="en">It is responsible for displaying text (rendering).</span></li>
+<li><span lang="id">It is responsible for managing files (IO).</span><span lang="en">It is responsible for managing files (IO).</span></li>
+<li><span lang="id">But it doesn't know that <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">print("Hello")</code> is Python code, nor does it know that <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">int main()</code> is a C++ entry point.</span><span lang="en">But it doesn't know that <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">print("Hello")</code> is Python code, nor does it know that <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">int main()</code> is a C++ entry point.</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Plugin System: Injecting "Soul"</span><span lang="en">3.2 Plugin System: Injecting "Soul"</span></h3>
+<p class="reveal"><span lang="id">To make VS Code able to "understand" code, we need to install <b>Extensions</b>.</span><span lang="en">To make VS Code able to "understand" code, we need to install <b>Extensions</b>.</span></p>
+<p class="reveal"><span lang="id">Plugins are like specialized <b>translators</b>:</span><span lang="en">Plugins are like specialized <b>translators</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Python Plugin</b>: Tells VS Code what variables are, what functions are, and how to run <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.py</code> files.</span><span lang="en"><b>Python Plugin</b>: Tells VS Code what variables are, what functions are, and how to run <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.py</code> files.</span></li>
+<li><span lang="id"><b>C++ Plugin</b>: Tells VS Code how to call the compiler and how to debug memory.</span><span lang="en"><b>C++ Plugin</b>: Tells VS Code how to call the compiler and how to debug memory.</span></li>
+</ul>
+<p class="reveal"><span lang="id">This design makes VS Code very lightweight—if you don't write Java, you don't have to carry Java's runtime environment.</span><span lang="en">This design makes VS Code very lightweight—if you don't write Java, you don't have to carry Java's runtime environment.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Behind the Scenes: From Code to Execution</span><span lang="en">3.3 Behind the Scenes: From Code to Execution</span></h3>
+<p class="reveal"><span lang="id"><ClientOnly></span><span lang="en"><ClientOnly></span></p>
+<p class="reveal"><span lang="id"><IdeArchitectureDemo /></span><span lang="en"><IdeArchitectureDemo /></span></p>
+<p class="reveal"><span lang="id"></ClientOnly></span><span lang="en"></ClientOnly></span></p>
+<p class="reveal"><span lang="id">Let's look at how VS Code, plugins, and the underlying environment collaborate through a specific scenario.</span><span lang="en">Let's look at how VS Code, plugins, and the underlying environment collaborate through a specific scenario.</span></p>
+<p class="reveal"><span lang="id">Suppose you write a line of Python code and click <b>Run</b> or <b>Debug</b>:</span><span lang="en">Suppose you write a line of Python code and click <b>Run</b> or <b>Debug</b>:</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">1. Language Recognition (Activation)</span><span lang="en">1. Language Recognition (Activation)</span></h4>
+<p class="reveal"><span lang="id">VS Code detects the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.py</code> suffix and automatically wakes up the <b>Python Plugin</b>. The plugin immediately takes over the editor, begins syntax analysis, colors the code differently (syntax highlighting), and provides intelligent suggestions.</span><span lang="en">VS Code detects the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.py</code> suffix and automatically wakes up the <b>Python Plugin</b>. The plugin immediately takes over the editor, begins syntax analysis, colors the code differently (syntax highlighting), and provides intelligent suggestions.</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">2. Task Delegation (Delegation)</span><span lang="en">2. Task Delegation (Delegation)</span></h4>
+<p class="reveal"><span lang="id">When you issue a command, the plugin itself does not directly execute the code, but <b>delegates</b> the task to underlying professional tools:</span><span lang="en">When you issue a command, the plugin itself does not directly execute the code, but <b>delegates</b> the task to underlying professional tools:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Run Mode</b>: The plugin generates a command (such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">python main.py</code>) and sends it to the system's <b>terminal</b> for execution.</span><span lang="en"><b>Run Mode</b>: The plugin generates a command (such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">python main.py</code>) and sends it to the system's <b>terminal</b> for execution.</span></li>
+<li><span lang="id"><b>Debug Mode</b>: The plugin starts a <b>Debug Adapter</b>. It's like a "monitoring probe," connecting to the internals of the Python interpreter, allowing you to control code execution line by line.</span><span lang="en"><b>Debug Mode</b>: The plugin starts a <b>Debug Adapter</b>. It's like a "monitoring probe," connecting to the internals of the Python interpreter, allowing you to control code execution line by line.</span></li>
+</ul>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">3. Result Feedback (Feedback)</span><span lang="en">3. Result Feedback (Feedback)</span></h4>
+<p class="reveal"><span lang="id">The Python interpreter (or compiler) executes the code and returns the results (or error messages) to the plugin. The plugin then "carries" this information back and displays it in VS Code's <b>bottom terminal panel</b>.</span><span lang="en">The Python interpreter (or compiler) executes the code and returns the results (or error messages) to the plugin. The plugin then "carries" this information back and displays it in VS Code's <b>bottom terminal panel</b>.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.4 Summary: Using a "Restaurant" as an Analogy</span><span lang="en">3.4 Summary: Using a "Restaurant" as an Analogy</span></h3>
+<p class="reveal"><span lang="id">If the above formula is a bit abstract, we can imagine the process of writing code as <b>dining at a restaurant</b>:</span><span lang="en">If the above formula is a bit abstract, we can imagine the process of writing code as <b>dining at a restaurant</b>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>VS Code is the "Restaurant Lobby"</b>:</span><span lang="en"><b>VS Code is the "Restaurant Lobby"</b>:</span></li>
+<li><span lang="id">The decoration is luxurious and the environment is comfortable (code highlighting, beautiful themes).</span><span lang="en">The decoration is luxurious and the environment is comfortable (code highlighting, beautiful themes).</span></li>
+<li><span lang="id"><b>But the lobby itself doesn't produce food</b>. You sit here just to more comfortably "order" (write code).</span><span lang="en"><b>But the lobby itself doesn't produce food</b>. You sit here just to more comfortably "order" (write code).</span></li>
+</ul>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Environment (Python/Node) is the "Kitchen"</b>:</span><span lang="en"><b>Environment (Python/Node) is the "Kitchen"</b>:</span></li>
+<li><span lang="id">This is where the real <b>cooking (running code)</b> happens.</span><span lang="en">This is where the real <b>cooking (running code)</b> happens.</span></li>
+<li><span lang="id">If the restaurant has no kitchen (Python not installed), you can sit in the lobby until dark and still won't get food.</span><span lang="en">If the restaurant has no kitchen (Python not installed), you can sit in the lobby until dark and still won't get food.</span></li>
+</ul>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Plugins are the "Waiters"</b>:</span><span lang="en"><b>Plugins are the "Waiters"</b>:</span></li>
+<li><span lang="id">They connect the lobby and the kitchen.</span><span lang="en">They connect the lobby and the kitchen.</span></li>
+<li><span lang="id">They understand your menu, run to tell the kitchen: "Table 3 wants a 'run main.py'!"</span><span lang="en">They understand your menu, run to tell the kitchen: "Table 3 wants a 'run main.py'!"</span></li>
+<li><span lang="id">When it's done, they bring the results (steaming hot food) back to you.</span><span lang="en">When it's done, they bring the results (steaming hot food) back to you.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Conclusion</b>:</span><span lang="en"><b>Conclusion</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Only installing VS Code = <b>Only lobby, no kitchen</b> (can only look, can't eat).</span><span lang="en">Only installing VS Code = <b>Only lobby, no kitchen</b> (can only look, can't eat).</span></li>
+<li><span lang="id">Only installing Python = <b>Only kitchen, no lobby</b> (can eat, but have to squat on the kitchen floor, poor experience).</span><span lang="en">Only installing Python = <b>Only kitchen, no lobby</b> (can eat, but have to squat on the kitchen floor, poor experience).</span></li>
+<li><span lang="id"><b>Installing VS Code + Plugins + Python = Perfect dining experience.</b></span><span lang="en"><b>Installing VS Code + Plugins + Python = Perfect dining experience.</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id"><script setup></span><span lang="en"><script setup></span></p>
+<p class="reveal"><span lang="id">import { onMounted } from 'vue'</span><span lang="en">import { onMounted } from 'vue'</span></p>
+<p class="reveal"><span lang="id">onMounted(() => {</span><span lang="en">onMounted(() => {</span></p>
+<p class="reveal"><span lang="id">const openTarget = () => {</span><span lang="en">const openTarget = () => {</span></p>
+<p class="reveal"><span lang="id">const hash = window.location.hash</span><span lang="en">const hash = window.location.hash</span></p>
+<p class="reveal"><span lang="id">if (hash) {</span><span lang="en">if (hash) {</span></p>
+<p class="reveal"><span lang="id">try {</span><span lang="en">try {</span></p>
+<p class="reveal"><span lang="id">// Handle encoded characters in hash</span><span lang="en">// Handle encoded characters in hash</span></p>
+<p class="reveal"><span lang="id">const target = document.querySelector(decodeURIComponent(hash))</span><span lang="en">const target = document.querySelector(decodeURIComponent(hash))</span></p>
+<p class="reveal"><span lang="id">// If the target is a details element, open it</span><span lang="en">// If the target is a details element, open it</span></p>
+<p class="reveal"><span lang="id">if (target && target.tagName === 'DETAILS') {</span><span lang="en">if (target && target.tagName === 'DETAILS') {</span></p>
+<p class="reveal"><span lang="id">target.setAttribute('open', '')</span><span lang="en">target.setAttribute('open', '')</span></p>
+<p class="reveal"><span lang="id">}</span><span lang="en">}</span></p>
+<p class="reveal"><span lang="id">// If the target is inside a details element, open the parent details</span><span lang="en">// If the target is inside a details element, open the parent details</span></p>
+<p class="reveal"><span lang="id">const parentDetails = target?.closest('details')</span><span lang="en">const parentDetails = target?.closest('details')</span></p>
+<p class="reveal"><span lang="id">if (parentDetails) {</span><span lang="en">if (parentDetails) {</span></p>
+<p class="reveal"><span lang="id">parentDetails.setAttribute('open', '')</span><span lang="en">parentDetails.setAttribute('open', '')</span></p>
+<p class="reveal"><span lang="id">}</span><span lang="en">}</span></p>
+<p class="reveal"><span lang="id">} catch (e) {</span><span lang="en">} catch (e) {</span></p>
+<p class="reveal"><span lang="id">console.error(e)</span><span lang="en">console.error(e)</span></p>
+<p class="reveal"><span lang="id">}</span><span lang="en">}</span></p>
+<p class="reveal"><span lang="id">}</span><span lang="en">}</span></p>
+<p class="reveal"><span lang="id">}</span><span lang="en">}</span></p>
+<p class="reveal"><span lang="id">openTarget()</span><span lang="en">openTarget()</span></p>
+<p class="reveal"><span lang="id">window.addEventListener('hashchange', openTarget)</span><span lang="en">window.addEventListener('hashchange', openTarget)</span></p>
+<p class="reveal"><span lang="id">})</span><span lang="en">})</span></p>
+<p class="reveal"><span lang="id"></script></span><span lang="en"></script></span></p>
+<p class="reveal"><span lang="id">To help everyone understand the meaning of each option, here we provide an in-depth analysis of the menu bar:</span><span lang="en">To help everyone understand the meaning of each option, here we provide an in-depth analysis of the menu bar:</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Fundamentals of Integrated Development Environment (IDE)</span><span lang="en">Fundamentals of Integrated Development Environment (IDE)</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Fundamentals of Integrated Development Environment (IDE)</span><span lang="en">Fundamentals of Integrated Development Environment (IDE)</span></p>
+</div>
+<p class="reveal"><span lang="id"><details class="custom-block details" id="vscode-file-menu"></span><span lang="en"><details class="custom-block details" id="vscode-file-menu"></span></p>
+<p class="reveal"><span lang="id"><summary>File: Project and File Open/Save/Workspace Management</summary></span><span lang="en"><summary>File: Project and File Open/Save/Workspace Management</summary></span></p>
+<p class="reveal"><span lang="id">This menu is mainly responsible for: <b>Creating/Opening Files</b>, <b>Opening Project Folders</b>, <b>Managing Workspaces</b>, <b>Saving and Closing</b>.</span><span lang="en">This menu is mainly responsible for: <b>Creating/Opening Files</b>, <b>Opening Project Folders</b>, <b>Managing Workspaces</b>, <b>Saving and Closing</b>.</span></p>
+<p class="reveal"><span lang="id">> The most commonly used are: Open Folder to open a project; Open… to open a single file; then use Save / Save All to save changes, and finally use Close Editor / Close Folder to end the current work. Workspace-related content can be slowly learned as you get more projects, no need to understand everything at once.</span><span lang="en">> The most commonly used are: Open Folder to open a project; Open… to open a single file; then use Save / Save All to save changes, and finally use Close Editor / Close Folder to end the current work. Workspace-related content can be slowly learned as you get more projects, no need to understand everything at once.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>New Text File</b>: Create a new unnamed text buffer for temporary notes or quick pasting.</span><span lang="en"><b>New Text File</b>: Create a new unnamed text buffer for temporary notes or quick pasting.</span></li>
+<li><span lang="id"><b>New File…</b>: Create a new file in the project (usually asks you to choose path/name).</span><span lang="en"><b>New File…</b>: Create a new file in the project (usually asks you to choose path/name).</span></li>
+<li><span lang="id"><b>New Window</b>: Open a new VS Code window instance.</span><span lang="en"><b>New Window</b>: Open a new VS Code window instance.</span></li>
+<li><span lang="id"><b>New Window with Profile</b>: Open a new window with a specified Profile (extension/settings combination), suitable for isolating environments for different courses/projects.</span><span lang="en"><b>New Window with Profile</b>: Open a new window with a specified Profile (extension/settings combination), suitable for isolating environments for different courses/projects.</span></li>
+<li><span lang="id"><b>Open…</b>: Open a single file for editing.</span><span lang="en"><b>Open…</b>: Open a single file for editing.</span></li>
+<li><span lang="id"><b>Open Folder…</b>: Open a folder as the project root directory (the most commonly used "open project" method).</span><span lang="en"><b>Open Folder…</b>: Open a folder as the project root directory (the most commonly used "open project" method).</span></li>
+<li><span lang="id"><b>Open Workspace from File…</b>: Open a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.code-workspace</code> file to load a workspace with multiple folders/specific settings.</span><span lang="en"><b>Open Workspace from File…</b>: Open a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.code-workspace</code> file to load a workspace with multiple folders/specific settings.</span></li>
+<li><span lang="id"><b>Open Recent</b>: Quickly access recently opened files/folders/workspaces.</span><span lang="en"><b>Open Recent</b>: Quickly access recently opened files/folders/workspaces.</span></li>
+<li><span lang="id"><b>Add Folder to Workspace…</b>: Add another folder to the current workspace (forming a multi-root workspace).</span><span lang="en"><b>Add Folder to Workspace…</b>: Add another folder to the current workspace (forming a multi-root workspace).</span></li>
+<li><span lang="id"><b>Save Workspace As…</b>: Save the current workspace structure as a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.code-workspace</code> file for easy sharing/reuse.</span><span lang="en"><b>Save Workspace As…</b>: Save the current workspace structure as a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.code-workspace</code> file for easy sharing/reuse.</span></li>
+<li><span lang="id"><b>Duplicate Workspace</b>: Duplicate the current workspace configuration (commonly used to create similar project environments).</span><span lang="en"><b>Duplicate Workspace</b>: Duplicate the current workspace configuration (commonly used to create similar project environments).</span></li>
+<li><span lang="id"><b>Save</b>: Save changes to the current file.</span><span lang="en"><b>Save</b>: Save changes to the current file.</span></li>
+<li><span lang="id"><b>Save As…</b>: Save the current file with a new name/path.</span><span lang="en"><b>Save As…</b>: Save the current file with a new name/path.</span></li>
+<li><span lang="id"><b>Save All</b>: Save all opened files that have modifications.</span><span lang="en"><b>Save All</b>: Save all opened files that have modifications.</span></li>
+<li><span lang="id"><b>Share</b>: Entry related to sharing/collaboration (specific content depends on version and extensions).</span><span lang="en"><b>Share</b>: Entry related to sharing/collaboration (specific content depends on version and extensions).</span></li>
+<li><span lang="id"><b>Auto Save</b>: Toggle auto-save strategy (e.g., delayed save/focus change save).</span><span lang="en"><b>Auto Save</b>: Toggle auto-save strategy (e.g., delayed save/focus change save).</span></li>
+<li><span lang="id"><b>Revert File</b>: Discard unsaved changes to the current file and revert to the disk version.</span><span lang="en"><b>Revert File</b>: Discard unsaved changes to the current file and revert to the disk version.</span></li>
+<li><span lang="id"><b>Close Editor</b>: Close the current tab.</span><span lang="en"><b>Close Editor</b>: Close the current tab.</span></li>
+<li><span lang="id"><b>Close Folder</b>: Close the current project folder (workspace becomes empty).</span><span lang="en"><b>Close Folder</b>: Close the current project folder (workspace becomes empty).</span></li>
+<li><span lang="id"><b>Close Window</b>: Close the current VS Code window.</span><span lang="en"><b>Close Window</b>: Close the current VS Code window.</span></li>
+</ul>
+<p class="reveal"><span lang="id"></details></span><span lang="en"></details></span></p>
+<p class="reveal"><span lang="id"><details class="custom-block details" id="vscode-edit-menu"></span><span lang="en"><details class="custom-block details" id="vscode-edit-menu"></span></p>
+<p class="reveal"><span lang="id"><summary>Edit: Basic Editing, Find/Replace, Comments and Quick Edit Actions</summary></span><span lang="en"><summary>Edit: Basic Editing, Find/Replace, Comments and Quick Edit Actions</summary></span></p>
+<p class="reveal"><span lang="id">This menu is mainly responsible for: <b>Undo/Redo</b>, <b>Cut/Copy/Paste</b>, <b>Find/Replace</b>, <b>Comments and Editor Actions</b> (improving editing efficiency).</span><span lang="en">This menu is mainly responsible for: <b>Undo/Redo</b>, <b>Cut/Copy/Paste</b>, <b>Find/Replace</b>, <b>Comments and Editor Actions</b> (improving editing efficiency).</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Undo / Redo</b>: The most basic operations for when you write code wrong.</span><span lang="en"><b>Undo / Redo</b>: The most basic operations for when you write code wrong.</span></li>
+<li><span lang="id"><b>Cut / Copy / Paste</b>: Text transportation.</span><span lang="en"><b>Cut / Copy / Paste</b>: Text transportation.</span></li>
+<li><span lang="id"><b>Find / Replace</b>: Search or batch modify in the current file.</span><span lang="en"><b>Find / Replace</b>: Search or batch modify in the current file.</span></li>
+<li><span lang="id"><b>Find in Files / Replace in Files</b>: Global (whole project) search and replace, very powerful but use with caution.</span><span lang="en"><b>Find in Files / Replace in Files</b>: Global (whole project) search and replace, very powerful but use with caution.</span></li>
+<li><span lang="id"><b>Toggle Line Comment</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl + /</code>, quickly comment/uncomment the current line.</span><span lang="en"><b>Toggle Line Comment</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl + /</code>, quickly comment/uncomment the current line.</span></li>
+<li><span lang="id"><b>Toggle Block Comment</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Shift + Alt + A</code>, quickly comment/uncomment the selected area.</span><span lang="en"><b>Toggle Block Comment</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Shift + Alt + A</code>, quickly comment/uncomment the selected area.</span></li>
+<li><span lang="id"><b>Emmet: Expand Abbreviation</b>: A powerful tool for HTML/CSS development, type shorthand and press Tab to expand code.</span><span lang="en"><b>Emmet: Expand Abbreviation</b>: A powerful tool for HTML/CSS development, type shorthand and press Tab to expand code.</span></li>
+</ul>
+<p class="reveal"><span lang="id"></details></span><span lang="en"></details></span></p>
+<p class="reveal"><span lang="id"><details class="custom-block details" id="vscode-selection-menu"></span><span lang="en"><details class="custom-block details" id="vscode-selection-menu"></span></p>
+<p class="reveal"><span lang="id"><summary>Selection: Multi-cursor and Smart Selection</summary></span><span lang="en"><summary>Selection: Multi-cursor and Smart Selection</summary></span></p>
+<p class="reveal"><span lang="id">This menu is mainly responsible for: <b>Cursor Control</b>, <b>Multi-line Editing</b>, <b>Expand/Shrink Selection</b>. This is VS Code's killer feature for improving efficiency.</span><span lang="en">This menu is mainly responsible for: <b>Cursor Control</b>, <b>Multi-line Editing</b>, <b>Expand/Shrink Selection</b>. This is VS Code's killer feature for improving efficiency.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Select All</b>: Select all content in the current file.</span><span lang="en"><b>Select All</b>: Select all content in the current file.</span></li>
+<li><span lang="id"><b>Expand Selection / Shrink Selection</b>: Intelligently perceive syntax structure, gradually expand or shrink the selection range (e.g., word -> string -> inside parentheses -> whole line -> function body).</span><span lang="en"><b>Expand Selection / Shrink Selection</b>: Intelligently perceive syntax structure, gradually expand or shrink the selection range (e.g., word -> string -> inside parentheses -> whole line -> function body).</span></li>
+<li><span lang="id"><b>Copy Line Up / Down</b>: Quickly clone the current line.</span><span lang="en"><b>Copy Line Up / Down</b>: Quickly clone the current line.</span></li>
+<li><span lang="id"><b>Move Line Up / Down</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Alt + ↑ / ↓</code>, adjust code line order directly without cut and paste.</span><span lang="en"><b>Move Line Up / Down</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Alt + ↑ / ↓</code>, adjust code line order directly without cut and paste.</span></li>
+<li><span lang="id"><b>Add Cursor Above / Below</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl + Alt + ↑ / ↓</code>, enable multi-cursor mode to edit multiple lines simultaneously.</span><span lang="en"><b>Add Cursor Above / Below</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl + Alt + ↑ / ↓</code>, enable multi-cursor mode to edit multiple lines simultaneously.</span></li>
+<li><span lang="id"><b>Add Cursor to Line Ends</b>: After selecting multiple lines of text, add a cursor at the end of each line.</span><span lang="en"><b>Add Cursor to Line Ends</b>: After selecting multiple lines of text, add a cursor at the end of each line.</span></li>
+</ul>
+<p class="reveal"><span lang="id"></details></span><span lang="en"></details></span></p>
+<p class="reveal"><span lang="id"><details class="custom-block details" id="vscode-view-menu"></span><span lang="en"><details class="custom-block details" id="vscode-view-menu"></span></p>
+<p class="reveal"><span lang="id"><summary>View: Interface Layout and Panel Control</summary></span><span lang="en"><summary>View: Interface Layout and Panel Control</summary></span></p>
+<p class="reveal"><span lang="id">This menu is mainly responsible for: <b>Toggle Sidebar/Panel</b>, <b>Adjust Layout</b>, <b>Command Palette</b>, <b>Output and Debug Console</b>.</span><span lang="en">This menu is mainly responsible for: <b>Toggle Sidebar/Panel</b>, <b>Adjust Layout</b>, <b>Command Palette</b>, <b>Output and Debug Console</b>.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Command Palette…</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl + Shift + P</code> / <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">F1</code>, VS Code's central command center, can search and execute all commands.</span><span lang="en"><b>Command Palette…</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl + Shift + P</code> / <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">F1</code>, VS Code's central command center, can search and execute all commands.</span></li>
+<li><span lang="id"><b>Open View…</b>: Quickly open specific sidebar views (such as Explorer, Source Control).</span><span lang="en"><b>Open View…</b>: Quickly open specific sidebar views (such as Explorer, Source Control).</span></li>
+<li><span lang="id"><b>Appearance</b>: Control fullscreen, menu bar visibility, sidebar position, zoom level (Zoom In/Out).</span><span lang="en"><b>Appearance</b>: Control fullscreen, menu bar visibility, sidebar position, zoom level (Zoom In/Out).</span></li>
+<li><span lang="id"><b>Editor Layout</b>: Split editor (Split Up/Down/Left/Right) for side-by-side code comparison.</span><span lang="en"><b>Editor Layout</b>: Split editor (Split Up/Down/Left/Right) for side-by-side code comparison.</span></li>
+<li><span lang="id"><b>Explorer / Search / Source Control / Run / Extensions</b>: Directly switch views in the Activity Bar.</span><span lang="en"><b>Explorer / Search / Source Control / Run / Extensions</b>: Directly switch views in the Activity Bar.</span></li>
+<li><span lang="id"><b>Problems / Output / Debug Console / Terminal</b>: Directly control the display content of the bottom panel.</span><span lang="en"><b>Problems / Output / Debug Console / Terminal</b>: Directly control the display content of the bottom panel.</span></li>
+<li><span lang="id"><b>Word Wrap</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Alt + Z</code>, control whether long lines of code automatically wrap (does not affect actual file content).</span><span lang="en"><b>Word Wrap</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Alt + Z</code>, control whether long lines of code automatically wrap (does not affect actual file content).</span></li>
+</ul>
+<p class="reveal"><span lang="id"></details></span><span lang="en"></details></span></p>
+<p class="reveal"><span lang="id"><details class="custom-block details" id="vscode-go-menu"></span><span lang="en"><details class="custom-block details" id="vscode-go-menu"></span></p>
+<p class="reveal"><span lang="id"><summary>Go: Code Navigation and Jumping</summary></span><span lang="en"><summary>Go: Code Navigation and Jumping</summary></span></p>
+<p class="reveal"><span lang="id">This menu is mainly responsible for: <b>Jumping Between Files</b>, <b>Jumping Between Symbols (Functions/Variables)</b>.</span><span lang="en">This menu is mainly responsible for: <b>Jumping Between Files</b>, <b>Jumping Between Symbols (Functions/Variables)</b>.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Back / Forward</b>: Like a browser, jump between your cursor history positions.</span><span lang="en"><b>Back / Forward</b>: Like a browser, jump between your cursor history positions.</span></li>
+<li><span lang="id"><b>Switch Editor…</b>: Quickly switch between opened tabs.</span><span lang="en"><b>Switch Editor…</b>: Quickly switch between opened tabs.</span></li>
+<li><span lang="id"><b>Go to File…</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl + P</code>, type filename to quickly open files.</span><span lang="en"><b>Go to File…</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl + P</code>, type filename to quickly open files.</span></li>
+<li><span lang="id"><b>Go to Symbol in Editor…</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl + Shift + O</code>, list functions/classes/variables in the current file for quick jumping.</span><span lang="en"><b>Go to Symbol in Editor…</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl + Shift + O</code>, list functions/classes/variables in the current file for quick jumping.</span></li>
+<li><span lang="id"><b>Go to Definition</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">F12</code>, jump to the definition of the variable or function at the cursor.</span><span lang="en"><b>Go to Definition</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">F12</code>, jump to the definition of the variable or function at the cursor.</span></li>
+<li><span lang="id"><b>Go to References</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Shift + F12</code>, see where this variable or function is used.</span><span lang="en"><b>Go to References</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Shift + F12</code>, see where this variable or function is used.</span></li>
+<li><span lang="id"><b>Go to Line/Column…</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl + G</code>, jump to a specified line number.</span><span lang="en"><b>Go to Line/Column…</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl + G</code>, jump to a specified line number.</span></li>
+</ul>
+<p class="reveal"><span lang="id"></details></span><span lang="en"></details></span></p>
+<p class="reveal"><span lang="id"><details class="custom-block details" id="vscode-run-menu"></span><span lang="en"><details class="custom-block details" id="vscode-run-menu"></span></p>
+<p class="reveal"><span lang="id"><summary>Run: Debugging and Execution</summary></span><span lang="en"><summary>Run: Debugging and Execution</summary></span></p>
+<p class="reveal"><span lang="id">This menu is mainly responsible for: <b>Start Debugging</b>, <b>Breakpoint Management</b>.</span><span lang="en">This menu is mainly responsible for: <b>Start Debugging</b>, <b>Breakpoint Management</b>.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Start Debugging</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">F5</code>, run the program in debug mode (supports breakpoints, variable watching).</span><span lang="en"><b>Start Debugging</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">F5</code>, run the program in debug mode (supports breakpoints, variable watching).</span></li>
+<li><span lang="id"><b>Run Without Debugging</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl + F5</code>, run the program directly without attaching a debugger (slightly faster).</span><span lang="en"><b>Run Without Debugging</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl + F5</code>, run the program directly without attaching a debugger (slightly faster).</span></li>
+<li><span lang="id"><b>Stop Debugging</b>: Forcefully end the current debugging session.</span><span lang="en"><b>Stop Debugging</b>: Forcefully end the current debugging session.</span></li>
+<li><span lang="id"><b>Restart Debugging</b>: Run again.</span><span lang="en"><b>Restart Debugging</b>: Run again.</span></li>
+<li><span lang="id"><b>Toggle Breakpoint</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">F9</code>, add or remove a red dot (breakpoint) on the current line.</span><span lang="en"><b>Toggle Breakpoint</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">F9</code>, add or remove a red dot (breakpoint) on the current line.</span></li>
+<li><span lang="id"><b>New Breakpoint</b>: Supports conditional breakpoints, log breakpoints, and other advanced features.</span><span lang="en"><b>New Breakpoint</b>: Supports conditional breakpoints, log breakpoints, and other advanced features.</span></li>
+</ul>
+<p class="reveal"><span lang="id"></details></span><span lang="en"></details></span></p>
+<p class="reveal"><span lang="id"><details class="custom-block details" id="vscode-terminal-menu"></span><span lang="en"><details class="custom-block details" id="vscode-terminal-menu"></span></p>
+<p class="reveal"><span lang="id"><summary>Terminal: Integrated Command Line</summary></span><span lang="en"><summary>Terminal: Integrated Command Line</summary></span></p>
+<p class="reveal"><span lang="id">This menu is mainly responsible for: <b>New Terminal</b>, <b>Manage Terminal Windows</b>.</span><span lang="en">This menu is mainly responsible for: <b>New Terminal</b>, <b>Manage Terminal Windows</b>.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>New Terminal</b>: Open a new Shell (PowerShell/Bash/Zsh) in the bottom panel.</span><span lang="en"><b>New Terminal</b>: Open a new Shell (PowerShell/Bash/Zsh) in the bottom panel.</span></li>
+<li><span lang="id"><b>Split Terminal</b>: Split left/right/up/down in the same terminal panel to run multiple commands simultaneously.</span><span lang="en"><b>Split Terminal</b>: Split left/right/up/down in the same terminal panel to run multiple commands simultaneously.</span></li>
+<li><span lang="id"><b>Run Task…</b>: Run build/test tasks defined in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">tasks.json</code>.</span><span lang="en"><b>Run Task…</b>: Run build/test tasks defined in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">tasks.json</code>.</span></li>
+</ul>
+<p class="reveal"><span lang="id"></details></span><span lang="en"></details></span></p>
+<p class="reveal"><span lang="id"><details class="custom-block details" id="vscode-help-menu"></span><span lang="en"><details class="custom-block details" id="vscode-help-menu"></span></p>
+<p class="reveal"><span lang="id"><summary>Help: Documentation and Feedback</summary></span><span lang="en"><summary>Help: Documentation and Feedback</summary></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Welcome</b>: Open the welcome page (contains getting started guide, recent projects).</span><span lang="en"><b>Welcome</b>: Open the welcome page (contains getting started guide, recent projects).</span></li>
+<li><span lang="id"><b>Show All Commands</b>: Same as Command Palette.</span><span lang="en"><b>Show All Commands</b>: Same as Command Palette.</span></li>
+<li><span lang="id"><b>Documentation</b>: Jump to official documentation.</span><span lang="en"><b>Documentation</b>: Jump to official documentation.</span></li>
+<li><span lang="id"><b>Editor Playground</b>: Interactive tutorial for learning editing techniques.</span><span lang="en"><b>Editor Playground</b>: Interactive tutorial for learning editing techniques.</span></li>
+<li><span lang="id"><b>Check for Updates…</b>: Manually check for updates.</span><span lang="en"><b>Check for Updates…</b>: Manually check for updates.</span></li>
+<li><span lang="id"><b>About</b>: View version number, build time, Electron/Node version information.</span><span lang="en"><b>About</b>: View version number, build time, Electron/Node version information.</span></li>
+</ul>
+<p class="reveal"><span lang="id"></details></span><span lang="en"></details></span></p>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../2-development-tools/git-version-control/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">2-development-tools/git-version-control</span><span lang="en">2-development-tools/git-version-control</span></b></a>
+      <a class="next" href="../../2-development-tools/package-managers/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">2-development-tools/package-managers</span><span lang="en">2-development-tools/package-managers</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

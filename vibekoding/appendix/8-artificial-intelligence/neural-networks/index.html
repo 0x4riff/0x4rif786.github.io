@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Fundamentals of Neural Networks and Deep Learning — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Fundamentals of Neural Networks and Deep Learning. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/8-artificial-intelligence/neural-networks/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Fundamentals of Neural Networks and Deep Learning</span><span lang="en">Fundamentals of Neural Networks and Deep Learning</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Fundamentals of Neural Networks and Deep Learning</span><span lang="en">Fundamentals of Neural Networks and Deep Learning</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Fundamentals of Neural Networks and Deep Learning.</span><span lang="en">Ensiklopedia VibeKoding: Fundamentals of Neural Networks and Deep Learning.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Neural networks are the engine of the AI revolution.</b> From ChatGPT's language understanding to image recognition in autonomous driving, neural networks are what's working behind the scenes. It's not magic — it's an elegant mathematical framework that "learns" the mapping from input to output through large amounts of data. Understanding the fundamentals will help you use and debug AI tools more effectively.</span><span lang="en"><b>Neural networks are the engine of the AI revolution.</b> From ChatGPT's language understanding to image recognition in autonomous driving, neural networks are what's working behind the scenes. It's not magic — it's an elegant mathematical framework that "learns" the mapping from input to output through large amounts of data. Understanding the fundamentals will help you use and debug AI tools more effectively.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn in this article?</b></span><span lang="en"><b>What will you learn in this article?</b></span></p>
+<p class="reveal"><span lang="id">After completing this chapter, you'll gain:</span><span lang="en">After completing this chapter, you'll gain:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Core concepts</b>: Understand the basic principles of neurons, layers, forward propagation, and backpropagation</span><span lang="en"><b>Core concepts</b>: Understand the basic principles of neurons, layers, forward propagation, and backpropagation</span></li>
+<li><span lang="id"><b>Network types</b>: Learn the characteristics and suitable use cases of mainstream architectures like CNN, RNN, and Transformer</span><span lang="en"><b>Network types</b>: Learn the characteristics and suitable use cases of mainstream architectures like CNN, RNN, and Transformer</span></li>
+<li><span lang="id"><b>Training process</b>: Understand how models "learn" from data</span><span lang="en"><b>Training process</b>: Understand how models "learn" from data</span></li>
+<li><span lang="id"><b>Key techniques</b>: Master practical concepts like overfitting, learning rate, and regularization</span><span lang="en"><b>Key techniques</b>: Master practical concepts like overfitting, learning rate, and regularization</span></li>
+<li><span lang="id"><b>Development history</b>: Understand the evolution from the Perceptron to large language models</span><span lang="en"><b>Development history</b>: Understand the evolution from the Perceptron to large language models</span></li>
+</ul>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Core Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>From Neuron to Network</td><td>Perceptron, activation functions, forward propagation</td></tr>
+<tr><td><b>Chapter 2</b></td><td>How Networks Learn</td><td>Loss functions, gradient descent, backpropagation</td></tr>
+<tr><td><b>Chapter 3</b></td><td>Mainstream Network Architectures</td><td>CNN, RNN, Transformer</td></tr>
+<tr><td><b>Chapter 4</b></td><td>The Art of Training</td><td>Overfitting, regularization, hyperparameter tuning</td></tr>
+<tr><td><b>Chapter 5</b></td><td>Development History and Frontiers</td><td>From Perceptron to GPT</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. From Neuron to Network</span><span lang="en">1. From Neuron to Network</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">A Single Neuron</span><span lang="en">A Single Neuron</span></h3>
+<p class="reveal"><span lang="id">The smallest unit of a neural network is the <b>neuron</b>. It mimics how biological neurons work: receiving multiple input signals, computing a weighted sum, and producing an output through an activation function.</span><span lang="en">The smallest unit of a neural network is the <b>neuron</b>. It mimics how biological neurons work: receiving multiple input signals, computing a weighted sum, and producing an output through an activation function.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Input x1 ──→ ×w1 ──┐
+Input x2 ──→ ×w2 ──┼──→ Σ(weighted sum) + b(bias) ──→ f(activation function) ──→ Output
+Input x3 ──→ ×w3 ──┘</pre>
+</div>
+<p class="reveal"><span lang="id">Mathematical expression: <b>y = f(w₁x₁ + w₂x₂ + w₃x₃ + b)</b></span><span lang="en">Mathematical expression: <b>y = f(w₁x₁ + w₂x₂ + w₃x₃ + b)</b></span></p>
+<p class="reveal"><span lang="id"><NeuronDemo /></span><span lang="en"><NeuronDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Activation Functions: Why Nonlinearity Matters</span><span lang="en">Activation Functions: Why Nonlinearity Matters</span></h3>
+<p class="reveal"><span lang="id">Without activation functions, no matter how many layers of neurons you stack, the result is always equivalent to a single linear transformation (matrix multiplication). Activation functions introduce <b>nonlinearity</b>, enabling the network to learn complex patterns.</span><span lang="en">Without activation functions, no matter how many layers of neurons you stack, the result is always equivalent to a single linear transformation (matrix multiplication). Activation functions introduce <b>nonlinearity</b>, enabling the network to learn complex patterns.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Activation Function</th><th>Formula</th><th>Characteristics</th><th>Common Use Cases</th></tr>
+<tr><td>ReLU</td><td>max(0, x)</td><td>Simple, efficient, fast training</td><td>Default choice for hidden layers</td></tr>
+<tr><td>Sigmoid</td><td>1/(1+e⁻ˣ)</td><td>Output range 0~1</td><td>Binary classification output layer</td></tr>
+<tr><td>Tanh</td><td>(eˣ-e⁻ˣ)/(eˣ+e⁻ˣ)</td><td>Output range -1~1</td><td>Commonly used in RNNs</td></tr>
+<tr><td>Softmax</td><td>eˣᵢ/Σeˣⱼ</td><td>Outputs a probability distribution</td><td>Multi-class classification output layer</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">From Neuron to Network</span><span lang="en">From Neuron to Network</span></h3>
+<p class="reveal"><span lang="id">Organize multiple neurons into <b>layers</b>, and connect multiple layers in sequence to form a neural network:</span><span lang="en">Organize multiple neurons into <b>layers</b>, and connect multiple layers in sequence to form a neural network:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Input Layer      Hidden Layer 1        Hidden Layer 2        Output Layer
+(features)       (extracts low-level   (extracts high-level   (prediction)
+                  features)             features)
+
+ x1 ──→  [○ ○ ○ ○] ──→ [○ ○ ○] ──→  [○ ○]
+ x2 ──→  [○ ○ ○ ○] ──→ [○ ○ ○] ──→  Cat/Dog
+ x3 ──→  [○ ○ ○ ○] ──→ [○ ○ ○]</pre>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Concept</th><th>Description</th></tr>
+<tr><td>Input Layer</td><td>Receives raw data (image pixels, text vectors, etc.)</td></tr>
+<tr><td>Hidden Layer</td><td>Intermediate processing layers; more layers means a "deeper" network (the "deep" in deep learning)</td></tr>
+<tr><td>Output Layer</td><td>Produces the final prediction (classification probabilities, regression values, etc.)</td></tr>
+<tr><td>Forward Propagation</td><td>The process of data flowing from the input layer to the output layer, layer by layer</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Traditional machine learning typically uses only 1–2 layers. When the number of hidden layers increases to dozens or even hundreds, it's called "deep" learning. Deeper networks can learn more abstract features: the first layer learns edges, the second layer learns textures, the third layer learns parts, and deeper layers learn "this is a cat."</span><span lang="en">Traditional machine learning typically uses only 1–2 layers. When the number of hidden layers increases to dozens or even hundreds, it's called "deep" learning. Deeper networks can learn more abstract features: the first layer learns edges, the second layer learns textures, the third layer learns parts, and deeper layers learn "this is a cat."</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. How Networks Learn</span><span lang="en">2. How Networks Learn</span></h2>
+<p class="reveal"><span lang="id">The "learning" in neural networks is essentially an <b>optimization problem</b>: find a set of weights (w) and biases (b) such that the network's predictions are as close as possible to the correct answers.</span><span lang="en">The "learning" in neural networks is essentially an <b>optimization problem</b>: find a set of weights (w) and biases (b) such that the network's predictions are as close as possible to the correct answers.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">The Three-Step Training Loop</span><span lang="en">The Three-Step Training Loop</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>1. Forward propagation: Feed input data, get predictions
+2. Compute loss: Use a loss function to measure the gap between predictions and true values
+3. Backpropagation: Calculate the gradient of each weight based on the loss, then update weights
+   ↓
+Repeat the above steps until the loss is sufficiently small</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Loss Functions: Measuring "How Wrong You Are"</span><span lang="en">Loss Functions: Measuring "How Wrong You Are"</span></h3>
+<p class="reveal"><span lang="id">A loss function quantifies the gap between predicted and true values. The goal of training is to minimize the loss.</span><span lang="en">A loss function quantifies the gap between predicted and true values. The goal of training is to minimize the loss.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Loss Function</th><th>Formula Summary</th><th>Use Case</th></tr>
+<tr><td>MSE (Mean Squared Error)</td><td>Mean of squared differences between predictions and true values</td><td>Regression problems</td></tr>
+<tr><td>Cross-Entropy</td><td>-Σ y·log(ŷ)</td><td>Classification problems</td></tr>
+<tr><td>Binary Cross-Entropy</td><td>Binary version of cross-entropy</td><td>Binary classification problems</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Gradient Descent: Finding the Lowest Point</span><span lang="en">Gradient Descent: Finding the Lowest Point</span></h3>
+<p class="reveal"><span lang="id">Imagine you're standing on a mountain, blindfolded, and need to walk to the lowest point. All you can do is <b>feel the slope under your feet, then take a step downhill</b>. This is gradient descent.</span><span lang="en">Imagine you're standing on a mountain, blindfolded, and need to walk to the lowest point. All you can do is <b>feel the slope under your feet, then take a step downhill</b>. This is gradient descent.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Loss
+  ↑
+  │    ╱╲
+  │   ╱  ╲      ← Current position
+  │  ╱    ╲    ↙ Descend along gradient direction
+  │ ╱      ╲╱   ← Local minimum
+  │╱            ╲╱  ← Global minimum
+  └──────────────→ Weight value</pre>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Concept</th><th>Description</th></tr>
+<tr><td>Gradient</td><td>The partial derivative of the loss function with respect to each weight, indicating "which direction to adjust to reduce the loss"</td></tr>
+<tr><td>Learning Rate</td><td>How far to step each time. Too large and you'll overshoot the minimum; too small and convergence is too slow</td></tr>
+<tr><td>Batch Size</td><td>How many samples to use for each gradient calculation. Full batch is too slow, single sample is too noisy, mini-batch is the compromise</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Backpropagation: The Triumph of the Chain Rule</span><span lang="en">Backpropagation: The Triumph of the Chain Rule</span></h3>
+<p class="reveal"><span lang="id">Backpropagation is an efficient algorithm for calculating gradients. It leverages the <b>chain rule</b> from calculus, starting from the output layer and working backward layer by layer to compute each weight's contribution to the loss.</span><span lang="en">Backpropagation is an efficient algorithm for calculating gradients. It leverages the <b>chain rule</b> from calculus, starting from the output layer and working backward layer by layer to compute each weight's contribution to the loss.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Forward propagation: Input → Hidden Layer 1 → Hidden Layer 2 → Output → Loss
+Backpropagation:    Loss → Output → Hidden Layer 2 → Hidden Layer 1 → Update all weights</pre>
+</div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Think of a neural network as an assembly line. When a product (prediction) has a problem (large loss), you need to trace back from the final step, checking how much each step (each layer's weights) contributed to the problem, then adjust proportionally. Those that contributed more get adjusted more; those that contributed less get adjusted less.</span><span lang="en">Think of a neural network as an assembly line. When a product (prediction) has a problem (large loss), you need to trace back from the final step, checking how much each step (each layer's weights) contributed to the problem, then adjust proportionally. Those that contributed more get adjusted more; those that contributed less get adjusted less.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Mainstream Network Architectures</span><span lang="en">3. Mainstream Network Architectures</span></h2>
+<p class="reveal"><span lang="id">Different types of data require different network architectures. Choosing the right architecture gets you twice the results with half the effort.</span><span lang="en">Different types of data require different network architectures. Choosing the right architecture gets you twice the results with half the effort.</span></p>
+<p class="reveal"><span lang="id"><NetworkLayersDemo /></span><span lang="en"><NetworkLayersDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 CNN (Convolutional Neural Network)</span><span lang="en">3.1 CNN (Convolutional Neural Network)</span></h3>
+<p class="reveal"><span lang="id">CNN is the king of image processing. The core idea: slide small convolution kernels across the image to extract local features.</span><span lang="en">CNN is the king of image processing. The core idea: slide small convolution kernels across the image to extract local features.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Input image → [Convolution → Activation → Pooling] × N → Fully Connected Layer → Output
+  28×28      Extract edges/textures/shapes                   Classification result</pre>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Feature</th><th>Description</th></tr>
+<tr><td>Local Connectivity</td><td>Each neuron only looks at a small patch, not the entire image</td></tr>
+<tr><td>Parameter Sharing</td><td>The same convolution kernel is reused across the entire image, drastically reducing parameters</td></tr>
+<tr><td>Translation Invariance</td><td>A cat on the left or right side of the image can still be recognized</td></tr>
+<tr><td>Hierarchical Features</td><td>Shallow layers learn edges, deep layers learn semantics</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">Representative models: LeNet, AlexNet, VGG, ResNet, EfficientNet</span><span lang="en">Representative models: LeNet, AlexNet, VGG, ResNet, EfficientNet</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 RNN (Recurrent Neural Network)</span><span lang="en">3.2 RNN (Recurrent Neural Network)</span></h3>
+<p class="reveal"><span lang="id">RNN is designed for <b>sequential data</b>. Its hidden state is passed to the next time step, giving the network a form of "memory."</span><span lang="en">RNN is designed for <b>sequential data</b>. Its hidden state is passed to the next time step, giving the network a form of "memory."</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Time step t1    Time step t2    Time step t3
+  &quot;I&quot;   ──→    &quot;like&quot;  ──→    &quot;cats&quot;
+   ↓             ↓             ↓
+  [h1]  ──→    [h2]   ──→    [h3] ──→ Output
+   ↑             ↑             ↑
+ Hidden state passes between time steps (memory)</pre>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Variant</th><th>Problem Solved</th><th>Core Mechanism</th></tr>
+<tr><td>Vanilla RNN</td><td>Basic sequence modeling</td><td>Simple recurrent connections</td></tr>
+<tr><td>LSTM</td><td>Vanishing gradients in long sequences</td><td>Forget gate, input gate, output gate</td></tr>
+<tr><td>GRU</td><td>LSTM has too many parameters</td><td>Simplified to reset gate and update gate</td></tr>
+<tr><td>Bidirectional RNN</td><td>Can only see the past</td><td>Processes forward and backward simultaneously</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">The elegance of LSTM lies in its three "gates": the <b>forget gate</b> decides which old memories to discard, the <b>input gate</b> decides which new information to store, and the <b>output gate</b> decides what to output. It's like reading a book — you selectively remember important plot points and forget irrelevant details.</span><span lang="en">The elegance of LSTM lies in its three "gates": the <b>forget gate</b> decides which old memories to discard, the <b>input gate</b> decides which new information to store, and the <b>output gate</b> decides what to output. It's like reading a book — you selectively remember important plot points and forget irrelevant details.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Transformer: Attention Is All You Need</span><span lang="en">3.3 Transformer: Attention Is All You Need</span></h3>
+<p class="reveal"><span lang="id">In 2017, Google published the paper "Attention Is All You Need," proposing the Transformer, which fundamentally transformed the AI field. It replaces recurrent structures with the <b>self-attention mechanism</b> and serves as the foundation for large models like GPT, BERT, and Claude.</span><span lang="en">In 2017, Google published the paper "Attention Is All You Need," proposing the Transformer, which fundamentally transformed the AI field. It replaces recurrent structures with the <b>self-attention mechanism</b> and serves as the foundation for large models like GPT, BERT, and Claude.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Input sequence → Embedding + Positional Encoding → [Multi-Head Attention → Feed-Forward Network] × N → Output
+                                                           ↑
+                                          Every token can &quot;see&quot; every other token</pre>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Advantage</th><th>Description</th></tr>
+<tr><td>Parallel Computation</td><td>Unlike RNNs that must process sequentially, Transformers can process the entire sequence in parallel</td></tr>
+<tr><td>Long-Range Dependencies</td><td>Direct connections between any two positions, regardless of distance</td></tr>
+<tr><td>Scalability</td><td>The larger the model and the more data, the better the performance (Scaling Law)</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Intuition for self-attention</b>: When reading the sentence "The cat sat on the mat because <b>it</b> was tired," "it" needs to attend to "cat" to understand the meaning. Self-attention lets the model learn this kind of association — computing a "relevance score" for every pair of tokens in the sequence.</span><span lang="en"><b>Intuition for self-attention</b>: When reading the sentence "The cat sat on the mat because <b>it</b> was tired," "it" needs to attend to "cat" to understand the meaning. Self-attention lets the model learn this kind of association — computing a "relevance score" for every pair of tokens in the sequence.</span></p>
+<p class="reveal"><span lang="id"><NetworkArchitectureDemo /></span><span lang="en"><NetworkArchitectureDemo /></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. The Art of Training</span><span lang="en">4. The Art of Training</span></h2>
+<p class="reveal"><span lang="id">Having a good architecture isn't enough — there are many pitfalls to avoid during training.</span><span lang="en">Having a good architecture isn't enough — there are many pitfalls to avoid during training.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Overfitting vs. Underfitting</span><span lang="en">4.1 Overfitting vs. Underfitting</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Problem</th><th>Symptoms</th><th>Cause</th><th>Solutions</th></tr>
+<tr><td>Overfitting</td><td>Good performance on training set, poor on test set</td><td>Model is too complex, "memorizing answers" rather than learning patterns</td><td>Regularization, Dropout, data augmentation, early stopping</td></tr>
+<tr><td>Underfitting</td><td>Poor performance on both training and test sets</td><td>Model is too simple, unable to learn patterns</td><td>Increase model capacity, train longer, better features</td></tr>
+</table></div>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Error
+  ↑
+  │ ╲  Training error          Test error  ╱
+  │  ╲                                    ╱
+  │   ╲─────────────────╱
+  │    Underfitting ← Sweet spot → Overfitting
+  └──────────────────────────→ Model complexity</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Key Hyperparameters</span><span lang="en">4.2 Key Hyperparameters</span></h3>
+<p class="reveal"><span lang="id">Hyperparameters are parameters that must be set manually before training (not learned by the model):</span><span lang="en">Hyperparameters are parameters that must be set manually before training (not learned by the model):</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Hyperparameter</th><th>Role</th><th>Common Range</th><th>Tuning Advice</th></tr>
+<tr><td>Learning Rate</td><td>Step size for each update</td><td>1e-5 ~ 1e-1</td><td>The most important hyperparameter; usually start from 1e-3</td></tr>
+<tr><td>Batch Size</td><td>Number of samples per training step</td><td>16 ~ 512</td><td>Larger batches are more stable but require more VRAM</td></tr>
+<tr><td>Epochs</td><td>Number of passes through the entire dataset</td><td>10 ~ 100+</td><td>Use with early stopping; stop when validation performance no longer improves</td></tr>
+<tr><td>Optimizer</td><td>Gradient update strategy</td><td>Adam, SGD</td><td>Adam is the default choice; SGD + momentum for fine-tuning</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 Regularization Techniques</span><span lang="en">4.3 Regularization Techniques</span></h3>
+<p class="reveal"><span lang="id">Common methods for preventing overfitting:</span><span lang="en">Common methods for preventing overfitting:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Technique</th><th>Principle</th><th>Usage</th></tr>
+<tr><td>Dropout</td><td>Randomly deactivate some neurons during training</td><td>Typically p=0.1~0.5</td></tr>
+<tr><td>Weight Decay</td><td>Add a penalty on weight magnitude to the loss function</td><td>L2 regularization, λ=1e-4</td></tr>
+<tr><td>Data Augmentation</td><td>Apply random transformations to training data (flip, crop, rotate)</td><td>Essential for image tasks</td></tr>
+<tr><td>Early Stopping</td><td>Stop training when validation loss stops decreasing</td><td>patience=5~10</td></tr>
+<tr><td>Batch Normalization</td><td>Normalize the input distribution of each layer</td><td>Accelerates convergence, has a mild regularization effect</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">1. First, run through the entire pipeline on a small dataset to confirm there are no code bugs
+2. Start by fine-tuning an existing pre-trained model rather than training from scratch
+3. The learning rate is the hyperparameter most worth your time to tune
+4. If the training loss isn't decreasing, check your data and code first before doubting the model</span><span lang="en">1. First, run through the entire pipeline on a small dataset to confirm there are no code bugs
+2. Start by fine-tuning an existing pre-trained model rather than training from scratch
+3. The learning rate is the hyperparameter most worth your time to tune
+4. If the training loss isn't decreasing, check your data and code first before doubting the model</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Development History and Frontiers</span><span lang="en">5. Development History and Frontiers</span></h2>
+<p class="reveal"><span lang="id">The development of neural networks has gone through several "winters" and "renaissances," with each breakthrough driven by key technological innovations.</span><span lang="en">The development of neural networks has gone through several "winters" and "renaissances," with each breakthrough driven by key technological innovations.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Era</th><th>Milestone</th><th>Key Breakthrough</th></tr>
+<tr><td>1958</td><td>Perceptron</td><td>The first neural network model; could only handle linear problems</td></tr>
+<tr><td>1986</td><td>Backpropagation Algorithm</td><td>Made training multi-layer networks possible</td></tr>
+<tr><td>1998</td><td>LeNet (CNN)</td><td>Convolutional networks achieved great success on handwritten digit recognition</td></tr>
+<tr><td>2012</td><td>AlexNet</td><td>Deep CNNs crushed traditional methods on ImageNet; deep learning explosion</td></tr>
+<tr><td>2014</td><td>GAN (Generative Adversarial Network)</td><td>Two networks trained adversarially, capable of generating realistic images</td></tr>
+<tr><td>2017</td><td>Transformer</td><td>"Attention Is All You Need"; attention mechanism replaced RNNs</td></tr>
+<tr><td>2018</td><td>BERT</td><td>Pre-training + fine-tuning paradigm; NLP breakthroughs across the board</td></tr>
+<tr><td>2020</td><td>GPT-3</td><td>175 billion parameters, demonstrating emergent capabilities of large models</td></tr>
+<tr><td>2022</td><td>ChatGPT</td><td>RLHF alignment technique; AI entered public consciousness</td></tr>
+<tr><td>2023+</td><td>Multimodal Large Models</td><td>GPT-4V, Claude, etc.; understanding both text and images simultaneously</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Current Trends</span><span lang="en">Current Trends</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Direction</th><th>Description</th></tr>
+<tr><td>Large Language Models (LLMs)</td><td>Parameter counts from hundreds of millions to trillions; emergent abilities in reasoning, coding, etc.</td></tr>
+<tr><td>Multimodal</td><td>A single model handling text, images, audio, and video</td></tr>
+<tr><td>Efficient Fine-Tuning</td><td>Techniques like LoRA and QLoRA enable ordinary developers to fine-tune large models</td></tr>
+<tr><td>AI Agents</td><td>Enabling large models to use tools, plan tasks, and autonomously complete complex goals</td></tr>
+<tr><td>Small Model Distillation</td><td>Using knowledge from large models to train smaller models for on-device deployment</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">You don't need to train neural networks from scratch. Modern AI development is more about <b>calling APIs</b> (like OpenAI or Claude API) or <b>fine-tuning pre-trained models</b> (e.g., using Hugging Face). But understanding the underlying principles helps you choose models more wisely, design better prompts, and diagnose problems more effectively.</span><span lang="en">You don't need to train neural networks from scratch. Modern AI development is more about <b>calling APIs</b> (like OpenAI or Claude API) or <b>fine-tuning pre-trained models</b> (e.g., using Hugging Face). But understanding the underlying principles helps you choose models more wisely, design better prompts, and diagnose problems more effectively.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary</span><span lang="en">Summary</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Core Concept</th><th>One-Sentence Summary</th></tr>
+<tr><td>Neuron</td><td>Weighted sum + activation function; the smallest computational unit of a network</td></tr>
+<tr><td>Forward Propagation</td><td>Data flows from input layer to output layer, producing a prediction</td></tr>
+<tr><td>Backpropagation</td><td>Starting from the loss, compute gradients layer by layer and update weights</td></tr>
+<tr><td>CNN</td><td>Convolution kernels extract local features; the go-to for image processing</td></tr>
+<tr><td>RNN/LSTM</td><td>Recurrent connections maintain memory; for processing sequential data</td></tr>
+<tr><td>Transformer</td><td>Self-attention with parallel processing; the foundational architecture of large models</td></tr>
+<tr><td>Overfitting</td><td>Model "memorizes answers"; prevent with regularization, Dropout, etc.</td></tr>
+<tr><td>Transfer Learning</td><td>Stand on the shoulders of giants; fine-tune pre-trained models for new tasks</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[3Blue1Brown - Neural Networks Video Series](https://www.3blue1brown.com/topics/neural-networks) — The most intuitive visual explanations</span><span lang="en">[3Blue1Brown - Neural Networks Video Series](https://www.3blue1brown.com/topics/neural-networks) — The most intuitive visual explanations</span></li>
+<li><span lang="id">[Stanford CS231n](http://cs231n.stanford.edu/) — Classic convolutional neural networks course</span><span lang="en">[Stanford CS231n](http://cs231n.stanford.edu/) — Classic convolutional neural networks course</span></li>
+<li><span lang="id">[The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/) — Visual guide to the Transformer architecture</span><span lang="en">[The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/) — Visual guide to the Transformer architecture</span></li>
+<li><span lang="id">[Fundamentals of Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/) — Free online textbook</span><span lang="en">[Fundamentals of Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/) — Free online textbook</span></li>
+<li><span lang="id">[Hugging Face Course](https://huggingface.co/learn) — Hands-on practice with Transformers and large models</span><span lang="en">[Hugging Face Course](https://huggingface.co/learn) — Hands-on practice with Transformers and large models</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../8-artificial-intelligence/multimodal-models/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">8-artificial-intelligence/multimodal-models</span><span lang="en">8-artificial-intelligence/multimodal-models</span></b></a>
+      <a class="next" href="../../8-artificial-intelligence/prompt-engineering/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">8-artificial-intelligence/prompt-engineering</span><span lang="en">8-artificial-intelligence/prompt-engineering</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

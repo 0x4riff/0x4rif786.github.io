@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur) — VibeKoding ☁️</title>
+<meta name="description" content="Modul praktis Level 2 VibeKoding: Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur). - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-2/backend/zeabur-deployment/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../stage-2/"><span lang="id">Level 2 · Developer</span><span lang="en">Level 2 · Developer</span></a> / <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">☁️</div>
+      <div>
+        <h1><span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 2 · Developer</span><span lang="en">Level 2 · Developer</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul praktis Level 2 VibeKoding: Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur).</span><span lang="en">Modul praktis Level 2 VibeKoding: Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur).</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">> 💡 <b>What does "putting a website online" mean?</b> Also called "going live" or "deploying/publishing". A website you built on your own computer can only be opened by you. <b>Putting it online means placing it on a server that runs 24/7, so anyone can type a URL in their browser and visit it</b> — just like a Word doc only you can read becomes visible to everyone once you post it to a blog; the difference is that this time you're publishing a full website.</span><span lang="en">> 💡 <b>What does "putting a website online" mean?</b> Also called "going live" or "deploying/publishing". A website you built on your own computer can only be opened by you. <b>Putting it online means placing it on a server that runs 24/7, so anyone can type a URL in their browser and visit it</b> — just like a Word doc only you can read becomes visible to everyone once you post it to a blog; the difference is that this time you're publishing a full website.</span></p>
+<p class="reveal"><span lang="id">In this tutorial, we'll walk through the <b>easiest way to get a site online — no server to buy, no DevOps to learn</b>. Just connect your GitHub repo, click a few buttons, and your site is live. We cover four popular platforms: <b>Tencent Cloud CloudBase</b>, <b>Vercel</b>, <b>Netlify</b>, and <b>Zeabur</b>.</span><span lang="en">In this tutorial, we'll walk through the <b>easiest way to get a site online — no server to buy, no DevOps to learn</b>. Just connect your GitHub repo, click a few buttons, and your site is live. We cover four popular platforms: <b>Tencent Cloud CloudBase</b>, <b>Vercel</b>, <b>Netlify</b>, and <b>Zeabur</b>.</span></p>
+<p class="reveal"><span lang="id">You might wonder: if everything ends up "on a server," why not just buy your own server and deploy there? The answer: <b>platforms handle all the messy parts for you</b>.</span><span lang="en">You might wonder: if everything ends up "on a server," why not just buy your own server and deploy there? The answer: <b>platforms handle all the messy parts for you</b>.</span></p>
+<p class="reveal"><span lang="id">If you deploy everything manually, a project usually involves many steps:</span><span lang="en">If you deploy everything manually, a project usually involves many steps:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Prepare a server</b></span><span lang="en"><b>Prepare a server</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">You first need to buy or rent a cloud server from a provider such as Alibaba Cloud, Tencent Cloud, or AWS EC2. Then you choose its region, CPU, memory, and storage, and learn how to connect to it remotely, often through SSH.</span><span lang="en">You first need to buy or rent a cloud server from a provider such as Alibaba Cloud, Tencent Cloud, or AWS EC2. Then you choose its region, CPU, memory, and storage, and learn how to connect to it remotely, often through SSH.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Configure the runtime environment</b></span><span lang="en"><b>Configure the runtime environment</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">Web apps only run under the correct environment. A Node.js project needs Node installed. A Python project needs Python and its dependencies. If the versions do not match, the app may fail to start.</span><span lang="en">Web apps only run under the correct environment. A Node.js project needs Node installed. A Python project needs Python and its dependencies. If the versions do not match, the app may fail to start.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Upload your files</b></span><span lang="en"><b>Upload your files</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">You need to move your local code and assets to the server, often via Git or file-transfer tools. Large projects can make this step frustrating if uploads break halfway through.</span><span lang="en">You need to move your local code and assets to the server, often via Git or file-transfer tools. Large projects can make this step frustrating if uploads break halfway through.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Start the service and test it</b></span><span lang="en"><b>Start the service and test it</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">After upload, you need to start the app and check whether the assigned address works. If not, the problem may be a firewall-blocked port, or it may be an application bug. In that case, you need to inspect logs.</span><span lang="en">After upload, you need to start the app and check whether the assigned address works. If not, the problem may be a firewall-blocked port, or it may be an application bug. In that case, you need to inspect logs.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Maintain and update</b></span><span lang="en"><b>Maintain and update</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">Every code update usually means another upload and restart. If the server crashes, you may need to restart services manually or configure a process manager to keep them alive.</span><span lang="en">Every code update usually means another upload and restart. If the server crashes, you may need to restart services manually or configure a process manager to keep them alive.</span></p>
+<p class="reveal"><span lang="id">Platforms such as CloudBase, Vercel, Netlify, and Zeabur exist to eliminate much of that complexity. They automate the boring parts:</span><span lang="en">Platforms such as CloudBase, Vercel, Netlify, and Zeabur exist to eliminate much of that complexity. They automate the boring parts:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">buying and provisioning servers</span><span lang="en">buying and provisioning servers</span></li>
+<li><span lang="id">configuring runtimes</span><span lang="en">configuring runtimes</span></li>
+<li><span lang="id">pulling code</span><span lang="en">pulling code</span></li>
+<li><span lang="id">starting services</span><span lang="en">starting services</span></li>
+<li><span lang="id">monitoring uptime</span><span lang="en">monitoring uptime</span></li>
+</ul>
+<p class="reveal"><span lang="id">In many cases, you just connect a GitHub repository or upload your code, and the platform does the rest.</span><span lang="en">In many cases, you just connect a GitHub repository or upload your code, and the platform does the rest.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Platform</th><th>Main strengths</th><th>Best for</th><th>Free tier</th></tr>
+<tr><td><b>Tencent Cloud CloudBase</b></td><td>Fast access within mainland China, strong WeChat ecosystem integration</td><td>China-focused users, WeChat Mini Program support</td><td>Yes</td></tr>
+<tr><td><b>Vercel</b></td><td>Excellent support for frontend frameworks, tight GitHub integration</td><td>Modern React/Vue/Next.js frontend projects</td><td>Yes</td></tr>
+<tr><td><b>Netlify</b></td><td>Broad feature set, great Git workflow, form handling, auth support</td><td>Static sites that also need forms or auth</td><td>Yes</td></tr>
+<tr><td><b>Zeabur</b></td><td>Flexible service combinations and many templates</td><td>More complex projects, including tools like Dify and n8n</td><td>About $5/month in free quota</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">Tencent Cloud CloudBase is Tencent's integrated cloud backend platform and is especially friendly for developers targeting domestic Chinese users.</span><span lang="en">Tencent Cloud CloudBase is Tencent's integrated cloud backend platform and is especially friendly for developers targeting domestic Chinese users.</span></p>
+<p class="reveal"><span lang="id">Its advantages include:</span><span lang="en">Its advantages include:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Fast domestic access</b></span><span lang="en"><b>Fast domestic access</b></span></li>
+<li><span lang="id"><b>WeChat ecosystem integration</b></span><span lang="en"><b>WeChat ecosystem integration</b></span></li>
+<li><span lang="id"><b>An all-in-one backend solution</b> including static hosting, cloud functions, databases, and storage</span><span lang="en"><b>An all-in-one backend solution</b> including static hosting, cloud functions, databases, and storage</span></li>
+<li><span lang="id"><b>A practical free tier</b></span><span lang="en"><b>A practical free tier</b></span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Deploy a web app with CloudBase</span><span lang="en">Deploy a web app with CloudBase</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Step 1: Register and log in</span><span lang="en">Step 1: Register and log in</span></h3>
+<p class="reveal"><span lang="id">Visit the [Tencent Cloud CloudBase Console](https://console.cloud.tencent.com/tcb) and log in with WeChat or QQ.</span><span lang="en">Visit the [Tencent Cloud CloudBase Console](https://console.cloud.tencent.com/tcb) and log in with WeChat or QQ.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Step 2: Create an environment</span><span lang="en">Step 2: Create an environment</span></h3>
+<p class="reveal"><span lang="id">Click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Create Environment</code> and choose an environment name such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">my-web-app</code>.</span><span lang="en">Click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Create Environment</code> and choose an environment name such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">my-web-app</code>.</span></p>
+<p class="reveal"><span lang="id">> ⚠️ <b>Note</b>: the free trial version of CloudBase often requires a redemption code. You usually need to follow the CloudBase official account and obtain a code there.</span><span lang="en">> ⚠️ <b>Note</b>: the free trial version of CloudBase often requires a redemption code. You usually need to follow the CloudBase official account and obtain a code there.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Step 3: Enable static website hosting</span><span lang="en">Step 3: Enable static website hosting</span></h3>
+<p class="reveal"><span lang="id">Inside the environment management screen, enable the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Static Website Hosting</code> feature. Once enabled, you will receive a default public domain.</span><span lang="en">Inside the environment management screen, enable the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Static Website Hosting</code> feature. Once enabled, you will receive a default public domain.</span></p>
+<p class="reveal"><span lang="id">CloudBase supports several deployment methods:</span><span lang="en">CloudBase supports several deployment methods:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">upload a local build output</span><span lang="en">upload a local build output</span></li>
+<li><span lang="id">deploy from a template</span><span lang="en">deploy from a template</span></li>
+<li><span lang="id">deploy from a Git repository</span><span lang="en">deploy from a Git repository</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Step 4: Deploy your code</span><span lang="en">Step 4: Deploy your code</span></h3>
+<p class="reveal"><span lang="id">CloudBase offers three main workflows:</span><span lang="en">CloudBase offers three main workflows:</span></p>
+<p class="reveal"><span lang="id"><b>Option 1: upload a local project</b></span><span lang="en"><b>Option 1: upload a local project</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">choose <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Local Project Deployment</code></span><span lang="en">choose <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Local Project Deployment</code></span></li>
+<li><span lang="id">upload your built static files such as HTML, CSS, and JS</span><span lang="en">upload your built static files such as HTML, CSS, and JS</span></li>
+<li><span lang="id">typically upload a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dist</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">build</code> directory</span><span lang="en">typically upload a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dist</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">build</code> directory</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Option 2: use a template</b></span><span lang="en"><b>Option 2: use a template</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">start from a preset project template</span><span lang="en">start from a preset project template</span></li>
+<li><span lang="id">common options include React and Vue starter templates</span><span lang="en">common options include React and Vue starter templates</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Option 3: deploy from Git</b></span><span lang="en"><b>Option 3: deploy from Git</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">connect a GitHub repository</span><span lang="en">connect a GitHub repository</span></li>
+<li><span lang="id">set the build command, such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm run build</code></span><span lang="en">set the build command, such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm run build</code></span></li>
+<li><span lang="id">every push can trigger an automatic redeploy</span><span lang="en">every push can trigger an automatic redeploy</span></li>
+</ul>
+<p class="reveal"><span lang="id">> 💡 <b>Tip</b>: you can also deploy from the command line:</span><span lang="en">> 💡 <b>Tip</b>: you can also deploy from the command line:</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> ```bash</span><span lang="en">> ```bash</span></p>
+<p class="reveal"><span lang="id">> # Install CloudBase CLI</span><span lang="en">> # Install CloudBase CLI</span></p>
+<p class="reveal"><span lang="id">> npm install -g @cloudbase/cli</span><span lang="en">> npm install -g @cloudbase/cli</span></p>
+<p class="reveal"><span lang="id">> # Log in</span><span lang="en">> # Log in</span></p>
+<p class="reveal"><span lang="id">> tcb login</span><span lang="en">> tcb login</span></p>
+<p class="reveal"><span lang="id">> # Deploy</span><span lang="en">> # Deploy</span></p>
+<p class="reveal"><span lang="id">> tcb hosting deploy ./dist -e your-env-id</span><span lang="en">> tcb hosting deploy ./dist -e your-env-id</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Step 5: Add a custom domain (optional)</span><span lang="en">Step 5: Add a custom domain (optional)</span></h3>
+<p class="reveal"><span lang="id">CloudBase also supports binding your own domain and applying a free HTTPS certificate.</span><span lang="en">CloudBase also supports binding your own domain and applying a free HTTPS certificate.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">Vercel is one of the most popular frontend deployment platforms in the world and is especially good for React, Vue, and Next.js projects.</span><span lang="en">Vercel is one of the most popular frontend deployment platforms in the world and is especially good for React, Vue, and Next.js projects.</span></p>
+<p class="reveal"><span lang="id">Its main strengths:</span><span lang="en">Its main strengths:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Deep GitHub integration</b></span><span lang="en"><b>Deep GitHub integration</b></span></li>
+<li><span lang="id"><b>Automatic preview deployments for pull requests</b></span><span lang="en"><b>Automatic preview deployments for pull requests</b></span></li>
+<li><span lang="id"><b>Global CDN distribution</b></span><span lang="en"><b>Global CDN distribution</b></span></li>
+<li><span lang="id"><b>Support for serverless functions</b></span><span lang="en"><b>Support for serverless functions</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">> ⚠️ <b>Note</b>: in some mainland-China network environments, Vercel may be less stable than domestic options such as CloudBase.</span><span lang="en">> ⚠️ <b>Note</b>: in some mainland-China network environments, Vercel may be less stable than domestic options such as CloudBase.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Deploy a web app with Vercel</span><span lang="en">Deploy a web app with Vercel</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Step 1: Register</span><span lang="en">Step 1: Register</span></h3>
+<p class="reveal"><span lang="id">Visit [Vercel](https://vercel.com) and sign in with GitHub.</span><span lang="en">Visit [Vercel](https://vercel.com) and sign in with GitHub.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Step 2: Import a project</span><span lang="en">Step 2: Import a project</span></h3>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Add New Project</code></span><span lang="en">Click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Add New Project</code></span></li>
+<li><span lang="id">Select the GitHub repository you want to deploy</span><span lang="en">Select the GitHub repository you want to deploy</span></li>
+<li><span lang="id">If needed, adjust GitHub app permissions</span><span lang="en">If needed, adjust GitHub app permissions</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Step 3: Configure build settings</span><span lang="en">Step 3: Configure build settings</span></h3>
+<p class="reveal"><span lang="id">Vercel often detects the framework automatically:</span><span lang="en">Vercel often detects the framework automatically:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Framework</th><th>Build command</th><th>Output directory</th></tr>
+<tr><td>React</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm run build</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">build</code></td></tr>
+<tr><td>Vue</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm run build</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dist</code></td></tr>
+<tr><td>Next.js</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">next build</code></td><td>-</td></tr>
+<tr><td>Plain HTML</td><td>-</td><td>project root</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">If detection fails, configure it manually:</span><span lang="en">If detection fails, configure it manually:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Build Command</b></span><span lang="en"><b>Build Command</b></span></li>
+<li><span lang="id"><b>Output Directory</b></span><span lang="en"><b>Output Directory</b></span></li>
+<li><span lang="id"><b>Install Command</b></span><span lang="en"><b>Install Command</b></span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Step 4: Deploy</span><span lang="en">Step 4: Deploy</span></h3>
+<p class="reveal"><span lang="id">Click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Deploy</code> and wait for the build to complete. A successful project receives a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">xxx.vercel.app</code> domain.</span><span lang="en">Click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Deploy</code> and wait for the build to complete. A successful project receives a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">xxx.vercel.app</code> domain.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Step 5: Add a custom domain (optional)</span><span lang="en">Step 5: Add a custom domain (optional)</span></h3>
+<p class="reveal"><span lang="id">Use the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Domains</code> section in project settings to bind your own domain. HTTPS is handled automatically.</span><span lang="en">Use the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Domains</code> section in project settings to bind your own domain. HTTPS is handled automatically.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">Netlify is another strong frontend deployment platform, especially for static sites and single-page applications.</span><span lang="en">Netlify is another strong frontend deployment platform, especially for static sites and single-page applications.</span></p>
+<p class="reveal"><span lang="id">Its strengths:</span><span lang="en">Its strengths:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Feature-rich hosting</b>, including form handling, auth, and edge/serverless functions</span><span lang="en"><b>Feature-rich hosting</b>, including form handling, auth, and edge/serverless functions</span></li>
+<li><span lang="id"><b>Strong Git integration</b></span><span lang="en"><b>Strong Git integration</b></span></li>
+<li><span lang="id"><b>Preview links for branches</b></span><span lang="en"><b>Preview links for branches</b></span></li>
+<li><span lang="id"><b>Global CDN</b></span><span lang="en"><b>Global CDN</b></span></li>
+<li><span lang="id"><b>Built-in form handling</b></span><span lang="en"><b>Built-in form handling</b></span></li>
+<li><span lang="id"><b>Built-in user authentication tools</b></span><span lang="en"><b>Built-in user authentication tools</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">> ⚠️ <b>Note</b>: Netlify may not be as fast as CloudBase for domestic Chinese users.</span><span lang="en">> ⚠️ <b>Note</b>: Netlify may not be as fast as CloudBase for domestic Chinese users.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Deploy a web app with Netlify</span><span lang="en">Deploy a web app with Netlify</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Step 1: Register</span><span lang="en">Step 1: Register</span></h3>
+<p class="reveal"><span lang="id">Visit [Netlify](https://www.netlify.com) and sign up with GitHub, GitLab, Bitbucket, or email.</span><span lang="en">Visit [Netlify](https://www.netlify.com) and sign up with GitHub, GitLab, Bitbucket, or email.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Step 2: Import a project</span><span lang="en">Step 2: Import a project</span></h3>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Add new site</code> → <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Import an existing project</code></span><span lang="en">Click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Add new site</code> → <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Import an existing project</code></span></li>
+<li><span lang="id">Choose your Git provider</span><span lang="en">Choose your Git provider</span></li>
+<li><span lang="id">Authorize Netlify</span><span lang="en">Authorize Netlify</span></li>
+<li><span lang="id">Select the repository</span><span lang="en">Select the repository</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Step 3: Configure build settings</span><span lang="en">Step 3: Configure build settings</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Framework</th><th>Build command</th><th>Publish directory</th></tr>
+<tr><td>React</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm run build</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">build</code></td></tr>
+<tr><td>Vue</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm run build</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dist</code></td></tr>
+<tr><td>Angular</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ng build</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dist/<project-name></code></td></tr>
+<tr><td>Next.js</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">next build</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">out</code></td></tr>
+<tr><td>Plain HTML</td><td>-</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.</code></td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Step 4: Deploy</span><span lang="en">Step 4: Deploy</span></h3>
+<p class="reveal"><span lang="id">Click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Deploy site</code>. Once it succeeds, you will receive a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">xxx.netlify.app</code> domain.</span><span lang="en">Click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Deploy site</code>. Once it succeeds, you will receive a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">xxx.netlify.app</code> domain.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Step 5: Add a custom domain (optional)</span><span lang="en">Step 5: Add a custom domain (optional)</span></h3>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Open the site settings</span><span lang="en">Open the site settings</span></li>
+<li><span lang="id">Go to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Domain management</code></span><span lang="en">Go to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Domain management</code></span></li>
+<li><span lang="id">Add your custom domain</span><span lang="en">Add your custom domain</span></li>
+<li><span lang="id">Follow the DNS instructions</span><span lang="en">Follow the DNS instructions</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Useful Netlify features</span><span lang="en">Useful Netlify features</span></h3>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">1. Form handling</span><span lang="en">1. Form handling</span></h4>
+<p class="reveal"><span lang="id">Netlify can capture form submissions without requiring a dedicated backend.</span><span lang="en">Netlify can capture form submissions without requiring a dedicated backend.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>html</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;form name=&quot;contact&quot; netlify&gt;
+  &lt;p&gt;
+    &lt;label&gt;Name: &lt;input type=&quot;text&quot; name=&quot;name&quot; /&gt;&lt;/label&gt;
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;label&gt;Email: &lt;input type=&quot;email&quot; name=&quot;email&quot; /&gt;&lt;/label&gt;
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;label&gt;Message: &lt;textarea name=&quot;message&quot;&gt;&lt;/textarea&gt;&lt;/label&gt;
+  &lt;/p&gt;
+  &lt;p&gt;
+    &lt;button type=&quot;submit&quot;&gt;Send&lt;/button&gt;
+  &lt;/p&gt;
+&lt;/form&gt;</pre>
+</div>
+<p class="reveal"><span lang="id">After deployment, Netlify automatically stores submission data and can forward it to email or other services.</span><span lang="en">After deployment, Netlify automatically stores submission data and can forward it to email or other services.</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">2. Netlify Functions</span><span lang="en">2. Netlify Functions</span></h4>
+<p class="reveal"><span lang="id">Netlify also supports serverless functions, which are useful for small APIs without maintaining a full backend.</span><span lang="en">Netlify also supports serverless functions, which are useful for small APIs without maintaining a full backend.</span></p>
+<p class="reveal"><span lang="id">For example:</span><span lang="en">For example:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>exports.handler = async (event, context) =&gt; {
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ message: &quot;Hello from Netlify!&quot; })
+  };
+};</pre>
+</div>
+<p class="reveal"><span lang="id">After deployment, the function is accessible at:</span><span lang="en">After deployment, the function is accessible at:</span></p>
+<p class="reveal"><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://your-domain/.netlify/functions/hello</code></span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://your-domain/.netlify/functions/hello</code></span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">3. Local development support</span><span lang="en">3. Local development support</span></h4>
+<p class="reveal"><span lang="id">Netlify provides a CLI:</span><span lang="en">Netlify provides a CLI:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Install Netlify CLI
+npm install -g netlify-cli
+
+# Log in
+netlify login
+
+# Start local development
+netlify dev
+
+# Test functions locally
+netlify functions:serve</pre>
+</div>
+<p class="reveal"><span lang="id">This lets you simulate Netlify forms and function behavior locally before deploying.</span><span lang="en">This lets you simulate Netlify forms and function behavior locally before deploying.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">Zeabur is a newer deployment platform that is especially useful for more complex projects involving multiple services.</span><span lang="en">Zeabur is a newer deployment platform that is especially useful for more complex projects involving multiple services.</span></p>
+<p class="reveal"><span lang="id">Its main strengths:</span><span lang="en">Its main strengths:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Many built-in service templates</b></span><span lang="en"><b>Many built-in service templates</b></span></li>
+<li><span lang="id"><b>Support for multiple deployment methods</b></span><span lang="en"><b>Support for multiple deployment methods</b></span></li>
+<li><span lang="id"><b>Flexible multi-service composition</b></span><span lang="en"><b>Flexible multi-service composition</b></span></li>
+<li><span lang="id"><b>Usage-based billing</b></span><span lang="en"><b>Usage-based billing</b></span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Deploy Dify with Zeabur</span><span lang="en">Deploy Dify with Zeabur</span></h2>
+<p class="reveal"><span lang="id">In earlier chapters, we already touched on Dify briefly. Now we can launch a full Dify service through [Zeabur](https://zeabur.com/projects) very easily.</span><span lang="en">In earlier chapters, we already touched on Dify briefly. Now we can launch a full Dify service through [Zeabur](https://zeabur.com/projects) very easily.</span></p>
+<p class="reveal"><span lang="id">First, open the [console page](https://zeabur.com/projects):</span><span lang="en">First, open the [console page](https://zeabur.com/projects):</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<p class="reveal"><span lang="id">In that interface, you will see a set of service blocks. At the top are options such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Agent</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Servers</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Docs</code>, and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Templates</code>:</span><span lang="en">In that interface, you will see a set of service blocks. At the top are options such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Agent</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Servers</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Docs</code>, and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Templates</code>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Agent</b>: Zeabur's built-in assistant for operational questions</span><span lang="en"><b>Agent</b>: Zeabur's built-in assistant for operational questions</span></li>
+<li><span lang="id"><b>Servers</b>: add or buy cloud servers</span><span lang="en"><b>Servers</b>: add or buy cloud servers</span></li>
+<li><span lang="id"><b>Docs</b>: official documentation</span><span lang="en"><b>Docs</b>: official documentation</span></li>
+<li><span lang="id"><b>Templates</b>: built-in application templates</span><span lang="en"><b>Templates</b>: built-in application templates</span></li>
+</ul>
+<p class="reveal"><span lang="id">> An <b>image</b> can be understood as a packaged runtime environment + application state. If a service has already been configured successfully on one machine, it can be packed into an image and reused elsewhere.</span><span lang="en">> An <b>image</b> can be understood as a packaged runtime environment + application state. If a service has already been configured successfully on one machine, it can be packed into an image and reused elsewhere.</span></p>
+<p class="reveal"><span lang="id">In the upper-right corner, you can also see your balance. By default, Zeabur usually gives you a small monthly free quota, roughly around 5 USD worth of usage.</span><span lang="en">In the upper-right corner, you can also see your balance. By default, Zeabur usually gives you a small monthly free quota, roughly around 5 USD worth of usage.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<p class="reveal"><span lang="id">You can click the balance to inspect daily usage:</span><span lang="en">You can click the balance to inspect daily usage:</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<p class="reveal"><span lang="id">Now let's create a Dify service.</span><span lang="en">Now let's create a Dify service.</span></p>
+<p class="reveal"><span lang="id">Start by clicking <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">New Project</code> on the [console homepage](https://zeabur.com/projects):</span><span lang="en">Start by clicking <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">New Project</code> on the [console homepage](https://zeabur.com/projects):</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<p class="reveal"><span lang="id">Zeabur supports several ways to create a service:</span><span lang="en">Zeabur supports several ways to create a service:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>GitHub</b></span><span lang="en"><b>GitHub</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">Connect your GitHub account and deploy directly from a repository.</span><span lang="en">Connect your GitHub account and deploy directly from a repository.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Template</b></span><span lang="en"><b>Template</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">Start from a built-in app template such as Dify or n8n.</span><span lang="en">Start from a built-in app template such as Dify or n8n.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Databases</b></span><span lang="en"><b>Databases</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">Deploy databases such as MySQL or MongoDB.</span><span lang="en">Deploy databases such as MySQL or MongoDB.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Functions</b></span><span lang="en"><b>Functions</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">Deploy JavaScript or Python functions.</span><span lang="en">Deploy JavaScript or Python functions.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Local Project</b></span><span lang="en"><b>Local Project</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">Upload a local folder and let Zeabur detect how to run it.</span><span lang="en">Upload a local folder and let Zeabur detect how to run it.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Docker Image</b></span><span lang="en"><b>Docker Image</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">Deploy from an already built Docker image.</span><span lang="en">Deploy from an already built Docker image.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Cursor</b></span><span lang="en"><b>Cursor</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">Deploy directly from a project you are editing in Cursor.</span><span lang="en">Deploy directly from a project you are editing in Cursor.</span></p>
+<p class="reveal"><span lang="id">If you want to deploy Dify, the easiest path is <b>Template</b>. Search for <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dify</code>, choose a version you like, and continue.</span><span lang="en">If you want to deploy Dify, the easiest path is <b>Template</b>. Search for <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dify</code>, choose a version you like, and continue.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<p class="reveal"><span lang="id">Then choose any project name. Zeabur will generate a temporary domain based on that name.</span><span lang="en">Then choose any project name. Zeabur will generate a temporary domain based on that name.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<p class="reveal"><span lang="id">After creation, you will see multiple services starting one after another. Dify is not a single program, but rather a group of coordinated services, so you need to wait until they are all running.</span><span lang="en">After creation, you will see multiple services starting one after another. Dify is not a single program, but rather a group of coordinated services, so you need to wait until they are all running.</span></p>
+<p class="reveal"><span lang="id">In many setups, you can click the main Dify app to get the access address. In this example, however, the final entry point is exposed through <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">nginx</code>, so you need to open the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">nginx</code> service and find the public service address there.</span><span lang="en">In many setups, you can click the main Dify app to get the access address. In this example, however, the final entry point is exposed through <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">nginx</code>, so you need to open the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">nginx</code> service and find the public service address there.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<p class="reveal"><span lang="id">After waiting a bit, you should see the Dify login screen. Register an account with your email and password, and your own Dify service is ready.</span><span lang="en">After waiting a bit, you should see the Dify login screen. Register an account with your email and password, and your own Dify service is ready.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<p class="reveal"><span lang="id">You can also launch <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">n8n</code> in a similar way if you want another AI workflow tool:</span><span lang="en">You can also launch <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">n8n</code> in a similar way if you want another AI workflow tool:</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Deploy a Snake game with Zeabur and Trae</span><span lang="en">Deploy a Snake game with Zeabur and Trae</span></h2>
+<p class="reveal"><span lang="id">To explore Zeabur's more advanced usage, let's deploy something simpler first: a Snake game generated with Trae.</span><span lang="en">To explore Zeabur's more advanced usage, let's deploy something simpler first: a Snake game generated with Trae.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Deploy an HTML-based version</span><span lang="en">Deploy an HTML-based version</span></h3>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<p class="reveal"><span lang="id">Trae can generate a browser-based Snake game from plain HTML very easily. Once the project is created locally, you can upload the whole folder to Zeabur using the local-project deployment method described above.</span><span lang="en">Trae can generate a browser-based Snake game from plain HTML very easily. Once the project is created locally, you can upload the whole folder to Zeabur using the local-project deployment method described above.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<p class="reveal"><span lang="id">After deployment, you will enter the service details page:</span><span lang="en">After deployment, you will enter the service details page:</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<p class="reveal"><span lang="id">Click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Network</code> on the left, find <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Public Address</code>, and click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Generate Domain</code> to create a public URL.</span><span lang="en">Click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Network</code> on the left, find <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Public Address</code>, and click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Generate Domain</code> to create a public URL.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<p class="reveal"><span lang="id">Once that address is generated, opening it in the browser will let you play your Snake game publicly:</span><span lang="en">Once that address is generated, opening it in the browser will let you play your Snake game publicly:</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<p class="reveal"><span lang="id">This same method works well for other static HTML-based web apps too.</span><span lang="en">This same method works well for other static HTML-based web apps too.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Deploy a React version</span><span lang="en">Deploy a React version</span></h3>
+<p class="reveal"><span lang="id">Now let's deploy a React app instead of a plain HTML app. Compared with static HTML, React is a more modern and component-based frontend framework, and it is common in production applications.</span><span lang="en">Now let's deploy a React app instead of a plain HTML app. Compared with static HTML, React is a more modern and component-based frontend framework, and it is common in production applications.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Refactor into a React architecture</span><span lang="en">Refactor into a React architecture</span></h4>
+<p class="reveal"><span lang="id">In Trae, you can simply say:</span><span lang="en">In Trae, you can simply say:</span></p>
+<p class="reveal"><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Help me refactor this code into a React architecture.</code></span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Help me refactor this code into a React architecture.</code></span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<p class="reveal"><span lang="id">However, React apps are a bit more demanding to deploy because they rely on a build toolchain and a more structured project layout.</span><span lang="en">However, React apps are a bit more demanding to deploy because they rely on a build toolchain and a more structured project layout.</span></p>
+<p class="reveal"><span lang="id">One especially important issue is the <b>port</b>. A local React development server often listens on port <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">3000</code> by default. Zeabur, however, expects the deployed app to listen on port <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">8080</code>.</span><span lang="en">One especially important issue is the <b>port</b>. A local React development server often listens on port <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">3000</code> by default. Zeabur, however, expects the deployed app to listen on port <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">8080</code>.</span></p>
+<p class="reveal"><span lang="id">If your React app still listens on <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">3000</code>, the deployment may fail because Zeabur cannot route traffic to it correctly.</span><span lang="en">If your React app still listens on <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">3000</code>, the deployment may fail because Zeabur cannot route traffic to it correctly.</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">What is a port?</span><span lang="en">What is a port?</span></h4>
+<p class="reveal"><span lang="id">You can think of the IP address as the building address and the port number as the room number. Together, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">IP:port</code> points to a specific service.</span><span lang="en">You can think of the IP address as the building address and the port number as the room number. Together, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">IP:port</code> points to a specific service.</span></p>
+<p class="reveal"><span lang="id">Most websites do not explicitly show a port because browsers automatically assume the default ports:</span><span lang="en">Most websites do not explicitly show a port because browsers automatically assume the default ports:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">80</code> for HTTP</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">80</code> for HTTP</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">443</code> for HTTPS</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">443</code> for HTTPS</span></li>
+</ul>
+<p class="reveal"><span lang="id">But for app-specific services such as React development servers (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">3000</code>) or Zeabur deployments (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">8080</code>), the port becomes important.</span><span lang="en">But for app-specific services such as React development servers (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">3000</code>) or Zeabur deployments (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">8080</code>), the port becomes important.</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">What does "listening on a port" mean?</span><span lang="en">What does "listening on a port" mean?</span></h4>
+<p class="reveal"><span lang="id">When a program listens on a port, it is telling the operating system:</span><span lang="en">When a program listens on a port, it is telling the operating system:</span></p>
+<p class="reveal"><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">I am waiting here for incoming network requests. Send them to me.</code></span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">I am waiting here for incoming network requests. Send them to me.</code></span></p>
+<p class="reveal"><span lang="id">In the building analogy, the IP is the building address, and the port is the room number. The React dev server opens room <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">3000</code> and tells the building manager, "Any requests addressed to room 3000 should be delivered to me."</span><span lang="en">In the building analogy, the IP is the building address, and the port is the room number. The React dev server opens room <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">3000</code> and tells the building manager, "Any requests addressed to room 3000 should be delivered to me."</span></p>
+<p class="reveal"><span lang="id">When you run <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm start</code> locally, React commonly chooses port <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">3000</code>. Zeabur, however, is designed to work with apps listening on <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">8080</code>, so you need to change the default.</span><span lang="en">When you run <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm start</code> locally, React commonly chooses port <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">3000</code>. Zeabur, however, is designed to work with apps listening on <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">8080</code>, so you need to change the default.</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Change the default listening port</span><span lang="en">Change the default listening port</span></h4>
+<p class="reveal"><span lang="id">The easiest way is simply to ask Trae:</span><span lang="en">The easiest way is simply to ask Trae:</span></p>
+<p class="reveal"><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Please help me change the default port of this React project to 8080.</code></span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Please help me change the default port of this React project to 8080.</code></span></p>
+<p class="reveal"><span lang="id">Trae can modify the relevant configuration for you. After that, rebuild the project and upload it to Zeabur again.</span><span lang="en">Trae can modify the relevant configuration for you. After that, rebuild the project and upload it to Zeabur again.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<p class="reveal"><span lang="id">Once you configure the public network address just as you did for the HTML project, the React app can also be served successfully.</span><span lang="en">Once you configure the public network address just as you did for the HTML project, the React app can also be served successfully.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<p class="reveal"><span lang="id">The same idea applies to any other app that needs a port adjustment before deployment.</span><span lang="en">The same idea applies to any other app that needs a port adjustment before deployment.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">Because server resources cost money, you should always get in the habit of stopping services you are no longer using.</span><span lang="en">Because server resources cost money, you should always get in the habit of stopping services you are no longer using.</span></p>
+<p class="reveal"><span lang="id">Open the project's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Settings</code>:</span><span lang="en">Open the project's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Settings</code>:</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<p class="reveal"><span lang="id">Scroll to the bottom, and you will see controls like the following:</span><span lang="en">Scroll to the bottom, and you will see controls like the following:</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></p>
+</div>
+<p class="reveal"><span lang="id">You can:</span><span lang="en">You can:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Suspend All Services</code> to pause everything and reduce cost</span><span lang="en">click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Suspend All Services</code> to pause everything and reduce cost</span></li>
+<li><span lang="id">click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Restart All Services</code> to restart services if something is stuck</span><span lang="en">click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Restart All Services</code> to restart services if something is stuck</span></li>
+<li><span lang="id">click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Delete Project</code> if you are sure you no longer need it</span><span lang="en">click <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Delete Project</code> if you are sure you no longer need it</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">In this tutorial, we introduced four common deployment platforms:</span><span lang="en">In this tutorial, we introduced four common deployment platforms:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Tencent Cloud CloudBase</b>: good for domestic Chinese users and strong WeChat integration</span><span lang="en"><b>Tencent Cloud CloudBase</b>: good for domestic Chinese users and strong WeChat integration</span></li>
+<li><span lang="id"><b>Vercel</b>: excellent for modern frontend frameworks and GitHub-driven workflows</span><span lang="en"><b>Vercel</b>: excellent for modern frontend frameworks and GitHub-driven workflows</span></li>
+<li><span lang="id"><b>Netlify</b>: strong for static sites that also need forms, auth, and other hosting features</span><span lang="en"><b>Netlify</b>: strong for static sites that also need forms, auth, and other hosting features</span></li>
+<li><span lang="id"><b>Zeabur</b>: very useful for more complex projects with multiple services and templates</span><span lang="en"><b>Zeabur</b>: very useful for more complex projects with multiple services and templates</span></li>
+</ul>
+<p class="reveal"><span lang="id">Which one you choose depends on your needs:</span><span lang="en">Which one you choose depends on your needs:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">For primarily domestic Chinese audiences, <b>CloudBase</b> is often the best first choice</span><span lang="en">For primarily domestic Chinese audiences, <b>CloudBase</b> is often the best first choice</span></li>
+<li><span lang="id">For React, Next.js, and similar stacks, <b>Vercel</b> or <b>Netlify</b> are strong options</span><span lang="en">For React, Next.js, and similar stacks, <b>Vercel</b> or <b>Netlify</b> are strong options</span></li>
+<li><span lang="id">For static sites that also need forms or auth, <b>Netlify</b> is especially useful</span><span lang="en">For static sites that also need forms or auth, <b>Netlify</b> is especially useful</span></li>
+<li><span lang="id">For Dify, n8n, and other multi-service setups, <b>Zeabur</b> is often the easiest</span><span lang="en">For Dify, n8n, and other multi-service setups, <b>Zeabur</b> is often the easiest</span></li>
+</ul>
+<p class="reveal"><span lang="id">No matter which platform you choose, the deployment workflow is conceptually similar:</span><span lang="en">No matter which platform you choose, the deployment workflow is conceptually similar:</span></p>
+<p class="reveal"><span lang="id"><b>prepare the code → choose a platform → configure the build → deploy it</b></span><span lang="en"><b>prepare the code → choose a platform → configure the build → deploy it</b></span></p>
+<p class="reveal"><span lang="id">Once you understand that loop, you can start publishing your own projects for the world to use.</span><span lang="en">Once you understand that loop, you can start publishing your own projects for the world to use.</span></p>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../backend/git-workflow/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Alur Kerja Git & GitHub: Mesin Waktu Kode</span><span lang="en">Alur Kerja Git & GitHub: Mesin Waktu Kode</span></b></a>
+      <a class="next" href="../../backend/cloud-server-deployment/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Rilis Tingkat Lanjut: Setup Server VPS Linux</span><span lang="en">Rilis Tingkat Lanjut: Setup Server VPS Linux</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

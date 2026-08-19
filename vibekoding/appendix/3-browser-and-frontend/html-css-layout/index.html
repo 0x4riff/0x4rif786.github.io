@@ -1,0 +1,1890 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Fundamentals of HTML/CSS Layout — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Fundamentals of HTML/CSS Layout. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/3-browser-and-frontend/html-css-layout/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Fundamentals of HTML/CSS Layout</span><span lang="en">Fundamentals of HTML/CSS Layout</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Fundamentals of HTML/CSS Layout</span><span lang="en">Fundamentals of HTML/CSS Layout</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Fundamentals of HTML/CSS Layout.</span><span lang="en">Ensiklopedia VibeKoding: Fundamentals of HTML/CSS Layout.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>How are web pages made? Why do some pages only have text, while others are as interactive as applications?</b> This question leads to the three cornerstones of web development, helping you understand the structure behind every web page.</span><span lang="en"><b>How are web pages made? Why do some pages only have text, while others are as interactive as applications?</b> This question leads to the three cornerstones of web development, helping you understand the structure behind every web page.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Overview of HTML, CSS, and JavaScript</span><span lang="en">1. Overview of HTML, CSS, and JavaScript</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 From Static Pages to Dynamic Applications</span><span lang="en">1.1 From Static Pages to Dynamic Applications</span></h3>
+<p class="reveal"><span lang="id">Imagine a <b>poster</b> you see on the street. You can only look at it, not interact with it — the poster won't change its content just because you looked at it, nor will it pop up more information because you tapped somewhere.</span><span lang="en">Imagine a <b>poster</b> you see on the street. You can only look at it, not interact with it — the poster won't change its content just because you looked at it, nor will it pop up more information because you tapped somewhere.</span></p>
+<p class="reveal"><span lang="id">Early web pages were exactly like these "electronic posters": view-only, immutable, with fixed content.</span><span lang="en">Early web pages were exactly like these "electronic posters": view-only, immutable, with fixed content.</span></p>
+<p class="reveal"><span lang="id">But modern web pages are completely different. They behave like <b>desktop applications</b>:</span><span lang="en">But modern web pages are completely different. They behave like <b>desktop applications</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">You can click, drag, input, and upload</span><span lang="en">You can click, drag, input, and upload</span></li>
+<li><span lang="id">The page changes in real time based on your actions</span><span lang="en">The page changes in real time based on your actions</span></li>
+<li><span lang="id">They can accomplish complex tasks like software (e.g., online video editing)</span><span lang="en">They can accomplish complex tasks like software (e.g., online video editing)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>The core reason for this transformation is the three cornerstones of web technology: HTML + CSS + JavaScript</b>.</span><span lang="en"><b>The core reason for this transformation is the three cornerstones of web technology: HTML + CSS + JavaScript</b>.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 An Analogy: Building a House</span><span lang="en">1.2 An Analogy: Building a House</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Technology</th><th>🏠 House Analogy</th><th>Actual Role</th><th>Concrete Example</th></tr>
+<tr><td><b>HTML</b></td><td>The house's <b>structure and materials</b></td><td>Defines the content and hierarchy of the page</td><td>This is a wall, this is a window, this is a room</td></tr>
+<tr><td><b>CSS</b></td><td>The house's <b>decoration and appearance</b></td><td>Controls the style and layout of the page</td><td>Paint the wall blue, place the window on the east side, tile the floor</td></tr>
+<tr><td><b>JavaScript</b></td><td>The house's <b>appliances and smart systems</b></td><td>Enables interactivity and logic on the page</td><td>Press the switch and the light turns on, open the door and the curtains automatically draw</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>HTML → CSS</b>: You need a house first before you can decorate it. HTML is the foundation, CSS is the beautification.
+
+<b>HTML + CSS → JavaScript</b>: You need the house and decoration before you can install smart systems. JavaScript makes a "dead" page come "alive."
+
+<b>Core Idea</b>: Each of the three has its own role, and none is dispensable. A page with only HTML is ugly, a page with only HTML+CSS can't be interactive, and only with all three can you build "web applications" like WeChat Web or Taobao.</span><span lang="en"><b>HTML → CSS</b>: You need a house first before you can decorate it. HTML is the foundation, CSS is the beautification.
+
+<b>HTML + CSS → JavaScript</b>: You need the house and decoration before you can install smart systems. JavaScript makes a "dead" page come "alive."
+
+<b>Core Idea</b>: Each of the three has its own role, and none is dispensable. A page with only HTML is ugly, a page with only HTML+CSS can't be interactive, and only with all three can you build "web applications" like WeChat Web or Taobao.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.3 Try It Yourself</span><span lang="en">1.3 Try It Yourself</span></h3>
+<p class="reveal"><span lang="id">👇 The demo below shows how HTML/CSS/JavaScript work together:</span><span lang="en">👇 The demo below shows how HTML/CSS/JavaScript work together:</span></p>
+<p class="reveal"><span lang="id"><WebTechTriad /></span><span lang="en"><WebTechTriad /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. HTML: The Skeleton of a Web Page</span><span lang="en">2. HTML: The Skeleton of a Web Page</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Motivation for needing HTML</span><span lang="en">2.1 Motivation for needing HTML</span></h3>
+<p class="reveal"><span lang="id">Before HTML existed, content on the internet was just <b>plain text</b>. Like the text you're reading right now — no formatting, no hierarchy, no links.</span><span lang="en">Before HTML existed, content on the internet was just <b>plain text</b>. Like the text you're reading right now — no formatting, no hierarchy, no links.</span></p>
+<p class="reveal"><span lang="id">What's wrong with plain text?</span><span lang="en">What's wrong with plain text?</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">❌ <b>Can't express hierarchy</b>: Can't tell what's a heading, what's body text, what's a footnote</span><span lang="en">❌ <b>Can't express hierarchy</b>: Can't tell what's a heading, what's body text, what's a footnote</span></li>
+<li><span lang="id">❌ <b>Machines can't understand it</b>: Search engines and screen readers (for the blind) can't comprehend the content</span><span lang="en">❌ <b>Machines can't understand it</b>: Search engines and screen readers (for the blind) can't comprehend the content</span></li>
+<li><span lang="id">❌ <b>Can't interact</b>: No links, no buttons, no input fields</span><span lang="en">❌ <b>Can't interact</b>: No links, no buttons, no input fields</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>HTML (HyperText Markup Language)</b> was created to solve these problems. It uses "tags" to mark the meaning of content, telling the browser "what this is."</span><span lang="en"><b>HTML (HyperText Markup Language)</b> was created to solve these problems. It uses "tags" to mark the meaning of content, telling the browser "what this is."</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 What Does HTML Code Look Like</span><span lang="en">2.2 What Does HTML Code Look Like</span></h3>
+<p class="reveal"><span lang="id">The basic unit of HTML is the "tag." Tags are wrapped in angle brackets <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">< ></code> and come in pairs:</span><span lang="en">The basic unit of HTML is the "tag." Tags are wrapped in angle brackets <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">< ></code> and come in pairs:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>html</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;h1&gt;This is a heading&lt;/h1&gt;
+&lt;p&gt;This is a paragraph&lt;/p&gt;
+&lt;a href=&quot;url&quot;&gt;This is a link&lt;/a&gt;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Key Concepts</b>:</span><span lang="en"><b>Key Concepts</b>:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Concept</th><th>Explanation</th><th>Example</th></tr>
+<tr><td><b>Tag</b></td><td>A marker wrapped in angle brackets</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><h1></code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"></h1></code></td></tr>
+<tr><td><b>Element</b></td><td>The tag + its content as a whole</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><h1>Heading</h1></code></td></tr>
+<tr><td><b>Attribute</b></td><td>Additional information on a tag</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">href="#"</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">class="card"</code></td></tr>
+<tr><td><b>Nesting</b></td><td>Tags placed inside other tags</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><div><p>Text</p></div></code></td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 How to Read HTML Code</span><span lang="en">2.3 How to Read HTML Code</span></h3>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Many beginners get dizzy seeing a bunch of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><xxx></code>. Actually, reading HTML code follows a <b>fixed pattern</b>:
+
+<b>Step 1: Find the "outermost layer"</b>
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">html
+<div class="card">        ← This is a container, holding content inside
+  <h2>Title</h2>
+  <p>Description text</p>
+</div>
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Step 2: Guess the meaning from the tag name</b>
+
+| Tag Name | Quick Memory | What Goes Inside |
+|----------|-------------|-------------------|
+| </code><div><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> | Big box | Any content, used for grouping |
+| </code><span><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> | Small box | Text fragments, used for marking |
+| </code><p><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> | Paragraph | A block of text |
+| </code><h1><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">-</code><h6><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> | Heading | Heading text, smaller number = more important |
+| </code><a><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> | Anchor/Link | Clickable content that navigates |
+| </code><img><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> | Image | No content inside, uses src to point to an image |
+| </code><button><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> | Button | Clickable text/icon |
+| </code><input><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> | Input field | No content inside, where users type |
+
+<b>Step 3: Look at class and id</b>
+
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">html
+<div class="user-card" id="user-123">
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+- </code>class="user-card"<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> → The "type" of this element, CSS can select it in bulk
+- </code>id="user-123"<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> → The "ID number" of this element, a unique identifier
+
+<b>Step 4: Indentation shows hierarchy</b>
+
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">html
+<body>
+  <header>           ← Indentation shows header is a child of body
+    <nav>            ← nav is a child of header
+      <a>Home</a>    ← a is a child of nav
+    </nav>
+  </header>
+</body>
+</code>``</span><span lang="en">Many beginners get dizzy seeing a bunch of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><xxx></code>. Actually, reading HTML code follows a <b>fixed pattern</b>:
+
+<b>Step 1: Find the "outermost layer"</b>
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">html
+<div class="card">        ← This is a container, holding content inside
+  <h2>Title</h2>
+  <p>Description text</p>
+</div>
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Step 2: Guess the meaning from the tag name</b>
+
+| Tag Name | Quick Memory | What Goes Inside |
+|----------|-------------|-------------------|
+| </code><div><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> | Big box | Any content, used for grouping |
+| </code><span><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> | Small box | Text fragments, used for marking |
+| </code><p><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> | Paragraph | A block of text |
+| </code><h1><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">-</code><h6><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> | Heading | Heading text, smaller number = more important |
+| </code><a><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> | Anchor/Link | Clickable content that navigates |
+| </code><img><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> | Image | No content inside, uses src to point to an image |
+| </code><button><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> | Button | Clickable text/icon |
+| </code><input><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> | Input field | No content inside, where users type |
+
+<b>Step 3: Look at class and id</b>
+
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">html
+<div class="user-card" id="user-123">
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+- </code>class="user-card"<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> → The "type" of this element, CSS can select it in bulk
+- </code>id="user-123"<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> → The "ID number" of this element, a unique identifier
+
+<b>Step 4: Indentation shows hierarchy</b>
+
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">html
+<body>
+  <header>           ← Indentation shows header is a child of body
+    <nav>            ← nav is a child of header
+      <a>Home</a>    ← a is a child of nav
+    </nav>
+  </header>
+</body>
+</code>``</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.4 Common HTML Tags Quick Reference</span><span lang="en">2.4 Common HTML Tags Quick Reference</span></h3>
+<p class="reveal"><span lang="id"><b>Structural Tags</b> (define the page skeleton):</span><span lang="en"><b>Structural Tags</b> (define the page skeleton):</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>html</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;h1&gt;This is a level-1 heading&lt;/h1&gt;
+&lt;h2&gt;This is a level-2 heading&lt;/h2&gt;
+&lt;p&gt;This is a paragraph&lt;/p&gt;
+&lt;div&gt;This is a container (for grouping)&lt;/div&gt;
+&lt;span&gt;This is an inline container (for marking text)&lt;/span&gt;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Links and Media</b> (enrich the page):</span><span lang="en"><b>Links and Media</b> (enrich the page):</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>html</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;a href=&quot;https://example.com&quot;&gt;Click here to navigate&lt;/a&gt;
+&lt;img src=&quot;photo.jpg&quot; alt=&quot;Photo description&quot; /&gt;
+&lt;video src=&quot;movie.mp4&quot; controls&gt;&lt;/video&gt;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Forms</b> (collect user input):</span><span lang="en"><b>Forms</b> (collect user input):</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>html</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;form&gt;
+  &lt;input type=&quot;text&quot; placeholder=&quot;Enter username&quot; /&gt;
+  &lt;input type=&quot;password&quot; placeholder=&quot;Enter password&quot; /&gt;
+  &lt;button type=&quot;submit&quot;&gt;Log in&lt;/button&gt;
+&lt;/form&gt;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Semantic Tags</b> (HTML5 additions, make page meaning clearer):</span><span lang="en"><b>Semantic Tags</b> (HTML5 additions, make page meaning clearer):</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>html</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;header&gt;Page header&lt;/header&gt;
+&lt;nav&gt;Navigation bar&lt;/nav&gt;
+&lt;main&gt;Main content area&lt;/main&gt;
+&lt;article&gt;An article&lt;/article&gt;
+&lt;aside&gt;Sidebar&lt;/aside&gt;
+&lt;footer&gt;Footer&lt;/footer&gt;</pre>
+</div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><div class="header"></code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><header></code> seem to produce the same visual effect, so why use the latter?
+
+1. <b>SEO-friendly</b>: Search engines can better understand page structure
+2. <b>Accessibility</b>: Screen readers can quickly locate areas like "navigation" and "main content"
+3. <b>Code readability</b>: Seeing <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><header></code> tells you immediately it's a header
+
+<b>When to use div?</b> When there's no suitable semantic tag. For example, a purely decorative container.</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><div class="header"></code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><header></code> seem to produce the same visual effect, so why use the latter?
+
+1. <b>SEO-friendly</b>: Search engines can better understand page structure
+2. <b>Accessibility</b>: Screen readers can quickly locate areas like "navigation" and "main content"
+3. <b>Code readability</b>: Seeing <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><header></code> tells you immediately it's a header
+
+<b>When to use div?</b> When there's no suitable semantic tag. For example, a purely decorative container.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.5 Approach to remembering So Many HTML Tags</span><span lang="en">2.5 Approach to remembering So Many HTML Tags</span></h3>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">"There are over a hundred HTML tags, how can I remember them all?"
+
+<b>The answer: You don't need to remember them all.</b> In actual development, 90% of cases only use about 20 tags.</span><span lang="en">"There are over a hundred HTML tags, how can I remember them all?"
+
+<b>The answer: You don't need to remember them all.</b> In actual development, 90% of cases only use about 20 tags.</span></p>
+</div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Memorize by Purpose</span><span lang="en">Memorize by Purpose</span></h4>
+<p class="reveal"><span lang="id"><b>1. Page Structure (drawing the skeleton)</b></span><span lang="en"><b>1. Page Structure (drawing the skeleton)</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Tag</th><th>Memory Aid</th><th>Purpose</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><header></code></td><td>Head</td><td>Header of a page or section</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><nav></code></td><td>Navigation</td><td>Navigation link area</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><main></code></td><td>Main</td><td>Main content of the page (only one per page)</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><article></code></td><td>Article</td><td>Independent content block (still meaningful if taken out alone)</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><section></code></td><td>Section</td><td>Thematic content grouping</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><aside></code></td><td>Aside</td><td>Sidebar, supplementary content</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><footer></code></td><td>Foot</td><td>Footer of a page or section</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Memory method</b>: Imagine a newspaper — it has a masthead (header), table of contents (nav), body text (main/article), columns (aside), and footer (footer).</span><span lang="en"><b>Memory method</b>: Imagine a newspaper — it has a masthead (header), table of contents (nav), body text (main/article), columns (aside), and footer (footer).</span></p>
+<p class="reveal"><span lang="id"><b>2. Content Marking (clarifying what it is)</b></span><span lang="en"><b>2. Content Marking (clarifying what it is)</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Tag</th><th>Memory Aid</th><th>Purpose</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><h1></code>-<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><h6></code></td><td>Heading 1-6</td><td>Heading hierarchy, h1 is the largest and most important</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><p></code></td><td>Paragraph</td><td>A block of text</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><ul></code>/<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><ol></code>/<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><li></code></td><td>Unordered/Ordered/List Item</td><td>Lists</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><a></code></td><td>Anchor</td><td>Links, for navigation</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><img></code></td><td>Image</td><td>Images</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><video></code>/<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><audio></code></td><td>Video/Audio</td><td>Multimedia</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><strong></code>/<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><em></code></td><td>Strong/Emphasis</td><td>Semantic emphasis</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Memory method</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><a></code> stands for "anchor" — imagine a ship dropping anchor at a spot; a link "anchors" you to another page.</span><span lang="en"><b>Memory method</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><a></code> stands for "anchor" — imagine a ship dropping anchor at a spot; a link "anchors" you to another page.</span></p>
+<p class="reveal"><span lang="id"><b>3. Form Interaction (collecting user input)</b></span><span lang="en"><b>3. Form Interaction (collecting user input)</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Tag</th><th>Memory Aid</th><th>Purpose</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><form></code></td><td>Form</td><td>Form container</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><input></code></td><td>Input</td><td>Various input fields (type determines the kind)</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><textarea></code></td><td>Text Area</td><td>Multi-line text input</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><select></code>/<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><option></code></td><td>Select/Option</td><td>Dropdown selection</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><button></code></td><td>Button</td><td>Button</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><label></code></td><td>Label</td><td>Descriptive text for input fields</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Memory method</b>: The <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">type</code> attribute of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><input></code> determines what it looks like:</span><span lang="en"><b>Memory method</b>: The <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">type</code> attribute of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><input></code> determines what it looks like:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">type="text"</code> → Text box</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">type="text"</code> → Text box</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">type="password"</code> → Password box</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">type="password"</code> → Password box</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">type="email"</code> → Email box</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">type="email"</code> → Email box</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">type="checkbox"</code> → Checkbox</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">type="checkbox"</code> → Checkbox</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">type="radio"</code> → Radio button</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">type="radio"</code> → Radio button</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>4. Container (for grouping)</b></span><span lang="en"><b>4. Container (for grouping)</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Tag</th><th>Memory Aid</th><th>Purpose</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><div></code></td><td>Big box</td><td>Block-level container, takes up a full row</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><span></code></td><td>Small box</td><td>Inline container, only takes content width</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Memory method</b>: div = division, span = span. div divides large areas, span marks text fragments.</span><span lang="en"><b>Memory method</b>: div = division, span = span. div divides large areas, span marks text fragments.</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">What to Do When You Encounter an Unfamiliar Tag?</span><span lang="en">What to Do When You Encounter an Unfamiliar Tag?</span></h4>
+<p class="reveal"><span lang="id"><b>Method 1: Guess the English word</b></span><span lang="en"><b>Method 1: Guess the English word</b></span></p>
+<p class="reveal"><span lang="id">Many tags are abbreviations of English words:</span><span lang="en">Many tags are abbreviations of English words:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><abbr></code> = abbreviation</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><abbr></code> = abbreviation</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><blockquote></code> = block quote</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><blockquote></code> = block quote</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><caption></code> = caption</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><caption></code> = caption</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><figcaption></code> = figure caption</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><figcaption></code> = figure caption</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Method 2: Check MDN</b></span><span lang="en"><b>Method 2: Check MDN</b></span></p>
+<p class="reveal"><span lang="id">[MDN HTML Elements Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element) has detailed explanations for all tags.</span><span lang="en">[MDN HTML Elements Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element) has detailed explanations for all tags.</span></p>
+<p class="reveal"><span lang="id"><b>Method 3: Ask AI</b></span><span lang="en"><b>Method 3: Ask AI</b></span></p>
+<p class="reveal"><span lang="id">> "What does the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><dl></code> tag in HTML mean? When should I use it?"</span><span lang="en">> "What does the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><dl></code> tag in HTML mean? When should I use it?"</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Don't Memorize Tags Deliberately</span><span lang="en">Don't Memorize Tags Deliberately</span></h4>
+<p class="reveal"><span lang="id"><b>The real workflow goes like this</b>:</span><span lang="en"><b>The real workflow goes like this</b>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">You know you need a "container" → Write <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><div></code></span><span lang="en">You know you need a "container" → Write <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><div></code></span></li>
+<li><span lang="id">Later you realize it's a "navigation area" → Change to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><nav></code></span><span lang="en">Later you realize it's a "navigation area" → Change to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><nav></code></span></li>
+<li><span lang="id">Later you realize it's an "independent article" → Change to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><article></code></span><span lang="en">Later you realize it's an "independent article" → Change to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><article></code></span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Write it first, then optimize semantics</b>. Tags can be changed anytime; don't agonize over which one to use upfront.</span><span lang="en"><b>Write it first, then optimize semantics</b>. Tags can be changed anytime; don't agonize over which one to use upfront.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. CSS: The Skin of a Web Page</span><span lang="en">3. CSS: The Skin of a Web Page</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Motivation for needing CSS</span><span lang="en">3.1 Motivation for needing CSS</span></h3>
+<p class="reveal"><span lang="id">Imagine you've moved into a <b>bare shell apartment</b>: it has walls, windows, and doors — livable, but:</span><span lang="en">Imagine you've moved into a <b>bare shell apartment</b>: it has walls, windows, and doors — livable, but:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">The walls are gray concrete, not pretty</span><span lang="en">The walls are gray concrete, not pretty</span></li>
+<li><span lang="id">Outlets and switches are randomly placed, not aesthetic</span><span lang="en">Outlets and switches are randomly placed, not aesthetic</span></li>
+<li><span lang="id">No furniture, inconvenient for daily life</span><span lang="en">No furniture, inconvenient for daily life</span></li>
+</ul>
+<p class="reveal"><span lang="id">An HTML-only web page is like this: it has content and structure, but it's <b>ugly</b>, <b>messy</b>, and <b>unfriendly</b>.</span><span lang="en">An HTML-only web page is like this: it has content and structure, but it's <b>ugly</b>, <b>messy</b>, and <b>unfriendly</b>.</span></p>
+<p class="reveal"><span lang="id">CSS (Cascading Style Sheets) is the web page's "decoration crew." It doesn't change the HTML structure (no tearing down walls or moving doors), it's only responsible for:</span><span lang="en">CSS (Cascading Style Sheets) is the web page's "decoration crew." It doesn't change the HTML structure (no tearing down walls or moving doors), it's only responsible for:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">🎨 <b>Painting walls</b>: Changing colors and backgrounds</span><span lang="en">🎨 <b>Painting walls</b>: Changing colors and backgrounds</span></li>
+<li><span lang="id">🖼️ <b>Hanging pictures</b>: Adding borders, shadows, rounded corners</span><span lang="en">🖼️ <b>Hanging pictures</b>: Adding borders, shadows, rounded corners</span></li>
+<li><span lang="id">🪑 <b>Arranging furniture</b>: Adjusting layout, spacing, and alignment</span><span lang="en">🪑 <b>Arranging furniture</b>: Adjusting layout, spacing, and alignment</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 What Does CSS Code Look Like</span><span lang="en">3.2 What Does CSS Code Look Like</span></h3>
+<p class="reveal"><span lang="id">CSS code has a fixed format:</span><span lang="en">CSS code has a fixed format:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>css</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>selector {
+  property-name: property-value;
+  property-name: property-value;
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Three ways to write it</b>:</span><span lang="en"><b>Three ways to write it</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>html</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;!-- Method 1: Inline styles (for temporary testing) --&gt;
+&lt;div style=&quot;color: red;&quot;&gt;Red text&lt;/div&gt;
+
+&lt;!-- Method 2: Internal styles (written inside the HTML file) --&gt;
+&lt;style&gt;
+  .red-text { color: red; }
+&lt;/style&gt;
+
+&lt;!-- Method 3: External styles (separate CSS file, recommended) --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot; /&gt;</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 How to Read CSS Code</span><span lang="en">3.3 How to Read CSS Code</span></h3>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Step 1: Look at the selector — "Who gets decorated?"</b>
+
+| Selector | Syntax | Meaning |
+|----------|--------|---------|
+| Tag selector | <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">p { }</code> | All <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><p></code> tags |
+| Class selector | <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.card { }</code> | All elements with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">class="card"</code> |
+| ID selector | <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">#header { }</code> | The unique element with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">id="header"</code> |
+| Descendant selector | <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.card h2 { }</code> | All <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><h2></code> inside <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.card</code> |
+| Group selector | <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.card, .box { }</code> | Selects both <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.card</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.box</code> |
+
+<b>Step 2: Look at the property — "What to decorate?"</b>
+
+| Property Category | Common Properties | Purpose |
+|-------------------|-------------------|---------|
+| Text | <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">color</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">font-size</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">font-weight</code> | Color, size, weight |
+| Background | <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">background</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">background-color</code> | Background color, background image |
+| Border | <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">border</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">border-radius</code> | Border line, rounded corners |
+| Spacing | <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">margin</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">padding</code> | Outer margin, inner padding |
+| Layout | <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">display</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">flex</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">grid</code> | Arrangement method |
+
+<b>Step 3: Look at the value — "What should it look like after decoration?"</b>
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">css
+.card {
+  width: 300px;        /<i> Fixed width </i>/
+  padding: 16px;       /<i> Inner padding of 16 pixels </i>/
+  border-radius: 8px;  /<i> Rounded corners of 8 pixels </i>/
+  background: #fff;    /<i> White background </i>/
+}
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Common units</b>:
+- </code>px<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">: Pixels, fixed size
+- </code>%<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">: Percentage, relative to the parent element
+- </code>rem<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">: Relative to the root element's font size
+- </code>vw/vh`: Relative to viewport width/height</span><span lang="en"><b>Step 1: Look at the selector — "Who gets decorated?"</b>
+
+| Selector | Syntax | Meaning |
+|----------|--------|---------|
+| Tag selector | <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">p { }</code> | All <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><p></code> tags |
+| Class selector | <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.card { }</code> | All elements with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">class="card"</code> |
+| ID selector | <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">#header { }</code> | The unique element with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">id="header"</code> |
+| Descendant selector | <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.card h2 { }</code> | All <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><h2></code> inside <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.card</code> |
+| Group selector | <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.card, .box { }</code> | Selects both <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.card</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.box</code> |
+
+<b>Step 2: Look at the property — "What to decorate?"</b>
+
+| Property Category | Common Properties | Purpose |
+|-------------------|-------------------|---------|
+| Text | <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">color</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">font-size</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">font-weight</code> | Color, size, weight |
+| Background | <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">background</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">background-color</code> | Background color, background image |
+| Border | <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">border</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">border-radius</code> | Border line, rounded corners |
+| Spacing | <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">margin</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">padding</code> | Outer margin, inner padding |
+| Layout | <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">display</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">flex</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">grid</code> | Arrangement method |
+
+<b>Step 3: Look at the value — "What should it look like after decoration?"</b>
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">css
+.card {
+  width: 300px;        /<i> Fixed width </i>/
+  padding: 16px;       /<i> Inner padding of 16 pixels </i>/
+  border-radius: 8px;  /<i> Rounded corners of 8 pixels </i>/
+  background: #fff;    /<i> White background </i>/
+}
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Common units</b>:
+- </code>px<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">: Pixels, fixed size
+- </code>%<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">: Percentage, relative to the parent element
+- </code>rem<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">: Relative to the root element's font size
+- </code>vw/vh`: Relative to viewport width/height</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.4 Selector Specificity</span><span lang="en">3.4 Selector Specificity</span></h3>
+<p class="reveal"><span lang="id">If an element is selected by multiple selectors at once, which one wins?</span><span lang="en">If an element is selected by multiple selectors at once, which one wins?</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>html</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;p class=&quot;highlight&quot; id=&quot;special&quot;&gt;What color is this text?&lt;/p&gt;</pre>
+</div>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>css</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>p { color: red; }             /* Specificity: 1 */
+.highlight { color: yellow; } /* Specificity: 10 */
+#special { color: blue; }     /* Specificity: 100 */</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Answer</b>: Blue. ID selectors have the highest specificity, class selectors next, and tag selectors the lowest.</span><span lang="en"><b>Answer</b>: Blue. ID selectors have the highest specificity, class selectors next, and tag selectors the lowest.</span></p>
+<p class="reveal"><span lang="id"><b>Inline styles</b> (written in the style attribute) have a specificity of 1000 — the highest!</span><span lang="en"><b>Inline styles</b> (written in the style attribute) have a specificity of 1000 — the highest!</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.5 The Box Model: Motivation for Doesning 't the Width Match</span><span lang="en">3.5 The Box Model: Motivation for Doesning 't the Width Match</span></h3>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">You're building a web page with three cards displayed side by side, each card 300px wide, with a container total width of 900px. You write:
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">css
+.card { width: 300px; }
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+Result: <b>The third card drops to the next row!</b>
+
+<b>Why?</b> Because </code>width: 300px<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> is only the content width — you forgot to account for padding and border. If the card has </code>padding: 20px<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> and </code>border: 1px`, the actual width is 342px, three cards = 1026px, exceeding the container!</span><span lang="en">You're building a web page with three cards displayed side by side, each card 300px wide, with a container total width of 900px. You write:
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">css
+.card { width: 300px; }
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+Result: <b>The third card drops to the next row!</b>
+
+<b>Why?</b> Because </code>width: 300px<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> is only the content width — you forgot to account for padding and border. If the card has </code>padding: 20px<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> and </code>border: 1px`, the actual width is 342px, three cards = 1026px, exceeding the container!</span></p>
+</div>
+<p class="reveal"><span lang="id">Every HTML element is treated as a "box" in CSS, composed of four layers. Imagine you're <b>packing a parcel</b>: the content is the item, padding is the bubble wrap, border is the cardboard box, and margin is the space between boxes.</span><span lang="en">Every HTML element is treated as a "box" in CSS, composed of four layers. Imagine you're <b>packing a parcel</b>: the content is the item, padding is the bubble wrap, border is the cardboard box, and margin is the space between boxes.</span></p>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>: Drag the sliders to adjust each layer's size and observe how the box model changes:</span><span lang="en">👇 <b>Try it yourself</b>: Drag the sliders to adjust each layer's size and observe how the box model changes:</span></p>
+<p class="reveal"><span lang="id"><CssBoxModel /></span><span lang="en"><CssBoxModel /></span></p>
+<p class="reveal"><span lang="id"><b>Solution</b>:</span><span lang="en"><b>Solution</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>css</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>.box {
+  box-sizing: border-box;  /* Make width include padding and border */
+  width: 200px;
+  padding: 10px;
+  border: 5px;
+}</pre>
+</div>
+<p class="reveal"><span lang="id">This way, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">width: 200px</code> is the final width, and padding and border are "squeezed" inside.</span><span lang="en">This way, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">width: 200px</code> is the final width, and padding and border are "squeezed" inside.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.6 Flexbox: Approach to Autoing -Align Elements</span><span lang="en">3.6 Flexbox: Approach to Autoing -Align Elements</span></h3>
+<p class="reveal"><span lang="id">Flexbox is the most commonly used layout method in modern CSS. It makes elements automatically align and arrange themselves, like books on a shelf that automatically stay aligned.</span><span lang="en">Flexbox is the most commonly used layout method in modern CSS. It makes elements automatically align and arrange themselves, like books on a shelf that automatically stay aligned.</span></p>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>: Switch direction and alignment to see how boxes arrange themselves:</span><span lang="en">👇 <b>Try it yourself</b>: Switch direction and alignment to see how boxes arrange themselves:</span></p>
+<p class="reveal"><span lang="id"><CssFlexbox /></span><span lang="en"><CssFlexbox /></span></p>
+<p class="reveal"><span lang="id"><b>Flex Core Concepts</b>:</span><span lang="en"><b>Flex Core Concepts</b>:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Property</th><th>Purpose</th><th>Common Values</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">display: flex</code></td><td>Enable Flex layout</td><td>-</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">flex-direction</code></td><td>Main axis direction</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">row</code> (horizontal), <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">column</code> (vertical)</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">justify-content</code></td><td>Main axis alignment</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">flex-start</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">center</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">space-between</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">align-items</code></td><td>Cross axis alignment</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">stretch</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">center</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">flex-start</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">flex-wrap</code></td><td>Whether to wrap</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">nowrap</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">wrap</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">gap</code></td><td>Spacing between elements</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">10px</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1rem</code></td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.7 CSS Preprocessors: SCSS/SASS and LESS</span><span lang="en">3.7 CSS Preprocessors: SCSS/SASS and LESS</span></h3>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">You've built a project with a 2000-line CSS file. Later, you need to change the theme color, and you discover:
+
+- The primary color <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">#3b82f6</code> appears 50 times
+- Changing one color requires a global search-and-replace, and you worry about missing one
+- Selectors like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.nav .nav-list .nav-item .nav-link</code> are long and hard to maintain
+
+<b>CSS preprocessors</b> were created to solve these problems. They let CSS "program": with variables, nesting, and reusable code.</span><span lang="en">You've built a project with a 2000-line CSS file. Later, you need to change the theme color, and you discover:
+
+- The primary color <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">#3b82f6</code> appears 50 times
+- Changing one color requires a global search-and-replace, and you worry about missing one
+- Selectors like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.nav .nav-list .nav-item .nav-link</code> are long and hard to maintain
+
+<b>CSS preprocessors</b> were created to solve these problems. They let CSS "program": with variables, nesting, and reusable code.</span></p>
+</div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">3.7.1 What Is a CSS Preprocessor?</span><span lang="en">3.7.1 What Is a CSS Preprocessor?</span></h4>
+<p class="reveal"><span lang="id"><b>In plain English</b>: A preprocessor is a "smarter CSS." You write styles with a more powerful syntax, then it <b>compiles</b> them into regular CSS that browsers can recognize.</span><span lang="en"><b>In plain English</b>: A preprocessor is a "smarter CSS." You write styles with a more powerful syntax, then it <b>compiles</b> them into regular CSS that browsers can recognize.</span></p>
+<p class="reveal"><span lang="id"><b>Why use one?</b></span><span lang="en"><b>Why use one?</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Pain Point</th><th>Vanilla CSS</th><th>Preprocessor</th></tr>
+<tr><td>Colors repeated everywhere</td><td>Copy-paste everywhere</td><td>Define a variable, change once and it applies globally</td></tr>
+<tr><td>Deep selector nesting</td><td>Write a long chain</td><td>Nesting syntax, hierarchy at a glance</td></tr>
+<tr><td>Same styles repeated</td><td>Copy-paste</td><td>Mixins, reusable like functions</td></tr>
+</table></div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">3.7.2 Comparison of the Three Major Preprocessors</span><span lang="en">3.7.2 Comparison of the Three Major Preprocessors</span></h4>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Feature</th><th>Vanilla CSS</th><th><b>SCSS/SASS</b></th><th><b>LESS</b></th></tr>
+<tr><td><b>Variable syntax</b></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">--primary</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">$primary</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">@primary</code></td></tr>
+<tr><td><b>Nesting syntax</b></td><td>❌ Not supported</td><td>✅ Supported</td><td>✅ Supported</td></tr>
+<tr><td><b>Mixins (code reuse)</b></td><td>❌ Not supported</td><td>✅ <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">@mixin</code></td><td>✅ <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.mixin()</code></td></tr>
+<tr><td><b>Learning curve</b></td><td>Easy</td><td>Moderate</td><td>Moderate</td></tr>
+<tr><td><b>Popularity</b></td><td>-</td><td>⭐⭐⭐ Most popular</td><td>⭐⭐ Fairly popular</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Quick memory</b>:</span><span lang="en"><b>Quick memory</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>SCSS</b>: Uses <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">$</code> symbol, used by Bootstrap 5, best ecosystem</span><span lang="en"><b>SCSS</b>: Uses <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">$</code> symbol, used by Bootstrap 5, best ecosystem</span></li>
+<li><span lang="id"><b>LESS</b>: Uses <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">@</code> symbol, consistent with CSS <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">@media</code> syntax, easier to pick up</span><span lang="en"><b>LESS</b>: Uses <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">@</code> symbol, consistent with CSS <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">@media</code> syntax, easier to pick up</span></li>
+</ul>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">3.7.3 Core Feature Comparison by Example</span><span lang="en">3.7.3 Core Feature Comparison by Example</span></h4>
+<p class="reveal"><span lang="id">##### 1. Variables: Change Once, Apply Globally</span><span lang="en">##### 1. Variables: Change Once, Apply Globally</span></p>
+<p class="reveal"><span lang="id"><b>Scenario</b>: The theme color <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">#3b82f6</code> is used in 20 places and needs to change to red.</span><span lang="en"><b>Scenario</b>: The theme color <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">#3b82f6</code> is used in 20 places and needs to change to red.</span></p>
+<p class="reveal"><span lang="id"><Tabs></span><span lang="en"><Tabs></span></p>
+<p class="reveal"><span lang="id"><TabItem label="Vanilla CSS"></span><span lang="en"><TabItem label="Vanilla CSS"></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>css</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>/* Need to change 20 places, easy to miss one */
+.button { background: #3b82f6; }
+.link { color: #3b82f6; }
+.border { border-color: #3b82f6; }</pre>
+</div>
+<p class="reveal"><span lang="id"></TabItem></span><span lang="en"></TabItem></span></p>
+<p class="reveal"><span lang="id"><TabItem label="SCSS"></span><span lang="en"><TabItem label="SCSS"></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>scss</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>$primary: #3b82f6;
+
+.button { background: $primary; }
+.link { color: $primary; }
+.border { border-color: $primary; }
+/* Change $primary in one place only */</pre>
+</div>
+<p class="reveal"><span lang="id"></TabItem></span><span lang="en"></TabItem></span></p>
+<p class="reveal"><span lang="id"><TabItem label="LESS"></span><span lang="en"><TabItem label="LESS"></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>less</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>@primary: #3b82f6;
+
+.button { background: @primary; }
+.link { color: @primary; }
+.border { border-color: @primary; }
+/* Change @primary in one place only */</pre>
+</div>
+<p class="reveal"><span lang="id"></TabItem></span><span lang="en"></TabItem></span></p>
+<p class="reveal"><span lang="id"></Tabs></span><span lang="en"></Tabs></span></p>
+<p class="reveal"><span lang="id">##### 2. Nesting: Hierarchy at a Glance</span><span lang="en">##### 2. Nesting: Hierarchy at a Glance</span></p>
+<p class="reveal"><span lang="id"><b>Scenario</b>: A navigation bar with multiple layers of structure.</span><span lang="en"><b>Scenario</b>: A navigation bar with multiple layers of structure.</span></p>
+<p class="reveal"><span lang="id"><Tabs></span><span lang="en"><Tabs></span></p>
+<p class="reveal"><span lang="id"><TabItem label="Vanilla CSS"></span><span lang="en"><TabItem label="Vanilla CSS"></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>css</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>/* Written as a long chain, hard to see hierarchy */
+.navbar .nav-list .nav-item .nav-link { }
+.navbar .nav-list .nav-item .nav-link:hover { }</pre>
+</div>
+<p class="reveal"><span lang="id"></TabItem></span><span lang="en"></TabItem></span></p>
+<p class="reveal"><span lang="id"><TabItem label="SCSS"></span><span lang="en"><TabItem label="SCSS"></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>scss</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>.navbar {
+  .nav-list {
+    .nav-item {
+      .nav-link {
+        &amp;:hover { }  /* &amp; refers to the parent selector */
+      }
+    }
+  }
+}</pre>
+</div>
+<p class="reveal"><span lang="id"></TabItem></span><span lang="en"></TabItem></span></p>
+<p class="reveal"><span lang="id"><TabItem label="LESS"></span><span lang="en"><TabItem label="LESS"></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>less</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>.navbar {
+  .nav-list {
+    .nav-item {
+      .nav-link {
+        &amp;:hover { }
+      }
+    }
+  }
+}</pre>
+</div>
+<p class="reveal"><span lang="id"></TabItem></span><span lang="en"></TabItem></span></p>
+<p class="reveal"><span lang="id"></Tabs></span><span lang="en"></Tabs></span></p>
+<p class="reveal"><span lang="id">##### 3. Mixins: Reusable Code Snippets</span><span lang="en">##### 3. Mixins: Reusable Code Snippets</span></p>
+<p class="reveal"><span lang="id"><b>Scenario</b>: Multiple buttons all need "centered display" styles.</span><span lang="en"><b>Scenario</b>: Multiple buttons all need "centered display" styles.</span></p>
+<p class="reveal"><span lang="id"><Tabs></span><span lang="en"><Tabs></span></p>
+<p class="reveal"><span lang="id"><TabItem label="Vanilla CSS"></span><span lang="en"><TabItem label="Vanilla CSS"></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>css</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>/* Copy-paste 3 times */
+.btn-primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-secondary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}</pre>
+</div>
+<p class="reveal"><span lang="id"></TabItem></span><span lang="en"></TabItem></span></p>
+<p class="reveal"><span lang="id"><TabItem label="SCSS"></span><span lang="en"><TabItem label="SCSS"></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>scss</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-primary { @include center; }
+.btn-secondary { @include center; }</pre>
+</div>
+<p class="reveal"><span lang="id"></TabItem></span><span lang="en"></TabItem></span></p>
+<p class="reveal"><span lang="id"><TabItem label="LESS"></span><span lang="en"><TabItem label="LESS"></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>less</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>.center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-primary { .center(); }
+.btn-secondary { .center(); }</pre>
+</div>
+<p class="reveal"><span lang="id"></TabItem></span><span lang="en"></TabItem></span></p>
+<p class="reveal"><span lang="id"></Tabs></span><span lang="en"></Tabs></span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">3.7.4 How to Choose?</span><span lang="en">3.7.4 How to Choose?</span></h4>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Situation</th><th>Recommendation</th></tr>
+<tr><td>Just starting out, small project</td><td><b>Vanilla CSS</b> (build a solid foundation first)</td></tr>
+<tr><td>Project uses Bootstrap 5</td><td><b>SCSS</b> (Bootstrap source is SCSS)</td></tr>
+<tr><td>Team is familiar with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">@</code> syntax</td><td><b>LESS</b> (consistent with CSS <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">@media</code> syntax)</td></tr>
+<tr><td>Need complex logic (loops, conditionals)</td><td><b>SCSS</b> (more powerful features)</td></tr>
+</table></div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">3.7.5 Using in a Project</span><span lang="en">3.7.5 Using in a Project</span></h4>
+<p class="reveal"><span lang="id"><b>Vite Project (simplest)</b>:</span><span lang="en"><b>Vite Project (simplest)</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Install sass
+npm install -D sass
+
+# Use .scss or .less files directly</pre>
+</div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">1. <b>Learn vanilla CSS first</b>: Preprocessors are just "syntactic sugar" — without understanding CSS fundamentals, you'll get more confused
+2. <b>Don't force it on small projects</b>: If your CSS is under 200 lines, writing plain CSS is simpler
+3. <b>Start with SCSS</b>: The syntax is almost identical to CSS, just with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">$</code> variables added
+4. <b>Don't nest too deeply</b>: More than 3 levels makes code hard to maintain</span><span lang="en">1. <b>Learn vanilla CSS first</b>: Preprocessors are just "syntactic sugar" — without understanding CSS fundamentals, you'll get more confused
+2. <b>Don't force it on small projects</b>: If your CSS is under 200 lines, writing plain CSS is simpler
+3. <b>Start with SCSS</b>: The syntax is almost identical to CSS, just with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">$</code> variables added
+4. <b>Don't nest too deeply</b>: More than 3 levels makes code hard to maintain</span></p>
+</div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">3.7.6 File Organization Comparison Across Tech Stacks</span><span lang="en">3.7.6 File Organization Comparison Across Tech Stacks</span></h4>
+<p class="reveal"><span lang="id"><b>For the same project, how does the file structure differ across tech stacks?</b></span><span lang="en"><b>For the same project, how does the file structure differ across tech stacks?</b></span></p>
+<p class="reveal"><span lang="id"><Tabs></span><span lang="en"><Tabs></span></p>
+<p class="reveal"><span lang="id"><TabItem label="Vanilla HTML + CSS"></span><span lang="en"><TabItem label="Vanilla HTML + CSS"></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>my-website/
+├── index.html              # Page structure
+├── about.html
+├── css/
+│   ├── reset.css           # Reset styles
+│   ├── layout.css          # Layout styles
+│   ├── components.css      # Component styles
+│   └── style.css           # Main styles (potentially thousands of lines)
+├── js/
+│   └── main.js
+└── images/
+    └── logo.png</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Characteristics</b>:</span><span lang="en"><b>Characteristics</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">CSS is centralized in one or a few files</span><span lang="en">CSS is centralized in one or a few files</span></li>
+<li><span lang="id">Changing styles requires switching between HTML and CSS files</span><span lang="en">Changing styles requires switching between HTML and CSS files</span></li>
+<li><span lang="id">Styles easily conflict with each other</span><span lang="en">Styles easily conflict with each other</span></li>
+</ul>
+<p class="reveal"><span lang="id"></TabItem></span><span lang="en"></TabItem></span></p>
+<p class="reveal"><span lang="id"><TabItem label="Vue + Vanilla CSS"></span><span lang="en"><TabItem label="Vue + Vanilla CSS"></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>src/
+├── components/             # Component folder
+│   ├── Button/
+│   │   ├── Button.vue      # Template + styles + logic
+│   │   └── Button.test.js
+│   ├── Header/
+│   │   └── Header.vue
+│   └── Footer/
+│       └── Footer.vue
+├── views/                  # Page folder
+│   ├── Home.vue
+│   └── About.vue
+├── App.vue                 # Root component
+└── main.js                 # Entry file</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Button.vue internal structure</b>:</span><span lang="en"><b>Button.vue internal structure</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>vue</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;template&gt;
+  &lt;button class=&quot;btn&quot;&gt;Click&lt;/button&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default { name: &#039;Button&#039; }
+&lt;/script&gt;
+
+&lt;style scoped&gt;              &lt;!-- scoped styles only affect the current component --&gt;
+.btn { background: #3b82f6; }
+&lt;/style&gt;</pre>
+</div>
+<p class="reveal"><span lang="id"></TabItem></span><span lang="en"></TabItem></span></p>
+<p class="reveal"><span lang="id"><TabItem label="Vue + SCSS"></span><span lang="en"><TabItem label="Vue + SCSS"></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>src/
+├── assets/
+│   └── styles/
+│       ├── _variables.scss     # Variables: colors, spacing, etc.
+│       ├── _mixins.scss        # Mixins: reusable code blocks
+│       ├── _functions.scss     # Functions: color calculations, etc.
+│       └── global.scss         # Global styles entry point
+├── components/
+│   ├── Button/
+│   │   └── Button.vue          # Components use @import to bring in variables
+│   └── Card/
+│       └── Card.vue
+├── views/
+│   ├── Home.vue
+│   └── About.vue
+├── App.vue
+└── main.js</pre>
+</div>
+<p class="reveal"><span lang="id"><b>_variables.scss</b>:</span><span lang="en"><b>_variables.scss</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>scss</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>$primary: #3b82f6;
+$secondary: #64748b;
+$spacing-sm: 8px;
+$spacing-md: 16px;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Button.vue</b>:</span><span lang="en"><b>Button.vue</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>vue</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;style scoped lang=&quot;scss&quot;&gt;
+@import &#039;@/assets/styles/variables&#039;;
+
+.btn {
+  background: $primary;      // Using variables
+  padding: $spacing-md;
+}
+&lt;/style&gt;</pre>
+</div>
+<p class="reveal"><span lang="id"></TabItem></span><span lang="en"></TabItem></span></p>
+<p class="reveal"><span lang="id"><TabItem label="Vue + Tailwind CSS"></span><span lang="en"><TabItem label="Vue + Tailwind CSS"></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>src/
+├── components/
+│   ├── Button.vue          # No style block needed
+│   ├── Card.vue
+│   └── Header.vue
+├── views/
+│   ├── Home.vue
+│   └── About.vue
+├── App.vue
+└── main.js
+
+# Configuration files (root directory)
+tailwind.config.js          # Theme configuration
+tailwind.css                # Base styles entry point</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Button.vue</b> (no style block):</span><span lang="en"><b>Button.vue</b> (no style block):</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>vue</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;template&gt;
+  &lt;button class=&quot;bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded&quot;&gt;
+    Click
+  &lt;/button&gt;
+&lt;/template&gt;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Characteristics</b>:</span><span lang="en"><b>Characteristics</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">No separate style files</span><span lang="en">No separate style files</span></li>
+<li><span lang="id">Class names are the styles (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">bg-blue-500</code> = blue background)</span><span lang="en">Class names are the styles (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">bg-blue-500</code> = blue background)</span></li>
+<li><span lang="id">Configuration centralized in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">tailwind.config.js</code></span><span lang="en">Configuration centralized in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">tailwind.config.js</code></span></li>
+</ul>
+<p class="reveal"><span lang="id"></TabItem></span><span lang="en"></TabItem></span></p>
+<p class="reveal"><span lang="id"></Tabs></span><span lang="en"></Tabs></span></p>
+<p class="reveal"><span lang="id"><b>Core Differences Summary</b>:</span><span lang="en"><b>Core Differences Summary</b>:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Tech Stack</th><th>Style File Location</th><th>Theme Management</th><th>Code Reuse</th></tr>
+<tr><td>Vanilla HTML+CSS</td><td>Centralized <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">css/</code> folder</td><td>Search and replace</td><td>Copy-paste</td></tr>
+<tr><td>Vue + CSS</td><td>Scattered in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.vue</code> components</td><td>Search and replace</td><td>Copy-paste</td></tr>
+<tr><td>Vue + SCSS</td><td>In components + <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">styles/</code> shared files</td><td>Variables for unified management</td><td>Mixins for reuse</td></tr>
+<tr><td>Vue + Tailwind</td><td>None (in class names)</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">tailwind.config.js</code></td><td>Class name composition</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.8 Approach to remembering So Many CSS Properties</span><span lang="en">3.8 Approach to remembering So Many CSS Properties</span></h3>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">"There are hundreds of CSS properties, how can I remember them all?"
+
+<b>The answer: Categorize by purpose, remember the core properties, and look up the rest as needed.</b></span><span lang="en">"There are hundreds of CSS properties, how can I remember them all?"
+
+<b>The answer: Categorize by purpose, remember the core properties, and look up the rest as needed.</b></span></p>
+</div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Memorize by Purpose</span><span lang="en">Memorize by Purpose</span></h4>
+<p class="reveal"><span lang="id"><b>1. Text & Typography (what text looks like)</b></span><span lang="en"><b>1. Text & Typography (what text looks like)</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Property</th><th>Memory Aid</th><th>Common Values</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">color</code></td><td>Color</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">red</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">#fff</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">rgb(0,0,0)</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">font-size</code></td><td>Font size</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">16px</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1rem</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1.5em</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">font-weight</code></td><td>Font weight</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">normal</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">bold</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">100</code>-<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">900</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">font-family</code></td><td>Font family</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"Microsoft YaHei"</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sans-serif</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">line-height</code></td><td>Line height</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1.5</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">24px</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">text-align</code></td><td>Text alignment</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">left</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">center</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">right</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">text-decoration</code></td><td>Text decoration</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">none</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">underline</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">line-through</code></td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Memory method</b>: Imagine you're formatting in Word — change color, change size, bold, change font, adjust line spacing, align, add underline.</span><span lang="en"><b>Memory method</b>: Imagine you're formatting in Word — change color, change size, bold, change font, adjust line spacing, align, add underline.</span></p>
+<p class="reveal"><span lang="id"><b>2. Box Model (how much space an element takes)</b></span><span lang="en"><b>2. Box Model (how much space an element takes)</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Property</th><th>Memory Aid</th><th>Common Values</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">width</code>/<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">height</code></td><td>Width/Height</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">100px</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">50%</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">100vw</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">padding</code></td><td>Inner padding</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">10px</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">10px 20px</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">margin</code></td><td>Outer margin</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">10px</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">auto</code> (for centering)</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">border</code></td><td>Border</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1px solid #ccc</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">border-radius</code></td><td>Rounded corners</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">4px</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">50%</code> (circle)</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">box-sizing</code></td><td>Box model</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">border-box</code> (recommended)</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Memory method</b>: padding is the "inner" spacing (distance from content to border), margin is the "outer" spacing (distance from border to other elements).</span><span lang="en"><b>Memory method</b>: padding is the "inner" spacing (distance from content to border), margin is the "outer" spacing (distance from border to other elements).</span></p>
+<p class="reveal"><span lang="id"><b>Shorthand rules</b>:</span><span lang="en"><b>Shorthand rules</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>css</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>/* Four values: top right bottom left (clockwise) */
+padding: 10px 20px 15px 25px;
+
+/* Two values: top-bottom left-right */
+padding: 10px 20px;
+
+/* One value: all four directions the same */
+padding: 10px;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>3. Background & Border (what an element looks like)</b></span><span lang="en"><b>3. Background & Border (what an element looks like)</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Property</th><th>Memory Aid</th><th>Common Values</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">background</code></td><td>Background</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">#fff</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">url(bg.jpg)</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">linear-gradient(...)</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">background-color</code></td><td>Background color</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">#fff</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">rgba(0,0,0,0.5)</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">background-image</code></td><td>Background image</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">url(photo.jpg)</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">background-size</code></td><td>Background size</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">cover</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">contain</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">100%</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">background-position</code></td><td>Background position</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">center</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">top left</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">box-shadow</code></td><td>Box shadow</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">0 2px 10px rgba(0,0,0,0.1)</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">opacity</code></td><td>Opacity</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">0</code>-<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1</code> (0 = fully transparent)</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Memory method</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">background</code> is a shorthand that can set multiple values at once:</span><span lang="en"><b>Memory method</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">background</code> is a shorthand that can set multiple values at once:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>css</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>background: #fff url(bg.jpg) no-repeat center/cover;
+/*          color  image     repeat     position/size */</pre>
+</div>
+<p class="reveal"><span lang="id"><b>4. Layout (how elements are arranged)</b></span><span lang="en"><b>4. Layout (how elements are arranged)</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Property</th><th>Memory Aid</th><th>Common Values</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">display</code></td><td>Display mode</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">block</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">inline</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">flex</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">grid</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">none</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">position</code></td><td>Positioning</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">static</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">relative</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">absolute</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fixed</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sticky</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">top</code>/<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">right</code>/<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">bottom</code>/<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">left</code></td><td>Four directions</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">10px</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">50%</code> (used with position)</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">z-index</code></td><td>Stack order</td><td>Higher number = on top</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">float</code></td><td>Float</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">left</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">right</code> (legacy, not recommended)</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">overflow</code></td><td>Overflow handling</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">visible</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">hidden</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">scroll</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">auto</code></td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>position memory method</b>:</span><span lang="en"><b>position memory method</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">static</code>: Default, normal flow</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">static</code>: Default, normal flow</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">relative</code>: Offset relative to its original position</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">relative</code>: Offset relative to its original position</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">absolute</code>: Positioned relative to the nearest positioned ancestor</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">absolute</code>: Positioned relative to the nearest positioned ancestor</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fixed</code>: Positioned relative to the viewport (doesn't move on scroll)</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fixed</code>: Positioned relative to the viewport (doesn't move on scroll)</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sticky</code>: Fixes in place after scrolling to a certain point</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sticky</code>: Fixes in place after scrolling to a certain point</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>5. Flexbox Layout (one-dimensional layout powerhouse)</b></span><span lang="en"><b>5. Flexbox Layout (one-dimensional layout powerhouse)</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Property</th><th>Memory Aid</th><th>Purpose</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">display: flex</code></td><td>Enable Flex</td><td>Container becomes a Flex container</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">flex-direction</code></td><td>Direction</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">row</code> (horizontal), <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">column</code> (vertical)</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">justify-content</code></td><td>Main axis alignment</td><td>How elements are arranged on the main axis</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">align-items</code></td><td>Cross axis alignment</td><td>How elements are aligned on the cross axis</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">flex-wrap</code></td><td>Wrapping</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">nowrap</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">wrap</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">gap</code></td><td>Gap</td><td>Spacing between elements</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">flex</code></td><td>Flexibility</td><td>Child element's grow/shrink ratio</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Memory method</b>:</span><span lang="en"><b>Memory method</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">justify</code> = justify/align → Main axis alignment</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">justify</code> = justify/align → Main axis alignment</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">align</code> = align → Cross axis alignment</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">align</code> = align → Cross axis alignment</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>6. Animation & Transition (how elements move)</b></span><span lang="en"><b>6. Animation & Transition (how elements move)</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Property</th><th>Memory Aid</th><th>Common Values</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">transition</code></td><td>Transition</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">all 0.3s ease</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">transform</code></td><td>Transform</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">translate(10px)</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">rotate(45deg)</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">scale(1.1)</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">animation</code></td><td>Animation</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fadeIn 1s ease forwards</code></td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Shorthand rules</b>:</span><span lang="en"><b>Shorthand rules</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>css</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>/* transition: property duration timing-function delay */
+transition: all 0.3s ease 0s;
+
+/* transform can combine multiple transformations */
+transform: translateX(10px) rotate(45deg) scale(1.1);</pre>
+</div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">What to Do When You Encounter an Unfamiliar Property?</span><span lang="en">What to Do When You Encounter an Unfamiliar Property?</span></h4>
+<p class="reveal"><span lang="id"><b>Method 1: Guess the English word</b></span><span lang="en"><b>Method 1: Guess the English word</b></span></p>
+<p class="reveal"><span lang="id">Many properties are English words or abbreviations:</span><span lang="en">Many properties are English words or abbreviations:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">margin</code> = margin, edge</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">margin</code> = margin, edge</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">padding</code> = padding, filling</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">padding</code> = padding, filling</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">border</code> = border, boundary</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">border</code> = border, boundary</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">visibility</code> = visibility</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">visibility</code> = visibility</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">cursor</code> = cursor</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">cursor</code> = cursor</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Method 2: Associate by scenario</b></span><span lang="en"><b>Method 2: Associate by scenario</b></span></p>
+<p class="reveal"><span lang="id">When you want to achieve a certain effect, think about the "keywords":</span><span lang="en">When you want to achieve a certain effect, think about the "keywords":</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>I want to...</th><th>Possible properties</th></tr>
+<tr><td>Change color</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">color</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">background-color</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">border-color</code></td></tr>
+<tr><td>Change size</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">width</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">height</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">font-size</code></td></tr>
+<tr><td>Change position</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">margin</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">position</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">top/left</code></td></tr>
+<tr><td>Change spacing</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">padding</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">margin</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">gap</code></td></tr>
+<tr><td>Hide an element</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">display: none</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">visibility: hidden</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">opacity: 0</code></td></tr>
+<tr><td>Center</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">margin: auto</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">text-align: center</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">justify-content: center</code></td></tr>
+<tr><td>Add rounded corners</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">border-radius</code></td></tr>
+<tr><td>Add shadow</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">box-shadow</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">text-shadow</code></td></tr>
+<tr><td>Add animation</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">transition</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">animation</code></td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Method 3: Check MDN or ask AI</b></span><span lang="en"><b>Method 3: Check MDN or ask AI</b></span></p>
+<p class="reveal"><span lang="id">[MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference) has detailed explanations for all properties.</span><span lang="en">[MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference) has detailed explanations for all properties.</span></p>
+<p class="reveal"><span lang="id">> "How do I make text display on a single line with an ellipsis for overflow in CSS?"</span><span lang="en">> "How do I make text display on a single line with an ellipsis for overflow in CSS?"</span></p>
+<p class="reveal"><span lang="id"><b>Method 4: "Learn by stealing" with DevTools</b></span><span lang="en"><b>Method 4: "Learn by stealing" with DevTools</b></span></p>
+<p class="reveal"><span lang="id">When you see a web page effect you like:</span><span lang="en">When you see a web page effect you like:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Right-click → "Inspect"</span><span lang="en">Right-click → "Inspect"</span></li>
+<li><span lang="id">Select the element, look at the Styles panel</span><span lang="en">Select the element, look at the Styles panel</span></li>
+<li><span lang="id">Copy the CSS properties directly</span><span lang="en">Copy the CSS properties directly</span></li>
+</ul>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Don't Memorize Properties Deliberately</span><span lang="en">Don't Memorize Properties Deliberately</span></h4>
+<p class="reveal"><span lang="id"><b>The real workflow goes like this</b>:</span><span lang="en"><b>The real workflow goes like this</b>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">You know you want to "center" → Search "CSS centering"</span><span lang="en">You know you want to "center" → Search "CSS centering"</span></li>
+<li><span lang="id">Copy the code, tweak the values</span><span lang="en">Copy the code, tweak the values</span></li>
+<li><span lang="id">After using it enough, you'll remember it</span><span lang="en">After using it enough, you'll remember it</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Recommended learning path</b>:</span><span lang="en"><b>Recommended learning path</b>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Master the box model first</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">width</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">height</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">padding</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">margin</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">border</code></span><span lang="en"><b>Master the box model first</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">width</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">height</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">padding</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">margin</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">border</code></span></li>
+<li><span lang="id"><b>Then master Flexbox</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">display: flex</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">justify-content</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">align-items</code></span><span lang="en"><b>Then master Flexbox</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">display: flex</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">justify-content</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">align-items</code></span></li>
+<li><span lang="id"><b>Then master positioning</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">position</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">top/left</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">z-index</code></span><span lang="en"><b>Then master positioning</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">position</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">top/left</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">z-index</code></span></li>
+<li><span lang="id"><b>Finally learn animation</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">transition</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">transform</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">animation</code></span><span lang="en"><b>Finally learn animation</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">transition</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">transform</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">animation</code></span></li>
+</ul>
+<p class="reveal"><span lang="id">Look up other properties as needed; you'll naturally remember them after using them enough.</span><span lang="en">Look up other properties as needed; you'll naturally remember them after using them enough.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. JavaScript: The Brain of a Web Page</span><span lang="en">4. JavaScript: The Brain of a Web Page</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Motivation for needing JavaScript</span><span lang="en">4.1 Motivation for needing JavaScript</span></h3>
+<p class="reveal"><span lang="id">A web page with only HTML + CSS is like a <b>mannequin in a store window</b>:</span><span lang="en">A web page with only HTML + CSS is like a <b>mannequin in a store window</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ Looks beautiful (CSS)</span><span lang="en">✅ Looks beautiful (CSS)</span></li>
+<li><span lang="id">✅ Structure is clear (HTML)</span><span lang="en">✅ Structure is clear (HTML)</span></li>
+<li><span lang="id">❌ But if you talk to it, it won't respond</span><span lang="en">❌ But if you talk to it, it won't respond</span></li>
+<li><span lang="id">❌ If you press a button, nothing happens</span><span lang="en">❌ If you press a button, nothing happens</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>JavaScript</b> turns a web page from a "mannequin" into a "real person":</span><span lang="en"><b>JavaScript</b> turns a web page from a "mannequin" into a "real person":</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ Click a button, and a prompt appears</span><span lang="en">✅ Click a button, and a prompt appears</span></li>
+<li><span lang="id">✅ Type text, and it checks the format in real time</span><span lang="en">✅ Type text, and it checks the format in real time</span></li>
+<li><span lang="id">✅ Scroll the page, and more content loads</span><span lang="en">✅ Scroll the page, and more content loads</span></li>
+<li><span lang="id">✅ Submit a form, and it shows "Submitting..."</span><span lang="en">✅ Submit a form, and it shows "Submitting..."</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 What Does JavaScript Code Look Like</span><span lang="en">4.2 What Does JavaScript Code Look Like</span></h3>
+<p class="reveal"><span lang="id"><b>Capability 1: Remembering data</b> (variables)</span><span lang="en"><b>Capability 1: Remembering data</b> (variables)</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>let userName = &#039;John&#039;
+let isLoggedIn = true
+let cartCount = 5</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Capability 2: Doing things repeatedly</b> (functions)</span><span lang="en"><b>Capability 2: Doing things repeatedly</b> (functions)</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>function sayHello(name) {
+  return &#039;Hello, &#039; + name + &#039;!&#039;
+}
+
+console.log(sayHello(&#039;John&#039;))  // Output: Hello, John!</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Capability 3: Responding to events</b> (event listeners)</span><span lang="en"><b>Capability 3: Responding to events</b> (event listeners)</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>button.addEventListener(&#039;click&#039;, function() {
+  alert(&#039;The button was clicked!&#039;)
+})</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Capability 4: Modifying the page</b> (DOM manipulation)</span><span lang="en"><b>Capability 4: Modifying the page</b> (DOM manipulation)</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>document.getElementById(&#039;title&#039;).textContent = &#039;New Title&#039;
+document.getElementById(&#039;box&#039;).style.background = &#039;red&#039;</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 How to Read JavaScript Code</span><span lang="en">4.3 How to Read JavaScript Code</span></h3>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Step 1: Find variables — "What's being remembered?"</b>
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+const API_URL = 'https://api.example.com'  // Constant, won't change
+let count = 0                                // Variable, can change
+const user = { name: 'John', age: 25 }       // Object, multiple data points
+const items = ['Apple', 'Banana', 'Orange']  // Array, list data
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Step 2: Find functions — "What can it do?"</b>
+
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+// Function names usually hint at their purpose
+function handleClick() { }      // Handle clicks
+function fetchData() { }        // Fetch data
+function validateForm() { }     // Validate forms
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Step 3: Find events — "When does it trigger?"</b>
+
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+button.addEventListener('click', handleClick)     // On click
+input.addEventListener('input', validateForm)     // On input
+window.addEventListener('scroll', loadMore)       // On scroll
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Step 4: Find DOM operations — "What got changed?"</b>
+
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+element.textContent = 'New content'     // Change text
+element.classList.add('active')         // Add a style class
+element.style.display = 'none'          // Hide the element
+parent.appendChild(child)               // Add an element
+</code>``</span><span lang="en"><b>Step 1: Find variables — "What's being remembered?"</b>
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+const API_URL = 'https://api.example.com'  // Constant, won't change
+let count = 0                                // Variable, can change
+const user = { name: 'John', age: 25 }       // Object, multiple data points
+const items = ['Apple', 'Banana', 'Orange']  // Array, list data
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Step 2: Find functions — "What can it do?"</b>
+
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+// Function names usually hint at their purpose
+function handleClick() { }      // Handle clicks
+function fetchData() { }        // Fetch data
+function validateForm() { }     // Validate forms
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Step 3: Find events — "When does it trigger?"</b>
+
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+button.addEventListener('click', handleClick)     // On click
+input.addEventListener('input', validateForm)     // On input
+window.addEventListener('scroll', loadMore)       // On scroll
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Step 4: Find DOM operations — "What got changed?"</b>
+
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+element.textContent = 'New content'     // Change text
+element.classList.add('active')         // Add a style class
+element.style.display = 'none'          // Hide the element
+parent.appendChild(child)               // Add an element
+</code>``</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.4 DOM: Method for JavaScripting Manipulate the Page</span><span lang="en">4.4 DOM: Method for JavaScripting Manipulate the Page</span></h3>
+<p class="reveal"><span lang="id">After the browser reads the HTML code, it doesn't treat them as a bunch of strings. Instead, it draws them as a "tree" in memory:</span><span lang="en">After the browser reads the HTML code, it doesn't treat them as a bunch of strings. Instead, it draws them as a "tree" in memory:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Document
+    ↓
+&lt;html&gt;
+    ├─&lt;head&gt;
+    │   └─&lt;title&gt;My Web Page&lt;/title&gt;
+    └─&lt;body&gt;
+        ├─&lt;h1&gt;Welcome&lt;/h1&gt;
+        └─&lt;div class=&quot;card&quot;&gt;
+            ├─&lt;img src=&quot;photo.jpg&quot;&gt;
+            └─&lt;p&gt;A paragraph of text&lt;/p&gt;</pre>
+</div>
+<p class="reveal"><span lang="id">This tree is called the <b>DOM tree</b>. Every HTML tag is a "node" on this tree.</span><span lang="en">This tree is called the <b>DOM tree</b>. Every HTML tag is a "node" on this tree.</span></p>
+<p class="reveal"><span lang="id"><b>How to find nodes?</b></span><span lang="en"><b>How to find nodes?</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// By ID (fastest, unique)
+const element = document.getElementById(&#039;header&#039;)
+
+// By selector (most common)
+const element = document.querySelector(&#039;.card h2&#039;)    // Find the first one
+const elements = document.querySelectorAll(&#039;button&#039;)  // Find all
+
+// By relationship
+element.parentNode           // Find parent node
+element.children             // Find child nodes
+element.nextElementSibling   // Find next sibling</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Performance warning</b>: DOM operations are <b>expensive</b>. Every time you modify the DOM, the browser has to recalculate layout and repaint.</span><span lang="en"><b>Performance warning</b>: DOM operations are <b>expensive</b>. Every time you modify the DOM, the browser has to recalculate layout and repaint.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// ❌ Inefficient: Loop 1000 times, operating on the DOM each time
+for (let i = 0; i &lt; 1000; i++) {
+  document.body.appendChild(createDiv())
+}
+
+// ✅ Efficient: Assemble first, then insert all at once
+const fragment = document.createDocumentFragment()
+for (let i = 0; i &lt; 1000; i++) {
+  fragment.appendChild(createDiv())
+}
+document.body.appendChild(fragment)</pre>
+</div>
+<p class="reveal"><span lang="id">This is precisely why modern frameworks like <b>Vue / React</b> were born: they play with a "virtual DOM" in memory, calculate the minimal set of changes, and only then touch the real DOM.</span><span lang="en">This is precisely why modern frameworks like <b>Vue / React</b> were born: they play with a "virtual DOM" in memory, calculate the minimal set of changes, and only then touch the real DOM.</span></p>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>: Basic DOM manipulation methods:</span><span lang="en">👇 <b>Try it yourself</b>: Basic DOM manipulation methods:</span></p>
+<p class="reveal"><span lang="id"><DomManipulator /></span><span lang="en"><DomManipulator /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.5 ECMAScript: The Evolution of JavaScript Versions</span><span lang="en">4.5 ECMAScript: The Evolution of JavaScript Versions</span></h3>
+<p class="reveal"><span lang="id"><b>ECMAScript</b> is the "standard specification" for JavaScript. Browser vendors implement JavaScript engines according to this standard.</span><span lang="en"><b>ECMAScript</b> is the "standard specification" for JavaScript. Browser vendors implement JavaScript engines according to this standard.</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Why Do Version Numbers Matter?</span><span lang="en">Why Do Version Numbers Matter?</span></h4>
+<p class="reveal"><span lang="id">JavaScript is not static. New features are added and issues are fixed every year. Version numbers tell you "which features this browser supports."</span><span lang="en">JavaScript is not static. New features are added and issues are fixed every year. Version numbers tell you "which features this browser supports."</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Important Versions at a Glance</span><span lang="en">Important Versions at a Glance</span></h4>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Version</th><th>Year</th><th>Key Features</th><th>What Problem It Solved</th></tr>
+<tr><td><b>ES5</b></td><td>2009</td><td>Strict mode, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">forEach</code>/<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">map</code>/<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">filter</code></td><td>Standardized the language, added array methods</td></tr>
+<tr><td><b>ES6/ES2015</b></td><td>2015</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">let/const</code>, arrow functions, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">class</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Promise</code>, modules</td><td>The biggest update, the starting point of modern JS</td></tr>
+<tr><td><b>ES2016</b></td><td>2016</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">includes()</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><i></i></code> exponentiation</td><td>Small update</td></tr>
+<tr><td><b>ES2017</b></td><td>2017</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">async/await</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Object.entries()</code></td><td>Async code is more readable</td></tr>
+<tr><td><b>ES2018</b></td><td>2018</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">...</code> spread operator, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Promise.finally()</code></td><td>Object and async enhancements</td></tr>
+<tr><td><b>ES2020</b></td><td>2020</td><td>Optional chaining <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">?.</code>, nullish coalescing <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">??</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">BigInt</code></td><td>Safe access to nested properties</td></tr>
+<tr><td><b>ES2021</b></td><td>2021</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">replaceAll()</code>, logical assignment <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">??=</code></td><td>String and assignment enhancements</td></tr>
+<tr><td><b>ES2022</b></td><td>2022</td><td>Top-level <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">await</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.at()</code> indexing</td><td>Easier async module loading</td></tr>
+</table></div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">The Most Commonly Used ES6+ Syntax</span><span lang="en">The Most Commonly Used ES6+ Syntax</span></h4>
+<p class="reveal"><span lang="id"><b>1. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">let</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">const</code> instead of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">var</code></b></span><span lang="en"><b>1. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">let</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">const</code> instead of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">var</code></b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// ❌ Old way: var has hoisting, prone to bugs
+var name = &#039;John&#039;
+if (true) {
+  var name = &#039;Jane&#039;  // Overwrites the outer name
+}
+console.log(name)  // &#039;Jane&#039;, not the expected result
+
+// ✅ New way: let has block scope
+let name = &#039;John&#039;
+if (true) {
+  let name = &#039;Jane&#039;  // Only valid inside this if block
+}
+console.log(name)  // &#039;John&#039;, as expected
+
+// ✅ const: Cannot be reassigned after declaration
+const PI = 3.14159
+PI = 3  // Error! Prevents accidental modification</pre>
+</div>
+<p class="reveal"><span lang="id"><b>2. Arrow Functions: More Concise Function Syntax</b></span><span lang="en"><b>2. Arrow Functions: More Concise Function Syntax</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// ❌ Old way
+const add = function(a, b) {
+  return a + b
+}
+
+// ✅ New way
+const add = (a, b) =&gt; a + b
+
+// Arrow functions bind this to the enclosing scope
+const obj = {
+  name: &#039;John&#039;,
+  // ❌ Regular function: this points to the caller
+  oldWay: function() {
+    setTimeout(function() {
+      console.log(this.name)  // undefined
+    }, 100)
+  },
+  // ✅ Arrow function: this inherits from obj
+  newWay: function() {
+    setTimeout(() =&gt; {
+      console.log(this.name)  // &#039;John&#039;
+    }, 100)
+  }
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>3. Destructuring Assignment: Extract Data from Objects/Arrays</b></span><span lang="en"><b>3. Destructuring Assignment: Extract Data from Objects/Arrays</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Object destructuring
+const user = { name: &#039;John&#039;, age: 25, city: &#039;Beijing&#039; }
+const { name, age } = user  // Direct extraction
+console.log(name)  // &#039;John&#039;
+
+// Array destructuring
+const colors = [&#039;red&#039;, &#039;green&#039;, &#039;blue&#039;]
+const [first, second] = colors
+console.log(first)  // &#039;red&#039;
+
+// Function parameter destructuring
+function greet({ name, age }) {
+  console.log(`${name} is ${age} years old`)
+}
+greet(user)  // &#039;John is 25 years old&#039;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>4. Template Literals: String Concatenation Without Pain</b></span><span lang="en"><b>4. Template Literals: String Concatenation Without Pain</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// ❌ Old way: A mess of quotes and plus signs
+const msg = &#039;User &#039; + name + &#039; is &#039; + age + &#039; years old&#039;
+
+// ✅ New way: Backticks + ${}
+const msg = `User ${name} is ${age} years old`
+
+// Also supports multi-line
+const html = `
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;${name}&lt;/h2&gt;
+    &lt;p&gt;Age: ${age}&lt;/p&gt;
+  &lt;/div&gt;
+`</pre>
+</div>
+<p class="reveal"><span lang="id"><b>5. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">async/await</code>: Write Async Code Like Synchronous Code</b></span><span lang="en"><b>5. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">async/await</code>: Write Async Code Like Synchronous Code</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// ❌ Callback hell
+fetchUser(function(user) {
+  fetchOrders(user.id, function(orders) {
+    fetchDetails(orders[0].id, function(details) {
+      console.log(details)
+    })
+  })
+})
+
+// ✅ async/await
+async function getUserData() {
+  const user = await fetchUser()
+  const orders = await fetchOrders(user.id)
+  const details = await fetchDetails(orders[0].id)
+  console.log(details)
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>6. Optional Chaining <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">?.</code> and Nullish Coalescing <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">??</code></b></span><span lang="en"><b>6. Optional Chaining <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">?.</code> and Nullish Coalescing <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">??</code></b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>const user = {
+  name: &#039;John&#039;,
+  address: {
+    city: &#039;Beijing&#039;
+  }
+}
+
+// ❌ Old way: Layer-by-layer checks
+const street = user &amp;&amp; user.address &amp;&amp; user.address.street
+const streetName = street !== undefined ? street : &#039;Unknown&#039;
+
+// ✅ New way: Optional chaining + nullish coalescing
+const streetName = user?.address?.street ?? &#039;Unknown&#039;</pre>
+</div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">1. <b>Check compatibility tables</b>: [caniuse.com](https://caniuse.com/) — enter the feature name
+2. <b>Use build tools</b>: Babel can transpile new syntax into code older browsers understand
+3. <b>Know your target users</b>: If you only support modern browsers, most ES6+ features work directly</span><span lang="en">1. <b>Check compatibility tables</b>: [caniuse.com](https://caniuse.com/) — enter the feature name
+2. <b>Use build tools</b>: Babel can transpile new syntax into code older browsers understand
+3. <b>Know your target users</b>: If you only support modern browsers, most ES6+ features work directly</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.6 TypeScript: Adding Type Constraints to JavaScript</span><span lang="en">4.6 TypeScript: Adding Type Constraints to JavaScript</span></h3>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Why Do We Need TypeScript?</span><span lang="en">Why Do We Need TypeScript?</span></h4>
+<p class="reveal"><span lang="id"><b>Scenario 1: Uncertain function parameter types</b></span><span lang="en"><b>Scenario 1: Uncertain function parameter types</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// JavaScript
+function calculateTotal(price, quantity) {
+  return price * quantity
+}
+
+calculateTotal(100, 5)      // 500 ✅
+calculateTotal(&#039;100&#039;, 5)    // &#039;1005&#039; ❌ String concatenation, not multiplication
+calculateTotal(100, &#039;5&#039;)    // 500 ✅ But this is just luck</pre>
+</div>
+<p class="reveal"><span lang="id">JavaScript won't tell you the parameter type is wrong until you discover the problem at runtime.</span><span lang="en">JavaScript won't tell you the parameter type is wrong until you discover the problem at runtime.</span></p>
+<p class="reveal"><span lang="id"><b>Scenario 2: Object property typos</b></span><span lang="en"><b>Scenario 2: Object property typos</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// JavaScript
+const user = {
+  name: &#039;John&#039;,
+  age: 25
+}
+
+console.log(user.nmae)  // undefined, typo but no error</pre>
+</div>
+<p class="reveal"><span lang="id"><b>TypeScript solves these problems</b>:</span><span lang="en"><b>TypeScript solves these problems</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>typescript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// TypeScript
+interface User {
+  name: string
+  age: number
+}
+
+function greet(user: User) {
+  console.log(`Hello, ${user.name}`)
+  console.log(user.nmae)  // ❌ Compile-time error: Property &#039;nmae&#039; does not exist
+}
+
+greet({ name: &#039;John&#039;, age: 25 })        // ✅
+greet({ name: &#039;John&#039;, age: &#039;25&#039; })      // ❌ Compile-time error: age should be number
+greet({ name: &#039;John&#039; })                 // ❌ Compile-time error: missing age</pre>
+</div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Core Concepts of TypeScript</span><span lang="en">Core Concepts of TypeScript</span></h4>
+<p class="reveal"><span lang="id"><b>1. Basic Types</b></span><span lang="en"><b>1. Basic Types</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>typescript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>let name: string = &#039;John&#039;
+let age: number = 25
+let isActive: boolean = true
+let anyValue: any = &#039;Can be any type&#039;  // Not recommended, defeats the purpose of type checking</pre>
+</div>
+<p class="reveal"><span lang="id"><b>2. Interface: Defining Object Structure</b></span><span lang="en"><b>2. Interface: Defining Object Structure</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>typescript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>interface Product {
+  id: number
+  name: string
+  price: number
+  discount?: number  // Optional property
+  readonly createdAt: Date  // Read-only property
+}
+
+const product: Product = {
+  id: 1,
+  name: &#039;iPhone 15&#039;,
+  price: 6999,
+  createdAt: new Date()
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>3. Type Alias</b></span><span lang="en"><b>3. Type Alias</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>typescript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>type ID = string | number  // Union type
+type Status = &#039;pending&#039; | &#039;approved&#039; | &#039;rejected&#039;  // Literal type
+
+function updateStatus(id: ID, status: Status) {
+  // ...
+}
+
+updateStatus(1, &#039;approved&#039;)      // ✅
+updateStatus(&#039;abc&#039;, &#039;pending&#039;)   // ✅
+updateStatus(1, &#039;processing&#039;)    // ❌ &#039;processing&#039; is not a valid Status</pre>
+</div>
+<p class="reveal"><span lang="id"><b>4. Generics: Reusable Types</b></span><span lang="en"><b>4. Generics: Reusable Types</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>typescript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Without generics: Write once per type
+function getFirstNumber(arr: number[]): number {
+  return arr[0]
+}
+function getFirstString(arr: string[]): string {
+  return arr[0]
+}
+
+// With generics: One function handles it all
+function getFirst&lt;T&gt;(arr: T[]): T {
+  return arr[0]
+}
+
+getFirst([1, 2, 3])        // Returns number
+getFirst([&#039;a&#039;, &#039;b&#039;, &#039;c&#039;])  // Returns string</pre>
+</div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">TypeScript vs JavaScript Comparison</span><span lang="en">TypeScript vs JavaScript Comparison</span></h4>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Feature</th><th>JavaScript</th><th>TypeScript</th></tr>
+<tr><td>Type checking</td><td>Errors found at runtime</td><td>Errors found at compile time</td></tr>
+<tr><td>IDE support</td><td>Basic hints</td><td>Intelligent autocomplete, refactoring, go-to-definition</td></tr>
+<tr><td>Learning curve</td><td>Easy</td><td>Need to learn the type system</td></tr>
+<tr><td>Suitable scenarios</td><td>Small projects, prototypes</td><td>Large projects, team collaboration</td></tr>
+<tr><td>How it runs</td><td>Browsers run it directly</td><td>Needs to be compiled to JavaScript</td></tr>
+</table></div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">TypeScript in Real Development</span><span lang="en">TypeScript in Real Development</span></h4>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>typescript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// API response type definition
+interface ApiResponse&lt;T&gt; {
+  code: number
+  message: string
+  data: T
+}
+
+interface User {
+  id: number
+  name: string
+  email: string
+}
+
+// Typed API request
+async function fetchUser(id: number): Promise&lt;ApiResponse&lt;User&gt;&gt; {
+  const response = await fetch(`/api/users/${id}`)
+  return response.json()
+}
+
+// IDE will hint all properties when using
+fetchUser(1).then(res =&gt; {
+  console.log(res.data.name)   // ✅ IDE autocomplete
+  console.log(res.data.nmae)   // ❌ Compile-time error
+})</pre>
+</div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">1. <b>Learn JavaScript well first</b>: TypeScript is a superset of JS; learning TS without knowing JS will be painful
+2. <b>Don't force TS on small projects</b>: Type definitions add code volume, making simple projects more complex
+3. <b>Transition from JSDoc</b>: Write <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/<i></i> @type {User} */</code> comments in JS files to experience type hints
+4. <b>Using <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">any</code> is a compromise, not a solution</b>: When you hit a type issue, try to solve it first rather than reaching for <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">any</code></span><span lang="en">1. <b>Learn JavaScript well first</b>: TypeScript is a superset of JS; learning TS without knowing JS will be painful
+2. <b>Don't force TS on small projects</b>: Type definitions add code volume, making simple projects more complex
+3. <b>Transition from JSDoc</b>: Write <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/<i></i> @type {User} */</code> comments in JS files to experience type hints
+4. <b>Using <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">any</code> is a compromise, not a solution</b>: When you hit a type issue, try to solve it first rather than reaching for <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">any</code></span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.7 Modern JavaScript Development Toolchain</span><span lang="en">4.7 Modern JavaScript Development Toolchain</span></h3>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Browsers only understand HTML/CSS/JS. But in modern development, we use:
+
+- <b>TypeScript</b>: Browsers don't understand it, needs to be compiled to JS
+- <b>SCSS/Less</b>: Browsers don't understand it, needs to be compiled to CSS
+- <b>Modules</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">import/export</code> needs to be bundled into a single file
+- <b>New syntax</b>: ES6+ needs to be transpiled into code older browsers support
+
+The toolchain transforms "development-time code" into "browser-runnable code."</span><span lang="en">Browsers only understand HTML/CSS/JS. But in modern development, we use:
+
+- <b>TypeScript</b>: Browsers don't understand it, needs to be compiled to JS
+- <b>SCSS/Less</b>: Browsers don't understand it, needs to be compiled to CSS
+- <b>Modules</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">import/export</code> needs to be bundled into a single file
+- <b>New syntax</b>: ES6+ needs to be transpiled into code older browsers support
+
+The toolchain transforms "development-time code" into "browser-runnable code."</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Core Tools</b>:</span><span lang="en"><b>Core Tools</b>:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Tool</th><th>Purpose</th><th>Analogy</th></tr>
+<tr><td><b>Node.js</b></td><td>JavaScript runtime</td><td>Lets JS run outside the browser</td></tr>
+<tr><td><b>npm/yarn/pnpm</b></td><td>Package manager</td><td>Downloads code libraries written by others</td></tr>
+<tr><td><b>Vite/Webpack</b></td><td>Build tool</td><td>Bundles source code into browser-runnable code</td></tr>
+<tr><td><b>Babel</b></td><td>Compiler</td><td>Transpiles new syntax to old syntax</td></tr>
+<tr><td><b>ESLint</b></td><td>Code linter</td><td>Finds code issues and style inconsistencies</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>A Typical Development Workflow</b>:</span><span lang="en"><b>A Typical Development Workflow</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># 1. Initialize the project
+npm create vite@latest my-app -- --template vue-ts
+
+# 2. Install dependencies
+cd my-app
+npm install
+
+# 3. Development mode (hot reload)
+npm run dev
+
+# 4. Build for production
+npm run build</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. How the Three Work Together</span><span lang="en">5. How the Three Work Together</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Division of Labor</span><span lang="en">5.1 Division of Labor</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Role</th><th>Responsible For</th><th>Doesn't Do</th><th>Typical Example</th></tr>
+<tr><td><b>HTML</b></td><td>Defines structure and semantics</td><td>Doesn't handle style/interaction</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><section><h1>Title</h1></section></code></td></tr>
+<tr><td><b>CSS</b></td><td>Controls appearance and layout</td><td>Doesn't handle logic/data</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.card { background: white; }</code></td></tr>
+<tr><td><b>JavaScript</b></td><td>Handles interaction and logic</td><td>Doesn't define structure</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">button.onclick = () => alert()</code></td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 A Complete Collaboration Example</span><span lang="en">5.2 A Complete Collaboration Example</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>html</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    /* CSS: Make the card look good */
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 16px;
+      max-width: 300px;
+    }
+    .card button {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- HTML: Define the card structure --&gt;
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2 id=&quot;title&quot;&gt;Click the Button&lt;/h2&gt;
+    &lt;button id=&quot;btn&quot;&gt;Click Me&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    // JavaScript: Make the button clickable
+    const btn = document.getElementById(&#039;btn&#039;)
+    const title = document.getElementById(&#039;title&#039;)
+
+    btn.addEventListener(&#039;click&#039;, function() {
+      title.textContent = &#039;Clicked!&#039;
+      alert(&#039;Title has been changed&#039;)
+    })
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. What to Do Criteria for You Encounter Unfamiliar Code</span><span lang="en">6. What to Do Criteria for You Encounter Unfamiliar Code</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Ask AI</span><span lang="en">6.1 Ask AI</span></h3>
+<p class="reveal"><span lang="id">> "What does the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><aside></code> tag in HTML mean? When should I use it?"</span><span lang="en">> "What does the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><aside></code> tag in HTML mean? When should I use it?"</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> "What effect does <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">position: sticky</code> have in CSS?"</span><span lang="en">> "What effect does <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">position: sticky</code> have in CSS?"</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 Check MDN</span><span lang="en">6.2 Check MDN</span></h3>
+<p class="reveal"><span lang="id">[MDN Web Docs](https://developer.mozilla.org/) is the most authoritative web technology documentation. When you encounter an unfamiliar tag, property, or method, just search for it.</span><span lang="en">[MDN Web Docs](https://developer.mozilla.org/) is the most authoritative web technology documentation. When you encounter an unfamiliar tag, property, or method, just search for it.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.3 Browser Developer Tools</span><span lang="en">6.3 Browser Developer Tools</span></h3>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Right-click a page element → "Inspect"</span><span lang="en">Right-click a page element → "Inspect"</span></li>
+<li><span lang="id">See the HTML structure in the <b>Elements</b> panel</span><span lang="en">See the HTML structure in the <b>Elements</b> panel</span></li>
+<li><span lang="id">See CSS styles in the <b>Styles</b> panel</span><span lang="en">See CSS styles in the <b>Styles</b> panel</span></li>
+<li><span lang="id">Execute JS code in the <b>Console</b> panel</span><span lang="en">Execute JS code in the <b>Console</b> panel</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.4 Common CSS Properties Quick Reference</span><span lang="en">6.4 Common CSS Properties Quick Reference</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>If You See This</th><th>What It Does</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">display: flex</code></td><td>Enables flexbox layout</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">position: absolute</code></td><td>Absolute positioning</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">z-index: 100</code></td><td>Stack order, higher number = on top</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">overflow: hidden</code></td><td>Hides content that overflows</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">cursor: pointer</code></td><td>Changes mouse cursor to a hand</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">transition: all 0.3s</code></td><td>Animation transition effect</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">box-sizing: border-box</code></td><td>Makes width include padding and border</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Glossary</span><span lang="en">7. Glossary</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Term</th><th>Full Name</th><th>Plain English Explanation</th></tr>
+<tr><td><b>HTML</b></td><td>HyperText Markup Language</td><td>A markup language that uses tags to describe web page structure</td></tr>
+<tr><td><b>CSS</b></td><td>Cascading Style Sheets</td><td>Controls colors, layout, and animations</td></tr>
+<tr><td><b>JavaScript</b></td><td>JavaScript</td><td>The programming language of the web, responsible for interaction and logic</td></tr>
+<tr><td><b>DOM</b></td><td>Document Object Model</td><td>Represents the page as an object tree</td></tr>
+<tr><td><b>Flexbox</b></td><td>Flexible Box Layout</td><td>A one-dimensional layout scheme, easy alignment and distribution</td></tr>
+<tr><td><b>Box Model</b></td><td>CSS Box Model</td><td>The layered boxes from content to outer margin for each element</td></tr>
+<tr><td><b>SCSS</b></td><td>Sassy CSS</td><td>A CSS preprocessor supporting variables, nesting, and mixins</td></tr>
+<tr><td><b>TypeScript</b></td><td>TypeScript</td><td>A superset of JavaScript that adds a type system</td></tr>
+<tr><td><b>ES6</b></td><td>ECMAScript 2015</td><td>A major version of JavaScript that added many new syntax features</td></tr>
+<tr><td><b>Semantic</b></td><td>Semantic HTML</td><td>Using meaningful tags (like header) instead of div</td></tr>
+<tr><td><b>Responsive</b></td><td>Responsive Design</td><td>Design that automatically adapts to different screen sizes</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary</span><span lang="en">Summary</span></h2>
+<p class="reveal"><span lang="id">Now you know: <b>HTML defines the skeleton, CSS handles the looks, and JavaScript gives it a soul</b>.</span><span lang="en">Now you know: <b>HTML defines the skeleton, CSS handles the looks, and JavaScript gives it a soul</b>.</span></p>
+<p class="reveal"><span lang="id">These three are the cornerstones of web development. Understanding them means you can:</span><span lang="en">These three are the cornerstones of web development. Understanding them means you can:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Read the source code of any web page (Right-click → "View Page Source")</span><span lang="en">Read the source code of any web page (Right-click → "View Page Source")</span></li>
+<li><span lang="id">Modify other people's web pages (Browser DevTools → Elements)</span><span lang="en">Modify other people's web pages (Browser DevTools → Elements)</span></li>
+<li><span lang="id">Start learning frontend frameworks (Vue/React), which are all built on top of these three</span><span lang="en">Start learning frontend frameworks (Vue/React), which are all built on top of these three</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Next Steps</b>:</span><span lang="en"><b>Next Steps</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">If you want to quickly build web pages, learn the <b>Vue</b> or <b>React</b> framework</span><span lang="en">If you want to quickly build web pages, learn the <b>Vue</b> or <b>React</b> framework</span></li>
+<li><span lang="id">If you want to deeply understand CSS, learn <b>Flexbox</b> and <b>Grid</b> layouts</span><span lang="en">If you want to deeply understand CSS, learn <b>Flexbox</b> and <b>Grid</b> layouts</span></li>
+<li><span lang="id">If you want to improve code quality, learn <b>TypeScript</b></span><span lang="en">If you want to improve code quality, learn <b>TypeScript</b></span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../3-browser-and-frontend/graphics-animation/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">3-browser-and-frontend/graphics-animation</span><span lang="en">3-browser-and-frontend/graphics-animation</span></b></a>
+      <a class="next" href="../../3-browser-and-frontend/javascript-deep-dive/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">3-browser-and-frontend/javascript-deep-dive</span><span lang="en">3-browser-and-frontend/javascript-deep-dive</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

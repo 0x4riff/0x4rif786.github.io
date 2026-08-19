@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Remote Development Claude Code dari Smartphone — VibeKoding 📲</title>
+<meta name="description" content="Modul master Level 3 VibeKoding: Remote Development Claude Code dari Smartphone. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-3/core-skills/mobile-development/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../stage-3/"><span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></a> / <span lang="id">Remote Development Claude Code dari Smartphone</span><span lang="en">Remote Development Claude Code dari Smartphone</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📲</div>
+      <div>
+        <h1><span lang="id">Remote Development Claude Code dari Smartphone</span><span lang="en">Remote Development Claude Code dari Smartphone</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul master Level 3 VibeKoding: Remote Development Claude Code dari Smartphone.</span><span lang="en">Modul master Level 3 VibeKoding: Remote Development Claude Code dari Smartphone.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Introduction</span><span lang="en">Introduction</span></h2>
+<p class="reveal"><span lang="id">Imagine these scenarios: you suddenly think of a brilliant bug-fix idea on the subway during your commute; you receive an urgent production incident alert while waiting in line at a cafe; you want to check how your AI-built project is progressing while accompanying your girlfriend shopping.</span><span lang="en">Imagine these scenarios: you suddenly think of a brilliant bug-fix idea on the subway during your commute; you receive an urgent production incident alert while waiting in line at a cafe; you want to check how your AI-built project is progressing while accompanying your girlfriend shopping.</span></p>
+<p class="reveal"><span lang="id">In traditional development workflows, these scenarios usually mean you need to find a place to open your laptop, or helplessly postpone the work. But in the AI-assisted coding era, the rules have changed. Claude Code makes it possible to carry your development environment in your pocket and stay productive anytime, anywhere.</span><span lang="en">In traditional development workflows, these scenarios usually mean you need to find a place to open your laptop, or helplessly postpone the work. But in the AI-assisted coding era, the rules have changed. Claude Code makes it possible to carry your development environment in your pocket and stay productive anytime, anywhere.</span></p>
+<p class="reveal"><span lang="id">In the summer of 2025, as Claude Code adoption grew, developers started exploring different "coding on phone" approaches. From simple local Termux usage, to complex SSH + Tailscale remote connections, to dedicated Happy Coder apps, a full mobile development ecosystem gradually took shape.</span><span lang="en">In the summer of 2025, as Claude Code adoption grew, developers started exploring different "coding on phone" approaches. From simple local Termux usage, to complex SSH + Tailscale remote connections, to dedicated Happy Coder apps, a full mobile development ecosystem gradually took shape.</span></p>
+<p class="reveal"><span lang="id">The core problem this chapter solves is: how to make Claude Code follow your phone and become a true "pocket development assistant."</span><span lang="en">The core problem this chapter solves is: how to make Claude Code follow your phone and become a true "pocket development assistant."</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">Based on real-world community feedback, the experience of each approach compares as follows:
+
+<b>Happy Coder (Approach 2)</b>
+- Connection stability issues: disconnections happen often, and context is lost after disconnects
+- Limited functionality: cannot use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/</code> commands
+- Security concerns: depends on official relay servers, and some users are concerned about data security
+
+<b>HAPI (Approach 3)</b>
+- Supports self-hosted servers: can be deployed on your own VPS
+- Better experience when paired with Tailscale: run <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">hapi server</code> on your computer and connect from your phone through the Tailscale IP
+- Relatively stable connection, suitable for long-term use
+
+<b>Claude Remote Control (Official Approach)</b>
+- Official solution, natively integrated with Claude Code
+- Supports full access to local environments (MCP, tools, project configuration)
+- Requires Max subscription (Pro support is coming soon)
+- Relies on Anthropic cloud connectivity
+
+<b>Recommendation</b>: if you require high connection stability, or are concerned about third-party relay security, choose <b>HAPI + Tailscale</b> or the <b>official Remote Control</b> approach.</span><span lang="en">Based on real-world community feedback, the experience of each approach compares as follows:
+
+<b>Happy Coder (Approach 2)</b>
+- Connection stability issues: disconnections happen often, and context is lost after disconnects
+- Limited functionality: cannot use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/</code> commands
+- Security concerns: depends on official relay servers, and some users are concerned about data security
+
+<b>HAPI (Approach 3)</b>
+- Supports self-hosted servers: can be deployed on your own VPS
+- Better experience when paired with Tailscale: run <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">hapi server</code> on your computer and connect from your phone through the Tailscale IP
+- Relatively stable connection, suitable for long-term use
+
+<b>Claude Remote Control (Official Approach)</b>
+- Official solution, natively integrated with Claude Code
+- Supports full access to local environments (MCP, tools, project configuration)
+- Requires Max subscription (Pro support is coming soon)
+- Relies on Anthropic cloud connectivity
+
+<b>Recommendation</b>: if you require high connection stability, or are concerned about third-party relay security, choose <b>HAPI + Tailscale</b> or the <b>official Remote Control</b> approach.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Core Principle: Mobile Development Architecture Patterns</span><span lang="en">Core Principle: Mobile Development Architecture Patterns</span></h2>
+<p class="reveal"><span lang="id">Before introducing specific approaches, first understand the essence of the problem.</span><span lang="en">Before introducing specific approaches, first understand the essence of the problem.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Why is mobile development a problem?</span><span lang="en">Why is mobile development a problem?</span></h3>
+<p class="reveal"><span lang="id">Traditional IDEs (such as VS Code and IntelliJ) require a full operating system environment, strong CPU, large memory, and storage space. Although phones are increasingly powerful, they still have natural limits for development experience:</span><span lang="en">Traditional IDEs (such as VS Code and IntelliJ) require a full operating system environment, strong CPU, large memory, and storage space. Although phones are increasingly powerful, they still have natural limits for development experience:</span></p>
+<p class="reveal"><span lang="id"><b>Input constraints</b>: virtual keyboards are inefficient for coding, and complex syntax is easy to mistype</span><span lang="en"><b>Input constraints</b>: virtual keyboards are inefficient for coding, and complex syntax is easy to mistype</span></p>
+<p class="reveal"><span lang="id"><b>Screen constraints</b>: small screens make it hard to view code, terminal, and browser at the same time</span><span lang="en"><b>Screen constraints</b>: small screens make it hard to view code, terminal, and browser at the same time</span></p>
+<p class="reveal"><span lang="id"><b>Environment constraints</b>: phones cannot run full development toolchains (compilers, databases, debuggers)</span><span lang="en"><b>Environment constraints</b>: phones cannot run full development toolchains (compilers, databases, debuggers)</span></p>
+<p class="reveal"><span lang="id"><b>Connection constraints</b>: mobile networks are unstable, and SSH sessions disconnect easily</span><span lang="en"><b>Connection constraints</b>: mobile networks are unstable, and SSH sessions disconnect easily</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Core idea: thin-client architecture</span><span lang="en">Core idea: thin-client architecture</span></h3>
+<p class="reveal"><span lang="id">The core idea behind all mobile development approaches is the same: the phone is only the "control console"; real development work is done elsewhere.</span><span lang="en">The core idea behind all mobile development approaches is the same: the phone is only the "control console"; real development work is done elsewhere.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│    ┌─────────────┐              ┌─────────────┐             │
+│    │   Phone     │              │ Host/Cloud  │             │
+│    │ (Controller)│   ────────►  │ (Executor)  │             │
+│    │             │   Commands   │             │             │
+│    │ • Send cmds │              │ • Run CLI   │             │
+│    │ • View out  │              │ • Exec code │             │
+│    │ • Review    │              │ • Access fs │             │
+│    └─────────────┘              └─────────────┘             │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘</pre>
+</div>
+<p class="reveal"><span lang="id">This architecture allows the phone to focus only on human-computer interaction, while heavy computation is delegated to your host or cloud.</span><span lang="en">This architecture allows the phone to focus only on human-computer interaction, while heavy computation is delegated to your host or cloud.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Approach 1: Official iOS App</span><span lang="en">Approach 1: Official iOS App</span></h2>
+<p class="reveal"><span lang="id">In October 2025, Anthropic officially launched Claude Code mobile support in the iOS app. This is the simplest mobile development option.</span><span lang="en">In October 2025, Anthropic officially launched Claude Code mobile support in the iOS app. This is the simplest mobile development option.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Regional limitations</span><span lang="en">Regional limitations</span></h3>
+<p class="reveal"><span lang="id">Important note: the Claude app <b>cannot be used directly</b> in mainland China.</span><span lang="en">Important note: the Claude app <b>cannot be used directly</b> in mainland China.</span></p>
+<p class="reveal"><span lang="id">If you are in mainland China, it is recommended to use <b>Happy Coder</b> directly (Approach 2), which can work normally through configured domestic API relay services.</span><span lang="en">If you are in mainland China, it is recommended to use <b>Happy Coder</b> directly (Approach 2), which can work normally through configured domestic API relay services.</span></p>
+<p class="reveal"><span lang="id">If you have an overseas Apple ID, you can switch regions and download the Claude app.</span><span lang="en">If you have an overseas Apple ID, you can switch regions and download the Claude app.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">How it works</span><span lang="en">How it works</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>┌─────────────┐                    ┌─────────────────┐
+│  iOS App    │ ──────────────────► │ Anthropic Cloud │
+│  (Phone)    │   HTTPS + OAuth     │  Claude Code    │
+└─────────────┘                    └────────┬────────┘
+                                           │
+                                           ▼
+                                   ┌───────────────┐
+                                   │   GitHub API  │
+                                   └───────────────┘</pre>
+</div>
+<p class="reveal"><span lang="id">Your phone app only sends commands. All code execution runs in Anthropic's cloud sandbox, and results are synced through GitHub.</span><span lang="en">Your phone app only sends commands. All code execution runs in Anthropic's cloud sandbox, and results are synced through GitHub.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Basic usage</span><span lang="en">Basic usage</span></h3>
+<p class="reveal"><span lang="id"><b>Prerequisites:</b></span><span lang="en"><b>Prerequisites:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">iPhone with iOS 15 or later</span><span lang="en">iPhone with iOS 15 or later</span></li>
+<li><span lang="id">Claude Pro/Team/Enterprise subscription (free plan is not supported)</span><span lang="en">Claude Pro/Team/Enterprise subscription (free plan is not supported)</span></li>
+<li><span lang="id">GitHub account</span><span lang="en">GitHub account</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Steps:</b></span><span lang="en"><b>Steps:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Download Claude app from App Store</span><span lang="en">Download Claude app from App Store</span></li>
+<li><span lang="id">Log in to your Anthropic account</span><span lang="en">Log in to your Anthropic account</span></li>
+<li><span lang="id">Find the "Code" tab in the app</span><span lang="en">Find the "Code" tab in the app</span></li>
+<li><span lang="id">Connect your GitHub repository through OAuth</span><span lang="en">Connect your GitHub repository through OAuth</span></li>
+<li><span lang="id">Start creating tasks</span><span lang="en">Start creating tasks</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Pros and cons</span><span lang="en">Pros and cons</span></h3>
+<p class="reveal"><span lang="id">Pros are zero setup barrier, smooth experience, and push notifications. Cons are iOS-only support, primary GitHub workflow, relatively limited capability (cannot access local file systems), and no direct availability in mainland China.</span><span lang="en">Pros are zero setup barrier, smooth experience, and push notifications. Cons are iOS-only support, primary GitHub workflow, relatively limited capability (cannot access local file systems), and no direct availability in mainland China.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Approach 2: Happy Coder</span><span lang="en">Approach 2: Happy Coder</span></h2>
+<p class="reveal"><span lang="id">Happy Coder is an open-source mobile and web client designed for Claude Code and Codex, with end-to-end encryption and remote control of your AI coding assistant from anywhere.</span><span lang="en">Happy Coder is an open-source mobile and web client designed for Claude Code and Codex, with end-to-end encryption and remote control of your AI coding assistant from anywhere.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">How it works</span><span lang="en">How it works</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>┌─────────────┐              ┌─────────────┐              ┌─────────────┐
+│  Happy App  │   ────────►  │ Happy Server │   ◄────────  │happy-coder  │
+│ (Phone/Web) │ Encrypted WS │   (Relay)    │  WebSocket   │ (Desktop)   │
+└─────────────┘              └─────────────┘              └──────┬──────┘
+                                                               │
+                                                               ▼
+                                                        ┌─────────────┐
+                                                        │Claude Code  │
+                                                        │    CLI      │
+                                                        └─────────────┘</pre>
+</div>
+<p class="reveal"><span lang="id">On your computer, run <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">happy</code> instead of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">claude</code> to launch your AI coding assistant. When you need phone control, the session automatically switches to remote mode. Press any key on your computer to switch back to local control.</span><span lang="en">On your computer, run <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">happy</code> instead of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">claude</code> to launch your AI coding assistant. When you need phone control, the session automatically switches to remote mode. Press any key on your computer to switch back to local control.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Installation and usage</span><span lang="en">Installation and usage</span></h3>
+<p class="reveal"><span lang="id"><b>Step 1: download app</b></span><span lang="en"><b>Step 1: download app</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Platform</th><th>Link</th></tr>
+<tr><td>iOS</td><td>[App Store](https://apps.apple.com/us/app/happy-claude-code-client/id6748571505)</td></tr>
+<tr><td>Android</td><td>[Google Play](https://play.google.com/store/apps/details?id=com.ex3ndr.happy)</td></tr>
+<tr><td>Web</td><td>[app.happy.engineering](https://app.happy.engineering)</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Step 2: install CLI on computer</b></span><span lang="en"><b>Step 2: install CLI on computer</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>npm install -g happy-coder</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 3: launch and pair</b></span><span lang="en"><b>Step 3: launch and pair</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># run in your project directory
+cd ~/my-project
+happy
+
+# a pairing QR code will be shown</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 4: scan and pair on phone</b></span><span lang="en"><b>Step 4: scan and pair on phone</b></span></p>
+<p class="reveal"><span lang="id">Open Happy app and scan the QR code shown on your computer. After pairing succeeds, you can control Claude Code from your phone.</span><span lang="en">Open Happy app and scan the QR code shown on your computer. After pairing succeeds, you can control Claude Code from your phone.</span></p>
+<p class="reveal"><span lang="id"><b>Step 5: use</b></span><span lang="en"><b>Step 5: use</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># launch Claude Code
+happy
+
+# or launch Codex
+happy codex</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Resource links</span><span lang="en">Resource links</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[GitHub Project](https://github.com/slopus/happy) - source code</span><span lang="en">[GitHub Project](https://github.com/slopus/happy) - source code</span></li>
+<li><span lang="id">[Documentation](https://happy.engineering/docs) - usage docs</span><span lang="en">[Documentation](https://happy.engineering/docs) - usage docs</span></li>
+<li><span lang="id">[Discord Community](https://discord.gg/fX9WBAhyfD) - community discussion</span><span lang="en">[Discord Community](https://discord.gg/fX9WBAhyfD) - community discussion</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Pros and cons</span><span lang="en">Pros and cons</span></h3>
+<p class="reveal"><span lang="id">Pros are simple setup, cross-platform support, end-to-end encryption, and open-source auditability. Cons are dependence on third-party relay infrastructure and the need to verify mobile app availability in your own environment.</span><span lang="en">Pros are simple setup, cross-platform support, end-to-end encryption, and open-source auditability. Cons are dependence on third-party relay infrastructure and the need to verify mobile app availability in your own environment.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Approach 3: HAPI</span><span lang="en">Approach 3: HAPI</span></h2>
+<p class="reveal"><span lang="id">HAPI is an alternative to Happy Coder, with a local-first design and support for seamless device switching across multiple AI models.</span><span lang="en">HAPI is an alternative to Happy Coder, with a local-first design and support for seamless device switching across multiple AI models.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">How it works</span><span lang="en">How it works</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>┌─────────────┐              ┌─────────────┐              ┌─────────────┐
+│  HAPI App   │   ────────►  │ HAPI Server │   ◄────────  │    hapi     │
+│ (Phone/PWA/ │  WireGuard   │ (Self-hosted│  WireGuard   │ (Desktop)   │
+│ Telegram)   │   + TLS      │   relay)    │   + TLS      │             │
+└─────────────┘              └─────────────┘              └──────┬──────┘
+                                                               │
+                                                               ▼
+                                                        ┌─────────────┐
+                                                        │Claude Code  │
+                                                        │ / Codex /   │
+                                                        │ Gemini etc. │
+                                                        └─────────────┘</pre>
+</div>
+<p class="reveal"><span lang="id">HAPI uses WireGuard plus TLS for end-to-end encryption. All communication goes through encrypted relay servers. You can self-host relay servers to fully control your data flow.</span><span lang="en">HAPI uses WireGuard plus TLS for end-to-end encryption. All communication goes through encrypted relay servers. You can self-host relay servers to fully control your data flow.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Core features</span><span lang="en">Core features</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Seamless switching</b>: switch control between desktop and phone; press any key to return to local control</span><span lang="en"><b>Seamless switching</b>: switch control between desktop and phone; press any key to return to local control</span></li>
+<li><span lang="id"><b>Native-first</b>: mobile apps are wrapped with native technology for smooth interaction</span><span lang="en"><b>Native-first</b>: mobile apps are wrapped with native technology for smooth interaction</span></li>
+<li><span lang="id"><b>AFK approvals</b>: receive approval requests on your phone while away from your computer</span><span lang="en"><b>AFK approvals</b>: receive approval requests on your phone while away from your computer</span></li>
+<li><span lang="id"><b>Multi-model support</b>: supports Claude Code, Codex, Gemini, OpenCode, and more</span><span lang="en"><b>Multi-model support</b>: supports Claude Code, Codex, Gemini, OpenCode, and more</span></li>
+<li><span lang="id"><b>Terminal anywhere</b>: access via PWA, Telegram Mini App, and more</span><span lang="en"><b>Terminal anywhere</b>: access via PWA, Telegram Mini App, and more</span></li>
+<li><span lang="id"><b>Voice control</b>: supports voice input commands, so your hands stay free</span><span lang="en"><b>Voice control</b>: supports voice input commands, so your hands stay free</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Installation and usage</span><span lang="en">Installation and usage</span></h3>
+<p class="reveal"><span lang="id"><b>Step 1: start relay server</b></span><span lang="en"><b>Step 1: start relay server</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># run on your server (or launch directly with npx)
+npx @twsxtd/hapi hub --relay</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 2: install CLI on computer</b></span><span lang="en"><b>Step 2: install CLI on computer</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># run in your project directory
+cd ~/my-project
+npx @twsxtd/hapi
+
+# or install globally
+npm install -g @twsxtd/hapi
+hapi</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 3: pair devices</b></span><span lang="en"><b>Step 3: pair devices</b></span></p>
+<p class="reveal"><span lang="id">Follow terminal prompts, open HAPI app on your phone, and scan the QR code to complete pairing.</span><span lang="en">Follow terminal prompts, open HAPI app on your phone, and scan the QR code to complete pairing.</span></p>
+<p class="reveal"><span lang="id"><b>Step 4: access methods</b></span><span lang="en"><b>Step 4: access methods</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Access Method</th><th>Description</th></tr>
+<tr><td>Web PWA</td><td>Browser access, supports install-to-home-screen</td></tr>
+<tr><td>Telegram Mini App</td><td>Use directly inside Telegram</td></tr>
+<tr><td>Mobile App</td><td>Native app experience (if published)</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Differences from Happy Coder</span><span lang="en">Differences from Happy Coder</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Feature</th><th>Happy Coder</th><th>HAPI</th></tr>
+<tr><td>Design philosophy</td><td>Cloud-first</td><td>Local-first</td></tr>
+<tr><td>Encryption method</td><td>WebSocket + E2E</td><td>WireGuard + TLS</td></tr>
+<tr><td>Multi-model support</td><td>Claude Code, Codex</td><td>Claude, Codex, Gemini, OpenCode</td></tr>
+<tr><td>Access methods</td><td>iOS/Android/Web</td><td>PWA, Telegram, more</td></tr>
+<tr><td>Voice control</td><td>No</td><td>Yes</td></tr>
+<tr><td>AFK approvals</td><td>No</td><td>Yes</td></tr>
+<tr><td>Self-hosted relay</td><td>Requires manual deployment</td><td>Out-of-the-box support</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Resource links</span><span lang="en">Resource links</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[GitHub Project](https://github.com/tiann/hapi) - source code</span><span lang="en">[GitHub Project](https://github.com/tiann/hapi) - source code</span></li>
+<li><span lang="id">[PWA Docs](https://github.com/tiann/hapi/blob/main/docs/pwa.md) - PWA installation and usage</span><span lang="en">[PWA Docs](https://github.com/tiann/hapi/blob/main/docs/pwa.md) - PWA installation and usage</span></li>
+<li><span lang="id">[How It Works](https://github.com/tiann/hapi/blob/main/docs/how-it-works.md) - technical implementation details</span><span lang="en">[How It Works](https://github.com/tiann/hapi/blob/main/docs/how-it-works.md) - technical implementation details</span></li>
+<li><span lang="id">[Voice Assistant](https://github.com/tiann/hapi/blob/main/docs/voice.md) - voice control features</span><span lang="en">[Voice Assistant](https://github.com/tiann/hapi/blob/main/docs/voice.md) - voice control features</span></li>
+<li><span lang="id">[Why HAPI](https://github.com/tiann/hapi/blob/main/docs/why-hapi.md) - design philosophy</span><span lang="en">[Why HAPI](https://github.com/tiann/hapi/blob/main/docs/why-hapi.md) - design philosophy</span></li>
+<li><span lang="id">[FAQ](https://github.com/tiann/hapi/blob/main/docs/faq.md) - frequently asked questions</span><span lang="en">[FAQ](https://github.com/tiann/hapi/blob/main/docs/faq.md) - frequently asked questions</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Pros and cons</span><span lang="en">Pros and cons</span></h3>
+<p class="reveal"><span lang="id">Pros are local-first design, multi-model support, end-to-end encryption, voice control, and self-hosted relay capability. Cons are that the project is relatively new and the ecosystem is still growing.</span><span lang="en">Pros are local-first design, multi-model support, end-to-end encryption, voice control, and self-hosted relay capability. Cons are that the project is relatively new and the ecosystem is still growing.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Approach 4: SSH + Tailscale + Tmux</span><span lang="en">Approach 4: SSH + Tailscale + Tmux</span></h2>
+<p class="reveal"><span lang="id">This is the best option for professional developers. You remotely connect to your development machine over SSH and keep sessions persistent with Tmux.</span><span lang="en">This is the best option for professional developers. You remotely connect to your development machine over SSH and keep sessions persistent with Tmux.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">How it works</span><span lang="en">How it works</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>┌─────────────┐              ┌─────────────┐              ┌─────────────┐
+│   Phone     │   ────────►  │  Tailscale  │   ◄────────  │  Computer   │
+│ (SSH client)│   VPN P2P    │ relay/hole  │   VPN P2P    │ (dev host)  │
+└─────────────┘              └─────────────┘              └──────┬──────┘
+                                                               │
+                                                               ▼
+                                                        ┌─────────────┐
+                                                        │    Tmux     │
+                                                        │ (session    │
+                                                        │ persistence)│
+                                                        └─────────────┘</pre>
+</div>
+<p class="reveal"><span lang="id">Tailscale creates a peer-to-peer VPN so you can access your home computer from any network. Tmux ensures Claude Code keeps running in the background even when SSH disconnects.</span><span lang="en">Tailscale creates a peer-to-peer VPN so you can access your home computer from any network. Tmux ensures Claude Code keeps running in the background even when SSH disconnects.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Why do you need Tailscale?</span><span lang="en">Why do you need Tailscale?</span></h3>
+<p class="reveal"><span lang="id"><b>Problems with traditional SSH:</b></span><span lang="en"><b>Problems with traditional SSH:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Phone (4G) ──XX──&gt; Router NAT ──XX──&gt; Home Computer
+             (cannot penetrate)   (LAN isolation)</pre>
+</div>
+<p class="reveal"><span lang="id">Your computer is on a private network, and your phone is on the public network, so direct access fails. Traditional solutions require port forwarding plus dynamic DNS, which are complex and risky.</span><span lang="en">Your computer is on a private network, and your phone is on the public network, so direct access fails. Traditional solutions require port forwarding plus dynamic DNS, which are complex and risky.</span></p>
+<p class="reveal"><span lang="id"><b>Tailscale solution:</b></span><span lang="en"><b>Tailscale solution:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Phone (4G) ──► Tailscale Relay ──◄── Home Computer
+            (auto hole-punch or relay)</pre>
+</div>
+<p class="reveal"><span lang="id">Tailscale uses NAT traversal, and falls back to relay automatically if traversal fails. The entire connection is encrypted.</span><span lang="en">Tailscale uses NAT traversal, and falls back to relay automatically if traversal fails. The entire connection is encrypted.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Full setup steps</span><span lang="en">Full setup steps</span></h3>
+<p class="reveal"><span lang="id"><b>Step 1: install Tailscale on computer</b></span><span lang="en"><b>Step 1: install Tailscale on computer</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># macOS
+brew install --cask tailscale
+
+# or download installer
+# https://tailscale.com/download</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 2: log in and get IP</b></span><span lang="en"><b>Step 2: log in and get IP</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># start Tailscale
+sudo tailscale up
+
+# check Tailscale IPv4
+tailscale ip -4
+# example output: 100.x.x.x</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 3: install Tailscale on phone</b></span><span lang="en"><b>Step 3: install Tailscale on phone</b></span></p>
+<p class="reveal"><span lang="id">Download Tailscale from App Store or Google Play and log in with the same account.</span><span lang="en">Download Tailscale from App Store or Google Play and log in with the same account.</span></p>
+<p class="reveal"><span lang="id"><b>Step 4: install and configure Tmux</b></span><span lang="en"><b>Step 4: install and configure Tmux</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># macOS
+brew install tmux
+
+# create ~/.tmux.conf
+cat &gt; ~/.tmux.conf &lt;&lt; &#039;EOF&#039;
+# enable mouse support
+set -g mouse on
+
+# default terminal with 256 colors
+set -g default-terminal &quot;screen-256color&quot;
+
+# change prefix key to Ctrl+A (optional)
+unbind C-b
+set -g prefix C-a
+
+# simplified split shortcuts
+bind v split-window -h
+bind h split-window
+EOF</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 5: create a persistent session</b></span><span lang="en"><b>Step 5: create a persistent session</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># create session named &quot;claude&quot;
+tmux new -s claude
+
+# start Claude Code in this session
+cd ~/my-project
+claude
+
+# detach without closing
+# press Ctrl+B then D</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 6: connect from phone SSH client</b></span><span lang="en"><b>Step 6: connect from phone SSH client</b></span></p>
+<p class="reveal"><span lang="id">Recommended SSH clients:</span><span lang="en">Recommended SSH clients:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Client</th><th>Platform</th><th>Notes</th></tr>
+<tr><td>Blink Shell</td><td>iOS</td><td>Supports MOSH, great for unstable networks</td></tr>
+<tr><td>Termius</td><td>iOS/Android</td><td>Cross-platform and polished UI</td></tr>
+<tr><td>a-Shell</td><td>iOS</td><td>Free and lightweight</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">Connection config:</span><span lang="en">Connection config:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Host: 100.x.x.x (your Tailscale IP)
+Port: 22
+Username: your computer username</pre>
+</div>
+<p class="reveal"><span lang="id">After connecting, attach to Tmux:</span><span lang="en">After connecting, attach to Tmux:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>tmux attach -t claude</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Advanced tips</span><span lang="en">Advanced tips</span></h3>
+<p class="reveal"><span lang="id"><b>Prevent your computer from sleeping:</b></span><span lang="en"><b>Prevent your computer from sleeping:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># macOS
+caffeinate -dimsu &amp;
+
+# or set System Settings &gt; Energy Saver &gt; prevent automatic sleep</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Use MOSH for unstable networks:</b></span><span lang="en"><b>Use MOSH for unstable networks:</b></span></p>
+<p class="reveal"><span lang="id">MOSH (Mobile Shell) is an SSH alternative optimized for mobile networks, with seamless recovery across network changes.</span><span lang="en">MOSH (Mobile Shell) is an SSH alternative optimized for mobile networks, with seamless recovery across network changes.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># install on computer
+brew install mosh
+
+# use MOSH from phone client
+# Blink Shell supports MOSH natively</pre>
+</div>
+<p class="reveal"><span lang="id"><b>One-command connect script:</b></span><span lang="en"><b>One-command connect script:</b></span></p>
+<p class="reveal"><span lang="id">Set this as startup command in your SSH client:</span><span lang="en">Set this as startup command in your SSH client:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>tmux attach -t claude || tmux new -s claude</pre>
+</div>
+<p class="reveal"><span lang="id">This will auto-attach to an existing session or create a new one.</span><span lang="en">This will auto-attach to an existing session or create a new one.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Pros and cons</span><span lang="en">Pros and cons</span></h3>
+<p class="reveal"><span lang="id">Pros are full capabilities and desktop-equivalent workflow with all development tools. Cons are more complex setup and the requirement to keep your computer online.</span><span lang="en">Pros are full capabilities and desktop-equivalent workflow with all development tools. Cons are more complex setup and the requirement to keep your computer online.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Approach 5: Local Termux Runtime</span><span lang="en">Approach 5: Local Termux Runtime</span></h2>
+<p class="reveal"><span lang="id">If you are an Android user, you can run Claude Code directly on your phone without connecting external devices.</span><span lang="en">If you are an Android user, you can run Claude Code directly on your phone without connecting external devices.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">How it works</span><span lang="en">How it works</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│                    ┌─────────────┐                          │
+│                    │   Termux    │                          │
+│                    │ (Linux env) │                          │
+│                    │             │                          │
+│                    │ • Node.js   │                          │
+│                    │ • Claude    │                          │
+│                    │   Code CLI  │                          │
+│                    │             │                          │
+│                    │ • Project   │                          │
+│                    │   files     │                          │
+│                    │ • Git       │                          │
+│                    └─────────────┘                          │
+│                         │                                   │
+│                         ▼                                   │
+│                   ┌─────────────┐                           │
+│                   │Anthropic API│                           │
+│                   └─────────────┘                           │
+└─────────────────────────────────────────────────────────────┘</pre>
+</div>
+<p class="reveal"><span lang="id">Termux is a terminal emulator and Linux environment for Android. You can directly install Node.js and Claude Code in it.</span><span lang="en">Termux is a terminal emulator and Linux environment for Android. You can directly install Node.js and Claude Code in it.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Installation steps</span><span lang="en">Installation steps</span></h3>
+<p class="reveal"><span lang="id"><b>Important</b>: download Termux from [F-Droid](https://f-droid.org/), not from Google Play (the Play version is outdated).</span><span lang="en"><b>Important</b>: download Termux from [F-Droid](https://f-droid.org/), not from Google Play (the Play version is outdated).</span></p>
+<p class="reveal"><span lang="id"><b>Step 1: install base tools</b></span><span lang="en"><b>Step 1: install base tools</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># update package manager
+pkg update &amp;&amp; pkg upgrade
+
+# install development tools
+pkg install git nodejs python vim</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 2: install Claude Code</b></span><span lang="en"><b>Step 2: install Claude Code</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>npm install -g @anthropic-ai/claude-code</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 3: configure environment</b></span><span lang="en"><b>Step 3: configure environment</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># create workspace
+mkdir -p ~/projects
+cd ~/projects
+
+# initialize project
+git clone https://github.com/your-repo.git
+cd your-repo
+
+# launch Claude Code
+claude</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 4: configure external keyboard (recommended)</b></span><span lang="en"><b>Step 4: configure external keyboard (recommended)</b></span></p>
+<p class="reveal"><span lang="id">In Termux:</span><span lang="en">In Termux:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># enable extra keys row
+# long press screen &gt; More &gt; Extra keys row
+
+# configure shortcuts
+# add in ~/.termux/termux.properties
+extra-keys = [[&#039;ESC&#039;,&#039;/&#039;,&#039;-&#039;,&#039;HOME&#039;,&#039;UP&#039;,&#039;END&#039;,&#039;PGUP&#039;,&#039;~&#039;], \
+              [&#039;TAB&#039;,&#039;CTRL&#039;,&#039;ALT&#039;,&#039;LEFT&#039;,&#039;DOWN&#039;,&#039;RIGHT&#039;,&#039;PGDN&#039;,&#039;|&#039;]]</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Performance considerations</span><span lang="en">Performance considerations</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Task Type</th><th>Android Performance</th></tr>
+<tr><td>Web development (HTML/CSS/JS)</td><td>Excellent</td></tr>
+<tr><td>Python scripts</td><td>Excellent</td></tr>
+<tr><td>Node.js applications</td><td>Good</td></tr>
+<tr><td>Running test suites</td><td>Medium</td></tr>
+<tr><td>Compiling large projects</td><td>Not recommended</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Pros and cons</span><span lang="en">Pros and cons</span></h3>
+<p class="reveal"><span lang="id">Pros are full local control, no external host dependency, and offline-first operation. Cons are limited phone performance, weak text input experience, and Android-only availability.</span><span lang="en">Pros are full local control, no external host dependency, and offline-first operation. Cons are limited phone performance, weak text input experience, and Android-only availability.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Approach 6: Claude Code UI</span><span lang="en">Approach 6: Claude Code UI</span></h2>
+<p class="reveal"><span lang="id">Claude Code UI (also known as CloudCLI) is an open-source project that provides a web interface for Claude Code, with phone browser support.</span><span lang="en">Claude Code UI (also known as CloudCLI) is an open-source project that provides a web interface for Claude Code, with phone browser support.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">How it works</span><span lang="en">How it works</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>┌─────────────┐              ┌─────────────┐              ┌─────────────┐
+│Phone Browser│   ────────►  │ Web Server  │   ◄────────  │Claude Code  │
+│             │  HTTP/HTTPS  │ (localhost) │   invoke     │    CLI      │
+└─────────────┘              └─────────────┘              └─────────────┘</pre>
+</div>
+<p class="reveal"><span lang="id">You run a web server on your computer, then access it from your phone browser. This requires LAN access or tunneling.</span><span lang="en">You run a web server on your computer, then access it from your phone browser. This requires LAN access or tunneling.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Installation and usage</span><span lang="en">Installation and usage</span></h3>
+<p class="reveal"><span lang="id"><b>Step 1: install</b></span><span lang="en"><b>Step 1: install</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># one-command start (recommended)
+npx @siteboon/claude-code-ui
+
+# or global install
+npm install -g @siteboon/claude-code-ui
+claude-code-ui</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 2: open interface</b></span><span lang="en"><b>Step 2: open interface</b></span></p>
+<p class="reveal"><span lang="id">Server defaults to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">http://localhost:3001</code>.</span><span lang="en">Server defaults to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">http://localhost:3001</code>.</span></p>
+<p class="reveal"><span lang="id"><b>Step 3: access from phone</b></span><span lang="en"><b>Step 3: access from phone</b></span></p>
+<p class="reveal"><span lang="id">Method A - LAN access (same Wi-Fi):</span><span lang="en">Method A - LAN access (same Wi-Fi):</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># bind all interfaces
+claude-code-ui --host 0.0.0.0
+
+# access from phone
+http://&lt;computer-lan-ip&gt;:3001</pre>
+</div>
+<p class="reveal"><span lang="id">Method B - ngrok tunnel:</span><span lang="en">Method B - ngrok tunnel:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># install ngrok
+brew install ngrok
+
+# start tunnel
+ngrok http 3001
+
+# open ngrok URL from phone</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Features</span><span lang="en">Features</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Responsive design with mobile support</span><span lang="en">Responsive design with mobile support</span></li>
+<li><span lang="id">Built-in chat interface</span><span lang="en">Built-in chat interface</span></li>
+<li><span lang="id">File browser</span><span lang="en">File browser</span></li>
+<li><span lang="id">Git operations UI</span><span lang="en">Git operations UI</span></li>
+<li><span lang="id">Session management</span><span lang="en">Session management</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Pros and cons</span><span lang="en">Pros and cons</span></h3>
+<p class="reveal"><span lang="id">Pros are graphical interface and rich features. Cons are tunnel requirements outside LAN and relatively more complex setup.</span><span lang="en">Pros are graphical interface and rich features. Cons are tunnel requirements outside LAN and relatively more complex setup.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Approach 7: Cloud Development Environment</span><span lang="en">Approach 7: Cloud Development Environment</span></h2>
+<p class="reveal"><span lang="id">If you do not have an always-on local computer, you can use cloud development environments where Claude Code runs on cloud servers.</span><span lang="en">If you do not have an always-on local computer, you can use cloud development environments where Claude Code runs on cloud servers.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">How it works</span><span lang="en">How it works</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>┌─────────────┐              ┌─────────────┐              ┌─────────────┐
+│   Phone     │   ────────►  │ Cloud Box   │   ─────────► │Claude Code  │
+│(Browser/App)│    HTTPS     │  (DevBox)   │              │    CLI      │
+└─────────────┘              └─────────────┘              └─────────────┘</pre>
+</div>
+<p class="reveal"><span lang="id">A cloud container comes with Claude Code preinstalled, and you access it from browser or mobile app.</span><span lang="en">A cloud container comes with Claude Code preinstalled, and you access it from browser or mobile app.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Using Sealos DevBox</span><span lang="en">Using Sealos DevBox</span></h3>
+<p class="reveal"><span lang="id"><b>Step 1: create environment</b></span><span lang="en"><b>Step 1: create environment</b></span></p>
+<p class="reveal"><span lang="id">Go to [Sealos DevBox](https://sealos.io/devbox), choose a Claude Code template, and create an environment.</span><span lang="en">Go to [Sealos DevBox](https://sealos.io/devbox), choose a Claude Code template, and create an environment.</span></p>
+<p class="reveal"><span lang="id"><b>Step 2: start development environment</b></span><span lang="en"><b>Step 2: start development environment</b></span></p>
+<p class="reveal"><span lang="id">Environment is ready in about 30-60 seconds, and you get a web terminal.</span><span lang="en">Environment is ready in about 30-60 seconds, and you get a web terminal.</span></p>
+<p class="reveal"><span lang="id"><b>Step 3: configure Claude API</b></span><span lang="en"><b>Step 3: configure Claude API</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>export ANTHROPIC_API_KEY=&quot;your-api-key&quot;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 4: connect Happy app</b></span><span lang="en"><b>Step 4: connect Happy app</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># install happy-coder (or use preinstalled)
+npm install -g happy-coder
+
+# generate pairing QR code
+happy</pre>
+</div>
+<p class="reveal"><span lang="id">After scanning on your phone, you can use it immediately.</span><span lang="en">After scanning on your phone, you can use it immediately.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Cloud option comparison</span><span lang="en">Cloud option comparison</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Platform</th><th>Claude Code</th><th>Mobile Optimization</th><th>Startup Time</th><th>Pricing</th></tr>
+<tr><td>Sealos DevBox</td><td>Preinstalled</td><td>Happy support</td><td>~60s</td><td>Pay-as-you-go</td></tr>
+<tr><td>GitHub Codespaces</td><td>Manual setup</td><td>Browser flow</td><td>~2-3 min</td><td>Free quota + hourly</td></tr>
+<tr><td>Gitpod</td><td>Manual setup</td><td>Browser flow</td><td>~1-2 min</td><td>Free quota + hourly</td></tr>
+<tr><td>Replit</td><td>No native Claude Code</td><td>Native app</td><td>Instant</td><td>Free + subscription</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Pros and cons</span><span lang="en">Pros and cons</span></h3>
+<p class="reveal"><span lang="id">Pros are no local computer requirement, environment consistency, and scalability. Cons are paid usage, network dependency, and code hosted in cloud.</span><span lang="en">Pros are no local computer requirement, environment consistency, and scalability. Cons are paid usage, network dependency, and code hosted in cloud.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Comparison and Selection</span><span lang="en">Comparison and Selection</span></h2>
+<p class="reveal"><span lang="id">Each approach has different strengths and is suitable for different scenarios.</span><span lang="en">Each approach has different strengths and is suitable for different scenarios.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Comparison table</span><span lang="en">Comparison table</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Approach</th><th>Difficulty</th><th>Requires Tunnel</th><th>Cost</th><th>Best Scenarios</th></tr>
+<tr><td>Official iOS App</td><td>Easy</td><td>No</td><td>$20/month</td><td>Quick checks, simple tasks</td></tr>
+<tr><td>Happy Coder</td><td>Relatively easy</td><td>No</td><td>Free</td><td>Daily use, convenience</td></tr>
+<tr><td>HAPI</td><td>Medium</td><td>No</td><td>Free</td><td>Multi-model, local-first</td></tr>
+<tr><td>SSH + Tailscale</td><td>Relatively complex</td><td>No</td><td>Free</td><td>Professional development, full features</td></tr>
+<tr><td>Termux</td><td>Medium</td><td>No</td><td>Free</td><td>Android local development</td></tr>
+<tr><td>Claude Code UI</td><td>Medium</td><td>Yes</td><td>Free</td><td>Web interface preference</td></tr>
+<tr><td>Cloud DevBox</td><td>Easy</td><td>No</td><td>Pay-as-you-go</td><td>No local computer</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Selection guide</span><span lang="en">Selection guide</span></h3>
+<p class="reveal"><span lang="id"><b>If you are in mainland China</b>: use <b>Happy Coder</b>; with domestic API relay setup, it works well.</span><span lang="en"><b>If you are in mainland China</b>: use <b>Happy Coder</b>; with domestic API relay setup, it works well.</span></p>
+<p class="reveal"><span lang="id"><b>If you want maximum convenience</b>: choose Happy Coder. Scan-and-use flow is very convenient.</span><span lang="en"><b>If you want maximum convenience</b>: choose Happy Coder. Scan-and-use flow is very convenient.</span></p>
+<p class="reveal"><span lang="id"><b>If you need multi-model support</b>: choose HAPI. It supports multiple AI coding assistants and is ideal for model switching workflows.</span><span lang="en"><b>If you need multi-model support</b>: choose HAPI. It supports multiple AI coding assistants and is ideal for model switching workflows.</span></p>
+<p class="reveal"><span lang="id"><b>If you have an always-on computer</b>: choose SSH + Tailscale. This gives the most complete experience.</span><span lang="en"><b>If you have an always-on computer</b>: choose SSH + Tailscale. This gives the most complete experience.</span></p>
+<p class="reveal"><span lang="id"><b>If you are an iPhone user (outside mainland China)</b>: official app is the easiest way to get started.</span><span lang="en"><b>If you are an iPhone user (outside mainland China)</b>: official app is the easiest way to get started.</span></p>
+<p class="reveal"><span lang="id"><b>If you only have Android</b>: Termux gives a fully local mobile development path.</span><span lang="en"><b>If you only have Android</b>: Termux gives a fully local mobile development path.</span></p>
+<p class="reveal"><span lang="id"><b>If you do not have a computer</b>: cloud DevBox is the ideal choice.</span><span lang="en"><b>If you do not have a computer</b>: cloud DevBox is the ideal choice.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Security and Privacy</span><span lang="en">Security and Privacy</span></h2>
+<p class="reveal"><span lang="id">Mobile development involves code transfer over networks, so security needs special attention.</span><span lang="en">Mobile development involves code transfer over networks, so security needs special attention.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Risks of relay servers</span><span lang="en">Risks of relay servers</span></h3>
+<p class="reveal"><span lang="id">When using relay-dependent services like Happy Coder or HAPI, consider these risks:</span><span lang="en">When using relay-dependent services like Happy Coder or HAPI, consider these risks:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│  What can a relay server potentially see?                  │
+│                                                             │
+│  • Data before encryption (if E2E is implemented poorly)   │
+│  • Metadata (when you connect, how long sessions run)      │
+│  • Your API key (if configured incorrectly)                 │
+│                                                             │
+│  What can a relay server potentially do?                   │
+│                                                             │
+│  • Record your code content                                │
+│  • Steal API credentials                                   │
+│  • Inject malicious commands                               │
+│  • Abuse your device as an attack node                     │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Security best practices</span><span lang="en">Security best practices</span></h3>
+<p class="reveal"><span lang="id"><b>1. Code sensitivity grading</b></span><span lang="en"><b>1. Code sensitivity grading</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│  Public projects/learning code -&gt; any approach is acceptable│
+│                                                             │
+│  Private projects -&gt; prefer SSH+Tailscale or self-hosted   │
+│                                                             │
+│  Commercial code -&gt; use SSH+Tailscale only, disable all    │
+│  third-party relay paths                                    │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘</pre>
+</div>
+<p class="reveal"><span lang="id"><b>2. Key management</b></span><span lang="en"><b>2. Key management</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># do not hard-code keys in source
+const apiKey = &quot;sk-ant-xxxxx&quot;
+
+# use environment variables
+const apiKey = process.env.ANTHROPIC_API_KEY
+
+# use .env files (add to .gitignore)
+ANTHROPIC_API_KEY=sk-ant-xxxxx</pre>
+</div>
+<p class="reveal"><span lang="id"><b>3. Use sandbox mode</b></span><span lang="en"><b>3. Use sandbox mode</b></span></p>
+<p class="reveal"><span lang="id">Claude Code supports sandbox mode to limit access scope:</span><span lang="en">Claude Code supports sandbox mode to limit access scope:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>claude --sandbox /path/to/project</pre>
+</div>
+<p class="reveal"><span lang="id"><b>4. Self-host relay</b></span><span lang="en"><b>4. Self-host relay</b></span></p>
+<p class="reveal"><span lang="id">If using Happy Coder, consider self-hosting relay:</span><span lang="en">If using Happy Coder, consider self-hosting relay:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># clone project (includes server implementation)
+git clone https://github.com/slopus/happy.git
+cd happy
+
+# deploy server to your VPS
+# follow project documentation for details</pre>
+</div>
+<p class="reveal"><span lang="id"><b>5. Use Headscale</b></span><span lang="en"><b>5. Use Headscale</b></span></p>
+<p class="reveal"><span lang="id">Headscale is an open-source implementation of Tailscale and can be self-hosted:</span><span lang="en">Headscale is an open-source implementation of Tailscale and can be self-hosted:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># one-command Docker deployment
+docker run -d \
+  --name headscale \
+  -v /srv/headscale:/etc/headscale \
+  -p 3478:3478/udp \
+  -p 8080:8080 \
+  headscale/headscale:latest</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Frequently Asked Questions</span><span lang="en">Frequently Asked Questions</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Do I need NAT traversal?</span><span lang="en">Do I need NAT traversal?</span></h3>
+<p class="reveal"><span lang="id">Most modern approaches <b>do not</b> require manual NAT traversal:</span><span lang="en">Most modern approaches <b>do not</b> require manual NAT traversal:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Approach</th><th>Principle</th></tr>
+<tr><td>Happy Coder</td><td>Relay mode, both sides actively connect to server</td></tr>
+<tr><td>HAPI</td><td>Relay mode, WireGuard + TLS</td></tr>
+<tr><td>Tailscale</td><td>NAT hole-punching or relay</td></tr>
+<tr><td>iOS App</td><td>Cloud execution</td></tr>
+<tr><td>Claude Code UI</td><td>Requires inbound access</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Why does relay mode not require traversal?</span><span lang="en">Why does relay mode not require traversal?</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Outbound connection (NAT allows):
+Computer ──► Relay Server yes
+
+Inbound connection (NAT blocks):
+External ──► Computer no
+
+Relay trick:
+Both sides make outbound connections to the relay,
+so neither side needs inbound connectivity.</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Does mobile development affect battery life?</span><span lang="en">Does mobile development affect battery life?</span></h3>
+<p class="reveal"><span lang="id">Different approaches consume different power:</span><span lang="en">Different approaches consume different power:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Approach</th><th>Power Usage</th><th>Reason</th></tr>
+<tr><td>SSH terminal</td><td>Low</td><td>Text-only rendering</td></tr>
+<tr><td>iOS App</td><td>Medium</td><td>Cloud execution, phone controls only</td></tr>
+<tr><td>Termux</td><td>High</td><td>Local CLI runtime</td></tr>
+<tr><td>Browser</td><td>Medium</td><td>Web UI rendering load</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">For long sessions, keep your phone charging.</span><span lang="en">For long sessions, keep your phone charging.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">What happens when network disconnects?</span><span lang="en">What happens when network disconnects?</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Approach</th><th>Impact of Network Disconnect</th></tr>
+<tr><td>SSH + Tmux</td><td>Claude keeps running; recover on reconnect</td></tr>
+<tr><td>Happy Coder</td><td>Auto-reconnect</td></tr>
+<tr><td>HAPI</td><td>Auto-reconnect</td></tr>
+<tr><td>iOS App</td><td>Cloud continues; app shows disconnect</td></tr>
+<tr><td>Termux</td><td>Session interruption</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Can I compile large projects on a phone?</span><span lang="en">Can I compile large projects on a phone?</span></h3>
+<p class="reveal"><span lang="id">Not recommended. Phone CPU and memory are limited, and large builds can cause:</span><span lang="en">Not recommended. Phone CPU and memory are limited, and large builds can cause:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">significant heating</span><span lang="en">significant heating</span></li>
+<li><span lang="id">rapid battery drain</span><span lang="en">rapid battery drain</span></li>
+<li><span lang="id">very long compile times</span><span lang="en">very long compile times</span></li>
+</ul>
+<p class="reveal"><span lang="id">Run heavy build tasks on remote hosts or cloud environments.</span><span lang="en">Run heavy build tasks on remote hosts or cloud environments.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary</span><span lang="en">Summary</span></h2>
+<p class="reveal"><span lang="id">The core idea of Claude Code mobile development is: <b>the phone is the controller, and real development runs elsewhere</b>.</span><span lang="en">The core idea of Claude Code mobile development is: <b>the phone is the controller, and real development runs elsewhere</b>.</span></p>
+<p class="reveal"><span lang="id">Which approach you should choose depends on your specific needs.</span><span lang="en">Which approach you should choose depends on your specific needs.</span></p>
+<p class="reveal"><span lang="id">If you are in mainland China, <b>Happy Coder</b> is recommended, especially when paired with domestic API relay configuration.</span><span lang="en">If you are in mainland China, <b>Happy Coder</b> is recommended, especially when paired with domestic API relay configuration.</span></p>
+<p class="reveal"><span lang="id">If you want the most convenient setup, use <b>Happy Coder</b>. Scan to connect, get push notifications, and switch devices smoothly.</span><span lang="en">If you want the most convenient setup, use <b>Happy Coder</b>. Scan to connect, get push notifications, and switch devices smoothly.</span></p>
+<p class="reveal"><span lang="id">If you need multi-model support or local-first architecture, use <b>HAPI</b>. It supports multiple assistants and self-hosted relay.</span><span lang="en">If you need multi-model support or local-first architecture, use <b>HAPI</b>. It supports multiple assistants and self-hosted relay.</span></p>
+<p class="reveal"><span lang="id">If you want the most complete development experience, use <b>SSH + Tailscale</b>. Setup is more complex, but capability is closest to desktop.</span><span lang="en">If you want the most complete development experience, use <b>SSH + Tailscale</b>. Setup is more complex, but capability is closest to desktop.</span></p>
+<p class="reveal"><span lang="id">If you are an iOS user outside mainland China, the <b>official app</b> is the easiest way to begin.</span><span lang="en">If you are an iOS user outside mainland China, the <b>official app</b> is the easiest way to begin.</span></p>
+<p class="reveal"><span lang="id">If you are an Android user, <b>Termux</b> enables fully local development on the phone.</span><span lang="en">If you are an Android user, <b>Termux</b> enables fully local development on the phone.</span></p>
+<p class="reveal"><span lang="id">If you do not have an always-on computer, <b>cloud DevBox</b> is the ideal option.</span><span lang="en">If you do not have an always-on computer, <b>cloud DevBox</b> is the ideal option.</span></p>
+<p class="reveal"><span lang="id">No matter which solution you choose, security matters: be cautious with third-party relay for sensitive code, manage API keys properly, and prefer self-hosted or private paths for important projects.</span><span lang="en">No matter which solution you choose, security matters: be cautious with third-party relay for sensitive code, manage API keys properly, and prefer self-hosted or private paths for important projects.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">References</span><span lang="en">References</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Official Resources</span><span lang="en">Official Resources</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[Claude Code Official Docs](https://docs.anthropic.com/en/docs/claude-code) - complete official Claude Code documentation</span><span lang="en">[Claude Code Official Docs](https://docs.anthropic.com/en/docs/claude-code) - complete official Claude Code documentation</span></li>
+<li><span lang="id">[Claude iOS App](https://apps.apple.com/app/claude/id6473753684) - official iOS app</span><span lang="en">[Claude iOS App](https://apps.apple.com/app/claude/id6473753684) - official iOS app</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Open Source Projects</span><span lang="en">Open Source Projects</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[slopus/happy](https://github.com/slopus/happy) (2.5k stars) - Happy Coder mobile client</span><span lang="en">[slopus/happy](https://github.com/slopus/happy) (2.5k stars) - Happy Coder mobile client</span></li>
+<li><span lang="id">[tiann/hapi](https://github.com/tiann/hapi) - HAPI local-first multi-model AI coding assistant</span><span lang="en">[tiann/hapi](https://github.com/tiann/hapi) - HAPI local-first multi-model AI coding assistant</span></li>
+<li><span lang="id">[siteboon/claudecodeui](https://github.com/siteboon/claudecodeui) - Claude Code UI (CloudCLI)</span><span lang="en">[siteboon/claudecodeui](https://github.com/siteboon/claudecodeui) - Claude Code UI (CloudCLI)</span></li>
+<li><span lang="id">[juanfont/headscale](https://github.com/juanfont/headscale) (19k stars) - open-source Tailscale implementation</span><span lang="en">[juanfont/headscale](https://github.com/juanfont/headscale) (19k stars) - open-source Tailscale implementation</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Chinese Tutorials</span><span lang="en">Chinese Tutorials</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[Code Anytime Anywhere: Configure Claude Code on Phone](https://m.blog.csdn.net/haa_y/article/details/151156494) - Termux setup guide</span><span lang="en">[Code Anytime Anywhere: Configure Claude Code on Phone](https://m.blog.csdn.net/haa_y/article/details/151156494) - Termux setup guide</span></li>
+<li><span lang="id">[AI Lab in Your Pocket: Always-Online Claude Code Mobile Workflow](https://www.cnblogs.com/swizard/p/19308983) - Tmux + Docker approach</span><span lang="en">[AI Lab in Your Pocket: Always-Online Claude Code Mobile Workflow](https://www.cnblogs.com/swizard/p/19308983) - Tmux + Docker approach</span></li>
+<li><span lang="id">[I Took Claude Code Shopping with My Girlfriend](https://post.m.smzdm.com/p/a3r7d63d/) - Tailscale remote connection</span><span lang="en">[I Took Claude Code Shopping with My Girlfriend](https://post.m.smzdm.com/p/a3r7d63d/) - Tailscale remote connection</span></li>
+<li><span lang="id">[Build Production Apps from Phone](https://m.toutiao.com/article/7611823834756301318/) - real mobile development case</span><span lang="en">[Build Production Apps from Phone](https://m.toutiao.com/article/7611823834756301318/) - real mobile development case</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">English Resources</span><span lang="en">English Resources</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[The Definitive Guide to Using Claude Code on Your Phone | Sealos Blog](https://sealos.io/blog/claude-code-on-phone/) - most comprehensive mobile guide</span><span lang="en">[The Definitive Guide to Using Claude Code on Your Phone | Sealos Blog](https://sealos.io/blog/claude-code-on-phone/) - most comprehensive mobile guide</span></li>
+<li><span lang="id">[SSH + Tailscale + Termius Complete Guide](https://m.blog.csdn.net/Lvyizhuo/article/details/157692953) - detailed remote connectivity guide</span><span lang="en">[SSH + Tailscale + Termius Complete Guide](https://m.blog.csdn.net/Lvyizhuo/article/details/157692953) - detailed remote connectivity guide</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Tool Downloads</span><span lang="en">Tool Downloads</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[Tailscale](https://tailscale.com/download) - peer-to-peer VPN tool</span><span lang="en">[Tailscale](https://tailscale.com/download) - peer-to-peer VPN tool</span></li>
+<li><span lang="id">[Termux (F-Droid)](https://f-droid.org/en/packages/com.termux/) - Android terminal emulator</span><span lang="en">[Termux (F-Droid)](https://f-droid.org/en/packages/com.termux/) - Android terminal emulator</span></li>
+<li><span lang="id">[Blink Shell](https://blink.sh/) - iOS SSH client (MOSH support)</span><span lang="en">[Blink Shell](https://blink.sh/) - iOS SSH client (MOSH support)</span></li>
+<li><span lang="id">[Termius](https://termius.com/) - cross-platform SSH client</span><span lang="en">[Termius](https://termius.com/) - cross-platform SSH client</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../core-skills/workflow/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Alur Kerja Praktik Terbaik Berbantuan AI</span><span lang="en">Alur Kerja Praktik Terbaik Berbantuan AI</span></b></a>
+      <a class="next" href="../../core-skills/claude-agent-sdk/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Claude Agent SDK: Membangun Agen Otonom Sendiri</span><span lang="en">Claude Agent SDK: Membangun Agen Otonom Sendiri</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

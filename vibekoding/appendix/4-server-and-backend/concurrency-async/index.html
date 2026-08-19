@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of Concurrency, Asynchrony, and Multithreading — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Concurrency, Asynchrony, and Multithreading. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/4-server-and-backend/concurrency-async/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Concurrency, Asynchrony, and Multithreading</span><span lang="en">Principles of Concurrency, Asynchrony, and Multithreading</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of Concurrency, Asynchrony, and Multithreading</span><span lang="en">Principles of Concurrency, Asynchrony, and Multithreading</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Concurrency, Asynchrony, and Multithreading.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Concurrency, Asynchrony, and Multithreading.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">> 💡 <b>Learning Guide</b>: Concurrent programming is the "Achilles' heel" for many backend engineers — you get stumped in interviews, hit bugs in production, and have no clue where to start with performance tuning. This chapter revolves around one core question: <b>When 100,000 users hit your service simultaneously, will your code collapse?</b></span><span lang="en">> 💡 <b>Learning Guide</b>: Concurrent programming is the "Achilles' heel" for many backend engineers — you get stumped in interviews, hit bugs in production, and have no clue where to start with performance tuning. This chapter revolves around one core question: <b>When 100,000 users hit your service simultaneously, will your code collapse?</b></span></p>
+<p class="reveal"><span lang="id">Before diving in, make sure you have these two foundational pieces:</span><span lang="en">Before diving in, make sure you have these two foundational pieces:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>What are CPU, Memory, and I/O</b>: If you're fuzzy on these basics, brush up on operating system fundamentals.</span><span lang="en"><b>What are CPU, Memory, and I/O</b>: If you're fuzzy on these basics, brush up on operating system fundamentals.</span></li>
+<li><span lang="id"><b>What is blocking/non-blocking</b>: If you're not yet comfortable with synchronous/asynchronous concepts, get a feel for them through hands-on programming first.</span><span lang="en"><b>What is blocking/non-blocking</b>: If you're not yet comfortable with synchronous/asynchronous concepts, get a feel for them through hands-on programming first.</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. Introduction: Motivation for Your Service "Freeze" During Peak Traffic</span><span lang="en">0. Introduction: Motivation for Your Service "Freeze" During Peak Traffic</span></h2>
+<p class="reveal"><span lang="id"><ProcessThreadCoroutineDemo /></span><span lang="en"><ProcessThreadCoroutineDemo /></span></p>
+<p class="reveal"><span lang="id">Many developers encounter situations like these in practice:</span><span lang="en">Many developers encounter situations like these in practice:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">The service responds lightning-fast in local testing, but becomes a "slideshow" once deployed;</span><span lang="en">The service responds lightning-fast in local testing, but becomes a "slideshow" once deployed;</span></li>
+<li><span lang="id">You bought high-spec servers, yet CPU utilization never goes up;</span><span lang="en">You bought high-spec servers, yet CPU utilization never goes up;</span></li>
+<li><span lang="id">During promotional peaks, the service "avalanches," forcing you to degrade or circuit-break.</span><span lang="en">During promotional peaks, the service "avalanches," forcing you to degrade or circuit-break.</span></li>
+</ul>
+<p class="reveal"><span lang="id">Intuitively, we think: <b>"The server isn't powerful enough."</b></span><span lang="en">Intuitively, we think: <b>"The server isn't powerful enough."</b></span></p>
+<p class="reveal"><span lang="id">But most of the time, the problem isn't that the hardware is "too slow" — it's that we <b>didn't design the concurrency model properly</b>.</span><span lang="en">But most of the time, the problem isn't that the hardware is "too slow" — it's that we <b>didn't design the concurrency model properly</b>.</span></p>
+<p class="reveal"><span lang="id"><b>The Core Dilemma</b>:</span><span lang="en"><b>The Core Dilemma</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Without concurrent processing: requests queue up, user experience is terrible;</span><span lang="en">Without concurrent processing: requests queue up, user experience is terrible;</span></li>
+<li><span lang="id">With reckless multithreading: lock contention and context-switching overhead actually degrade performance.</span><span lang="en">With reckless multithreading: lock contention and context-switching overhead actually degrade performance.</span></li>
+</ul>
+<p class="reveal"><span lang="id">Faced with these challenges, simply "adding more machines" is no longer enough. We need a systematic approach to concurrency design that ensures both performance and stability under high concurrency. That's exactly what this chapter aims to address.</span><span lang="en">Faced with these challenges, simply "adding more machines" is no longer enough. We need a systematic approach to concurrency design that ensures both performance and stability under high concurrency. That's exactly what this chapter aims to address.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Core Concepts: Processes, Threads, and Coroutines — What's the Difference</span><span lang="en">1. Core Concepts: Processes, Threads, and Coroutines — What's the Difference</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 A Restaurant Analogy</span><span lang="en">1.1 A Restaurant Analogy</span></h3>
+<p class="reveal"><span lang="id">Imagine you run a restaurant and need to serve many customers at once:</span><span lang="en">Imagine you run a restaurant and need to serve many customers at once:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Concept</th><th>Restaurant Analogy</th><th>Technical Meaning</th></tr>
+<tr><td><b>Process</b></td><td><b>An independent restaurant branch</b></td><td>Has its own memory space and resource allocation. It is the basic unit of OS resource allocation. A crash in one process does not affect others.</td></tr>
+<tr><td><b>Thread</b></td><td><b>A chef within a branch</b></td><td>The basic unit of CPU scheduling, sharing memory space within a process. Threads in the same process can share data, but one thread crashing can bring down the entire process.</td></tr>
+<tr><td><b>Coroutine</b></td><td><b>A chef's "cloning technique"</b></td><td>A user-space lightweight thread, scheduled by the program itself rather than the OS. Switching overhead is minimal; you can create millions of them.</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 In-Depth Comparison: The Essential Differences</span><span lang="en">1.2 In-Depth Comparison: The Essential Differences</span></h3>
+<p class="reveal"><span lang="id"><ProcessIsolationDemo /></span><span lang="en"><ProcessIsolationDemo /></span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Process: The "Container" of Resource Isolation</span><span lang="en">Process: The "Container" of Resource Isolation</span></h4>
+<p class="reveal"><span lang="id"><b>Key Characteristics</b>:</span><span lang="en"><b>Key Characteristics</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Strong isolation</b>: Each process has its own independent virtual address space</span><span lang="en"><b>Strong isolation</b>: Each process has its own independent virtual address space</span></li>
+<li><span lang="id"><b>High overhead</b>: Creation/switching requires OS intervention, taking ~1-10ms</span><span lang="en"><b>High overhead</b>: Creation/switching requires OS intervention, taking ~1-10ms</span></li>
+<li><span lang="id"><b>Complex communication</b>: Inter-Process Communication (IPC) requires special mechanisms (pipes, message queues, shared memory, etc.)</span><span lang="en"><b>Complex communication</b>: Inter-Process Communication (IPC) requires special mechanisms (pipes, message queues, shared memory, etc.)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Use Cases</b>:</span><span lang="en"><b>Use Cases</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Services requiring strong isolation (e.g., browser tabs, sandboxed programs)</span><span lang="en">Services requiring strong isolation (e.g., browser tabs, sandboxed programs)</span></li>
+<li><span lang="id">Multi-language hybrid deployments</span><span lang="en">Multi-language hybrid deployments</span></li>
+<li><span lang="id">Service units that need independent restart/upgrade</span><span lang="en">Service units that need independent restart/upgrade</span></li>
+</ul>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Thread: The "Light Cavalry" of Shared Memory</span><span lang="en">Thread: The "Light Cavalry" of Shared Memory</span></h4>
+<p class="reveal"><span lang="id"><ThreadSchedulingDemo /></span><span lang="en"><ThreadSchedulingDemo /></span></p>
+<p class="reveal"><span lang="id"><b>Key Characteristics</b>:</span><span lang="en"><b>Key Characteristics</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Shared memory</b>: Threads within the same process share code, data, and heap segments</span><span lang="en"><b>Shared memory</b>: Threads within the same process share code, data, and heap segments</span></li>
+<li><span lang="id"><b>Independent stack space</b>: Each thread has its own stack (typically ~1MB)</span><span lang="en"><b>Independent stack space</b>: Each thread has its own stack (typically ~1MB)</span></li>
+<li><span lang="id"><b>Fast switching</b>: Thread switching takes ~1-10μs, about 1000× faster than process switching</span><span lang="en"><b>Fast switching</b>: Thread switching takes ~1-10μs, about 1000× faster than process switching</span></li>
+<li><span lang="id"><b>Synchronization required</b>: Shared data must be protected with locks</span><span lang="en"><b>Synchronization required</b>: Shared data must be protected with locks</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Use Cases</b>:</span><span lang="en"><b>Use Cases</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">CPU-intensive tasks (computation, image processing)</span><span lang="en">CPU-intensive tasks (computation, image processing)</span></li>
+<li><span lang="id">Concurrent tasks that need to share a lot of data</span><span lang="en">Concurrent tasks that need to share a lot of data</span></li>
+<li><span lang="id">Latency-sensitive background tasks</span><span lang="en">Latency-sensitive background tasks</span></li>
+</ul>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Coroutine: The User-Space "Green Thread"</span><span lang="en">Coroutine: The User-Space "Green Thread"</span></h4>
+<p class="reveal"><span lang="id"><CoroutineLightweightDemo /></span><span lang="en"><CoroutineLightweightDemo /></span></p>
+<p class="reveal"><span lang="id"><b>Key Characteristics</b>:</span><span lang="en"><b>Key Characteristics</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>User-space scheduling</b>: Scheduled by the program/runtime library, not the OS</span><span lang="en"><b>User-space scheduling</b>: Scheduled by the program/runtime library, not the OS</span></li>
+<li><span lang="id"><b>Extremely lightweight</b>: Coroutine stacks are typically only a few KB; you can create millions</span><span lang="en"><b>Extremely lightweight</b>: Coroutine stacks are typically only a few KB; you can create millions</span></li>
+<li><span lang="id"><b>Extremely fast switching</b>: Coroutine switching takes ~100ns, about 100× faster than thread switching</span><span lang="en"><b>Extremely fast switching</b>: Coroutine switching takes ~100ns, about 100× faster than thread switching</span></li>
+<li><span lang="id"><b>Non-preemptive</b>: Coroutines voluntarily yield the CPU (cooperative multitasking)</span><span lang="en"><b>Non-preemptive</b>: Coroutines voluntarily yield the CPU (cooperative multitasking)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Use Cases</b>:</span><span lang="en"><b>Use Cases</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">I/O-intensive high-concurrency services (web servers, gateways)</span><span lang="en">I/O-intensive high-concurrency services (web servers, gateways)</span></li>
+<li><span lang="id">Scenarios requiring many long-lived connections (IM, game servers)</span><span lang="en">Scenarios requiring many long-lived connections (IM, game servers)</span></li>
+<li><span lang="id">Streaming data processing, pipeline workflows</span><span lang="en">Streaming data processing, pipeline workflows</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Case Study: An E-Commerce Promotion's "Concurrency Nightmare"</span><span lang="en">2. Case Study: An E-Commerce Promotion's "Concurrency Nightmare"</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Lessons Learned: Evolution from "Single Machine" to "Distributed"</span><span lang="en">2.1 Lessons Learned: Evolution from "Single Machine" to "Distributed"</span></h3>
+<p class="reveal"><span lang="id">Let's look at the evolution story of a real e-commerce system:</span><span lang="en">Let's look at the evolution story of a real e-commerce system:</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Phase 1: The Single-Machine Era (1K DAU)</span><span lang="en">Phase 1: The Single-Machine Era (1K DAU)</span></h4>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># A simple Flask application
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route(&#039;/order&#039;)
+def create_order():
+    # Query inventory
+    stock = db.query(&quot;SELECT stock FROM products WHERE id=1&quot;)
+    if stock &gt; 0:
+        # Deduct inventory
+        db.execute(&quot;UPDATE products SET stock = stock - 1 WHERE id=1&quot;)
+        # Create order
+        db.execute(&quot;INSERT INTO orders ...&quot;)
+        return &quot;Order created!&quot;
+    return &quot;Out of stock!&quot;
+
+# Start: flask run</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Problems</b>:</span><span lang="en"><b>Problems</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Single process, single thread — can only handle one request at a time</span><span lang="en">Single process, single thread — can only handle one request at a time</span></li>
+<li><span lang="id">Inventory deduction is not locked, leading to overselling under concurrency</span><span lang="en">Inventory deduction is not locked, leading to overselling under concurrency</span></li>
+<li><span lang="id">Limited database connections; the connection pool is quickly exhausted</span><span lang="en">Limited database connections; the connection pool is quickly exhausted</span></li>
+</ul>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Phase 2: The Multi-Process Era (10K DAU)</span><span lang="en">Phase 2: The Multi-Process Era (10K DAU)</span></h4>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Deploy with Gunicorn multi-process
+gunicorn -w 4 -k sync app:app
+
+# 4 worker processes, each handling requests independently</pre>
+</div>
+<p class="reveal"><span lang="id"><b>New Problems</b>:</span><span lang="en"><b>New Problems</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">4 processes all query inventory simultaneously, all see stock=1, all deduct successfully — 3 oversold items!</span><span lang="en">4 processes all query inventory simultaneously, all see stock=1, all deduct successfully — 3 oversold items!</span></li>
+<li><span lang="id">Need to introduce distributed locks</span><span lang="en">Need to introduce distributed locks</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>import redis
+
+# Use Redis distributed lock
+lock = redis_client.lock(&quot;stock_lock&quot;, timeout=10)
+if lock.acquire():
+    try:
+        stock = db.query(&quot;SELECT stock FROM products WHERE id=1&quot;)
+        if stock &gt; 0:
+            db.execute(&quot;UPDATE products SET stock = stock - 1 WHERE id=1&quot;)
+    finally:
+        lock.release()</pre>
+</div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Phase 3: The Coroutine Era (100K DAU)</span><span lang="en">Phase 3: The Coroutine Era (100K DAU)</span></h4>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Use FastAPI + asyncio
+from fastapi import FastAPI
+import asyncio
+
+app = FastAPI()
+
+async def check_stock(product_id: int) -&gt; int:
+    # Async database query, non-blocking
+    result = await db.fetch_one(
+        &quot;SELECT stock FROM products WHERE id = :id&quot;,
+        {&quot;id&quot;: product_id}
+    )
+    return result[&quot;stock&quot;]
+
+@app.get(&quot;/order&quot;)
+async def create_order(product_id: int):
+    # Concurrently check inventory and user info
+    stock_task = check_stock(product_id)
+    user_task = get_user_info(request.user_id)
+
+    stock, user = await asyncio.gather(stock_task, user_task)
+
+    if stock &gt; 0:
+        # Async inventory deduction
+        await db.execute(
+            &quot;UPDATE products SET stock = stock - 1 WHERE id = :id&quot;,
+            {&quot;id&quot;: product_id}
+        )
+        return {&quot;status&quot;: &quot;success&quot;}
+
+    return {&quot;status&quot;: &quot;out_of_stock&quot;}
+
+# Start: uvicorn main:app --workers 4
+# Each worker can handle thousands of concurrent coroutines</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Advantages</b>:</span><span lang="en"><b>Advantages</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Thousands of concurrent connections within a single thread</span><span lang="en">Thousands of concurrent connections within a single thread</span></li>
+<li><span lang="id">Voluntarily yields CPU during I/O operations without blocking other requests</span><span lang="en">Voluntarily yields CPU during I/O operations without blocking other requests</span></li>
+<li><span lang="id">Extremely low memory footprint, ideal for high-concurrency long-connection scenarios</span><span lang="en">Extremely low memory footprint, ideal for high-concurrency long-connection scenarios</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Concurrency Model Evolution Comparison Table</span><span lang="en">2.2 Concurrency Model Evolution Comparison Table</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Phase</th><th>Concurrency Model</th><th>DAU Supported</th><th>Core Problem</th><th>Solution</th></tr>
+<tr><td><b>Monolith</b></td><td>Single process, single thread</td><td>1K</td><td>Cannot handle concurrency</td><td>Introduce multi-process</td></tr>
+<tr><td><b>Multi-Process</b></td><td>Multi-process synchronous</td><td>10K</td><td>Data races, overselling</td><td>Distributed locks</td></tr>
+<tr><td><b>Multi-Threaded</b></td><td>Multi-threaded + locks</td><td>50K</td><td>Context-switching overhead, deadlocks</td><td>Thread pools, lock-free queues</td></tr>
+<tr><td><b>Coroutine</b></td><td>Async I/O</td><td>100K+</td><td>Code complexity, debugging difficulty</td><td>Framework encapsulation, distributed tracing</td></tr>
+<tr><td><b>Hybrid</b></td><td>Multi-process + coroutines</td><td>1M+</td><td>Architectural complexity</td><td>Service governance, elastic scaling</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Deep Dive: How Various Concurrency Models Work</span><span lang="en">3. Deep Dive: How Various Concurrency Models Work</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Process Model: Isolation and Communication</span><span lang="en">3.1 Process Model: Isolation and Communication</span></h3>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Memory Isolation Mechanism</span><span lang="en">Memory Isolation Mechanism</span></h4>
+<p class="reveal"><span lang="id"><ProcessIsolationDemo /></span><span lang="en"><ProcessIsolationDemo /></span></p>
+<p class="reveal"><span lang="id">Each process has its own independent virtual address space:</span><span lang="en">Each process has its own independent virtual address space:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Process A Virtual Memory      Process B Virtual Memory
++----------------+        +----------------+
+|  Kernel Space  |        |  Kernel Space  |  &lt;-- Shared (read-only)
+|  (shared)      |        |  (shared)      |
++----------------+        +----------------+
+|  Stack         |        |  Stack         |  &lt;-- Independent
+|  (grows down)  |        |  (grows down)  |
++----------------+        +----------------+
+|  Heap          |        |  Heap          |  &lt;-- Independent
+|  (grows up)    |        |  (grows up)    |
++----------------+        +----------------+
+|  Data Segment  |        |  Data Segment  |  &lt;-- Independent
+|  (.bss/.data)  |        |  (.bss/.data)  |
++----------------+        +----------------+
+|  Code Segment  |        |  Code Segment  |  &lt;-- Independent
+|  (.text)       |        |  (.text)       |
++----------------+        +----------------+</pre>
+</div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Inter-Process Communication (IPC) Methods</span><span lang="en">Inter-Process Communication (IPC) Methods</span></h4>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Method</th><th>Principle</th><th>Speed</th><th>Use Case</th></tr>
+<tr><td><b>Pipe</b></td><td>Kernel buffer, unidirectional stream</td><td>Medium</td><td>Parent-child process communication</td></tr>
+<tr><td><b>Message Queue</b></td><td>Kernel message linked list</td><td>Medium</td><td>Async message passing</td></tr>
+<tr><td><b>Shared Memory</b></td><td>Same physical memory mapped</td><td>Fastest</td><td>Large data sharing</td></tr>
+<tr><td><b>Semaphore</b></td><td>Kernel counter</td><td>-</td><td>Synchronization and mutual exclusion</td></tr>
+<tr><td><b>Socket</b></td><td>Network protocol stack</td><td>Slower</td><td>Cross-machine communication</td></tr>
+<tr><td><b>Signal</b></td><td>Soft interrupt</td><td>-</td><td>Event notification</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Thread Model: Scheduling and Synchronization</span><span lang="en">3.2 Thread Model: Scheduling and Synchronization</span></h3>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Thread Scheduling Principles</span><span lang="en">Thread Scheduling Principles</span></h4>
+<p class="reveal"><span lang="id"><ThreadSchedulingDemo /></span><span lang="en"><ThreadSchedulingDemo /></span></p>
+<p class="reveal"><span lang="id">How the OS thread scheduler works:</span><span lang="en">How the OS thread scheduler works:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Ready Queue                  Running                  Waiting Queue
++--------+                +--------+               +--------+
+| Thread B|  &lt;-- timeslice| Thread A|  &lt;-- I/O req | Thread C|
+| Thread D|      expires  |(running)|              | Thread E|
+| Thread F|                +--------+              |(blocked)|
++--------+                                         +--------+
+    |                                                  |
+    v                                                  v
+Scheduler picks next to run by priority    Moved back to ready queue when I/O completes</pre>
+</div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Common Thread Synchronization Mechanisms</span><span lang="en">Common Thread Synchronization Mechanisms</span></h4>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Mechanism</th><th>Principle</th><th>Pros</th><th>Cons</th></tr>
+<tr><td><b>Mutex</b></td><td>Binary state, exclusive access</td><td>Simple to implement</td><td>Poor performance under heavy contention</td></tr>
+<tr><td><b>RWLock</b></td><td>Shared for reads, exclusive for writes</td><td>Efficient for read-heavy workloads</td><td>Complex implementation, risk of write starvation</td></tr>
+<tr><td><b>Spinlock</b></td><td>Busy-waiting, doesn't release CPU</td><td>Efficient when wait time is short</td><td>Wastes CPU when wait time is long</td></tr>
+<tr><td><b>Condition Variable</b></td><td>Wait for a specific condition to be met</td><td>Avoids busy-waiting</td><td>Must be used with a lock</td></tr>
+<tr><td><b>Semaphore</b></td><td>Counter controls access count</td><td>Can limit concurrency</td><td>Error-prone if misused</td></tr>
+<tr><td><b>Atomic Operations</b></td><td>CPU instruction-level atomicity</td><td>Lock-free, highest performance</td><td>Only works with simple data types</td></tr>
+<tr><td><b>Lock-Free Queue</b></td><td>Implemented via CAS operations</td><td>Excellent performance under high concurrency</td><td>Complex implementation, ABA problem</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Coroutine Model: User-Space Scheduling</span><span lang="en">3.3 Coroutine Model: User-Space Scheduling</span></h3>
+<p class="reveal"><span lang="id"><CoroutineLightweightDemo /></span><span lang="en"><CoroutineLightweightDemo /></span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Core Advantages of Coroutines</span><span lang="en">Core Advantages of Coroutines</span></h4>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Traditional Multithreading      vs              Coroutine Model
+
++------------+                       +------------+
+|  Thread 1  |                       | Event Loop |
+| (1MB stack)|                       | (Scheduler)|
++------------+                       +------------+
+     |                                     |
+     v                                     v
++------------+                       +------------+
+|  Thread 2  |                       | Coroutine A|
+| (1MB stack)|                       | (few KB)   |
++------------+                       +------------+
+     |                                     |
+     v                                     v
++------------+                       +------------+
+|  Thread 3  |                       | Coroutine B|
+| (1MB stack)|                       | (few KB)   |
++------------+                       +------------+
+
+Overhead: N MB                       Overhead: N KB
+Creation: ~10μs                      Creation: ~100ns
+Switching: ~1μs                      Switching: ~100ns</pre>
+</div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">How async/await Works</span><span lang="en">How async/await Works</span></h4>
+<p class="reveal"><span lang="id"><AsyncAwaitDemo /></span><span lang="en"><AsyncAwaitDemo /></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>import asyncio
+
+async def fetch_data(url):
+    # When await is hit, the coroutine suspends and yields the CPU
+    response = await aiohttp.get(url)
+    # After I/O completes, the event loop wakes the coroutine, resuming from here
+    return response.json()
+
+async def main():
+    # Create 3 coroutine tasks
+    tasks = [
+        fetch_data(&quot;https://api1.example.com&quot;),
+        fetch_data(&quot;https://api2.example.com&quot;),
+        fetch_data(&quot;https://api3.example.com&quot;)
+    ]
+    # Execute concurrently; total time ≈ the slowest request
+    results = await asyncio.gather(*tasks)
+    return results
+
+# Start the event loop
+asyncio.run(main())</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Execution Flow</b>:</span><span lang="en"><b>Execution Flow</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Timeline --------------------------------------------------------------------&gt;
+
+Coroutine A: [Prepare]--[await suspend]=======[Response received]--[Process]
+                     |
+Coroutine B:         [Prepare]--[await suspend]=======[Response received]--[Process]
+                                  |
+Coroutine C:                      [Prepare]--[await suspend]=======[Response received]
+                                               |
+                                               ↓
+                                         All I/O complete
+
+Legend: [ ] = CPU execution, === = I/O waiting, | = coroutine switch</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.4 Event Loop: The "Heart" of Coroutines</span><span lang="en">3.4 Event Loop: The "Heart" of Coroutines</span></h3>
+<p class="reveal"><span lang="id"><EventLoopDemo /></span><span lang="en"><EventLoopDemo /></span></p>
+<p class="reveal"><span lang="id">The event loop is the core mechanism of coroutine scheduling:</span><span lang="en">The event loop is the core mechanism of coroutine scheduling:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>import selectors
+import heapq
+
+class EventLoop:
+    def __init__(self):
+        self.selector = selectors.DefaultSelector()
+        self.ready = []  # Ready queue
+        self.scheduled = []  # Scheduled task queue
+        self.current = None
+
+    def run(self):
+        while True:
+            # 1. Process scheduled tasks
+            now = time.time()
+            while self.scheduled and self.scheduled[0][0] &lt;= now:
+                _, callback = heapq.heappop(self.scheduled)
+                self.ready.append(callback)
+
+            # 2. Wait for I/O events
+            timeout = 0 if self.ready else 0.1
+            events = self.selector.select(timeout)
+
+            for key, mask in events:
+                callback = key.data
+                self.ready.append(callback)
+
+            # 3. Execute ready callbacks
+            while self.ready:
+                callback = self.ready.popleft()
+                callback()</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.5 Concurrency vs. Parallelism: Not</span><span lang="en">3.5 Concurrency vs. Parallelism: Not</span></h3>
+<p class="reveal"><span lang="id"><ConcurrentVsParallelDemo /></span><span lang="en"><ConcurrentVsParallelDemo /></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Concept</th><th>Meaning</th><th>Analogy</th><th>Requirements</th></tr>
+<tr><td><b>Concurrency</b></td><td>Multiple tasks interleave execution, appearing to progress simultaneously</td><td>One person alternating between cooking multiple dishes</td><td>Single-core CPU is enough</td></tr>
+<tr><td><b>Parallelism</b></td><td>Multiple tasks truly execute at the same time</td><td>Multiple people cooking different dishes simultaneously</td><td>Multi-core CPU or multiple machines</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Illustration</b>:</span><span lang="en"><b>Illustration</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Single-Core CPU - Concurrency
+Time →  1    2    3    4    5    6    7    8
+Task A: [Run ][Run ]      [Run ][Run ]
+Task B:      [Run ][Run ]      [Run ][Run ]
+
+Two tasks interleave execution, appearing to progress &quot;simultaneously&quot;
+
+========================================
+
+Multi-Core CPU - Parallelism
+Time →  1    2    3    4    5    6    7    8
+Core 1: [Task A][Task A][Task A][Task A]
+Core 2: [Task B][Task B][Task B][Task B]
+
+Two tasks truly execute &quot;simultaneously&quot;
+
+========================================
+
+In reality, it&#039;s often: Concurrency + Parallelism
+Time →  1    2    3    4    5    6    7    8
+Core 1: [A1][A1][B1][B1][C1][C1][D1][D1]
+Core 2: [A2][A2][B2][B2][C2][C2][D2][D2]
+
+Multiple tasks are concurrently scheduled to different cores, then run in parallel on those cores</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. In Practice: Go Goroutines and Green Threads</span><span lang="en">4. In Practice: Go Goroutines and Green Threads</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Go's Concurrency Philosophy</span><span lang="en">4.1 Go's Concurrency Philosophy</span></h3>
+<p class="reveal"><span lang="id"><GoroutineGreenThreadDemo /></span><span lang="en"><GoroutineGreenThreadDemo /></span></p>
+<p class="reveal"><span lang="id">Go's concurrency design philosophy: <b>Don't communicate by sharing memory; share memory by communicating</b>.</span><span lang="en">Go's concurrency design philosophy: <b>Don't communicate by sharing memory; share memory by communicating</b>.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>go</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>package main
+
+import (
+    &quot;fmt&quot;
+    &quot;time&quot;
+)
+
+// Producer
+func producer(ch chan&lt;- int, id int) {
+    for i := 0; i &lt; 5; i++ {
+        fmt.Printf(&quot;Producer %d sending: %d\n&quot;, id, i)
+        ch &lt;- i  // Send data to channel
+        time.Sleep(100 * time.Millisecond)
+    }
+}
+
+// Consumer
+func consumer(ch &lt;-chan int, id int) {
+    for val := range ch {  // Receive data from channel
+        fmt.Printf(&quot;Consumer %d received: %d\n&quot;, id, val)
+    }
+}
+
+func main() {
+    // Create a buffered channel
+    ch := make(chan int, 10)
+
+    // Start 2 producer goroutines
+    for i := 0; i &lt; 2; i++ {
+        go producer(ch, i)
+    }
+
+    // Start 2 consumer goroutines
+    for i := 0; i &lt; 2; i++ {
+        go consumer(ch, i)
+    }
+
+    // Wait for a while
+    time.Sleep(3 * time.Second)
+    close(ch)
+}</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Goroutine Scheduler: The GMP Model</span><span lang="en">4.2 Goroutine Scheduler: The GMP Model</span></h3>
+<p class="reveal"><span lang="id">Go's scheduler uses the GMP model:</span><span lang="en">Go's scheduler uses the GMP model:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Component</th><th>Meaning</th><th>Role</th></tr>
+<tr><td><b>G (Goroutine)</b></td><td>Coroutine</td><td>The task to execute, lightweight (2KB stack, dynamically resizable)</td></tr>
+<tr><td><b>M (Machine)</b></td><td>OS Thread</td><td>The carrier that actually executes G, 1:1 mapping with kernel threads</td></tr>
+<tr><td><b>P (Processor)</b></td><td>Logical Processor</td><td>Scheduling context containing a runnable G queue; count defaults to the number of CPU cores</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Scheduling Flow</b>:</span><span lang="en"><b>Scheduling Flow</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Global Queue
++----------------+
+|  G1  |  G2  |  G3  |
++----------------+
+
+P0 Local Queue      P1 Local Queue      P2 Local Queue      P3 Local Queue
++----------+       +----------+       +----------+       +----------+
+| G4 | G5  |       | G6 | G7  |       | G8 | G9  |       | G10| G11 |
++----------+       +----------+       +----------+       +----------+
+    |                     |                     |                     |
+    v                     v                     v                     v
++----------+       +----------+       +----------+       +----------+
+|    M0    |       |    M1    |       |    M2    |       |    M3    |
+| (OS Thrd)|       | (OS Thrd)|       | (OS Thrd)|       | (OS Thrd)|
++----------+       +----------+       +----------+       +----------+
+
+Scheduling Strategy:
+1. Each P maintains a local G queue to reduce lock contention
+2. P takes G from its local queue and hands it to M for execution
+3. When the local queue is empty, &quot;steal&quot; half the G&#039;s from another P (Work Stealing)
+4. The global queue serves as a fallback, checked periodically</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Practical Code Templates</span><span lang="en">5. Practical Code Templates</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Python asyncio High-Concurrency Template</span><span lang="en">5.1 Python asyncio High-Concurrency Template</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>import asyncio
+import aiohttp
+from typing import List, Dict
+import time
+
+class AsyncHTTPClient:
+    &quot;&quot;&quot;High-performance HTTP client based on asyncio&quot;&quot;&quot;
+
+    def __init__(self, max_connections: int = 100, timeout: int = 30):
+        self.timeout = aiohttp.ClientTimeout(total=timeout)
+        # Limit concurrent connections to avoid overwhelming the target service
+        connector = aiohttp.TCPConnector(
+            limit=max_connections,
+            limit_per_host=10,  # Connection limit per host
+            enable_cleanup_closed=True,
+            force_close=True,
+        )
+        self.session = aiohttp.ClientSession(
+            connector=connector,
+            timeout=self.timeout,
+        )
+
+    async def fetch(self, url: str, method: str = &#039;GET&#039;, **kwargs) -&gt; Dict:
+        &quot;&quot;&quot;Send a single request&quot;&quot;&quot;
+        try:
+            async with self.session.request(method, url, **kwargs) as response:
+                return {
+                    &#039;url&#039;: url,
+                    &#039;status&#039;: response.status,
+                    &#039;data&#039;: await response.text(),
+                    &#039;error&#039;: None
+                }
+        except asyncio.TimeoutError:
+            return {&#039;url&#039;: url, &#039;status&#039;: None, &#039;data&#039;: None, &#039;error&#039;: &#039;Timeout&#039;}
+        except Exception as e:
+            return {&#039;url&#039;: url, &#039;status&#039;: None, &#039;data&#039;: None, &#039;error&#039;: str(e)}
+
+    async def fetch_many(self, urls: List[str], concurrency: int = 10) -&gt; List[Dict]:
+        &quot;&quot;&quot;Fetch multiple URLs concurrently, with a concurrency limit&quot;&quot;&quot;
+        semaphore = asyncio.Semaphore(concurrency)
+
+        async def fetch_with_limit(url):
+            async with semaphore:
+                return await self.fetch(url)
+
+        # Execute all requests concurrently
+        tasks = [fetch_with_limit(url) for url in urls]
+        return await asyncio.gather(*tasks, return_exceptions=True)
+
+    async def close(self):
+        await self.session.close()
+
+
+# Usage example
+async def main():
+    client = AsyncHTTPClient(max_connections=50)
+
+    # List of URLs to fetch
+    urls = [
+        &quot;https://api.github.com/users/github&quot;,
+        &quot;https://api.github.com/users/google&quot;,
+        &quot;https://api.github.com/users/microsoft&quot;,
+        # ... more URLs
+    ] * 10  # Simulate 300 requests
+
+    start = time.time()
+    results = await client.fetch_many(urls, concurrency=20)
+    elapsed = time.time() - start
+
+    # Summarize results
+    success = sum(1 for r in results if r.get(&#039;status&#039;) == 200)
+    failed = len(results) - success
+
+    print(f&quot;Total requests: {len(results)}&quot;)
+    print(f&quot;Success: {success}, Failed: {failed}&quot;)
+    print(f&quot;Elapsed: {elapsed:.2f}s&quot;)
+    print(f&quot;QPS: {len(results)/elapsed:.1f}&quot;)
+
+    await client.close()
+
+if __name__ == &quot;__main__&quot;:
+    asyncio.run(main())</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Go High-Concurrency Service Template</span><span lang="en">5.2 Go High-Concurrency Service Template</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>go</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>package main
+
+import (
+	&quot;context&quot;
+	&quot;encoding/json&quot;
+	&quot;fmt&quot;
+	&quot;log&quot;
+	&quot;net/http&quot;
+	&quot;runtime&quot;
+	&quot;time&quot;
+
+	&quot;golang.org/x/sync/errgroup&quot;
+)
+
+// Request/Response structures
+type OrderRequest struct {
+	UserID    int64   `json:&quot;user_id&quot;`
+	ProductID int64   `json:&quot;product_id&quot;`
+	Quantity  int     `json:&quot;quantity&quot;`
+	Price     float64 `json:&quot;price&quot;`
+}
+
+type OrderResponse struct {
+	OrderID   int64   `json:&quot;order_id&quot;`
+	Status    string  `json:&quot;status&quot;`
+	Total     float64 `json:&quot;total&quot;`
+	CreatedAt string  `json:&quot;created_at&quot;`
+}
+
+// Simulated database operations
+type Database struct {
+	orders map[int64]*OrderResponse
+	mutex  chan struct{}
+}
+
+func NewDatabase() *Database {
+	db := &amp;Database{
+		orders: make(map[int64]*OrderResponse),
+		mutex:  make(chan struct{}, 1), // Simulated mutex
+	}
+	return db
+}
+
+func (db *Database) CreateOrder(ctx context.Context, req *OrderRequest) (*OrderResponse, error) {
+	// Acquire lock
+	select {
+	case db.mutex &lt;- struct{}{}:
+		defer func() { &lt;-db.mutex }()
+	case &lt;-ctx.Done():
+		return nil, ctx.Err()
+	}
+
+	// Simulate database operation latency
+	select {
+	case &lt;-time.After(50 * time.Millisecond):
+	case &lt;-ctx.Done():
+		return nil, ctx.Err()
+	}
+
+	order := &amp;OrderResponse{
+		OrderID:   time.Now().UnixNano(),
+		Status:    &quot;created&quot;,
+		Total:     req.Price * float64(req.Quantity),
+		CreatedAt: time.Now().Format(time.RFC3339),
+	}
+	db.orders[order.OrderID] = order
+	return order, nil
+}
+
+// HTTP handler
+type Handler struct {
+	db *Database
+}
+
+func NewHandler(db *Database) *Handler {
+	return &amp;Handler{db: db}
+}
+
+func (h *Handler) CreateOrder(w http.ResponseWriter, r *http.Request) {
+	// Set request timeout
+	ctx, cancel := context.WithTimeout(r.Context(), 2*time.Second)
+	defer cancel()
+
+	var req OrderRequest
+	if err := json.NewDecoder(r.Body).Decode(&amp;req); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	order, err := h.db.CreateOrder(ctx, &amp;req)
+	if err != nil {
+		if err == context.DeadlineExceeded {
+			http.Error(w, &quot;Request timeout&quot;, http.StatusGatewayTimeout)
+			return
+		}
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set(&quot;Content-Type&quot;, &quot;application/json&quot;)
+	json.NewEncoder(w).Encode(order)
+}
+
+func (h *Handler) Health(w http.ResponseWriter, r *http.Request) {
+	info := map[string]interface{}{
+		&quot;status&quot;:    &quot;ok&quot;,
+		&quot;goroutine&quot;: runtime.NumGoroutine(),
+		&quot;cpu&quot;:       runtime.NumCPU(),
+		&quot;version&quot;:   runtime.Version(),
+	}
+	w.Header().Set(&quot;Content-Type&quot;, &quot;application/json&quot;)
+	json.NewEncoder(w).Encode(info)
+}
+
+// Batch processing example
+func BatchProcess(ctx context.Context, items []int) ([]int, error) {
+	g, ctx := errgroup.WithContext(ctx)
+	g.SetLimit(10) // Limit concurrency to 10
+
+	results := make([]int, len(items))
+
+	for i, item := range items {
+		i, item := i, item // Avoid closure capture pitfall
+		g.Go(func() error {
+			select {
+			case &lt;-ctx.Done():
+				return ctx.Err()
+			default:
+				// Simulate processing
+				time.Sleep(100 * time.Millisecond)
+				results[i] = item * 2
+				return nil
+			}
+		})
+	}
+
+	if err := g.Wait(); err != nil {
+		return nil, err
+	}
+	return results, nil
+}
+
+func main() {
+	// Initialize database
+	db := NewDatabase()
+
+	// Create handler
+	handler := NewHandler(db)
+
+	// Set up routes
+	mux := http.NewServeMux()
+	mux.HandleFunc(&quot;/order&quot;, handler.CreateOrder)
+	mux.HandleFunc(&quot;/health&quot;, handler.Health)
+
+	// Create server
+	server := &amp;http.Server{
+		Addr:         &quot;:8080&quot;,
+		Handler:      mux,
+		ReadTimeout:  5 * time.Second,
+		WriteTimeout: 10 * time.Second,
+		IdleTimeout:  120 * time.Second,
+	}
+
+	fmt.Println(&quot;Server starting on :8080&quot;)
+	fmt.Printf(&quot;Go version: %s\n&quot;, runtime.Version())
+	fmt.Printf(&quot;CPU cores: %d\n&quot;, runtime.NumCPU())
+
+	if err := server.ListenAndServe(); err != nil {
+		log.Fatal(err)
+	}
+}</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Summary Comparison Tables</span><span lang="en">6. Summary Comparison Tables</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Core Concept Comparison</span><span lang="en">6.1 Core Concept Comparison</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Feature</th><th>Process</th><th>Thread</th><th>Coroutine</th></tr>
+<tr><td><b>Scheduler</b></td><td>OS</td><td>OS</td><td>User program / runtime</td></tr>
+<tr><td><b>Switch Overhead</b></td><td>~1-10ms</td><td>~1-10μs</td><td>~100ns</td></tr>
+<tr><td><b>Memory Footprint</b></td><td>~10MB+</td><td>~1MB</td><td>~2KB</td></tr>
+<tr><td><b>Communication</b></td><td>IPC</td><td>Shared memory</td><td>Shared memory / Channel</td></tr>
+<tr><td><b>Sync Required</b></td><td>No</td><td>Locks needed</td><td>Locks / Cooperative</td></tr>
+<tr><td><b>Crash Impact</b></td><td>This process only</td><td>Entire process</td><td>Controllable</td></tr>
+<tr><td><b>Use Case</b></td><td>Strong isolation, multi-tenant</td><td>CPU-intensive</td><td>I/O-intensive</td></tr>
+<tr><td><b>Typical Languages</b></td><td>All languages</td><td>All languages</td><td>Go, Python, JS, Rust</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 Concurrency Model Selection Guide</span><span lang="en">6.2 Concurrency Model Selection Guide</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Scenario</th><th>Recommended Model</th><th>Rationale</th></tr>
+<tr><td>Web service gateway</td><td>Coroutine + async I/O</td><td>High concurrent connections, low memory footprint</td></tr>
+<tr><td>Real-time communication</td><td>Coroutine + long connections</td><td>Maintain many WebSocket connections</td></tr>
+<tr><td>Data processing pipelines</td><td>Multi-process + coroutines</td><td>Utilize multi-core, I/O non-blocking</td></tr>
+<tr><td>Scientific computing</td><td>Multi-threaded / multi-process</td><td>CPU-intensive, needs parallel computation</td></tr>
+<tr><td>Microservice architecture</td><td>Multi-process + coroutines</td><td>Inter-service isolation, internal high concurrency</td></tr>
+<tr><td>Embedded systems</td><td>Coroutine / single-threaded</td><td>Resource-constrained, deterministic scheduling</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.3 Terminology Reference</span><span lang="en">6.3 Terminology Reference</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>English Term</th><th>Chinese Translation</th><th>Explanation</th></tr>
+<tr><td><b>Process</b></td><td>进程</td><td>Basic unit of OS resource allocation, with independent memory space</td></tr>
+<tr><td><b>Thread</b></td><td>线程</td><td>Basic unit of CPU scheduling, shares process memory space</td></tr>
+<tr><td><b>Coroutine</b></td><td>协程</td><td>User-space lightweight thread, scheduled by the program itself</td></tr>
+<tr><td><b>Concurrency</b></td><td>并发</td><td>Multiple tasks interleave execution, appearing to progress simultaneously</td></tr>
+<tr><td><b>Parallelism</b></td><td>并行</td><td>Multiple tasks truly execute simultaneously, requires multi-core support</td></tr>
+<tr><td><b>Context Switch</b></td><td>上下文切换</td><td>The process of the CPU switching from one task to another</td></tr>
+<tr><td><b>Blocking I/O</b></td><td>阻塞 I/O</td><td>Initiates an I/O request and waits for completion; the thread is suspended</td></tr>
+<tr><td><b>Non-blocking I/O</b></td><td>非阻塞 I/O</td><td>Initiates an I/O request and returns immediately without waiting for the result</td></tr>
+<tr><td><b>Async I/O</b></td><td>异步 I/O</td><td>Notifies the caller via callback or notification mechanism when I/O completes</td></tr>
+<tr><td><b>Event Loop</b></td><td>事件循环</td><td>Coroutine scheduling mechanism that continuously listens for events and dispatches them</td></tr>
+<tr><td><b>Goroutine</b></td><td>Go 协程</td><td>Go language's lightweight thread implementation</td></tr>
+<tr><td><b>Channel</b></td><td>通道</td><td>Go's mechanism for communication between goroutines</td></tr>
+<tr><td><b>Mutex</b></td><td>互斥锁</td><td>Synchronization primitive for protecting shared resources</td></tr>
+<tr><td><b>Semaphore</b></td><td>信号量</td><td>Controls the number of threads concurrently accessing a resource</td></tr>
+<tr><td><b>Deadlock</b></td><td>死锁</td><td>Multiple threads waiting for each other to release resources, causing permanent blocking</td></tr>
+<tr><td><b>Race Condition</b></td><td>竞态条件</td><td>Multiple threads accessing shared data simultaneously, leading to non-deterministic results</td></tr>
+<tr><td><b>Thread Pool</b></td><td>线程池</td><td>Pre-create a set of threads and reuse them to reduce creation/destruction overhead</td></tr>
+<tr><td><b>Work Stealing</b></td><td>工作窃取</td><td>Idle threads "steal" tasks from busy threads' queues for execution</td></tr>
+<tr><td><b>Zero-copy</b></td><td>零拷贝</td><td>Data transferred between kernel space and user space without CPU copy</td></tr>
+<tr><td><b>C10K Problem</b></td><td>C10K 问题</td><td>The challenge of handling 10,000 connections on a single machine</td></tr>
+<tr><td><b>C10M Problem</b></td><td>C10M 问题</td><td>The ultimate challenge of handling 10 million connections on a single machine</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Closing Thoughts</span><span lang="en">7. Closing Thoughts</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.1 The Golden Rules of Concurrent Programming</span><span lang="en">7.1 The Golden Rules of Concurrent Programming</span></h3>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Don't optimize prematurely</b>: Make the code work correctly first, then consider performance optimization</span><span lang="en"><b>Don't optimize prematurely</b>: Make the code work correctly first, then consider performance optimization</span></li>
+<li><span lang="id"><b>Avoid shared state</b>: "Don't communicate by sharing memory; share memory by communicating"</span><span lang="en"><b>Avoid shared state</b>: "Don't communicate by sharing memory; share memory by communicating"</span></li>
+<li><span lang="id"><b>Let errors surface early</b>: Concurrency bugs are often hard to reproduce; expose them as much as possible during testing</span><span lang="en"><b>Let errors surface early</b>: Concurrency bugs are often hard to reproduce; expose them as much as possible during testing</span></li>
+<li><span lang="id"><b>Limit concurrency</b>: Unlimited concurrency is no protection at all; use semaphores or connection pools to cap it</span><span lang="en"><b>Limit concurrency</b>: Unlimited concurrency is no protection at all; use semaphores or connection pools to cap it</span></li>
+<li><span lang="id"><b>Monitor and observe</b>: Concurrent systems must have comprehensive monitoring to quickly locate issues</span><span lang="en"><b>Monitor and observe</b>: Concurrent systems must have comprehensive monitoring to quickly locate issues</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.2 Learning Roadmap</span><span lang="en">7.2 Learning Roadmap</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Phase 1: Fundamental Understanding
+    ├── Understand basic concepts of processes and threads
+    ├── Learn synchronization primitives (locks, semaphores, condition variables)
+    └── Write simple multi-threaded programs
+
+Phase 2: Deep Dive into Principles
+    ├── Understand memory models and visibility
+    ├── Learn lock-free programming and atomic operations
+    ├── Understand thread pools and work stealing
+    └── Analyze deadlocks and race conditions
+
+Phase 3: Advanced Applications
+    ├── Master coroutines and async programming
+    ├── Learn Go/Python/Rust concurrency models
+    ├── Understand concurrency in distributed systems
+    └── Performance tuning and capacity planning
+
+Phase 4: Expert Level
+    ├── Design high-concurrency system architectures
+    ├── Solve complex concurrency bugs
+    ├── Develop concurrency programming frameworks
+    └── Share and spread concurrency knowledge</pre>
+</div>
+<p class="reveal"><span lang="id">I hope this guide helps you build a systematic understanding of concurrent programming. Remember, <b>concurrency is not the goal — it's the means</b>. The real objective is to build high-performance, highly available services. Understand the principles, choose the right model, write solid code, and you'll go far on the concurrency journey.</span><span lang="en">I hope this guide helps you build a systematic understanding of concurrent programming. Remember, <b>concurrency is not the goal — it's the means</b>. The real objective is to build high-performance, highly available services. Understand the principles, choose the right model, write solid code, and you'll go far on the concurrency journey.</span></p>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../4-server-and-backend/client-languages/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">4-server-and-backend/client-languages</span><span lang="en">4-server-and-backend/client-languages</span></b></a>
+      <a class="next" href="../../4-server-and-backend/cross-platform/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">4-server-and-backend/cross-platform</span><span lang="en">4-server-and-backend/cross-platform</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

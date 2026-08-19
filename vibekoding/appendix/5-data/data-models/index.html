@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Data Models: A Complete Overview — Document, Graph, Time-Series, and Vector — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Data Models: A Complete Overview — Document, Graph, Time-Series, and Vector. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/5-data/data-models/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Data Models: A Complete Overview — Document, Graph, Time-Series, and Vector</span><span lang="en">Data Models: A Complete Overview — Document, Graph, Time-Series, and Vector</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Data Models: A Complete Overview — Document, Graph, Time-Series, and Vector</span><span lang="en">Data Models: A Complete Overview — Document, Graph, Time-Series, and Vector</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Data Models: A Complete Overview — Document, Graph, Time-Series, and Vector.</span><span lang="en">Ensiklopedia VibeKoding: Data Models: A Complete Overview — Document, Graph, Time-Series, and Vector.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Why can't you just stuff all your data into MySQL tables?</b> When your data is a social network graph, millions of sensor readings per second, or semantic vectors for AI to understand, relational tables fall short. Different data shapes require different modeling approaches.</span><span lang="en"><b>Why can't you just stuff all your data into MySQL tables?</b> When your data is a social network graph, millions of sensor readings per second, or semantic vectors for AI to understand, relational tables fall short. Different data shapes require different modeling approaches.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Beyond Relational: Motivation for needing Other Data Models</span><span lang="en">1. Beyond Relational: Motivation for needing Other Data Models</span></h2>
+<p class="reveal"><span lang="id">Relational databases (MySQL, PostgreSQL) organize data with "tables + rows + columns," suitable for structured, well-defined business data. But real-world data comes in far more forms than just this:</span><span lang="en">Relational databases (MySQL, PostgreSQL) organize data with "tables + rows + columns," suitable for structured, well-defined business data. But real-world data comes in far more forms than just this:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Data Shape</th><th>Relational Pain Point</th><th>Better Model</th></tr>
+<tr><td>User profiles (flexible fields, nested structures)</td><td>Frequent ALTER TABLE, many NULL columns</td><td><b>Document Model</b></td></tr>
+<tr><td>Social networks (friends of friends of friends)</td><td>Multi-level JOIN performance degrades exponentially</td><td><b>Graph Model</b></td></tr>
+<tr><td>Monitoring metrics (millions of writes per second)</td><td>Write bottlenecks, historical data bloat</td><td><b>Time-Series Model</b></td></tr>
+<tr><td>AI semantic search ("similar meaning" content)</td><td>Cannot express semantic similarity</td><td><b>Vector Model</b></td></tr>
+</table></div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">It's not about "replacing" relational databases, but "supplementing" them. Most systems still run their core business on MySQL/PostgreSQL, but introducing specialized data models for specific scenarios can yield orders-of-magnitude performance improvements.</span><span lang="en">It's not about "replacing" relational databases, but "supplementing" them. Most systems still run their core business on MySQL/PostgreSQL, but introducing specialized data models for specific scenarios can yield orders-of-magnitude performance improvements.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Document Model</span><span lang="en">2. Document Model</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Overview of the Document Model</span><span lang="en">2.1 Overview of the Document Model</span></h3>
+<p class="reveal"><span lang="id">The document model stores data as <b>JSON/BSON documents</b>, where each record is a self-contained document that can have different field structures.</span><span lang="en">The document model stores data as <b>JSON/BSON documents</b>, where each record is a self-contained document that can have different field structures.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>json</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>{
+  &quot;_id&quot;: &quot;user_1001&quot;,
+  &quot;name&quot;: &quot;Zhang San&quot;,
+  &quot;tags&quot;: [&quot;VIP&quot;, &quot;Active&quot;],
+  &quot;address&quot;: { &quot;city&quot;: &quot;Beijing&quot;, &quot;district&quot;: &quot;Chaoyang&quot; },
+  &quot;orders&quot;: [
+    { &quot;id&quot;: &quot;o1&quot;, &quot;amount&quot;: 299 },
+    { &quot;id&quot;: &quot;o2&quot;, &quot;amount&quot;: 599 }
+  ]
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Key Features:</b></span><span lang="en"><b>Key Features:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>No Schema Constraints</b>: No need to predefine table structure; fields can be added or removed at any time</span><span lang="en"><b>No Schema Constraints</b>: No need to predefine table structure; fields can be added or removed at any time</span></li>
+<li><span lang="id"><b>Nested Structures</b>: Addresses and orders are embedded directly in the document; one read gets all data</span><span lang="en"><b>Nested Structures</b>: Addresses and orders are embedded directly in the document; one read gets all data</span></li>
+<li><span lang="id"><b>Horizontal Scaling</b>: Naturally suited for sharding, easily handling massive data volumes</span><span lang="en"><b>Horizontal Scaling</b>: Naturally suited for sharding, easily handling massive data volumes</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Document vs. Relational</span><span lang="en">2.2 Document vs. Relational</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Comparison</th><th>Relational (MySQL)</th><th>Document (MongoDB)</th></tr>
+<tr><td>Data Structure</td><td>Fixed Schema, ALTER TABLE to modify</td><td>Flexible Schema, add fields anytime</td></tr>
+<tr><td>Nested Data</td><td>Requires multi-table JOINs</td><td>Embedded directly in the document</td></tr>
+<tr><td>Cross-record Relationships</td><td>JOINs are powerful</td><td>Relationship queries are weaker</td></tr>
+<tr><td>Best For</td><td>Structurally stable business data</td><td>Structurally variable content data</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 Typical Use Cases</span><span lang="en">2.3 Typical Use Cases</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>CMS Content Management</b>: Articles, comments, and tags with varying structures</span><span lang="en"><b>CMS Content Management</b>: Articles, comments, and tags with varying structures</span></li>
+<li><span lang="id"><b>User Profiles</b>: Different users have different attribute fields</span><span lang="en"><b>User Profiles</b>: Different users have different attribute fields</span></li>
+<li><span lang="id"><b>Product Catalogs</b>: Phones have "screen size," food has "shelf life" — completely different fields</span><span lang="en"><b>Product Catalogs</b>: Phones have "screen size," food has "shelf life" — completely different fields</span></li>
+<li><span lang="id"><b>Configuration Centers</b>: Each service's configuration structure is inconsistent</span><span lang="en"><b>Configuration Centers</b>: Each service's configuration structure is inconsistent</span></li>
+</ul>
+
+<div class="callout warn reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div>
+  <p><span lang="id">"MongoDB doesn't need data structure design" — Wrong! The document model also requires careful design: nesting levels shouldn't be too deep, and frequently updated sub-documents should be split into separate collections.</span><span lang="en">"MongoDB doesn't need data structure design" — Wrong! The document model also requires careful design: nesting levels shouldn't be too deep, and frequently updated sub-documents should be split into separate collections.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Graph Model</span><span lang="en">3. Graph Model</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Overview of the Graph Model</span><span lang="en">3.1 Overview of the Graph Model</span></h3>
+<p class="reveal"><span lang="id">The graph model uses <b>Nodes</b> and <b>Edges</b> to represent entities and their relationships. Each node is an entity, each edge is a relationship, and both nodes and edges can carry properties.</span><span lang="en">The graph model uses <b>Nodes</b> and <b>Edges</b> to represent entities and their relationships. Each node is an entity, each edge is a relationship, and both nodes and edges can carry properties.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>(Zhang San) --[follows]--&gt; (Li Si) --[follows]--&gt; (Wang Wu)
+   |                                    |
+   +--------[purchased]----&gt; (iPhone) &lt;--[purchased]--+</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 The Graph Model's Killer Feature: Multi-hop Queries</span><span lang="en">3.2 The Graph Model's Killer Feature: Multi-hop Queries</span></h3>
+<p class="reveal"><span lang="id"><b>Scenario</b>: Finding "friends of friends of friends" in a social network</span><span lang="en"><b>Scenario</b>: Finding "friends of friends of friends" in a social network</span></p>
+<p class="reveal"><span lang="id">Relational approach (3-level JOIN):</span><span lang="en">Relational approach (3-level JOIN):</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>sql</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>SELECT DISTINCT f3.name
+FROM friends f1
+JOIN friends f2 ON f1.friend_id = f2.user_id
+JOIN friends f3 ON f2.friend_id = f3.user_id
+WHERE f1.user_id = 1001;</pre>
+</div>
+<p class="reveal"><span lang="id">Graph database approach (Cypher query language):</span><span lang="en">Graph database approach (Cypher query language):</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>cypher</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>MATCH (me)-[:FOLLOWS*1..3]-&gt;(target)
+WHERE me.name = &#039;Zhang San&#039;
+RETURN DISTINCT target.name</pre>
+</div>
+<p class="reveal"><span lang="id">Each additional hop in the relational approach adds another JOIN, causing exponential performance degradation. Graph databases traverse relationships via pointers directly, so multi-hop query performance remains nearly unchanged.</span><span lang="en">Each additional hop in the relational approach adds another JOIN, causing exponential performance degradation. Graph databases traverse relationships via pointers directly, so multi-hop query performance remains nearly unchanged.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Typical Use Cases</span><span lang="en">3.3 Typical Use Cases</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Social Networks</b>: Friend recommendations, mutual follows, influence propagation</span><span lang="en"><b>Social Networks</b>: Friend recommendations, mutual follows, influence propagation</span></li>
+<li><span lang="id"><b>Knowledge Graphs</b>: Entity relationship reasoning ("who is the student of who's teacher")</span><span lang="en"><b>Knowledge Graphs</b>: Entity relationship reasoning ("who is the student of who's teacher")</span></li>
+<li><span lang="id"><b>Fraud Detection</b>: Discovering money loops, associated account networks</span><span lang="en"><b>Fraud Detection</b>: Discovering money loops, associated account networks</span></li>
+<li><span lang="id"><b>Recommendation Systems</b>: User-product-tag relationship graph-based recommendations</span><span lang="en"><b>Recommendation Systems</b>: User-product-tag relationship graph-based recommendations</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Time-Series Model</span><span lang="en">4. Time-Series Model</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Overview of the Time-Series Model</span><span lang="en">4.1 Overview of the Time-Series Model</span></h3>
+<p class="reveal"><span lang="id">The time-series model uses <b>timestamps</b> as the primary axis, specifically optimized for "write in chronological order, query by time range" scenarios.</span><span lang="en">The time-series model uses <b>timestamps</b> as the primary axis, specifically optimized for "write in chronological order, query by time range" scenarios.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>timestamp            device      cpu_usage   memory
+2024-01-15 10:00:01  server-01   45%         12.3GB
+2024-01-15 10:00:02  server-01   67%         12.5GB
+2024-01-15 10:00:03  server-01   92%         14.1GB</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Motivation for Noting Use MySQL for Time-Series Data</span><span lang="en">4.2 Motivation for Noting Use MySQL for Time-Series Data</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Issue</th><th>MySQL</th><th>Time-Series Database (InfluxDB)</th></tr>
+<tr><td>Write Speed</td><td>Tens of thousands/sec</td><td><b>Millions/sec</b></td></tr>
+<tr><td>Historical Data</td><td>Manual cleanup, tables keep growing</td><td><b>Automatic expiration policy (TTL)</b></td></tr>
+<tr><td>Aggregation Queries</td><td>Slow GROUP BY</td><td><b>Built-in downsampling</b> (5 sec → 1 min average)</td></tr>
+<tr><td>Storage Efficiency</td><td>General-purpose storage, wasted space</td><td><b>Columnar compression</b>, saving 90% space</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 Typical Use Cases</span><span lang="en">4.3 Typical Use Cases</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Server Monitoring</b>: CPU, memory, disk collected every second</span><span lang="en"><b>Server Monitoring</b>: CPU, memory, disk collected every second</span></li>
+<li><span lang="id"><b>IoT Sensors</b>: Temperature, humidity, GPS trajectories</span><span lang="en"><b>IoT Sensors</b>: Temperature, humidity, GPS trajectories</span></li>
+<li><span lang="id"><b>Financial Markets</b>: Stock prices, trading volume at second-level granularity</span><span lang="en"><b>Financial Markets</b>: Stock prices, trading volume at second-level granularity</span></li>
+<li><span lang="id"><b>Log Analysis</b>: Timeline aggregation of application logs</span><span lang="en"><b>Log Analysis</b>: Timeline aggregation of application logs</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Vector Model</span><span lang="en">5. Vector Model</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Overview of the Vector Model</span><span lang="en">5.1 Overview of the Vector Model</span></h3>
+<p class="reveal"><span lang="id">The vector model converts unstructured data like text, images, and audio into high-dimensional numerical vectors through an <b>Embedding model</b>, then measures semantic similarity by calculating the distance between vectors.</span><span lang="en">The vector model converts unstructured data like text, images, and audio into high-dimensional numerical vectors through an <b>Embedding model</b>, then measures semantic similarity by calculating the distance between vectors.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&quot;delicious Japanese food&quot; → Embedding → [0.82, 0.15, 0.91, 0.33, ...]
+                                        ↓ Cosine similarity
+&quot;Ginza sushi master&quot;    → [0.80, 0.18, 0.89, ...] → 96% similar
+&quot;Italian pizza&quot;          → [0.12, 0.85, 0.20, ...] → 31% similar</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Vector Search vs. Keyword Search</span><span lang="en">5.2 Vector Search vs. Keyword Search</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Comparison</th><th>Keyword Search (LIKE / Full-text Index)</th><th>Vector Search</th></tr>
+<tr><td>Search Method</td><td>Exact string matching</td><td>Semantic similarity matching</td></tr>
+<tr><td>"delicious Japanese food"</td><td>Can only match text containing "Japanese food"</td><td>Can find "sushi," "sashimi," "izakaya"</td></tr>
+<tr><td>Multilingual</td><td>Needs separate handling</td><td>Cross-language semantic understanding</td></tr>
+<tr><td>Multimodal</td><td>Text only</td><td>Unified retrieval across text, images, and audio</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 Typical Use Cases</span><span lang="en">5.3 Typical Use Cases</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>RAG (Retrieval-Augmented Generation)</b>: Providing relevant knowledge fragments to LLMs</span><span lang="en"><b>RAG (Retrieval-Augmented Generation)</b>: Providing relevant knowledge fragments to LLMs</span></li>
+<li><span lang="id"><b>Semantic Search</b>: Understanding user intent rather than keywords</span><span lang="en"><b>Semantic Search</b>: Understanding user intent rather than keywords</span></li>
+<li><span lang="id"><b>Image Search</b>: Upload an image to find visually similar images</span><span lang="en"><b>Image Search</b>: Upload an image to find visually similar images</span></li>
+<li><span lang="id"><b>Recommendation Systems</b>: Content semantic-based similarity recommendations</span><span lang="en"><b>Recommendation Systems</b>: Content semantic-based similarity recommendations</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Standalone Vector Databases</b>: Pinecone, Milvus, Weaviate — focused on vector retrieval, best performance
+- <b>Traditional Database Extensions</b>: pgvector (PostgreSQL), Atlas Vector Search (MongoDB) — reduce architectural complexity
+- <b>In-Memory Vector Libraries</b>: FAISS, Annoy — suitable for small-scale, low-latency scenarios</span><span lang="en">- <b>Standalone Vector Databases</b>: Pinecone, Milvus, Weaviate — focused on vector retrieval, best performance
+- <b>Traditional Database Extensions</b>: pgvector (PostgreSQL), Atlas Vector Search (MongoDB) — reduce architectural complexity
+- <b>In-Memory Vector Libraries</b>: FAISS, Annoy — suitable for small-scale, low-latency scenarios</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Selection Guide: Approach to choosing a Data Model</span><span lang="en">6. Selection Guide: Approach to choosing a Data Model</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>What Does Your Data Look Like?</th><th>Recommended Model</th><th>Representative Products</th></tr>
+<tr><td>Fixed structure, clear relationships (orders, users)</td><td>Relational</td><td>MySQL, PostgreSQL</td></tr>
+<tr><td>Flexible structure, deep nesting (content, configs)</td><td>Document</td><td>MongoDB, DynamoDB</td></tr>
+<tr><td>Complex relationships between entities, need multi-hop traversal</td><td>Graph</td><td>Neo4j, Amazon Neptune</td></tr>
+<tr><td>Write in chronological order, query by time range</td><td>Time-Series</td><td>InfluxDB, TimescaleDB</td></tr>
+<tr><td>Unstructured data, need semantic similarity search</td><td>Vector</td><td>Pinecone, Milvus, pgvector</td></tr>
+</table></div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">Modern systems typically use <b>multiple models together</b>:
+- <b>Core business</b> on PostgreSQL (relational)
+- <b>User behavior logs</b> on InfluxDB (time-series)
+- <b>AI knowledge base</b> on Milvus + pgvector (vector)
+- <b>Recommendation engine</b> on Neo4j (graph)
+
+Don't try to find "one database to solve all problems" — instead, let each type of data find its most suitable home.</span><span lang="en">Modern systems typically use <b>multiple models together</b>:
+- <b>Core business</b> on PostgreSQL (relational)
+- <b>User behavior logs</b> on InfluxDB (time-series)
+- <b>AI knowledge base</b> on Milvus + pgvector (vector)
+- <b>Recommendation engine</b> on Neo4j (graph)
+
+Don't try to find "one database to solve all problems" — instead, let each type of data find its most suitable home.</span></p>
+</div>
+<p class="reveal"><span lang="id"><DataModelsDemo /></span><span lang="en"><DataModelsDemo /></span></p>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../5-data/data-governance/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">5-data/data-governance</span><span lang="en">5-data/data-governance</span></b></a>
+      <a class="next" href="../../5-data/data-tracking/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">5-data/data-tracking</span><span lang="en">5-data/data-tracking</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

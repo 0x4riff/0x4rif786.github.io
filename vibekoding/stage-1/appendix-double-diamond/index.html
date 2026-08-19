@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mempersempit Solusi (Double Diamond) — VibeKoding 💎</title>
+<meta name="description" content="Modul referensi resmi Level 1 VibeKoding: Mempersempit Solusi (Double Diamond). - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-1/appendix-double-diamond/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../">VibeKoding</a> / <a href="../../stage-1/"><span lang="id">Level 1 · Pemula</span><span lang="en">Level 1 · Pemula</span></a> / <span lang="id">Mempersempit Solusi (Double Diamond)</span><span lang="en">Mempersempit Solusi (Double Diamond)</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">💎</div>
+      <div>
+        <h1><span lang="id">Mempersempit Solusi (Double Diamond)</span><span lang="en">Mempersempit Solusi (Double Diamond)</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 1 · Pemula</span><span lang="en">Level 1 · Pemula</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul referensi resmi Level 1 VibeKoding: Mempersempit Solusi (Double Diamond).</span><span lang="en">Modul referensi resmi Level 1 VibeKoding: Mempersempit Solusi (Double Diamond).</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id"><script setup></span><span lang="en"><script setup></span></p>
+<p class="reveal"><span lang="id">import StageAssignmentCard from '@theme/components/StageAssignmentCard.vue'</span><span lang="en">import StageAssignmentCard from '@theme/components/StageAssignmentCard.vue'</span></p>
+<p class="reveal"><span lang="id"></script></span><span lang="en"></script></span></p>
+<p class="reveal"><span lang="id"><a id="top-dd"></a></span><span lang="en"><a id="top-dd"></a></span></p>
+<p class="reveal"><span lang="id">After needs analysis and user interviews, we often have a large collection of material: accounts from different users, problems with existing tools, and several possible directions for improvement. Once the material grows, the next difficulty is deciding what to keep.</span><span lang="en">After needs analysis and user interviews, we often have a large collection of material: accounts from different users, problems with existing tools, and several possible directions for improvement. Once the material grows, the next difficulty is deciding what to keep.</span></p>
+<p class="reveal"><span lang="id">When "understanding the problem" and "designing the solution" are not separated, it is easy to conduct interviews while searching for reasons to support a preferred feature. The <b>Double Diamond</b> separates these two kinds of work through two cycles of divergence and convergence.</span><span lang="en">When "understanding the problem" and "designing the solution" are not separated, it is easy to conduct interviews while searching for reasons to support a preferred feature. The <b>Double Diamond</b> separates these two kinds of work through two cycles of divergence and convergence.</span></p>
+<p class="reveal"><span lang="id">This chapter introduces Discover, Define, Develop, and Deliver, and explains the inputs, outputs, and common mistakes of each stage.</span><span lang="en">This chapter introduces Discover, Define, Develop, and Deliver, and explains the inputs, outputs, and common mistakes of each stage.</span></p>
+<p class="reveal"><span lang="id"><a id="dd-what"></a></span><span lang="en"><a id="dd-what"></a></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">[1. Two Cycles of Divergence and Convergence](#top-dd)</span><span lang="en">[1. Two Cycles of Divergence and Convergence](#top-dd)</span></h2>
+<p class="reveal"><span lang="id">The Double Diamond is a classic design process framework promoted by the UK <b>Design Council</b>. It represents a full design and innovation process as two connected diamond shapes.</span><span lang="en">The Double Diamond is a classic design process framework promoted by the UK <b>Design Council</b>. It represents a full design and innovation process as two connected diamond shapes.</span></p>
+<p class="reveal"><span lang="id">It is called a "diamond" because each diamond contains two opposite but equally important motions:</span><span lang="en">It is called a "diamond" because each diamond contains two opposite but equally important motions:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>diverge</b>: open the view and look at more possibilities</span><span lang="en"><b>diverge</b>: open the view and look at more possibilities</span></li>
+<li><span lang="id"><b>converge</b>: narrow the scope and make choices</span><span lang="en"><b>converge</b>: narrow the scope and make choices</span></li>
+</ul>
+<p class="reveal"><span lang="id">The full process has four steps:</span><span lang="en">The full process has four steps:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Discover</b>: broadly understand users, problems, context, and market</span><span lang="en"><b>Discover</b>: broadly understand users, problems, context, and market</span></li>
+<li><span lang="id"><b>Define</b>: extract the core problem that is actually worth solving</span><span lang="en"><b>Define</b>: extract the core problem that is actually worth solving</span></li>
+<li><span lang="id"><b>Develop</b>: explore multiple solution directions around that problem</span><span lang="en"><b>Develop</b>: explore multiple solution directions around that problem</span></li>
+<li><span lang="id"><b>Deliver</b>: choose, prototype, test, and deliver the more suitable solution</span><span lang="en"><b>Deliver</b>: choose, prototype, test, and deliver the more suitable solution</span></li>
+</ul>
+<p class="reveal"><span lang="id">The first two stages address the problem space; the last two address the solution space.</span><span lang="en">The first two stages address the problem space; the last two address the solution space.</span></p>
+<p class="reveal"><span lang="id"><figure class="field-figure field-figure--diagram"></span><span lang="en"><figure class="field-figure field-figure--diagram"></span></p>
+<p class="reveal"><span lang="id"><a href="https://www.designcouncil.org.uk/resources/framework-for-innovation/" target="_blank" rel="noreferrer"></span><span lang="en"><a href="https://www.designcouncil.org.uk/resources/framework-for-innovation/" target="_blank" rel="noreferrer"></span></p>
+<p class="reveal"><span lang="id"><img src="/images/product-discovery/double-diamond/design-council-double-diamond-wide.png" alt="The Design Council Double Diamond: Discover, Define, Develop, and Deliver form two connected diamonds" loading="lazy" /></span><span lang="en"><img src="/images/product-discovery/double-diamond/design-council-double-diamond-wide.png" alt="The Design Council Double Diamond: Discover, Define, Develop, and Deliver form two connected diamonds" loading="lazy" /></span></p>
+<p class="reveal"><span lang="id"></a></span><span lang="en"></a></span></p>
+<p class="reveal"><span lang="id"><figcaption><strong>Begin with the original diagram.</strong> The left diamond diverges through Discover and converges through Define; the right diverges again through Develop and converges through Deliver. The Design Council also notes that this is not a linear process that can only move forward once. When testing reveals a problem, the team can return to an earlier stage. Source: <a href="https://www.designcouncil.org.uk/resources/framework-for-innovation/" target="_blank" rel="noreferrer">Design Council</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>.</figcaption></span><span lang="en"><figcaption><strong>Begin with the original diagram.</strong> The left diamond diverges through Discover and converges through Define; the right diverges again through Develop and converges through Deliver. The Design Council also notes that this is not a linear process that can only move forward once. When testing reveals a problem, the team can return to an earlier stage. Source: <a href="https://www.designcouncil.org.uk/resources/framework-for-innovation/" target="_blank" rel="noreferrer">Design Council</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>.</figcaption></span></p>
+<p class="reveal"><span lang="id"></figure></span><span lang="en"></figure></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Why Separate Problems from Solutions</span><span lang="en">2. Why Separate Problems from Solutions</span></h2>
+<p class="reveal"><span lang="id">The most common beginner rhythm looks like this:</span><span lang="en">The most common beginner rhythm looks like this:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">get an idea</span><span lang="en">get an idea</span></li>
+<li><span lang="id">feel that the direction sounds exciting</span><span lang="en">feel that the direction sounds exciting</span></li>
+<li><span lang="id">start prototyping immediately</span><span lang="en">start prototyping immediately</span></li>
+<li><span lang="id">keep adding more features</span><span lang="en">keep adding more features</span></li>
+<li><span lang="id">eventually lose track of the actual problem</span><span lang="en">eventually lose track of the actual problem</span></li>
+</ul>
+<p class="reveal"><span lang="id">The value of the Double Diamond is not that it makes the process more complicated. It <b>forces you to separate "understanding the problem" from "designing the solution."</b></span><span lang="en">The value of the Double Diamond is not that it makes the process more complicated. It <b>forces you to separate "understanding the problem" from "designing the solution."</b></span></p>
+<p class="reveal"><span lang="id">That sounds obvious, but it matters a lot. Many failed products were not badly executed. They failed because:</span><span lang="en">That sounds obvious, but it matters a lot. Many failed products were not badly executed. They failed because:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">they chose the wrong problem</span><span lang="en">they chose the wrong problem</span></li>
+<li><span lang="id">they misunderstood the user</span><span lang="en">they misunderstood the user</span></li>
+<li><span lang="id">they locked in a solution too early</span><span lang="en">they locked in a solution too early</span></li>
+<li><span lang="id">they spent a lot of time polishing detail before validating direction</span><span lang="en">they spent a lot of time polishing detail before validating direction</span></li>
+</ul>
+<p class="reveal"><span lang="id">The Double Diamond keeps reminding you:</span><span lang="en">The Double Diamond keeps reminding you:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">do not assume a problem is real just because the idea is easy to imagine</span><span lang="en">do not assume a problem is real just because the idea is easy to imagine</span></li>
+<li><span lang="id">do not assume something is worth building just because it is technically buildable</span><span lang="en">do not assume something is worth building just because it is technically buildable</span></li>
+<li><span lang="id">do not assume a prototype matters just because it looks complete</span><span lang="en">do not assume a prototype matters just because it looks complete</span></li>
+</ul>
+<p class="reveal"><span lang="id">All three warnings address the same error: treating the amount already invested as evidence that the direction is correct. A prototype only shows what the team has made. Interviews, field observation, and real use provide evidence that the problem exists.</span><span lang="en">All three warnings address the same error: treating the amount already invested as evidence that the direction is correct. A prototype only shows what the team has made. Interviews, field observation, and real use provide evidence that the problem exists.</span></p>
+<p class="reveal"><span lang="id"><a id="dd-first"></a></span><span lang="en"><a id="dd-first"></a></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">[3. The First Diamond: The Problem Space](#top-dd)</span><span lang="en">[3. The First Diamond: The Problem Space](#top-dd)</span></h2>
+<p class="reveal"><span lang="id">The first diamond is about the <b>problem itself</b>, not the solution. Its output is a problem definition, not a product prototype.</span><span lang="en">The first diamond is about the <b>problem itself</b>, not the solution. Its output is a problem definition, not a product prototype.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Discover: Open up the problem space first</span><span lang="en">3.1 Discover: Open up the problem space first</span></h3>
+<p class="reveal"><span lang="id">The core task in Discover is <b>broad research, not quick conclusions.</b></span><span lang="en">The core task in Discover is <b>broad research, not quick conclusions.</b></span></p>
+<p class="reveal"><span lang="id">Typical work in this phase includes:</span><span lang="en">Typical work in this phase includes:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">watching how users behave in real situations</span><span lang="en">watching how users behave in real situations</span></li>
+<li><span lang="id">interviewing potential users and asking when the problem last happened</span><span lang="en">interviewing potential users and asking when the problem last happened</span></li>
+<li><span lang="id">seeing how they currently patch the issue together</span><span lang="en">seeing how they currently patch the issue together</span></li>
+<li><span lang="id">checking how competitors and substitutes handle it</span><span lang="en">checking how competitors and substitutes handle it</span></li>
+<li><span lang="id">collecting context about market, workflow, constraints, and surrounding systems</span><span lang="en">collecting context about market, workflow, constraints, and surrounding systems</span></li>
+</ul>
+<p class="reveal"><span lang="id">Many people think Discover just means "read more things." But the more important part is this: <b>you need to understand people and situations, not just collect information.</b></span><span lang="en">Many people think Discover just means "read more things." But the more important part is this: <b>you need to understand people and situations, not just collect information.</b></span></p>
+<p class="reveal"><span lang="id">For example, imagine you want to build an AI tool for organizing meeting notes. In Discover, the better questions are:</span><span lang="en">For example, imagine you want to build an AI tool for organizing meeting notes. In Discover, the better questions are:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">what exactly feels painful after a meeting</span><span lang="en">what exactly feels painful after a meeting</span></li>
+<li><span lang="id">is the hard part recording, organizing, or syncing</span><span lang="en">is the hard part recording, organizing, or syncing</span></li>
+<li><span lang="id">are people writing notes themselves, asking interns to do it, listening to recordings later, or simply skipping documentation</span><span lang="en">are people writing notes themselves, asking interns to do it, listening to recordings later, or simply skipping documentation</span></li>
+<li><span lang="id">which meeting types really need notes, and which ones do not</span><span lang="en">which meeting types really need notes, and which ones do not</span></li>
+</ul>
+<p class="reveal"><span lang="id">The main goal in Discover is not to get the answer right away. It is to <b>avoid assuming too early that you already know the answer.</b></span><span lang="en">The main goal in Discover is not to get the answer right away. It is to <b>avoid assuming too early that you already know the answer.</b></span></p>
+<p class="reveal"><span lang="id"><figure class="field-figure"></span><span lang="en"><figure class="field-figure"></span></p>
+<p class="reveal"><span lang="id"><a href="https://creativecommons.org/2018/09/25/findings-from-the-discovery-phase-of-cc-usability/" target="_blank" rel="noreferrer"></span><span lang="en"><a href="https://creativecommons.org/2018/09/25/findings-from-the-discovery-phase-of-cc-usability/" target="_blank" rel="noreferrer"></span></p>
+<p class="reveal"><span lang="id"><img src="/images/product-discovery/double-diamond/creative-commons-design-workshop.jpg" alt="A Creative Commons usability research workshop, with interview responses organized on sheets and sticky notes across a wall" loading="lazy" /></span><span lang="en"><img src="/images/product-discovery/double-diamond/creative-commons-design-workshop.jpg" alt="A Creative Commons usability research workshop, with interview responses organized on sheets and sticky notes across a wall" loading="lazy" /></span></p>
+<p class="reveal"><span lang="id"></a></span><span lang="en"></a></span></p>
+<p class="reveal"><span lang="id"><figcaption><strong>Real Discover material is messy.</strong> In a 2018 usability study, the Creative Commons team conducted 81 interviews and synthesized another 36 existing interviews. Each sheet in the photograph represents a question, sticky notes record participants' answers, and dots help mark and compare them. At this point, the team preserved differences instead of forcing the material into one answer. Photograph and case: <a href="https://creativecommons.org/2018/09/25/findings-from-the-discovery-phase-of-cc-usability/" target="_blank" rel="noreferrer">Creative Commons</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>.</figcaption></span><span lang="en"><figcaption><strong>Real Discover material is messy.</strong> In a 2018 usability study, the Creative Commons team conducted 81 interviews and synthesized another 36 existing interviews. Each sheet in the photograph represents a question, sticky notes record participants' answers, and dots help mark and compare them. At this point, the team preserved differences instead of forcing the material into one answer. Photograph and case: <a href="https://creativecommons.org/2018/09/25/findings-from-the-discovery-phase-of-cc-usability/" target="_blank" rel="noreferrer">Creative Commons</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>.</figcaption></span></p>
+<p class="reveal"><span lang="id"></figure></span><span lang="en"></figure></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Define: Extract the core problem from a pile of information</span><span lang="en">3.2 Define: Extract the core problem from a pile of information</span></h3>
+<p class="reveal"><span lang="id">If Discover opens the view, Define starts to narrow it.</span><span lang="en">If Discover opens the view, Define starts to narrow it.</span></p>
+<p class="reveal"><span lang="id">Define is not about preserving every observation. It is about asking:</span><span lang="en">Define is not about preserving every observation. It is about asking:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">which problem is most worth solving first</span><span lang="en">which problem is most worth solving first</span></li>
+<li><span lang="id">which problem shows up most often, hurts most, or matters most</span><span lang="en">which problem shows up most often, hurts most, or matters most</span></li>
+<li><span lang="id">which single situation version one should focus on</span><span lang="en">which single situation version one should focus on</span></li>
+</ul>
+<p class="reveal"><span lang="id">The core of this phase is turning a broad topic into one clear problem definition.</span><span lang="en">The core of this phase is turning a broad topic into one clear problem definition.</span></p>
+<p class="reveal"><span lang="id">For example, maybe you start with:</span><span lang="en">For example, maybe you start with:</span></p>
+<p class="reveal"><span lang="id">> I want to build an AI tool that improves meeting efficiency.</span><span lang="en">> I want to build an AI tool that improves meeting efficiency.</span></p>
+<p class="reveal"><span lang="id">By the time you reach Define, a much stronger version might be:</span><span lang="en">By the time you reach Define, a much stronger version might be:</span></p>
+<p class="reveal"><span lang="id">> We will first solve the problem that project teams often cannot produce a shareable meeting note with action items, owners, and deadlines within 10 minutes after a 30-60 minute collaboration meeting.</span><span lang="en">> We will first solve the problem that project teams often cannot produce a shareable meeting note with action items, owners, and deadlines within 10 minutes after a 30-60 minute collaboration meeting.</span></p>
+<p class="reveal"><span lang="id">At that point, the problem is starting to become clear:</span><span lang="en">At that point, the problem is starting to become clear:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">who the users are</span><span lang="en">who the users are</span></li>
+<li><span lang="id">what the situation is</span><span lang="en">what the situation is</span></li>
+<li><span lang="id">where the bottleneck is</span><span lang="en">where the bottleneck is</span></li>
+<li><span lang="id">what success would look like</span><span lang="en">what success would look like</span></li>
+</ul>
+<p class="reveal"><span lang="id">The essence of Define is this: <b>go from "there are many problems" to "this is the one problem we will solve first."</b></span><span lang="en">The essence of Define is this: <b>go from "there are many problems" to "this is the one problem we will solve first."</b></span></p>
+<p class="reveal"><span lang="id"><figure class="field-figure"></span><span lang="en"><figure class="field-figure"></span></p>
+<p class="reveal"><span lang="id"><a href="https://creativecommons.org/2018/09/25/findings-from-the-discovery-phase-of-cc-usability/" target="_blank" rel="noreferrer"></span><span lang="en"><a href="https://creativecommons.org/2018/09/25/findings-from-the-discovery-phase-of-cc-usability/" target="_blank" rel="noreferrer"></span></p>
+<p class="reveal"><span lang="id"><img src="/images/product-discovery/double-diamond/creative-commons-research-synthesis.jpg" alt="The Creative Commons team arranging and clustering interview notes to identify research themes" loading="lazy" /></span><span lang="en"><img src="/images/product-discovery/double-diamond/creative-commons-research-synthesis.jpg" alt="The Creative Commons team arranging and clustering interview notes to identify research themes" loading="lazy" /></span></p>
+<p class="reveal"><span lang="id"></a></span><span lang="en"></a></span></p>
+<p class="reveal"><span lang="id"><figcaption><strong>Define is not choosing the most appealing quote.</strong> In the same case, the team combined and clustered 117 interviews, searched for recurring patterns, and eventually developed 9 insights. The spaces, groups, and colors in the photograph show the intermediate work between raw answers and themes and priorities. Photograph and case: <a href="https://creativecommons.org/2018/09/25/findings-from-the-discovery-phase-of-cc-usability/" target="_blank" rel="noreferrer">Creative Commons</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>.</figcaption></span><span lang="en"><figcaption><strong>Define is not choosing the most appealing quote.</strong> In the same case, the team combined and clustered 117 interviews, searched for recurring patterns, and eventually developed 9 insights. The spaces, groups, and colors in the photograph show the intermediate work between raw answers and themes and priorities. Photograph and case: <a href="https://creativecommons.org/2018/09/25/findings-from-the-discovery-phase-of-cc-usability/" target="_blank" rel="noreferrer">Creative Commons</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>.</figcaption></span></p>
+<p class="reveal"><span lang="id"></figure></span><span lang="en"></figure></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. The Second Diamond: The Solution Space</span><span lang="en">4. The Second Diamond: The Solution Space</span></h2>
+<p class="reveal"><span lang="id">Only after you complete the first diamond does it make sense to move fully into the second. By then, you are not solving a vague direction anymore. You are solving a specific problem that has already been narrowed down.</span><span lang="en">Only after you complete the first diamond does it make sense to move fully into the second. By then, you are not solving a vague direction anymore. You are solving a specific problem that has already been narrowed down.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Develop: Explore multiple solutions around the same problem</span><span lang="en">4.1 Develop: Explore multiple solutions around the same problem</span></h3>
+<p class="reveal"><span lang="id">The focus in Develop is <b>to expand the solution space around one defined problem.</b></span><span lang="en">The focus in Develop is <b>to expand the solution space around one defined problem.</b></span></p>
+<p class="reveal"><span lang="id">This kind of divergence is different from Discover:</span><span lang="en">This kind of divergence is different from Discover:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Discover expands the problem space</span><span lang="en">Discover expands the problem space</span></li>
+<li><span lang="id">Develop expands the solution space</span><span lang="en">Develop expands the solution space</span></li>
+</ul>
+<p class="reveal"><span lang="id">Still using the meeting-note example, in Develop you can ask:</span><span lang="en">Still using the meeting-note example, in Develop you can ask:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">should this be a web tool or a meeting plugin</span><span lang="en">should this be a web tool or a meeting plugin</span></li>
+<li><span lang="id">should it process recordings after the meeting or work in real time</span><span lang="en">should it process recordings after the meeting or work in real time</span></li>
+<li><span lang="id">should it focus only on summary, or mainly on extracting action items</span><span lang="en">should it focus only on summary, or mainly on extracting action items</span></li>
+<li><span lang="id">should it optimize for personal productivity or team sync</span><span lang="en">should it optimize for personal productivity or team sync</span></li>
+<li><span lang="id">should the user edit freely, or should the product output a structured template directly</span><span lang="en">should the user edit freely, or should the product output a structured template directly</span></li>
+</ul>
+<p class="reveal"><span lang="id">This is a good phase for brainstorming, comparison, and co-creation.</span><span lang="en">This is a good phase for brainstorming, comparison, and co-creation.</span></p>
+<p class="reveal"><span lang="id">But there is an important precondition: <b>all of these solution directions must still serve the same defined problem.</b></span><span lang="en">But there is an important precondition: <b>all of these solution directions must still serve the same defined problem.</b></span></p>
+<p class="reveal"><span lang="id">If the problem is not clear, Develop quickly turns back into random feature sprawl.</span><span lang="en">If the problem is not clear, Develop quickly turns back into random feature sprawl.</span></p>
+<p class="reveal"><span lang="id"><figure class="field-figure"></span><span lang="en"><figure class="field-figure"></span></p>
+<p class="reveal"><span lang="id"><a href="https://commons.wikimedia.org/wiki/File:Design_Thinking_Workshop_WMDE_1.jpg" target="_blank" rel="noreferrer"></span><span lang="en"><a href="https://commons.wikimedia.org/wiki/File:Design_Thinking_Workshop_WMDE_1.jpg" target="_blank" rel="noreferrer"></span></p>
+<p class="reveal"><span lang="id"><img src="/images/product-discovery/double-diamond/develop-idea-board.jpg" alt="A solution board from a Wikimedia Deutschland design-thinking workshop, with colored notes spread across several candidate directions" loading="lazy" /></span><span lang="en"><img src="/images/product-discovery/double-diamond/develop-idea-board.jpg" alt="A solution board from a Wikimedia Deutschland design-thinking workshop, with colored notes spread across several candidate directions" loading="lazy" /></span></p>
+<p class="reveal"><span lang="id"></a></span><span lang="en"></a></span></p>
+<p class="reveal"><span lang="id"><figcaption><strong>Develop keeps several answers in view.</strong> This board comes from a Wikimedia Deutschland design-thinking workshop. Candidate ideas are spread out by theme and have not yet been compressed into a feature list. The value of divergence is not the number of sticky notes; it is that the team genuinely compares different paths before choosing one. Photograph: <a href="https://commons.wikimedia.org/wiki/File:Design_Thinking_Workshop_WMDE_1.jpg" target="_blank" rel="noreferrer">Corinna Schuster (WMDE) / Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a>.</figcaption></span><span lang="en"><figcaption><strong>Develop keeps several answers in view.</strong> This board comes from a Wikimedia Deutschland design-thinking workshop. Candidate ideas are spread out by theme and have not yet been compressed into a feature list. The value of divergence is not the number of sticky notes; it is that the team genuinely compares different paths before choosing one. Photograph: <a href="https://commons.wikimedia.org/wiki/File:Design_Thinking_Workshop_WMDE_1.jpg" target="_blank" rel="noreferrer">Corinna Schuster (WMDE) / Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a>.</figcaption></span></p>
+<p class="reveal"><span lang="id"></figure></span><span lang="en"></figure></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Deliver: Choose, prototype, test, and put the solution into reality</span><span lang="en">4.2 Deliver: Choose, prototype, test, and put the solution into reality</span></h3>
+<p class="reveal"><span lang="id">Deliver is the convergence phase inside the second diamond.</span><span lang="en">Deliver is the convergence phase inside the second diamond.</span></p>
+<p class="reveal"><span lang="id">At this stage, you are no longer trying to imagine more possibilities. You are making choices:</span><span lang="en">At this stage, you are no longer trying to imagine more possibilities. You are making choices:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">which direction fits the current stage best</span><span lang="en">which direction fits the current stage best</span></li>
+<li><span lang="id">which version is smallest but still useful</span><span lang="en">which version is smallest but still useful</span></li>
+<li><span lang="id">which features are necessary first and which can wait</span><span lang="en">which features are necessary first and which can wait</span></li>
+<li><span lang="id">how to prototype, test, and validate with a smaller group</span><span lang="en">how to prototype, test, and validate with a smaller group</span></li>
+</ul>
+<p class="reveal"><span lang="id">Many people think Deliver means "launch." A more accurate way to understand it is this:</span><span lang="en">Many people think Deliver means "launch." A more accurate way to understand it is this:</span></p>
+<p class="reveal"><span lang="id"><b>turn one solution into something testable, usable, and improvable.</b></span><span lang="en"><b>turn one solution into something testable, usable, and improvable.</b></span></p>
+<p class="reveal"><span lang="id">That could be:</span><span lang="en">That could be:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">a low-fidelity flow diagram</span><span lang="en">a low-fidelity flow diagram</span></li>
+<li><span lang="id">a Figma prototype</span><span lang="en">a Figma prototype</span></li>
+<li><span lang="id">a working MVP</span><span lang="en">a working MVP</span></li>
+<li><span lang="id">a small user test</span><span lang="en">a small user test</span></li>
+<li><span lang="id">a revised version after one round of feedback</span><span lang="en">a revised version after one round of feedback</span></li>
+</ul>
+<p class="reveal"><span lang="id">The point of Deliver is not perfection. It is to <b>get the solution into a real environment quickly enough to validate it.</b></span><span lang="en">The point of Deliver is not perfection. It is to <b>get the solution into a real environment quickly enough to validate it.</b></span></p>
+<p class="reveal"><span lang="id"><figure class="field-figure"></span><span lang="en"><figure class="field-figure"></span></p>
+<p class="reveal"><span lang="id"><a href="https://commons.wikimedia.org/wiki/File:TestingPaperPrototype.jpg" target="_blank" rel="noreferrer"></span><span lang="en"><a href="https://commons.wikimedia.org/wiki/File:TestingPaperPrototype.jpg" target="_blank" rel="noreferrer"></span></p>
+<p class="reveal"><span lang="id"><img src="/images/product-discovery/double-diamond/paper-prototype-test.jpg" alt="A participant writing in an input field on a paper prototype to simulate interaction with an unbuilt interface" loading="lazy" /></span><span lang="en"><img src="/images/product-discovery/double-diamond/paper-prototype-test.jpg" alt="A participant writing in an input field on a paper prototype to simulate interaction with an unbuilt interface" loading="lazy" /></span></p>
+<p class="reveal"><span lang="id"></a></span><span lang="en"></a></span></p>
+<p class="reveal"><span lang="id"><figcaption><strong>Testable does not mean fully coded.</strong> A paper prototype draws the interface on paper. A participant clicks and writes while the researcher substitutes the next sheet. This is enough to examine the flow, wording, and sequence of actions without spending weeks implementing a direction that may be wrong. Photograph: <a href="https://commons.wikimedia.org/wiki/File:TestingPaperPrototype.jpg" target="_blank" rel="noreferrer">d_jan / Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noreferrer">CC BY 2.0</a>.</figcaption></span><span lang="en"><figcaption><strong>Testable does not mean fully coded.</strong> A paper prototype draws the interface on paper. A participant clicks and writes while the researcher substitutes the next sheet. This is enough to examine the flow, wording, and sequence of actions without spending weeks implementing a direction that may be wrong. Photograph: <a href="https://commons.wikimedia.org/wiki/File:TestingPaperPrototype.jpg" target="_blank" rel="noreferrer">d_jan / Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noreferrer">CC BY 2.0</a>.</figcaption></span></p>
+<p class="reveal"><span lang="id"></figure></span><span lang="en"></figure></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Distinguishing the Four Stages</span><span lang="en">5. Distinguishing the Four Stages</span></h2>
+<p class="reveal"><span lang="id">We have now examined the four stages separately. The interactive diagram below places them in one process. Select a stage and compare its work, outputs, and the tasks deliberately postponed until later.</span><span lang="en">We have now examined the four stages separately. The interactive diagram below places them in one process. Select a stage and compare its work, outputs, and the tasks deliberately postponed until later.</span></p>
+<p class="reveal"><span lang="id"><DoubleDiamondNavigator /></span><span lang="en"><DoubleDiamondNavigator /></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Common Double Diamond Mistakes</span><span lang="en">6. Common Double Diamond Mistakes</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Jumping into Deliver before doing Discover</span><span lang="en">6.1 Jumping into Deliver before doing Discover</span></h3>
+<p class="reveal"><span lang="id">This is the most common one. People get an idea and immediately start drawing screens, writing PRDs, integrating models, or building pages.</span><span lang="en">This is the most common one. People get an idea and immediately start drawing screens, writing PRDs, integrating models, or building pages.</span></p>
+<p class="reveal"><span lang="id">The problem is not that they are not serious. The problem is that they may not even know whether the problem is worth solving.</span><span lang="en">The problem is not that they are not serious. The problem is that they may not even know whether the problem is worth solving.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 Staying in Discover for too long and never reaching Define</span><span lang="en">6.2 Staying in Discover for too long and never reaching Define</span></h3>
+<p class="reveal"><span lang="id">The opposite mistake is endless research, endless reading, endless interviews, and no convergence.</span><span lang="en">The opposite mistake is endless research, endless reading, endless interviews, and no convergence.</span></p>
+<p class="reveal"><span lang="id">The Double Diamond is not telling you to expand forever. It is reminding you that after expansion, you must eventually make choices.</span><span lang="en">The Double Diamond is not telling you to expand forever. It is reminding you that after expansion, you must eventually make choices.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.3 Quietly changing the problem after Define</span><span lang="en">6.3 Quietly changing the problem after Define</span></h3>
+<p class="reveal"><span lang="id">Some teams define a problem, but during Develop they discover that a certain solution is easier to build. Then they quietly rewrite the problem so it fits their preferred solution.</span><span lang="en">Some teams define a problem, but during Develop they discover that a certain solution is easier to build. Then they quietly rewrite the problem so it fits their preferred solution.</span></p>
+<p class="reveal"><span lang="id">That is dangerous. At that point, you may no longer be solving the real problem. You may be defending a favorite implementation.</span><span lang="en">That is dangerous. At that point, you may no longer be solving the real problem. You may be defending a favorite implementation.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.4 Treating Deliver as "build everything"</span><span lang="en">6.4 Treating Deliver as "build everything"</span></h3>
+<p class="reveal"><span lang="id">Deliver does not mean shipping a huge complete product. Often, a testable prototype or one round of real user testing is already a strong deliverable.</span><span lang="en">Deliver does not mean shipping a huge complete product. Often, a testable prototype or one round of real user testing is already a strong deliverable.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. How to Use the Double Diamond in AI Products</span><span lang="en">7. How to Use the Double Diamond in AI Products</span></h2>
+<p class="reveal"><span lang="id">AI products are especially likely to fall into capability-first thinking because model capabilities are so tempting. It is very easy to jump straight to:</span><span lang="en">AI products are especially likely to fall into capability-first thinking because model capabilities are so tempting. It is very easy to jump straight to:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">should we add multimodal input</span><span lang="en">should we add multimodal input</span></li>
+<li><span lang="id">should we build an agent</span><span lang="en">should we build an agent</span></li>
+<li><span lang="id">should we connect workflow automation</span><span lang="en">should we connect workflow automation</span></li>
+<li><span lang="id">should we add voice, image, or web search</span><span lang="en">should we add voice, image, or web search</span></li>
+</ul>
+<p class="reveal"><span lang="id">The Double Diamond forces you to ask first:</span><span lang="en">The Double Diamond forces you to ask first:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">where are users actually stuck</span><span lang="en">where are users actually stuck</span></li>
+<li><span lang="id">is this bottleneck something AI is truly needed for</span><span lang="en">is this bottleneck something AI is truly needed for</span></li>
+<li><span lang="id">without AI, what is so weak about the current method</span><span lang="en">without AI, what is so weak about the current method</span></li>
+<li><span lang="id">if AI is added, what real progress does it create</span><span lang="en">if AI is added, what real progress does it create</span></li>
+</ul>
+<p class="reveal"><span lang="id">That helps you avoid a very common failure mode:</span><span lang="en">That helps you avoid a very common failure mode:</span></p>
+<p class="reveal"><span lang="id"><b>high capability, low value.</b></span><span lang="en"><b>high capability, low value.</b></span></p>
+<p class="reveal"><span lang="id">A practical sequence looks like this:</span><span lang="en">A practical sequence looks like this:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">in Discover, observe how users currently handle the task</span><span lang="en">in Discover, observe how users currently handle the task</span></li>
+<li><span lang="id">in Define, write the most painful scenario as one clear problem statement</span><span lang="en">in Define, write the most painful scenario as one clear problem statement</span></li>
+<li><span lang="id">in Develop, compare which AI capabilities best serve that problem</span><span lang="en">in Develop, compare which AI capabilities best serve that problem</span></li>
+<li><span lang="id">in Deliver, build a small first version and test it with real users</span><span lang="en">in Deliver, build a small first version and test it with real users</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8. A Double Diamond Template You Can Reuse</span><span lang="en">8. A Double Diamond Template You Can Reuse</span></h2>
+<p class="reveal"><span lang="id">If you are working on your own product, you can write through the stages in this order:</span><span lang="en">If you are working on your own product, you can write through the stages in this order:</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Discover</span><span lang="en">Discover</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Who are the users I am observing?</span><span lang="en">Who are the users I am observing?</span></li>
+<li><span lang="id">When did they last experience this problem?</span><span lang="en">When did they last experience this problem?</span></li>
+<li><span lang="id">How do they solve it now?</span><span lang="en">How do they solve it now?</span></li>
+<li><span lang="id">What feels most annoying, slow, or risky?</span><span lang="en">What feels most annoying, slow, or risky?</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Define</span><span lang="en">Define</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Out of all these problems, which one is most worth solving first?</span><span lang="en">Out of all these problems, which one is most worth solving first?</span></li>
+<li><span lang="id">Which situation is most frequent or most important?</span><span lang="en">Which situation is most frequent or most important?</span></li>
+<li><span lang="id">Who exactly does version one serve, and what exactly does it solve?</span><span lang="en">Who exactly does version one serve, and what exactly does it solve?</span></li>
+<li><span lang="id">If we solve it well, what change happens in the user's state?</span><span lang="en">If we solve it well, what change happens in the user's state?</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Develop</span><span lang="en">Develop</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">What solution directions are possible for this problem?</span><span lang="en">What solution directions are possible for this problem?</span></li>
+<li><span lang="id">Which directions are lightest, fastest, and easiest to validate?</span><span lang="en">Which directions are lightest, fastest, and easiest to validate?</span></li>
+<li><span lang="id">Which parts are essential now, and which can wait?</span><span lang="en">Which parts are essential now, and which can wait?</span></li>
+</ul>
+<p class="reveal"><span lang="id"><figure class="field-figure field-figure--portrait"></span><span lang="en"><figure class="field-figure field-figure--portrait"></span></p>
+<p class="reveal"><span lang="id"><a href="https://commons.wikimedia.org/wiki/File:Design_Thinking_Workshop_WMDE_Gruppenarbeit_2.jpg" target="_blank" rel="noreferrer"></span><span lang="en"><a href="https://commons.wikimedia.org/wiki/File:Design_Thinking_Workshop_WMDE_Gruppenarbeit_2.jpg" target="_blank" rel="noreferrer"></span></p>
+<p class="reveal"><span lang="id"><img src="/images/product-discovery/double-diamond/wmde-group-workshop.jpg" alt="Participants at a Wikimedia Deutschland design-thinking workshop making solution ideas visible through hands-on group work" loading="lazy" /></span><span lang="en"><img src="/images/product-discovery/double-diamond/wmde-group-workshop.jpg" alt="Participants at a Wikimedia Deutschland design-thinking workshop making solution ideas visible through hands-on group work" loading="lazy" /></span></p>
+<p class="reveal"><span lang="id"></a></span><span lang="en"></a></span></p>
+<p class="reveal"><span lang="id"><figcaption><strong>Develop is not waiting for one good idea.</strong> The participants are cutting, arranging, and making so that different people's ideas become objects the group can discuss. The sooner a solution becomes visible, the easier it is to compare, combine, or discard. Photograph: Corinna Schuster (WMDE), <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a>.</figcaption></span><span lang="en"><figcaption><strong>Develop is not waiting for one good idea.</strong> The participants are cutting, arranging, and making so that different people's ideas become objects the group can discuss. The sooner a solution becomes visible, the easier it is to compare, combine, or discard. Photograph: Corinna Schuster (WMDE), <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a>.</figcaption></span></p>
+<p class="reveal"><span lang="id"></figure></span><span lang="en"></figure></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Deliver</span><span lang="en">Deliver</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">What is the smallest thing we can deliver to validate this direction?</span><span lang="en">What is the smallest thing we can deliver to validate this direction?</span></li>
+<li><span lang="id">Is it a flow sketch, a prototype, or an MVP?</span><span lang="en">Is it a flow sketch, a prototype, or an MVP?</span></li>
+<li><span lang="id">Who do we need to test with?</span><span lang="en">Who do we need to test with?</span></li>
+<li><span lang="id">After testing, how will we decide whether to continue, change, or stop?</span><span lang="en">After testing, how will we decide whether to continue, change, or stop?</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">9. A Full Example a Beginner Can Understand</span><span lang="en">9. A Full Example a Beginner Can Understand</span></h2>
+<p class="reveal"><span lang="id">Suppose you want to build an AI tool that helps college students prepare job-application resumes.</span><span lang="en">Suppose you want to build an AI tool that helps college students prepare job-application resumes.</span></p>
+<p class="reveal"><span lang="id">Many people would immediately jump into the second diamond and start asking:</span><span lang="en">Many people would immediately jump into the second diamond and start asking:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">should there be one-click beautification</span><span lang="en">should there be one-click beautification</span></li>
+<li><span lang="id">should there be smart rewriting</span><span lang="en">should there be smart rewriting</span></li>
+<li><span lang="id">should it auto-match the job description</span><span lang="en">should it auto-match the job description</span></li>
+<li><span lang="id">should it generate self-introductions</span><span lang="en">should it generate self-introductions</span></li>
+</ul>
+<p class="reveal"><span lang="id">But with the Double Diamond, a stronger process looks like this:</span><span lang="en">But with the Double Diamond, a stronger process looks like this:</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">First diamond</span><span lang="en">First diamond</span></h3>
+<p class="reveal"><span lang="id"><b>Discover</b></span><span lang="en"><b>Discover</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">talk to recent graduates about the last time they revised a resume</span><span lang="en">talk to recent graduates about the last time they revised a resume</span></li>
+<li><span lang="id">watch how they turn an old version into a new one</span><span lang="en">watch how they turn an old version into a new one</span></li>
+<li><span lang="id">figure out whether their biggest issue is "I cannot write," "I cannot revise," or "I cannot judge quality"</span><span lang="en">figure out whether their biggest issue is "I cannot write," "I cannot revise," or "I cannot judge quality"</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Define</b></span><span lang="en"><b>Define</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">narrow it into a more specific problem</span><span lang="en">narrow it into a more specific problem</span></li>
+<li><span lang="id">not "students cannot make resumes"</span><span lang="en">not "students cannot make resumes"</span></li>
+<li><span lang="id">but "students applying for internships for the first time struggle to rewrite existing experiences into role-fit wording, so they delay applying"</span><span lang="en">but "students applying for internships for the first time struggle to rewrite existing experiences into role-fit wording, so they delay applying"</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Second diamond</span><span lang="en">Second diamond</span></h3>
+<p class="reveal"><span lang="id"><b>Develop</b></span><span lang="en"><b>Develop</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">compare several directions: template library, AI rewriting, role comparison, resume scoring, example references</span><span lang="en">compare several directions: template library, AI rewriting, role comparison, resume scoring, example references</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Deliver</b></span><span lang="en"><b>Deliver</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">build only one narrow first version, such as "rewrite resume bullet points based on a job description"</span><span lang="en">build only one narrow first version, such as "rewrite resume bullet points based on a job description"</span></li>
+<li><span lang="id">let five students test it and see whether it helps them submit a first version faster</span><span lang="en">let five students test it and see whether it helps them submit a first version faster</span></li>
+</ul>
+<p class="reveal"><span lang="id">Once the first diamond is solid, the second diamond becomes much clearer.</span><span lang="en">Once the first diamond is solid, the second diamond becomes much clearer.</span></p>
+<p class="reveal"><span lang="id"><figure class="field-figure field-figure--artifact"></span><span lang="en"><figure class="field-figure field-figure--artifact"></span></p>
+<p class="reveal"><span lang="id"><a href="https://commons.wikimedia.org/wiki/File:Design_Thinking_Workshop_Prototyp_Mitmach-O-Mat.png" target="_blank" rel="noreferrer"></span><span lang="en"><a href="https://commons.wikimedia.org/wiki/File:Design_Thinking_Workshop_Prototyp_Mitmach-O-Mat.png" target="_blank" rel="noreferrer"></span></p>
+<p class="reveal"><span lang="id"><img src="/images/product-discovery/double-diamond/wmde-workshop-prototype.png" alt="A hand-drawn Mitmach-O-Mat interface produced during a Wikimedia Deutschland design-thinking workshop" loading="lazy" /></span><span lang="en"><img src="/images/product-discovery/double-diamond/wmde-workshop-prototype.png" alt="A hand-drawn Mitmach-O-Mat interface produced during a Wikimedia Deutschland design-thinking workshop" loading="lazy" /></span></p>
+<p class="reveal"><span lang="id"></a></span><span lang="en"></a></span></p>
+<p class="reveal"><span lang="id"><figcaption><strong>A prototype only needs to answer one question.</strong> This workshop artifact has no complete visual system, only a welcome message, an action button, and a short explanation. It is already sufficient for observing whether participants understand the next step. Deliver aims to obtain feedback, not to make the interface look finished first. Prototype: Corinna Schuster / WMDE, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a>.</figcaption></span><span lang="en"><figcaption><strong>A prototype only needs to answer one question.</strong> This workshop artifact has no complete visual system, only a welcome message, an action button, and a short explanation. It is already sufficient for observing whether participants understand the next step. Deliver aims to obtain feedback, not to make the interface look finished first. Prototype: Corinna Schuster / WMDE, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a>.</figcaption></span></p>
+<p class="reveal"><span lang="id"></figure></span><span lang="en"></figure></span></p>
+<p class="reveal"><span lang="id"><a id="dd-ai"></a></span><span lang="en"><a id="dd-ai"></a></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">[10. Using AI in the Double Diamond](#top-dd)</span><span lang="en">[10. Using AI in the Double Diamond](#top-dd)</span></h2>
+<p class="reveal"><span lang="id">The Double Diamond is not an AI tool, but AI works very well as an accelerator inside all four stages. The key is not to let AI decide for you. The key is to let it help you expand the view, organize information, compare directions, and generate validation material.</span><span lang="en">The Double Diamond is not an AI tool, but AI works very well as an accelerator inside all four stages. The key is not to let AI decide for you. The key is to let it help you expand the view, organize information, compare directions, and generate validation material.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">11.1 In Discover, use AI to build a rough problem map first</span><span lang="en">11.1 In Discover, use AI to build a rough problem map first</span></h3>
+<p class="reveal"><span lang="id">Before formal interviews and deeper research, AI can help you do a lightweight scan of the space, for example:</span><span lang="en">Before formal interviews and deeper research, AI can help you do a lightweight scan of the space, for example:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">what common substitutes already exist</span><span lang="en">what common substitutes already exist</span></li>
+<li><span lang="id">what users complain about most in public communities</span><span lang="en">what users complain about most in public communities</span></li>
+<li><span lang="id">which scenarios and user groups this problem shows up in</span><span lang="en">which scenarios and user groups this problem shows up in</span></li>
+<li><span lang="id">what current products often ignore</span><span lang="en">what current products often ignore</span></li>
+</ul>
+<p class="reveal"><span lang="id">This cannot replace real research, but it is very useful for creating a first map of the space.</span><span lang="en">This cannot replace real research, but it is very useful for creating a first map of the space.</span></p>
+<p class="reveal"><span lang="id">A simple beginner prompt could be:</span><span lang="en">A simple beginner prompt could be:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>I want to build a tool that helps college students improve resumes.
+Do not help me think about features yet.
+First help me figure out what problems people most often run into here.</pre>
+</div>
+<p class="reveal"><span lang="id">Possible AI output:</span><span lang="en">Possible AI output:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Initial problem map:
+
+1. They do not know what experiences to include
+2. They do not know how to tailor the resume to different roles
+3. They revise many times and still do not know if it is good enough
+4. They need someone else to review it, but cannot always ask
+5. Because they feel unsure, they keep delaying applications</pre>
+</div>
+<p class="reveal"><span lang="id">That kind of output is not there to replace your judgment. It helps you enter Discover faster.</span><span lang="en">That kind of output is not there to replace your judgment. It helps you enter Discover faster.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">11.2 In Define, use AI to narrow the problem statement</span><span lang="en">11.2 In Define, use AI to narrow the problem statement</span></h3>
+<p class="reveal"><span lang="id">After collecting a lot of information, one of the hardest things is turning it into one really clear problem statement. You can give research notes to AI and ask it to compress them into candidate definitions:</span><span lang="en">After collecting a lot of information, one of the hardest things is turning it into one really clear problem statement. You can give research notes to AI and ask it to compress them into candidate definitions:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Below are user notes and research notes I collected during Discover:
+[paste the content]
+
+Please do 3 things:
+1. summarize the most common problem patterns
+2. based on frequency, pain, and ease of validation, suggest 3 problems worth prioritizing
+3. write each problem as one clear problem statement</pre>
+</div>
+<p class="reveal"><span lang="id">You can keep the input very simple too:</span><span lang="en">You can keep the input very simple too:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>These are the issues I collected:
+1. people do not know what to write on the resume
+2. people do not know how to revise it
+3. people keep feeling it is not good enough, so they do not apply
+
+Please help me decide which problem is the best first one to solve.</pre>
+</div>
+<p class="reveal"><span lang="id">Possible AI output:</span><span lang="en">Possible AI output:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Recommended first problem:
+
+&quot;Students applying for internships for the first time are unsure whether their resume has reached a submit-ready level, so they keep revising and delay applying.&quot;
+
+Reasons:
+1. it is more concrete
+2. it explains the delay behavior
+3. it is easier to test with a smaller first version</pre>
+</div>
+<p class="reveal"><span lang="id">That is useful because it helps you narrow a fuzzy set of issues into something closer to an MVP starting point.</span><span lang="en">That is useful because it helps you narrow a fuzzy set of issues into something closer to an MVP starting point.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">11.3 In Develop, use AI to expand multiple solution directions</span><span lang="en">11.3 In Develop, use AI to expand multiple solution directions</span></h3>
+<p class="reveal"><span lang="id">Once people define a problem, they often fixate immediately on the first solution that comes to mind. AI is very useful here as a forced divergence tool:</span><span lang="en">Once people define a problem, they often fixate immediately on the first solution that comes to mind. AI is very useful here as a forced divergence tool:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>I have defined this core problem: [your problem statement]
+Please do not give me only one final answer.
+Instead, propose 2-3 solution directions from each of these angles:
+1. the lightest MVP
+2. the best option for validating demand
+3. the best option for improving user experience
+4. a non-AI solution
+5. an AI-based solution
+
+At the end, compare the strengths, risks, and validation cost of each direction.</pre>
+</div>
+<p class="reveal"><span lang="id">That stops you from getting trapped by one favorite solution too early.</span><span lang="en">That stops you from getting trapped by one favorite solution too early.</span></p>
+<p class="reveal"><span lang="id">A simpler prompt could be:</span><span lang="en">A simpler prompt could be:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>My problem statement is:
+&quot;Students delay applying because they are not sure whether their resume is ready.&quot;
+
+Please suggest 4 different solution directions, not just one.</pre>
+</div>
+<p class="reveal"><span lang="id">Possible AI output:</span><span lang="en">Possible AI output:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Option 1: resume readiness checklist
+Option 2: job-description-based rewrite assistant
+Option 3: resume risk detector
+Option 4: example comparison library</pre>
+</div>
+<p class="reveal"><span lang="id">Now you are in comparison mode instead of only staring at one AI rewriting path.</span><span lang="en">Now you are in comparison mode instead of only staring at one AI rewriting path.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">11.4 In Deliver, use AI to generate prototype copy and testing material</span><span lang="en">11.4 In Deliver, use AI to generate prototype copy and testing material</span></h3>
+<p class="reveal"><span lang="id">Once you reach Deliver, AI is very useful for speeding up work like:</span><span lang="en">Once you reach Deliver, AI is very useful for speeding up work like:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">writing copy for low-fidelity prototypes</span><span lang="en">writing copy for low-fidelity prototypes</span></li>
+<li><span lang="id">organizing user test scripts</span><span lang="en">organizing user test scripts</span></li>
+<li><span lang="id">generating multiple versions of titles, buttons, and instructions</span><span lang="en">generating multiple versions of titles, buttons, and instructions</span></li>
+<li><span lang="id">summarizing test feedback and issue lists</span><span lang="en">summarizing test feedback and issue lists</span></li>
+</ul>
+<p class="reveal"><span lang="id">For example, you can ask AI to generate a 20-minute user test script, or summarize five pieces of feedback into a decision frame like "continue / revise / pause."</span><span lang="en">For example, you can ask AI to generate a 20-minute user test script, or summarize five pieces of feedback into a decision frame like "continue / revise / pause."</span></p>
+<p class="reveal"><span lang="id">A very small input could be:</span><span lang="en">A very small input could be:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>I made a very simple prototype:
+the user uploads a resume, and the system tells them which parts are not yet ready for submission.
+
+Please generate a 15-minute user testing script.</pre>
+</div>
+<p class="reveal"><span lang="id">Possible AI output:</span><span lang="en">Possible AI output:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>15-minute user testing script:
+
+1. Ask the user to describe their most recent resume submission experience
+2. Let them upload a resume independently
+3. Observe whether they understand the feedback
+4. Ask which parts feel helpful and which parts feel confusing
+5. Ask whether they would want to use this again before the next application</pre>
+</div>
+<p class="reveal"><span lang="id">That is useful because it moves you from "I finished the prototype" to "how do I actually test this?"</span><span lang="en">That is useful because it moves you from "I finished the prototype" to "how do I actually test this?"</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">11.5 Let AI act as a stage guard</span><span lang="en">11.5 Let AI act as a stage guard</span></h3>
+<p class="reveal"><span lang="id">One of the biggest risks in the Double Diamond is that people skip stages. You can directly ask AI to act like a process guard:</span><span lang="en">One of the biggest risks in the Double Diamond is that people skip stages. You can directly ask AI to act like a process guard:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please act as a product process coach.
+Here is my current project state: [your description]
+Please judge whether I am mainly in Discover, Define, Develop, or Deliver.
+Then tell me:
+1. whether I am jumping ahead too early
+2. what the most important action in the current stage is
+3. what I should not do yet</pre>
+</div>
+<p class="reveal"><span lang="id">That is especially helpful for beginners because it is very easy to start prototyping before the problem is truly clear.</span><span lang="en">That is especially helpful for beginners because it is very easy to start prototyping before the problem is truly clear.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">11. Summary</span><span lang="en">11. Summary</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Discover and Define produce a problem definition; Develop and Deliver produce and test a solution.</span><span lang="en">Discover and Define produce a problem definition; Develop and Deliver produce and test a solution.</span></li>
+<li><span lang="id">Divergence expands the candidate set; convergence uses evidence to make tradeoffs.</span><span lang="en">Divergence expands the candidate set; convergence uses evidence to make tradeoffs.</span></li>
+<li><span lang="id">The problem definition should precede solution exploration, but later tests may require revision.</span><span lang="en">The problem definition should precede solution exploration, but later tests may require revision.</span></li>
+<li><span lang="id">Deliver aims to produce test results that support learning, not necessarily a complete product.</span><span lang="en">Deliver aims to produce test results that support learning, not necessarily a complete product.</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">12. Exercise</span><span lang="en">12. Exercise</span></h2>
+<p class="reveal"><span lang="id"><StageAssignmentCard title="Organize Your Idea with the Double Diamond"></span><span lang="en"><StageAssignmentCard title="Organize Your Idea with the Double Diamond"></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Pick one product idea you have been thinking about and write a draft for its Discover, Define, Develop, and Deliver stages</span><span lang="en">Pick one product idea you have been thinking about and write a draft for its Discover, Define, Develop, and Deliver stages</span></li>
+<li><span lang="id">In Define, force yourself to compress the problem into one concrete sentence</span><span lang="en">In Define, force yourself to compress the problem into one concrete sentence</span></li>
+<li><span lang="id">In Develop, list at least 3 different solution directions instead of clinging to the first one</span><span lang="en">In Develop, list at least 3 different solution directions instead of clinging to the first one</span></li>
+<li><span lang="id">In Deliver, write down one smallest validation version you could ship within a week</span><span lang="en">In Deliver, write down one smallest validation version you could ship within a week</span></li>
+</ul>
+<p class="reveal"><span lang="id"></StageAssignmentCard></span><span lang="en"></StageAssignmentCard></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<p class="reveal"><span lang="id">This article mainly draws on the Design Council's official material about the Double Diamond. These are good places to continue:</span><span lang="en">This article mainly draws on the Design Council's official material about the Double Diamond. These are good places to continue:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[Design Council: The Double Diamond](https://www.designcouncil.org.uk/our-resources/the-double-diamond/)</span><span lang="en">[Design Council: The Double Diamond](https://www.designcouncil.org.uk/our-resources/the-double-diamond/)</span></li>
+<li><span lang="id">[Design Council: Framework for Innovation](https://www.designcouncil.org.uk/our-work/skills-learning/tools-frameworks/framework-for-innovation-design-councils-evolved-double-diamond/)</span><span lang="en">[Design Council: Framework for Innovation](https://www.designcouncil.org.uk/our-work/skills-learning/tools-frameworks/framework-for-innovation-design-councils-evolved-double-diamond/)</span></li>
+<li><span lang="id">[Design Council: History of the Double Diamond](https://www.designcouncil.org.uk/our-resources/the-double-diamond/history-of-the-double-diamond/)</span><span lang="en">[Design Council: History of the Double Diamond](https://www.designcouncil.org.uk/our-resources/the-double-diamond/history-of-the-double-diamond/)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><style scoped></span><span lang="en"><style scoped></span></p>
+<p class="reveal"><span lang="id">.field-figure { margin: 24px 0 32px; overflow: hidden; border: 1px solid var(--vp-c-divider); border-radius: 12px; background: var(--vp-c-bg-soft); }</span><span lang="en">.field-figure { margin: 24px 0 32px; overflow: hidden; border: 1px solid var(--vp-c-divider); border-radius: 12px; background: var(--vp-c-bg-soft); }</span></p>
+<p class="reveal"><span lang="id">.field-figure > a { display: block; background: #f4f4f1; }</span><span lang="en">.field-figure > a { display: block; background: #f4f4f1; }</span></p>
+<p class="reveal"><span lang="id">.field-figure img { display: block; width: 100%; max-height: 520px; object-fit: contain; }</span><span lang="en">.field-figure img { display: block; width: 100%; max-height: 520px; object-fit: contain; }</span></p>
+<p class="reveal"><span lang="id">.field-figure--diagram img { max-height: 580px; padding: 18px; }</span><span lang="en">.field-figure--diagram img { max-height: 580px; padding: 18px; }</span></p>
+<p class="reveal"><span lang="id">.field-figure--portrait img { max-height: 640px; object-fit: contain; }</span><span lang="en">.field-figure--portrait img { max-height: 640px; object-fit: contain; }</span></p>
+<p class="reveal"><span lang="id">.field-figure--artifact img { padding: 20px; background: #f4f1eb; object-fit: contain; }</span><span lang="en">.field-figure--artifact img { padding: 20px; background: #f4f1eb; object-fit: contain; }</span></p>
+<p class="reveal"><span lang="id">.field-figure figcaption { padding: 13px 16px 15px; border-top: 1px solid var(--vp-c-divider); color: var(--vp-c-text-2); font-size: 13px; line-height: 1.75; }</span><span lang="en">.field-figure figcaption { padding: 13px 16px 15px; border-top: 1px solid var(--vp-c-divider); color: var(--vp-c-text-2); font-size: 13px; line-height: 1.75; }</span></p>
+<p class="reveal"><span lang="id">.field-figure figcaption strong { color: var(--vp-c-text-1); }</span><span lang="en">.field-figure figcaption strong { color: var(--vp-c-text-1); }</span></p>
+<p class="reveal"><span lang="id">@media (max-width: 640px) { .field-figure { margin: 20px 0 28px; } .field-figure--diagram img { padding: 8px; } }</span><span lang="en">@media (max-width: 640px) { .field-figure { margin: 20px 0 28px; } .field-figure--diagram img { padding: 8px; } }</span></p>
+<p class="reveal"><span lang="id"></style></span><span lang="en"></style></span></p>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../appendix-mom-test/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Validasi Kebutuhan dengan The Mom Test</span><span lang="en">Validasi Kebutuhan dengan The Mom Test</span></b></a>
+      <a class="next" href="../building-prototype/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Membangun Prototipe Interaktif</span><span lang="en">Membangun Prototipe Interaktif</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../assets/vibekoding.js"></script>
+</body>
+</html>

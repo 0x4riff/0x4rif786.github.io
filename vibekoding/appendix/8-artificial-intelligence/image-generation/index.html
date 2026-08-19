@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of Image Generation — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Image Generation. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/8-artificial-intelligence/image-generation/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Image Generation</span><span lang="en">Principles of Image Generation</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of Image Generation</span><span lang="en">Principles of Image Generation</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Image Generation.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Image Generation.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">> 💡 <b>Learning Guide</b>: This chapter systematically explores the working mechanisms of generative visual large models. Starting from the "GPU-intensive" challenge of high-dimensional pixel space, we'll deconstruct the rigorous mathematical principles behind Variational Autoencoders (VAE), Diffusion Models, and Cross-Attention. Meanwhile, clever and vivid interactive components will ensure that you — even with zero AI background — can quickly grasp these cutting-edge technologies!</span><span lang="en">> 💡 <b>Learning Guide</b>: This chapter systematically explores the working mechanisms of generative visual large models. Starting from the "GPU-intensive" challenge of high-dimensional pixel space, we'll deconstruct the rigorous mathematical principles behind Variational Autoencoders (VAE), Diffusion Models, and Cross-Attention. Meanwhile, clever and vivid interactive components will ensure that you — even with zero AI background — can quickly grasp these cutting-edge technologies!</span></p>
+<p class="reveal"><span lang="id"><ImageGenQuickStartDemo /></span><span lang="en"><ImageGenQuickStartDemo /></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. Introduction: Confronting the "Curse of Dimensionality" of Millions of Pixels</span><span lang="en">0. Introduction: Confronting the "Curse of Dimensionality" of Millions of Pixels</span></h2>
+<p class="reveal"><span lang="id">When we marvel at the stunning masterpieces generated by Midjourney or Stable Diffusion, we must first understand the computational challenge facing the machine at its lowest level.</span><span lang="en">When we marvel at the stunning masterpieces generated by Midjourney or Stable Diffusion, we must first understand the computational challenge facing the machine at its lowest level.</span></p>
+<p class="reveal"><span lang="id">A standard $1024 \times 1024$ pixel high-definition image in standard RGB three-channel format requires computing and filling over <b>3 million</b> floating-point values.</span><span lang="en">A standard $1024 \times 1024$ pixel high-definition image in standard RGB three-channel format requires computing and filling over <b>3 million</b> floating-point values.</span></p>
+<p class="reveal"><span lang="id">The <b>Curse of Dimensionality</b> arises: if we directly ask a deep neural network to jointly estimate the probability distribution of every single pixel in such an enormous "Euclidean Space," the computational cost would be devastatingly extreme, and the generated images would be highly prone to terrifying local distortions and semantic tearing.</span><span lang="en">The <b>Curse of Dimensionality</b> arises: if we directly ask a deep neural network to jointly estimate the probability distribution of every single pixel in such an enormous "Euclidean Space," the computational cost would be devastatingly extreme, and the generated images would be highly prone to terrifying local distortions and semantic tearing.</span></p>
+<p class="reveal"><span lang="id">Therefore, modern cutting-edge image generation algorithms have found a safe haven through dimensionality reduction: <b>"Don't brute-force compute on the vast, chaotic original pixel canvas; instead, precisely sculpt within a highly condensed feature space."</b></span><span lang="en">Therefore, modern cutting-edge image generation algorithms have found a safe haven through dimensionality reduction: <b>"Don't brute-force compute on the vast, chaotic original pixel canvas; instead, precisely sculpt within a highly condensed feature space."</b></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. The Foundation of Dimensionality Reduction: Latent Space and VAE's Magical Compression</span><span lang="en">1. The Foundation of Dimensionality Reduction: Latent Space and VAE's Magical Compression</span></h2>
+<p class="reveal"><span lang="id">Since a painting has many redundant, uniformly flat areas at the macro level (such as an almost gradient-free pure blue sky), we can "package" these visual features. This requires the spatial transformation master in the image generation foundation — the <b>Variational Autoencoder (VAE)</b>.</span><span lang="en">Since a painting has many redundant, uniformly flat areas at the macro level (such as an almost gradient-free pure blue sky), we can "package" these visual features. This requires the spatial transformation master in the image generation foundation — the <b>Variational Autoencoder (VAE)</b>.</span></p>
+<p class="reveal"><span lang="id">VAE's responsibility is extremely singular yet critically important:</span><span lang="en">VAE's responsibility is extremely singular yet critically important:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Dimensionality Reduction Compression (Encoder)</b>: Drastically condenses the massive millions of <b>Pixel Space</b> into an abstract grid of extremely small dimensions, extracting shape features and color structures. This highly dense grid domain, rich in high-order semantic information, is the famous <b>Latent Space</b>.</span><span lang="en"><b>Dimensionality Reduction Compression (Encoder)</b>: Drastically condenses the massive millions of <b>Pixel Space</b> into an abstract grid of extremely small dimensions, extracting shape features and color structures. This highly dense grid domain, rich in high-order semantic information, is the famous <b>Latent Space</b>.</span></li>
+<li><span lang="id"><b>Painting and Decompression (Decoder)</b>: The generative neural network actually operates entirely within this miniature "latent space grid." Once the low-dimensional features are assembled and finalized, the VAE expands and restores it losslessly — like instant noodles absorbing water — mapping it back to a high-definition pixel image that human eyes can appreciate.</span><span lang="en"><b>Painting and Decompression (Decoder)</b>: The generative neural network actually operates entirely within this miniature "latent space grid." Once the low-dimensional features are assembled and finalized, the VAE expands and restores it losslessly — like instant noodles absorbing water — mapping it back to a high-definition pixel image that human eyes can appreciate.</span></li>
+</ul>
+<p class="reveal"><span lang="id">👇 <b>Try it out</b>:</span><span lang="en">👇 <b>Try it out</b>:</span></p>
+<p class="reveal"><span lang="id">Drag the red dot coordinates on the spatial plane below to intuitively experience how even the slightest shift in just two mathematical coordinate dimensions in Latent Space can be decoded and mapped into entirely different appearance features!</span><span lang="en">Drag the red dot coordinates on the spatial plane below to intuitively experience how even the slightest shift in just two mathematical coordinate dimensions in Latent Space can be decoded and mapped into entirely different appearance features!</span></p>
+<p class="reveal"><span lang="id"><LatentSpaceViz /></span><span lang="en"><LatentSpaceViz /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. The Core of Evolution: Stripping Away the Fog with Diffusion Models</span><span lang="en">2. The Core of Evolution: Stripping Away the Fog with Diffusion Models</span></h2>
+<p class="reveal"><span lang="id">The latent space canvas is set up, but how should the model generate features that meet expectations out of thin air?</span><span lang="en">The latent space canvas is set up, but how should the model generate features that meet expectations out of thin air?</span></p>
+<p class="reveal"><span lang="id">The absolute dominant architecture currently ruling the generative image field — the <b>Denoising Diffusion Probabilistic Model (DDPM / Diffusion Model)</b> — uses a brilliantly conceived "reverse sculpting" philosophy.</span><span lang="en">The absolute dominant architecture currently ruling the generative image field — the <b>Denoising Diffusion Probabilistic Model (DDPM / Diffusion Model)</b> — uses a brilliantly conceived "reverse sculpting" philosophy.</span></p>
+<p class="reveal"><span lang="id">As Michelangelo said: "The statue was already in the stone; I merely removed the unnecessary parts." Diffusion's learning is divided into two ingeniously connected phases:</span><span lang="en">As Michelangelo said: "The statue was already in the stone; I merely removed the unnecessary parts." Diffusion's learning is divided into two ingeniously connected phases:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Noise Addition and Destruction (Forward Diffusion Process)</b>: Mathematically defined as a Markov chain stochastic destruction process (SDE). During training, the system progressively and uniformly fuses Gaussian white noise into millions of high-quality images through a noise schedule, until the images completely collapse into isotropic normal distribution snowflakes with no feature information remaining. <b>(The model memorizes all the destruction trajectory features at this moment)</b>.</span><span lang="en"><b>Noise Addition and Destruction (Forward Diffusion Process)</b>: Mathematically defined as a Markov chain stochastic destruction process (SDE). During training, the system progressively and uniformly fuses Gaussian white noise into millions of high-quality images through a noise schedule, until the images completely collapse into isotropic normal distribution snowflakes with no feature information remaining. <b>(The model memorizes all the destruction trajectory features at this moment)</b>.</span></li>
+<li><span lang="id"><b>Rebuilding Order (Reverse Denoising Prediction Process)</b>: When it comes to inference generation, we only provide the AI with a base of pure white noise. The powerful U-Net or Diffusion Transformer (DiT) estimation network begins to work. At every subtle computational timestep (Step), it predicts: "Which part of this chaotic information is the invalid noise we need to strip away (Score function)?" and then subtracts it.</span><span lang="en"><b>Rebuilding Order (Reverse Denoising Prediction Process)</b>: When it comes to inference generation, we only provide the AI with a base of pure white noise. The powerful U-Net or Diffusion Transformer (DiT) estimation network begins to work. At every subtle computational timestep (Step), it predicts: "Which part of this chaotic information is the invalid noise we need to strip away (Score function)?" and then subtracts it.</span></li>
+</ul>
+<p class="reveal"><span lang="id">Through hundreds or thousands of repeated annealing-based micro-adjustment stripping, it forcefully "predicts" a beautifully crafted image feature from a chaotic mosaic.</span><span lang="en">Through hundreds or thousands of repeated annealing-based micro-adjustment stripping, it forcefully "predicts" a beautifully crafted image feature from a chaotic mosaic.</span></p>
+<p class="reveal"><span lang="id"><DiffusionProcessDemo /></span><span lang="en"><DiffusionProcessDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Multimodal Alignment: The Key to Understanding Human Language (Cross-Attention)</span><span lang="en">3. Multimodal Alignment: The Key to Understanding Human Language (Cross-Attention)</span></h2>
+<p class="reveal"><span lang="id">After AI masters the art of painting, if left unchecked, it will only arbitrarily produce bizarre and wild fantasies. To make it precisely paint according to human-given Prompt text ("Cyberpunk cat"), both parties must be equipped with a powerful cross-modal translation and illumination hub.</span><span lang="en">After AI masters the art of painting, if left unchecked, it will only arbitrarily produce bizarre and wild fantasies. To make it precisely paint according to human-given Prompt text ("Cyberpunk cat"), both parties must be equipped with a powerful cross-modal translation and illumination hub.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Translation System (CLIP)</b>: A cross-domain contrastive language grid. It successfully maps each of your English descriptions into hundreds of dimensional mathematical vectors (Embeddings) that can resonate with visual content.</span><span lang="en"><b>Translation System (CLIP)</b>: A cross-domain contrastive language grid. It successfully maps each of your English descriptions into hundreds of dimensional mathematical vectors (Embeddings) that can resonate with visual content.</span></li>
+<li><span lang="id"><b>Executing Instructions (Cross-Attention)</b>: This is the masterstroke of large models. In every instantaneous cycle of the above denoising steps, the generated image's latent layer acts as the Query, reaching out to match the text Key/Value sent by CLIP.</span><span lang="en"><b>Executing Instructions (Cross-Attention)</b>: This is the masterstroke of large models. In every instantaneous cycle of the above denoising steps, the generated image's latent layer acts as the Query, reaching out to match the text Key/Value sent by CLIP.</span></li>
+</ul>
+<p class="reveal"><span lang="id">Once the system enters the stage of outlining the image, the vector weight for the word "kitty" gets geometrically amplified in the attention mechanism and focused on staining the grid area where the animal's body is about to form. <b>At this moment, your language becomes a flashlight beam, illuminating the specific local details that the AI should focus on painting!</b></span><span lang="en">Once the system enters the stage of outlining the image, the vector weight for the word "kitty" gets geometrically amplified in the attention mechanism and focused on staining the grid area where the animal's body is about to form. <b>At this moment, your language becomes a flashlight beam, illuminating the specific local details that the AI should focus on painting!</b></span></p>
+<p class="reveal"><span lang="id"><PromptVisualizer /></span><span lang="en"><PromptVisualizer /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Inference Transformation: The Highway Paved by Flow Matching</span><span lang="en">4. Inference Transformation: The Highway Paved by Flow Matching</span></h2>
+<p class="reveal"><span lang="id">Although traditional Diffusion theory is elegant, its fatal flaw is <b>being too slow to compute</b>.</span><span lang="en">Although traditional Diffusion theory is elegant, its fatal flaw is <b>being too slow to compute</b>.</span></p>
+<p class="reveal"><span lang="id">Because it relies on highly random inference, equivalent to grope blindly in an extremely rugged maze (stochastic differential inference), generating a single image typically requires the model to iterate through as many as 50 steps.</span><span lang="en">Because it relies on highly random inference, equivalent to grope blindly in an extremely rugged maze (stochastic differential inference), generating a single image typically requires the model to iterate through as many as 50 steps.</span></p>
+<p class="reveal"><span lang="id">To spark a performance revolution, the latest top-tier multimodal models (such as SD3, Flux behind Black Myth) have comprehensively adopted a new foundational core theory: <b>Flow Matching / Continuous Normalizing Flows</b>.</span><span lang="en">To spark a performance revolution, the latest top-tier multimodal models (such as SD3, Flux behind Black Myth) have comprehensively adopted a new foundational core theory: <b>Flow Matching / Continuous Normalizing Flows</b>.</span></p>
+<p class="reveal"><span lang="id">With the aid of analytical geometry thinking: through the minimalist logical guidance of Optimal Transport (OT), the model no longer relies on purely random circular wandering. <b>The algorithm is directly forced into an approximately straight Ordinary Differential Equation (ODE) smooth vector trajectory between the source pure noise and the endpoint data target!</b></span><span lang="en">With the aid of analytical geometry thinking: through the minimalist logical guidance of Optimal Transport (OT), the model no longer relies on purely random circular wandering. <b>The algorithm is directly forced into an approximately straight Ordinary Differential Equation (ODE) smooth vector trajectory between the source pure noise and the endpoint data target!</b></span></p>
+<p class="reveal"><span lang="id">No more detours! This also means that models applying the Flow Matching architecture only need an incredibly low number of steps (merely 4 to 8 steps) to rapidly render breathtaking image results!</span><span lang="en">No more detours! This also means that models applying the Flow Matching architecture only need an incredibly low number of steps (merely 4 to 8 steps) to rapidly render breathtaking image results!</span></p>
+<p class="reveal"><span lang="id"><FlowMatchingDemo /></span><span lang="en"><FlowMatchingDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Architecture Summary</span><span lang="en">5. Architecture Summary</span></h2>
+<p class="reveal"><span lang="id">At this point, the grand relay that runs and tumbles inside the GPU in the mere seconds after you press <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><Enter></code> to request an image in an AI application is fully revealed:</span><span lang="en">At this point, the grand relay that runs and tumbles inside the GPU in the mere seconds after you press <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><Enter></code> to request an image in an AI application is fully revealed:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Language Translation and Decompression Bridge (CLIP / Text Encoder)</b>: Rigorously vectorizes human intent and spreads it as guidance anchors to the visual realm.</span><span lang="en"><b>Language Translation and Decompression Bridge (CLIP / Text Encoder)</b>: Rigorously vectorizes human intent and spreads it as guidance anchors to the visual realm.</span></li>
+<li><span lang="id"><b>Sculpting Backbone Computing Base (DiT combined with Flow Matching/Diffusion)</b>: On the abstracted high-low frequency latent network surface, accepts Cross-Attention interference and polishing, performing high-concurrency extraction and washing of chaotic Gaussian interference information.</span><span lang="en"><b>Sculpting Backbone Computing Base (DiT combined with Flow Matching/Diffusion)</b>: On the abstracted high-low frequency latent network surface, accepts Cross-Attention interference and polishing, performing high-concurrency extraction and washing of chaotic Gaussian interference information.</span></li>
+<li><span lang="id"><b>Compression Mapping Magnifier (VAE)</b>: Guards the final gate, rapidly decompressing the polished and formed abstract miniature feature matrix, ultimately presenting it on the million-pixel-level large display.</span><span lang="en"><b>Compression Mapping Magnifier (VAE)</b>: Guards the final gate, rapidly decompressing the polished and formed abstract miniature feature matrix, ultimately presenting it on the million-pixel-level large display.</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Core Terminology Glossary</span><span lang="en">6. Core Terminology Glossary</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Term</th><th>English Full Name</th><th>Plain Explanation</th></tr>
+<tr><td><b>Latent Space</b></td><td>Latent Space</td><td>A greatly reduced-dimensionality mathematical distribution space; a highly condensed "composition draft" stripped of irrelevant redundancies that only the AI painter can understand.</td></tr>
+<tr><td><b>VAE</b></td><td>Variational Autoencoder</td><td>An extreme size conversion device. Bears the key function of dimensionally compressing billions of pixels and finally decompressing and enlarging the finished draft for placement.</td></tr>
+<tr><td><b>Diffusion</b></td><td>Diffusion Probabilistic Model</td><td>The mainstream image feature extraction destruction and reverse regression prediction recovery algorithm; the backbone infrastructure that relies on progressively removing isotropic fine random interference to slowly form and emerge patterns.</td></tr>
+<tr><td><b>CLIP</b></td><td>Contrastive Language-Image Pre-Training</td><td>A powerful component trained using symmetric contrastive training on hundreds of millions of human image captions, solving how language characters and color objects should be associated and interconnected.</td></tr>
+<tr><td><b>Cross-Attention</b></td><td>Cross-Attention Mechanism</td><td>A method for mixing sequence features within large models; colloquially speaking, it requires the image's own grid to look up and verify the externally issued language requirement priorities with a certain weight during computation — an illumination mapping tool.</td></tr>
+<tr><td><b>Flow Matching</b></td><td>Flow Matching Algorithm</td><td>An advanced optimized continuous mapping rebuilt on the foundation of previous random blind runs, relying on equation solving to constrain a smooth, determined straight path, which is the core acceleration technique that saves rendering time by hundreds of times.</td></tr>
+</table></div>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../8-artificial-intelligence/embedding-vector-retrieval/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">8-artificial-intelligence/embedding-vector-retrieval</span><span lang="en">8-artificial-intelligence/embedding-vector-retrieval</span></b></a>
+      <a class="next" href="../../8-artificial-intelligence/llm-principles/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">8-artificial-intelligence/llm-principles</span><span lang="en">8-artificial-intelligence/llm-principles</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

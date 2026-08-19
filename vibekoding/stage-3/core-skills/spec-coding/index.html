@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dari Vibe Coding Menuju Spec Coding — VibeKoding 📐</title>
+<meta name="description" content="Modul master Level 3 VibeKoding: Dari Vibe Coding Menuju Spec Coding. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-3/core-skills/spec-coding/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../stage-3/"><span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></a> / <span lang="id">Dari Vibe Coding Menuju Spec Coding</span><span lang="en">Dari Vibe Coding Menuju Spec Coding</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📐</div>
+      <div>
+        <h1><span lang="id">Dari Vibe Coding Menuju Spec Coding</span><span lang="en">Dari Vibe Coding Menuju Spec Coding</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul master Level 3 VibeKoding: Dari Vibe Coding Menuju Spec Coding.</span><span lang="en">Modul master Level 3 VibeKoding: Dari Vibe Coding Menuju Spec Coding.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">> "Code is a lossy projection of intent."</span><span lang="en">> "Code is a lossy projection of intent."</span></p>
+<p class="reveal"><span lang="id">> Code is a lossy projection of intent.</span><span lang="en">> Code is a lossy projection of intent.</span></p>
+<p class="reveal"><span lang="id">> - Sean Grove, OpenAI, AI Engineer World's Fair 2025</span><span lang="en">> - Sean Grove, OpenAI, AI Engineer World's Fair 2025</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">The Core Idea of Spec Coding: Everything Is Markdown</span><span lang="en">The Core Idea of Spec Coding: Everything Is Markdown</span></h2>
+<p class="reveal"><span lang="id">Before going deeper into Spec Coding, first understand the underlying philosophy of Claude Code: <b>everything is Markdown</b>.</span><span lang="en">Before going deeper into Spec Coding, first understand the underlying philosophy of Claude Code: <b>everything is Markdown</b>.</span></p>
+<p class="reveal"><span lang="id">In Claude Code's design philosophy, process records, information transfer, and even conversations with the model can all be Markdown:</span><span lang="en">In Claude Code's design philosophy, process records, information transfer, and even conversations with the model can all be Markdown:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>CLAUDE.md</b>: a Markdown document for project conventions</span><span lang="en"><b>CLAUDE.md</b>: a Markdown document for project conventions</span></li>
+<li><span lang="id"><b>.claude/rules/</b>: a collection of layered Markdown rule files</span><span lang="en"><b>.claude/rules/</b>: a collection of layered Markdown rule files</span></li>
+<li><span lang="id"><b>specs/</b>: Markdown descriptions of feature requirements</span><span lang="en"><b>specs/</b>: Markdown descriptions of feature requirements</span></li>
+<li><span lang="id"><b>Conversation history</b>: Claude Code's chat records are themselves in Markdown format</span><span lang="en"><b>Conversation history</b>: Claude Code's chat records are themselves in Markdown format</span></li>
+<li><span lang="id"><b>AGENTS.md</b>: Markdown instructions that define agent behavior</span><span lang="en"><b>AGENTS.md</b>: Markdown instructions that define agent behavior</span></li>
+</ul>
+<p class="reveal"><span lang="id">This is exactly the core of Spec Coding: <b>the specification itself is code</b>. When you write requirements, design decisions, and acceptance criteria in Markdown, you are already writing "code" - AI will read that Markdown and then generate the real implementation.</span><span lang="en">This is exactly the core of Spec Coding: <b>the specification itself is code</b>. When you write requirements, design decisions, and acceptance criteria in Markdown, you are already writing "code" - AI will read that Markdown and then generate the real implementation.</span></p>
+<p class="reveal"><span lang="id">Josh Beckman's summary of Grove's talk captures it perfectly:</span><span lang="en">Josh Beckman's summary of Grove's talk captures it perfectly:</span></p>
+<p class="reveal"><span lang="id">> "Software engineering (and lawmaking and legal review) is specification repair."</span><span lang="en">> "Software engineering (and lawmaking and legal review) is specification repair."</span></p>
+<p class="reveal"><span lang="id">> Software engineering (and lawmaking and legal review) is specification repair.</span><span lang="en">> Software engineering (and lawmaking and legal review) is specification repair.</span></p>
+<p class="reveal"><span lang="id">In Claude Code, this "specification repair" process is: <b>modify Markdown -> AI reads Markdown -> generate/modify code -> verify the result</b>. The entire workflow is Markdown-driven.</span><span lang="en">In Claude Code, this "specification repair" process is: <b>modify Markdown -> AI reads Markdown -> generate/modify code -> verify the result</b>. The entire workflow is Markdown-driven.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Sean Grove's "The New Code": A Talk That Changes How You Think</span><span lang="en">1. Sean Grove's "The New Code": A Talk That Changes How You Think</span></h2>
+<p class="reveal"><span lang="id">In 2025, OpenAI researcher <b>Sean Grove</b> gave a talk titled <b>"The New Code"</b> at AI Engineer World's Fair, and it shook the entire developer community. He proposed a disruptive idea: <b>for 70 years we have been writing code to solve problems, but code is only a lossy projection of intent - specifications are the real "new code."</b></span><span lang="en">In 2025, OpenAI researcher <b>Sean Grove</b> gave a talk titled <b>"The New Code"</b> at AI Engineer World's Fair, and it shook the entire developer community. He proposed a disruptive idea: <b>for 70 years we have been writing code to solve problems, but code is only a lossy projection of intent - specifications are the real "new code."</b></span></p>
+<p class="reveal"><span lang="id">That talk gave rise to a new development paradigm: <b>Spec Coding</b> - making specification documents, rather than code, the core artifact of development, and letting AI generate code from the specification.</span><span lang="en">That talk gave rise to a new development paradigm: <b>Spec Coding</b> - making specification documents, rather than code, the core artifact of development, and letting AI generate code from the specification.</span></p>
+<p class="reveal"><span lang="id">Starting from Grove's talk, this article will help you understand the core ideas of Spec Coding, review the limits of Vibe Coding, and show how to apply this methodology in real development with Claude Code.</span><span lang="en">Starting from Grove's talk, this article will help you understand the core ideas of Spec Coding, review the limits of Vibe Coding, and show how to apply this methodology in real development with Claude Code.</span></p>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">1. Understand the key ideas in Sean Grove's "The New Code" talk
+2. Master the core concepts and methodology of Spec Coding
+3. Recognize both the value and the ceiling of Vibe Coding
+4. Learn how to practice a Spec Coding workflow in Claude Code
+5. Master a gradual transition strategy from Vibe Coding to Spec Coding</span><span lang="en">1. Understand the key ideas in Sean Grove's "The New Code" talk
+2. Master the core concepts and methodology of Spec Coding
+3. Recognize both the value and the ceiling of Vibe Coding
+4. Learn how to practice a Spec Coding workflow in Claude Code
+5. Master a gradual transition strategy from Vibe Coding to Spec Coding</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Sean Grove's "The New Code": A Talk That Changes How You Think</span><span lang="en">1. Sean Grove's "The New Code": A Talk That Changes How You Think</span></h2>
+<p class="reveal"><span lang="id">In 2025, OpenAI researcher Sean Grove gave a talk titled <b>"The New Code"</b> at AI Engineer World's Fair. This talk is widely seen as the intellectual starting point of the Spec Coding movement.</span><span lang="en">In 2025, OpenAI researcher Sean Grove gave a talk titled <b>"The New Code"</b> at AI Engineer World's Fair. This talk is widely seen as the intellectual starting point of the Spec Coding movement.</span></p>
+<p class="reveal"><span lang="id">Grove previously founded OneGraph, a GraphQL developer tools company later acquired by Netlify, and now works on alignment reasoning at OpenAI - helping turn high-level intent into executable specifications and evaluation standards.</span><span lang="en">Grove previously founded OneGraph, a GraphQL developer tools company later acquired by Netlify, and now works on alignment reasoning at OpenAI - helping turn high-level intent into executable specifications and evaluation standards.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 Core Argument: Code Is a Lossy Projection of Intent</span><span lang="en">1.1 Core Argument: Code Is a Lossy Projection of Intent</span></h3>
+<p class="reveal"><span lang="id">The core concept of Grove's talk can be summarized in one sentence:</span><span lang="en">The core concept of Grove's talk can be summarized in one sentence:</span></p>
+<p class="reveal"><span lang="id">> <b>Code is a lossy projection of intent.</b></span><span lang="en">> <b>Code is a lossy projection of intent.</b></span></p>
+<p class="reveal"><span lang="id">> Code is a lossy projection of intent.</span><span lang="en">> Code is a lossy projection of intent.</span></p>
+<p class="reveal"><span lang="id">What does that mean? When you have an idea in your head and turn it into code, a huge amount of context gets lost along the way - <b>why</b> you chose this approach, <b>what trade-offs</b> you considered, and <b>which constraints</b> mattered. The final code only preserves "how to do it," while losing "why it should be done this way."</span><span lang="en">What does that mean? When you have an idea in your head and turn it into code, a huge amount of context gets lost along the way - <b>why</b> you chose this approach, <b>what trade-offs</b> you considered, and <b>which constraints</b> mattered. The final code only preserves "how to do it," while losing "why it should be done this way."</span></p>
+<p class="reveal"><span lang="id">It is like compressing a book into a tweet - the information density drops sharply, and the original intent is heavily degraded.</span><span lang="en">It is like compressing a book into a tweet - the information density drops sharply, and the original intent is heavily degraded.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 The Essence of Programming Is Communication</span><span lang="en">1.2 The Essence of Programming Is Communication</span></h3>
+<p class="reveal"><span lang="id">Grove proposed a simple but profound idea:</span><span lang="en">Grove proposed a simple but profound idea:</span></p>
+<p class="reveal"><span lang="id">> "If you can communicate effectively, you can program."</span><span lang="en">> "If you can communicate effectively, you can program."</span></p>
+<p class="reveal"><span lang="id">> If you can communicate effectively, you can program.</span><span lang="en">> If you can communicate effectively, you can program.</span></p>
+<p class="reveal"><span lang="id">He argues that actual coding work only accounts for <b>10-20%</b> of development. The other 80% is <b>structured communication</b> around requirements and goals - understanding what users want, aligning with the team on solutions, defining acceptance criteria, and handling edge cases.</span><span lang="en">He argues that actual coding work only accounts for <b>10-20%</b> of development. The other 80% is <b>structured communication</b> around requirements and goals - understanding what users want, aligning with the team on solutions, defining acceptance criteria, and handling edge cases.</span></p>
+<p class="reveal"><span lang="id">That means the core of programming ability is not mastery of syntax in a particular language, but the ability to <b>turn vague intent into precise descriptions</b>.</span><span lang="en">That means the core of programming ability is not mastery of syntax in a particular language, but the ability to <b>turn vague intent into precise descriptions</b>.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.3 Whoever Writes the Spec Is the Programmer</span><span lang="en">1.3 Whoever Writes the Spec Is the Programmer</span></h3>
+<p class="reveal"><span lang="id">This is Grove's most disruptive idea:</span><span lang="en">This is Grove's most disruptive idea:</span></p>
+<p class="reveal"><span lang="id">> "Whoever writes the spec - be it a PM, a lawmaker, an engineer, a marketer - is now the programmer."</span><span lang="en">> "Whoever writes the spec - be it a PM, a lawmaker, an engineer, a marketer - is now the programmer."</span></p>
+<p class="reveal"><span lang="id">> Whoever writes the spec - be it a PM, a lawmaker, an engineer, a marketer - is now the programmer.</span><span lang="en">> Whoever writes the spec - be it a PM, a lawmaker, an engineer, a marketer - is now the programmer.</span></p>
+<p class="reveal"><span lang="id">As AI becomes increasingly good at turning specifications into code, the <b>real programming work</b> shifts from "writing code" to "writing specifications." Whoever can express intent most precisely becomes the most valuable "programmer."</span><span lang="en">As AI becomes increasingly good at turning specifications into code, the <b>real programming work</b> shifts from "writing code" to "writing specifications." Whoever can express intent most precisely becomes the most valuable "programmer."</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.4 Specifications Can Have a Code-Like Toolchain</span><span lang="en">1.4 Specifications Can Have a Code-Like Toolchain</span></h3>
+<p class="reveal"><span lang="id">Grove pointed out that specifications can have a complete toolchain just like code:</span><span lang="en">Grove pointed out that specifications can have a complete toolchain just like code:</span></p>
+<p class="reveal"><span lang="id">> "Specs actually give us a very similar toolchain, but it's targeted at intentions rather than syntax."</span><span lang="en">> "Specs actually give us a very similar toolchain, but it's targeted at intentions rather than syntax."</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Composition</b>: specifications can be modular and composable, like code modules</span><span lang="en"><b>Composition</b>: specifications can be modular and composable, like code modules</span></li>
+<li><span lang="id"><b>Testing</b>: specifications can embed unit tests to verify that behavior matches expectations</span><span lang="en"><b>Testing</b>: specifications can embed unit tests to verify that behavior matches expectations</span></li>
+<li><span lang="id"><b>Linting</b>: ambiguous language in specifications can be detected, just like a linter catches syntax issues</span><span lang="en"><b>Linting</b>: ambiguous language in specifications can be detected, just like a linter catches syntax issues</span></li>
+<li><span lang="id"><b>Consistency checks</b>: specifications across departments can be checked for consistency, similar to a type checker</span><span lang="en"><b>Consistency checks</b>: specifications across departments can be checked for consistency, similar to a type checker</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.5 OpenAI Model Spec: Living Proof</span><span lang="en">1.5 OpenAI Model Spec: Living Proof</span></h3>
+<p class="reveal"><span lang="id">Grove used OpenAI's own <b>Model Spec</b> document as evidence.</span><span lang="en">Grove used OpenAI's own <b>Model Spec</b> document as evidence.</span></p>
+<p class="reveal"><span lang="id">When OpenAI discovered a sycophancy problem, they did not retrain the model. Instead, they <b>modified the specification document</b>. The change propagated automatically across the system, and the issue was corrected.</span><span lang="en">When OpenAI discovered a sycophancy problem, they did not retrain the model. Instead, they <b>modified the specification document</b>. The change propagated automatically across the system, and the issue was corrected.</span></p>
+<p class="reveal"><span lang="id">This proves a crucial point: <b>the specification itself can act like executable code</b>. Changing the specification is equivalent to changing behavior, without touching a single line of traditional code.</span><span lang="en">This proves a crucial point: <b>the specification itself can act like executable code</b>. Changing the specification is equivalent to changing behavior, without touching a single line of traditional code.</span></p>
+<p class="reveal"><span lang="id">Josh Beckman's summary of Grove's talk captures it perfectly:</span><span lang="en">Josh Beckman's summary of Grove's talk captures it perfectly:</span></p>
+<p class="reveal"><span lang="id">> "Software engineering (and lawmaking and legal review) is specification repair."</span><span lang="en">> "Software engineering (and lawmaking and legal review) is specification repair."</span></p>
+<p class="reveal"><span lang="id">> Software engineering (and lawmaking and legal review) is specification repair.</span><span lang="en">> Software engineering (and lawmaking and legal review) is specification repair.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Spec Coding: Specification as Code</span><span lang="en">2. Spec Coding: Specification as Code</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 What Is Spec Coding</span><span lang="en">2.1 What Is Spec Coding</span></h3>
+<p class="reveal"><span lang="id">Spec Coding, also called Spec-Driven Development (SDD), is a methodology that treats <b>specification documents as the core artifact of development</b>.</span><span lang="en">Spec Coding, also called Spec-Driven Development (SDD), is a methodology that treats <b>specification documents as the core artifact of development</b>.</span></p>
+<p class="reveal"><span lang="id">The core idea is: <b>write the specification clearly first, then let AI generate code from that specification. The specification is the source of truth, and code is only the implementation artifact derived from it.</b></span><span lang="en">The core idea is: <b>write the specification clearly first, then let AI generate code from that specification. The specification is the source of truth, and code is only the implementation artifact derived from it.</b></span></p>
+<p class="reveal"><span lang="id">Robert C. Martin's classic statement from <i>Clean Code</i> becomes newly relevant in the AI era:</span><span lang="en">Robert C. Martin's classic statement from <i>Clean Code</i> becomes newly relevant in the AI era:</span></p>
+<p class="reveal"><span lang="id">> "Specifying requirements so precisely that a machine can execute them is programming."</span><span lang="en">> "Specifying requirements so precisely that a machine can execute them is programming."</span></p>
+<p class="reveal"><span lang="id">> Specifying requirements so precisely that a machine can execute them is programming.</span><span lang="en">> Specifying requirements so precisely that a machine can execute them is programming.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Comparing Vibe Coding and Spec Coding</span><span lang="en">2.2 Comparing Vibe Coding and Spec Coding</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Dimension</th><th>Vibe Coding</th><th>Spec Coding</th></tr>
+<tr><td><b>Approach</b></td><td>Improvised prompts, iterative back-and-forth</td><td>Write a complete specification first, then generate code</td></tr>
+<tr><td><b>Best for</b></td><td>Prototypes, hackathons, exploration</td><td>Production systems, team collaboration, enterprise work</td></tr>
+<tr><td><b>Code quality</b></td><td>Fast but fragile</td><td>Structured, testable, auditable</td></tr>
+<tr><td><b>First-pass success rate</b></td><td>Unstable</td><td>Targets 95%+</td></tr>
+<tr><td><b>Reusability</b></td><td>One-off prompts</td><td>Specifications can be reused across projects</td></tr>
+<tr><td><b>Security</b></td><td>Easy to overlook things</td><td>Built in at the specification layer</td></tr>
+<tr><td><b>Documentation</b></td><td>Missing or always lagging behind</td><td>The specification is the documentation and stays maintained</td></tr>
+<tr><td><b>Team collaboration</b></td><td>Depends on personal prompting skill</td><td>Shared specifications, shared standards</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">The two are not opposites. As Brad Jolicoeur points out:</span><span lang="en">The two are not opposites. As Brad Jolicoeur points out:</span></p>
+<p class="reveal"><span lang="id">> "Clever engineers will even use vibe coding as a first step to generate the initial draft of a specification."</span><span lang="en">> "Clever engineers will even use vibe coding as a first step to generate the initial draft of a specification."</span></p>
+<p class="reveal"><span lang="id">> Clever engineers will even use vibe coding as a first step to generate the initial draft of a specification.</span><span lang="en">> Clever engineers will even use vibe coding as a first step to generate the initial draft of a specification.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 The Three-Layer Specification Structure of Spec Coding</span><span lang="en">2.3 The Three-Layer Specification Structure of Spec Coding</span></h3>
+<p class="reveal"><span lang="id">Engineers at Red Hat summarized a practical three-layer specification model:</span><span lang="en">Engineers at Red Hat summarized a practical three-layer specification model:</span></p>
+<p class="reveal"><span lang="id"><b>Layer 1: Functional Specification (What)</b></span><span lang="en"><b>Layer 1: Functional Specification (What)</b></span></p>
+<p class="reveal"><span lang="id">Describe the expected result in natural language and answer "what should it do":</span><span lang="en">Describe the expected result in natural language and answer "what should it do":</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>markdown</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>## User Authentication Feature
+
+### User Stories
+- As a new user, I want to register with my email
+- As a registered user, I want to log in with email and password
+- As a user who forgot my password, I want to reset it by email
+
+### Acceptance Criteria
+- Validate email format and password strength during registration
+- Lock the account for 15 minutes after 5 failed login attempts
+- Password reset links are valid for 30 minutes</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Layer 2: Language-Agnostic Specification (How - Architecture Layer)</b></span><span lang="en"><b>Layer 2: Language-Agnostic Specification (How - Architecture Layer)</b></span></p>
+<p class="reveal"><span lang="id">Define data structures, architectural patterns, and security requirements:</span><span lang="en">Define data structures, architectural patterns, and security requirements:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>markdown</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>## Technical Design
+
+### Data Model
+- users table: id, email, password_hash, created_at, locked_until
+- sessions table: id, user_id, token, expires_at
+
+### API Design
+- POST /api/auth/register -&gt; 201 Created
+- POST /api/auth/login -&gt; 200 OK + JWT
+- POST /api/auth/reset-password -&gt; 202 Accepted
+
+### Security Requirements
+- Passwords use bcrypt with cost factor &gt;= 12
+- JWT expires in 15 minutes, refresh token in 7 days
+- Enable rate limiting on all endpoints</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Layer 3: Language-Specific Specification (How - Implementation Layer)</b></span><span lang="en"><b>Layer 3: Language-Specific Specification (How - Implementation Layer)</b></span></p>
+<p class="reveal"><span lang="id">Version requirements, test framework, and documentation standards:</span><span lang="en">Version requirements, test framework, and documentation standards:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>markdown</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>## Implementation Constraints
+
+### Tech Stack
+- Runtime: Node.js 20+
+- Framework: Express 5
+- ORM: Prisma
+- Testing: Vitest
+
+### Code Conventions
+- Use TypeScript strict mode
+- Use a custom AppError class for error handling
+- All API endpoints require JSDoc comments</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Practicing Spec Coding in Claude Code</span><span lang="en">3. Practicing Spec Coding in Claude Code</span></h2>
+<p class="reveal"><span lang="id">Once you understand the theory, the next question is how to apply it in Claude Code. Claude Code's design philosophy naturally fits Spec Coding - its <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE.md</code>, Rules directory, and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/plan</code> command are all forms of specification-driven development.</span><span lang="en">Once you understand the theory, the next question is how to apply it in Claude Code. Claude Code's design philosophy naturally fits Spec Coding - its <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE.md</code>, Rules directory, and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/plan</code> command are all forms of specification-driven development.</span></p>
+<p class="reveal"><span lang="id">When OpenAI itself builds projects with Codex, it uses a similar pattern: using an <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">AGENTS.md</code> file as a specification to guide the AI agent. Their core lesson is this: <b>when the agent struggles, treat that as a signal - identify what is missing, whether it is tools, guardrails, or documentation, and then add it to the repository</b>. That aligns perfectly with Spec Coding: specifications are living artifacts and should keep evolving.</span><span lang="en">When OpenAI itself builds projects with Codex, it uses a similar pattern: using an <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">AGENTS.md</code> file as a specification to guide the AI agent. Their core lesson is this: <b>when the agent struggles, treat that as a signal - identify what is missing, whether it is tools, guardrails, or documentation, and then add it to the repository</b>. That aligns perfectly with Spec Coding: specifications are living artifacts and should keep evolving.</span></p>
+<p class="reveal"><span lang="id">Research from Augment Code supports the same conclusion: <b>executable specifications stay accurate because AI agents generate code directly from them, creating a forcing function - outdated specifications produce broken implementations</b>. That means specifications do not rot the way traditional documentation does.</span><span lang="en">Research from Augment Code supports the same conclusion: <b>executable specifications stay accurate because AI agents generate code directly from them, creating a forcing function - outdated specifications produce broken implementations</b>. That means specifications do not rot the way traditional documentation does.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Step One: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE.md</code> to Establish Project Specifications</span><span lang="en">3.1 Step One: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE.md</code> to Establish Project Specifications</span></h3>
+<p class="reveal"><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE.md</code> is the "living specification" of your project. Every time Claude Code starts, it reads this file, which is equivalent to giving AI a persistent project handbook.</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE.md</code> is the "living specification" of your project. Every time Claude Code starts, it reads this file, which is equivalent to giving AI a persistent project handbook.</span></p>
+<p class="reveal"><span lang="id">In the earlier chapter [Claude Code Quick Start Core Guide](../basics/), we already learned how to create <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE.md</code>. In the context of Spec Coding, its role becomes even more important - <b>it is not just a config file, but the entry point to the project specification</b>.</span><span lang="en">In the earlier chapter [Claude Code Quick Start Core Guide](../basics/), we already learned how to create <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE.md</code>. In the context of Spec Coding, its role becomes even more important - <b>it is not just a config file, but the entry point to the project specification</b>.</span></p>
+<p class="reveal"><span lang="id">Engineers at LogRocket emphasize that <b>solid context is crucial for AI agents because it prevents hallucinations and inefficiency</b>. Without specifications, an AI agent may make large, uncontrolled changes to a project. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE.md</code> is the first line of defense that provides that "solid context."</span><span lang="en">Engineers at LogRocket emphasize that <b>solid context is crucial for AI agents because it prevents hallucinations and inefficiency</b>. Without specifications, an AI agent may make large, uncontrolled changes to a project. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE.md</code> is the first line of defense that provides that "solid context."</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>markdown</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># E-commerce Project Specification
+
+## Project Positioning
+A SaaS e-commerce platform for small and medium-sized merchants, supporting multiple stores and multiple payment channels.
+
+## Architectural Decisions
+- Frontend-backend separation with an API-first design
+- Microservice backend architecture, with services communicating through a message queue
+- Read-write database separation
+
+## Core Constraints
+- Store all monetary amounts as integers in cents to avoid floating-point precision issues
+- The order state machine must strictly follow: pending payment -&gt; paid -&gt; shipped -&gt; completed
+- Payment-related endpoints must be idempotent</pre>
+</div>
+<p class="reveal"><span lang="id">Aviator's team summarized the key information that specifications should capture - and that is exactly what your <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE.md</code> should cover:</span><span lang="en">Aviator's team summarized the key information that specifications should capture - and that is exactly what your <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE.md</code> should cover:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">input and output formats and data types</span><span lang="en">input and output formats and data types</span></li>
+<li><span lang="id">business rules and edge cases</span><span lang="en">business rules and edge cases</span></li>
+<li><span lang="id">system dependencies and constraints</span><span lang="en">system dependencies and constraints</span></li>
+<li><span lang="id">performance and scalability requirements</span><span lang="en">performance and scalability requirements</span></li>
+<li><span lang="id">error handling and security requirements</span><span lang="en">error handling and security requirements</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Step Two: Use the Rules Directory to Manage Layered Specifications</span><span lang="en">3.2 Step Two: Use the Rules Directory to Manage Layered Specifications</span></h3>
+<p class="reveal"><span lang="id">As your project grows, a single <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE.md</code> will not be enough. At that point, use the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.claude/rules/</code> directory to organize layered specifications.</span><span lang="en">As your project grows, a single <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE.md</code> will not be enough. At that point, use the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.claude/rules/</code> directory to organize layered specifications.</span></p>
+<p class="reveal"><span lang="id">This is exactly what Augment Code calls the idea of "executable specifications": <b>specifications are not static documents, but living instructions consumed directly by AI agents</b>. When you split rules into the Rules directory, each rule file is loaded only when related files are being edited, which both saves tokens and preserves precision.</span><span lang="en">This is exactly what Augment Code calls the idea of "executable specifications": <b>specifications are not static documents, but living instructions consumed directly by AI agents</b>. When you split rules into the Rules directory, each rule file is loaded only when related files are being edited, which both saves tokens and preserves precision.</span></p>
+<p class="reveal"><span lang="id">Engineers at Tessl found that breaking requirements into structured documents - with a PRD defining "what and why," and technical specifications defining "how" - helps prevent AI from accumulating confusion in long conversations and significantly improves output consistency.</span><span lang="en">Engineers at Tessl found that breaking requirements into structured documents - with a PRD defining "what and why," and technical specifications defining "how" - helps prevent AI from accumulating confusion in long conversations and significantly improves output consistency.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>.claude/rules/
+├── 00-architecture.md      # Architecture rules (global)
+├── 01-security.md          # Security rules (global)
+├── 10-api-design.md        # API design rules
+├── 11-frontend-patterns.md # Frontend pattern rules
+├── 12-database.md          # Database rules
+└── 20-testing.md           # Testing rules</pre>
+</div>
+<p class="reveal"><span lang="id">Each rule file can specify its scope through frontmatter:</span><span lang="en">Each rule file can specify its scope through frontmatter:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>markdown</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>---
+globs:
+  - &quot;src/api/**/*.ts&quot;
+  - &quot;src/services/**/*.ts&quot;
+---
+
+# API Design Rules
+
+## Route Design
+- RESTful style, use plural nouns: /api/v1/orders
+- Nested resources can go at most two levels deep: /api/v1/users/123/orders
+
+## Response Format
+- Success: { data, pagination? }
+- Error: { error: { code, message, details? } }
+
+## Must Follow
+- All write operations require authentication
+- All list endpoints must support pagination
+- Sensitive operations must write audit logs</pre>
+</div>
+<p class="reveal"><span lang="id">That way, when Claude Code edits API-related files, it will automatically load this specification and make sure the generated code follows the standard.</span><span lang="en">That way, when Claude Code edits API-related files, it will automatically load this specification and make sure the generated code follows the standard.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Step Three: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/plan</code> to Implement Specify -> Plan -> Tasks -> Implement</span><span lang="en">3.3 Step Three: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/plan</code> to Implement Specify -> Plan -> Tasks -> Implement</span></h3>
+<p class="reveal"><span lang="id">The standard Spec Coding workflow is a four-stage loop. GitHub Spec Kit standardizes it as Specify -> Plan -> Tasks -> Implement, and Claude Code's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/plan</code> command naturally supports this flow.</span><span lang="en">The standard Spec Coding workflow is a four-stage loop. GitHub Spec Kit standardizes it as Specify -> Plan -> Tasks -> Implement, and Claude Code's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/plan</code> command naturally supports this flow.</span></p>
+<p class="reveal"><span lang="id">The SpecThis team emphasized one key principle: <b>define boundaries before the agent runs - know what should change before any code changes happen</b>. That is exactly the value of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/plan</code>.</span><span lang="en">The SpecThis team emphasized one key principle: <b>define boundaries before the agent runs - know what should change before any code changes happen</b>. That is exactly the value of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/plan</code>.</span></p>
+<p class="reveal"><span lang="id"><b>Stage 1: Specify</b></span><span lang="en"><b>Stage 1: Specify</b></span></p>
+<p class="reveal"><span lang="id">First write clearly what you want to build. Do not rush into code:</span><span lang="en">First write clearly what you want to build. Do not rush into code:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>/plan
+I need to implement an order refund feature. The specification is:
+
+Functional requirements:
+- Users can request a full refund before shipment
+- Within 7 days after shipment, users can request a return and refund
+- Refunds require administrator approval
+
+Acceptance criteria:
+- The refund amount cannot exceed the amount actually paid for the order
+- Refund state machine: requested -&gt; approved -&gt; refunding -&gt; refunded
+- Inventory is restored after the refund is completed
+- Log every operation throughout the process</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Stage 2: Plan</b></span><span lang="en"><b>Stage 2: Plan</b></span></p>
+<p class="reveal"><span lang="id">Claude will generate a technical plan based on your specification:</span><span lang="en">Claude will generate a technical plan based on your specification:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>📋 Refund Feature Implementation Plan
+
+1. Data model design
+   - Create a refunds table
+   - Add refund-related states to the order state machine
+
+2. API design
+   - POST /api/orders/:id/refund - request a refund
+   - PUT /api/refunds/:id/approve - approve a refund
+   - GET /api/refunds - refund list
+
+3. Business logic
+   - Refund eligibility checks
+   - Refund amount calculation
+   - Inventory restoration logic
+
+4. Integrations
+   - Connect to the payment provider&#039;s refund API
+   - Send refund notifications</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Stage 3: Tasks</b></span><span lang="en"><b>Stage 3: Tasks</b></span></p>
+<p class="reveal"><span lang="id">Break the plan into small tasks that can be executed independently, and give each task a clear completion standard.</span><span lang="en">Break the plan into small tasks that can be executed independently, and give each task a clear completion standard.</span></p>
+<p class="reveal"><span lang="id"><b>Stage 4: Implement</b></span><span lang="en"><b>Stage 4: Implement</b></span></p>
+<p class="reveal"><span lang="id">Implement one task at a time, validating after each one is completed.</span><span lang="en">Implement one task at a time, validating after each one is completed.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.4 Real Example: Building a User Notification System with Spec Coding</span><span lang="en">3.4 Real Example: Building a User Notification System with Spec Coding</span></h3>
+<p class="reveal"><span lang="id">Let's use a full example to compare Vibe Coding and Spec Coding. Data from Orchestrator.dev shows that in the 2025 Stack Overflow survey, 84% of developers use or plan to use AI tools, but only 22% are satisfied with the results, and 46% believe accuracy is a problem. Spec Coding is exactly the key to closing that satisfaction gap.</span><span lang="en">Let's use a full example to compare Vibe Coding and Spec Coding. Data from Orchestrator.dev shows that in the 2025 Stack Overflow survey, 84% of developers use or plan to use AI tools, but only 22% are satisfied with the results, and 46% believe accuracy is a problem. Spec Coding is exactly the key to closing that satisfaction gap.</span></p>
+<p class="reveal"><span lang="id"><b>Vibe Coding approach:</b></span><span lang="en"><b>Vibe Coding approach:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>You: Build a notification feature
+AI: [Immediately starts writing code and generates a simple notification list]
+
+You: It should support read and unread
+AI: [Modifies the code and adds a read field]
+
+You: It also needs multiple notification types
+AI: [Changes it again and adds a type field]
+
+You: It should push notifications to phones too
+AI: [Makes a big rewrite, and the previous structure no longer fits very well...]</pre>
+</div>
+<p class="reveal"><span lang="id">Result: after four rounds of changes, the architecture has been overturned again and again, and the code gets messier over time.</span><span lang="en">Result: after four rounds of changes, the architecture has been overturned again and again, and the code gets messier over time.</span></p>
+<p class="reveal"><span lang="id"><b>Spec Coding approach:</b></span><span lang="en"><b>Spec Coding approach:</b></span></p>
+<p class="reveal"><span lang="id">First write a specification document <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">specs/notification.md</code>:</span><span lang="en">First write a specification document <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">specs/notification.md</code>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>markdown</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># User Notification System Specification
+
+## Functional Requirements
+1. Support three channels: in-app notifications, email notifications, and push notifications
+2. Notification types: system announcements, order status, promotional campaigns, security alerts
+3. Users can configure notification preferences by channel and type
+4. Support read/unread state and bulk mark-as-read
+
+## Data Model
+- notifications table: id, user_id, type, channel, title, content,
+  is_read, created_at
+- notification_preferences table: user_id, type, channel, enabled
+
+## API Design
+- GET /api/notifications?type=&amp;is_read= - get notification list (paginated)
+- PUT /api/notifications/:id/read - mark as read
+- PUT /api/notifications/read-all - mark all as read
+- GET /api/notification-preferences - get preference settings
+- PUT /api/notification-preferences - update preference settings
+
+## Acceptance Criteria
+- The unread notification count updates in real time
+- The notification list supports infinite scrolling
+- Push notification latency &lt; 3 seconds
+- Preference changes take effect immediately</pre>
+</div>
+<p class="reveal"><span lang="id">Then in Claude Code:</span><span lang="en">Then in Claude Code:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>@specs/notification.md
+Implement the user notification system according to this specification.
+Start with the data model, then implement the API, and finally build the frontend components.
+Pause after each module is complete, and I will confirm before you continue.</pre>
+</div>
+<p class="reveal"><span lang="id">Result: it lands cleanly in one go, with a clear architecture and no need to repeatedly tear things down and rebuild them.</span><span lang="en">Result: it lands cleanly in one go, with a clear architecture and no need to repeatedly tear things down and rebuild them.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.5 Strengthening Spec Coding with Superpowers</span><span lang="en">3.5 Strengthening Spec Coding with Superpowers</span></h3>
+<p class="reveal"><span lang="id">In the earlier chapter [Superpowers for Engineering-Grade Development](../superpowers/), we learned about the Superpowers skill system. Spec Coding and Superpowers are natural companions:</span><span lang="en">In the earlier chapter [Superpowers for Engineering-Grade Development](../superpowers/), we learned about the Superpowers skill system. Spec Coding and Superpowers are natural companions:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Spec Coding Stage</th><th>Matching Superpowers Skill</th></tr>
+<tr><td>Define the specification</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">brainstorming</code> - use Socratic questioning to clarify requirements</td></tr>
+<tr><td>Technical planning</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">writing-plans</code> - break the specification into small tasks</td></tr>
+<tr><td>Incremental implementation</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">test-driven-development</code> - TDD red-green-refactor</td></tr>
+<tr><td>Quality verification</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">code-review</code> + <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">verification-before-completion</code></td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Example of combined usage:</b></span><span lang="en"><b>Example of combined usage:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>@specs/notification.md
+Implement the notification system according to this specification using TDD,
+and help me review the code after it is done</pre>
+</div>
+<p class="reveal"><span lang="id">This single instruction activates both the Spec Coding workflow and Superpowers skills like TDD and Code Review, forming a complete engineering-grade development process.</span><span lang="en">This single instruction activates both the Spec Coding workflow and Superpowers skills like TDD and Code Review, forming a complete engineering-grade development process.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.6 Version Control and Continuous Evolution of Specifications</span><span lang="en">3.6 Version Control and Continuous Evolution of Specifications</span></h3>
+<p class="reveal"><span lang="id">The Vibe Coding Substack proposed an important viewpoint: <b>Specs are now code</b>. If specifications are code, then they should be managed like code:</span><span lang="en">The Vibe Coding Substack proposed an important viewpoint: <b>Specs are now code</b>. If specifications are code, then they should be managed like code:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Version control</b>: keep specification files in Git and commit them together with the code</span><span lang="en"><b>Version control</b>: keep specification files in Git and commit them together with the code</span></li>
+<li><span lang="id"><b>Change tracking</b>: every change to the specification has a commit record so you know who changed what and why</span><span lang="en"><b>Change tracking</b>: every change to the specification has a commit record so you know who changed what and why</span></li>
+<li><span lang="id"><b>Code review</b>: changes to specifications should also go through PR review so the team stays aligned</span><span lang="en"><b>Code review</b>: changes to specifications should also go through PR review so the team stays aligned</span></li>
+<li><span lang="id"><b>CI integration</b>: specification changes trigger automated tests to verify whether the implementation still conforms to the specification</span><span lang="en"><b>CI integration</b>: specification changes trigger automated tests to verify whether the implementation still conforms to the specification</span></li>
+</ul>
+<p class="reveal"><span lang="id">In Claude Code, that means your <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE.md</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.claude/rules/</code>, and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">specs/</code> directory should all be version-controlled. Robomotion's experience is that <b>versioning specifications together with implementations prevents drift and keeps everything auditable</b>.</span><span lang="en">In Claude Code, that means your <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE.md</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.claude/rules/</code>, and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">specs/</code> directory should all be version-controlled. Robomotion's experience is that <b>versioning specifications together with implementations prevents drift and keeps everything auditable</b>.</span></p>
+<p class="reveal"><span lang="id">OpenAI's Harness Engineering practice also confirms this: their <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">AGENTS.md</code> file is itself written by Codex and is continuously updated as the project evolves. When the agent encounters difficulties, the fix is not to change the code directly, but to <b>have Codex update the specification itself</b> - forming a self-healing loop for specifications.</span><span lang="en">OpenAI's Harness Engineering practice also confirms this: their <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">AGENTS.md</code> file is itself written by Codex and is continuously updated as the project evolves. When the agent encounters difficulties, the fix is not to change the code directly, but to <b>have Codex update the specification itself</b> - forming a self-healing loop for specifications.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. A Hybrid Strategy: Gradually Moving from Vibe to Spec</span><span lang="en">4. A Hybrid Strategy: Gradually Moving from Vibe to Spec</span></h2>
+<p class="reveal"><span lang="id">The industry consensus is not "abandon Vibe Coding," but rather <b>choose the right approach for the right scenario</b>.</span><span lang="en">The industry consensus is not "abandon Vibe Coding," but rather <b>choose the right approach for the right scenario</b>.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 When to Use Vibe Coding</span><span lang="en">4.1 When to Use Vibe Coding</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Validate whether an idea is feasible, with a prototype built within 30 minutes</span><span lang="en">Validate whether an idea is feasible, with a prototype built within 30 minutes</span></li>
+<li><span lang="id">Explore unfamiliar technologies or frameworks</span><span lang="en">Explore unfamiliar technologies or frameworks</span></li>
+<li><span lang="id">Hackathons or internal demos</span><span lang="en">Hackathons or internal demos</span></li>
+<li><span lang="id">One-off scripts or tools</span><span lang="en">One-off scripts or tools</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 When to Use Spec Coding</span><span lang="en">4.2 When to Use Spec Coding</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Production feature development</span><span lang="en">Production feature development</span></li>
+<li><span lang="id">Multi-person collaborative projects</span><span lang="en">Multi-person collaborative projects</span></li>
+<li><span lang="id">Code that will need long-term maintenance</span><span lang="en">Code that will need long-term maintenance</span></li>
+<li><span lang="id">Sensitive domains such as security, payments, or data</span><span lang="en">Sensitive domains such as security, payments, or data</span></li>
+<li><span lang="id">API design and system integration</span><span lang="en">API design and system integration</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 A Recommended Gradual Workflow</span><span lang="en">4.3 A Recommended Gradual Workflow</span></h3>
+<p class="reveal"><span lang="id"><b>Stage 1: Vibe Exploration</b></span><span lang="en"><b>Stage 1: Vibe Exploration</b></span></p>
+<p class="reveal"><span lang="id">Use Vibe Coding to validate the idea quickly. Do not write specifications yet, and do not worry about code quality:</span><span lang="en">Use Vibe Coding to validate the idea quickly. Do not write specifications yet, and do not worry about code quality:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Build a simple notification popup so we can see how it feels</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Stage 2: Refine the Specification</b></span><span lang="en"><b>Stage 2: Refine the Specification</b></span></p>
+<p class="reveal"><span lang="id">Once feasibility is confirmed, organize what you learned during exploration into a specification. You can even ask AI to help:</span><span lang="en">Once feasibility is confirmed, organize what you learned during exploration into a specification. You can even ask AI to help:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Based on the notification feature prototype we just built,
+help me organize a formal functional specification document,
+including the data model, API design, and acceptance criteria</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Stage 3: Rebuild with Spec</b></span><span lang="en"><b>Stage 3: Rebuild with Spec</b></span></p>
+<p class="reveal"><span lang="id">Based on that specification, re-implement the production-grade version using Spec Coding:</span><span lang="en">Based on that specification, re-implement the production-grade version using Spec Coding:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>@specs/notification.md
+Implement this from scratch according to the specification, and do not refer to the previous prototype code</pre>
+</div>
+<p class="reveal"><span lang="id">The advantage of this workflow is clear: <b>use the speed of Vibe Coding to validate direction, and the quality of Spec Coding to deliver the product</b>.</span><span lang="en">The advantage of this workflow is clear: <b>use the speed of Vibe Coding to validate direction, and the quality of Spec Coding to deliver the product</b>.</span></p>
+<p class="reveal"><span lang="id">Robomotion summarized it well:</span><span lang="en">Robomotion summarized it well:</span></p>
+<p class="reveal"><span lang="id">> "The spec is the source of truth. The AI generated output is the draft implementation. Validation is not optional."</span><span lang="en">> "The spec is the source of truth. The AI generated output is the draft implementation. Validation is not optional."</span></p>
+<p class="reveal"><span lang="id">> The spec is the source of truth. The AI generated output is the draft implementation. Validation is not optional.</span><span lang="en">> The spec is the source of truth. The AI generated output is the draft implementation. Validation is not optional.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Frequently Asked Questions</span><span lang="en">5. Frequently Asked Questions</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Q1: Doesn't Spec Coding feel too slow?</span><span lang="en">Q1: Doesn't Spec Coding feel too slow?</span></h3>
+<p class="reveal"><span lang="id">Writing specifications does require up-front investment. But Greg Ceccarelli's team used Spec Coding to deliver a complete macOS product with <b>three people in four weeks</b> - something that would be nearly impossible in traditional development.</span><span lang="en">Writing specifications does require up-front investment. But Greg Ceccarelli's team used Spec Coding to deliver a complete macOS product with <b>three people in four weeks</b> - something that would be nearly impossible in traditional development.</span></p>
+<p class="reveal"><span lang="id">The time spent writing specifications early will be recovered later through less rework, fewer bugs, and lower communication cost.</span><span lang="en">The time spent writing specifications early will be recovered later through less rework, fewer bugs, and lower communication cost.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Q2: How detailed should a specification be?</span><span lang="en">Q2: How detailed should a specification be?</span></h3>
+<p class="reveal"><span lang="id">Robomotion's suggestion is: <b>a high-quality specification can be only one page</b>. What matters is whether it answers these eight questions:</span><span lang="en">Robomotion's suggestion is: <b>a high-quality specification can be only one page</b>. What matters is whether it answers these eight questions:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">What are we automating?</span><span lang="en">What are we automating?</span></li>
+<li><span lang="id">What is the input?</span><span lang="en">What is the input?</span></li>
+<li><span lang="id">What is the output?</span><span lang="en">What is the output?</span></li>
+<li><span lang="id">What are the constraints?</span><span lang="en">What are the constraints?</span></li>
+<li><span lang="id">What are the failure modes?</span><span lang="en">What are the failure modes?</span></li>
+<li><span lang="id">What are the security requirements?</span><span lang="en">What are the security requirements?</span></li>
+<li><span lang="id">What are the performance requirements?</span><span lang="en">What are the performance requirements?</span></li>
+<li><span lang="id">What tests prove that it works?</span><span lang="en">What tests prove that it works?</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Q3: What if AI only does exactly what the specification says and misses "obvious" features?</span><span lang="en">Q3: What if AI only does exactly what the specification says and misses "obvious" features?</span></h3>
+<p class="reveal"><span lang="id">This really is one limitation of Spec Coding. Feedback from GitHub Spec Kit users is that AI will do <b>"exactly and only"</b> what is written in the specification.</span><span lang="en">This really is one limitation of Spec Coding. Feedback from GitHub Spec Kit users is that AI will do <b>"exactly and only"</b> what is written in the specification.</span></p>
+<p class="reveal"><span lang="id">The solution is to add a "non-functional requirements" section to the specification and list common expectations there, such as error handling, logging, and accessibility. Or set global rules in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE.md</code>.</span><span lang="en">The solution is to add a "non-functional requirements" section to the specification and list common expectations there, such as error handling, logging, and accessibility. Or set global rules in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE.md</code>.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Q4: Do small projects also need Spec Coding?</span><span lang="en">Q4: Do small projects also need Spec Coding?</span></h3>
+<p class="reveal"><span lang="id">No. Spec Coding is best suited to:</span><span lang="en">No. Spec Coding is best suited to:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">production-grade projects</span><span lang="en">production-grade projects</span></li>
+<li><span lang="id">collaborative team projects</span><span lang="en">collaborative team projects</span></li>
+<li><span lang="id">projects that need long-term maintenance</span><span lang="en">projects that need long-term maintenance</span></li>
+</ul>
+<p class="reveal"><span lang="id">For quick prototypes, one-off scripts, and learning experiments, Vibe Coding is more suitable.</span><span lang="en">For quick prototypes, one-off scripts, and learning experiments, Vibe Coding is more suitable.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Q5: How do you get a team to accept Spec Coding?</span><span lang="en">Q5: How do you get a team to accept Spec Coding?</span></h3>
+<p class="reveal"><span lang="id">Start with a small feature as a pilot. Let the team see how Spec Coding reduces rework and improves first-pass success. The Stack Overflow 2025 survey shows that 84% of developers use or plan to use AI tools, but only 22% are satisfied with the results - Spec Coding is exactly the key to improving that satisfaction.</span><span lang="en">Start with a small feature as a pilot. Let the team see how Spec Coding reduces rework and improves first-pass success. The Stack Overflow 2025 survey shows that 84% of developers use or plan to use AI tools, but only 22% are satisfied with the results - Spec Coding is exactly the key to improving that satisfaction.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Summary</span><span lang="en">6. Summary</span></h2>
+<p class="reveal"><span lang="id">Moving from Vibe Coding to Spec Coding is not a revolution. It is an evolution.</span><span lang="en">Moving from Vibe Coding to Spec Coding is not a revolution. It is an evolution.</span></p>
+<p class="reveal"><span lang="id">Sean Grove made it very clear in "The New Code": <b>for 70 years, we have been writing code to solve problems; now we should be writing specifications to generate code</b>. Code is a lossy projection of intent, while specifications can fully capture intent, context, and constraints.</span><span lang="en">Sean Grove made it very clear in "The New Code": <b>for 70 years, we have been writing code to solve problems; now we should be writing specifications to generate code</b>. Code is a lossy projection of intent, while specifications can fully capture intent, context, and constraints.</span></p>
+<p class="reveal"><span lang="id">For developers using Claude Code, this shift is already happening:</span><span lang="en">For developers using Claude Code, this shift is already happening:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE.md</code> you write is your project specification</span><span lang="en">the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE.md</code> you write is your project specification</span></li>
+<li><span lang="id">the Rules directory you configure is your layered specification system</span><span lang="en">the Rules directory you configure is your layered specification system</span></li>
+<li><span lang="id">the planning you do with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/plan</code> is the Specify -> Plan -> Tasks flow</span><span lang="en">the planning you do with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/plan</code> is the Specify -> Plan -> Tasks flow</span></li>
+<li><span lang="id">combining TDD and Code Review from Superpowers gives you a complete Spec Coding workflow</span><span lang="en">combining TDD and Code Review from Superpowers gives you a complete Spec Coding workflow</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Key takeaways:</b></span><span lang="en"><b>Key takeaways:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Vibe Coding is suitable for exploration and prototypes, while Spec Coding is suitable for production and collaboration</span><span lang="en">Vibe Coding is suitable for exploration and prototypes, while Spec Coding is suitable for production and collaboration</span></li>
+<li><span lang="id">The specification is the source of truth, and code is an implementation artifact produced from it</span><span lang="en">The specification is the source of truth, and code is an implementation artifact produced from it</span></li>
+<li><span lang="id">The ability to write specifications = programming ability, and communication ability matters more than syntax ability</span><span lang="en">The ability to write specifications = programming ability, and communication ability matters more than syntax ability</span></li>
+<li><span lang="id">Start small: just by writing <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE.md</code> well, you have already taken the first step into Spec Coding</span><span lang="en">Start small: just by writing <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE.md</code> well, you have already taken the first step into Spec Coding</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">In the next chapter, we will learn how to use Claude Code's Agent Teams capability so multiple AI instances can collaborate like a real development team.</span><span lang="en">In the next chapter, we will learn how to use Claude Code's Agent Teams capability so multiple AI instances can collaborate like a real development team.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">References</span><span lang="en">References</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Related to Sean Grove's "The New Code" Talk</span><span lang="en">Related to Sean Grove's "The New Code" Talk</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[Code is just a lossy projection of intent — The Decoder](https://the-decoder.com/code-is-just-a-lossy-projection-of-intent-according-to-openai-researcher-sean-grove/)</span><span lang="en">[Code is just a lossy projection of intent — The Decoder](https://the-decoder.com/code-is-just-a-lossy-projection-of-intent-according-to-openai-researcher-sean-grove/)</span></li>
+<li><span lang="id">[The End of Coding? How Specifications Are Becoming the New Source Code — Implicator](https://www.implicator.ai/the-end-of-coding-how-specifications-are-becoming-the-new-source-code/)</span><span lang="en">[The End of Coding? How Specifications Are Becoming the New Source Code — Implicator](https://www.implicator.ai/the-end-of-coding-how-specifications-are-becoming-the-new-source-code/)</span></li>
+<li><span lang="id">[OpenAI: Intent, Not Code, Drives Future Software Development — AI Tech Suite](https://www.aitechsuite.com/ai-news/openai-intent-not-code-drives-future-software-development)</span><span lang="en">[OpenAI: Intent, Not Code, Drives Future Software Development — AI Tech Suite](https://www.aitechsuite.com/ai-news/openai-intent-not-code-drives-future-software-development)</span></li>
+<li><span lang="id">[Note on The New Code — Josh Beckman](https://www.joshbeckman.org/notes/914234100)</span><span lang="en">[Note on The New Code — Josh Beckman](https://www.joshbeckman.org/notes/914234100)</span></li>
+<li><span lang="id">[Full Transcript of "The New Code"](https://lawwu.github.io/transcripts/8rABwKRsec4.html)</span><span lang="en">[Full Transcript of "The New Code"](https://lawwu.github.io/transcripts/8rABwKRsec4.html)</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Spec Coding Methodology</span><span lang="en">Spec Coding Methodology</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[How spec-driven development improves AI coding quality — Red Hat](https://developers.redhat.com/articles/2025/10/22/how-spec-driven-development-improves-ai-coding-quality)</span><span lang="en">[How spec-driven development improves AI coding quality — Red Hat](https://developers.redhat.com/articles/2025/10/22/how-spec-driven-development-improves-ai-coding-quality)</span></li>
+<li><span lang="id">[Spec-Driven Development with AI: Complete 2025 Guide — Dplooy](https://www.dplooy.com/blog/spec-driven-development-with-ai-complete-2025-guide)</span><span lang="en">[Spec-Driven Development with AI: Complete 2025 Guide — Dplooy](https://www.dplooy.com/blog/spec-driven-development-with-ai-complete-2025-guide)</span></li>
+<li><span lang="id">[Spec-Driven Development: Building Production-Ready Software with AI — Orchestrator.dev](https://orchestrator.dev/blog/2025-12-16-spec_driven_dev_article)</span><span lang="en">[Spec-Driven Development: Building Production-Ready Software with AI — Orchestrator.dev](https://orchestrator.dev/blog/2025-12-16-spec_driven_dev_article)</span></li>
+<li><span lang="id">[Agents Code but the Problem of Clear Specification Remains — Greg Ceccarelli](https://www.gregceccarelli.com/writing/beyond-code-centric)</span><span lang="en">[Agents Code but the Problem of Clear Specification Remains — Greg Ceccarelli](https://www.gregceccarelli.com/writing/beyond-code-centric)</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Vibe Coding vs. Spec Coding</span><span lang="en">Vibe Coding vs. Spec Coding</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[Vibe Coding vs Spec Driven — Cosmo Edge](https://cosmo-edge.com/vibe-coding-vs-spec-driven-ai-development/)</span><span lang="en">[Vibe Coding vs Spec Driven — Cosmo Edge](https://cosmo-edge.com/vibe-coding-vs-spec-driven-ai-development/)</span></li>
+<li><span lang="id">[Master AI in Software Engineering: Vibe vs. Spec Coding — Brad Jolicoeur](https://bradjolicoeur.com/article/ai-software-engineering-vibe-spec-prompting)</span><span lang="en">[Master AI in Software Engineering: Vibe vs. Spec Coding — Brad Jolicoeur](https://bradjolicoeur.com/article/ai-software-engineering-vibe-spec-prompting)</span></li>
+<li><span lang="id">[From Vibe Coding to Spec-Driven Development — Tessl](https://tessl.io/blog/from-vibe-coding-to-spec-driven-development/)</span><span lang="en">[From Vibe Coding to Spec-Driven Development — Tessl](https://tessl.io/blog/from-vibe-coding-to-spec-driven-development/)</span></li>
+<li><span lang="id">[Spec First Approach for Enterprise — Robomotion](https://robomotion.io/blog/spec-first-approach-the-way-to-adapt-vibe-coding-for-enterprise-work)</span><span lang="en">[Spec First Approach for Enterprise — Robomotion](https://robomotion.io/blog/spec-first-approach-the-way-to-adapt-vibe-coding-for-enterprise-work)</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Tools and Practices</span><span lang="en">Tools and Practices</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[GitHub Spec Kit vs Vibe Coding — Ossels](https://ossels.ai/github-spec-kit-spec-driven-development/)</span><span lang="en">[GitHub Spec Kit vs Vibe Coding — Ossels](https://ossels.ai/github-spec-kit-spec-driven-development/)</span></li>
+<li><span lang="id">[A Spec-First Workflow for Agentic AI — LogRocket](https://blog.logrocket.com/spec-first-workflow-agentic-ai/)</span><span lang="en">[A Spec-First Workflow for Agentic AI — LogRocket](https://blog.logrocket.com/spec-first-workflow-agentic-ai/)</span></li>
+<li><span lang="id">[Specs Are Now Code — The Vibe Coding Substack](https://thevibecoding.substack.com/p/specs-are-now-code)</span><span lang="en">[Specs Are Now Code — The Vibe Coding Substack](https://thevibecoding.substack.com/p/specs-are-now-code)</span></li>
+<li><span lang="id">[Harness Engineering — Martin Fowler](https://martinfowler.com/articles/exploring-gen-ai/harness-engineering.html)</span><span lang="en">[Harness Engineering — Martin Fowler](https://martinfowler.com/articles/exploring-gen-ai/harness-engineering.html)</span></li>
+<li><span lang="id">[Spec-Driven Development & AI Agents Explained — Augment Code](https://www.augmentcode.com/guides/spec-driven-development-ai-agents-explained)</span><span lang="en">[Spec-Driven Development & AI Agents Explained — Augment Code](https://www.augmentcode.com/guides/spec-driven-development-ai-agents-explained)</span></li>
+<li><span lang="id">[Spec-Driven Development: The Key to Scalable AI Agents — Aviator](https://www.aviator.co/blog/spec-driven-development/)</span><span lang="en">[Spec-Driven Development: The Key to Scalable AI Agents — Aviator](https://www.aviator.co/blog/spec-driven-development/)</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../core-skills/superpowers/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Claude Code Superpowers untuk Kode Kelas Industri</span><span lang="en">Claude Code Superpowers untuk Kode Kelas Industri</span></b></a>
+      <a class="next" href="../../core-skills/github-iterative-development/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Siklus Lengkap Pengembangan via GitHub Issues</span><span lang="en">Siklus Lengkap Pengembangan via GitHub Issues</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of Embeddings and Vector Retrieval — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Embeddings and Vector Retrieval. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/8-artificial-intelligence/embedding-vector-retrieval/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Embeddings and Vector Retrieval</span><span lang="en">Principles of Embeddings and Vector Retrieval</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of Embeddings and Vector Retrieval</span><span lang="en">Principles of Embeddings and Vector Retrieval</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Embeddings and Vector Retrieval.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Embeddings and Vector Retrieval.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>How does a computer understand that "cats and dogs are similar, but neither is similar to a car"?</b> To humans this is common sense, but to a computer, "cat", "dog", and "car" are just three unrelated strings. Embedding technology is the key to solving this problem — it turns text into numerical vectors, allowing computers to understand semantic "closeness and distance."</span><span lang="en"><b>How does a computer understand that "cats and dogs are similar, but neither is similar to a car"?</b> To humans this is common sense, but to a computer, "cat", "dog", and "car" are just three unrelated strings. Embedding technology is the key to solving this problem — it turns text into numerical vectors, allowing computers to understand semantic "closeness and distance."</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn in this article?</b></span><span lang="en"><b>What will you learn in this article?</b></span></p>
+<p class="reveal"><span lang="id">After completing this chapter, you will gain:</span><span lang="en">After completing this chapter, you will gain:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Intuitive understanding</b>: Grasp what Embedding is and why the vectors for "cat" and "dog" end up close together</span><span lang="en"><b>Intuitive understanding</b>: Grasp what Embedding is and why the vectors for "cat" and "dog" end up close together</span></li>
+<li><span lang="id"><b>Similarity calculation</b>: Master core metrics like cosine similarity and Euclidean distance</span><span lang="en"><b>Similarity calculation</b>: Master core metrics like cosine similarity and Euclidean distance</span></li>
+<li><span lang="id"><b>Indexing principles</b>: Understand how vector databases perform millisecond-level retrieval across millions of data points</span><span lang="en"><b>Indexing principles</b>: Understand how vector databases perform millisecond-level retrieval across millions of data points</span></li>
+<li><span lang="id"><b>Technology selection</b>: Learn the characteristics and use cases of mainstream vector databases</span><span lang="en"><b>Technology selection</b>: Learn the characteristics and use cases of mainstream vector databases</span></li>
+<li><span lang="id"><b>End-to-end pipeline</b>: Master the complete pipeline from text to vectors to retrieval</span><span lang="en"><b>End-to-end pipeline</b>: Master the complete pipeline from text to vectors to retrieval</span></li>
+</ul>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Core Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>Embedding Concepts</td><td>Semantic space, vector representation</td></tr>
+<tr><td><b>Chapter 2</b></td><td>Similarity Calculation</td><td>Cosine similarity, Euclidean distance</td></tr>
+<tr><td><b>Chapter 3</b></td><td>Vector Indexing</td><td>Brute-force search vs. ANN</td></tr>
+<tr><td><b>Chapter 4</b></td><td>Vector Databases</td><td>Pinecone, Milvus, Chroma</td></tr>
+<tr><td><b>Chapter 5</b></td><td>End-to-End Pipeline</td><td>Text → Vector → Storage → Query</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. Panorama: The Bridge from Text to Numbers</span><span lang="en">0. Panorama: The Bridge from Text to Numbers</span></h2>
+<p class="reveal"><span lang="id">In the world of natural language processing, there is a fundamental challenge: <b>computers only understand numbers, not text</b>.</span><span lang="en">In the world of natural language processing, there is a fundamental challenge: <b>computers only understand numbers, not text</b>.</span></p>
+<p class="reveal"><span lang="id">Early approaches assigned each word a numeric ID (One-Hot encoding), for example "cat"=001, "dog"=010, "car"=100. But this had a fatal flaw: <b>all words are equally distant from each other</b>. The distance from "cat" to "dog" is exactly the same as the distance from "cat" to "car" — which clearly defies our intuition.</span><span lang="en">Early approaches assigned each word a numeric ID (One-Hot encoding), for example "cat"=001, "dog"=010, "car"=100. But this had a fatal flaw: <b>all words are equally distant from each other</b>. The distance from "cat" to "dog" is exactly the same as the distance from "cat" to "car" — which clearly defies our intuition.</span></p>
+<p class="reveal"><span lang="id">The revolutionary insight of Embedding is this: it maps each word into a <b>dense, low-dimensional vector space</b>, where semantically similar words naturally cluster together. In this space, "cat" and "dog" are close neighbors, while "car" sits far away — the computer can finally "understand" semantics.</span><span lang="en">The revolutionary insight of Embedding is this: it maps each word into a <b>dense, low-dimensional vector space</b>, where semantically similar words naturally cluster together. In this space, "cat" and "dog" are close neighbors, while "car" sits far away — the computer can finally "understand" semantics.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>One-Hot</b>: Dimension = vocabulary size (potentially tens of thousands), each vector has only a single 1 and all other entries are 0 — sparse and devoid of semantics
+- <b>Embedding</b>: Dimensions typically 768–1536, every number carries meaning — dense and rich in semantic information
+- <b>Key breakthrough</b>: Word2Vec (2013) proved that "a word's meaning can be defined by its context," ushering in the Embedding era</span><span lang="en">- <b>One-Hot</b>: Dimension = vocabulary size (potentially tens of thousands), each vector has only a single 1 and all other entries are 0 — sparse and devoid of semantics
+- <b>Embedding</b>: Dimensions typically 768–1536, every number carries meaning — dense and rich in semantic information
+- <b>Key breakthrough</b>: Word2Vec (2013) proved that "a word's meaning can be defined by its context," ushering in the Embedding era</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Embedding Concepts: Turning Text into Coordinates</span><span lang="en">1. Embedding Concepts: Turning Text into Coordinates</span></h2>
+<p class="reveal"><span lang="id">The core idea of Embedding can be summarized in one sentence: <b>use a set of numbers (a vector) to represent the meaning of a word or sentence</b>.</span><span lang="en">The core idea of Embedding can be summarized in one sentence: <b>use a set of numbers (a vector) to represent the meaning of a word or sentence</b>.</span></p>
+<p class="reveal"><span lang="id">Imagine a two-dimensional coordinate system. Place "cat" at coordinates (0.2, 0.7), "dog" at (0.3, 0.6), and "car" at (0.9, 0.1). You'll notice "cat" and "dog" have similar coordinates, while "car" is far away from both. This is the intuition behind Embedding — <b>semantic similarity becomes spatial distance</b>.</span><span lang="en">Imagine a two-dimensional coordinate system. Place "cat" at coordinates (0.2, 0.7), "dog" at (0.3, 0.6), and "car" at (0.9, 0.1). You'll notice "cat" and "dog" have similar coordinates, while "car" is far away from both. This is the intuition behind Embedding — <b>semantic similarity becomes spatial distance</b>.</span></p>
+<p class="reveal"><span lang="id"><EmbeddingConceptDemo /></span><span lang="en"><EmbeddingConceptDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">1. <b>Semantic clustering</b>: Words with similar meanings automatically group together (animals in one cluster, food in another, technology in another)
+2. <b>Analogical relationships</b>: Vector arithmetic can express semantic relationships — the classic example: king − man + woman ≈ queen
+3. <b>Dimensional meaning</b>: Each dimension implicitly encodes some semantic feature (e.g., "is it an animal", "size", "sentiment", etc.)</span><span lang="en">1. <b>Semantic clustering</b>: Words with similar meanings automatically group together (animals in one cluster, food in another, technology in another)
+2. <b>Analogical relationships</b>: Vector arithmetic can express semantic relationships — the classic example: king − man + woman ≈ queen
+3. <b>Dimensional meaning</b>: Each dimension implicitly encodes some semantic feature (e.g., "is it an animal", "size", "sentiment", etc.)</span></p>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Encoding Method</th><th>Dimensions</th><th>Semantic Information</th><th>Typical Application</th></tr>
+<tr><td>One-Hot</td><td>Vocabulary size (~50,000)</td><td>None</td><td>Traditional NLP</td></tr>
+<tr><td>Word2Vec</td><td>100–300</td><td>Word-level semantics</td><td>Word similarity, analogical reasoning</td></tr>
+<tr><td>BERT Embedding</td><td>768</td><td>Contextual semantics</td><td>Sentence understanding, QA</td></tr>
+<tr><td>OpenAI text-embedding-3</td><td>1536–3072</td><td>Deep semantics</td><td>RAG, semantic search</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Similarity Calculation: Method for "Close" Are Two Vectors</span><span lang="en">2. Similarity Calculation: Method for "Close" Are Two Vectors</span></h2>
+<p class="reveal"><span lang="id">With vector representations in hand, the next question is naturally: <b>how do we measure how similar two vectors are?</b> It's like measuring how close two cities are on a map — you can measure the straight-line distance, or you can check whether they point in the same direction.</span><span lang="en">With vector representations in hand, the next question is naturally: <b>how do we measure how similar two vectors are?</b> It's like measuring how close two cities are on a map — you can measure the straight-line distance, or you can check whether they point in the same direction.</span></p>
+<p class="reveal"><span lang="id"><VectorSimilarityDemo /></span><span lang="en"><VectorSimilarityDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Cosine Similarity</b>: Measures whether two vectors point in the same <b>direction</b>. Range: [-1, 1]. 1 means identical direction, 0 means orthogonal (unrelated), -1 means completely opposite. The go-to choice for text semantic comparison because it's unaffected by vector magnitude.
+- <b>Euclidean Distance</b>: Measures the <b>straight-line distance</b> between the endpoints of two vectors. Range: [0, ∞). 0 means they coincide exactly; the larger the value, the less similar. Suitable for scenarios where "absolute magnitude" matters.</span><span lang="en">- <b>Cosine Similarity</b>: Measures whether two vectors point in the same <b>direction</b>. Range: [-1, 1]. 1 means identical direction, 0 means orthogonal (unrelated), -1 means completely opposite. The go-to choice for text semantic comparison because it's unaffected by vector magnitude.
+- <b>Euclidean Distance</b>: Measures the <b>straight-line distance</b> between the endpoints of two vectors. Range: [0, ∞). 0 means they coincide exactly; the larger the value, the less similar. Suitable for scenarios where "absolute magnitude" matters.</span></p>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Metric</th><th>Formula Intuition</th><th>Range</th><th>Use Cases</th></tr>
+<tr><td>Cosine Similarity</td><td>Compares direction, ignores magnitude</td><td>[-1, 1]</td><td>Text semantic search, recommendation systems</td></tr>
+<tr><td>Euclidean Distance</td><td>Straight-line distance between endpoints</td><td>[0, ∞)</td><td>Image features, cluster analysis</td></tr>
+<tr><td>Dot Product</td><td>Direction × Magnitude</td><td>(-∞, +∞)</td><td>Fast computation with normalized vectors</td></tr>
+<tr><td>Manhattan Distance</td><td>Distance traveled along coordinate axes</td><td>[0, ∞)</td><td>High-dimensional sparse vectors</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Vector Indexing: Approach to searching Millions of Vectors in Milliseconds</span><span lang="en">3. Vector Indexing: Approach to searching Millions of Vectors in Milliseconds</span></h2>
+<p class="reveal"><span lang="id">Suppose you have 1 million documents, each converted into a 1536-dimensional vector. A user asks a question, and you need to find the 10 most similar ones. The most direct approach is to compute similarity one by one — but that means performing 1 million 1536-dimensional vector operations, which is far too slow.</span><span lang="en">Suppose you have 1 million documents, each converted into a 1536-dimensional vector. A user asks a question, and you need to find the 10 most similar ones. The most direct approach is to compute similarity one by one — but that means performing 1 million 1536-dimensional vector operations, which is far too slow.</span></p>
+<p class="reveal"><span lang="id">This is the problem that <b>vector indexing</b> solves: <b>trade space for time by building index structures through preprocessing, reducing retrieval speed from O(n) to approximately O(log n)</b>.</span><span lang="en">This is the problem that <b>vector indexing</b> solves: <b>trade space for time by building index structures through preprocessing, reducing retrieval speed from O(n) to approximately O(log n)</b>.</span></p>
+<p class="reveal"><span lang="id"><VectorIndexDemo /></span><span lang="en"><VectorIndexDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Brute-force (Flat)</b>: Compare one by one. 100% accurate but slow. Suitable for small datasets (< 100k).
+- <b>IVF (Inverted File Index)</b>: Partition the vector space into regions (clusters) first, then search only the nearest few regions during querying. Like organizing a library by subject — you only go to the relevant sections when looking for a book.
+- <b>HNSW (Hierarchical Navigable Small World)</b>: Build a multi-layer graph structure, navigating from coarse to fine granularity layer by layer. Like first looking at a world map to locate a country, then a provincial map, and finally a street map.
+- <b>PQ (Product Quantization)</b>: Compress high-dimensional vectors into short codes, sacrificing a small amount of precision for significant memory savings. Suitable for ultra-large-scale datasets.</span><span lang="en">- <b>Brute-force (Flat)</b>: Compare one by one. 100% accurate but slow. Suitable for small datasets (< 100k).
+- <b>IVF (Inverted File Index)</b>: Partition the vector space into regions (clusters) first, then search only the nearest few regions during querying. Like organizing a library by subject — you only go to the relevant sections when looking for a book.
+- <b>HNSW (Hierarchical Navigable Small World)</b>: Build a multi-layer graph structure, navigating from coarse to fine granularity layer by layer. Like first looking at a world map to locate a country, then a provincial map, and finally a street map.
+- <b>PQ (Product Quantization)</b>: Compress high-dimensional vectors into short codes, sacrificing a small amount of precision for significant memory savings. Suitable for ultra-large-scale datasets.</span></p>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Index Type</th><th>Build Speed</th><th>Query Speed</th><th>Recall</th><th>Memory Usage</th><th>Suitable Scale</th></tr>
+<tr><td>Flat (Brute-force)</td><td>No build needed</td><td>Slow</td><td>100%</td><td>High</td><td>< 100k</td></tr>
+<tr><td>IVF</td><td>Moderate</td><td>Fast</td><td>95%+</td><td>Medium</td><td>100k–10M</td></tr>
+<tr><td>HNSW</td><td>Slow</td><td>Very fast</td><td>99%+</td><td>High</td><td>100k–10M</td></tr>
+<tr><td>PQ</td><td>Moderate</td><td>Fast</td><td>90%+</td><td>Very low</td><td>> 10M</td></tr>
+<tr><td>IVF-PQ</td><td>Moderate</td><td>Fast</td><td>92%+</td><td>Low</td><td>> 100M</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Vector Databases: Storage Engines Purpose-Built for Vectors</span><span lang="en">4. Vector Databases: Storage Engines Purpose-Built for Vectors</span></h2>
+<p class="reveal"><span lang="id">With vectors and indexing algorithms in hand, you need a place to store and manage them. Traditional databases (MySQL, PostgreSQL) excel at structured data but struggle with high-dimensional vector similarity search. <b>Vector databases</b> are designed specifically for this scenario.</span><span lang="en">With vectors and indexing algorithms in hand, you need a place to store and manage them. Traditional databases (MySQL, PostgreSQL) excel at structured data but struggle with high-dimensional vector similarity search. <b>Vector databases</b> are designed specifically for this scenario.</span></p>
+<p class="reveal"><span lang="id"><VectorDatabaseDemo /></span><span lang="en"><VectorDatabaseDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">1. <b>Efficient storage</b>: Storage formats optimized for high-dimensional floating-point vectors
+2. <b>ANN retrieval</b>: Built-in support for multiple approximate nearest neighbor indexing algorithms (HNSW, IVF, etc.)
+3. <b>Metadata filtering</b>: Support for filtering by tags, timestamps, and other criteria alongside vector search
+4. <b>Real-time updates</b>: Support for dynamic insertion, deletion, and modification of vectors without rebuilding the entire index
+5. <b>Horizontal scaling</b>: Distributed architecture supporting billion-scale vector collections</span><span lang="en">1. <b>Efficient storage</b>: Storage formats optimized for high-dimensional floating-point vectors
+2. <b>ANN retrieval</b>: Built-in support for multiple approximate nearest neighbor indexing algorithms (HNSW, IVF, etc.)
+3. <b>Metadata filtering</b>: Support for filtering by tags, timestamps, and other criteria alongside vector search
+4. <b>Real-time updates</b>: Support for dynamic insertion, deletion, and modification of vectors without rebuilding the entire index
+5. <b>Horizontal scaling</b>: Distributed architecture supporting billion-scale vector collections</span></p>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Database</th><th>Type</th><th>Characteristics</th><th>Use Cases</th></tr>
+<tr><td>Pinecone</td><td>Fully-managed cloud service</td><td>Zero ops, works out of the box</td><td>Rapid prototyping, small-to-medium production</td></tr>
+<tr><td>Milvus</td><td>Open-source distributed</td><td>High performance, scalable</td><td>Large-scale production environments</td></tr>
+<tr><td>Chroma</td><td>Open-source lightweight</td><td>Embeddable, clean API</td><td>Local development, small projects</td></tr>
+<tr><td>Weaviate</td><td>Open-source cloud-native</td><td>Built-in vectorization, GraphQL</td><td>Scenarios requiring automatic vectorization</td></tr>
+<tr><td>Qdrant</td><td>Open-source high-performance</td><td>Rust implementation, strong filtering</td><td>Scenarios requiring complex filtering</td></tr>
+<tr><td>pgvector</td><td>PostgreSQL extension</td><td>Reuses existing PG infrastructure</td><td>Teams already using PostgreSQL</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. End-to-End Pipeline: The Complete Flow from Text to Retrieval</span><span lang="en">5. End-to-End Pipeline: The Complete Flow from Text to Retrieval</span></h2>
+<p class="reveal"><span lang="id">Now that we understand each component, let's wire them together and see how a complete vector retrieval system works.</span><span lang="en">Now that we understand each component, let's wire them together and see how a complete vector retrieval system works.</span></p>
+<p class="reveal"><span lang="id">The entire flow splits into two tracks: <b>offline ingestion</b> (turning documents into vectors and storing them) and <b>online querying</b> (turning questions into vectors and searching).</span><span lang="en">The entire flow splits into two tracks: <b>offline ingestion</b> (turning documents into vectors and storing them) and <b>online querying</b> (turning questions into vectors and searching).</span></p>
+<p class="reveal"><span lang="id"><EmbeddingPipelineDemo /></span><span lang="en"><EmbeddingPipelineDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">1. <b>Document loading</b>: Read raw text from various sources (PDFs, web pages, databases)
+2. <b>Text preprocessing</b>: Clean, denoise, and normalize (strip HTML tags, special characters, etc.)
+3. <b>Text chunking</b>: Split long text into appropriately sized chunks according to a strategy (200–500 tokens)
+4. <b>Vectorization</b>: Call an embedding model (e.g., OpenAI text-embedding-3-small) to convert each chunk into a vector
+5. <b>Store in vector database</b>: Write the vectors along with the original text and metadata into the database</span><span lang="en">1. <b>Document loading</b>: Read raw text from various sources (PDFs, web pages, databases)
+2. <b>Text preprocessing</b>: Clean, denoise, and normalize (strip HTML tags, special characters, etc.)
+3. <b>Text chunking</b>: Split long text into appropriately sized chunks according to a strategy (200–500 tokens)
+4. <b>Vectorization</b>: Call an embedding model (e.g., OpenAI text-embedding-3-small) to convert each chunk into a vector
+5. <b>Store in vector database</b>: Write the vectors along with the original text and metadata into the database</span></p>
+</div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">1. <b>Receive query</b>: User inputs a natural language question
+2. <b>Query vectorization</b>: Convert the question into a vector using the same embedding model
+3. <b>Similarity retrieval</b>: Search the vector database for the Top-K most similar document chunks
+4. <b>Post-processing</b>: Rerank, deduplicate, filter by metadata
+5. <b>Return results</b>: Return the most relevant document chunks to the caller (or pass them to an LLM to generate an answer)</span><span lang="en">1. <b>Receive query</b>: User inputs a natural language question
+2. <b>Query vectorization</b>: Convert the question into a vector using the same embedding model
+3. <b>Similarity retrieval</b>: Search the vector database for the Top-K most similar document chunks
+4. <b>Post-processing</b>: Rerank, deduplicate, filter by metadata
+5. <b>Return results</b>: Return the most relevant document chunks to the caller (or pass them to an LLM to generate an answer)</span></p>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Stage</th><th>Key Decision</th><th>Recommended Approach</th></tr>
+<tr><td>Embedding Model</td><td>Accuracy vs. cost vs. speed</td><td>OpenAI text-embedding-3-small (best value)</td></tr>
+<tr><td>Chunking Strategy</td><td>Granularity vs. semantic integrity</td><td>Recursive chunking, 200–500 tokens</td></tr>
+<tr><td>Vector Database</td><td>Scale vs. operational cost</td><td>Chroma for small projects, Pinecone/Milvus for production</td></tr>
+<tr><td>Similarity Metric</td><td>Semantic vs. exact</td><td>Cosine similarity (go-to for text scenarios)</td></tr>
+<tr><td>Top-K Value</td><td>Recall vs. noise</td><td>Retrieve 20 first, rerank and take Top 5</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary</span><span lang="en">Summary</span></h2>
+<p class="reveal"><span lang="id">Embedding and vector retrieval form the bridge connecting "human language" and "machine understanding." They are also the foundational infrastructure for AI applications such as RAG, semantic search, and recommendation systems.</span><span lang="en">Embedding and vector retrieval form the bridge connecting "human language" and "machine understanding." They are also the foundational infrastructure for AI applications such as RAG, semantic search, and recommendation systems.</span></p>
+<p class="reveal"><span lang="id">Key takeaways from this chapter:</span><span lang="en">Key takeaways from this chapter:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>The essence of Embedding</b>: Mapping text into a high-dimensional vector space, turning semantic similarity into spatial distance</span><span lang="en"><b>The essence of Embedding</b>: Mapping text into a high-dimensional vector space, turning semantic similarity into spatial distance</span></li>
+<li><span lang="id"><b>Similarity metrics</b>: Cosine similarity focuses on direction (ideal for text), Euclidean distance focuses on absolute distance</span><span lang="en"><b>Similarity metrics</b>: Cosine similarity focuses on direction (ideal for text), Euclidean distance focuses on absolute distance</span></li>
+<li><span lang="id"><b>Indexing is the performance key</b>: HNSW and IVF reduce retrieval across millions of vectors to milliseconds</span><span lang="en"><b>Indexing is the performance key</b>: HNSW and IVF reduce retrieval across millions of vectors to milliseconds</span></li>
+<li><span lang="id"><b>Vector database selection</b>: Chroma/pgvector for small projects, Pinecone/Milvus for production</span><span lang="en"><b>Vector database selection</b>: Chroma/pgvector for small projects, Pinecone/Milvus for production</span></li>
+<li><span lang="id"><b>End-to-end thinking</b>: From document loading to final retrieval, every stage's choices affect the final outcome</span><span lang="en"><b>End-to-end thinking</b>: From document loading to final retrieval, every stage's choices affect the final outcome</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[OpenAI Embeddings Documentation](https://platform.openai.com/docs/guides/embeddings) - Official embedding model usage guide</span><span lang="en">[OpenAI Embeddings Documentation](https://platform.openai.com/docs/guides/embeddings) - Official embedding model usage guide</span></li>
+<li><span lang="id">[Pinecone Learning Center](https://www.pinecone.io/learn/) - Systematic tutorials on vector databases and retrieval</span><span lang="en">[Pinecone Learning Center](https://www.pinecone.io/learn/) - Systematic tutorials on vector databases and retrieval</span></li>
+<li><span lang="id">[FAISS Wiki](https://github.com/facebookresearch/faiss/wiki) - Documentation for Facebook's open-source vector retrieval library</span><span lang="en">[FAISS Wiki](https://github.com/facebookresearch/faiss/wiki) - Documentation for Facebook's open-source vector retrieval library</span></li>
+<li><span lang="id">[Word2Vec Original Paper](https://arxiv.org/abs/1301.3781) - The seminal work that launched the Embedding era</span><span lang="en">[Word2Vec Original Paper](https://arxiv.org/abs/1301.3781) - The seminal work that launched the Embedding era</span></li>
+<li><span lang="id">[MTEB Leaderboard](https://huggingface.co/spaces/mteb/leaderboard) - Embedding model performance comparison leaderboard</span><span lang="en">[MTEB Leaderboard](https://huggingface.co/spaces/mteb/leaderboard) - Embedding model performance comparison leaderboard</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../8-artificial-intelligence/context-engineering/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">8-artificial-intelligence/context-engineering</span><span lang="en">8-artificial-intelligence/context-engineering</span></b></a>
+      <a class="next" href="../../8-artificial-intelligence/image-generation/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">8-artificial-intelligence/image-generation</span><span lang="en">8-artificial-intelligence/image-generation</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

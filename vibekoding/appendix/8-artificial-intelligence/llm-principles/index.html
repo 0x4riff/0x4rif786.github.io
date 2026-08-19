@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of Large Language Model Operation — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Large Language Model Operation. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/8-artificial-intelligence/llm-principles/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Large Language Model Operation</span><span lang="en">Principles of Large Language Model Operation</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of Large Language Model Operation</span><span lang="en">Principles of Large Language Model Operation</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Large Language Model Operation.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Large Language Model Operation.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">> 💡 <b>Learning Guide</b>: This chapter requires no programming background. Through interactive demonstrations, it takes you deep into the inner workings of Large Language Models (LLMs). We'll start from the most basic concept of tokenization and go all the way to how GPT is trained and performs inference.</span><span lang="en">> 💡 <b>Learning Guide</b>: This chapter requires no programming background. Through interactive demonstrations, it takes you deep into the inner workings of Large Language Models (LLMs). We'll start from the most basic concept of tokenization and go all the way to how GPT is trained and performs inference.</span></p>
+<p class="reveal"><span lang="id"><LlmQuickStartDemo /></span><span lang="en"><LlmQuickStartDemo /></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. Introduction: From Human Language to Machine Computation</span><span lang="en">0. Introduction: From Human Language to Machine Computation</span></h2>
+<p class="reveal"><span lang="id">Humans communicate through language; computers compute through numbers.</span><span lang="en">Humans communicate through language; computers compute through numbers.</span></p>
+<p class="reveal"><span lang="id">The essence of a <b>Large Language Model (LLM)</b> is a bridge connecting these two worlds.</span><span lang="en">The essence of a <b>Large Language Model (LLM)</b> is a bridge connecting these two worlds.</span></p>
+<p class="reveal"><span lang="id">Its core task is singular: <b>transform the problem of "understanding language" into a problem of "mathematical computation."</b></span><span lang="en">Its core task is singular: <b>transform the problem of "understanding language" into a problem of "mathematical computation."</b></span></p>
+<p class="reveal"><span lang="id">To achieve this goal, we need to solve three core challenges:</span><span lang="en">To achieve this goal, we need to solve three core challenges:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Translation</b>: How do we turn text into numbers? (Tokenization & Embedding)</span><span lang="en"><b>Translation</b>: How do we turn text into numbers? (Tokenization & Embedding)</span></li>
+<li><span lang="id"><b>Efficiency</b>: How do we make computers compute fast? (Matrix operations)</span><span lang="en"><b>Efficiency</b>: How do we make computers compute fast? (Matrix operations)</span></li>
+<li><span lang="id"><b>Memory</b>: How do we make computers understand context? (The Transformer model)</span><span lang="en"><b>Memory</b>: How do we make computers understand context? (The Transformer model)</span></li>
+</ul>
+<p class="reveal"><span lang="id">This tutorial will take you from zero, step by step, through the construction of this bridge.</span><span lang="en">This tutorial will take you from zero, step by step, through the construction of this bridge.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. 分词（Tokenization）</span><span lang="en">1. 分词（Tokenization）</span></h2>
+<p class="reveal"><span lang="id">A computer cannot read the word "hamburger" — it only understands numbers.</span><span lang="en">A computer cannot read the word "hamburger" — it only understands numbers.</span></p>
+<p class="reveal"><span lang="id">So our first task is: <b>break text into the smallest units a computer can process.</b></span><span lang="en">So our first task is: <b>break text into the smallest units a computer can process.</b></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 Overview of Tokenization</span><span lang="en">1.1 Overview of Tokenization</span></h3>
+<p class="reveal"><span lang="id">Tokenization is the process of splitting a sentence into individual "word units" (Tokens).</span><span lang="en">Tokenization is the process of splitting a sentence into individual "word units" (Tokens).</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>English</b>: Words are naturally separated by spaces, making tokenization easy (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">I love AI</code>).</span><span lang="en"><b>English</b>: Words are naturally separated by spaces, making tokenization easy (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">I love AI</code>).</span></li>
+<li><span lang="id"><b>Chinese</b>: There are no spaces, so algorithms are needed to segment the text (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">我爱人工智能</code>).</span><span lang="en"><b>Chinese</b>: There are no spaces, so algorithms are needed to segment the text (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">我爱人工智能</code>).</span></li>
+</ul>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Tokenizer</span><span lang="en">Tokenizer</span></h4>
+<p class="reveal"><span lang="id">The program that performs tokenization is called a <b>Tokenizer</b>.</span><span lang="en">The program that performs tokenization is called a <b>Tokenizer</b>.</span></p>
+<p class="reveal"><span lang="id">It acts like an interpreter, responsible for translating human text into sequences of numbers that machines can read.</span><span lang="en">It acts like an interpreter, responsible for translating human text into sequences of numbers that machines can read.</span></p>
+<p class="reveal"><span lang="id">Modern LLMs (such as GPT-4) typically use <b>Subword Tokenization</b> techniques (like the BPE algorithm).</span><span lang="en">Modern LLMs (such as GPT-4) typically use <b>Subword Tokenization</b> techniques (like the BPE algorithm).</span></p>
+<p class="reveal"><span lang="id">The clever part: <b>common words stay intact, rare words get split.</b></span><span lang="en">The clever part: <b>common words stay intact, rare words get split.</b></span></p>
+<p class="reveal"><span lang="id">Here is a real BPE tokenization example (based on the GPT-4 Tokenizer):</span><span lang="en">Here is a real BPE tokenization example (based on the GPT-4 Tokenizer):</span></p>
+<p class="reveal"><span lang="id"><b>Input</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"The quick brown fox jumps over the lazy dog. \n今天天气真不错！"</code></span><span lang="en"><b>Input</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"The quick brown fox jumps over the lazy dog. \n今天天气真不错！"</code></span></p>
+<p class="reveal"><span lang="id"><b>Token List</b>:</span><span lang="en"><b>Token List</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>index=791,   string=&#039;The&#039;
+index=4062,  string=&#039; quick&#039;
+index=14198, string=&#039; brown&#039;
+index=39935, string=&#039; fox&#039;
+index=83368, string=&#039; jumps&#039;   &lt;-- if split, might be &#039; jump&#039; + &#039;s&#039;
+index=927,   string=&#039; over&#039;
+index=279,   string=&#039; the&#039;
+index=16053, string=&#039; lazy&#039;
+index=3290,  string=&#039; dog&#039;
+index=13,    string=&#039;.&#039;
+index=198,   string=&#039;\n&#039;       &lt;-- newline character
+index=33838, string=&#039;今天&#039;      &lt;-- common word merged directly
+index=54580, string=&#039;天气&#039;
+index=20265, string=&#039;真&#039;
+index=57672, string=&#039;不错&#039;
+index=171,   string=&#039;！&#039;</pre>
+</div>
+<p class="reveal"><span lang="id">> <b>On handling rare characters</b>:</span><span lang="en">> <b>On handling rare characters</b>:</span></p>
+<p class="reveal"><span lang="id">> If a character not present in the vocabulary is encountered (suppose "今" were very rare), the model falls back to <b>Byte-level</b> encoding.</span><span lang="en">> If a character not present in the vocabulary is encountered (suppose "今" were very rare), the model falls back to <b>Byte-level</b> encoding.</span></p>
+<p class="reveal"><span lang="id">> 1.  Raw Input: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">今</code></span><span lang="en">> 1.  Raw Input: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">今</code></span></p>
+<p class="reveal"><span lang="id">> 2.  Bytes: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">\xE4 \xBB \x8A</code></span><span lang="en">> 2.  Bytes: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">\xE4 \xBB \x8A</code></span></p>
+<p class="reveal"><span lang="id">> 3.  BPE Lookup: first look for <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">\xE4\xBB\x8A</code> -> not found -> split into <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">\xE4\xBB</code> (ID=1001) + <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">\x8A</code> (ID=2002).</span><span lang="en">> 3.  BPE Lookup: first look for <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">\xE4\xBB\x8A</code> -> not found -> split into <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">\xE4\xBB</code> (ID=1001) + <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">\x8A</code> (ID=2002).</span></p>
+<p class="reveal"><span lang="id">> 4.  Final Tokens: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">[1001, 2002]</code>.</span><span lang="en">> 4.  Final Tokens: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">[1001, 2002]</code>.</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> This mechanism guarantees that <b>no matter what characters are input, the model can process them — there is never an OOV (Out Of Vocabulary) problem</b>.</span><span lang="en">> This mechanism guarantees that <b>no matter what characters are input, the model can process them — there is never an OOV (Out Of Vocabulary) problem</b>.</span></p>
+<p class="reveal"><span lang="id"><TokenizationDemo /></span><span lang="en"><TokenizationDemo /></span></p>
+<p class="reveal"><span lang="id"><b>Key point</b>: LLMs process not words, but <b>Token IDs</b> (a sequence of numeric indices).</span><span lang="en"><b>Key point</b>: LLMs process not words, but <b>Token IDs</b> (a sequence of numeric indices).</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. The Core Challenge: Approach to making Computers "Compute" Language</span><span lang="en">2. The Core Challenge: Approach to making Computers "Compute" Language</span></h2>
+<p class="reveal"><span lang="id">Our task is to process language. But computers only understand numbers.</span><span lang="en">Our task is to process language. But computers only understand numbers.</span></p>
+<p class="reveal"><span lang="id">The most direct idea: assign each word an ID number.</span><span lang="en">The most direct idea: assign each word an ID number.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">apple -> ID 10</span><span lang="en">apple -> ID 10</span></li>
+<li><span lang="id">banana -> ID 20</span><span lang="en">banana -> ID 20</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Motivation for Noting Just Use Simple IDs</span><span lang="en">2.1 Motivation for Noting Just Use Simple IDs</span></h3>
+<p class="reveal"><span lang="id">If we only use IDs, the computer would think "10" and "20" are just two unrelated numbers.</span><span lang="en">If we only use IDs, the computer would think "10" and "20" are just two unrelated numbers.</span></p>
+<p class="reveal"><span lang="id">Moreover, if the vocabulary has 100,000 words, we might need an array of length 100,000 to represent a single word (One-Hot encoding), where 99,999 positions are 0 and only one position is 1.</span><span lang="en">Moreover, if the vocabulary has 100,000 words, we might need an array of length 100,000 to represent a single word (One-Hot encoding), where 99,999 positions are 0 and only one position is 1.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Drawback 1: Too wasteful</b> (sparse — One-Hot arrays are too large).</span><span lang="en"><b>Drawback 1: Too wasteful</b> (sparse — One-Hot arrays are too large).</span></li>
+<li><span lang="id"><b>Drawback 2: No semantics</b> (cannot represent that "apple" and "banana" are both fruits).</span><span lang="en"><b>Drawback 2: No semantics</b> (cannot represent that "apple" and "banana" are both fruits).</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 The Solution: Embedding (Dense Vectors)</span><span lang="en">2.2 The Solution: Embedding (Dense Vectors)</span></h3>
+<p class="reveal"><span lang="id">To represent a word <b>efficiently</b> and <b>meaningfully</b>, we invented <b>Embedding</b>.</span><span lang="en">To represent a word <b>efficiently</b> and <b>meaningfully</b>, we invented <b>Embedding</b>.</span></p>
+<p class="reveal"><span lang="id">Instead of using a long 0/1 array, it uses a shorter array filled with decimals (e.g., 512 numbers) to describe a word.</span><span lang="en">Instead of using a long 0/1 array, it uses a shorter array filled with decimals (e.g., 512 numbers) to describe a word.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">For example: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">[0.8 (is fruit), 0.1 (red), 0.9 (sweet)...]</code></span><span lang="en">For example: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">[0.8 (is fruit), 0.1 (red), 0.9 (sweet)...]</code></span></li>
+</ul>
+<p class="reveal"><span lang="id">This way, we not only compress the data but also turn word meanings into computable "coordinates."</span><span lang="en">This way, we not only compress the data but also turn word meanings into computable "coordinates."</span></p>
+<p class="reveal"><span lang="id"><EmbeddingDemo /></span><span lang="en"><EmbeddingDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. From Words to Matrices</span><span lang="en">3. From Words to Matrices</span></h2>
+<p class="reveal"><span lang="id">Having solved the problem of representing "a single word," we now need to solve the problem of representing "a sentence."</span><span lang="en">Having solved the problem of representing "a single word," we now need to solve the problem of representing "a sentence."</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Motivation for Matricesing</span><span lang="en">3.1 Motivation for Matricesing</span></h3>
+<p class="reveal"><span lang="id">Because a sentence contains many words.</span><span lang="en">Because a sentence contains many words.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">One word = one row of numbers (a vector).</span><span lang="en">One word = one row of numbers (a vector).</span></li>
+<li><span lang="id">One sentence = many rows of numbers stacked together.</span><span lang="en">One sentence = many rows of numbers stacked together.</span></li>
+</ul>
+<p class="reveal"><span lang="id">This is a <b>matrix</b>.</span><span lang="en">This is a <b>matrix</b>.</span></p>
+<p class="reveal"><span lang="id">The reason we assemble them into matrices is that the core hardware of modern computers — <b>GPUs (Graphics Cards)</b> — are inherently designed for matrix operations.</span><span lang="en">The reason we assemble them into matrices is that the core hardware of modern computers — <b>GPUs (Graphics Cards)</b> — are inherently designed for matrix operations.</span></p>
+<p class="reveal"><span lang="id">Only by turning language into matrices can we leverage the parallel processing power of GPUs to achieve <b>efficient</b> inference and training.</span><span lang="en">Only by turning language into matrices can we leverage the parallel processing power of GPUs to achieve <b>efficient</b> inference and training.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 The Complete Pipeline</span><span lang="en">3.2 The Complete Pipeline</span></h3>
+<p class="reveal"><span lang="id">Let's review how data flows:</span><span lang="en">Let's review how data flows:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Tokenization</b>: Chop the text into pieces.</span><span lang="en"><b>Tokenization</b>: Chop the text into pieces.</span></li>
+<li><span lang="id"><b>Indexing</b>: Convert pieces into IDs.</span><span lang="en"><b>Indexing</b>: Convert pieces into IDs.</span></li>
+<li><span lang="id"><b>Embedding</b>: Convert IDs into vectors (for semantics and compression).</span><span lang="en"><b>Embedding</b>: Convert IDs into vectors (for semantics and compression).</span></li>
+<li><span lang="id"><b>Stacking</b>: Assemble vectors into matrices (for efficient GPU computation).</span><span lang="en"><b>Stacking</b>: Assemble vectors into matrices (for efficient GPU computation).</span></li>
+</ul>
+<p class="reveal"><span lang="id"><TokenizerToMatrix /></span><span lang="en"><TokenizerToMatrix /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.5 Interlude: What Exactly Overview of a "Model"</span><span lang="en">3.5 Interlude: What Exactly Overview of a "Model"</span></h2>
+<p class="reveal"><span lang="id">Before diving into specific architectures, let's understand the term "model" in plain terms.</span><span lang="en">Before diving into specific architectures, let's understand the term "model" in plain terms.</span></p>
+<p class="reveal"><span lang="id">In the AI field, a <b>Model</b> is essentially a super complex <b>function</b> or <b>black box</b>.</span><span lang="en">In the AI field, a <b>Model</b> is essentially a super complex <b>function</b> or <b>black box</b>.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Input</b>: A bunch of numbers (like the Token IDs above).</span><span lang="en"><b>Input</b>: A bunch of numbers (like the Token IDs above).</span></li>
+<li><span lang="id"><b>Processing</b>: Inside the black box are billions of parameters (think of them as billions of adjustable knobs) that perform frenzied addition, subtraction, multiplication, and division on the input data.</span><span lang="en"><b>Processing</b>: Inside the black box are billions of parameters (think of them as billions of adjustable knobs) that perform frenzied addition, subtraction, multiplication, and division on the input data.</span></li>
+<li><span lang="id"><b>Output</b>: Another bunch of numbers (representing predictions, such as the probability of the next word).</span><span lang="en"><b>Output</b>: Another bunch of numbers (representing predictions, such as the probability of the next word).</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>An analogy:</b></span><span lang="en"><b>An analogy:</b></span></p>
+<p class="reveal"><span lang="id">You can think of a model as an <b>experienced master chef</b>:</span><span lang="en">You can think of a model as an <b>experienced master chef</b>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Input (ingredients)</b>: You give them beef, potatoes, and tomatoes.</span><span lang="en"><b>Input (ingredients)</b>: You give them beef, potatoes, and tomatoes.</span></li>
+<li><span lang="id"><b>Model (the chef's brain)</b>: Based on the thousands of recipes they've learned (training data), they rapidly compute in their head: dice the beef, peel the potatoes, control the heat...</span><span lang="en"><b>Model (the chef's brain)</b>: Based on the thousands of recipes they've learned (training data), they rapidly compute in their head: dice the beef, peel the potatoes, control the heat...</span></li>
+<li><span lang="id"><b>Output (the dish)</b>: They serve up a plate of braised beef brisket with potatoes.</span><span lang="en"><b>Output (the dish)</b>: They serve up a plate of braised beef brisket with potatoes.</span></li>
+</ul>
+<p class="reveal"><span lang="id">What we call <b>Training</b> is the process of having this chef start as an apprentice, making mistakes billions of times. If it's too salty, tweak the "salt knob"; if too bland, tweak the "heat knob" — until they can consistently produce delicious dishes.</span><span lang="en">What we call <b>Training</b> is the process of having this chef start as an apprentice, making mistakes billions of times. If it's too salty, tweak the "salt knob"; if too bland, tweak the "heat knob" — until they can consistently produce delicious dishes.</span></p>
+<p class="reveal"><span lang="id">Today's LLMs are "super chefs" who have "read every book in human history" — except what they cook isn't food, but text.</span><span lang="en">Today's LLMs are "super chefs" who have "read every book in human history" — except what they cook isn't food, but text.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. The Evolutionary Path: From RNN to Transformer</span><span lang="en">4. The Evolutionary Path: From RNN to Transformer</span></h2>
+<p class="reveal"><span lang="id">With data (Tokens) and a chef (Model) in hand, let's look at how this chef thinks.</span><span lang="en">With data (Tokens) and a chef (Model) in hand, let's look at how this chef thinks.</span></p>
+<p class="reveal"><span lang="id">In AI's evolutionary history, there have been two main "ways of thinking" (architectures): <b>RNN</b> and <b>Transformer</b>.</span><span lang="en">In AI's evolutionary history, there have been two main "ways of thinking" (architectures): <b>RNN</b> and <b>Transformer</b>.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 The Old Clumsy Way: RNN (The Telephone Game)</span><span lang="en">4.1 The Old Clumsy Way: RNN (The Telephone Game)</span></h3>
+<p class="reveal"><span lang="id">Early models (RNNs, Recurrent Neural Networks) processed a sentence like playing the <b>Telephone Game</b>.</span><span lang="en">Early models (RNNs, Recurrent Neural Networks) processed a sentence like playing the <b>Telephone Game</b>.</span></p>
+<p class="reveal"><span lang="id"><b>How it works:</b></span><span lang="en"><b>How it works:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Read word 1, "I", memorize it, pass it to step 2.</span><span lang="en">Read word 1, "I", memorize it, pass it to step 2.</span></li>
+<li><span lang="id">Read word 2, "love", combine with the previous memory, update the mental note, pass to step 3.</span><span lang="en">Read word 2, "love", combine with the previous memory, update the mental note, pass to step 3.</span></li>
+<li><span lang="id">Read word 3, "eating", update memory again...</span><span lang="en">Read word 3, "eating", update memory again...</span></li>
+<li><span lang="id">...until the last word is read.</span><span lang="en">...until the last word is read.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>This brings two fatal drawbacks:</b></span><span lang="en"><b>This brings two fatal drawbacks:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Slow (no parallelism)</b>: You must wait for one person to finish passing the message before the next can begin. You can't have 100 people working at the same time.</span><span lang="en"><b>Slow (no parallelism)</b>: You must wait for one person to finish passing the message before the next can begin. You can't have 100 people working at the same time.</span></li>
+<li><span lang="id"><b>Forgetful (long-distance forgetting)</b>: By the time the message reaches the 100th person, they may have long forgotten whether the first person said "I" or "you." This causes models to lose coherence when writing long passages.</span><span lang="en"><b>Forgetful (long-distance forgetting)</b>: By the time the message reaches the 100th person, they may have long forgotten whether the first person said "I" or "you." This causes models to lose coherence when writing long passages.</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 The Modern Genius Design: Transformer (The Roundtable Meeting)</span><span lang="en">4.2 The Modern Genius Design: Transformer (The Roundtable Meeting)</span></h3>
+<p class="reveal"><span lang="id">In 2017, Google proposed a completely new architecture — the <b>Transformer</b>. It fundamentally changed the rules, turning the "Telephone Game" into a <b>Roundtable Meeting</b>.</span><span lang="en">In 2017, Google proposed a completely new architecture — the <b>Transformer</b>. It fundamentally changed the rules, turning the "Telephone Game" into a <b>Roundtable Meeting</b>.</span></p>
+<p class="reveal"><span lang="id"><b>How it works:</b></span><span lang="en"><b>How it works:</b></span></p>
+<p class="reveal"><span lang="id">The Transformer no longer passes messages one by one; instead, it has <b>all words sit down at the table at once</b>.</span><span lang="en">The Transformer no longer passes messages one by one; instead, it has <b>all words sit down at the table at once</b>.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Bird's-eye view (Parallel Computation)</b>: All words enter simultaneously — no queue. Everyone writes their information on paper and lays it out in the middle of the table.</span><span lang="en"><b>Bird's-eye view (Parallel Computation)</b>: All words enter simultaneously — no queue. Everyone writes their information on paper and lays it out in the middle of the table.</span></li>
+<li><span lang="id"><b>Attention Mechanism</b>: This is its killer feature. Every word can <b>directly</b> look at any other word's information on the table.</span><span lang="en"><b>Attention Mechanism</b>: This is its killer feature. Every word can <b>directly</b> look at any other word's information on the table.</span></li>
+<li><span lang="id">For example, when reading the word "it," the model doesn't need to recall earlier messages — it directly spots "the kitten" earlier in the sentence and instantly understands "it = the kitten."</span><span lang="en">For example, when reading the word "it," the model doesn't need to recall earlier messages — it directly spots "the kitten" earlier in the sentence and instantly understands "it = the kitten."</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>This perfectly solves RNN's pain points:</b></span><span lang="en"><b>This perfectly solves RNN's pain points:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Fast</b>: Everyone reviews materials simultaneously — the GPU can run at full throttle, maximizing efficiency.</span><span lang="en"><b>Fast</b>: Everyone reviews materials simultaneously — the GPU can run at full throttle, maximizing efficiency.</span></li>
+<li><span lang="id"><b>Never forgets</b>: No matter how long the sentence, the distance between the 1st word and the 10,000th word is just "one step away" — you can look at whoever you want.</span><span lang="en"><b>Never forgets</b>: No matter how long the sentence, the distance between the 1st word and the 10,000th word is just "one step away" — you can look at whoever you want.</span></li>
+</ul>
+<p class="reveal"><span lang="id">> <b>In summary</b>:</span><span lang="en">> <b>In summary</b>:</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> - <b>RNN</b>: Like navigating a maze, step by step, easy to get lost.</span><span lang="en">> - <b>RNN</b>: Like navigating a maze, step by step, easy to get lost.</span></p>
+<p class="reveal"><span lang="id">> - <b>Transformer</b>: Like viewing a map from a bird's-eye view — both the start and finish are in sight.</span><span lang="en">> - <b>Transformer</b>: Like viewing a map from a bird's-eye view — both the start and finish are in sight.</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Why Do We Still Need "Positional" Information?</span><span lang="en">Why Do We Still Need "Positional" Information?</span></h4>
+<p class="reveal"><span lang="id">Because the Transformer processes everything at once, without special handling it can't tell the difference between "I love you" and "You love I" (same words, just in a different order).</span><span lang="en">Because the Transformer processes everything at once, without special handling it can't tell the difference between "I love you" and "You love I" (same words, just in a different order).</span></p>
+<p class="reveal"><span lang="id">So we give each word a <b>number tag (Positional Encoding)</b> to tell the model who is in position 1, who is in position 2, and so on.</span><span lang="en">So we give each word a <b>number tag (Positional Encoding)</b> to tell the model who is in position 1, who is in position 2, and so on.</span></p>
+<p class="reveal"><span lang="id">> A small reminder: many LLMs are autoregressive (predicting the next word), so during generation they still output one token at a time; but in the internal computation of <b>each generation step</b>, the Transformer still excels at leveraging matrix parallelism and caching optimizations.</span><span lang="en">> A small reminder: many LLMs are autoregressive (predicting the next word), so during generation they still output one token at a time; but in the internal computation of <b>each generation step</b>, the Transformer still excels at leveraging matrix parallelism and caching optimizations.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 Efficiency Black Magic: KV Cache</span><span lang="en">4.3 Efficiency Black Magic: KV Cache</span></h3>
+<p class="reveal"><span lang="id">You may have heard that when generating long texts, it gets slower toward the end, or VRAM usage grows. This is usually because the model needs to "remember" everything it has generated so far.</span><span lang="en">You may have heard that when generating long texts, it gets slower toward the end, or VRAM usage grows. This is usually because the model needs to "remember" everything it has generated so far.</span></p>
+<p class="reveal"><span lang="id"><b>How does the Transformer "take notes"?</b></span><span lang="en"><b>How does the Transformer "take notes"?</b></span></p>
+<p class="reveal"><span lang="id">In the Transformer's attention mechanism, every word generates two vectors, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Key (K)</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Value (V)</code>, for later words to "query."</span><span lang="en">In the Transformer's attention mechanism, every word generates two vectors, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Key (K)</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Value (V)</code>, for later words to "query."</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">When the model generates the 100th word, it needs to look back at the K and V of the previous 99 words.</span><span lang="en">When the model generates the 100th word, it needs to look back at the K and V of the previous 99 words.</span></li>
+<li><span lang="id">If it had to recompute the K and V for the previous 99 words every time, that would be terribly wasteful!</span><span lang="en">If it had to recompute the K and V for the previous 99 words every time, that would be terribly wasteful!</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>The role of KV Cache:</b></span><span lang="en"><b>The role of KV Cache:</b></span></p>
+<p class="reveal"><span lang="id">KV Cache is like an <b>"incremental notebook."</b></span><span lang="en">KV Cache is like an <b>"incremental notebook."</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>No recomputation</b>: After computing the K and V for word 1, store them.</span><span lang="en"><b>No recomputation</b>: After computing the K and V for word 1, store them.</span></li>
+<li><span lang="id"><b>Only compute the new</b>: When generating word 2, only compute K and V for word 2, then concatenate them with word 1's K and V.</span><span lang="en"><b>Only compute the new</b>: When generating word 2, only compute K and V for word 2, then concatenate them with word 1's K and V.</span></li>
+<li><span lang="id"><b>Growing thicker</b>: As the conversation continues, this "notebook" (VRAM usage) gets thicker and thicker.</span><span lang="en"><b>Growing thicker</b>: As the conversation continues, this "notebook" (VRAM usage) gets thicker and thicker.</span></li>
+</ul>
+<p class="reveal"><span lang="id">This is why long-context conversations consume so much VRAM — <b>it's not that the model is getting bigger, but that the notes (KV Cache) are getting too thick.</b></span><span lang="en">This is why long-context conversations consume so much VRAM — <b>it's not that the model is getting bigger, but that the notes (KV Cache) are getting too thick.</b></span></p>
+<p class="reveal"><span lang="id"><RNNvsTransformer /></span><span lang="en"><RNNvsTransformer /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Revealed: From "Text Completion" to "Conversation"</span><span lang="en">5. Revealed: From "Text Completion" to "Conversation"</span></h2>
+<p class="reveal"><span lang="id">Many people mistakenly think ChatGPT truly understands what we're saying, but its fundamental instinct is only one thing: <b>predicting the next token</b> (Next Token Prediction).</span><span lang="en">Many people mistakenly think ChatGPT truly understands what we're saying, but its fundamental instinct is only one thing: <b>predicting the next token</b> (Next Token Prediction).</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Instinct: Frenzied Text Completion</span><span lang="en">5.1 Instinct: Frenzied Text Completion</span></h3>
+<p class="reveal"><span lang="id">If you give a base model the input "The weather is nice today," it might complete it with "let's go to the park."</span><span lang="en">If you give a base model the input "The weather is nice today," it might complete it with "let's go to the park."</span></p>
+<p class="reveal"><span lang="id">But if you input "What is the capital of the United States?", it might complete it with "What is the capital of China? What is the capital of Japan?" (because it's mimicking the format of an exam paper, not answering the question).</span><span lang="en">But if you input "What is the capital of the United States?", it might complete it with "What is the capital of China? What is the capital of Japan?" (because it's mimicking the format of an exam paper, not answering the question).</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Technique: Using a "Script" to Chat</span><span lang="en">5.2 Technique: Using a "Script" to Chat</span></h3>
+<p class="reveal"><span lang="id">To turn it into a conversational assistant, engineers came up with a brilliant idea: <b>role-playing</b>.</span><span lang="en">To turn it into a conversational assistant, engineers came up with a brilliant idea: <b>role-playing</b>.</span></p>
+<p class="reveal"><span lang="id">We quietly add special <b>tags (Templates)</b> to the input, making the model think it's continuing a "dialogue script."</span><span lang="en">We quietly add special <b>tags (Templates)</b> to the input, making the model think it's continuing a "dialogue script."</span></p>
+<p class="reveal"><span lang="id">For example, what you see is:</span><span lang="en">For example, what you see is:</span></p>
+<p class="reveal"><span lang="id">> User: Hello</span><span lang="en">> User: Hello</span></p>
+<p class="reveal"><span lang="id">What the model actually sees is:</span><span lang="en">What the model actually sees is:</span></p>
+<p class="reveal"><span lang="id">> <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><|user|></code> Hello <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><|assistant|></code></span><span lang="en">> <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><|user|></code> Hello <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><|assistant|></code></span></p>
+<p class="reveal"><span lang="id">The moment the model sees <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><|assistant|></code>, it knows: "Oh, it's my turn to play the assistant and speak."</span><span lang="en">The moment the model sees <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><|assistant|></code>, it knows: "Oh, it's my turn to play the assistant and speak."</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 In-Depth Interactive Demo</span><span lang="en">5.3 In-Depth Interactive Demo</span></h3>
+<p class="reveal"><span lang="id">The demo below will walk you through the essence of LLMs step by step. Please click through <b>1. Instinct -> 2. Technique -> 3. Principles -> 4. Advanced</b> in order — give it a try!</span><span lang="en">The demo below will walk you through the essence of LLMs step by step. Please click through <b>1. Instinct -> 2. Technique -> 3. Principles -> 4. Advanced</b> in order — give it a try!</span></p>
+<p class="reveal"><span lang="id"><TrainingInferenceDemo /></span><span lang="en"><TrainingInferenceDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. From "Nonsense" to "Good Assistant" (Alignment)</span><span lang="en">6. From "Nonsense" to "Good Assistant" (Alignment)</span></h2>
+<p class="reveal"><span lang="id">Being able to chat isn't enough. A raw model might teach people how to build bombs or spew profanity.</span><span lang="en">Being able to chat isn't enough. A raw model might teach people how to build bombs or spew profanity.</span></p>
+<p class="reveal"><span lang="id">To make it a polite, safe, and reliable assistant like ChatGPT, two final polishing steps are needed:</span><span lang="en">To make it a polite, safe, and reliable assistant like ChatGPT, two final polishing steps are needed:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>SFT (Supervised Fine-Tuning)</b>:</span><span lang="en"><b>SFT (Supervised Fine-Tuning)</b>:</span></li>
+<li><span lang="id">Have human experts write many high-quality Q&A pairs to teach the model "how to speak properly."</span><span lang="en">Have human experts write many high-quality Q&A pairs to teach the model "how to speak properly."</span></li>
+<li><span lang="id">Goal: Make the model understand instructions instead of rambling on.</span><span lang="en">Goal: Make the model understand instructions instead of rambling on.</span></li>
+<li><span lang="id">_Data example (JSON format)_:</span><span lang="en">_Data example (JSON format)_:</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>json</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>      // SFT training data example
+      {
+        &quot;messages&quot;: [
+          { &quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Please translate this sentence into English: \&quot;你好\&quot;.&quot; },
+          { &quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: &quot;Hello.&quot; }
+        ]
+      }
+      // The model learns: when it sees a &quot;translate&quot; instruction, give the result directly,
+      // rather than continuing with &quot;how are you&quot;</pre>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>RLHF (Reinforcement Learning from Human Feedback)</b>:</span><span lang="en"><b>RLHF (Reinforcement Learning from Human Feedback)</b>:</span></li>
+<li><span lang="id"><b>Scoring</b>: Have the model generate several responses, and human teachers score them (which is safer? which is more polite?).</span><span lang="en"><b>Scoring</b>: Have the model generate several responses, and human teachers score them (which is safer? which is more polite?).</span></li>
+<li><span lang="id"><b>Reward and Punishment</b>: If the model speaks well, reward it; if poorly, punish it. Gradually, the model learns to "align" with human values (Alignment).</span><span lang="en"><b>Reward and Punishment</b>: If the model speaks well, reward it; if poorly, punish it. Gradually, the model learns to "align" with human values (Alignment).</span></li>
+<li><span lang="id">_Data example (JSON format)_:</span><span lang="en">_Data example (JSON format)_:</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>json</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>      // RLHF preference data example (DPO/PPO)
+      {
+        &quot;prompt&quot;: &quot;How to make a bomb?&quot;,
+        &quot;chosen&quot;: &quot;I&#039;m sorry, I cannot answer that question.&quot;, // human-preferred response (safe)
+        &quot;rejected&quot;: &quot;First, you need to...&quot; // human-rejected response (dangerous)
+      }</pre>
+</div>
+<p class="reveal"><span lang="id"><b>In the demo above, click the 4th tab "Advanced: Alignment" to personally experience the dramatic difference before and after alignment.</b></span><span lang="en"><b>In the demo above, click the 4th tab "Advanced: Alignment" to personally experience the dramatic difference before and after alignment.</b></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Frontier Exploration: Thinking Models, MoE Architecture, and Linear Attention</span><span lang="en">7. Frontier Exploration: Thinking Models, MoE Architecture, and Linear Attention</span></h2>
+<p class="reveal"><span lang="id">As technology advances, we've found that relying solely on "predicting the next token" sometimes leads to silly mistakes, especially with math and logic problems.</span><span lang="en">As technology advances, we've found that relying solely on "predicting the next token" sometimes leads to silly mistakes, especially with math and logic problems.</span></p>
+<p class="reveal"><span lang="id">Thus, a new generation of <b>Thinking Models</b> (such as OpenAI o1, DeepSeek-R1) was born.</span><span lang="en">Thus, a new generation of <b>Thinking Models</b> (such as OpenAI o1, DeepSeek-R1) was born.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.1 Overview of "Thinking" (Thinking Models)</span><span lang="en">7.1 Overview of "Thinking" (Thinking Models)</span></h3>
+<p class="reveal"><span lang="id">When humans answer complex questions (like "which is larger, 9.11 or 9.9?"), we don't blurt out an answer — we think in our heads first.</span><span lang="en">When humans answer complex questions (like "which is larger, 9.11 or 9.9?"), we don't blurt out an answer — we think in our heads first.</span></p>
+<p class="reveal"><span lang="id">A Thinking Model is one that has learned this <b>slow thinking (System 2)</b> capability.</span><span lang="en">A Thinking Model is one that has learned this <b>slow thinking (System 2)</b> capability.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Fast Thinking (System 1)</b>: Intuitive, blurting out answers. Prone to mistakes.</span><span lang="en"><b>Fast Thinking (System 1)</b>: Intuitive, blurting out answers. Prone to mistakes.</span></li>
+<li><span lang="id"><b>Slow Thinking (System 2)</b>: Generating a "Chain of Thought (CoT)," reasoning step by step, and finally giving an answer.</span><span lang="en"><b>Slow Thinking (System 2)</b>: Generating a "Chain of Thought (CoT)," reasoning step by step, and finally giving an answer.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><ThinkingModelDemo /></span><span lang="en"><ThinkingModelDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.2 Training Revealed: From "Imitation" to "Exploration"</span><span lang="en">7.2 Training Revealed: From "Imitation" to "Exploration"</span></h3>
+<p class="reveal"><span lang="id">Why couldn't earlier models think this way? Because the training method changed.</span><span lang="en">Why couldn't earlier models think this way? Because the training method changed.</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Traditional Approach (SFT — Imitation Learning)</span><span lang="en">Traditional Approach (SFT — Imitation Learning)</span></h4>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Method</b>: Show the model human thought processes and have it <b>imitate</b> them.</span><span lang="en"><b>Method</b>: Show the model human thought processes and have it <b>imitate</b> them.</span></li>
+<li><span lang="id"><b>Limitation</b>: The model's ceiling is the quality of human data. If humans themselves can't figure something out (like extremely hard math problems), the model can't learn it either.</span><span lang="en"><b>Limitation</b>: The model's ceiling is the quality of human data. If humans themselves can't figure something out (like extremely hard math problems), the model can't learn it either.</span></li>
+</ul>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Thinking Approach (RL — Reinforcement Learning)</span><span lang="en">Thinking Approach (RL — Reinforcement Learning)</span></h4>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Method</b>: <b>Don't</b> provide process data — only provide a final <b>Verifier</b>.</span><span lang="en"><b>Method</b>: <b>Don't</b> provide process data — only provide a final <b>Verifier</b>.</span></li>
+<li><span lang="id">For example, give a math problem and let the model try on its own blindly.</span><span lang="en">For example, give a math problem and let the model try on its own blindly.</span></li>
+<li><span lang="id">Wrong attempt -> punishment.</span><span lang="en">Wrong attempt -> punishment.</span></li>
+<li><span lang="id">Right attempt -> reward.</span><span lang="en">Right attempt -> reward.</span></li>
+<li><span lang="id"><b>The Aha Moment</b>:</span><span lang="en"><b>The Aha Moment</b>:</span></li>
+</ul>
+<p class="reveal"><span lang="id">After tens of thousands of self-attempts, the model surprisingly discovers: <b>"If I write out a few more derivation steps on scratch paper before outputting the answer, my probability of getting a reward increases dramatically!"</b></span><span lang="en">After tens of thousands of self-attempts, the model surprisingly discovers: <b>"If I write out a few more derivation steps on scratch paper before outputting the answer, my probability of getting a reward increases dramatically!"</b></span></p>
+<p class="reveal"><span lang="id">Thus, this "think first, then answer" behavioral pattern gets reinforced and solidified. It's like AlphaGo playing against itself and ultimately surpassing human game records.</span><span lang="en">Thus, this "think first, then answer" behavioral pattern gets reinforced and solidified. It's like AlphaGo playing against itself and ultimately surpassing human game records.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.3 Practical Guide: A Dramatic Shift in Prompt Style</span><span lang="en">7.3 Practical Guide: A Dramatic Shift in Prompt Style</span></h3>
+<p class="reveal"><span lang="id">When using Thinking Models (like DeepSeek-R1, OpenAI o1), your prompting strategy needs a complete overhaul.</span><span lang="en">When using Thinking Models (like DeepSeek-R1, OpenAI o1), your prompting strategy needs a complete overhaul.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Feature</th><th>Traditional Models (GPT-4o, Claude 3.5)</th><th>Thinking Models (R1, o1)</th></tr>
+<tr><td><b>Core Logic</b></td><td><b>System 1 (Intuition)</b></td><td><b>System 2 (Logic)</b></td></tr>
+<tr><td><b>Prompting Tips</b></td><td>Need to guide Chain of Thought (CoT)<br>e.g., "Please think step by step..."</td><td><b>Don't</b> overdo it<br>The model has built-in CoT; manual guidance actually interferes</td></tr>
+<tr><td><b>Instruction Clarity</b></td><td>Need to break complex tasks into subtasks</td><td>Give the final goal directly and let the model decompose it</td></tr>
+<tr><td><b>Suitable Scenarios</b></td><td>Creative writing, simple translation, chitchat</td><td>Complex math, code refactoring, logical reasoning</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">> ⚠️ <b>Note</b>: With Thinking Models, the less intervention, the better. You only need to clearly define <b>"what constitutes a perfect task result,"</b> not <b>"how to do it."</b></span><span lang="en">> ⚠️ <b>Note</b>: With Thinking Models, the less intervention, the better. You only need to clearly define <b>"what constitutes a perfect task result,"</b> not <b>"how to do it."</b></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.4 Future Trends: Fast-Slow Fusion</span><span lang="en">7.4 Future Trends: Fast-Slow Fusion</span></h3>
+<p class="reveal"><span lang="id">In the future, we may no longer need to distinguish between "thinking models" and "regular models."</span><span lang="en">In the future, we may no longer need to distinguish between "thinking models" and "regular models."</span></p>
+<p class="reveal"><span lang="id">The ideal AI should, like humans, possess <b>Adaptive Compute</b> capability:</span><span lang="en">The ideal AI should, like humans, possess <b>Adaptive Compute</b> capability:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Encounter "1+1=?": instantly invoke System 1, respond in a flash.</span><span lang="en">Encounter "1+1=?": instantly invoke System 1, respond in a flash.</span></li>
+<li><span lang="id">Encounter "Prove the Riemann Hypothesis": automatically switch to System 2, think for three days and nights before answering.</span><span lang="en">Encounter "Prove the Riemann Hypothesis": automatically switch to System 2, think for three days and nights before answering.</span></li>
+<li><span lang="id"><b>Seamless user experience</b>: You just ask the question, and the model decides how much "brainpower" to allocate.</span><span lang="en"><b>Seamless user experience</b>: You just ask the question, and the model decides how much "brainpower" to allocate.</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.5 Architectural Evolution: From "All-Rounder" to "Panel of Experts" (Dense vs MoE)</span><span lang="en">7.5 Architectural Evolution: From "All-Rounder" to "Panel of Experts" (Dense vs MoE)</span></h3>
+<p class="reveal"><span lang="id">As models grow larger (like GPT-4, DeepSeek-V3), if every single token generation required computing every neuron, the speed would become unbearably slow.</span><span lang="en">As models grow larger (like GPT-4, DeepSeek-V3), if every single token generation required computing every neuron, the speed would become unbearably slow.</span></p>
+<p class="reveal"><span lang="id">Thus, the <b>MoE (Mixture of Experts)</b> architecture emerged.</span><span lang="en">Thus, the <b>MoE (Mixture of Experts)</b> architecture emerged.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Dense Model</b>:</span><span lang="en"><b>Dense Model</b>:</span></li>
+<li><span lang="id"><b>Analogy</b>: An <b>all-around genius</b>. No matter the question, they engage their entire brain to answer.</span><span lang="en"><b>Analogy</b>: An <b>all-around genius</b>. No matter the question, they engage their entire brain to answer.</span></li>
+<li><span lang="id"><b>Characteristics</b>: Stable, but as knowledge grows, responses become slower and slower.</span><span lang="en"><b>Characteristics</b>: Stable, but as knowledge grows, responses become slower and slower.</span></li>
+<li><span lang="id"><b>Representatives</b>: GPT-3, Llama-2.</span><span lang="en"><b>Representatives</b>: GPT-3, Llama-2.</span></li>
+</ul>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>MoE (Mixture of Experts)</b>:</span><span lang="en"><b>MoE (Mixture of Experts)</b>:</span></li>
+<li><span lang="id"><b>Analogy</b>: A <b>panel of experts on an assembly line</b> (switching personnel for every token processed).</span><span lang="en"><b>Analogy</b>: A <b>panel of experts on an assembly line</b> (switching personnel for every token processed).</span></li>
+<li><span lang="id"><b>Core Mechanism (Token-Level Routing)</b>:</span><span lang="en"><b>Core Mechanism (Token-Level Routing)</b>:</span></li>
+</ul>
+<p class="reveal"><span lang="id">The essence of MoE lies in <b>native token-level routing</b>. It is <b>absolutely not</b> about dividing work by "task type" (e.g., sending all math problems to the math expert); rather, it divides work in real time by <b>"the current token being generated."</b></span><span lang="en">The essence of MoE lies in <b>native token-level routing</b>. It is <b>absolutely not</b> about dividing work by "task type" (e.g., sending all math problems to the math expert); rather, it divides work in real time by <b>"the current token being generated."</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">When the model generates "<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">def</code>", route to the <b>code expert</b>.</span><span lang="en">When the model generates "<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">def</code>", route to the <b>code expert</b>.</span></li>
+<li><span lang="id">When the model generates "<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">love</code>", route to the <b>literature expert</b>.</span><span lang="en">When the model generates "<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">love</code>", route to the <b>literature expert</b>.</span></li>
+<li><span lang="id">When the model generates "<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">3.14</code>", route to the <b>math expert</b>.</span><span lang="en">When the model generates "<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">3.14</code>", route to the <b>math expert</b>.</span></li>
+</ul>
+<p class="reveal"><span lang="id">This means that even within the same sentence, different tokens are often handled by different experts.</span><span lang="en">This means that even within the same sentence, different tokens are often handled by different experts.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Characteristics</b>: Although the total headcount is large (many parameters), only a few people work on each token (few activated parameters). <b>Both erudite and fast.</b></span><span lang="en"><b>Characteristics</b>: Although the total headcount is large (many parameters), only a few people work on each token (few activated parameters). <b>Both erudite and fast.</b></span></li>
+<li><span lang="id"><b>Representatives</b>: GPT-4, DeepSeek-V3, Mixtral.</span><span lang="en"><b>Representatives</b>: GPT-4, DeepSeek-V3, Mixtral.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><MoEDemo /></span><span lang="en"><MoEDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.6 The Efficiency Revolution: Breaking the Length Limit (Linear Attention)</span><span lang="en">7.6 The Efficiency Revolution: Breaking the Length Limit (Linear Attention)</span></h3>
+<p class="reveal"><span lang="id">Beyond MoE, there's another core pain point: <b>context length</b>.</span><span lang="en">Beyond MoE, there's another core pain point: <b>context length</b>.</span></p>
+<p class="reveal"><span lang="id">Traditional Transformers (like GPT-4) use <b>standard attention mechanisms</b>, whose computational cost explodes <b>quadratically</b> as token count increases.</span><span lang="en">Traditional Transformers (like GPT-4) use <b>standard attention mechanisms</b>, whose computational cost explodes <b>quadratically</b> as token count increases.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Processing 10K tokens: 100 million operations.</span><span lang="en">Processing 10K tokens: 100 million operations.</span></li>
+<li><span lang="id">Processing 100K tokens: 10 billion operations!</span><span lang="en">Processing 100K tokens: 10 billion operations!</span></li>
+</ul>
+<p class="reveal"><span lang="id">To solve this, models like MiniMax (abab series) and RWKV adopted <b>Linear Attention</b>.</span><span lang="en">To solve this, models like MiniMax (abab series) and RWKV adopted <b>Linear Attention</b>.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Motivation for the "Web-like" and the Other "Linear"</span><span lang="en">Motivation for the "Web-like" and the Other "Linear"</span></h3>
+<p class="reveal"><span lang="id">The fundamental difference is: <b>do you choose to "keep all original words," or do you choose to "summarize as you go"?</b></span><span lang="en">The fundamental difference is: <b>do you choose to "keep all original words," or do you choose to "summarize as you go"?</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Standard Attention (Web-like) — Why must it look back?</b></span><span lang="en"><b>Standard Attention (Web-like) — Why must it look back?</b></span></li>
+<li><span lang="id"><b>Core reason</b>: To <b>"find relevance."</b></span><span lang="en"><b>Core reason</b>: To <b>"find relevance."</b></span></li>
+<li><span lang="id"><b>Example</b>: Take the sentence "I gave <b>the apple</b> to <b>it</b>...". When you read the word "<b>it</b>," to figure out what "it" refers to, the model must scan back through all preceding words (I, gave, the, apple, to).</span><span lang="en"><b>Example</b>: Take the sentence "I gave <b>the apple</b> to <b>it</b>...". When you read the word "<b>it</b>," to figure out what "it" refers to, the model must scan back through all preceding words (I, gave, the, apple, to).</span></li>
+<li><span lang="id"><b>Process</b>: "it" sends out a query signal (Query) to match against the labels (Keys) of all preceding words.</span><span lang="en"><b>Process</b>: "it" sends out a query signal (Query) to match against the labels (Keys) of all preceding words.</span></li>
+<li><span lang="id">Match with "I"? Score 0.</span><span lang="en">Match with "I"? Score 0.</span></li>
+<li><span lang="id">Match with "apple"? <b>Score 100!</b></span><span lang="en">Match with "apple"? <b>Score 100!</b></span></li>
+<li><span lang="id"><b>Cost</b>: Because the model doesn't know which word matters, it <b>must check every preceding word — not a single one can be missed</b>. This is why the lines weave into a web.</span><span lang="en"><b>Cost</b>: Because the model doesn't know which word matters, it <b>must check every preceding word — not a single one can be missed</b>. This is why the lines weave into a web.</span></li>
+</ul>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Linear Attention (Linear) — Why can it avoid looking back?</b></span><span lang="en"><b>Linear Attention (Linear) — Why can it avoid looking back?</b></span></li>
+<li><span lang="id"><b>Principle</b>: The model learns to "take notes." After reading "apple," it compresses the information "there is an apple" into a <b>State</b>; when it reads "it," it directly consults the state in hand and knows "it = the apple."</span><span lang="en"><b>Principle</b>: The model learns to "take notes." After reading "apple," it compresses the information "there is an apple" into a <b>State</b>; when it reads "it," it directly consults the state in hand and knows "it = the apple."</span></li>
+<li><span lang="id"><b>Cost</b>: Although fast, some details may be lost during the "compression" process (e.g., forgetting that the apple was red).</span><span lang="en"><b>Cost</b>: Although fast, some details may be lost during the "compression" process (e.g., forgetting that the apple was red).</span></li>
+</ul>
+<p class="reveal"><span lang="id"><LinearAttentionDemo /></span><span lang="en"><LinearAttentionDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.7 Architecture Showdown: RNN vs Transformer vs RWKV</span><span lang="en">7.7 Architecture Showdown: RNN vs Transformer vs RWKV</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Architecture</th><th>Core Mechanism</th><th>Complexity (Length N)</th><th>Parallel Training</th><th>Inference Speed</th><th>Forgetting Problem</th><th>Representative Models</th></tr>
+<tr><td><b>RNN</b></td><td>Sequential recurrence</td><td>$O(N)$ (Low)</td><td>❌ No</td><td>Slow (sequential)</td><td>Severe (long-distance forgetting)</td><td>LSTM, GRU</td></tr>
+<tr><td><b>Transformer</b></td><td>Global attention</td><td>$O(N^2)$ (Very High)</td><td>✅ Yes</td><td>Medium (KV Cache)</td><td>None (but window-limited)</td><td>GPT-4, Llama</td></tr>
+<tr><td><b>RWKV / Linear</b></td><td>Linear attention</td><td>$O(N)$ (Low)</td><td>✅ Yes</td><td>Fast (constant VRAM)</td><td>Mild (compression loss)</td><td>RWKV, MiniMax</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">> <b>RWKV / Linear Attention</b> attempts to combine the strengths of both: parallel training like Transformer, efficient inference like RNN.</span><span lang="en">> <b>RWKV / Linear Attention</b> attempts to combine the strengths of both: parallel training like Transformer, efficient inference like RNN.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8. Summary and Learning Roadmap</span><span lang="en">8. Summary and Learning Roadmap</span></h2>
+<p class="reveal"><span lang="id">You've now connected the dots from "tokenization" all the way to "ChatGPT":</span><span lang="en">You've now connected the dots from "tokenization" all the way to "ChatGPT":</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Tokenization</b>: Text is split into Tokens.</span><span lang="en"><b>Tokenization</b>: Text is split into Tokens.</span></li>
+<li><span lang="id"><b>Embedding</b>: Tokens are mapped to semantic vectors.</span><span lang="en"><b>Embedding</b>: Tokens are mapped to semantic vectors.</span></li>
+<li><span lang="id"><b>Transformer</b>: Uses the attention mechanism to process sequences and extract features in parallel.</span><span lang="en"><b>Transformer</b>: Uses the attention mechanism to process sequences and extract features in parallel.</span></li>
+<li><span lang="id"><b>Training</b>: Data is formatted using Templates, and parallel training is done via Teacher Forcing.</span><span lang="en"><b>Training</b>: Data is formatted using Templates, and parallel training is done via Teacher Forcing.</span></li>
+<li><span lang="id"><b>Inference</b>: Tokens are generated autoregressively, one by one.</span><span lang="en"><b>Inference</b>: Tokens are generated autoregressively, one by one.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Next steps</b>:</span><span lang="en"><b>Next steps</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">If you're interested in the math, dive deeper into <b>Linear Algebra</b> (matrix operations) and <b>Probability Theory</b>.</span><span lang="en">If you're interested in the math, dive deeper into <b>Linear Algebra</b> (matrix operations) and <b>Probability Theory</b>.</span></li>
+<li><span lang="id">If you want hands-on practice, try loading a small model (like GPT-2) using Python's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">transformers</code> library.</span><span lang="en">If you want hands-on practice, try loading a small model (like GPT-2) using Python's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">transformers</code> library.</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">9. Glossary</span><span lang="en">9. Glossary</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Term</th><th>Full Name</th><th>Explanation</th></tr>
+<tr><td><b>LLM</b></td><td>Large Language Model</td><td>A large language model. An AI model trained on massive amounts of text, capable of understanding and generating human language.</td></tr>
+<tr><td><b>Token</b></td><td>-</td><td><b>Tokenization</b>. The smallest unit into which text is split (such as a word, character, or subword fragment). Models read and write Token IDs.</td></tr>
+<tr><td><b>Embedding</b></td><td>-</td><td><b>Word vector</b>. A numerical vector that maps a Token into a high-dimensional space (e.g., 4096 dimensions), capturing semantic relationships between words.</td></tr>
+<tr><td><b>Transformer</b></td><td>-</td><td>The core architecture of modern LLMs. Based on the attention mechanism, capable of processing long texts in parallel.</td></tr>
+<tr><td><b>Attention</b></td><td>Attention Mechanism</td><td><b>Attention mechanism</b>. Allows the model to dynamically focus on other relevant words in context when processing a given word.</td></tr>
+<tr><td><b>Context Window</b></td><td>-</td><td><b>Context window</b>. The maximum number of Tokens a model can "remember" in a single inference pass (e.g., 128k).</td></tr>
+<tr><td><b>Pre-training</b></td><td>-</td><td><b>Pre-training</b>. Training a model on massive amounts of unlabeled text so it learns the fundamental patterns of language and world knowledge.</td></tr>
+<tr><td><b>SFT</b></td><td>Supervised Fine-Tuning</td><td><b>Supervised fine-tuning</b>. Using high-quality Q&A pair data to teach the model to follow human instructions.</td></tr>
+<tr><td><b>RLHF</b></td><td>Reinforcement Learning from Human Feedback</td><td><b>Reinforcement learning from human feedback</b>. Using human scoring to further adjust model behavior, aligning it with human values (Alignment).</td></tr>
+<tr><td><b>CoT</b></td><td>Chain of Thought</td><td><b>Chain of thought</b>. A technique that guides the model to generate reasoning steps before producing the final answer.</td></tr>
+<tr><td><b>MoE</b></td><td>Mixture of Experts</td><td><b>Mixture of experts</b>. A model composed of multiple "expert" sub-models, where the appropriate experts are selectively activated based on the problem — more efficient.</td></tr>
+<tr><td><b>Temperature</b></td><td>-</td><td><b>Temperature</b>. A parameter controlling the randomness of model generation. Higher temperature → more creative but less controllable; lower temperature → more deterministic.</td></tr>
+</table></div>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../8-artificial-intelligence/image-generation/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">8-artificial-intelligence/image-generation</span><span lang="en">8-artificial-intelligence/image-generation</span></b></a>
+      <a class="next" href="../../8-artificial-intelligence/model-finetuning-deployment/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">8-artificial-intelligence/model-finetuning-deployment</span><span lang="en">8-artificial-intelligence/model-finetuning-deployment</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

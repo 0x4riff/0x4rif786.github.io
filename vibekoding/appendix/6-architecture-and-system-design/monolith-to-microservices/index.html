@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>An Introduction to Monolith-to-Microservices Evolution — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: An Introduction to Monolith-to-Microservices Evolution. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/6-architecture-and-system-design/monolith-to-microservices/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">An Introduction to Monolith-to-Microservices Evolution</span><span lang="en">An Introduction to Monolith-to-Microservices Evolution</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">An Introduction to Monolith-to-Microservices Evolution</span><span lang="en">An Introduction to Monolith-to-Microservices Evolution</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: An Introduction to Monolith-to-Microservices Evolution.</span><span lang="en">Ensiklopedia VibeKoding: An Introduction to Monolith-to-Microservices Evolution.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>No architecture is "the best" — there is only "the best fit for the current stage."</b> Moving from monolith to microservices is not a single leap but a gradual evolution as business scale and team size grow. Splitting into microservices too early is just as dangerous as splitting too late.</span><span lang="en"><b>No architecture is "the best" — there is only "the best fit for the current stage."</b> Moving from monolith to microservices is not a single leap but a gradual evolution as business scale and team size grow. Splitting into microservices too early is just as dangerous as splitting too late.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn from this article?</b></span><span lang="en"><b>What will you learn from this article?</b></span></p>
+<p class="reveal"><span lang="id">After reading this chapter, you will gain:</span><span lang="en">After reading this chapter, you will gain:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Evolution Path</b>: Understand the four stages from monolith to microservices</span><span lang="en"><b>Evolution Path</b>: Understand the four stages from monolith to microservices</span></li>
+<li><span lang="id"><b>When to Split</b>: Know when you should split and when you shouldn't</span><span lang="en"><b>When to Split</b>: Know when you should split and when you shouldn't</span></li>
+<li><span lang="id"><b>Splitting Strategies</b>: Master the methodology of splitting by business domain</span><span lang="en"><b>Splitting Strategies</b>: Master the methodology of splitting by business domain</span></li>
+<li><span lang="id"><b>Communication Patterns</b>: Understand the choices between synchronous and asynchronous inter-service communication</span><span lang="en"><b>Communication Patterns</b>: Understand the choices between synchronous and asynchronous inter-service communication</span></li>
+<li><span lang="id"><b>Data Splitting</b>: Understand the challenges and solutions of database decomposition</span><span lang="en"><b>Data Splitting</b>: Understand the challenges and solutions of database decomposition</span></li>
+</ul>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Core Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>Architecture Evolution Path</td><td>Monolith → Modular → SOA → Microservices</td></tr>
+<tr><td><b>Chapter 2</b></td><td>When and Why to Split</td><td>Conway's Law, team autonomy</td></tr>
+<tr><td><b>Chapter 3</b></td><td>Splitting Strategies</td><td>DDD bounded contexts, Strangler Fig pattern</td></tr>
+<tr><td><b>Chapter 4</b></td><td>Service Communication</td><td>REST, gRPC, message queues</td></tr>
+<tr><td><b>Chapter 5</b></td><td>Data Splitting</td><td>Database decomposition, data synchronization</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Architecture Evolution Path</span><span lang="en">1. Architecture Evolution Path</span></h2>
+<p class="reveal"><span lang="id">Architecture evolution is not driven by technology — it is <b>driven by organizational scale</b>. When a team grows from 5 to 500 people, the collaboration efficiency of a monolithic architecture drops precipitously.</span><span lang="en">Architecture evolution is not driven by technology — it is <b>driven by organizational scale</b>. When a team grows from 5 to 500 people, the collaboration efficiency of a monolithic architecture drops precipitously.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Stage</th><th>Architecture</th><th>Team Size</th><th>Characteristics</th></tr>
+<tr><td>Startup</td><td>Monolithic application</td><td>1–10 people</td><td>All code in one project, simple deployment</td></tr>
+<tr><td>Growth</td><td>Modular monolith</td><td>10–50 people</td><td>Code organized by module, but still deployed together</td></tr>
+<tr><td>Expansion</td><td>SOA (Service-Oriented)</td><td>50–200 people</td><td>Split into coarse-grained services by business line</td></tr>
+<tr><td>Scale</td><td>Microservices</td><td>200+ people</td><td>Fine-grained services, each team develops and deploys independently</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><ArchEvolutionDemo /></span><span lang="en"><ArchEvolutionDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">"Organizations which design systems... produce designs which are copies of the communication structures of these organizations." — Melvin Conway
+
+Simply put: 3 teams building one system will end up with 3 services. The essence of architecture splitting is <b>organizational splitting</b>.
+
+<b>Inverse Conway's Law</b>: Since organizational structure determines system architecture, to get the architecture you want, first restructure the organization accordingly. For example, if you want an independent payment service, first create an independent payment team. Many companies fail at microservice splitting not because of technology, but because the organization didn't adapt.</span><span lang="en">"Organizations which design systems... produce designs which are copies of the communication structures of these organizations." — Melvin Conway
+
+Simply put: 3 teams building one system will end up with 3 services. The essence of architecture splitting is <b>organizational splitting</b>.
+
+<b>Inverse Conway's Law</b>: Since organizational structure determines system architecture, to get the architecture you want, first restructure the organization accordingly. For example, if you want an independent payment service, first create an independent payment team. Many companies fail at microservice splitting not because of technology, but because the organization didn't adapt.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Criteria for Split into Microservices</span><span lang="en">2. Criteria for Split into Microservices</span></h2>
+<p class="reveal"><span lang="id">Not all systems need microservices. Splitting too early introduces unnecessary complexity.</span><span lang="en">Not all systems need microservices. Splitting too early introduces unnecessary complexity.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Signal</th><th>Description</th><th>Recommendation</th></tr>
+<tr><td>Frequent deployment conflicts</td><td>Multiple teams modifying the same codebase, frequent conflicts</td><td>Consider splitting</td></tr>
+<tr><td>A module needs independent scaling</td><td>The search module needs 10x the resources of other modules</td><td>Consider splitting</td></tr>
+<tr><td>Differentiated tech stacks needed</td><td>AI module uses Python, main site uses Java</td><td>Consider splitting</td></tr>
+<tr><td>Team < 10 people</td><td>Low communication overhead, monolith is sufficient</td><td>Don't split</td></tr>
+<tr><td>Business still in exploration phase</td><td>Requirements change rapidly, boundaries are unclear</td><td>Don't split</td></tr>
+<tr><td>No DevOps capability</td><td>No CI/CD, containerization, or monitoring infrastructure</td><td>Don't split</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Splitting Strategies</span><span lang="en">3. Splitting Strategies</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Split by Business Domain (DDD Bounded Contexts)</span><span lang="en">3.1 Split by Business Domain (DDD Bounded Contexts)</span></h3>
+<p class="reveal"><span lang="id">The Bounded Context from DDD (Domain-Driven Design) is the best guiding principle for splitting microservices. Each bounded context corresponds to an independent business domain with its own data model and business rules.</span><span lang="en">The Bounded Context from DDD (Domain-Driven Design) is the best guiding principle for splitting microservices. Each bounded context corresponds to an independent business domain with its own data model and business rules.</span></p>
+<p class="reveal"><span lang="id"><b>What is a bounded context?</b> The same word can mean different things in different business domains. For example, "user" in the user domain means registration info (name, email), in the order domain means the buyer (shipping address, payment method), and in the recommendation domain means a behavioral profile (browsing history, preference tags). A bounded context draws a boundary within which terminology and models have a clear, unified meaning.</span><span lang="en"><b>What is a bounded context?</b> The same word can mean different things in different business domains. For example, "user" in the user domain means registration info (name, email), in the order domain means the buyer (shipping address, payment method), and in the recommendation domain means a behavioral profile (browsing history, preference tags). A bounded context draws a boundary within which terminology and models have a clear, unified meaning.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>┌─────────────┐  ┌─────────────┐  ┌─────────────┐
+│  User Domain │  │ Order Domain│  │Payment Domain│
+│             │  │             │  │             │
+│ User        │  │ Order       │  │ Payment     │
+│ Profile     │  │ OrderItem   │  │ Refund      │
+│ Address     │  │ Cart        │  │ Transaction │
+│             │  │             │  │             │
+│ User Service│  │Order Service│  │Payment Svc  │
+└──────┬──────┘  └──────┬──────┘  └──────┬──────┘
+       │                │                │
+       └────── API calls / event communication ───────┘</pre>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Bounded Context</th><th>Core Entities</th><th>Corresponding Service</th></tr>
+<tr><td>User domain</td><td>User, Profile, Address</td><td>User Service</td></tr>
+<tr><td>Product domain</td><td>Product, Category, SKU</td><td>Product Service</td></tr>
+<tr><td>Order domain</td><td>Order, OrderItem</td><td>Order Service</td></tr>
+<tr><td>Payment domain</td><td>Payment, Refund</td><td>Payment Service</td></tr>
+<tr><td>Logistics domain</td><td>Shipment, Tracking</td><td>Logistics Service</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Strangler Fig Pattern</span><span lang="en">3.2 Strangler Fig Pattern</span></h3>
+<p class="reveal"><span lang="id">Don't rewrite the entire monolith at once. Instead, like a strangler fig, gradually replace old modules with new services:</span><span lang="en">Don't rewrite the entire monolith at once. Instead, like a strangler fig, gradually replace old modules with new services:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Create a new service outside the monolith</span><span lang="en">Create a new service outside the monolith</span></li>
+<li><span lang="id">Route some traffic to the new service through a proxy layer</span><span lang="en">Route some traffic to the new service through a proxy layer</span></li>
+<li><span lang="id">After verifying the new service is stable, gradually migrate more traffic</span><span lang="en">After verifying the new service is stable, gradually migrate more traffic</span></li>
+<li><span lang="id">Eventually replace the old module entirely</span><span lang="en">Eventually replace the old module entirely</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Service Communication Patterns</span><span lang="en">4. Service Communication Patterns</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Method</th><th>Protocol</th><th>Characteristics</th><th>Use Cases</th></tr>
+<tr><td>REST</td><td>HTTP/JSON</td><td>Simple and universal, great ecosystem</td><td>External APIs, CRUD operations</td></tr>
+<tr><td>gRPC</td><td>HTTP/2 + Protobuf</td><td>High performance, strongly typed</td><td>High-frequency internal service calls</td></tr>
+<tr><td>Message queue</td><td>AMQP/Kafka</td><td>Async decoupling, peak shaving</td><td>Event notifications, async tasks</td></tr>
+<tr><td>GraphQL</td><td>HTTP/JSON</td><td>Client-driven queries</td><td>BFF layer, mobile clients</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Need immediate results</b> → Synchronous (REST/gRPC)
+- <b>Don't need immediate results</b> → Asynchronous (message queue)
+- <b>One event triggers multiple actions</b> → Asynchronous (publish-subscribe)
+
+Rule of thumb: go async whenever possible. The longer the synchronous call chain, the more fragile the system.</span><span lang="en">- <b>Need immediate results</b> → Synchronous (REST/gRPC)
+- <b>Don't need immediate results</b> → Asynchronous (message queue)
+- <b>One event triggers multiple actions</b> → Asynchronous (publish-subscribe)
+
+Rule of thumb: go async whenever possible. The longer the synchronous call chain, the more fragile the system.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Data Splitting: The Hardest Part</span><span lang="en">5. Data Splitting: The Hardest Part</span></h2>
+<p class="reveal"><span lang="id">The most painful part of microservice splitting is not code decomposition — it's database decomposition. Each service should own its own database, but this makes cross-service queries difficult.</span><span lang="en">The most painful part of microservice splitting is not code decomposition — it's database decomposition. Each service should own its own database, but this makes cross-service queries difficult.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Challenge</th><th>Description</th><th>Solution</th></tr>
+<tr><td>Cross-service JOINs</td><td>Cannot directly JOIN tables from two services</td><td>API composition queries, data redundancy</td></tr>
+<tr><td>Distributed transactions</td><td>Cross-database transactions cannot use local transactions</td><td>Saga, local message tables</td></tr>
+<tr><td>Data consistency</td><td>Data across services may be temporarily inconsistent</td><td>Eventual consistency, event-driven</td></tr>
+<tr><td>Data migration</td><td>Migrating from shared to independent databases</td><td>Dual-write transition, data sync tools</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary</span><span lang="en">Summary</span></h2>
+<p class="reveal"><span lang="id">Moving from monolith to microservices is a gradual process, not a overnight revolution.</span><span lang="en">Moving from monolith to microservices is a gradual process, not a overnight revolution.</span></p>
+<p class="reveal"><span lang="id">Key takeaways from this chapter:</span><span lang="en">Key takeaways from this chapter:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Evolution Path</b>: Monolith → modular monolith → SOA → microservices, each step driven by clear motivations</span><span lang="en"><b>Evolution Path</b>: Monolith → modular monolith → SOA → microservices, each step driven by clear motivations</span></li>
+<li><span lang="id"><b>When to Split</b>: Team size, deployment conflicts, and scaling needs are signals to split</span><span lang="en"><b>When to Split</b>: Team size, deployment conflicts, and scaling needs are signals to split</span></li>
+<li><span lang="id"><b>Splitting Strategies</b>: Use DDD bounded contexts to guide splitting and the Strangler Fig pattern for gradual migration</span><span lang="en"><b>Splitting Strategies</b>: Use DDD bounded contexts to guide splitting and the Strangler Fig pattern for gradual migration</span></li>
+<li><span lang="id"><b>Communication Choices</b>: Go async whenever possible; keep synchronous call chains as short as possible</span><span lang="en"><b>Communication Choices</b>: Go async whenever possible; keep synchronous call chains as short as possible</span></li>
+<li><span lang="id"><b>Data Splitting</b>: The hardest but most important part — accepting eventual consistency is the key mindset shift</span><span lang="en"><b>Data Splitting</b>: The hardest but most important part — accepting eventual consistency is the key mindset shift</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[Building Microservices](https://www.oreilly.com/library/view/building-microservices-2nd/9781492034018/) - Sam Newman's microservices classic</span><span lang="en">[Building Microservices](https://www.oreilly.com/library/view/building-microservices-2nd/9781492034018/) - Sam Newman's microservices classic</span></li>
+<li><span lang="id">[Monolith to Microservices](https://www.oreilly.com/library/view/monolith-to-microservices/9781492047834/) - A guide to incremental migration</span><span lang="en">[Monolith to Microservices](https://www.oreilly.com/library/view/monolith-to-microservices/9781492047834/) - A guide to incremental migration</span></li>
+<li><span lang="id">[Domain-Driven Design](https://www.domainlanguage.com/ddd/) - Eric Evans' DDD classic</span><span lang="en">[Domain-Driven Design](https://www.domainlanguage.com/ddd/) - Eric Evans' DDD classic</span></li>
+<li><span lang="id">[The Strangler Fig Pattern](https://martinfowler.com/bliki/StranglerFigApplication.html) - Martin Fowler on the Strangler Fig pattern</span><span lang="en">[The Strangler Fig Pattern](https://martinfowler.com/bliki/StranglerFigApplication.html) - Martin Fowler on the Strangler Fig pattern</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../6-architecture-and-system-design/high-availability/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">6-architecture-and-system-design/high-availability</span><span lang="en">6-architecture-and-system-design/high-availability</span></b></a>
+      <a class="next" href="../../6-architecture-and-system-design/system-design-methodology/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">6-architecture-and-system-design/system-design-methodology</span><span lang="en">6-architecture-and-system-design/system-design-methodology</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

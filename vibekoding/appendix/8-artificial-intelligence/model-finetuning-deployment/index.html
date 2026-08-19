@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>An Introduction to Model Fine-Tuning and Deployment — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: An Introduction to Model Fine-Tuning and Deployment. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/8-artificial-intelligence/model-finetuning-deployment/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">An Introduction to Model Fine-Tuning and Deployment</span><span lang="en">An Introduction to Model Fine-Tuning and Deployment</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">An Introduction to Model Fine-Tuning and Deployment</span><span lang="en">An Introduction to Model Fine-Tuning and Deployment</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: An Introduction to Model Fine-Tuning and Deployment.</span><span lang="en">Ensiklopedia VibeKoding: An Introduction to Model Fine-Tuning and Deployment.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Large models are powerful, but they don't understand your business.</b> GPT-4 can write poetry and code, but it doesn't know your company's product terminology or your industry's professional standards. Fine-tuning is the process of making a general-purpose large model "learn" your professional knowledge — like giving a knowledgeable generalist on-the-job training to become your domain expert.</span><span lang="en"><b>Large models are powerful, but they don't understand your business.</b> GPT-4 can write poetry and code, but it doesn't know your company's product terminology or your industry's professional standards. Fine-tuning is the process of making a general-purpose large model "learn" your professional knowledge — like giving a knowledgeable generalist on-the-job training to become your domain expert.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn from this article?</b></span><span lang="en"><b>What will you learn from this article?</b></span></p>
+<p class="reveal"><span lang="id">After completing this chapter, you will gain:</span><span lang="en">After completing this chapter, you will gain:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Process understanding</b>: Master the complete fine-tuning pipeline from data preparation to model deployment</span><span lang="en"><b>Process understanding</b>: Master the complete fine-tuning pipeline from data preparation to model deployment</span></li>
+<li><span lang="id"><b>Data engineering</b>: Understand the format requirements and quality standards for fine-tuning data</span><span lang="en"><b>Data engineering</b>: Understand the format requirements and quality standards for fine-tuning data</span></li>
+<li><span lang="id"><b>Efficient fine-tuning</b>: Understand the principles and advantages of parameter-efficient fine-tuning techniques like LoRA</span><span lang="en"><b>Efficient fine-tuning</b>: Understand the principles and advantages of parameter-efficient fine-tuning techniques like LoRA</span></li>
+<li><span lang="id"><b>Model compression</b>: Master how quantization techniques enable large models to run on consumer hardware</span><span lang="en"><b>Model compression</b>: Master how quantization techniques enable large models to run on consumer hardware</span></li>
+<li><span lang="id"><b>Deployment practices</b>: Understand mainstream architectures and selection strategies for model serving</span><span lang="en"><b>Deployment practices</b>: Understand mainstream architectures and selection strategies for model serving</span></li>
+</ul>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Core Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>Fine-tuning Pipeline</td><td>Data → Training → Evaluation → Deployment</td></tr>
+<tr><td><b>Chapter 2</b></td><td>Training Data</td><td>Data formats, quality control</td></tr>
+<tr><td><b>Chapter 3</b></td><td>LoRA Fine-tuning</td><td>Low-rank adaptation, parameter efficiency</td></tr>
+<tr><td><b>Chapter 4</b></td><td>Model Quantization</td><td>FP16, INT8, INT4</td></tr>
+<tr><td><b>Chapter 5</b></td><td>Model Deployment</td><td>Inference serving, API gateway</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. Overview: Motivation for Fining -tuning Needed</span><span lang="en">0. Overview: Motivation for Fining -tuning Needed</span></h2>
+<p class="reveal"><span lang="id">Large language model training is divided into two phases: <b>pre-training</b> and <b>fine-tuning</b>. Pre-training learns language capabilities from massive general data, while fine-tuning learns specialized capabilities from task-specific data.</span><span lang="en">Large language model training is divided into two phases: <b>pre-training</b> and <b>fine-tuning</b>. Pre-training learns language capabilities from massive general data, while fine-tuning learns specialized capabilities from task-specific data.</span></p>
+<p class="reveal"><span lang="id">To use an analogy: pre-training is like going to college — learning general knowledge and understanding a bit of everything; fine-tuning is like onboarding training — learning professional skills for a specific position.</span><span lang="en">To use an analogy: pre-training is like going to college — learning general knowledge and understanding a bit of everything; fine-tuning is like onboarding training — learning professional skills for a specific position.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Specific output formats</b>: When you need the model to consistently output in a fixed JSON format
+- <b>Professional domain knowledge</b>: Terminology and standards in medical, legal, financial, and other domains
+- <b>Language style transfer</b>: Making the model respond in a specific tone or style (e.g., customer service scripts)
+- <b>Niche language support</b>: Improving model performance on specific languages
+- <b>Cost optimization</b>: Using a fine-tuned small model to replace large model API calls, reducing inference costs</span><span lang="en">- <b>Specific output formats</b>: When you need the model to consistently output in a fixed JSON format
+- <b>Professional domain knowledge</b>: Terminology and standards in medical, legal, financial, and other domains
+- <b>Language style transfer</b>: Making the model respond in a specific tone or style (e.g., customer service scripts)
+- <b>Niche language support</b>: Improving model performance on specific languages
+- <b>Cost optimization</b>: Using a fine-tuned small model to replace large model API calls, reducing inference costs</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Fine-tuning Pipeline: The Complete Journey from Data to Production</span><span lang="en">1. Fine-tuning Pipeline: The Complete Journey from Data to Production</span></h2>
+<p class="reveal"><span lang="id">Fine-tuning is not just "throwing data at a model and calling it done." It's a rigorous engineering process where every step affects the final result.</span><span lang="en">Fine-tuning is not just "throwing data at a model and calling it done." It's a rigorous engineering process where every step affects the final result.</span></p>
+<p class="reveal"><span lang="id"><FinetuningPipelineDemo /></span><span lang="en"><FinetuningPipelineDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">1. <b>Data Preparation</b>: Collect, clean, and annotate training data — this is the most time-consuming and critical step
+2. <b>Model Selection</b>: Choose an appropriate base model, such as Llama 3, Qwen, or Mistral
+3. <b>Training Configuration</b>: Set hyperparameters like learning rate, batch size, and number of epochs
+4. <b>Training Execution</b>: Run training on GPUs, monitoring loss curves and evaluation metrics
+5. <b>Evaluation and Deployment</b>: Evaluate performance on a test set, then deploy as an API service if it passes</span><span lang="en">1. <b>Data Preparation</b>: Collect, clean, and annotate training data — this is the most time-consuming and critical step
+2. <b>Model Selection</b>: Choose an appropriate base model, such as Llama 3, Qwen, or Mistral
+3. <b>Training Configuration</b>: Set hyperparameters like learning rate, batch size, and number of epochs
+4. <b>Training Execution</b>: Run training on GPUs, monitoring loss curves and evaluation metrics
+5. <b>Evaluation and Deployment</b>: Evaluate performance on a test set, then deploy as an API service if it passes</span></p>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Stage</th><th>Key Actions</th><th>Common Pitfalls</th></tr>
+<tr><td>Data Preparation</td><td>Clean, deduplicate, format</td><td>Poor data quality leads to the model "learning bad habits"</td></tr>
+<tr><td>Model Selection</td><td>Evaluate base model capabilities</td><td>Model too large to train, or too small for good results</td></tr>
+<tr><td>Training Configuration</td><td>Adjust hyperparameters</td><td>Learning rate too high causes catastrophic forgetting</td></tr>
+<tr><td>Training Execution</td><td>Monitor loss and metrics</td><td>Overfitting, training not converging</td></tr>
+<tr><td>Evaluation and Deployment</td><td>A/B testing, gradual rollout</td><td>Test set leakage leading to inflated evaluation metrics</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Training Data: The Ceiling of Fine-tuning Performance</span><span lang="en">2. Training Data: The Ceiling of Fine-tuning Performance</span></h2>
+<p class="reveal"><span lang="id">There's an old saying in fine-tuning: <b>"Garbage in, garbage out."</b> The quality of training data directly determines the upper limit of fine-tuning effectiveness. 100 high-quality data points often outperform 10,000 low-quality ones.</span><span lang="en">There's an old saying in fine-tuning: <b>"Garbage in, garbage out."</b> The quality of training data directly determines the upper limit of fine-tuning effectiveness. 100 high-quality data points often outperform 10,000 low-quality ones.</span></p>
+<p class="reveal"><span lang="id"><TrainingDataDemo /></span><span lang="en"><TrainingDataDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">1. <b>Instruction Format</b>: The most commonly used format, containing three fields: instruction, input, and expected output. Suitable for training models to follow instructions.
+2. <b>Chat Format</b>: Multi-turn conversation format containing message lists for system, user, and assistant roles. Suitable for training chatbots.
+3. <b>Completion Format</b>: Simple prompt-completion pairs, suitable for text generation, code completion, and similar scenarios.</span><span lang="en">1. <b>Instruction Format</b>: The most commonly used format, containing three fields: instruction, input, and expected output. Suitable for training models to follow instructions.
+2. <b>Chat Format</b>: Multi-turn conversation format containing message lists for system, user, and assistant roles. Suitable for training chatbots.
+3. <b>Completion Format</b>: Simple prompt-completion pairs, suitable for text generation, code completion, and similar scenarios.</span></p>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Data Quality Dimension</th><th>Description</th><th>Verification Method</th></tr>
+<tr><td>Accuracy</td><td>Answers must be correct</td><td>Manual review, expert verification</td></tr>
+<tr><td>Consistency</td><td>Similar questions have consistent response styles</td><td>Sample comparison checks</td></tr>
+<tr><td>Diversity</td><td>Cover enough scenarios and variations</td><td>Statistical distribution of question types</td></tr>
+<tr><td>Deduplication</td><td>Avoid duplicate samples causing overfitting</td><td>Text deduplication, semantic deduplication</td></tr>
+<tr><td>Data Volume</td><td>Usually 500~5000 high-quality data points suffice</td><td>Start small, gradually increase</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. LoRA: Achieving 90% of Results with 1% of Parameters</span><span lang="en">3. LoRA: Achieving 90% of Results with 1% of Parameters</span></h2>
+<p class="reveal"><span lang="id">Full fine-tuning requires updating all model parameters — for a 70B parameter model, this means needing hundreds of GB of VRAM and massive GPU computing power. For most teams, this is impractical.</span><span lang="en">Full fine-tuning requires updating all model parameters — for a 70B parameter model, this means needing hundreds of GB of VRAM and massive GPU computing power. For most teams, this is impractical.</span></p>
+<p class="reveal"><span lang="id">LoRA (Low-Rank Adaptation) provides an elegant solution: <b>freeze the original model parameters and only train a small set of newly added low-rank matrices.</b> These matrices typically have only 0.1%~1% of the original model's parameters but can achieve results close to full fine-tuning.</span><span lang="en">LoRA (Low-Rank Adaptation) provides an elegant solution: <b>freeze the original model parameters and only train a small set of newly added low-rank matrices.</b> These matrices typically have only 0.1%~1% of the original model's parameters but can achieve results close to full fine-tuning.</span></p>
+<p class="reveal"><span lang="id"><LoRADemo /></span><span lang="en"><LoRADemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">The original model's weight matrix W is a huge matrix (e.g., 4096×4096). LoRA doesn't directly modify W but adds a "bypass" alongside it: W' = W + BA, where B and A are two small matrices (e.g., 4096×8 and 8×4096). During training, only B and A are updated while the original W remains unchanged.
+- <b>Rank (r)</b>: Higher r values mean stronger expressiveness but more parameters. Usually r=8~64 is sufficient
+- <b>Merge for deployment</b>: After training, BA can be merged back into W for zero additional overhead during inference</span><span lang="en">The original model's weight matrix W is a huge matrix (e.g., 4096×4096). LoRA doesn't directly modify W but adds a "bypass" alongside it: W' = W + BA, where B and A are two small matrices (e.g., 4096×8 and 8×4096). During training, only B and A are updated while the original W remains unchanged.
+- <b>Rank (r)</b>: Higher r values mean stronger expressiveness but more parameters. Usually r=8~64 is sufficient
+- <b>Merge for deployment</b>: After training, BA can be merged back into W for zero additional overhead during inference</span></p>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Fine-tuning Method</th><th>Trainable Parameters</th><th>VRAM Requirement</th><th>Training Speed</th><th>Effect</th></tr>
+<tr><td>Full Fine-tuning</td><td>100%</td><td>Extremely high</td><td>Slow</td><td>Best</td></tr>
+<tr><td>LoRA</td><td>0.1%~1%</td><td>Low</td><td>Fast</td><td>Close to full</td></tr>
+<tr><td>QLoRA</td><td>0.1%~1%</td><td>Lower</td><td>Medium</td><td>Slightly below LoRA</td></tr>
+<tr><td>Prompt Tuning</td><td>< 0.01%</td><td>Extremely low</td><td>Very fast</td><td>Limited</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Model Quantization: Slimming Down Large Models</span><span lang="en">4. Model Quantization: Slimming Down Large Models</span></h2>
+<p class="reveal"><span lang="id">A 70B parameter model stored in FP32 (32-bit floating point) requires 280GB of VRAM — impossible to run without several top-tier GPUs. Quantization technology compresses model size by reducing numerical precision, enabling large models to run on consumer hardware.</span><span lang="en">A 70B parameter model stored in FP32 (32-bit floating point) requires 280GB of VRAM — impossible to run without several top-tier GPUs. Quantization technology compresses model size by reducing numerical precision, enabling large models to run on consumer hardware.</span></p>
+<p class="reveal"><span lang="id"><ModelQuantizationDemo /></span><span lang="en"><ModelQuantizationDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Quantization is fundamentally a <b>precision-for-space</b> trade-off. FP32 → FP16 is nearly lossless, INT8 has minor loss, and INT4 has noticeable but usually acceptable quality degradation. The key is finding the optimal balance point for your scenario.
+- <b>FP16 (half precision)</b>: Halves the size with almost no quality loss; the default choice for training and inference
+- <b>INT8 (8-bit integer)</b>: Halves the size again with minimal quality loss; suitable for most inference scenarios
+- <b>INT4 (4-bit integer)</b>: Only 1/8 of FP32 size with some quality loss; suitable for resource-constrained scenarios</span><span lang="en">Quantization is fundamentally a <b>precision-for-space</b> trade-off. FP32 → FP16 is nearly lossless, INT8 has minor loss, and INT4 has noticeable but usually acceptable quality degradation. The key is finding the optimal balance point for your scenario.
+- <b>FP16 (half precision)</b>: Halves the size with almost no quality loss; the default choice for training and inference
+- <b>INT8 (8-bit integer)</b>: Halves the size again with minimal quality loss; suitable for most inference scenarios
+- <b>INT4 (4-bit integer)</b>: Only 1/8 of FP32 size with some quality loss; suitable for resource-constrained scenarios</span></p>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Precision</th><th>Bytes Per Parameter</th><th>70B Model Size</th><th>Quality Loss</th><th>Applicable Scenario</th></tr>
+<tr><td>FP32</td><td>4 bytes</td><td>~280 GB</td><td>None</td><td>Training baseline</td></tr>
+<tr><td>FP16</td><td>2 bytes</td><td>~140 GB</td><td>Nearly none</td><td>Standard training and inference</td></tr>
+<tr><td>INT8</td><td>1 byte</td><td>~70 GB</td><td>Very small</td><td>Production inference</td></tr>
+<tr><td>INT4</td><td>0.5 bytes</td><td>~35 GB</td><td>Acceptable</td><td>Edge devices, local deployment</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Model Deployment: From Lab to Production</span><span lang="en">5. Model Deployment: From Lab to Production</span></h2>
+<p class="reveal"><span lang="id">The model is trained, quantized and compressed — the final step is deploying it as a callable service. Model deployment isn't just about "running the model"; it also involves engineering issues like concurrency handling, load balancing, and cost control.</span><span lang="en">The model is trained, quantized and compressed — the final step is deploying it as a callable service. Model deployment isn't just about "running the model"; it also involves engineering issues like concurrency handling, load balancing, and cost control.</span></p>
+<p class="reveal"><span lang="id"><ModelServingDemo /></span><span lang="en"><ModelServingDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">1. <b>API Service Providers</b>: Use APIs from OpenAI, Anthropic, and other providers directly. Zero operations, pay per token, suitable for rapid validation and small-to-medium scale usage.
+2. <b>Self-hosted Inference</b>: Deploy on your own GPU servers using frameworks like vLLM or TGI. Controllable costs, data stays on-premises, suitable for scenarios with privacy requirements or large-scale calls.
+3. <b>Serverless Inference</b>: Use platforms like AWS SageMaker or Replicate, pay per request with automatic scaling. Suitable for scenarios with fluctuating traffic.</span><span lang="en">1. <b>API Service Providers</b>: Use APIs from OpenAI, Anthropic, and other providers directly. Zero operations, pay per token, suitable for rapid validation and small-to-medium scale usage.
+2. <b>Self-hosted Inference</b>: Deploy on your own GPU servers using frameworks like vLLM or TGI. Controllable costs, data stays on-premises, suitable for scenarios with privacy requirements or large-scale calls.
+3. <b>Serverless Inference</b>: Use platforms like AWS SageMaker or Replicate, pay per request with automatic scaling. Suitable for scenarios with fluctuating traffic.</span></p>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Deployment Solution</th><th>Cost Model</th><th>Latency</th><th>Operations Complexity</th><th>Applicable Scenario</th></tr>
+<tr><td>API Service Provider</td><td>Pay per token</td><td>Medium</td><td>Zero</td><td>Rapid prototyping, small-to-medium scale</td></tr>
+<tr><td>vLLM Self-deployment</td><td>GPU rental costs</td><td>Low</td><td>High</td><td>Large-scale, privacy-sensitive</td></tr>
+<tr><td>Serverless</td><td>Pay per request</td><td>Higher cold start</td><td>Low</td><td>Fluctuating traffic</td></tr>
+<tr><td>Edge Deployment</td><td>One-time hardware cost</td><td>Very low</td><td>Medium</td><td>Offline scenarios, IoT</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary</span><span lang="en">Summary</span></h2>
+<p class="reveal"><span lang="id">Model fine-tuning and deployment are critical steps in transforming large models from "general-purpose tools" to "professional assistants." From data preparation to model deployment, every step requires engineering thinking and practice.</span><span lang="en">Model fine-tuning and deployment are critical steps in transforming large models from "general-purpose tools" to "professional assistants." From data preparation to model deployment, every step requires engineering thinking and practice.</span></p>
+<p class="reveal"><span lang="id">Key takeaways from this chapter:</span><span lang="en">Key takeaways from this chapter:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Fine-tuning is onboarding training</b>: Making general-purpose models learn domain-specific knowledge and behavioral patterns</span><span lang="en"><b>Fine-tuning is onboarding training</b>: Making general-purpose models learn domain-specific knowledge and behavioral patterns</span></li>
+<li><span lang="id"><b>Data quality determines the ceiling</b>: 100 high-quality data points beat 10,000 low-quality ones</span><span lang="en"><b>Data quality determines the ceiling</b>: 100 high-quality data points beat 10,000 low-quality ones</span></li>
+<li><span lang="id"><b>LoRA is the efficiency champion</b>: Achieving near full fine-tuning results with less than 1% of parameters</span><span lang="en"><b>LoRA is the efficiency champion</b>: Achieving near full fine-tuning results with less than 1% of parameters</span></li>
+<li><span lang="id"><b>Quantization is a deployment enabler</b>: INT4 quantization makes running 70B models on a single GPU possible</span><span lang="en"><b>Quantization is a deployment enabler</b>: INT4 quantization makes running 70B models on a single GPU possible</span></li>
+<li><span lang="id"><b>Deployment solutions vary by scenario</b>: Use APIs for rapid validation, self-deployment for large scale, and serverless for fluctuating traffic</span><span lang="en"><b>Deployment solutions vary by scenario</b>: Use APIs for rapid validation, self-deployment for large scale, and serverless for fluctuating traffic</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[Hugging Face PEFT Documentation](https://huggingface.co/docs/peft) - Official documentation for parameter-efficient fine-tuning library</span><span lang="en">[Hugging Face PEFT Documentation](https://huggingface.co/docs/peft) - Official documentation for parameter-efficient fine-tuning library</span></li>
+<li><span lang="id">[vLLM Documentation](https://docs.vllm.ai/) - High-performance LLM inference engine</span><span lang="en">[vLLM Documentation](https://docs.vllm.ai/) - High-performance LLM inference engine</span></li>
+<li><span lang="id">[Unsloth](https://github.com/unslothai/unsloth) - 2x accelerated LoRA fine-tuning framework</span><span lang="en">[Unsloth](https://github.com/unslothai/unsloth) - 2x accelerated LoRA fine-tuning framework</span></li>
+<li><span lang="id">[GGUF Format Specification](https://github.com/ggerganov/ggml/blob/master/docs/gguf.md) - Quantized model format used by llama.cpp</span><span lang="en">[GGUF Format Specification](https://github.com/ggerganov/ggml/blob/master/docs/gguf.md) - Quantized model format used by llama.cpp</span></li>
+<li><span lang="id">[OpenAI Fine-tuning Guide](https://platform.openai.com/docs/guides/fine-tuning) - OpenAI's official fine-tuning guide</span><span lang="en">[OpenAI Fine-tuning Guide](https://platform.openai.com/docs/guides/fine-tuning) - OpenAI's official fine-tuning guide</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../8-artificial-intelligence/llm-principles/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">8-artificial-intelligence/llm-principles</span><span lang="en">8-artificial-intelligence/llm-principles</span></b></a>
+      <a class="next" href="../../8-artificial-intelligence/multimodal-models/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">8-artificial-intelligence/multimodal-models</span><span lang="en">8-artificial-intelligence/multimodal-models</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

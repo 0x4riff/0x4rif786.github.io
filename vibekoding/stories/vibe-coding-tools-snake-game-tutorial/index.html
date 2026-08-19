@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake — VibeKoding 🕹️</title>
+<meta name="description" content="Studi kasus praktis VibeKoding: Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stories/vibe-coding-tools-snake-game-tutorial/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../">VibeKoding</a> / <a href="../../stories/"><span lang="id">Studi Kasus & Eksperimen</span><span lang="en">Studi Kasus & Eksperimen</span></a> / <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">🕹️</div>
+      <div>
+        <h1><span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Studi Kasus & Eksperimen</span><span lang="en">Studi Kasus & Eksperimen</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Studi kasus praktis VibeKoding: Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake.</span><span lang="en">Studi kasus praktis VibeKoding: Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Chapter Introduction</span><span lang="en">Chapter Introduction</span></h2>
+<p class="reveal"><span lang="id">With so many AI programming tools available, which one is right for you? This chapter provides an in-depth comparative evaluation of 7 major Web Vibe Coding platforms, including Lovable, Replit, and Z.ai, through a unified hands-on task: developing a "Snake + AI Poem Writing" game. We'll compare them across multiple dimensions, including beginner-friendliness, code controllability, and deployment convenience, helping you quickly choose the best development assistant tool.</span><span lang="en">With so many AI programming tools available, which one is right for you? This chapter provides an in-depth comparative evaluation of 7 major Web Vibe Coding platforms, including Lovable, Replit, and Z.ai, through a unified hands-on task: developing a "Snake + AI Poem Writing" game. We'll compare them across multiple dimensions, including beginner-friendliness, code controllability, and deployment convenience, helping you quickly choose the best development assistant tool.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">This article introduces an emerging software development practice—"Vibe Coding," which uses artificial intelligence to accelerate the application building process.</span><span lang="en">This article introduces an emerging software development practice—"Vibe Coding," which uses artificial intelligence to accelerate the application building process.</span></p>
+<p class="reveal"><span lang="id">Next, we will successively introduce the core concepts of Vibe Coding, explain what AI Agents are, and provide practical prompt writing methods. Finally, we will provide a complete hands-on tutorial on building a "Snake" game from scratch, along with detailed comparison evaluations of multiple mainstream Vibe Coding platforms to help you choose the best tool combination for yourself.</span><span lang="en">Next, we will successively introduce the core concepts of Vibe Coding, explain what AI Agents are, and provide practical prompt writing methods. Finally, we will provide a complete hands-on tutorial on building a "Snake" game from scratch, along with detailed comparison evaluations of multiple mainstream Vibe Coding platforms to help you choose the best tool combination for yourself.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">What You Will Learn:</span><span lang="en">What You Will Learn:</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>What is Vibe Coding:</b> Understand its definition, workflow, and key advantages.</span><span lang="en"><b>What is Vibe Coding:</b> Understand its definition, workflow, and key advantages.</span></li>
+<li><span lang="id"><b>The Role of AI Agents:</b> Understand how AI Agents work and how they differ from traditional programs.</span><span lang="en"><b>The Role of AI Agents:</b> Understand how AI Agents work and how they differ from traditional programs.</span></li>
+<li><span lang="id"><b>How to Write Good Prompts:</b> Master clear and specific prompt writing to achieve better results.</span><span lang="en"><b>How to Write Good Prompts:</b> Master clear and specific prompt writing to achieve better results.</span></li>
+<li><span lang="id"><b>Vibe Coding Tools:</b> Get to know the mainstream AI programming and design platforms.</span><span lang="en"><b>Vibe Coding Tools:</b> Get to know the mainstream AI programming and design platforms.</span></li>
+<li><span lang="id"><b>Platform Comparison:</b> Evaluate and compare the advantages and disadvantages of 7 different AI Agent platforms from a beginner's perspective.</span><span lang="en"><b>Platform Comparison:</b> Evaluate and compare the advantages and disadvantages of 7 different AI Agent platforms from a beginner's perspective.</span></li>
+<li><span lang="id"><b>UI/UX Tools:</b> Learn how to integrate UI/UX tools like Figma and Mastergo into your overall workflow.</span><span lang="en"><b>UI/UX Tools:</b> Learn how to integrate UI/UX tools like Figma and Mastergo into your overall workflow.</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Introduction</span><span lang="en">1. Introduction</span></h2>
+<p class="reveal"><span lang="id">In previous lessons, we've been using z.ai's full-stack development model to complete programming tasks.</span><span lang="en">In previous lessons, we've been using z.ai's full-stack development model to complete programming tasks.</span></p>
+<p class="reveal"><span lang="id">However, have we ever thought: its core is actually "AI Agent" (different from ordinary chat-based AI, and much more intelligent)? This is because it doesn't just chat with you—it can also think (when you give it a task, it first makes a plan), and actively take actions (like calling web searches, executing computer commands, opening web pages, etc.). We will introduce this in detail later.</span><span lang="en">However, have we ever thought: its core is actually "AI Agent" (different from ordinary chat-based AI, and much more intelligent)? This is because it doesn't just chat with you—it can also think (when you give it a task, it first makes a plan), and actively take actions (like calling web searches, executing computer commands, opening web pages, etc.). We will introduce this in detail later.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. What is Vibe Coding?</span><span lang="en">1. What is Vibe Coding?</span></h2>
+<p class="reveal"><span lang="id">Vibe Coding is a new software development method that uses AI to accelerate the application development process. It is not a replacement for traditional programming, but rather a more "conversational" programming model. This concept was proposed by AI researcher Andrej Karpathy: in this workflow, developers no longer write code line by line, but mainly guide AI Agents to generate, optimize, and debug applications.</span><span lang="en">Vibe Coding is a new software development method that uses AI to accelerate the application development process. It is not a replacement for traditional programming, but rather a more "conversational" programming model. This concept was proposed by AI researcher Andrej Karpathy: in this workflow, developers no longer write code line by line, but mainly guide AI Agents to generate, optimize, and debug applications.</span></p>
+<p class="reveal"><span lang="id">The core idea of Vibe Coding shifts from <b>"code-first"</b> to <b>"intent-first"</b>. You no longer need to start from the first line of code, but describe the desired outcome in natural language.</span><span lang="en">The core idea of Vibe Coding shifts from <b>"code-first"</b> to <b>"intent-first"</b>. You no longer need to start from the first line of code, but describe the desired outcome in natural language.</span></p>
+<p class="reveal"><span lang="id">A typical Vibe Coding workflow is an iterative loop:</span><span lang="en">A typical Vibe Coding workflow is an iterative loop:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Describe the Goal:</b> First describe the feature you want to implement in a sentence or paragraph, for example: "Make a simple Snake game with a Python backend that can generate poems."</span><span lang="en"><b>Describe the Goal:</b> First describe the feature you want to implement in a sentence or paragraph, for example: "Make a simple Snake game with a Python backend that can generate poems."</span></li>
+<li><span lang="id"><b>AI Generates Code:</b> The AI Agent parses your requirements and generates the first version of the code, including the basic structure, frontend pages, and backend logic.</span><span lang="en"><b>AI Generates Code:</b> The AI Agent parses your requirements and generates the first version of the code, including the basic structure, frontend pages, and backend logic.</span></li>
+<li><span lang="id"><b>Run and Observe:</b> Run the generated code, check if it works as expected, and discover bugs or shortcomings.</span><span lang="en"><b>Run and Observe:</b> Run the generated code, check if it works as expected, and discover bugs or shortcomings.</span></li>
+<li><span lang="id"><b>Feedback and Iterate:</b> If there are errors or the results are unsatisfactory, continue giving instructions in the conversation, for example: "The snake moves too slowly, speed it up," or "The API Key in the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.env</code> file isn't being read correctly, please fix the backend code."</span><span lang="en"><b>Feedback and Iterate:</b> If there are errors or the results are unsatisfactory, continue giving instructions in the conversation, for example: "The snake moves too slowly, speed it up," or "The API Key in the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.env</code> file isn't being read correctly, please fix the backend code."</span></li>
+<li><span lang="id"><b>Repeat:</b> Continuously iterate through the "describe → generate → run → feedback" loop until the application reaches a satisfactory state.</span><span lang="en"><b>Repeat:</b> Continuously iterate through the "describe → generate → run → feedback" loop until the application reaches a satisfactory state.</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Main Advantages of Vibe Coding:</span><span lang="en">Main Advantages of Vibe Coding:</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Lower Barrier:</b> Allows designers, entrepreneurs, students, and others without programming experience to participate in application development through natural language.</span><span lang="en"><b>Lower Barrier:</b> Allows designers, entrepreneurs, students, and others without programming experience to participate in application development through natural language.</span></li>
+<li><span lang="id"><b>Faster Prototyping:</b> Significantly reduces the time from idea to Minimum Viable Product (MVP).</span><span lang="en"><b>Faster Prototyping:</b> Significantly reduces the time from idea to Minimum Viable Product (MVP).</span></li>
+<li><span lang="id"><b>Improved Efficiency:</b> Automatically handles a large amount of repetitive, mechanical coding work (like template code), allowing developers to focus on architecture design and problem abstraction.</span><span lang="en"><b>Improved Efficiency:</b> Automatically handles a large amount of repetitive, mechanical coding work (like template code), allowing developers to focus on architecture design and problem abstraction.</span></li>
+<li><span lang="id"><b>Encourages Experimentation:</b> Promotes a approach of quick output then continuous improvement, making it easier to try new ideas and features.</span><span lang="en"><b>Encourages Experimentation:</b> Promotes a approach of quick output then continuous improvement, making it easier to try new ideas and features.</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. What is an AI Agent?</span><span lang="en">2. What is an AI Agent?</span></h2>
+<p class="reveal"><span lang="id">So what exactly is an AI Agent? Simply put, an AI Agent is an AI system that can <b>perceive environments, make decisions, and take actions</b> to achieve specific goals. Compared to simple chatbots that only respond to prompts, AI Agents have the following key characteristics:</span><span lang="en">So what exactly is an AI Agent? Simply put, an AI Agent is an AI system that can <b>perceive environments, make decisions, and take actions</b> to achieve specific goals. Compared to simple chatbots that only respond to prompts, AI Agents have the following key characteristics:</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Core Capabilities of AI Agents</span><span lang="en">2.1 Core Capabilities of AI Agents</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Capability</th><th>Description</th><th>Example</th></tr>
+<tr><td><b>Planning</b></td><td>Break down complex tasks into multiple steps</td><td>When asked to "build a blog," automatically creates subtasks: design database, write API, build frontend, etc.</td></tr>
+<tr><td><b>Tool Use</b></td><td>Call external tools to extend capabilities</td><td>Use browser to search for information, execute code, read/write files</td></tr>
+<tr><td><b>Memory</b></td><td>Retain context and learn from interactions</td><td>Remember user preferences, reference previous conversation history</td></tr>
+<tr><td><b>Reflection</b></td><td>Evaluate action results and adjust strategies</td><td>When code fails, analyze the error and try alternative solutions</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 AI Agent vs. Traditional Programs</span><span lang="en">2.2 AI Agent vs. Traditional Programs</span></h3>
+<p class="reveal"><span lang="id">Let's compare AI Agents with traditional programs:</span><span lang="en">Let's compare AI Agents with traditional programs:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Dimension</th><th>Traditional Programs</th><th>AI Agents</th></tr>
+<tr><td><b>Logic</b></td><td>Hard-coded by developers</td><td>Learned from vast amounts of data</td></tr>
+<tr><td><b>Input</b></td><td>Structured data (JSON, database)</td><td>Natural language, any form</td></tr>
+<tr><td><b>Output</b></td><td>Determined results</td><td>Generative, creative content</td></tr>
+<tr><td><b>Adaptability</b></td><td>Requires code changes to modify behavior</td><td>Can adapt through prompts or fine-tuning</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 How AI Agents Work</span><span lang="en">2.3 How AI Agents Work</span></h3>
+<p class="reveal"><span lang="id">The working principle of AI Agents can be summarized as a feedback loop:</span><span lang="en">The working principle of AI Agents can be summarized as a feedback loop:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Goal → Perception → Planning → Action → Evaluation → (Loop)</pre>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Goal Setting:</b> The user provides a task goal in natural language.</span><span lang="en"><b>Goal Setting:</b> The user provides a task goal in natural language.</span></li>
+<li><span lang="id"><b>Perception:</b> The Agent understands the goal and gathers relevant information.</span><span lang="en"><b>Perception:</b> The Agent understands the goal and gathers relevant information.</span></li>
+<li><span lang="id"><b>Planning:</b> The Agent breaks down the goal into executable steps.</span><span lang="en"><b>Planning:</b> The Agent breaks down the goal into executable steps.</span></li>
+<li><span lang="id"><b>Action:</b> The Agent executes the plan, potentially calling various tools.</span><span lang="en"><b>Action:</b> The Agent executes the plan, potentially calling various tools.</span></li>
+<li><span lang="id"><b>Evaluation:</b> The Agent evaluates the results of the action.</span><span lang="en"><b>Evaluation:</b> The Agent evaluates the results of the action.</span></li>
+<li><span lang="id"><b>Loop:</b> Based on the evaluation, the Agent adjusts and continues the loop until the goal is achieved.</span><span lang="en"><b>Loop:</b> Based on the evaluation, the Agent adjusts and continues the loop until the goal is achieved.</span></li>
+</ul>
+<p class="reveal"><span lang="id">This is similar to how a human developer works: understanding requirements → making a plan → writing code → testing → fixing bugs → iterating.</span><span lang="en">This is similar to how a human developer works: understanding requirements → making a plan → writing code → testing → fixing bugs → iterating.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. How to Write Good Prompts</span><span lang="en">3. How to Write Good Prompts</span></h2>
+<p class="reveal"><span lang="id">In Vibe Coding, the quality of prompts directly determines the quality of AI output. Here are some practical prompt writing tips:</span><span lang="en">In Vibe Coding, the quality of prompts directly determines the quality of AI output. Here are some practical prompt writing tips:</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Basic Principles</span><span lang="en">3.1 Basic Principles</span></h3>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Be Specific:</b> Clearly describe what you want to achieve, avoiding vague expressions.</span><span lang="en"><b>Be Specific:</b> Clearly describe what you want to achieve, avoiding vague expressions.</span></li>
+<li><span lang="id">❌ "Make a website"</span><span lang="en">❌ "Make a website"</span></li>
+<li><span lang="id">✅ "Make a personal blog with a header, article list, and comment section"</span><span lang="en">✅ "Make a personal blog with a header, article list, and comment section"</span></li>
+</ul>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Provide Context:</b> Give the AI enough background information so it can generate more relevant code.</span><span lang="en"><b>Provide Context:</b> Give the AI enough background information so it can generate more relevant code.</span></li>
+<li><span lang="id">❌ "Write a login function"</span><span lang="en">❌ "Write a login function"</span></li>
+<li><span lang="id">✅ "Write a login function using JWT, storing tokens in localStorage, with a 7-day expiration"</span><span lang="en">✅ "Write a login function using JWT, storing tokens in localStorage, with a 7-day expiration"</span></li>
+</ul>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Define Constraints:</b> Specify technical requirements and limitations.</span><span lang="en"><b>Define Constraints:</b> Specify technical requirements and limitations.</span></li>
+<li><span lang="id">❌ "Write an API"</span><span lang="en">❌ "Write an API"</span></li>
+<li><span lang="id">✅ "Write a RESTful API using Express.js, following REST conventions, returning JSON data"</span><span lang="en">✅ "Write a RESTful API using Express.js, following REST conventions, returning JSON data"</span></li>
+</ul>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Iterative Refinement:</b> Start with simple requirements, then gradually add complexity.</span><span lang="en"><b>Iterative Refinement:</b> Start with simple requirements, then gradually add complexity.</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Prompt Structure Template</span><span lang="en">3.2 Prompt Structure Template</span></h3>
+<p class="reveal"><span lang="id">A good prompt can follow this structure:</span><span lang="en">A good prompt can follow this structure:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>[Role/Context] + [Task Description] + [Technical Requirements] + [Expected Output]
+
+Example:
+&quot;As a full-stack developer, create a user registration API using Node.js + Express + MongoDB. 
+The API should validate email format, hash passwords with bcrypt, and return JWT tokens. 
+Provide complete code with error handling and comments.&quot;</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Common Prompt Patterns</span><span lang="en">3.3 Common Prompt Patterns</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Pattern</th><th>Description</th><th>Example</th></tr>
+<tr><td><b>Step-by-Step</b></td><td>Ask AI to break down complex tasks</td><td>"First create the database schema, then write the API, finally build the frontend"</td></tr>
+<tr><td><b>Example-Based</b></td><td>Provide examples for reference</td><td>"Similar to the login page on https://example.com, create a registration page"</td></tr>
+<tr><td><b>Role-Playing</b></td><td>Assign a specific role</td><td>"As a senior frontend engineer, review this React code and point out performance issues"</td></tr>
+<tr><td><b>Constraint-Based</b></td><td>Emphasize constraints</td><td>"Use only vanilla JavaScript, no external libraries"</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Hands-On: Building a Snake Game</span><span lang="en">4. Hands-On: Building a Snake Game</span></h2>
+<p class="reveal"><span lang="id">Now let's put it into practice! We'll build a Snake game with AI poem generation functionality using Vibe Coding.</span><span lang="en">Now let's put it into practice! We'll build a Snake game with AI poem generation functionality using Vibe Coding.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Project Requirements</span><span lang="en">4.1 Project Requirements</span></h3>
+<p class="reveal"><span lang="id"><b>Core Features:</b></span><span lang="en"><b>Core Features:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Classic Snake gameplay—control the snake to eat food, avoid hitting walls or itself</span><span lang="en">Classic Snake gameplay—control the snake to eat food, avoid hitting walls or itself</span></li>
+<li><span lang="id">Word collection—when the snake moves, it collects English words appearing on the board</span><span lang="en">Word collection—when the snake moves, it collects English words appearing on the board</span></li>
+<li><span lang="id">AI poem generation—select collected words to generate poems using DeepSeek API</span><span lang="en">AI poem generation—select collected words to generate poems using DeepSeek API</span></li>
+<li><span lang="id">Data persistence—word collections persist across multiple rounds</span><span lang="en">Data persistence—word collections persist across multiple rounds</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Technical Requirements:</b></span><span lang="en"><b>Technical Requirements:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Frontend: HTML5 Canvas game rendering</span><span lang="en">Frontend: HTML5 Canvas game rendering</span></li>
+<li><span lang="id">Backend: API service integrated with DeepSeek</span><span lang="en">Backend: API service integrated with DeepSeek</span></li>
+<li><span lang="id">State Management: Save word inventory across game sessions</span><span lang="en">State Management: Save word inventory across game sessions</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Implementation Steps</span><span lang="en">4.2 Implementation Steps</span></h3>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Step 1: Describe the Project</span><span lang="en">Step 1: Describe the Project</span></h4>
+<p class="reveal"><span lang="id">First, describe your project goal to the AI Agent:</span><span lang="en">First, describe your project goal to the AI Agent:</span></p>
+<p class="reveal"><span lang="id">> "Create a Snake game web application with the following features:</span><span lang="en">> "Create a Snake game web application with the following features:</span></p>
+<p class="reveal"><span lang="id">> 1. Classic Snake gameplay with keyboard controls</span><span lang="en">> 1. Classic Snake gameplay with keyboard controls</span></p>
+<p class="reveal"><span lang="id">> 2. Word collection: words appear randomly on the board, snake collects them by eating</span><span lang="en">> 2. Word collection: words appear randomly on the board, snake collects them by eating</span></p>
+<p class="reveal"><span lang="id">> 3. Word inventory: collected words are displayed in a sidebar</span><span lang="en">> 3. Word inventory: collected words are displayed in a sidebar</span></p>
+<p class="reveal"><span lang="id">> 4. AI poetry generation: select words and click 'Generate Poem' to call DeepSeek API and generate a poem</span><span lang="en">> 4. AI poetry generation: select words and click 'Generate Poem' to call DeepSeek API and generate a poem</span></p>
+<p class="reveal"><span lang="id">> 5. Word persistence: used words are removed or decreased from the inventory</span><span lang="en">> 5. Word persistence: used words are removed or decreased from the inventory</span></p>
+<p class="reveal"><span lang="id">> 6. Navigation: simple tabs or top menu to switch between two pages</span><span lang="en">> 6. Navigation: simple tabs or top menu to switch between two pages</span></p>
+<p class="reveal"><span lang="id">> 7. Shared state: ensure collected words stay synchronized and visible on both pages"</span><span lang="en">> 7. Shared state: ensure collected words stay synchronized and visible on both pages"</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Step 2: AI Generates Code</span><span lang="en">Step 2: AI Generates Code</span></h4>
+<p class="reveal"><span lang="id">The AI Agent will analyze your requirements and generate the initial code structure:</span><span lang="en">The AI Agent will analyze your requirements and generate the initial code structure:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Backend: Express.js server, DeepSeek API integration</span><span lang="en">Backend: Express.js server, DeepSeek API integration</span></li>
+<li><span lang="id">Frontend: HTML5 Canvas game, word inventory management</span><span lang="en">Frontend: HTML5 Canvas game, word inventory management</span></li>
+<li><span lang="id">Database: Simple in-memory or file-based storage</span><span lang="en">Database: Simple in-memory or file-based storage</span></li>
+</ul>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Step 3: Test and Iterate</span><span lang="en">Step 3: Test and Iterate</span></h4>
+<p class="reveal"><span lang="id">Run the code and check if it meets expectations:</span><span lang="en">Run the code and check if it meets expectations:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Does the game work correctly?</span><span lang="en">Does the game work correctly?</span></li>
+<li><span lang="id">Does word collection function properly?</span><span lang="en">Does word collection function properly?</span></li>
+<li><span lang="id">Does the AI poetry generation work?</span><span lang="en">Does the AI poetry generation work?</span></li>
+<li><span lang="id">Are there any bugs or issues?</span><span lang="en">Are there any bugs or issues?</span></li>
+</ul>
+<p class="reveal"><span lang="id">If problems arise, continue refining through conversation:</span><span lang="en">If problems arise, continue refining through conversation:</span></p>
+<p class="reveal"><span lang="id">> "The snake moves too slowly, please increase the speed"</span><span lang="en">> "The snake moves too slowly, please increase the speed"</span></p>
+<p class="reveal"><span lang="id">> "The word inventory isn't displaying correctly, please check the state management"</span><span lang="en">> "The word inventory isn't displaying correctly, please check the state management"</span></p>
+<p class="reveal"><span lang="id">> "The API call failed, please add error handling"</span><span lang="en">> "The API call failed, please add error handling"</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 Key Technical Points</span><span lang="en">4.3 Key Technical Points</span></h3>
+<p class="reveal"><span lang="id">During development, pay attention to these points:</span><span lang="en">During development, pay attention to these points:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Game Loop:</b> Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">requestAnimationFrame</code> for smooth rendering</span><span lang="en"><b>Game Loop:</b> Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">requestAnimationFrame</code> for smooth rendering</span></li>
+<li><span lang="id"><b>Collision Detection:</b> Check if the snake head overlaps with food, walls, or itself</span><span lang="en"><b>Collision Detection:</b> Check if the snake head overlaps with food, walls, or itself</span></li>
+<li><span lang="id"><b>State Management:</b> Ensure word inventory is synchronized between game page and poetry page</span><span lang="en"><b>State Management:</b> Ensure word inventory is synchronized between game page and poetry page</span></li>
+<li><span lang="id"><b>API Security:</b> Store API keys in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.env</code> files, add to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.gitignore</code> to prevent leakage</span><span lang="en"><b>API Security:</b> Store API keys in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.env</code> files, add to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.gitignore</code> to prevent leakage</span></li>
+<li><span lang="id"><b>Error Handling:</b> Add try-catch blocks for API calls, provide user-friendly error messages</span><span lang="en"><b>Error Handling:</b> Add try-catch blocks for API calls, provide user-friendly error messages</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.4 Running the Project</span><span lang="en">4.4 Running the Project</span></h3>
+<p class="reveal"><span lang="id"><b>Frontend:</b></span><span lang="en"><b>Frontend:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># If using a simple static file
+open index.html
+
+# If using a development server
+npm run dev</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Backend:</b></span><span lang="en"><b>Backend:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>npm install
+# Set your DeepSeek API key in .env
+echo &quot;DEEPSEEK_API_KEY=your_api_key&quot; &gt; .env
+npm start</pre>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Display the same shared word inventory.</b></span><span lang="en"><b>Display the same shared word inventory.</b></span></li>
+<li><span lang="id"><b>User selects some words and clicks </b>Generate Poem<b> button.</b></span><span lang="en"><b>User selects some words and clicks </b>Generate Poem<b> button.</b></span></li>
+<li><span lang="id"><b>Send these words to the backend, where DeepSeek API generates a poem.</b></span><span lang="en"><b>Send these words to the backend, where DeepSeek API generates a poem.</b></span></li>
+<li><span lang="id"><b>After generating the poem, used words are removed or decreased from the inventory.</b></span><span lang="en"><b>After generating the poem, used words are removed or decreased from the inventory.</b></span></li>
+<li><span lang="id"><b>Navigation:</b> Simple tab or top menu to switch between the two pages.</span><span lang="en"><b>Navigation:</b> Simple tab or top menu to switch between the two pages.</span></li>
+<li><span lang="id"><b>Shared State:</b> Ensure collected words stay synchronized and visible on both pages.</span><span lang="en"><b>Shared State:</b> Ensure collected words stay synchronized and visible on both pages.</span></li>
+</ul>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Example Results</b></span><span lang="en"><b>Example Results</b></span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">Different Vibe Coding platforms each have their own characteristics and workflows. We tested multiple platforms using the same "Snake game with DeepSeek API" requirements, evaluating their strengths and weaknesses from a beginner's perspective. Here's the summary.</span><span lang="en">Different Vibe Coding platforms each have their own characteristics and workflows. We tested multiple platforms using the same "Snake game with DeepSeek API" requirements, evaluating their strengths and weaknesses from a beginner's perspective. Here's the summary.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Comparison Criteria</span><span lang="en">1. Comparison Criteria</span></h2>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Goal</b></span><span lang="en"><b>Goal</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">Build a Snake (Snake) web application integrated with DeepSeek API.</span><span lang="en">Build a Snake (Snake) web application integrated with DeepSeek API.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Game Details</b></span><span lang="en"><b>Game Details</b></span></li>
+<li><span lang="id">The game generates poetry through DeepSeek LLM API.</span><span lang="en">The game generates poetry through DeepSeek LLM API.</span></li>
+<li><span lang="id">The snake eats English words; collected words are retained after the game ends and continue to be used in new rounds. The same word can be collected multiple times and counted separately.</span><span lang="en">The snake eats English words; collected words are retained after the game ends and continue to be used in new rounds. The same word can be collected multiple times and counted separately.</span></li>
+<li><span lang="id">When a poem is generated, used words are removed from the inventory.</span><span lang="en">When a poem is generated, used words are removed from the inventory.</span></li>
+</ul>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Must-Haves</b></span><span lang="en"><b>Must-Haves</b></span></li>
+<li><span lang="id">A runnable frontend page containing the Snake game (keyboard control, Canvas rendering).</span><span lang="en">A runnable frontend page containing the Snake game (keyboard control, Canvas rendering).</span></li>
+<li><span lang="id">Word collection mechanism (words appear on the board, sidebar list updates when snake eats a word).</span><span lang="en">Word collection mechanism (words appear on the board, sidebar list updates when snake eats a word).</span></li>
+<li><span lang="id">Persistence of word inventory across multiple game rounds.</span><span lang="en">Persistence of word inventory across multiple game rounds.</span></li>
+<li><span lang="id">Backend using DeepSeek API (if no API Key, can return mock poetry first).</span><span lang="en">Backend using DeepSeek API (if no API Key, can return mock poetry first).</span></li>
+<li><span lang="id">"Generate Poetry" button: clicks to call backend, displays poetry, and updates word inventory based on usage.</span><span lang="en">"Generate Poetry" button: clicks to call backend, displays poetry, and updates word inventory based on usage.</span></li>
+<li><span lang="id">Support for <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.env</code> API Key, and avoiding key leakage through <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.gitignore</code>.</span><span lang="en">Support for <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.env</code> API Key, and avoiding key leakage through <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.gitignore</code>.</span></li>
+</ul>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Nice-to-Haves</b></span><span lang="en"><b>Nice-to-Haves</b></span></li>
+<li><span lang="id">Users can select which words to use for generating poetry.</span><span lang="en">Users can select which words to use for generating poetry.</span></li>
+<li><span lang="id">Good user experience (e.g., clear sidebar showing word list, well-laid-out poetry display area).</span><span lang="en">Good user experience (e.g., clear sidebar showing word list, well-laid-out poetry display area).</span></li>
+<li><span lang="id">Add comments in the code for beginners, explaining key logic.</span><span lang="en">Add comments in the code for beginners, explaining key logic.</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Code Output Comparison</span><span lang="en">2. Code Output Comparison</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1. Lovable (Web-based)</span><span lang="en">1. Lovable (Web-based)</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Platform Type:</b> Web</span><span lang="en"><b>Platform Type:</b> Web</span></li>
+<li><span lang="id"><b>Key Features & Workflow:</b> Lovable does very well in integration and collaboration. It automatically handles initialization tasks like connecting to Supabase databases, making the project setup process very smooth. You only need to describe your project requirements, and the Agent will help connect various services and build the basic structure.</span><span lang="en"><b>Key Features & Workflow:</b> Lovable does very well in integration and collaboration. It automatically handles initialization tasks like connecting to Supabase databases, making the project setup process very smooth. You only need to describe your project requirements, and the Agent will help connect various services and build the basic structure.</span></li>
+<li><span lang="id"><b>Suitable Users:</b> For beginners trying Vibe Coding for the first time, Lovable is a very friendly choice. It simplifies the complexity of multi-service integration, allowing you to focus on prompts and iteration rather than environment configuration. Thanks to high automation, you can quickly get a runnable prototype.</span><span lang="en"><b>Suitable Users:</b> For beginners trying Vibe Coding for the first time, Lovable is a very friendly choice. It simplifies the complexity of multi-service integration, allowing you to focus on prompts and iteration rather than environment configuration. Thanks to high automation, you can quickly get a runnable prototype.</span></li>
+<li><span lang="id"><b>Prompt Process:</b></span><span lang="en"><b>Prompt Process:</b></span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Snake Game Results:</b></span><span lang="en"><b>Snake Game Results:</b></span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Price:</b> Relatively expensive, but if you have a school email, you can verify as a student to use it at half price.</span><span lang="en"><b>Price:</b> Relatively expensive, but if you have a school email, you can verify as a student to use it at half price.</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2. Cursor (IDE)</span><span lang="en">2. Cursor (IDE)</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Platform Type:</b> Desktop App (PC)</span><span lang="en"><b>Platform Type:</b> Desktop App (PC)</span></li>
+<li><span lang="id"><b>Key Features & Workflow:</b> Cursor is a proprietary IDE with integrated AI capabilities, supporting Windows, macOS, and Linux. It embeds features like code generation, intelligent rewriting, and codebase queries directly into the development environment. Compared to web tools, it's closer to a traditional local development experience. Since it's a local environment, different computers have varying configurations, and occasionally you'll encounter environment-related issues. The benefit is that the project is on your machine—no need to separately download or configure a runtime environment, as Cursor handles many tedious steps for you.</span><span lang="en"><b>Key Features & Workflow:</b> Cursor is a proprietary IDE with integrated AI capabilities, supporting Windows, macOS, and Linux. It embeds features like code generation, intelligent rewriting, and codebase queries directly into the development environment. Compared to web tools, it's closer to a traditional local development experience. Since it's a local environment, different computers have varying configurations, and occasionally you'll encounter environment-related issues. The benefit is that the project is on your machine—no need to separately download or configure a runtime environment, as Cursor handles many tedious steps for you.</span></li>
+<li><span lang="id"><b>Suitable Users:</b> For users with some programming foundation, Cursor is a very powerful and familiar environment. However, for complete beginners with no foundation, you'll need to understand project structure, dependency management, and file organization concepts yourself, which has a steeper learning curve. More suitable for developers who want to add AI assistants to traditional coding workflows.</span><span lang="en"><b>Suitable Users:</b> For users with some programming foundation, Cursor is a very powerful and familiar environment. However, for complete beginners with no foundation, you'll need to understand project structure, dependency management, and file organization concepts yourself, which has a steeper learning curve. More suitable for developers who want to add AI assistants to traditional coding workflows.</span></li>
+<li><span lang="id"><b>Prompt Process:</b></span><span lang="en"><b>Prompt Process:</b></span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Snake Game Results:</b></span><span lang="en"><b>Snake Game Results:</b></span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Price:</b></span><span lang="en"><b>Price:</b></span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3. Z.ai (Web-based)</span><span lang="en">3. Z.ai (Web-based)</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Platform Type:</b> Web</span><span lang="en"><b>Platform Type:</b> Web</span></li>
+<li><span lang="id"><b>Key Features & Workflow:</b> Z.ai's usage is relatively straightforward, but a clear challenge is: you need to <b>manually copy and paste the generated code</b>. The platform lacks a real-time preview window, making it difficult to see the code running effect immediately.</span><span lang="en"><b>Key Features & Workflow:</b> Z.ai's usage is relatively straightforward, but a clear challenge is: you need to <b>manually copy and paste the generated code</b>. The platform lacks a real-time preview window, making it difficult to see the code running effect immediately.</span></li>
+<li><span lang="id"><b>Suitable Users:</b> This platform requires a more "hands-on" approach to use. The lack of automation means you must interact directly with the code, which can actually be a kind of training for those who want to deeply understand AI output. However, frequent copy-pasting brings efficiency problems and error risks. More suitable for students who want to see "raw AI output code" rather than those seeking a one-click experience.</span><span lang="en"><b>Suitable Users:</b> This platform requires a more "hands-on" approach to use. The lack of automation means you must interact directly with the code, which can actually be a kind of training for those who want to deeply understand AI output. However, frequent copy-pasting brings efficiency problems and error risks. More suitable for students who want to see "raw AI output code" rather than those seeking a one-click experience.</span></li>
+<li><span lang="id"><b>Prompt Process:</b></span><span lang="en"><b>Prompt Process:</b></span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Snake Game Results:</b></span><span lang="en"><b>Snake Game Results:</b></span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Price:</b></span><span lang="en"><b>Price:</b></span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4. Replit (Web-based)</span><span lang="en">4. Replit (Web-based)</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Platform Type:</b> Web</span><span lang="en"><b>Platform Type:</b> Web</span></li>
+<li><span lang="id"><b>Key Features & Workflow:</b> Replit is an all-in-one online development and deployment environment—you can write code, run programs, and generate online access links directly in the browser. Before starting coding, it gives you a clear action plan; it also provides a visual editor where you can directly modify the UI in the preview window, and the source code automatically syncs. This allows you to verify at any time whether the AI output matches expectations, greatly reducing the number of back-and-forth modifications.</span><span lang="en"><b>Key Features & Workflow:</b> Replit is an all-in-one online development and deployment environment—you can write code, run programs, and generate online access links directly in the browser. Before starting coding, it gives you a clear action plan; it also provides a visual editor where you can directly modify the UI in the preview window, and the source code automatically syncs. This allows you to verify at any time whether the AI output matches expectations, greatly reducing the number of back-and-forth modifications.</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Suitable Users:</b> Replit is very beginner-friendly. It simplifies the complete loop from coding to deployment—no need to separately configure servers or hosting services. Collaboration features are also strong, making it suitable for classmates working on projects together or having others help review code remotely.</span><span lang="en"><b>Suitable Users:</b> Replit is very beginner-friendly. It simplifies the complete loop from coding to deployment—no need to separately configure servers or hosting services. Collaboration features are also strong, making it suitable for classmates working on projects together or having others help review code remotely.</span></li>
+<li><span lang="id"><b>Prompt Process:</b> During the build process, the AI didn't fully understand the requirements at first—about 3 rounds of iteration were needed before the final output reached the ideal result.</span><span lang="en"><b>Prompt Process:</b> During the build process, the AI didn't fully understand the requirements at first—about 3 rounds of iteration were needed before the final output reached the ideal result.</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Snake Game Results:</b></span><span lang="en"><b>Snake Game Results:</b></span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Price:</b></span><span lang="en"><b>Price:</b></span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5. Bolt.new (Web-based)</span><span lang="en">5. Bolt.new (Web-based)</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Platform Type:</b> Web</span><span lang="en"><b>Platform Type:</b> Web</span></li>
+<li><span lang="id"><b>Key Features & Workflow:</b> Bolt.new is similar to Lovable, featuring a Web + AI development environment. It can automatically generate project scaffolding and offers real-time preview. Compared to Lovable, Bolt.new provides more development control, allowing you to directly modify files in the browser and configure build tools.</span><span lang="en"><b>Key Features & Workflow:</b> Bolt.new is similar to Lovable, featuring a Web + AI development environment. It can automatically generate project scaffolding and offers real-time preview. Compared to Lovable, Bolt.new provides more development control, allowing you to directly modify files in the browser and configure build tools.</span></li>
+<li><span lang="id"><b>Suitable Users:</b> For developers who want more control but don't want to set up a local environment, Bolt.new offers a good balance. It allows you to get started quickly while having the flexibility to customize configurations.</span><span lang="en"><b>Suitable Users:</b> For developers who want more control but don't want to set up a local environment, Bolt.new offers a good balance. It allows you to get started quickly while having the flexibility to customize configurations.</span></li>
+<li><span lang="id"><b>Prompt Process:</b></span><span lang="en"><b>Prompt Process:</b></span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Snake Game Results:</b></span><span lang="en"><b>Snake Game Results:</b></span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Price:</b></span><span lang="en"><b>Price:</b></span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6. Claude Dev (Web-based)</span><span lang="en">6. Claude Dev (Web-based)</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Platform Type:</b> Web (VS Code in browser)</span><span lang="en"><b>Platform Type:</b> Web (VS Code in browser)</span></li>
+<li><span lang="id"><b>Key Features & Workflow:</b> Claude Dev is essentially a browser-based version of Cursor, providing a full VS Code-like development environment in the web. It supports file management, terminal, and various extensions. The advantage is that you don't need to install anything—just open the browser to start coding.</span><span lang="en"><b>Key Features & Workflow:</b> Claude Dev is essentially a browser-based version of Cursor, providing a full VS Code-like development environment in the web. It supports file management, terminal, and various extensions. The advantage is that you don't need to install anything—just open the browser to start coding.</span></li>
+<li><span lang="id"><b>Suitable Users:</b> For users who like Cursor's workflow but don't want to install desktop software, or those who need to code on different devices, Claude Dev is a great alternative.</span><span lang="en"><b>Suitable Users:</b> For users who like Cursor's workflow but don't want to install desktop software, or those who need to code on different devices, Claude Dev is a great alternative.</span></li>
+<li><span lang="id"><b>Prompt Process:</b></span><span lang="en"><b>Prompt Process:</b></span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Snake Game Results:</b></span><span lang="en"><b>Snake Game Results:</b></span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Price:</b></span><span lang="en"><b>Price:</b></span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7. GitHub Copilot (IDE Plugin)</span><span lang="en">7. GitHub Copilot (IDE Plugin)</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Platform Type:</b> IDE Plugin (VS Code, JetBrains, etc.)</span><span lang="en"><b>Platform Type:</b> IDE Plugin (VS Code, JetBrains, etc.)</span></li>
+<li><span lang="id"><b>Key Features & Workflow:</b> GitHub Copilot is not a complete development platform but an AI coding assistant that integrates into your existing IDE. It provides code suggestions, auto-completion, and can help explain and refactor code. It works locally without sending code to the cloud, offering better privacy and security.</span><span lang="en"><b>Key Features & Workflow:</b> GitHub Copilot is not a complete development platform but an AI coding assistant that integrates into your existing IDE. It provides code suggestions, auto-completion, and can help explain and refactor code. It works locally without sending code to the cloud, offering better privacy and security.</span></li>
+<li><span lang="id"><b>Suitable Users:</b> For developers who already have a development environment set up and want to enhance productivity with AI assistance. Not suitable for complete beginners who haven't set up a local environment yet.</span><span lang="en"><b>Suitable Users:</b> For developers who already have a development environment set up and want to enhance productivity with AI assistance. Not suitable for complete beginners who haven't set up a local environment yet.</span></li>
+<li><span lang="id"><b>Prompt Process:</b> Copilot works differently—it provides inline suggestions as you type, rather than generating entire projects through conversations. You can write comments or function names, and Copilot will suggest implementations.</span><span lang="en"><b>Prompt Process:</b> Copilot works differently—it provides inline suggestions as you type, rather than generating entire projects through conversations. You can write comments or function names, and Copilot will suggest implementations.</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Snake Game Results:</b></span><span lang="en"><b>Snake Game Results:</b></span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Price:</b></span><span lang="en"><b>Price:</b></span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Summary and Recommendations</span><span lang="en">3. Summary and Recommendations</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Platform Comparison Summary</span><span lang="en">3.1 Platform Comparison Summary</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Platform</th><th>Type</th><th>Beginner Friendliness</th><th>Code Control</th><th>Deployment</th><th>Price</th></tr>
+<tr><td>Lovable</td><td>Web</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>High</td></tr>
+<tr><td>Cursor</td><td>Desktop</td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐</td><td>Free/Paid</td></tr>
+<tr><td>Z.ai</td><td>Web</td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐</td><td>Free</td></tr>
+<tr><td>Replit</td><td>Web</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>Free/Paid</td></tr>
+<tr><td>Bolt.new</td><td>Web</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>Free/Paid</td></tr>
+<tr><td>Claude Dev</td><td>Web</td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐</td><td>Free/Paid</td></tr>
+<tr><td>Copilot</td><td>Plugin</td><td>⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>N/A</td><td>Paid</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Selection Recommendations</span><span lang="en">3.2 Selection Recommendations</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Complete Beginners:</b> Try <b>Lovable</b> or <b>Replit</b>—they offer the smoothest experience with minimal setup.</span><span lang="en"><b>Complete Beginners:</b> Try <b>Lovable</b> or <b>Replit</b>—they offer the smoothest experience with minimal setup.</span></li>
+<li><span lang="id"><b>Those with Programming Foundation:</b> <b>Cursor</b> or <b>Claude Dev</b> provide the most control.</span><span lang="en"><b>Those with Programming Foundation:</b> <b>Cursor</b> or <b>Claude Dev</b> provide the most control.</span></li>
+<li><span lang="id"><b>Students on a Budget:</b> <b>Z.ai</b> or free tiers of <b>Replit/Bolt.new</b> are good choices.</span><span lang="en"><b>Students on a Budget:</b> <b>Z.ai</b> or free tiers of <b>Replit/Bolt.new</b> are good choices.</span></li>
+<li><span lang="id"><b>Those Seeking Balance:</b> <b>Bolt.new</b> offers a good balance between ease of use and control.</span><span lang="en"><b>Those Seeking Balance:</b> <b>Bolt.new</b> offers a good balance between ease of use and control.</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Future Trends</span><span lang="en">3.3 Future Trends</span></h3>
+<p class="reveal"><span lang="id">Vibe Coding is rapidly evolving. We can expect:</span><span lang="en">Vibe Coding is rapidly evolving. We can expect:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>More Powerful Agents:</b> Future AI Agents will have stronger reasoning and planning capabilities.</span><span lang="en"><b>More Powerful Agents:</b> Future AI Agents will have stronger reasoning and planning capabilities.</span></li>
+<li><span lang="id"><b>Deeper Integration:</b> Seamless integration with more development tools and services.</span><span lang="en"><b>Deeper Integration:</b> Seamless integration with more development tools and services.</span></li>
+<li><span lang="id"><b>Lower Barriers:</b> Even non-technical users can create complex applications.</span><span lang="en"><b>Lower Barriers:</b> Even non-technical users can create complex applications.</span></li>
+<li><span lang="id"><b>New Workflows:</b> Emergence of new development patterns beyond traditional coding.</span><span lang="en"><b>New Workflows:</b> Emergence of new development patterns beyond traditional coding.</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. AI Design Tools: Integrating Figma into Your Workflow</span><span lang="en">6. AI Design Tools: Integrating Figma into Your Workflow</span></h2>
+<p class="reveal"><span lang="id">In addition to AI programming tools, AI-powered design tools are also becoming essential for Vibe Coding workflows. This section introduces how to integrate tools like Figma into your development process.</span><span lang="en">In addition to AI programming tools, AI-powered design tools are also becoming essential for Vibe Coding workflows. This section introduces how to integrate tools like Figma into your development process.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Common AI Design Tools</span><span lang="en">6.1 Common AI Design Tools</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Tool</th><th>Features</th><th>Suitable For</th></tr>
+<tr><td><b>Figma (with AI)</b></td><td>AI-powered design features, auto-layout, component suggestions</td><td>UI/UX Design</td></tr>
+<tr><td><b>Mastergo</b></td><td>Chinese-localized, AI-assisted design, collaboration features</td><td>Chinese market products</td></tr>
+<tr><td><b>Uizard</b></td><td>AI-powered wireframe to design conversion</td><td>Rapid prototyping</td></tr>
+<tr><td><b>Galileo AI</b></td><td>Text-to-UI generation</td><td>Quick idea visualization</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 Integrating Design Tools with Vibe Coding</span><span lang="en">6.2 Integrating Design Tools with Vibe Coding</span></h3>
+<p class="reveal"><span lang="id">The typical workflow is:</span><span lang="en">The typical workflow is:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Design Phase:</b> Use AI design tools to create UI mockups</span><span lang="en"><b>Design Phase:</b> Use AI design tools to create UI mockups</span></li>
+<li><span lang="id"><b>handoff:</b> Export design specs or use plugins to integrate with development</span><span lang="en"><b>handoff:</b> Export design specs or use plugins to integrate with development</span></li>
+<li><span lang="id"><b>Implementation:</b> AI Agent reads design specs and implements code</span><span lang="en"><b>Implementation:</b> AI Agent reads design specs and implements code</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.3 Hands-On: Using Figma with Vibe Coding</span><span lang="en">6.3 Hands-On: Using Figma with Vibe Coding</span></h3>
+<p class="reveal"><span lang="id"><b>Step 1: Create Design in Figma</b></span><span lang="en"><b>Step 1: Create Design in Figma</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Use Figma's AI features to quickly generate layouts</span><span lang="en">Use Figma's AI features to quickly generate layouts</span></li>
+<li><span lang="id">Or manually design and use AI assistance for improvements</span><span lang="en">Or manually design and use AI assistance for improvements</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Step 2: handoff to Development</b></span><span lang="en"><b>Step 2: handoff to Development</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Use Figma's "Developer Mode" to inspect specs</span><span lang="en">Use Figma's "Developer Mode" to inspect specs</span></li>
+<li><span lang="id">Or use plugins like "Anima" to export code</span><span lang="en">Or use plugins like "Anima" to export code</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Step 3: Vibe Coding Implementation</b></span><span lang="en"><b>Step 3: Vibe Coding Implementation</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Describe the design to your AI Agent</span><span lang="en">Describe the design to your AI Agent</span></li>
+<li><span lang="id">The Agent generates code that matches the design</span><span lang="en">The Agent generates code that matches the design</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.4 Practical Tips</span><span lang="en">6.4 Practical Tips</span></h3>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Keep Designs Simple:</b> Start with simple designs, add complexity gradually</span><span lang="en"><b>Keep Designs Simple:</b> Start with simple designs, add complexity gradually</span></li>
+<li><span lang="id"><b>Use Design Systems:</b> Establish consistent component libraries</span><span lang="en"><b>Use Design Systems:</b> Establish consistent component libraries</span></li>
+<li><span lang="id"><b>Leverage AI Features:</b> Make full use of AI-assisted design features</span><span lang="en"><b>Leverage AI Features:</b> Make full use of AI-assisted design features</span></li>
+<li><span lang="id"><b>Iterate Quickly:</b> Rapidly iterate based on AI-generated suggestions</span><span lang="en"><b>Iterate Quickly:</b> Rapidly iterate based on AI-generated suggestions</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Summary</span><span lang="en">7. Summary</span></h2>
+<p class="reveal"><span lang="id">This chapter covered:</span><span lang="en">This chapter covered:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Vibe Coding Concept:</b> A new development paradigm that uses AI to accelerate application building</span><span lang="en"><b>Vibe Coding Concept:</b> A new development paradigm that uses AI to accelerate application building</span></li>
+<li><span lang="id"><b>AI Agent Technology:</b> The core capabilities and working principles of AI Agents</span><span lang="en"><b>AI Agent Technology:</b> The core capabilities and working principles of AI Agents</span></li>
+<li><span lang="id"><b>Prompt Engineering:</b> Techniques for writing effective prompts</span><span lang="en"><b>Prompt Engineering:</b> Techniques for writing effective prompts</span></li>
+<li><span lang="id"><b>Hands-On Practice:</b> Building a complete Snake game with AI poetry generation</span><span lang="en"><b>Hands-On Practice:</b> Building a complete Snake game with AI poetry generation</span></li>
+<li><span lang="id"><b>Platform Comparison:</b> Detailed evaluation of 7 major Vibe Coding platforms</span><span lang="en"><b>Platform Comparison:</b> Detailed evaluation of 7 major Vibe Coding platforms</span></li>
+<li><span lang="id"><b>Design Tool Integration:</b> How to incorporate AI design tools into your workflow</span><span lang="en"><b>Design Tool Integration:</b> How to incorporate AI design tools into your workflow</span></li>
+</ul>
+<p class="reveal"><span lang="id">Vibe Coding represents the future of software development. As AI technology continues to advance, the barrier to software development will become increasingly lower. We encourage everyone to embrace this new paradigm and start their Vibe Coding journey!</span><span lang="en">Vibe Coding represents the future of software development. As AI technology continues to advance, the barrier to software development will become increasingly lower. We encourage everyone to embrace this new paradigm and start their Vibe Coding journey!</span></p>
+<p class="reveal"><span lang="id"><b>Next Steps:</b></span><span lang="en"><b>Next Steps:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Choose a platform and start your first Vibe Coding project</span><span lang="en">Choose a platform and start your first Vibe Coding project</span></li>
+<li><span lang="id">Practice prompt writing skills</span><span lang="en">Practice prompt writing skills</span></li>
+<li><span lang="id">Explore AI design tools</span><span lang="en">Explore AI design tools</span></li>
+<li><span lang="id">Join the Vibe Coding community to learn from others</span><span lang="en">Join the Vibe Coding community to learn from others</span></li>
+</ul>
+<p class="reveal"><span lang="id">Happy Vibe Coding! 🚀</span><span lang="en">Happy Vibe Coding! 🚀</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span><span lang="en">Studi Kasus: Duel 7 Alat AI Coding Bikin Game Snake</span></p>
+</div>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Kembali ke Indeks Cerita</span><span lang="en">Kembali ke Indeks Cerita</span></b></a>
+      <a class="next" href="../"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Indeks Cerita</span><span lang="en">Indeks Cerita</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../assets/vibekoding.js"></script>
+</body>
+</html>

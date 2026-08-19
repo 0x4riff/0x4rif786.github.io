@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>An Introduction to Testing Strategies — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: An Introduction to Testing Strategies. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/9-engineering-excellence/testing-strategies/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">An Introduction to Testing Strategies</span><span lang="en">An Introduction to Testing Strategies</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">An Introduction to Testing Strategies</span><span lang="en">An Introduction to Testing Strategies</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: An Introduction to Testing Strategies.</span><span lang="en">Ensiklopedia VibeKoding: An Introduction to Testing Strategies.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Is your code really "bug-free"?</b> After every code change, you manually click through to see if anything broke — this works when the project is small. But when the codebase grows to tens of thousands of lines and the team expands to a dozen people, "clicking around manually" becomes a disaster.
+
+This chapter helps you understand the core strategies of software testing, from the test pyramid to TDD, building a systematic quality assurance mindset.</span><span lang="en"><b>Is your code really "bug-free"?</b> After every code change, you manually click through to see if anything broke — this works when the project is small. But when the codebase grows to tens of thousands of lines and the team expands to a dozen people, "clicking around manually" becomes a disaster.
+
+This chapter helps you understand the core strategies of software testing, from the test pyramid to TDD, building a systematic quality assurance mindset.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn in this article?</b></span><span lang="en"><b>What will you learn in this article?</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Core Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>Test pyramid</td><td>Levels and ratios of testing</td></tr>
+<tr><td><b>Chapter 2</b></td><td>Unit testing in practice</td><td>How to write a good test</td></tr>
+<tr><td><b>Chapter 3</b></td><td>TDD-driven development</td><td>The Red-Green-Refactor cycle</td></tr>
+<tr><td><b>Chapter 4</b></td><td>Choosing a testing strategy</td><td>Approaches for different scenarios</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">After reading this chapter, you will understand how to choose appropriate testing strategies for your projects, write valuable tests, and improve code design quality through TDD.</span><span lang="en">After reading this chapter, you will understand how to choose appropriate testing strategies for your projects, write valuable tests, and improve code design quality through TDD.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. The Big Picture: Motivation for Automateding Testing</span><span lang="en">0. The Big Picture: Motivation for Automateding Testing</span></h2>
+<p class="reveal"><span lang="id">Imagine you're a structural engineer. After every blueprint revision, you don't personally climb every floor to check if the structure is safe — you rely on an <b>automated inspection system</b>. Software testing is the "structural inspection system" of the code world.</span><span lang="en">Imagine you're a structural engineer. After every blueprint revision, you don't personally climb every floor to check if the structure is safe — you rely on an <b>automated inspection system</b>. Software testing is the "structural inspection system" of the code world.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Regression Protection</b>: When you modify feature A, automatically check if features B, C, and D are affected
+- <b>Refactoring Confidence</b>: With test coverage, you can refactor with confidence
+- <b>Living Documentation</b>: Good tests are the best usage manual
+- <b>Rapid Feedback</b>: Know in seconds if the code is correct, rather than discovering issues after deployment</span><span lang="en">- <b>Regression Protection</b>: When you modify feature A, automatically check if features B, C, and D are affected
+- <b>Refactoring Confidence</b>: With test coverage, you can refactor with confidence
+- <b>Living Documentation</b>: Good tests are the best usage manual
+- <b>Rapid Feedback</b>: Know in seconds if the code is correct, rather than discovering issues after deployment</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. The Test Pyramid: Levels and Ratios of Testing</span><span lang="en">1. The Test Pyramid: Levels and Ratios of Testing</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 The Three-Layer Pyramid</span><span lang="en">1.1 The Three-Layer Pyramid</span></h3>
+<p class="reveal"><span lang="id">The test pyramid proposed by Mike Cohn is a classic model for testing strategy. It tells us: <b>different types of tests should have different quantity ratios</b>.</span><span lang="en">The test pyramid proposed by Mike Cohn is a classic model for testing strategy. It tells us: <b>different types of tests should have different quantity ratios</b>.</span></p>
+<p class="reveal"><span lang="id">Use the interactive component below — click on each layer of the pyramid to learn about its characteristics:</span><span lang="en">Use the interactive component below — click on each layer of the pyramid to learn about its characteristics:</span></p>
+<p class="reveal"><span lang="id"><TestPyramidDemo /></span><span lang="en"><TestPyramidDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 Motivation for a Pyramid Shape</span><span lang="en">1.2 Motivation for a Pyramid Shape</span></h3>
+<p class="reveal"><span lang="id">The pyramid shape reflects a core tradeoff: <b>the balance between speed and realism</b>.</span><span lang="en">The pyramid shape reflects a core tradeoff: <b>the balance between speed and realism</b>.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Bottom layer (Unit Tests)</b>: Extremely fast, most numerous, lowest cost, but only verify individual parts</span><span lang="en"><b>Bottom layer (Unit Tests)</b>: Extremely fast, most numerous, lowest cost, but only verify individual parts</span></li>
+<li><span lang="id"><b>Middle layer (Integration Tests)</b>: Moderate speed, moderate quantity, verify how parts work together</span><span lang="en"><b>Middle layer (Integration Tests)</b>: Moderate speed, moderate quantity, verify how parts work together</span></li>
+<li><span lang="id"><b>Top layer (E2E Tests)</b>: Closest to real users, but slow, high maintenance cost, prone to environment-related failures</span><span lang="en"><b>Top layer (E2E Tests)</b>: Closest to real users, but slow, high maintenance cost, prone to environment-related failures</span></li>
+</ul>
+<p class="reveal"><span lang="id">> <b>Anti-pattern: The Ice Cream Cone</b> — If your project has the most E2E tests and the fewest unit tests, you have an inverted "ice cream cone." This means your test suite runs slowly, fails frequently, and has extremely high maintenance costs.</span><span lang="en">> <b>Anti-pattern: The Ice Cream Cone</b> — If your project has the most E2E tests and the fewest unit tests, you have an inverted "ice cream cone." This means your test suite runs slowly, fails frequently, and has extremely high maintenance costs.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Unit Testing in Practice</span><span lang="en">2. Unit Testing in Practice</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 What Makes a Good Unit Test</span><span lang="en">2.1 What Makes a Good Unit Test</span></h3>
+<p class="reveal"><span lang="id">Good unit tests follow the <b>FIRST</b> principles:</span><span lang="en">Good unit tests follow the <b>FIRST</b> principles:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Principle</th><th>Meaning</th><th>Description</th></tr>
+<tr><td><b>F</b>ast</td><td>Fast</td><td>Completes in milliseconds; developers are willing to run them frequently</td></tr>
+<tr><td><b>I</b>ndependent</td><td>Independent</td><td>Tests don't depend on each other; each can run independently</td></tr>
+<tr><td><b>R</b>epeatable</td><td>Repeatable</td><td>Same results in any environment</td></tr>
+<tr><td><b>S</b>elf-validating</td><td>Self-validating</td><td>Clear pass/fail result; no human judgment needed</td></tr>
+<tr><td><b>T</b>imely</td><td>Timely</td><td>Written at the same time as — or before — the code</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Test Structure: The AAA Pattern</span><span lang="en">2.2 Test Structure: The AAA Pattern</span></h3>
+<p class="reveal"><span lang="id">Every test should have a clear three-part structure:</span><span lang="en">Every test should have a clear three-part structure:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>test(&#039;should correctly calculate price with tax&#039;, () =&gt; {
+  // Arrange — set up test data
+  const price = 100
+  const taxRate = 0.13
+
+  // Act — call the function under test
+  const result = calculateTotalWithTax(price, taxRate)
+
+  // Assert — verify the result
+  expect(result).toBe(113)
+})</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 What to Test and What Not to Test</span><span lang="en">2.3 What to Test and What Not to Test</span></h3>
+<p class="reveal"><span lang="id"><b>Should test:</b></span><span lang="en"><b>Should test:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Core business logic (price calculations, permission checks, data transformations)</span><span lang="en">Core business logic (price calculations, permission checks, data transformations)</span></li>
+<li><span lang="id">Edge cases (null, zero, negative numbers, extremely large numbers)</span><span lang="en">Edge cases (null, zero, negative numbers, extremely large numbers)</span></li>
+<li><span lang="id">Error handling paths</span><span lang="en">Error handling paths</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Don't need to test:</b></span><span lang="en"><b>Don't need to test:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Internal implementations of third-party libraries</span><span lang="en">Internal implementations of third-party libraries</span></li>
+<li><span lang="id">Simple getters/setters</span><span lang="en">Simple getters/setters</span></li>
+<li><span lang="id">Framework features (e.g., Vue's reactivity system)</span><span lang="en">Framework features (e.g., Vue's reactivity system)</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. TDD: Test-Driven Development</span><span lang="en">3. TDD: Test-Driven Development</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 The Red-Green-Refactor Cycle</span><span lang="en">3.1 The Red-Green-Refactor Cycle</span></h3>
+<p class="reveal"><span lang="id">The core of TDD (Test-Driven Development) is a simple cycle: <b>write a test first, then write the implementation, then refactor</b>.</span><span lang="en">The core of TDD (Test-Driven Development) is a simple cycle: <b>write a test first, then write the implementation, then refactor</b>.</span></p>
+<p class="reveal"><span lang="id">Use the interactive component below to experience the complete TDD cycle:</span><span lang="en">Use the interactive component below to experience the complete TDD cycle:</span></p>
+<p class="reveal"><span lang="id"><TDDCycleDemo /></span><span lang="en"><TDDCycleDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 The Three Rules of TDD</span><span lang="en">3.2 The Three Rules of TDD</span></h3>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Don't write any production code except to make a failing test pass</b></span><span lang="en"><b>Don't write any production code except to make a failing test pass</b></span></li>
+<li><span lang="id"><b>Write only enough of a test to demonstrate a failure</b> (compilation errors count as failures)</span><span lang="en"><b>Write only enough of a test to demonstrate a failure</b> (compilation errors count as failures)</span></li>
+<li><span lang="id"><b>Write only enough production code to pass the test</b></span><span lang="en"><b>Write only enough production code to pass the test</b></span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 The True Value of TDD</span><span lang="en">3.3 The True Value of TDD</span></h3>
+<p class="reveal"><span lang="id">The value of TDD goes beyond "writing tests first" — it <b>forces you to think about interface design</b>. When you write a test first, you think from the "user's" perspective: what parameters should this function accept? What should it return? This naturally leads to better API design.</span><span lang="en">The value of TDD goes beyond "writing tests first" — it <b>forces you to think about interface design</b>. When you write a test first, you think from the "user's" perspective: what parameters should this function accept? What should it return? This naturally leads to better API design.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">TDD is well-suited for logic-heavy code (algorithms, business rules, data transformations), but for UI layout, exploratory prototypes, and similar scenarios, forcing TDD can actually slow you down. The key is to understand its principles and apply them flexibly.</span><span lang="en">TDD is well-suited for logic-heavy code (algorithms, business rules, data transformations), but for UI layout, exploratory prototypes, and similar scenarios, forcing TDD can actually slow you down. The key is to understand its principles and apply them flexibly.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Choosing a Testing Strategy</span><span lang="en">4. Choosing a Testing Strategy</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Testing Focus by Project Type</span><span lang="en">4.1 Testing Focus by Project Type</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Project Type</th><th>Testing Focus</th><th>Recommended Ratio</th></tr>
+<tr><td><b>Utility Library / SDK</b></td><td>Primarily unit tests</td><td>90% unit + 10% integration</td></tr>
+<tr><td><b>API Service</b></td><td>Primarily integration tests</td><td>30% unit + 60% integration + 10% E2E</td></tr>
+<tr><td><b>Web Application</b></td><td>Balanced distribution</td><td>50% unit + 30% integration + 20% E2E</td></tr>
+<tr><td><b>MVP / Prototype</b></td><td>Critical path E2E</td><td>A small number of core tests is sufficient</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Common Testing Tools</span><span lang="en">4.2 Common Testing Tools</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Tool</th><th>Type</th><th>Use Case</th></tr>
+<tr><td><b>Vitest</b></td><td>Unit/Integration</td><td>First choice for Vite projects; compatible with Jest API</td></tr>
+<tr><td><b>Jest</b></td><td>Unit/Integration</td><td>Most popular in the Node.js ecosystem</td></tr>
+<tr><td><b>Playwright</b></td><td>E2E</td><td>Cross-browser; developed by Microsoft</td></tr>
+<tr><td><b>Cypress</b></td><td>E2E</td><td>Great developer experience; easy debugging</td></tr>
+<tr><td><b>Testing Library</b></td><td>Component testing</td><td>Test UI components from the user's perspective</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. AI-Powered: Using LLMs to Improve Testing Efficiency</span><span lang="en">5. AI-Powered: Using LLMs to Improve Testing Efficiency</span></h2>
+<p class="reveal"><span lang="id">LLMs are already very capable in the testing domain — they can help you generate test cases, discover edge cases, and even write complete test code.</span><span lang="en">LLMs are already very capable in the testing domain — they can help you generate test cases, discover edge cases, and even write complete test code.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Generating Unit Tests</span><span lang="en">5.1 Generating Unit Tests</span></h3>
+<p class="reveal"><span lang="id">> <b>Prompt</b>:</span><span lang="en">> <b>Prompt</b>:</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<p class="reveal"><span lang="id">> Please write unit tests for the following function using the Vitest framework:</span><span lang="en">> Please write unit tests for the following function using the Vitest framework:</span></p>
+<p class="reveal"><span lang="id">> 1. Follow the AAA pattern (Arrange-Act-Assert)</span><span lang="en">> 1. Follow the AAA pattern (Arrange-Act-Assert)</span></p>
+<p class="reveal"><span lang="id">> 2. Cover the happy path, edge cases, and error paths</span><span lang="en">> 2. Cover the happy path, edge cases, and error paths</span></p>
+<p class="reveal"><span lang="id">> 3. Each test case should have a clear description</span><span lang="en">> 3. Each test case should have a clear description</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> [Paste your function code]</span><span lang="en">> [Paste your function code]</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Discovering Edge Cases</span><span lang="en">5.2 Discovering Edge Cases</span></h3>
+<p class="reveal"><span lang="id">> <b>Prompt</b>:</span><span lang="en">> <b>Prompt</b>:</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<p class="reveal"><span lang="id">> Analyze the following function and list all possible edge cases and</span><span lang="en">> Analyze the following function and list all possible edge cases and</span></p>
+<p class="reveal"><span lang="id">> extreme input scenarios, including: null, zero, negative numbers,</span><span lang="en">> extreme input scenarios, including: null, zero, negative numbers,</span></p>
+<p class="reveal"><span lang="id">> extremely large numbers, special characters, concurrency situations, etc.</span><span lang="en">> extremely large numbers, special characters, concurrency situations, etc.</span></p>
+<p class="reveal"><span lang="id">> For each scenario, describe the expected behavior and potential risks.</span><span lang="en">> For each scenario, describe the expected behavior and potential risks.</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> [Paste your function code]</span><span lang="en">> [Paste your function code]</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 Generating Tests from Requirements (TDD Assistance)</span><span lang="en">5.3 Generating Tests from Requirements (TDD Assistance)</span></h3>
+<p class="reveal"><span lang="id">> <b>Prompt</b>:</span><span lang="en">> <b>Prompt</b>:</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<p class="reveal"><span lang="id">> I want to implement a shopping cart module with these requirements:</span><span lang="en">> I want to implement a shopping cart module with these requirements:</span></p>
+<p class="reveal"><span lang="id">> - Add items, remove items, modify quantities</span><span lang="en">> - Add items, remove items, modify quantities</span></p>
+<p class="reveal"><span lang="id">> - Automatically calculate total price (with discounts)</span><span lang="en">> - Automatically calculate total price (with discounts)</span></p>
+<p class="reveal"><span lang="id">> - Show error when stock is insufficient</span><span lang="en">> - Show error when stock is insufficient</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> Following TDD methodology, first write test cases (no implementation),</span><span lang="en">> Following TDD methodology, first write test cases (no implementation),</span></p>
+<p class="reveal"><span lang="id">> using Vitest, covering all core scenarios.</span><span lang="en">> using Vitest, covering all core scenarios.</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Always check that AI-generated test assertions are meaningful — avoid useless tests like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">expect(true).toBe(true)</code>. Good tests should actually fail when the code is wrong.</span><span lang="en">Always check that AI-generated test assertions are meaningful — avoid useless tests like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">expect(true).toBe(true)</code>. Good tests should actually fail when the code is wrong.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Summary</span><span lang="en">6. Summary</span></h2>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Test Pyramid</b>: More at the bottom, fewer at the top; balance speed with realism</span><span lang="en"><b>Test Pyramid</b>: More at the bottom, fewer at the top; balance speed with realism</span></li>
+<li><span lang="id"><b>Unit Tests</b>: Follow FIRST principles and AAA pattern; test core logic</span><span lang="en"><b>Unit Tests</b>: Follow FIRST principles and AAA pattern; test core logic</span></li>
+<li><span lang="id"><b>TDD</b>: Red-Green-Refactor cycle; use tests to drive design</span><span lang="en"><b>TDD</b>: Red-Green-Refactor cycle; use tests to drive design</span></li>
+<li><span lang="id"><b>Strategy Selection</b>: Choose appropriate testing ratios based on project type and stage</span><span lang="en"><b>Strategy Selection</b>: Choose appropriate testing ratios based on project type and stage</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Testing is not a burden — it's an <b>accelerator</b>. In the short term, writing tests does take extra time; in the long term, it saves countless hours of manual verification, regression bug investigation, and late-night emergency fixes. Good tests give you the confidence to say: <b>"Go ahead and make changes — the tests will tell us if anything is wrong."</b></span><span lang="en">Testing is not a burden — it's an <b>accelerator</b>. In the short term, writing tests does take extra time; in the long term, it saves countless hours of manual verification, regression bug investigation, and late-night emergency fixes. Good tests give you the confidence to say: <b>"Go ahead and make changes — the tests will tell us if anything is wrong."</b></span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Classic Book</b>: Kent Beck's <i>Test-Driven Development</i> is the foundational work on TDD.</span><span lang="en"><b>Classic Book</b>: Kent Beck's <i>Test-Driven Development</i> is the foundational work on TDD.</span></li>
+<li><span lang="id"><b>Practical Guide</b>: Try writing tests for a small project with Vitest to experience the testing process from scratch.</span><span lang="en"><b>Practical Guide</b>: Try writing tests for a small project with Vitest to experience the testing process from scratch.</span></li>
+<li><span lang="id"><b>Testing Patterns</b>: Learn the differences and use cases for Mock, Stub, and Spy.</span><span lang="en"><b>Testing Patterns</b>: Learn the differences and use cases for Mock, Stub, and Spy.</span></li>
+<li><span lang="id"><b>Continuous Integration</b>: Integrate tests into your CI/CD pipeline so they run automatically with every commit.</span><span lang="en"><b>Continuous Integration</b>: Integrate tests into your CI/CD pipeline so they run automatically with every commit.</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../9-engineering-excellence/technology-selection/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">9-engineering-excellence/technology-selection</span><span lang="en">9-engineering-excellence/technology-selection</span></b></a>
+      <a class="next" href="../../"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">index</span><span lang="en">index</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

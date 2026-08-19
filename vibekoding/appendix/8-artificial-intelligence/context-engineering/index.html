@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>An Introduction to Context Engineering — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: An Introduction to Context Engineering. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/8-artificial-intelligence/context-engineering/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">An Introduction to Context Engineering</span><span lang="en">An Introduction to Context Engineering</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">An Introduction to Context Engineering</span><span lang="en">An Introduction to Context Engineering</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: An Introduction to Context Engineering.</span><span lang="en">Ensiklopedia VibeKoding: An Introduction to Context Engineering.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">> 💡 <b>Study Guide</b>: Prompt engineering solves "how to say things clearly"; context engineering solves "how to let the model see the right information at the right time." This chapter revolves around one question: <b>Within a limited context window, how do you make the model understand you without burning through your budget?</b></span><span lang="en">> 💡 <b>Study Guide</b>: Prompt engineering solves "how to say things clearly"; context engineering solves "how to let the model see the right information at the right time." This chapter revolves around one question: <b>Within a limited context window, how do you make the model understand you without burning through your budget?</b></span></p>
+<p class="reveal"><span lang="id">Before diving in, here are two "foundation bricks" to review:</span><span lang="en">Before diving in, here are two "foundation bricks" to review:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>What is a Token</b>: See the "Tokenization & Tokens" section in [Introduction to Large Language Models](./llm-principles.md).</span><span lang="en"><b>What is a Token</b>: See the "Tokenization & Tokens" section in [Introduction to Large Language Models](./llm-principles.md).</span></li>
+<li><span lang="id"><b>What is a Prompt</b>: If you're unfamiliar with the basic structure of System / User / Assistant messages, start with [Prompt Engineering](./prompt-engineering/).</span><span lang="en"><b>What is a Prompt</b>: If you're unfamiliar with the basic structure of System / User / Assistant messages, start with [Prompt Engineering](./prompt-engineering/).</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. Introduction: Motivation for Forgeting Mid-Conversation — and Why Does It Keep Getting More Expensive</span><span lang="en">0. Introduction: Motivation for Forgeting Mid-Conversation — and Why Does It Keep Getting More Expensive</span></h2>
+<p class="reveal"><span lang="id"><AgentContextFlow /></span><span lang="en"><AgentContextFlow /></span></p>
+<p class="reveal"><span lang="id">Many people encounter similar situations when using large language models:</span><span lang="en">Many people encounter similar situations when using large language models:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Mid-conversation, the model suddenly "forgets" key conditions mentioned earlier;</span><span lang="en">Mid-conversation, the model suddenly "forgets" key conditions mentioned earlier;</span></li>
+<li><span lang="id">In long conversations, responses contradict each other, making it hard to maintain a consistent setup;</span><span lang="en">In long conversations, responses contradict each other, making it hard to maintain a consistent setup;</span></li>
+<li><span lang="id">As conversation turns pile up, the bill climbs like a taxi meter.</span><span lang="en">As conversation turns pile up, the bill climbs like a taxi meter.</span></li>
+</ul>
+<p class="reveal"><span lang="id">Intuitively, we tend to think: <b>"This model has a bad memory."</b></span><span lang="en">Intuitively, we tend to think: <b>"This model has a bad memory."</b></span></p>
+<p class="reveal"><span lang="id">But most of the time, the problem isn't that the model "can't remember" — it's that we <b>haven't designed the context it can see properly.</b></span><span lang="en">But most of the time, the problem isn't that the model "can't remember" — it's that we <b>haven't designed the context it can see properly.</b></span></p>
+<p class="reveal"><span lang="id"><IntroProblemReasonSolution /></span><span lang="en"><IntroProblemReasonSolution /></span></p>
+<p class="reveal"><span lang="id">Faced with these challenges, relying solely on "writing better prompts" falls short. We need a more systematic engineering approach to ensure the model always receives the most critical information — within a limited window and budget. This is exactly what <b>context engineering</b> aims to solve.</span><span lang="en">Faced with these challenges, relying solely on "writing better prompts" falls short. We need a more systematic engineering approach to ensure the model always receives the most critical information — within a limited window and budget. This is exactly what <b>context engineering</b> aims to solve.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Overview of "Context Engineering" (Definition + Scenarios)</span><span lang="en">1. Overview of "Context Engineering" (Definition + Scenarios)</span></h2>
+<p class="reveal"><span lang="id">Let's start with a concise working definition, then look at a few typical scenarios.</span><span lang="en">Let's start with a concise working definition, then look at a few typical scenarios.</span></p>
+<p class="reveal"><span lang="id">> Context engineering is an engineering discipline for building and managing the "information environment" for LLMs. It determines what the model "sees, ignores, and when it sees it," enabling stable task completion within a finite context window.</span><span lang="en">> Context engineering is an engineering discipline for building and managing the "information environment" for LLMs. It determines what the model "sees, ignores, and when it sees it," enabling stable task completion within a finite context window.</span></p>
+<p class="reveal"><span lang="id">Simply put, it boils down to three things: organizing information, controlling the window, and managing costs.</span><span lang="en">Simply put, it boils down to three things: organizing information, controlling the window, and managing costs.</span></p>
+<p class="reveal"><span lang="id">Common use cases include:</span><span lang="en">Common use cases include:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Conversational agents and customer service bots</span><span lang="en">Conversational agents and customer service bots</span></li>
+<li><span lang="id">Code / documentation assistants</span><span lang="en">Code / documentation assistants</span></li>
+<li><span lang="id">Multi-turn tool calling and long-flow orchestration</span><span lang="en">Multi-turn tool calling and long-flow orchestration</span></li>
+</ul>
+<p class="reveal"><span lang="id">Next, we'll start with the "hard-won lessons" of a real team to see how they gradually evolved from "only knowing how to write prompts" to "mastering context engineering."</span><span lang="en">Next, we'll start with the "hard-won lessons" of a real team to see how they gradually evolved from "only knowing how to write prompts" to "mastering context engineering."</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Starting with "Hard-Won Lessons": Pitfalls the Manus Team Encountered</span><span lang="en">2. Starting with "Hard-Won Lessons": Pitfalls the Manus Team Encountered</span></h2>
+<p class="reveal"><span lang="id">The case studies in this chapter come from <b>Manus</b> (a general-purpose AI Agent).</span><span lang="en">The case studies in this chapter come from <b>Manus</b> (a general-purpose AI Agent).</span></p>
+<p class="reveal"><span lang="id">Unlike ordinary conversations, Manus needs to autonomously plan and invoke tools to complete long tasks (involving dozens or even hundreds of interaction rounds).</span><span lang="en">Unlike ordinary conversations, Manus needs to autonomously plan and invoke tools to complete long tasks (involving dozens or even hundreds of interaction rounds).</span></p>
+<p class="reveal"><span lang="id">This creates a core contradiction:</span><span lang="en">This creates a core contradiction:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>If you don't remember</b>: critical information is lost, and the task breaks down.</span><span lang="en"><b>If you don't remember</b>: critical information is lost, and the task breaks down.</span></li>
+<li><span lang="id"><b>If you remember everything</b>: costs and latency explode, potentially exceeding window limits.</span><span lang="en"><b>If you remember everything</b>: costs and latency explode, potentially exceeding window limits.</span></li>
+</ul>
+<p class="reveal"><span lang="id">After multiple architectural refactors, the Manus team realized one truth: <b>Context can't just be "written" — it must be "designed."</b></span><span lang="en">After multiple architectural refactors, the Manus team realized one truth: <b>Context can't just be "written" — it must be "designed."</b></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 What Did Four Refactors Teach Us</span><span lang="en">2.1 What Did Four Refactors Teach Us</span></h3>
+<p class="reveal"><span lang="id">Manus co-founder Ji Yichao shared their "pitfall history":</span><span lang="en">Manus co-founder Ji Yichao shared their "pitfall history":</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Iteration</th><th>Problem Encountered</th><th>Thinking at the Time</th><th>Result</th></tr>
+<tr><td><b>1st</b></td><td>AI kept forgetting mid-conversation</td><td>"Just write more prompts"</td><td>Longer prompts, higher costs</td></tr>
+<tr><td><b>2nd</b></td><td>Important info kept getting squeezed out</td><td>"Copy the important stuff multiple times"</td><td>Even longer text, even higher costs</td></tr>
+<tr><td><b>3rd</b></td><td>The bill was shockingly high</td><td>"Can we reuse previous computations?"</td><td>Found ways to reduce repeated computation costs</td></tr>
+<tr><td><b>4th</b></td><td>Long documents couldn't be processed</td><td>"Can we look things up only when needed?"</td><td>Built a "library + on-demand retrieval" solution</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Core insight</b>: <b>It's not about remembering more, but remembering more cleverly.</b></span><span lang="en"><b>Core insight</b>: <b>It's not about remembering more, but remembering more cleverly.</b></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Overview of AI's "Memory" Really Like</span><span lang="en">2.2 Overview of AI's "Memory" Really Like</span></h3>
+<p class="reveal"><span lang="id"><b>Traditional computer memory</b> = <b>Hard drive</b>:</span><span lang="en"><b>Traditional computer memory</b> = <b>Hard drive</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Large capacity: can store large amounts of data long-term;</span><span lang="en">Large capacity: can store large amounts of data long-term;</span></li>
+<li><span lang="id">Low cost: storing for a year is relatively cheap;</span><span lang="en">Low cost: storing for a year is relatively cheap;</span></li>
+<li><span lang="id">Read/write speeds are relatively slow; finding information takes time.</span><span lang="en">Read/write speeds are relatively slow; finding information takes time.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>AI context</b> = <b>Small whiteboard</b>:</span><span lang="en"><b>AI context</b> = <b>Small whiteboard</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Fast read/write: the model can directly see the entire context in a single call;</span><span lang="en">Fast read/write: the model can directly see the entire context in a single call;</span></li>
+<li><span lang="id">Limited space: once full, old content must be erased;</span><span lang="en">Limited space: once full, old content must be erased;</span></li>
+<li><span lang="id">Every token written incurs additional computation and cost.</span><span lang="en">Every token written incurs additional computation and cost.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Manus's lesson</b>: <b>Use the whiteboard sparingly and cleverly — don't use it to store an encyclopedia.</b></span><span lang="en"><b>Manus's lesson</b>: <b>Use the whiteboard sparingly and cleverly — don't use it to store an encyclopedia.</b></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Step 1: Know the Cost — Placement of Every Penny Go</span><span lang="en">3. Step 1: Know the Cost — Placement of Every Penny Go</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Motivation for starting with Cost</span><span lang="en">3.1 Motivation for starting with Cost</span></h3>
+<p class="reveal"><span lang="id">Let's look at how your money is spent during a typical AI conversation:</span><span lang="en">Let's look at how your money is spent during a typical AI conversation:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>💰 Cost Breakdown (per conversation):
+├─ 70% re-reading old content (&quot;What did we just talk about?&quot;)
+├─ 20% processing new content (&quot;What are you saying now?&quot;)
+└─ 10% generating a reply (&quot;How should I respond?&quot;)</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Surprising finding</b>: <b>70% of the money is spent having the AI re-read what you've already said!</b></span><span lang="en"><b>Surprising finding</b>: <b>70% of the money is spent having the AI re-read what you've already said!</b></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Overview of KV Cache (Prefix Reuse)</span><span lang="en">3.2 Overview of KV Cache (Prefix Reuse)</span></h3>
+<p class="reveal"><span lang="id">Before discussing pricing, we need to understand a core technical concept: <b>KV Cache (Key-Value Cache)</b>.</span><span lang="en">Before discussing pricing, we need to understand a core technical concept: <b>KV Cache (Key-Value Cache)</b>.</span></p>
+<p class="reveal"><span lang="id">Don't be intimidated by the jargon — it's essentially the AI's "short-term memory cheat sheet."</span><span lang="en">Don't be intimidated by the jargon — it's essentially the AI's "short-term memory cheat sheet."</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Without KV Cache</b>: The AI has to start reading, understanding, and computing from the first character every time, as if seeing the text for the very first time.</span><span lang="en"><b>Without KV Cache</b>: The AI has to start reading, understanding, and computing from the first character every time, as if seeing the text for the very first time.</span></li>
+<li><span lang="id"><b>With KV Cache</b>: The AI stores the computation results of parts it has already processed (Pre-fill). Next time, if the opening content hasn't changed, it directly retrieves the memoized result, skipping recomputation.</span><span lang="en"><b>With KV Cache</b>: The AI stores the computation results of parts it has already processed (Pre-fill). Next time, if the opening content hasn't changed, it directly retrieves the memoized result, skipping recomputation.</span></li>
+</ul>
+<p class="reveal"><span lang="id">It's like:</span><span lang="en">It's like:</span></p>
+<p class="reveal"><span lang="id">> You walk into an exam room.</span><span lang="en">> You walk into an exam room.</span></p>
+<p class="reveal"><span lang="id">> <b>Scenario A</b>: Every time, you have to read the entire textbook from cover to cover before starting to answer questions. (Slow, exhausting, expensive)</span><span lang="en">> <b>Scenario A</b>: Every time, you have to read the entire textbook from cover to cover before starting to answer questions. (Slow, exhausting, expensive)</span></p>
+<p class="reveal"><span lang="id">> <b>Scenario B</b>: You've already memorized the textbook content (Cache), so you sit down and start answering immediately. (Fast, effortless, cheap)</span><span lang="en">> <b>Scenario B</b>: You've already memorized the textbook content (Cache), so you sit down and start answering immediately. (Fast, effortless, cheap)</span></p>
+<p class="reveal"><span lang="id">In cloud providers' billing tables, <b>"memorized material" (Cache Hit)</b> is typically over 90% cheaper than <b>"new material" (Cache Miss)</b>.</span><span lang="en">In cloud providers' billing tables, <b>"memorized material" (Cache Hit)</b> is typically over 90% cheaper than <b>"new material" (Cache Miss)</b>.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 The Price Gap Between "Memorization" and "Lookup on Demand"</span><span lang="en">3.3 The Price Gap Between "Memorization" and "Lookup on Demand"</span></h3>
+<p class="reveal"><span lang="id">Using Claude as an example:</span><span lang="en">Using Claude as an example:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Lookup on demand</b> (no cache): $3.00 / million tokens</span><span lang="en"><b>Lookup on demand</b> (no cache): $3.00 / million tokens</span></li>
+<li><span lang="id"><b>From memory</b> (with cache): $0.30 / million tokens</span><span lang="en"><b>From memory</b> (with cache): $0.30 / million tokens</span></li>
+<li><span lang="id"><b>A 10x difference</b>!</span><span lang="en"><b>A 10x difference</b>!</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Manus's practice</b>: By having the AI "memorize the textbook," they reduced costs from <b>$0.15 to $0.02</b> — <b>saving 87%</b>!</span><span lang="en"><b>Manus's practice</b>: By having the AI "memorize the textbook," they reduced costs from <b>$0.15 to $0.02</b> — <b>saving 87%</b>!</span></p>
+<p class="reveal"><span lang="id"><ContextWindowVisualizer /></span><span lang="en"><ContextWindowVisualizer /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.4 Pitfall Guide: Don't Let Timestamps Destroy Your "Cache"</span><span lang="en">3.4 Pitfall Guide: Don't Let Timestamps Destroy Your "Cache"</span></h3>
+<p class="reveal"><span lang="id">Many developers habitually put the "current time" as the first line of the System Prompt, thinking it's rigorous.</span><span lang="en">Many developers habitually put the "current time" as the first line of the System Prompt, thinking it's rigorous.</span></p>
+<p class="reveal"><span lang="id"><b>But this is one of the biggest anti-patterns in context engineering.</b></span><span lang="en"><b>But this is one of the biggest anti-patterns in context engineering.</b></span></p>
+<p class="reveal"><span lang="id">Imagine this: you've memorized an entire history book (System Prompt), only to have the first line read "the current second."</span><span lang="en">Imagine this: you've memorized an entire history book (System Prompt), only to have the first line read "the current second."</span></p>
+<p class="reveal"><span lang="id">If that line changes every second, then everything you memorized a second ago becomes invalid — you have to re-memorize it from scratch.</span><span lang="en">If that line changes every second, then everything you memorized a second ago becomes invalid — you have to re-memorize it from scratch.</span></p>
+<p class="reveal"><span lang="id">This is the Achilles' heel of <b>prefix reuse (KV Cache)</b>: <b>If the beginning changes, everything after it must be recomputed.</b></span><span lang="en">This is the Achilles' heel of <b>prefix reuse (KV Cache)</b>: <b>If the beginning changes, everything after it must be recomputed.</b></span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Wrong approach: putting dynamic information first</span><span lang="en">Wrong approach: putting dynamic information first</span></h4>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>System: The current time is 2024-01-01 12:00:01. You are an assistant...
+(One minute later)
+System: The current time is 2024-01-01 12:01:01. You are an assistant...</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Consequence</b>: Although only a few characters changed, because they're at the very beginning, 99% of the subsequent fixed content can't benefit from cache reuse. Every request is as slow and expensive as the first one.</span><span lang="en"><b>Consequence</b>: Although only a few characters changed, because they're at the very beginning, 99% of the subsequent fixed content can't benefit from cache reuse. Every request is as slow and expensive as the first one.</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Correct approach: separate static from dynamic</span><span lang="en">Correct approach: separate static from dynamic</span></h4>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>System: You are an assistant... (thousands of characters of fixed rules and knowledge base go here)
+User: (Pass in the current time via a tool call or user message)</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Benefit</b>: The thousands of characters of rules never change; the AI only needs to "memorize" them once. Subsequent requests directly use cached memory, making them blazing fast.</span><span lang="en"><b>Benefit</b>: The thousands of characters of rules never change; the AI only needs to "memorize" them once. Subsequent requests directly use cached memory, making them blazing fast.</span></p>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>:</span><span lang="en">👇 <b>Try it yourself</b>:</span></p>
+<p class="reveal"><span lang="id">Toggle the switch below to enable <b>"memorization acceleration,"</b> then click "Send New Request" multiple times.</span><span lang="en">Toggle the switch below to enable <b>"memorization acceleration,"</b> then click "Send New Request" multiple times.</span></p>
+<p class="reveal"><span lang="id">Observe: when the first block becomes "memorized," what happens to the <b>Time to First Token (TTFT)</b>?</span><span lang="en">Observe: when the first block becomes "memorized," what happens to the <b>Time to First Token (TTFT)</b>?</span></p>
+<p class="reveal"><span lang="id"><KVCacheDemo /></span><span lang="en"><KVCacheDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Step 2: Sliding Window — When "Memory" Becomes "Cost"</span><span lang="en">4. Step 2: Sliding Window — When "Memory" Becomes "Cost"</span></h2>
+<p class="reveal"><span lang="id">As conversations grow longer, the first problem you hit is: <b>What happens when the window is full?</b></span><span lang="en">As conversations grow longer, the first problem you hit is: <b>What happens when the window is full?</b></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Motivation for the "First In, First Out" Break</span><span lang="en">4.1 Motivation for the "First In, First Out" Break</span></h3>
+<p class="reveal"><span lang="id">The simplest memory management is the <b>Sliding Window</b>: <b>new stuff comes in, old stuff goes out.</b></span><span lang="en">The simplest memory management is the <b>Sliding Window</b>: <b>new stuff comes in, old stuff goes out.</b></span></p>
+<p class="reveal"><span lang="id">It sounds fair, but in real tasks, it's a disaster.</span><span lang="en">It sounds fair, but in real tasks, it's a disaster.</span></p>
+<p class="reveal"><span lang="id"><b>Scenario replay</b>:</span><span lang="en"><b>Scenario replay</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Conversation log:
+[1] User: I&#039;m Zhang San, responsible for the payments system
+[2] User: The project uses Go
+[3] User: The database is PostgreSQL
+...
+[20] User: Write an API endpoint for me</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Result</b>: By the time you reach message 20, message 1 ("I'm Zhang San") has already been pushed out of the window. The AI has completely forgotten who you are or what system you're responsible for.</span><span lang="en"><b>Result</b>: By the time you reach message 20, message 1 ("I'm Zhang San") has already been pushed out of the window. The AI has completely forgotten who you are or what system you're responsible for.</span></p>
+<p class="reveal"><span lang="id"><b>The core problem</b>: This strategy treats <b>critical information</b> (identity, tech stack) and <b>filler</b> ("ok", "got it") as equals — kicking them all out together.</span><span lang="en"><b>The core problem</b>: This strategy treats <b>critical information</b> (identity, tech stack) and <b>filler</b> ("ok", "got it") as equals — kicking them all out together.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 "Middle Amnesia" — Motivation for AIing Always Miss Key Information</span><span lang="en">4.2 "Middle Amnesia" — Motivation for AIing Always Miss Key Information</span></h3>
+<p class="reveal"><span lang="id">Besides "forgetting fast," AI has another quirk: <b>it also "overlooks" things.</b></span><span lang="en">Besides "forgetting fast," AI has another quirk: <b>it also "overlooks" things.</b></span></p>
+<p class="reveal"><span lang="id">Research shows: <b>AI is most sensitive to the beginning and end, and most likely to ignore the middle.</b> This is the famous <b>Lost in the Middle</b> phenomenon.</span><span lang="en">Research shows: <b>AI is most sensitive to the beginning and end, and most likely to ignore the middle.</b> This is the famous <b>Lost in the Middle</b> phenomenon.</span></p>
+<p class="reveal"><span lang="id"><b>U-shaped memory curve</b>:</span><span lang="en"><b>U-shaped memory curve</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Position: Start → Middle → End
+Memory:   High  →  Low   → High</pre>
+</div>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>:</span><span lang="en">👇 <b>Try it yourself</b>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">First, try <b>"Sliding Window"</b>: send several messages in the chat box below and see how old conversations are mercilessly "pushed out."</span><span lang="en">First, try <b>"Sliding Window"</b>: send several messages in the chat box below and see how old conversations are mercilessly "pushed out."</span></li>
+<li><span lang="id">Then check <b>"Lost in the Middle"</b>: observe — when key information is buried in the middle of a long passage, is the retrieval success rate at its lowest?</span><span lang="en">Then check <b>"Lost in the Middle"</b>: observe — when key information is buried in the middle of a long passage, is the retrieval success rate at its lowest?</span></li>
+</ul>
+<p class="reveal"><span lang="id"><SlidingWindowDemo /></span><span lang="en"><SlidingWindowDemo /></span></p>
+<p class="reveal"><span lang="id"><LostInMiddleDemo /></span><span lang="en"><LostInMiddleDemo /></span></p>
+<p class="reveal"><span lang="id"><b>Solution</b>: Place critical information at the <b>beginning</b> (system prompt) or the <b>end</b> (user query).</span><span lang="en"><b>Solution</b>: Place critical information at the <b>beginning</b> (system prompt) or the <b>end</b> (user query).</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Step 3: Selective Retention — Approach to "Pin" Key Information</span><span lang="en">5. Step 3: Selective Retention — Approach to "Pin" Key Information</span></h2>
+<p class="reveal"><span lang="id">If "first in, first out" doesn't work, what should we do?</span><span lang="en">If "first in, first out" doesn't work, what should we do?</span></p>
+<p class="reveal"><span lang="id">Manus's answer: <b>Establish an "information hierarchy."</b></span><span lang="en">Manus's answer: <b>Establish an "information hierarchy."</b></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Motivation for Ranking Information by Importance</span><span lang="en">5.1 Motivation for Ranking Information by Importance</span></h3>
+<p class="reveal"><span lang="id">Stop treating every piece of information equally — decide what stays and what goes based on importance:</span><span lang="en">Stop treating every piece of information equally — decide what stays and what goes based on importance:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Tier</th><th>Information Type</th><th>Treatment</th><th>Cost Impact</th></tr>
+<tr><td><b>VIP</b></td><td>System setup, user identity</td><td><b>Keep forever</b></td><td>+15% cost</td></tr>
+<tr><td><b>Important</b></td><td>Current task objective</td><td><b>Keep for task duration</b></td><td>+10% cost</td></tr>
+<tr><td><b>Normal</b></td><td>Regular conversation history</td><td><b>Keep last 5 turns</b></td><td>Baseline cost</td></tr>
+<tr><td><b>Disposable</b></td><td>Retrievable knowledge</td><td><b>Look up when needed</b></td><td>-60% cost</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Core idea</b>: <b>Spend 25% more to retain 90% of critical information.</b></span><span lang="en"><b>Core idea</b>: <b>Spend 25% more to retain 90% of critical information.</b></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 The "Pinning" Strategy</span><span lang="en">5.2 The "Pinning" Strategy</span></h3>
+<p class="reveal"><span lang="id">Think of the context window as a whiteboard:</span><span lang="en">Think of the context window as a whiteboard:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>VIP information</b>: <b>Nailed down</b> at the very top of the whiteboard (System Prompt).</span><span lang="en"><b>VIP information</b>: <b>Nailed down</b> at the very top of the whiteboard (System Prompt).</span></li>
+<li><span lang="id"><b>Important information</b>: <b>Magneted</b> to the middle of the whiteboard (Context Injection).</span><span lang="en"><b>Important information</b>: <b>Magneted</b> to the middle of the whiteboard (Context Injection).</span></li>
+<li><span lang="id"><b>Regular conversation</b>: Written on the lower part of the whiteboard; when space runs out, erase the oldest (Sliding Window).</span><span lang="en"><b>Regular conversation</b>: Written on the lower part of the whiteboard; when space runs out, erase the oldest (Sliding Window).</span></li>
+</ul>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>:</span><span lang="en">👇 <b>Try it yourself</b>:</span></p>
+<p class="reveal"><span lang="id">In the demo below, try "pinning" an important conversation message.</span><span lang="en">In the demo below, try "pinning" an important conversation message.</span></p>
+<p class="reveal"><span lang="id">Observe: as you keep chatting, does the pinned information stay in place while unpinned messages get pushed out?</span><span lang="en">Observe: as you keep chatting, does the pinned information stay in place while unpinned messages get pushed out?</span></p>
+<p class="reveal"><span lang="id"><SelectiveContextDemo /></span><span lang="en"><SelectiveContextDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Step 4: RAG — When "Memory" Needs a "Library"</span><span lang="en">6. Step 4: RAG — When "Memory" Needs a "Library"</span></h2>
+<p class="reveal"><span lang="id">Sometimes there's simply too much information to process (like hundreds of pages of technical documentation), and the whiteboard can't hold it all. That's when you need an external brain — <b>RAG (Retrieval-Augmented Generation)</b>.</span><span lang="en">Sometimes there's simply too much information to process (like hundreds of pages of technical documentation), and the whiteboard can't hold it all. That's when you need an external brain — <b>RAG (Retrieval-Augmented Generation)</b>.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Why the "Small Whiteboard" Isn't Enough</span><span lang="en">6.1 Why the "Small Whiteboard" Isn't Enough</span></h3>
+<p class="reveal"><span lang="id">When Manus faced millions of words of technical documentation, they compared two approaches:</span><span lang="en">When Manus faced millions of words of technical documentation, they compared two approaches:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Full ingestion</b>: Stuff everything into the context at once.</span><span lang="en"><b>Full ingestion</b>: Stuff everything into the context at once.</span></li>
+<li><span lang="id"><b>Consequence</b>: The whiteboard is instantly full, processing is painfully slow, and according to the "Lost in the Middle" theory, the AI can't even remember the middle content.</span><span lang="en"><b>Consequence</b>: The whiteboard is instantly full, processing is painfully slow, and according to the "Lost in the Middle" theory, the AI can't even remember the middle content.</span></li>
+<li><span lang="id"><b>Cost</b>: ~$50 per request, 15-second wait.</span><span lang="en"><b>Cost</b>: ~$50 per request, 15-second wait.</span></li>
+<li><span lang="id"><b>On-demand retrieval (RAG)</b>: First search the library (database), then copy only the relevant passages onto the whiteboard.</span><span lang="en"><b>On-demand retrieval (RAG)</b>: First search the library (database), then copy only the relevant passages onto the whiteboard.</span></li>
+<li><span lang="id"><b>Consequence</b>: The whiteboard stays clean; the AI focuses on critical information.</span><span lang="en"><b>Consequence</b>: The whiteboard stays clean; the AI focuses on critical information.</span></li>
+<li><span lang="id"><b>Cost</b>: ~$0.50 per request, 2-second wait.</span><span lang="en"><b>Cost</b>: ~$0.50 per request, 2-second wait.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>99% cost savings and 87% time savings!</b></span><span lang="en"><b>99% cost savings and 87% time savings!</b></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 Best Practices for "Looking Things Up"</span><span lang="en">6.2 Best Practices for "Looking Things Up"</span></h3>
+<p class="reveal"><span lang="id">Manus's experience distilled:</span><span lang="en">Manus's experience distilled:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>How big should each "page" be?</b> 500-1000 characters works best.</span><span lang="en"><b>How big should each "page" be?</b> 500-1000 characters works best.</span></li>
+<li><span lang="id"><b>How many "books" to check at once?</b> 3-5 — more becomes distracting.</span><span lang="en"><b>How many "books" to check at once?</b> 3-5 — more becomes distracting.</span></li>
+<li><span lang="id"><b>How relevant before retrieving?</b> Similarity > 0.7, to avoid forcing irrelevant content.</span><span lang="en"><b>How relevant before retrieving?</b> Similarity > 0.7, to avoid forcing irrelevant content.</span></li>
+</ul>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>:</span><span lang="en">👇 <b>Try it yourself</b>:</span></p>
+<p class="reveal"><span lang="id">Enter a question in the search box (e.g., "how to reset password") and see how the system pulls only the most relevant snippets from a mountain of documents.</span><span lang="en">Enter a question in the search box (e.g., "how to reset password") and see how the system pulls only the most relevant snippets from a mountain of documents.</span></p>
+<p class="reveal"><span lang="id"><RAGSimulationDemo /></span><span lang="en"><RAGSimulationDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Step 5: Compression — Approach to writing More Densely on the "Whiteboard"</span><span lang="en">7. Step 5: Compression — Approach to writing More Densely on the "Whiteboard"</span></h2>
+<p class="reveal"><span lang="id">What if all the information is important, nothing can be deleted, and you don't want to look things up?</span><span lang="en">What if all the information is important, nothing can be deleted, and you don't want to look things up?</span></p>
+<p class="reveal"><span lang="id">Then you have no choice but to <b>write smaller</b> — this is <b>context compression</b>.</span><span lang="en">Then you have no choice but to <b>write smaller</b> — this is <b>context compression</b>.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.1 Criteria for Need "Shorthand"</span><span lang="en">7.1 Criteria for Need "Shorthand"</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Retrieved material is too thick (>2000 characters).</span><span lang="en">Retrieved material is too thick (>2000 characters).</span></li>
+<li><span lang="id">Conversation history is too verbose (occupying >80% of whiteboard space).</span><span lang="en">Conversation history is too verbose (occupying >80% of whiteboard space).</span></li>
+<li><span lang="id">You need a fast answer and don't want the AI wading through walls of text.</span><span lang="en">You need a fast answer and don't want the AI wading through walls of text.</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.2 Three Levels of "Shorthand"</span><span lang="en">7.2 Three Levels of "Shorthand"</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Compression Method</th><th>Compression Ratio</th><th>What's Preserved</th><th>Use Case</th><th>Cost Savings</th></tr>
+<tr><td><b>Summarization</b></td><td>70%</td><td>Main ideas</td><td>Quick overview</td><td>Save 30%</td></tr>
+<tr><td><b>Key Points</b></td><td>50%</td><td>Critical points</td><td>Structured output</td><td>Save 50%</td></tr>
+<tr><td><b>Tabular</b></td><td>30%</td><td>Core data</td><td>Programmatic processing</td><td>Save 70%</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>:</span><span lang="en">👇 <b>Try it yourself</b>:</span></p>
+<p class="reveal"><span lang="id">Choose different compression strategies and see how walls of text become shorter and more refined.</span><span lang="en">Choose different compression strategies and see how walls of text become shorter and more refined.</span></p>
+<p class="reveal"><span lang="id"><ContextCompressionDemo /></span><span lang="en"><ContextCompressionDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8. System Integration: Building the AI's "Memory Palace"</span><span lang="en">8. System Integration: Building the AI's "Memory Palace"</span></h2>
+<p class="reveal"><span lang="id">So far, we've learned various independent strategies like building blocks:</span><span lang="en">So far, we've learned various independent strategies like building blocks:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>KV Cache</b>: Helps us save money (Chapter 3)</span><span lang="en"><b>KV Cache</b>: Helps us save money (Chapter 3)</span></li>
+<li><span lang="id"><b>Sliding Window</b>: Helps us free up space (Chapter 4)</span><span lang="en"><b>Sliding Window</b>: Helps us free up space (Chapter 4)</span></li>
+<li><span lang="id"><b>Tiered Retention</b>: Helps us keep the important stuff (Chapter 5)</span><span lang="en"><b>Tiered Retention</b>: Helps us keep the important stuff (Chapter 5)</span></li>
+<li><span lang="id"><b>RAG</b>: Gives us external brainpower (Chapter 6)</span><span lang="en"><b>RAG</b>: Gives us external brainpower (Chapter 6)</span></li>
+</ul>
+<p class="reveal"><span lang="id">Now it's time to assemble these blocks into a complete castle — what we call Manus's <b>"Memory Palace."</b></span><span lang="en">Now it's time to assemble these blocks into a complete castle — what we call Manus's <b>"Memory Palace."</b></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">8.1 Assemble Context Like Building a House</span><span lang="en">8.1 Assemble Context Like Building a House</span></h3>
+<p class="reveal"><span lang="id">Don't think of context as a messy pile of text; think of it as a layered building. Each floor has its unique function and "rules of residence."</span><span lang="en">Don't think of context as a messy pile of text; think of it as a layered building. Each floor has its unique function and "rules of residence."</span></p>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>:</span><span lang="en">👇 <b>Try it yourself</b>:</span></p>
+<p class="reveal"><span lang="id">Click "Start Building" and see how we construct this palace floor by floor.</span><span lang="en">Click "Start Building" and see how we construct this palace floor by floor.</span></p>
+<p class="reveal"><span lang="id"><MemoryPalaceDemo /></span><span lang="en"><MemoryPalaceDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">8.2 Motivation for This Design So Powerful</span><span lang="en">8.2 Motivation for This Design So Powerful</span></h3>
+<p class="reveal"><span lang="id">The design philosophy of this palace aims to resolve three contradictions:</span><span lang="en">The design philosophy of this palace aims to resolve three contradictions:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Foundation (System Prompt) — Solves the "expensive" problem</b></span><span lang="en"><b>Foundation (System Prompt) — Solves the "expensive" problem</b></span></li>
+<li><span lang="id"><b>Contradiction</b>: System setup (who you are, what the rules are) is the longest part, and has to be sent every time.</span><span lang="en"><b>Contradiction</b>: System setup (who you are, what the rules are) is the longest part, and has to be sent every time.</span></li>
+<li><span lang="id"><b>Solution</b>: Place it at the bottom layer. Using <b>KV Cache</b> technology, as long as it doesn't change, the AI can "recite it from memory." For hundreds of subsequent conversation rounds, the computation cost for this part is nearly <b>$0</b>.</span><span lang="en"><b>Solution</b>: Place it at the bottom layer. Using <b>KV Cache</b> technology, as long as it doesn't change, the AI can "recite it from memory." For hundreds of subsequent conversation rounds, the computation cost for this part is nearly <b>$0</b>.</span></li>
+</ul>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Pillars (Task Context) — Solves the "forgetting" problem</b></span><span lang="en"><b>Pillars (Task Context) — Solves the "forgetting" problem</b></span></li>
+<li><span lang="id"><b>Contradiction</b>: As conversations grow long, the AI easily forgets the original task objective (e.g., "write a Snake game").</span><span lang="en"><b>Contradiction</b>: As conversations grow long, the AI easily forgets the original task objective (e.g., "write a Snake game").</span></li>
+<li><span lang="id"><b>Solution</b>: Use the <b>tiered retention</b> strategy to "pin" the task objective on the second layer. No matter how many rounds of conversation, this layer is never deleted, ensuring the AI never loses sight of the original goal.</span><span lang="en"><b>Solution</b>: Use the <b>tiered retention</b> strategy to "pin" the task objective on the second layer. No matter how many rounds of conversation, this layer is never deleted, ensuring the AI never loses sight of the original goal.</span></li>
+</ul>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Top Floor (Chat & RAG) — Solves the "chaos" problem</b></span><span lang="en"><b>Top Floor (Chat & RAG) — Solves the "chaos" problem</b></span></li>
+<li><span lang="id"><b>Contradiction</b>: There's new conversation and retrieved reference material — mixing them together creates confusion.</span><span lang="en"><b>Contradiction</b>: There's new conversation and retrieved reference material — mixing them together creates confusion.</span></li>
+<li><span lang="id"><b>Solution</b>:</span><span lang="en"><b>Solution</b>:</span></li>
+<li><span lang="id"><b>Living Room (Chat)</b>: Managed with a <b>sliding window</b>, keeping only the most recent 5-10 hot messages.</span><span lang="en"><b>Living Room (Chat)</b>: Managed with a <b>sliding window</b>, keeping only the most recent 5-10 hot messages.</span></li>
+<li><span lang="id"><b>Library (RAG)</b>: Reference material comes and goes, never taking up permanent space.</span><span lang="en"><b>Library (RAG)</b>: Reference material comes and goes, never taking up permanent space.</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">8.3 Real-World Results</span><span lang="en">8.3 Real-World Results</span></h3>
+<p class="reveal"><span lang="id">After the Manus team deployed this architecture, the results were immediate:</span><span lang="en">After the Manus team deployed this architecture, the results were immediate:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Cost savings</b>: Because the foundation is "memorized," per-round conversation cost plummeted <b>84%</b>.</span><span lang="en"><b>Cost savings</b>: Because the foundation is "memorized," per-round conversation cost plummeted <b>84%</b>.</span></li>
+<li><span lang="id"><b>Speed gains</b>: The AI no longer reads thousands of characters from scratch every time; average response time dropped from 8 seconds to <b>2 seconds</b>.</span><span lang="en"><b>Speed gains</b>: The AI no longer reads thousands of characters from scratch every time; average response time dropped from 8 seconds to <b>2 seconds</b>.</span></li>
+<li><span lang="id"><b>Accuracy improvement</b>: Critical information is "nailed down" — the AI never forgets what it's supposed to be doing mid-conversation.</span><span lang="en"><b>Accuracy improvement</b>: Critical information is "nailed down" — the AI never forgets what it's supposed to be doing mid-conversation.</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">9. Hands-On Templates: Copy the Homework Directly</span><span lang="en">9. Hands-On Templates: Copy the Homework Directly</span></h2>
+<p class="reveal"><span lang="id">To help you intuitively understand how this mechanism works, we've prepared a <b>full-chain simulation</b>.</span><span lang="en">To help you intuitively understand how this mechanism works, we've prepared a <b>full-chain simulation</b>.</span></p>
+<p class="reveal"><span lang="id">Choose a scenario and click "Next" to see how the <b>Memory Palace</b> dynamically retrieves, assembles, and cleans up context in the few seconds between a user query and the AI's response.</span><span lang="en">Choose a scenario and click "Next" to see how the <b>Memory Palace</b> dynamically retrieves, assembles, and cleans up context in the few seconds between a user query and the AI's response.</span></p>
+<p class="reveal"><span lang="id"><MemoryPalaceActionDemo /></span><span lang="en"><MemoryPalaceActionDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">📝 Ready-to-Use Practical Designs</span><span lang="en">📝 Ready-to-Use Practical Designs</span></h3>
+<p class="reveal"><span lang="id">If you're designing a system like Manus, don't just focus on how to write prompts — pay more attention to <b>how the system architecture orchestrates context.</b></span><span lang="en">If you're designing a system like Manus, don't just focus on how to write prompts — pay more attention to <b>how the system architecture orchestrates context.</b></span></p>
+<p class="reveal"><span lang="id">Below are <b>system design blueprints</b> for two classic scenarios, including both <b>prompt design</b> and <b>code logic (pseudocode)</b>.</span><span lang="en">Below are <b>system design blueprints</b> for two classic scenarios, including both <b>prompt design</b> and <b>code logic (pseudocode)</b>.</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Scenario 1: Full-Stack Engineer Agent (Long-Term Memory Type)</span><span lang="en">Scenario 1: Full-Stack Engineer Agent (Long-Term Memory Type)</span></h4>
+<p class="reveal"><span lang="id">> <b>Core challenge</b>: Long task cycles make it easy to forget the original requirements and project context.</span><span lang="en">> <b>Core challenge</b>: Long task cycles make it easy to forget the original requirements and project context.</span></p>
+<p class="reveal"><span lang="id">> <b>Strategy</b>: System layer (identity) + Task layer (pinned objectives) + Chat layer (sliding window).</span><span lang="en">> <b>Strategy</b>: System layer (identity) + Task layer (pinned objectives) + Chat layer (sliding window).</span></p>
+<p class="reveal"><span lang="id"><b>1. System Prompt (Layer 1 & 2)</b></span><span lang="en"><b>1. System Prompt (Layer 1 & 2)</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>markdown</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Layer 1: Identity Setup (System Prompt) - Never changes, leverages KV Cache
+You are a senior full-stack engineer, proficient in Python and Vue3.
+Coding style:
+- Variable naming strictly follows PEP8
+- Critical logic must include comments
+- Prioritize existing project utility functions
+
+# Layer 2: Task Pinning (Task Context) - Must not be deleted during the task
+Current task: Refactor payment module (payment_module)
+Core constraints:
+1. Must maintain compatibility with legacy API v1.0
+2. Database migration scripts must be idempotent
+3. Deadline: This Friday</pre>
+</div>
+<p class="reveal"><span lang="id"><b>2. Context Assembly Logic (Pseudocode)</b></span><span lang="en"><b>2. Context Assembly Logic (Pseudocode)</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>def build_engineer_context(user_input, chat_history, task_info):
+    context = []
+
+    # 1. Foundation layer: Identity setup (leverages KV Cache)
+    # This part doesn&#039;t change for hundreds of rounds; computation cost is near $0
+    context.append(SYSTEM_PROMPT)
+
+    # 2. Pillar layer: Task pinning (Pinned)
+    # No matter how long the conversation, this is always inserted after System
+    context.append(f&quot;Current task: {task_info}&quot;)
+
+    # 3. Retrieval layer: Code snippets (RAG)
+    # Search the codebase for relevant code based on the user&#039;s question
+    relevant_code = search_codebase(user_input)
+    if relevant_code:
+        context.append(f&quot;Reference code:\n{relevant_code}&quot;)
+
+    # 4. Interaction layer: Conversation history (Sliding Window)
+    # Only take the last 10 turns to avoid blowing up the context
+    recent_chat = chat_history[-10:]
+    context.extend(recent_chat)
+
+    # 5. Latest input
+    context.append(user_input)
+
+    return context</pre>
+</div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Scenario 2: Intelligent Customer Service Agent (Precision Q&A Type)</span><span lang="en">Scenario 2: Intelligent Customer Service Agent (Precision Q&A Type)</span></h4>
+<p class="reveal"><span lang="id">> <b>Core challenge</b>: Cost-sensitive, and absolutely cannot fabricate answers.</span><span lang="en">> <b>Core challenge</b>: Cost-sensitive, and absolutely cannot fabricate answers.</span></p>
+<p class="reveal"><span lang="id">> <b>Strategy</b>: System layer (strong constraints) + RAG layer (dynamic injection).</span><span lang="en">> <b>Strategy</b>: System layer (strong constraints) + RAG layer (dynamic injection).</span></p>
+<p class="reveal"><span lang="id"><b>1. System Prompt (Layer 1)</b></span><span lang="en"><b>1. System Prompt (Layer 1)</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>markdown</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Layer 1: Identity Setup (System Prompt)
+You are a professional e-commerce customer service representative.
+Response principles:
+1. A warm, professional, and concise tone
+2. **Absolutely prohibited** from fabricating facts; only answer based on [Reference Materials]
+3. If the materials don&#039;t contain an answer, respond directly with &quot;I&#039;m very sorry, I&#039;ll need to transfer you to a human agent for this question&quot;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>2. Context Assembly Logic (Pseudocode)</b></span><span lang="en"><b>2. Context Assembly Logic (Pseudocode)</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>def build_support_context(user_input):
+    context = []
+
+    # 1. Foundation layer: Identity setup
+    context.append(SYSTEM_PROMPT)
+
+    # 2. Library layer: Dynamic retrieval (RAG)
+    # Only in customer service scenarios does RAG take center stage, placed in the middle
+    docs = vector_db.search(user_input, top_k=3)
+
+    context.append(&quot;【Reference Materials Start】&quot;)
+    for doc in docs:
+        context.append(doc.content)
+    context.append(&quot;【Reference Materials End】&quot;)
+
+    # 3. Interaction layer: Very short history
+    # Customer service typically doesn&#039;t need long memory; keep the last 3 turns
+    context.extend(get_recent_chat(limit=3))
+
+    context.append(user_input)
+
+    return context</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">10. Glossary</span><span lang="en">10. Glossary</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>English Term</th><th>Chinese Translation</th><th>Explanation</th></tr>
+<tr><td><b>Context Window</b></td><td>上下文窗口</td><td>The maximum text length a model can process in a single pass (including input and output). Content exceeding this limit is truncated or forgotten.</td></tr>
+<tr><td><b>Token</b></td><td>词元</td><td>The smallest unit of text processed by an LLM. Roughly 1 token ≈ 0.75 English words or 0.5 Chinese characters. Both billing and window limits use tokens as the unit.</td></tr>
+<tr><td><b>KV Cache</b></td><td>KV 缓存</td><td>An inference acceleration technique that caches already-computed attention key-value pairs, avoiding redundant computation on repeated prefixes and significantly reducing latency and cost.</td></tr>
+<tr><td><b>RAG</b></td><td>检索增强生成</td><td>Before answering a question, relevant information is retrieved from an external knowledge base and provided as context to the model, reducing hallucination and expanding knowledge boundaries.</td></tr>
+<tr><td><b>Sliding Window</b></td><td>滑动窗口</td><td>The most basic context management strategy. Keeps the token count within the window constant; when new content enters, the earliest old content is automatically removed.</td></tr>
+<tr><td><b>Lost in Middle</b></td><td>中间迷失</td><td>A limitation of large models. Research shows models remember information at the beginning and end of long contexts best, while easily overlooking information in the middle.</td></tr>
+<tr><td><b>System Prompt</b></td><td>系统提示</td><td>Instructions placed at the very beginning of a conversation, used to set the model's identity, behavioral norms, response style, and core tasks.</td></tr>
+<tr><td><b>Few-shot</b></td><td>少样本学习</td><td>Providing several "question-answer" examples in the prompt to help the model quickly understand the task pattern and output format.</td></tr>
+<tr><td><b>Chain of Thought</b></td><td>思维链</td><td>Guiding the model to output reasoning steps before giving a final answer. This approach significantly improves the model's ability to solve complex logical and mathematical problems.</td></tr>
+<tr><td><b>Hallucination</b></td><td>幻觉</td><td>The phenomenon where a model confidently generates information that appears plausible but is actually incorrect or non-existent.</td></tr>
+<tr><td><b>Embedding</b></td><td>向量化</td><td>The technique of converting text into high-dimensional numerical vectors. Semantically similar texts are closer in vector space, forming the foundation of semantic search.</td></tr>
+<tr><td><b>Vector DB</b></td><td>向量数据库</td><td>A database specifically designed for storing and retrieving vector data. Supports similarity search to quickly find the document fragments that best match a query.</td></tr>
+<tr><td><b>Temperature</b></td><td>温度</td><td>A hyperparameter controlling the randomness of model output. Higher values (e.g., 0.8) produce more diverse, creative outputs; lower values (e.g., 0.2) produce more deterministic, precise outputs.</td></tr>
+<tr><td><b>TTFT</b></td><td>首字延迟</td><td>Time to First Token — the time elapsed from when a user sends a request to when the model outputs its first token. A key metric for measuring interactive experience.</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary: The Essence of Context Engineering</span><span lang="en">Summary: The Essence of Context Engineering</span></h2>
+<p class="reveal"><span lang="id">Manus's four refactors taught us:</span><span lang="en">Manus's four refactors taught us:</span></p>
+<p class="reveal"><span lang="id"><b>From a practical standpoint</b>: It's not about remembering more, but about remembering with more structure and selectivity.</span><span lang="en"><b>From a practical standpoint</b>: It's not about remembering more, but about remembering with more structure and selectivity.</span></p>
+<p class="reveal"><span lang="id"><b>From a cost perspective</b>:</span><span lang="en"><b>From a cost perspective</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Most waste comes from redundant computation of fixed prefixes, which must be addressed through prefix stability and caching mechanisms;</span><span lang="en">Most waste comes from redundant computation of fixed prefixes, which must be addressed through prefix stability and caching mechanisms;</span></li>
+<li><span lang="id">Important information being erroneously discarded often stems from a "one-size-fits-all" sliding window, which must be addressed through information tiering and pinning strategies;</span><span lang="en">Important information being erroneously discarded often stems from a "one-size-fits-all" sliding window, which must be addressed through information tiering and pinning strategies;</span></li>
+<li><span lang="id">When facing extremely long documents and knowledge bases, relying solely on expanding the context window is unrealistic — retrieval and compression mechanisms must be combined.</span><span lang="en">When facing extremely long documents and knowledge bases, relying solely on expanding the context window is unrealistic — retrieval and compression mechanisms must be combined.</span></li>
+</ul>
+<p class="reveal"><span lang="id">The goal: within a given model and context limit, ensure every token invested serves a clear purpose.</span><span lang="en">The goal: within a given model and context limit, ensure every token invested serves a clear purpose.</span></p>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../8-artificial-intelligence/ai-protocols/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">8-artificial-intelligence/ai-protocols</span><span lang="en">8-artificial-intelligence/ai-protocols</span></b></a>
+      <a class="next" href="../../8-artificial-intelligence/embedding-vector-retrieval/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">8-artificial-intelligence/embedding-vector-retrieval</span><span lang="en">8-artificial-intelligence/embedding-vector-retrieval</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

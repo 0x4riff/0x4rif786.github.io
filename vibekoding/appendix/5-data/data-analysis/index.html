@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of Data Analysis — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Data Analysis. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/5-data/data-analysis/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Data Analysis</span><span lang="en">Principles of Data Analysis</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of Data Analysis</span><span lang="en">Principles of Data Analysis</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Data Analysis.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Data Analysis.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>How do you extract "certainty" from scattered data that can guide business decisions?</b>
+In internet products, massive amounts of user behavior records are generated every second. Looking only at totals (such as total visits) often obscures the truth. This chapter will guide you from basic statistical metrics to advanced business analysis models, helping you master the underlying logic of data analysis.</span><span lang="en"><b>How do you extract "certainty" from scattered data that can guide business decisions?</b>
+In internet products, massive amounts of user behavior records are generated every second. Looking only at totals (such as total visits) often obscures the truth. This chapter will guide you from basic statistical metrics to advanced business analysis models, helping you master the underlying logic of data analysis.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. Overview: The Essence of Data Analysis</span><span lang="en">0. Overview: The Essence of Data Analysis</span></h2>
+<p class="reveal"><span lang="id">> Many people think glancing at a report counts as data analysis. If you don't understand the transformation logic between "data, information, and insight," you'll be trapped in the overwhelming details of numbers. The purpose of this section is to help you build a big-picture view and understand that the ultimate goal of data analysis is not "reporting," but "decision-making."</span><span lang="en">> Many people think glancing at a report counts as data analysis. If you don't understand the transformation logic between "data, information, and insight," you'll be trapped in the overwhelming details of numbers. The purpose of this section is to help you build a big-picture view and understand that the ultimate goal of data analysis is not "reporting," but "decision-making."</span></p>
+<p class="reveal"><span lang="id">Data analysis is not simply "report summarization," but a process of <b>dimensionality reduction</b> and <b>feature extraction</b>.</span><span lang="en">Data analysis is not simply "report summarization," but a process of <b>dimensionality reduction</b> and <b>feature extraction</b>.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Raw Data</b>: Scattered, unordered records (e.g., User A clicked Button B at 10:01).</span><span lang="en"><b>Raw Data</b>: Scattered, unordered records (e.g., User A clicked Button B at 10:01).</span></li>
+<li><span lang="id"><b>Information</b>: Processed data (e.g., 30% of users clicked Button B today).</span><span lang="en"><b>Information</b>: Processed data (e.g., 30% of users clicked Button B today).</span></li>
+<li><span lang="id"><b>Insight</b>: Discovering patterns behind the data (e.g., Button B's click rate is much higher on mobile than desktop, indicating mobile users rely more on this feature).</span><span lang="en"><b>Insight</b>: Discovering patterns behind the data (e.g., Button B's click rate is much higher on mobile than desktop, indicating mobile users rely more on this feature).</span></li>
+</ul>
+<p class="reveal"><span lang="id">Our goal is to build a systematic analysis framework that drives business growth through a closed loop of "observe → decompose → pinpoint → decide."</span><span lang="en">Our goal is to build a systematic analysis framework that drives business growth through a closed loop of "observe → decompose → pinpoint → decide."</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Descriptive Statistics: Summarizing the Big Picture in One Sentence</span><span lang="en">1. Descriptive Statistics: Summarizing the Big Picture in One Sentence</span></h2>
+<p class="reveal"><span lang="id">> When faced with 100,000 rows of data, you can't review each one individually. You need the ability to "compress information," using a minimal set of metrics to precisely capture the pulse of the data. If you don't understand the statistical traps of mean and median, you'll be misled by extreme values when analyzing business performance (such as average spending per user), leading to absurd conclusions.</span><span lang="en">> When faced with 100,000 rows of data, you can't review each one individually. You need the ability to "compress information," using a minimal set of metrics to precisely capture the pulse of the data. If you don't understand the statistical traps of mean and median, you'll be misled by extreme values when analyzing business performance (such as average spending per user), leading to absurd conclusions.</span></p>
+<p class="reveal"><span lang="id">When a dataset has tens of thousands of records, we need to use a small number of "representative metrics" to describe its overall profile.</span><span lang="en">When a dataset has tens of thousands of records, we need to use a small number of "representative metrics" to describe its overall profile.</span></p>
+<p class="reveal"><span lang="id"><DescriptiveStatsDemo /></span><span lang="en"><DescriptiveStatsDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 Mean: The Baseline of Overall Level</span><span lang="en">1.1 Mean: The Baseline of Overall Level</span></h3>
+<p class="reveal"><span lang="id">The mean (arithmetic average) is the most intuitive metric.</span><span lang="en">The mean (arithmetic average) is the most intuitive metric.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Calculation logic</b>: The sum of all values divided by the total count of data.</span><span lang="en"><b>Calculation logic</b>: The sum of all values divided by the total count of data.</span></li>
+<li><span lang="id"><b>Limitation</b>: It is highly susceptible to interference from <b>extreme outliers</b>.</span><span lang="en"><b>Limitation</b>: It is highly susceptible to interference from <b>extreme outliers</b>.</span></li>
+<li><span lang="id"><b>Example</b>: If 9 employees earn 5k/month and the boss earns 100k/month, the average salary appears to be 14.5k. At this point, the mean does not truly represent the income level of most employees.</span><span lang="en"><b>Example</b>: If 9 employees earn 5k/month and the boss earns 100k/month, the average salary appears to be 14.5k. At this point, the mean does not truly represent the income level of most employees.</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 Median and Mode</span><span lang="en">1.2 Median and Mode</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Median</b>: Sort the data from smallest to largest and take the middle value. It effectively resists interference from outliers and truly reflects the typical "middle layer" level.</span><span lang="en"><b>Median</b>: Sort the data from smallest to largest and take the middle value. It effectively resists interference from outliers and truly reflects the typical "middle layer" level.</span></li>
+<li><span lang="id"><b>Mode</b>: The value that appears most frequently in the dataset. When analyzing "users' favorite products" or "most common error codes," the mode most directly indicates group tendencies.</span><span lang="en"><b>Mode</b>: The value that appears most frequently in the dataset. When analyzing "users' favorite products" or "most common error codes," the mode most directly indicates group tendencies.</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.3 Standard Deviation: The "Width" of Distribution</span><span lang="en">1.3 Standard Deviation: The "Width" of Distribution</span></h3>
+<p class="reveal"><span lang="id">It describes the magnitude of fluctuation of data points around the mean.</span><span lang="en">It describes the magnitude of fluctuation of data points around the mean.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Low standard deviation</b>: Data is very concentrated, and the mean is highly representative (e.g., component dimensions on a factory assembly line).</span><span lang="en"><b>Low standard deviation</b>: Data is very concentrated, and the mean is highly representative (e.g., component dimensions on a factory assembly line).</span></li>
+<li><span lang="id"><b>High standard deviation</b>: Data is widely scattered, with significant individual differences.</span><span lang="en"><b>High standard deviation</b>: Data is widely scattered, with significant individual differences.</span></li>
+<li><span lang="id"><b>Significance</b>: In performance monitoring, high standard deviation often indicates insufficient system stability, with many extremely slow "long-tail requests."</span><span lang="en"><b>Significance</b>: In performance monitoring, high standard deviation often indicates insufficient system stability, with many extremely slow "long-tail requests."</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Data Aggregation: Mining Micro-Patterns in Groups</span><span lang="en">2. Data Aggregation: Mining Micro-Patterns in Groups</span></h2>
+<p class="reveal"><span lang="id">> "Average conversion rate for all users is 5%" is often a meaningless truth. You must learn how to "slice" the data to discover the huge differences between different regions, channels, and device types. Aggregation analysis lets you pierce through the "one-size-fits-all" averages and directly reach the real business pain points that were hidden.</span><span lang="en">> "Average conversion rate for all users is 5%" is often a meaningless truth. You must learn how to "slice" the data to discover the huge differences between different regions, channels, and device types. Aggregation analysis lets you pierce through the "one-size-fits-all" averages and directly reach the real business pain points that were hidden.</span></p>
+<p class="reveal"><span lang="id">Individual behavior is often random, but group behavior follows statistical patterns. The core of <b>Data Aggregation</b> lies in "slicing" populations along specific dimensions.</span><span lang="en">Individual behavior is often random, but group behavior follows statistical patterns. The core of <b>Data Aggregation</b> lies in "slicing" populations along specific dimensions.</span></p>
+<p class="reveal"><span lang="id"><DataAggregationDemo /></span><span lang="en"><DataAggregationDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 The Core Logic of Aggregation: Split-Apply-Combine</span><span lang="en">2.1 The Core Logic of Aggregation: Split-Apply-Combine</span></h3>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Split</b>: Group by an attribute (e.g., city, registration channel, new vs. returning users).</span><span lang="en"><b>Split</b>: Group by an attribute (e.g., city, registration channel, new vs. returning users).</span></li>
+<li><span lang="id"><b>Apply</b>: Execute aggregation functions within each group, such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">COUNT()</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SUM()</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">AVG()</code>.</span><span lang="en"><b>Apply</b>: Execute aggregation functions within each group, such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">COUNT()</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SUM()</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">AVG()</code>.</span></li>
+<li><span lang="id"><b>Combine</b>: Compare results across different groups to identify differences.</span><span lang="en"><b>Combine</b>: Compare results across different groups to identify differences.</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Motivation for Groupinging (Group By) Essential</span><span lang="en">2.2 Motivation for Groupinging (Group By) Essential</span></h3>
+<p class="reveal"><span lang="id">Aggregated data often hides problems. For example, overall conversion rates may be rising, but after splitting, you find that a surge in "Shanghai" is pulling up the overall average while all other regions are declining. Through aggregation analysis, we can precisely pinpoint the best or worst-performing segments from the "blended average."</span><span lang="en">Aggregated data often hides problems. For example, overall conversion rates may be rising, but after splitting, you find that a surge in "Shanghai" is pulling up the overall average while all other regions are declining. Through aggregation analysis, we can precisely pinpoint the best or worst-performing segments from the "blended average."</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Funnel Model: Locating the "Bleeding Points" in the Value Chain</span><span lang="en">3. Funnel Model: Locating the "Bleeding Points" in the Value Chain</span></h2>
+<p class="reveal"><span lang="id">> You invested significant resources to acquire users, but conversions are minimal — was all the money wasted? The funnel model tells you exactly where users stumbled. Learning this section transforms "business optimization" from blind guessing into targeted development, directing resources to the points with the highest conversion returns.</span><span lang="en">> You invested significant resources to acquire users, but conversions are minimal — was all the money wasted? The funnel model tells you exactly where users stumbled. Learning this section transforms "business optimization" from blind guessing into targeted development, directing resources to the points with the highest conversion returns.</span></p>
+<p class="reveal"><span lang="id">Users go through a层层筛选 process from entry to completing the final goal (such as payment). The Funnel model is not just about looking at the final conversion rate, but about seeing <b>where users were lost</b>.</span><span lang="en">Users go through a层层筛选 process from entry to completing the final goal (such as payment). The Funnel model is not just about looking at the final conversion rate, but about seeing <b>where users were lost</b>.</span></p>
+<p class="reveal"><span lang="id"><FunnelAnalysisDemo /></span><span lang="en"><FunnelAnalysisDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Core Conversion Metrics</span><span lang="en">3.1 Core Conversion Metrics</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Overall conversion rate</b>: Total users who completed the end / Total users who entered the start.</span><span lang="en"><b>Overall conversion rate</b>: Total users who completed the end / Total users who entered the start.</span></li>
+<li><span lang="id"><b>Step conversion rate</b>: Users at current step / Users at previous step (reflects the pass-through efficiency of that step).</span><span lang="en"><b>Step conversion rate</b>: Users at current step / Users at previous step (reflects the pass-through efficiency of that step).</span></li>
+<li><span lang="id"><b>Drop-off rate</b>: 1 - Step conversion rate.</span><span lang="en"><b>Drop-off rate</b>: 1 - Step conversion rate.</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 In-Depth Analysis Approach</span><span lang="en">3.2 In-Depth Analysis Approach</span></h3>
+<p class="reveal"><span lang="id">If the drop-off rate at a particular step is abnormally high, it indicates <b>experience friction</b> at that point. For example:</span><span lang="en">If the drop-off rate at a particular step is abnormally high, it indicates <b>experience friction</b> at that point. For example:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">High drop-off on the registration page: The form is too complex or verification codes aren't being received.</span><span lang="en">High drop-off on the registration page: The form is too complex or verification codes aren't being received.</span></li>
+<li><span lang="id">Drop-off at payment method selection: Too few payment options or slow redirect loading.</span><span lang="en">Drop-off at payment method selection: Too few payment options or slow redirect loading.</span></li>
+</ul>
+<p class="reveal"><span lang="id">Investing effort in optimizing the narrowest part of the funnel typically yields the greatest returns.</span><span lang="en">Investing effort in optimizing the narrowest part of the funnel typically yields the greatest returns.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Retention Analysis: The "Hardcore" Health Check for Your Product</span><span lang="en">4. Retention Analysis: The "Hardcore" Health Check for Your Product</span></h2>
+<p class="reveal"><span lang="id">> Retention is the primary gold standard for product value. If user acquisition is filling a bucket with water, retention is checking whether the bucket leaks. If you only know how to look at total visits (traffic) but can't analyze retention (keeping users), you can't determine whether the product is growing healthily or playing a numbers game destined to collapse.</span><span lang="en">> Retention is the primary gold standard for product value. If user acquisition is filling a bucket with water, retention is checking whether the bucket leaks. If you only know how to look at total visits (traffic) but can't analyze retention (keeping users), you can't determine whether the product is growing healthily or playing a numbers game destined to collapse.</span></p>
+<p class="reveal"><span lang="id">User growth doesn't equal success — retaining users is the core value. Retention rate measures the proportion of users who return after a specific time period.</span><span lang="en">User growth doesn't equal success — retaining users is the core value. Retention rate measures the proportion of users who return after a specific time period.</span></p>
+<p class="reveal"><span lang="id"><RetentionAnalysisDemo /></span><span lang="en"><RetentionAnalysisDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Core Time Windows</span><span lang="en">4.1 Core Time Windows</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Day 1 Retention</b>: Focuses on "first impression." Did users perceive the core value within 24 hours of their first visit?</span><span lang="en"><b>Day 1 Retention</b>: Focuses on "first impression." Did users perceive the core value within 24 hours of their first visit?</span></li>
+<li><span lang="id"><b>Day 7 Retention</b>: Focuses on "habit formation." Did users develop a pattern of periodic usage within the first week?</span><span lang="en"><b>Day 7 Retention</b>: Focuses on "habit formation." Did users develop a pattern of periodic usage within the first week?</span></li>
+<li><span lang="id"><b>Day 30 Retention</b>: Focuses on "long-term stickiness." It determines the product's survival ceiling.</span><span lang="en"><b>Day 30 Retention</b>: Focuses on "long-term stickiness." It determines the product's survival ceiling.</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Retention Curve Shapes: Determining PMF</span><span lang="en">4.2 Retention Curve Shapes: Determining PMF</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Continuous decline to zero</b>: The product doesn't solve user pain points, or it's acquiring the wrong user segments.</span><span lang="en"><b>Continuous decline to zero</b>: The product doesn't solve user pain points, or it's acquiring the wrong user segments.</span></li>
+<li><span lang="id"><b>Stabilization (long tail)</b>: The product has achieved <b>PMF (Product-Market Fit)</b>, possessing a group of loyal, sticky users and a foundation for scaled growth.</span><span lang="en"><b>Stabilization (long tail)</b>: The product has achieved <b>PMF (Product-Market Fit)</b>, possessing a group of loyal, sticky users and a foundation for scaled growth.</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Conclusion: Building a Scientific Data Intuition</span><span lang="en">5. Conclusion: Building a Scientific Data Intuition</span></h2>
+<p class="reveal"><span lang="id">Excellent analysts should possess critical thinking and not be misled by appearances:</span><span lang="en">Excellent analysts should possess critical thinking and not be misled by appearances:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Look at distributions, not just means</b>: Consider the variability and outliers behind the data.</span><span lang="en"><b>Look at distributions, not just means</b>: Consider the variability and outliers behind the data.</span></li>
+<li><span lang="id"><b>Look at segments, not just totals</b>: Use multi-dimensional aggregation (Group By) to restore the real picture.</span><span lang="en"><b>Look at segments, not just totals</b>: Use multi-dimensional aggregation (Group By) to restore the real picture.</span></li>
+<li><span lang="id"><b>Look at trends, not just snapshots</b>: Observe the product's long-term health through retention curves.</span><span lang="en"><b>Look at trends, not just snapshots</b>: Observe the product's long-term health through retention curves.</span></li>
+<li><span lang="id"><b>Find breakpoints rather than optimizing blindly</b>: Use funnels to pinpoint the real business bottlenecks.</span><span lang="en"><b>Find breakpoints rather than optimizing blindly</b>: Use funnels to pinpoint the real business bottlenecks.</span></li>
+</ul>
+<p class="reveal"><span lang="id">The goal of data analysis is not to generate pretty reports, but to minimize "uncertainty" and make evidence-based, informed decisions.</span><span lang="en">The goal of data analysis is not to generate pretty reports, but to minimize "uncertainty" and make evidence-based, informed decisions.</span></p>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../5-data/ab-testing/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">5-data/ab-testing</span><span lang="en">5-data/ab-testing</span></b></a>
+      <a class="next" href="../../5-data/data-governance/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">5-data/data-governance</span><span lang="en">5-data/data-governance</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

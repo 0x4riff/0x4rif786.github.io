@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Data Representation Principles: Encoding, Storage, and Transmission — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Data Representation Principles: Encoding, Storage, and Transmission. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/1-computer-fundamentals/data-encoding-storage/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Data Representation Principles: Encoding, Storage, and Transmission</span><span lang="en">Data Representation Principles: Encoding, Storage, and Transmission</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Data Representation Principles: Encoding, Storage, and Transmission</span><span lang="en">Data Representation Principles: Encoding, Storage, and Transmission</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Data Representation Principles: Encoding, Storage, and Transmission.</span><span lang="en">Ensiklopedia VibeKoding: Data Representation Principles: Encoding, Storage, and Transmission.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">When you send a photo to a friend, post a WeChat message, or download a multi-GB game, how does that information travel across half the globe and appear intact on your screen? This chapter revolves around a question that often puzzles beginners: <b>Why did my received file turn into garbled text?</b> Following this question, we'll thoroughly uncover the three foundational pillars of computing: <b>encoding, storage, and transmission</b>.</span><span lang="en">When you send a photo to a friend, post a WeChat message, or download a multi-GB game, how does that information travel across half the globe and appear intact on your screen? This chapter revolves around a question that often puzzles beginners: <b>Why did my received file turn into garbled text?</b> Following this question, we'll thoroughly uncover the three foundational pillars of computing: <b>encoding, storage, and transmission</b>.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn from this article?</b></span><span lang="en"><b>What will you learn from this article?</b></span></p>
+<p class="reveal"><span lang="id">After completing this chapter, you will gain:</span><span lang="en">After completing this chapter, you will gain:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Garbled text troubleshooting</b>: When encountering "file opens as garbled text," you'll be able to analyze the cause from an encoding perspective rather than simply assuming "the file is corrupted"</span><span lang="en"><b>Garbled text troubleshooting</b>: When encountering "file opens as garbled text," you'll be able to analyze the cause from an encoding perspective rather than simply assuming "the file is corrupted"</span></li>
+<li><span lang="id"><b>Cross-platform awareness</b>: When handling data exchange, you'll know why encoding formats and byte order matter</span><span lang="en"><b>Cross-platform awareness</b>: When handling data exchange, you'll know why encoding formats and byte order matter</span></li>
+<li><span lang="id"><b>Encoding worldview</b>: Understand how computers represent everything in the world using 0s and 1s — from text to images to complex objects</span><span lang="en"><b>Encoding worldview</b>: Understand how computers represent everything in the world using 0s and 1s — from text to images to complex objects</span></li>
+<li><span lang="id"><b>Foundation for further learning</b>: Build a foundation for network protocols, file formats, and serialization technologies</span><span lang="en"><b>Foundation for further learning</b>: Build a foundation for network protocols, file formats, and serialization technologies</span></li>
+</ul>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Core Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>Character Encoding</td><td>ASCII, UTF-8, GBK</td></tr>
+<tr><td><b>Chapter 2</b></td><td>Data Storage</td><td>Binary, byte order</td></tr>
+<tr><td><b>Chapter 3</b></td><td>Data Transmission</td><td>Serialization, compression</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">Before we begin, we need to clarify a physical fact that beginners often overlook:</span><span lang="en">Before we begin, we need to clarify a physical fact that beginners often overlook:</span></p>
+<p class="reveal"><span lang="id">Computers are actually extremely "rigid." They don't recognize Chinese characters, don't understand colors, and can't comprehend Jay Chou's songs.</span><span lang="en">Computers are actually extremely "rigid." They don't recognize Chinese characters, don't understand colors, and can't comprehend Jay Chou's songs.</span></p>
+<p class="reveal"><span lang="id">At their lowest level, they consist of countless tiny semiconductor switches, and <b>they can only repeatedly determine "on (1)" or "off (0)."</b></span><span lang="en">At their lowest level, they consist of countless tiny semiconductor switches, and <b>they can only repeatedly determine "on (1)" or "off (0)."</b></span></p>
+<p class="reveal"><span lang="id">Since computers only understand 0s and 1s, how do we make them display colorful images and complex text?</span><span lang="en">Since computers only understand 0s and 1s, how do we make them display colorful images and complex text?</span></p>
+<p class="reveal"><span lang="id">The answer is: <b>we create a "codebook."</b></span><span lang="en">The answer is: <b>we create a "codebook."</b></span></p>
+<p class="reveal"><span lang="id">We agree with the computer: if the underlying electrical signal sends <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">01000001</code>, it should draw the English letter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">A</code> on screen; if it sends another signal sequence, it should display the color red.</span><span lang="en">We agree with the computer: if the underlying electrical signal sends <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">01000001</code>, it should draw the English letter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">A</code> on screen; if it sends another signal sequence, it should display the color red.</span></p>
+<p class="reveal"><span lang="id">This <b>process of creating and using a codebook for back-and-forth translation is called "Encoding."</b></span><span lang="en">This <b>process of creating and using a codebook for back-and-forth translation is called "Encoding."</b></span></p>
+<p class="reveal"><span lang="id">Once you understand the logical starting point that "everything in a computer is essentially code," you can instantly understand the most common spooky phenomenon — garbled text — and how it's produced.</span><span lang="en">Once you understand the logical starting point that "everything in a computer is essentially code," you can instantly understand the most common spooky phenomenon — garbled text — and how it's produced.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. Introduction: The Significance of Data Representation</span><span lang="en">0. Introduction: The Significance of Data Representation</span></h2>
+<p class="reveal"><span lang="id">Imagine you receive an important document from a colleague. You double-click to open it, and it's full of strange text like "浣犲ソ" or "ä½ å¥½."</span><span lang="en">Imagine you receive an important document from a colleague. You double-click to open it, and it's full of strange text like "浣犲ソ" or "ä½ å¥½."</span></p>
+<p class="reveal"><span lang="id">Your first instinct is probably: was the file corrupted during transmission? Was there packet loss?</span><span lang="en">Your first instinct is probably: was the file corrupted during transmission? Was there packet loss?</span></p>
+<p class="reveal"><span lang="id">But in reality, the vast majority of so-called "file corruption" has only one true cause — <b>your computer "used the wrong reading rules."</b></span><span lang="en">But in reality, the vast majority of so-called "file corruption" has only one true cause — <b>your computer "used the wrong reading rules."</b></span></p>
+<p class="reveal"><span lang="id"><b>Try it out below</b>:</span><span lang="en"><b>Try it out below</b>:</span></p>
+<p class="reveal"><span lang="id">Try switching between different "decoding codebooks" in the simulator below to read the same underlying byte sequence.</span><span lang="en">Try switching between different "decoding codebooks" in the simulator below to read the same underlying byte sequence.</span></p>
+<p class="reveal"><span lang="id"><GarbledTextDemo /></span><span lang="en"><GarbledTextDemo /></span></p>
+<p class="reveal"><span lang="id"><b>Core Insight: Mismatched Codebooks</b></span><span lang="en"><b>Core Insight: Mismatched Codebooks</b></span></p>
+<p class="reveal"><span lang="id">Bytes (sequences of 0s and 1s) have no inherent meaning on their own. It's the <b>encoding rules</b> devised by humans that give them meaning.</span><span lang="en">Bytes (sequences of 0s and 1s) have no inherent meaning on their own. It's the <b>encoding rules</b> devised by humans that give them meaning.</span></p>
+<p class="reveal"><span lang="id">This is like a string of Morse code "dit dit dah." If you look it up in a Chinese telegraph codebook, it's one character; if you look it up in a US military codebook, it's a different character.</span><span lang="en">This is like a string of Morse code "dit dit dah." If you look it up in a Chinese telegraph codebook, it's one character; if you look it up in a US military codebook, it's a different character.</span></p>
+<p class="reveal"><span lang="id"><b>The sender used the UTF-8 codebook to translate Chinese characters into numbers and sent them to you. If you insist on using the GBK codebook to interpret those numbers, what you get is of course all garbled text.</b></span><span lang="en"><b>The sender used the UTF-8 codebook to translate Chinese characters into numbers and sent them to you. If you insist on using the GBK codebook to interpret those numbers, what you get is of course all garbled text.</b></span></p>
+<p class="reveal"><span lang="id">To thoroughly understand why undamaged data becomes garbled, we need to understand the complete chain of data processing. That is, the "life cycle" of data: <b>encoding</b>, <b>storage</b>, <b>transmission</b>.</span><span lang="en">To thoroughly understand why undamaged data becomes garbled, we need to understand the complete chain of data processing. That is, the "life cycle" of data: <b>encoding</b>, <b>storage</b>, <b>transmission</b>.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Data Encoding: The Digital Representation of Everything</span><span lang="en">1. Data Encoding: The Digital Representation of Everything</span></h2>
+<p class="reveal"><span lang="id">Simply put:</span><span lang="en">Simply put:</span></p>
+<p class="reveal"><span lang="id">> <b>Data encoding</b> is the creation of a "bidirectional translation dictionary" that maps the diverse and complex information of the real world (text, colors, sounds) into the 0s and 1s that computers can understand.</span><span lang="en">> <b>Data encoding</b> is the creation of a "bidirectional translation dictionary" that maps the diverse and complex information of the real world (text, colors, sounds) into the 0s and 1s that computers can understand.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 Turning Text into Numbers: From ASCII to Unicode</span><span lang="en">1.1 Turning Text into Numbers: From ASCII to Unicode</span></h3>
+<p class="reveal"><span lang="id">Every time we type in WeChat, with each key press, the computer is secretly doing one thing: <b>table lookup and replacement.</b></span><span lang="en">Every time we type in WeChat, with each key press, the computer is secretly doing one thing: <b>table lookup and replacement.</b></span></p>
+<p class="reveal"><span lang="id"><b>Phase 1: ASCII's Small World</b></span><span lang="en"><b>Phase 1: ASCII's Small World</b></span></p>
+<p class="reveal"><span lang="id">When computers were first invented, Americans thought the world only had 26 English letters, digits, and some punctuation marks, so they created a very thin codebook called <b>ASCII</b>.</span><span lang="en">When computers were first invented, Americans thought the world only had 26 English letters, digits, and some punctuation marks, so they created a very thin codebook called <b>ASCII</b>.</span></p>
+<p class="reveal"><span lang="id">It defined only 128 symbols, such as specifying that the number <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">65</code> represents the uppercase letter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">A</code>. Since there are so few characters, the space of <b>1 byte (equal to 8 bits)</b> can accommodate 256 variations — more than enough.</span><span lang="en">It defined only 128 symbols, such as specifying that the number <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">65</code> represents the uppercase letter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">A</code>. Since there are so few characters, the space of <b>1 byte (equal to 8 bits)</b> can accommodate 256 variations — more than enough.</span></p>
+<p class="reveal"><span lang="id"><b>Phase 2: The Warring States Period of Encodings</b></span><span lang="en"><b>Phase 2: The Warring States Period of Encodings</b></span></p>
+<p class="reveal"><span lang="id">But later, computers went global. People realized: <b>Chinese has tens of thousands of characters, Japanese has kana — 1 byte simply can't hold them all!</b></span><span lang="en">But later, computers went global. People realized: <b>Chinese has tens of thousands of characters, Japanese has kana — 1 byte simply can't hold them all!</b></span></p>
+<p class="reveal"><span lang="id">So China created the GBK codebook (using 2 bytes to store one Chinese character), Japan created Shift_JIS... the world descended into chaos. A webpage made in China, when sent to an American client whose computer didn't have the GBK dictionary, would open as garbled text.</span><span lang="en">So China created the GBK codebook (using 2 bytes to store one Chinese character), Japan created Shift_JIS... the world descended into chaos. A webpage made in China, when sent to an American client whose computer didn't have the GBK dictionary, would open as garbled text.</span></p>
+<p class="reveal"><span lang="id"><b>Phase 3: The Unification of Unicode</b></span><span lang="en"><b>Phase 3: The Unification of Unicode</b></span></p>
+<p class="reveal"><span lang="id">Finally, the great minds of the computing world sat down together and said: "Let's stop doing our own thing. Let's create a super dictionary that includes every symbol on Earth!" This is the famous <b>Unicode</b>. It assigns a unique number to every character in the world — even every Emoji you use daily.</span><span lang="en">Finally, the great minds of the computing world sat down together and said: "Let's stop doing our own thing. Let's create a super dictionary that includes every symbol on Earth!" This is the famous <b>Unicode</b>. It assigns a unique number to every character in the world — even every Emoji you use daily.</span></p>
+<p class="reveal"><span lang="id">And <b>UTF-8</b>, which you've probably heard of, is currently the most popular "storage rule" for the Unicode dictionary. Its cleverest feature is being <b>variable-length</b>: English characters use only 1 byte, Chinese characters use 3 bytes, making it very space-efficient.</span><span lang="en">And <b>UTF-8</b>, which you've probably heard of, is currently the most popular "storage rule" for the Unicode dictionary. Its cleverest feature is being <b>variable-length</b>: English characters use only 1 byte, Chinese characters use 3 bytes, making it very space-efficient.</span></p>
+<p class="reveal"><span lang="id"><b>Try it out below</b>:</span><span lang="en"><b>Try it out below</b>:</span></p>
+<p class="reveal"><span lang="id">Type any mix of Chinese, English, or Emoji in the input box below (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">你好 Hello</code>), and see how the computer "looks up the table" to allocate storage space.</span><span lang="en">Type any mix of Chinese, English, or Emoji in the input box below (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">你好 Hello</code>), and see how the computer "looks up the table" to allocate storage space.</span></p>
+<p class="reveal"><span lang="id"><CharacterEncodingExplorer /></span><span lang="en"><CharacterEncodingExplorer /></span></p>
+<p class="reveal"><span lang="id"><b>Surprising discoveries</b>:</span><span lang="en"><b>Surprising discoveries</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">An English letter takes only <b>1 byte</b> in UTF-8.</span><span lang="en">An English letter takes only <b>1 byte</b> in UTF-8.</span></li>
+<li><span lang="id">A typical Chinese character takes <b>3 bytes</b>.</span><span lang="en">A typical Chinese character takes <b>3 bytes</b>.</span></li>
+<li><span lang="id">An Emoji (🎉) requires <b>4 bytes</b>!</span><span lang="en">An Emoji (🎉) requires <b>4 bytes</b>!</span></li>
+</ul>
+<p class="reveal"><span lang="id">> <b>Fun fact</b>: Why do many people feel that sending a text message of the same length allows much more English text than Chinese? Because in the underlying electrical signal sequence, the physical size of Chinese characters is three times that of English!</span><span lang="en">> <b>Fun fact</b>: Why do many people feel that sending a text message of the same length allows much more English text than Chinese? Because in the underlying electrical signal sequence, the physical size of Chinese characters is three times that of English!</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 Multimedia Data Encoding</span><span lang="en">1.2 Multimedia Data Encoding</span></h3>
+<p class="reveal"><span lang="id">Text can be looked up in a table, but what about the Mona Lisa's smile or Jay Chou's singing? How do they become 0s and 1s?</span><span lang="en">Text can be looked up in a table, but what about the Mona Lisa's smile or Jay Chou's singing? How do they become 0s and 1s?</span></p>
+<p class="reveal"><span lang="id">The method is the same: <b>slicing and mapping.</b></span><span lang="en">The method is the same: <b>slicing and mapping.</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Image encoding</b>:</span><span lang="en"><b>Image encoding</b>:</span></li>
+</ul>
+<p class="reveal"><span lang="id">Zoom into a photo infinitely, and it's actually composed of millions of tiny glowing squares (pixels). We just need to assign a number to each color (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">#FF0000</code> for red), then store the numbers for millions of squares. The photo becomes numbers.</span><span lang="en">Zoom into a photo infinitely, and it's actually composed of millions of tiny glowing squares (pixels). We just need to assign a number to each color (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">#FF0000</code> for red), then store the numbers for millions of squares. The photo becomes numbers.</span></p>
+<p class="reveal"><span lang="id"><b>Try it out below</b>: Hover over the small squares on the left canvas to see how image colors map to hexadecimal codes.</span><span lang="en"><b>Try it out below</b>: Hover over the small squares on the left canvas to see how image colors map to hexadecimal codes.</span></p>
+<p class="reveal"><span lang="id"><ImageEncodingDemo /></span><span lang="en"><ImageEncodingDemo /></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Audio encoding</b>:</span><span lang="en"><b>Audio encoding</b>:</span></li>
+</ul>
+<p class="reveal"><span lang="id">Sound is essentially vibrations of air. If we measure the height of this wave 44,100 times per second (sampling) and record the height values, the continuous sound wave becomes a discrete array of numbers.</span><span lang="en">Sound is essentially vibrations of air. If we measure the height of this wave 44,100 times per second (sampling) and record the height values, the continuous sound wave becomes a discrete array of numbers.</span></p>
+<p class="reveal"><span lang="id"><b>Try it out below</b>: Drag the slider to see how a continuous analog sound wave gets "sliced" into digital audio.</span><span lang="en"><b>Try it out below</b>: Drag the slider to see how a continuous analog sound wave gets "sliced" into digital audio.</span></p>
+<p class="reveal"><span lang="id"><AudioEncodingDemo /></span><span lang="en"><AudioEncodingDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Data Storage: Persistence Before Transmission</span><span lang="en">2. Data Storage: Persistence Before Transmission</span></h2>
+<p class="reveal"><span lang="id">After data is encoded and ready to be sent to someone else, it must first be placed on the computer's physical media. This brings up an unavoidable hardware law.</span><span lang="en">After data is encoded and ready to be sent to someone else, it must first be placed on the computer's physical media. This brings up an unavoidable hardware law.</span></p>
+<p class="reveal"><span lang="id">You might think: <b>"Since everything needs to be stored, why not just store everything in the fastest read/write location?"</b></span><span lang="en">You might think: <b>"Since everything needs to be stored, why not just store everything in the fastest read/write location?"</b></span></p>
+<p class="reveal"><span lang="id">However, in the hardware world, there's an eternal curse of not being able to have your cake and eat it too: <b>faster storage media are typically more expensive to manufacture and have smaller capacities.</b></span><span lang="en">However, in the hardware world, there's an eternal curse of not being able to have your cake and eat it too: <b>faster storage media are typically more expensive to manufacture and have smaller capacities.</b></span></p>
+<p class="reveal"><span lang="id">To get the fastest possible computer operation with the least money, computer scientists designed the <b>storage hierarchy</b> (also known as the storage pyramid).</span><span lang="en">To get the fastest possible computer operation with the least money, computer scientists designed the <b>storage hierarchy</b> (also known as the storage pyramid).</span></p>
+<p class="reveal"><span lang="id"><b>Try it out below</b>:</span><span lang="en"><b>Try it out below</b>:</span></p>
+<p class="reveal"><span lang="id">Click on different levels of the pyramid to see how modern computers carefully manage costs.</span><span lang="en">Click on different levels of the pyramid to see how modern computers carefully manage costs.</span></p>
+<p class="reveal"><span lang="id"><StoragePyramidDemo /></span><span lang="en"><StoragePyramidDemo /></span></p>
+<p class="reveal"><span lang="id"><b>Core Insight: The Operating System's Porter Philosophy</b></span><span lang="en"><b>Core Insight: The Operating System's Porter Philosophy</b></span></p>
+<p class="reveal"><span lang="id">There is no perfect storage device. Therefore, the operating system (like Windows, macOS) acts like an extremely clever, tireless warehouse manager:</span><span lang="en">There is no perfect storage device. Therefore, the operating system (like Windows, macOS) acts like an extremely clever, tireless warehouse manager:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">It stuffs massive amounts of movies and games into the slow but large (and cheap) warehouse — <b>SSD or HDD</b>.</span><span lang="en">It stuffs massive amounts of movies and games into the slow but large (and cheap) warehouse — <b>SSD or HDD</b>.</span></li>
+<li><span lang="id">When you want to play a game, it quickly moves the relevant high-resolution texture files from the hard drive to the extremely fast but capacity-limited workbench — <b>RAM</b>.</span><span lang="en">When you want to play a game, it quickly moves the relevant high-resolution texture files from the hard drive to the extremely fast but capacity-limited workbench — <b>RAM</b>.</span></li>
+<li><span lang="id">When you close the game, it clears the RAM to make room on the workbench for other files.</span><span lang="en">When you close the game, it clears the RAM to make room on the workbench for other files.</span></li>
+</ul>
+<p class="reveal"><span lang="id">> <b>Aha moment</b>: When you play a large open-world game and encounter long black screens during scene transitions (loading screens), it's essentially because the hard drive warehouse is too slow. The porter (the OS) is working frantically to move the next map's data to the RAM workbench.</span><span lang="en">> <b>Aha moment</b>: When you play a large open-world game and encounter long black screens during scene transitions (loading screens), it's essentially because the hard drive warehouse is too slow. The porter (the OS) is working frantically to move the next map's data to the RAM workbench.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Data Transmission: Cross-Device Data Transfer</span><span lang="en">3. Data Transmission: Cross-Device Data Transfer</span></h2>
+<p class="reveal"><span lang="id">After data is encoded and stored in memory, the next step is sending it to your friend.</span><span lang="en">After data is encoded and stored in memory, the next step is sending it to your friend.</span></p>
+<p class="reveal"><span lang="id">> <b>Data transmission</b> is the process of sending electrical signals (or optical signals) representing 0s and 1s through network cables, fiber optics, or radio waves, accurately from one machine to another.</span><span lang="en">> <b>Data transmission</b> is the process of sending electrical signals (or optical signals) representing 0s and 1s through network cables, fiber optics, or radio waves, accurately from one machine to another.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Hardware and LAN Transmission: The Physical Limit of a Wire</span><span lang="en">3.1 Hardware and LAN Transmission: The Physical Limit of a Wire</span></h3>
+<p class="reveal"><span lang="id">Inside a computer case, or between two computers that are very close together, we face a <b>pure physical challenge</b>.</span><span lang="en">Inside a computer case, or between two computers that are very close together, we face a <b>pure physical challenge</b>.</span></p>
+<p class="reveal"><span lang="id">Many people's first idea is: "One wire sends one signal at a time, so if I connect 8 wires in parallel, won't the speed be 8 times faster?"</span><span lang="en">Many people's first idea is: "One wire sends one signal at a time, so if I connect 8 wires in parallel, won't the speed be 8 times faster?"</span></p>
+<p class="reveal"><span lang="id">This was the thinking behind the <b>parallel transmission</b> used in early hard drive connections.</span><span lang="en">This was the thinking behind the <b>parallel transmission</b> used in early hard drive connections.</span></p>
+<p class="reveal"><span lang="id">However, today's phone Type-C ports, external USB connections, and internal PCIe interfaces on motherboards all use <b>serial transmission</b> (with only one main channel sending data).</span><span lang="en">However, today's phone Type-C ports, external USB connections, and internal PCIe interfaces on motherboards all use <b>serial transmission</b> (with only one main channel sending data).</span></p>
+<p class="reveal"><span lang="id"><b>Try it out below</b>:</span><span lang="en"><b>Try it out below</b>:</span></p>
+<p class="reveal"><span lang="id">Compare the animations of serial and parallel transmission.</span><span lang="en">Compare the animations of serial and parallel transmission.</span></p>
+<p class="reveal"><span lang="id"><DataTransmissionDemo /></span><span lang="en"><DataTransmissionDemo /></span></p>
+<p class="reveal"><span lang="id"><b>Why did "one small road" beat the "eight-lane highway"?</b></span><span lang="en"><b>Why did "one small road" beat the "eight-lane highway"?</b></span></p>
+<p class="reveal"><span lang="id">At low speeds, 8 wires are indeed better. But when we need to send billions of signals per second, problems arise:</span><span lang="en">At low speeds, 8 wires are indeed better. But when we need to send billions of signals per second, problems arise:</span></p>
+<p class="reveal"><span lang="id">The weak currents on parallel wires create strong electromagnetic interference with each other (crosstalk). Moreover, you simply cannot guarantee that 8 signals sent simultaneously from the transmitter will all arrive at the finish line at <b>exactly the same time</b>. If even one wire is slightly slower due to impurities and resistance, the 8 bits combined into one byte are completely scrambled.</span><span lang="en">The weak currents on parallel wires create strong electromagnetic interference with each other (crosstalk). Moreover, you simply cannot guarantee that 8 signals sent simultaneously from the transmitter will all arrive at the finish line at <b>exactly the same time</b>. If even one wire is slightly slower due to impurities and resistance, the 8 bits combined into one byte are completely scrambled.</span></p>
+<p class="reveal"><span lang="id">So rather than spending a fortune trying to equalize 8 race tracks, it's better to pour all technical resources into 1 race car and push it to light speed. This is the physical truth behind serial interfaces' dominance.</span><span lang="en">So rather than spending a fortune trying to equalize 8 race tracks, it's better to pour all technical resources into 1 race car and push it to light speed. This is the physical truth behind serial interfaces' dominance.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 WAN and Internet Transmission: The Art of Loss-Proof Delivery Across Oceans</span><span lang="en">3.2 WAN and Internet Transmission: The Art of Loss-Proof Delivery Across Oceans</span></h3>
+<p class="reveal"><span lang="id">What if your data isn't going to a graphics card one inch away inside the case, but to a server in the United States on the other side of the ocean?</span><span lang="en">What if your data isn't going to a graphics card one inch away inside the case, but to a server in the United States on the other side of the ocean?</span></p>
+<p class="reveal"><span lang="id">A single continuous wire is impossible. Data must traverse fiber optic cables, submarine stations, and countless aging routers. At this point, the challenge is no longer physical limits but <b>fault-tolerance and preservation</b>.</span><span lang="en">A single continuous wire is impossible. Data must traverse fiber optic cables, submarine stations, and countless aging routers. At this point, the challenge is no longer physical limits but <b>fault-tolerance and preservation</b>.</span></p>
+<p class="reveal"><span lang="id">When you send a 1GB large video via WeChat, the underlying logic is much like an international move — you can't just throw the entire container at the postal service.</span><span lang="en">When you send a 1GB large video via WeChat, the underlying logic is much like an international move — you can't just throw the entire container at the postal service.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Packetization</b>: The network slices the video into tens of thousands of envelope-sized "packets" (typically 1500 bytes each).</span><span lang="en"><b>Packetization</b>: The network slices the video into tens of thousands of envelope-sized "packets" (typically 1500 bytes each).</span></li>
+<li><span lang="id"><b>Checksum</b>: To prevent a submarine fiber optic cable from being bitten by a shark, causing a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">0</code> in some packet to flip to a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1</code>, the system calculates a "fingerprint code" using a complex mathematical formula and attaches it to the envelope before sending.</span><span lang="en"><b>Checksum</b>: To prevent a submarine fiber optic cable from being bitten by a shark, causing a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">0</code> in some packet to flip to a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1</code>, the system calculates a "fingerprint code" using a complex mathematical formula and attaches it to the envelope before sending.</span></li>
+<li><span lang="id"><b>TCP Retransmission and Acknowledgment</b>: The recipient receives the envelope and verifies the fingerprint code themselves. If it doesn't match (damaged en route), or if the sequence number jumps from 31 to 33 (packet loss), they shout across the network: <b>"I didn't receive #32, please resend #32!"</b></span><span lang="en"><b>TCP Retransmission and Acknowledgment</b>: The recipient receives the envelope and verifies the fingerprint code themselves. If it doesn't match (damaged en route), or if the sequence number jumps from 31 to 33 (packet loss), they shout across the network: <b>"I didn't receive #32, please resend #32!"</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">Thanks to this extremely rigorous packet-slicing and verification mechanism called <b>TCP (Transmission Control Protocol)</b> at the lowest level, even if you download a WeChat file in a basement or on highly unstable WiFi for half an hour, the moment the download completes, the file is guaranteed to be 100% intact with 0 corruption.</span><span lang="en">Thanks to this extremely rigorous packet-slicing and verification mechanism called <b>TCP (Transmission Control Protocol)</b> at the lowest level, even if you download a WeChat file in a basement or on highly unstable WiFi for half an hour, the moment the download completes, the file is guaranteed to be 100% intact with 0 corruption.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Case Study: End-to-End Pipeline from Image Capture to Network Sharing</span><span lang="en">4. Case Study: End-to-End Pipeline from Image Capture to Network Sharing</span></h2>
+<p class="reveal"><span lang="id">Earlier, we covered "how to translate into numbers (encoding)," "where to store it (storage)," and "how to complete the journey intact (transmission)" as separate modules.</span><span lang="en">Earlier, we covered "how to translate into numbers (encoding)," "where to store it (storage)," and "how to complete the journey intact (transmission)" as separate modules.</span></p>
+<p class="reveal"><span lang="id">Now let's put these building blocks together and immersively watch an incredibly ordinary everyday operation: <b>taking a photo that automatically backs up to the cloud.</b></span><span lang="en">Now let's put these building blocks together and immersively watch an incredibly ordinary everyday operation: <b>taking a photo that automatically backs up to the cloud.</b></span></p>
+<p class="reveal"><span lang="id">In the one second after you press the shutter, an incredibly grand digital war has already erupted inside your phone.</span><span lang="en">In the one second after you press the shutter, an incredibly grand digital war has already erupted inside your phone.</span></p>
+<p class="reveal"><span lang="id"><b>Try it out below</b>:</span><span lang="en"><b>Try it out below</b>:</span></p>
+<p class="reveal"><span lang="id">Click "Execute this step" to track the thrilling complete life journey of this data.</span><span lang="en">Click "Execute this step" to track the thrilling complete life journey of this data.</span></p>
+<p class="reveal"><span lang="id"><PhotoUploadJourneyDemo /></span><span lang="en"><PhotoUploadJourneyDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Terminology Reference</span><span lang="en">5. Terminology Reference</span></h2>
+<p class="reveal"><span lang="id">When reading other documentation, you may encounter the following jargon. Here's a quick reference table:</span><span lang="en">When reading other documentation, you may encounter the following jargon. Here's a quick reference table:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Term / Abbreviation</th><th>Description</th></tr>
+<tr><td><b>Bit (b)</b></td><td>The smallest unit in the computing world — can only be 0 or 1.</td></tr>
+<tr><td><b>Byte (B)</b></td><td>8 Bits bundled together make one Byte. It's the most basic unit of measurement for file size.</td></tr>
+<tr><td><b>Character Set</b></td><td>Like a "dictionary's table of contents" — specifies that a certain character exists, without defining exactly how it's stored on disk.</td></tr>
+<tr><td><b>Encoding</b></td><td>The specific "storage rules" that determine which bytes correspond to a character in the dictionary (e.g., UTF-8).</td></tr>
+<tr><td><b>RAM</b></td><td>Extremely fast workspace that clears when power is lost. Your phone's 8G/16G RAM refers to this.</td></tr>
+<tr><td><b>SSD</b></td><td>The modern computer's warehouse for permanent data storage, based on flash memory chips, tens of times faster than old mechanical hard drives.</td></tr>
+<tr><td><b>Serial / Parallel</b></td><td>Serial is one channel with data racing through in single file; parallel is multiple channels advancing side by side (but not suitable for extremely high frequencies).</td></tr>
+<tr><td><b>Checksum</b></td><td>A verification code attached during data transmission. The recipient calculates it, and if it matches what's written on the package, the data is intact.</td></tr>
+<tr><td><b>TCP</b></td><td>The cornerstone protocol of the internet. Responsible for slicing large files, adding sequence numbers, and retransmitting lost packets to ensure data is delivered 100% intact.</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary</span><span lang="en">Summary</span></h2>
+<p class="reveal"><span lang="id">The many questions raised at the beginning of this article — now you have the answers from a system-level perspective:</span><span lang="en">The many questions raised at the beginning of this article — now you have the answers from a system-level perspective:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Why does the same file become garbled when you receive it?</b></span><span lang="en"><b>Why does the same file become garbled when you receive it?</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">The data isn't corrupted — your reading software just picked the wrong codebook (an encoding issue).</span><span lang="en">The data isn't corrupted — your reading software just picked the wrong codebook (an encoding issue).</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Why are most cables behind computers now a single small Type-C, yet faster than the wide cables from before?</b></span><span lang="en"><b>Why are most cables behind computers now a single small Type-C, yet faster than the wide cables from before?</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">Because before it was several horse carts running in parallel and easily colliding (parallel), and now it's a bullet train racing at top speed on a dedicated track (serial).</span><span lang="en">Because before it was several horse carts running in parallel and easily colliding (parallel), and now it's a bullet train racing at top speed on a dedicated track (serial).</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Why do large games have long black loading screens when switching scenes?</b></span><span lang="en"><b>Why do large games have long black loading screens when switching scenes?</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">Because they need to frantically move massive files of dozens of GB from the slow hard drive (storage area) to the fast but expensive RAM (core workspace).</span><span lang="en">Because they need to frantically move massive files of dozens of GB from the slow hard drive (storage area) to the fast but expensive RAM (core workspace).</span></p>
+<p class="reveal"><span lang="id">The essence of computers is actually very simple:</span><span lang="en">The essence of computers is actually very simple:</span></p>
+<p class="reveal"><span lang="id"><b>It's simply a machine that excels at "converting" all light, shadow, and text (encoding), "storing" them on some silicon chip (storage), and then "mailing" them out as chopped-up electrical pulses (transmission).</b></span><span lang="en"><b>It's simply a machine that excels at "converting" all light, shadow, and text (encoding), "storing" them on some silicon chip (storage), and then "mailing" them out as chopped-up electrical pulses (transmission).</b></span></p>
+<p class="reveal"><span lang="id">Once you understand this cyclical process, you truly hold the key to unlocking the door to the fundamental principles of computing.</span><span lang="en">Once you understand this cyclical process, you truly hold the key to unlocking the door to the fundamental principles of computing.</span></p>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../1-computer-fundamentals/computer-organization/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">1-computer-fundamentals/computer-organization</span><span lang="en">1-computer-fundamentals/computer-organization</span></b></a>
+      <a class="next" href="../../1-computer-fundamentals/data-structures/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">1-computer-fundamentals/data-structures</span><span lang="en">1-computer-fundamentals/data-structures</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

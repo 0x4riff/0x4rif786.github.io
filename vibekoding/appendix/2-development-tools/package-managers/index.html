@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>An Introduction to Package Managers — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: An Introduction to Package Managers. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/2-development-tools/package-managers/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">An Introduction to Package Managers</span><span lang="en">An Introduction to Package Managers</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">An Introduction to Package Managers</span><span lang="en">An Introduction to Package Managers</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: An Introduction to Package Managers.</span><span lang="en">Ensiklopedia VibeKoding: An Introduction to Package Managers.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">> 💡 <b>Learning Guide</b>: You don't have to reinvent the wheel when writing code — 99% of the functionality you need has already been written and published online by someone else. A <b>package manager</b> is the tool that helps you find, download, and manage these "ready-made parts." This chapter revolves around one core question: <b>how to make code dependencies reproducible, collaborative, and maintainable?</b></span><span lang="en">> 💡 <b>Learning Guide</b>: You don't have to reinvent the wheel when writing code — 99% of the functionality you need has already been written and published online by someone else. A <b>package manager</b> is the tool that helps you find, download, and manage these "ready-made parts." This chapter revolves around one core question: <b>how to make code dependencies reproducible, collaborative, and maintainable?</b></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Package Managers Across Language/System Ecosystems</span><span lang="en">1. Package Managers Across Language/System Ecosystems</span></h2>
+<p class="reveal"><span lang="id">Different programming languages and operating systems have their own ecosystem toolchains, but the underlying logic is exactly the same.</span><span lang="en">Different programming languages and operating systems have their own ecosystem toolchains, but the underlying logic is exactly the same.</span></p>
+<p class="reveal"><span lang="id">👇 <b>Try it out</b>: Select an ecosystem you're familiar with and explore its mainstream package management tools.</span><span lang="en">👇 <b>Try it out</b>: Select an ecosystem you're familiar with and explore its mainstream package management tools.</span></p>
+<p class="reveal"><span lang="id"><PackageManagerOverviewDemo /></span><span lang="en"><PackageManagerOverviewDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 Placement of Packagesing Come From — The Registry</span><span lang="en">1.1 Placement of Packagesing Come From — The Registry</span></h3>
+<p class="reveal"><span lang="id">Every ecosystem has a central repository behind it that stores all downloadable packages:</span><span lang="en">Every ecosystem has a central repository behind it that stores all downloadable packages:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Ecosystem</th><th>Registry</th><th>Package Count</th></tr>
+<tr><td>JavaScript</td><td>[npmjs.com](https://npmjs.com)</td><td>2 million+</td></tr>
+<tr><td>Python</td><td>[pypi.org](https://pypi.org)</td><td>500K+</td></tr>
+<tr><td>Rust</td><td>[crates.io](https://crates.io)</td><td>150K+</td></tr>
+<tr><td>Go</td><td>[pkg.go.dev](https://pkg.go.dev)</td><td>500K+</td></tr>
+<tr><td>macOS/Linux Tools</td><td>[formulae.brew.sh](https://formulae.brew.sh)</td><td>7,000+</td></tr>
+<tr><td>Windows Software</td><td>[winget.run](https://winget.run) / [chocolatey.org](https://chocolatey.org)</td><td>Tens of thousands</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 JavaScript's Big Three: npm vs yarn vs pnpm</span><span lang="en">1.2 JavaScript's Big Three: npm vs yarn vs pnpm</span></h3>
+<p class="reveal"><span lang="id">Similar functionality, with differences mainly in <b>speed and disk usage</b>:</span><span lang="en">Similar functionality, with differences mainly in <b>speed and disk usage</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Disk usage: pnpm (hard link sharing) &lt; yarn PnP (zero node_modules) &lt; npm (full copy)
+Install speed: pnpm ≈ yarn &gt; npm
+Usage: npm (most universal) &gt; pnpm (recommended for new projects) &gt; yarn (some teams)</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Recommendation</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">pnpm</code> for new projects, stick with the existing tool for existing projects, and don't switch casually.</span><span lang="en"><b>Recommendation</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">pnpm</code> for new projects, stick with the existing tool for existing projects, and don't switch casually.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.3 Windows's Big Three: winget vs Chocolatey vs Scoop</span><span lang="en">1.3 Windows's Big Three: winget vs Chocolatey vs Scoop</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th></th><th>winget</th><th>Chocolatey</th><th>Scoop</th></tr>
+<tr><td><b>Official backing</b></td><td>Microsoft official</td><td>Third-party</td><td>Third-party</td></tr>
+<tr><td><b>Requires admin</b></td><td>Partially needed</td><td>Yes</td><td><b>Not needed</b></td></tr>
+<tr><td><b>Best for</b></td><td>Daily software installation</td><td>Enterprise batch deployment</td><td>Dev tool management</td></tr>
+<tr><td><b>Package count</b></td><td>Many, growing fast</td><td>Most (10,000+)</td><td>Focused on dev tools</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Recommendation</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">winget</code> for daily use, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">scoop</code> for dev tools, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Chocolatey</code> for enterprise automation.</span><span lang="en"><b>Recommendation</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">winget</code> for daily use, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">scoop</code> for dev tools, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Chocolatey</code> for enterprise automation.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Installing Packages — What Happens Behind the Scenes</span><span lang="en">2. Installing Packages — What Happens Behind the Scenes</span></h2>
+<p class="reveal"><span lang="id">After typing <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm install axios</code>, the command line goes quiet for a few seconds, and then it's done. What exactly happened during those seconds?</span><span lang="en">After typing <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm install axios</code>, the command line goes quiet for a few seconds, and then it's done. What exactly happened during those seconds?</span></p>
+<p class="reveal"><span lang="id">👇 <b>Try it out</b>: Select a package, click "Run," and observe the full installation process.</span><span lang="en">👇 <b>Try it out</b>: Select a package, click "Run," and observe the full installation process.</span></p>
+<p class="reveal"><span lang="id"><PackageInstallDemo /></span><span lang="en"><PackageInstallDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 The Four Stages Explained</span><span lang="en">2.1 The Four Stages Explained</span></h3>
+<p class="reveal"><span lang="id"><b>① Dependency Resolution</b></span><span lang="en"><b>① Dependency Resolution</b></span></p>
+<p class="reveal"><span lang="id">The package manager first "understands" what you want to install. Take <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">axios</code> as an example — it itself depends on packages like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">follow-redirects</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">form-data</code>, etc., which also need to be installed. This process is called <b>building the dependency tree</b>.</span><span lang="en">The package manager first "understands" what you want to install. Take <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">axios</code> as an example — it itself depends on packages like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">follow-redirects</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">form-data</code>, etc., which also need to be installed. This process is called <b>building the dependency tree</b>.</span></p>
+<p class="reveal"><span lang="id"><b>② Fetch</b></span><span lang="en"><b>② Fetch</b></span></p>
+<p class="reveal"><span lang="id">Download all needed packages from the Registry (compressed <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.tgz</code> archives). Smart package managers will:</span><span lang="en">Download all needed packages from the Registry (compressed <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.tgz</code> archives). Smart package managers will:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Download multiple packages in parallel instead of waiting one by one</span><span lang="en">Download multiple packages in parallel instead of waiting one by one</span></li>
+<li><span lang="id">Check the local cache first — if there's a hit, skip the network</span><span lang="en">Check the local cache first — if there's a hit, skip the network</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>③ Link</b></span><span lang="en"><b>③ Link</b></span></p>
+<p class="reveal"><span lang="id">Extract the downloaded packages into the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">node_modules/</code> directory and set up the reference relationships.</span><span lang="en">Extract the downloaded packages into the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">node_modules/</code> directory and set up the reference relationships.</span></p>
+<p class="reveal"><span lang="id"><b>④ Write Lockfile</b></span><span lang="en"><b>④ Write Lockfile</b></span></p>
+<p class="reveal"><span lang="id">Write the <b>exact version numbers</b> from this installation into <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">package-lock.json</code> (or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">yarn.lock</code> / <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">pnpm-lock.yaml</code>).</span><span lang="en">Write the <b>exact version numbers</b> from this installation into <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">package-lock.json</code> (or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">yarn.lock</code> / <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">pnpm-lock.yaml</code>).</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Most Common Commands Cheat Sheet</span><span lang="en">2.2 Most Common Commands Cheat Sheet</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># ── JavaScript (npm) ──────────────────────────────────
+npm install              # Install all dependencies per package.json
+npm install axios        # Install a new package (production dependency)
+npm install -D jest      # Install a dev dependency (only used during development)
+npm install -g tsx       # Global install (available in any directory)
+npm uninstall axios      # Uninstall a package
+npm update               # Upgrade all packages to latest compatible versions
+npm run build            # Run scripts defined in package.json
+npx create-react-app .   # Run temporarily without installing to project
+
+# ── Python (pip) ──────────────────────────────────────
+pip install requests           # Install a package
+pip install requests==2.28.0   # Install a specific version
+pip freeze &gt; requirements.txt  # Export current dependency list
+pip install -r requirements.txt # Install from a list
+
+# ── Rust (cargo) ──────────────────────────────────────
+cargo add serde    # Add a dependency (auto-updates Cargo.toml)
+cargo build        # Build the project
+cargo test         # Run tests
+cargo run          # Run the project
+
+# ── Go (go mod) ───────────────────────────────────────
+go get github.com/gin-gonic/gin  # Add a dependency
+go mod tidy                      # Clean up dependencies (remove extras, add missing)
+go build ./...                   # Build
+
+# ── Windows (winget) ──────────────────────────────────
+winget install Git.Git           # Install software
+winget upgrade --all             # Update all installed software</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 Overview of npm scripts</span><span lang="en">2.3 Overview of npm scripts</span></h3>
+<p class="reveal"><span lang="id">The <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">scripts</code> field in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">package.json</code> is npm's built-in <b>task runner</b>:</span><span lang="en">The <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">scripts</code> field in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">package.json</code> is npm's built-in <b>task runner</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>json</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>{
+  &quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;vite&quot;,
+    &quot;build&quot;: &quot;vite build&quot;,
+    &quot;test&quot;: &quot;jest&quot;,
+    &quot;lint&quot;: &quot;eslint src/&quot;
+  }
+}</pre>
+</div>
+<p class="reveal"><span lang="id">Running: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm run dev</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm run build</code>. Benefits:</span><span lang="en">Running: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm run dev</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm run build</code>. Benefits:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Unified entry point</b>: Team members don't need to memorize underlying tool commands</span><span lang="en"><b>Unified entry point</b>: Team members don't need to memorize underlying tool commands</span></li>
+<li><span lang="id"><b>Auto environment setup</b>: Running automatically adds <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">node_modules/.bin</code> to PATH, so locally installed tools are directly usable</span><span lang="en"><b>Auto environment setup</b>: Running automatically adds <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">node_modules/.bin</code> to PATH, so locally installed tools are directly usable</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Global vs Local Installation</span><span lang="en">3. Global vs Local Installation</span></h2>
+<p class="reveal"><span lang="id">This is one of the most confusing concepts for beginners.</span><span lang="en">This is one of the most confusing concepts for beginners.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 The Difference</span><span lang="en">3.1 The Difference</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>npm install axios        # Local install: into ./node_modules/, only available in current project
+npm install -g typescript  # Global install: into system directory, available in any project/directory</pre>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th></th><th>Local Install</th><th>Global Install</th></tr>
+<tr><td><b>Location</b></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">./node_modules/</code></td><td>System-level directory (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/usr/local/lib/</code>)</td></tr>
+<tr><td><b>Best for</b></td><td>Project dependency libraries (axios, vue, react)</td><td>CLI tools (tsc, eslint, create-react-app)</td></tr>
+<tr><td><b>Version isolation</b></td><td>Each project has independent versions ✅</td><td>One version shared across the machine ⚠️</td></tr>
+<tr><td><b>Team consistency</b></td><td>Lockfile ensures consistency ✅</td><td>Different people may have different versions ⚠️</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 The Golden Rule</span><span lang="en">3.2 The Golden Rule</span></h3>
+<p class="reveal"><span lang="id">> <i></i>Library dependencies (axios, lodash, vue) should always be installed locally;</span><span lang="en">> <i></i>Library dependencies (axios, lodash, vue) should always be installed locally;</span></p>
+<p class="reveal"><span lang="id">> CLI tools (tsc, eslint) should preferably be installed locally too, invoked with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npx</code>.<i></i></span><span lang="en">> CLI tools (tsc, eslint) should preferably be installed locally too, invoked with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npx</code>.<i></i></span></p>
+<p class="reveal"><span lang="id"><b>Why are CLI tools also recommended for local installation?</b></span><span lang="en"><b>Why are CLI tools also recommended for local installation?</b></span></p>
+<p class="reveal"><span lang="id">Suppose you globally installed <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">eslint@8</code>, but Project A needs the new rules from <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">eslint@9</code> — you'd have to switch back and forth between global and project versions. Install <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">eslint</code> locally and invoke it with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npx eslint .</code>, so each project can independently configure its own version.</span><span lang="en">Suppose you globally installed <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">eslint@8</code>, but Project A needs the new rules from <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">eslint@9</code> — you'd have to switch back and forth between global and project versions. Install <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">eslint</code> locally and invoke it with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npx eslint .</code>, so each project can independently configure its own version.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 npx — Run Temporarily, Don't Pollute the Environment</span><span lang="en">3.3 npx — Run Temporarily, Don't Pollute the Environment</span></h3>
+<p class="reveal"><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npx</code> is npm's built-in package runner that lets you <b>run a package without installing it</b>:</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npx</code> is npm's built-in package runner that lets you <b>run a package without installing it</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Run create-vue without installing it, to initialize a project
+npx create-vue my-project
+
+# Run prettier without installing it, to format files
+npx prettier --write src/
+
+# Force a specific version (ignoring any installed version)
+npx typescript@5.4 tsc --version</pre>
+</div>
+<p class="reveal"><span lang="id">Python's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">uvx</code> and Rust's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">cargo run</code> also provide similar "run temporarily" capabilities:</span><span lang="en">Python's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">uvx</code> and Rust's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">cargo run</code> also provide similar "run temporarily" capabilities:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>uvx ruff check .       # Python: temporarily run the ruff checker
+cargo install ripgrep  # Rust: install globally, becomes system command rg</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. The Secret of Version Numbers — Semantic Versioning</span><span lang="en">4. The Secret of Version Numbers — Semantic Versioning</span></h2>
+<p class="reveal"><span lang="id">In <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">package.json</code>, you'll see entries like:</span><span lang="en">In <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">package.json</code>, you'll see entries like:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>json</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>{
+  &quot;dependencies&quot;: {
+    &quot;axios&quot;: &quot;^1.6.8&quot;,
+    &quot;typescript&quot;: &quot;~5.4.0&quot;
+  }
+}</pre>
+</div>
+<p class="reveal"><span lang="id">What do <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">^</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">~</code> mean here?</span><span lang="en">What do <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">^</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">~</code> mean here?</span></p>
+<p class="reveal"><span lang="id">👇 <b>Try it out</b>: Hover over the parts of a version number to understand their meaning; click range operators to see which versions are accepted.</span><span lang="en">👇 <b>Try it out</b>: Hover over the parts of a version number to understand their meaning; click range operators to see which versions are accepted.</span></p>
+<p class="reveal"><span lang="id"><DependencyTreeDemo /></span><span lang="en"><DependencyTreeDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Motivation for Noting Pin the Version</span><span lang="en">4.1 Motivation for Noting Pin the Version</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Approach</th><th>Pros</th><th>Cons</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"axios": "1.6.8"</code> (exact pin)</td><td>Fully predictable</td><td>Security patches can't auto-update</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"axios": "^1.6.8"</code> (compatible range, recommended)</td><td>Auto-get bug fixes and new features</td><td>Rarely may introduce minor incompatibilities</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"axios": "*"</code> (any version)</td><td>Always latest</td><td>Major version upgrades can completely break code</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Best practice</b>: Declare ranges with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">^</code> + pin actual versions with a lockfile — use both together.</span><span lang="en"><b>Best practice</b>: Declare ranges with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">^</code> + pin actual versions with a lockfile — use both together.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Overview of Dependency Hell</span><span lang="en">4.2 Overview of Dependency Hell</span></h3>
+<p class="reveal"><span lang="id">When you depend on 50 packages, and each of those depends on several more, the "dependency tree" can have hundreds of nodes. If two of your dependencies need <b>incompatible versions of the same library</b>, you have a "dependency conflict."</span><span lang="en">When you depend on 50 packages, and each of those depends on several more, the "dependency tree" can have hundreds of nodes. If two of your dependencies need <b>incompatible versions of the same library</b>, you have a "dependency conflict."</span></p>
+<p class="reveal"><span lang="id">How different ecosystems solve this:</span><span lang="en">How different ecosystems solve this:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>npm v3+</b>: Same major version hoisted to top level and shared; different major versions each get their own copy</span><span lang="en"><b>npm v3+</b>: Same major version hoisted to top level and shared; different major versions each get their own copy</span></li>
+<li><span lang="id"><b>pnpm</b>: Hard links + strict isolation, fundamentally preventing "phantom dependencies" (packages you can use without declaring)</span><span lang="en"><b>pnpm</b>: Hard links + strict isolation, fundamentally preventing "phantom dependencies" (packages you can use without declaring)</span></li>
+<li><span lang="id"><b>cargo (Rust)</b>: Language-level enforcement that each package can only depend on the same version, completely avoiding conflicts</span><span lang="en"><b>cargo (Rust)</b>: Language-level enforcement that each package can only depend on the same version, completely avoiding conflicts</span></li>
+<li><span lang="id"><b>go mod (Go)</b>: Minimum Version Selection (MVS) strategy, choosing the lowest version that satisfies all constraints</span><span lang="en"><b>go mod (Go)</b>: Minimum Version Selection (MVS) strategy, choosing the lowest version that satisfies all constraints</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Lockfiles — The Cornerstone of Team Collaboration</span><span lang="en">5. Lockfiles — The Cornerstone of Team Collaboration</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Motivation for needing a Lockfile</span><span lang="en">5.1 Motivation for needing a Lockfile</span></h3>
+<p class="reveal"><span lang="id">Suppose <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">package.json</code> says <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"axios": "^1.6.0"</code>:</span><span lang="en">Suppose <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">package.json</code> says <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"axios": "^1.6.0"</code>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">You install today → gets <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1.6.8</code></span><span lang="en">You install today → gets <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1.6.8</code></span></li>
+<li><span lang="id">Your teammate installs tomorrow → might get <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1.7.0</code> (released last night)</span><span lang="en">Your teammate installs tomorrow → might get <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1.7.0</code> (released last night)</span></li>
+<li><span lang="id">CI server next week → might get <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1.7.1</code></span><span lang="en">CI server next week → might get <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1.7.1</code></span></li>
+</ul>
+<p class="reveal"><span lang="id">Same code, three different results. A <b>lockfile</b> records the exact version of every package, so everyone installs identically.</span><span lang="en">Same code, three different results. A <b>lockfile</b> records the exact version of every package, so everyone installs identically.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Scenario</th><th>Command</th><th>Behavior</th></tr>
+<tr><td>Dev environment sync</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm install</code></td><td>References lockfile, doesn't upgrade versions</td></tr>
+<tr><td>CI / production deploy</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm ci</code></td><td><b>Strictly</b> follows lockfile; errors if there's a discrepancy</td></tr>
+<tr><td>Active version upgrade</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm update</code></td><td>Upgrades within allowed range, updates lockfile</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Should Lockfiles Be Committed to Git</span><span lang="en">5.2 Should Lockfiles Be Committed to Git</span></h3>
+<p class="reveal"><span lang="id"><b>Applications must commit; libraries published to npm may not.</b></span><span lang="en"><b>Applications must commit; libraries published to npm may not.</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ <b>Web apps, backend services</b>: Must commit to ensure deployment and dev environments are identical</span><span lang="en">✅ <b>Web apps, backend services</b>: Must commit to ensure deployment and dev environments are identical</span></li>
+<li><span lang="id">❌ <b>npm-published libraries</b>: Usually not committed; library users have their own lockfiles</span><span lang="en">❌ <b>npm-published libraries</b>: Usually not committed; library users have their own lockfiles</span></li>
+<li><span lang="id">✅ <b>Python projects</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">requirements.txt</code> itself acts as a lockfile and should be committed</span><span lang="en">✅ <b>Python projects</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">requirements.txt</code> itself acts as a lockfile and should be committed</span></li>
+<li><span lang="id">✅ <b>Go projects</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">go.sum</code> must be committed for integrity verification</span><span lang="en">✅ <b>Go projects</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">go.sum</code> must be committed for integrity verification</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Python Virtual Environments</span><span lang="en">6. Python Virtual Environments</span></h2>
+<p class="reveal"><span lang="id">Python has a concept that requires special attention: <b>virtual environments (venv)</b>.</span><span lang="en">Python has a concept that requires special attention: <b>virtual environments (venv)</b>.</span></p>
+<p class="reveal"><span lang="id"><b>Why are they needed?</b></span><span lang="en"><b>Why are they needed?</b></span></p>
+<p class="reveal"><span lang="id">Python installs packages <b>globally</b> by default. Your Project A needs <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">requests==2.28</code>, and Project B needs <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">requests==2.31</code> — they'll conflict.</span><span lang="en">Python installs packages <b>globally</b> by default. Your Project A needs <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">requests==2.28</code>, and Project B needs <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">requests==2.31</code> — they'll conflict.</span></p>
+<p class="reveal"><span lang="id"><b>Solution</b>: Create an independent virtual environment for each project so they don't interfere with each other.</span><span lang="en"><b>Solution</b>: Create an independent virtual environment for each project so they don't interfere with each other.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># 1. Create a virtual environment (run in project root directory)
+python -m venv .venv
+
+# 2. Activate the virtual environment
+source .venv/bin/activate        # macOS / Linux
+.venv\Scripts\activate           # Windows (Command Prompt CMD)
+.venv\Scripts\Activate.ps1       # Windows (PowerShell)
+
+# 3. After activation, pip install only affects the current virtual environment, not the global one
+pip install requests
+
+# 4. Exit the virtual environment
+deactivate</pre>
+</div>
+<p class="reveal"><span lang="id">> ⚠️ <b>Common Windows issue</b>: PowerShell blocks script execution by default. First run:</span><span lang="en">> ⚠️ <b>Common Windows issue</b>: PowerShell blocks script execution by default. First run:</span></p>
+<p class="reveal"><span lang="id">> ```powershell</span><span lang="en">> ```powershell</span></p>
+<p class="reveal"><span lang="id">> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</span><span lang="en">> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<p class="reveal"><span lang="id"><b>Modern alternatives</b>:</span><span lang="en"><b>Modern alternatives</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">conda create -n myproject python=3.11</code> — even manages the Python version itself</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">conda create -n myproject python=3.11</code> — even manages the Python version itself</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">uv venv && source .venv/bin/activate</code> — written in Rust, creates blazingly fast</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">uv venv && source .venv/bin/activate</code> — written in Rust, creates blazingly fast</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Should <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.venv</code> be committed to Git?</b></span><span lang="en"><b>Should <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.venv</code> be committed to Git?</b></span></p>
+<p class="reveal"><span lang="id">No! <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.venv</code> is generated locally and should be added to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.gitignore</code>. Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">requirements.txt</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">pyproject.toml</code> to describe dependencies.</span><span lang="en">No! <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.venv</code> is generated locally and should be added to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.gitignore</code>. Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">requirements.txt</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">pyproject.toml</code> to describe dependencies.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Common Issues Cheat Sheet</span><span lang="en">7. Common Issues Cheat Sheet</span></h2>
+<p class="reveal"><span lang="id"><b>Q: Should <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">node_modules</code> be committed to Git?</b></span><span lang="en"><b>Q: Should <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">node_modules</code> be committed to Git?</b></span></p>
+<p class="reveal"><span lang="id">No! It's typically hundreds of MB and should be added to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.gitignore</code>. With <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">package-lock.json</code>, anyone can quickly rebuild it with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm install</code>.</span><span lang="en">No! It's typically hundreds of MB and should be added to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.gitignore</code>. With <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">package-lock.json</code>, anyone can quickly rebuild it with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm install</code>.</span></p>
+<p class="reveal"><span lang="id"><b>Q: Installation fails / getting weird errors?</b></span><span lang="en"><b>Q: Installation fails / getting weird errors?</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Clear cache, delete old installation, start fresh
+npm cache clean --force
+rm -rf node_modules package-lock.json   # macOS/Linux
+rmdir /s /q node_modules &amp;&amp; del package-lock.json  # Windows CMD
+npm install</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Q: Installation is too slow?</b></span><span lang="en"><b>Q: Installation is too slow?</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Switch to a domestic mirror (recommended to write to .npmrc file, don&#039;t pollute global config)
+echo &quot;registry=https://registry.npmmirror.com&quot; &gt; .npmrc
+
+# pip can also configure mirrors
+pip install requests -i https://pypi.tuna.tsinghua.edu.cn/simple</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Q: How to handle package security vulnerabilities?</b></span><span lang="en"><b>Q: How to handle package security vulnerabilities?</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>npm audit          # Scan for known vulnerabilities
+npm audit fix      # Auto-fix compatible vulnerabilities
+npm audit fix --force  # Force upgrade (may be breaking, use with caution)</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Q: How to tell if a package is trustworthy?</b></span><span lang="en"><b>Q: How to tell if a package is trustworthy?</b></span></p>
+<p class="reveal"><span lang="id">Check on [npmjs.com](https://npmjs.com) or [bundlephobia.com](https://bundlephobia.com):</span><span lang="en">Check on [npmjs.com](https://npmjs.com) or [bundlephobia.com](https://bundlephobia.com):</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Weekly downloads (higher is more trustworthy)</span><span lang="en">Weekly downloads (higher is more trustworthy)</span></li>
+<li><span lang="id">Last update time (be cautious if not updated in 2+ years)</span><span lang="en">Last update time (be cautious if not updated in 2+ years)</span></li>
+<li><span lang="id">Number of dependencies (more dependencies = more risk)</span><span lang="en">Number of dependencies (more dependencies = more risk)</span></li>
+<li><span lang="id">GitHub Stars and issue activity</span><span lang="en">GitHub Stars and issue activity</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Q: Where does winget install software on Windows?</b></span><span lang="en"><b>Q: Where does winget install software on Windows?</b></span></p>
+<p class="reveal"><span lang="id">winget installs to system directories (requires admin) or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">%LOCALAPPDATA%\Microsoft\WindowsApps</code> by default. Scoop installs all software uniformly in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">%USERPROFILE%\scoop\apps\</code>, making it easy to manage and migrate.</span><span lang="en">winget installs to system directories (requires admin) or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">%LOCALAPPDATA%\Microsoft\WindowsApps</code> by default. Scoop installs all software uniformly in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">%USERPROFILE%\scoop\apps\</code>, making it easy to manage and migrate.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8. Terminology Reference</span><span lang="en">8. Terminology Reference</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>English Term</th><th>Chinese Translation</th><th>Explanation</th></tr>
+<tr><td><b>Package</b></td><td>包 / 库</td><td>Code modules written and published by others</td></tr>
+<tr><td><b>Registry</b></td><td>注册表 / 仓库</td><td>The central storage server for all packages (e.g., npmjs.com)</td></tr>
+<tr><td><b>Dependency</b></td><td>依赖</td><td>Other packages your project needs to run</td></tr>
+<tr><td><b>devDependency</b></td><td>开发依赖</td><td>Packages only needed during development (test frameworks, build tools, etc.)</td></tr>
+<tr><td><b>Lockfile</b></td><td>锁文件</td><td>Records exact version numbers, ensuring environment consistency</td></tr>
+<tr><td><b>SemVer</b></td><td>语义化版本</td><td>MAJOR.MINOR.PATCH version naming convention</td></tr>
+<tr><td><b>node_modules</b></td><td>模块目录</td><td>The directory where npm-installed packages are actually stored</td></tr>
+<tr><td><b>venv</b></td><td>虚拟环境</td><td>An isolated sandbox for Python project packages</td></tr>
+<tr><td><b>tarball</b></td><td>压缩包</td><td>The distribution format of packages, usually <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.tgz</code> files</td></tr>
+<tr><td><b>Hoisting</b></td><td>提升</td><td>npm lifts sub-dependencies to the top level to avoid duplicate installations</td></tr>
+<tr><td><b>Phantom Dependency</b></td><td>幽灵依赖</td><td>Packages that can be used without being declared in config (pnpm prevents this)</td></tr>
+<tr><td><b>npx</b></td><td>—</td><td>npm's built-in package runner, runs packages temporarily without installing</td></tr>
+<tr><td><b>go.sum</b></td><td>—</td><td>Go module hash verification file, prevents dependency tampering</td></tr>
+<tr><td><b>Crate</b></td><td>—</td><td>The unit name for "packages" in the Rust ecosystem</td></tr>
+<tr><td><b>winget</b></td><td>—</td><td>Windows' official package manager (built into Windows 10/11)</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary: The Essence of Package Managers</span><span lang="en">Summary: The Essence of Package Managers</span></h2>
+<p class="reveal"><span lang="id">Remember the core with these four points:</span><span lang="en">Remember the core with these four points:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Package manager = app store</b>: Helps you find, install, and manage code parts so you don't reinvent the wheel.</span><span lang="en"><b>Package manager = app store</b>: Helps you find, install, and manage code parts so you don't reinvent the wheel.</span></li>
+<li><span lang="id"><b>Lockfile = team contract</b>: Pins exact versions, making "it works on my machine" a thing of the past.</span><span lang="en"><b>Lockfile = team contract</b>: Pins exact versions, making "it works on my machine" a thing of the past.</span></li>
+<li><span lang="id"><b>Semantic versioning = communication language</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">^</code> safely gets updates; when MAJOR changes, be careful.</span><span lang="en"><b>Semantic versioning = communication language</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">^</code> safely gets updates; when MAJOR changes, be careful.</span></li>
+<li><span lang="id"><b>Local > Global</b>: Install project dependencies locally whenever possible; use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npx</code> / <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">uvx</code> for temporary tool runs to keep your environment clean.</span><span lang="en"><b>Local > Global</b>: Install project dependencies locally whenever possible; use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npx</code> / <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">uvx</code> for temporary tool runs to keep your environment clean.</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../2-development-tools/ide-basics/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">2-development-tools/ide-basics</span><span lang="en">2-development-tools/ide-basics</span></b></a>
+      <a class="next" href="../../2-development-tools/ports-localhost/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">2-development-tools/ports-localhost</span><span lang="en">2-development-tools/ports-localhost</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

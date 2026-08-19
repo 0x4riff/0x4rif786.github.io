@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Eksekusi Tugas Kompleks Berdurasi Panjang — VibeKoding ⏳</title>
+<meta name="description" content="Modul master Level 3 VibeKoding: Eksekusi Tugas Kompleks Berdurasi Panjang. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-3/core-skills/long-running-tasks/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../stage-3/"><span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></a> / <span lang="id">Eksekusi Tugas Kompleks Berdurasi Panjang</span><span lang="en">Eksekusi Tugas Kompleks Berdurasi Panjang</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">⏳</div>
+      <div>
+        <h1><span lang="id">Eksekusi Tugas Kompleks Berdurasi Panjang</span><span lang="en">Eksekusi Tugas Kompleks Berdurasi Panjang</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul master Level 3 VibeKoding: Eksekusi Tugas Kompleks Berdurasi Panjang.</span><span lang="en">Modul master Level 3 VibeKoding: Eksekusi Tugas Kompleks Berdurasi Panjang.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Introduction</span><span lang="en">Introduction</span></h2>
+<p class="reveal"><span lang="id">Traditional AI coding assistants are "conversational": you say one thing, it replies once, and then stops. But for real development tasks, this mode is far from enough.</span><span lang="en">Traditional AI coding assistants are "conversational": you say one thing, it replies once, and then stops. But for real development tasks, this mode is far from enough.</span></p>
+<p class="reveal"><span lang="id">Imagine these scenarios: you want Claude to refactor an entire project, but it edits a few files and says "done"; you want Claude to keep fixing bugs until all tests pass, but it runs once and stops; you want Claude to "work overnight," but next morning you find it stopped long ago.</span><span lang="en">Imagine these scenarios: you want Claude to refactor an entire project, but it edits a few files and says "done"; you want Claude to keep fixing bugs until all tests pass, but it runs once and stops; you want Claude to "work overnight," but next morning you find it stopped long ago.</span></p>
+<p class="reveal"><span lang="id">In the summer of 2025, an Australian developer named Geoffrey Huntley (who is also a sheep farmer) wrote a 5-line bash script. The script was simple: continuously restart Claude Code and feed it the same task. He named it "Ralph Wiggum," after the Simpsons character who keeps trying and never gives up.</span><span lang="en">In the summer of 2025, an Australian developer named Geoffrey Huntley (who is also a sheep farmer) wrote a 5-line bash script. The script was simple: continuously restart Claude Code and feed it the same task. He named it "Ralph Wiggum," after the Simpsons character who keeps trying and never gives up.</span></p>
+<p class="reveal"><span lang="id">This simple script shocked Silicon Valley. In just two weeks, related projects got 7,000+ GitHub stars. People used it to generate 6 complete projects overnight, delivered $50,000 contract work with only $297 API cost, and even used it to build a complete programming language in 3 months.</span><span lang="en">This simple script shocked Silicon Valley. In just two weeks, related projects got 7,000+ GitHub stars. People used it to generate 6 complete projects overnight, delivered $50,000 contract work with only $297 API cost, and even used it to build a complete programming language in 3 months.</span></p>
+<p class="reveal"><span lang="id">The core question this chapter solves is: how to make Claude Code work continuously like a real developer until tasks are truly complete.</span><span lang="en">The core question this chapter solves is: how to make Claude Code work continuously like a real developer until tasks are truly complete.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Core Principle: Why Does AI "Stop Too Early"?</span><span lang="en">Core Principle: Why Does AI "Stop Too Early"?</span></h2>
+<p class="reveal"><span lang="id">Before discussing specific methods, first understand the root cause.</span><span lang="en">Before discussing specific methods, first understand the root cause.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">AI's completion judgment is unreliable</span><span lang="en">AI's completion judgment is unreliable</span></h3>
+<p class="reveal"><span lang="id">LLMs have a fundamental weakness: they cannot reliably judge whether work is truly complete.</span><span lang="en">LLMs have a fundamental weakness: they cannot reliably judge whether work is truly complete.</span></p>
+<p class="reveal"><span lang="id">Human completion criteria are objective: all tests pass, features are complete, and code quality meets standards. But AI can only judge by "feeling." It may stop because "this looks about right," or because "output seems enough," or because it does not know what to do next.</span><span lang="en">Human completion criteria are objective: all tests pass, features are complete, and code quality meets standards. But AI can only judge by "feeling." It may stop because "this looks about right," or because "output seems enough," or because it does not know what to do next.</span></p>
+<p class="reveal"><span lang="id">That is why we need an external system to determine real completion rather than relying on AI's internal sense.</span><span lang="en">That is why we need an external system to determine real completion rather than relying on AI's internal sense.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">The core idea of the solution</span><span lang="en">The core idea of the solution</span></h3>
+<p class="reveal"><span lang="id">The core solution is to keep AI working inside a "loop."</span><span lang="en">The core solution is to keep AI working inside a "loop."</span></p>
+<p class="reveal"><span lang="id">Whenever it tries to exit, the external system checks three questions: is it truly complete? does it meet objective criteria? is anything missing? If not, inject the task again and continue another round.</span><span lang="en">Whenever it tries to exit, the external system checks three questions: is it truly complete? does it meet objective criteria? is anything missing? If not, inject the task again and continue another round.</span></p>
+<p class="reveal"><span lang="id">This idea can be implemented in many forms, from simple bash scripts to complex orchestration systems, but the essence is the same.</span><span lang="en">This idea can be implemented in many forms, from simple bash scripts to complex orchestration systems, but the essence is the same.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Method 1: While True Bash Loop (Most Primitive Method)</span><span lang="en">Method 1: While True Bash Loop (Most Primitive Method)</span></h2>
+<p class="reveal"><span lang="id">This is the simplest and most direct implementation. Essentially, write an infinite loop that restarts Claude Code each round and feeds the same task description.</span><span lang="en">This is the simplest and most direct implementation. Essentially, write an infinite loop that restarts Claude Code each round and feeds the same task description.</span></p>
+<p class="reveal"><span lang="id">The simplest implementation is only 5 lines:</span><span lang="en">The simplest implementation is only 5 lines:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>#!/bin/bash
+while true; do
+    cat PROMPT.md | claude
+done</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">How it works</span><span lang="en">How it works</span></h3>
+<p class="reveal"><span lang="id">The script flow is straightforward. Step 1 reads the task description from <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">PROMPT.md</code>. Step 2 launches Claude Code and passes the task description in. Step 3 Claude works and outputs results. Step 4 Claude exits after finishing. Step 5 the loop automatically restarts and returns to step 1, creating an infinite cycle unless you interrupt manually with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl+C</code>.</span><span lang="en">The script flow is straightforward. Step 1 reads the task description from <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">PROMPT.md</code>. Step 2 launches Claude Code and passes the task description in. Step 3 Claude works and outputs results. Step 4 Claude exits after finishing. Step 5 the loop automatically restarts and returns to step 1, creating an infinite cycle unless you interrupt manually with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl+C</code>.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Pros and cons</span><span lang="en">Pros and cons</span></h3>
+<p class="reveal"><span lang="id">The advantage is extreme simplicity: anyone can understand it, no configuration needed, immediately usable, and good for quick experiments.</span><span lang="en">The advantage is extreme simplicity: anyone can understand it, no configuration needed, immediately usable, and good for quick experiments.</span></p>
+<p class="reveal"><span lang="id">But the disadvantages are obvious: it cannot judge real completion, it may spin forever, it has no safety guardrails, and it can waste API calls.</span><span lang="en">But the disadvantages are obvious: it cannot judge real completion, it may spin forever, it has no safety guardrails, and it can waste API calls.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Real usage example</span><span lang="en">Real usage example</span></h3>
+<p class="reveal"><span lang="id">First, create a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">PROMPT.md</code> file to describe your task. For example, refactoring a user auth module:</span><span lang="en">First, create a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">PROMPT.md</code> file to describe your task. For example, refactoring a user auth module:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>markdown</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Task: Refactor user authentication module
+
+Requirements:
+1. Extract all authentication logic into an independent AuthService class
+2. Add unit tests, coverage &gt; 80%
+3. Update related documentation
+
+When all tests pass and docs are updated, output: task complete</pre>
+</div>
+<p class="reveal"><span lang="id">Then create and run the loop script:</span><span lang="en">Then create and run the loop script:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>chmod +x loop.sh
+./loop.sh</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Safer improved version</span><span lang="en">Safer improved version</span></h3>
+<p class="reveal"><span lang="id">To avoid endless loops, add an iteration cap:</span><span lang="en">To avoid endless loops, add an iteration cap:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>#!/bin/bash
+MAX_ITERATIONS=50
+iteration=0
+
+while true; do
+    iteration=$((iteration + 1))
+    echo &quot;=== Iteration $iteration/$MAX_ITERATIONS ===&quot;
+
+    cat PROMPT.md | claude
+
+    if [ $iteration -ge $MAX_ITERATIONS ]; then
+        echo &quot;Reached maximum iterations, stopping&quot;
+        break
+    fi
+
+    sleep 5  # small delay to avoid API rate limits
+done</pre>
+</div>
+<p class="reveal"><span lang="id">This improved version adds a max-iteration limit, shows per-round progress, and stops automatically at the limit. It also adds a 5-second delay each loop to avoid rate limiting.</span><span lang="en">This improved version adds a max-iteration limit, shows per-round progress, and stops automatically at the limit. It also adds a 5-second delay each loop to avoid rate limiting.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Method 2: Ralph Wiggum Plugin (Official Recommendation)</span><span lang="en">Method 2: Ralph Wiggum Plugin (Official Recommendation)</span></h2>
+<p class="reveal"><span lang="id">Ralph Wiggum is an official Anthropic plugin built specifically for long-running tasks. It is named after the Simpsons character, representing the spirit of "keep trying despite failure."</span><span lang="en">Ralph Wiggum is an official Anthropic plugin built specifically for long-running tasks. It is named after the Simpsons character, representing the spirit of "keep trying despite failure."</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Core mechanism: Stop Hook</span><span lang="en">Core mechanism: Stop Hook</span></h3>
+<p class="reveal"><span lang="id">The core of Ralph is Stop Hook. When Claude wants to exit, Stop Hook intercepts the exit signal. Then the system checks: did output include the specific completion marker? If no marker is found, it reinjects the original prompt and starts another iteration. Only when the completion marker is detected is Claude allowed to exit.</span><span lang="en">The core of Ralph is Stop Hook. When Claude wants to exit, Stop Hook intercepts the exit signal. Then the system checks: did output include the specific completion marker? If no marker is found, it reinjects the original prompt and starts another iteration. Only when the completion marker is detected is Claude allowed to exit.</span></p>
+<p class="reveal"><span lang="id">This guarantees Claude does not stop just because it "feels close enough." It must complete clearly marked requirements.</span><span lang="en">This guarantees Claude does not stop just because it "feels close enough." It must complete clearly marked requirements.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Installation</span><span lang="en">Installation</span></h3>
+<p class="reveal"><span lang="id">Ralph Wiggum is an official Claude Code plugin and can be installed in two ways.</span><span lang="en">Ralph Wiggum is an official Claude Code plugin and can be installed in two ways.</span></p>
+<p class="reveal"><span lang="id"><b>Option 1: install from official plugin marketplace (recommended)</b></span><span lang="en"><b>Option 1: install from official plugin marketplace (recommended)</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># run in Claude Code
+claude
+
+# add official plugin marketplace
+/plugin marketplace add anthropics/claude-code
+
+# install Ralph Wiggum
+/plugin install ralph-wiggum@claude-code-plugins
+
+# verify installation
+/plugin</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Option 2: install directly from GitHub</b></span><span lang="en"><b>Option 2: install directly from GitHub</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># enter plugin directory
+cd ~/.claude/plugins/
+
+# clone plugin repo
+git clone https://github.com/anthropics/ralph-wiggum-plugin.git</pre>
+</div>
+<p class="reveal"><span lang="id">After installation, you can use:</span><span lang="en">After installation, you can use:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/ralph-wiggum:ralph-loop</code> - start loop</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/ralph-wiggum:ralph-loop</code> - start loop</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/ralph-wiggum:cancel-ralph</code> - cancel loop</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/ralph-wiggum:cancel-ralph</code> - cancel loop</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/ralph-wiggum:help</code> - show help</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/ralph-wiggum:help</code> - show help</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Basic usage</span><span lang="en">Basic usage</span></h3>
+<p class="reveal"><span lang="id">Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/ralph-wiggum:ralph-loop</code>:</span><span lang="en">Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/ralph-wiggum:ralph-loop</code>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>/ralph-wiggum:ralph-loop &quot;Build a todo API with CRUD operations, input validation, and tests.
+             Output &lt;promise&gt;COMPLETE&lt;/promise&gt; when everything is done.&quot; \
+  --max-iterations 50 \
+  --completion-promise &quot;COMPLETE&quot;</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Parameter explanation</span><span lang="en">Parameter explanation</span></h3>
+<p class="reveal"><span lang="id">The two most important parameters are <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">--max-iterations</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">--completion-promise</code>.</span><span lang="en">The two most important parameters are <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">--max-iterations</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">--completion-promise</code>.</span></p>
+<p class="reveal"><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">--max-iterations</code> sets the hard safety cap. Recommended values are typically 20-100. Even if unfinished, Ralph stops at this limit to prevent infinite API spending.</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">--max-iterations</code> sets the hard safety cap. Recommended values are typically 20-100. Even if unfinished, Ralph stops at this limit to prevent infinite API spending.</span></p>
+<p class="reveal"><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">--completion-promise</code> specifies the completion marker text, which must be explicit and unique. Ralph treats the task as complete only when Claude output contains that marker. Use clear markers such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">COMPLETE</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">TASK_DONE</code>, and avoid ambiguous words.</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">--completion-promise</code> specifies the completion marker text, which must be explicit and unique. Ralph treats the task as complete only when Claude output contains that marker. Use clear markers such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">COMPLETE</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">TASK_DONE</code>, and avoid ambiguous words.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Prompt best practices</span><span lang="en">Prompt best practices</span></h3>
+<p class="reveal"><span lang="id">Writing good prompts is key to Ralph success.</span><span lang="en">Writing good prompts is key to Ralph success.</span></p>
+<p class="reveal"><span lang="id">Bad prompts usually do not define completion criteria. For example, "write a todo API" may lead AI to output a rough skeleton and stop, with no tests, no verification, and no docs.</span><span lang="en">Bad prompts usually do not define completion criteria. For example, "write a todo API" may lead AI to output a rough skeleton and stop, with no tests, no verification, and no docs.</span></p>
+<p class="reveal"><span lang="id">Good prompts should include phased requirements and clear acceptance criteria. For example:</span><span lang="en">Good prompts should include phased requirements and clear acceptance criteria. For example:</span></p>
+<p class="reveal"><span lang="id">Describe phased tasks first. Phase 1 is core functionality with all CRUD endpoints: POST <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/todos</code> create, GET <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/todos</code> list, GET <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/todos/:id</code> fetch single, PUT <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/todos/:id</code> update, DELETE <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/todos/:id</code> delete. Phase 2 is input validation: title cannot be empty, completion status must be boolean. Phase 3 is tests: write tests for each endpoint, with coverage > 80%.</span><span lang="en">Describe phased tasks first. Phase 1 is core functionality with all CRUD endpoints: POST <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/todos</code> create, GET <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/todos</code> list, GET <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/todos/:id</code> fetch single, PUT <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/todos/:id</code> update, DELETE <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/todos/:id</code> delete. Phase 2 is input validation: title cannot be empty, completion status must be boolean. Phase 3 is tests: write tests for each endpoint, with coverage > 80%.</span></p>
+<p class="reveal"><span lang="id">Then define acceptance criteria: all tests pass, code passes linter, README includes API docs.</span><span lang="en">Then define acceptance criteria: all tests pass, code passes linter, README includes API docs.</span></p>
+<p class="reveal"><span lang="id">Finally define a unique completion marker: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><promise>TODO_API_COMPLETE</promise></code>.</span><span lang="en">Finally define a unique completion marker: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><promise>TODO_API_COMPLETE</promise></code>.</span></p>
+<p class="reveal"><span lang="id">This way Claude knows exactly what to do and when completion is truly achieved.</span><span lang="en">This way Claude knows exactly what to do and when completion is truly achieved.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">More prompt templates</span><span lang="en">More prompt templates</span></h3>
+<p class="reveal"><span lang="id">Here are common task templates you can use directly or adapt.</span><span lang="en">Here are common task templates you can use directly or adapt.</span></p>
+<p class="reveal"><span lang="id"><b>Template 1: test migration (Jest -> Vitest)</b></span><span lang="en"><b>Template 1: test migration (Jest -> Vitest)</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>/ralph-wiggum:ralph-loop &quot;
+Migrate all tests in this project from Jest to Vitest:
+- Keep all test logic unchanged
+- Update config files (vite.config.js, vitest.config.js)
+- Replace Jest-specific APIs (e.g., jest.mock -&gt; vi.mock)
+- Ensure all tests pass
+- Remove Jest-related dependencies
+
+Acceptance criteria:
+- npm test passes fully
+- no Jest dependency in package.json
+- project builds successfully
+
+Output after completion: &lt;promise&gt;VITEST_MIGRATION_COMPLETE&lt;/promise&gt;
+&quot; --max-iterations 40 --completion-promise &quot;VITEST_MIGRATION_COMPLETE&quot;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Template 2: UI/UX optimization (mobile-first)</b></span><span lang="en"><b>Template 2: UI/UX optimization (mobile-first)</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>/ralph-wiggum:ralph-loop &quot;
+Polish this project&#039;s UI/UX into a refined mobile-first language learning app:
+- unify spacing and whitespace (use 4px base unit)
+- establish clear type hierarchy (title/body/auxiliary text)
+- unify styles for cards, lists, and shared components
+- add bottom navigation (Home/Learn/Quiz/Progress/Settings)
+- ensure mobile rendering quality
+
+Acceptance criteria:
+- npm run build succeeds
+- no TypeScript errors
+- key pages preview correctly on mobile
+
+Output after completion: &lt;promise&gt;UI_UX_COMPLETE&lt;/promise&gt;
+&quot; --max-iterations 25 --completion-promise &quot;UI_UX_COMPLETE&quot;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Template 3: bulk TypeScript annotation</b></span><span lang="en"><b>Template 3: bulk TypeScript annotation</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>/ralph-wiggum:ralph-loop &quot;
+Add TypeScript type annotations to all functions in the project:
+- prioritize src/ directory
+- add types for function params and return values
+- avoid any, use concrete types or unknown
+- add necessary type definitions
+
+Acceptance criteria:
+- npm run typecheck passes
+- no @ts-ignore or @ts-any comments
+- code runs correctly
+
+Output after completion: &lt;promise&gt;TYPES_ADDED&lt;/promise&gt;
+&quot; --max-iterations 30 --completion-promise &quot;TYPES_ADDED&quot;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Template 4: TDD-driven feature development</b></span><span lang="en"><b>Template 4: TDD-driven feature development</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>/ralph-wiggum:ralph-loop &quot;
+Implement checkout functionality using TDD:
+1. Write tests first (checkout.test.ts)
+2. Run tests (should fail)
+3. Write minimal code to pass tests
+4. Refactor and optimize
+5. Repeat until all tests pass
+
+Feature requirements:
+- shopping cart item list
+- shipping fee calculation
+- coupon application
+- payment form validation
+
+Acceptance criteria:
+- all tests pass (npm test checkout.test.ts)
+- code coverage &gt; 80%
+- no ESLint errors
+
+Output after completion: &lt;promise&gt;CHECKOUT_COMPLETE&lt;/promise&gt;
+&quot; --max-iterations 25 --completion-promise &quot;CHECKOUT_COMPLETE&quot;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Template 5: code style unification</b></span><span lang="en"><b>Template 5: code style unification</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>/ralph-wiggum:ralph-loop &quot;
+Unify code style across the project:
+- format all files with Prettier
+- unify naming conventions (variables camelCase, components PascalCase)
+- remove unused imports and variables
+- unify string quotes (single quotes)
+- unify semicolon style (no semicolons)
+
+Acceptance criteria:
+- npm run lint passes
+- consistent code style
+- build succeeds
+
+Output after completion: &lt;promise&gt;STYLE_UNIFIED&lt;/promise&gt;
+&quot; --max-iterations 20 --completion-promise &quot;STYLE_UNIFIED&quot;</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Real-world cases</span><span lang="en">Real-world cases</span></h3>
+<p class="reveal"><span lang="id">One famous case happened at a Y Combinator hackathon, where a team used Ralph Loop. At 11 PM, they set a task: implement MVPs for 6 product specs in sequence and emit specific completion markers for each one. They set max iterations to 200 and went to sleep.</span><span lang="en">One famous case happened at a Y Combinator hackathon, where a team used Ralph Loop. At 11 PM, they set a task: implement MVPs for 6 product specs in sequence and emit specific completion markers for each one. They set max iterations to 200 and went to sleep.</span></p>
+<p class="reveal"><span lang="id">The next morning, they had 6 demo-ready projects, and API cost was only $297. That is Ralph's power: while you sleep, AI keeps working.</span><span lang="en">The next morning, they had 6 demo-ready projects, and API cost was only $297. That is Ralph's power: while you sleep, AI keeps working.</span></p>
+<p class="reveal"><span lang="id">Another case came from Boris Cherny (Claude Code lead). With Ralph plus Opus 4.5, he delivered 259 PRs in 30 days, including 497 commits, adding 40,000 lines and deleting 38,000 lines. Most strikingly, all of it was produced by Claude Code without manually writing code.</span><span lang="en">Another case came from Boris Cherny (Claude Code lead). With Ralph plus Opus 4.5, he delivered 259 PRs in 30 days, including 497 commits, adding 40,000 lines and deleting 38,000 lines. Most strikingly, all of it was produced by Claude Code without manually writing code.</span></p>
+<p class="reveal"><span lang="id">An even wilder case is the CURSED programming language. Ralph creator Geoffrey Huntley used Ralph Loop over 3 months to autonomously build a full programming language. Its keywords use Gen Z slang (such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">slay</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sus</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">based</code>), and more importantly it includes a full LLVM compiler implementation, standard library, and partial editor support. This demonstrates Ralph Loop's true potential: if you provide a clear target, it can keep working for months until a complex project is truly finished.</span><span lang="en">An even wilder case is the CURSED programming language. Ralph creator Geoffrey Huntley used Ralph Loop over 3 months to autonomously build a full programming language. Its keywords use Gen Z slang (such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">slay</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sus</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">based</code>), and more importantly it includes a full LLVM compiler implementation, standard library, and partial editor support. This demonstrates Ralph Loop's true potential: if you provide a clear target, it can keep working for months until a complex project is truly finished.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">More real-world cases</span><span lang="en">More real-world cases</span></h3>
+<p class="reveal"><span lang="id"><b>Automated project refactor</b></span><span lang="en"><b>Automated project refactor</b></span></p>
+<p class="reveal"><span lang="id">One developer used Ralph to refactor a legacy project with messy code, no tests, and missing documentation. The assigned tasks were:</span><span lang="en">One developer used Ralph to refactor a legacy project with messy code, no tests, and missing documentation. The assigned tasks were:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Add tests for existing code</span><span lang="en">Add tests for existing code</span></li>
+<li><span lang="id">Refactor step by step, ensuring tests pass after each change</span><span lang="en">Refactor step by step, ensuring tests pass after each change</span></li>
+<li><span lang="id">Update documentation</span><span lang="en">Update documentation</span></li>
+</ul>
+<p class="reveal"><span lang="id">Ralph ran over a full weekend. By Monday, there were 47 commits, cleaner code structure, 75% test coverage, and complete API docs. Cost was around $12.</span><span lang="en">Ralph ran over a full weekend. By Monday, there were 47 commits, cleaner code structure, 75% test coverage, and complete API docs. Cost was around $12.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Ralph philosophy</span><span lang="en">Ralph philosophy</span></h3>
+<p class="reveal"><span lang="id">Ralph reflects three core philosophies.</span><span lang="en">Ralph reflects three core philosophies.</span></p>
+<p class="reveal"><span lang="id">The first is iteration over perfection. Do not expect perfection in one pass; use loops to improve. The first pass may only build a skeleton, second fixes bugs, third optimizes, fourth adds tests; every round gets better.</span><span lang="en">The first is iteration over perfection. Do not expect perfection in one pass; use loops to improve. The first pass may only build a skeleton, second fixes bugs, third optimizes, fourth adds tests; every round gets better.</span></p>
+<p class="reveal"><span lang="id">The second is failure as data. Every test failure is an opportunity to improve; do not fear failure, learn from it.</span><span lang="en">The second is failure as data. Every test failure is an opportunity to improve; do not fear failure, learn from it.</span></p>
+<p class="reveal"><span lang="id">The third is persistent trying: keep trying until it works. That is Ralph spirit.</span><span lang="en">The third is persistent trying: keep trying until it works. That is Ralph spirit.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">When Ralph is suitable or unsuitable</span><span lang="en">When Ralph is suitable or unsuitable</span></h3>
+<p class="reveal"><span lang="id">Knowing where Ralph fits helps save both time and cost.</span><span lang="en">Knowing where Ralph fits helps save both time and cost.</span></p>
+<p class="reveal"><span lang="id"><b>Suitable scenarios for Ralph</b></span><span lang="en"><b>Suitable scenarios for Ralph</b></span></p>
+<p class="reveal"><span lang="id">These tasks have clear completion criteria and are good for automatic iteration:</span><span lang="en">These tasks have clear completion criteria and are good for automatic iteration:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Scenario</th><th>Why</th></tr>
+<tr><td>Test migration</td><td>Clear target framework, validated by passing tests</td></tr>
+<tr><td>Large refactors</td><td>Specific refactor rules can be defined</td></tr>
+<tr><td>Framework migration</td><td>Successful migration is verifiable by working code</td></tr>
+<tr><td>Bulk type annotation</td><td>Done when typecheck passes</td></tr>
+<tr><td>Test coverage improvement</td><td>Coverage percentage is objective</td></tr>
+<tr><td>Documentation generation</td><td>API docs can be automatically validated</td></tr>
+<tr><td>UI/UX unification</td><td>Concrete design rules can be defined</td></tr>
+<tr><td>Bug fixes with repro</td><td>Pass condition is testable</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Unsuitable scenarios for Ralph</b></span><span lang="en"><b>Unsuitable scenarios for Ralph</b></span></p>
+<p class="reveal"><span lang="id">These tasks require human judgment or exploration:</span><span lang="en">These tasks require human judgment or exploration:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Scenario</th><th>Why</th></tr>
+<tr><td>Architecture decisions</td><td>e.g., microservices vs monolith requires trade-off judgment</td></tr>
+<tr><td>Security-sensitive code</td><td>Vulnerabilities can be subtle and hard to detect automatically</td></tr>
+<tr><td>Ambiguous requirements</td><td>No clear completion criteria</td></tr>
+<tr><td>Exploratory work</td><td>Direction changes continuously</td></tr>
+<tr><td>Creative design</td><td>Requires human aesthetic judgment</td></tr>
+<tr><td>Simple one-off tasks</td><td>Using Ralph is overkill</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Decision checklist</b></span><span lang="en"><b>Decision checklist</b></span></p>
+<p class="reveal"><span lang="id">Ask yourself three questions:</span><span lang="en">Ask yourself three questions:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Can I define explicit completion criteria?</b> If not, not suitable</span><span lang="en"><b>Can I define explicit completion criteria?</b> If not, not suitable</span></li>
+<li><span lang="id"><b>Is there an objective validation method?</b> (tests/build/typecheck) If not, not suitable</span><span lang="en"><b>Is there an objective validation method?</b> (tests/build/typecheck) If not, not suitable</span></li>
+<li><span lang="id"><b>Does this task require continuous human feedback?</b> If yes, not suitable</span><span lang="en"><b>Does this task require continuous human feedback?</b> If yes, not suitable</span></li>
+</ul>
+<p class="reveal"><span lang="id">If all three answers are "no," let Ralph run.</span><span lang="en">If all three answers are "no," let Ralph run.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Method 3: Enhanced Ralph</span><span lang="en">Method 3: Enhanced Ralph</span></h2>
+<p class="reveal"><span lang="id">This is a community-enhanced implementation of official Ralph. The [frankbria/ralph-claude-code](https://github.com/frankbria/ralph-claude-code) project adds stronger safety mechanisms.</span><span lang="en">This is a community-enhanced implementation of official Ralph. The [frankbria/ralph-claude-code](https://github.com/frankbria/ralph-claude-code) project adds stronger safety mechanisms.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Additional features</span><span lang="en">Additional features</span></h3>
+<p class="reveal"><span lang="id">Enhanced Ralph adds several extra safety features.</span><span lang="en">Enhanced Ralph adds several extra safety features.</span></p>
+<p class="reveal"><span lang="id">First is dual exit conditions. Official Ralph checks only the completion marker, but the enhanced version requires both the completion marker and explicit <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">EXIT_SIGNAL</code> before stopping. This means even if Claude outputs completion marker, loop can continue for additional verification unless explicit exit appears.</span><span lang="en">First is dual exit conditions. Official Ralph checks only the completion marker, but the enhanced version requires both the completion marker and explicit <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">EXIT_SIGNAL</code> before stopping. This means even if Claude outputs completion marker, loop can continue for additional verification unless explicit exit appears.</span></p>
+<p class="reveal"><span lang="id">Second is rate limiting. Default is 100 runs/hour, preventing runaway API bills if a bug causes endless loops. You can adjust this limit.</span><span lang="en">Second is rate limiting. Default is 100 runs/hour, preventing runaway API bills if a bug causes endless loops. You can adjust this limit.</span></p>
+<p class="reveal"><span lang="id">Third is a smart circuit breaker. If the system detects completion marker 5 consecutive times, it force-stops. This prevents rare edge cases where loops fail to terminate correctly.</span><span lang="en">Third is a smart circuit breaker. If the system detects completion marker 5 consecutive times, it force-stops. This prevents rare edge cases where loops fail to terminate correctly.</span></p>
+<p class="reveal"><span lang="id">Fourth is a real-time dashboard. Enhanced Ralph provides a command-line dashboard showing current iterations, task progress, and estimated cost.</span><span lang="en">Fourth is a real-time dashboard. Enhanced Ralph provides a command-line dashboard showing current iterations, task progress, and estimated cost.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Installation</span><span lang="en">Installation</span></h3>
+<p class="reveal"><span lang="id">Install enhanced Ralph by cloning from GitHub:</span><span lang="en">Install enhanced Ralph by cloning from GitHub:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>git clone https://github.com/frankbria/ralph-claude-code.git
+cd ralph-claude-code
+./install.sh</pre>
+</div>
+<p class="reveal"><span lang="id">The install script sets required files and configuration automatically.</span><span lang="en">The install script sets required files and configuration automatically.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Usage</span><span lang="en">Usage</span></h3>
+<p class="reveal"><span lang="id">Enhanced Ralph usage has two steps. First initialize project with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ralph-setup</code>:</span><span lang="en">Enhanced Ralph usage has two steps. First initialize project with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ralph-setup</code>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>ralph-setup my-project</pre>
+</div>
+<p class="reveal"><span lang="id">This creates required config files in project. Then start loop with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ralph loop</code>:</span><span lang="en">This creates required config files in project. Then start loop with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ralph loop</code>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>ralph loop</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Configuration file</span><span lang="en">Configuration file</span></h3>
+<p class="reveal"><span lang="id">Enhanced Ralph uses <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.claude/ralph-config.json</code>:</span><span lang="en">Enhanced Ralph uses <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.claude/ralph-config.json</code>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>json</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>{
+  &quot;maxIterations&quot;: 50,
+  &quot;rateLimitPerHour&quot;: 100,
+  &quot;completionPromise&quot;: &quot;TASK_COMPLETE&quot;,
+  &quot;exitSignal&quot;: &quot;EXIT_NOW&quot;,
+  &quot;costAlertThresholds&quot;: [10, 50, 100]
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">maxIterations</code> is max loop count. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">rateLimitPerHour</code> is hourly rate cap. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">completionPromise</code> is completion marker text. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">exitSignal</code> is explicit exit signal. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">costAlertThresholds</code> defines budget warning levels.</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">maxIterations</code> is max loop count. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">rateLimitPerHour</code> is hourly rate cap. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">completionPromise</code> is completion marker text. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">exitSignal</code> is explicit exit signal. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">costAlertThresholds</code> defines budget warning levels.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Method 4: Agent Teams (Parallel Multi-Agent)</span><span lang="en">Method 4: Agent Teams (Parallel Multi-Agent)</span></h2>
+<p class="reveal"><span lang="id">When tasks are large enough, a single Claude is not enough; you need "team collaboration."</span><span lang="en">When tasks are large enough, a single Claude is not enough; you need "team collaboration."</span></p>
+<p class="reveal"><span lang="id">Agent Teams is an advanced capability that lets multiple Claude instances run in parallel and coordinate through shared task lists and dependencies. This is suitable for very large projects. In Nicholas Carlini's experiment, 16 parallel agents produced 100,000+ lines of code in two weeks and built a C compiler capable of compiling the Linux kernel.</span><span lang="en">Agent Teams is an advanced capability that lets multiple Claude instances run in parallel and coordinate through shared task lists and dependencies. This is suitable for very large projects. In Nicholas Carlini's experiment, 16 parallel agents produced 100,000+ lines of code in two weeks and built a C compiler capable of compiling the Linux kernel.</span></p>
+<p class="reveal"><span lang="id">Agent Teams is more complex, and we will cover it in detail in the next section: "3.3 Agent Teams Multi-Agent Collaboration."</span><span lang="en">Agent Teams is more complex, and we will cover it in detail in the next section: "3.3 Agent Teams Multi-Agent Collaboration."</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Method 5: Background Tasks (Ctrl+B)</span><span lang="en">Method 5: Background Tasks (Ctrl+B)</span></h2>
+<p class="reveal"><span lang="id">This is a simple and practical non-blocking execution method.</span><span lang="en">This is a simple and practical non-blocking execution method.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Basic operation</span><span lang="en">Basic operation</span></h3>
+<p class="reveal"><span lang="id">Usage is straightforward. When Claude starts a task, press <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl+B</code> to push it to background.</span><span lang="en">Usage is straightforward. When Claude starts a task, press <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl+B</code> to push it to background.</span></p>
+<p class="reveal"><span lang="id">For example, you say: "Run full test suite." Claude begins running. You press <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl+B</code>, and Claude replies: "Task pushed to background (ID: task_abc123)." Then you can continue: "Meanwhile, analyze this log file." Claude can analyze logs while tests continue in background.</span><span lang="en">For example, you say: "Run full test suite." Claude begins running. You press <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl+B</code>, and Claude replies: "Task pushed to background (ID: task_abc123)." Then you can continue: "Meanwhile, analyze this log file." Claude can analyze logs while tests continue in background.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Viewing background tasks</span><span lang="en">Viewing background tasks</span></h3>
+<p class="reveal"><span lang="id">There are several ways to check background tasks. Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/tasks</code> to list all tasks with task ID, state, and start time. Press <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl+T</code> for quick status summary. You can also bring a task back to foreground to inspect live output.</span><span lang="en">There are several ways to check background tasks. Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/tasks</code> to list all tasks with task ID, state, and start time. Press <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl+T</code> for quick status summary. You can also bring a task back to foreground to inspect live output.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Suitable scenarios</span><span lang="en">Suitable scenarios</span></h3>
+<p class="reveal"><span lang="id">Background tasks are good for typical situations:</span><span lang="en">Background tasks are good for typical situations:</span></p>
+<p class="reveal"><span lang="id">First, long-running tests. Full suites may take tens of minutes, and background mode avoids blocking.</span><span lang="en">First, long-running tests. Full suites may take tens of minutes, and background mode avoids blocking.</span></p>
+<p class="reveal"><span lang="id">Second, large project builds. Build pipelines can run while you continue other work.</span><span lang="en">Second, large project builds. Build pipelines can run while you continue other work.</span></p>
+<p class="reveal"><span lang="id">Third, batch file operations such as mass rename and formatting.</span><span lang="en">Third, batch file operations such as mass rename and formatting.</span></p>
+<p class="reveal"><span lang="id">Fourth, anything you do not want to wait for synchronously.</span><span lang="en">Fourth, anything you do not want to wait for synchronously.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Safety Mechanisms: Preventing Infinite Loops</span><span lang="en">Safety Mechanisms: Preventing Infinite Loops</span></h2>
+<p class="reveal"><span lang="id">Any automated loop system must include protections, otherwise it may run out of control.</span><span lang="en">Any automated loop system must include protections, otherwise it may run out of control.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Hard limits</span><span lang="en">Hard limits</span></h3>
+<p class="reveal"><span lang="id">The most basic protection is setting <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">--max-iterations</code> (maximum loop count). This is mandatory. Regardless of completion state, task stops at this cap and prevents unlimited API spending.</span><span lang="en">The most basic protection is setting <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">--max-iterations</code> (maximum loop count). This is mandatory. Regardless of completion state, task stops at this cap and prevents unlimited API spending.</span></p>
+<p class="reveal"><span lang="id">You can also enforce time limits, for example auto-stop after 4 hours. You can also set budget alerts that pause and notify at spend thresholds (for example 10 USD, 50 USD, 100 USD).</span><span lang="en">You can also enforce time limits, for example auto-stop after 4 hours. You can also set budget alerts that pause and notify at spend thresholds (for example 10 USD, 50 USD, 100 USD).</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Intelligent detection</span><span lang="en">Intelligent detection</span></h3>
+<p class="reveal"><span lang="id">You can add smart dead-loop detection. For example, check whether recent commits include meaningful changes:</span><span lang="en">You can add smart dead-loop detection. For example, check whether recent commits include meaningful changes:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>if [ $(git diff HEAD~5 | wc -l) -eq 0 ]; then
+    echo &quot;No substantive changes in the last 5 commits, possible loop&quot;
+    exit 1
+fi</pre>
+</div>
+<p class="reveal"><span lang="id">If recent diffs are minimal, system may be stuck and should stop with alert.</span><span lang="en">If recent diffs are minimal, system may be stuck and should stop with alert.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Cost alerts</span><span lang="en">Cost alerts</span></h3>
+<p class="reveal"><span lang="id">Set cost alert thresholds in config:</span><span lang="en">Set cost alert thresholds in config:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>json</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>{
+  &quot;costAlertThresholds&quot;: [10, 50, 100],
+  &quot;alertAction&quot;: &quot;pause_and_notify&quot;
+}</pre>
+</div>
+<p class="reveal"><span lang="id">When spending reaches 10, 50, or 100 USD, system pauses and notifies so you can decide whether to continue.</span><span lang="en">When spending reaches 10, 50, or 100 USD, system pauses and notifies so you can decide whether to continue.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Manual checkpoints</span><span lang="en">Manual checkpoints</span></h3>
+<p class="reveal"><span lang="id">For important tasks, add manual checkpoints:</span><span lang="en">For important tasks, add manual checkpoints:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>if [ $((iteration % 10)) -eq 0 ]; then
+    read -p &quot;Completed $iteration iterations. Continue? (y/n)&quot; answer
+    if [ &quot;$answer&quot; != &quot;y&quot; ]; then
+        break
+    fi
+fi</pre>
+</div>
+<p class="reveal"><span lang="id">This pauses every 10 iterations for confirmation, allowing timely human intervention.</span><span lang="en">This pauses every 10 iterations for confirmation, allowing timely human intervention.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Practical Build: Complete BBS Forum with Ralph Loop</span><span lang="en">Practical Build: Complete BBS Forum with Ralph Loop</span></h2>
+<p class="reveal"><span lang="id">Let's use a full example to show Ralph Loop power. We will build a BBS-style forum system from scratch, including user auth, posting, profile center, and admin backend.</span><span lang="en">Let's use a full example to show Ralph Loop power. We will build a BBS-style forum system from scratch, including user auth, posting, profile center, and admin backend.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Project objective</span><span lang="en">Project objective</span></h3>
+<p class="reveal"><span lang="id">Build a fully functional BBS forum system with:</span><span lang="en">Build a fully functional BBS forum system with:</span></p>
+<p class="reveal"><span lang="id"><b>User-side features:</b></span><span lang="en"><b>User-side features:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">user registration, login, logout</span><span lang="en">user registration, login, logout</span></li>
+<li><span lang="id">browse post list (pagination)</span><span lang="en">browse post list (pagination)</span></li>
+<li><span lang="id">view post detail</span><span lang="en">view post detail</span></li>
+<li><span lang="id">publish new posts</span><span lang="en">publish new posts</span></li>
+<li><span lang="id">comment feature</span><span lang="en">comment feature</span></li>
+<li><span lang="id">profile center (view own posts, update profile)</span><span lang="en">profile center (view own posts, update profile)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Admin backend features:</b></span><span lang="en"><b>Admin backend features:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">admin login</span><span lang="en">admin login</span></li>
+<li><span lang="id">user management (ban/unban)</span><span lang="en">user management (ban/unban)</span></li>
+<li><span lang="id">post management (delete/pin)</span><span lang="en">post management (delete/pin)</span></li>
+<li><span lang="id">comment management</span><span lang="en">comment management</span></li>
+<li><span lang="id">system statistics</span><span lang="en">system statistics</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Tech stack:</b></span><span lang="en"><b>Tech stack:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">backend: Node.js + Express + SQLite</span><span lang="en">backend: Node.js + Express + SQLite</span></li>
+<li><span lang="id">frontend: React + React Router + Axios</span><span lang="en">frontend: React + React Router + Axios</span></li>
+<li><span lang="id">auth: JWT token</span><span lang="en">auth: JWT token</span></li>
+<li><span lang="id">styling: Tailwind CSS</span><span lang="en">styling: Tailwind CSS</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Preparation</span><span lang="en">Preparation</span></h3>
+<p class="reveal"><span lang="id">First install Ralph Wiggum plugin:</span><span lang="en">First install Ralph Wiggum plugin:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>claude /plugins:add ralph-wiggum</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Start Ralph Loop</span><span lang="en">Start Ralph Loop</span></h3>
+<p class="reveal"><span lang="id">Now launch Ralph Loop to build the whole project:</span><span lang="en">Now launch Ralph Loop to build the whole project:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>/ralph-wiggum:ralph-loop &quot;
+Please build a complete BBS forum system from scratch using TDD.
+
+Project structure requirements:
+- backend/ directory: Express API server
+- frontend/ directory: React frontend app
+- both directories have their own tests
+
+Backend requirements:
+- use Express framework
+- SQLite storage (better-sqlite3)
+- JWT auth (jsonwebtoken + bcrypt)
+- user table: id, username, password, email, role, createdAt
+- post table: id, title, content, authorId, category, pinned, createdAt
+- comment table: id, content, postId, authorId, createdAt
+
+Backend API endpoints:
+- POST /api/auth/register - user register
+- POST /api/auth/login - user login
+- GET /api/posts - get post list (pagination + category filter)
+- GET /api/posts/:id - get post detail
+- POST /api/posts - create post (auth required)
+- PUT /api/posts/:id - edit post (author or admin)
+- DELETE /api/posts/:id - delete post (author or admin)
+- POST /api/posts/:id/comments - add comment (auth required)
+- GET /api/user/profile - get profile (auth required)
+- PUT /api/user/profile - update profile (auth required)
+- GET /api/admin/stats - admin statistics (admin only)
+- GET /api/admin/users - user list (admin only)
+- PUT /api/admin/users/:id/ban - ban user (admin only)
+
+Frontend page requirements:
+- /login - login page
+- /register - register page
+- / - home page (post list)
+- /post/:id - post detail
+- /new - publish post
+- /profile - profile center
+- /admin - admin panel (admin permission required)
+
+Admin panel features:
+- user management (view, ban, unban)
+- post management (view, delete, pin)
+- comment management (view, delete)
+- system statistics (user count, post count, comment count)
+
+TDD requirements:
+- write tests first, then implementation
+- each feature must have corresponding tests
+- backend uses Jest, API tests cover all endpoints
+- frontend uses Vitest, component tests cover major features
+- auth middleware must have tests
+
+Acceptance criteria:
+- npm test (backend) passes
+- npm test (frontend) passes
+- frontend starts and works correctly
+- backend API responds correctly
+- proper permission isolation between normal users and admin
+- code passes ESLint checks
+
+Output after completion: &lt;promise&gt;BBS_SYSTEM_COMPLETE&lt;/promise&gt;
+&quot; --max-iterations 150 --completion-promise &quot;BBS_SYSTEM_COMPLETE&quot;</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Expected time</span><span lang="en">Expected time</span></h3>
+<p class="reveal"><span lang="id">Based on complexity:</span><span lang="en">Based on complexity:</span></p>
+<p class="reveal"><span lang="id"><b>If coded manually</b>: about 40-60 hours (including schema design, auth system, frontend/backend integration, and testing)</span><span lang="en"><b>If coded manually</b>: about 40-60 hours (including schema design, auth system, frontend/backend integration, and testing)</span></p>
+<p class="reveal"><span lang="id"><b>Using Ralph Loop</b>:</span><span lang="en"><b>Using Ralph Loop</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">base version (core features): around 3-5 hours</span><span lang="en">base version (core features): around 3-5 hours</span></li>
+<li><span lang="id">full version (admin backend + tests): around 6-10 hours</span><span lang="en">full version (admin backend + tests): around 6-10 hours</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Monitoring progress</span><span lang="en">Monitoring progress</span></h3>
+<p class="reveal"><span lang="id">While Ralph Loop is running, you can monitor progress in several ways:</span><span lang="en">While Ralph Loop is running, you can monitor progress in several ways:</span></p>
+<p class="reveal"><span lang="id"><b>Iteration count</b>: Ralph shows current and max iterations, which helps estimate remaining time.</span><span lang="en"><b>Iteration count</b>: Ralph shows current and max iterations, which helps estimate remaining time.</span></p>
+<p class="reveal"><span lang="id"><b>Logs</b>: you can see what Claude is doing now, such as designing schema, writing APIs, building components, and fixing bugs.</span><span lang="en"><b>Logs</b>: you can see what Claude is doing now, such as designing schema, writing APIs, building components, and fixing bugs.</span></p>
+<p class="reveal"><span lang="id"><b>Test status</b>: every test run result is shown. Passing tests increase and failing tests decrease. When failures begin to drop, project is approaching completion.</span><span lang="en"><b>Test status</b>: every test run result is shown. Passing tests increase and failing tests decrease. When failures begin to drop, project is approaching completion.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Post-completion verification</span><span lang="en">Post-completion verification</span></h3>
+<p class="reveal"><span lang="id">After Ralph outputs completion marker, perform manual verification:</span><span lang="en">After Ralph outputs completion marker, perform manual verification:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># backend tests
+cd backend
+npm test
+
+# frontend tests
+cd frontend
+npm test
+
+# start backend
+cd backend
+npm start
+
+# start frontend (in another terminal)
+cd frontend
+npm run dev</pre>
+</div>
+<p class="reveal"><span lang="id">Open browser and test:</span><span lang="en">Open browser and test:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">register a new user</span><span lang="en">register a new user</span></li>
+<li><span lang="id">login</span><span lang="en">login</span></li>
+<li><span lang="id">browse posts</span><span lang="en">browse posts</span></li>
+<li><span lang="id">publish new post</span><span lang="en">publish new post</span></li>
+<li><span lang="id">add comment</span><span lang="en">add comment</span></li>
+<li><span lang="id">open profile center</span><span lang="en">open profile center</span></li>
+<li><span lang="id">logout and login as admin (default account: admin/admin123)</span><span lang="en">logout and login as admin (default account: admin/admin123)</span></li>
+<li><span lang="id">test admin backend features</span><span lang="en">test admin backend features</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Notes</span><span lang="en">Notes</span></h3>
+<p class="reveal"><span lang="id">Ralph Loop is powerful, but keep these points in mind:</span><span lang="en">Ralph Loop is powerful, but keep these points in mind:</span></p>
+<p class="reveal"><span lang="id"><b>First, more detailed prompts produce better results.</b> Ambiguous prompts require more iterations for correction.</span><span lang="en"><b>First, more detailed prompts produce better results.</b> Ambiguous prompts require more iterations for correction.</span></p>
+<p class="reveal"><span lang="id"><b>Second, set reasonable iteration caps.</b> BBS systems are complex; recommend at least 100 iterations.</span><span lang="en"><b>Second, set reasonable iteration caps.</b> BBS systems are complex; recommend at least 100 iterations.</span></p>
+<p class="reveal"><span lang="id"><b>Third, TDD is recommended.</b> Writing tests first can significantly reduce debugging time.</span><span lang="en"><b>Third, TDD is recommended.</b> Writing tests first can significantly reduce debugging time.</span></p>
+<p class="reveal"><span lang="id"><b>Fourth, final manual verification is required.</b> AI may miss edge cases or special scenarios, especially in security-sensitive paths.</span><span lang="en"><b>Fourth, final manual verification is required.</b> AI may miss edge cases or special scenarios, especially in security-sensitive paths.</span></p>
+<p class="reveal"><span lang="id"><b>Fifth, pay close attention to schema design.</b> Ralph may need several iterations before landing on a robust schema.</span><span lang="en"><b>Fifth, pay close attention to schema design.</b> Ralph may need several iterations before landing on a robust schema.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Method Comparison and Selection</span><span lang="en">Method Comparison and Selection</span></h2>
+<p class="reveal"><span lang="id">Each method has its own characteristics and fits different scenarios.</span><span lang="en">Each method has its own characteristics and fits different scenarios.</span></p>
+<p class="reveal"><span lang="id">While True Loop is the simplest: only 5 lines to run, good for quick experiments and prototypes. But it is limited and does not detect real completion, relying only on iteration caps.</span><span lang="en">While True Loop is the simplest: only 5 lines to run, good for quick experiments and prototypes. But it is limited and does not detect real completion, relying only on iteration caps.</span></p>
+<p class="reveal"><span lang="id">Ralph Wiggum is the general recommendation for most scenarios. It has a complete Stop Hook mechanism, supports completion-marker checks, has official support, and solid docs.</span><span lang="en">Ralph Wiggum is the general recommendation for most scenarios. It has a complete Stop Hook mechanism, supports completion-marker checks, has official support, and solid docs.</span></p>
+<p class="reveal"><span lang="id">Enhanced Ralph is better for production environments, with dual exit conditions, rate limits, and smart circuit breakers.</span><span lang="en">Enhanced Ralph is better for production environments, with dual exit conditions, rate limits, and smart circuit breakers.</span></p>
+<p class="reveal"><span lang="id">Background tasks are useful for simple non-blocking execution: just press <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl+B</code>. But it is only background execution, not iterative loop orchestration.</span><span lang="en">Background tasks are useful for simple non-blocking execution: just press <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl+B</code>. But it is only background execution, not iterative loop orchestration.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary</span><span lang="en">Summary</span></h2>
+<p class="reveal"><span lang="id">The core idea for making Claude Code work long-term is simple: do not ask it to "finish in one shot," ask it to "keep trying until true completion."</span><span lang="en">The core idea for making Claude Code work long-term is simple: do not ask it to "finish in one shot," ask it to "keep trying until true completion."</span></p>
+<p class="reveal"><span lang="id">All methods are fundamentally doing the same thing: give Claude a task, let it run, check whether completion is real, and if not, continue the next round.</span><span lang="en">All methods are fundamentally doing the same thing: give Claude a task, let it run, check whether completion is real, and if not, continue the next round.</span></p>
+<p class="reveal"><span lang="id">Which method to choose depends on your needs.</span><span lang="en">Which method to choose depends on your needs.</span></p>
+<p class="reveal"><span lang="id">If you want simple and fast, use While True Loop. Five lines can run, but features are limited.</span><span lang="en">If you want simple and fast, use While True Loop. Five lines can run, but features are limited.</span></p>
+<p class="reveal"><span lang="id">If you want general recommendation, use Ralph Wiggum. Official support, complete capability, suitable for most cases.</span><span lang="en">If you want general recommendation, use Ralph Wiggum. Official support, complete capability, suitable for most cases.</span></p>
+<p class="reveal"><span lang="id">If this is production usage, use enhanced Ralph. It has extra safety mechanisms and is more reliable.</span><span lang="en">If this is production usage, use enhanced Ralph. It has extra safety mechanisms and is more reliable.</span></p>
+<p class="reveal"><span lang="id">(For Agent Teams multi-agent collaboration, see the next section: "3.3 Agent Teams Multi-Agent Collaboration.")</span><span lang="en">(For Agent Teams multi-agent collaboration, see the next section: "3.3 Agent Teams Multi-Agent Collaboration.")</span></p>
+<p class="reveal"><span lang="id">Hopefully this chapter helps you use Claude Code more effectively so AI becomes a true productivity tool rather than only a chatbot.</span><span lang="en">Hopefully this chapter helps you use Claude Code more effectively so AI becomes a true productivity tool rather than only a chatbot.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">References</span><span lang="en">References</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Official Resources</span><span lang="en">Official Resources</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[Claude Code Official Docs](https://docs.anthropic.com/en/docs/claude-code) - complete official Claude Code documentation</span><span lang="en">[Claude Code Official Docs](https://docs.anthropic.com/en/docs/claude-code) - complete official Claude Code documentation</span></li>
+<li><span lang="id">[Ralph Wiggum Plugin README](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/ralph-wiggum) - official plugin documentation</span><span lang="en">[Ralph Wiggum Plugin README](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/ralph-wiggum) - official plugin documentation</span></li>
+<li><span lang="id">[Claude Code Hooks](https://docs.anthropic.com/en/docs/claude-code/configuration/hooks) - official Hooks system docs</span><span lang="en">[Claude Code Hooks](https://docs.anthropic.com/en/docs/claude-code/configuration/hooks) - official Hooks system docs</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Community Projects</span><span lang="en">Community Projects</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[frankbria/ralph-claude-code](https://github.com/frankbria/ralph-claude-code) (2.1k stars) - enhanced Ralph implementation with additional safeguards</span><span lang="en">[frankbria/ralph-claude-code](https://github.com/frankbria/ralph-claude-code) (2.1k stars) - enhanced Ralph implementation with additional safeguards</span></li>
+<li><span lang="id">[Awesome Ralph](https://github.com/snwfdhmp/awesome-ralph) - curated Ralph resources and examples</span><span lang="en">[Awesome Ralph](https://github.com/snwfdhmp/awesome-ralph) - curated Ralph resources and examples</span></li>
+<li><span lang="id">[Ralph Ryan](https://github.com/wquguru/ralph-ryan) - PRD generation + Ralph loop integration</span><span lang="en">[Ralph Ryan](https://github.com/wquguru/ralph-ryan) - PRD generation + Ralph loop integration</span></li>
+<li><span lang="id">[snarktank/ralph](https://github.com/snarktank/ralph) - original Ralph implementation</span><span lang="en">[snarktank/ralph](https://github.com/snarktank/ralph) - original Ralph implementation</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Articles and Tutorials</span><span lang="en">Articles and Tutorials</span></h3>
+<p class="reveal"><span lang="id"><b>English resources</b></span><span lang="en"><b>English resources</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[Geoffrey Huntley - Ralph Technique](https://ghuntley.com/ralph/) - original Ralph concept by creator</span><span lang="en">[Geoffrey Huntley - Ralph Technique](https://ghuntley.com/ralph/) - original Ralph concept by creator</span></li>
+<li><span lang="id">[Effective Framework Practices for Reliable Long-Running AI Agents](https://m.blog.csdn.net/weixin_48708052/article/details/158044721) - deep read of Anthropic engineering blog</span><span lang="en">[Effective Framework Practices for Reliable Long-Running AI Agents](https://m.blog.csdn.net/weixin_48708052/article/details/158044721) - deep read of Anthropic engineering blog</span></li>
+<li><span lang="id">[Complete Claude Code Guide](https://developer.aliyun.com/article/1705912) - full usage guide</span><span lang="en">[Complete Claude Code Guide](https://developer.aliyun.com/article/1705912) - full usage guide</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Chinese tutorials</b></span><span lang="en"><b>Chinese tutorials</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[Beginner-Friendly Tutorial - CSDN](https://m.blog.csdn.net/zsr154278963/article/details/156637281) - detailed install and usage guide</span><span lang="en">[Beginner-Friendly Tutorial - CSDN](https://m.blog.csdn.net/zsr154278963/article/details/156637281) - detailed install and usage guide</span></li>
+<li><span lang="id">[Deep Analysis - Toutiao](https://m.toutiao.com/a7585579989207188006/) - mechanism and core principles</span><span lang="en">[Deep Analysis - Toutiao](https://m.toutiao.com/a7585579989207188006/) - mechanism and core principles</span></li>
+<li><span lang="id">[Full-Stack Plain-Language Guide](https://www.jdon.com/90167-ralph-wigum-loop-explained-for-teens.html) - complete walkthrough from principles to practice</span><span lang="en">[Full-Stack Plain-Language Guide](https://www.jdon.com/90167-ralph-wigum-loop-explained-for-teens.html) - complete walkthrough from principles to practice</span></li>
+<li><span lang="id">[Beginner and Practical Guide - CNBlogs](https://www.cnblogs.com/buwai/p/19625356) - basics and practical examples</span><span lang="en">[Beginner and Practical Guide - CNBlogs](https://www.cnblogs.com/buwai/p/19625356) - basics and practical examples</span></li>
+<li><span lang="id">[Ralph Loop Deep Dive - CSDN](https://m.blog.csdn.net/roamingcode/article/details/156732443) - Stop Hook mechanism details</span><span lang="en">[Ralph Loop Deep Dive - CSDN](https://m.blog.csdn.net/roamingcode/article/details/156732443) - Stop Hook mechanism details</span></li>
+<li><span lang="id">[Claude Code Perpetual Engine - CSDN](https://m.blog.csdn.net/qq_44866828/article/details/156736656) - infinite-loop iteration plugin deep dive</span><span lang="en">[Claude Code Perpetual Engine - CSDN](https://m.blog.csdn.net/qq_44866828/article/details/156736656) - infinite-loop iteration plugin deep dive</span></li>
+<li><span lang="id">[Ralph Loop New User Starter - CNBlogs](https://www.cnblogs.com/gyc567/p/19495639) - best practices and prompt summary</span><span lang="en">[Ralph Loop New User Starter - CNBlogs](https://www.cnblogs.com/gyc567/p/19495639) - best practices and prompt summary</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Practical Case Studies</span><span lang="en">Practical Case Studies</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[CURSED Programming Language](https://github.com/geoffreyhuntley/cursed) - complete programming language built with Ralph over 3 months</span><span lang="en">[CURSED Programming Language](https://github.com/geoffreyhuntley/cursed) - complete programming language built with Ralph over 3 months</span></li>
+<li><span lang="id">[Boris Cherny's 30 Days](https://twitter.com/boriskirov/status/1756002385683786616) - 259 PRs case share</span><span lang="en">[Boris Cherny's 30 Days](https://twitter.com/boriskirov/status/1756002385683786616) - 259 PRs case share</span></li>
+<li><span lang="id">[Y Combinator Hackathon](https://github.com/geoffreyhuntley/ralph) - 6-project overnight generation case</span><span lang="en">[Y Combinator Hackathon](https://github.com/geoffreyhuntley/ralph) - 6-project overnight generation case</span></li>
+<li><span lang="id">[Geoffrey Huntley's Blog](https://ghuntley.com/) - creator's technical blog</span><span lang="en">[Geoffrey Huntley's Blog](https://ghuntley.com/) - creator's technical blog</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../core-skills/skills/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Claude Code Skills: Membungkus Logika Jadi Modul</span><span lang="en">Claude Code Skills: Membungkus Logika Jadi Modul</span></b></a>
+      <a class="next" href="../../core-skills/agent-teams/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Claude Agent Teams: Tim Pengembang Serba AI</span><span lang="en">Claude Agent Teams: Tim Pengembang Serba AI</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

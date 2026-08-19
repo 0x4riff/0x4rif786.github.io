@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Capstone Proyek: SaaS AI Copywriting + Supabase + Stripe — VibeKoding 🏆</title>
+<meta name="description" content="Modul praktis Level 2 VibeKoding: Capstone Proyek: SaaS AI Copywriting + Supabase + Stripe. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-2/assignments/copywriting-platform-supabase/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../stage-2/"><span lang="id">Level 2 · Developer</span><span lang="en">Level 2 · Developer</span></a> / <span lang="id">Capstone Proyek: SaaS AI Copywriting + Supabase + Stripe</span><span lang="en">Capstone Proyek: SaaS AI Copywriting + Supabase + Stripe</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">🏆</div>
+      <div>
+        <h1><span lang="id">Capstone Proyek: SaaS AI Copywriting + Supabase + Stripe</span><span lang="en">Capstone Proyek: SaaS AI Copywriting + Supabase + Stripe</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 2 · Developer</span><span lang="en">Level 2 · Developer</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul praktis Level 2 VibeKoding: Capstone Proyek: SaaS AI Copywriting + Supabase + Stripe.</span><span lang="en">Modul praktis Level 2 VibeKoding: Capstone Proyek: SaaS AI Copywriting + Supabase + Stripe.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Overview</span><span lang="en">Overview</span></h2>
+<p class="reveal"><span lang="id">This project requires you to build an AI marketing copywriting SaaS product for independent developers and content teams, based on a real PRD. You'll use Supabase as the backend service and Stripe for payments, completing the full process from requirements analysis to deployment.</span><span lang="en">This project requires you to build an AI marketing copywriting SaaS product for independent developers and content teams, based on a real PRD. You'll use Supabase as the backend service and Stripe for payments, completing the full process from requirements analysis to deployment.</span></p>
+<p class="reveal"><span lang="id">This is the comprehensive practical section of Stage 2. In previous chapters, you've learned individual skills — frontend pages, backend APIs, databases, and payment integration. This project ties them all together into a runnable product prototype.</span><span lang="en">This is the comprehensive practical section of Stage 2. In previous chapters, you've learned individual skills — frontend pages, backend APIs, databases, and payment integration. This project ties them all together into a runnable product prototype.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Prerequisites</span><span lang="en">Prerequisites</span></h2>
+<p class="reveal"><span lang="id">Before starting this project, you should already be familiar with:</span><span lang="en">Before starting this project, you should already be familiar with:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Frontend page design and component libraries ([UI Design](../../frontend/ui-design/), [Modern Component Libraries](../../frontend/modern-component-library/))</span><span lang="en">Frontend page design and component libraries ([UI Design](../../frontend/ui-design/), [Modern Component Libraries](../../frontend/modern-component-library/))</span></li>
+<li><span lang="id">Backend API design and development ([API Code](../../backend/ai-interface-code/))</span><span lang="en">Backend API design and development ([API Code](../../backend/ai-interface-code/))</span></li>
+<li><span lang="id">Database fundamentals and Supabase ([Database to Supabase](../../backend/database-supabase/))</span><span lang="en">Database fundamentals and Supabase ([Database to Supabase](../../backend/database-supabase/))</span></li>
+<li><span lang="id">Payment integration ([Stripe Payment System](../../backend/stripe-payment/))</span><span lang="en">Payment integration ([Stripe Payment System](../../backend/stripe-payment/))</span></li>
+<li><span lang="id">Git workflow and deployment ([Git & GitHub](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/))</span><span lang="en">Git workflow and deployment ([Git & GitHub](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/))</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Learning Objectives</span><span lang="en">Learning Objectives</span></h2>
+<p class="reveal"><span lang="id">After completing this project, you will be able to:</span><span lang="en">After completing this project, you will be able to:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Read and understand a real PRD, extracting a development task list</span><span lang="en">Read and understand a real PRD, extracting a development task list</span></li>
+<li><span lang="id">Use AI assistance to incrementally generate frontend pages and backend APIs</span><span lang="en">Use AI assistance to incrementally generate frontend pages and backend APIs</span></li>
+<li><span lang="id">Implement user authentication and database operations with Supabase</span><span lang="en">Implement user authentication and database operations with Supabase</span></li>
+<li><span lang="id">Integrate Stripe for paid subscription functionality</span><span lang="en">Integrate Stripe for paid subscription functionality</span></li>
+<li><span lang="id">Build an admin dashboard and complete end-to-end integration</span><span lang="en">Build an admin dashboard and complete end-to-end integration</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Project Overview</span><span lang="en">Project Overview</span></h2>
+<p class="reveal"><span lang="id">You will build an AI marketing copywriting SaaS with three subsystems:</span><span lang="en">You will build an AI marketing copywriting SaaS with three subsystems:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Subsystem</th><th>Responsibility</th></tr>
+<tr><td><b>Public Website</b></td><td>Product intro, pricing, FAQ, registration conversion</td></tr>
+<tr><td><b>User Workspace</b></td><td>Enter product info, generate copywriting, view history, upgrade plan</td></tr>
+<tr><td><b>Admin Dashboard</b></td><td>User management, generation records, payment data, operations overview</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">The backend uses Supabase for database and authentication, Stripe for payment processing, and AI models for generating marketing copy.</span><span lang="en">The backend uses Supabase for database and authentication, Stripe for payment processing, and AI models for generating marketing copy.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">The requirements document for this project is on GitHub: [View PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/en/stage-2/assignments/copywriting-platform-supabase/PRD.md)</span><span lang="en">The requirements document for this project is on GitHub: [View PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/en/stage-2/assignments/copywriting-platform-supabase/PRD.md)</span></p>
+</div>
+<p class="reveal"><span lang="id"><div style="margin: 32px 0;"></span><span lang="en"><div style="margin: 32px 0;"></span></p>
+<p class="reveal"><span lang="id"><ClientOnly></span><span lang="en"><ClientOnly></span></p>
+<p class="reveal"><span lang="id"><StepBar :active="0" :items="[</span><span lang="en"><StepBar :active="0" :items="[</span></p>
+<p class="reveal"><span lang="id">{ title: 'Requirements', description: 'Read PRD, define pages, features, auth, and payment scope' },</span><span lang="en">{ title: 'Requirements', description: 'Read PRD, define pages, features, auth, and payment scope' },</span></p>
+<p class="reveal"><span lang="id">{ title: 'Scaffold', description: 'Use AI to generate three frontend skeletons (www / app / admin)' },</span><span lang="en">{ title: 'Scaffold', description: 'Use AI to generate three frontend skeletons (www / app / admin)' },</span></p>
+<p class="reveal"><span lang="id">{ title: 'Backend', description: 'Supabase auth, generation API, Stripe payments' },</span><span lang="en">{ title: 'Backend', description: 'Supabase auth, generation API, Stripe payments' },</span></p>
+<p class="reveal"><span lang="id">{ title: 'Launch', description: 'End-to-end testing, deploy, and prepare demo' }</span><span lang="en">{ title: 'Launch', description: 'End-to-end testing, deploy, and prepare demo' }</span></p>
+<p class="reveal"><span lang="id">]" /></span><span lang="en">]" /></span></p>
+<p class="reveal"><span lang="id"></ClientOnly></span><span lang="en"></ClientOnly></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Part 1: Requirements Analysis</span><span lang="en">Part 1: Requirements Analysis</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 Read the PRD</span><span lang="en">1.1 Read the PRD</span></h3>
+<p class="reveal"><span lang="id">Open the PRD document and answer these key questions:</span><span lang="en">Open the PRD document and answer these key questions:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">How many entry points does the system have? Which pages does each cover?</span><span lang="en">How many entry points does the system have? Which pages does each cover?</span></li>
+<li><span lang="id">What is the core functionality of each page?</span><span lang="en">What is the core functionality of each page?</span></li>
+<li><span lang="id">What modules and data tables does the backend include?</span><span lang="en">What modules and data tables does the backend include?</span></li>
+<li><span lang="id">How should plan pricing, payment flow, and free tier be designed?</span><span lang="en">How should plan pricing, payment flow, and free tier be designed?</span></li>
+<li><span lang="id">What is the MVP scope? What goes in the first version and what doesn't?</span><span lang="en">What is the MVP scope? What goes in the first version and what doesn't?</span></li>
+</ul>
+
+<div class="callout warn reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div>
+  <p><span lang="id">If the above questions don't have clear answers, don't start coding. Unclear requirements are the most common cause of rework.</span><span lang="en">If the above questions don't have clear answers, don't start coding. Unclear requirements are the most common cause of rework.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 Confirm System Architecture</span><span lang="en">1.2 Confirm System Architecture</span></h3>
+<p class="reveal"><span lang="id">Map out the overall architecture based on the PRD:</span><span lang="en">Map out the overall architecture based on the PRD:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>mermaid</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>flowchart TD
+  prd[&quot;PRD&quot;] --&gt; web[&quot;Public Website&quot;]
+  prd --&gt; app[&quot;User Workspace&quot;]
+  prd --&gt; admin[&quot;Admin Dashboard&quot;]
+  app --&gt; auth[&quot;Auth&quot;]
+  app --&gt; gen[&quot;Copy Generation Task&quot;]
+  gen --&gt; db[&quot;Database&quot;]
+  billing[&quot;Payments &amp; Plans&quot;] --&gt; db
+  admin --&gt; analytics[&quot;User / Generation / Payment Dashboard&quot;]</pre>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Part 2: Project Scaffolding</span><span lang="en">Part 2: Project Scaffolding</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Generate Frontend Pages</span><span lang="en">2.1 Generate Frontend Pages</span></h3>
+<p class="reveal"><span lang="id">Use AI to generate the basic structure and mock data for all pages.</span><span lang="en">Use AI to generate the basic structure and mock data for all pages.</span></p>
+<p class="reveal"><span lang="id">Prompt reference:</span><span lang="en">Prompt reference:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Based on the current PRD, help me generate a frontend scaffold for an AI marketing copywriting SaaS.
+
+Requirements:
+1. Three entry points: www, app, admin
+2. www: homepage, pricing, FAQ
+3. app: login, register, generation workspace, history, plans page
+4. admin: dashboard homepage, user management, generation records, payment orders
+5. Only generate page structure with mock data, no real API integration
+6. Style should look like a modern SaaS, not a classroom demo</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Refine the Core Page</span><span lang="en">2.2 Refine the Core Page</span></h3>
+<p class="reveal"><span lang="id">After the scaffold is ready, focus on refining the copywriting generation workspace (Dashboard) page:</span><span lang="en">After the scaffold is ready, focus on refining the copywriting generation workspace (Dashboard) page:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Continue refining the /dashboard page.
+
+This is an AI marketing copywriting workspace.
+
+Left side form fields:
+- Product name
+- One-line description
+- Target audience
+- 3 selling points
+- Distribution channels (website, WeChat Moments, Xiaohongshu, Douyin, email)
+
+Right side result area:
+- Main headline
+- Subheadline
+- CTA
+- 3 versions of short copy
+- Long-form copy
+
+Use mock data for interactions first.
+
+Requirements:
+- Loading state after clicking &quot;Generate Copy&quot;
+- Empty state for result area
+- Responsive layout, works on both wide and narrow screens</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 Verify Page Structure</span><span lang="en">2.3 Verify Page Structure</span></h3>
+<p class="reveal"><span lang="id">Check each item:</span><span lang="en">Check each item:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[ ] Three entry point routes are independent</span><span lang="en">[ ] Three entry point routes are independent</span></li>
+<li><span lang="id">[ ] Page count matches the PRD</span><span lang="en">[ ] Page count matches the PRD</span></li>
+<li><span lang="id">[ ] Dashboard form and result area layout is reasonable</span><span lang="en">[ ] Dashboard form and result area layout is reasonable</span></li>
+<li><span lang="id">[ ] Mock data shows basic UI states</span><span lang="en">[ ] Mock data shows basic UI states</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Stuck?</span><span lang="en">Stuck?</span></h3>
+<p class="reveal"><span lang="id">If you get stuck during frontend scaffolding, review these chapters:</span><span lang="en">If you get stuck during frontend scaffolding, review these chapters:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[UI Design](../../frontend/ui-design/)</span><span lang="en">[UI Design](../../frontend/ui-design/)</span></li>
+<li><span lang="id">[Multi-Product UI Design](../../frontend/multi-product-ui/)</span><span lang="en">[Multi-Product UI Design](../../frontend/multi-product-ui/)</span></li>
+<li><span lang="id">[LLM & Skills Interface Beautification](../../frontend/llm-skills-beautiful/)</span><span lang="en">[LLM & Skills Interface Beautification](../../frontend/llm-skills-beautiful/)</span></li>
+<li><span lang="id">[Design Prototype to Project Code](../../frontend/design-to-code/)</span><span lang="en">[Design Prototype to Project Code](../../frontend/design-to-code/)</span></li>
+<li><span lang="id">[Modern Component Libraries](../../frontend/modern-component-library/)</span><span lang="en">[Modern Component Libraries](../../frontend/modern-component-library/)</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Part 3: Backend Integration</span><span lang="en">Part 3: Backend Integration</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Connect Supabase Login</span><span lang="en">3.1 Connect Supabase Login</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Treat me as a beginner and guide me step by step through Supabase login integration.
+
+Help me complete:
+1. Connect the project to Supabase
+2. Implement registration, login, and logout
+3. Redirect to /dashboard after successful login
+4. Redirect unauthenticated users to /login when accessing /dashboard, /billing, /admin
+5. Create a profiles table
+6. Automatically create a record in profiles table after user registration
+7. profiles table includes email, role, and plan fields
+
+Requirements:
+- Explain which files are being modified at each step
+- Don&#039;t hardcode API keys
+- Clearly mark any steps that require manual actions in the Supabase dashboard
+- Explain how to verify registration and login after completion</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Connect Generation API and Database</span><span lang="en">3.2 Connect Generation API and Database</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Treat me as a beginner and help me implement the core feature: generating marketing copy and saving it.
+
+Target behavior:
+1. User fills out the form on /dashboard and clicks &quot;Generate Copy&quot;
+2. Backend receives: product name, description, target audience, selling points, distribution channels
+3. Backend calls the model to generate results
+4. Page displays the generated results
+5. Both input and output are saved to the database
+6. User can view history on next visit
+
+Help me complete:
+- Create generation API /api/generate
+- Create generations table
+- Design input and output fields
+- Dashboard page reads current user&#039;s history
+
+User experience:
+- Button loading state
+- Error message on generation failure
+- Empty state when no history exists
+
+After completion, explain:
+- Frontend page file locations
+- Backend API file locations
+- Where database write logic lives
+- How to test the complete generation pipeline</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Connect Stripe Payments</span><span lang="en">3.3 Connect Stripe Payments</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Treat me as a beginner and help me add the simplest viable Stripe payment to the project.
+
+No complex system needed — just get the basic payment flow working.
+
+Help me complete:
+1. /billing page shows free and pro plans
+2. User clicks upgrade → redirects to Stripe Checkout
+3. After successful payment, returns to the site
+4. Payment result saved to subscriptions table
+5. Sync update to profile.plan field
+6. Free users limited to 3 generations per day, pro users unlimited
+
+Implementation principles:
+- Get the main flow working first, don&#039;t worry about complex edge cases
+- Clearly document what needs to be configured in Stripe dashboard
+- Explain how to test the complete payment flow after completion</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.4 Build Admin Dashboard</span><span lang="en">3.4 Build Admin Dashboard</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Treat me as a beginner and help me build a clean, functional admin dashboard.
+
+Admin-only access.
+
+Help me complete:
+1. Only users with role = admin can access /admin
+2. Dashboard has 3 tabs: User List, Generation Records, Subscription Status
+3. User List shows: email, plan, creation date
+4. Generation Records shows: user, product name, channel, creation date
+5. Subscription Status shows: user, plan, payment status
+
+Requirements:
+- Clean, clear interface
+- Use existing component library&#039;s table, tab, and badge components
+- Explain how to set an account as admin after completion</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Stuck?</span><span lang="en">Stuck?</span></h3>
+<p class="reveal"><span lang="id">If you get stuck during backend development, review these chapters:</span><span lang="en">If you get stuck during backend development, review these chapters:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[Database to Supabase](../../backend/database-supabase/)</span><span lang="en">[Database to Supabase](../../backend/database-supabase/)</span></li>
+<li><span lang="id">[API Code with LLM Assistance](../../backend/ai-interface-code/)</span><span lang="en">[API Code with LLM Assistance](../../backend/ai-interface-code/)</span></li>
+<li><span lang="id">[Stripe Payment Integration](../../backend/stripe-payment/)</span><span lang="en">[Stripe Payment Integration](../../backend/stripe-payment/)</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Part 4: Integration & Launch</span><span lang="en">Part 4: Integration & Launch</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 End-to-End Testing</span><span lang="en">4.1 End-to-End Testing</span></h3>
+<p class="reveal"><span lang="id">At minimum, verify these scenarios:</span><span lang="en">At minimum, verify these scenarios:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Register → Login → Generate copy → View history → Upgrade plan</span><span lang="en">Register → Login → Generate copy → View history → Upgrade plan</span></li>
+<li><span lang="id">Admin login → View user data → View generation records → View payment status</span><span lang="en">Admin login → View user data → View generation records → View payment status</span></li>
+</ul>
+<p class="reveal"><span lang="id">Pre-deployment check:</span><span lang="en">Pre-deployment check:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Treat me as a beginner and help me check if the project is ready for deployment.
+
+Check focus:
+- Are environment variables complete?
+- Is the login callback URL correct?
+- Is the Stripe payment callback URL correct?
+- Are there missing loading, empty, or error states on any pages?
+- Does the README include setup and deployment instructions?
+
+Help me:
+1. List items to fix, prioritized
+2. Mark which ones must be fixed first
+3. Explain deployment steps after fixes</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Deployment</span><span lang="en">4.2 Deployment</span></h3>
+<p class="reveal"><span lang="id">Deploy the project to a public environment. For deployment instructions, see: [Git & GitHub Workflow](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/).</span><span lang="en">Deploy the project to a public environment. For deployment instructions, see: [Git & GitHub Workflow](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/).</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Deliverables</span><span lang="en">Deliverables</span></h2>
+<p class="reveal"><span lang="id">After completing this project, submit the following:</span><span lang="en">After completing this project, submit the following:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[ ] Accessible live demo link</span><span lang="en">[ ] Accessible live demo link</span></li>
+<li><span lang="id">[ ] Source code repository link (with README)</span><span lang="en">[ ] Source code repository link (with README)</span></li>
+<li><span lang="id">[ ] PRD document</span><span lang="en">[ ] PRD document</span></li>
+<li><span lang="id">[ ] Core page screenshots (homepage, Dashboard, Billing, Admin)</span><span lang="en">[ ] Core page screenshots (homepage, Dashboard, Billing, Admin)</span></li>
+<li><span lang="id">[ ] 60-second demo video (covering register → generate → pay → admin)</span><span lang="en">[ ] 60-second demo video (covering register → generate → pay → admin)</span></li>
+</ul>
+<p class="reveal"><span lang="id">README should include at minimum: project overview, core page descriptions, tech stack, local setup steps, and environment variable list.</span><span lang="en">README should include at minimum: project overview, core page descriptions, tech stack, local setup steps, and environment variable list.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Grading Criteria</span><span lang="en">Grading Criteria</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Dimension</th><th>Basic Requirements</th><th>Advanced Requirements</th></tr>
+<tr><td>Product Completeness</td><td>Homepage, login, Dashboard, Billing, Admin are all accessible</td><td>Homepage copy and visual style look like a real SaaS</td></tr>
+<tr><td>Business Loop</td><td>Register → Login → Generate → View history works end-to-end</td><td>Free/Pro permission differences are clearly visible</td></tr>
+<tr><td>Data Correctness</td><td>Generation results and payment status are saved to database</td><td>Has clear error messages, empty states, and loading states</td></tr>
+<tr><td>Auth & Security</td><td>Unauthenticated users can't access protected pages; regular users can't access Admin</td><td>Has basic input validation and server-side auth</td></tr>
+<tr><td>Engineering Delivery</td><td>Project runs locally and can be deployed publicly</td><td>README is clear, demo video is well-structured</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">If the task feels too large, remember this principle: <b>Get it working first, then make it pretty.</b></span><span lang="en">If the task feels too large, remember this principle: <b>Get it working first, then make it pretty.</b></span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Pre-Submission Checklist</span><span lang="en">Pre-Submission Checklist</span></h2>
+<p class="reveal"><span lang="id"><el-card shadow="hover" style="margin: 20px 0; border-radius: 12px;"></span><span lang="en"><el-card shadow="hover" style="margin: 20px 0; border-radius: 12px;"></span></p>
+<p class="reveal"><span lang="id"><template #header></span><span lang="en"><template #header></span></p>
+<p class="reveal"><span lang="id"><div style="font-weight: bold; font-size: 16px;">Final check before submission</div></span><span lang="en"><div style="font-weight: bold; font-size: 16px;">Final check before submission</div></span></p>
+<p class="reveal"><span lang="id"></template></span><span lang="en"></template></span></p>
+<p class="reveal"><span lang="id"><ul style="list-style-type: none; padding-left: 0;"></span><span lang="en"><ul style="list-style-type: none; padding-left: 0;"></span></p>
+<p class="reveal"><span lang="id"><li><label><input type="checkbox" disabled /> Homepage, login, Dashboard, Billing, and Admin pages are complete</label></li></span><span lang="en"><li><label><input type="checkbox" disabled /> Homepage, login, Dashboard, Billing, and Admin pages are complete</label></li></span></p>
+<p class="reveal"><span lang="id"><li><label><input type="checkbox" disabled /> Users can register, login, and logout</label></li></span><span lang="en"><li><label><input type="checkbox" disabled /> Users can register, login, and logout</label></li></span></p>
+<p class="reveal"><span lang="id"><li><label><input type="checkbox" disabled /> Generation results are actually saved to the database</label></li></span><span lang="en"><li><label><input type="checkbox" disabled /> Generation results are actually saved to the database</label></li></span></p>
+<p class="reveal"><span lang="id"><li><label><input type="checkbox" disabled /> Payment main flow is working</label></li></span><span lang="en"><li><label><input type="checkbox" disabled /> Payment main flow is working</label></li></span></p>
+<p class="reveal"><span lang="id"><li><label><input type="checkbox" disabled /> Admin can view users, generation records, and payment status</label></li></span><span lang="en"><li><label><input type="checkbox" disabled /> Admin can view users, generation records, and payment status</label></li></span></p>
+<p class="reveal"><span lang="id"><li><label><input type="checkbox" disabled /> Project is deployed to the public internet</label></li></span><span lang="en"><li><label><input type="checkbox" disabled /> Project is deployed to the public internet</label></li></span></p>
+<p class="reveal"><span lang="id"></ul></span><span lang="en"></ul></span></p>
+<p class="reveal"><span lang="id"></el-card></span><span lang="en"></el-card></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">References</span><span lang="en">References</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[UI Design](../../frontend/ui-design/)</span><span lang="en">[UI Design](../../frontend/ui-design/)</span></li>
+<li><span lang="id">[Multi-Product UI Design](../../frontend/multi-product-ui/)</span><span lang="en">[Multi-Product UI Design](../../frontend/multi-product-ui/)</span></li>
+<li><span lang="id">[LLM & Skills Interface Beautification](../../frontend/llm-skills-beautiful/)</span><span lang="en">[LLM & Skills Interface Beautification](../../frontend/llm-skills-beautiful/)</span></li>
+<li><span lang="id">[Design Prototype to Project Code](../../frontend/design-to-code/)</span><span lang="en">[Design Prototype to Project Code](../../frontend/design-to-code/)</span></li>
+<li><span lang="id">[Modern Component Libraries](../../frontend/modern-component-library/)</span><span lang="en">[Modern Component Libraries](../../frontend/modern-component-library/)</span></li>
+<li><span lang="id">[Database to Supabase](../../backend/database-supabase/)</span><span lang="en">[Database to Supabase](../../backend/database-supabase/)</span></li>
+<li><span lang="id">[API Code with LLM Assistance](../../backend/ai-interface-code/)</span><span lang="en">[API Code with LLM Assistance](../../backend/ai-interface-code/)</span></li>
+<li><span lang="id">[Git & GitHub Workflow](../../backend/git-workflow/)</span><span lang="en">[Git & GitHub Workflow](../../backend/git-workflow/)</span></li>
+<li><span lang="id">[Web App Deployment](../../backend/zeabur-deployment/)</span><span lang="en">[Web App Deployment](../../backend/zeabur-deployment/)</span></li>
+<li><span lang="id">[Stripe Payment Integration](../../backend/stripe-payment/)</span><span lang="en">[Stripe Payment Integration](../../backend/stripe-payment/)</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../frontend/hogwarts-portraits/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Proyek: Potret Hidup Hogwarts (Hogwarts Portraits)</span><span lang="en">Proyek: Potret Hidup Hogwarts (Hogwarts Portraits)</span></b></a>
+      <a class="next" href="../../assignments/exam-management-express/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Proyek: Sistem Ujian Online & Panel Manajemen</span><span lang="en">Proyek: Sistem Ujian Online & Panel Manajemen</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of Debugging — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Debugging. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/2-development-tools/debugging-art/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Debugging</span><span lang="en">Principles of Debugging</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of Debugging</span><span lang="en">Principles of Debugging</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Debugging.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Debugging.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>The code is done, you run it, and it throws an error — now what?</b> Many beginners get stuck at this point, staring at the screen not knowing what to do. Debugging is one of the most core skills in programming — arguably even more important than writing code itself. Writing code only accounts for about 30% of development time; the remaining 70% is spent understanding problems, locating bugs, and verifying fixes.</span><span lang="en"><b>The code is done, you run it, and it throws an error — now what?</b> Many beginners get stuck at this point, staring at the screen not knowing what to do. Debugging is one of the most core skills in programming — arguably even more important than writing code itself. Writing code only accounts for about 30% of development time; the remaining 70% is spent understanding problems, locating bugs, and verifying fixes.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn in this article?</b></span><span lang="en"><b>What will you learn in this article?</b></span></p>
+<p class="reveal"><span lang="id">After completing this chapter, you will gain:</span><span lang="en">After completing this chapter, you will gain:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Debugging mindset</b>: Build a systematic approach to problem locating — no more "guessing blindly"</span><span lang="en"><b>Debugging mindset</b>: Build a systematic approach to problem locating — no more "guessing blindly"</span></li>
+<li><span lang="id"><b>Error reading ability</b>: Understand error messages and quickly locate problems from stack traces</span><span lang="en"><b>Error reading ability</b>: Understand error messages and quickly locate problems from stack traces</span></li>
+<li><span lang="id"><b>Classic debugging methods</b>: Master techniques like binary search debugging, rubber duck debugging, and minimal reproduction</span><span lang="en"><b>Classic debugging methods</b>: Master techniques like binary search debugging, rubber duck debugging, and minimal reproduction</span></li>
+<li><span lang="id"><b>Tool proficiency</b>: Understand when to use breakpoint debugging, log debugging, network debugging</span><span lang="en"><b>Tool proficiency</b>: Understand when to use breakpoint debugging, log debugging, network debugging</span></li>
+<li><span lang="id"><b>AI-assisted debugging</b>: Learn to use AI to accelerate debugging without becoming dependent on it</span><span lang="en"><b>AI-assisted debugging</b>: Learn to use AI to accelerate debugging without becoming dependent on it</span></li>
+</ul>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Core Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>Reading Error Messages</td><td>Error types, stack traces</td></tr>
+<tr><td><b>Chapter 2</b></td><td>Classic Debugging Methods</td><td>Binary search, rubber duck, minimal reproduction</td></tr>
+<tr><td><b>Chapter 3</b></td><td>Debugging Toolbox</td><td>Breakpoints, logging, network capture</td></tr>
+<tr><td><b>Chapter 4</b></td><td>Debugging in the AI Era</td><td>AI assistance + human judgment</td></tr>
+<tr><td><b>Chapter 5</b></td><td>Debugging Mindset and Habits</td><td>Defensive programming, debug logs</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. The Big Picture: Debugging Is a Scientific Method</span><span lang="en">0. The Big Picture: Debugging Is a Scientific Method</span></h2>
+<p class="reveal"><span lang="id">Debugging is not about "getting lucky" — it's a rigorous scientific process. The methodology physicists use in experiments applies perfectly to debugging:</span><span lang="en">Debugging is not about "getting lucky" — it's a rigorous scientific process. The methodology physicists use in experiments applies perfectly to debugging:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Observe the phenomenon</b>: What went wrong with the program? What error did it throw?</span><span lang="en"><b>Observe the phenomenon</b>: What went wrong with the program? What error did it throw?</span></li>
+<li><span lang="id"><b>Form a hypothesis</b>: What might be causing it?</span><span lang="en"><b>Form a hypothesis</b>: What might be causing it?</span></li>
+<li><span lang="id"><b>Design an experiment</b>: How can you verify this hypothesis?</span><span lang="en"><b>Design an experiment</b>: How can you verify this hypothesis?</span></li>
+<li><span lang="id"><b>Verify the conclusion</b>: If the hypothesis is correct, fix it; if not, try another hypothesis</span><span lang="en"><b>Verify the conclusion</b>: If the hypothesis is correct, fix it; if not, try another hypothesis</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Reproduce first, then fix</b>: If you can't reliably reproduce a bug, you won't know if your fix actually worked
+- <b>Change only one variable at a time</b>: If you change multiple things simultaneously, you won't know which change solved the problem
+- <b>Trust evidence, not intuition</b>: The place where you think "it can't possibly be the problem" is often exactly where the problem is
+- <b>What changed recently?</b>: 80% of bugs are introduced by recent changes</span><span lang="en">- <b>Reproduce first, then fix</b>: If you can't reliably reproduce a bug, you won't know if your fix actually worked
+- <b>Change only one variable at a time</b>: If you change multiple things simultaneously, you won't know which change solved the problem
+- <b>Trust evidence, not intuition</b>: The place where you think "it can't possibly be the problem" is often exactly where the problem is
+- <b>What changed recently?</b>: 80% of bugs are introduced by recent changes</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Reading Error Messages: Errors Are Clues, Not Enemies</span><span lang="en">1. Reading Error Messages: Errors Are Clues, Not Enemies</span></h2>
+<p class="reveal"><span lang="id">The most common beginner mistake: panicking when seeing an error, immediately closing or ignoring it. In reality, <b>error messages are the program telling you what went wrong</b> — they are your best friends.</span><span lang="en">The most common beginner mistake: panicking when seeing an error, immediately closing or ignoring it. In reality, <b>error messages are the program telling you what went wrong</b> — they are your best friends.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 The Three Types of Errors</span><span lang="en">1.1 The Three Types of Errors</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Type</th><th>When It Appears</th><th>Example</th><th>Difficulty</th></tr>
+<tr><td><b>Syntax Error</b></td><td>Before the code even runs</td><td>Missing bracket, misspelled keyword</td><td>Easiest to fix</td></tr>
+<tr><td><b>Runtime Error</b></td><td>Code crashes at a specific line</td><td>Accessing an undefined variable, division by zero</td><td>Medium difficulty</td></tr>
+<tr><td><b>Logic Error</b></td><td>Code runs but produces wrong results</td><td>Wrong calculation formula, reversed conditional logic</td><td>Hardest to detect</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 How to Read an Error Stack Trace</span><span lang="en">1.2 How to Read an Error Stack Trace</span></h3>
+<p class="reveal"><span lang="id">Using JavaScript as an example, here's a typical error message:</span><span lang="en">Using JavaScript as an example, here's a typical error message:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>TypeError: Cannot read properties of undefined (reading &#039;name&#039;)
+    at getUserName (app.js:15:23)
+    at handleClick (app.js:42:10)
+    at HTMLButtonElement.&lt;anonymous&gt; (app.js:58:5)</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Read from top to bottom</b>:</span><span lang="en"><b>Read from top to bottom</b>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>First line</b>: Error type + error description → <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">TypeError</code>, attempting to read the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">name</code> property of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">undefined</code></span><span lang="en"><b>First line</b>: Error type + error description → <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">TypeError</code>, attempting to read the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">name</code> property of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">undefined</code></span></li>
+<li><span lang="id"><b>Second line</b>: The function and location where the error occurred → <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">getUserName</code> function, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">app.js</code> line 15, column 23</span><span lang="en"><b>Second line</b>: The function and location where the error occurred → <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">getUserName</code> function, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">app.js</code> line 15, column 23</span></li>
+<li><span lang="id"><b>Subsequent lines</b>: The call chain → Who called this function? <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">handleClick</code> → button click event</span><span lang="en"><b>Subsequent lines</b>: The call chain → Who called this function? <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">handleClick</code> → button click event</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Read top-down for the cause, bottom-up for the origin.</b> The first line tells you "what went wrong," the last line tells you "where it started."</span><span lang="en"><b>Read top-down for the cause, bottom-up for the origin.</b> The first line tells you "what went wrong," the last line tells you "where it started."</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.3 Common Error Types Quick Reference</span><span lang="en">1.3 Common Error Types Quick Reference</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Error Name</th><th>Meaning</th><th>Common Causes</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SyntaxError</code></td><td>Syntax error</td><td>Mismatched brackets, missing commas</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">TypeError</code></td><td>Type error</td><td>Operating on <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">undefined</code>/<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">null</code></td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ReferenceError</code></td><td>Reference error</td><td>Using an undeclared variable</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">RangeError</code></td><td>Range error</td><td>Array out of bounds, too deep recursion</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">NetworkError</code></td><td>Network error</td><td>API request failed, CORS issues</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">404 Not Found</code></td><td>Resource not found</td><td>Wrong URL, file deleted</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">500 Internal Server Error</code></td><td>Server internal error</td><td>Backend code crash</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.4 Python Error Messages Comparison</span><span lang="en">1.4 Python Error Messages Comparison</span></h3>
+<p class="reveal"><span lang="id">Python's stack trace is the opposite of JavaScript — <b>read from bottom to top</b>:</span><span lang="en">Python's stack trace is the opposite of JavaScript — <b>read from bottom to top</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Traceback (most recent call last):
+  File &quot;main.py&quot;, line 10, in &lt;module&gt;
+    result = calculate(data)
+  File &quot;main.py&quot;, line 5, in calculate
+    return data[&quot;price&quot;] * data[&quot;quantity&quot;]
+KeyError: &#039;quantity&#039;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>The last line</b> is the actual error cause: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">KeyError: 'quantity'</code> — the dictionary doesn't have the key <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">quantity</code>.</span><span lang="en"><b>The last line</b> is the actual error cause: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">KeyError: 'quantity'</code> — the dictionary doesn't have the key <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">quantity</code>.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Regardless of the language, error messages contain three key pieces of information: <b>what went wrong</b> (error type), <b>where it went wrong</b> (file and line number), <b>why it went wrong</b> (error description). Learn to extract these three pieces of information, and you can read error messages in any language.</span><span lang="en">Regardless of the language, error messages contain three key pieces of information: <b>what went wrong</b> (error type), <b>where it went wrong</b> (file and line number), <b>why it went wrong</b> (error description). Learn to extract these three pieces of information, and you can read error messages in any language.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Classic Debugging Methods: Wisdom From Experience</span><span lang="en">2. Classic Debugging Methods: Wisdom From Experience</span></h2>
+<p class="reveal"><span lang="id">These methods require no tools at all — just your brain. They are the foundation of all advanced debugging techniques.</span><span lang="en">These methods require no tools at all — just your brain. They are the foundation of all advanced debugging techniques.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Binary Search Debugging</span><span lang="en">2.1 Binary Search Debugging</span></h3>
+<p class="reveal"><span lang="id"><b>Core idea</b>: Narrow the problem scope by half, then half again, until you find the root cause.</span><span lang="en"><b>Core idea</b>: Narrow the problem scope by half, then half again, until you find the root cause.</span></p>
+<p class="reveal"><span lang="id"><b>Scenario</b>: The code is long and you don't know which section has the problem.</span><span lang="en"><b>Scenario</b>: The code is long and you don't know which section has the problem.</span></p>
+<p class="reveal"><span lang="id"><b>Steps</b>:</span><span lang="en"><b>Steps</b>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Add a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console.log</code> (or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">print</code>) in the middle of the code</span><span lang="en">Add a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console.log</code> (or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">print</code>) in the middle of the code</span></li>
+<li><span lang="id">If the error occurs before the midpoint → the problem is in the first half</span><span lang="en">If the error occurs before the midpoint → the problem is in the first half</span></li>
+<li><span lang="id">If the error occurs after the midpoint → the problem is in the second half</span><span lang="en">If the error occurs after the midpoint → the problem is in the second half</span></li>
+<li><span lang="id">Repeat this process on the problematic half</span><span lang="en">Repeat this process on the problematic half</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>100 lines of code with a bug
+    ↓ Add log at line 50
+Problem is in lines 50-100
+    ↓ Add log at line 75
+Problem is in lines 50-75
+    ↓ Add log at line 62
+Problem is in lines 60-62!</pre>
+</div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">100 lines of code: at most 7 attempts (log₂100 ≈ 7) to locate the specific line. Even 1000 lines only need 10 attempts.</span><span lang="en">100 lines of code: at most 7 attempts (log₂100 ≈ 7) to locate the specific line. Even 1000 lines only need 10 attempts.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Rubber Duck Debugging</span><span lang="en">2.2 Rubber Duck Debugging</span></h3>
+<p class="reveal"><span lang="id"><b>Core idea</b>: Explain the problem line by line to someone else (or a rubber duck). While explaining, you'll often discover the issue yourself.</span><span lang="en"><b>Core idea</b>: Explain the problem line by line to someone else (or a rubber duck). While explaining, you'll often discover the issue yourself.</span></p>
+<p class="reveal"><span lang="id"><b>Why does it work?</b> Because "writing code" and "explaining code" use different parts of your brain. When you're forced to verbally describe each step of the logic, assumptions you "thought were correct" get exposed.</span><span lang="en"><b>Why does it work?</b> Because "writing code" and "explaining code" use different parts of your brain. When you're forced to verbally describe each step of the logic, assumptions you "thought were correct" get exposed.</span></p>
+<p class="reveal"><span lang="id"><b>How to practice</b>:</span><span lang="en"><b>How to practice</b>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Open the problematic code</span><span lang="en">Open the problematic code</span></li>
+<li><span lang="id">Explain line by line: "What does this line do? Why is it done this way?"</span><span lang="en">Explain line by line: "What does this line do? Why is it done this way?"</span></li>
+<li><span lang="id">When you say "Hmm, this should be... wait a minute" — that's often where the bug is</span><span lang="en">When you say "Hmm, this should be... wait a minute" — that's often where the bug is</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 Minimal Reproduction</span><span lang="en">2.3 Minimal Reproduction</span></h3>
+<p class="reveal"><span lang="id"><b>Core idea</b>: Simplify a complex problem to the minimum — keep only the code needed to trigger the bug.</span><span lang="en"><b>Core idea</b>: Simplify a complex problem to the minimum — keep only the code needed to trigger the bug.</span></p>
+<p class="reveal"><span lang="id"><b>Why it matters</b>:</span><span lang="en"><b>Why it matters</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">In complex systems, bugs can be "masked" by other code</span><span lang="en">In complex systems, bugs can be "masked" by other code</span></li>
+<li><span lang="id">Minimal reproduction eliminates interfering factors, making the problem obvious at a glance</span><span lang="en">Minimal reproduction eliminates interfering factors, making the problem obvious at a glance</span></li>
+<li><span lang="id">It also makes it easier to ask others for help — nobody wants to read your 500 lines of code</span><span lang="en">It also makes it easier to ask others for help — nobody wants to read your 500 lines of code</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Steps</b>:</span><span lang="en"><b>Steps</b>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Create a new empty file</span><span lang="en">Create a new empty file</span></li>
+<li><span lang="id">Copy only the code related to the problem</span><span lang="en">Copy only the code related to the problem</span></li>
+<li><span lang="id">Gradually remove code until deleting any single line makes the bug disappear</span><span lang="en">Gradually remove code until deleting any single line makes the bug disappear</span></li>
+<li><span lang="id">What remains is the root cause of the bug</span><span lang="en">What remains is the root cause of the bug</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.4 Regression Method (Git Bisect)</span><span lang="en">2.4 Regression Method (Git Bisect)</span></h3>
+<p class="reveal"><span lang="id"><b>Core idea</b>: If the code "used to work and now it's broken," find which commit introduced the problem.</span><span lang="en"><b>Core idea</b>: If the code "used to work and now it's broken," find which commit introduced the problem.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Git&#039;s built-in binary search tool
+git bisect start
+git bisect bad          # Mark the current version as having the bug
+git bisect good abc123  # Mark a known-good older version
+# Git automatically checks out the middle commit; you test and tell it good or bad
+# Repeat a few times to find the commit that introduced the bug</pre>
+</div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">| Situation | Recommended Method |
+|-----|---------|
+| Don't know which section of code has the error | Binary search |
+| Logic looks correct but results are wrong | Rubber duck |
+| Bug in a complex system | Minimal reproduction |
+| "It was working fine and suddenly broke" | Regression / Git Bisect |</span><span lang="en">| Situation | Recommended Method |
+|-----|---------|
+| Don't know which section of code has the error | Binary search |
+| Logic looks correct but results are wrong | Rubber duck |
+| Bug in a complex system | Minimal reproduction |
+| "It was working fine and suddenly broke" | Regression / Git Bisect |</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Debugging Toolbox: The Right Tool Doubles Your Efficiency</span><span lang="en">3. Debugging Toolbox: The Right Tool Doubles Your Efficiency</span></h2>
+<p class="reveal"><span lang="id">Methods are the foundation, but the right tools can multiply your debugging speed.</span><span lang="en">Methods are the foundation, but the right tools can multiply your debugging speed.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 console.log / print: Simple Yet Powerful</span><span lang="en">3.1 console.log / print: Simple Yet Powerful</span></h3>
+<p class="reveal"><span lang="id"><b>Best for</b>: Quickly checking variable values, confirming which code path was executed.</span><span lang="en"><b>Best for</b>: Quickly checking variable values, confirming which code path was executed.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// JavaScript
+console.log(&#039;Function called with params:&#039;, data)
+console.log(&#039;Calculation result:&#039;, result)
+console.table(arrayData)  // Display arrays/objects in table format</pre>
+</div>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Python
+print(f&quot;Current value: {value}&quot;)
+print(f&quot;Type: {type(data)}&quot;)  # Check data types</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Advanced techniques</b>:</span><span lang="en"><b>Advanced techniques</b>:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Method</th><th>Purpose</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console.log()</code></td><td>Standard output</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console.warn()</code></td><td>Yellow warning — easy to find in large logs</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console.error()</code></td><td>Red error</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console.table()</code></td><td>Display arrays and objects in table format</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console.time()</code> / <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console.timeEnd()</code></td><td>Measure code execution time</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console.trace()</code></td><td>Print the call stack</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Breakpoint Debugging: Step Through Every Line</span><span lang="en">3.2 Breakpoint Debugging: Step Through Every Line</span></h3>
+<p class="reveal"><span lang="id"><b>Best for</b>: Complex logic that requires tracking the code execution process step by step.</span><span lang="en"><b>Best for</b>: Complex logic that requires tracking the code execution process step by step.</span></p>
+<p class="reveal"><span lang="id"><b>In the browser</b> (Chrome DevTools):</span><span lang="en"><b>In the browser</b> (Chrome DevTools):</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Open Developer Tools (F12) → Sources panel</span><span lang="en">Open Developer Tools (F12) → Sources panel</span></li>
+<li><span lang="id">Find the source file, click a line number to set a breakpoint</span><span lang="en">Find the source file, click a line number to set a breakpoint</span></li>
+<li><span lang="id">Trigger the relevant action — code will pause at the breakpoint</span><span lang="en">Trigger the relevant action — code will pause at the breakpoint</span></li>
+<li><span lang="id">Use control buttons to step through:</span><span lang="en">Use control buttons to step through:</span></li>
+<li><span lang="id"><b>Continue</b> (F8): Run to the next breakpoint</span><span lang="en"><b>Continue</b> (F8): Run to the next breakpoint</span></li>
+<li><span lang="id"><b>Step Over</b> (F10): Execute the current line without entering function bodies</span><span lang="en"><b>Step Over</b> (F10): Execute the current line without entering function bodies</span></li>
+<li><span lang="id"><b>Step Into</b> (F11): Enter function bodies</span><span lang="en"><b>Step Into</b> (F11): Enter function bodies</span></li>
+<li><span lang="id"><b>Step Out</b> (Shift+F11): Exit the current function</span><span lang="en"><b>Step Out</b> (Shift+F11): Exit the current function</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>In VS Code</b>:</span><span lang="en"><b>In VS Code</b>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Click to the left of a line number to set a breakpoint (red dot)</span><span lang="en">Click to the left of a line number to set a breakpoint (red dot)</span></li>
+<li><span lang="id">Press F5 to start debugging</span><span lang="en">Press F5 to start debugging</span></li>
+<li><span lang="id">View all variable values in the "Variables" panel</span><span lang="en">View all variable values in the "Variables" panel</span></li>
+<li><span lang="id">Add expressions you care about in the "Watch" panel</span><span lang="en">Add expressions you care about in the "Watch" panel</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>console.log</b> is great for quick verification — use it and delete it. <b>Breakpoint debugging</b> is for deep analysis of complex logic. They complement each other rather than replace one another.</span><span lang="en"><b>console.log</b> is great for quick verification — use it and delete it. <b>Breakpoint debugging</b> is for deep analysis of complex logic. They complement each other rather than replace one another.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Network Debugging: Frontend-Backend Issues</span><span lang="en">3.3 Network Debugging: Frontend-Backend Issues</span></h3>
+<p class="reveal"><span lang="id"><b>Best for</b>: The page displays incorrectly, but you're not sure if it's a frontend problem or bad data from the backend.</span><span lang="en"><b>Best for</b>: The page displays incorrectly, but you're not sure if it's a frontend problem or bad data from the backend.</span></p>
+<p class="reveal"><span lang="id"><b>Chrome DevTools → Network Panel</b>:</span><span lang="en"><b>Chrome DevTools → Network Panel</b>:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>What to Check</th><th>What Problems You Can Discover</th></tr>
+<tr><td><b>Status Code</b></td><td>404 (wrong URL), 500 (server crash), 403 (no permission)</td></tr>
+<tr><td><b>Request Parameters</b></td><td>Is the data sent from the frontend correct?</td></tr>
+<tr><td><b>Response Data</b></td><td>Is the data format returned by the backend correct?</td></tr>
+<tr><td><b>Request Timing</b></td><td>Which API is too slow and dragging down the page</td></tr>
+<tr><td><b>Request Headers</b></td><td>Is the Token included? Is Content-Type correct?</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Debugging mnemonic</b>: Check the status code first, then request parameters, then response data.</span><span lang="en"><b>Debugging mnemonic</b>: Check the status code first, then request parameters, then response data.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.4 Debugging Tool Selection Quick Reference</span><span lang="en">3.4 Debugging Tool Selection Quick Reference</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Problem Type</th><th>Recommended Tool</th></tr>
+<tr><td>Variable values are wrong</td><td>console.log / breakpoints</td></tr>
+<tr><td>Logic execution order is wrong</td><td>Breakpoint debugging</td></tr>
+<tr><td>API request failed</td><td>Network panel</td></tr>
+<tr><td>Page styling is wrong</td><td>Elements panel (inspect CSS)</td></tr>
+<tr><td>Performance issues</td><td>Performance panel / console.time</td></tr>
+<tr><td>Memory leaks</td><td>Memory panel</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Debugging in the AI Era: Let AI Be Your Assistant</span><span lang="en">4. Debugging in the AI Era: Let AI Be Your Assistant</span></h2>
+<p class="reveal"><span lang="id">AI tools (ChatGPT, Claude, Cursor, etc.) can greatly accelerate debugging — but only if you know how to use them properly.</span><span lang="en">AI tools (ChatGPT, Claude, Cursor, etc.) can greatly accelerate debugging — but only if you know how to use them properly.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Overview of AI Good At</span><span lang="en">4.1 Overview of AI Good At</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>AI Is Good At</th><th>AI Is Not Good At</th></tr>
+<tr><td>Explaining what error messages mean</td><td>Understanding your business logic</td></tr>
+<tr><td>Providing solutions for common problems</td><td>Judging which solution fits your project best</td></tr>
+<tr><td>Generating debugging code snippets</td><td>Reproducing bugs that only occur in specific environments</td></tr>
+<tr><td>Analyzing potential issues in code</td><td>Understanding complex system context</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 How to Ask AI the Right Questions</span><span lang="en">4.2 How to Ask AI the Right Questions</span></h3>
+<p class="reveal"><span lang="id"><b>Bad question</b>:</span><span lang="en"><b>Bad question</b>:</span></p>
+<p class="reveal"><span lang="id">> "My code has an error, can you help me look at it?"</span><span lang="en">> "My code has an error, can you help me look at it?"</span></p>
+<p class="reveal"><span lang="id"><b>Good question</b>:</span><span lang="en"><b>Good question</b>:</span></p>
+<p class="reveal"><span lang="id">> "I'm writing a form component in React, and when submitting I get <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">TypeError: Cannot read properties of undefined (reading 'email')</code>. Here's the relevant code: [paste code]. I've confirmed the API returns the correct data format, so the issue is likely in the frontend data processing."</span><span lang="en">> "I'm writing a form component in React, and when submitting I get <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">TypeError: Cannot read properties of undefined (reading 'email')</code>. Here's the relevant code: [paste code]. I've confirmed the API returns the correct data format, so the issue is likely in the frontend data processing."</span></p>
+<p class="reveal"><span lang="id"><b>Question template</b>:</span><span lang="en"><b>Question template</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>1. What I&#039;m doing: [context]
+2. Expected behavior: [what should happen]
+3. Actual behavior: [what actually happens]
+4. Error message: [complete error]
+5. Relevant code: [paste code]
+6. What I&#039;ve already tried: [what I ruled out]</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 Pitfalls of AI Debugging</span><span lang="en">4.3 Pitfalls of AI Debugging</span></h3>
+
+<div class="callout warn reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div>
+  <p><span lang="id">1. <b>AI may "confidently make things up"</b>: The solution AI provides might look reasonable but could be completely wrong. Always verify yourself.
+2. <b>AI doesn't know your context</b>: It doesn't know your project structure, dependency versions, or runtime environment. You need to provide sufficient context.
+3. <b>Over-reliance on AI degrades your debugging skills</b>: If you throw every error at AI, you'll never learn to debug on your own. Try analyzing the problem yourself for 5 minutes before asking AI.</span><span lang="en">1. <b>AI may "confidently make things up"</b>: The solution AI provides might look reasonable but could be completely wrong. Always verify yourself.
+2. <b>AI doesn't know your context</b>: It doesn't know your project structure, dependency versions, or runtime environment. You need to provide sufficient context.
+3. <b>Over-reliance on AI degrades your debugging skills</b>: If you throw every error at AI, you'll never learn to debug on your own. Try analyzing the problem yourself for 5 minutes before asking AI.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.4 The Best Combination: AI + Human Judgment</span><span lang="en">4.4 The Best Combination: AI + Human Judgment</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Encounter a Bug
+  ↓
+Step 1: Read the error message yourself (1 minute)
+  ↓
+Step 2: Form your own hypothesis (2 minutes)
+  ↓
+Step 3: Quickly test the hypothesis (2 minutes)
+  ↓
+Still stuck? → Send the error + code + your analysis to AI
+  ↓
+AI gives suggestions → You judge if they&#039;re reasonable → Verify</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Debugging Mindset and Habits: From "Firefighting" to "Fire Prevention"</span><span lang="en">5. Debugging Mindset and Habits: From "Firefighting" to "Fire Prevention"</span></h2>
+<p class="reveal"><span lang="id">The best debugging is not needing to debug at all. Building good habits can reduce bugs at the source.</span><span lang="en">The best debugging is not needing to debug at all. Building good habits can reduce bugs at the source.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Defensive Programming</span><span lang="en">5.1 Defensive Programming</span></h3>
+<p class="reveal"><span lang="id"><b>Core idea</b>: When writing code, assume "everything could go wrong" and build safeguards in advance.</span><span lang="en"><b>Core idea</b>: When writing code, assume "everything could go wrong" and build safeguards in advance.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Bad: Assumes data definitely exists
+const name = data.user.name
+
+// Good: Defensive approach
+const name = data?.user?.name ?? &#039;Unknown User&#039;</pre>
+</div>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Bad: Assumes the file can always be opened
+content = open(&#039;config.json&#039;).read()
+
+# Good: Defensive approach
+try:
+    content = open(&#039;config.json&#039;).read()
+except FileNotFoundError:
+    print(&quot;Config file not found, using default configuration&quot;)
+    content = &#039;{}&#039;</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Writing Good Logs</span><span lang="en">5.2 Writing Good Logs</span></h3>
+<p class="reveal"><span lang="id">Logs are key to "post-mortem debugging." In production environments, you can't set breakpoints — you can only rely on logs.</span><span lang="en">Logs are key to "post-mortem debugging." In production environments, you can't set breakpoints — you can only rely on logs.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Log Level</th><th>Purpose</th><th>Example</th></tr>
+<tr><td><b>DEBUG</b></td><td>Detailed info during development</td><td>Variable values, function parameters</td></tr>
+<tr><td><b>INFO</b></td><td>Normal business flow</td><td>"User login successful", "Order created"</td></tr>
+<tr><td><b>WARN</b></td><td>Non-blocking but noteworthy</td><td>"Cache miss", "Retry attempt 2"</td></tr>
+<tr><td><b>ERROR</b></td><td>Something went wrong, needs handling</td><td>"Database connection failed", "API timeout"</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">A good log entry should answer: <b>when</b>, <b>where</b>, <b>what happened</b>, and <b>what the key data is</b>.
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+[2025-01-15 14:30:22] [ERROR] [OrderService] Failed to create order
+  User ID: 12345, Product ID: 67890, Reason: Insufficient stock
+</code>``</span><span lang="en">A good log entry should answer: <b>when</b>, <b>where</b>, <b>what happened</b>, and <b>what the key data is</b>.
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+[2025-01-15 14:30:22] [ERROR] [OrderService] Failed to create order
+  User ID: 12345, Product ID: 67890, Reason: Insufficient stock
+</code>``</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 Debugging Checklist</span><span lang="en">5.3 Debugging Checklist</span></h3>
+<p class="reveal"><span lang="id">When you encounter a bug, troubleshoot in this order:</span><span lang="en">When you encounter a bug, troubleshoot in this order:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Read the error message</b>: Error type, file, line number</span><span lang="en"><b>Read the error message</b>: Error type, file, line number</span></li>
+<li><span lang="id"><b>What changed recently?</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git diff</code> to see recent changes</span><span lang="en"><b>What changed recently?</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git diff</code> to see recent changes</span></li>
+<li><span lang="id"><b>Can you reproduce it?</b>: Find stable reproduction steps</span><span lang="en"><b>Can you reproduce it?</b>: Find stable reproduction steps</span></li>
+<li><span lang="id"><b>Narrow the scope</b>: Use binary search or minimal reproduction to pinpoint</span><span lang="en"><b>Narrow the scope</b>: Use binary search or minimal reproduction to pinpoint</span></li>
+<li><span lang="id"><b>Form and verify hypotheses</b>: Change only one variable at a time</span><span lang="en"><b>Form and verify hypotheses</b>: Change only one variable at a time</span></li>
+<li><span lang="id"><b>Regression test after fixing</b>: Ensure the fix didn't introduce new problems</span><span lang="en"><b>Regression test after fixing</b>: Ensure the fix didn't introduce new problems</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.4 Common Beginner Debugging Traps</span><span lang="en">5.4 Common Beginner Debugging Traps</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Trap</th><th>Correct Approach</th></tr>
+<tr><td>Start modifying code without reading the error</td><td>Read the complete error message first</td></tr>
+<tr><td>Change multiple things at once</td><td>Change one thing, verify, then change the next</td></tr>
+<tr><td>Commit without testing after changes</td><td>Run tests after every modification</td></tr>
+<tr><td>Only test on your own machine</td><td>Consider different environments (browsers, OS, network)</td></tr>
+<tr><td>Don't clean up console.log after debugging</td><td>Delete all debug code before committing</td></tr>
+<tr><td>Restart/reinstall whenever there's a problem</td><td>Understand the root cause first; restarting is only a temporary fix</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Summary</span><span lang="en">6. Summary</span></h2>
+<p class="reveal"><span lang="id">Debugging is a craft that requires deliberate practice. Let's review the core takeaways:</span><span lang="en">Debugging is a craft that requires deliberate practice. Let's review the core takeaways:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Debugging is a scientific method</b>: Observe → Hypothesize → Experiment → Verify — not luck</span><span lang="en"><b>Debugging is a scientific method</b>: Observe → Hypothesize → Experiment → Verify — not luck</span></li>
+<li><span lang="id"><b>Error messages are friends</b>: Learn to extract "what, where, why" from errors</span><span lang="en"><b>Error messages are friends</b>: Learn to extract "what, where, why" from errors</span></li>
+<li><span lang="id"><b>Classic methods never go out of style</b>: Binary search, rubber duck, and minimal reproduction are the foundation of all debugging</span><span lang="en"><b>Classic methods never go out of style</b>: Binary search, rubber duck, and minimal reproduction are the foundation of all debugging</span></li>
+<li><span lang="id"><b>Use the right tool for the right scenario</b>: console.log for quick checks, breakpoints for deep analysis, Network panel for API issues</span><span lang="en"><b>Use the right tool for the right scenario</b>: console.log for quick checks, breakpoints for deep analysis, Network panel for API issues</span></li>
+<li><span lang="id"><b>AI is an assistant, not a crutch</b>: Analyze on your own first, then let AI assist, then verify yourself</span><span lang="en"><b>AI is an assistant, not a crutch</b>: Analyze on your own first, then let AI assist, then verify yourself</span></li>
+<li><span lang="id"><b>Prevention beats firefighting</b>: Defensive programming and good logging habits reduce bugs at the source</span><span lang="en"><b>Prevention beats firefighting</b>: Defensive programming and good logging habits reduce bugs at the source</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Every bug is a learning opportunity.</b> Each bug you fix builds your "pattern recognition" ability — the next time you encounter a similar problem, you'll locate the cause faster.</span><span lang="en"><b>Every bug is a learning opportunity.</b> Each bug you fix builds your "pattern recognition" ability — the next time you encounter a similar problem, you'll locate the cause faster.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[Chrome DevTools Official Documentation](https://developer.chrome.com/docs/devtools/) — Complete guide to browser debugging tools</span><span lang="en">[Chrome DevTools Official Documentation](https://developer.chrome.com/docs/devtools/) — Complete guide to browser debugging tools</span></li>
+<li><span lang="id">[VS Code Debugging](https://code.visualstudio.com/docs/editor/debugging) — VS Code breakpoint debugging tutorial</span><span lang="en">[VS Code Debugging](https://code.visualstudio.com/docs/editor/debugging) — VS Code breakpoint debugging tutorial</span></li>
+<li><span lang="id">[How to Debug Anything](https://www.debuggingbook.org/) — Systematic debugging methodology</span><span lang="en">[How to Debug Anything](https://www.debuggingbook.org/) — Systematic debugging methodology</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../2-development-tools/debugging-art/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">2-development-tools/debugging-art</span><span lang="en">2-development-tools/debugging-art</span></b></a>
+      <a class="next" href="../../2-development-tools/environment-path/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">2-development-tools/environment-path</span><span lang="en">2-development-tools/environment-path</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

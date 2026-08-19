@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of Serialization: Data Translation — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Serialization: Data Translation. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/4-server-and-backend/serialization/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Serialization: Data Translation</span><span lang="en">Principles of Serialization: Data Translation</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of Serialization: Data Translation</span><span lang="en">Principles of Serialization: Data Translation</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Serialization: Data Translation.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Serialization: Data Translation.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>How does data travel across a network?</b> It's like asking: how does one person's speech become understandable to another? Serialization solves the problem of "data translation" — converting in-memory objects into a transmittable format.</span><span lang="en"><b>How does data travel across a network?</b> It's like asking: how does one person's speech become understandable to another? Serialization solves the problem of "data translation" — converting in-memory objects into a transmittable format.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">The Necessity of Data Serialization</span><span lang="en">The Necessity of Data Serialization</span></h2>
+<p class="reveal"><span lang="id">During frontend-backend interaction, data undergoes multiple "transformations" to travel from the server to the client.</span><span lang="en">During frontend-backend interaction, data undergoes multiple "transformations" to travel from the server to the client.</span></p>
+<p class="reveal"><span lang="id"><b>Scenario 1: The data the frontend receives has "changed"</b></span><span lang="en"><b>Scenario 1: The data the frontend receives has "changed"</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Backend sends
+Date birth = new Date(1990, 5, 15)
+
+// Frontend receives
+{ &quot;birth&quot;: &quot;1990-06-15T00:00:00Z&quot; }  // A string!</pre>
+</div>
+<p class="reveal"><span lang="id">The frontend tries to use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.getFullYear()</code> and gets an error — because this isn't a Date object, it's a string.</span><span lang="en">The frontend tries to use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.getFullYear()</code> and gets an error — because this isn't a Date object, it's a string.</span></p>
+<p class="reveal"><span lang="id"><b>Scenario 2: Chinese garbled text</b></span><span lang="en"><b>Scenario 2: Chinese garbled text</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>json</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Expected
+{ &quot;name&quot;: &quot;Zhang San&quot; }
+
+// Actually received
+{ &quot;name&quot;: &quot;å¼ ä¸&quot; }</pre>
+</div>
+<p class="reveal"><span lang="id">Character encoding issues cause Chinese characters to become garbled.</span><span lang="en">Character encoding issues cause Chinese characters to become garbled.</span></p>
+<p class="reveal"><span lang="id"><b>Scenario 3: Performance bottleneck</b></span><span lang="en"><b>Scenario 3: Performance bottleneck</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>json</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// A response containing 10,000 product listings
+{
+  &quot;products&quot;: [
+    { &quot;id&quot;: 1, &quot;name&quot;: &quot;...&quot;, &quot;description&quot;: &quot;...&quot;, ... },
+    // ... 9999 more
+  ]
+}
+// Size: 5.2 MB, transfer time: 3.5 seconds</pre>
+</div>
+<p class="reveal"><span lang="id">JSON format redundancy causes the data packet to be too large, seriously impacting performance.</span><span lang="en">JSON format redundancy causes the data packet to be too large, seriously impacting performance.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id"><b>Serialization is like "translation"</b> — "translating" in-memory objects into a transmittable format, and the receiver "translates" them back.</span><span lang="en"><b>Serialization is like "translation"</b> — "translating" in-memory objects into a transmittable format, and the receiver "translates" them back.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Overview of Serialization and Deserialization</span><span lang="en">1. Overview of Serialization and Deserialization</span></h2>
+<p class="reveal"><span lang="id"><b>Serialization</b> is the process of converting objects into a transmittable format.</span><span lang="en"><b>Serialization</b> is the process of converting objects into a transmittable format.</span></p>
+<p class="reveal"><span lang="id"><b>Deserialization</b> is the process of converting a transmitted format back into objects.</span><span lang="en"><b>Deserialization</b> is the process of converting a transmitted format back into objects.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 Package Delivery Analogy</span><span lang="en">1.1 Package Delivery Analogy</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Package Delivery</th><th>Serialization</th><th>Description</th></tr>
+<tr><td>Pack items</td><td>Serialize</td><td>Pack items in a box, attach labels</td></tr>
+<tr><td>Transport</td><td>Network transmission</td><td>Delivery truck transports to destination</td></tr>
+<tr><td>Unpack and retrieve</td><td>Deserialize</td><td>Recipient opens the box, takes out items</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 Motivation for needing Serialization</span><span lang="en">1.2 Motivation for needing Serialization</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Reason</th><th>Description</th><th>Example</th></tr>
+<tr><td><b>Network transmission</b></td><td>Networks can only transmit byte streams</td><td>API calls, RPC communication</td></tr>
+<tr><td><b>Persistent storage</b></td><td>Disks can only store bytes</td><td>Saving objects to files, databases</td></tr>
+<tr><td><b>Cross-language</b></td><td>Different languages have different data structures</td><td>Java object → Python dictionary</td></tr>
+<tr><td><b>Distributed caching</b></td><td>Redis/Memcached store bytes</td><td>Caching user information</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Common Serialization Formats</span><span lang="en">2. Common Serialization Formats</span></h2>
+<p class="reveal"><span lang="id"><b>Try it out</b>: Click the button below to observe the serialization process across different languages:</span><span lang="en"><b>Try it out</b>: Click the button below to observe the serialization process across different languages:</span></p>
+<p class="reveal"><span lang="id"><SerializationDemo /></span><span lang="en"><SerializationDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 JSON: The Most Universal</span><span lang="en">2.1 JSON: The Most Universal</span></h3>
+<p class="reveal"><span lang="id"><b>Advantages</b>:</span><span lang="en"><b>Advantages</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Good readability, easy debugging</span><span lang="en">Good readability, easy debugging</span></li>
+<li><span lang="id">Supported by all languages</span><span lang="en">Supported by all languages</span></li>
+<li><span lang="id">Browser native support (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">JSON.parse</code> / <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">JSON.stringify</code>)</span><span lang="en">Browser native support (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">JSON.parse</code> / <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">JSON.stringify</code>)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Disadvantages</b>:</span><span lang="en"><b>Disadvantages</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Large size (lots of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">{}</code> <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">""</code> markup)</span><span lang="en">Large size (lots of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">{}</code> <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">""</code> markup)</span></li>
+<li><span lang="id">Doesn't support rich data types (Date, Map, Set are converted to strings)</span><span lang="en">Doesn't support rich data types (Date, Map, Set are converted to strings)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Use cases</b>:</span><span lang="en"><b>Use cases</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Public APIs</span><span lang="en">Public APIs</span></li>
+<li><span lang="id">Frontend-backend communication</span><span lang="en">Frontend-backend communication</span></li>
+<li><span lang="id">Configuration files</span><span lang="en">Configuration files</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 XML: The Former Mainstream</span><span lang="en">2.2 XML: The Former Mainstream</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>xml</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;user&gt;
+  &lt;id&gt;123&lt;/id&gt;
+  &lt;name&gt;Zhang San&lt;/name&gt;
+  &lt;email&gt;zhangsan@example.com&lt;/email&gt;
+  &lt;age&gt;28&lt;/age&gt;
+&lt;/user&gt;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Advantages</b>:</span><span lang="en"><b>Advantages</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Clear structure, supports comments</span><span lang="en">Clear structure, supports comments</span></li>
+<li><span lang="id">Supports complex nested structures</span><span lang="en">Supports complex nested structures</span></li>
+<li><span lang="id">Has Schema validation (XSD)</span><span lang="en">Has Schema validation (XSD)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Disadvantages</b>:</span><span lang="en"><b>Disadvantages</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Large size, slow parsing</span><span lang="en">Large size, slow parsing</span></li>
+<li><span lang="id">Tag redundancy (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><open></close></code>)</span><span lang="en">Tag redundancy (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><open></close></code>)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Use cases</b>:</span><span lang="en"><b>Use cases</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Configuration files (Spring, MyBatis)</span><span lang="en">Configuration files (Spring, MyBatis)</span></li>
+<li><span lang="id">SOAP protocol</span><span lang="en">SOAP protocol</span></li>
+<li><span lang="id">Complex data exchange</span><span lang="en">Complex data exchange</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 Protobuf: The Most Efficient</span><span lang="en">2.3 Protobuf: The Most Efficient</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>protobuf</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// user.proto
+syntax = &quot;proto3&quot;;
+message User {
+  int32 id = 1;
+  string name = 2;
+  string email = 3;
+  int32 age = 4;
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Advantages</b>:</span><span lang="en"><b>Advantages</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Small size (30-50% smaller than JSON)</span><span lang="en">Small size (30-50% smaller than JSON)</span></li>
+<li><span lang="id">Fast speed (5-10x faster parsing)</span><span lang="en">Fast speed (5-10x faster parsing)</span></li>
+<li><span lang="id">Backward compatible (adding fields doesn't affect old versions)</span><span lang="en">Backward compatible (adding fields doesn't affect old versions)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Disadvantages</b>:</span><span lang="en"><b>Disadvantages</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Not human-readable (binary format)</span><span lang="en">Not human-readable (binary format)</span></li>
+<li><span lang="id">Requires .proto file definition</span><span lang="en">Requires .proto file definition</span></li>
+<li><span lang="id">Doesn't support dynamic types</span><span lang="en">Doesn't support dynamic types</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Use cases</b>:</span><span lang="en"><b>Use cases</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Microservice internal communication</span><span lang="en">Microservice internal communication</span></li>
+<li><span lang="id">High-performance scenarios (gaming, real-time communication)</span><span lang="en">High-performance scenarios (gaming, real-time communication)</span></li>
+<li><span lang="id">Mobile apps (saves bandwidth)</span><span lang="en">Mobile apps (saves bandwidth)</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.4 MessagePack: Balancing Readability and Performance</span><span lang="en">2.4 MessagePack: Balancing Readability and Performance</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>json</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// MessagePack is a binary version of JSON
+// Same data, MessagePack is about 30% smaller than JSON</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Advantages</b>:</span><span lang="en"><b>Advantages</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Smaller than JSON, faster than JSON</span><span lang="en">Smaller than JSON, faster than JSON</span></li>
+<li><span lang="id">Maintains JSON's data model</span><span lang="en">Maintains JSON's data model</span></li>
+<li><span lang="id">Supports all JSON types</span><span lang="en">Supports all JSON types</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Disadvantages</b>:</span><span lang="en"><b>Disadvantages</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Not human-readable</span><span lang="en">Not human-readable</span></li>
+<li><span lang="id">Not as efficient as Protobuf</span><span lang="en">Not as efficient as Protobuf</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Use cases</b>:</span><span lang="en"><b>Use cases</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Need performance but don't want Protobuf</span><span lang="en">Need performance but don't want Protobuf</span></li>
+<li><span lang="id">Redis caching</span><span lang="en">Redis caching</span></li>
+<li><span lang="id">WebSocket messages</span><span lang="en">WebSocket messages</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Serialization Methods by Language</span><span lang="en">3. Serialization Methods by Language</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Language</th><th>JSON Library</th><th>Protobuf Library</th><th>XML Library</th></tr>
+<tr><td><b>JavaScript</b></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">JSON.stringify()</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">protobuf.js</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fast-xml-parser</code></td></tr>
+<tr><td><b>Python</b></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">json.dumps()</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">protobuf</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">xmltodict</code></td></tr>
+<tr><td><b>Java</b></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Jackson</code> / <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Gson</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">protobuf-java</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">JAXB</code></td></tr>
+<tr><td><b>Go</b></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">encoding/json</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">proto</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">encoding/xml</code></td></tr>
+<tr><td><b>C++</b></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">nlohmann/json</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">protobuf</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">tinyxml2</code></td></tr>
+<tr><td><b>C#</b></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">System.Text.Json</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Google.Protobuf</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">System.Xml</code></td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Frontend-backend communication</b>: JSON (easy debugging)
+- <b>Microservice internal</b>: Protobuf (best performance)
+- <b>Configuration files</b>: JSON or YAML
+- <b>Legacy system integration</b>: XML (may have no other choice)</span><span lang="en">- <b>Frontend-backend communication</b>: JSON (easy debugging)
+- <b>Microservice internal</b>: Protobuf (best performance)
+- <b>Configuration files</b>: JSON or YAML
+- <b>Legacy system integration</b>: XML (may have no other choice)</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Performance Comparison</span><span lang="en">4. Performance Comparison</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Size Comparison (using a user object as example)</span><span lang="en">4.1 Size Comparison (using a user object as example)</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Format</th><th>Size</th><th>Relative to JSON</th></tr>
+<tr><td>JSON</td><td>68 bytes</td><td>100%</td></tr>
+<tr><td>XML</td><td>142 bytes</td><td>209%</td></tr>
+<tr><td>Protobuf</td><td>38 bytes</td><td>56%</td></tr>
+<tr><td>MessagePack</td><td>52 bytes</td><td>76%</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Speed Comparison (serializing 10,000 times)</span><span lang="en">4.2 Speed Comparison (serializing 10,000 times)</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Format</th><th>Time</th><th>Relative to JSON</th></tr>
+<tr><td>JSON</td><td>45 ms</td><td>100%</td></tr>
+<tr><td>XML</td><td>120 ms</td><td>267%</td></tr>
+<tr><td>Protobuf</td><td>8 ms</td><td>18%</td></tr>
+<tr><td>MessagePack</td><td>28 ms</td><td>62%</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Protobuf is fastest</b>: Suitable for high-performance scenarios
+- <b>MessagePack is second</b>: About 40% faster than JSON
+- <b>JSON is slowest</b>: But sufficient for most scenarios</span><span lang="en">- <b>Protobuf is fastest</b>: Suitable for high-performance scenarios
+- <b>MessagePack is second</b>: About 40% faster than JSON
+- <b>JSON is slowest</b>: But sufficient for most scenarios</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Common Issues</span><span lang="en">5. Common Issues</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Date Serialization Problem</span><span lang="en">5.1 Date Serialization Problem</span></h3>
+<p class="reveal"><span lang="id"><b>Problem</b>: Date objects become strings after serialization</span><span lang="en"><b>Problem</b>: Date objects become strings after serialization</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Before serialization
+const date = new Date(&#039;2024-01-01&#039;)
+
+// After serialization
+JSON.stringify(date)  // &quot;2024-01-01T00:00:00.000Z&quot;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Solutions</b>:</span><span lang="en"><b>Solutions</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Option 1: Convert to timestamp
+{ createdAt: date.getTime() }  // 1704067200000
+
+// Option 2: Convert to ISO string
+{ createdAt: date.toISOString() }  // &quot;2024-01-01T00:00:00.000Z&quot;
+
+// Option 3: Custom serialization
+JSON.stringify(obj, (key, value) =&gt; {
+  if (value instanceof Date) {
+    return { __type: &#039;Date&#039;, value: value.toISOString() }
+  }
+  return value
+})</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Circular Reference Problem</span><span lang="en">5.2 Circular Reference Problem</span></h3>
+<p class="reveal"><span lang="id"><b>Problem</b>: Circular references in objects cause errors</span><span lang="en"><b>Problem</b>: Circular references in objects cause errors</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>const obj = { name: &#039;test&#039; }
+obj.self = obj
+JSON.stringify(obj)  // TypeError: Converting circular structure to JSON</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Solutions</b>:</span><span lang="en"><b>Solutions</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Option 1: Filter out circular references
+const seen = new WeakSet()
+JSON.stringify(obj, (key, value) =&gt; {
+  if (typeof value === &#039;object&#039; &amp;&amp; value !== null) {
+    if (seen.has(value)) return
+    seen.add(value)
+  }
+  return value
+})
+
+// Option 2: Use the flatted library
+import { parse, stringify } from &#039;flatted&#039;
+stringify(obj)  // Automatically handles circular references</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 Chinese Garbled Text Problem</span><span lang="en">5.3 Chinese Garbled Text Problem</span></h3>
+<p class="reveal"><span lang="id"><b>Problem</b>: Chinese characters become garbled after serialization</span><span lang="en"><b>Problem</b>: Chinese characters become garbled after serialization</span></p>
+<p class="reveal"><span lang="id"><b>Causes</b>:</span><span lang="en"><b>Causes</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Character encoding mismatch (UTF-8 vs GBK)</span><span lang="en">Character encoding mismatch (UTF-8 vs GBK)</span></li>
+<li><span lang="id">BOM markers</span><span lang="en">BOM markers</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Solutions</b>:</span><span lang="en"><b>Solutions</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Python: Ensure UTF-8
+import json
+json.dumps(data, ensure_ascii=False)  # Don&#039;t escape Chinese characters</pre>
+</div>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Node.js: Set response header
+res.setHeader(&#039;Content-Type&#039;, &#039;application/json; charset=utf-8&#039;)</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Practice: E-commerce System Serialization Solution</span><span lang="en">6. Practice: E-commerce System Serialization Solution</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Scenario Analysis</span><span lang="en">6.1 Scenario Analysis</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Scenario</th><th>Format Choice</th><th>Rationale</th></tr>
+<tr><td><b>App → Backend API</b></td><td>JSON</td><td>Easy debugging, unified frontend-backend</td></tr>
+<tr><td><b>Backend → Backend RPC</b></td><td>Protobuf</td><td>Best performance, saves bandwidth</td></tr>
+<tr><td><b>Cache to Redis</b></td><td>MessagePack</td><td>Smaller than JSON, can serialize complex objects</td></tr>
+<tr><td><b>Log recording</b></td><td>JSON</td><td>Easy for log analysis tools to parse</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 Code Examples</span><span lang="en">6.2 Code Examples</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// API response (JSON)
+app.get(&#039;/api/products/:id&#039;, async (req, res) =&gt; {
+  const product = await db.getProduct(req.params.id)
+  res.json({
+    code: 0,
+    data: product
+  })
+})
+
+// Microservice communication (Protobuf)
+// product.proto
+syntax = &quot;proto3&quot;;
+message Product {
+  int32 id = 1;
+  string name = 2;
+  int32 price = 3;
+}
+
+// Server side
+const proto = require(&#039;./product.proto&#039;)
+const message = proto.Product.create(product)
+const buffer = proto.Product.encode(message).finish()
+
+// Client side
+const decoded = proto.Product.decode(buffer)
+
+// Redis cache (MessagePack)
+const msgpack = require(&#039;msgpack-lite&#039;)
+await redis.set(
+  `product:${id}`,
+  msgpack.encode(product)
+)
+const cached = msgpack.decode(await redis.get(`product:${id}`))</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Using AI to Help Choose a Serialization Solution</span><span lang="en">7. Using AI to Help Choose a Serialization Solution</span></h2>
+<p class="reveal"><span lang="id">AI can help you choose the right serialization format based on your scenario.</span><span lang="en">AI can help you choose the right serialization format based on your scenario.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.1 Prompt Template</span><span lang="en">7.1 Prompt Template</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>You are a senior system architect, proficient in data serialization technology. Please help me choose an appropriate serialization solution.
+
+## Business Scenario
+[Describe your scenario, e.g.: e-commerce app, game backend, microservices, etc.]
+
+## Technical Requirements
+[List constraints, e.g.:
+- Frontend-backend separation (Vue + Node.js)
+- High performance requirements (QPS &gt; 10000)
+- Bandwidth sensitive (mobile, need to save data)
+- Cross-language needed (Java + Python + Go)]
+
+## Data Characteristics
+[Describe data features, e.g.:
+- Large data volume (single response &gt; 1MB)
+- Complex structure (deeply nested)
+- Contains dates, binary data, and other special types]
+
+## Output Format
+Please output in the following format:
+1. Recommended solution (JSON/Protobuf/MessagePack/XML)
+2. Rationale
+3. Performance comparison (estimated size and speed)
+4. Code examples</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.2 Practical Example</span><span lang="en">7.2 Practical Example</span></h3>
+<p class="reveal"><span lang="id"><b>Input prompt</b>:</span><span lang="en"><b>Input prompt</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>You are a senior system architect. Our e-commerce app needs to optimize the product list API performance.
+
+## Business Scenario
+- E-commerce app product list API
+- Returns 100 products per request
+- Each product contains: id, name, price, image, description, and 20 other fields
+- Currently using JSON, response size ~200KB, time ~800ms
+
+## Technical Requirements
+- Frontend is Vue.js
+- Backend is Node.js + Go microservices
+- Need to balance performance and development efficiency
+
+## Optimization Goal
+- Response time under 300ms
+- Data packet size reduced by 30%</pre>
+</div>
+<p class="reveal"><span lang="id"><b>AI output</b>:</span><span lang="en"><b>AI output</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Recommended solution: Hybrid approach
+
+1. **API layer**: Continue using JSON (frontend-friendly)
+2. **Microservice communication**: Switch to Protobuf (performance improvement)
+3. **Static data**: Enable gzip compression
+
+### Rationale
+- JSON is most frontend-friendly, no extra parsing needed
+- Backend microservices using Protobuf can reduce data volume by 40%
+- gzip compression is very effective for text (JSON can be compressed by 70%)
+
+### Performance Comparison
+| Solution | Size | Time |
+|------|------|------|
+| Current (JSON) | 200 KB | 800 ms |
+| + gzip | 60 KB | 350 ms |
+| + Protobuf | 50 KB | 280 ms |
+
+### Code Examples
+[Specific implementation code...]</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Glossary</span><span lang="en">Glossary</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Term</th><th>English</th><th>Description</th></tr>
+<tr><td><b>Serialization</b></td><td>Serialization</td><td>Object → Byte stream</td></tr>
+<tr><td><b>Deserialization</b></td><td>Deserialization</td><td>Byte stream → Object</td></tr>
+<tr><td><b>JSON</b></td><td>JavaScript Object Notation</td><td>The most commonly used text format</td></tr>
+<tr><td><b>XML</b></td><td>Extensible Markup Language</td><td>Markup language, formerly mainstream</td></tr>
+<tr><td><b>Protobuf</b></td><td>Protocol Buffers</td><td>Efficient format open-sourced by Google</td></tr>
+<tr><td><b>MessagePack</b></td><td>-</td><td>Binary version of JSON</td></tr>
+<tr><td><b>Encoding</b></td><td>Encoding</td><td>Characters → Bytes</td></tr>
+<tr><td><b>Decoding</b></td><td>Decoding</td><td>Bytes → Characters</td></tr>
+</table></div>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../4-server-and-backend/search-engines/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">4-server-and-backend/search-engines</span><span lang="en">4-server-and-backend/search-engines</span></b></a>
+      <a class="next" href="../../4-server-and-backend/web-frameworks/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">4-server-and-backend/web-frameworks</span><span lang="en">4-server-and-backend/web-frameworks</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>An Introduction to Code Quality and Refactoring — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: An Introduction to Code Quality and Refactoring. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/9-engineering-excellence/code-quality-refactoring/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">An Introduction to Code Quality and Refactoring</span><span lang="en">An Introduction to Code Quality and Refactoring</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">An Introduction to Code Quality and Refactoring</span><span lang="en">An Introduction to Code Quality and Refactoring</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: An Introduction to Code Quality and Refactoring.</span><span lang="en">Ensiklopedia VibeKoding: An Introduction to Code Quality and Refactoring.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Is it enough that your code just works?</b> You may have written code like this: the feature works, but two weeks later even you can't understand it. Or someone on the team left behind a pile of "code that only God and they can understand."
+
+This chapter helps you understand what good code is, how to identify bad code, and how to safely improve it.</span><span lang="en"><b>Is it enough that your code just works?</b> You may have written code like this: the feature works, but two weeks later even you can't understand it. Or someone on the team left behind a pile of "code that only God and they can understand."
+
+This chapter helps you understand what good code is, how to identify bad code, and how to safely improve it.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn in this article?</b></span><span lang="en"><b>What will you learn in this article?</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Core Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>Code Smells</td><td>Identifying common problems</td></tr>
+<tr><td><b>Chapter 2</b></td><td>Refactoring Techniques</td><td>Safely improving code</td></tr>
+<tr><td><b>Chapter 3</b></td><td>Code Review</td><td>Quality assurance in team collaboration</td></tr>
+<tr><td><b>Chapter 4</b></td><td>Quality Metrics</td><td>Measuring code health with data</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">After reading this chapter, you will be able to identify code problems, refactor safely, and continuously improve code quality through team collaboration.</span><span lang="en">After reading this chapter, you will be able to identify code problems, refactor safely, and continuously improve code quality through team collaboration.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. The Big Picture: The Lifecycle of Code</span><span lang="en">0. The Big Picture: The Lifecycle of Code</span></h2>
+<p class="reveal"><span lang="id">In software development, there is an often-overlooked fact: <b>code is read far more times than it is written</b>.</span><span lang="en">In software development, there is an often-overlooked fact: <b>code is read far more times than it is written</b>.</span></p>
+<p class="reveal"><span lang="id">A piece of code, from creation to retirement, roughly goes through this journey:</span><span lang="en">A piece of code, from creation to retirement, roughly goes through this journey:</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Writing Phase</b>: A developer writes the first implementation. The feature works, tests pass.
+- <b>Review Phase</b>: Team members read the code and suggest improvements.
+- <b>Maintenance Phase</b>: Fixing bugs, adding features, adapting to new requirements — this phase accounts for over 80% of the code's lifecycle.
+- <b>Refactoring Phase</b>: When code becomes hard to maintain, the internal structure needs to be improved without changing external behavior.
+- <b>Retirement Phase</b>: Technology evolves, and old code is replaced by new solutions.</span><span lang="en">- <b>Writing Phase</b>: A developer writes the first implementation. The feature works, tests pass.
+- <b>Review Phase</b>: Team members read the code and suggest improvements.
+- <b>Maintenance Phase</b>: Fixing bugs, adding features, adapting to new requirements — this phase accounts for over 80% of the code's lifecycle.
+- <b>Refactoring Phase</b>: When code becomes hard to maintain, the internal structure needs to be improved without changing external behavior.
+- <b>Retirement Phase</b>: Technology evolves, and old code is replaced by new solutions.</span></p>
+</div>
+<p class="reveal"><span lang="id">Martin Fowler once said in <i>Refactoring</i>: <b>"Any fool can write code that a computer can understand. Good programmers write code that humans can understand."</b></span><span lang="en">Martin Fowler once said in <i>Refactoring</i>: <b>"Any fool can write code that a computer can understand. Good programmers write code that humans can understand."</b></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Code Smells: Identifying Common Problems</span><span lang="en">1. Code Smells: Identifying Common Problems</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 Overview of Code Smells</span><span lang="en">1.1 Overview of Code Smells</span></h3>
+<p class="reveal"><span lang="id">The concept of "Code Smell" was proposed by Kent Beck. It refers to characteristics in code that <b>are not bugs but suggest deeper design problems</b>. It's like a strange odor in a room — it won't make you sick immediately, but it signals that something needs cleaning.</span><span lang="en">The concept of "Code Smell" was proposed by Kent Beck. It refers to characteristics in code that <b>are not bugs but suggest deeper design problems</b>. It's like a strange odor in a room — it won't make you sick immediately, but it signals that something needs cleaning.</span></p>
+<p class="reveal"><span lang="id">Use the interactive component below to identify some of the most common code smells:</span><span lang="en">Use the interactive component below to identify some of the most common code smells:</span></p>
+<p class="reveal"><span lang="id"><CodeSmellDemo /></span><span lang="en"><CodeSmellDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 Common Code Smells Checklist</span><span lang="en">1.2 Common Code Smells Checklist</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Code Smell</th><th>Symptom</th><th>Harm</th></tr>
+<tr><td><b>Long Method</b></td><td>Function exceeds 50 lines</td><td>Hard to understand, test, and reuse</td></tr>
+<tr><td><b>Magic Numbers</b></td><td>Writing <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">86400000</code> directly in code</td><td>Unclear meaning, easy to miss when modifying</td></tr>
+<tr><td><b>Duplicated Code</b></td><td>Similar logic in multiple places</td><td>Must sync changes everywhere, easy to miss</td></tr>
+<tr><td><b>Deep Nesting</b></td><td>More than 3 levels of if/for</td><td>Logic like a maze, hard to follow</td></tr>
+<tr><td><b>Long Parameter List</b></td><td>Function has more than 4 parameters</td><td>Difficult to call, easy to mix up order</td></tr>
+<tr><td><b>God Class</b></td><td>One class/module does too much</td><td>Unclear responsibilities, change one thing and everything breaks</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Code smells are not "errors" — they are "signals." They tell you: the design here may need improvement. Not all smells need to be fixed immediately, but you need the ability to recognize them.</span><span lang="en">Code smells are not "errors" — they are "signals." They tell you: the design here may need improvement. Not all smells need to be fixed immediately, but you need the ability to recognize them.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Refactoring Techniques: Safely Improving Code</span><span lang="en">2. Refactoring Techniques: Safely Improving Code</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Overview of Refactoring</span><span lang="en">2.1 Overview of Refactoring</span></h3>
+<p class="reveal"><span lang="id">The definition of Refactoring is precise: <b>improving the internal structure of code without changing its external behavior.</b></span><span lang="en">The definition of Refactoring is precise: <b>improving the internal structure of code without changing its external behavior.</b></span></p>
+<p class="reveal"><span lang="id">The key phrase is "without changing external behavior." Refactoring is not rewriting, not adding features, not fixing bugs. It is the "organizing and tidying up" of code internals.</span><span lang="en">The key phrase is "without changing external behavior." Refactoring is not rewriting, not adding features, not fixing bugs. It is the "organizing and tidying up" of code internals.</span></p>
+<p class="reveal"><span lang="id">Use the component below to compare the before and after of common refactoring techniques:</span><span lang="en">Use the component below to compare the before and after of common refactoring techniques:</span></p>
+<p class="reveal"><span lang="id"><RefactoringDemo /></span><span lang="en"><RefactoringDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Common Refactoring Techniques</span><span lang="en">2.2 Common Refactoring Techniques</span></h3>
+<p class="reveal"><span lang="id"><b>Extract Function</b></span><span lang="en"><b>Extract Function</b></span></p>
+<p class="reveal"><span lang="id">This is the most commonly used refactoring technique. When a piece of code can be summarized with a meaningful name, it should be extracted into a function.</span><span lang="en">This is the most commonly used refactoring technique. When a piece of code can be summarized with a meaningful name, it should be extracted into a function.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Before refactoring
+function printReport(data) {
+  // Calculate total price
+  let total = 0
+  for (const item of data.items) {
+    total += item.price * item.qty
+  }
+  // Print...
+}
+
+// After refactoring
+function calculateTotal(items) {
+  return items.reduce((sum, item) =&gt; sum + item.price * item.qty, 0)
+}
+
+function printReport(data) {
+  const total = calculateTotal(data.items)
+  // Print...
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Rename</b></span><span lang="en"><b>Rename</b></span></p>
+<p class="reveal"><span lang="id">Good naming is the cheapest and most effective documentation. When you need to write a comment to explain what a variable or function means, its name is not good enough.</span><span lang="en">Good naming is the cheapest and most effective documentation. When you need to write a comment to explain what a variable or function means, its name is not good enough.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Before refactoring
+const d = new Date() - startTime  // Elapsed time
+const arr = users.filter(u =&gt; u.a) // Active users
+
+// After refactoring
+const elapsedMs = new Date() - startTime
+const activeUsers = users.filter(user =&gt; user.isActive)</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Replace Nested Conditional with Guard Clauses</b></span><span lang="en"><b>Replace Nested Conditional with Guard Clauses</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Before refactoring
+function getPayAmount(employee) {
+  if (employee.isSeparated) {
+    return { amount: 0 }
+  } else {
+    if (employee.isRetired) {
+      return { amount: employee.pension }
+    } else {
+      return { amount: employee.salary }
+    }
+  }
+}
+
+// After refactoring
+function getPayAmount(employee) {
+  if (employee.isSeparated) return { amount: 0 }
+  if (employee.isRetired) return { amount: employee.pension }
+  return { amount: employee.salary }
+}</pre>
+</div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">The biggest risk of refactoring is "introducing bugs while making changes." So the prerequisite for refactoring is <b>having test coverage</b>. Run tests after each small refactoring step to ensure behavior hasn't changed. For code without tests, add tests first before refactoring.</span><span lang="en">The biggest risk of refactoring is "introducing bugs while making changes." So the prerequisite for refactoring is <b>having test coverage</b>. Run tests after each small refactoring step to ensure behavior hasn't changed. For code without tests, add tests first before refactoring.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Code Review: Quality Assurance in Team Collaboration</span><span lang="en">3. Code Review: Quality Assurance in Team Collaboration</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Motivation for Coding Review</span><span lang="en">3.1 Motivation for Coding Review</span></h3>
+<p class="reveal"><span lang="id">Code Review is one of the most effective quality assurance methods in a team. Its value goes beyond finding bugs:</span><span lang="en">Code Review is one of the most effective quality assurance methods in a team. Its value goes beyond finding bugs:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Knowledge Sharing</b>: Team members learn each other's code, reducing the "bus factor" (if someone gets hit by a bus, can the project continue?)</span><span lang="en"><b>Knowledge Sharing</b>: Team members learn each other's code, reducing the "bus factor" (if someone gets hit by a bus, can the project continue?)</span></li>
+<li><span lang="id"><b>Consistent Style</b>: Reviews gradually establish the team's coding standards</span><span lang="en"><b>Consistent Style</b>: Reviews gradually establish the team's coding standards</span></li>
+<li><span lang="id"><b>Early Detection of Design Issues</b>: Bad architectural decisions are harder to fix than bugs</span><span lang="en"><b>Early Detection of Design Issues</b>: Bad architectural decisions are harder to fix than bugs</span></li>
+<li><span lang="id"><b>Mutual Learning</b>: Reading others' code is a shortcut to improving your own programming skills</span><span lang="en"><b>Mutual Learning</b>: Reading others' code is a shortcut to improving your own programming skills</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 What to Review</span><span lang="en">3.2 What to Review</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Dimension</th><th>Focus</th></tr>
+<tr><td><b>Correctness</b></td><td>Is the logic correct? Are edge cases handled?</td></tr>
+<tr><td><b>Readability</b></td><td>Are names clear? Is the structure easy to understand?</td></tr>
+<tr><td><b>Security</b></td><td>Are there injection risks? Is sensitive data exposed?</td></tr>
+<tr><td><b>Performance</b></td><td>Are there obvious performance issues? N+1 queries?</td></tr>
+<tr><td><b>Testing</b></td><td>Are there corresponding tests? Do they cover critical paths?</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Review Etiquette</span><span lang="en">3.3 Review Etiquette</span></h3>
+<p class="reveal"><span lang="id">Good code review is a <b>discussion about code, not criticism of people</b>:</span><span lang="en">Good code review is a <b>discussion about code, not criticism of people</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Use "we" instead of "you": ~~"You wrote this wrong"~~ → "Here we could consider using a guard clause"</span><span lang="en">Use "we" instead of "you": ~~"You wrote this wrong"~~ → "Here we could consider using a guard clause"</span></li>
+<li><span lang="id">Ask rather than command: ~~"Change to const"~~ → "Will this variable be reassigned later? If not, const would be safer"</span><span lang="en">Ask rather than command: ~~"Change to const"~~ → "Will this variable be reassigned later? If not, const would be safer"</span></li>
+<li><span lang="id">Give reasons: Don't just say "not good" — explain "why it's not good" and "how to make it better"</span><span lang="en">Give reasons: Don't just say "not good" — explain "why it's not good" and "how to make it better"</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Code Quality Metrics</span><span lang="en">4. Code Quality Metrics</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Cyclomatic Complexity</span><span lang="en">4.1 Cyclomatic Complexity</span></h3>
+<p class="reveal"><span lang="id">Cyclomatic Complexity measures the number of independent paths in code. Each <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">if</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">for</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">case</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">&&</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">||</code> increases complexity.</span><span lang="en">Cyclomatic Complexity measures the number of independent paths in code. Each <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">if</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">for</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">case</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">&&</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">||</code> increases complexity.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Complexity</th><th>Rating</th><th>Recommendation</th></tr>
+<tr><td>1-10</td><td>Simple</td><td>Easy to understand and test</td></tr>
+<tr><td>11-20</td><td>Moderate</td><td>Consider splitting</td></tr>
+<tr><td>21-50</td><td>Complex</td><td>Must refactor</td></tr>
+<tr><td>50+</td><td>Unmaintainable</td><td>Urgent refactoring needed</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Code Coverage</span><span lang="en">4.2 Code Coverage</span></h3>
+<p class="reveal"><span lang="id">Code coverage measures what proportion of code is executed by tests. Common metrics:</span><span lang="en">Code coverage measures what proportion of code is executed by tests. Common metrics:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Line Coverage</b>: Proportion of executed code lines to total lines</span><span lang="en"><b>Line Coverage</b>: Proportion of executed code lines to total lines</span></li>
+<li><span lang="id"><b>Branch Coverage</b>: Proportion of executed conditional branches to total branches</span><span lang="en"><b>Branch Coverage</b>: Proportion of executed conditional branches to total branches</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">80% coverage does not mean good code quality. Coverage only tells you "which code hasn't been tested," not "whether the tests are meaningful." A test that only asserts <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">expect(true).toBe(true)</code> can increase coverage but is completely worthless.</span><span lang="en">80% coverage does not mean good code quality. Coverage only tells you "which code hasn't been tested," not "whether the tests are meaningful." A test that only asserts <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">expect(true).toBe(true)</code> can increase coverage but is completely worthless.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 Practical Tools</span><span lang="en">4.3 Practical Tools</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Tool</th><th>Purpose</th></tr>
+<tr><td><b>ESLint</b></td><td>JavaScript/TypeScript static analysis</td></tr>
+<tr><td><b>Prettier</b></td><td>Code formatting, consistent style</td></tr>
+<tr><td><b>SonarQube</b></td><td>Comprehensive code quality platform</td></tr>
+<tr><td><b>Husky</b></td><td>Git hooks, automatic checks before commits</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. AI-Powered: Using LLMs to Improve Code Quality</span><span lang="en">5. AI-Powered: Using LLMs to Improve Code Quality</span></h2>
+<p class="reveal"><span lang="id">LLMs are already very practical in the code quality domain — they can serve as your "24/7 online code reviewer."</span><span lang="en">LLMs are already very practical in the code quality domain — they can serve as your "24/7 online code reviewer."</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Identifying Code Smells</span><span lang="en">5.1 Identifying Code Smells</span></h3>
+<p class="reveal"><span lang="id">> <b>Prompt</b>:</span><span lang="en">> <b>Prompt</b>:</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<p class="reveal"><span lang="id">> Please review the following code and identify code smells, including but not limited to:</span><span lang="en">> Please review the following code and identify code smells, including but not limited to:</span></p>
+<p class="reveal"><span lang="id">> long methods, magic numbers, duplicated code, deep nesting, long parameter lists.</span><span lang="en">> long methods, magic numbers, duplicated code, deep nesting, long parameter lists.</span></p>
+<p class="reveal"><span lang="id">> For each issue, provide the specific location, description, and improvement suggestions.</span><span lang="en">> For each issue, provide the specific location, description, and improvement suggestions.</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> [Paste your code]</span><span lang="en">> [Paste your code]</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Automated Refactoring</span><span lang="en">5.2 Automated Refactoring</span></h3>
+<p class="reveal"><span lang="id">> <b>Prompt</b>:</span><span lang="en">> <b>Prompt</b>:</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<p class="reveal"><span lang="id">> Please refactor the following code with these requirements:</span><span lang="en">> Please refactor the following code with these requirements:</span></p>
+<p class="reveal"><span lang="id">> 1. Do not change external behavior</span><span lang="en">> 1. Do not change external behavior</span></p>
+<p class="reveal"><span lang="id">> 2. Use techniques like extract function, guard clauses to replace nesting</span><span lang="en">> 2. Use techniques like extract function, guard clauses to replace nesting</span></p>
+<p class="reveal"><span lang="id">> 3. Improve naming, eliminate magic numbers</span><span lang="en">> 3. Improve naming, eliminate magic numbers</span></p>
+<p class="reveal"><span lang="id">> 4. Explain the reasoning behind each refactoring step</span><span lang="en">> 4. Explain the reasoning behind each refactoring step</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> [Paste your code]</span><span lang="en">> [Paste your code]</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 Simulated Code Review</span><span lang="en">5.3 Simulated Code Review</span></h3>
+<p class="reveal"><span lang="id">> <b>Prompt</b>:</span><span lang="en">> <b>Prompt</b>:</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<p class="reveal"><span lang="id">> Please review this code from the perspective of a senior developer, providing feedback on these dimensions:</span><span lang="en">> Please review this code from the perspective of a senior developer, providing feedback on these dimensions:</span></p>
+<p class="reveal"><span lang="id">> - Correctness: Are there logic bugs? Are edge cases handled?</span><span lang="en">> - Correctness: Are there logic bugs? Are edge cases handled?</span></p>
+<p class="reveal"><span lang="id">> - Readability: Are names clear? Is the structure easy to understand?</span><span lang="en">> - Readability: Are names clear? Is the structure easy to understand?</span></p>
+<p class="reveal"><span lang="id">> - Performance: Are there obvious performance issues?</span><span lang="en">> - Performance: Are there obvious performance issues?</span></p>
+<p class="reveal"><span lang="id">> - Security: Are there injection or data leakage risks?</span><span lang="en">> - Security: Are there injection or data leakage risks?</span></p>
+<p class="reveal"><span lang="id">> Use a "suggestion" tone rather than "command," and provide improvement plans.</span><span lang="en">> Use a "suggestion" tone rather than "command," and provide improvement plans.</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> [Paste your code]</span><span lang="en">> [Paste your code]</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">You need to verify AI's refactoring suggestions yourself — run tests to confirm behavior hasn't changed. Treat AI as a "colleague who gives suggestions," not an "authority to trust unconditionally."</span><span lang="en">You need to verify AI's refactoring suggestions yourself — run tests to confirm behavior hasn't changed. Treat AI as a "colleague who gives suggestions," not an "authority to trust unconditionally."</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Summary</span><span lang="en">6. Summary</span></h2>
+<p class="reveal"><span lang="id">Looking back, we've gone from identifying problems to solving them, building a complete code quality improvement system:</span><span lang="en">Looking back, we've gone from identifying problems to solving them, building a complete code quality improvement system:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Identify</b>: Learn to smell code smells, know where improvements are needed</span><span lang="en"><b>Identify</b>: Learn to smell code smells, know where improvements are needed</span></li>
+<li><span lang="id"><b>Refactor</b>: Master safe refactoring techniques, improve in small steps under test protection</span><span lang="en"><b>Refactor</b>: Master safe refactoring techniques, improve in small steps under test protection</span></li>
+<li><span lang="id"><b>Collaborate</b>: Use code review to let the team collectively safeguard code quality</span><span lang="en"><b>Collaborate</b>: Use code review to let the team collectively safeguard code quality</span></li>
+<li><span lang="id"><b>Measure</b>: Track code health with objective metrics</span><span lang="en"><b>Measure</b>: Track code health with objective metrics</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Code quality is not a one-time effort but a continuous habit. It's like keeping a room tidy — you don't wait until it's a mess to do a deep clean; you tidy up a little every day. The <b>Boy Scout Rule</b> says it well: leave the code cleaner than you found it.</span><span lang="en">Code quality is not a one-time effort but a continuous habit. It's like keeping a room tidy — you don't wait until it's a mess to do a deep clean; you tidy up a little every day. The <b>Boy Scout Rule</b> says it well: leave the code cleaner than you found it.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Classic Book</b>: Martin Fowler's <i>Refactoring: Improving the Design of Existing Code</i> is the bible of this field.</span><span lang="en"><b>Classic Book</b>: Martin Fowler's <i>Refactoring: Improving the Design of Existing Code</i> is the bible of this field.</span></li>
+<li><span lang="id"><b>Clean Code</b>: Robert C. Martin's <i>Clean Code</i> provides many practical coding principles.</span><span lang="en"><b>Clean Code</b>: Robert C. Martin's <i>Clean Code</i> provides many practical coding principles.</span></li>
+<li><span lang="id"><b>Practical Tools</b>: Try configuring ESLint + Prettier + Husky in your project to experience automated code quality assurance.</span><span lang="en"><b>Practical Tools</b>: Try configuring ESLint + Prettier + Husky in your project to experience automated code quality assurance.</span></li>
+<li><span lang="id"><b>Code Review</b>: Google's Code Review guidelines are the industry gold standard and worth studying.</span><span lang="en"><b>Code Review</b>: Google's Code Review guidelines are the industry gold standard and worth studying.</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../8-artificial-intelligence/transformer-attention/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">8-artificial-intelligence/transformer-attention</span><span lang="en">8-artificial-intelligence/transformer-attention</span></b></a>
+      <a class="next" href="../../9-engineering-excellence/design-patterns/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">9-engineering-excellence/design-patterns</span><span lang="en">9-engineering-excellence/design-patterns</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

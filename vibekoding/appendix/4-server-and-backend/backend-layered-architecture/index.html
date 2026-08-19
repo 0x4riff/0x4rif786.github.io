@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of Backend Layered Architecture — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Backend Layered Architecture. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/4-server-and-backend/backend-layered-architecture/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Backend Layered Architecture</span><span lang="en">Principles of Backend Layered Architecture</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of Backend Layered Architecture</span><span lang="en">Principles of Backend Layered Architecture</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Backend Layered Architecture.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Backend Layered Architecture.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">> <b>Core Question</b>: As code grows more chaotic, how should you organize it to stay clear and understandable?</span><span lang="en">> <b>Core Question</b>: As code grows more chaotic, how should you organize it to stay clear and understandable?</span></p>
+<p class="reveal"><span lang="id">When a project expands from dozens of lines to tens of thousands, from solo development to team collaboration, and from simple CRUD to complex business logic, the way code is organized directly determines the project's survival. Layered architecture is not about showing off or following dogma — it exists to resolve a fundamental contradiction in software engineering: the clash between the <b>natural growth of business complexity</b> and the <b>limited capacity of human cognition</b>.</span><span lang="en">When a project expands from dozens of lines to tens of thousands, from solo development to team collaboration, and from simple CRUD to complex business logic, the way code is organized directly determines the project's survival. Layered architecture is not about showing off or following dogma — it exists to resolve a fundamental contradiction in software engineering: the clash between the <b>natural growth of business complexity</b> and the <b>limited capacity of human cognition</b>.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Motivation for Layersing</span><span lang="en">1. Motivation for Layersing</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 The Root of the Problem</span><span lang="en">1.1 The Root of the Problem</span></h3>
+<p class="reveal"><span lang="id"><b>Early version</b> (100 lines of code):</span><span lang="en"><b>Early version</b> (100 lines of code):</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>java</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>@PostMapping(&quot;/register&quot;)
+public Result register(@RequestBody User user) {
+    // 1. Check if username already exists
+    if (userRepository.findByUsername(user.getUsername()) != null) {
+        return Result.error(&quot;Username already exists&quot;);
+    }
+    // 2. Encrypt password
+    user.setPassword(encrypt(user.getPassword()));
+    // 3. Save user
+    userRepository.save(user);
+    // 4. Send welcome email
+    emailService.sendWelcome(user.getEmail());
+    // 5. Log
+    log.info(&quot;User registered: {}&quot;, user.getUsername());
+    return Result.success();
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>6 months later</b> (500 lines of code):</span><span lang="en"><b>6 months later</b> (500 lines of code):</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Phone number verification added</span><span lang="en">Phone number verification added</span></li>
+<li><span lang="id">Real-name authentication added</span><span lang="en">Real-name authentication added</span></li>
+<li><span lang="id">Referral rewards added</span><span lang="en">Referral rewards added</span></li>
+<li><span lang="id">Risk control checks added</span><span lang="en">Risk control checks added</span></li>
+<li><span lang="id">...</span><span lang="en">...</span></li>
+</ul>
+<p class="reveal"><span lang="id">Now this method is 500 lines, and every change is nerve-wracking because:</span><span lang="en">Now this method is 500 lines, and every change is nerve-wracking because:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Logic is tangled together — changing one part may affect other features</span><span lang="en">Logic is tangled together — changing one part may affect other features</span></li>
+<li><span lang="id">Hard to test — every test requires simulating a full HTTP request</span><span lang="en">Hard to test — every test requires simulating a full HTTP request</span></li>
+<li><span lang="id">Newcomers can't understand it — all logic is piled together</span><span lang="en">Newcomers can't understand it — all logic is piled together</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>The essence of the problem</b>: code has no "boundaries"; all responsibilities are mixed together.</span><span lang="en"><b>The essence of the problem</b>: code has no "boundaries"; all responsibilities are mixed together.</span></p>
+<p class="reveal"><span lang="id"><b>The compounding effect of technical debt</b>:</span><span lang="en"><b>The compounding effect of technical debt</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">❌ <b>High coupling</b>: Business logic is coupled with data access and HTTP protocol — a single change ripples everywhere</span><span lang="en">❌ <b>High coupling</b>: Business logic is coupled with data access and HTTP protocol — a single change ripples everywhere</span></li>
+<li><span lang="id">❌ <b>Low cohesion</b>: One method takes on multiple responsibilities, violating the Single Responsibility Principle</span><span lang="en">❌ <b>Low cohesion</b>: One method takes on multiple responsibilities, violating the Single Responsibility Principle</span></li>
+<li><span lang="id">❌ <b>Hard to test</b>: Cannot test business logic in isolation — must boot the full HTTP container</span><span lang="en">❌ <b>Hard to test</b>: Cannot test business logic in isolation — must boot the full HTTP container</span></li>
+<li><span lang="id">❌ <b>Hard to reuse</b>: Business logic is bound to HTTP requests; scheduled tasks and message queues cannot reuse it</span><span lang="en">❌ <b>Hard to reuse</b>: Business logic is bound to HTTP requests; scheduled tasks and message queues cannot reuse it</span></li>
+<li><span lang="id">❌ <b>Cognitive load</b>: Developers must understand details across all layers simultaneously, unable to focus</span><span lang="en">❌ <b>Cognitive load</b>: Developers must understand details across all layers simultaneously, unable to focus</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 The Core Idea of Layering</span><span lang="en">1.2 The Core Idea of Layering</span></h3>
+<p class="reveal"><span lang="id">Layered architecture draws clear boundaries for code:</span><span lang="en">Layered architecture draws clear boundaries for code:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>┌─────────────────────────────────────┐
+│  Accept requests ← Controller       │  Only responsible for &quot;taking orders&quot;
+├─────────────────────────────────────┤
+│  Business orchestration ← Service   │  Only responsible for &quot;cooking&quot;
+├─────────────────────────────────────┤
+│  Data access ← Repository           │  Only responsible for &quot;fetching ingredients&quot;
+├─────────────────────────────────────┤
+│  Business definition ← Domain       │  Only responsible for &quot;recipe standards&quot;
+└─────────────────────────────────────┘</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Key principles</b>:</span><span lang="en"><b>Key principles</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Each layer does only its own job</span><span lang="en">Each layer does only its own job</span></li>
+<li><span lang="id">Layers communicate through well-defined interfaces</span><span lang="en">Layers communicate through well-defined interfaces</span></li>
+<li><span lang="id">Business logic is concentrated in Service and Domain</span><span lang="en">Business logic is concentrated in Service and Domain</span></li>
+<li><span lang="id">Data access logic is concentrated in Repository</span><span lang="en">Data access logic is concentrated in Repository</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Engineering value of layered architecture</b>:</span><span lang="en"><b>Engineering value of layered architecture</b>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Reduces cognitive load</b>: Developers can focus on the responsibilities of the current layer without understanding every global detail</span><span lang="en"><b>Reduces cognitive load</b>: Developers can focus on the responsibilities of the current layer without understanding every global detail</span></li>
+<li><span lang="id"><b>Improves testability</b>: Each layer can be unit-tested independently by mocking dependencies</span><span lang="en"><b>Improves testability</b>: Each layer can be unit-tested independently by mocking dependencies</span></li>
+<li><span lang="id"><b>Enhances maintainability</b>: When requirements change, the scope of modifications is clear, reducing risk</span><span lang="en"><b>Enhances maintainability</b>: When requirements change, the scope of modifications is clear, reducing risk</span></li>
+<li><span lang="id"><b>Promotes code reuse</b>: Business logic is not tied to HTTP — it can be reused in scheduled tasks and message queues</span><span lang="en"><b>Promotes code reuse</b>: Business logic is not tied to HTTP — it can be reused in scheduled tasks and message queues</span></li>
+<li><span lang="id"><b>Supports team collaboration</b>: Different developers can work on different layers in parallel, reducing conflicts</span><span lang="en"><b>Supports team collaboration</b>: Different developers can work on different layers in parallel, reducing conflicts</span></li>
+<li><span lang="id"><b>Extends code lifespan</b>: Clear boundaries make code easier to refactor and evolve</span><span lang="en"><b>Extends code lifespan</b>: Clear boundaries make code easier to refactor and evolve</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. The Four-Layer Architecture in Detail</span><span lang="en">2. The Four-Layer Architecture in Detail</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Overall Structure</span><span lang="en">2.1 Overall Structure</span></h3>
+<p class="reveal"><span lang="id">The essence of layered architecture is <b>Separation of Concerns</b> and <b>dependency direction control</b>:</span><span lang="en">The essence of layered architecture is <b>Separation of Concerns</b> and <b>dependency direction control</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>┌─────────────────────────────────────────────────────┐
+│  Frontend request                                     │
+└────────────────────┬────────────────────────────────┘
+                     │ HTTP Request
+                     ▼
+┌─────────────────────────────────────────────────────┐
+│  Controller Layer                                    │
+│  - Accept requests, validate parameters              │
+│  - DTO conversion                                    │
+│  - Call Service                                      │
+│  - Return response                                   │
+└────────────────────┬────────────────────────────────┘
+                     │ Business call
+                     ▼
+┌─────────────────────────────────────────────────────┐
+│  Service Layer                                       │
+│  - Business logic orchestration                     │
+│  - Transaction management                            │
+│  - Coordinate multiple Repositories                  │
+│  - Cross-module coordination                         │
+└────────────────────┬────────────────────────────────┘
+                     │ Data access
+                     ▼
+┌─────────────────────────────────────────────────────┐
+│  Repository Layer                                    │
+│  - Database CRUD                                     │
+│  - Query encapsulation                               │
+│  - ORM mapping                                       │
+└────────────────────┬────────────────────────────────┘
+                     │ Domain objects
+                     ▼
+┌─────────────────────────────────────────────────────┐
+│  Domain Layer                                        │
+│  - Entity                                            │
+│  - Value Object                                      │
+│  - Business rules                                    │
+└─────────────────────────────────────────────────────┘</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Dependency direction</b>: Code dependencies must point toward <b>more stable, more abstract</b> directions</span><span lang="en"><b>Dependency direction</b>: Code dependencies must point toward <b>more stable, more abstract</b> directions</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Controller depends on Service interface (abstraction)</span><span lang="en">Controller depends on Service interface (abstraction)</span></li>
+<li><span lang="id">Service depends on Repository interface (abstraction)</span><span lang="en">Service depends on Repository interface (abstraction)</span></li>
+<li><span lang="id">All layers depend on Domain (business core, most stable)</span><span lang="en">All layers depend on Domain (business core, most stable)</span></li>
+<li><span lang="id"><b>Reverse dependencies are forbidden</b> (e.g., Repository depending on Service)</span><span lang="en"><b>Reverse dependencies are forbidden</b> (e.g., Repository depending on Service)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><LayeredArchitectureDemo /></span><span lang="en"><LayeredArchitectureDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Controller Layer</span><span lang="en">2.2 Controller Layer</span></h3>
+<p class="reveal"><span lang="id"><b>Responsibility</b>: The "receptionist" for requests</span><span lang="en"><b>Responsibility</b>: The "receptionist" for requests</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Accept HTTP requests, parse parameters</span><span lang="en">Accept HTTP requests, parse parameters</span></li>
+<li><span lang="id">Validate parameters (format, required fields, etc.)</span><span lang="en">Validate parameters (format, required fields, etc.)</span></li>
+<li><span lang="id">DTO conversion (Request → Param)</span><span lang="en">DTO conversion (Request → Param)</span></li>
+<li><span lang="id">Call Service to execute business logic</span><span lang="en">Call Service to execute business logic</span></li>
+<li><span lang="id">DTO conversion (Result → Response)</span><span lang="en">DTO conversion (Result → Response)</span></li>
+<li><span lang="id">Return HTTP response</span><span lang="en">Return HTTP response</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>What it should NOT do</b>:</span><span lang="en"><b>What it should NOT do</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Write business logic directly</span><span lang="en">Write business logic directly</span></li>
+<li><span lang="id">Access the database directly</span><span lang="en">Access the database directly</span></li>
+<li><span lang="id">Handle transactions</span><span lang="en">Handle transactions</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Design philosophy</b>:</span><span lang="en"><b>Design philosophy</b>:</span></p>
+<p class="reveal"><span lang="id">The Controller is the system's "facade," serving as an adapter — translating the external HTTP protocol into internal business calls. It should contain no business decisions, because business decisions embody domain knowledge and should be decoupled from the transport protocol.</span><span lang="en">The Controller is the system's "facade," serving as an adapter — translating the external HTTP protocol into internal business calls. It should contain no business decisions, because business decisions embody domain knowledge and should be decoupled from the transport protocol.</span></p>
+<p class="reveal"><span lang="id"><b>Example</b>:</span><span lang="en"><b>Example</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>java</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>@RestController
+@RequestMapping(&quot;/api/users&quot;)
+public class UserController {
+
+    private final UserService userService;
+
+    @PostMapping
+    public UserResponse createUser(
+            @RequestBody @Valid UserRequest request) {
+
+        // 1. Request DTO → Param DTO
+        UserParam param = UserParam.builder()
+                .username(request.getUsername())
+                .password(encrypt(request.getPassword()))
+                .email(request.getEmail())
+                .build();
+
+        // 2. Call Service
+        User user = userService.createUser(param);
+
+        // 3. Entity → Response DTO
+        return UserResponse.from(user);
+    }
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Key points</b>:</span><span lang="en"><b>Key points</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">@Valid</code> for automatic parameter validation</span><span lang="en">Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">@Valid</code> for automatic parameter validation</span></li>
+<li><span lang="id">Use DTOs to isolate frontend and backend data structures</span><span lang="en">Use DTOs to isolate frontend and backend data structures</span></li>
+<li><span lang="id">Only do "translation" and "dispatching" — no business logic</span><span lang="en">Only do "translation" and "dispatching" — no business logic</span></li>
+</ul>
+<p class="reveal"><span lang="id"><ControllerLayerDemo /></span><span lang="en"><ControllerLayerDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 Service Layer</span><span lang="en">2.3 Service Layer</span></h3>
+<p class="reveal"><span lang="id"><b>Responsibility</b>: The "chef" of the business</span><span lang="en"><b>Responsibility</b>: The "chef" of the business</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Implement core business logic</span><span lang="en">Implement core business logic</span></li>
+<li><span lang="id">Orchestrate operations across multiple Repositories</span><span lang="en">Orchestrate operations across multiple Repositories</span></li>
+<li><span lang="id">Manage transaction boundaries</span><span lang="en">Manage transaction boundaries</span></li>
+<li><span lang="id">Handle cross-module coordination</span><span lang="en">Handle cross-module coordination</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>What it should NOT do</b>:</span><span lang="en"><b>What it should NOT do</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Write SQL directly (leave that to Repository)</span><span lang="en">Write SQL directly (leave that to Repository)</span></li>
+<li><span lang="id">Handle HTTP-related concerns</span><span lang="en">Handle HTTP-related concerns</span></li>
+<li><span lang="id">Return database entities to Controller</span><span lang="en">Return database entities to Controller</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Design philosophy</b>:</span><span lang="en"><b>Design philosophy</b>:</span></p>
+<p class="reveal"><span lang="id">The Service layer carries business logic and should remain pure. It does not depend on any framework or transport protocol, which enables:</span><span lang="en">The Service layer carries business logic and should remain pure. It does not depend on any framework or transport protocol, which enables:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Unit testing independent of the web layer</span><span lang="en">Unit testing independent of the web layer</span></li>
+<li><span lang="id">Reuse in scheduled tasks and message queue consumers</span><span lang="en">Reuse in scheduled tasks and message queue consumers</span></li>
+<li><span lang="id">Protection of business logic from technology stack changes</span><span lang="en">Protection of business logic from technology stack changes</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Example</b>:</span><span lang="en"><b>Example</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>java</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>@Service
+@RequiredArgsConstructor
+public class UserService {
+
+    private final UserRepository userRepository;
+    private final EmailService emailService;
+
+    @Transactional
+    public User createUser(UserParam param) {
+        // 1. Business rule: check if username already exists
+        if (userRepository.existsByUsername(param.getUsername())) {
+            throw new UserAlreadyExistsException();
+        }
+
+        // 2. Create user entity
+        User user = new User();
+        user.setUsername(param.getUsername());
+        user.setPassword(param.getPassword());
+        user.setEmail(param.getEmail());
+
+        // 3. Save to database
+        userRepository.save(user);
+
+        // 4. Send welcome email (cross-module coordination)
+        emailService.sendWelcomeEmail(user);
+
+        return user;
+    }
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Key points</b>:</span><span lang="en"><b>Key points</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">@Transactional</code> to guarantee transaction consistency</span><span lang="en">Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">@Transactional</code> to guarantee transaction consistency</span></li>
+<li><span lang="id">Throw business exceptions and let the Controller handle them uniformly</span><span lang="en">Throw business exceptions and let the Controller handle them uniformly</span></li>
+<li><span lang="id">No dependency on HTTP concepts — reusable</span><span lang="en">No dependency on HTTP concepts — reusable</span></li>
+</ul>
+<p class="reveal"><span lang="id"><ServiceLayerDemo /></span><span lang="en"><ServiceLayerDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.4 Repository Layer</span><span lang="en">2.4 Repository Layer</span></h3>
+<p class="reveal"><span lang="id"><b>Responsibility</b>: The "warehouse keeper" of data</span><span lang="en"><b>Responsibility</b>: The "warehouse keeper" of data</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Encapsulate all data access logic</span><span lang="en">Encapsulate all data access logic</span></li>
+<li><span lang="id">Execute CRUD operations</span><span lang="en">Execute CRUD operations</span></li>
+<li><span lang="id">Handle ORM mapping</span><span lang="en">Handle ORM mapping</span></li>
+<li><span lang="id">Encapsulate query conditions</span><span lang="en">Encapsulate query conditions</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>What it should NOT do</b>:</span><span lang="en"><b>What it should NOT do</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Write business logic</span><span lang="en">Write business logic</span></li>
+<li><span lang="id">Handle transactions (managed by the Service layer)</span><span lang="en">Handle transactions (managed by the Service layer)</span></li>
+<li><span lang="id">Depend on upper-layer modules</span><span lang="en">Depend on upper-layer modules</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Design philosophy</b>:</span><span lang="en"><b>Design philosophy</b>:</span></p>
+<p class="reveal"><span lang="id">The Repository is an abstraction layer for data access that hides the details of the underlying database. The value of this abstraction lies in:</span><span lang="en">The Repository is an abstraction layer for data access that hides the details of the underlying database. The value of this abstraction lies in:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">When switching databases, only the Repository implementation needs to change — business logic remains untouched</span><span lang="en">When switching databases, only the Repository implementation needs to change — business logic remains untouched</span></li>
+<li><span lang="id">Easy mocking for unit testing</span><span lang="en">Easy mocking for unit testing</span></li>
+<li><span lang="id">Query logic is centrally managed, avoiding duplicate code</span><span lang="en">Query logic is centrally managed, avoiding duplicate code</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Example</b>:</span><span lang="en"><b>Example</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>java</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>@Repository
+public interface UserRepository extends JpaRepository&lt;User, Long&gt; {
+
+    // Automatically implemented by Spring Data JPA
+    Optional&lt;User&gt; findByUsername(String username);
+    boolean existsByUsername(String username);
+
+    // Custom complex query
+    @Query(&quot;SELECT u FROM User u WHERE u.email = :email AND u.deleted = false&quot;)
+    Optional&lt;User&gt; findActiveByEmail(@Param(&quot;email&quot;) String email);
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Key points</b>:</span><span lang="en"><b>Key points</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Repository is an interface — contains no business logic</span><span lang="en">Repository is an interface — contains no business logic</span></li>
+<li><span lang="id">Express query intent through method names</span><span lang="en">Express query intent through method names</span></li>
+<li><span lang="id">Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">@Query</code> for custom complex queries</span><span lang="en">Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">@Query</code> for custom complex queries</span></li>
+</ul>
+<p class="reveal"><span lang="id"><RepositoryLayerDemo /></span><span lang="en"><RepositoryLayerDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.5 Domain Layer</span><span lang="en">2.5 Domain Layer</span></h3>
+<p class="reveal"><span lang="id"><b>Responsibility</b>: The "recipe standards" of the business</span><span lang="en"><b>Responsibility</b>: The "recipe standards" of the business</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Define business entities</span><span lang="en">Define business entities</span></li>
+<li><span lang="id">Define value objects</span><span lang="en">Define value objects</span></li>
+<li><span lang="id">Encapsulate business rules</span><span lang="en">Encapsulate business rules</span></li>
+<li><span lang="id">Serve as the common dependency for all layers</span><span lang="en">Serve as the common dependency for all layers</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Important characteristics</b>:</span><span lang="en"><b>Important characteristics</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">The Domain layer depends on no other layer</span><span lang="en">The Domain layer depends on no other layer</span></li>
+<li><span lang="id">All layers depend on the Domain layer</span><span lang="en">All layers depend on the Domain layer</span></li>
+<li><span lang="id">It is the foundation of the layered architecture</span><span lang="en">It is the foundation of the layered architecture</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Design philosophy</b>:</span><span lang="en"><b>Design philosophy</b>:</span></p>
+<p class="reveal"><span lang="id">The Domain layer is the business core of the entire system, expressing domain knowledge and business rules. Its purity is critical:</span><span lang="en">The Domain layer is the business core of the entire system, expressing domain knowledge and business rules. Its purity is critical:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Not depending on frameworks means business logic is not held hostage by the technology stack</span><span lang="en">Not depending on frameworks means business logic is not held hostage by the technology stack</span></li>
+<li><span lang="id">All layers depending on it ensures the consistency of business rules</span><span lang="en">All layers depending on it ensures the consistency of business rules</span></li>
+<li><span lang="id">It supports long-term evolution — technology stacks can be replaced, but business rules are relatively stable</span><span lang="en">It supports long-term evolution — technology stacks can be replaced, but business rules are relatively stable</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Example</b>:</span><span lang="en"><b>Example</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>java</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>@Entity
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true, nullable = false)
+    private String username;
+
+    @Column(nullable = false)
+    private String password;
+
+    // ✅ Business method: encapsulates business rules
+    public boolean isPasswordCorrect(String rawPassword) {
+        return BCrypt.checkpw(rawPassword, this.password);
+    }
+
+    public void changePassword(String oldPassword, String newPassword) {
+        if (!isPasswordCorrect(oldPassword)) {
+            throw new IncorrectPasswordException();
+        }
+        this.password = BCrypt.hashpw(newPassword);
+    }
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Key points</b>:</span><span lang="en"><b>Key points</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Entities have unique identifiers</span><span lang="en">Entities have unique identifiers</span></li>
+<li><span lang="id">Business rules are encapsulated in Domain objects</span><span lang="en">Business rules are encapsulated in Domain objects</span></li>
+<li><span lang="id">The Domain layer is pure business logic, not dependent on any framework</span><span lang="en">The Domain layer is pure business logic, not dependent on any framework</span></li>
+</ul>
+<p class="reveal"><span lang="id"><DomainModelDemo /></span><span lang="en"><DomainModelDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. DTO: The "Translator" Between Layers</span><span lang="en">3. DTO: The "Translator" Between Layers</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Motivation for DTOsing</span><span lang="en">3.1 Motivation for DTOsing</span></h3>
+<p class="reveal"><span lang="id"><b>The problem</b>: If you return database entities directly to the frontend:</span><span lang="en"><b>The problem</b>: If you return database entities directly to the frontend:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>java</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// ❌ Wrong: directly returning Entity
+@Entity
+public class User {
+    private Long id;
+    private String username;
+    private String password;        // Sensitive information!
+    private Boolean isDeleted;      // Internal field!
+}</pre>
+</div>
+<p class="reveal"><span lang="id">The frontend would receive fields that should never be exposed, creating security risks.</span><span lang="en">The frontend would receive fields that should never be exposed, creating security risks.</span></p>
+<p class="reveal"><span lang="id"><b>The solution</b>: Use DTOs as "translators"</span><span lang="en"><b>The solution</b>: Use DTOs as "translators"</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Database Entity → Service Param/Result → Controller Request/Response → Frontend</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Types of DTOs</span><span lang="en">3.2 Types of DTOs</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Type</th><th>Purpose</th><th>Example</th></tr>
+<tr><td>Request DTO</td><td>Controller receives parameters</td><td>UserCreateRequest</td></tr>
+<tr><td>Response DTO</td><td>Controller returns data</td><td>UserResponse</td></tr>
+<tr><td>Param DTO</td><td>Service method parameters</td><td>UserParam</td></tr>
+<tr><td>Result DTO</td><td>Service returns results</td><td>UserResult</td></tr>
+<tr><td>Entity</td><td>Database mapping</td><td>User</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Key principle</b>:</span><span lang="en"><b>Key principle</b>:</span></p>
+<p class="reveal"><span lang="id">Each layer uses its own DTOs — never pass entities directly. DTOs contain only necessary fields, which avoids exposing internal implementation details and preserves the independence of each layer.</span><span lang="en">Each layer uses its own DTOs — never pass entities directly. DTOs contain only necessary fields, which avoids exposing internal implementation details and preserves the independence of each layer.</span></p>
+<p class="reveal"><span lang="id"><DtoFlowDemo /></span><span lang="en"><DtoFlowDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Dependency Direction: The Iron Rule of Layered Architecture</span><span lang="en">4. Dependency Direction: The Iron Rule of Layered Architecture</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Dependency Inversion Principle</span><span lang="en">4.1 Dependency Inversion Principle</span></h3>
+<p class="reveal"><span lang="id"><b>Wrong approach</b>:</span><span lang="en"><b>Wrong approach</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Controller → UserServiceImpl → UserDaoImpl → UserEntity</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Correct approach</b>:</span><span lang="en"><b>Correct approach</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Controller → UserService (interface) → UserRepository (interface) → UserEntity</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Dependency direction</b>:</span><span lang="en"><b>Dependency direction</b>:</span></p>
+<p class="reveal"><span lang="id">The correct dependency direction has all layers depending on more abstract, more stable layers. Specifically, Controller depends on the Service interface, Service depends on the Repository interface, all layers depend on the Domain layer, and the Domain layer depends on no other layer. This dependency direction ensures the independence and testability of business logic.</span><span lang="en">The correct dependency direction has all layers depending on more abstract, more stable layers. Specifically, Controller depends on the Service interface, Service depends on the Repository interface, all layers depend on the Domain layer, and the Domain layer depends on no other layer. This dependency direction ensures the independence and testability of business logic.</span></p>
+<p class="reveal"><span lang="id">Wrong practices include Service directly depending on a Repository implementation class, Controller directly accessing the database, or the Domain layer depending on other layers — all of which increase coupling and reduce system maintainability.</span><span lang="en">Wrong practices include Service directly depending on a Repository implementation class, Controller directly accessing the database, or the Domain layer depending on other layers — all of which increase coupling and reduce system maintainability.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Code Example</span><span lang="en">4.2 Code Example</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>java</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// ✅ Correct: depends on interfaces
+@Service
+public class OrderService {
+    private final OrderRepository orderRepository;  // interface
+    private final PaymentService paymentService;    // interface
+}
+
+// ✅ Implementation class injected automatically by Spring
+@Repository
+public class OrderRepositoryImpl implements OrderRepository {
+    // Implementation details
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><DependencyDirectionDemo /></span><span lang="en"><DependencyDirectionDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Real-World Case Study: E-Commerce Order System</span><span lang="en">5. Real-World Case Study: E-Commerce Order System</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Requirements</span><span lang="en">5.1 Requirements</span></h3>
+<p class="reveal"><span lang="id">Creating an order:</span><span lang="en">Creating an order:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">User selects products</span><span lang="en">User selects products</span></li>
+<li><span lang="id">Check inventory</span><span lang="en">Check inventory</span></li>
+<li><span lang="id">Calculate total amount</span><span lang="en">Calculate total amount</span></li>
+<li><span lang="id">Create the order</span><span lang="en">Create the order</span></li>
+<li><span lang="id">Deduct inventory</span><span lang="en">Deduct inventory</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Implementation</span><span lang="en">5.2 Implementation</span></h3>
+<p class="reveal"><span lang="id"><b>Domain Layer</b>:</span><span lang="en"><b>Domain Layer</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>java</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>@Entity
+public class Order {
+    @Id
+    private Long id;
+    private Long userId;
+    private List&lt;OrderItem&gt; items;
+    private Money totalAmount;
+    private OrderStatus status;
+
+    public void calculateTotal() {
+        Money total = Money.zero();
+        for (OrderItem item : items) {
+            total = total.add(item.getSubTotal());
+        }
+        this.totalAmount = total;
+    }
+
+    public void cancel() {
+        if (this.status != OrderStatus.PENDING_PAYMENT) {
+            throw new IllegalStateException(&quot;Only pending-payment orders can be cancelled&quot;);
+        }
+        this.status = OrderStatus.CANCELLED;
+    }
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Repository Layer</b>:</span><span lang="en"><b>Repository Layer</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>java</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>@Repository
+public interface OrderRepository extends JpaRepository&lt;Order, Long&gt; {
+    List&lt;Order&gt; findByUserIdOrderByCreatedAtDesc(Long userId);
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Service Layer</b>:</span><span lang="en"><b>Service Layer</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>java</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>@Service
+@RequiredArgsConstructor
+public class OrderService {
+
+    private final OrderRepository orderRepository;
+    private final InventoryService inventoryService;
+
+    @Transactional
+    public OrderDTO createOrder(OrderParam param) {
+        // 1. Validate products and reserve inventory
+        for (OrderItemParam item : param.getItems()) {
+            inventoryService.reserveStock(item.getProductId(), item.getQuantity());
+        }
+
+        // 2. Create order
+        Order order = new Order();
+        order.setUserId(param.getUserId());
+        order.calculateTotal();
+
+        // 3. Save order
+        orderRepository.save(order);
+
+        return OrderDTO.from(order);
+    }
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Controller Layer</b>:</span><span lang="en"><b>Controller Layer</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>java</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>@RestController
+@RequestMapping(&quot;/api/orders&quot;)
+public class OrderController {
+
+    private final OrderService orderService;
+
+    @PostMapping
+    public OrderResponse createOrder(@RequestBody @Valid OrderRequest request) {
+        OrderParam param = OrderParam.builder()
+                .userId(request.getUserId())
+                .items(request.getItems())
+                .build();
+
+        OrderDTO order = orderService.createOrder(param);
+
+        return OrderResponse.from(order);
+    }
+}</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Frequently Asked Questions</span><span lang="en">6. Frequently Asked Questions</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Can the Controller contain business logic</span><span lang="en">6.1 Can the Controller contain business logic</span></h3>
+<p class="reveal"><span lang="id">The Controller should not contain business logic — it is only responsible for accepting requests and returning responses. Business logic should be encapsulated in the Service layer. The benefit is that code can be reused: for example, scheduled tasks or message queue consumers can directly call the Service without going through HTTP. Additionally, business logic concentrated in one place is easier to test and maintain, avoiding inconsistencies caused by scattered logic.</span><span lang="en">The Controller should not contain business logic — it is only responsible for accepting requests and returning responses. Business logic should be encapsulated in the Service layer. The benefit is that code can be reused: for example, scheduled tasks or message queue consumers can directly call the Service without going through HTTP. Additionally, business logic concentrated in one place is easier to test and maintain, avoiding inconsistencies caused by scattered logic.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 Overview of the Anemic Domain Model and Rich Domain Model</span><span lang="en">6.2 Overview of the Anemic Domain Model and Rich Domain Model</span></h3>
+<p class="reveal"><span lang="id">The <b>Anemic Domain Model</b> means entity classes contain only properties and their corresponding getter/setter methods, with no business logic — all business rules reside in the Service layer. This model is simple in structure, easy to understand, and is the approach adopted by most projects.</span><span lang="en">The <b>Anemic Domain Model</b> means entity classes contain only properties and their corresponding getter/setter methods, with no business logic — all business rules reside in the Service layer. This model is simple in structure, easy to understand, and is the approach adopted by most projects.</span></p>
+<p class="reveal"><span lang="id">The <b>Rich Domain Model</b> means entity classes contain not only properties but also business methods related to the entity, encapsulating business rules within the entity itself. This approach aligns better with object-oriented design principles, keeping data and behavior together and improving code cohesion.</span><span lang="en">The <b>Rich Domain Model</b> means entity classes contain not only properties but also business methods related to the entity, encapsulating business rules within the entity itself. This approach aligns better with object-oriented design principles, keeping data and behavior together and improving code cohesion.</span></p>
+<p class="reveal"><span lang="id">It is recommended to choose the model based on the team's technical background and project complexity. Whichever you choose, maintain consistency, and the Domain layer should at least include basic behavioral methods rather than being a completely empty shell.</span><span lang="en">It is recommended to choose the model based on the team's technical background and project complexity. Whichever you choose, maintain consistency, and the Domain layer should at least include basic behavioral methods rather than being a completely empty shell.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.3 Approach to handling transactions that span multiple Services</span><span lang="en">6.3 Approach to handling transactions that span multiple Services</span></h3>
+<p class="reveal"><span lang="id">When a business operation needs to span multiple Services, use a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">@Transactional</code> annotation on the upper-level Service method, and within that method, call the lower-level Services in sequence. This ensures all operations execute within the same transaction context — either all succeed or all fail, maintaining data consistency. Note that transaction boundaries should be as small as possible, including only necessary operations, to avoid holding database locks for extended periods and affecting concurrency performance.</span><span lang="en">When a business operation needs to span multiple Services, use a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">@Transactional</code> annotation on the upper-level Service method, and within that method, call the lower-level Services in sequence. This ensures all operations execute within the same transaction context — either all succeed or all fail, maintaining data consistency. Note that transaction boundaries should be as small as possible, including only necessary operations, to avoid holding database locks for extended periods and affecting concurrency performance.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Summary</span><span lang="en">7. Summary</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Layer</th><th>Responsibility</th><th>Keywords</th></tr>
+<tr><td>Controller</td><td>Accept requests, validate parameters, call Service, return response</td><td>Receptionist</td></tr>
+<tr><td>Service</td><td>Business logic orchestration, transaction management, coordinate Repository</td><td>Chef</td></tr>
+<tr><td>Repository</td><td>Data access, ORM mapping, query encapsulation</td><td>Warehouse Keeper</td></tr>
+<tr><td>Domain</td><td>Entity definition, business rules, value objects</td><td>Recipe Standards</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Core principles</b>:</span><span lang="en"><b>Core principles</b>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Each layer does only its own job</span><span lang="en">Each layer does only its own job</span></li>
+<li><span lang="id">Layers communicate through interfaces</span><span lang="en">Layers communicate through interfaces</span></li>
+<li><span lang="id">Business logic is concentrated in Service and Domain</span><span lang="en">Business logic is concentrated in Service and Domain</span></li>
+<li><span lang="id">Data access logic is concentrated in Repository</span><span lang="en">Data access logic is concentrated in Repository</span></li>
+<li><span lang="id">Use DTOs to isolate data structures between layers</span><span lang="en">Use DTOs to isolate data structures between layers</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8. More Architectural Patterns</span><span lang="en">8. More Architectural Patterns</span></h2>
+<p class="reveal"><span lang="id">This article introduces <b>Layered Architecture</b>, the most common and easiest backend architecture pattern to get started with. But backend architecture goes far beyond this one pattern — depending on the business context, there are other architectural patterns worth understanding:</span><span lang="en">This article introduces <b>Layered Architecture</b>, the most common and easiest backend architecture pattern to get started with. But backend architecture goes far beyond this one pattern — depending on the business context, there are other architectural patterns worth understanding:</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">8.1 Other Common Architectural Patterns</span><span lang="en">8.1 Other Common Architectural Patterns</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Pattern</th><th>Use Case</th><th>Characteristics</th></tr>
+<tr><td><b>Monolithic Architecture</b></td><td>Small projects, MVP</td><td>All functionality in a single application, simple deployment</td></tr>
+<tr><td><b>Microservices Architecture</b></td><td>Large, complex systems</td><td>Split into multiple independent services, each independently deployable</td></tr>
+<tr><td><b>Event-Driven Architecture</b></td><td>High concurrency, async processing</td><td>Processing flows triggered by events, highly decoupled</td></tr>
+<tr><td><b>Clean Architecture</b></td><td>Complex business systems</td><td>Business logic at the center, dependencies only point inward, frameworks on the outermost layer</td></tr>
+<tr><td><b>Hexagonal Architecture</b></td><td>Systems needing diverse external adapters</td><td>Isolates core from external systems through ports and adapters</td></tr>
+<tr><td><b>Onion Architecture</b></td><td>Domain-Driven Design</td><td>Concentric layers, domain model innermost, infrastructure outermost</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">Let's explore each one:</span><span lang="en">Let's explore each one:</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Monolithic Architecture</span><span lang="en">Monolithic Architecture</span></h4>
+<p class="reveal"><span lang="id">All functionality packaged in a single application, sharing one database and one process.</span><span lang="en">All functionality packaged in a single application, sharing one database and one process.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>┌──────────────────────────────┐
+│       Monolithic App         │
+│  ┌────┐ ┌────┐ ┌────┐       │
+│  │User│ │Order│ │Pay │ ...   │
+│  └──┬─┘ └──┬─┘ └──┬─┘       │
+│     └──────┼──────┘          │
+│        Shared Database       │
+└──────────────────────────────┘</pre>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Pros</b>: Simple to develop, easy to deploy, straightforward local debugging</span><span lang="en"><b>Pros</b>: Simple to develop, easy to deploy, straightforward local debugging</span></li>
+<li><span lang="id"><b>Cons</b>: High code coupling, hard to scale, one module failure can bring down the entire system</span><span lang="en"><b>Cons</b>: High code coupling, hard to scale, one module failure can bring down the entire system</span></li>
+<li><span lang="id"><b>Best for</b>: Early-stage startups, single-team development, rapid prototype validation</span><span lang="en"><b>Best for</b>: Early-stage startups, single-team development, rapid prototype validation</span></li>
+</ul>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Microservices Architecture</span><span lang="en">Microservices Architecture</span></h4>
+<p class="reveal"><span lang="id">Splits the system into multiple independent services, each with its own data and business logic, independently deployable and scalable.</span><span lang="en">Splits the system into multiple independent services, each with its own data and business logic, independently deployable and scalable.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>┌────────┐  ┌────────┐  ┌────────┐
+│User Svc│  │Order Svc│ │Pay Svc │
+│  DB-1  │  │  DB-2  │  │  DB-3  │
+└───┬────┘  └───┬────┘  └───┬────┘
+    └───────────┼───────────┘
+          API Gateway</pre>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Pros</b>: Independent deployment and scaling, flexible technology stack, fault isolation</span><span lang="en"><b>Pros</b>: Independent deployment and scaling, flexible technology stack, fault isolation</span></li>
+<li><span lang="id"><b>Cons</b>: Complex inter-service communication, challenging distributed data consistency, requires mature DevOps capabilities</span><span lang="en"><b>Cons</b>: Complex inter-service communication, challenging distributed data consistency, requires mature DevOps capabilities</span></li>
+<li><span lang="id"><b>Best for</b>: Large complex systems, multi-team collaboration, scenarios requiring independent scaling</span><span lang="en"><b>Best for</b>: Large complex systems, multi-team collaboration, scenarios requiring independent scaling</span></li>
+</ul>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Event-Driven Architecture</span><span lang="en">Event-Driven Architecture</span></h4>
+<p class="reveal"><span lang="id">Communication through asynchronous events — producers emit events, consumers respond to events, with highly decoupled components.</span><span lang="en">Communication through asynchronous events — producers emit events, consumers respond to events, with highly decoupled components.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Producer ──→ [Event Bus / Message Queue] ──→ Consumer A
+                                          ──→ Consumer B
+                                          ──→ Consumer C</pre>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Pros</b>: Highly decoupled, naturally supports scaling, ideal for real-time processing</span><span lang="en"><b>Pros</b>: Highly decoupled, naturally supports scaling, ideal for real-time processing</span></li>
+<li><span lang="id"><b>Cons</b>: Difficult debugging, event ordering and idempotency require extra handling</span><span lang="en"><b>Cons</b>: Difficult debugging, event ordering and idempotency require extra handling</span></li>
+<li><span lang="id"><b>Best for</b>: Real-time data analysis, IoT systems, async communication between microservices</span><span lang="en"><b>Best for</b>: Real-time data analysis, IoT systems, async communication between microservices</span></li>
+</ul>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Clean Architecture</span><span lang="en">Clean Architecture</span></h4>
+<p class="reveal"><span lang="id">Proposed by Robert C. Martin, the system is divided into four concentric layers with dependencies pointing only inward:</span><span lang="en">Proposed by Robert C. Martin, the system is divided into four concentric layers with dependencies pointing only inward:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>┌─────────────────────────────────────┐
+│  Frameworks &amp; Drivers               │
+│  ┌─────────────────────────────┐    │
+│  │  Interface Adapters          │    │
+│  │  ┌─────────────────────┐    │    │
+│  │  │  Use Cases            │    │    │
+│  │  │  ┌─────────────┐     │    │    │
+│  │  │  │  Entities    │     │    │    │
+│  │  │  │  (Domain)    │     │    │    │
+│  │  │  └─────────────┘     │    │    │
+│  │  └─────────────────────┘    │    │
+│  └─────────────────────────────┘    │
+└─────────────────────────────────────┘
+      Dependency direction: outer → inner</pre>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Core rule</b>: Inner layers know nothing about outer layers; business logic is completely independent of frameworks and databases</span><span lang="en"><b>Core rule</b>: Inner layers know nothing about outer layers; business logic is completely independent of frameworks and databases</span></li>
+<li><span lang="id"><b>Pros</b>: High testability, replaceable technology stack, clear business logic</span><span lang="en"><b>Pros</b>: High testability, replaceable technology stack, clear business logic</span></li>
+<li><span lang="id"><b>Cons</b>: Higher initial development cost, lots of inter-layer mapping code, risk of over-engineering in small projects</span><span lang="en"><b>Cons</b>: Higher initial development cost, lots of inter-layer mapping code, risk of over-engineering in small projects</span></li>
+<li><span lang="id"><b>Best for</b>: Complex business systems, projects requiring long-term maintenance</span><span lang="en"><b>Best for</b>: Complex business systems, projects requiring long-term maintenance</span></li>
+</ul>
+<p class="reveal"><span lang="id"><CleanArchitectureDemo /></span><span lang="en"><CleanArchitectureDemo /></span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Hexagonal Architecture (Ports & Adapters)</span><span lang="en">Hexagonal Architecture (Ports & Adapters)</span></h4>
+<p class="reveal"><span lang="id">Defines input/output interfaces for the core business through "ports," and connects external systems through "adapters":</span><span lang="en">Defines input/output interfaces for the core business through "ports," and connects external systems through "adapters":</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>        ┌─────────────┐
+  HTTP ──→ Port       │
+  CLI  ──→ (Inbound)  │  Core Business  │  (Outbound) ──→ Database
+  MQ   ──→            │  Logic           │  Port      ──→ External API
+        └─────────────┘</pre>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Core idea</b>: Business logic does not depend on any external technology; external systems connect through adapters</span><span lang="en"><b>Core idea</b>: Business logic does not depend on any external technology; external systems connect through adapters</span></li>
+<li><span lang="id"><b>Pros</b>: External systems can be freely swapped; testing only requires mock adapters</span><span lang="en"><b>Pros</b>: External systems can be freely swapped; testing only requires mock adapters</span></li>
+<li><span lang="id"><b>Best for</b>: Scenarios requiring integration with diverse external systems</span><span lang="en"><b>Best for</b>: Scenarios requiring integration with diverse external systems</span></li>
+</ul>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Onion Architecture</span><span lang="en">Onion Architecture</span></h4>
+<p class="reveal"><span lang="id">Similar to Clean Architecture, emphasizes the domain model at the innermost layer and infrastructure at the outermost, with dependencies only pointing inward:</span><span lang="en">Similar to Clean Architecture, emphasizes the domain model at the innermost layer and infrastructure at the outermost, with dependencies only pointing inward:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>┌──────────────────────────────┐
+│  Infrastructure              │
+│  ┌────────────────────────┐  │
+│  │  Application Services  │  │
+│  │  ┌──────────────────┐  │  │
+│  │  │  Domain Services  │  │  │
+│  │  │  ┌────────────┐   │  │  │
+│  │  │  │Domain Model│   │  │  │
+│  │  │  └────────────┘   │  │  │
+│  │  └──────────────────┘  │  │
+│  └────────────────────────┘  │
+└──────────────────────────────┘</pre>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Core idea</b>: The domain model is the core of the system; all dependencies point toward it</span><span lang="en"><b>Core idea</b>: The domain model is the core of the system; all dependencies point toward it</span></li>
+<li><span lang="id"><b>Difference from Clean Architecture</b>: Onion Architecture emphasizes the domain service layer more; Clean Architecture emphasizes the use case layer more</span><span lang="en"><b>Difference from Clean Architecture</b>: Onion Architecture emphasizes the domain service layer more; Clean Architecture emphasizes the use case layer more</span></li>
+<li><span lang="id"><b>Best for</b>: Projects adopting Domain-Driven Design (DDD)</span><span lang="en"><b>Best for</b>: Projects adopting Domain-Driven Design (DDD)</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">8.2 Architecture Evolution Path</span><span lang="en">8.2 Architecture Evolution Path</span></h3>
+<p class="reveal"><span lang="id">These architectures are not mutually exclusive alternatives — they represent a gradual evolution:</span><span lang="en">These architectures are not mutually exclusive alternatives — they represent a gradual evolution:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Traditional Layered Architecture (N-Layered)
+  │  Problem: inter-layer coupling, hard to replace external dependencies
+  ▼
+Hexagonal Architecture (Ports &amp; Adapters)
+  │  Improvement: use ports and adapters to isolate external systems
+  ▼
+Onion Architecture
+  │  Improvement: explicit concentric layering, domain model at the center
+  ▼
+Clean Architecture
+  │  Improvement: unified dependency rules, clear four-layer responsibilities
+  ▼
+Choose the right architecture based on business needs</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">8.3 Architecture Selection Guide</span><span lang="en">8.3 Architecture Selection Guide</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Users &lt; 1k, Code &lt; 5,000 lines
+    ↓
+Monolithic + Simple Layering
+    ↓
+Users 1k–100k, requires multi-team collaboration
+    ↓
+Layered Architecture (this article)
+    ↓
+Users &gt; 100k, high business complexity
+    ↓
+Microservices / Event-Driven Architecture</pre>
+</div>
+<p class="reveal"><span lang="id">More detailed selection dimensions:</span><span lang="en">More detailed selection dimensions:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Factor</th><th>Simple Layering</th><th>Clean/Hexagonal Architecture</th><th>Microservices</th></tr>
+<tr><td>Team size</td><td>1–5 people</td><td>5–20 people</td><td>20+ people</td></tr>
+<tr><td>Business complexity</td><td>Low</td><td>Medium–High</td><td>High</td></tr>
+<tr><td>Deployment frequency</td><td>Low</td><td>Medium</td><td>High (independent deployment)</td></tr>
+<tr><td>Technology stack diversity</td><td>Single</td><td>Single</td><td>Can be diverse</td></tr>
+<tr><td>Operations cost</td><td>Low</td><td>Medium</td><td>High</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">8.4 Recommended Reading</span><span lang="en">8.4 Recommended Reading</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Monolithic Architecture</b>: See the companion article [<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">backend-project-architecture.md</code>](./backend-project-architecture.md) for the evolution from scripts to monoliths</span><span lang="en"><b>Monolithic Architecture</b>: See the companion article [<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">backend-project-architecture.md</code>](./backend-project-architecture.md) for the evolution from scripts to monoliths</span></li>
+<li><span lang="id"><b>Microservices Architecture</b>: See [From Monolith to Microservices](/en/appendix/6-architecture-and-system-design/monolith-to-microservices)</span><span lang="en"><b>Microservices Architecture</b>: See [From Monolith to Microservices](/en/appendix/6-architecture-and-system-design/monolith-to-microservices)</span></li>
+<li><span lang="id"><b>Clean Architecture</b>: Robert C. Martin's <i>Clean Architecture</i> — the classic that introduced dependency rules and the four-layer concentric model</span><span lang="en"><b>Clean Architecture</b>: Robert C. Martin's <i>Clean Architecture</i> — the classic that introduced dependency rules and the four-layer concentric model</span></li>
+<li><span lang="id"><b>Enterprise Architecture Patterns</b>: Martin Fowler's <i>Patterns of Enterprise Application Architecture</i> — the authoritative reference on layered architecture and domain logic organization</span><span lang="en"><b>Enterprise Architecture Patterns</b>: Martin Fowler's <i>Patterns of Enterprise Application Architecture</i> — the authoritative reference on layered architecture and domain logic organization</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">8.5 Approach to choosing</span><span lang="en">8.5 Approach to choosing</span></h3>
+<p class="reveal"><span lang="id"><b>Remember this principle</b>: <b>Architecture serves the business — don't do architecture for architecture's sake</b>.</span><span lang="en"><b>Remember this principle</b>: <b>Architecture serves the business — don't do architecture for architecture's sake</b>.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Small projects: use simple architecture, ship fast to validate</span><span lang="en">Small projects: use simple architecture, ship fast to validate</span></li>
+<li><span lang="id">Large projects: consider complex architecture when needed, avoid over-engineering</span><span lang="en">Large projects: consider complex architecture when needed, avoid over-engineering</span></li>
+<li><span lang="id">Team familiarity matters too — choose solutions everyone can understand</span><span lang="en">Team familiarity matters too — choose solutions everyone can understand</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">9. Summary</span><span lang="en">9. Summary</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Layer</th><th>Responsibility</th><th>Keywords</th></tr>
+<tr><td>Controller</td><td>Accept requests, validate parameters, call Service, return response</td><td>Receptionist</td></tr>
+<tr><td>Service</td><td>Business logic orchestration, transaction management, coordinate Repository</td><td>Chef</td></tr>
+<tr><td>Repository</td><td>Data access, ORM mapping, query encapsulation</td><td>Warehouse Keeper</td></tr>
+<tr><td>Domain</td><td>Entity definition, business rules, value objects</td><td>Recipe Standards</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Core principles</b>:</span><span lang="en"><b>Core principles</b>:</span></p>
+<p class="reveal"><span lang="id">The core of layered architecture lies in clear responsibility division and dependency direction control. Each layer focuses only on its own responsibilities, communicates with adjacent layers through interfaces, concentrates business logic in the Service and Domain layers, concentrates data access logic in the Repository layer, and isolates data structures between layers through DTOs to avoid directly exposing internal implementation. This design makes the system easier to understand, test, and maintain, capable of supporting continuous business evolution.</span><span lang="en">The core of layered architecture lies in clear responsibility division and dependency direction control. Each layer focuses only on its own responsibilities, communicates with adjacent layers through interfaces, concentrates business logic in the Service and Domain layers, concentrates data access logic in the Repository layer, and isolates data structures between layers through DTOs to avoid directly exposing internal implementation. This design makes the system easier to understand, test, and maintain, capable of supporting continuous business evolution.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">References</span><span lang="en">References</span></h2>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[Catalog of Patterns of Enterprise Application Architecture - Martin Fowler](https://www.martinfowler.com/eaaCatalog/) — Martin Fowler's catalog of enterprise application architecture patterns, the classic reference for layered architecture</span><span lang="en">[Catalog of Patterns of Enterprise Application Architecture - Martin Fowler](https://www.martinfowler.com/eaaCatalog/) — Martin Fowler's catalog of enterprise application architecture patterns, the classic reference for layered architecture</span></li>
+<li><span lang="id">[Backend Side Architecture Evolution (N-layered, DDD, Hexagon, Onion, Clean Architecture)](https://medium.com/@iamprovidence/backend-side-architecture-evolution-n-layered-ddd-hexagon-onion-clean-architecture-643d72444ce4) — The evolution from N-Layered to Clean Architecture, understanding why each pattern emerged</span><span lang="en">[Backend Side Architecture Evolution (N-layered, DDD, Hexagon, Onion, Clean Architecture)](https://medium.com/@iamprovidence/backend-side-architecture-evolution-n-layered-ddd-hexagon-onion-clean-architecture-643d72444ce4) — The evolution from N-Layered to Clean Architecture, understanding why each pattern emerged</span></li>
+<li><span lang="id">[Complete Guide to Clean Architecture - GeeksforGeeks](https://www.geeksforgeeks.org/complete-guide-to-clean-architecture/) — A complete guide to Clean Architecture, covering layers, dependency rules, and separation of concerns</span><span lang="en">[Complete Guide to Clean Architecture - GeeksforGeeks](https://www.geeksforgeeks.org/complete-guide-to-clean-architecture/) — A complete guide to Clean Architecture, covering layers, dependency rules, and separation of concerns</span></li>
+<li><span lang="id">[Understanding Hexagonal, Clean, Onion, and Traditional Layered Architectures: A Deep Dive](https://romanglushach.medium.com/understanding-hexagonal-clean-onion-and-traditional-layered-architectures-a-deep-dive-c0f93b8a1b96) — An in-depth comparison of Hexagonal, Clean, Onion, and Traditional Layered Architectures</span><span lang="en">[Understanding Hexagonal, Clean, Onion, and Traditional Layered Architectures: A Deep Dive](https://romanglushach.medium.com/understanding-hexagonal-clean-onion-and-traditional-layered-architectures-a-deep-dive-c0f93b8a1b96) — An in-depth comparison of Hexagonal, Clean, Onion, and Traditional Layered Architectures</span></li>
+<li><span lang="id">[Building Clean Architectures in Modern Backend Frameworks](https://leapcell.io/blog/building-clean-architectures-in-modern-backend-frameworks) — A practical guide to implementing Clean Architecture in modern backend frameworks</span><span lang="en">[Building Clean Architectures in Modern Backend Frameworks](https://leapcell.io/blog/building-clean-architectures-in-modern-backend-frameworks) — A practical guide to implementing Clean Architecture in modern backend frameworks</span></li>
+<li><span lang="id">[Backend Architecture Patterns: From Monoliths to Microservices](https://nerdleveltech.com/backend-architecture-patterns-from-monoliths-to-microservices) — A panoramic overview of backend architecture patterns from monoliths to microservices</span><span lang="en">[Backend Architecture Patterns: From Monoliths to Microservices](https://nerdleveltech.com/backend-architecture-patterns-from-monoliths-to-microservices) — A panoramic overview of backend architecture patterns from monoliths to microservices</span></li>
+<li><span lang="id">[MVC Three-Layer Architecture Case Study](https://www.cnblogs.com/TheMagicalRainbowSea/p/17409206.html) — The relationship between MVC and three-layer architecture with practical examples, suitable for Chinese readers getting started</span><span lang="en">[MVC Three-Layer Architecture Case Study](https://www.cnblogs.com/TheMagicalRainbowSea/p/17409206.html) — The relationship between MVC and three-layer architecture with practical examples, suitable for Chinese readers getting started</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../4-server-and-backend/backend-languages/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">4-server-and-backend/backend-languages</span><span lang="en">4-server-and-backend/backend-languages</span></b></a>
+      <a class="next" href="../../4-server-and-backend/backend-project-architecture/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">4-server-and-backend/backend-project-architecture</span><span lang="en">4-server-and-backend/backend-project-architecture</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of High Availability and Disaster Recovery — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of High Availability and Disaster Recovery. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/6-architecture-and-system-design/high-availability/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of High Availability and Disaster Recovery</span><span lang="en">Principles of High Availability and Disaster Recovery</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of High Availability and Disaster Recovery</span><span lang="en">Principles of High Availability and Disaster Recovery</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of High Availability and Disaster Recovery.</span><span lang="en">Ensiklopedia VibeKoding: Principles of High Availability and Disaster Recovery.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>One minute of downtime can mean losses in the hundreds of thousands.</b> High Availability (HA) refers to a system's ability to continue providing service in the face of hardware failures, software bugs, network issues, and other anomalies. Disaster Recovery (DR) is the ability to restore service when a larger-scale disaster strikes.</span><span lang="en"><b>One minute of downtime can mean losses in the hundreds of thousands.</b> High Availability (HA) refers to a system's ability to continue providing service in the face of hardware failures, software bugs, network issues, and other anomalies. Disaster Recovery (DR) is the ability to restore service when a larger-scale disaster strikes.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn from this article?</b></span><span lang="en"><b>What will you learn from this article?</b></span></p>
+<p class="reveal"><span lang="id">After reading this chapter, you will gain:</span><span lang="en">After reading this chapter, you will gain:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Availability Metrics</b>: Understand what "nines" mean and the corresponding downtime allowances</span><span lang="en"><b>Availability Metrics</b>: Understand what "nines" mean and the corresponding downtime allowances</span></li>
+<li><span lang="id"><b>Failover</b>: Master active-standby, active-active, and multi-site high availability architectures</span><span lang="en"><b>Failover</b>: Master active-standby, active-active, and multi-site high availability architectures</span></li>
+<li><span lang="id"><b>Disaster Recovery Strategies</b>: Understand RPO and RTO concepts and design methods</span><span lang="en"><b>Disaster Recovery Strategies</b>: Understand RPO and RTO concepts and design methods</span></li>
+<li><span lang="id"><b>Failure Detection</b>: Understand heartbeat, probes, circuit breakers, and other failure detection mechanisms</span><span lang="en"><b>Failure Detection</b>: Understand heartbeat, probes, circuit breakers, and other failure detection mechanisms</span></li>
+<li><span lang="id"><b>Chaos Engineering</b>: Learn how to proactively inject failures to verify system resilience</span><span lang="en"><b>Chaos Engineering</b>: Learn how to proactively inject failures to verify system resilience</span></li>
+</ul>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Core Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>Availability Metrics</td><td>SLA, nines, downtime</td></tr>
+<tr><td><b>Chapter 2</b></td><td>Failover Architectures</td><td>Active-standby, active-active, multi-AZ, multi-region active-active</td></tr>
+<tr><td><b>Chapter 3</b></td><td>Disaster Recovery Design</td><td>RPO, RTO, backup strategies</td></tr>
+<tr><td><b>Chapter 4</b></td><td>Failure Detection and Recovery</td><td>Heartbeat, circuit breakers, auto-scaling</td></tr>
+<tr><td><b>Chapter 5</b></td><td>Chaos Engineering</td><td>Fault injection, resilience verification</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Availability Metrics: What Do "Nines" Mean</span><span lang="en">1. Availability Metrics: What Do "Nines" Mean</span></h2>
+<p class="reveal"><span lang="id">Availability is typically measured in "nines," calculated as:</span><span lang="en">Availability is typically measured in "nines," calculated as:</span></p>
+<p class="reveal"><span lang="id"><b>Availability = Uptime / Total Time x 100%</b></span><span lang="en"><b>Availability = Uptime / Total Time x 100%</b></span></p>
+<p class="reveal"><span lang="id">For example, if a system is down for 43 minutes in a month (30 days = 43,200 minutes), its availability is (43,200 - 43) / 43,200 ≈ 99.9%. Each additional nine reduces the allowable downtime by an order of magnitude, and the difficulty and cost of achieving it grow exponentially.</span><span lang="en">For example, if a system is down for 43 minutes in a month (30 days = 43,200 minutes), its availability is (43,200 - 43) / 43,200 ≈ 99.9%. Each additional nine reduces the allowable downtime by an order of magnitude, and the difficulty and cost of achieving it grow exponentially.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Availability Level</th><th>Percentage</th><th>Monthly Downtime Allowed</th><th>Annual Downtime Allowed</th><th>Typical Requirements</th></tr>
+<tr><td>2 nines</td><td>99%</td><td>7.3 hours</td><td>3.65 days</td><td>Internal tools</td></tr>
+<tr><td>3 nines</td><td>99.9%</td><td>43 minutes</td><td>8.76 hours</td><td>Standard business systems</td></tr>
+<tr><td>4 nines</td><td>99.99%</td><td>4.3 minutes</td><td>52.6 minutes</td><td>E-commerce, SaaS</td></tr>
+<tr><td>5 nines</td><td>99.999%</td><td>26 seconds</td><td>5.26 minutes</td><td>Finance, payments</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><AvailabilityCalculatorDemo /></span><span lang="en"><AvailabilityCalculatorDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>SLA (Service Level Agreement)</b> is a formal commitment between a service provider and its customers. For example, AWS S3 promises 99.99% availability; if it fails to meet that, it issues proportional refunds. An SLA is not just a technical metric — it's a business contract. Violating an SLA means losing money.</span><span lang="en"><b>SLA (Service Level Agreement)</b> is a formal commitment between a service provider and its customers. For example, AWS S3 promises 99.99% availability; if it fails to meet that, it issues proportional refunds. An SLA is not just a technical metric — it's a business contract. Violating an SLA means losing money.</span></p>
+</div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">3 nines (99.9%) means you can be down for 43 minutes per month — a single bad deployment and a rollback can use that up. 4 nines (99.99%) means only 4 minutes of downtime per month — this requires a complete high-availability infrastructure including automatic failover, rolling deployments, and health checks.</span><span lang="en">3 nines (99.9%) means you can be down for 43 minutes per month — a single bad deployment and a rollback can use that up. 4 nines (99.99%) means only 4 minutes of downtime per month — this requires a complete high-availability infrastructure including automatic failover, rolling deployments, and health checks.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Failover Architectures</span><span lang="en">2. Failover Architectures</span></h2>
+<p class="reveal"><span lang="id">Failover is the core mechanism of high availability: when the primary node fails, traffic is automatically switched to a backup node to continue serving.</span><span lang="en">Failover is the core mechanism of high availability: when the primary node fails, traffic is automatically switched to a backup node to continue serving.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Active-Standby Mode</span><span lang="en">Active-Standby Mode</span></h3>
+<p class="reveal"><span lang="id">The most common high availability architecture. The primary node handles all requests while the standby node synchronizes data in real time but does not serve requests. When the primary fails, the standby automatically takes over.</span><span lang="en">The most common high availability architecture. The primary node handles all requests while the standby node synchronizes data in real time but does not serve requests. When the primary fails, the standby automatically takes over.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Normal state:
+  Client → Primary node (handling requests)
+            Standby node (syncing data, on standby)
+
+Failover:
+  Client → Standby node (takes over as new primary)
+            Original primary (failed, awaiting repair)</pre>
+</div>
+<p class="reveal"><span lang="id">A key concern is <b>split brain</b>: during a network partition, both primary and standby think the other is down and both start serving requests, leading to data inconsistency. The solution is to introduce a <b>Quorum</b> — at least 3 nodes vote to decide which one is the primary.</span><span lang="en">A key concern is <b>split brain</b>: during a network partition, both primary and standby think the other is down and both start serving requests, leading to data inconsistency. The solution is to introduce a <b>Quorum</b> — at least 3 nodes vote to decide which one is the primary.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Multi-AZ (Multi-Availability Zone)</span><span lang="en">Multi-AZ (Multi-Availability Zone)</span></h3>
+<p class="reveal"><span lang="id">Deploy services across multiple data centers (availability zones) within the same region. A single data center losing power or connectivity does not affect the overall service. Cloud providers typically have low-latency dedicated links between availability zones (< 2ms).</span><span lang="en">Deploy services across multiple data centers (availability zones) within the same region. A single data center losing power or connectivity does not affect the overall service. Cloud providers typically have low-latency dedicated links between availability zones (< 2ms).</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Multi-Region Active-Active</span><span lang="en">Multi-Region Active-Active</span></h3>
+<p class="reveal"><span lang="id">Deploy complete service replicas in different cities or even different countries, where each site can independently handle requests. This is the highest level of high availability architecture, but also the most complex — the core challenge is the latency and consistency issues of <b>cross-region data synchronization</b>.</span><span lang="en">Deploy complete service replicas in different cities or even different countries, where each site can independently handle requests. This is the highest level of high availability architecture, but also the most complex — the core challenge is the latency and consistency issues of <b>cross-region data synchronization</b>.</span></p>
+<p class="reveal"><span lang="id"><FailoverStrategyDemo /></span><span lang="en"><FailoverStrategyDemo /></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Architecture</th><th>Availability Level</th><th>Cost</th><th>Complexity</th><th>Use Cases</th></tr>
+<tr><td>Single machine</td><td>99%~99.9%</td><td>Low</td><td>Low</td><td>Development/testing, internal tools</td></tr>
+<tr><td>Active-standby</td><td>99.9%~99.99%</td><td>Medium</td><td>Medium</td><td>Small-to-medium business systems</td></tr>
+<tr><td>Multi-AZ</td><td>99.99%</td><td>High</td><td>High</td><td>E-commerce, SaaS platforms</td></tr>
+<tr><td>Multi-region active-active</td><td>99.999%</td><td>Very high</td><td>Very high</td><td>Finance, large-scale internet</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Disaster Recovery Design: RPO and RTO</span><span lang="en">3. Disaster Recovery Design: RPO and RTO</span></h2>
+<p class="reveal"><span lang="id">Disaster recovery design revolves around two core metrics:</span><span lang="en">Disaster recovery design revolves around two core metrics:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Metric</th><th>Full Name</th><th>Meaning</th><th>Example</th></tr>
+<tr><td>RPO</td><td>Recovery Point Objective</td><td>How much data loss is tolerable</td><td>RPO=0 means no data loss is acceptable</td></tr>
+<tr><td>RTO</td><td>Recovery Time Objective</td><td>How much downtime is tolerable</td><td>RTO=5min means recovery within 5 minutes</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Backup Strategy and RPO Relationship</span><span lang="en">Backup Strategy and RPO Relationship</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Backup Method</th><th>RPO</th><th>Cost</th><th>Description</th></tr>
+<tr><td>Daily full backup</td><td>24 hours</td><td>Low</td><td>At most one day of data loss</td></tr>
+<tr><td>Real-time incremental backup</td><td>Minutes</td><td>Medium</td><td>Continuous binlog/WAL sync</td></tr>
+<tr><td>Synchronous replication</td><td>0</td><td>High</td><td>Writes must wait for replica acknowledgment</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">If a user's avatar is lost, they can re-upload it (RPO=24h is fine), but payment records must not lose a single entry (RPO=0). Decide backup strategies based on the business value of the data, rather than applying a one-size-fits-all approach.</span><span lang="en">If a user's avatar is lost, they can re-upload it (RPO=24h is fine), but payment records must not lose a single entry (RPO=0). Decide backup strategies based on the business value of the data, rather than applying a one-size-fits-all approach.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Failure Detection and Recovery</span><span lang="en">4. Failure Detection and Recovery</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Failure Detection Mechanisms</span><span lang="en">4.1 Failure Detection Mechanisms</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Mechanism</th><th>Principle</th><th>Detection Speed</th><th>Use Cases</th></tr>
+<tr><td>Heartbeat</td><td>Periodically send heartbeat packets; timeout indicates failure</td><td>Seconds</td><td>Node liveness detection</td></tr>
+<tr><td>Health check</td><td>HTTP/TCP probes check service status</td><td>Seconds</td><td>Load balancer backend detection</td></tr>
+<tr><td>Business probe</td><td>Simulates real requests to check business logic</td><td>Seconds to minutes</td><td>End-to-end availability monitoring</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>How Heartbeat Detection Works</b>: Node A sends an "I'm alive" signal to the monitor at fixed intervals (e.g., every 5 seconds). If N consecutive heartbeats (e.g., 3) are missed, Node A is deemed to have failed. The key parameters are the <b>heartbeat interval</b> and <b>timeout threshold</b> — too short an interval increases network overhead, while too long delays failure detection.</span><span lang="en"><b>How Heartbeat Detection Works</b>: Node A sends an "I'm alive" signal to the monitor at fixed intervals (e.g., every 5 seconds). If N consecutive heartbeats (e.g., 3) are missed, Node A is deemed to have failed. The key parameters are the <b>heartbeat interval</b> and <b>timeout threshold</b> — too short an interval increases network overhead, while too long delays failure detection.</span></p>
+<p class="reveal"><span lang="id"><b>Three Levels of Health Checks</b>:</span><span lang="en"><b>Three Levels of Health Checks</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Liveness probe</b>: Is the process still running? If not, restart it</span><span lang="en"><b>Liveness probe</b>: Is the process still running? If not, restart it</span></li>
+<li><span lang="id"><b>Readiness probe</b>: Can the service accept requests? If not, remove it from the load balancer</span><span lang="en"><b>Readiness probe</b>: Can the service accept requests? If not, remove it from the load balancer</span></li>
+<li><span lang="id"><b>Startup probe</b>: Has the service finished starting? If not, wait — don't misdiagnose it as a failure</span><span lang="en"><b>Startup probe</b>: Has the service finished starting? If not, wait — don't misdiagnose it as a failure</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Automatic Recovery Mechanisms</span><span lang="en">4.2 Automatic Recovery Mechanisms</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Mechanism</th><th>Description</th><th>Typical Tools</th></tr>
+<tr><td>Automatic restart</td><td>Automatically restart a crashed process</td><td>systemd, PM2, K8s</td></tr>
+<tr><td>Auto-scaling</td><td>Automatically add instances when load increases</td><td>K8s HPA, cloud provider Auto Scaling</td></tr>
+<tr><td>Circuit breaker / Degradation</td><td>Fast fail when downstream fails, preventing cascading failures</td><td>Hystrix, Sentinel, Resilience4j</td></tr>
+<tr><td>Rate limiting</td><td>Reject requests that exceed capacity</td><td>Nginx limit_req, API gateway rate limiting</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Circuit Breaker Pattern Explained</b>:</span><span lang="en"><b>Circuit Breaker Pattern Explained</b>:</span></p>
+<p class="reveal"><span lang="id">The circuit breaker is inspired by electrical fuses — when current is too high, the fuse automatically trips to protect the entire circuit from burning out. In microservices, when a downstream service fails, the circuit breaker "trips," causing requests to fail fast rather than waiting for a timeout.</span><span lang="en">The circuit breaker is inspired by electrical fuses — when current is too high, the fuse automatically trips to protect the entire circuit from burning out. In microservices, when a downstream service fails, the circuit breaker "trips," causing requests to fail fast rather than waiting for a timeout.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Circuit breaker three states:
+
+  Closed (normal) ──→ failure rate exceeds threshold ──→ Open (tripped)
+       ↑                                    │
+       │                              wait for cooldown
+       │                                    ↓
+       └── probe request succeeds ←── Half-Open (testing)</pre>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Closed state</b>: Normal request forwarding, while tracking failure rate</span><span lang="en"><b>Closed state</b>: Normal request forwarding, while tracking failure rate</span></li>
+<li><span lang="id"><b>Open state</b>: All requests return errors immediately (fast fail), downstream is no longer called</span><span lang="en"><b>Open state</b>: All requests return errors immediately (fast fail), downstream is no longer called</span></li>
+<li><span lang="id"><b>Half-Open state</b>: After the cooldown period, a small number of probe requests are allowed through. If they succeed, return to Closed; if they fail, stay Open</span><span lang="en"><b>Half-Open state</b>: After the cooldown period, a small number of probe requests are allowed through. If they succeed, return to Closed; if they fail, stay Open</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Fallback</b> is the companion strategy to circuit breaking: when the circuit breaker triggers, instead of returning an error, it returns a "fallback" result. For example, if the recommendation service is down, return a list of popular products; if a user's avatar fails to load, show a default avatar.</span><span lang="en"><b>Fallback</b> is the companion strategy to circuit breaking: when the circuit breaker triggers, instead of returning an error, it returns a "fallback" result. For example, if the recommendation service is down, return a list of popular products; if a user's avatar fails to load, show a default avatar.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Chaos Engineering: Proactively Finding Problems</span><span lang="en">5. Chaos Engineering: Proactively Finding Problems</span></h2>
+<p class="reveal"><span lang="id">The core philosophy of chaos engineering is: <b>rather than waiting for failures to happen, proactively create them</b> to verify system resilience in a controlled environment.</span><span lang="en">The core philosophy of chaos engineering is: <b>rather than waiting for failures to happen, proactively create them</b> to verify system resilience in a controlled environment.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Tool</th><th>Creator</th><th>Core Capability</th></tr>
+<tr><td>Chaos Monkey</td><td>Netflix</td><td>Randomly terminates production instances</td></tr>
+<tr><td>Chaos Mesh</td><td>PingCAP</td><td>Fault injection in K8s environments</td></tr>
+<tr><td>Litmus</td><td>CNCF</td><td>Cloud-native chaos engineering framework</td></tr>
+<tr><td>ChaosBlade</td><td>Alibaba</td><td>Multi-scenario fault injection tool</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">1. <b>Define steady state</b>: Clarify metrics for normal system operation (e.g., P99 latency < 200ms)
+2. <b>Form a hypothesis</b>: If a node goes down, the system should automatically recover within 30 seconds
+3. <b>Inject failures</b>: Create controlled failures (start in testing, then move to production)
+4. <b>Observe results</b>: Did the system recover as expected? Were there cascading failures?
+5. <b>Fix weaknesses</b>: Improve architecture and processes based on findings</span><span lang="en">1. <b>Define steady state</b>: Clarify metrics for normal system operation (e.g., P99 latency < 200ms)
+2. <b>Form a hypothesis</b>: If a node goes down, the system should automatically recover within 30 seconds
+3. <b>Inject failures</b>: Create controlled failures (start in testing, then move to production)
+4. <b>Observe results</b>: Did the system recover as expected? Were there cascading failures?
+5. <b>Fix weaknesses</b>: Improve architecture and processes based on findings</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary</span><span lang="en">Summary</span></h2>
+<p class="reveal"><span lang="id">High availability is not a feature — it is an architectural capability. It requires safeguards at every stage: design, development, deployment, and operations.</span><span lang="en">High availability is not a feature — it is an architectural capability. It requires safeguards at every stage: design, development, deployment, and operations.</span></p>
+<p class="reveal"><span lang="id">Key takeaways from this chapter:</span><span lang="en">Key takeaways from this chapter:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Nines</b>: Each additional nine reduces downtime by an order of magnitude, with cost and complexity growing exponentially</span><span lang="en"><b>Nines</b>: Each additional nine reduces downtime by an order of magnitude, with cost and complexity growing exponentially</span></li>
+<li><span lang="id"><b>Failover</b>: From active-standby to multi-region active-active, choose the right architecture based on business needs</span><span lang="en"><b>Failover</b>: From active-standby to multi-region active-active, choose the right architecture based on business needs</span></li>
+<li><span lang="id"><b>RPO and RTO</b>: Design backup and recovery strategies based on data value and business tolerance</span><span lang="en"><b>RPO and RTO</b>: Design backup and recovery strategies based on data value and business tolerance</span></li>
+<li><span lang="id"><b>Automation</b>: Failure detection, automatic restart, circuit breakers, and degradation are fundamental high availability infrastructure</span><span lang="en"><b>Automation</b>: Failure detection, automatic restart, circuit breakers, and degradation are fundamental high availability infrastructure</span></li>
+<li><span lang="id"><b>Chaos Engineering</b>: Proactively inject failures to verify system resilience in a controlled environment</span><span lang="en"><b>Chaos Engineering</b>: Proactively inject failures to verify system resilience in a controlled environment</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[Site Reliability Engineering](https://sre.google/sre-book/table-of-contents/) - Google SRE classic</span><span lang="en">[Site Reliability Engineering](https://sre.google/sre-book/table-of-contents/) - Google SRE classic</span></li>
+<li><span lang="id">[Chaos Monkey](https://netflix.github.io/chaosmonkey/) - Netflix chaos engineering tool</span><span lang="en">[Chaos Monkey](https://netflix.github.io/chaosmonkey/) - Netflix chaos engineering tool</span></li>
+<li><span lang="id">[Release It!](https://pragprog.com/titles/mnee2/release-it-second-edition/) - Production environment design patterns</span><span lang="en">[Release It!](https://pragprog.com/titles/mnee2/release-it-second-edition/) - Production environment design patterns</span></li>
+<li><span lang="id">[Chaos Mesh](https://chaos-mesh.org/) - K8s chaos engineering platform</span><span lang="en">[Chaos Mesh](https://chaos-mesh.org/) - K8s chaos engineering platform</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../6-architecture-and-system-design/distributed-systems/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">6-architecture-and-system-design/distributed-systems</span><span lang="en">6-architecture-and-system-design/distributed-systems</span></b></a>
+      <a class="next" href="../../6-architecture-and-system-design/monolith-to-microservices/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">6-architecture-and-system-design/monolith-to-microservices</span><span lang="en">6-architecture-and-system-design/monolith-to-microservices</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

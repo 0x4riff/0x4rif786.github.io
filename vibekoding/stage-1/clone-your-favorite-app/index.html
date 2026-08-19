@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kloning dari Screenshot: Praktik Tiruan — VibeKoding 📸</title>
+<meta name="description" content="Modul referensi resmi Level 1 VibeKoding: Kloning dari Screenshot: Praktik Tiruan. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-1/clone-your-favorite-app/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../">VibeKoding</a> / <a href="../../stage-1/"><span lang="id">Level 1 · Pemula</span><span lang="en">Level 1 · Pemula</span></a> / <span lang="id">Kloning dari Screenshot: Praktik Tiruan</span><span lang="en">Kloning dari Screenshot: Praktik Tiruan</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📸</div>
+      <div>
+        <h1><span lang="id">Kloning dari Screenshot: Praktik Tiruan</span><span lang="en">Kloning dari Screenshot: Praktik Tiruan</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 1 · Pemula</span><span lang="en">Level 1 · Pemula</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul referensi resmi Level 1 VibeKoding: Kloning dari Screenshot: Praktik Tiruan.</span><span lang="en">Modul referensi resmi Level 1 VibeKoding: Kloning dari Screenshot: Praktik Tiruan.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id"><script setup></span><span lang="en"><script setup></span></p>
+<p class="reveal"><span lang="id">import StageAssignmentCard from '@theme/components/StageAssignmentCard.vue'</span><span lang="en">import StageAssignmentCard from '@theme/components/StageAssignmentCard.vue'</span></p>
+<p class="reveal"><span lang="id">const duration = 'About <strong>2 hours</strong>'</span><span lang="en">const duration = 'About <strong>2 hours</strong>'</span></p>
+<p class="reveal"><span lang="id"></script></span><span lang="en"></script></span></p>
+<p class="reveal"><span lang="id">In the previous lesson, we asked AI to write a program from one sentence. This time we will use something easier to see: <strong>choose a screenshot you like and ask AI to build from it.</strong></span><span lang="en">In the previous lesson, we asked AI to write a program from one sentence. This time we will use something easier to see: <strong>choose a screenshot you like and ask AI to build from it.</strong></span></p>
+<p class="reveal"><span lang="id">It is a little like building blocks while looking at a picture. You do not have to describe every color, gap, and button position in advance; the screenshot already communicates much of that information.</span><span lang="en">It is a little like building blocks while looking at a picture. You do not have to describe every color, gap, and button position in advance; the screenshot already communicates much of that information.</span></p>
+<p class="reveal"><span lang="id"><div style="text-align: center;"></span><span lang="en"><div style="text-align: center;"></span></p>
+<p class="reveal"><span lang="id"><div style="display: inline-block; padding: 8px 20px; border-radius: 8px; border: 1px dashed #FFB6C1; background: linear-gradient(135deg, #FFF0F5 0%, #FFE4EC 100%); margin: 12px 0;"></span><span lang="en"><div style="display: inline-block; padding: 8px 20px; border-radius: 8px; border: 1px dashed #FFB6C1; background: linear-gradient(135deg, #FFF0F5 0%, #FFE4EC 100%); margin: 12px 0;"></span></p>
+<p class="reveal"><span lang="id"><span style="font-size: 15px; font-weight: 500; color: #666;">Copy it first, then gradually turn it into your own work 🧱</span></span><span lang="en"><span style="font-size: 15px; font-weight: 500; color: #666;">Copy it first, then gradually turn it into your own work 🧱</span></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">What this lesson is for</span><span lang="en">What this lesson is for</span></h2>
+<p class="reveal"><span lang="id"><ChapterIntroduction :duration="duration" :tags="['Screenshot cloning', 'AI coding', 'Beginner exercise']" coreOutput="One small project" expectedOutput="A webpage or mini-game that opens and responds to input"></span><span lang="en"><ChapterIntroduction :duration="duration" :tags="['Screenshot cloning', 'AI coding', 'Beginner exercise']" coreOutput="One small project" expectedOutput="A webpage or mini-game that opens and responds to input"></span></p>
+<p class="reveal"><span lang="id">We will begin with a screenshot from a real product and create a small project that runs in the browser. You may choose a product homepage, a data dashboard, or a simple game.</span><span lang="en">We will begin with a screenshot from a real product and create a small project that runs in the browser. You may choose a product homepage, a data dashboard, or a simple game.</span></p>
+<p class="reveal"><span lang="id">This lesson practices one thing: <strong>find a screenshot you like, give it to AI, and say in your own words what you want to make.</strong></span><span lang="en">This lesson practices one thing: <strong>find a screenshot you like, give it to AI, and say in your own words what you want to make.</strong></span></p>
+<p class="reveal"><span lang="id">You do not need to know how to code or prepare a complete requirements document. Let AI create the first version, look at the result, and then describe what should change.</span><span lang="en">You do not need to know how to code or prepare a complete requirements document. Let AI create the first version, look at the result, and then describe what should change.</span></p>
+<p class="reveal"><span lang="id"></ChapterIntroduction></span><span lang="en"></ChapterIntroduction></span></p>
+<p class="reveal"><span lang="id"><div style="margin: 50px 0;"></span><span lang="en"><div style="margin: 50px 0;"></span></p>
+<p class="reveal"><span lang="id"><ClientOnly></span><span lang="en"><ClientOnly></span></p>
+<p class="reveal"><span lang="id"><StepBar :active="0" :items="[</span><span lang="en"><StepBar :active="0" :items="[</span></p>
+<p class="reveal"><span lang="id">{ title: 'Choose an image', description: 'Find one page you like' },</span><span lang="en">{ title: 'Choose an image', description: 'Find one page you like' },</span></p>
+<p class="reveal"><span lang="id">{ title: 'Give it to AI', description: 'Drag it into the chat' },</span><span lang="en">{ title: 'Give it to AI', description: 'Drag it into the chat' },</span></p>
+<p class="reveal"><span lang="id">{ title: 'Say one sentence', description: 'Ask AI to build it' },</span><span lang="en">{ title: 'Say one sentence', description: 'Ask AI to build it' },</span></p>
+<p class="reveal"><span lang="id">{ title: 'Keep improving', description: 'Fix one difference at a time' }</span><span lang="en">{ title: 'Keep improving', description: 'Fix one difference at a time' }</span></p>
+<p class="reveal"><span lang="id">]" /></span><span lang="en">]" /></span></p>
+<p class="reveal"><span lang="id"></ClientOnly></span><span lang="en"></ClientOnly></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Choose the kind of work you want</span><span lang="en">1. Choose the kind of work you want</span></h2>
+<p class="reveal"><span lang="id">Before opening the tool, decide what kind of small result you want today.</span><span lang="en">Before opening the tool, decide what kind of small result you want today.</span></p>
+<p class="reveal"><span lang="id">The goal is not a full product with every feature. It is <strong>one page that opens, makes sense, and has one simple interaction</strong>. A smaller scope makes the first attempt more likely to succeed.</span><span lang="en">The goal is not a full product with every feature. It is <strong>one page that opens, makes sense, and has one simple interaction</strong>. A smaller scope makes the first attempt more likely to succeed.</span></p>
+<p class="reveal"><span lang="id">Choose one of these:</span><span lang="en">Choose one of these:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><strong>Product homepage:</strong> a heading, introduction, image, and button</span><span lang="en"><strong>Product homepage:</strong> a heading, introduction, image, and button</span></li>
+<li><span lang="id"><strong>SaaS dashboard:</strong> a sidebar, data cards, and charts</span><span lang="en"><strong>SaaS dashboard:</strong> a sidebar, data cards, and charts</span></li>
+<li><span lang="id"><strong>Simple game:</strong> movement, clicking, or one small objective</span><span lang="en"><strong>Simple game:</strong> movement, clicking, or one small objective</span></li>
+</ul>
+<p class="reveal"><span lang="id">When choosing the reference, check three things:</span><span lang="en">When choosing the reference, check three things:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Can you understand the main content from one screenshot?</span><span lang="en">Can you understand the main content from one screenshot?</span></li>
+<li><span lang="id">Is there something in the page that you genuinely like?</span><span lang="en">Is there something in the page that you genuinely like?</span></li>
+<li><span lang="id">After building, will you be able to tell quickly whether the result resembles it?</span><span lang="en">After building, will you be able to tell quickly whether the result resembles it?</span></li>
+</ul>
+<p class="reveal"><span lang="id">If you like a homepage's large heading and colors, capture its first screen. If you like the block world in a game, save one image that clearly represents it.</span><span lang="en">If you like a homepage's large heading and colors, capture its first screen. If you like the block world in a game, save one image that clearly represents it.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">The closer the result, the more carefully you have noticed the visual details and the better you have become at describing differences to AI. Place the final result beside the reference. Does it feel 50%, 70%, or 90% similar?</span><span lang="en">The closer the result, the more carefully you have noticed the visual details and the better you have become at describing differences to AI. Place the final result beside the reference. Does it feel 50%, 70%, or 90% similar?</span></p>
+</div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Do not begin with login, payment, chat, an admin panel, and a mobile app. This lesson is about reproducing the one screen in front of you.</span><span lang="en">Do not begin with login, payment, chat, an admin panel, and a mobile app. This lesson is about reproducing the one screen in front of you.</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Follow the teacher through one webpage</span><span lang="en">2. Follow the teacher through one webpage</span></h2>
+<p class="reveal"><span lang="id">First watch the complete process. Once it makes sense, repeat it with your own screenshot.</span><span lang="en">First watch the complete process. Once it makes sense, repeat it with your own screenshot.</span></p>
+<p class="reveal"><span lang="id">The teacher created an empty folder and opened it in Trae. The project was named <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">trae-screenshot-demo</code>; at the beginning it contained no webpage or code.</span><span lang="en">The teacher created an empty folder and opened it in Trae. The project was named <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">trae-screenshot-demo</code>; at the beginning it contained no webpage or code.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Give the reference image to Trae</span><span lang="en">2.1 Give the reference image to Trae</span></h3>
+<p class="reveal"><span lang="id">The reference comes from a Framer showcase page. The large heading, navigation, purple mountain scene, and small controls are all visible.</span><span lang="en">The reference comes from a Framer showcase page. The large heading, navigation, purple mountain scene, and small controls are all visible.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">The webpage screenshot placed into Trae</span><span lang="en">The webpage screenshot placed into Trae</span></p>
+</div>
+<p class="reveal"><span lang="id">_Screenshot source: [Framer Website Builder](https://www.framer.com/solutions/website-builder/)_</span><span lang="en">_Screenshot source: [Framer Website Builder](https://www.framer.com/solutions/website-builder/)_</span></p>
+<p class="reveal"><span lang="id">After dragging the image into Trae's chat, the teacher used a very short prompt:</span><span lang="en">After dragging the image into Trae's chat, the teacher used a very short prompt:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Build a webpage that looks like this image. Open it for me when it is ready.</pre>
+</div>
+<p class="reveal"><span lang="id">The image tells Trae roughly how the page should look; the sentence says that the image should become a webpage.</span><span lang="en">The image tells Trae roughly how the page should look; the sentence says that the image should become a webpage.</span></p>
+<p class="reveal"><span lang="id">After sending, wait while Trae creates the files. Do not send several more requests before the first one has finished.</span><span lang="en">After sending, wait while Trae creates the files. Do not send several more requests before the first one has finished.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Look at the first version</span><span lang="en">2.2 Look at the first version</span></h3>
+<p class="reveal"><span lang="id">Trae created <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">index.html</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">styles.css</code>, and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">script.js</code>, then opened the webpage in a browser. This animation is the result produced in the lesson:</span><span lang="en">Trae created <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">index.html</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">styles.css</code>, and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">script.js</code>, then opened the webpage in a browser. This animation is the result produced in the lesson:</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Wishlabs page generated and run from the screenshot</span><span lang="en">Wishlabs page generated and run from the screenshot</span></p>
+</div>
+<p class="reveal"><span lang="id">Do not study the code yet. Look at the page and compare it with the reference:</span><span lang="en">Do not study the code yet. Look at the page and compare it with the reference:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">The purple sky and mountain atmosphere remain.</span><span lang="en">The purple sky and mountain atmosphere remain.</span></li>
+<li><span lang="id">A large heading still occupies the center.</span><span lang="en">A large heading still occupies the center.</span></li>
+<li><span lang="id">There is navigation at the top and a row of controls near the bottom.</span><span lang="en">There is navigation at the top and a row of controls near the bottom.</span></li>
+<li><span lang="id">Text, buttons, and images form a complete first screen.</span><span lang="en">Text, buttons, and images form a complete first screen.</span></li>
+</ul>
+<p class="reveal"><span lang="id">It is not an exact copy, but it captures the most visible structure and mood. That is a good first version.</span><span lang="en">It is not an exact copy, but it captures the most visible structure and mood. That is a good first version.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 The first version only needs to be visible</span><span lang="en">2.3 The first version only needs to be visible</span></h3>
+<p class="reveal"><span lang="id">Do not throw everything away because the font or button position is slightly different. Confirm that the page opens, then choose the clearest problem.</span><span lang="en">Do not throw everything away because the font or button position is slightly different. Confirm that the page opens, then choose the clearest problem.</span></p>
+<p class="reveal"><span lang="id">If the heading is too small, say:</span><span lang="en">If the heading is too small, say:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Make the heading in the center larger.</pre>
+</div>
+<p class="reveal"><span lang="id">Open the page again after the change. If it is closer to what you wanted, the iteration was useful.</span><span lang="en">Open the page again after the change. If it is closer to what you wanted, the iteration was useful.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">You are making something with Trae, not taking a prompt-writing exam. Describe what you see in the words you normally use.</span><span lang="en">You are making something with Trae, not taking a prompt-writing exam. Describe what you see in the words you normally use.</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Try it yourself</span><span lang="en">3. Try it yourself</span></h2>
+<p class="reveal"><span lang="id">Open Trae, create an empty folder, and open that folder in Trae. A simple name such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">my-first-page</code> is enough.</span><span lang="en">Open Trae, create an empty folder, and open that folder in Trae. A simple name such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">my-first-page</code> is enough.</span></p>
+<p class="reveal"><span lang="id">Then follow these steps:</span><span lang="en">Then follow these steps:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Find a webpage or game screenshot you like.</span><span lang="en">Find a webpage or game screenshot you like.</span></li>
+<li><span lang="id">Select the image button beside the chat and choose the screenshot.</span><span lang="en">Select the image button beside the chat and choose the screenshot.</span></li>
+<li><span lang="id">Check that the image appears in the message.</span><span lang="en">Check that the image appears in the message.</span></li>
+<li><span lang="id">Type one short request and send it.</span><span lang="en">Type one short request and send it.</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Build a webpage that looks like this image.
+Open it for me when it is ready.</pre>
+</div>
+<p class="reveal"><span lang="id">You do not need to specify a framework, directory structure, or file names for this first exercise. Let Trae choose them.</span><span lang="en">You do not need to specify a framework, directory structure, or file names for this first exercise. Let Trae choose them.</span></p>
+<p class="reveal"><span lang="id">If you want only the visual style and not the original name and text, add:</span><span lang="en">If you want only the visual style and not the original name and text, add:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Use the style of this image, but replace the name and content with something new.</pre>
+</div>
+<p class="reveal"><span lang="id">Wait until Trae finishes. Approve file creation or project execution if it asks. If the webpage does not open automatically, say:</span><span lang="en">Wait until Trae finishes. Approve file creation or project execution if it asks. If the webpage does not open automatically, say:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Start this project for me. I want to see the result.</pre>
+</div>
+<p class="reveal"><span lang="id">When the page appears, spend ten seconds checking whether it opens, whether the main content is present, and whether the main button responds. Do not begin by changing five things at once.</span><span lang="en">When the page appears, spend ten seconds checking whether it opens, whether the main content is present, and whether the main button responds. Do not begin by changing five things at once.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. The same method works for other products</span><span lang="en">4. The same method works for other products</span></h2>
+<p class="reveal"><span lang="id">The screenshot method is not limited to product homepages. To verify that, the teacher created two more empty projects: a data dashboard and a block game.</span><span lang="en">The screenshot method is not limited to product homepages. To verify that, the teacher created two more empty projects: a data dashboard and a block game.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Example 1: SaaS dashboard</span><span lang="en">Example 1: SaaS dashboard</span></h3>
+<p class="reveal"><span lang="id">SaaS products often use dashboards for project progress, sales, or user data. In this Linear screenshot, navigation is on the left and the dashboard content is on the right.</span><span lang="en">SaaS products often use dashboards for project progress, sales, or user data. In this Linear screenshot, navigation is on the left and the dashboard content is on the right.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Official Linear Dashboard interface</span><span lang="en">Official Linear Dashboard interface</span></p>
+</div>
+<p class="reveal"><span lang="id">_Class reference: [Linear Dashboards](https://linear.app/docs/dashboards)_</span><span lang="en">_Class reference: [Linear Dashboards](https://linear.app/docs/dashboards)_</span></p>
+<p class="reveal"><span lang="id">The teacher placed the image into Trae and said:</span><span lang="en">The teacher placed the image into Trae and said:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Build a data dashboard like this one.
+Use sample data for now.</pre>
+</div>
+<p class="reveal"><span lang="id">Trae produced a sidebar, data cards, and charts. This is the page running in the browser:</span><span lang="en">Trae produced a sidebar, data cards, and charts. This is the page running in the browser:</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Dashboard generated and run from the screenshot</span><span lang="en">Dashboard generated and run from the screenshot</span></p>
+</div>
+<p class="reveal"><span lang="id">The numbers are not real business data, and that is fine. The first exercise is about building the dashboard structure. Replace the labels and figures only after the page is stable.</span><span lang="en">The numbers are not real business data, and that is fine. The first exercise is about building the dashboard structure. Replace the labels and figures only after the page is stable.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Example 2: block game</span><span lang="en">Example 2: block game</span></h3>
+<p class="reveal"><span lang="id">If an ordinary webpage does not interest you, use a game screenshot. The teacher chose a Minecraft block-world image.</span><span lang="en">If an ordinary webpage does not interest you, use a game screenshot. The teacher chose a Minecraft block-world image.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Minecraft Creative Mode interface</span><span lang="en">Minecraft Creative Mode interface</span></p>
+</div>
+<p class="reveal"><span lang="id">_Class reference: [Minecraft example on Microsoft Learn](https://learn.microsoft.com/en-us/xbox/accessibility/xbox-accessibility-guidelines/108)_</span><span lang="en">_Class reference: [Minecraft example on Microsoft Learn](https://learn.microsoft.com/en-us/xbox/accessibility/xbox-accessibility-guidelines/108)_</span></p>
+<p class="reveal"><span lang="id">The request was still short:</span><span lang="en">The request was still short:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Build a block game like this one.
+The character should move and place blocks.</pre>
+</div>
+<p class="reveal"><span lang="id">Trae created a playable browser game in which the character can move and place or remove blocks:</span><span lang="en">Trae created a playable browser game in which the character can move and place or remove blocks:</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">2D block game generated and run from the screenshot</span><span lang="en">2D block game generated and run from the screenshot</span></p>
+</div>
+<p class="reveal"><span lang="id">Notice that this result is a <strong>2D side-view game</strong>. The character moves on a flat plane and the picture has no forward or backward depth. Because the prompt only said “block game,” Trae chose the simpler interpretation.</span><span lang="en">Notice that this result is a <strong>2D side-view game</strong>. The character moves on a flat plane and the picture has no forward or backward depth. Because the prompt only said “block game,” Trae chose the simpler interpretation.</span></p>
+<p class="reveal"><span lang="id">Open the page, press the arrow keys, and click the scene. If the character moves and blocks can be placed, the first 2D version works.</span><span lang="en">Open the page, press the arrow keys, and click the scene. If the character moves and blocks can be placed, the first 2D version works.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Make another version in 3D</span><span lang="en">Make another version in 3D</span></h3>
+<p class="reveal"><span lang="id">If you want a first-person view closer to Minecraft, include “3D” in the request. The teacher opened a new empty project, added the same screenshot, and said:</span><span lang="en">If you want a first-person view closer to Minecraft, include “3D” in the request. The teacher opened a new empty project, added the same screenshot, and said:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Build a 3D block game like this one.
+Let the player walk, turn the camera, and place blocks.</pre>
+</div>
+<p class="reveal"><span lang="id">This time Trae created an actual 3D block world:</span><span lang="en">This time Trae created an actual 3D block world:</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">3D block game generated and run from the screenshot</span><span lang="en">3D block game generated and run from the screenshot</span></p>
+</div>
+<p class="reveal"><span lang="id">After selecting “Start Game,” use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">WASD</code> to walk and the mouse to turn. The left button removes a block, the right button places one, and number keys change the block type.</span><span lang="en">After selecting “Start Game,” use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">WASD</code> to walk and the mouse to turn. The left button removes a block, the right button places one, and number keys change the block type.</span></p>
+<p class="reveal"><span lang="id">Neither 2D nor 3D is always better. 2D is easier for a first game. If walking forward and backward inside the world is central to your idea, say clearly that you want 3D.</span><span lang="en">Neither 2D nor 3D is always better. 2D is easier for a first game. If walking forward and backward inside the world is central to your idea, say clearly that you want 3D.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">A reference is only a starting point. Change the color, theme, text, images, or interaction so the result gradually becomes your own work.</span><span lang="en">A reference is only a starting point. Change the color, theme, text, images, or interaction so the result gradually becomes your own work.</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. What if the first version is not good?</span><span lang="en">5. What if the first version is not good?</span></h2>
+<p class="reveal"><span lang="id">It is normal for the first version to look different or contain a button that does not respond. A project is rarely finished in one sentence. Look once, change a little, and look again.</span><span lang="en">It is normal for the first version to look different or contain a button that does not respond. A project is rarely finished in one sentence. Look once, change a little, and look again.</span></p>
+<p class="reveal"><span lang="id">A common beginner mistake is placing every problem in one message. When too many things change at once, you cannot tell which change produced the result.</span><span lang="en">A common beginner mistake is placing every problem in one message. When too many things change at once, you cannot tell which change produced the result.</span></p>
+<p class="reveal"><span lang="id">Use a simpler rule: <strong>pick the clearest problem in each round.</strong></span><span lang="en">Use a simpler rule: <strong>pick the clearest problem in each round.</strong></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">The page looks wrong</span><span lang="en">The page looks wrong</span></h3>
+<p class="reveal"><span lang="id">If a card is too tall:</span><span lang="en">If a card is too tall:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>The card at the top is too tall. Make it shorter.</pre>
+</div>
+<p class="reveal"><span lang="id">If the main image is too small:</span><span lang="en">If the main image is too small:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>The image in the center is too small. Make it larger.</pre>
+</div>
+<p class="reveal"><span lang="id">If the background is too dark:</span><span lang="en">If the background is too dark:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>The background is too dark. Use a lighter color.</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">The page behaves incorrectly</span><span lang="en">The page behaves incorrectly</span></h3>
+<p class="reveal"><span lang="id">If a button does nothing:</span><span lang="en">If a button does nothing:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>This button does not respond when I click it. Please fix it.</pre>
+</div>
+<p class="reveal"><span lang="id">If the game character cannot move:</span><span lang="en">If the game character cannot move:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>The arrow keys do nothing. Please fix the movement.</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">You do not know how to describe the problem</span><span lang="en">You do not know how to describe the problem</span></h3>
+<p class="reveal"><span lang="id">Take a screenshot of the current page and say:</span><span lang="en">Take a screenshot of the current page and say:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>This is the current result. Compare it with the reference and fix the biggest difference.</pre>
+</div>
+<p class="reveal"><span lang="id">You do not need to know terms such as “margin” or “responsive layout.” “It feels crowded,” “the text is hard to read,” and “the mobile page is messy” are useful descriptions. Fix one problem, then continue to the next.</span><span lang="en">You do not need to know terms such as “margin” or “responsive layout.” “It feels crowded,” “the text is hard to read,” and “the mobile page is messy” are useful descriptions. Fix one problem, then continue to the next.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Classroom check</span><span lang="en">6. Classroom check</span></h2>
+<p class="reveal"><span lang="id">Do not inspect only a still image. Open the result and click or play it yourself.</span><span lang="en">Do not inspect only a still image. Open the result and click or play it yourself.</span></p>
+<p class="reveal"><span lang="id">Check four things:</span><span lang="en">Check four things:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><strong>It opens:</strong> refreshing does not produce a blank page or error.</span><span lang="en"><strong>It opens:</strong> refreshing does not produce a blank page or error.</span></li>
+<li><span lang="id"><strong>It is understandable:</strong> another person can tell whether it is a homepage, dashboard, or game.</span><span lang="en"><strong>It is understandable:</strong> another person can tell whether it is a homepage, dashboard, or game.</span></li>
+<li><span lang="id"><strong>It responds:</strong> the main button or basic game controls work.</span><span lang="en"><strong>It responds:</strong> the main button or basic game controls work.</span></li>
+<li><span lang="id"><strong>It stays readable:</strong> narrowing the window does not make text and images overlap badly.</span><span lang="en"><strong>It stays readable:</strong> narrowing the window does not make text and images overlap badly.</span></li>
+</ul>
+<p class="reveal"><span lang="id">If one item fails, tell Trae exactly what you observed and ask it to fix only that issue. When all four pass, the exercise is complete.</span><span lang="en">If one item fails, tell Trae exactly what you observed and ask it to fix only that issue. When all four pass, the exercise is complete.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Login, payment, group chat, and online multiplayer are not part of today's lesson. One finished small page is more valuable than ten unfinished beginnings.</span><span lang="en">Login, payment, group chat, and online multiplayer are not part of today's lesson. One finished small page is more valuable than ten unfinished beginnings.</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">📚 Assignment</span><span lang="en">📚 Assignment</span></h2>
+<p class="reveal"><span lang="id"><StageAssignmentCard title="Build your own page from one screenshot"></span><span lang="en"><StageAssignmentCard title="Build your own page from one screenshot"></span></p>
+<p class="reveal"><span lang="id"><p>Choose a webpage or game image you like, give it to AI, and reproduce only one screen.</p></span><span lang="en"><p>Choose a webpage or game image you like, give it to AI, and reproduce only one screen.</p></span></p>
+<p class="reveal"><span lang="id"><ol></span><span lang="en"><ol></span></p>
+<p class="reveal"><span lang="id"><li>Keep the reference screenshot.</li></span><span lang="en"><li>Keep the reference screenshot.</li></span></p>
+<p class="reveal"><span lang="id"><li>Generate the page and improve one part you dislike.</li></span><span lang="en"><li>Generate the page and improve one part you dislike.</li></span></p>
+<p class="reveal"><span lang="id"><li>Save a screenshot of the revised work.</li></span><span lang="en"><li>Save a screenshot of the revised work.</li></span></p>
+<p class="reveal"><span lang="id"></ol></span><span lang="en"></ol></span></p>
+<p class="reveal"><span lang="id"><p>When presenting, place the reference and your work side by side and explain the change you made.</p></span><span lang="en"><p>When presenting, place the reference and your work side by side and explain the change you made.</p></span></p>
+<p class="reveal"><span lang="id"></StageAssignmentCard></span><span lang="en"></StageAssignmentCard></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">What to remember</span><span lang="en">What to remember</span></h2>
+<p class="reveal"><span lang="id">We did not begin with code. We began with one screenshot. The entire exercise has four steps:</span><span lang="en">We did not begin with code. We began with one screenshot. The entire exercise has four steps:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Take or save a screenshot.</span><span lang="en">Take or save a screenshot.</span></li>
+<li><span lang="id">Give it to AI.</span><span lang="en">Give it to AI.</span></li>
+<li><span lang="id">Describe the work in one sentence.</span><span lang="en">Describe the work in one sentence.</span></li>
+<li><span lang="id">Fix one visible difference at a time.</span><span lang="en">Fix one visible difference at a time.</span></li>
+</ul>
+<p class="reveal"><span lang="id">The image tells AI what the product should look like. Your words tell it what the product should do. Once the first version appears, clicking, observing, and taking screenshots help you explain the next change.</span><span lang="en">The image tells AI what the product should look like. Your words tell it what the product should do. Once the first version appears, clicking, observing, and taking screenshots help you explain the next change.</span></p>
+<p class="reveal"><span lang="id">A prompt does not need to sound like a technical manual. Say one simple thing, get the work running, and continue the conversation based on what is in front of you. Building a project will begin to feel much less distant.</span><span lang="en">A prompt does not need to sound like a technical manual. Say one simple thing, get the work running, and continue the conversation based on what is in front of you. Building a project will begin to feel much less distant.</span></p>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../introduction-to-ai-ide/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Pengenalan Alat Pemrograman AI</span><span lang="en">Pengenalan Alat Pemrograman AI</span></b></a>
+      <a class="next" href="../appendix-idea-sources/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Menemukan Masalah Nyata di Sekitar</span><span lang="en">Menemukan Masalah Nyata di Sekitar</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../assets/vibekoding.js"></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Flutter &amp; Dart: Satu Kode untuk iOS &amp; Android — VibeKoding 🐦</title>
+<meta name="description" content="Modul master Level 3 VibeKoding: Flutter &amp; Dart: Satu Kode untuk iOS &amp; Android. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-3/cross-platform/flutter-app/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../stage-3/"><span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></a> / <span lang="id">Flutter & Dart: Satu Kode untuk iOS & Android</span><span lang="en">Flutter & Dart: Satu Kode untuk iOS & Android</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">🐦</div>
+      <div>
+        <h1><span lang="id">Flutter & Dart: Satu Kode untuk iOS & Android</span><span lang="en">Flutter & Dart: Satu Kode untuk iOS & Android</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul master Level 3 VibeKoding: Flutter & Dart: Satu Kode untuk iOS & Android.</span><span lang="en">Modul master Level 3 VibeKoding: Flutter & Dart: Satu Kode untuk iOS & Android.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">Flutter is useful when one team wants to deliver Android and iOS applications—and often web or desktop versions—from one Dart project. It works especially well for products whose screens, interaction, and brand styling should remain consistent across devices.</span><span lang="en">Flutter is useful when one team wants to deliver Android and iOS applications—and often web or desktop versions—from one Dart project. It works especially well for products whose screens, interaction, and brand styling should remain consistent across devices.</span></p>
+<p class="reveal"><span lang="id">In this chapter we build a small <b>store expense ledger</b>. A staff member enters an expense, sees the daily total, and can still find the record after reopening the application.</span><span lang="en">In this chapter we build a small <b>store expense ledger</b>. A staff member enters an expense, sees the daily total, and can still find the record after reopening the application.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. What Flutter is</span><span lang="en">1. What Flutter is</span></h2>
+<p class="reveal"><span lang="id">Flutter is Google's UI toolkit. The application language is <b>Dart</b>. Instead of composing a screen from the platform's standard controls, Flutter draws a consistent interface through its own rendering system.</span><span lang="en">Flutter is Google's UI toolkit. The application language is <b>Dart</b>. Instead of composing a screen from the platform's standard controls, Flutter draws a consistent interface through its own rendering system.</span></p>
+<p class="reveal"><span lang="id">That gives the team strong control over layout and animation. It does not remove platform work: permissions, payment, notifications, signing, accessibility, and store rules still have to be tested on every target platform.</span><span lang="en">That gives the team strong control over layout and animation. It does not remove platform work: permissions, payment, notifications, signing, accessibility, and store rules still have to be tested on every target platform.</span></p>
+<p class="reveal"><span lang="id">Flutter is a good choice when:</span><span lang="en">Flutter is a good choice when:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Android and iOS need nearly the same product;</span><span lang="en">Android and iOS need nearly the same product;</span></li>
+<li><span lang="id">a custom visual system matters;</span><span lang="en">a custom visual system matters;</span></li>
+<li><span lang="id">the team is willing to use Dart;</span><span lang="en">the team is willing to use Dart;</span></li>
+<li><span lang="id">most work is forms, lists, dashboards, media, or business workflows.</span><span lang="en">most work is forms, lists, dashboards, media, or business workflows.</span></li>
+</ul>
+<p class="reveal"><span lang="id">Choose native SwiftUI or Jetpack Compose when the product depends heavily on the newest platform APIs, deeply platform-specific interaction, or a large existing native codebase.</span><span lang="en">Choose native SwiftUI or Jetpack Compose when the product depends heavily on the newest platform APIs, deeply platform-specific interaction, or a large existing native codebase.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Look at three production products</span><span lang="en">2. Look at three production products</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">My BMW: a vehicle companion app</span><span lang="en">My BMW: a vehicle companion app</span></h3>
+<p class="reveal"><span lang="id">My BMW brings vehicle status, charging, service, and remote controls into one mobile product. The interface places the car and its current state before secondary actions.</span><span lang="en">My BMW brings vehicle status, charging, service, and remote controls into one mobile product. The interface places the car and its current state before secondary actions.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">My BMW shows vehicle status and service entry points beside the car</span><span lang="en">My BMW shows vehicle status and service entry points beside the car</span></p>
+</div>
+<p class="reveal"><span lang="id">For our ledger, borrow the same information order: today's amount first, the latest records second, and the add action always easy to reach.</span><span lang="en">For our ledger, borrow the same information order: today's amount first, the latest records second, and the add action always easy to reach.</span></p>
+<p class="reveal"><span lang="id">Reference: [Flutter customer story for BMW](https://flutter.dev/showcase/bmw).</span><span lang="en">Reference: [Flutter customer story for BMW](https://flutter.dev/showcase/bmw).</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Google Pay: immediate confirmation after an action</span><span lang="en">Google Pay: immediate confirmation after an action</span></h3>
+<p class="reveal"><span lang="id">Payment products must make it obvious whether an action succeeded. Google Pay uses clear state changes and feedback rather than leaving the user to guess.</span><span lang="en">Payment products must make it obvious whether an action succeeded. Google Pay uses clear state changes and feedback rather than leaving the user to guess.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Google Pay reward feedback and payment state</span><span lang="en">Google Pay reward feedback and payment state</span></p>
+</div>
+<p class="reveal"><span lang="id">Our ledger will do the same after saving: update the total, add the row, clear the form, and show a success message.</span><span lang="en">Our ledger will do the same after saving: update the total, add the row, clear the form, and show a success message.</span></p>
+<p class="reveal"><span lang="id">Reference: [Flutter customer stories](https://flutter.dev/showcase).</span><span lang="en">Reference: [Flutter customer stories](https://flutter.dev/showcase).</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Nubank: a financial product with a calm hierarchy</span><span lang="en">Nubank: a financial product with a calm hierarchy</span></h3>
+<p class="reveal"><span lang="id">Nubank's app groups account information and help actions without turning every function into a competing card.</span><span lang="en">Nubank's app groups account information and help actions without turning every function into a competing card.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Nubank account and help entry points</span><span lang="en">Nubank account and help entry points</span></p>
+</div>
+<p class="reveal"><span lang="id">The useful lesson is restraint. An expense tool needs readable numbers and predictable actions more than decoration.</span><span lang="en">The useful lesson is restraint. An expense tool needs readable numbers and predictable actions more than decoration.</span></p>
+<p class="reveal"><span lang="id">Reference: [Nubank engineering on Flutter](https://building.nubank.com.br/flutter-at-nubank/).</span><span lang="en">Reference: [Nubank engineering on Flutter](https://building.nubank.com.br/flutter-at-nubank/).</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Install Flutter and verify the environment</span><span lang="en">3. Install Flutter and verify the environment</span></h2>
+<p class="reveal"><span lang="id">Install the stable Flutter SDK from the [official guide](https://docs.flutter.dev/get-started/install), then run:</span><span lang="en">Install the stable Flutter SDK from the [official guide](https://docs.flutter.dev/get-started/install), then run:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>flutter doctor</pre>
+</div>
+<p class="reveal"><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">flutter doctor</code> lists the targets your computer can actually build. A green web toolchain does not prove that Android Studio, an Android SDK, Xcode, CocoaPods, and mobile signing are ready.</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">flutter doctor</code> lists the targets your computer can actually build. A green web toolchain does not prove that Android Studio, an Android SDK, Xcode, CocoaPods, and mobile signing are ready.</span></p>
+<p class="reveal"><span lang="id">Create the project:</span><span lang="en">Create the project:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>flutter create store_expense_ledger
+cd store_expense_ledger
+flutter run -d chrome</pre>
+</div>
+<p class="reveal"><span lang="id">When the counter sample opens in Chrome, keep it working before making changes.</span><span lang="en">When the counter sample opens in Chrome, keep it working before making changes.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Build the first useful screen</span><span lang="en">4. Build the first useful screen</span></h2>
+<p class="reveal"><span lang="id">Ask your coding assistant:</span><span lang="en">Ask your coding assistant:</span></p>
+<p class="reveal"><span lang="id">> Replace the counter sample with a store expense home page. Show today's total, a short expense list, and an Add Expense button.</span><span lang="en">> Replace the counter sample with a store expense home page. Show today's total, a short expense list, and an Add Expense button.</span></p>
+<p class="reveal"><span lang="id">Run the app and check both a wide and narrow browser window. Numbers must not be clipped and the main button must remain visible.</span><span lang="en">Run the app and check both a wide and narrow browser window. Numbers must not be clipped and the main button must remain visible.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">The running Flutter store ledger with a saved printer-paper expense</span><span lang="en">The running Flutter store ledger with a saved printer-paper expense</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Add the expense form</span><span lang="en">5. Add the expense form</span></h2>
+<p class="reveal"><span lang="id">The first form only needs a category, note, and amount.</span><span lang="en">The first form only needs a category, note, and amount.</span></p>
+<p class="reveal"><span lang="id">> Open an expense form from the Add Expense button. Add category, note, and amount fields plus Save and Cancel.</span><span lang="en">> Open an expense form from the Add Expense button. Add category, note, and amount fields plus Save and Cancel.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">The add-expense bottom sheet in the running application</span><span lang="en">The add-expense bottom sheet in the running application</span></p>
+</div>
+<p class="reveal"><span lang="id">Now test empty and invalid input:</span><span lang="en">Now test empty and invalid input:</span></p>
+<p class="reveal"><span lang="id">> Show a short message below each invalid field. Do not save an empty category or an amount that is zero or negative.</span><span lang="en">> Show a short message below each invalid field. Do not save an empty category or an amount that is zero or negative.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Field-level validation shown on an empty expense form</span><span lang="en">Field-level validation shown on an empty expense form</span></p>
+</div>
+<p class="reveal"><span lang="id">A useful error belongs beside the field that needs attention. A generic “Something went wrong” banner is not enough.</span><span lang="en">A useful error belongs beside the field that needs attention. A generic “Something went wrong” banner is not enough.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Make saving update the whole screen</span><span lang="en">6. Make saving update the whole screen</span></h2>
+<p class="reveal"><span lang="id">> When Save succeeds, close the form, add the expense to the top of the list, update today's total, and show a confirmation message.</span><span lang="en">> When Save succeeds, close the form, add the expense to the top of the list, update today's total, and show a confirmation message.</span></p>
+<p class="reveal"><span lang="id">Enter “Office supplies,” “Printer paper,” and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">56</code>. The total, row, and message should all change once.</span><span lang="en">Enter “Office supplies,” “Printer paper,” and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">56</code>. The total, row, and message should all change once.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">The total, list, and success message after saving an expense</span><span lang="en">The total, list, and success message after saving an expense</span></p>
+</div>
+<p class="reveal"><span lang="id">If a double click creates two rows, fix that before adding more features.</span><span lang="en">If a double click creates two rows, fix that before adding more features.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Keep records after the app closes</span><span lang="en">7. Keep records after the app closes</span></h2>
+<p class="reveal"><span lang="id">Start with local persistence. This means the current device stores the records and reloads them at startup.</span><span lang="en">Start with local persistence. This means the current device stores the records and reloads them at startup.</span></p>
+<p class="reveal"><span lang="id">> Save expense records locally and restore them when the application starts. Do not add accounts or a server yet.</span><span lang="en">> Save expense records locally and restore them when the application starts. Do not add accounts or a server yet.</span></p>
+<p class="reveal"><span lang="id">Small prototypes can serialize a simple list. A longer-lived product should place storage behind a repository layer so SQLite or a remote API can replace the first implementation without rewriting every screen.</span><span lang="en">Small prototypes can serialize a simple list. A longer-lived product should place storage behind a repository layer so SQLite or a remote API can replace the first implementation without rewriting every screen.</span></p>
+<p class="reveal"><span lang="id">Test persistence yourself:</span><span lang="en">Test persistence yourself:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">save two expenses;</span><span lang="en">save two expenses;</span></li>
+<li><span lang="id">refresh the browser;</span><span lang="en">refresh the browser;</span></li>
+<li><span lang="id">close the tab and open it again;</span><span lang="en">close the tab and open it again;</span></li>
+<li><span lang="id">verify the total and both rows.</span><span lang="en">verify the total and both rows.</span></li>
+</ul>
+<p class="reveal"><span lang="id">For architecture guidance, read [Flutter's application architecture guide](https://docs.flutter.dev/app-architecture/guide).</span><span lang="en">For architecture guidance, read [Flutter's application architecture guide](https://docs.flutter.dev/app-architecture/guide).</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8. Add editing and deletion carefully</span><span lang="en">8. Add editing and deletion carefully</span></h2>
+<p class="reveal"><span lang="id">> Let the user edit one expense. Reuse the existing form and recalculate the total after saving.</span><span lang="en">> Let the user edit one expense. Reuse the existing form and recalculate the total after saving.</span></p>
+<p class="reveal"><span lang="id">After that works:</span><span lang="en">After that works:</span></p>
+<p class="reveal"><span lang="id">> Add Delete with a confirmation dialog. Cancel must keep the record unchanged.</span><span lang="en">> Add Delete with a confirmation dialog. Cancel must keep the record unchanged.</span></p>
+<p class="reveal"><span lang="id">Editing and deleting are useful tests of the data model. If the screen uses a list position as identity, rows may change unexpectedly after sorting. Give every expense a stable ID.</span><span lang="en">Editing and deleting are useful tests of the data model. If the screen uses a list position as identity, rows may change unexpectedly after sorting. Give every expense a stable ID.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">9. Prepare for a real backend</span><span lang="en">9. Prepare for a real backend</span></h2>
+<p class="reveal"><span lang="id">A shared company ledger needs accounts, permissions, server-side records, and audit history. Begin by explaining the boundary:</span><span lang="en">A shared company ledger needs accounts, permissions, server-side records, and audit history. Begin by explaining the boundary:</span></p>
+<p class="reveal"><span lang="id">> Describe the data model for users, stores, expenses, categories, and audit events. Do not write code yet.</span><span lang="en">> Describe the data model for users, stores, expenses, categories, and audit events. Do not write code yet.</span></p>
+<p class="reveal"><span lang="id">Then connect one operation at a time:</span><span lang="en">Then connect one operation at a time:</span></p>
+<p class="reveal"><span lang="id">> Load the signed-in user's stores from the existing API. Do not let the client choose its own role.</span><span lang="en">> Load the signed-in user's stores from the existing API. Do not let the client choose its own role.</span></p>
+<p class="reveal"><span lang="id">> Send one expense to the backend. Keep the local copy if the network fails and let the user retry.</span><span lang="en">> Send one expense to the backend. Keep the local copy if the network fails and let the user retry.</span></p>
+<p class="reveal"><span lang="id">Secrets that authorize the whole company never belong inside the Flutter package. The server must decide which stores and records each account may access.</span><span lang="en">Secrets that authorize the whole company never belong inside the Flutter package. The server must decide which stores and records each account may access.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">10. Test before packaging</span><span lang="en">10. Test before packaging</span></h2>
+<p class="reveal"><span lang="id">Run static analysis and tests:</span><span lang="en">Run static analysis and tests:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>flutter analyze
+flutter test</pre>
+</div>
+<p class="reveal"><span lang="id">Add a widget test that enters a valid expense and confirms the total changes. Add another for an invalid amount.</span><span lang="en">Add a widget test that enters a valid expense and confirms the total changes. Add another for an invalid amount.</span></p>
+<p class="reveal"><span lang="id">For responsive screens, follow Flutter's [adaptive and responsive design guidance](https://docs.flutter.dev/ui/adaptive-responsive).</span><span lang="en">For responsive screens, follow Flutter's [adaptive and responsive design guidance](https://docs.flutter.dev/ui/adaptive-responsive).</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">11. Build for each target</span><span lang="en">11. Build for each target</span></h2>
+<p class="reveal"><span lang="id">A successful web build is useful, but it is not an Android or iOS release.</span><span lang="en">A successful web build is useful, but it is not an Android or iOS release.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>flutter build web</pre>
+</div>
+<p class="reveal"><span lang="id">For Android, install Android Studio and the Android SDK, accept the required licenses, create a signed release build, and test it on a real phone. For iOS, use a Mac with Xcode and a valid simulator runtime or device, configure signing, create an archive, and test through TestFlight.</span><span lang="en">For Android, install Android Studio and the Android SDK, accept the required licenses, create a signed release build, and test it on a real phone. For iOS, use a Mac with Xcode and a valid simulator runtime or device, configure signing, create an archive, and test through TestFlight.</span></p>
+<p class="reveal"><span lang="id">Desktop targets also need their own packaging, signing, and clean-machine tests. Follow the [official deployment guides](https://docs.flutter.dev/deployment).</span><span lang="en">Desktop targets also need their own packaging, signing, and clean-machine tests. Follow the [official deployment guides](https://docs.flutter.dev/deployment).</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">12. What was verified here</span><span lang="en">12. What was verified here</span></h2>
+<p class="reveal"><span lang="id">This prototype ran with Flutter 3.44.9 and Dart 3.12.2. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">flutter analyze</code>, the widget test, and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">flutter build web</code> passed. The built web application was opened, an expense for printer paper was saved, validation was triggered, and the record remained after a refresh.</span><span lang="en">This prototype ran with Flutter 3.44.9 and Dart 3.12.2. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">flutter analyze</code>, the widget test, and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">flutter build web</code> passed. The built web application was opened, an expense for printer paper was saved, validation was triggered, and the record remained after a refresh.</span></p>
+<p class="reveal"><span lang="id">The machine did not have a working Android SDK. Xcode did not have an iOS Simulator runtime or CocoaPods. Android and iOS builds, signing, device behavior, and store submission are therefore not claimed as complete.</span><span lang="en">The machine did not have a working Android SDK. Xcode did not have an iOS Simulator runtime or CocoaPods. Android and iOS builds, signing, device behavior, and store submission are therefore not claimed as complete.</span></p>
+<p class="reveal"><span lang="id">The right first finish line is modest: enter one expense, see a clear error for invalid input, save successfully, and find the same record after reopening the app. Once that is dependable, move on to accounts, synchronization, and release builds.</span><span lang="en">The right first finish line is modest: enter one expense, see a clear error for invalid input, save successfully, and find the same record after reopening the app. Once that is dependable, move on to accounts, synchronization, and release builds.</span></p>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../cross-platform/react-native-expo/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Aplikasi Store Inspection: React Native & Expo</span><span lang="en">Aplikasi Store Inspection: React Native & Expo</span></b></a>
+      <a class="next" href="../../cross-platform/pwa-local-app/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Progressive Web App (PWA): Web Rasa Native Offline</span><span lang="en">Progressive Web App (PWA): Web Rasa Native Offline</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

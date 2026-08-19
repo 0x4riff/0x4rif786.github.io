@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of Frontend Frameworks — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Frontend Frameworks. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/3-browser-and-frontend/frontend-framework-nature/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Frontend Frameworks</span><span lang="en">Principles of Frontend Frameworks</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of Frontend Frameworks</span><span lang="en">Principles of Frontend Frameworks</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Frontend Frameworks.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Frontend Frameworks.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">> <b>Learning Guide</b>: This article answers a fundamental question — <b>What exactly do frontend frameworks (Vue, React, Svelte, etc.) do?</b> If you've only learned HTML, CSS, and a bit of JavaScript, that's perfectly fine — we'll start from the very beginning.</span><span lang="en">> <b>Learning Guide</b>: This article answers a fundamental question — <b>What exactly do frontend frameworks (Vue, React, Svelte, etc.) do?</b> If you've only learned HTML, CSS, and a bit of JavaScript, that's perfectly fine — we'll start from the very beginning.</span></p>
+<p class="reveal"><span lang="id">Before we begin, make sure you know these two basic concepts. If you're unsure, you can check the corresponding chapters first:</span><span lang="en">Before we begin, make sure you know these two basic concepts. If you're unsure, you can check the corresponding chapters first:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>HTML</b>: The skeleton of web pages, defining what elements are on the page (headings, paragraphs, buttons, images...). See [HTML and CSS Layout](./html-css-layout.md).</span><span lang="en"><b>HTML</b>: The skeleton of web pages, defining what elements are on the page (headings, paragraphs, buttons, images...). See [HTML and CSS Layout](./html-css-layout.md).</span></li>
+<li><span lang="id"><b>JavaScript</b>: The programming language that makes web pages "come alive," able to modify page content and respond to user actions. See [JavaScript Deep Dive](./javascript-deep-dive.md).</span><span lang="en"><b>JavaScript</b>: The programming language that makes web pages "come alive," able to modify page content and respond to user actions. See [JavaScript Deep Dive](./javascript-deep-dive.md).</span></li>
+</ul>
+<p class="reveal"><span lang="id">There's also one concept that will appear frequently later, so let's give it a complete explanation here.</span><span lang="en">There's also one concept that will appear frequently later, so let's give it a complete explanation here.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Overview of the DOM</span><span lang="en">Overview of the DOM</span></h3>
+<p class="reveal"><span lang="id">DOM stands for Document Object Model.</span><span lang="en">DOM stands for Document Object Model.</span></p>
+<p class="reveal"><span lang="id">When you open a web page in the browser, the first thing the browser does is read the HTML code. After reading it, the browser doesn't directly use the HTML text to display the page. Instead, it first <b>converts the HTML code into a tree structure</b> and stores it in memory. This tree is called the DOM tree.</span><span lang="en">When you open a web page in the browser, the first thing the browser does is read the HTML code. After reading it, the browser doesn't directly use the HTML text to display the page. Instead, it first <b>converts the HTML code into a tree structure</b> and stores it in memory. This tree is called the DOM tree.</span></p>
+<p class="reveal"><span lang="id">Each node (Node) on the tree corresponds to an HTML tag. The nesting relationships between tags become parent-child relationships in the DOM tree.</span><span lang="en">Each node (Node) on the tree corresponds to an HTML tag. The nesting relationships between tags become parent-child relationships in the DOM tree.</span></p>
+<p class="reveal"><span lang="id">👇 <b>Try it out</b>:</span><span lang="en">👇 <b>Try it out</b>:</span></p>
+<p class="reveal"><span lang="id">Hover your mouse over the HTML code on the left, and the corresponding node in the DOM tree on the right will be highlighted. It works the other way too. Each line of HTML tag corresponds to a node on the DOM tree.</span><span lang="en">Hover your mouse over the HTML code on the left, and the corresponding node in the DOM tree on the right will be highlighted. It works the other way too. Each line of HTML tag corresponds to a node on the DOM tree.</span></p>
+<p class="reveal"><span lang="id"><WhatIsDomDemo /></span><span lang="en"><WhatIsDomDemo /></span></p>
+<p class="reveal"><span lang="id"><b>Why understand the DOM?</b> Because the way JavaScript modifies pages is by manipulating this DOM tree — adding nodes, deleting nodes, modifying node content. And the core work that frontend frameworks do is help you automate these DOM operations. We'll mention the DOM repeatedly later — understanding it is the foundation for understanding framework principles.</span><span lang="en"><b>Why understand the DOM?</b> Because the way JavaScript modifies pages is by manipulating this DOM tree — adding nodes, deleting nodes, modifying node content. And the core work that frontend frameworks do is help you automate these DOM operations. We'll mention the DOM repeatedly later — understanding it is the foundation for understanding framework principles.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. Introduction: Overview of a "Frontend Framework"</span><span lang="en">0. Introduction: Overview of a "Frontend Framework"</span></h2>
+<p class="reveal"><span lang="id">First, let's explain the word "framework." In programming, a <b>Framework</b> is a set of pre-written code and rules that specifies how your code should be organized and run. You write code according to its conventions, and it handles a large amount of repetitive, tedious low-level work for you.</span><span lang="en">First, let's explain the word "framework." In programming, a <b>Framework</b> is a set of pre-written code and rules that specifies how your code should be organized and run. You write code according to its conventions, and it handles a large amount of repetitive, tedious low-level work for you.</span></p>
+<p class="reveal"><span lang="id"><b>Frontend frameworks</b> are frameworks specifically designed to help you <b>build web interfaces</b>. The most common ones today are Vue, React, Svelte, and Angular.</span><span lang="en"><b>Frontend frameworks</b> are frameworks specifically designed to help you <b>build web interfaces</b>. The most common ones today are Vue, React, Svelte, and Angular.</span></p>
+<p class="reveal"><span lang="id">So what problems do they actually solve? These three cards summarize the core logic:</span><span lang="en">So what problems do they actually solve? These three cards summarize the core logic:</span></p>
+<p class="reveal"><span lang="id"><FrameworkMotivationDemo /></span><span lang="en"><FrameworkMotivationDemo /></span></p>
+<p class="reveal"><span lang="id">Let's expand on this step by step, starting from the most basic questions.</span><span lang="en">Let's expand on this step by step, starting from the most basic questions.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. The Core Question: Criteria for Data Changes, What Happens to the UI</span><span lang="en">1. The Core Question: Criteria for Data Changes, What Happens to the UI</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 First, Let's Clarify What "Data" and "UI" Are</span><span lang="en">1.1 First, Let's Clarify What "Data" and "UI" Are</span></h3>
+<p class="reveal"><span lang="id">In any web application, two things exist simultaneously:</span><span lang="en">In any web application, two things exist simultaneously:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Data (Data / State)</b>: Information stored internally by the program. For example, "the shopping cart has 3 items," "the username is Zhang San," "the 2nd tab is currently selected." This data exists in JavaScript variables, and users cannot see them.</span><span lang="en"><b>Data (Data / State)</b>: Information stored internally by the program. For example, "the shopping cart has 3 items," "the username is Zhang San," "the 2nd tab is currently selected." This data exists in JavaScript variables, and users cannot see them.</span></li>
+<li><span lang="id"><b>UI (User Interface)</b>: What users see on the screen. For example, the page shows "Shopping Cart (3)", displays "Welcome, Zhang San", and the 2nd tab is highlighted. These are the visual effects presented by HTML elements.</span><span lang="en"><b>UI (User Interface)</b>: What users see on the screen. For example, the page shows "Shopping Cart (3)", displays "Welcome, Zhang San", and the 2nd tab is highlighted. These are the visual effects presented by HTML elements.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>There's a correspondence between data and UI</b>: If the data is "3 items," the UI should display "3." If the data changes to "4 items," the UI should also change to "4."</span><span lang="en"><b>There's a correspondence between data and UI</b>: If the data is "3 items," the UI should display "3." If the data changes to "4 items," the UI should also change to "4."</span></p>
+<p class="reveal"><span lang="id">The question is: <b>Who is responsible for this "following change" process?</b></span><span lang="en">The question is: <b>Who is responsible for this "following change" process?</b></span></p>
+<p class="reveal"><span lang="id">👇 <b>Try clicking</b>:</span><span lang="en">👇 <b>Try clicking</b>:</span></p>
+<p class="reveal"><span lang="id">Click the "Add Item" button and notice: the data (left) has already changed, but the UI (right) hasn't updated along with it — they're "disconnected." Click "Sync UI" to manually fix it.</span><span lang="en">Click the "Add Item" button and notice: the data (left) has already changed, but the UI (right) hasn't updated along with it — they're "disconnected." Click "Sync UI" to manually fix it.</span></p>
+<p class="reveal"><span lang="id"><DataUIGapDemo /></span><span lang="en"><DataUIGapDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 Motivation for Doning 't JavaScript Variable Changes Automatically Update the UI</span><span lang="en">1.2 Motivation for Doning 't JavaScript Variable Changes Automatically Update the UI</span></h3>
+<p class="reveal"><span lang="id">This is the most confusing part for beginners, so let's explain the underlying principles step by step.</span><span lang="en">This is the most confusing part for beginners, so let's explain the underlying principles step by step.</span></p>
+<p class="reveal"><span lang="id">In JavaScript, a variable is simply a block of memory space used to store data. When you execute <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count = count + 1</code>, the JavaScript engine does something very simple: changes the value of count in memory from 3 to 4. <b>Once this step is done, nothing else happens.</b></span><span lang="en">In JavaScript, a variable is simply a block of memory space used to store data. When you execute <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count = count + 1</code>, the JavaScript engine does something very simple: changes the value of count in memory from 3 to 4. <b>Once this step is done, nothing else happens.</b></span></p>
+<p class="reveal"><span lang="id">The content displayed on the page (like the DOM node <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><span>3</span></code>) is stored in a completely different block of memory. When the JavaScript engine modifies a variable, it has no idea that a DOM node on the page is displaying that variable's value, and there's no mechanism for it to check.</span><span lang="en">The content displayed on the page (like the DOM node <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><span>3</span></code>) is stored in a completely different block of memory. When the JavaScript engine modifies a variable, it has no idea that a DOM node on the page is displaying that variable's value, and there's no mechanism for it to check.</span></p>
+<p class="reveal"><span lang="id">So the fundamental reason is: <b>JavaScript variables and DOM nodes are two independent blocks of memory, with no automatic linkage mechanism between them.</b> Modifying a variable only changes the memory where the variable resides; the memory where the DOM node lives is not affected at all.</span><span lang="en">So the fundamental reason is: <b>JavaScript variables and DOM nodes are two independent blocks of memory, with no automatic linkage mechanism between them.</b> Modifying a variable only changes the memory where the variable resides; the memory where the DOM node lives is not affected at all.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>let count = 3
+
+// There&#039;s a DOM node on the page displaying count&#039;s value:
+// &lt;span id=&quot;counter&quot;&gt;3&lt;/span&gt;
+
+count = 4
+// What did the JavaScript engine do?
+//   → Changed the value of variable count in memory from 3 to 4
+//   → Done. That&#039;s it.
+// The &lt;span&gt; on the page still shows &quot;3&quot;</pre>
+</div>
+<p class="reveal"><span lang="id">If you want the display on the page to also become "4," you must <b>write extra code</b> to manually find that DOM node and then modify its content:</span><span lang="en">If you want the display on the page to also become "4," you must <b>write extra code</b> to manually find that DOM node and then modify its content:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>count = 4  // Step 1: Change the variable
+
+// Step 2: You must write this yourself — find the DOM node, change its text
+document.getElementById(&#039;counter&#039;).textContent = count</pre>
+</div>
+<p class="reveal"><span lang="id">If there are 5 places on the page displaying count's value (cart quantity, product list, total price, subtotal, status indicator), you need to write 5 such code blocks. <b>Miss any one, and that location will still show the old value — the user sees incorrect information.</b></span><span lang="en">If there are 5 places on the page displaying count's value (cart quantity, product list, total price, subtotal, status indicator), you need to write 5 such code blocks. <b>Miss any one, and that location will still show the old value — the user sees incorrect information.</b></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.3 What Does the Framework Do Two Steps to Establish Automatic Connection</span><span lang="en">1.3 What Does the Framework Do Two Steps to Establish Automatic Connection</span></h3>
+<p class="reveal"><span lang="id">Frameworks can automatically sync, relying on <b>two coordinated steps</b> — neither can be missing.</span><span lang="en">Frameworks can automatically sync, relying on <b>two coordinated steps</b> — neither can be missing.</span></p>
+<p class="reveal"><span lang="id"><b>Step One: You "register" in the template which places should display this variable</b></span><span lang="en"><b>Step One: You "register" in the template which places should display this variable</b></span></p>
+<p class="reveal"><span lang="id">In the framework's HTML template, you use syntax like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">{{ count }}</code> to mark "display count's value here":</span><span lang="en">In the framework's HTML template, you use syntax like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">{{ count }}</code> to mark "display count's value here":</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>html</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;!-- Vue template --&gt;
+&lt;span&gt;Shopping Cart: {{ count }} items&lt;/span&gt;    &lt;!-- Position A: I want to display count --&gt;
+&lt;span&gt;Total: ¥{{ count * 99 }}&lt;/span&gt;   &lt;!-- Position B: I also use count --&gt;
+&lt;span&gt;{{ count &gt; 5 ? &#039;Too many&#039; : &#039;Normal&#039; }}&lt;/span&gt;  &lt;!-- Position C: I also use count --&gt;</pre>
+</div>
+<p class="reveal"><span lang="id">When the framework first renders the page, it records this "registration relationship": <b>Positions A, B, and C all depend on count</b>.</span><span lang="en">When the framework first renders the page, it records this "registration relationship": <b>Positions A, B, and C all depend on count</b>.</span></p>
+<p class="reveal"><span lang="id"><b>Step Two: The framework monitors the variable and, when it changes, checks the registration table and updates automatically</b></span><span lang="en"><b>Step Two: The framework monitors the variable and, when it changes, checks the registration table and updates automatically</b></span></p>
+<p class="reveal"><span lang="id">The framework uses JavaScript's built-in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Proxy</code> to "wrap" your variable, making it a "monitored variable." When you modify this variable, the Proxy quietly does something extra while assigning the value: it notifies the framework that "count changed." After receiving the notification, the framework checks the registration table from step one and updates all three positions A, B, and C.</span><span lang="en">The framework uses JavaScript's built-in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Proxy</code> to "wrap" your variable, making it a "monitored variable." When you modify this variable, the Proxy quietly does something extra while assigning the value: it notifies the framework that "count changed." After receiving the notification, the framework checks the registration table from step one and updates all three positions A, B, and C.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Native JS:
+  You write HTML → &lt;span id=&quot;counter&quot;&gt;3&lt;/span&gt; (no connection to variable)
+  You change variable → count = 4 → Done, no UI reaction
+  You manually add → document.getElementById(&#039;counter&#039;).textContent = 4 → UI updates
+
+Vue Framework:
+  You write template → &lt;span&gt;{{ count }}&lt;/span&gt; (framework remembers: this depends on count)
+  You change variable → count = 4 → Proxy intercepts → notifies framework → framework checks registration table → auto-updates A/B/C</pre>
+</div>
+<p class="reveal"><span lang="id">This is why "only frameworks can automatically sync" — there's fundamentally no connection between native HTML's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><span></code> and JS variables. The framework's template syntax (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">{{ }}</code>) is the key to establishing this connection. When you write <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">{{ count }}</code>, the framework knows this location should display count; only then can the framework precisely find and update it when count changes.</span><span lang="en">This is why "only frameworks can automatically sync" — there's fundamentally no connection between native HTML's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><span></code> and JS variables. The framework's template syntax (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">{{ }}</code>) is the key to establishing this connection. When you write <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">{{ count }}</code>, the framework knows this location should display count; only then can the framework precisely find and update it when count changes.</span></p>
+<p class="reveal"><span lang="id">👇 <b>Try clicking</b>:</span><span lang="en">👇 <b>Try clicking</b>:</span></p>
+<p class="reveal"><span lang="id">First select "Native JavaScript," click "Execute," and notice — the variable changed but the UI didn't budge; you need to manually sync each position step by step. Then switch to "Using Framework" and click "Execute" again — once the variable changes, the framework automatically completes all steps, and the UI immediately catches up.</span><span lang="en">First select "Native JavaScript," click "Execute," and notice — the variable changed but the UI didn't budge; you need to manually sync each position step by step. Then switch to "Using Framework" and click "Execute" again — once the variable changes, the framework automatically completes all steps, and the UI immediately catches up.</span></p>
+<p class="reveal"><span lang="id"><WhyNoAutoSyncDemo /></span><span lang="en"><WhyNoAutoSyncDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.4 Comparison: Manual Sync vs. Auto Sync in Practice</span><span lang="en">1.4 Comparison: Manual Sync vs. Auto Sync in Practice</span></h3>
+<p class="reveal"><span lang="id">After understanding the principles, let's see how significant the difference is between manual sync and auto sync in a slightly more complex scenario.</span><span lang="en">After understanding the principles, let's see how significant the difference is between manual sync and auto sync in a slightly more complex scenario.</span></p>
+<p class="reveal"><span lang="id">👇 <b>Try clicking</b>:</span><span lang="en">👇 <b>Try clicking</b>:</span></p>
+<p class="reveal"><span lang="id">The left side shows the "manual sync" approach without a framework — for each display area, you need to click the "Sync" button separately to update. The right side shows the "auto sync" approach with a framework — you just click "Add Item," and all display areas update automatically. Try intentionally not syncing a certain area on the left to see what happens.</span><span lang="en">The left side shows the "manual sync" approach without a framework — for each display area, you need to click the "Sync" button separately to update. The right side shows the "auto sync" approach with a framework — you just click "Add Item," and all display areas update automatically. Try intentionally not syncing a certain area on the left to see what happens.</span></p>
+<p class="reveal"><span lang="id"><ManualVsAutoSyncDemo /></span><span lang="en"><ManualVsAutoSyncDemo /></span></p>
+<p class="reveal"><span lang="id"><b>This is the fundamental reason frontend frameworks exist: to add the ability for JavaScript variables to "automatically notify the UI to update when modified," eliminating errors caused by manual synchronization.</b></span><span lang="en"><b>This is the fundamental reason frontend frameworks exist: to add the ability for JavaScript variables to "automatically notify the UI to update when modified," eliminating errors caused by manual synchronization.</b></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. The Framework's Core Idea: Describing the UI with Data</span><span lang="en">2. The Framework's Core Idea: Describing the UI with Data</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 The Difference Between Two Approaches</span><span lang="en">2.1 The Difference Between Two Approaches</span></h3>
+<p class="reveal"><span lang="id">After understanding the value of "automatic sync," let's look at how frameworks specifically implement it.</span><span lang="en">After understanding the value of "automatic sync," let's look at how frameworks specifically implement it.</span></p>
+<p class="reveal"><span lang="id">In the pre-framework era (like using jQuery), code was written like this — you tell the browser step by step what to do:</span><span lang="en">In the pre-framework era (like using jQuery), code was written like this — you tell the browser step by step what to do:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Step 1: Find the element with id &quot;counter&quot; on the page
+var element = document.getElementById(&#039;counter&#039;)
+// Step 2: Change this element&#039;s text content to the new value
+element.textContent = &#039;4&#039;
+// Step 3: Find another element, change it too
+document.getElementById(&#039;total&#039;).textContent = &#039;¥396&#039;
+// Step 4: If quantity is greater than 5, also change the status indicator...</pre>
+</div>
+<p class="reveal"><span lang="id">This approach is called <b>Imperative</b> — you're "commanding" the browser to execute operations step by step.</span><span lang="en">This approach is called <b>Imperative</b> — you're "commanding" the browser to execute operations step by step.</span></p>
+<p class="reveal"><span lang="id">With a framework, code becomes like this — you only describe "what the UI should look like":</span><span lang="en">With a framework, code becomes like this — you only describe "what the UI should look like":</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>html</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;!-- I don&#039;t care how this value gets updated on the page --&gt;
+&lt;!-- I&#039;m just saying: this should display count&#039;s value --&gt;
+&lt;span&gt;{{ count }}&lt;/span&gt;
+&lt;span&gt;Total: ¥{{ count * 99 }}&lt;/span&gt;
+&lt;span v-if=&quot;count &gt; 5&quot;&gt;Too many items!&lt;/span&gt;</pre>
+</div>
+<p class="reveal"><span lang="id">This approach is called <b>Declarative</b> — you're "declaring" the final state of the UI, and the framework handles how to reach that state.</span><span lang="en">This approach is called <b>Declarative</b> — you're "declaring" the final state of the UI, and the framework handles how to reach that state.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Core Formula: UI = f(State)</span><span lang="en">2.2 Core Formula: UI = f(State)</span></h3>
+<p class="reveal"><span lang="id">All modern frontend frameworks — whether Vue, React, or Svelte — follow the same core idea, expressible as a formula:</span><span lang="en">All modern frontend frameworks — whether Vue, React, or Svelte — follow the same core idea, expressible as a formula:</span></p>
+<p class="reveal"><span lang="id">> <b>UI = f(State)</b></span><span lang="en">> <b>UI = f(State)</b></span></p>
+<p class="reveal"><span lang="id">This formula means:</span><span lang="en">This formula means:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>State</b>: Your application data. Those JavaScript variables: how many items are in the cart, whether the user is logged in, which page is current...</span><span lang="en"><b>State</b>: Your application data. Those JavaScript variables: how many items are in the cart, whether the user is logged in, which page is current...</span></li>
+<li><span lang="id"><b>f (function)</b>: The framework's rendering mechanism. It knows how to turn data into UI.</span><span lang="en"><b>f (function)</b>: The framework's rendering mechanism. It knows how to turn data into UI.</span></li>
+<li><span lang="id"><b>UI</b>: The final result users see on screen.</span><span lang="en"><b>UI</b>: The final result users see on screen.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Meaning</b>: Given a set of data (State), after the framework's processing (f), you can deterministically get the corresponding UI. When data changes, the UI changes accordingly. Developers only need to care about data, not how the UI updates.</span><span lang="en"><b>Meaning</b>: Given a set of data (State), after the framework's processing (f), you can deterministically get the corresponding UI. When data changes, the UI changes accordingly. Developers only need to care about data, not how the UI updates.</span></p>
+<p class="reveal"><span lang="id">👇 <b>Try clicking</b>:</span><span lang="en">👇 <b>Try clicking</b>:</span></p>
+<p class="reveal"><span lang="id">Modify the data (State) on the left and observe how the UI on the right automatically changes. This is the intuitive manifestation of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">UI = f(State)</code>.</span><span lang="en">Modify the data (State) on the left and observe how the UI on the right automatically changes. This is the intuitive manifestation of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">UI = f(State)</code>.</span></p>
+<p class="reveal"><span lang="id"><DeclarativeFormulaDemo /></span><span lang="en"><DeclarativeFormulaDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 Motivation for Declarativing Better than Imperative</span><span lang="en">2.3 Motivation for Declarativing Better than Imperative</span></h3>
+<p class="reveal"><span lang="id">The advantage of declarative writing lies in:</span><span lang="en">The advantage of declarative writing lies in:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Comparison Dimension</th><th>Imperative (No Framework)</th><th>Declarative (With Framework)</th></tr>
+<tr><td><b>Code Volume</b></td><td>Must write specific operation code for each update</td><td>Write template once, framework handles automatically</td></tr>
+<tr><td><b>Error Probability</b></td><td>Easy to miss updating a location</td><td>Framework ensures all locations update</td></tr>
+<tr><td><b>Readability</b></td><td>Code mixed with lots of DOM operations</td><td>Code clearly describes UI structure</td></tr>
+<tr><td><b>Maintenance Cost</b></td><td>Changing one feature requires modifying many places</td><td>Just modify data logic, UI follows automatically</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">Simply put: declarative lets you focus on "business logic" (how data changes) without worrying about the repetitive and error-prone task of "how to update the UI."</span><span lang="en">Simply put: declarative lets you focus on "business logic" (how data changes) without worrying about the repetitive and error-prone task of "how to update the UI."</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Reactivity System: Method for iting Framework Know Data Changed</span><span lang="en">3. Reactivity System: Method for iting Framework Know Data Changed</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Overview of "Reactivity"</span><span lang="en">3.1 Overview of "Reactivity"</span></h3>
+<p class="reveal"><span lang="id">Earlier we said "when data changes, the UI automatically updates." But there's a technical problem: <b>JavaScript itself doesn't have the ability to "automatically notify others when a variable is modified."</b></span><span lang="en">Earlier we said "when data changes, the UI automatically updates." But there's a technical problem: <b>JavaScript itself doesn't have the ability to "automatically notify others when a variable is modified."</b></span></p>
+<p class="reveal"><span lang="id">When you write <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count = 4</code>, JavaScript only changes count's value from 3 to 4 and doesn't automatically tell anyone. The framework needs a mechanism to "detect" when you've modified data.</span><span lang="en">When you write <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count = 4</code>, JavaScript only changes count's value from 3 to 4 and doesn't automatically tell anyone. The framework needs a mechanism to "detect" when you've modified data.</span></p>
+<p class="reveal"><span lang="id"><b>Reactivity</b> is the umbrella term for this mechanism: when data changes, the system can automatically sense the change and execute corresponding update operations.</span><span lang="en"><b>Reactivity</b> is the umbrella term for this mechanism: when data changes, the system can automatically sense the change and execute corresponding update operations.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Three Different Implementation Approaches</span><span lang="en">3.2 Three Different Implementation Approaches</span></h3>
+<p class="reveal"><span lang="id">Different frameworks use different technical approaches to implement reactivity. This is also the most fundamental difference between Vue, React, and Svelte.</span><span lang="en">Different frameworks use different technical approaches to implement reactivity. This is also the most fundamental difference between Vue, React, and Svelte.</span></p>
+<p class="reveal"><span lang="id"><b>Approach One: Proxy Interception (Vue's Approach)</b></span><span lang="en"><b>Approach One: Proxy Interception (Vue's Approach)</b></span></p>
+<p class="reveal"><span lang="id">Vue uses JavaScript's built-in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Proxy</code> mechanism. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Proxy</code> can automatically execute code you specify when you read or modify an object's properties.</span><span lang="en">Vue uses JavaScript's built-in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Proxy</code> mechanism. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Proxy</code> can automatically execute code you specify when you read or modify an object's properties.</span></p>
+<p class="reveal"><span lang="id">Vue wraps your data object with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Proxy</code>. When you execute <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count = 4</code>, the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Proxy</code> intercepts this write operation and notifies Vue: "count's value has changed." Vue then updates all parts of the UI that use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count</code>.</span><span lang="en">Vue wraps your data object with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Proxy</code>. When you execute <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count = 4</code>, the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Proxy</code> intercepts this write operation and notifies Vue: "count's value has changed." Vue then updates all parts of the UI that use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count</code>.</span></p>
+<p class="reveal"><span lang="id">As a developer, you don't need to do anything extra — just assign values directly, and Vue senses it automatically.</span><span lang="en">As a developer, you don't need to do anything extra — just assign values directly, and Vue senses it automatically.</span></p>
+<p class="reveal"><span lang="id"><b>Approach Two: Explicit Invocation (React's Approach)</b></span><span lang="en"><b>Approach Two: Explicit Invocation (React's Approach)</b></span></p>
+<p class="reveal"><span lang="id">React doesn't use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Proxy</code>. It requires you to modify data through a dedicated function:</span><span lang="en">React doesn't use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Proxy</code>. It requires you to modify data through a dedicated function:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// React&#039;s approach
+const [count, setCount] = useState(0)
+
+// Can&#039;t just write count = 4 (React won&#039;t sense it)
+// Must call setCount:
+setCount(4)</pre>
+</div>
+<p class="reveal"><span lang="id">Only when you call <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">setCount()</code> does React know the data has changed and will update the UI. If you directly write <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count = 4</code>, React has no idea, and the UI won't update.</span><span lang="en">Only when you call <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">setCount()</code> does React know the data has changed and will update the UI. If you directly write <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count = 4</code>, React has no idea, and the UI won't update.</span></p>
+<p class="reveal"><span lang="id">This approach is more "explicit" — every data change is something you proactively tell the framework, preventing accidental updates.</span><span lang="en">This approach is more "explicit" — every data change is something you proactively tell the framework, preventing accidental updates.</span></p>
+<p class="reveal"><span lang="id"><b>Approach Three: Compiler Analysis (Svelte's Approach)</b></span><span lang="en"><b>Approach Three: Compiler Analysis (Svelte's Approach)</b></span></p>
+<p class="reveal"><span lang="id">Svelte takes a completely different route. It has a Compiler that analyzes your source code before it runs.</span><span lang="en">Svelte takes a completely different route. It has a Compiler that analyzes your source code before it runs.</span></p>
+<p class="reveal"><span lang="id">When the compiler sees you've written an assignment like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count += 1</code>, it automatically inserts code after that line to "notify the UI to update." In other words, by the time the code runs, the "notification" action has already been pre-arranged by the compiler.</span><span lang="en">When the compiler sees you've written an assignment like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count += 1</code>, it automatically inserts code after that line to "notify the UI to update." In other words, by the time the code runs, the "notification" action has already been pre-arranged by the compiler.</span></p>
+<p class="reveal"><span lang="id">Your code looks like plain JavaScript assignment, but the compiled code contains additional UI update logic.</span><span lang="en">Your code looks like plain JavaScript assignment, but the compiled code contains additional UI update logic.</span></p>
+<p class="reveal"><span lang="id">👇 <b>Try clicking</b>:</span><span lang="en">👇 <b>Try clicking</b>:</span></p>
+<p class="reveal"><span lang="id">Select different framework tabs, click "Modify Data," and observe what steps each framework goes through "under the hood" to detect data changes and update the UI.</span><span lang="en">Select different framework tabs, click "Modify Data," and observe what steps each framework goes through "under the hood" to detect data changes and update the UI.</span></p>
+<p class="reveal"><span lang="id"><ReactivityMechanismDemo /></span><span lang="en"><ReactivityMechanismDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Comparison of Three Approaches</span><span lang="en">3.3 Comparison of Three Approaches</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Comparison Dimension</th><th>Vue (Proxy)</th><th>React (Explicit Invocation)</th><th>Svelte (Compiler)</th></tr>
+<tr><td><b>Developer's Writing Style</b></td><td>Direct assignment <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count = 4</code></td><td>Must use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">setCount(4)</code></td><td>Direct assignment <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count = 4</code></td></tr>
+<tr><td><b>When Changes are Detected</b></td><td>Runtime automatic interception</td><td>Developer proactively notifies</td><td>Compiler pre-inserts notification code</td></tr>
+<tr><td><b>Runtime Performance Overhead</b></td><td>Proxy has slight interception overhead</td><td>setState scheduling has slight overhead</td><td>Almost no additional overhead</td></tr>
+<tr><td><b>Debugging Difficulty</b></td><td>Medium</td><td>Clear data flow, relatively easy</td><td>Need to understand compiled code</td></tr>
+<tr><td><b>Suitable Scenarios</b></td><td>Pursuing development efficiency and natural syntax</td><td>Pursuing predictable data flow</td><td>Pursuing ultimate runtime performance</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">None of the three approaches is absolutely better or worse. Vue is the most natural to write, React has the most controllable data flow, and Svelte has the best runtime performance. Which to choose depends on the project's specific needs.</span><span lang="en">None of the three approaches is absolutely better or worse. Vue is the most natural to write, React has the most controllable data flow, and Svelte has the best runtime performance. Which to choose depends on the project's specific needs.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Components: Breaking the UI into Reusable Small Pieces</span><span lang="en">4. Components: Breaking the UI into Reusable Small Pieces</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Motivation for splitting</span><span lang="en">4.1 Motivation for splitting</span></h3>
+<p class="reveal"><span lang="id">A complete web page might have a navigation bar, sidebar, content area, search box, user avatar, various buttons... If all the code is in one file, that file would become extremely long and very hard to maintain.</span><span lang="en">A complete web page might have a navigation bar, sidebar, content area, search box, user avatar, various buttons... If all the code is in one file, that file would become extremely long and very hard to maintain.</span></p>
+<p class="reveal"><span lang="id"><b>Components</b> are about splitting the interface into independent small pieces, each managing its own data, its own UI, and its own logic.</span><span lang="en"><b>Components</b> are about splitting the interface into independent small pieces, each managing its own data, its own UI, and its own logic.</span></p>
+<p class="reveal"><span lang="id">For example, an e-commerce page can be split into these components:</span><span lang="en">For example, an e-commerce page can be split into these components:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">NavBar</code> component: responsible for the top navigation bar</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">NavBar</code> component: responsible for the top navigation bar</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SearchBox</code> component: responsible for the search box</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SearchBox</code> component: responsible for the search box</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ProductCard</code> component: responsible for one product card</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ProductCard</code> component: responsible for one product card</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ShoppingCart</code> component: responsible for the shopping cart</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ShoppingCart</code> component: responsible for the shopping cart</span></li>
+</ul>
+<p class="reveal"><span lang="id">Each component is independent. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ProductCard</code> doesn't need to know what code is in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">NavBar</code> — it only needs to manage itself.</span><span lang="en">Each component is independent. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ProductCard</code> doesn't need to know what code is in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">NavBar</code> — it only needs to manage itself.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Three Benefits of Components</span><span lang="en">4.2 Three Benefits of Components</span></h3>
+<p class="reveal"><span lang="id"><b>Benefit One: Reuse.</b> Once a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ProductCard</code> component is written, it can be used 100 times on the page — each time you pass in different product data, it renders a different product card. No need to copy-paste 100 copies of HTML code.</span><span lang="en"><b>Benefit One: Reuse.</b> Once a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ProductCard</code> component is written, it can be used 100 times on the page — each time you pass in different product data, it renders a different product card. No need to copy-paste 100 copies of HTML code.</span></p>
+<p class="reveal"><span lang="id"><b>Benefit Two: Encapsulation.</b> The data and logic inside a component are independent. Modifying the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SearchBox</code> component's code won't affect the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ProductCard</code> component. When multiple people collaborate, different people can develop different components simultaneously without interfering with each other.</span><span lang="en"><b>Benefit Two: Encapsulation.</b> The data and logic inside a component are independent. Modifying the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SearchBox</code> component's code won't affect the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ProductCard</code> component. When multiple people collaborate, different people can develop different components simultaneously without interfering with each other.</span></p>
+<p class="reveal"><span lang="id"><b>Benefit Three: Maintainability.</b> When a feature has a problem, you can directly locate the corresponding component to fix it, rather than searching through a file with thousands of lines.</span><span lang="en"><b>Benefit Three: Maintainability.</b> When a feature has a problem, you can directly locate the corresponding component to fix it, rather than searching through a file with thousands of lines.</span></p>
+<p class="reveal"><span lang="id">👇 <b>Try clicking</b>:</span><span lang="en">👇 <b>Try clicking</b>:</span></p>
+<p class="reveal"><span lang="id">Click the component name on the left to see its corresponding area on the page. Notice that the same <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ProductCard</code> component is reused multiple times, each time displaying different data.</span><span lang="en">Click the component name on the left to see its corresponding area on the page. Notice that the same <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ProductCard</code> component is reused multiple times, each time displaying different data.</span></p>
+<p class="reveal"><span lang="id"><ComponentTreeDemo /></span><span lang="en"><ComponentTreeDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 What Does a Component Look Like in Code</span><span lang="en">4.3 What Does a Component Look Like in Code</span></h3>
+<p class="reveal"><span lang="id">Taking Vue as an example, a component is a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.vue</code> file containing three parts:</span><span lang="en">Taking Vue as an example, a component is a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.vue</code> file containing three parts:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>html</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;!-- ProductCard.vue --&gt;
+&lt;template&gt;
+  &lt;!-- HTML structure here — the component&#039;s &quot;appearance&quot; --&gt;
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h3&gt;{{ name }}&lt;/h3&gt;
+    &lt;p&gt;Price: ¥{{ price }}&lt;/p&gt;
+    &lt;button @click=&quot;addToCart&quot;&gt;Add to Cart&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+// JavaScript logic here — the component&#039;s &quot;behavior&quot;
+const props = defineProps([&#039;name&#039;, &#039;price&#039;])
+
+function addToCart() {
+  // Handle &quot;add to cart&quot; logic
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+/* CSS styles here — the component&#039;s &quot;look&quot; */
+.card {
+  border: 1px solid #ccc;
+  padding: 16px;
+}
+&lt;/style&gt;</pre>
+</div>
+<p class="reveal"><span lang="id">When using this component, it's like using a custom HTML tag:</span><span lang="en">When using this component, it's like using a custom HTML tag:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>html</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;!-- Using the ProductCard component elsewhere --&gt;
+&lt;ProductCard name=&quot;Wireless Earbuds&quot; price=&quot;299&quot; /&gt;
+&lt;ProductCard name=&quot;Mechanical Keyboard&quot; price=&quot;599&quot; /&gt;
+&lt;ProductCard name=&quot;Monitor&quot; price=&quot;1999&quot; /&gt;</pre>
+</div>
+<p class="reveal"><span lang="id">Three lines of code render three different product cards.</span><span lang="en">Three lines of code render three different product cards.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. The Cost of DOM Operations: Motivation for Frameworksing Try So Hard</span><span lang="en">5. The Cost of DOM Operations: Motivation for Frameworksing Try So Hard</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Overview of DOM Operations</span><span lang="en">5.1 Overview of DOM Operations</span></h3>
+<p class="reveal"><span lang="id">As mentioned earlier, the DOM is the tree structure generated after the browser parses HTML. <b>DOM operations</b> are using JavaScript to modify nodes on this tree. For example, changing text, adding an element, deleting an element, or modifying a style.</span><span lang="en">As mentioned earlier, the DOM is the tree structure generated after the browser parses HTML. <b>DOM operations</b> are using JavaScript to modify nodes on this tree. For example, changing text, adding an element, deleting an element, or modifying a style.</span></p>
+<p class="reveal"><span lang="id">These operations themselves aren't complicated, but after executing DOM operations, the browser needs to do a lot of additional work to update the screen display:</span><span lang="en">These operations themselves aren't complicated, but after executing DOM operations, the browser needs to do a lot of additional work to update the screen display:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Recalculate Styles</b>: Do the CSS styles of this node and its children need to change?</span><span lang="en"><b>Recalculate Styles</b>: Do the CSS styles of this node and its children need to change?</span></li>
+<li><span lang="id"><b>Layout (Reflow)</b>: The position and size of all elements on the page need to be recalculated. Because one element's change might affect other elements' positions.</span><span lang="en"><b>Layout (Reflow)</b>: The position and size of all elements on the page need to be recalculated. Because one element's change might affect other elements' positions.</span></li>
+<li><span lang="id"><b>Repaint</b>: Paint the calculated content onto the screen.</span><span lang="en"><b>Repaint</b>: Paint the calculated content onto the screen.</span></li>
+</ul>
+<p class="reveal"><span lang="id">Each of these steps has computational cost. If your code frequently triggers DOM operations, the browser will repeatedly execute these steps, and the page will become laggy.</span><span lang="en">Each of these steps has computational cost. If your code frequently triggers DOM operations, the browser will repeatedly execute these steps, and the page will become laggy.</span></p>
+<p class="reveal"><span lang="id">👇 <b>Try clicking</b>:</span><span lang="en">👇 <b>Try clicking</b>:</span></p>
+<p class="reveal"><span lang="id">Observe the time comparison between direct DOM operations and batch DOM operations. As the number of modifications increases, the "one-by-one operation" time rises sharply.</span><span lang="en">Observe the time comparison between direct DOM operations and batch DOM operations. As the number of modifications increases, the "one-by-one operation" time rises sharply.</span></p>
+<p class="reveal"><span lang="id"><DomOperationCostDemo /></span><span lang="en"><DomOperationCostDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Method for Frameworksing Solve This Problem</span><span lang="en">5.2 Method for Frameworksing Solve This Problem</span></h3>
+<p class="reveal"><span lang="id">Since direct DOM operations are expensive, frameworks find ways to <b>reduce the number of DOM operations</b>. There are two specific strategies:</span><span lang="en">Since direct DOM operations are expensive, frameworks find ways to <b>reduce the number of DOM operations</b>. There are two specific strategies:</span></p>
+<p class="reveal"><span lang="id"><b>Strategy One: Virtual DOM + Diffing (Vue and React's Approach)</b></span><span lang="en"><b>Strategy One: Virtual DOM + Diffing (Vue and React's Approach)</b></span></p>
+<p class="reveal"><span lang="id">The Virtual DOM is a JavaScript object whose structure corresponds one-to-one with the real DOM tree, but it only exists in memory and doesn't trigger browser layout and painting.</span><span lang="en">The Virtual DOM is a JavaScript object whose structure corresponds one-to-one with the real DOM tree, but it only exists in memory and doesn't trigger browser layout and painting.</span></p>
+<p class="reveal"><span lang="id">When data changes, the framework's processing flow is:</span><span lang="en">When data changes, the framework's processing flow is:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Create a "new Virtual DOM tree" using JavaScript objects, describing what the UI should look like after data changes</span><span lang="en">Create a "new Virtual DOM tree" using JavaScript objects, describing what the UI should look like after data changes</span></li>
+<li><span lang="id">Compare this new tree with the old tree (this process is called <b>Diff</b>), finding which nodes changed</span><span lang="en">Compare this new tree with the old tree (this process is called <b>Diff</b>), finding which nodes changed</span></li>
+<li><span lang="id">Apply only the truly changed parts to the real DOM (this process is called <b>Patch</b>)</span><span lang="en">Apply only the truly changed parts to the real DOM (this process is called <b>Patch</b>)</span></li>
+</ul>
+<p class="reveal"><span lang="id">This way, no matter how data changes, the final operations on the real DOM are always minimal.</span><span lang="en">This way, no matter how data changes, the final operations on the real DOM are always minimal.</span></p>
+<p class="reveal"><span lang="id">👇 <b>Try clicking</b>:</span><span lang="en">👇 <b>Try clicking</b>:</span></p>
+<p class="reveal"><span lang="id">Click "Modify Data" and observe how the Virtual DOM compares the new and old trees to find changed nodes. Notice the "Real DOM" on the far right — only the truly changed parts flash.</span><span lang="en">Click "Modify Data" and observe how the Virtual DOM compares the new and old trees to find changed nodes. Notice the "Real DOM" on the far right — only the truly changed parts flash.</span></p>
+<p class="reveal"><span lang="id"><VirtualDomDiffDemo /></span><span lang="en"><VirtualDomDiffDemo /></span></p>
+<p class="reveal"><span lang="id"><b>Strategy Two: Compile-Time Precise Targeting (Svelte's Approach)</b></span><span lang="en"><b>Strategy Two: Compile-Time Precise Targeting (Svelte's Approach)</b></span></p>
+<p class="reveal"><span lang="id">Svelte doesn't use the Virtual DOM. Its compiler analyzes your code when you write it: "When <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count</code> changes, the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><span></code> on line 3 needs to be updated." At runtime, it directly targets that element for updating, completely without needing to compare new and old trees.</span><span lang="en">Svelte doesn't use the Virtual DOM. Its compiler analyzes your code when you write it: "When <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count</code> changes, the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><span></code> on line 3 needs to be updated." At runtime, it directly targets that element for updating, completely without needing to compare new and old trees.</span></p>
+<p class="reveal"><span lang="id">This approach skips the Diff step and is theoretically better performing. But it depends on the compiler's analytical ability — the compiler needs to be smart enough to correctly identify all places that need updating.</span><span lang="en">This approach skips the Diff step and is theoretically better performing. But it depends on the compiler's analytical ability — the compiler needs to be smart enough to correctly identify all places that need updating.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Runtime vs. Compile-Time: The Core Trade-off in Framework Design</span><span lang="en">6. Runtime vs. Compile-Time: The Core Trade-off in Framework Design</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Two Phases</span><span lang="en">6.1 Two Phases</span></h3>
+<p class="reveal"><span lang="id">Frontend code goes through two phases from when you write it to when it finally runs in the browser:</span><span lang="en">Frontend code goes through two phases from when you write it to when it finally runs in the browser:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Compile-time (Build-time)</b>: Your source code is processed by build tools (like Vite, Webpack) and transformed into code the browser can execute directly. This process happens on your computer, before users open the web page.</span><span lang="en"><b>Compile-time (Build-time)</b>: Your source code is processed by build tools (like Vite, Webpack) and transformed into code the browser can execute directly. This process happens on your computer, before users open the web page.</span></li>
+<li><span lang="id"><b>Runtime</b>: The transformed code executes in the user's browser. The framework's core logic (like Virtual DOM Diff, reactivity tracking) works during this phase.</span><span lang="en"><b>Runtime</b>: The transformed code executes in the user's browser. The framework's core logic (like Virtual DOM Diff, reactivity tracking) works during this phase.</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 How Frameworks Distribute Work Across These Two Phases</span><span lang="en">6.2 How Frameworks Distribute Work Across These Two Phases</span></h3>
+<p class="reveal"><span lang="id">Different frameworks distribute different amounts of work across these two phases, which determines their performance characteristics and bundle size:</span><span lang="en">Different frameworks distribute different amounts of work across these two phases, which determines their performance characteristics and bundle size:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>React</b>: Most work is done at runtime. Virtual DOM creation, Diff, and Patch all happen in the browser. The advantage is high flexibility; the cost is needing to send the entire framework's runtime code (~40KB) to the browser.</span><span lang="en"><b>React</b>: Most work is done at runtime. Virtual DOM creation, Diff, and Patch all happen in the browser. The advantage is high flexibility; the cost is needing to send the entire framework's runtime code (~40KB) to the browser.</span></li>
+<li><span lang="id"><b>Vue</b>: A hybrid approach. Templates are optimized at compile-time (the compiler marks which nodes are static and won't change), but the final UI updates still happen through the runtime Virtual DOM. Runtime code is approximately 30KB.</span><span lang="en"><b>Vue</b>: A hybrid approach. Templates are optimized at compile-time (the compiler marks which nodes are static and won't change), but the final UI updates still happen through the runtime Virtual DOM. Runtime code is approximately 30KB.</span></li>
+<li><span lang="id"><b>Svelte</b>: Most work is done at compile-time. The compiler analyzes your code and directly generates precise DOM update instructions. There's almost no framework code at runtime — the final bundle contains only your own business code. The smallest bundle size.</span><span lang="en"><b>Svelte</b>: Most work is done at compile-time. The compiler analyzes your code and directly generates precise DOM update instructions. There's almost no framework code at runtime — the final bundle contains only your own business code. The smallest bundle size.</span></li>
+</ul>
+<p class="reveal"><span lang="id">👇 <b>Try clicking</b>:</span><span lang="en">👇 <b>Try clicking</b>:</span></p>
+<p class="reveal"><span lang="id">Click different framework tabs to see their position on the "Runtime ↔ Compile-time" spectrum, and their respective trade-offs in bundle size, runtime performance, and developer experience.</span><span lang="en">Click different framework tabs to see their position on the "Runtime ↔ Compile-time" spectrum, and their respective trade-offs in bundle size, runtime performance, and developer experience.</span></p>
+<p class="reveal"><span lang="id"><FrameworkSpectrumDemo /></span><span lang="en"><FrameworkSpectrumDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.3 Industry Trends</span><span lang="en">6.3 Industry Trends</span></h3>
+<p class="reveal"><span lang="id">In recent years, the direction of framework development has been clear: <b>move more and more work from runtime to compile-time.</b> Because compile-time computation doesn't consume user device resources and doesn't affect page load speed.</span><span lang="en">In recent years, the direction of framework development has been clear: <b>move more and more work from runtime to compile-time.</b> Because compile-time computation doesn't consume user device resources and doesn't affect page load speed.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Vue</b> is developing Vapor Mode, which can skip the Virtual DOM and directly generate DOM operation code at compile-time</span><span lang="en"><b>Vue</b> is developing Vapor Mode, which can skip the Virtual DOM and directly generate DOM operation code at compile-time</span></li>
+<li><span lang="id"><b>React</b> has introduced the React Compiler that automatically optimizes component re-rendering behavior at compile-time</span><span lang="en"><b>React</b> has introduced the React Compiler that automatically optimizes component re-rendering behavior at compile-time</span></li>
+<li><span lang="id"><b>Svelte 5</b> has introduced the Runes system, further enhancing compile-time analysis capabilities</span><span lang="en"><b>Svelte 5</b> has introduced the Runes system, further enhancing compile-time analysis capabilities</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Summary</span><span lang="en">7. Summary</span></h2>
+<p class="reveal"><span lang="id">Let's review the core points of this article:</span><span lang="en">Let's review the core points of this article:</span></p>
+<p class="reveal"><span lang="id"><b>The fundamental problem frontend frameworks solve</b>: When data in an application changes, automatically, efficiently, and reliably update the UI, without requiring developers to manually operate the DOM.</span><span lang="en"><b>The fundamental problem frontend frameworks solve</b>: When data in an application changes, automatically, efficiently, and reliably update the UI, without requiring developers to manually operate the DOM.</span></p>
+<p class="reveal"><span lang="id"><b>The core idea they all follow</b>: UI = f(State) — the UI is a function of data. Developers only need to focus on data changes, and the framework handles reflecting data changes to the UI.</span><span lang="en"><b>The core idea they all follow</b>: UI = f(State) — the UI is a function of data. Developers only need to focus on data changes, and the framework handles reflecting data changes to the UI.</span></p>
+<p class="reveal"><span lang="id"><b>Their key technical differences</b>:</span><span lang="en"><b>Their key technical differences</b>:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Technical Point</th><th>Meaning</th></tr>
+<tr><td><b>Reactivity System</b></td><td>How the framework detects data changes. Vue uses Proxy interception, React uses explicit setState, Svelte uses compiler analysis.</td></tr>
+<tr><td><b>Virtual DOM</b></td><td>Vue and React use a JavaScript object to simulate the DOM tree, finding the minimal update by comparing new and old trees (Diff) to reduce real DOM operations.</td></tr>
+<tr><td><b>Componentization</b></td><td>Breaking the UI into independent, reusable small pieces, each component managing its own data and UI.</td></tr>
+<tr><td><b>Compile-time Optimization</b></td><td>Performing analysis and optimization in advance during the code build phase, reducing runtime computation. Svelte leads the way in this regard.</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>In one sentence</b>: The essential work of frontend frameworks is — taking over the "data to UI" synchronization process, letting developers only need to think about data logic, without needing to manually operate the UI.</span><span lang="en"><b>In one sentence</b>: The essential work of frontend frameworks is — taking over the "data to UI" synchronization process, letting developers only need to think about data logic, without needing to manually operate the UI.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Glossary</span><span lang="en">Glossary</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>English Term</th><th>Chinese Translation</th><th>Explanation</th></tr>
+<tr><td><b>Framework</b></td><td>框架</td><td>A set of pre-written code and rules that provides the foundational structure and common functionality for developers building applications.</td></tr>
+<tr><td><b>DOM</b></td><td>Document Object Model</td><td>The tree data structure generated after the browser parses HTML, which JavaScript manipulates to modify the page.</td></tr>
+<tr><td><b>Virtual DOM</b></td><td>Virtual DOM</td><td>Using JavaScript objects to simulate the DOM tree, finding the minimal update path through the Diff algorithm to reduce real DOM operations.</td></tr>
+<tr><td><b>State</b></td><td>State</td><td>Data in the application, such as user information, shopping cart contents, current page state, etc.</td></tr>
+<tr><td><b>Reactivity</b></td><td>Reactivity</td><td>When data changes, the system can automatically sense and execute corresponding UI update operations.</td></tr>
+<tr><td><b>Proxy</b></td><td>Proxy</td><td>A built-in JavaScript mechanism that can intercept read and write operations on an object. Vue 3 uses it to implement reactivity.</td></tr>
+<tr><td><b>Component</b></td><td>Component</td><td>An independent, reusable piece of UI code containing its own HTML structure, JavaScript logic, and CSS styles.</td></tr>
+<tr><td><b>Declarative</b></td><td>Declarative</td><td>A programming style: you describe "what final result you want," and the framework decides how to implement it.</td></tr>
+<tr><td><b>Imperative</b></td><td>Imperative</td><td>A programming style: you tell the program step by step "exactly what to do."</td></tr>
+<tr><td><b>Diff</b></td><td>Diffing</td><td>Comparing new and old Virtual DOM trees to find which nodes have changed.</td></tr>
+<tr><td><b>Patch</b></td><td>Patching</td><td>Applying the changes found by Diff to the real DOM.</td></tr>
+<tr><td><b>Compile-time</b></td><td>Compile-time</td><td>The period when code is processed during the build phase, before users open the web page.</td></tr>
+<tr><td><b>Runtime</b></td><td>Runtime</td><td>The period when code executes in the user's browser.</td></tr>
+<tr><td><b>Compiler</b></td><td>Compiler</td><td>A program that transforms source code into another form of code. Svelte's compiler transforms <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.svelte</code> files into efficient JavaScript.</td></tr>
+</table></div>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../3-browser-and-frontend/frontend-engineering/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">3-browser-and-frontend/frontend-engineering</span><span lang="en">3-browser-and-frontend/frontend-engineering</span></b></a>
+      <a class="next" href="../../3-browser-and-frontend/frontend-frameworks/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">3-browser-and-frontend/frontend-frameworks</span><span lang="en">3-browser-and-frontend/frontend-frameworks</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

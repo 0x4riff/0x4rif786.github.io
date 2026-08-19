@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Digital Circuit Basics: From Transistors to CPU — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Digital Circuit Basics: From Transistors to CPU. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/1-computer-fundamentals/transistor-to-cpu/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Digital Circuit Basics: From Transistors to CPU</span><span lang="en">Digital Circuit Basics: From Transistors to CPU</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Digital Circuit Basics: From Transistors to CPU</span><span lang="en">Digital Circuit Basics: From Transistors to CPU</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Digital Circuit Basics: From Transistors to CPU.</span><span lang="en">Ensiklopedia VibeKoding: Digital Circuit Basics: From Transistors to CPU.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>How does a computer "think"?</b> You probably know the CPU is the computer's "brain," but how does this brain actually work? How does it go from a pile of metal and plastic to a smart device that can execute programs and process data? This chapter takes you from the most fundamental transistors, step by step, to understand the principles behind CPU construction.</span><span lang="en"><b>How does a computer "think"?</b> You probably know the CPU is the computer's "brain," but how does this brain actually work? How does it go from a pile of metal and plastic to a smart device that can execute programs and process data? This chapter takes you from the most fundamental transistors, step by step, to understand the principles behind CPU construction.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn from this article?</b></span><span lang="en"><b>What will you learn from this article?</b></span></p>
+<p class="reveal"><span lang="id">After completing this chapter, you will gain:</span><span lang="en">After completing this chapter, you will gain:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Terminology understanding</b>: When hearing "CPU clock speed," "multi-core," or "instruction set," you won't be confused — you'll understand the physical principles behind them</span><span lang="en"><b>Terminology understanding</b>: When hearing "CPU clock speed," "multi-core," or "instruction set," you won't be confused — you'll understand the physical principles behind them</span></li>
+<li><span lang="id"><b>Code execution perspective</b>: See how a line of code goes through fetch, decode, execute, and write-back to ultimately become pixels on screen</span><span lang="en"><b>Code execution perspective</b>: See how a line of code goes through fetch, decode, execute, and write-back to ultimately become pixels on screen</span></li>
+<li><span lang="id"><b>Abstraction layer thinking</b>: Understand how each layer provides services to the layer above while hiding the complexity of the layer below</span><span lang="en"><b>Abstraction layer thinking</b>: Understand how each layer provides services to the layer above while hiding the complexity of the layer below</span></li>
+<li><span lang="id"><b>Foundation for further learning</b>: Build a foundation for computer architecture, embedded development, and performance optimization</span><span lang="en"><b>Foundation for further learning</b>: Build a foundation for computer architecture, embedded development, and performance optimization</span></li>
+</ul>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Core Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>Transistors</td><td>Switches of the digital world</td></tr>
+<tr><td><b>Chapter 2</b></td><td>Logic Gates</td><td>Physical implementation of Boolean operations</td></tr>
+<tr><td><b>Chapter 3</b></td><td>Functional Units</td><td>Adders, registers, multiplexers</td></tr>
+<tr><td><b>Chapter 4</b></td><td>CPU Core</td><td>Fetch, decode, execute, write-back</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. Big Picture: From Sand to Intelligence</span><span lang="en">0. Big Picture: From Sand to Intelligence</span></h2>
+<p class="reveal"><span lang="id">In exploring the底层 of computers, one fundamental question often arises: <b>where does the "thinking" ability of modern computers actually come from?</b></span><span lang="en">In exploring the底层 of computers, one fundamental question often arises: <b>where does the "thinking" ability of modern computers actually come from?</b></span></p>
+<p class="reveal"><span lang="id">If we peel away a computer's shiny casing, we typically see just a pile of metal, plastic, and silicon wafers. They have no life of their own, understand no mathematics, and know nothing of intelligence. But when electrical current flows through them, everything begins to operate. Ultimately, it all stems from one deceptively simple physical abstraction: <b>the switch</b>.</span><span lang="en">If we peel away a computer's shiny casing, we typically see just a pile of metal, plastic, and silicon wafers. They have no life of their own, understand no mathematics, and know nothing of intelligence. But when electrical current flows through them, everything begins to operate. Ultimately, it all stems from one deceptively simple physical abstraction: <b>the switch</b>.</span></p>
+<p class="reveal"><span lang="id">Imagine a switch that controls a light bulb. Press it and the light turns on, representing "1"; release it and the light turns off, representing "0." If we had billions of such switches and could make <b>the output of one switch control another switch</b>, thereby combining them into an incredibly complex logical network, what would happen?</span><span lang="en">Imagine a switch that controls a light bulb. Press it and the light turns on, representing "1"; release it and the light turns off, representing "0." If we had billions of such switches and could make <b>the output of one switch control another switch</b>, thereby combining them into an incredibly complex logical network, what would happen?</span></p>
+<p class="reveal"><span lang="id">The answer is a universal computing platform capable of executing arbitrary logic. The key to understanding computer systems lies in "abstraction." Like building blocks, we control underlying complexity through layered encapsulation. Here are the four core levels from sand to intelligence:</span><span lang="en">The answer is a universal computing platform capable of executing arbitrary logic. The key to understanding computer systems lies in "abstraction." Like building blocks, we control underlying complexity through layered encapsulation. Here are the four core levels from sand to intelligence:</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Layer 1: Transistors (tens of billions)</b>
+  These are the底层 "switches." Modern CPUs primarily use MOSFETs (Metal-Oxide-Semiconductor Field-Effect Transistors). Applying voltage to the gate allows current to flow between source and drain. This is the physical starting point of "using electricity to control electricity." The core problem it solves: <b>how to use one electrical signal to control another electrical signal?</b>
+
+- <b>Layer 2: Logic Gates (billions)</b>
+  When we connect specific transistors in series or parallel, a remarkable transformation occurs — circuits become mathematics. For example, an AND gate requires both inputs to be 1 for the output to be 1. This constitutes a mapping of Boolean algebra onto physical circuits. The core problem it solves: <b>how to transform physical on/off states into logical operations based on 0s and 1s?</b>
+
+- <b>Layer 3: Functional Units (hundreds)</b>
+  By assembling basic logic gates, we can build computing modules with specific purposes. Adders handle arithmetic, multiplexers control data flow, and registers give circuits the ability to remember. The core problem it solves: <b>how to construct machines capable of performing addition calculations and remembering states?</b>
+
+- <b>Layer 4: CPU Core (1-128 cores)</b>
+  This is the command center of the entire microarchitecture. When you write a line of code, the various components inside the CPU work in coordination billions of times per second, executing the entire process of fetch, decode, execute, and write-back. The core problem it solves: <b>how to make all modules work in unison to automatically execute a specified program sequence?</b></span><span lang="en">- <b>Layer 1: Transistors (tens of billions)</b>
+  These are the底层 "switches." Modern CPUs primarily use MOSFETs (Metal-Oxide-Semiconductor Field-Effect Transistors). Applying voltage to the gate allows current to flow between source and drain. This is the physical starting point of "using electricity to control electricity." The core problem it solves: <b>how to use one electrical signal to control another electrical signal?</b>
+
+- <b>Layer 2: Logic Gates (billions)</b>
+  When we connect specific transistors in series or parallel, a remarkable transformation occurs — circuits become mathematics. For example, an AND gate requires both inputs to be 1 for the output to be 1. This constitutes a mapping of Boolean algebra onto physical circuits. The core problem it solves: <b>how to transform physical on/off states into logical operations based on 0s and 1s?</b>
+
+- <b>Layer 3: Functional Units (hundreds)</b>
+  By assembling basic logic gates, we can build computing modules with specific purposes. Adders handle arithmetic, multiplexers control data flow, and registers give circuits the ability to remember. The core problem it solves: <b>how to construct machines capable of performing addition calculations and remembering states?</b>
+
+- <b>Layer 4: CPU Core (1-128 cores)</b>
+  This is the command center of the entire microarchitecture. When you write a line of code, the various components inside the CPU work in coordination billions of times per second, executing the entire process of fetch, decode, execute, and write-back. The core problem it solves: <b>how to make all modules work in unison to automatically execute a specified program sequence?</b></span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Transistors: Switches of the Digital World</span><span lang="en">1. Transistors: Switches of the Digital World</span></h2>
+<p class="reveal"><span lang="id">Let's start from the microscopic world. The component below demonstrates the basic principles of a transistor. Try operating it and observe how current flows:</span><span lang="en">Let's start from the microscopic world. The component below demonstrates the basic principles of a transistor. Try operating it and observe how current flows:</span></p>
+<p class="reveal"><span lang="id"><TransistorDemo /></span><span lang="en"><TransistorDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 Transistor Overview</span><span lang="en">1.1 Transistor Overview</span></h3>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">In engineering, a <b>transistor</b> is a semiconductor device that changed the course of human history. In the context of digital circuits, we can directly abstract it as a perfect "switch."
+
+Why do we need transistors? Think of a water faucet in daily life. You turn the valve with your hand, and water flows out. <b>A transistor is essentially a nanoscale water faucet:</b>
+- The <b>source</b> and <b>drain</b> are like the two ends of a water pipe.
+- The <b>gate</b> is the valve that controls the water flow.
+
+The key difference is: we don't turn the switch by hand, but with <b>voltage signals</b>. When one switch can be controlled by electrical signals produced by another switch, we've crossed the enormous chasm from "manual intervention" to "automatic computation."</span><span lang="en">In engineering, a <b>transistor</b> is a semiconductor device that changed the course of human history. In the context of digital circuits, we can directly abstract it as a perfect "switch."
+
+Why do we need transistors? Think of a water faucet in daily life. You turn the valve with your hand, and water flows out. <b>A transistor is essentially a nanoscale water faucet:</b>
+- The <b>source</b> and <b>drain</b> are like the two ends of a water pipe.
+- The <b>gate</b> is the valve that controls the water flow.
+
+The key difference is: we don't turn the switch by hand, but with <b>voltage signals</b>. When one switch can be controlled by electrical signals produced by another switch, we've crossed the enormous chasm from "manual intervention" to "automatic computation."</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 Representing Binary with Transistors</span><span lang="en">1.2 Representing Binary with Transistors</span></h3>
+<p class="reveal"><span lang="id">You might ask: what does the computer's so-called "only understanding 0s and 1s" actually look like in the physical world? Are there really tiny 0s and 1s flowing through chips?</span><span lang="en">You might ask: what does the computer's so-called "only understanding 0s and 1s" actually look like in the physical world? Are there really tiny 0s and 1s flowing through chips?</span></p>
+<p class="reveal"><span lang="id">Of course not. It all relies on human-defined <b>abstraction conventions</b>. We abandon the obsession with continuous analog signals and set two extreme thresholds:</span><span lang="en">Of course not. It all relies on human-defined <b>abstraction conventions</b>. We abandon the obsession with continuous analog signals and set two extreme thresholds:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">We define <b>high voltage (e.g., 3.3V or 1.0V)</b> as logical <b>1</b> (True).</span><span lang="en">We define <b>high voltage (e.g., 3.3V or 1.0V)</b> as logical <b>1</b> (True).</span></li>
+<li><span lang="id">We define <b>low voltage (near 0V)</b> as logical <b>0</b> (False).</span><span lang="en">We define <b>low voltage (near 0V)</b> as logical <b>0</b> (False).</span></li>
+</ul>
+<p class="reveal"><span lang="id">This is the so-called digital abstraction: we take the noisy analog world and cleanly slice it into crisp 0s and 1s. When the gate receives high voltage, the transistor conducts — the switch is closed; when the gate receives low voltage, the switch opens.</span><span lang="en">This is the so-called digital abstraction: we take the noisy analog world and cleanly slice it into crisp 0s and 1s. When the gate receives high voltage, the transistor conducts — the switch is closed; when the gate receives low voltage, the switch opens.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.3 The Evolution of Transistor Counts</span><span lang="en">1.3 The Evolution of Transistor Counts</span></h3>
+<p class="reveal"><span lang="id">A single transistor can only control on/off, which seems incredibly insignificant. But what if we combine billions of such switches? Look at the table below reflecting Moore's Law to understand the development of modern chips.</span><span lang="en">A single transistor can only control on/off, which seems incredibly insignificant. But what if we combine billions of such switches? Look at the table below reflecting Moore's Law to understand the development of modern chips.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Milestone</th><th>Processor Chip</th><th>Transistor Count</th><th>Process Node</th><th>Historical Significance</th></tr>
+<tr><td>1971</td><td>Intel 4004</td><td>2,300</td><td>10μm</td><td>Dawn of the microprocessor</td></tr>
+<tr><td>1993</td><td>Intel Pentium</td><td>3.1 million</td><td>800nm</td><td>PCs become universal</td></tr>
+<tr><td>2006</td><td>Intel Core 2 Duo</td><td>291 million</td><td>65nm</td><td>Multi-core architecture goes mainstream</td></tr>
+<tr><td>2020</td><td>Apple M1</td><td>16 billion</td><td>5nm</td><td>Mobile architecture revolution feeds back to desktop</td></tr>
+<tr><td>2023</td><td>Apple M3 Max</td><td>92 billion</td><td>3nm</td><td>Approaching the physical limits of atoms</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">> <b>Deep dive: What is "3nm"?</b></span><span lang="en">> <b>Deep dive: What is "3nm"?</b></span></p>
+<p class="reveal"><span lang="id">> When we hear about 5nm or 3nm in the news, imagine how incredibly tiny that is. A silicon atom has a diameter of about 0.2 nanometers. So at the 3nm process node, the most critical structures of a transistor are only a few dozen atoms wide! This means we're building humanity's largest computing fortresses at the very edge of where quantum mechanics takes effect.</span><span lang="en">> When we hear about 5nm or 3nm in the news, imagine how incredibly tiny that is. A silicon atom has a diameter of about 0.2 nanometers. So at the 3nm process node, the most critical structures of a transistor are only a few dozen atoms wide! This means we're building humanity's largest computing fortresses at the very edge of where quantum mechanics takes effect.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Logic Gates: Computing with Switches</span><span lang="en">2. Logic Gates: Computing with Switches</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 From Transistors to Logic Gates</span><span lang="en">2.1 From Transistors to Logic Gates</span></h3>
+<p class="reveal"><span lang="id">As mentioned earlier, a single transistor is just a simple control over current flow. But when you arrange multiple transistors in specific patterns, physics transforms into mathematical logic. In this new dimension, we no longer talk about cumbersome voltages and currents, but directly about pure logical "true" (1) and "false" (0).</span><span lang="en">As mentioned earlier, a single transistor is just a simple control over current flow. But when you arrange multiple transistors in specific patterns, physics transforms into mathematical logic. In this new dimension, we no longer talk about cumbersome voltages and currents, but directly about pure logical "true" (1) and "false" (0).</span></p>
+<p class="reveal"><span lang="id">Please experience the effect of combining switches through the logic gate demo below:</span><span lang="en">Please experience the effect of combining switches through the logic gate demo below:</span></p>
+<p class="reveal"><span lang="id"><LogicGateDemo /></span><span lang="en"><LogicGateDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Basic Logic Gates</span><span lang="en">2.2 Basic Logic Gates</span></h3>
+<p class="reveal"><span lang="id">In our computer architecture, there are several fundamental logic gates. All supercomputers are built from these building blocks:</span><span lang="en">In our computer architecture, there are several fundamental logic gates. All supercomputers are built from these building blocks:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>AND Gate</b>:</span><span lang="en"><b>AND Gate</b>:</span></li>
+<li><span lang="id"><b>Rule</b>: Output is 1 only when all inputs are 1.</span><span lang="en"><b>Rule</b>: Output is 1 only when all inputs are 1.</span></li>
+<li><span lang="id"><b>Intuitive understanding</b>: Connect two transistors <b>in series</b>. Current can only pass through if both barriers are opened simultaneously. Like opening a bank vault — both the manager and supervisor must insert their keys at the same time.</span><span lang="en"><b>Intuitive understanding</b>: Connect two transistors <b>in series</b>. Current can only pass through if both barriers are opened simultaneously. Like opening a bank vault — both the manager and supervisor must insert their keys at the same time.</span></li>
+</ul>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>OR Gate</b>:</span><span lang="en"><b>OR Gate</b>:</span></li>
+<li><span lang="id"><b>Rule</b>: Output is 1 if at least one input is 1.</span><span lang="en"><b>Rule</b>: Output is 1 if at least one input is 1.</span></li>
+<li><span lang="id"><b>Intuitive understanding</b>: Connect two transistors <b>in parallel</b>. With multiple parallel channels, as long as one path is open, current can flow through.</span><span lang="en"><b>Intuitive understanding</b>: Connect two transistors <b>in parallel</b>. With multiple parallel channels, as long as one path is open, current can flow through.</span></li>
+</ul>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>NOT Gate (Inverter)</b>:</span><span lang="en"><b>NOT Gate (Inverter)</b>:</span></li>
+<li><span lang="id"><b>Rule</b>: Input 1 always outputs 0; input 0 always outputs 1.</span><span lang="en"><b>Rule</b>: Input 1 always outputs 0; input 0 always outputs 1.</span></li>
+<li><span lang="id"><b>Intuitive understanding</b>: A gate specifically designed to flip states, also a key defense line frequently used in circuit design for signal shaping.</span><span lang="en"><b>Intuitive understanding</b>: A gate specifically designed to flip states, also a key defense line frequently used in circuit design for signal shaping.</span></li>
+</ul>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>XOR Gate (Exclusive OR)</b>:</span><span lang="en"><b>XOR Gate (Exclusive OR)</b>:</span></li>
+<li><span lang="id"><b>Rule</b>: Output is exactly 1 when the two inputs are <b>different</b>.</span><span lang="en"><b>Rule</b>: Output is exactly 1 when the two inputs are <b>different</b>.</span></li>
+<li><span lang="id"><b>Intuitive understanding</b>: You can think of it as a precision machine for "detecting differences." This is our secret weapon for performing binary addition in circuits.</span><span lang="en"><b>Intuitive understanding</b>: You can think of it as a precision machine for "detecting differences." This is our secret weapon for performing binary addition in circuits.</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 Implementing Addition with Logic Gates</span><span lang="en">2.3 Implementing Addition with Logic Gates</span></h3>
+<p class="reveal"><span lang="id">If the logic gates introduced above can only perform simple conditional judgments, how does a computer actually do mathematical operations?</span><span lang="en">If the logic gates introduced above can only perform simple conditional judgments, how does a computer actually do mathematical operations?</span></p>
+<p class="reveal"><span lang="id"><BinaryAdditionRulesDemo /></span><span lang="en"><BinaryAdditionRulesDemo /></span></p>
+<p class="reveal"><span lang="id">Therefore, by combining an XOR gate (responsible for computing the current bit) and an AND gate (responsible for computing the carry), we get a circuit that can perform single-digit addition. This is the most basic <b>half adder</b>.</span><span lang="en">Therefore, by combining an XOR gate (responsible for computing the current bit) and an AND gate (responsible for computing the carry), we get a circuit that can perform single-digit addition. This is the most basic <b>half adder</b>.</span></p>
+<p class="reveal"><span lang="id"><HalfAdderDemo /></span><span lang="en"><HalfAdderDemo /></span></p>
+<p class="reveal"><span lang="id">But the half adder has a fatal flaw: physically, it <b>has only two input ports (A and B)</b>.</span><span lang="en">But the half adder has a fatal flaw: physically, it <b>has only two input ports (A and B)</b>.</span></p>
+<p class="reveal"><span lang="id">Imagine performing decimal column addition (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">19 + 22</code>):</span><span lang="en">Imagine performing decimal column addition (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">19 + 22</code>):</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Ones digit</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">9 + 2 = 11</code>. Only two numbers need to be added; write <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1</code>, carry <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1</code>. This is exactly two inputs — a half adder handles it perfectly.</span><span lang="en"><b>Ones digit</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">9 + 2 = 11</code>. Only two numbers need to be added; write <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1</code>, carry <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1</code>. This is exactly two inputs — a half adder handles it perfectly.</span></li>
+<li><span lang="id"><b>Tens digit</b>: Not only do we need to compute <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1 + 2</code>, but we also need to <b>add the "carry 1" passed from the ones digit</b> (i.e., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1 + 2 + 1 = 4</code>). This means in multi-digit addition, except for the rightmost digit, all other digits are actually adding <b>three numbers</b> together!</span><span lang="en"><b>Tens digit</b>: Not only do we need to compute <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1 + 2</code>, but we also need to <b>add the "carry 1" passed from the ones digit</b> (i.e., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1 + 2 + 1 = 4</code>). This means in multi-digit addition, except for the rightmost digit, all other digits are actually adding <b>three numbers</b> together!</span></li>
+</ul>
+<p class="reveal"><span lang="id">Because the half adder has no third input port to accept the "carry-in from the lower digit," it can't be used for any digit except the rightmost one. To solve this problem, we need a <b>full adder</b> that can accept three signals:</span><span lang="en">Because the half adder has no third input port to accept the "carry-in from the lower digit," it can't be used for any digit except the rightmost one. To solve this problem, we need a <b>full adder</b> that can accept three signals:</span></p>
+<p class="reveal"><span lang="id"><FullAdderDemo /></span><span lang="en"><FullAdderDemo /></span></p>
+<p class="reveal"><span lang="id">By cascading multiple full adders, multi-digit addition can be accomplished:</span><span lang="en">By cascading multiple full adders, multi-digit addition can be accomplished:</span></p>
+<p class="reveal"><span lang="id"><AdderChainDemo /></span><span lang="en"><AdderChainDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">To handle more complex numbers in the real world, adders need to be assembled like building blocks:
+
+1. <b>Half Adder</b>: It can handle adding two single-digit numbers (the combination of XOR and AND gates described above). It computes the sum and carry bits but can't accept a carry-in from a lower position.
+
+2. <b>Full Adder</b>: In multi-digit calculations, intermediate digits need to add A and B together plus handle the carry-in from the lower position. Incorporating the lower carry into the logic creates a full adder.
+
+3. <b>Ripple Carry Adder</b>: To handle 32-bit or 64-bit numbers, simply cascade dozens of full adders together. The carry signal ripples from the lower bits to the higher bits like a wave, completing addition of any size.</span><span lang="en">To handle more complex numbers in the real world, adders need to be assembled like building blocks:
+
+1. <b>Half Adder</b>: It can handle adding two single-digit numbers (the combination of XOR and AND gates described above). It computes the sum and carry bits but can't accept a carry-in from a lower position.
+
+2. <b>Full Adder</b>: In multi-digit calculations, intermediate digits need to add A and B together plus handle the carry-in from the lower position. Incorporating the lower carry into the logic creates a full adder.
+
+3. <b>Ripple Carry Adder</b>: To handle 32-bit or 64-bit numbers, simply cascade dozens of full adders together. The carry signal ripples from the lower bits to the higher bits like a wave, completing addition of any size.</span></p>
+</div>
+<p class="reveal"><span lang="id">Want to understand the complete process from logic gates to multi-digit addition all at once? Try this comprehensive demo:</span><span lang="en">Want to understand the complete process from logic gates to multi-digit addition all at once? Try this comprehensive demo:</span></p>
+<p class="reveal"><span lang="id"><CompleteAdderDemo /></span><span lang="en"><CompleteAdderDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Functional Units: Combining Logic Gates</span><span lang="en">3. Functional Units: Combining Logic Gates</span></h2>
+<p class="reveal"><span lang="id">Now, with our building blocks made of logic gates in hand, we can leap to a higher level of abstraction. Computing addition alone is not enough. We package groups of logic gates and assemble them into modules with specific functions. These modules are collectively called <b>functional units</b>.</span><span lang="en">Now, with our building blocks made of logic gates in hand, we can leap to a higher level of abstraction. Computing addition alone is not enough. We package groups of logic gates and assemble them into modules with specific functions. These modules are collectively called <b>functional units</b>.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Common Functional Modules</span><span lang="en">3.1 Common Functional Modules</span></h3>
+<p class="reveal"><span lang="id">When designing a CPU, there are time-tested classic prefabricated modules:</span><span lang="en">When designing a CPU, there are time-tested classic prefabricated modules:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Module</th><th>Core Mission</th><th>Internal Logic Nature</th><th>Real-life Analogy</th></tr>
+<tr><td><b>Adder</b></td><td>Engine for all types of arithmetic operations</td><td>High-level bit-wise cascading of full adders</td><td>A tireless abacus</td></tr>
+<tr><td><b>Multiplexer (MUX)</b></td><td>Controls data flow paths, implementing one-of-many selection</td><td>Cleverly combines AND gates as switches, OR gates for aggregation</td><td>Precision railroad switch</td></tr>
+<tr><td><b>Decoder</b></td><td>Decodes and translates external binary instructions</td><td>Gate arrays that precisely light up specific outputs based on input states</td><td>Code-breaking translator</td></tr>
+<tr><td><b>Flip-Flop</b></td><td>Breaks through the ephemeral nature of electrical signals to record history</td><td>Subtle cross-feedback loops forming bistable modes</td><td>A seesaw that holds its state</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">To intuitively experience how these functional units work, you can operate the component below to view the internal logic of a <b>multiplexer</b> and a <b>decoder</b>:</span><span lang="en">To intuitively experience how these functional units work, you can operate the component below to view the internal logic of a <b>multiplexer</b> and a <b>decoder</b>:</span></p>
+<p class="reveal"><span lang="id"><FunctionalUnitDemo /></span><span lang="en"><FunctionalUnitDemo /></span></p>
+<p class="reveal"><span lang="id">Please explore the most fascinating part through the component below — <b>how memory emerges from nothing</b>:</span><span lang="en">Please explore the most fascinating part through the component below — <b>how memory emerges from nothing</b>:</span></p>
+<p class="reveal"><span lang="id"><RegisterDemo /></span><span lang="en"><RegisterDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Registers: Data Storage Units</span><span lang="en">3.2 Registers: Data Storage Units</span></h3>
+<p class="reveal"><span lang="id">Beyond computation, computers also need the ability to remember data long-term or temporarily. If a computer loses memory of the previous second during computation, no complex calculation is possible. The computer must have some means of preserving past states. This ability primarily relies on a circuit structure called a <b>flip-flop</b>.</span><span lang="en">Beyond computation, computers also need the ability to remember data long-term or temporarily. If a computer loses memory of the previous second during computation, no complex calculation is possible. The computer must have some means of preserving past states. This ability primarily relies on a circuit structure called a <b>flip-flop</b>.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">In most logic circuits, signal flow is forward (feedforward). To produce sustained "memory," early pioneers came up with a brilliant design: feed the output signal back to the input.
+
+It's like an ingeniously balanced seesaw with two stable resting points. Without external disturbance, thanks to its closed-loop design, it permanently stays in either the "left-high-right-low" state (e.g., representing 0) or the opposite state (representing 1). Even fleeting state changes get permanently "locked in" by the closed loop.
+
+When we arrange 32 or 64 of these flip-flops in a neat row and apply a unified, powerful clock frequency signal to command them to act in unison, a <b>register</b> is born. It resides at the heart of the CPU system, serving as ultra-fast "scratch paper" that silently safeguards every one of your critical real-time variables.</span><span lang="en">In most logic circuits, signal flow is forward (feedforward). To produce sustained "memory," early pioneers came up with a brilliant design: feed the output signal back to the input.
+
+It's like an ingeniously balanced seesaw with two stable resting points. Without external disturbance, thanks to its closed-loop design, it permanently stays in either the "left-high-right-low" state (e.g., representing 0) or the opposite state (representing 1). Even fleeting state changes get permanently "locked in" by the closed loop.
+
+When we arrange 32 or 64 of these flip-flops in a neat row and apply a unified, powerful clock frequency signal to command them to act in unison, a <b>register</b> is born. It resides at the heart of the CPU system, serving as ultra-fast "scratch paper" that silently safeguards every one of your critical real-time variables.</span></p>
+</div>
+<p class="reveal"><span lang="id">Please experience the process of breaking and restoring the closed loop through the interactive demo below:</span><span lang="en">Please experience the process of breaking and restoring the closed loop through the interactive demo below:</span></p>
+<p class="reveal"><span lang="id"><FlipFlopDemo /></span><span lang="en"><FlipFlopDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. CPU Architecture: From Functional Units to Processor</span><span lang="en">4. CPU Architecture: From Functional Units to Processor</span></h2>
+<p class="reveal"><span lang="id">With various computing modules and memory components designed, it's now time for the core integration phase. How do we combine these modules to make them into a central processing unit (CPU) that can automatically execute instructions?</span><span lang="en">With various computing modules and memory components designed, it's now time for the core integration phase. How do we combine these modules to make them into a central processing unit (CPU) that can automatically execute instructions?</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Core CPU Components</span><span lang="en">4.1 Core CPU Components</span></h3>
+<p class="reveal"><span lang="id">If we view the CPU as a machine with clear division of labor, each unit has its irreplaceable position:</span><span lang="en">If we view the CPU as a machine with clear division of labor, each unit has its irreplaceable position:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Arithmetic Logic Unit (ALU)</b>: The "worker" unit responsible for executing addition, subtraction, multiplication, division, and various logical operations.</span><span lang="en"><b>Arithmetic Logic Unit (ALU)</b>: The "worker" unit responsible for executing addition, subtraction, multiplication, division, and various logical operations.</span></li>
+<li><span lang="id"><b>Register File</b>: Temporary drawers on the workbench — very small capacity but extremely fast, used for storing urgent parameters currently being computed.</span><span lang="en"><b>Register File</b>: Temporary drawers on the workbench — very small capacity but extremely fast, used for storing urgent parameters currently being computed.</span></li>
+<li><span lang="id"><b>Internal Bus</b>: The conveyor belt within the system, responsible for transporting data and signals between modules.</span><span lang="en"><b>Internal Bus</b>: The conveyor belt within the system, responsible for transporting data and signals between modules.</span></li>
+<li><span lang="id"><b>Control Unit</b>: The commander-in-chief. Its mission is to read instructions composed of 0s and 1s from memory, parse what should be done, and transmit specific control signals to other modules, directing them to perform their duties.</span><span lang="en"><b>Control Unit</b>: The commander-in-chief. Its mission is to read instructions composed of 0s and 1s from memory, parse what should be done, and transmit specific control signals to other modules, directing them to perform their duties.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><MinCpuDemo /></span><span lang="en"><MinCpuDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 CPU Instruction Execution Flow</span><span lang="en">4.2 CPU Instruction Execution Flow</span></h3>
+<p class="reveal"><span lang="id">No matter how complex the high-level programming language you write, it ultimately becomes a series of底层 instructions in memory. The process of executing any instruction essentially repeats these four typical steps:</span><span lang="en">No matter how complex the high-level programming language you write, it ultimately becomes a series of底层 instructions in memory. The process of executing any instruction essentially repeats these four typical steps:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Fetch</b>: Following the current program execution cursor address, reach into the relatively slow cache and forcefully pull the next binary "instruction" into the core.</span><span lang="en"><b>Fetch</b>: Following the current program execution cursor address, reach into the relatively slow cache and forcefully pull the next binary "instruction" into the core.</span></li>
+<li><span lang="id"><b>Decode</b>: The command brain immediately analyzes: is this command asking me to move memory, or to call the adder for a computation? Immediately connect and activate the required circuits.</span><span lang="en"><b>Decode</b>: The command brain immediately analyzes: is this command asking me to move memory, or to call the adder for a computation? Immediately connect and activate the required circuits.</span></li>
+<li><span lang="id"><b>Execute</b>: The instruction dispatch reaches a workshop like the ALU. The machines roar into action, going all out for hardcore logical operations.</span><span lang="en"><b>Execute</b>: The instruction dispatch reaches a workshop like the ALU. The machines roar into action, going all out for hardcore logical operations.</span></li>
+<li><span lang="id"><b>Write Back</b>: The moment of crystallization — carefully write the newly obtained answer to a specific register or back to the broader memory.</span><span lang="en"><b>Write Back</b>: The moment of crystallization — carefully write the newly obtained answer to a specific register or back to the broader memory.</span></li>
+</ul>
+<p class="reveal"><span lang="id">Click "Clock Pulse" below to observe how instructions are decomposed and executed step by step in this cycle, and which hardware modules are involved:</span><span lang="en">Click "Clock Pulse" below to observe how instructions are decomposed and executed step by step in this cycle, and which hardware modules are involved:</span></p>
+<p class="reveal"><span lang="id"><CpuArchitectureDemo /></span><span lang="en"><CpuArchitectureDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">If we had to wait for one instruction to complete all four steps before starting the next, efficiency would clearly be too low.
+
+Just like a factory assembly line, chip engineers introduced <b>instruction pipelining</b>. This means when the first circuit section is "executing" instruction A, the preceding circuits aren't idle — they're "decoding" instruction B, or even "fetching" instruction C in advance. Through this parallel overlapping approach, CPU execution efficiency is greatly improved.</span><span lang="en">If we had to wait for one instruction to complete all four steps before starting the next, efficiency would clearly be too low.
+
+Just like a factory assembly line, chip engineers introduced <b>instruction pipelining</b>. This means when the first circuit section is "executing" instruction A, the preceding circuits aren't idle — they're "decoding" instruction B, or even "fetching" instruction C in advance. Through this parallel overlapping approach, CPU execution efficiency is greatly improved.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Summary: Crossing Abstraction Layers</span><span lang="en">5. Summary: Crossing Abstraction Layers</span></h2>
+<p class="reveal"><span lang="id">Looking back on this journey, we've experienced the most core layers of abstraction in computer architecture. This is the complete path from底层 physical materials to a universal computing platform:</span><span lang="en">Looking back on this journey, we've experienced the most core layers of abstraction in computer architecture. This is the complete path from底层 physical materials to a universal computing platform:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Macroscopic physics: Sand (silicon dioxide crystals)</b></span><span lang="en"><b>Macroscopic physics: Sand (silicon dioxide crystals)</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">→ <i>After human smelting, slicing, toxic gas etching, and other demanding processes</i></span><span lang="en">→ <i>After human smelting, slicing, toxic gas etching, and other demanding processes</i></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Microscopic physics: Massive arrays of transistor switches</b> (using micro-electricity to control micro-electricity)</span><span lang="en"><b>Microscopic physics: Massive arrays of transistor switches</b> (using micro-electricity to control micro-electricity)</span></li>
+</ul>
+<p class="reveal"><span lang="id">→ <i>After sleepless wiring by engineering masters, achieving astonishing digital abstraction constraints</i></span><span lang="en">→ <i>After sleepless wiring by engineering masters, achieving astonishing digital abstraction constraints</i></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Digital algebra: AND / OR / NOT logic gate systems</b></span><span lang="en"><b>Digital algebra: AND / OR / NOT logic gate systems</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">→ <i>Ruthlessly eliminating errors, deriving basic behaviors from perfect truth tables</i></span><span lang="en">→ <i>Ruthlessly eliminating errors, deriving basic behaviors from perfect truth tables</i></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Microarchitecture modules: Functional unit building block sets (adders and other components)</b></span><span lang="en"><b>Microarchitecture modules: Functional unit building block sets (adders and other components)</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">→ <i>Adding system life rhythms and memory characteristics, evolving into complete functional bodies</i></span><span lang="en">→ <i>Adding system life rhythms and memory characteristics, evolving into complete functional bodies</i></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Complex system architecture: Vast and exquisite CPU combined arrays</b></span><span lang="en"><b>Complex system architecture: Vast and exquisite CPU combined arrays</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">→ <i>Opening the door to the virtual application world for developers worldwide</i></span><span lang="en">→ <i>Opening the door to the virtual application world for developers worldwide</i></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Millions of application kingdoms: Algorithms, system-level software, and the blooming internet universe</b></span><span lang="en"><b>Millions of application kingdoms: Algorithms, system-level software, and the blooming internet universe</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">The most fascinating aspect of computer science is that <b>each layer of encapsulation perfectly hides the complex details of the layer below.</b> As a software developer, when you write <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">salary = base + bonus</code>, you don't need to think about electron drift or current flow inside half adders. Similarly, chip hardware designers don't need to worry about what software their chip will run in the future.</span><span lang="en">The most fascinating aspect of computer science is that <b>each layer of encapsulation perfectly hides the complex details of the layer below.</b> As a software developer, when you write <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">salary = base + bonus</code>, you don't need to think about electron drift or current flow inside half adders. Similarly, chip hardware designers don't need to worry about what software their chip will run in the future.</span></p>
+<p class="reveal"><span lang="id">It is this extreme layer decoupling and highly independent black-box encapsulation that together nurtured and paved the way for the carnival of modern technology.</span><span lang="en">It is this extreme layer decoupling and highly independent black-box encapsulation that together nurtured and paved the way for the carnival of modern technology.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Ultimately, so-called computing power is nothing more than the transformation of massive switch reconfigurations within a confined space; accompanied by the rhythm of the clock, completing complex computations on this tiny silicon chip.</b>
+
+"Quantitative change ultimately triggers a qualitative leap" — this phrase is continuously validated in computer architecture. When we tap our keyboards and gaze at our screens, we can try to imagine: deep within the incredibly microscopic silicon substrate, billions of tiny transistors are at this very moment straining to perform precise coordination in the flash of electric light. This is perhaps the most unique beauty of computer science.</span><span lang="en"><b>Ultimately, so-called computing power is nothing more than the transformation of massive switch reconfigurations within a confined space; accompanied by the rhythm of the clock, completing complex computations on this tiny silicon chip.</b>
+
+"Quantitative change ultimately triggers a qualitative leap" — this phrase is continuously validated in computer architecture. When we tap our keyboards and gaze at our screens, we can try to imagine: deep within the incredibly microscopic silicon substrate, billions of tiny transistors are at this very moment straining to perform precise coordination in the flash of electric light. This is perhaps the most unique beauty of computer science.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<p class="reveal"><span lang="id">If you're full of curiosity about底层 technology, you can explore the following directions:</span><span lang="en">If you're full of curiosity about底层 technology, you can explore the following directions:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Classic textbook</b>: <i>Computer Organization and Design (The Hardware/Software Interface)</i> is an excellent reference for studying architecture in depth.</span><span lang="en"><b>Classic textbook</b>: <i>Computer Organization and Design (The Hardware/Software Interface)</i> is an excellent reference for studying architecture in depth.</span></li>
+<li><span lang="id"><b>Digital logic simulation</b>: Try using logic simulation software or basic components to build a simple 8-bit adder or simulator hands-on.</span><span lang="en"><b>Digital logic simulation</b>: Try using logic simulation software or basic components to build a simple 8-bit adder or simulator hands-on.</span></li>
+<li><span lang="id"><b>Architecture frontiers</b>: Learn about how multi-level caches mitigate the "memory wall" problem, the principles of out-of-order instruction execution, and GPU's special computing mechanisms.</span><span lang="en"><b>Architecture frontiers</b>: Learn about how multi-level caches mitigate the "memory wall" problem, the principles of out-of-order instruction execution, and GPU's special computing mechanisms.</span></li>
+<li><span lang="id"><b>Low-level and assembly language</b>: Try learning some basic assembly language to understand how high-level languages are ultimately transformed into hexadecimal instructions executable by machines.</span><span lang="en"><b>Low-level and assembly language</b>: Try learning some basic assembly language to understand how high-level languages are ultimately transformed into hexadecimal instructions executable by machines.</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../1-computer-fundamentals/programming-languages/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">1-computer-fundamentals/programming-languages</span><span lang="en">1-computer-fundamentals/programming-languages</span></b></a>
+      <a class="next" href="../../1-computer-fundamentals/type-systems/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">1-computer-fundamentals/type-systems</span><span lang="en">1-computer-fundamentals/type-systems</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

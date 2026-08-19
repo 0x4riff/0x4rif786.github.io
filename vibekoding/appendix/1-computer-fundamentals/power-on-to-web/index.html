@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Computer System Overview: From Boot to Web Visit — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Computer System Overview: From Boot to Web Visit. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/1-computer-fundamentals/power-on-to-web/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Computer System Overview: From Boot to Web Visit</span><span lang="en">Computer System Overview: From Boot to Web Visit</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Computer System Overview: From Boot to Web Visit</span><span lang="en">Computer System Overview: From Boot to Web Visit</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Computer System Overview: From Boot to Web Visit.</span><span lang="en">Ensiklopedia VibeKoding: Computer System Overview: From Boot to Web Visit.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Have you ever wondered what happens between pressing your computer's power button and finally seeing a webpage in your browser?
+
+This process is like a <b>relay race</b> — hardware powers up and wakes the firmware, the firmware finishes checking and passes the baton to the operating system, the OS prepares the environment so the browser can run, and the browser reaches across the network to retrieve a webpage from a distant server. Every step <b>depends on the successful completion of the previous one</b>. If any runner drops the baton, subsequent steps cannot proceed.
+
+Understanding this complete chain will help you build a holistic understanding of computer systems and is an essential step on the path to becoming a full-stack engineer.</span><span lang="en">Have you ever wondered what happens between pressing your computer's power button and finally seeing a webpage in your browser?
+
+This process is like a <b>relay race</b> — hardware powers up and wakes the firmware, the firmware finishes checking and passes the baton to the operating system, the OS prepares the environment so the browser can run, and the browser reaches across the network to retrieve a webpage from a distant server. Every step <b>depends on the successful completion of the previous one</b>. If any runner drops the baton, subsequent steps cannot proceed.
+
+Understanding this complete chain will help you build a holistic understanding of computer systems and is an essential step on the path to becoming a full-stack engineer.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn?</b></span><span lang="en"><b>What will you learn?</b></span></p>
+<p class="reveal"><span lang="id">This article guides you through the five stages from pressing the power button to seeing a webpage, in the actual order events occur:</span><span lang="en">This article guides you through the five stages from pressing the power button to seeing a webpage, in the actual order events occur:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Hardware Boot</b> (Section 1) → How current wakes the CPU</span><span lang="en"><b>Hardware Boot</b> (Section 1) → How current wakes the CPU</span></li>
+<li><span lang="id"><b>Firmware Self-Test</b> (Section 2) → How BIOS/UEFI confirms hardware is normal and finds the boot device</span><span lang="en"><b>Firmware Self-Test</b> (Section 2) → How BIOS/UEFI confirms hardware is normal and finds the boot device</span></li>
+<li><span lang="id"><b>OS Boot</b> (Section 3) → How the kernel loads and the desktop appears</span><span lang="en"><b>OS Boot</b> (Section 3) → How the kernel loads and the desktop appears</span></li>
+<li><span lang="id"><b>Browser Launch</b> (Section 4) → How an application is run by the operating system</span><span lang="en"><b>Browser Launch</b> (Section 4) → How an application is run by the operating system</span></li>
+<li><span lang="id"><b>Network Request</b> (Section 5) → The complete network journey from entering a URL to page rendering</span><span lang="en"><b>Network Request</b> (Section 5) → The complete network journey from entering a URL to page rendering</span></li>
+</ul>
+<p class="reveal"><span lang="id">Each step builds on the previous one, and none can be skipped.</span><span lang="en">Each step builds on the previous one, and none can be skipped.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Pressing Power: Hardware Awakening</span><span lang="en">1. Pressing Power: Hardware Awakening</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 Power Supply Startup</span><span lang="en">1.1 Power Supply Startup</span></h3>
+<p class="reveal"><span lang="id">When you press the power button, the <b>Power Supply Unit (PSU)</b> starts working, converting alternating current (220V) into direct current (12V, 5V, 3.3V, etc.) to power all hardware components.</span><span lang="en">When you press the power button, the <b>Power Supply Unit (PSU)</b> starts working, converting alternating current (220V) into direct current (12V, 5V, 3.3V, etc.) to power all hardware components.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Power button → Power Supply Unit (PSU) → DC output → Powers motherboard components</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 Motherboard Chipset Wake-up</span><span lang="en">1.2 Motherboard Chipset Wake-up</span></h3>
+<p class="reveal"><span lang="id">Once the power stabilizes, the <b>motherboard chipset</b> begins working. It's like the computer's "head dispatcher," responsible for coordinating all hardware components.</span><span lang="en">Once the power stabilizes, the <b>motherboard chipset</b> begins working. It's like the computer's "head dispatcher," responsible for coordinating all hardware components.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.3 CPU Reset</span><span lang="en">1.3 CPU Reset</span></h3>
+<p class="reveal"><span lang="id">After receiving the reset signal, the CPU clears all internal registers and cache, and starts executing instructions from a preset address. This address typically points to the <b>BIOS/UEFI</b> chip.</span><span lang="en">After receiving the reset signal, the CPU clears all internal registers and cache, and starts executing instructions from a preset address. This address typically points to the <b>BIOS/UEFI</b> chip.</span></p>
+<p class="reveal"><span lang="id"><PowerOnDemo /></span><span lang="en"><PowerOnDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">> <b>First relay leg complete</b> At this point, the hardware-level work is done: the power supply converted AC into stable DC, the motherboard chipset was awakened and began coordinating components, and the CPU completed its reset, cleared registers, and is ready to execute its first instruction.</span><span lang="en">> <b>First relay leg complete</b> At this point, the hardware-level work is done: the power supply converted AC into stable DC, the motherboard chipset was awakened and began coordinating components, and the CPU completed its reset, cleared registers, and is ready to execute its first instruction.</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> But note — at this moment, the CPU is like a "newborn baby just opening its eyes." It can execute instructions but knows nothing about its environment: how much memory is installed? Is the graphics card working? Where is the hard drive? Which device should it boot the OS from? The CPU can't answer these questions itself.</span><span lang="en">> But note — at this moment, the CPU is like a "newborn baby just opening its eyes." It can execute instructions but knows nothing about its environment: how much memory is installed? Is the graphics card working? Where is the hard drive? Which device should it boot the OS from? The CPU can't answer these questions itself.</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> So the first instruction the CPU executes after reset is a jump to a <b>fixed memory address</b> — this address points to the BIOS/UEFI firmware chip permanently soldered on the motherboard. From this moment on, control passes from pure hardware to firmware. BIOS/UEFI's mission is clear: <b>check that all hardware is functioning properly, then find and boot the operating system.</b> This is the second leg of the relay.</span><span lang="en">> So the first instruction the CPU executes after reset is a jump to a <b>fixed memory address</b> — this address points to the BIOS/UEFI firmware chip permanently soldered on the motherboard. From this moment on, control passes from pure hardware to firmware. BIOS/UEFI's mission is clear: <b>check that all hardware is functioning properly, then find and boot the operating system.</b> This is the second leg of the relay.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. BIOS/UEFI: Hardware Self-Test</span><span lang="en">2. BIOS/UEFI: Hardware Self-Test</span></h2>
+<p class="reveal"><span lang="id"><BiosUefiInteractiveDemo /></span><span lang="en"><BiosUefiInteractiveDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">> <b>Second relay leg complete</b> BIOS/UEFI has successfully fulfilled its three missions: confirmed through POST that memory, graphics card, keyboard, and other hardware are all working normally; initialized each hardware component's operating mode; and found the boot sector on the hard drive according to the boot order.</span><span lang="en">> <b>Second relay leg complete</b> BIOS/UEFI has successfully fulfilled its three missions: confirmed through POST that memory, graphics card, keyboard, and other hardware are all working normally; initialized each hardware component's operating mode; and found the boot sector on the hard drive according to the boot order.</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> But BIOS/UEFI's role ends here — it's essentially a "health examiner + dispatcher." It can check if hardware is healthy and decide which device to boot from, but it won't manage your files, run your applications, or display a beautiful desktop. These complex tasks require a more powerful software to take over — the <b>operating system</b>.</span><span lang="en">> But BIOS/UEFI's role ends here — it's essentially a "health examiner + dispatcher." It can check if hardware is healthy and decide which device to boot from, but it won't manage your files, run your applications, or display a beautiful desktop. These complex tasks require a more powerful software to take over — the <b>operating system</b>.</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> The handoff is very specific: BIOS/UEFI reads the bootloader code from the first sector of the hard drive (boot sector), loads it into memory, and tells the CPU to jump to this code and begin execution. From this moment, control officially passes from firmware to the OS bootloader. The bootloader will gradually load the OS kernel, start system services, and ultimately present the familiar desktop. The most complex leg of this chain has begun.</span><span lang="en">> The handoff is very specific: BIOS/UEFI reads the bootloader code from the first sector of the hard drive (boot sector), loads it into memory, and tells the CPU to jump to this code and begin execution. From this moment, control officially passes from firmware to the OS bootloader. The bootloader will gradually load the OS kernel, start system services, and ultimately present the familiar desktop. The most complex leg of this chain has begun.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. OS Boot: From Kernel to Desktop</span><span lang="en">3. OS Boot: From Kernel to Desktop</span></h2>
+<p class="reveal"><span lang="id"><OSBootInteractiveDemo /></span><span lang="en"><OSBootInteractiveDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">> <b>Third relay leg complete</b> The operating system has fully started, and the desktop is displayed. Let's review what this leg accomplished: the bootloader read the kernel from disk, the kernel took control of the CPU and memory, system services started one by one (networking, audio, security center...), and finally the graphical interface rendered the desktop.</span><span lang="en">> <b>Third relay leg complete</b> The operating system has fully started, and the desktop is displayed. Let's review what this leg accomplished: the bootloader read the kernel from disk, the kernel took control of the CPU and memory, system services started one by one (networking, audio, security center...), and finally the graphical interface rendered the desktop.</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> At this point, the OS is like a building with water and electricity connected and property management moved in — <b>process management</b> allocates rooms to each resident (program), <b>memory management</b> allocates space, the <b>file system</b> manages the warehouse, and the <b>network protocol stack</b> handles external communications. These "public services" are the infrastructure all applications run on. Without them, no program could start.</span><span lang="en">> At this point, the OS is like a building with water and electricity connected and property management moved in — <b>process management</b> allocates rooms to each resident (program), <b>memory management</b> allocates space, the <b>file system</b> manages the warehouse, and the <b>network protocol stack</b> handles external communications. These "public services" are the infrastructure all applications run on. Without them, no program could start.</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> Now you want to go online, so you double-click the browser icon on the desktop. Behind this simple action, the OS must do a series of tasks: find where the browser's executable file is on the hard drive, create an independent process for it, allocate memory space, and load the program code... This is a direct demonstration of the OS's "process management" capability. Next, let's see how the browser is launched.</span><span lang="en">> Now you want to go online, so you double-click the browser icon on the desktop. Behind this simple action, the OS must do a series of tasks: find where the browser's executable file is on the hard drive, create an independent process for it, allocate memory space, and load the program code... This is a direct demonstration of the OS's "process management" capability. Next, let's see how the browser is launched.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Opening the Browser: Application Startup</span><span lang="en">4. Opening the Browser: Application Startup</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Application Launch Process</span><span lang="en">4.1 Application Launch Process</span></h3>
+<p class="reveal"><span lang="id">When you double-click the browser icon, the operating system will:</span><span lang="en">When you double-click the browser icon, the operating system will:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Find the executable file</b>: Based on file associations, locate the browser's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.exe</code> (Windows) or executable file</span><span lang="en"><b>Find the executable file</b>: Based on file associations, locate the browser's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.exe</code> (Windows) or executable file</span></li>
+<li><span lang="id"><b>Create a process</b>: Create a new <b>process</b> for the browser</span><span lang="en"><b>Create a process</b>: Create a new <b>process</b> for the browser</span></li>
+<li><span lang="id"><b>Load the program</b>: Load the browser's code from the hard drive into memory</span><span lang="en"><b>Load the program</b>: Load the browser's code from the hard drive into memory</span></li>
+<li><span lang="id"><b>Initialize</b>: Start the browser's main thread, rendering engine, network engine, etc.</span><span lang="en"><b>Initialize</b>: Start the browser's main thread, rendering engine, network engine, etc.</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Browser launch process:
+┌─────────────────────────────────────┐
+│  1. Double-click icon               │
+│  2. OS finds browser executable     │
+│  3. Create browser process          │
+│  4. Load browser code into memory   │
+│  5. Initialize modules (rendering,  │
+│     networking, JS engine)          │
+│  6. Display browser window          │
+└─────────────────────────────────────┘</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Major Components of a Browser</span><span lang="en">4.2 Major Components of a Browser</span></h3>
+<p class="reveal"><span lang="id">A modern browser is a complex "operating system," primarily composed of:</span><span lang="en">A modern browser is a complex "operating system," primarily composed of:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Module</th><th>Function</th></tr>
+<tr><td><b>User Interface</b></td><td>Address bar, tabs, bookmarks, etc.</td></tr>
+<tr><td><b>Browser Engine</b></td><td>Coordinates UI and rendering engine</td></tr>
+<tr><td><b>Rendering Engine</b></td><td>Parses HTML/CSS and displays webpages</td></tr>
+<tr><td><b>JavaScript Engine</b></td><td>Executes JavaScript code</td></tr>
+<tr><td><b>Networking Module</b></td><td>Sends HTTP requests</td></tr>
+<tr><td><b>UI Backend</b></td><td>Draws basic UI components</td></tr>
+<tr><td><b>Data Storage</b></td><td>Cookies, LocalStorage, etc.</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><BrowserArchitectureDemo /></span><span lang="en"><BrowserArchitectureDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">> <b>Fourth relay leg complete</b> The browser has launched successfully. The OS created an independent process for it, allocated memory space, and the browser's internal modules have all initialized: the rendering engine is ready to parse HTML/CSS, the JavaScript engine is ready to execute scripts, and the networking module is ready to send and receive data.</span><span lang="en">> <b>Fourth relay leg complete</b> The browser has launched successfully. The OS created an independent process for it, allocated memory space, and the browser's internal modules have all initialized: the rendering engine is ready to parse HTML/CSS, the JavaScript engine is ready to execute scripts, and the networking module is ready to send and receive data.</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> You can think of the browser at this moment as a car that's been started — the engine is running, the dashboard is lit, and the navigation system is ready. But the car is still parked, because the driver (you) hasn't told it "where to go." The browser window is blank, the cursor blinks in the address bar, waiting for your input.</span><span lang="en">> You can think of the browser at this moment as a car that's been started — the engine is running, the dashboard is lit, and the navigation system is ready. But the car is still parked, because the driver (you) hasn't told it "where to go." The browser window is blank, the cursor blinks in the address bar, waiting for your input.</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> When you type <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://www.example.com</code> in the address bar and press Enter, a journey spanning the entire internet begins. The browser's networking module takes over this request: first parsing the URL structure, then translating the domain name into an IP address via DNS, establishing a TCP connection with the distant server across the network, negotiating an encrypted channel, sending an HTTP request, waiting for the server's response, and finally passing the received HTML/CSS/JS code to the rendering engine to draw the webpage you see. This is the leg with the most steps and the richest set of protocols — and the one Web developers need to understand most.</span><span lang="en">> When you type <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://www.example.com</code> in the address bar and press Enter, a journey spanning the entire internet begins. The browser's networking module takes over this request: first parsing the URL structure, then translating the domain name into an IP address via DNS, establishing a TCP connection with the distant server across the network, negotiating an encrypted channel, sending an HTTP request, waiting for the server's response, and finally passing the received HTML/CSS/JS code to the rendering engine to draw the webpage you see. This is the leg with the most steps and the richest set of protocols — and the one Web developers need to understand most.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Accessing a URL: The Complete Network Request Process</span><span lang="en">5. Accessing a URL: The Complete Network Request Process</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 URL Overview</span><span lang="en">5.1 URL Overview</span></h3>
+<p class="reveal"><span lang="id">A <b>URL (Uniform Resource Locator)</b> is the address of a resource. Just like a real-world address, it locates resources on the internet.</span><span lang="en">A <b>URL (Uniform Resource Locator)</b> is the address of a resource. Just like a real-world address, it locates resources on the internet.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>URL structure:
+┌─────────────────────────────────────────────────────────┐
+│  https://  │  www.example.com  │  /path/to/page  │ ?query=1 │
+│  Protocol  │     Domain        │      Path       │  Query   │
+└─────────────────────────────────────────────────────────┘</pre>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Protocol</b>: How to access the resource (http, https, ftp, etc.)</span><span lang="en"><b>Protocol</b>: How to access the resource (http, https, ftp, etc.)</span></li>
+<li><span lang="id"><b>Domain</b>: The server's address</span><span lang="en"><b>Domain</b>: The server's address</span></li>
+<li><span lang="id"><b>Path</b>: The resource's location on the server</span><span lang="en"><b>Path</b>: The resource's location on the server</span></li>
+<li><span lang="id"><b>Query</b>: Additional parameters</span><span lang="en"><b>Query</b>: Additional parameters</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 The Complete Process of Accessing a URL</span><span lang="en">5.2 The Complete Process of Accessing a URL</span></h3>
+<p class="reveal"><span lang="id">When you access <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://www.example.com</code>, here's what happens:</span><span lang="en">When you access <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://www.example.com</code>, here's what happens:</span></p>
+<p class="reveal"><span lang="id"><URLRequestDemo /></span><span lang="en"><URLRequestDemo /></span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Step 1: URL Parsing</span><span lang="en">Step 1: URL Parsing</span></h4>
+<p class="reveal"><span lang="id">The browser first <b>parses the URL</b>, extracting the protocol, domain, path, and other information.</span><span lang="en">The browser first <b>parses the URL</b>, extracting the protocol, domain, path, and other information.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>URL parsing process:
+https://www.example.com/index.html
+  ↓
+Protocol: https
+Domain: www.example.com
+Path: /index.html</pre>
+</div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Step 2: DNS Resolution</span><span lang="en">Step 2: DNS Resolution</span></h4>
+<p class="reveal"><span lang="id">Computers access servers over the network using <b>IP addresses</b> (e.g., 93.184.216.34), not domain names. So the domain name must be converted to an IP address. This process is called <b>DNS resolution</b>.</span><span lang="en">Computers access servers over the network using <b>IP addresses</b> (e.g., 93.184.216.34), not domain names. So the domain name must be converted to an IP address. This process is called <b>DNS resolution</b>.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>DNS resolution flow:
+┌─────────────────────────────────────────────────────────┐
+│  Browser cache → hosts file → Local DNS cache → DNS server  │
+└─────────────────────────────────────────────────────────┘
+
+Actual process:
+1. Browser checks cache (visited recently?)
+2. Operating system checks DNS cache
+3. Send query request to DNS server
+4. DNS server returns IP address</pre>
+</div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Step 3: Establish TCP Connection</span><span lang="en">Step 3: Establish TCP Connection</span></h4>
+<p class="reveal"><span lang="id">After obtaining the IP address, the browser needs to establish a <b>TCP connection</b> with the server. TCP is a transport layer protocol that ensures reliable data transmission.</span><span lang="en">After obtaining the IP address, the browser needs to establish a <b>TCP connection</b> with the server. TCP is a transport layer protocol that ensures reliable data transmission.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>TCP three-way handshake:
+┌─────────────────────────────────────────────────────────┐
+│  Client → Server: SYN (synchronization request)         │
+│  Server → Client: SYN-ACK (acknowledge and synchronize) │
+│  Client → Server: ACK (acknowledgment)                  │
+│                        ↓                                │
+│  Connection established!                                │
+└─────────────────────────────────────────────────────────┘</pre>
+</div>
+<p class="reveal"><span lang="id">For <b>HTTPS</b>, a <b>TLS/SSL handshake</b> is also needed to establish an encrypted channel.</span><span lang="en">For <b>HTTPS</b>, a <b>TLS/SSL handshake</b> is also needed to establish an encrypted channel.</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Step 4: Send HTTP Request</span><span lang="en">Step 4: Send HTTP Request</span></h4>
+<p class="reveal"><span lang="id">After the connection is established, the browser sends an <b>HTTP request</b> to the server:</span><span lang="en">After the connection is established, the browser sends an <b>HTTP request</b> to the server:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>HTTP request format:
+┌─────────────────────────────────────────────────────────┐
+│  GET /index.html HTTP/1.1                              │
+│  Host: www.example.com                                 │
+│  User-Agent: Mozilla/5.0...                             │
+│  Accept: text/html                                     │
+│                                                         │
+│  (empty line)                                          │
+└─────────────────────────────────────────────────────────┘</pre>
+</div>
+<p class="reveal"><span lang="id">Common HTTP methods:</span><span lang="en">Common HTTP methods:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Method</th><th>Meaning</th><th>Purpose</th></tr>
+<tr><td><b>GET</b></td><td>Retrieve a resource</td><td>Browsing webpages</td></tr>
+<tr><td><b>POST</b></td><td>Submit data</td><td>Login, form submission</td></tr>
+<tr><td><b>PUT</b></td><td>Upload a resource</td><td>File upload</td></tr>
+<tr><td><b>DELETE</b></td><td>Delete a resource</td><td>Data deletion</td></tr>
+</table></div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Step 5: Server Processes the Request</span><span lang="en">Step 5: Server Processes the Request</span></h4>
+<p class="reveal"><span lang="id">After the server (typically a <b>web server</b> like Nginx or Apache) receives the request:</span><span lang="en">After the server (typically a <b>web server</b> like Nginx or Apache) receives the request:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Parse the request</b>: Understand what the client wants</span><span lang="en"><b>Parse the request</b>: Understand what the client wants</span></li>
+<li><span lang="id"><b>Process business logic</b>: Call backend programs (e.g., Python, Node.js, Java)</span><span lang="en"><b>Process business logic</b>: Call backend programs (e.g., Python, Node.js, Java)</span></li>
+<li><span lang="id"><b>Query the database</b>: Retrieve needed data</span><span lang="en"><b>Query the database</b>: Retrieve needed data</span></li>
+<li><span lang="id"><b>Generate response</b>: Assemble data into HTML, JSON, or other formats</span><span lang="en"><b>Generate response</b>: Assemble data into HTML, JSON, or other formats</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Server processing flow:
+┌─────────────────────────────────────────────────────────┐
+│  1. Web server receives request (Nginx/Apache)          │
+│  2. Route to the appropriate handler based on path      │
+│  3. Execute backend code (API, business logic)          │
+│  4. Query database if needed, retrieve data             │
+│  5. Assemble response (HTML/JSON/CSS/JS)               │
+│  6. Return HTTP response                                │
+└─────────────────────────────────────────────────────────┘</pre>
+</div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Step 6: Return HTTP Response</span><span lang="en">Step 6: Return HTTP Response</span></h4>
+<p class="reveal"><span lang="id">The server returns an <b>HTTP response</b> containing a status code, response headers, and response body:</span><span lang="en">The server returns an <b>HTTP response</b> containing a status code, response headers, and response body:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>HTTP response format:
+┌─────────────────────────────────────────────────────────┐
+│  HTTP/1.1 200 OK                                       │
+│  Content-Type: text/html                               │
+│  Content-Length: 1234                                  │
+│                                                         │
+│  &lt;!DOCTYPE html&gt;                                       │
+│  &lt;html&gt;...&lt;/html&gt;                                      │
+└─────────────────────────────────────────────────────────┘</pre>
+</div>
+<p class="reveal"><span lang="id">Common status codes:</span><span lang="en">Common status codes:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Status Code</th><th>Meaning</th></tr>
+<tr><td><b>200</b></td><td>Success</td></tr>
+<tr><td><b>301/302</b></td><td>Redirect</td></tr>
+<tr><td><b>404</b></td><td>Resource not found</td></tr>
+<tr><td><b>500</b></td><td>Server error</td></tr>
+</table></div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Step 7: Browser Renders the Page</span><span lang="en">Step 7: Browser Renders the Page</span></h4>
+<p class="reveal"><span lang="id">After receiving the response, the browser begins <b>rendering the page</b>:</span><span lang="en">After receiving the response, the browser begins <b>rendering the page</b>:</span></p>
+<p class="reveal"><span lang="id"><RenderingDemo /></span><span lang="en"><RenderingDemo /></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Parse HTML</b>: Build the DOM tree</span><span lang="en"><b>Parse HTML</b>: Build the DOM tree</span></li>
+<li><span lang="id"><b>Parse CSS</b>: Calculate styles and build the render tree</span><span lang="en"><b>Parse CSS</b>: Calculate styles and build the render tree</span></li>
+<li><span lang="id"><b>Execute JavaScript</b>: Run JS code in the page</span><span lang="en"><b>Execute JavaScript</b>: Run JS code in the page</span></li>
+<li><span lang="id"><b>Paint the page</b>: Display content on screen</span><span lang="en"><b>Paint the page</b>: Display content on screen</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Browser rendering process:
+┌─────────────────────────────────────────────────────────┐
+│  1. HTML parsing → DOM tree                             │
+│  2. CSS parsing → Style rules                           │
+│  3. DOM + CSS → Render tree                             │
+│  4. Layout calculation → Size and position of elements  │
+│  5. Paint → Pixels displayed on screen                  │
+│  6. Composite → Multiple layers merged for display      │
+└─────────────────────────────────────────────────────────┘</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">> <b>Final relay leg complete</b> The webpage is finally displayed on your screen! Let's review how many stages this last leg went through: the browser parsed the URL to extract the protocol and domain, translated the domain into an IP address through layered DNS queries, established a reliable connection with the server via TCP three-way handshake, built an encrypted channel through TLS handshake, sent an HTTP request, the server processed business logic, queried the database, assembled response data and returned it, and finally the browser's rendering engine parsed the HTML into a DOM tree, computed CSS into style rules, merged both into a render tree, calculated layout, and painted pixels onto the screen one by one.</span><span lang="en">> <b>Final relay leg complete</b> The webpage is finally displayed on your screen! Let's review how many stages this last leg went through: the browser parsed the URL to extract the protocol and domain, translated the domain into an IP address through layered DNS queries, established a reliable connection with the server via TCP three-way handshake, built an encrypted channel through TLS handshake, sent an HTTP request, the server processed business logic, queried the database, assembled response data and returned it, and finally the browser's rendering engine parsed the HTML into a DOM tree, computed CSS into style rules, merged both into a render tree, calculated layout, and painted pixels onto the screen one by one.</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> Now let's zoom out and review the full picture of this relay race from start to finish. From the moment the power button is pressed: current wakes the hardware (1st leg) → firmware checks devices and finds the boot disk (2nd leg) → the OS boots completely from kernel to desktop (3rd leg) → the browser is launched as an application by the OS (4th leg) → network requests cross the internet to retrieve data and render it as a page (5th leg). Five legs connected end to end, each building on the previous one's results. Without any single leg, you couldn't see the webpage in front of you.</span><span lang="en">> Now let's zoom out and review the full picture of this relay race from start to finish. From the moment the power button is pressed: current wakes the hardware (1st leg) → firmware checks devices and finds the boot disk (2nd leg) → the OS boots completely from kernel to desktop (3rd leg) → the browser is launched as an application by the OS (4th leg) → network requests cross the internet to retrieve data and render it as a page (5th leg). Five legs connected end to end, each building on the previous one's results. Without any single leg, you couldn't see the webpage in front of you.</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> Next, let's use a complete flowchart to connect these five stages and visualize their dependencies.</span><span lang="en">> Next, let's use a complete flowchart to connect these five stages and visualize their dependencies.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Complete Process Review</span><span lang="en">6. Complete Process Review</span></h2>
+<p class="reveal"><span lang="id">Let's connect the entire process:</span><span lang="en">Let's connect the entire process:</span></p>
+<p class="reveal"><span lang="id"><FullProcessDemo /></span><span lang="en"><FullProcessDemo /></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Complete process from pressing power to visiting a website:
+
+┌──────────────────────────────────────────────────────────────────┐
+│  1. Press Power                                                   │
+│     └── Power startup → Motherboard wake-up → CPU reset → Execute BIOS/UEFI │
+├──────────────────────────────────────────────────────────────────┤
+│  2. BIOS/UEFI Boot                                                │
+│     └── Hardware self-test → Find boot device → Read bootloader  │
+├──────────────────────────────────────────────────────────────────┤
+│  3. Operating System Boot                                         │
+│     └── Bootloader → Load kernel → Start services → Display desktop │
+├──────────────────────────────────────────────────────────────────┤
+│  4. Open Browser                                                  │
+│     └── Double-click icon → Create process → Load program → Display window │
+├──────────────────────────────────────────────────────────────────┤
+│  5. Access URL                                                    │
+│     └── URL parsing → DNS resolution → TCP connection → HTTP request │
+│         → Server processing → HTTP response → Browser rendering → Display page │
+└──────────────────────────────────────────────────────────────────┘</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">> Looking at the entire chain, you'll notice an interesting pattern: each stage solves completely different problems, and the technical domains involved are entirely different. The 1st leg is in the domain of <b>electrical engineering</b> — power conversion, circuit design, signal transmission; the 2nd leg belongs to <b>firmware programming</b> — using low-level code to directly control hardware; the 3rd leg is the world of <b>operating systems</b> — process scheduling, memory management, file systems, which are core topics in computer science; the 4th leg involves <b>application development</b> — how to design a complex software architecture like a browser; and the 5th leg spans <b>computer networking</b> and <b>frontend development</b> — from network protocols like DNS, TCP/IP, and HTTP to HTML/CSS/JS parsing and rendering.</span><span lang="en">> Looking at the entire chain, you'll notice an interesting pattern: each stage solves completely different problems, and the technical domains involved are entirely different. The 1st leg is in the domain of <b>electrical engineering</b> — power conversion, circuit design, signal transmission; the 2nd leg belongs to <b>firmware programming</b> — using low-level code to directly control hardware; the 3rd leg is the world of <b>operating systems</b> — process scheduling, memory management, file systems, which are core topics in computer science; the 4th leg involves <b>application development</b> — how to design a complex software architecture like a browser; and the 5th leg spans <b>computer networking</b> and <b>frontend development</b> — from network protocols like DNS, TCP/IP, and HTTP to HTML/CSS/JS parsing and rendering.</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> This also explains why a "full-stack engineer" needs broad knowledge: every line of frontend code you write must travel through this entire chain before reaching the user. Understanding each link helps you quickly locate problems — is it a network layer issue? A server problem? Or a browser rendering issue?</span><span lang="en">> This also explains why a "full-stack engineer" needs broad knowledge: every line of frontend code you write must travel through this entire chain before reaching the user. Understanding each link helps you quickly locate problems — is it a network layer issue? A server problem? Or a browser rendering issue?</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> The knowledge map below organizes these technical domains and points the way for your further learning.</span><span lang="en">> The knowledge map below organizes these technical domains and points the way for your further learning.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Knowledge Map</span><span lang="en">7. Knowledge Map</span></h2>
+<p class="reveal"><span lang="id">The knowledge domains covered in this chapter:</span><span lang="en">The knowledge domains covered in this chapter:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Computer System Overview
+├── Hardware Basics
+│   ├── Power Supply (PSU)
+│   ├── Motherboard Chipset
+│   └── CPU
+├── BIOS/UEFI
+│   ├── POST Self-Test
+│   ├── Boot Order
+│   └── Bootloader
+├── Operating System
+│   ├── Kernel
+│   ├── System Services
+│   └── Desktop Environment
+├── Applications
+│   ├── Process Management
+│   └── Program Loading
+└── Network Communication
+    ├── DNS Resolution
+    ├── TCP/IP Protocol
+    ├── HTTP Protocol
+    └── Browser Rendering</pre>
+</div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">If you want to dive deeper into any stage, you can continue learning:
+
+- <b>From Transistors to CPU</b>: Understand computer hardware fundamentals
+- <b>Operating Systems (Processes/Memory/File Systems)</b>: Deepen your understanding of operating systems
+- <b>Computer Networks</b>: Deepen your understanding of network protocols</span><span lang="en">If you want to dive deeper into any stage, you can continue learning:
+
+- <b>From Transistors to CPU</b>: Understand computer hardware fundamentals
+- <b>Operating Systems (Processes/Memory/File Systems)</b>: Deepen your understanding of operating systems
+- <b>Computer Networks</b>: Deepen your understanding of network protocols</span></p>
+</div>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../1-computer-fundamentals/operating-systems/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">1-computer-fundamentals/operating-systems</span><span lang="en">1-computer-fundamentals/operating-systems</span></b></a>
+      <a class="next" href="../../1-computer-fundamentals/programming-languages/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">1-computer-fundamentals/programming-languages</span><span lang="en">1-computer-fundamentals/programming-languages</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

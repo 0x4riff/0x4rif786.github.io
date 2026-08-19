@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Rilis Tingkat Lanjut: Setup Server VPS Linux — VibeKoding 🖥️</title>
+<meta name="description" content="Modul praktis Level 2 VibeKoding: Rilis Tingkat Lanjut: Setup Server VPS Linux. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-2/backend/cloud-server-deployment/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../stage-2/"><span lang="id">Level 2 · Developer</span><span lang="en">Level 2 · Developer</span></a> / <span lang="id">Rilis Tingkat Lanjut: Setup Server VPS Linux</span><span lang="en">Rilis Tingkat Lanjut: Setup Server VPS Linux</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">🖥️</div>
+      <div>
+        <h1><span lang="id">Rilis Tingkat Lanjut: Setup Server VPS Linux</span><span lang="en">Rilis Tingkat Lanjut: Setup Server VPS Linux</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 2 · Developer</span><span lang="en">Level 2 · Developer</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul praktis Level 2 VibeKoding: Rilis Tingkat Lanjut: Setup Server VPS Linux.</span><span lang="en">Modul praktis Level 2 VibeKoding: Rilis Tingkat Lanjut: Setup Server VPS Linux.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id"><script setup></span><span lang="en"><script setup></span></p>
+<p class="reveal"><span lang="id">import RelatedArticlesSection from '../../../../.vitepress/theme/components/RelatedArticlesSection.vue'</span><span lang="en">import RelatedArticlesSection from '../../../../.vitepress/theme/components/RelatedArticlesSection.vue'</span></p>
+<p class="reveal"><span lang="id">import { relatedArticlesMap } from '../../../../.vitepress/theme/data/relatedArticles'</span><span lang="en">import { relatedArticlesMap } from '../../../../.vitepress/theme/data/relatedArticles'</span></p>
+<p class="reveal"><span lang="id"></script></span><span lang="en"></script></span></p>
+<p class="reveal"><span lang="id">> 💡 <b>What does "putting a website online" mean?</b> Also called "going live" or "deploying/publishing". A website you built on your own computer can only be opened by you. <b>Putting it online means placing it on a server that runs 24/7, so anyone can type a URL in their browser and visit it</b> — just like a Word doc only you can read becomes visible to everyone once you post it to a blog; the difference is that this time you're publishing a full website.</span><span lang="en">> 💡 <b>What does "putting a website online" mean?</b> Also called "going live" or "deploying/publishing". A website you built on your own computer can only be opened by you. <b>Putting it online means placing it on a server that runs 24/7, so anyone can type a URL in their browser and visit it</b> — just like a Word doc only you can read becomes visible to everyone once you post it to a blog; the difference is that this time you're publishing a full website.</span></p>
+<p class="reveal"><span lang="id">In the previous chapter we learned the easiest way to publish — using one-click PaaS platforms like Vercel or Zeabur. This chapter covers the more flexible, do-it-yourself approach: <b>buy your own cloud server, set everything up from scratch, and publish your site yourself</b>. You'll learn how to pick a server, connect to it, install the environment, configure Nginx, attach a domain, and enable HTTPS. Once you understand this, no platform can limit you — run whatever services you want.</span><span lang="en">In the previous chapter we learned the easiest way to publish — using one-click PaaS platforms like Vercel or Zeabur. This chapter covers the more flexible, do-it-yourself approach: <b>buy your own cloud server, set everything up from scratch, and publish your site yourself</b>. You'll learn how to pick a server, connect to it, install the environment, configure Nginx, attach a domain, and enable HTTPS. Once you understand this, no platform can limit you — run whatever services you want.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">Before picking a platform, answer three questions:</span><span lang="en">Before picking a platform, answer three questions:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Does your project need to run 24/7?</b></span><span lang="en"><b>Does your project need to run 24/7?</b></span></li>
+<li><span lang="id">No (responds only when visited, e.g. docs, blogs, static sites) → <b>Static hosting / PaaS</b></span><span lang="en">No (responds only when visited, e.g. docs, blogs, static sites) → <b>Static hosting / PaaS</b></span></li>
+<li><span lang="id">Yes (cron jobs, crawlers, Telegram/Discord bots, WebSocket services) → <b>Always-on PaaS or VPS</b></span><span lang="en">Yes (cron jobs, crawlers, Telegram/Discord bots, WebSocket services) → <b>Always-on PaaS or VPS</b></span></li>
+</ul>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Do you need a GPU?</b></span><span lang="en"><b>Do you need a GPU?</b></span></li>
+<li><span lang="id">No (just calling OpenAI/Anthropic APIs) → Regular platforms work</span><span lang="en">No (just calling OpenAI/Anthropic APIs) → Regular platforms work</span></li>
+<li><span lang="id">Yes (running open-source models, generating images/video) → <b>GPU cloud platforms</b> (Modal, Replicate, Lambda Labs)</span><span lang="en">Yes (running open-source models, generating images/video) → <b>GPU cloud platforms</b> (Modal, Replicate, Lambda Labs)</span></li>
+</ul>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Where are your users primarily located?</b></span><span lang="en"><b>Where are your users primarily located?</b></span></li>
+<li><span lang="id">Global / US/EU → Vercel / Railway / Fly.io / AWS</span><span lang="en">Global / US/EU → Vercel / Railway / Fly.io / AWS</span></li>
+<li><span lang="id">China mainland → Chinese clouds (Alibaba Cloud / Tencent Cloud) or Cloudflare (fast in China)</span><span lang="en">China mainland → Chinese clouds (Alibaba Cloud / Tencent Cloud) or Cloudflare (fast in China)</span></li>
+<li><span lang="id">Both → Use CDN, deploy China-facing assets on Chinese cloud, global on AWS with GeoDNS</span><span lang="en">Both → Use CDN, deploy China-facing assets on Chinese cloud, global on AWS with GeoDNS</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>What type of project are you deploying?
+│
+├─ Pure frontend static site (Vite/React/Vue build output)
+│   ├─ Completely free → Cloudflare Pages (unlimited bandwidth) / GitHub Pages
+│   ├─ Next.js project → Vercel (official platform, best DX)
+│   └─ China users primarily → Cloudflare Pages or domestic OSS+CDN
+│
+├─ Backend API, doesn&#039;t need to be always-on (request-triggered)
+│   ├─ Node.js/Python API → Vercel Functions / Cloudflare Workers
+│   └─ Full-stack frameworks (Next.js/Nuxt/SvelteKit) → Vercel
+│
+├─ Needs always-on process (Bot, cron, WebSocket)
+│   ├─ Don&#039;t want to manage servers → Railway / Render / Fly.io
+│   ├─ Full control &amp; cost savings → Buy a VPS (DigitalOcean / Vultr / Hetzner / AWS EC2)
+│   └─ China-facing projects → Tencent Cloud Lighthouse / Alibaba Cloud ECS
+│
+├─ Need to run AI models / GPU
+│   ├─ Inference API → Modal / Replicate / Hugging Face Inference
+│   ├─ Training/Fine-tuning → Modal / Lambda Labs
+│   └─ China GPU → AutoDL / Alibaba Cloud PAI
+│
+└─ Large production projects
+    └─ AWS/GCP + Kubernetes (hire DevOps or let AI write Terraform)</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">For most personal projects, demos, and portfolios, you <b>don't need to buy a server at all</b>. This section covers the most popular free/low-cost platforms with how to sign up, how to use them, and their gotchas.</span><span lang="en">For most personal projects, demos, and portfolios, you <b>don't need to buy a server at all</b>. This section covers the most popular free/low-cost platforms with how to sign up, how to use them, and their gotchas.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.1 Vercel — First Choice for Next.js / Frontend</span><span lang="en">1.1 Vercel — First Choice for Next.js / Frontend</span></h2>
+<p class="reveal"><span lang="id"><b>Website:</b> https://vercel.com</span><span lang="en"><b>Website:</b> https://vercel.com</span></p>
+<p class="reveal"><span lang="id"><b>Best for:</b> Next.js projects, React/Vue frontends, full-stack apps with Serverless Functions, AI chatbots (fast response time)</span><span lang="en"><b>Best for:</b> Next.js projects, React/Vue frontends, full-stack apps with Serverless Functions, AI chatbots (fast response time)</span></p>
+<p class="reveal"><span lang="id"><b>How to use:</b></span><span lang="en"><b>How to use:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Sign up with your GitHub account</span><span lang="en">Sign up with your GitHub account</span></li>
+<li><span lang="id">Click "Add New..." → "Project"</span><span lang="en">Click "Add New..." → "Project"</span></li>
+<li><span lang="id">Select your GitHub repository</span><span lang="en">Select your GitHub repository</span></li>
+<li><span lang="id">Vercel auto-detects your framework (Next.js/Vite/React etc.), fill in environment variables</span><span lang="en">Vercel auto-detects your framework (Next.js/Vite/React etc.), fill in environment variables</span></li>
+<li><span lang="id">Click "Deploy" — your site is live in 1-2 minutes at <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">xxx.vercel.app</code></span><span lang="en">Click "Deploy" — your site is live in 1-2 minutes at <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">xxx.vercel.app</code></span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Free tier (Hobby plan):</b></span><span lang="en"><b>Free tier (Hobby plan):</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">100 GB bandwidth/month</span><span lang="en">100 GB bandwidth/month</span></li>
+<li><span lang="id">100 hours build time/month</span><span lang="en">100 hours build time/month</span></li>
+<li><span lang="id">Serverless Function execution time <b>10 seconds</b> (the most critical limit!)</span><span lang="en">Serverless Function execution time <b>10 seconds</b> (the most critical limit!)</span></li>
+<li><span lang="id">Auto HTTPS, global CDN, PR preview links</span><span lang="en">Auto HTTPS, global CDN, PR preview links</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Paid (Pro, $20/month):</b></span><span lang="en"><b>Paid (Pro, $20/month):</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Function timeout extended to 60-300s</span><span lang="en">Function timeout extended to 60-300s</span></li>
+<li><span lang="id">1 TB bandwidth</span><span lang="en">1 TB bandwidth</span></li>
+<li><span lang="id">Team collaboration features</span><span lang="en">Team collaboration features</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>⚠️ Key limitations beginners hit:</b></span><span lang="en"><b>⚠️ Key limitations beginners hit:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>10-second function timeout</b> on free tier: AI API calls exceeding 10s will disconnect. Pro tier $20/mo extends to 60s, 300s costs extra</span><span lang="en"><b>10-second function timeout</b> on free tier: AI API calls exceeding 10s will disconnect. Pro tier $20/mo extends to 60s, 300s costs extra</span></li>
+<li><span lang="id"><b>No always-on processes</b>: No cron, no WebSocket long-polling, no permanently running bots</span><span lang="en"><b>No always-on processes</b>: No cron, no WebSocket long-polling, no permanently running bots</span></li>
+<li><span lang="id"><b>Cold starts</b>: Functions unused for a while will be slow on first request</span><span lang="en"><b>Cold starts</b>: Functions unused for a while will be slow on first request</span></li>
+<li><span lang="id"><b>AI project costs</b>: Streaming AI responses consumes bandwidth; heavy traffic can push Pro bills to $200/month</span><span lang="en"><b>AI project costs</b>: Streaming AI responses consumes bandwidth; heavy traffic can push Pro bills to $200/month</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Verdict:</b> Vercel is the smoothest experience for deploying frontend pages, docs, and quick demos. But for always-on agents or long-running AI calls — don't use Vercel.</span><span lang="en"><b>Verdict:</b> Vercel is the smoothest experience for deploying frontend pages, docs, and quick demos. But for always-on agents or long-running AI calls — don't use Vercel.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.2 Cloudflare Pages — Unlimited Bandwidth, Fast Globally</span><span lang="en">1.2 Cloudflare Pages — Unlimited Bandwidth, Fast Globally</span></h2>
+<p class="reveal"><span lang="id"><b>Website:</b> https://pages.cloudflare.com</span><span lang="en"><b>Website:</b> https://pages.cloudflare.com</span></p>
+<p class="reveal"><span lang="id"><b>Best for:</b> Static sites, bandwidth-heavy projects, global audiences, Edge Functions</span><span lang="en"><b>Best for:</b> Static sites, bandwidth-heavy projects, global audiences, Edge Functions</span></p>
+<p class="reveal"><span lang="id"><b>Free tier:</b></span><span lang="en"><b>Free tier:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Unlimited bandwidth</b> (the biggest selling point!)</span><span lang="en"><b>Unlimited bandwidth</b> (the biggest selling point!)</span></li>
+<li><span lang="id">500 builds/month</span><span lang="en">500 builds/month</span></li>
+<li><span lang="id">Unlimited requests</span><span lang="en">Unlimited requests</span></li>
+<li><span lang="id">Cloudflare Workers: 100,000 requests/day</span><span lang="en">Cloudflare Workers: 100,000 requests/day</span></li>
+<li><span lang="id">300+ edge locations worldwide, decent speed even in China</span><span lang="en">300+ edge locations worldwide, decent speed even in China</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>How to use:</b></span><span lang="en"><b>How to use:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Sign up for a free Cloudflare account</span><span lang="en">Sign up for a free Cloudflare account</span></li>
+<li><span lang="id">Go to Workers & Pages → Create → Pages → Connect to Git</span><span lang="en">Go to Workers & Pages → Create → Pages → Connect to Git</span></li>
+<li><span lang="id">Select your repo, set build command (Vite: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm run build</code>, output dir: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dist</code>)</span><span lang="en">Select your repo, set build command (Vite: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm run build</code>, output dir: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dist</code>)</span></li>
+<li><span lang="id">Click Save and Deploy</span><span lang="en">Click Save and Deploy</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Bonus: Workers AI:</b> Cloudflare also offers running open-source AI models (Llama 3, Mistral, Stable Diffusion) on edge nodes, with 10,000 neurons/day free. Great for running small models without relying on OpenAI APIs.</span><span lang="en"><b>Bonus: Workers AI:</b> Cloudflare also offers running open-source AI models (Llama 3, Mistral, Stable Diffusion) on edge nodes, with 10,000 neurons/day free. Great for running small models without relying on OpenAI APIs.</span></p>
+<p class="reveal"><span lang="id"><b>Verdict:</b> Best choice for static sites, especially projects with global audiences. Unlimited bandwidth is a killer feature.</span><span lang="en"><b>Verdict:</b> Best choice for static sites, especially projects with global audiences. Unlimited bandwidth is a killer feature.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.3 Railway — Best Experience for Backend Services (Always-On)</span><span lang="en">1.3 Railway — Best Experience for Backend Services (Always-On)</span></h2>
+<p class="reveal"><span lang="id"><b>Website:</b> https://railway.app</span><span lang="en"><b>Website:</b> https://railway.app</span></p>
+<p class="reveal"><span lang="id"><b>Best for:</b> Always-on backend services, Node.js/Python/Go APIs, Discord/Telegram bots, full-stack projects needing databases</span><span lang="en"><b>Best for:</b> Always-on backend services, Node.js/Python/Go APIs, Discord/Telegram bots, full-stack projects needing databases</span></p>
+<p class="reveal"><span lang="id"><b>How to use:</b></span><span lang="en"><b>How to use:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Sign up with GitHub</span><span lang="en">Sign up with GitHub</span></li>
+<li><span lang="id">New Project → Deploy from GitHub repo (or pick a template)</span><span lang="en">New Project → Deploy from GitHub repo (or pick a template)</span></li>
+<li><span lang="id">Railway auto-detects your project type, installs deps, builds, and starts</span><span lang="en">Railway auto-detects your project type, installs deps, builds, and starts</span></li>
+<li><span lang="id">One-click add PostgreSQL/Redis/MySQL/MongoDB databases</span><span lang="en">One-click add PostgreSQL/Redis/MySQL/MongoDB databases</span></li>
+<li><span lang="id">Auto-generated domain, or bind your custom domain</span><span lang="en">Auto-generated domain, or bind your custom domain</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Pricing:</b></span><span lang="en"><b>Pricing:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">New users get <b>$5 trial credit</b> (not permanently free)</span><span lang="en">New users get <b>$5 trial credit</b> (not permanently free)</span></li>
+<li><span lang="id">Usage-based billing after that, starts ~$5/month (minimum spec always-on service + DB)</span><span lang="en">Usage-based billing after that, starts ~$5/month (minimum spec always-on service + DB)</span></li>
+<li><span lang="id">Sleeps after 5 min idle (during free trial); no sleep after paying</span><span lang="en">Sleeps after 5 min idle (during free trial); no sleep after paying</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Verdict:</b> Railway has the best experience for deploying backend APIs, bots, and full-stack apps needing databases — auto-deploy from GitHub, built-in databases, logs and monitoring all included.</span><span lang="en"><b>Verdict:</b> Railway has the best experience for deploying backend APIs, bots, and full-stack apps needing databases — auto-deploy from GitHub, built-in databases, logs and monitoring all included.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.4 Fly.io — Truly 24/7 Free Containers</span><span lang="en">1.4 Fly.io — Truly 24/7 Free Containers</span></h2>
+<p class="reveal"><span lang="id"><b>Website:</b> https://fly.io</span><span lang="en"><b>Website:</b> https://fly.io</span></p>
+<p class="reveal"><span lang="id"><b>Best for:</b> Low-latency globally distributed services, wanting a <b>truly free 24/7</b> container, accepting a slight learning curve</span><span lang="en"><b>Best for:</b> Low-latency globally distributed services, wanting a <b>truly free 24/7</b> container, accepting a slight learning curve</span></p>
+<p class="reveal"><span lang="id"><b>Free tier:</b></span><span lang="en"><b>Free tier:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">3 micro shared VMs (micro-1x, 256MB RAM)</span><span lang="en">3 micro shared VMs (micro-1x, 256MB RAM)</span></li>
+<li><span lang="id"><b>No runtime limit</b> (no sleeping like Render)</span><span lang="en"><b>No runtime limit</b> (no sleeping like Render)</span></li>
+<li><span lang="id">160 GB outbound traffic/month</span><span lang="en">160 GB outbound traffic/month</span></li>
+<li><span lang="id">3 GB persistent volumes</span><span lang="en">3 GB persistent volumes</span></li>
+<li><span lang="id">30+ global datacenter regions</span><span lang="en">30+ global datacenter regions</span></li>
+<li><span lang="id">GPU support (A100/H100)</span><span lang="en">GPU support (A100/H100)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>How to use:</b></span><span lang="en"><b>How to use:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Sign up requires credit card (won't be charged, identity verification)</span><span lang="en">Sign up requires credit card (won't be charged, identity verification)</span></li>
+<li><span lang="id">Install flyctl CLI</span><span lang="en">Install flyctl CLI</span></li>
+<li><span lang="id">Write a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fly.toml</code> config in your project (AI can generate this)</span><span lang="en">Write a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fly.toml</code> config in your project (AI can generate this)</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fly launch</code> → auto-builds Docker image, allocates IP, deploys</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fly launch</code> → auto-builds Docker image, allocates IP, deploys</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fly deploy</code> to update, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fly logs</code> to view logs</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fly deploy</code> to update, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fly logs</code> to view logs</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Verdict:</b> If you need a <b>truly 24/7 free container</b> for a bot/API/cron job, Fly.io is the best free option. Trade-off is learning flyctl commands and Docker basics.</span><span lang="en"><b>Verdict:</b> If you need a <b>truly 24/7 free container</b> for a bot/API/cron job, Fly.io is the best free option. Trade-off is learning flyctl commands and Docker basics.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.5 Render — 750 Hours Free But Sleeps</span><span lang="en">1.5 Render — 750 Hours Free But Sleeps</span></h2>
+<p class="reveal"><span lang="id"><b>Website:</b> https://render.com</span><span lang="en"><b>Website:</b> https://render.com</span></p>
+<p class="reveal"><span lang="id"><b>Best for:</b> Learning phase, personal projects, projects that don't mind cold starts</span><span lang="en"><b>Best for:</b> Learning phase, personal projects, projects that don't mind cold starts</span></p>
+<p class="reveal"><span lang="id"><b>Free tier:</b></span><span lang="en"><b>Free tier:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Web Service: 750 hours/month (one instance runs continuously)</span><span lang="en">Web Service: 750 hours/month (one instance runs continuously)</span></li>
+<li><span lang="id">PostgreSQL: free for 90 days (⚠️ DB gets deleted after!)</span><span lang="en">PostgreSQL: free for 90 days (⚠️ DB gets deleted after!)</span></li>
+<li><span lang="id">Static sites: completely free, 100 GB bandwidth</span><span lang="en">Static sites: completely free, 100 GB bandwidth</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>⚠️ Key issue:</b></span><span lang="en"><b>⚠️ Key issue:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Sleeps after 15 minutes of inactivity</b>, cold start takes 10-30 seconds (bad UX)</span><span lang="en"><b>Sleeps after 15 minutes of inactivity</b>, cold start takes 10-30 seconds (bad UX)</span></li>
+<li><span lang="id">Free database deleted after 90 days — remember to back up!</span><span lang="en">Free database deleted after 90 days — remember to back up!</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Verdict:</b> Good for dev/testing/school projects, but don't put production user-facing projects on the free tier. Paid starts at $7/month to disable sleeping.</span><span lang="en"><b>Verdict:</b> Good for dev/testing/school projects, but don't put production user-facing projects on the free tier. Paid starts at $7/month to disable sleeping.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.6 Other Notable Platforms</span><span lang="en">1.6 Other Notable Platforms</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Platform</th><th>Type</th><th>Free Tier</th><th>Highlights</th></tr>
+<tr><td><b>GitHub Pages</b></td><td>Static hosting</td><td>Unlimited (100GB soft limit)</td><td>Easiest: push to GitHub, it goes live</td></tr>
+<tr><td><b>Hugging Face Spaces</b></td><td>AI apps</td><td>Free CPU small instance</td><td>Dedicated to AI demos (Gradio/Streamlit)</td></tr>
+<tr><td><b>Modal</b></td><td>AI/Serverless GPU</td><td>$30/month credit</td><td>Python functions-as-a-service, GPU cold start <4s</td></tr>
+<tr><td><b>Replicate</b></td><td>AI model hosting</td><td>Pay per call</td><td>Turn models into APIs without infra management</td></tr>
+<tr><td><b>Denoland Deploy</b></td><td>Deno/Edge</td><td>100k requests/day free</td><td>Deno official platform, native TypeScript</td></tr>
+<tr><td><b>Netlify</b></td><td>Static hosting</td><td>100GB bandwidth/month</td><td>Rich plugin ecosystem</td></tr>
+<tr><td><b>Supabase</b></td><td>BaaS</td><td>500MB DB free</td><td>Open-source Firebase alternative, Postgres+Auth+Storage</td></tr>
+<tr><td><b>Neon</b></td><td>Serverless Postgres</td><td>500MB free</td><td>Branchable databases for Serverless</td></tr>
+<tr><td><b>Upstash</b></td><td>Serverless Redis</td><td>10k commands/day free</td><td>Request-based Redis for Serverless</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">If you need full control over the server environment, run custom services, or PaaS doesn't cover your needs, it's time to buy your own cloud server. This section walks through AWS (the most widely used global cloud platform), and also covers alternatives like DigitalOcean, Vultr, and Hetzner.</span><span lang="en">If you need full control over the server environment, run custom services, or PaaS doesn't cover your needs, it's time to buy your own cloud server. This section walks through AWS (the most widely used global cloud platform), and also covers alternatives like DigitalOcean, Vultr, and Hetzner.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.1 AWS Free Tier — Free for 12 Months</span><span lang="en">2.1 AWS Free Tier — Free for 12 Months</span></h2>
+<p class="reveal"><span lang="id">AWS offers new users a 12-month Free Tier that's perfect for learning and personal projects. Here's what's included:</span><span lang="en">AWS offers new users a 12-month Free Tier that's perfect for learning and personal projects. Here's what's included:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Service</th><th>Free Tier Allocation</th></tr>
+<tr><td><b>EC2</b></td><td>750 hours/month of t2.micro or t3.micro (one instance running 24/7)</td></tr>
+<tr><td><b>S3</b></td><td>5GB standard storage</td></tr>
+<tr><td><b>RDS</b></td><td>750 hours/month db.t2.micro/db.t3.micro + 20GB storage</td></tr>
+<tr><td><b>Lambda</b></td><td>1 million requests/month + 3.2 million seconds compute</td></tr>
+<tr><td><b>CloudFront</b></td><td>50GB egress + 2 million requests/month</td></tr>
+<tr><td><b>CloudWatch</b></td><td>10 custom metrics + 1GB log ingestion</td></tr>
+<tr><td><b>DynamoDB</b></td><td>25GB storage + 2.5 million read/write capacity units</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>⚠️ Important:</b> Free Tier expires 12 months after sign-up, after which you'll be charged standard rates. Always set up billing alerts (Billing Dashboard → Budgets) to avoid surprise charges. Destroy resources you're not using!</span><span lang="en"><b>⚠️ Important:</b> Free Tier expires 12 months after sign-up, after which you'll be charged standard rates. Always set up billing alerts (Billing Dashboard → Budgets) to avoid surprise charges. Destroy resources you're not using!</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">How to create an EC2 instance (AWS VPS):</span><span lang="en">How to create an EC2 instance (AWS VPS):</span></h3>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Sign up</b> at https://aws.amazon.com/ with email and credit card</span><span lang="en"><b>Sign up</b> at https://aws.amazon.com/ with email and credit card</span></li>
+<li><span lang="id">Go to <b>EC2 Dashboard</b> → <b>Launch Instances</b></span><span lang="en">Go to <b>EC2 Dashboard</b> → <b>Launch Instances</b></span></li>
+<li><span lang="id"><b>Step 1: Choose an Amazon Machine Image (AMI)</b></span><span lang="en"><b>Step 1: Choose an Amazon Machine Image (AMI)</b></span></li>
+<li><span lang="id">Select <b>Ubuntu Server 22.04 LTS (HVM), SSD Volume Type</b> (64-bit x86) — this is the most beginner-friendly option</span><span lang="en">Select <b>Ubuntu Server 22.04 LTS (HVM), SSD Volume Type</b> (64-bit x86) — this is the most beginner-friendly option</span></li>
+<li><span lang="id"><b>Step 2: Choose Instance Type</b></span><span lang="en"><b>Step 2: Choose Instance Type</b></span></li>
+<li><span lang="id">Select <b>t2.micro</b> (free tier eligible, 1 vCPU, 1GB RAM)</span><span lang="en">Select <b>t2.micro</b> (free tier eligible, 1 vCPU, 1GB RAM)</span></li>
+<li><span lang="id"><b>Step 3: Configure Instance Details</b></span><span lang="en"><b>Step 3: Configure Instance Details</b></span></li>
+<li><span lang="id">Keep defaults (1 instance, default VPC)</span><span lang="en">Keep defaults (1 instance, default VPC)</span></li>
+<li><span lang="id"><b>Step 4: Add Storage</b></span><span lang="en"><b>Step 4: Add Storage</b></span></li>
+<li><span lang="id">Default 8GB gp2 root volume is enough for starters</span><span lang="en">Default 8GB gp2 root volume is enough for starters</span></li>
+<li><span lang="id"><b>Step 5: Add Tags</b> (optional, for organization)</span><span lang="en"><b>Step 5: Add Tags</b> (optional, for organization)</span></li>
+<li><span lang="id"><b>Step 6: Configure Security Group</b> (⚠️ CRITICAL — this is your firewall)</span><span lang="en"><b>Step 6: Configure Security Group</b> (⚠️ CRITICAL — this is your firewall)</span></li>
+<li><span lang="id">Create a new security group</span><span lang="en">Create a new security group</span></li>
+<li><span lang="id">Add rules:</span><span lang="en">Add rules:</span></li>
+<li><span lang="id">Type: <b>SSH</b>, Port: 22, Source: <b>My IP</b> (only your IP can SSH)</span><span lang="en">Type: <b>SSH</b>, Port: 22, Source: <b>My IP</b> (only your IP can SSH)</span></li>
+<li><span lang="id">Type: <b>HTTP</b>, Port: 80, Source: <b>Anywhere (0.0.0.0/0)</b></span><span lang="en">Type: <b>HTTP</b>, Port: 80, Source: <b>Anywhere (0.0.0.0/0)</b></span></li>
+<li><span lang="id">Type: <b>HTTPS</b>, Port: 443, Source: <b>Anywhere</b></span><span lang="en">Type: <b>HTTPS</b>, Port: 443, Source: <b>Anywhere</b></span></li>
+<li><span lang="id"><b>Step 7: Review and Launch</b></span><span lang="en"><b>Step 7: Review and Launch</b></span></li>
+<li><span lang="id"><b>Key Pair</b>: When prompted, create a new key pair (e.g. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">my-aws-key.pem</code>), download it, and store it safely. <b>You cannot download it again!</b></span><span lang="en"><b>Key Pair</b>: When prompted, create a new key pair (e.g. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">my-aws-key.pem</code>), download it, and store it safely. <b>You cannot download it again!</b></span></li>
+<li><span lang="id">Click <b>Launch Instances</b> → wait 2-5 minutes for it to start</span><span lang="en">Click <b>Launch Instances</b> → wait 2-5 minutes for it to start</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Connecting to your EC2 instance:</span><span lang="en">Connecting to your EC2 instance:</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># On your local Mac/Linux terminal
+chmod 400 my-aws-key.pem  # Set correct permissions (required!)
+ssh -i my-aws-key.pem ubuntu@YOUR_PUBLIC_IP
+# e.g. ssh -i my-aws-key.pem ubuntu@54.123.45.67
+
+# On Windows use PuTTY (convert .pem to .ppk) or Windows Terminal with OpenSSH</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Get your public IP:</b> Go to EC2 Dashboard → Instances → Select your instance → Look for "Public IPv4 address" in the details.</span><span lang="en"><b>Get your public IP:</b> Go to EC2 Dashboard → Instances → Select your instance → Look for "Public IPv4 address" in the details.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.2 DigitalOcean — Great Documentation for Beginners</span><span lang="en">2.2 DigitalOcean — Great Documentation for Beginners</span></h2>
+<p class="reveal"><span lang="id"><b>Website:</b> https://www.digitalocean.com</span><span lang="en"><b>Website:</b> https://www.digitalocean.com</span></p>
+<p class="reveal"><span lang="id"><b>Pricing:</b> Droplets start at $4/month (512MB RAM, 10GB SSD, 500GB bandwidth)</span><span lang="en"><b>Pricing:</b> Droplets start at $4/month (512MB RAM, 10GB SSD, 500GB bandwidth)</span></p>
+<p class="reveal"><span lang="id"><b>Why choose DO:</b> Their documentation (called "community tutorials") is legendary — almost any Linux/server question has a well-written DO tutorial. Their interface is clean and beginner-friendly.</span><span lang="en"><b>Why choose DO:</b> Their documentation (called "community tutorials") is legendary — almost any Linux/server question has a well-written DO tutorial. Their interface is clean and beginner-friendly.</span></p>
+<p class="reveal"><span lang="id"><b>How to use:</b></span><span lang="en"><b>How to use:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Sign up (credit card or PayPal, $2 minimum deposit via PayPal)</span><span lang="en">Sign up (credit card or PayPal, $2 minimum deposit via PayPal)</span></li>
+<li><span lang="id">Click "Create" → "Droplets"</span><span lang="en">Click "Create" → "Droplets"</span></li>
+<li><span lang="id">Choose Ubuntu 22.04, $4/month basic plan, pick a datacenter close to your users (NYC, SFO, London, Singapore, etc.)</span><span lang="en">Choose Ubuntu 22.04, $4/month basic plan, pick a datacenter close to your users (NYC, SFO, London, Singapore, etc.)</span></li>
+<li><span lang="id">Add your SSH public key (recommended) or set a root password</span><span lang="en">Add your SSH public key (recommended) or set a root password</span></li>
+<li><span lang="id">Click "Create Droplet" — ready in ~1 minute</span><span lang="en">Click "Create Droplet" — ready in ~1 minute</span></li>
+<li><span lang="id">Connect via: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ssh root@YOUR_DROPLET_IP</code></span><span lang="en">Connect via: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ssh root@YOUR_DROPLET_IP</code></span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.3 Vultr — Hourly Billing, Lots of Locations</span><span lang="en">2.3 Vultr — Hourly Billing, Lots of Locations</span></h2>
+<p class="reveal"><span lang="id"><b>Website:</b> https://www.vultr.com</span><span lang="en"><b>Website:</b> https://www.vultr.com</span></p>
+<p class="reveal"><span lang="id"><b>Pricing:</b> Regular Cloud Compute starts at $5/month (1 vCPU, 1GB RAM, 25GB SSD, 1TB bandwidth)</span><span lang="en"><b>Pricing:</b> Regular Cloud Compute starts at $5/month (1 vCPU, 1GB RAM, 25GB SSD, 1TB bandwidth)</span></p>
+<p class="reveal"><span lang="id"><b>Why choose Vultr:</b> Pay by the hour (you can spin up a server for 10 minutes to test something, then destroy it and pay cents), 30+ global locations, and they have affordable GPU instances if you need that later.</span><span lang="en"><b>Why choose Vultr:</b> Pay by the hour (you can spin up a server for 10 minutes to test something, then destroy it and pay cents), 30+ global locations, and they have affordable GPU instances if you need that later.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.4 Hetzner — Best Value for Long-Term Projects</span><span lang="en">2.4 Hetzner — Best Value for Long-Term Projects</span></h2>
+<p class="reveal"><span lang="id"><b>Website:</b> https://www.hetzner.com/cloud</span><span lang="en"><b>Website:</b> https://www.hetzner.com/cloud</span></p>
+<p class="reveal"><span lang="id"><b>Pricing:</b> CX11 starts at €3.49/month (1 vCPU, 2GB RAM, 20GB SSD, 20TB traffic!)</span><span lang="en"><b>Pricing:</b> CX11 starts at €3.49/month (1 vCPU, 2GB RAM, 20GB SSD, 20TB traffic!)</span></p>
+<p class="reveal"><span lang="id"><b>Why choose Hetzner:</b> Best price-to-performance ratio in Europe, extremely stable network. Great for long-running production projects. The tradeoff is datacenters are in Germany/Finland/US (no Asia locations).</span><span lang="en"><b>Why choose Hetzner:</b> Best price-to-performance ratio in Europe, extremely stable network. Great for long-running production projects. The tradeoff is datacenters are in Germany/Finland/US (no Asia locations).</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.5 VPS Provider Quick Comparison</span><span lang="en">2.5 VPS Provider Quick Comparison</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Provider</th><th>Starting Price</th><th>Best For</th><th>Free Trial</th></tr>
+<tr><td><b>AWS EC2</b></td><td>Free tier for 12 months, then ~$10/month</td><td>Learning AWS, enterprise integration</td><td>12 months Free Tier</td></tr>
+<tr><td><b>DigitalOcean</b></td><td>$4/month</td><td>Beginners, great docs</td><td>$200 credit for 60 days (new users)</td></tr>
+<tr><td><b>Vultr</b></td><td>$5/month ($2.50 for IPv6-only)</td><td>Hourly testing, many regions</td><td>$100 credit for 30 days</td></tr>
+<tr><td><b>Hetzner</b></td><td>€3.49/month</td><td>Best value long-term projects</td><td>€20 credit</td></tr>
+<tr><td><b>Linode (Akamai)</b></td><td>$5/month</td><td>Established, reliable</td><td>$100 credit for 60 days</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">Once you've SSH'd into your server, the first thing is to update the system and install basic tools. You can <b>copy the prompt below to your AI assistant</b> and let it generate the exact commands you need:</span><span lang="en">Once you've SSH'd into your server, the first thing is to update the system and install basic tools. You can <b>copy the prompt below to your AI assistant</b> and let it generate the exact commands you need:</span></p>
+<p class="reveal"><span lang="id">> "I just set up a new Ubuntu 22.04 server and want to deploy a [Node.js/Python/...] project. Give me the complete initialization commands including: system update, create a non-root sudo user, configure SSH key auth, install Node.js 20, install Nginx, install Docker, configure basic ufw firewall."</span><span lang="en">> "I just set up a new Ubuntu 22.04 server and want to deploy a [Node.js/Python/...] project. Give me the complete initialization commands including: system update, create a non-root sudo user, configure SSH key auth, install Node.js 20, install Nginx, install Docker, configure basic ufw firewall."</span></p>
+<p class="reveal"><span lang="id">A typical initial setup:</span><span lang="en">A typical initial setup:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># 1. Update system and install basic tools
+sudo apt update &amp;&amp; sudo apt upgrade -y
+sudo apt install -y curl wget git vim ufw build-essential
+
+# 2. Create a regular user (don&#039;t always use root!)
+sudo adduser yourname
+sudo usermod -aG sudo yourname
+
+# 3. Install Node.js (use nvm, NOT apt)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+source ~/.bashrc
+nvm install 20
+node -v  # verify
+
+# 4. Install Nginx
+sudo apt install -y nginx
+sudo systemctl start nginx
+sudo systemctl enable nginx
+# Visit http://YOUR-IP in browser, should see Nginx welcome page
+
+# 5. Install Docker (if using containers)
+curl -fsSL https://get.docker.com | sh
+sudo usermod -aG docker yourname  # run Docker without sudo
+# Log out and back in for this to take effect
+docker --version
+
+# 6. Configure firewall
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
+sudo ufw enable
+sudo ufw status</pre>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.1 Configuring Security Group / Firewall (VERY IMPORTANT!)</span><span lang="en">3.1 Configuring Security Group / Firewall (VERY IMPORTANT!)</span></h2>
+<p class="reveal"><span lang="id">On AWS this is done via <b>Security Groups</b> (in the EC2 console). On DigitalOcean/Vultr it's in their dashboard firewall settings. On Ubuntu you also need <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ufw</code>.</span><span lang="en">On AWS this is done via <b>Security Groups</b> (in the EC2 console). On DigitalOcean/Vultr it's in their dashboard firewall settings. On Ubuntu you also need <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ufw</code>.</span></p>
+<p class="reveal"><span lang="id"><b>Open these ports at minimum:</b></span><span lang="en"><b>Open these ports at minimum:</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Port</th><th>Purpose</th><th>Recommendation</th></tr>
+<tr><td><b>22</b></td><td>SSH</td><td>Required; restrict to your IP if possible</td></tr>
+<tr><td><b>80</b></td><td>HTTP</td><td>Required for web</td></tr>
+<tr><td><b>443</b></td><td>HTTPS</td><td>Required for secure web</td></tr>
+<tr><td><b>3000-3999</b></td><td>Node.js dev ports</td><td>Open temporarily for debugging, close after deployment</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">> ⚠️ <b>#1 beginner mistake:</b> The app is running but you can't access it. 90% of the time it's because the security group/firewall isn't allowing that port.</span><span lang="en">> ⚠️ <b>#1 beginner mistake:</b> The app is running but you can't access it. 90% of the time it's because the security group/firewall isn't allowing that port.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4.1 Scenario 1: Deploy a Static Frontend (Vite/React/Vue)</span><span lang="en">4.1 Scenario 1: Deploy a Static Frontend (Vite/React/Vue)</span></h2>
+<p class="reveal"><span lang="id">After <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm run build</code>, you get a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dist/</code> folder with pure HTML/CSS/JS files.</span><span lang="en">After <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm run build</code>, you get a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dist/</code> folder with pure HTML/CSS/JS files.</span></p>
+<p class="reveal"><span lang="id"><b>Get code to the server:</b></span><span lang="en"><b>Get code to the server:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Option A: rsync from local machine
+rsync -avz --exclude=node_modules ./dist/ yourname@YOUR-IP:/var/www/myapp/
+
+# Option B: git clone on server (recommended, easier updates)
+cd /var/www
+sudo git clone https://github.com/YOUR_USER/YOUR_REPO.git myapp
+cd myapp
+npm install
+npm run build</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Configure Nginx:</b></span><span lang="en"><b>Configure Nginx:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>sudo vim /etc/nginx/sites-available/myapp</pre>
+</div>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>nginx</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>server {
+    listen 80;
+    server_name YOUR-IP-OR-DOMAIN;
+
+    root /var/www/myapp/dist;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;  # SPA routing fallback
+    }
+
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff2?)$ {
+        expires 1y;
+        add_header Cache-Control &quot;public, immutable&quot;;
+    }
+}</pre>
+</div>
+<p class="reveal"><span lang="id">Enable the site:</span><span lang="en">Enable the site:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>sudo ln -s /etc/nginx/sites-available/myapp /etc/nginx/sites-enabled/
+sudo nginx -t &amp;&amp; sudo systemctl reload nginx</pre>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4.2 Scenario 2: Deploy a Node.js Backend (Express/Fastify/NestJS)</span><span lang="en">4.2 Scenario 2: Deploy a Node.js Backend (Express/Fastify/NestJS)</span></h2>
+<p class="reveal"><span lang="id">Use <b>PM2</b> to keep the app running in the background:</span><span lang="en">Use <b>PM2</b> to keep the app running in the background:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>npm install -g pm2
+cd /path/to/your/app
+npm install
+npm run build  # if TypeScript
+pm2 start dist/main.js --name &quot;myapp&quot;
+pm2 startup &amp;&amp; pm2 save  # auto-start on boot
+pm2 logs myapp  # view logs</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Nginx reverse proxy:</b></span><span lang="en"><b>Nginx reverse proxy:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>nginx</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>server {
+    listen 80;
+    server_name api.yourdomain.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection &#039;upgrade&#039;;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}</pre>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4.3 Scenario 3: Docker Compose Full-Stack Deploy</span><span lang="en">4.3 Scenario 3: Docker Compose Full-Stack Deploy</span></h2>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>yaml</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># docker-compose.yml
+version: &#039;3.8&#039;
+services:
+  app:
+    build: .
+    ports:
+      - &quot;3000:3000&quot;
+    environment:
+      - DATABASE_URL=postgresql://postgres:pass@db:5432/myapp
+    depends_on: [db, redis]
+    restart: always
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: myapp
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+
+  redis:
+    image: redis:7-alpine
+    restart: always
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - &quot;80:80&quot;
+      - &quot;443:443&quot;
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./frontend/dist:/usr/share/nginx/html
+    depends_on: [app]
+    restart: always
+
+volumes:
+  postgres_data:</pre>
+</div>
+<p class="reveal"><span lang="id">Run with: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">docker compose up -d</code></span><span lang="en">Run with: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">docker compose up -d</code></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5.1 Buy a Domain & Set DNS</span><span lang="en">5.1 Buy a Domain & Set DNS</span></h2>
+<p class="reveal"><span lang="id">Register a domain via Namecheap, Cloudflare Registrar, GoDaddy, or AWS Route 53. In your domain's DNS settings, add <b>A records</b>:</span><span lang="en">Register a domain via Namecheap, Cloudflare Registrar, GoDaddy, or AWS Route 53. In your domain's DNS settings, add <b>A records</b>:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Type</th><th>Host</th><th>Value</th></tr>
+<tr><td>A</td><td>@</td><td>Your server IP</td></tr>
+<tr><td>A</td><td>www</td><td>Your server IP</td></tr>
+<tr><td>A</td><td>api</td><td>Your server IP (for backend)</td></tr>
+</table></div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5.2 One-Click HTTPS with Let's Encrypt</span><span lang="en">5.2 One-Click HTTPS with Let's Encrypt</span></h2>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>sudo apt install -y certbot python3-certbot-nginx
+sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com -d api.yourdomain.com
+# Choose option 2 (Redirect) to auto-redirect HTTP to HTTPS
+sudo certbot renew --dry-run  # test auto-renewal</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">When you log into AWS Console (or any cloud dashboard), you'll see dozens of services with cryptic names (EC2, S3, RDS, ELB, VPC…). This section explains the most common ones and when to use them, <b>using AWS as the primary example</b> (the concepts map directly to other clouds).</span><span lang="en">When you log into AWS Console (or any cloud dashboard), you'll see dozens of services with cryptic names (EC2, S3, RDS, ELB, VPC…). This section explains the most common ones and when to use them, <b>using AWS as the primary example</b> (the concepts map directly to other clouds).</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6.1 Cloud Architecture Overview</span><span lang="en">6.1 Cloud Architecture Overview</span></h2>
+<p class="reveal"><span lang="id">A typical web application running on the cloud looks like this:</span><span lang="en">A typical web application running on the cloud looks like this:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>User → CloudFront (CDN) → ALB (Load Balancer) → EC2 (Your App Server)
+                              │                     │
+                              │                     ├── S3 (images/files)
+                              │                     ├── RDS (database)
+                              │                     └── ElastiCache (Redis)
+                              │
+                              └── ECS/EKS (containers, advanced)
+                              
+         └── Route 53 (DNS) → maps your domain to CloudFront/ALB
+             + ACM (SSL certs) → HTTPS encryption</pre>
+</div>
+<p class="reveal"><span lang="id">Let's go through each service.</span><span lang="en">Let's go through each service.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6.2 Compute: Where Your Code Runs</span><span lang="en">6.2 Compute: Where Your Code Runs</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">EC2 (Elastic Compute Cloud) — The VPS</span><span lang="en">EC2 (Elastic Compute Cloud) — The VPS</span></h3>
+<p class="reveal"><span lang="id">This is the "cloud server" we've been using. It's a virtual machine you can SSH into, install anything on, and configure however you want.</span><span lang="en">This is the "cloud server" we've been using. It's a virtual machine you can SSH into, install anything on, and configure however you want.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Alibaba Cloud:</b> ECS</span><span lang="en"><b>Alibaba Cloud:</b> ECS</span></li>
+<li><span lang="id"><b>Tencent Cloud:</b> CVM / Lighthouse</span><span lang="en"><b>Tencent Cloud:</b> CVM / Lighthouse</span></li>
+<li><span lang="id"><b>DigitalOcean:</b> Droplet</span><span lang="en"><b>DigitalOcean:</b> Droplet</span></li>
+<li><span lang="id"><b>Hetzner:</b> Cloud Server</span><span lang="en"><b>Hetzner:</b> Cloud Server</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>When to use:</b> When you need full control, custom software, always-on processes.</span><span lang="en"><b>When to use:</b> When you need full control, custom software, always-on processes.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Lambda — Serverless Functions</span><span lang="en">Lambda — Serverless Functions</span></h3>
+<p class="reveal"><span lang="id">Upload code snippets without managing servers. Pay per invocation and execution time. Runs only when triggered.</span><span lang="en">Upload code snippets without managing servers. Pay per invocation and execution time. Runs only when triggered.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Alibaba Cloud:</b> Function Compute</span><span lang="en"><b>Alibaba Cloud:</b> Function Compute</span></li>
+<li><span lang="id"><b>Tencent Cloud:</b> SCF (Serverless Cloud Function)</span><span lang="en"><b>Tencent Cloud:</b> SCF (Serverless Cloud Function)</span></li>
+<li><span lang="id"><b>GCP:</b> Cloud Functions</span><span lang="en"><b>GCP:</b> Cloud Functions</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>When to use:</b> Occasional tasks (webhook handlers, image processing, scheduled jobs), APIs with spiky traffic. <b>Not for</b> always-on processes like WebSocket bots.</span><span lang="en"><b>When to use:</b> Occasional tasks (webhook handlers, image processing, scheduled jobs), APIs with spiky traffic. <b>Not for</b> always-on processes like WebSocket bots.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">ECS/EKS — Container Orchestration</span><span lang="en">ECS/EKS — Container Orchestration</span></h3>
+<p class="reveal"><span lang="id">If your project uses Docker and grows to multiple containers/services, use Kubernetes for orchestration.</span><span lang="en">If your project uses Docker and grows to multiple containers/services, use Kubernetes for orchestration.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>AWS ECS:</b> Amazon's simpler container service</span><span lang="en"><b>AWS ECS:</b> Amazon's simpler container service</span></li>
+<li><span lang="id"><b>AWS EKS:</b> Managed Kubernetes</span><span lang="en"><b>AWS EKS:</b> Managed Kubernetes</span></li>
+<li><span lang="id"><b>Alibaba Cloud:</b> ACK</span><span lang="en"><b>Alibaba Cloud:</b> ACK</span></li>
+<li><span lang="id"><b>Tencent Cloud:</b> TKE</span><span lang="en"><b>Tencent Cloud:</b> TKE</span></li>
+<li><span lang="id"><b>Google Cloud:</b> GKE</span><span lang="en"><b>Google Cloud:</b> GKE</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>When to use:</b> Multi-service microservice architectures, auto-scaling, team projects. Most personal projects won't need this — a VPS + Docker Compose is enough.</span><span lang="en"><b>When to use:</b> Multi-service microservice architectures, auto-scaling, team projects. Most personal projects won't need this — a VPS + Docker Compose is enough.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6.3 Storage: Where Files and Data Live</span><span lang="en">6.3 Storage: Where Files and Data Live</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">S3 (Simple Storage Service) ⭐ Most Used</span><span lang="en">S3 (Simple Storage Service) ⭐ Most Used</span></h3>
+<p class="reveal"><span lang="id"><b>This is the most common service beyond servers</b>, used for storing images, videos, PDFs, static site assets, backups, and more. <b>Never store user-uploaded files on your server's local disk!</b> They'll be lost if you rebuild/migrate/resize the server.</span><span lang="en"><b>This is the most common service beyond servers</b>, used for storing images, videos, PDFs, static site assets, backups, and more. <b>Never store user-uploaded files on your server's local disk!</b> They'll be lost if you rebuild/migrate/resize the server.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Alibaba Cloud:</b> OSS (Object Storage Service)</span><span lang="en"><b>Alibaba Cloud:</b> OSS (Object Storage Service)</span></li>
+<li><span lang="id"><b>Tencent Cloud:</b> COS (Cloud Object Storage)</span><span lang="en"><b>Tencent Cloud:</b> COS (Cloud Object Storage)</span></li>
+<li><span lang="id"><b>Google Cloud:</b> GCS (Google Cloud Storage)</span><span lang="en"><b>Google Cloud:</b> GCS (Google Cloud Storage)</span></li>
+<li><span lang="id"><b>Alternative:</b> Cloudflare R2 (zero egress fees — great deal!)</span><span lang="en"><b>Alternative:</b> Cloudflare R2 (zero egress fees — great deal!)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Free tier:</b> AWS S3 gives 5GB standard storage for 12 months under Free Tier. Alibaba Cloud OSS gives new users 5GB for 6 months. Cloudflare R2 has a permanent free tier with 10GB storage.</span><span lang="en"><b>Free tier:</b> AWS S3 gives 5GB standard storage for 12 months under Free Tier. Alibaba Cloud OSS gives new users 5GB for 6 months. Cloudflare R2 has a permanent free tier with 10GB storage.</span></p>
+<p class="reveal"><span lang="id"><b>What you can do with S3:</b></span><span lang="en"><b>What you can do with S3:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Store user uploads (avatars, images, attachments, product photos)</span><span lang="en">Store user uploads (avatars, images, attachments, product photos)</span></li>
+<li><span lang="id">Host static websites (upload your <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dist/</code> folder, enable "Static website hosting")</span><span lang="en">Host static websites (upload your <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dist/</code> folder, enable "Static website hosting")</span></li>
+<li><span lang="id">Backup database exports</span><span lang="en">Backup database exports</span></li>
+<li><span lang="id">Pair with CloudFront CDN for fast global downloads</span><span lang="en">Pair with CloudFront CDN for fast global downloads</span></li>
+<li><span lang="id">Generate pre-signed URLs for sharing private files</span><span lang="en">Generate pre-signed URLs for sharing private files</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>How to use S3 (AWS Console walkthrough):</b></span><span lang="en"><b>How to use S3 (AWS Console walkthrough):</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Go to <b>S3 Dashboard</b> → <b>Create bucket</b></span><span lang="en">Go to <b>S3 Dashboard</b> → <b>Create bucket</b></span></li>
+<li><span lang="id">Enter a <b>globally unique</b> bucket name (e.g. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">myapp-images</code>)</span><span lang="en">Enter a <b>globally unique</b> bucket name (e.g. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">myapp-images</code>)</span></li>
+<li><span lang="id">Choose an AWS Region (e.g. us-east-1 for US East)</span><span lang="en">Choose an AWS Region (e.g. us-east-1 for US East)</span></li>
+<li><span lang="id"><b>Object Ownership:</b> Select "ACLs enabled" → "Bucket owner preferred" (simpler for public access)</span><span lang="en"><b>Object Ownership:</b> Select "ACLs enabled" → "Bucket owner preferred" (simpler for public access)</span></li>
+<li><span lang="id"><b>Uncheck</b> "Block all public access" if you want public images (read the warning, only uncheck for public content)</span><span lang="en"><b>Uncheck</b> "Block all public access" if you want public images (read the warning, only uncheck for public content)</span></li>
+<li><span lang="id">Leave other settings default → Click <b>Create bucket</b></span><span lang="en">Leave other settings default → Click <b>Create bucket</b></span></li>
+<li><span lang="id">Click your bucket → <b>Upload</b> → Select files</span><span lang="en">Click your bucket → <b>Upload</b> → Select files</span></li>
+<li><span lang="id">After upload, each file gets a URL like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://myapp-images.s3.us-east-1.amazonaws.com/avatar.jpg</code></span><span lang="en">After upload, each file gets a URL like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://myapp-images.s3.us-east-1.amazonaws.com/avatar.jpg</code></span></li>
+<li><span lang="id">Use that URL directly in your frontend <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><img src="..."></code></span><span lang="en">Use that URL directly in your frontend <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><img src="..."></code></span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Using S3 with code (Node.js example, ask AI to write the full logic):</b></span><span lang="en"><b>Using S3 with code (Node.js example, ask AI to write the full logic):</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// npm install @aws-sdk/client-s3 @aws-sdk/lib-storage
+import { S3Client, PutObjectCommand } from &quot;@aws-sdk/client-s3&quot;;
+
+const s3 = new S3Client({ region: &quot;us-east-1&quot; });
+
+async function uploadFile(buffer, filename, contentType) {
+  await s3.send(new PutObjectCommand({
+    Bucket: &quot;myapp-images&quot;,
+    Key: filename,
+    Body: buffer,
+    ContentType: contentType,
+    ACL: &quot;public-read&quot; // make file publicly accessible
+  }));
+  return `https://myapp-images.s3.us-east-1.amazonaws.com/${filename}`;
+}</pre>
+</div>
+<p class="reveal"><span lang="id">> ⚠️ <b>Critical Security Note:</b> AWS Access Keys are like your S3 password. <b>Never hardcode them in frontend code or commit to Git!</b> Store them in environment variables or use IAM roles. If keys leak, disable them immediately in IAM console.</span><span lang="en">> ⚠️ <b>Critical Security Note:</b> AWS Access Keys are like your S3 password. <b>Never hardcode them in frontend code or commit to Git!</b> Store them in environment variables or use IAM roles. If keys leak, disable them immediately in IAM console.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">EBS (Elastic Block Store) — Virtual Hard Drives</span><span lang="en">EBS (Elastic Block Store) — Virtual Hard Drives</span></h3>
+<p class="reveal"><span lang="id">Block storage volumes attached to EC2 instances (like your computer's hard drive). EC2 instances come with a root volume (8-60GB typically); buy additional EBS volumes when you need more space.</span><span lang="en">Block storage volumes attached to EC2 instances (like your computer's hard drive). EC2 instances come with a root volume (8-60GB typically); buy additional EBS volumes when you need more space.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Alibaba Cloud:</b> Cloud Disk (ESSD/SSD)</span><span lang="en"><b>Alibaba Cloud:</b> Cloud Disk (ESSD/SSD)</span></li>
+<li><span lang="id"><b>Tencent Cloud:</b> CBS (Cloud Block Storage)</span><span lang="en"><b>Tencent Cloud:</b> CBS (Cloud Block Storage)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>When to use:</b> Extra disk space for your server, data that needs to persist independently of the EC2 instance lifecycle.</span><span lang="en"><b>When to use:</b> Extra disk space for your server, data that needs to persist independently of the EC2 instance lifecycle.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">EFS (Elastic File System) — Shared File Storage</span><span lang="en">EFS (Elastic File System) — Shared File Storage</span></h3>
+<p class="reveal"><span lang="id">A network file system that multiple EC2 instances can mount simultaneously. Good for sharing uploaded files across multiple web servers.</span><span lang="en">A network file system that multiple EC2 instances can mount simultaneously. Good for sharing uploaded files across multiple web servers.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Alibaba Cloud:</b> NAS</span><span lang="en"><b>Alibaba Cloud:</b> NAS</span></li>
+<li><span lang="id"><b>Tencent Cloud:</b> CFS</span><span lang="en"><b>Tencent Cloud:</b> CFS</span></li>
+</ul>
+<p class="reveal"><span lang="id">Most small projects don't need this — a single server + S3 is enough.</span><span lang="en">Most small projects don't need this — a single server + S3 is enough.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6.4 Databases: Structured Data Storage</span><span lang="en">6.4 Databases: Structured Data Storage</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">RDS (Relational Database Service) ⭐ Common</span><span lang="en">RDS (Relational Database Service) ⭐ Common</span></h3>
+<p class="reveal"><span lang="id"><b>Don't run your production database on the same VPS!</b> While technically possible (we did this earlier in the Docker Compose example), for production use a managed database: automated backups, high availability, monitoring, and one-click scaling.</span><span lang="en"><b>Don't run your production database on the same VPS!</b> While technically possible (we did this earlier in the Docker Compose example), for production use a managed database: automated backups, high availability, monitoring, and one-click scaling.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Alibaba Cloud:</b> RDS</span><span lang="en"><b>Alibaba Cloud:</b> RDS</span></li>
+<li><span lang="id"><b>Tencent Cloud:</b> TDSQL-C / CDB</span><span lang="en"><b>Tencent Cloud:</b> TDSQL-C / CDB</span></li>
+<li><span lang="id"><b>Google Cloud:</b> Cloud SQL</span><span lang="en"><b>Google Cloud:</b> Cloud SQL</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Supported engines:</b> MySQL, PostgreSQL, MariaDB, SQL Server, Oracle, and Amazon Aurora (MySQL/PostgreSQL-compatible, cloud-optimized).</span><span lang="en"><b>Supported engines:</b> MySQL, PostgreSQL, MariaDB, SQL Server, Oracle, and Amazon Aurora (MySQL/PostgreSQL-compatible, cloud-optimized).</span></p>
+<p class="reveal"><span lang="id"><b>Free tier:</b> AWS RDS gives 750 hours/month of db.t2.micro or db.t3.micro + 20GB storage for 12 months.</span><span lang="en"><b>Free tier:</b> AWS RDS gives 750 hours/month of db.t2.micro or db.t3.micro + 20GB storage for 12 months.</span></p>
+<p class="reveal"><span lang="id"><b>How to set up RDS (AWS):</b></span><span lang="en"><b>How to set up RDS (AWS):</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Go to <b>RDS</b> → <b>Create database</b></span><span lang="en">Go to <b>RDS</b> → <b>Create database</b></span></li>
+<li><span lang="id">Select <b>Standard create</b> → Engine: <b>MySQL 8.0</b> or PostgreSQL</span><span lang="en">Select <b>Standard create</b> → Engine: <b>MySQL 8.0</b> or PostgreSQL</span></li>
+<li><span lang="id">Templates: <b>Free tier</b> (to stay within free allocation)</span><span lang="en">Templates: <b>Free tier</b> (to stay within free allocation)</span></li>
+<li><span lang="id">Set DB instance identifier, master username, master password</span><span lang="en">Set DB instance identifier, master username, master password</span></li>
+<li><span lang="id">Instance configuration: <b>db.t3.micro</b> (free tier)</span><span lang="en">Instance configuration: <b>db.t3.micro</b> (free tier)</span></li>
+<li><span lang="id">Storage: 20GB gp2 (free tier eligible)</span><span lang="en">Storage: 20GB gp2 (free tier eligible)</span></li>
+<li><span lang="id">Connectivity: Select the <b>same VPC</b> as your EC2 instance</span><span lang="en">Connectivity: Select the <b>same VPC</b> as your EC2 instance</span></li>
+<li><span lang="id"><b>Public access:</b> No (only allow access from within VPC)</span><span lang="en"><b>Public access:</b> No (only allow access from within VPC)</span></li>
+<li><span lang="id">VPC Security Group: Create new, or select existing that allows port 5432/3306 from your EC2 security group</span><span lang="en">VPC Security Group: Create new, or select existing that allows port 5432/3306 from your EC2 security group</span></li>
+<li><span lang="id">Click <b>Create database</b> → wait ~5-10 minutes</span><span lang="en">Click <b>Create database</b> → wait ~5-10 minutes</span></li>
+<li><span lang="id">Once available, get the <b>Endpoint</b> (looks like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">mydb.xxxxx.us-east-1.rds.amazonaws.com:3306</code>)</span><span lang="en">Once available, get the <b>Endpoint</b> (looks like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">mydb.xxxxx.us-east-1.rds.amazonaws.com:3306</code>)</span></li>
+<li><span lang="id">Update your app's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">DATABASE_URL</code> to point to this endpoint, and add your EC2 security group to the RDS security group's inbound rules</span><span lang="en">Update your app's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">DATABASE_URL</code> to point to this endpoint, and add your EC2 security group to the RDS security group's inbound rules</span></li>
+</ul>
+<p class="reveal"><span lang="id">> 💡 <b>vibecoding tip:</b> Tell AI "I have an AWS RDS PostgreSQL instance at [endpoint], with user [username], help me write connection code and migration scripts for [my project]."</span><span lang="en">> 💡 <b>vibecoding tip:</b> Tell AI "I have an AWS RDS PostgreSQL instance at [endpoint], with user [username], help me write connection code and migration scripts for [my project]."</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">ElastiCache — Managed Redis/Memcached</span><span lang="en">ElastiCache — Managed Redis/Memcached</span></h3>
+<p class="reveal"><span lang="id">In-memory caching for hot data (reducing DB queries), session/token storage, message queues, leaderboards, etc.</span><span lang="en">In-memory caching for hot data (reducing DB queries), session/token storage, message queues, leaderboards, etc.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Alibaba Cloud:</b> ApsaraDB for Redis</span><span lang="en"><b>Alibaba Cloud:</b> ApsaraDB for Redis</span></li>
+<li><span lang="id"><b>Tencent Cloud:</b> TencentDB for Redis</span><span lang="en"><b>Tencent Cloud:</b> TencentDB for Redis</span></li>
+<li><span lang="id"><b>Alternative:</b> Upstash (Serverless Redis, free tier available)</span><span lang="en"><b>Alternative:</b> Upstash (Serverless Redis, free tier available)</span></li>
+</ul>
+<p class="reveal"><span lang="id">For small projects you can just run <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sudo apt install redis-server</code> on your VPS; use managed Redis for production/high availability.</span><span lang="en">For small projects you can just run <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sudo apt install redis-server</code> on your VPS; use managed Redis for production/high availability.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6.5 Networking: Faster, Safer Access</span><span lang="en">6.5 Networking: Faster, Safer Access</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">CloudFront — CDN (Content Delivery Network) ⭐ Common</span><span lang="en">CloudFront — CDN (Content Delivery Network) ⭐ Common</span></h3>
+<p class="reveal"><span lang="id">Caches your static assets (images, CSS, JS, video) at edge locations worldwide so users get content from the nearest node.</span><span lang="en">Caches your static assets (images, CSS, JS, video) at edge locations worldwide so users get content from the nearest node.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Alibaba Cloud:</b> CDN / DCDN</span><span lang="en"><b>Alibaba Cloud:</b> CDN / DCDN</span></li>
+<li><span lang="id"><b>Tencent Cloud:</b> CDN / EdgeOne</span><span lang="en"><b>Tencent Cloud:</b> CDN / EdgeOne</span></li>
+<li><span lang="id"><b>Google Cloud:</b> Cloud CDN</span><span lang="en"><b>Google Cloud:</b> Cloud CDN</span></li>
+<li><span lang="id"><b>Free alternative:</b> Cloudflare CDN (free plan includes unlimited bandwidth)</span><span lang="en"><b>Free alternative:</b> Cloudflare CDN (free plan includes unlimited bandwidth)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>When to use:</b></span><span lang="en"><b>When to use:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Sites with images/video/large files</span><span lang="en">Sites with images/video/large files</span></li>
+<li><span lang="id">Users spread across different regions</span><span lang="en">Users spread across different regions</span></li>
+<li><span lang="id">Reducing bandwidth costs on your origin server</span><span lang="en">Reducing bandwidth costs on your origin server</span></li>
+<li><span lang="id">Cloudflare Pages essentially = CDN + static hosting</span><span lang="en">Cloudflare Pages essentially = CDN + static hosting</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>How to configure CloudFront:</b></span><span lang="en"><b>How to configure CloudFront:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">CloudFront console → <b>Create distribution</b></span><span lang="en">CloudFront console → <b>Create distribution</b></span></li>
+<li><span lang="id">Origin domain: select your S3 bucket or your EC2 ALB</span><span lang="en">Origin domain: select your S3 bucket or your EC2 ALB</span></li>
+<li><span lang="id">Default cache behavior: Redirect HTTP to HTTPS</span><span lang="en">Default cache behavior: Redirect HTTP to HTTPS</span></li>
+<li><span lang="id">Create distribution → wait ~5-15 minutes to deploy</span><span lang="en">Create distribution → wait ~5-15 minutes to deploy</span></li>
+<li><span lang="id">Point your domain's DNS to the CloudFront distribution domain name (e.g. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dxxx.cloudfront.net</code>) via a CNAME record</span><span lang="en">Point your domain's DNS to the CloudFront distribution domain name (e.g. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dxxx.cloudfront.net</code>) via a CNAME record</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">ELB (Elastic Load Balancing)</span><span lang="en">ELB (Elastic Load Balancing)</span></h3>
+<p class="reveal"><span lang="id">Distributes incoming traffic across multiple EC2 instances, automatically removing unhealthy instances.</span><span lang="en">Distributes incoming traffic across multiple EC2 instances, automatically removing unhealthy instances.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>ALB (Application Load Balancer):</b> Layer 7 (HTTP/HTTPS), path-based routing, most common for web apps</span><span lang="en"><b>ALB (Application Load Balancer):</b> Layer 7 (HTTP/HTTPS), path-based routing, most common for web apps</span></li>
+<li><span lang="id"><b>NLB (Network Load Balancer):</b> Layer 4 (TCP/UDP), ultra-low latency</span><span lang="en"><b>NLB (Network Load Balancer):</b> Layer 4 (TCP/UDP), ultra-low latency</span></li>
+<li><span lang="id"><b>GLB (Gateway Load Balancer):</b> For network virtual appliances</span><span lang="en"><b>GLB (Gateway Load Balancer):</b> For network virtual appliances</span></li>
+<li><span lang="id"><b>Alibaba Cloud:</b> SLB / ALB</span><span lang="en"><b>Alibaba Cloud:</b> SLB / ALB</span></li>
+<li><span lang="id"><b>Tencent Cloud:</b> CLB</span><span lang="en"><b>Tencent Cloud:</b> CLB</span></li>
+</ul>
+<p class="reveal"><span lang="id">Single-server projects don't need this. Use it when you scale to multiple backend servers.</span><span lang="en">Single-server projects don't need this. Use it when you scale to multiple backend servers.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Route 53 — DNS Service</span><span lang="en">Route 53 — DNS Service</span></h3>
+<p class="reveal"><span lang="id">Translates domain names to IP addresses. Most domain registrars include free DNS, but Route 53 is deeply integrated with AWS.</span><span lang="en">Translates domain names to IP addresses. Most domain registrars include free DNS, but Route 53 is deeply integrated with AWS.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Alibaba Cloud:</b> Alibaba Cloud DNS</span><span lang="en"><b>Alibaba Cloud:</b> Alibaba Cloud DNS</span></li>
+<li><span lang="id"><b>Tencent Cloud:</b> DNSPod</span><span lang="en"><b>Tencent Cloud:</b> DNSPod</span></li>
+<li><span lang="id"><b>Free alternative:</b> Cloudflare DNS (one of the fastest globally, completely free)</span><span lang="en"><b>Free alternative:</b> Cloudflare DNS (one of the fastest globally, completely free)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Common DNS record types:</b></span><span lang="en"><b>Common DNS record types:</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Type</th><th>Purpose</th><th>Example</th></tr>
+<tr><td><b>A</b></td><td>Domain → IPv4 address</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">@ → 54.123.45.67</code></td></tr>
+<tr><td><b>AAAA</b></td><td>Domain → IPv6 address</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">@ → 2600:xxxx::</code></td></tr>
+<tr><td><b>CNAME</b></td><td>Domain → another domain (used for CDN)</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">static → dxxx.cloudfront.net</code></td></tr>
+<tr><td><b>MX</b></td><td>Mail server (needed for business email)</td><td>-</td></tr>
+<tr><td><b>TXT</b></td><td>Arbitrary text (domain verification, SPF/DKIM)</td><td>-</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">ACM (AWS Certificate Manager) — Free SSL Certificates</span><span lang="en">ACM (AWS Certificate Manager) — Free SSL Certificates</span></h3>
+<p class="reveal"><span lang="id">AWS provides free SSL/TLS certificates that auto-renew when used with CloudFront or ALB. Just request a certificate, validate via DNS or email, and attach it to your distribution/load balancer.</span><span lang="en">AWS provides free SSL/TLS certificates that auto-renew when used with CloudFront or ALB. Just request a certificate, validate via DNS or email, and attach it to your distribution/load balancer.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Alibaba Cloud:</b> Free SSL Certificates</span><span lang="en"><b>Alibaba Cloud:</b> Free SSL Certificates</span></li>
+<li><span lang="id"><b>Tencent Cloud:</b> Free SSL Certificates</span><span lang="en"><b>Tencent Cloud:</b> Free SSL Certificates</span></li>
+<li><span lang="id"><b>Universal free option:</b> Certbot + Let's Encrypt (the method we showed in Section 5, 90-day auto-renewal)</span><span lang="en"><b>Universal free option:</b> Certbot + Let's Encrypt (the method we showed in Section 5, 90-day auto-renewal)</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">VPC (Virtual Private Cloud)</span><span lang="en">VPC (Virtual Private Cloud)</span></h3>
+<p class="reveal"><span lang="id">An isolated virtual network on AWS where your EC2, RDS, and other resources live. New accounts get a default VPC. Advanced usage (public/private subnet separation, NAT gateways) requires deeper study.</span><span lang="en">An isolated virtual network on AWS where your EC2, RDS, and other resources live. New accounts get a default VPC. Advanced usage (public/private subnet separation, NAT gateways) requires deeper study.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6.6 Other Common Services</span><span lang="en">6.6 Other Common Services</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Domain Registration</span><span lang="en">Domain Registration</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Global:</b> Namecheap, Cloudflare Registrar (free WHOIS privacy), GoDaddy</span><span lang="en"><b>Global:</b> Namecheap, Cloudflare Registrar (free WHOIS privacy), GoDaddy</span></li>
+<li><span lang="id"><b>AWS:</b> Route 53 (also does registration)</span><span lang="en"><b>AWS:</b> Route 53 (also does registration)</span></li>
+<li><span lang="id"><b>China:</b> Alibaba Cloud Wanwang, Tencent Cloud DNSPod (required for ICP filing)</span><span lang="en"><b>China:</b> Alibaba Cloud Wanwang, Tencent Cloud DNSPod (required for ICP filing)</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">SES (Simple Email Service) — Sending Emails</span><span lang="en">SES (Simple Email Service) — Sending Emails</span></h3>
+<p class="reveal"><span lang="id">Don't run your own mail server (you'll likely end up in spam). Use a professional email service.</span><span lang="en">Don't run your own mail server (you'll likely end up in spam). Use a professional email service.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>AWS SES</b>, SendGrid, Mailgun, Resend</span><span lang="en"><b>AWS SES</b>, SendGrid, Mailgun, Resend</span></li>
+<li><span lang="id"><b>China:</b> Alibaba Cloud Direct Mail, Tencent SES</span><span lang="en"><b>China:</b> Alibaba Cloud Direct Mail, Tencent SES</span></li>
+<li><span lang="id">Uses: verification emails, notifications, marketing emails</span><span lang="en">Uses: verification emails, notifications, marketing emails</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">SNS (Simple Notification Service) — SMS/Push Notifications</span><span lang="en">SNS (Simple Notification Service) — SMS/Push Notifications</span></h3>
+<p class="reveal"><span lang="id">For SMS, mobile push notifications. Twilio is the popular global alternative for SMS.</span><span lang="en">For SMS, mobile push notifications. Twilio is the popular global alternative for SMS.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">CloudWatch — Monitoring & Logging</span><span lang="en">CloudWatch — Monitoring & Logging</span></h3>
+<p class="reveal"><span lang="id">Monitor EC2 CPU/memory/disk, view application logs, set up alerts (high CPU, service down).</span><span lang="en">Monitor EC2 CPU/memory/disk, view application logs, set up alerts (high CPU, service down).</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Alibaba Cloud:</b> Cloud Monitor + SLS (Log Service)</span><span lang="en"><b>Alibaba Cloud:</b> Cloud Monitor + SLS (Log Service)</span></li>
+<li><span lang="id"><b>Tencent Cloud:</b> Cloud Monitor + CLS</span><span lang="en"><b>Tencent Cloud:</b> Cloud Monitor + CLS</span></li>
+<li><span lang="id"><b>Beginner alternative:</b> PM2's built-in monitoring + Uptime Kuma (open-source, one Docker container to run)</span><span lang="en"><b>Beginner alternative:</b> PM2's built-in monitoring + Uptime Kuma (open-source, one Docker container to run)</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">S3 Advanced: Image Processing / Lambda Triggers</span><span lang="en">S3 Advanced: Image Processing / Lambda Triggers</span></h3>
+<p class="reveal"><span lang="id">S3 can automatically trigger Lambda functions when files are uploaded. For example, when a user uploads a large photo, a Lambda function can resize it into thumbnails automatically. In China, Alibaba OSS has built-in image processing (append <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">?x-oss-process=image/resize,w_300</code> to URLs) and Tencent COS has Cloud Infinite (CI) for similar features.</span><span lang="en">S3 can automatically trigger Lambda functions when files are uploaded. For example, when a user uploads a large photo, a Lambda function can resize it into thumbnails automatically. In China, Alibaba OSS has built-in image processing (append <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">?x-oss-process=image/resize,w_300</code> to URLs) and Tencent COS has Cloud Infinite (CI) for similar features.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6.7 Cloud Service Mapping: AWS ↔ Chinese Clouds ↔ Alternatives</span><span lang="en">6.7 Cloud Service Mapping: AWS ↔ Chinese Clouds ↔ Alternatives</span></h2>
+<p class="reveal"><span lang="id">Quick reference for finding equivalent services:</span><span lang="en">Quick reference for finding equivalent services:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Category</th><th>AWS</th><th>Alibaba Cloud</th><th>Tencent Cloud</th><th>Free/Budget Alternative</th></tr>
+<tr><td>Cloud Servers</td><td>EC2</td><td>ECS</td><td>CVM / Lighthouse</td><td>DigitalOcean / Vultr / Hetzner</td></tr>
+<tr><td>Object Storage</td><td>S3</td><td>OSS</td><td>COS</td><td>Cloudflare R2 (zero egress)</td></tr>
+<tr><td>Relational DB</td><td>RDS</td><td>RDS</td><td>TDSQL-C/CDB</td><td>Supabase / Neon</td></tr>
+<tr><td>Redis Cache</td><td>ElastiCache</td><td>ApsaraDB Redis</td><td>TencentDB Redis</td><td>Upstash</td></tr>
+<tr><td>CDN</td><td>CloudFront</td><td>CDN/DCDN</td><td>CDN/EdgeOne</td><td>Cloudflare CDN (free)</td></tr>
+<tr><td>Load Balancer</td><td>ALB/NLB</td><td>SLB/ALB</td><td>CLB</td><td>Nginx self-hosted / Caddy</td></tr>
+<tr><td>Serverless</td><td>Lambda</td><td>Function Compute</td><td>SCF</td><td>Cloudflare Workers</td></tr>
+<tr><td>Containers/K8s</td><td>ECS/EKS</td><td>ACK</td><td>TKE</td><td>Fly.io / Railway</td></tr>
+<tr><td>DNS</td><td>Route 53</td><td>Alibaba Cloud DNS</td><td>DNSPod</td><td>Cloudflare DNS (free)</td></tr>
+<tr><td>SSL Certs</td><td>ACM (free)</td><td>Free certs</td><td>Free certs</td><td>Let's Encrypt (free)</td></tr>
+<tr><td>Email</td><td>SES</td><td>Direct Mail</td><td>SES</td><td>Resend / SendGrid free tier</td></tr>
+<tr><td>SMS</td><td>SNS</td><td>SMS</td><td>SMS</td><td>Twilio</td></tr>
+<tr><td>Monitoring</td><td>CloudWatch</td><td>Cloud Monitor</td><td>Cloud Monitor</td><td>Uptime Kuma (self-hosted)</td></tr>
+<tr><td>AI/ML APIs</td><td>Bedrock</td><td>Tongyi Qianwen/Bailian</td><td>Hunyuan/TI</td><td>OpenAI / Anthropic API</td></tr>
+<tr><td>Domain Registration</td><td>Route 53</td><td>Wanwang</td><td>DNSPod</td><td>Namecheap / Cloudflare</td></tr>
+</table></div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6.8 Common Beginner Questions</span><span lang="en">6.8 Common Beginner Questions</span></h2>
+<p class="reveal"><span lang="id"><b>Q: Should I use cloud managed services or self-host everything on a VPS?</b></span><span lang="en"><b>Q: Should I use cloud managed services or self-host everything on a VPS?</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Personal projects / learning:</b> Self-host on VPS (Docker Compose everything) — cheaper and you learn more.</span><span lang="en"><b>Personal projects / learning:</b> Self-host on VPS (Docker Compose everything) — cheaper and you learn more.</span></li>
+<li><span lang="id"><b>Production with real users:</b> Use managed services for databases and object storage (auto-backup, stability), app can stay on VPS.</span><span lang="en"><b>Production with real users:</b> Use managed services for databases and object storage (auto-backup, stability), app can stay on VPS.</span></li>
+<li><span lang="id"><b>Well-funded/team projects:</b> Use cloud managed services as much as possible — spend time on business logic, not ops.</span><span lang="en"><b>Well-funded/team projects:</b> Use cloud managed services as much as possible — spend time on business logic, not ops.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Q: How do I use the AWS Free Tier without getting charged?</b></span><span lang="en"><b>Q: How do I use the AWS Free Tier without getting charged?</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Always launch <b>t2.micro/t3.micro</b> instances (marked "Free tier eligible")</span><span lang="en">Always launch <b>t2.micro/t3.micro</b> instances (marked "Free tier eligible")</span></li>
+<li><span lang="id">Set up a <b>Billing Alarm</b> for $0 or $1 (Billing Dashboard → Budgets → Create budget)</span><span lang="en">Set up a <b>Billing Alarm</b> for $0 or $1 (Billing Dashboard → Budgets → Create budget)</span></li>
+<li><span lang="id"><b>Terminate/delete</b> resources when done: EC2 instances, RDS databases, S3 buckets, EBS volumes, Elastic IPs</span><span lang="en"><b>Terminate/delete</b> resources when done: EC2 instances, RDS databases, S3 buckets, EBS volumes, Elastic IPs</span></li>
+<li><span lang="id">Note that EBS volumes and Elastic IPs <b>continue charging even when the instance is stopped</b> if not deleted</span><span lang="en">Note that EBS volumes and Elastic IPs <b>continue charging even when the instance is stopped</b> if not deleted</span></li>
+<li><span lang="id">Check the Billing Dashboard monthly</span><span lang="en">Check the Billing Dashboard monthly</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Q: AWS vs other VPS providers?</b></span><span lang="en"><b>Q: AWS vs other VPS providers?</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Learning AWS ecosystem / preparing for cloud jobs → Use AWS Free Tier</span><span lang="en">Learning AWS ecosystem / preparing for cloud jobs → Use AWS Free Tier</span></li>
+<li><span lang="id">Quick deployment, simple projects, lowest cost → DigitalOcean ($4/mo) or Hetzner (€3.49/mo)</span><span lang="en">Quick deployment, simple projects, lowest cost → DigitalOcean ($4/mo) or Hetzner (€3.49/mo)</span></li>
+<li><span lang="id">Hourly testing → Vultr (per-hour billing, destroy anytime)</span><span lang="en">Hourly testing → Vultr (per-hour billing, destroy anytime)</span></li>
+<li><span lang="id">AI/GPU workloads → Modal or Lambda Labs</span><span lang="en">AI/GPU workloads → Modal or Lambda Labs</span></li>
+<li><span lang="id">Completely free, 24/7 container → Fly.io free tier</span><span lang="en">Completely free, 24/7 container → Fly.io free tier</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">If you're deploying AI Agents (not just regular web apps), there are platforms specifically designed for AI workloads:</span><span lang="en">If you're deploying AI Agents (not just regular web apps), there are platforms specifically designed for AI workloads:</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7.1 Modal — Serverless GPU for Python AI/ML</span><span lang="en">7.1 Modal — Serverless GPU for Python AI/ML</span></h2>
+<p class="reveal"><span lang="id"><b>Website:</b> https://modal.com</span><span lang="en"><b>Website:</b> https://modal.com</span></p>
+<p class="reveal"><span lang="id"><b>Best for:</b> Python AI projects needing GPU inference, scheduled jobs, batch data processing</span><span lang="en"><b>Best for:</b> Python AI projects needing GPU inference, scheduled jobs, batch data processing</span></p>
+<p class="reveal"><span lang="id"><b>Features:</b></span><span lang="en"><b>Features:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Define functions with Python decorators, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">modal deploy</code> for one-command deployment</span><span lang="en">Define functions with Python decorators, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">modal deploy</code> for one-command deployment</span></li>
+<li><span lang="id">GPU container cold start ~1 second, billed per millisecond</span><span lang="en">GPU container cold start ~1 second, billed per millisecond</span></li>
+<li><span lang="id">Built-in scheduling, secrets management, shared storage</span><span lang="en">Built-in scheduling, secrets management, shared storage</span></li>
+<li><span lang="id">Free plan includes $30/month credit (enough for most personal projects)</span><span lang="en">Free plan includes $30/month credit (enough for most personal projects)</span></li>
+<li><span lang="id">Only supports Python</span><span lang="en">Only supports Python</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>import modal
+app = modal.App(&quot;my-ai-agent&quot;)
+
+@app.function(gpu=&quot;A10G&quot;, timeout=300)
+def run_agent(prompt: str):
+    # Run your AI model/agent here
+    return result</pre>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7.2 Hugging Face Spaces — First Choice for AI Demos</span><span lang="en">7.2 Hugging Face Spaces — First Choice for AI Demos</span></h2>
+<p class="reveal"><span lang="id"><b>Website:</b> https://huggingface.co/spaces</span><span lang="en"><b>Website:</b> https://huggingface.co/spaces</span></p>
+<p class="reveal"><span lang="id"><b>Best for:</b> Quickly showcasing AI demos (Gradio/Streamlit UI), open-source model display</span><span lang="en"><b>Best for:</b> Quickly showcasing AI demos (Gradio/Streamlit UI), open-source model display</span></p>
+<p class="reveal"><span lang="id"><b>Features:</b></span><span lang="en"><b>Features:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Free small CPU instances; GPU available paid</span><span lang="en">Free small CPU instances; GPU available paid</span></li>
+<li><span lang="id">Supports Gradio, Streamlit, Docker</span><span lang="en">Supports Gradio, Streamlit, Docker</span></li>
+<li><span lang="id">Active community; every Space has public code and discussions</span><span lang="en">Active community; every Space has public code and discussions</span></li>
+<li><span lang="id">One-click fork of others' Spaces to modify</span><span lang="en">One-click fork of others' Spaces to modify</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7.3 Replicate — Turn Models into APIs</span><span lang="en">7.3 Replicate — Turn Models into APIs</span></h2>
+<p class="reveal"><span lang="id"><b>Website:</b> https://replicate.com</span><span lang="en"><b>Website:</b> https://replicate.com</span></p>
+<p class="reveal"><span lang="id"><b>Best for:</b> Turning AI models into callable HTTP APIs without managing servers</span><span lang="en"><b>Best for:</b> Turning AI models into callable HTTP APIs without managing servers</span></p>
+<p class="reveal"><span lang="id">Push your model, Replicate packages it into an HTTP API, charges per call. Great for publishing fine-tuned models.</span><span lang="en">Push your model, Replicate packages it into an HTTP API, charges per call. Great for publishing fine-tuned models.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7.4 Lambda Labs — On-Demand GPU Instances</span><span lang="en">7.4 Lambda Labs — On-Demand GPU Instances</span></h2>
+<p class="reveal"><span lang="id"><b>Website:</b> https://lambdalabs.com</span><span lang="en"><b>Website:</b> https://lambdalabs.com</span></p>
+<p class="reveal"><span lang="id"><b>Best for:</b> GPU-intensive training and inference at lower cost than AWS/GCP GPU instances. A100, H100, A10 available on-demand.</span><span lang="en"><b>Best for:</b> GPU-intensive training and inference at lower cost than AWS/GCP GPU instances. A100, H100, A10 available on-demand.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">This is the most important mindset for vibecoding-era deployment: <b>You don't need to memorize every command — AI is your DevOps assistant.</b></span><span lang="en">This is the most important mindset for vibecoding-era deployment: <b>You don't need to memorize every command — AI is your DevOps assistant.</b></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8.1 Two AI Collaboration Modes</span><span lang="en">8.1 Two AI Collaboration Modes</span></h2>
+<p class="reveal"><span lang="id"><b>Mode 1: Generate scripts locally, execute manually</b></span><span lang="en"><b>Mode 1: Generate scripts locally, execute manually</b></span></p>
+<p class="reveal"><span lang="id">Tell your AI coding assistant (Claude Code, Trae Solo, Cursor):</span><span lang="en">Tell your AI coding assistant (Claude Code, Trae Solo, Cursor):</span></p>
+<p class="reveal"><span lang="id">> "I want to deploy [project description] to [platform/server]. Generate:</span><span lang="en">> "I want to deploy [project description] to [platform/server]. Generate:</span></p>
+<p class="reveal"><span lang="id">> 1. Complete step-by-step deployment checklist</span><span lang="en">> 1. Complete step-by-step deployment checklist</span></p>
+<p class="reveal"><span lang="id">> 2. All needed config files (Nginx, PM2, Dockerfile, docker-compose)</span><span lang="en">> 2. All needed config files (Nginx, PM2, Dockerfile, docker-compose)</span></p>
+<p class="reveal"><span lang="id">> 3. A deploy.sh deployment script</span><span lang="en">> 3. A deploy.sh deployment script</span></p>
+<p class="reveal"><span lang="id">> 4. Environment variable checklist"</span><span lang="en">> 4. Environment variable checklist"</span></p>
+<p class="reveal"><span lang="id">Then just execute what AI generates.</span><span lang="en">Then just execute what AI generates.</span></p>
+<p class="reveal"><span lang="id"><b>Mode 2: AI SSHs directly to your server (even easier)</b></span><span lang="en"><b>Mode 2: AI SSHs directly to your server (even easier)</b></span></p>
+<p class="reveal"><span lang="id">Claude Code supports remote SSH operations:</span><span lang="en">Claude Code supports remote SSH operations:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>claude
+# Tell it:
+# &quot;SSH into root@MY-IP and deploy /root/myapp, configure Nginx + HTTPS + PM2&quot;</pre>
+</div>
+<p class="reveal"><span lang="id">AI will automatically check the environment, install missing dependencies, pull code, build, configure, and verify — all without you typing commands manually.</span><span lang="en">AI will automatically check the environment, install missing dependencies, pull code, build, configure, and verify — all without you typing commands manually.</span></p>
+<p class="reveal"><span lang="id">> ⚠️ <b>Safety reminders:</b></span><span lang="en">> ⚠️ <b>Safety reminders:</b></span></p>
+<p class="reveal"><span lang="id">> - Practice on a test server first to confirm AI won't make destructive changes</span><span lang="en">> - Practice on a test server first to confirm AI won't make destructive changes</span></p>
+<p class="reveal"><span lang="id">> - Back up important data regularly</span><span lang="en">> - Back up important data regularly</span></p>
+<p class="reveal"><span lang="id">> - Give AI a least-privilege user (don't give root; a sudo user is fine, but watch commands)</span><span lang="en">> - Give AI a least-privilege user (don't give root; a sudo user is fine, but watch commands)</span></p>
+<p class="reveal"><span lang="id">> - Before AI runs dangerous commands, review what it's about to do</span><span lang="en">> - Before AI runs dangerous commands, review what it's about to do</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8.2 Universal Deployment Prompt Template</span><span lang="en">8.2 Universal Deployment Prompt Template</span></h2>
+<p class="reveal"><span lang="id">No matter which platform/server you choose, fill this out and send it to AI for a complete actionable plan:</span><span lang="en">No matter which platform/server you choose, fill this out and send it to AI for a complete actionable plan:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Help me deploy a project with the following info:
+
+[DEPLOYMENT TARGET]
+- Platform/Server: [Vercel / Railway / Fly.io / Ubuntu 22.04 VPS / AWS EC2 / ...]
+- Server IP (if VPS): xxx.xxx.xxx.xxx
+- Already configured: [SSH key login / Docker installed / Nginx installed / ...]
+
+[PROJECT INFO]
+- Project type: [Next.js 14 / Vite+React / Node.js Express / Python FastAPI / ...]
+- Code location: GitHub repo https://github.com/xxx/xxx
+- Tech stack: Node.js 20 + PostgreSQL 16 + Redis 7
+- Start command: npm run start
+- Listens on port: 3000
+- Environment variables: DATABASE_URL=xxx, JWT_SECRET=xxx, OPENAI_API_KEY=xxx
+
+[DOMAIN]
+- Domain: mydomain.com
+- DNS already pointing to server: Yes/No
+- Need HTTPS: Yes/No
+
+[REQUIREMENTS]
+1. Complete steps (list local vs server operations separately)
+2. Provide all config files
+3. Tell me how to verify successful deployment
+4. List common gotchas and troubleshooting steps</pre>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8.3 AI-Assisted Troubleshooting Workflow</span><span lang="en">8.3 AI-Assisted Troubleshooting Workflow</span></h2>
+<p class="reveal"><span lang="id">When things break:</span><span lang="en">When things break:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Check logs first:</b></span><span lang="en"><b>Check logs first:</b></span></li>
+<li><span lang="id">Nginx: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sudo tail -50 /var/log/nginx/error.log</code></span><span lang="en">Nginx: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sudo tail -50 /var/log/nginx/error.log</code></span></li>
+<li><span lang="id">PM2: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">pm2 logs myapp</code></span><span lang="en">PM2: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">pm2 logs myapp</code></span></li>
+<li><span lang="id">Docker: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">docker compose logs app</code></span><span lang="en">Docker: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">docker compose logs app</code></span></li>
+<li><span lang="id">systemd: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sudo journalctl -u myapp -n 50</code></span><span lang="en">systemd: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sudo journalctl -u myapp -n 50</code></span></li>
+</ul>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Copy the full error to AI</b> with context:</span><span lang="en"><b>Copy the full error to AI</b> with context:</span></li>
+</ul>
+<p class="reveal"><span lang="id">> "Deploying Node.js to Ubuntu, getting 502 Bad Gateway. Nginx error log: [paste]. Config: [paste]. PM2 status: [paste]. Help me debug."</span><span lang="en">> "Deploying Node.js to Ubuntu, getting 502 Bad Gateway. Nginx error log: [paste]. Config: [paste]. PM2 status: [paste]. Help me debug."</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Common issues quick reference:</b></span><span lang="en"><b>Common issues quick reference:</b></span></li>
+<li><span lang="id"><b>502 Bad Gateway:</b> Backend not running, wrong port, incorrect proxy_pass</span><span lang="en"><b>502 Bad Gateway:</b> Backend not running, wrong port, incorrect proxy_pass</span></li>
+<li><span lang="id"><b>Can't access IP:</b> Security group not allowing port, ufw blocking, Nginx not started</span><span lang="en"><b>Can't access IP:</b> Security group not allowing port, ufw blocking, Nginx not started</span></li>
+<li><span lang="id"><b>Refresh gives 404:</b> Nginx missing <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">try_files</code> for SPA routing</span><span lang="en"><b>Refresh gives 404:</b> Nginx missing <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">try_files</code> for SPA routing</span></li>
+<li><span lang="id"><b>Static assets 404:</b> Wrong root path, file permissions</span><span lang="en"><b>Static assets 404:</b> Wrong root path, file permissions</span></li>
+<li><span lang="id"><b>HTTPS cert fails:</b> Domain not pointing to server, port 80 blocked</span><span lang="en"><b>HTTPS cert fails:</b> Domain not pointing to server, port 80 blocked</span></li>
+<li><span lang="id"><b>PM2 keeps restarting:</b> Code bug causing crash, check <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">pm2 logs</code></span><span lang="en"><b>PM2 keeps restarting:</b> Code bug causing crash, check <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">pm2 logs</code></span></li>
+<li><span lang="id"><b>Vercel Function timeout:</b> Over 10s limit — switch to Fly.io/Railway/VPS for long-running tasks</span><span lang="en"><b>Vercel Function timeout:</b> Over 10s limit — switch to Fly.io/Railway/VPS for long-running tasks</span></li>
+<li><span lang="id"><b>Railway/Render 503:</b> Service sleeping or credits exhausted</span><span lang="en"><b>Railway/Render 503:</b> Service sleeping or credits exhausted</span></li>
+<li><span lang="id"><b>AWS EC2 connection refused:</b> Security group missing SSH rule or wrong port</span><span lang="en"><b>AWS EC2 connection refused:</b> Security group missing SSH rule or wrong port</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">9.1 File Transfer</span><span lang="en">9.1 File Transfer</span></h2>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Local → Server
+scp ./file.zip yourname@IP:/home/yourname/
+scp -r ./dir yourname@IP:/home/yourname/
+
+# Server → Local
+scp yourname@IP:/home/yourname/file.zip ./
+
+# rsync (incremental sync, recommended for deployment)
+rsync -avz --exclude=node_modules --exclude=.git ./project/ yourname@IP:/var/www/project/</pre>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">9.2 One-Command Update Script</span><span lang="en">9.2 One-Command Update Script</span></h2>
+<p class="reveal"><span lang="id">Create <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">deploy.sh</code> on your server:</span><span lang="en">Create <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">deploy.sh</code> on your server:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>#!/bin/bash
+set -e
+cd /path/to/project
+git pull origin main
+npm install
+npm run build
+pm2 restart myapp
+echo &quot;✅ Deployment complete!&quot;</pre>
+</div>
+<p class="reveal"><span lang="id">Updates are just <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">bash deploy.sh</code>. For full automation, set up GitHub Actions (ask AI to write the CI/CD config) so code pushes to main deploy automatically.</span><span lang="en">Updates are just <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">bash deploy.sh</code>. For full automation, set up GitHub Actions (ask AI to write the CI/CD config) so code pushes to main deploy automatically.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">9.3 Security Hardening Checklist</span><span lang="en">9.3 Security Hardening Checklist</span></h2>
+<p class="reveal"><span lang="id">Ask AI to generate a complete hardening script, which typically includes:</span><span lang="en">Ask AI to generate a complete hardening script, which typically includes:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Disable password login, use SSH keys only</span><span lang="en">Disable password login, use SSH keys only</span></li>
+<li><span lang="id">Change default SSH port (22 → something else)</span><span lang="en">Change default SSH port (22 → something else)</span></li>
+<li><span lang="id">Install fail2ban (auto-ban brute force IPs)</span><span lang="en">Install fail2ban (auto-ban brute force IPs)</span></li>
+<li><span lang="id">Enable automatic security updates: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sudo apt install unattended-upgrades</code></span><span lang="en">Enable automatic security updates: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sudo apt install unattended-upgrades</code></span></li>
+<li><span lang="id">Never commit secrets/.env to Git</span><span lang="en">Never commit secrets/.env to Git</span></li>
+<li><span lang="id">Schedule regular database backups to S3</span><span lang="en">Schedule regular database backups to S3</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id"><b>Deployment Options Summary:</b></span><span lang="en"><b>Deployment Options Summary:</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Scenario</th><th>Recommended</th><th>Cost</th><th>Difficulty</th></tr>
+<tr><td>Pure frontend/docs</td><td>Cloudflare Pages / Vercel / GitHub Pages</td><td>Free</td><td>⭐</td></tr>
+<tr><td>Next.js full-stack (fast response)</td><td>Vercel</td><td>Free / $20/mo</td><td>⭐</td></tr>
+<tr><td>Backend API / Bot (always-on)</td><td>Railway / Fly.io (free) / VPS</td><td>$0-10/mo</td><td>⭐⭐</td></tr>
+<tr><td>Full-stack (full control)</td><td>DigitalOcean / Vultr / AWS EC2 + Docker</td><td>$4-10/mo</td><td>⭐⭐⭐</td></tr>
+<tr><td>AI Agent demos</td><td>Hugging Face Spaces</td><td>Free</td><td>⭐</td></tr>
+<tr><td>AI GPU inference</td><td>Modal (global)</td><td>$0-30/mo credit</td><td>⭐⭐</td></tr>
+<tr><td>Production with users</td><td>AWS/Azure/GCP managed services</td><td>Varies</td><td>⭐⭐⭐</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Remember the 5 core steps:</b></span><span lang="en"><b>Remember the 5 core steps:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Pick a platform</b> → Based on your project type (use the table above)</span><span lang="en"><b>Pick a platform</b> → Based on your project type (use the table above)</span></li>
+<li><span lang="id"><b>Get code there</b> → git push / rsync / GitHub auto-deploy</span><span lang="en"><b>Get code there</b> → git push / rsync / GitHub auto-deploy</span></li>
+<li><span lang="id"><b>Set up environment</b> → Install Node.js/Nginx/Docker (or platform handles it)</span><span lang="en"><b>Set up environment</b> → Install Node.js/Nginx/Docker (or platform handles it)</span></li>
+<li><span lang="id"><b>Keep it running</b> → PM2 / Docker / systemd</span><span lang="en"><b>Keep it running</b> → PM2 / Docker / systemd</span></li>
+<li><span lang="id"><b>Domain + HTTPS</b> → DNS records + Certbot / ACM</span><span lang="en"><b>Domain + HTTPS</b> → DNS records + Certbot / ACM</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Vibecoding mindset:</b></span><span lang="en"><b>Vibecoding mindset:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Understand <i>what</i> needs to be done, not every command</span><span lang="en">Understand <i>what</i> needs to be done, not every command</span></li>
+<li><span lang="id">Describe requirements clearly to AI — it gives complete solutions</span><span lang="en">Describe requirements clearly to AI — it gives complete solutions</span></li>
+<li><span lang="id">Understand what AI is doing, confirm key steps</span><span lang="en">Understand what AI is doing, confirm key steps</span></li>
+<li><span lang="id">When errors happen, paste logs to AI — it diagnoses 90% of issues</span><span lang="en">When errors happen, paste logs to AI — it diagnoses 90% of issues</span></li>
+<li><span lang="id">Back up important data, use least privilege</span><span lang="en">Back up important data, use least privilege</span></li>
+</ul>
+<p class="reveal"><span lang="id">Deploy once and you'll realize — getting online isn't that hard. 🎯</span><span lang="en">Deploy once and you'll realize — getting online isn't that hard. 🎯</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id"><RelatedArticlesSection</span><span lang="en"><RelatedArticlesSection</span></p>
+<p class="reveal"><span lang="id">:articles="relatedArticlesMap['en/stage-2/backend/cloud-server-deployment']"</span><span lang="en">:articles="relatedArticlesMap['en/stage-2/backend/cloud-server-deployment']"</span></p>
+<p class="reveal"><span lang="id">title="Related Articles"</span><span lang="en">title="Related Articles"</span></p>
+<p class="reveal"><span lang="id">description="Continue learning the engineering skills around deployment."</span><span lang="en">description="Continue learning the engineering skills around deployment."</span></p>
+<p class="reveal"><span lang="id">/></span><span lang="en">/></span></p>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../backend/zeabur-deployment/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span><span lang="en">Rilis Web Mudah: Deploy 1-Klik PaaS (Vercel / Zeabur)</span></b></a>
+      <a class="next" href="../../backend/modern-cli/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Perangkat Coding Modern CLI AI Agent</span><span lang="en">Perangkat Coding Modern CLI AI Agent</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

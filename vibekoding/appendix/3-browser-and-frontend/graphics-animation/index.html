@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Fundamentals of Graphics and Animation: Canvas and Related Technologies — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Fundamentals of Graphics and Animation: Canvas and Related Technologies. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/3-browser-and-frontend/graphics-animation/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Fundamentals of Graphics and Animation: Canvas and Related Technologies</span><span lang="en">Fundamentals of Graphics and Animation: Canvas and Related Technologies</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Fundamentals of Graphics and Animation: Canvas and Related Technologies</span><span lang="en">Fundamentals of Graphics and Animation: Canvas and Related Technologies</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Fundamentals of Graphics and Animation: Canvas and Related Technologies.</span><span lang="en">Ensiklopedia VibeKoding: Fundamentals of Graphics and Animation: Canvas and Related Technologies.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Early web pages could only display plain text and images. But if you want to create a Breakout game, gorgeous dynamic effects, or a freely draggable data report, relying solely on <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><div></code> is far from enough. That's exactly why <b>Canvas</b> was born.
+
+This guide will take you from drawing your first line all the way to building a particle engine that runs smoothly at 60 FPS in the browser.</span><span lang="en">Early web pages could only display plain text and images. But if you want to create a Breakout game, gorgeous dynamic effects, or a freely draggable data report, relying solely on <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><div></code> is far from enough. That's exactly why <b>Canvas</b> was born.
+
+This guide will take you from drawing your first line all the way to building a particle engine that runs smoothly at 60 FPS in the browser.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Overview of Canvas</span><span lang="en">1. Overview of Canvas</span></h2>
+<p class="reveal"><span lang="id">If early web pages were static models assembled from <b>LEGO bricks</b> (HTML tags), then the HTML5 <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><canvas></code> tag is like handing you a <b>giant digital canvas</b>, along with a code-controlled <b>paintbrush</b>, and leaving the rest to your creative freedom.</span><span lang="en">If early web pages were static models assembled from <b>LEGO bricks</b> (HTML tags), then the HTML5 <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><canvas></code> tag is like handing you a <b>giant digital canvas</b>, along with a code-controlled <b>paintbrush</b>, and leaving the rest to your creative freedom.</span></p>
+<p class="reveal"><span lang="id">There are no tag structures in the drawings here. Once you paint something with the brush, it immediately becomes pure <b>"pixel pigment"</b>.</span><span lang="en">There are no tag structures in the drawings here. Once you paint something with the brush, it immediately becomes pure <b>"pixel pigment"</b>.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 Canvas vs SVG: Two Different Schools of Artists</span><span lang="en">1.1 Canvas vs SVG: Two Different Schools of Artists</span></h3>
+<p class="reveal"><span lang="id">In the frontend drawing world, Canvas has a rival called <b>SVG</b>. They represent two completely different approaches to drawing:</span><span lang="en">In the frontend drawing world, Canvas has a rival called <b>SVG</b>. They represent two completely different approaches to drawing:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Canvas (Bitmap Drawing Board):</b></span><span lang="en"><b>Canvas (Bitmap Drawing Board):</b></span></li>
+<li><span lang="id"><b>Principle</b>: Like actually painting on real paper — a few strokes become a blob of pigment (pixels).</span><span lang="en"><b>Principle</b>: Like actually painting on real paper — a few strokes become a blob of pigment (pixels).</span></li>
+<li><span lang="id"><b>Advantage</b>: The computer just "splashes paint" onto the screen — performance takes off! Can simultaneously render thousands of bouncing, flashing particles.</span><span lang="en"><b>Advantage</b>: The computer just "splashes paint" onto the screen — performance takes off! Can simultaneously render thousands of bouncing, flashing particles.</span></li>
+<li><span lang="id"><b>Disadvantage</b>: Once drawn, you can't individually undo anything (can't select via DOM nodes), and zooming in causes mosaic blurriness.</span><span lang="en"><b>Disadvantage</b>: Once drawn, you can't individually undo anything (can't select via DOM nodes), and zooming in causes mosaic blurriness.</span></li>
+<li><span lang="id"><b>SVG (Vector Graphics Assembly):</b></span><span lang="en"><b>SVG (Vector Graphics Assembly):</b></span></li>
+<li><span lang="id"><b>Principle</b>: Like making a PowerPoint. You draw a circle, and it generates an independent "circle entity" tag on the canvas.</span><span lang="en"><b>Principle</b>: Like making a PowerPoint. You draw a circle, and it generates an independent "circle entity" tag on the canvas.</span></li>
+<li><span lang="id"><b>Advantage</b>: Whether zoomed in 100x or 100,000x, it's always razor sharp. Each shape is an independent DOM node — you can change its color with CSS and JS or bind click events at any time.</span><span lang="en"><b>Advantage</b>: Whether zoomed in 100x or 100,000x, it's always razor sharp. Each shape is an independent DOM node — you can change its color with CSS and JS or bind click events at any time.</span></li>
+<li><span lang="id"><b>Disadvantage</b>: If you try to have tens of thousands of objects flying around, the heavy DOM tree and layout engine will freeze the browser.</span><span lang="en"><b>Disadvantage</b>: If you try to have tens of thousands of objects flying around, the heavy DOM tree and layout engine will freeze the browser.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Simple summary: For dynamic games and cool particle effects, use Canvas; for precise logos and interactive charts, use SVG.</b></span><span lang="en"><b>Simple summary: For dynamic games and cool particle effects, use Canvas; for precise logos and interactive charts, use SVG.</b></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. The First Stroke: Understanding the Counter-Intuitive Coordinate System</span><span lang="en">2. The First Stroke: Understanding the Counter-Intuitive Coordinate System</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Motivation for This Paper Upside Down</span><span lang="en">2.1 Motivation for This Paper Upside Down</span></h3>
+<p class="reveal"><span lang="id">When you're ready to start drawing, you first need to understand that the ruler in Canvas is inverted. In a traditional math class coordinate system, the zero point is in the center, and values increase as you go up. But in computer screen displays, almost all devices define the "origin (0, 0)" at the <b>top-left corner of the screen</b>. Moving right increases the X-axis — no problem there — but <b>moving down increases the Y-axis</b>.</span><span lang="en">When you're ready to start drawing, you first need to understand that the ruler in Canvas is inverted. In a traditional math class coordinate system, the zero point is in the center, and values increase as you go up. But in computer screen displays, almost all devices define the "origin (0, 0)" at the <b>top-left corner of the screen</b>. Moving right increases the X-axis — no problem there — but <b>moving down increases the Y-axis</b>.</span></p>
+<p class="reveal"><span lang="id"><b>Core Principles of the Canvas Coordinate System:</b></span><span lang="en"><b>Core Principles of the Canvas Coordinate System:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Native unit</b>: Pixels (px), corresponding 1:1 to screen physical pixels.</span><span lang="en"><b>Native unit</b>: Pixels (px), corresponding 1:1 to screen physical pixels.</span></li>
+<li><span lang="id"><b>X-axis</b>: Positive direction is right, from <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">0</code> to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">canvas.width</code>.</span><span lang="en"><b>X-axis</b>: Positive direction is right, from <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">0</code> to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">canvas.width</code>.</span></li>
+<li><span lang="id"><b>Y-axis</b>: Positive direction is down, from <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">0</code> to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">canvas.height</code>.</span><span lang="en"><b>Y-axis</b>: Positive direction is down, from <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">0</code> to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">canvas.height</code>.</span></li>
+</ul>
+<p class="reveal"><span lang="id">👇 Drag the small dot below to intuitively feel the coordinate origin and direction in computer graphics:</span><span lang="en">👇 Drag the small dot below to intuitively feel the coordinate origin and direction in computer graphics:</span></p>
+<p class="reveal"><span lang="id"><CoordinateSystemDemo /></span><span lang="en"><CoordinateSystemDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Seasoning Your Magic Paintbrush</span><span lang="en">2.2 Seasoning Your Magic Paintbrush</span></h3>
+<p class="reveal"><span lang="id">With the coordinate system in place, we can summon the paintbrush (called <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Context</code>, or abbreviated <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ctx</code> in code). Just like painting with a real palette, the Canvas API design perfectly follows three steps of physical painting:</span><span lang="en">With the coordinate system in place, we can summon the paintbrush (called <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Context</code>, or abbreviated <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ctx</code> in code). Just like painting with a real palette, the Canvas API design perfectly follows three steps of physical painting:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Color Mixing (State)</b>: Set fill color with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fillStyle</code>, stroke color with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">strokeStyle</code>.</span><span lang="en"><b>Color Mixing (State)</b>: Set fill color with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fillStyle</code>, stroke color with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">strokeStyle</code>.</span></li>
+<li><span lang="id"><b>Shaping (Path)</b>: Decide whether you want to draw a line (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">lineTo</code>), a circle (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">arc</code>), or a rectangle (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">rect</code>).</span><span lang="en"><b>Shaping (Path)</b>: Decide whether you want to draw a line (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">lineTo</code>), a circle (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">arc</code>), or a rectangle (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">rect</code>).</span></li>
+<li><span lang="id"><b>Minimal Strokes (Render)</b>: Decide whether to fill the interior (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fill()</code>) or outline the edges (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">stroke()</code>).</span><span lang="en"><b>Minimal Strokes (Render)</b>: Decide whether to fill the interior (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fill()</code>) or outline the edges (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">stroke()</code>).</span></li>
+</ul>
+<p class="reveal"><span lang="id">Since Canvas is a pure bitmap canvas with "no regrets once drawn," once you paint, it immediately dries into pixels and cannot be undone as independent objects.</span><span lang="en">Since Canvas is a pure bitmap canvas with "no regrets once drawn," once you paint, it immediately dries into pixels and cannot be undone as independent objects.</span></p>
+<p class="reveal"><span lang="id">👇 Try selecting different shapes and colors in the demo below to see how the underlying code executes the "three-step" process described above:</span><span lang="en">👇 Try selecting different shapes and colors in the demo below to see how the underlying code executes the "three-step" process described above:</span></p>
+<p class="reveal"><span lang="id"><CanvasBasicsDemo /></span><span lang="en"><CanvasBasicsDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Flipbook Animation: How to Make Graphics Move Incredibly Smoothly</span><span lang="en">3. Flipbook Animation: How to Make Graphics Move Incredibly Smoothly</span></h2>
+<p class="reveal"><span lang="id">Since Canvas becomes permanent pixels once filled, how are all those characters running around the screen in HTML5 games made?</span><span lang="en">Since Canvas becomes permanent pixels once filled, how are all those characters running around the screen in HTML5 games made?</span></p>
+<p class="reveal"><span lang="id">The answer is <b>"tricking your eyes."</b> This works exactly like flipbooks or film reels.</span><span lang="en">The answer is <b>"tricking your eyes."</b> This works exactly like flipbooks or film reels.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Erase the Board (Clear)</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">clearRect()</code> to mercilessly clear the entire canvas.</span><span lang="en"><b>Erase the Board (Clear)</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">clearRect()</code> to mercilessly clear the entire canvas.</span></li>
+<li><span lang="id"><b>Calculate New Position (Update)</b>: Sneakily add 2 pixels to the character's X coordinate.</span><span lang="en"><b>Calculate New Position (Update)</b>: Sneakily add 2 pixels to the character's X coordinate.</span></li>
+<li><span lang="id"><b>Redraw (Render)</b>: Paint the character at its new position.</span><span lang="en"><b>Redraw (Render)</b>: Paint the character at its new position.</span></li>
+<li><span lang="id"><b>Crazy Loop</b>: Combine with the browser's built-in precision metronome <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">requestAnimationFrame</code>. It repeats these three actions at the display's refresh rate (typically 60 times per second, i.e., 60 FPS).</span><span lang="en"><b>Crazy Loop</b>: Combine with the browser's built-in precision metronome <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">requestAnimationFrame</code>. It repeats these three actions at the display's refresh rate (typically 60 times per second, i.e., 60 FPS).</span></li>
+</ul>
+<p class="reveal"><span lang="id">Due to the human eye's "persistence of vision," during 60 per-second cycles of [Erase -> Update -> Redraw], what you see is not a flickering blackboard but animation smooth as silk.</span><span lang="en">Due to the human eye's "persistence of vision," during 60 per-second cycles of [Erase -> Update -> Redraw], what you see is not a flickering blackboard but animation smooth as silk.</span></p>
+<p class="reveal"><span lang="id">👇 Adjust the playback speed in the demo below and observe how the displacement of each frame connects into fluid motion:</span><span lang="en">👇 Adjust the playback speed in the demo below and observe how the displacement of each frame connects into fluid motion:</span></p>
+<p class="reveal"><span lang="id"><AnimationLoopDemo /></span><span lang="en"><AnimationLoopDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Blind Man's Bluff: Approach to handling Click Interactions in Canvas</span><span lang="en">4. Blind Man's Bluff: Approach to handling Click Interactions in Canvas</span></h2>
+<p class="reveal"><span lang="id">Because the Canvas is seen by the browser as a "pigment cloth" with no structure. Suppose you draw a monster with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">arc()</code> on the canvas, and you want to implement "click monster to deal damage" — you <b>simply cannot</b> use traditional <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">document.getElementById</code> to get this monster. Because in the HTML structure, there's only that rigid <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><canvas></code> tag that's 600 pixels wide.</span><span lang="en">Because the Canvas is seen by the browser as a "pigment cloth" with no structure. Suppose you draw a monster with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">arc()</code> on the canvas, and you want to implement "click monster to deal damage" — you <b>simply cannot</b> use traditional <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">document.getElementById</code> to get this monster. Because in the HTML structure, there's only that rigid <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><canvas></code> tag that's 600 pixels wide.</span></p>
+<p class="reveal"><span lang="id">This is the most classic problem in graphics programming: <b>Collision Detection and Event Delegation</b>.</span><span lang="en">This is the most classic problem in graphics programming: <b>Collision Detection and Event Delegation</b>.</span></p>
+<p class="reveal"><span lang="id">Since the browser only knows your mouse clicked the Canvas screen coordinates <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">(x, y)</code>, you need to reverse-calculate using middle school geometry:</span><span lang="en">Since the browser only knows your mouse clicked the Canvas screen coordinates <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">(x, y)</code>, you need to reverse-calculate using middle school geometry:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>For circles</b>: Use the Pythagorean theorem to calculate the distance from the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">mouse click point</code> to the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">circle center position</code>. If the distance is less than the radius, it was "hit."</span><span lang="en"><b>For circles</b>: Use the Pythagorean theorem to calculate the distance from the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">mouse click point</code> to the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">circle center position</code>. If the distance is less than the radius, it was "hit."</span></li>
+<li><span lang="id"><b>For rectangles</b>: Check if the clicked <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">x</code> is within the rectangle's left and right boundaries, and simultaneously if <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">y</code> is within the top and bottom boundaries.</span><span lang="en"><b>For rectangles</b>: Check if the clicked <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">x</code> is within the rectangle's left and right boundaries, and simultaneously if <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">y</code> is within the top and bottom boundaries.</span></li>
+</ul>
+<p class="reveal"><span lang="id">No matter how many elements are on your canvas, mouse hover or click events are always bound to the Canvas as the sole container — this is the ultimate "event delegation."</span><span lang="en">No matter how many elements are on your canvas, mouse hover or click events are always bound to the Canvas as the sole container — this is the ultimate "event delegation."</span></p>
+<p class="reveal"><span lang="id">👇 Try using the mouse (click, drag, hover) or keyboard (arrow keys to move) below to experience this low-level interaction logic of "manually calculating distances":</span><span lang="en">👇 Try using the mouse (click, drag, hover) or keyboard (arrow keys to move) below to experience this low-level interaction logic of "manually calculating distances":</span></p>
+<p class="reveal"><span lang="id"><EventHandlingDemo /></span><span lang="en"><EventHandlingDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Liberating Computing Power: Particle Systems and Visual Magic</span><span lang="en">5. Liberating Computing Power: Particle Systems and Visual Magic</span></h2>
+<p class="reveal"><span lang="id">At this point, when we combine "coordinate systems," "animation loops," and "colors and shapes," and multiply their count to hundreds or thousands of tiny fragments, you've mastered the ultimate visual weapon: <b>Particle Systems</b>.</span><span lang="en">At this point, when we combine "coordinate systems," "animation loops," and "colors and shapes," and multiply their count to hundreds or thousands of tiny fragments, you've mastered the ultimate visual weapon: <b>Particle Systems</b>.</span></p>
+<p class="reveal"><span lang="id">Its core approach is incredibly simple yet effective:</span><span lang="en">Its core approach is incredibly simple yet effective:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Create a massive array filled with hundreds of independent "particle objects."</span><span lang="en">Create a massive array filled with hundreds of independent "particle objects."</span></li>
+<li><span lang="id">Each object has its own lifecycle (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">life</code>), velocity (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">vx/vy</code>), and gravity damping (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">gravity</code>).</span><span lang="en">Each object has its own lifecycle (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">life</code>), velocity (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">vx/vy</code>), and gravity damping (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">gravity</code>).</span></li>
+<li><span lang="id">Each time <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">requestAnimationFrame</code> fires, iterate through and update these hundreds of particles, render them, and silently clean up those that are "dead" (lifetimes exhausted or fallen off screen).</span><span lang="en">Each time <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">requestAnimationFrame</code> fires, iterate through and update these hundreds of particles, render them, and silently clean up those that are "dead" (lifetimes exhausted or fallen off screen).</span></li>
+</ul>
+<p class="reveal"><span lang="id">Your browser can instantly become a dream factory producing fireworks, snowstorms, and explosions.</span><span lang="en">Your browser can instantly become a dream factory producing fireworks, snowstorms, and explosions.</span></p>
+<p class="reveal"><span lang="id">👇 Click different effects, adjust gravity and particle count, and observe how they present complex swarm visuals through the simplest physics and math formulas:</span><span lang="en">👇 Click different effects, adjust gravity and particle count, and observe how they present complex swarm visuals through the simplest physics and math formulas:</span></p>
+<p class="reveal"><span lang="id"><ParticleSystemDemo /></span><span lang="en"><ParticleSystemDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Guarding FPS Glory: Approach to handling an Overheating CPU</span><span lang="en">6. Guarding FPS Glory: Approach to handling an Overheating CPU</span></h2>
+<p class="reveal"><span lang="id">Making thousands of objects calculate and redraw 60 times per second is extremely performance-intensive. Without proper technique, your computer fan will soon take off.</span><span lang="en">Making thousands of objects calculate and redraw 60 times per second is extremely performance-intensive. Without proper technique, your computer fan will soon take off.</span></p>
+<p class="reveal"><span lang="id">Here are the "body-guard techniques" that real engine experts use to rescue frame rates:</span><span lang="en">Here are the "body-guard techniques" that real engine experts use to rescue frame rates:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Partial Erasure (Dirty Rectangle):</b></span><span lang="en"><b>Partial Erasure (Dirty Rectangle):</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">When a character runs across a vast grassland, never <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">clearRect</code> the entire grassland every frame! Only use a "small eraser" on the specific small area the character passed through and redraw there — performance immediately skyrockets exponentially.</span><span lang="en">When a character runs across a vast grassland, never <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">clearRect</code> the entire grassland every frame! Only use a "small eraser" on the specific small area the character passed through and redraw there — performance immediately skyrockets exponentially.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Behind-the-Scenes Stunt Double (Offscreen Canvas):</b></span><span lang="en"><b>Behind-the-Scenes Stunt Double (Offscreen Canvas):</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">If the background has a complex starry sky with elaborate mountains, rendering it in real-time every time is foolish. We typically secretly create an invisible <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><canvas></code> in memory and paint the beautiful background onto it once. In subsequent frame refreshes, we simply use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">drawImage()</code> to paste this composited "static negative" directly, eliminating massive base calculations.</span><span lang="en">If the background has a complex starry sky with elaborate mountains, rendering it in real-time every time is foolish. We typically secretly create an invisible <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><canvas></code> in memory and paint the beautiful background onto it once. In subsequent frame refreshes, we simply use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">drawImage()</code> to paste this composited "static negative" directly, eliminating massive base calculations.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Batch Brush Washing (Batching):</b></span><span lang="en"><b>Batch Brush Washing (Batching):</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">Switching from red to blue in the palette is expensive at the low level. If the canvas has 1,000 red circles and 1,000 blue circles scattered alternately, the fastest approach is: prepare the red paint first, iterate and paint all red circles, then switch to blue paint and paint all blue circles. This is the famous Batch Rendering concept.</span><span lang="en">Switching from red to blue in the palette is expensive at the low level. If the canvas has 1,000 red circles and 1,000 blue circles scattered alternately, the fastest approach is: prepare the red paint first, iterate and paint all red circles, then switch to blue paint and paint all blue circles. This is the famous Batch Rendering concept.</span></p>
+<p class="reveal"><span lang="id">👇 Pull the object count above 3,000 and watch the webpage plummet into the abyss of lag, then sequentially turn on the "optimization techniques" switches in the bottom right to witness real frame rate rescue firsthand:</span><span lang="en">👇 Pull the object count above 3,000 and watch the webpage plummet into the abyss of lag, then sequentially turn on the "optimization techniques" switches in the bottom right to witness real frame rate rescue firsthand:</span></p>
+<p class="reveal"><span lang="id"><PerformanceDemo /></span><span lang="en"><PerformanceDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Terminology Summary</span><span lang="en">7. Terminology Summary</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Term</th><th>Plain Explanation</th></tr>
+<tr><td><b>Canvas</b></td><td>The 2D canvas provided by HTML5. Extremely fast rendering, but once drawn, everything becomes pixel pigment — DOM operations cannot manipulate the content.</td></tr>
+<tr><td><b>SVG</b></td><td>Vector graphics. Never blurs when zoomed, and each shape is an independent tag element that can easily have CSS styles and interactions bound to it.</td></tr>
+<tr><td><b>Context (ctx)</b></td><td>The "2D magic paintbrush" you requested, used for color mixing, defining shapes, and rendering various special effects.</td></tr>
+<tr><td><b>requestAnimationFrame</b></td><td>The browser's built-in god-tier metronome that strictly follows the display's refresh rate to execute callbacks — the ultimate choice for creating silky smooth animations.</td></tr>
+<tr><td><b>FPS (Frame Rate)</b></td><td>Frames per second. 60 FPS means the browser seamlessly erases and redraws the canvas 60 times per second.</td></tr>
+<tr><td><b>Dirty Rectangle</b></td><td>Precisely erasing and redrawing only within the tiny area where changes occurred, thereby strongly preserving performance.</td></tr>
+<tr><td><b>Offscreen Canvas</b></td><td>A "shadow canvas" hidden in memory. Pre-paint extremely complex but static scenes, then use them as dead textures for repeated use.</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">> From a simple straight line segment to a magnificent particle system engine — all effects that seem like magic are nothing more than 60 coordinate calculations and redraw cycles per second.</span><span lang="en">> From a simple straight line segment to a magnificent particle system engine — all effects that seem like magic are nothing more than 60 coordinate calculations and redraw cycles per second.</span></p>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../3-browser-and-frontend/frontend-project-architecture/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">3-browser-and-frontend/frontend-project-architecture</span><span lang="en">3-browser-and-frontend/frontend-project-architecture</span></b></a>
+      <a class="next" href="../../3-browser-and-frontend/html-css-layout/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">3-browser-and-frontend/html-css-layout</span><span lang="en">3-browser-and-frontend/html-css-layout</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

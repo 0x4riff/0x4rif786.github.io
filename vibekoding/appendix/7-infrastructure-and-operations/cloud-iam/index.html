@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of Cloud Identity and Access Management — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Cloud Identity and Access Management. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/7-infrastructure-and-operations/cloud-iam/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Cloud Identity and Access Management</span><span lang="en">Principles of Cloud Identity and Access Management</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of Cloud Identity and Access Management</span><span lang="en">Principles of Cloud Identity and Access Management</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Cloud Identity and Access Management.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Cloud Identity and Access Management.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">> <b>Learning Guide</b>: Prompt engineering solves "how to say things clearly," while cloud account permission management solves "who can do what." This chapter revolves around one question: <b>In the cloud world, how do you grant access conveniently without handing the keys to the wrong people?</b></span><span lang="en">> <b>Learning Guide</b>: Prompt engineering solves "how to say things clearly," while cloud account permission management solves "who can do what." This chapter revolves around one question: <b>In the cloud world, how do you grant access conveniently without handing the keys to the wrong people?</b></span></p>
+<p class="reveal"><span lang="id">Before you begin, it's recommended to brush up on two fundamentals:</span><span lang="en">Before you begin, it's recommended to brush up on two fundamentals:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>What is a Token</b>: You can read the "Tokenization & Tokens" section in [Introduction to Large Language Models](../8-artificial-intelligence/llm-principles.md).</span><span lang="en"><b>What is a Token</b>: You can read the "Tokenization & Tokens" section in [Introduction to Large Language Models](../8-artificial-intelligence/llm-principles.md).</span></li>
+<li><span lang="id"><b>What is a Prompt</b>: If you're not yet familiar with the basic System / User / Assistant structure, check out [Prompt Engineering](../8-artificial-intelligence/prompt-engineering/).</span><span lang="en"><b>What is a Prompt</b>: If you're not yet familiar with the basic System / User / Assistant structure, check out [Prompt Engineering](../8-artificial-intelligence/prompt-engineering/).</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. Introduction: Motivation for Peopling "Step on Landmines" as Soon as They Get on the Cloud</span><span lang="en">0. Introduction: Motivation for Peopling "Step on Landmines" as Soon as They Get on the Cloud</span></h2>
+<p class="reveal"><span lang="id"><IamRamComparisonDemo /></span><span lang="en"><IamRamComparisonDemo /></span></p>
+<p class="reveal"><span lang="id">Many people encounter similar situations when they first start using cloud services:</span><span lang="en">Many people encounter similar situations when they first start using cloud services:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Hard-coding AccessKeys directly in code and committing them to GitHub for convenience;</span><span lang="en">Hard-coding AccessKeys directly in code and committing them to GitHub for convenience;</span></li>
+<li><span lang="id">Giving all employees "admin permissions," only to have someone accidentally delete the production database;</span><span lang="en">Giving all employees "admin permissions," only to have someone accidentally delete the production database;</span></li>
+<li><span lang="id">After a project handover, having no idea who still has former employees' account credentials;</span><span lang="en">After a project handover, having no idea who still has former employees' account credentials;</span></li>
+<li><span lang="id">Hearing about enabling MFA but putting it off because it seems "too much trouble."</span><span lang="en">Hearing about enabling MFA but putting it off because it seems "too much trouble."</span></li>
+</ul>
+<p class="reveal"><span lang="id">Intuitively, we might think: <b>"These employees lack security awareness."</b></span><span lang="en">Intuitively, we might think: <b>"These employees lack security awareness."</b></span></p>
+<p class="reveal"><span lang="id">But most of the time, the problem isn't the people — it's the <b>failure to establish a proper permission management system.</b></span><span lang="en">But most of the time, the problem isn't the people — it's the <b>failure to establish a proper permission management system.</b></span></p>
+<p class="reveal"><span lang="id"><IntroProblemReasonSolution /></span><span lang="en"><IntroProblemReasonSolution /></span></p>
+<p class="reveal"><span lang="id">Faced with these challenges, relying on "being more careful" is no longer enough. We need a systematic approach to permission management — and that's exactly what <b>IAM (Identity and Access Management)</b> sets out to solve.</span><span lang="en">Faced with these challenges, relying on "being more careful" is no longer enough. We need a systematic approach to permission management — and that's exactly what <b>IAM (Identity and Access Management)</b> sets out to solve.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Overview of IAM/RAM Starting with the "Access Control System"</span><span lang="en">1. Overview of IAM/RAM Starting with the "Access Control System"</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 Analogy: A Company's Smart Access Control</span><span lang="en">1.1 Analogy: A Company's Smart Access Control</span></h3>
+<p class="reveal"><span lang="id">Imagine your company moves into a new office building:</span><span lang="en">Imagine your company moves into a new office building:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Scenario</th><th>Without IAM</th><th>With IAM</th></tr>
+<tr><td>New employee onboarding</td><td>Give them a master key that opens every door</td><td>Give them an access card that only opens doors in their work area</td></tr>
+<tr><td>Employee departure</td><td>The key is just lost, and no one knows who has it</td><td>Immediately revoke their access card in the system — all doors are locked</td></tr>
+<tr><td>Contractors</td><td>Lend them the key for a few days</td><td>Issue a temporary access card, set to expire automatically in 3 days</td></tr>
+<tr><td>Visitors</td><td>The front desk hands them a key</td><td>Issue a one-time visitor code that only accesses the meeting room</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>IAM (Identity and Access Management)</b> is like this "smart access control system":</span><span lang="en"><b>IAM (Identity and Access Management)</b> is like this "smart access control system":</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Identity</b>: Who? Employee, contractor, visitor, application</span><span lang="en"><b>Identity</b>: Who? Employee, contractor, visitor, application</span></li>
+<li><span lang="id"><b>Access</b>: Which doors can they enter? What operations can they perform?</span><span lang="en"><b>Access</b>: Which doors can they enter? What operations can they perform?</span></li>
+<li><span lang="id"><b>Management</b>: How to issue keys, how to revoke them, how to check records</span><span lang="en"><b>Management</b>: How to issue keys, how to revoke them, how to check records</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 AWS IAM vs Alibaba Cloud RAM</span><span lang="en">1.2 AWS IAM vs Alibaba Cloud RAM</span></h3>
+<p class="reveal"><span lang="id"><IamRamComparisonDemo /></span><span lang="en"><IamRamComparisonDemo /></span></p>
+<p class="reveal"><span lang="id">Different cloud providers have their own IAM implementations:</span><span lang="en">Different cloud providers have their own IAM implementations:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Cloud Provider</th><th>Service Name</th><th>Core Concepts</th></tr>
+<tr><td><b>AWS</b></td><td>IAM (Identity and Access Management)</td><td>User, Group, Role, Policy</td></tr>
+<tr><td><b>Alibaba Cloud</b></td><td>RAM (Resource Access Management)</td><td>User, User Group, Role, Policy</td></tr>
+<tr><td><b>Tencent Cloud</b></td><td>CAM (Cloud Access Management)</td><td>User, User Group, Role, Policy</td></tr>
+<tr><td><b>Huawei Cloud</b></td><td>IAM</td><td>User, User Group, Agency, Policy</td></tr>
+<tr><td><b>Azure</b></td><td>Azure AD + RBAC</td><td>User, Group, Role, RBAC</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">Although the names differ, <b>the core concepts are the same</b>:</span><span lang="en">Although the names differ, <b>the core concepts are the same</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>User</b>: Represents a specific person or application</span><span lang="en"><b>User</b>: Represents a specific person or application</span></li>
+<li><span lang="id"><b>Group</b>: Manages permissions for a batch of users</span><span lang="en"><b>Group</b>: Manages permissions for a batch of users</span></li>
+<li><span lang="id"><b>Role</b>: Defines a set of permissions that can be "assumed"</span><span lang="en"><b>Role</b>: Defines a set of permissions that can be "assumed"</span></li>
+<li><span lang="id"><b>Policy</b>: Specific permission rules (what is allowed/denied)</span><span lang="en"><b>Policy</b>: Specific permission rules (what is allowed/denied)</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Users, Groups, Roles: Selection of One Should You Use</span><span lang="en">2. Users, Groups, Roles: Selection of One Should You Use</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Differences Between the Three "Identities"</span><span lang="en">2.1 Differences Between the Three "Identities"</span></h3>
+<p class="reveal"><span lang="id"><IdentityProviderDemo /></span><span lang="en"><IdentityProviderDemo /></span></p>
+<p class="reveal"><span lang="id">Let's use an office scenario as an analogy:</span><span lang="en">Let's use an office scenario as an analogy:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Concept</th><th>Analogy</th><th>Use Case</th><th>Characteristics</th></tr>
+<tr><td><b>User</b></td><td>Full-time employee with their own desk and access card</td><td>Long-term, stable team members</td><td>Has permanent credentials (password, AK/SK)</td></tr>
+<tr><td><b>Group</b></td><td>Department, like "Engineering" or "Sales"</td><td>Batch permission management</td><td>Cannot log in; just a permission container</td></tr>
+<tr><td><b>Role</b></td><td>Temporary visitor pass, contractor temporary card</td><td>Temporary authorization, cross-account access</td><td>No permanent credentials; obtains temporary credentials by "assuming"</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Real Case: Permission Evolution at a Startup</span><span lang="en">2.2 Real Case: Permission Evolution at a Startup</span></h3>
+<p class="reveal"><span lang="id"><b>Phase 1: Founding Team (2-3 people)</b></span><span lang="en"><b>Phase 1: Founding Team (2-3 people)</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Problem: Using the root account directly to log into the console because it&#039;s &quot;easier&quot;
+Risk: The root account has all permissions; if compromised, the entire account is ruined</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Phase 2: Team Expansion (5-10 people)</b></span><span lang="en"><b>Phase 2: Team Expansion (5-10 people)</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Improvement: Create IAM Users for everyone, assign different permissions
+Problems:
+- Ops engineer Xiao Wang left — where are his AK/SK scattered across servers?
+- The new frontend dev needs S3 read-only access, the backend dev needs RDS access — configuring each one manually is too tedious</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Phase 3: Standardization (10-30 people)</b></span><span lang="en"><b>Phase 3: Standardization (10-30 people)</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Improvements:
+1. Create IAM Groups by role:
+   - Developers: S3, EC2, RDS read/write
+   - DevOps: Full permissions, but MFA required
+   - ReadOnly: View all resources, cannot modify
+   - QAs: Test environment resource access
+
+2. Use IAM Roles:
+   - EC2 instances use Instance Profiles — no more storing AK/SK on servers
+   - Cross-account access via Role Assume — no shared AK/SK
+   - CI/CD uses OIDC Federation — no long-term credential storage</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Phase 4: Multi-Account / Enterprise (30+ people)</b></span><span lang="en"><b>Phase 4: Multi-Account / Enterprise (30+ people)</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Architecture:
+- Master Account: Only used for billing and organizational management; no resources placed here
+- Audit Account: Collects logs from all accounts
+- Dev Account: Development environment
+- Staging Account: Pre-release/testing environment
+- Prod Account: Production environment, strictest permissions
+
+Permission Flow:
+- Developers have read-only access to the Dev account by default
+- To modify production, submit a ticket to request Assume into a temporary Prod Role
+- All Assume operations are logged by CloudTrail for periodic auditing</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Roles and Policies: The "Soul" of Permission Management</span><span lang="en">3. Roles and Policies: The "Soul" of Permission Management</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 The Essence of a Role: Trust + Permissions</span><span lang="en">3.1 The Essence of a Role: Trust + Permissions</span></h3>
+<p class="reveal"><span lang="id"><RolePolicyDemo /></span><span lang="en"><RolePolicyDemo /></span></p>
+<p class="reveal"><span lang="id">An IAM Role has two core components:</span><span lang="en">An IAM Role has two core components:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Trust Policy</b>: Who can assume this role?</span><span lang="en"><b>Trust Policy</b>: Who can assume this role?</span></li>
+<li><span lang="id"><b>Permission Policy</b>: What can they do after successfully assuming it?</span><span lang="en"><b>Permission Policy</b>: What can they do after successfully assuming it?</span></li>
+</ul>
+<p class="reveal"><span lang="id">Using a theater performance analogy:</span><span lang="en">Using a theater performance analogy:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Concept</th><th>Analogy</th><th>Explanation</th></tr>
+<tr><td><b>Role</b></td><td>"Hamlet" in the script</td><td>Defines what play to perform (permissions)</td></tr>
+<tr><td><b>Trust Policy</b></td><td>The director saying "who can play Hamlet"</td><td>Could be "actors from this troupe" (same-account users), "actors borrowed from a neighboring troupe" (cross-account), "guest stars" (external IdP)</td></tr>
+<tr><td><b>Permission Policy</b></td><td>The script content</td><td>What Hamlet can do: deliver lines, duel, go mad (specific permissions)</td></tr>
+<tr><td><b>Assume Role</b></td><td>An actor going on stage</td><td>Xiao Li is chosen to play Hamlet; once on stage, he has all the permissions defined in the script</td></tr>
+<tr><td><b>Temporary Credentials</b></td><td>Performance pass</td><td>Xiao Li gets a "temporary performance pass" that expires after the show</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Policy: The "Grammar" of Permissions</span><span lang="en">3.2 Policy: The "Grammar" of Permissions</span></h3>
+<p class="reveal"><span lang="id"><PermissionHierarchyDemo /></span><span lang="en"><PermissionHierarchyDemo /></span></p>
+<p class="reveal"><span lang="id">An IAM Policy is a JSON document that defines "who can do what to which resources."</span><span lang="en">An IAM Policy is a JSON document that defines "who can do what to which resources."</span></p>
+<p class="reveal"><span lang="id"><b>A Complete Policy Example</b>:</span><span lang="en"><b>A Complete Policy Example</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>json</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>{
+  &quot;Version&quot;: &quot;2012-10-17&quot;,
+  &quot;Statement&quot;: [
+    {
+      &quot;Sid&quot;: &quot;AllowS3ReadWrite&quot;,
+      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Action&quot;: [&quot;s3:GetObject&quot;, &quot;s3:PutObject&quot;, &quot;s3:DeleteObject&quot;],
+      &quot;Resource&quot;: &quot;arn:aws:s3:::my-app-bucket/*&quot;,
+      &quot;Condition&quot;: {
+        &quot;StringEquals&quot;: {
+          &quot;aws:RequestedRegion&quot;: &quot;ap-northeast-1&quot;
+        },
+        &quot;Bool&quot;: {
+          &quot;aws:MultiFactorAuthPresent&quot;: &quot;true&quot;
+        }
+      }
+    },
+    {
+      &quot;Sid&quot;: &quot;DenySensitiveData&quot;,
+      &quot;Effect&quot;: &quot;Deny&quot;,
+      &quot;Action&quot;: &quot;s3:*&quot;,
+      &quot;Resource&quot;: &quot;arn:aws:s3:::my-app-bucket/sensitive/*&quot;
+    }
+  ]
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Key Field Explanations</b>:</span><span lang="en"><b>Key Field Explanations</b>:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Field</th><th>Meaning</th><th>Example</th></tr>
+<tr><td><b>Version</b></td><td>Policy syntax version</td><td>"2012-10-17"</td></tr>
+<tr><td><b>Statement</b></td><td>Array of permission statements; can contain multiple rules</td><td>[...]</td></tr>
+<tr><td><b>Sid</b></td><td>Statement ID, optional, used to identify this rule</td><td>"AllowS3ReadWrite"</td></tr>
+<tr><td><b>Effect</b></td><td>Effect: Allow or Deny</td><td>"Allow"</td></tr>
+<tr><td><b>Action</b></td><td>Allowed/denied operations; supports wildcards</td><td>"s3:GetObject", "s3:\*"</td></tr>
+<tr><td><b>Resource</b></td><td>Target resource, identified by ARN</td><td>"arn:aws:s3:::bucket/\*"</td></tr>
+<tr><td><b>Condition</b></td><td>Optional; only takes effect when specific conditions are met</td><td>Region restriction, MFA requirement, etc.</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Permission Priority: Deny > Allow > Default Deny</span><span lang="en">3.3 Permission Priority: Deny > Allow > Default Deny</span></h3>
+<p class="reveal"><span lang="id">IAM's permission evaluation logic can be summed up in one sentence: <b>Explicit Deny always wins; no Allow means Deny.</b></span><span lang="en">IAM's permission evaluation logic can be summed up in one sentence: <b>Explicit Deny always wins; no Allow means Deny.</b></span></p>
+<p class="reveal"><span lang="id">The evaluation flow is as follows:</span><span lang="en">The evaluation flow is as follows:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>1. First check if there is a Deny policy
+   ├─ Has Deny → Denied (regardless of any Allow)
+   └─ No Deny → Continue checking
+
+2. Then check if there is an Allow policy
+   ├─ Has Allow → Allowed
+   └─ No Allow → Denied (default deny principle)</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Practical Example: Protecting Sensitive Data</b></span><span lang="en"><b>Practical Example: Protecting Sensitive Data</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>json</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Policy 1: Normal permissions for developers
+{
+  &quot;Effect&quot;: &quot;Allow&quot;,
+  &quot;Action&quot;: [&quot;s3:*&quot;],
+  &quot;Resource&quot;: &quot;arn:aws:s3:::company-data/*&quot;
+}
+
+// Policy 2: Protect sensitive directories (even developers with s3:* cannot access)
+{
+  &quot;Effect&quot;: &quot;Deny&quot;,
+  &quot;Action&quot;: [&quot;s3:*&quot;],
+  &quot;Resource&quot;: &quot;arn:aws:s3:::company-data/sensitive/*&quot;
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Key Points</b>:</span><span lang="en"><b>Key Points</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Although developers have <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">s3:*</code> Allow permissions</span><span lang="en">Although developers have <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">s3:*</code> Allow permissions</span></li>
+<li><span lang="id">The sensitive directory has an explicit Deny rule</span><span lang="en">The sensitive directory has an explicit Deny rule</span></li>
+<li><span lang="id">Deny takes higher priority, so developers cannot access sensitive data</span><span lang="en">Deny takes higher priority, so developers cannot access sensitive data</span></li>
+<li><span lang="id">Even if the developer is an admin, this Deny still applies (unless it's the root account)</span><span lang="en">Even if the developer is an admin, this Deny still applies (unless it's the root account)</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Access Keys (AK/SK): A "Key" That Needs Careful Handling</span><span lang="en">4. Access Keys (AK/SK): A "Key" That Needs Careful Handling</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Overview of AK/SK</span><span lang="en">4.1 Overview of AK/SK</span></h3>
+<p class="reveal"><span lang="id"><AccessKeyManagementDemo /></span><span lang="en"><AccessKeyManagementDemo /></span></p>
+<p class="reveal"><span lang="id">Access Keys are long-term credentials provided by cloud services for programmatic API calls. They consist of two parts:</span><span lang="en">Access Keys are long-term credentials provided by cloud services for programmatic API calls. They consist of two parts:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Component</th><th>Name</th><th>Purpose</th><th>Analogy</th></tr>
+<tr><td><b>Access Key ID</b></td><td>Access Key ID</td><td>Identifies who you are (like a username)</td><td>Bank card number</td></tr>
+<tr><td><b>Secret Access Key</b></td><td>Secret Access Key</td><td>Proves you are who you say you are (like a password)</td><td>Bank card PIN</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Motivation for AKing /SK "High-Risk Items"</span><span lang="en">4.2 Motivation for AKing /SK "High-Risk Items"</span></h3>
+<p class="reveal"><span lang="id"><b>Real Case: A Startup's Lesson</b></span><span lang="en"><b>Real Case: A Startup's Lesson</b></span></p>
+<p class="reveal"><span lang="id">Xiao Li is a new backend engineer at a startup. In his first week, his task is to debug a file upload feature.</span><span lang="en">Xiao Li is a new backend engineer at a startup. In his first week, his task is to debug a file upload feature.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Xiao Li&#039;s code (serious security issue!)
+import boto3
+
+# Hard-coded AK/SK directly in the code for convenience
+s3 = boto3.client(
+    &#039;s3&#039;,
+    aws_access_key_id=&#039;AKIAIOSFODNN7EXAMPLE&#039;,
+    aws_secret_access_key=&#039;wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY&#039;,
+    region_name=&#039;ap-northeast-1&#039;
+)
+
+def upload_file(file_path, bucket_name, object_name):
+    s3.upload_file(file_path, bucket_name, object_name)
+    print(f&quot;File uploaded to s3://{bucket_name}/{object_name}&quot;)
+
+# Test upload
+upload_file(&#039;./test.jpg&#039;, &#039;my-company-bucket&#039;, &#039;uploads/test.jpg&#039;)</pre>
+</div>
+<p class="reveal"><span lang="id"><b>What Happened a Week Later</b>:</span><span lang="en"><b>What Happened a Week Later</b>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Xiao Li committed the code to GitHub (including AK/SK)</span><span lang="en">Xiao Li committed the code to GitHub (including AK/SK)</span></li>
+<li><span lang="id">The code on GitHub was scanned by crawlers, and the AK/SK were extracted</span><span lang="en">The code on GitHub was scanned by crawlers, and the AK/SK were extracted</span></li>
+<li><span lang="id">Attackers used these credentials to create a large number of EC2 instances in the company account for crypto mining</span><span lang="en">Attackers used these credentials to create a large number of EC2 instances in the company account for crypto mining</span></li>
+<li><span lang="id">At the end of the month, the bill arrived: an extra $12,000 in charges</span><span lang="en">At the end of the month, the bill arrived: an extra $12,000 in charges</span></li>
+<li><span lang="id">An audit revealed the AK/SK leak, and Xiao Li was called in for a talk...</span><span lang="en">An audit revealed the AK/SK leak, and Xiao Li was called in for a talk...</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>What Does This Case Teach Us?</b></span><span lang="en"><b>What Does This Case Teach Us?</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Wrong Practice</th><th>Correct Practice</th></tr>
+<tr><td>Hard-coding AK/SK in code</td><td>Use IAM Roles so the program automatically obtains temporary credentials</td></tr>
+<tr><td>Committing AK/SK to a Git repository</td><td>Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.gitignore</code> to exclude config files; use a secrets management service</td></tr>
+<tr><td>Using the same AK/SK long-term without rotation</td><td>Rotate AK/SK regularly; use temporary credentials instead of long-term ones</td></tr>
+<tr><td>Assigning excessive permissions to AK/SK</td><td>Follow the principle of least privilege; grant only necessary permissions</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 AK/SK Security Best Practices</span><span lang="en">4.3 AK/SK Security Best Practices</span></h3>
+<p class="reveal"><span lang="id"><b>Scenario 1: Local Development</b></span><span lang="en"><b>Scenario 1: Local Development</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Correct approach: Use AWS CLI to configure credentials — don&#039;t write them in code
+aws configure
+# Then enter Access Key ID and Secret Access Key as prompted
+# This info is saved in ~/.aws/credentials with permissions set to 600
+
+# No credential configuration needed in code
+import boto3
+s3 = boto3.client(&#039;s3&#039;)  # Automatically reads from ~/.aws/credentials</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Scenario 2: Servers / EC2</b></span><span lang="en"><b>Scenario 2: Servers / EC2</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Correct approach: Use IAM Instance Profile
+# 1. Create an IAM Role and attach the needed permissions (e.g., S3ReadOnly)
+# 2. Create an Instance Profile and associate it with this Role
+# 3. When launching EC2, select this Instance Profile
+
+# No credentials needed in code at all
+import boto3
+s3 = boto3.client(&#039;s3&#039;)  # Automatically obtains temporary credentials from EC2 metadata service
+
+# Temporary credentials auto-rotate — no need to worry about expiration</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Scenario 3: CI/CD Pipelines</b></span><span lang="en"><b>Scenario 3: CI/CD Pipelines</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>yaml</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Correct approach: Use OIDC Federation (OpenID Connect)
+# Example with GitHub Actions:
+
+# 1. Create an OIDC Identity Provider in AWS, trusting GitHub
+# 2. Create an IAM Role with a trust policy allowing specific GitHub repos to assume it
+# 3. Configure in GitHub Actions
+
+name: Deploy
+on: [push]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # Critical: allows requesting an OIDC token
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: arn:aws:iam::123456789012:role/GitHubActionsRole
+          aws-region: ap-northeast-1
+          # Note: No Access Key here! Entirely using temporary credentials
+
+      - name: Deploy
+        run: aws s3 sync ./build s3://my-bucket/</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Summary: AK/SK Usage Security Levels</b></span><span lang="en"><b>Summary: AK/SK Usage Security Levels</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Security Level</th><th>Practice</th><th>Suitable For</th><th>Risk Level</th></tr>
+<tr><td>Highest</td><td>Use IAM Role (no long-term creds)</td><td>EC2, Lambda, ECS, CI/CD</td><td>Very Low</td></tr>
+<tr><td>High</td><td>Use OIDC Federation</td><td>GitHub Actions, GitLab CI</td><td>Low</td></tr>
+<tr><td>Medium</td><td>Use secrets management service</td><td>Local development, small teams</td><td>Medium</td></tr>
+<tr><td>Low</td><td>Use environment variables</td><td>Rapid prototyping, personal projects</td><td>High</td></tr>
+<tr><td>Very Low</td><td>Hard-code in source code</td><td>Not recommended for any scenario</td><td>Very High</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Multi-Factor Authentication (MFA): Adding a "Lock" to Your Account</span><span lang="en">5. Multi-Factor Authentication (MFA): Adding a "Lock" to Your Account</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Overview of MFA</span><span lang="en">5.1 Overview of MFA</span></h3>
+<p class="reveal"><span lang="id"><MfaSecurityDemo /></span><span lang="en"><MfaSecurityDemo /></span></p>
+<p class="reveal"><span lang="id">MFA (Multi-Factor Authentication), also called 2FA (Two-Factor Authentication), is a security mechanism that requires users to provide <b>two or more</b> different types of authentication factors when logging in:</span><span lang="en">MFA (Multi-Factor Authentication), also called 2FA (Two-Factor Authentication), is a security mechanism that requires users to provide <b>two or more</b> different types of authentication factors when logging in:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Factor Type</th><th>What It Is</th><th>Examples</th></tr>
+<tr><td><b>Knowledge Factor</b> (something you know)</td><td>Information only the user knows</td><td>Password, PIN code</td></tr>
+<tr><td><b>Possession Factor</b> (something you have)</td><td>A physical device the user possesses</td><td>Phone, hardware key</td></tr>
+<tr><td><b>Inherence Factor</b> (something you are)</td><td>The user's biological characteristics</td><td>Fingerprint, facial recognition</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Motivation for MFAing So Important</span><span lang="en">5.2 Motivation for MFAing So Important</span></h3>
+<p class="reveal"><span lang="id"><b>Real Data Tells the Answer</b>:</span><span lang="en"><b>Real Data Tells the Answer</b>:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Attack Method</th><th>Success Rate Without MFA</th><th>Success Rate With MFA</th></tr>
+<tr><td>Password guessing / brute force</td><td>Very High</td><td>Extremely Low (second factor still required)</td></tr>
+<tr><td>Phishing attacks to obtain passwords</td><td>Very High</td><td>Extremely Low (phishing page cannot obtain MFA code)</td></tr>
+<tr><td>Password leaks (from other website breaches)</td><td>Very High</td><td>Extremely Low (second factor unknown)</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Microsoft Security Report (2020)</b>: Enabling MFA can block <b>99.9%</b> of automated attacks.</span><span lang="en"><b>Microsoft Security Report (2020)</b>: Enabling MFA can block <b>99.9%</b> of automated attacks.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 MFA in Practice: Enabling MFA for the AWS Root Account</span><span lang="en">5.3 MFA in Practice: Enabling MFA for the AWS Root Account</span></h3>
+<p class="reveal"><span lang="id"><b>Step 1: Log into the AWS Console</b></span><span lang="en"><b>Step 1: Log into the AWS Console</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Log in with your root account email and password</span><span lang="en">Log in with your root account email and password</span></li>
+<li><span lang="id">Click your account name in the top-right corner and select "Security Credentials"</span><span lang="en">Click your account name in the top-right corner and select "Security Credentials"</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Step 2: Enable MFA</b></span><span lang="en"><b>Step 2: Enable MFA</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Find the "Multi-factor authentication (MFA)" section</span><span lang="en">Find the "Multi-factor authentication (MFA)" section</span></li>
+<li><span lang="id">Click "Assign MFA device"</span><span lang="en">Click "Assign MFA device"</span></li>
+<li><span lang="id">Choose the MFA device type ("Authenticator app" recommended)</span><span lang="en">Choose the MFA device type ("Authenticator app" recommended)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Step 3: Configure Virtual MFA</b></span><span lang="en"><b>Step 3: Configure Virtual MFA</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Install Google Authenticator or Microsoft Authenticator on your phone</span><span lang="en">Install Google Authenticator or Microsoft Authenticator on your phone</span></li>
+<li><span lang="id">Scan the QR code or manually enter the secret key</span><span lang="en">Scan the QR code or manually enter the secret key</span></li>
+<li><span lang="id">Enter the 6-digit code shown in the app (enter two consecutive codes, since the code refreshes every 30 seconds)</span><span lang="en">Enter the 6-digit code shown in the app (enter two consecutive codes, since the code refreshes every 30 seconds)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Done!</b> Your root account now has MFA protection.</span><span lang="en"><b>Done!</b> Your root account now has MFA protection.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Cross-Account Access: Approach to "Visit" Safely</span><span lang="en">6. Cross-Account Access: Approach to "Visit" Safely</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Motivation for needing Cross-Account Access</span><span lang="en">6.1 Motivation for needing Cross-Account Access</span></h3>
+<p class="reveal"><span lang="id"><CrossAccountAccessDemo /></span><span lang="en"><CrossAccountAccessDemo /></span></p>
+<p class="reveal"><span lang="id">As businesses grow, many companies adopt a <b>multi-account architecture</b> to isolate different environments:</span><span lang="en">As businesses grow, many companies adopt a <b>multi-account architecture</b> to isolate different environments:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Account Type</th><th>Purpose</th><th>Permission Requirements</th></tr>
+<tr><td><b>Master Account</b></td><td>Organization management, billing</td><td>Rarely used</td></tr>
+<tr><td><b>Security Audit</b></td><td>Centralized log collection from all accounts</td><td>Read-only access to other accounts</td></tr>
+<tr><td><b>Shared Services</b></td><td>Shared resources (image registries, etc.)</td><td>Read-only access from other accounts</td></tr>
+<tr><td><b>Development</b></td><td>Development environment</td><td>Full access for developers</td></tr>
+<tr><td><b>Staging</b></td><td>Testing / pre-release environment</td><td>Tester permissions</td></tr>
+<tr><td><b>Production</b></td><td>Production environment</td><td>Strictly limited, requires approval</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>The Problem: How does the Production account's EC2 pull images from the Shared Services account's registry?</b></span><span lang="en"><b>The Problem: How does the Production account's EC2 pull images from the Shared Services account's registry?</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Option A: Write AK/SK in Production's user data (Dangerous! AK/SK leakage risk)</span><span lang="en">Option A: Write AK/SK in Production's user data (Dangerous! AK/SK leakage risk)</span></li>
+<li><span lang="id">Option B: Use cross-account Role Assume (Recommended! Temporary credentials, auto-rotation)</span><span lang="en">Option B: Use cross-account Role Assume (Recommended! Temporary credentials, auto-rotation)</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 How Cross-Account Role Assume Works</span><span lang="en">6.2 How Cross-Account Role Assume Works</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Account A (Production)                    Account B (Shared Services)
+    |                                           |
+    |  1. Request Assume Role                  |
+    |  &quot;I want to assume Account B&#039;s          |
+    |   ECRReadRole&quot;                            |
+    |------------------------------------------&gt;|
+    |                                           |
+    |                    2. Check Trust Policy  |
+    |                    &quot;Can Account A         |
+    |                     assume me?&quot;           |
+    |                                           |
+    |  3. Return temporary credentials         |
+    |  AccessKeyId, SecretKey, SessionToken    |
+    |&lt;------------------------------------------|
+    |                                           |
+    |  4. Use temporary credentials            |
+    |     to access ECR                         |
+    |  docker pull accountB.dkr.ecr...         |</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Key Points</b>:</span><span lang="en"><b>Key Points</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Temporary credentials are valid for 1 hour by default, configurable up to 12 hours</span><span lang="en">Temporary credentials are valid for 1 hour by default, configurable up to 12 hours</span></li>
+<li><span lang="id">No need to store any long-term credentials in code</span><span lang="en">No need to store any long-term credentials in code</span></li>
+<li><span lang="id">Trust policies can restrict who can assume the role (e.g., specific accounts, specific external IDs)</span><span lang="en">Trust policies can restrict who can assume the role (e.g., specific accounts, specific external IDs)</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.3 Hands-On: Configuring Cross-Account ECR Access</span><span lang="en">6.3 Hands-On: Configuring Cross-Account ECR Access</span></h3>
+<p class="reveal"><span lang="id"><b>Scenario</b>: The Production account's EC2 needs to pull Docker images from the Shared Services account.</span><span lang="en"><b>Scenario</b>: The Production account's EC2 needs to pull Docker images from the Shared Services account.</span></p>
+<p class="reveal"><span lang="id"><b>Step 1: Create an IAM Role in the Shared Services Account</b></span><span lang="en"><b>Step 1: Create an IAM Role in the Shared Services Account</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Log into the Shared Services account's AWS Console</span><span lang="en">Log into the Shared Services account's AWS Console</span></li>
+<li><span lang="id">Go to IAM → Roles → Create role</span><span lang="en">Go to IAM → Roles → Create role</span></li>
+<li><span lang="id">Select "Another AWS account"</span><span lang="en">Select "Another AWS account"</span></li>
+<li><span lang="id">Enter the Production account's Account ID</span><span lang="en">Enter the Production account's Account ID</span></li>
+<li><span lang="id">Optional: Check "Require external ID" and enter a random string (adds security)</span><span lang="en">Optional: Check "Require external ID" and enter a random string (adds security)</span></li>
+<li><span lang="id">Attach permission: AmazonEC2ContainerRegistryReadOnly</span><span lang="en">Attach permission: AmazonEC2ContainerRegistryReadOnly</span></li>
+<li><span lang="id">Name the Role: CrossAccountECRReadRole</span><span lang="en">Name the Role: CrossAccountECRReadRole</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Step 2: Get the Role ARN</b></span><span lang="en"><b>Step 2: Get the Role ARN</b></span></p>
+<p class="reveal"><span lang="id">After creation, copy the Role's ARN:</span><span lang="en">After creation, copy the Role's ARN:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>arn:aws:iam::SHARED_SERVICES_ACCOUNT_ID:role/CrossAccountECRReadRole</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 3: Configure EC2 Instances in the Production Account</b></span><span lang="en"><b>Step 3: Configure EC2 Instances in the Production Account</b></span></p>
+<p class="reveal"><span lang="id">Method A: Use Instance Profile (Recommended)</span><span lang="en">Method A: Use Instance Profile (Recommended)</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Create an IAM Role in the Production account (for EC2 use)</span><span lang="en">Create an IAM Role in the Production account (for EC2 use)</span></li>
+<li><span lang="id">Trust policy: Trust the EC2 service</span><span lang="en">Trust policy: Trust the EC2 service</span></li>
+<li><span lang="id">Permission policy: Allow assuming the cross-account Role</span><span lang="en">Permission policy: Allow assuming the cross-account Role</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>json</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>{
+  &quot;Version&quot;: &quot;2012-10-17&quot;,
+  &quot;Statement&quot;: [
+    {
+      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Action&quot;: &quot;sts:AssumeRole&quot;,
+      &quot;Resource&quot;: &quot;arn:aws:iam::SHARED_SERVICES_ACCOUNT_ID:role/CrossAccountECRReadRole&quot;
+    }
+  ]
+}</pre>
+</div>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Create an Instance Profile and associate it with this Role</span><span lang="en">Create an Instance Profile and associate it with this Role</span></li>
+<li><span lang="id">When launching EC2, select this Instance Profile</span><span lang="en">When launching EC2, select this Instance Profile</span></li>
+</ul>
+<p class="reveal"><span lang="id">Method B: Dynamically Assume Role in EC2 User Data</span><span lang="en">Method B: Dynamically Assume Role in EC2 User Data</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>#!/bin/bash
+# Install AWS CLI
+yum install -y aws-cli
+
+# Assume cross-account Role
+CREDS=$(aws sts assume-role \
+  --role-arn arn:aws:iam::SHARED_SERVICES_ACCOUNT_ID:role/CrossAccountECRReadRole \
+  --role-session-name EC2PullSession)
+
+# Extract temporary credentials
+export AWS_ACCESS_KEY_ID=$(echo $CREDS | jq -r &#039;.Credentials.AccessKeyId&#039;)
+export AWS_SECRET_ACCESS_KEY=$(echo $CREDS | jq -r &#039;.Credentials.SecretAccessKey&#039;)
+export AWS_SESSION_TOKEN=$(echo $CREDS | jq -r &#039;.Credentials.SessionToken&#039;)
+
+# Log in to ECR
+aws ecr get-login-password --region ap-northeast-1 | \
+  docker login --username AWS --password-stdin SHARED_SERVICES_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com
+
+# Pull the image
+docker pull SHARED_SERVICES_ACCOUNT_ID.dkr.ecr.ap-northeast-1.amazonaws.com/my-app:latest</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 4: Test Cross-Account Access</b></span><span lang="en"><b>Step 4: Test Cross-Account Access</b></span></p>
+<p class="reveal"><span lang="id">Run on the Production EC2 instance:</span><span lang="en">Run on the Production EC2 instance:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Test if Assume Role works
+aws sts get-caller-identity
+# Should show: arn:aws:sts::PRODUCTION_ACCOUNT_ID:assumed-role/CrossAccountECRReadRole/EC2PullSession
+
+# Test if we can list Shared Services ECR repositories
+aws ecr describe-repositories --registry-id SHARED_SERVICES_ACCOUNT_ID</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Done!</b> Now the Production EC2 can safely pull images from Shared Services without sharing any long-term credentials.</span><span lang="en"><b>Done!</b> Now the Production EC2 can safely pull images from Shared Services without sharing any long-term credentials.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Hands-On: Building a Secure Permission System</span><span lang="en">7. Hands-On: Building a Secure Permission System</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.1 Building a Permission Architecture from Scratch</span><span lang="en">7.1 Building a Permission Architecture from Scratch</span></h3>
+<p class="reveal"><span lang="id"><BestPracticesDemo /></span><span lang="en"><BestPracticesDemo /></span></p>
+<p class="reveal"><span lang="id">Suppose you're the tech lead at a 10-person startup and need to design an AWS permission architecture from scratch. Here are the recommended implementation steps:</span><span lang="en">Suppose you're the tech lead at a 10-person startup and need to design an AWS permission architecture from scratch. Here are the recommended implementation steps:</span></p>
+<p class="reveal"><span lang="id"><b>Phase 1: Root Account Protection (Day 1)</b></span><span lang="en"><b>Phase 1: Root Account Protection (Day 1)</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Goal: Protect the root account — this is the most important account
+
+1. Enable root account MFA (mandatory)
+   - Hardware MFA recommended (YubiKey), or Google Authenticator
+
+2. Create an IAM admin user
+   - Username: admin (or your name)
+   - Permissions: AdministratorAccess (but will be tightened later)
+   - Enable MFA
+
+3. Delete the root account&#039;s Access Keys (if any were created)
+   - The root account should never have AK/SK
+
+4. Configure root account usage alerts
+   - Use CloudWatch + SNS to send email/SMS whenever the root account logs in</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Phase 2: Team Permission Grouping (Week 1)</b></span><span lang="en"><b>Phase 2: Team Permission Grouping (Week 1)</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Goal: Group team members and manage permissions in batches
+
+1. Analyze team roles:
+   - Backend developers (2)
+   - Frontend developer (1)
+   - Mobile developer (1)
+   - Product manager (1)
+   - Designer (1)
+   - Founders / admins (3)
+
+2. Create IAM Groups:
+
+   Group: Developers
+   ├── Members: All developers (backend, frontend, mobile)
+   ├── Permissions:
+   │   ├── EC2: Start, stop, view (but cannot delete others&#039; instances)
+   │   ├── S3: Read/write development environment buckets
+   │   ├── RDS: Read-only (cannot modify production database)
+   │   └── CloudWatch: View logs
+   └── Restriction: Can only operate in the ap-northeast-1 region
+
+   Group: ProductTeam
+   ├── Members: Product manager, designer
+   ├── Permissions:
+   │   ├── S3: Read-only (view data files)
+   │   ├── CloudWatch Dashboard: View monitoring charts
+   │   └── Cost Explorer: View billing (but cannot modify)
+   └── Restriction: Read-only; cannot modify any resources
+
+   Group: Administrators
+   ├── Members: Founders, tech lead
+   ├── Permissions: AdministratorAccess
+   └── Requirement: Must use MFA to perform operations
+
+3. Create an IAM User for each person and add them to the corresponding Group
+   - Never attach permissions directly to individuals — always manage via Groups
+   - Enable MFA (mandatory)</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Phase 3: Application-Layer Permission Optimization (Weeks 2-4)</b></span><span lang="en"><b>Phase 3: Application-Layer Permission Optimization (Weeks 2-4)</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Goal: Let applications access AWS resources securely
+
+1. EC2 instances use Instance Profiles
+   - No more configuring AK/SK on servers
+   - Create an IAM Role and attach needed permissions (e.g., S3 read/write)
+   - Create an Instance Profile and associate it with this Role
+   - Select this Instance Profile when launching EC2
+   - Application code uses boto3 directly without credential configuration
+
+2. If AK/SK must be used (third-party integrations)
+   - Use AWS Secrets Manager to store AK/SK
+   - Application reads from Secrets Manager at startup
+   - Set up regular rotation (90 days)
+   - Monitor AK/SK usage
+
+3. Configure CloudTrail to record all API calls
+   - Create a dedicated S3 bucket for log storage
+   - Enable log file validation (to prevent tampering)
+   - Configure SNS notifications for critical events (e.g., root account usage, policy changes)</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Phase 4: Security Hardening (Ongoing)</b></span><span lang="en"><b>Phase 4: Security Hardening (Ongoing)</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Goal: Establish continuous security monitoring and improvement mechanisms
+
+1. Enable AWS Config
+   - Monitor resource configuration changes
+   - Check compliance (e.g., whether security groups have 0.0.0.0/0 open)
+
+2. Enable IAM Access Analyzer
+   - Continuously analyze resource policies
+   - Identify external access (e.g., whether S3 buckets are public)
+
+3. Regularly review IAM configuration
+   - Monthly check for unused IAM Users and Roles
+   - Check Access Key usage
+   - Verify Group membership is reasonable
+
+4. Establish a security incident response process
+   - If AK/SK leak is discovered: Immediately delete, rotate, audit the impact scope
+   - If abnormal API calls are detected: Immediately investigate and restrict permissions</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8. Common Misconceptions and Pitfall Avoidance Guide</span><span lang="en">8. Common Misconceptions and Pitfall Avoidance Guide</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">8.1 Top 10 IAM Anti-Patterns</span><span lang="en">8.1 Top 10 IAM Anti-Patterns</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>#</th><th>Anti-Pattern</th><th>Why It's Bad</th><th>Correct Practice</th></tr>
+<tr><td>1</td><td>Using the root account for daily operations</td><td>Root account has all permissions; damage cannot be limited if compromised</td><td>Create an IAM admin user; use root account only when necessary</td></tr>
+<tr><td>2</td><td>Giving everyone AdministratorAccess</td><td>Violates least privilege; increases risk of mistakes and insider threats</td><td>Group by role; grant only necessary permissions</td></tr>
+<tr><td>3</td><td>Hard-coding AK/SK in source code</td><td>AK/SK easily leaked via GitHub and hard to rotate</td><td>Use IAM Roles, environment variables, or secrets management services</td></tr>
+<tr><td>4</td><td>Not rotating AK/SK for long periods</td><td>Increases exposure window after credential leaks</td><td>Set a 90-day rotation policy, or better — use temporary credentials</td></tr>
+<tr><td>5</td><td>Ignoring MFA</td><td>Account is immediately compromised if password is leaked</td><td>Enable MFA for all IAM users, especially high-privilege users</td></tr>
+<tr><td>6</td><td>Not using CloudTrail</td><td>Cannot audit who did what; impossible to trace incidents</td><td>Enable CloudTrail and store logs in a separate audit account</td></tr>
+<tr><td>7</td><td>IAM Policies that are too permissive</td><td>e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Resource: "<i>"</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Action: "</i>"</code> — increases attack surface</td><td>Explicitly specify resource ARNs and specific Actions</td></tr>
+<tr><td>8</td><td>Not cleaning up departed employees' IAM Users</td><td>Zombie accounts can become backdoors</td><td>Establish an offboarding process; immediately disable and delete IAM Users</td></tr>
+<tr><td>9</td><td>Not using IAM Access Analyzer</td><td>Cannot discover overly permissive resource policies (e.g., public S3 buckets)</td><td>Enable IAM Access Analyzer; regularly check for external access</td></tr>
+<tr><td>10</td><td>Not validating Policies in a test environment</td><td>Applying Policies directly in production may cause service outages</td><td>Use IAM Policy Simulator to test; validate in a test environment first</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">9. Glossary</span><span lang="en">9. Glossary</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>English Term</th><th>Chinese Translation</th><th>Explanation</th></tr>
+<tr><td><b>IAM (Identity and Access Management)</b></td><td>身份与访问管理</td><td>Cloud service for managing user identities and access permissions</td></tr>
+<tr><td><b>RAM (Resource Access Management)</b></td><td>资源访问管理</td><td>Alibaba Cloud's IAM service name</td></tr>
+<tr><td><b>Root Account</b></td><td>根账号</td><td>The owner account created when registering a cloud account; has the highest privileges</td></tr>
+<tr><td><b>IAM User</b></td><td>IAM 用户/子账号</td><td>A sub-identity created by the root account for daily operations</td></tr>
+<tr><td><b>IAM Role</b></td><td>IAM 角色</td><td>A temporary permission carrier with no long-term credentials; needs to be "assumed"</td></tr>
+<tr><td><b>IAM Policy</b></td><td>IAM 策略</td><td>JSON-formatted permission rule definition</td></tr>
+<tr><td><b>ARN</b></td><td>亚马逊资源名称</td><td>Globally unique resource identifier</td></tr>
+<tr><td><b>AK/SK</b></td><td>访问密钥/密钥</td><td>Credentials for programmatic cloud API access</td></tr>
+<tr><td><b>STS</b></td><td>安全令牌服务</td><td>Service that provides temporary security credentials</td></tr>
+<tr><td><b>MFA</b></td><td>多因素认证</td><td>Authentication method requiring two or more factors</td></tr>
+<tr><td><b>SSO</b></td><td>单点登录</td><td>Authentication method allowing users to access multiple systems with a single login</td></tr>
+<tr><td><b>ExternalId</b></td><td>外部 ID</td><td>Security identifier used to prevent confused deputy attacks</td></tr>
+<tr><td><b>CloudTrail</b></td><td>云审计服务</td><td>Logging service that records all API calls and operations in a cloud account</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary: Core Principles of Cloud Account Permission Management</span><span lang="en">Summary: Core Principles of Cloud Account Permission Management</span></h2>
+<p class="reveal"><span lang="id">Cloud account permission management is not a one-time effort — it needs to evolve continuously based on team size and business needs:</span><span lang="en">Cloud account permission management is not a one-time effort — it needs to evolve continuously based on team size and business needs:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Starting Phase</b> (1-10 people):</span><span lang="en"><b>Starting Phase</b> (1-10 people):</span></li>
+<li><span lang="id">Protect the root account (MFA + don't use the root account for daily operations)</span><span lang="en">Protect the root account (MFA + don't use the root account for daily operations)</span></li>
+<li><span lang="id">Create an IAM admin user</span><span lang="en">Create an IAM admin user</span></li>
+<li><span lang="id">Basic grouping (Developers, Admins)</span><span lang="en">Basic grouping (Developers, Admins)</span></li>
+</ul>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Growth Phase</b> (10-50 people):</span><span lang="en"><b>Growth Phase</b> (10-50 people):</span></li>
+<li><span lang="id">Refined permission grouping (frontend/backend, ops, product, etc.)</span><span lang="en">Refined permission grouping (frontend/backend, ops, product, etc.)</span></li>
+<li><span lang="id">Use IAM Roles instead of AK/SK</span><span lang="en">Use IAM Roles instead of AK/SK</span></li>
+<li><span lang="id">Enable CloudTrail auditing</span><span lang="en">Enable CloudTrail auditing</span></li>
+<li><span lang="id">Regular permission reviews</span><span lang="en">Regular permission reviews</span></li>
+</ul>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Maturity Phase</b> (50+ people / multi-account):</span><span lang="en"><b>Maturity Phase</b> (50+ people / multi-account):</span></li>
+<li><span lang="id">Multi-account architecture (Dev, Staging, Prod separation)</span><span lang="en">Multi-account architecture (Dev, Staging, Prod separation)</span></li>
+<li><span lang="id">Centralized log audit account</span><span lang="en">Centralized log audit account</span></li>
+<li><span lang="id">Automated permission reviews and alerts</span><span lang="en">Automated permission reviews and alerts</span></li>
+<li><span lang="id">Well-established permission request and approval workflows</span><span lang="en">Well-established permission request and approval workflows</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Remember Three Core Principles</b>:</span><span lang="en"><b>Remember Three Core Principles</b>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Principle of Least Privilege</b>: Grant only necessary permissions; don't give AdministratorAccess</span><span lang="en"><b>Principle of Least Privilege</b>: Grant only necessary permissions; don't give AdministratorAccess</span></li>
+<li><span lang="id"><b>No Long-Term Credentials</b>: Prefer IAM Roles and temporary credentials to avoid AK/SK leaks</span><span lang="en"><b>No Long-Term Credentials</b>: Prefer IAM Roles and temporary credentials to avoid AK/SK leaks</span></li>
+<li><span lang="id"><b>Enable MFA</b>: Especially for root accounts and high-privilege accounts — this is the most effective security measure</span><span lang="en"><b>Enable MFA</b>: Especially for root accounts and high-privilege accounts — this is the most effective security measure</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">> <b>Further Reading</b>:</span><span lang="en">> <b>Further Reading</b>:</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> - [AWS IAM Official Documentation](https://docs.aws.amazon.com/iam/)</span><span lang="en">> - [AWS IAM Official Documentation](https://docs.aws.amazon.com/iam/)</span></p>
+<p class="reveal"><span lang="id">> - [Alibaba Cloud RAM Official Documentation](https://www.aliyun.com/product/ram)</span><span lang="en">> - [Alibaba Cloud RAM Official Documentation](https://www.aliyun.com/product/ram)</span></p>
+<p class="reveal"><span lang="id">> - [AWS IAM Best Practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)</span><span lang="en">> - [AWS IAM Best Practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)</span></p>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../7-infrastructure-and-operations/ci-cd/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">7-infrastructure-and-operations/ci-cd</span><span lang="en">7-infrastructure-and-operations/ci-cd</span></b></a>
+      <a class="next" href="../../7-infrastructure-and-operations/cloud-platforms/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">7-infrastructure-and-operations/cloud-platforms</span><span lang="en">7-infrastructure-and-operations/cloud-platforms</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

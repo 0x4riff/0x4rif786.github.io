@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of API Design: Frontend-Backend Communication Protocols — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of API Design: Frontend-Backend Communication Protocols. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/4-server-and-backend/api-design/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of API Design: Frontend-Backend Communication Protocols</span><span lang="en">Principles of API Design: Frontend-Backend Communication Protocols</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of API Design: Frontend-Backend Communication Protocols</span><span lang="en">Principles of API Design: Frontend-Backend Communication Protocols</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of API Design: Frontend-Backend Communication Protocols.</span><span lang="en">Ensiklopedia VibeKoding: Principles of API Design: Frontend-Backend Communication Protocols.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>How do frontend and backend communicate efficiently?</b> It's like asking: how should a restaurant design its menu so guests can understand it at a glance? How should waiters take orders without making mistakes? How should dishes be served to keep customers satisfied? API design solves the problem of "conversation rules."</span><span lang="en"><b>How do frontend and backend communicate efficiently?</b> It's like asking: how should a restaurant design its menu so guests can understand it at a glance? How should waiters take orders without making mistakes? How should dishes be served to keep customers satisfied? API design solves the problem of "conversation rules."</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. First, a Question: Have You Experienced These Nightmares</span><span lang="en">0. First, a Question: Have You Experienced These Nightmares</span></h2>
+<p class="reveal"><span lang="id"><b>Scenario 1: Inconsistent API Naming</b></span><span lang="en"><b>Scenario 1: Inconsistent API Naming</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>GET /getUserData
+GET /fetchUserInfo
+GET /queryUserById
+GET /users/query</pre>
+</div>
+<p class="reveal"><span lang="id">Four endpoints, same functionality, completely different naming styles. New hires are confused: which one should I use?</span><span lang="en">Four endpoints, same functionality, completely different naming styles. New hires are confused: which one should I use?</span></p>
+<p class="reveal"><span lang="id"><b>Scenario 2: Inconsistent Error Handling</b></span><span lang="en"><b>Scenario 2: Inconsistent Error Handling</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>json</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Some return HTTP status codes
+HTTP/1.1 404 Not Found
+
+// Some return 200 + code
+HTTP/1.1 200 OK
+{ &quot;code&quot;: 404, &quot;message&quot;: &quot;User not found&quot; }
+
+// Some just throw exceptions
+HTTP/1.1 200 OK
+{ &quot;error&quot;: &quot;Something went wrong&quot; }</pre>
+</div>
+<p class="reveal"><span lang="id">The frontend doesn't know how to determine if a request was successful.</span><span lang="en">The frontend doesn't know how to determine if a request was successful.</span></p>
+<p class="reveal"><span lang="id"><b>Scenario 3: Inconsistent Response Structures</b></span><span lang="en"><b>Scenario 3: Inconsistent Response Structures</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>json</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Endpoint A
+{ &quot;data&quot;: { ... } }
+
+// Endpoint B
+{ &quot;result&quot;: { ... } }
+
+// Endpoint C
+{ &quot;content&quot;: { ... } }</pre>
+</div>
+<p class="reveal"><span lang="id">Every endpoint returns a different format, requiring the frontend to handle each one individually.</span><span lang="en">Every endpoint returns a different format, requiring the frontend to handle each one individually.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id"><b>Good API design is like a restaurant's ordering system</b> — clear menu, standardized procedures, and informative error messages.</span><span lang="en"><b>Good API design is like a restaurant's ordering system</b> — clear menu, standardized procedures, and informative error messages.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Overview of an API</span><span lang="en">1. Overview of an API</span></h2>
+<p class="reveal"><span lang="id"><b>API</b> (Application Programming Interface) is simply the "agreement for communication between programs."</span><span lang="en"><b>API</b> (Application Programming Interface) is simply the "agreement for communication between programs."</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 Restaurant Analogy</span><span lang="en">1.1 Restaurant Analogy</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Restaurant Role</th><th>Corresponding Concept</th><th>Description</th></tr>
+<tr><td>Menu</td><td>API Documentation</td><td>Tells you what "dishes" are available</td></tr>
+<tr><td>Waiter</td><td>HTTP Protocol</td><td>A standardized "way of communicating"</td></tr>
+<tr><td>Kitchen</td><td>Server</td><td>Processes requests based on "orders"</td></tr>
+<tr><td>Serving Food</td><td>Response</td><td>Returns results to the "guest"</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 A Complete API Request</span><span lang="en">1.2 A Complete API Request</span></h3>
+<p class="reveal"><span lang="id">👇 <b>Try it out</b>: Click the button below to observe a complete API request-response flow:</span><span lang="en">👇 <b>Try it out</b>: Click the button below to observe a complete API request-response flow:</span></p>
+<p class="reveal"><span lang="id"><ApiRequestDemo /></span><span lang="en"><ApiRequestDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. API Design Philosophy: RPC / REST / GraphQL / gRPC</span><span lang="en">2. API Design Philosophy: RPC / REST / GraphQL / gRPC</span></h2>
+<p class="reveal"><span lang="id">Before diving into specific RESTful design, let's understand four major API design styles:</span><span lang="en">Before diving into specific RESTful design, let's understand four major API design styles:</span></p>
+<p class="reveal"><span lang="id"><ApiStyleCompare /></span><span lang="en"><ApiStyleCompare /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 REST vs RESTful: What's the Difference</span><span lang="en">2.1 REST vs RESTful: What's the Difference</span></h3>
+<p class="reveal"><span lang="id">Many people confuse these two concepts:</span><span lang="en">Many people confuse these two concepts:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Concept</th><th>Meaning</th><th>Description</th></tr>
+<tr><td><b>REST</b></td><td>An architectural style</td><td>A design philosophy proposed by Roy Fielding, consisting of a set of constraints</td></tr>
+<tr><td><b>RESTful</b></td><td>Conforming to REST style</td><td>An adjective indicating that the API design follows REST principles</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Analogy</b>:</span><span lang="en"><b>Analogy</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">REST is like "minimalism" — a design philosophy</span><span lang="en">REST is like "minimalism" — a design philosophy</span></li>
+<li><span lang="id">RESTful API is like "a minimalist room" — a concrete implementation of that philosophy</span><span lang="en">RESTful API is like "a minimalist room" — a concrete implementation of that philosophy</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Six REST Constraints</b>:</span><span lang="en"><b>Six REST Constraints</b>:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Constraint</th><th>Description</th></tr>
+<tr><td><b>Client-Server Separation</b></td><td>Frontend and backend develop independently, interfaces are decoupled</td></tr>
+<tr><td><b>Stateless</b></td><td>Each request contains all necessary information; the server doesn't save session state</td></tr>
+<tr><td><b>Cacheable</b></td><td>Responses should indicate whether they are cacheable, improving performance</td></tr>
+<tr><td><b>Uniform Interface</b></td><td>Use standard HTTP methods and status codes</td></tr>
+<tr><td><b>Layered System</b></td><td>Clients don't need to know which layer of server they're connecting to</td></tr>
+<tr><td><b>Code on Demand</b> (optional)</td><td>The server can extend client functionality</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">1. <b>Low learning curve</b>: The HTTP protocol itself embodies REST principles
+2. <b>Mature ecosystem</b>: Rich tools, frameworks, and documentation
+3. <b>High versatility</b>: Any language, any platform can call it
+4. <b>Easy to cache</b>: GET requests are naturally cacheable, CDN-friendly</span><span lang="en">1. <b>Low learning curve</b>: The HTTP protocol itself embodies REST principles
+2. <b>Mature ecosystem</b>: Rich tools, frameworks, and documentation
+3. <b>High versatility</b>: Any language, any platform can call it
+4. <b>Easy to cache</b>: GET requests are naturally cacheable, CDN-friendly</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. RESTful Design: Making URLs Communicate</span><span lang="en">3. RESTful Design: Making URLs Communicate</span></h2>
+<p class="reveal"><span lang="id"><b>REST</b> (Representational State Transfer) is an architectural style with core principles:</span><span lang="en"><b>REST</b> (Representational State Transfer) is an architectural style with core principles:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Abstract things on the network as "Resources"</span><span lang="en">Abstract things on the network as "Resources"</span></li>
+<li><span lang="id">Use URLs to identify resources</span><span lang="en">Use URLs to identify resources</span></li>
+<li><span lang="id">Use HTTP methods to operate on resources</span><span lang="en">Use HTTP methods to operate on resources</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Warehouse Analogy</span><span lang="en">3.1 Warehouse Analogy</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Warehouse Concept</th><th>REST Equivalent</th><th>Example</th></tr>
+<tr><td>Shelf address</td><td>URL</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/users</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/orders</code></td></tr>
+<tr><td>Operation method</td><td>HTTP Method</td><td>GET (view), POST (add)</td></tr>
+<tr><td>Goods</td><td>Resource</td><td>User data, order data</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Key Principle</b>: URLs are nouns, not verbs.</span><span lang="en"><b>Key Principle</b>: URLs are nouns, not verbs.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 URL Design Rules</span><span lang="en">3.2 URL Design Rules</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Rule</th><th>Wrong Example</th><th>Correct Example</th><th>Description</th></tr>
+<tr><td>Use nouns, not verbs</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/getUsers</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/users</code></td><td>URL represents resources, HTTP methods represent operations</td></tr>
+<tr><td>Use plural form</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/user</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/users</code></td><td>Consistent plural style</td></tr>
+<tr><td>Lowercase + hyphens</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/UserProfiles</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/user-profiles</code></td><td>URLs are case-sensitive</td></tr>
+<tr><td>Avoid deep nesting</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/a/b/c/d/e</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/a/b/c</code></td><td>Maximum 3 levels</td></tr>
+<tr><td>Use query params for filtering</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/products/phone/5000</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/products?cat=phone</code></td><td>Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">?</code> parameters for filters</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Using lowercase + hyphens (-) is the safest approach, avoiding case confusion and inconsistent underscore styles.</span><span lang="en">Using lowercase + hyphens (-) is the safest approach, avoiding case confusion and inconsistent underscore styles.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 HTTP Method Selection</span><span lang="en">3.3 HTTP Method Selection</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Method</th><th>Purpose</th><th>Idempotent</th><th>Safe</th><th>Typical Scenario</th></tr>
+<tr><td><b>GET</b></td><td>Retrieve resource</td><td>Yes</td><td>Yes</td><td>Query lists, view details</td></tr>
+<tr><td><b>POST</b></td><td>Create resource</td><td>No</td><td>No</td><td>Add user, submit order</td></tr>
+<tr><td><b>PUT</b></td><td>Full update</td><td>Yes</td><td>No</td><td>Replace entire user profile</td></tr>
+<tr><td><b>PATCH</b></td><td>Partial update</td><td>No</td><td>No</td><td>Only modify nickname</td></tr>
+<tr><td><b>DELETE</b></td><td>Delete resource</td><td>Yes</td><td>No</td><td>Delete user, cancel order</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Idempotency</b>: Multiple executions produce the same result.
+
+- <b>Idempotent operations</b> (GET/PUT/DELETE): Clicking 10 times produces the same result as clicking once
+- <b>Non-idempotent operations</b> (POST): Clicking 10 times might create 10 orders
+
+<b>Solution</b>: Use unique IDs for POST operations to prevent duplicate processing.</span><span lang="en"><b>Idempotency</b>: Multiple executions produce the same result.
+
+- <b>Idempotent operations</b> (GET/PUT/DELETE): Clicking 10 times produces the same result as clicking once
+- <b>Non-idempotent operations</b> (POST): Clicking 10 times might create 10 orders
+
+<b>Solution</b>: Use unique IDs for POST operations to prevent duplicate processing.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Status Codes: Making Errors "Communicate"</span><span lang="en">4. Status Codes: Making Errors "Communicate"</span></h2>
+<p class="reveal"><span lang="id">HTTP status codes are the standard way for servers to tell clients "what happened."</span><span lang="en">HTTP status codes are the standard way for servers to tell clients "what happened."</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Status Code Categories</span><span lang="en">4.1 Status Code Categories</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Category</th><th>Meaning</th><th>Typical Status Codes</th></tr>
+<tr><td><b>2xx</b></td><td>Success</td><td>200 OK, 201 Created, 204 No Content</td></tr>
+<tr><td><b>3xx</b></td><td>Redirection</td><td>301 Permanent Move, 304 Not Modified</td></tr>
+<tr><td><b>4xx</b></td><td>Client Error</td><td>400 Bad Request, 401 Unauthorized, 404 Not Found</td></tr>
+<tr><td><b>5xx</b></td><td>Server Error</td><td>500 Internal Error, 503 Service Unavailable</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Common Status Code Demo</span><span lang="en">4.2 Common Status Code Demo</span></h3>
+<p class="reveal"><span lang="id">👇 <b>Try it out</b>: Click the button below to learn about common status codes:</span><span lang="en">👇 <b>Try it out</b>: Click the button below to learn about common status codes:</span></p>
+<p class="reveal"><span lang="id"><StatusCodeDemo /></span><span lang="en"><StatusCodeDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Error Handling: Graceful "Rejection"</span><span lang="en">5. Error Handling: Graceful "Rejection"</span></h2>
+<p class="reveal"><span lang="id">Good error handling lets clients "understand what happened from the status code" instead of guessing.</span><span lang="en">Good error handling lets clients "understand what happened from the status code" instead of guessing.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Error Handling "Pitfall Guide"</span><span lang="en">4.1 Error Handling "Pitfall Guide"</span></h3>
+<p class="reveal"><span lang="id"><b>Pitfall 1: Returning 200 for All Errors</b></span><span lang="en"><b>Pitfall 1: Returning 200 for All Errors</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>json</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// ❌ Bad practice
+HTTP/1.1 200 OK
+{ &quot;error&quot;: &quot;Something went wrong&quot; }</pre>
+</div>
+<p class="reveal"><span lang="id">Problem: Caching layers will cache this "successful" response, and monitoring systems won't detect the issue.</span><span lang="en">Problem: Caching layers will cache this "successful" response, and monitoring systems won't detect the issue.</span></p>
+<p class="reveal"><span lang="id"><b>Pitfall 2: Error Messages Too Vague</b></span><span lang="en"><b>Pitfall 2: Error Messages Too Vague</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>json</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// ❌ Bad practice
+HTTP/1.1 400 Bad Request
+{ &quot;message&quot;: &quot;Invalid parameters&quot; }</pre>
+</div>
+<p class="reveal"><span lang="id">Problem: The client doesn't know which parameter is wrong or why.</span><span lang="en">Problem: The client doesn't know which parameter is wrong or why.</span></p>
+<p class="reveal"><span lang="id"><b>Pitfall 3: Exposing Sensitive Information</b></span><span lang="en"><b>Pitfall 3: Exposing Sensitive Information</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>json</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// ❌ Dangerous practice
+HTTP/1.1 500 Internal Server Error
+{ &quot;stack&quot;: &quot;at UserService.login...&quot;, &quot;sql&quot;: &quot;SELECT * FROM...&quot; }</pre>
+</div>
+<p class="reveal"><span lang="id">Danger: Exposes code structure and database queries that attackers can exploit.</span><span lang="en">Danger: Exposes code structure and database queries that attackers can exploit.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Correct Error Handling Demo</span><span lang="en">5.2 Correct Error Handling Demo</span></h3>
+<p class="reveal"><span lang="id">👇 <b>Try it out</b>: Compare "good" and "bad" error response designs:</span><span lang="en">👇 <b>Try it out</b>: Compare "good" and "bad" error response designs:</span></p>
+<p class="reveal"><span lang="id"><ErrorHandlingDemo /></span><span lang="en"><ErrorHandlingDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Versioning: API "Backward Compatibility"</span><span lang="en">6. Versioning: API "Backward Compatibility"</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Motivation for Versioninging</span><span lang="en">6.1 Motivation for Versioninging</span></h3>
+<p class="reveal"><span lang="id">Scenario: Your app has 1 million users, and you need to modify the order endpoint.</span><span lang="en">Scenario: Your app has 1 million users, and you need to modify the order endpoint.</span></p>
+<p class="reveal"><span lang="id"><b>Without versioning</b>:</span><span lang="en"><b>Without versioning</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">New app calls new endpoint → works fine</span><span lang="en">New app calls new endpoint → works fine</span></li>
+<li><span lang="id">Old app calls new endpoint → missing fields, crashes!</span><span lang="en">Old app calls new endpoint → missing fields, crashes!</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Correct approach</b>:</span><span lang="en"><b>Correct approach</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/v1/orders</code> - Old endpoint, continues serving old apps</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/v1/orders</code> - Old endpoint, continues serving old apps</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/v2/orders</code> - New endpoint, new features go here</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/v2/orders</code> - New endpoint, new features go here</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 Versioning Strategies</span><span lang="en">6.2 Versioning Strategies</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Strategy</th><th>Example</th><th>Pros</th><th>Cons</th></tr>
+<tr><td><b>URL Path</b></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/v1/users</code></td><td>Intuitive, cacheable</td><td>Longer URLs</td></tr>
+<tr><td><b>Request Header</b></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Accept: vnd.api.v2+json</code></td><td>Clean URLs</td><td>Harder to debug</td></tr>
+<tr><td><b>Query Parameter</b></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/users?version=2</code></td><td>Simple</td><td>Less standard</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.3 Version Evolution Example</span><span lang="en">6.3 Version Evolution Example</span></h3>
+<p class="reveal"><span lang="id">Using the user endpoint as an example, showing v1 to v2 evolution:</span><span lang="en">Using the user endpoint as an example, showing v1 to v2 evolution:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Endpoint</th><th>v1 (Old)</th><th>v2 (New)</th><th>Change Description</th></tr>
+<tr><td><b>Get User</b></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">GET /v1/users</code><br>Returns: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">name, email</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">GET /v2/users</code><br>Returns: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">name, email, avatar, phone</code></td><td>Added avatar and phone fields</td></tr>
+<tr><td><b>Create Order</b></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">POST /v1/orders</code><br>Accepts: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">items[]</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">POST /v2/orders</code><br>Accepts: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">items[], coupons[]</code></td><td>Added coupon support</td></tr>
+<tr><td><b>Batch Operations</b></td><td>None</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">POST /v2/orders/batch</code></td><td>Added batch creation endpoint</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Maintain backward compatibility</b>: Keep v1 endpoints for at least 6-12 months to give clients time to upgrade
+- <b>Update documentation in sync</b>: Each version should have its own API documentation
+- <b>Deprecation notices</b>: Announce in advance when v1 will be retired and guide migration
+- <b>Monitor usage</b>: Track v1 call volume and confirm it's safe to retire before stopping service</span><span lang="en">- <b>Maintain backward compatibility</b>: Keep v1 endpoints for at least 6-12 months to give clients time to upgrade
+- <b>Update documentation in sync</b>: Each version should have its own API documentation
+- <b>Deprecation notices</b>: Announce in advance when v1 will be retired and guide migration
+- <b>Monitor usage</b>: Track v1 call volume and confirm it's safe to retire before stopping service</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Response Structure Design</span><span lang="en">7. Response Structure Design</span></h2>
+<p class="reveal"><span lang="id">Response structure is the "data contract" for frontend-backend collaboration. A unified format dramatically reduces communication costs.</span><span lang="en">Response structure is the "data contract" for frontend-backend collaboration. A unified format dramatically reduces communication costs.</span></p>
+<p class="reveal"><span lang="id"><ResponseStructureDemo /></span><span lang="en"><ResponseStructureDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.1 Industry Best Practices</span><span lang="en">7.1 Industry Best Practices</span></h3>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">Refer to [Google API Design Guide](https://cloud.google.com/apis/design/errors). Google requires all API error responses to include the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">google.rpc.Status</code> message structure:
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">json
+{
+  "error": {
+    "code": 429,
+    "message": "Resource exhausted, please try again later",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "RESOURCE_AVAILABILITY",
+        "domain": "compute.googleapis.com",
+        "metadata": {
+          "zone": "us-east1-a",
+          "service": "compute"
+        }
+      }
+    ]
+  }
+}
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Core Requirements</b>:
+- Must include </code>ErrorInfo<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> providing machine-readable error identifiers
+- </code>message<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> is developer-facing, describing the problem and solution in concise language
+- </code>details<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> array can include </code>LocalizedMessage<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">, </code>Help` (help links), etc.</span><span lang="en">Refer to [Google API Design Guide](https://cloud.google.com/apis/design/errors). Google requires all API error responses to include the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">google.rpc.Status</code> message structure:
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">json
+{
+  "error": {
+    "code": 429,
+    "message": "Resource exhausted, please try again later",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "RESOURCE_AVAILABILITY",
+        "domain": "compute.googleapis.com",
+        "metadata": {
+          "zone": "us-east1-a",
+          "service": "compute"
+        }
+      }
+    ]
+  }
+}
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Core Requirements</b>:
+- Must include </code>ErrorInfo<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> providing machine-readable error identifiers
+- </code>message<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> is developer-facing, describing the problem and solution in concise language
+- </code>details<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> array can include </code>LocalizedMessage<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">, </code>Help` (help links), etc.</span></p>
+</div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">Refer to [Microsoft REST API Guidelines](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md). Microsoft emphasizes response consistency:
+
+<b>Error vs. Fault Classification</b>:
+- <b>Error</b>: Client sent invalid data, returns 4xx, doesn't affect API availability
+- <b>Fault</b>: Server cannot properly respond to a valid request, returns 5xx, affects API availability
+
+<b>Response Header Standards</b>:
+- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Date</code>: Must be returned, using RFC 5322 format (GMT timezone)
+- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Content-Type</code>: Must be returned
+- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ETag</code>: Must be returned for resources supporting optimistic concurrency control</span><span lang="en">Refer to [Microsoft REST API Guidelines](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md). Microsoft emphasizes response consistency:
+
+<b>Error vs. Fault Classification</b>:
+- <b>Error</b>: Client sent invalid data, returns 4xx, doesn't affect API availability
+- <b>Fault</b>: Server cannot properly respond to a valid request, returns 5xx, affects API availability
+
+<b>Response Header Standards</b>:
+- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Date</code>: Must be returned, using RFC 5322 format (GMT timezone)
+- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Content-Type</code>: Must be returned
+- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ETag</code>: Must be returned for resources supporting optimistic concurrency control</span></p>
+</div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">Refer to [Alibaba Java Development Manual](https://developer.aliyun.com/special/tech-java). Alibaba has the following API response standards:
+
+<b>Unified Return Object</b>:
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">java
+public class Result<T> {
+    private Integer code;
+    private String message;
+    private T data;
+    private String requestId;
+}
+</code>``
+
+<b>Error Code Segmented Design</b>:
+| Range | Type | Example |
+| :--- | :--- | :--- |
+| 0 | Success | 0 |
+| 1xxxx | Parameter Error | 10001 Missing required parameter |
+| 2xxxx | Business Error | 20001 Insufficient balance |
+| 3xxxx | Authentication Error | 30001 Not logged in |
+| 5xxxx | System Error | 50001 Database exception |</span><span lang="en">Refer to [Alibaba Java Development Manual](https://developer.aliyun.com/special/tech-java). Alibaba has the following API response standards:
+
+<b>Unified Return Object</b>:
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">java
+public class Result<T> {
+    private Integer code;
+    private String message;
+    private T data;
+    private String requestId;
+}
+</code>``
+
+<b>Error Code Segmented Design</b>:
+| Range | Type | Example |
+| :--- | :--- | :--- |
+| 0 | Success | 0 |
+| 1xxxx | Parameter Error | 10001 Missing required parameter |
+| 2xxxx | Business Error | 20001 Insufficient balance |
+| 3xxxx | Authentication Error | 30001 Not logged in |
+| 5xxxx | System Error | 50001 Database exception |</span></p>
+</div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">Refer to [Stripe API Documentation](https://docs.stripe.com/api/errors). Stripe's error response design is highly refined:
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">json
+{
+  "error": {
+    "type": "card_error",
+    "code": "card_declined",
+    "message": "Your card was declined.",
+    "param": "number",
+    "decline_code": "insufficient_funds",
+    "doc_url": "https://stripe.com/docs/error-codes/card-declined"
+  }
+}
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Design Highlights</b>:
+- </code>type<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> distinguishes error types: </code>api_error<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">, </code>card_error<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">, </code>invalid_request_error<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+- </code>param<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> identifies which specific parameter has the error, frontend can directly locate form fields
+- </code>doc_url<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> provides documentation links for developers to learn more
+- </code>decline_code` provides more granular error reasons</span><span lang="en">Refer to [Stripe API Documentation](https://docs.stripe.com/api/errors). Stripe's error response design is highly refined:
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">json
+{
+  "error": {
+    "type": "card_error",
+    "code": "card_declined",
+    "message": "Your card was declined.",
+    "param": "number",
+    "decline_code": "insufficient_funds",
+    "doc_url": "https://stripe.com/docs/error-codes/card-declined"
+  }
+}
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Design Highlights</b>:
+- </code>type<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> distinguishes error types: </code>api_error<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">, </code>card_error<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">, </code>invalid_request_error<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+- </code>param<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> identifies which specific parameter has the error, frontend can directly locate form fields
+- </code>doc_url<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> provides documentation links for developers to learn more
+- </code>decline_code` provides more granular error reasons</span></p>
+</div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">Refer to [JSON:API Specification](https://jsonapi.org/format/), a widely adopted JSON API response specification in the industry:
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">json
+{
+  "data": {
+    "type": "articles",
+    "id": "1",
+    "attributes": {
+      "title": "JSON:API Specification Explained"
+    },
+    "relationships": {
+      "author": {
+        "data": { "type": "users", "id": "9" }
+      }
+    }
+  },
+  "included": [
+    {
+      "type": "users",
+      "id": "9",
+      "attributes": {
+        "name": "John Doe"
+      }
+    }
+  ]
+}
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Core Design</b>:
+- </code>data<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> contains the primary resource, must have </code>type<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> and </code>id<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+- </code>attributes<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> stores resource attributes
+- </code>relationships<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> describes resource associations
+- </code>included` avoids repeated requests by returning related data at once</span><span lang="en">Refer to [JSON:API Specification](https://jsonapi.org/format/), a widely adopted JSON API response specification in the industry:
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">json
+{
+  "data": {
+    "type": "articles",
+    "id": "1",
+    "attributes": {
+      "title": "JSON:API Specification Explained"
+    },
+    "relationships": {
+      "author": {
+        "data": { "type": "users", "id": "9" }
+      }
+    }
+  },
+  "included": [
+    {
+      "type": "users",
+      "id": "9",
+      "attributes": {
+        "name": "John Doe"
+      }
+    }
+  ]
+}
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Core Design</b>:
+- </code>data<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> contains the primary resource, must have </code>type<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> and </code>id<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+- </code>attributes<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> stores resource attributes
+- </code>relationships<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> describes resource associations
+- </code>included` avoids repeated requests by returning related data at once</span></p>
+</div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">Refer to [GitHub REST API Documentation](https://docs.github.com/en/rest). GitHub's response design emphasizes developer experience:
+
+<b>Success Response</b>:
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">json
+{
+  "id": 1296269,
+  "node_id": "MDEwOlJlcG9zaXRvcnkxMjk2MjY5",
+  "name": "Hello-World",
+  "full_name": "octocat/Hello-World",
+  "owner": {
+    "login": "octocat",
+    "id": 1,
+    "avatar_url": "https://github.com/images/error/octocat_happy.gif"
+  },
+  "private": false,
+  "html_url": "https://github.com/octocat/Hello-World"
+}
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Error Response</b>:
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">json
+{
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest"
+}
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Design Highlights</b>:
+- Response includes multiple URL formats (</code>html_url<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">, </code>url<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">) for different scenarios
+- Error response includes </code>documentation_url<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> pointing to docs
+- Uses </code>Link` response header for pagination navigation</span><span lang="en">Refer to [GitHub REST API Documentation](https://docs.github.com/en/rest). GitHub's response design emphasizes developer experience:
+
+<b>Success Response</b>:
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">json
+{
+  "id": 1296269,
+  "node_id": "MDEwOlJlcG9zaXRvcnkxMjk2MjY5",
+  "name": "Hello-World",
+  "full_name": "octocat/Hello-World",
+  "owner": {
+    "login": "octocat",
+    "id": 1,
+    "avatar_url": "https://github.com/images/error/octocat_happy.gif"
+  },
+  "private": false,
+  "html_url": "https://github.com/octocat/Hello-World"
+}
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Error Response</b>:
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">json
+{
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest"
+}
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Design Highlights</b>:
+- Response includes multiple URL formats (</code>html_url<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">, </code>url<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">) for different scenarios
+- Error response includes </code>documentation_url<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> pointing to docs
+- Uses </code>Link` response header for pagination navigation</span></p>
+</div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">Refer to [Twitter API v2 Documentation](https://developer.twitter.com/en/docs/twitter-api). Twitter API v2 uses a concise response format:
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">json
+{
+  "data": {
+    "id": "1460323737035677698",
+    "text": "Hello, Twitter!"
+  },
+  "includes": {
+    "users": [
+      {
+        "id": "2244994945",
+        "name": "Twitter Dev",
+        "username": "TwitterDev"
+      }
+    ]
+  }
+}
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Design Highlights</b>:
+- </code>data<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> contains primary data, </code>includes<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> contains related data (similar to JSON:API)
+- Supports field selection: </code>?tweet.fields=created_at,public_metrics<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+- Pagination uses </code>next_token<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> and </code>previous_token`</span><span lang="en">Refer to [Twitter API v2 Documentation](https://developer.twitter.com/en/docs/twitter-api). Twitter API v2 uses a concise response format:
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">json
+{
+  "data": {
+    "id": "1460323737035677698",
+    "text": "Hello, Twitter!"
+  },
+  "includes": {
+    "users": [
+      {
+        "id": "2244994945",
+        "name": "Twitter Dev",
+        "username": "TwitterDev"
+      }
+    ]
+  }
+}
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Design Highlights</b>:
+- </code>data<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> contains primary data, </code>includes<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> contains related data (similar to JSON:API)
+- Supports field selection: </code>?tweet.fields=created_at,public_metrics<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+- Pagination uses </code>next_token<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> and </code>previous_token`</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.2 Best Practices Summary</span><span lang="en">7.2 Best Practices Summary</span></h3>
+<p class="reveal"><span lang="id">Combining the above specifications, response structure design should follow these principles:</span><span lang="en">Combining the above specifications, response structure design should follow these principles:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Consistency First</b>: All endpoints use the same response structure; the frontend can build a unified request layer</span><span lang="en"><b>Consistency First</b>: All endpoints use the same response structure; the frontend can build a unified request layer</span></li>
+<li><span lang="id"><b>Machine-Readable</b>: Error codes + error reasons allow programs to handle errors automatically</span><span lang="en"><b>Machine-Readable</b>: Error codes + error reasons allow programs to handle errors automatically</span></li>
+<li><span lang="id"><b>Human-Friendly</b>: Clear message descriptions including resolution suggestions</span><span lang="en"><b>Human-Friendly</b>: Clear message descriptions including resolution suggestions</span></li>
+<li><span lang="id"><b>Traceable</b>: request_id spans the entire request chain for easy issue identification</span><span lang="en"><b>Traceable</b>: request_id spans the entire request chain for easy issue identification</span></li>
+<li><span lang="id"><b>Internationalization Support</b>: Extend localized messages through details</span><span lang="en"><b>Internationalization Support</b>: Extend localized messages through details</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.3 Data Field Design Standards</span><span lang="en">7.3 Data Field Design Standards</span></h3>
+<p class="reveal"><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">data</code> is the core of the response, and its design directly impacts frontend development efficiency.</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">data</code> is the core of the response, and its design directly impacts frontend development efficiency.</span></p>
+<p class="reveal"><span lang="id"><DataFieldDesignDemo /></span><span lang="en"><DataFieldDesignDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.4 Advanced Error Response Design</span><span lang="en">7.4 Advanced Error Response Design</span></h3>
+<p class="reveal"><span lang="id"><ErrorResponseDesignDemo /></span><span lang="en"><ErrorResponseDesignDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- [Google API Design Guide - Errors](https://cloud.google.com/apis/design/errors)
+- [Microsoft REST API Guidelines](https://github.com/microsoft/api-guidelines)
+- [Alibaba Java Development Manual](https://developer.aliyun.com/special/tech-java)
+- [Heroku HTTP API Design Guide](https://github.com/interagent/http-api-design)
+- [Stripe API - Errors](https://docs.stripe.com/api/errors)
+- [JSON:API Specification](https://jsonapi.org/format/)</span><span lang="en">- [Google API Design Guide - Errors](https://cloud.google.com/apis/design/errors)
+- [Microsoft REST API Guidelines](https://github.com/microsoft/api-guidelines)
+- [Alibaba Java Development Manual](https://developer.aliyun.com/special/tech-java)
+- [Heroku HTTP API Design Guide](https://github.com/interagent/http-api-design)
+- [Stripe API - Errors](https://docs.stripe.com/api/errors)
+- [JSON:API Specification](https://jsonapi.org/format/)</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8. Practice: E-commerce System API Design Example</span><span lang="en">8. Practice: E-commerce System API Design Example</span></h2>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># User Module
+GET    /v1/users                    # Get user list
+POST   /v1/users                    # Create new user
+GET    /v1/users/{id}               # Get user details
+PUT    /v1/users/{id}               # Full update user
+PATCH  /v1/users/{id}               # Partial update user
+DELETE /v1/users/{id}               # Delete user
+
+# Order Module
+GET    /v1/users/{id}/orders        # Get orders for a user
+POST   /v1/orders                   # Create order
+GET    /v1/orders/{id}              # Get order details
+PATCH  /v1/orders/{id}/status       # Update order status
+
+# Product Module (use query params for complex filtering)
+GET    /v1/products?category=phone&amp;price_max=5000&amp;sort=price_desc&amp;page=1</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">9. Using AI to Assist API Design</span><span lang="en">9. Using AI to Assist API Design</span></h2>
+<p class="reveal"><span lang="id">AI can help you quickly generate specification-compliant API designs. The key is providing clear context and constraints.</span><span lang="en">AI can help you quickly generate specification-compliant API designs. The key is providing clear context and constraints.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">9.1 Prompt Template</span><span lang="en">9.1 Prompt Template</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>You are a senior backend architect, proficient in RESTful API design. Please help me design a set of API endpoints.
+
+## Business Background
+[Describe your business scenario, e.g., e-commerce system, blog platform, task management, etc.]
+
+## Functional Requirements
+[List the required functional modules, e.g.:
+- User management: registration, login, personal information
+- Order management: create order, query orders, cancel order
+- Product management: product list, product details, search]
+
+## Design Requirements
+1. Follow RESTful conventions
+2. URLs use plural nouns, lowercase + hyphens
+3. Use HTTP methods correctly (GET/POST/PUT/PATCH/DELETE)
+4. Unified response format: { code, message, data, request_id }
+5. Appropriate status code usage
+6. Versioning: URL path approach (/v1/)
+
+## Output Format
+Please output in the following format:
+
+### Endpoint List
+| Method | URL | Description | Request Body | Response Body |
+|--------|-----|-------------|--------------|---------------|
+
+### Request/Response Examples
+[Detailed examples for key endpoints]
+
+### Status Code Descriptions
+[Status codes used and their meanings]</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">9.2 Practical Example: E-commerce Order API</span><span lang="en">9.2 Practical Example: E-commerce Order API</span></h3>
+<p class="reveal"><span lang="id"><b>Input Prompt:</b></span><span lang="en"><b>Input Prompt:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>You are a senior backend architect, proficient in RESTful API design. Please help me design a set of API endpoints for an e-commerce order system.
+
+## Business Background
+A B2C e-commerce platform where users can browse products, place orders, and view order status.
+
+## Functional Requirements
+- Order module: create order, query order list, query order details, cancel order, pay order
+- Cart module: add product, modify quantity, remove product, view cart
+
+## Design Requirements
+1. Follow RESTful conventions
+2. URLs use plural nouns, lowercase + hyphens
+3. Use HTTP methods correctly
+4. Unified response format
+5. Versioning: /v1/</pre>
+</div>
+<p class="reveal"><span lang="id"><b>AI Output Example:</b></span><span lang="en"><b>AI Output Example:</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Method</th><th>URL</th><th>Description</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">POST</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/v1/orders</code></td><td>Create order</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">GET</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/v1/orders</code></td><td>Query order list</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">GET</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/v1/orders/{id}</code></td><td>Query order details</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">PATCH</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/v1/orders/{id}/status</code></td><td>Update order status (cancel/pay)</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">GET</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/v1/users/{id}/cart</code></td><td>Get cart</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">POST</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/v1/users/{id}/cart/items</code></td><td>Add product to cart</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">PATCH</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/v1/users/{id}/cart/items/{itemId}</code></td><td>Modify cart item quantity</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">DELETE</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/v1/users/{id}/cart/items/{itemId}</code></td><td>Remove cart item</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">9.3 Notes on AI-Assisted Design</span><span lang="en">9.3 Notes on AI-Assisted Design</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Note</th><th>Description</th></tr>
+<tr><td><b>Provide complete context</b></td><td>Business background, user roles, and data relationships should all be clearly stated</td></tr>
+<tr><td><b>Define constraints clearly</b></td><td>Naming conventions, versioning strategy, and response format should be defined upfront</td></tr>
+<tr><td><b>Iterate and refine</b></td><td>The first output may not be perfect; ask follow-up questions and request modifications</td></tr>
+<tr><td><b>Manual review</b></td><td>AI-generated content needs human verification against business requirements</td></tr>
+<tr><td><b>Cover edge cases</b></td><td>Ask AI to consider error handling, permission control, pagination, and other edge cases</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- "Please add error response examples for each endpoint"
+- "Please consider pagination, sorting, and filtering parameters"
+- "Please add permission control descriptions for the endpoints"
+- "Please check if it follows RESTful best practices"</span><span lang="en">- "Please add error response examples for each endpoint"
+- "Please consider pagination, sorting, and filtering parameters"
+- "Please add permission control descriptions for the endpoints"
+- "Please check if it follows RESTful best practices"</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Glossary</span><span lang="en">Glossary</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Term</th><th>English</th><th>Explanation</th></tr>
+<tr><td><b>API</b></td><td>Application Programming Interface</td><td>Agreement for communication between programs</td></tr>
+<tr><td><b>REST</b></td><td>Representational State Transfer</td><td>An architectural style that uses URLs to identify resources</td></tr>
+<tr><td><b>Resource</b></td><td>Resource</td><td>Core concept in REST architecture, has unique identifiers (URLs)</td></tr>
+<tr><td><b>Idempotency</b></td><td>Idempotency</td><td>Multiple executions produce the same result</td></tr>
+<tr><td><b>Status Code</b></td><td>Status Code</td><td>Response status defined by the HTTP protocol</td></tr>
+<tr><td><b>Versioning</b></td><td>Versioning</td><td>Allows old and new APIs to coexist for smooth upgrades</td></tr>
+<tr><td><b>Request Body</b></td><td>Request Body</td><td>Data carried by POST/PUT/PATCH requests</td></tr>
+<tr><td><b>Response Body</b></td><td>Response Body</td><td>Data returned by the server</td></tr>
+<tr><td><b>Header</b></td><td>Header</td><td>Metadata for requests/responses (e.g., Content-Type)</td></tr>
+<tr><td><b>Authentication</b></td><td>Authentication</td><td>Verifying "who you are" (login, Token)</td></tr>
+<tr><td><b>Authorization</b></td><td>Authorization</td><td>Verifying "what you can do" (permissions)</td></tr>
+</table></div>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../3-browser-and-frontend/web-performance/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">3-browser-and-frontend/web-performance</span><span lang="en">3-browser-and-frontend/web-performance</span></b></a>
+      <a class="next" href="../../4-server-and-backend/api-intro/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">4-server-and-backend/api-intro</span><span lang="en">4-server-and-backend/api-intro</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

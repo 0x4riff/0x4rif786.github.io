@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of Ports and Localhost — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Ports and Localhost. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/2-development-tools/ports-localhost/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Ports and Localhost</span><span lang="en">Principles of Ports and Localhost</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of Ports and Localhost</span><span lang="en">Principles of Ports and Localhost</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Ports and Localhost.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Ports and Localhost.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">> 💡 <b>Learning Guide</b>: When you run <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm run dev</code> and the terminal shows <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">http://localhost:5173</code>, have you ever wondered: what is <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localhost</code>? What does <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">5173</code> represent? Why do you sometimes get an <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">EADDRINUSE</code> error? This chapter will thoroughly explain these concepts you see every day in development but rarely dig into.</span><span lang="en">> 💡 <b>Learning Guide</b>: When you run <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm run dev</code> and the terminal shows <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">http://localhost:5173</code>, have you ever wondered: what is <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localhost</code>? What does <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">5173</code> represent? Why do you sometimes get an <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">EADDRINUSE</code> error? This chapter will thoroughly explain these concepts you see every day in development but rarely dig into.</span></p>
+<p class="reveal"><span lang="id">Before we begin, it's recommended to brush up on two foundational topics:</span><span lang="en">Before we begin, it's recommended to brush up on two foundational topics:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Networking basics</b>: If you're not clear on IP addresses and HTTP concepts, check out [Computer Fundamentals - Network Communication](../1-computer-fundamentals/network-fundamentals.md).</span><span lang="en"><b>Networking basics</b>: If you're not clear on IP addresses and HTTP concepts, check out [Computer Fundamentals - Network Communication](../1-computer-fundamentals/network-fundamentals.md).</span></li>
+<li><span lang="id"><b>Terminal basics</b>: If you're not familiar with the command line terminal, check out [An Introduction to Command Line and Shell Scripts](./command-line-shell.md).</span><span lang="en"><b>Terminal basics</b>: If you're not familiar with the command line terminal, check out [An Introduction to Command Line and Shell Scripts](./command-line-shell.md).</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. Introduction: What Exactly Overview of That <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localhost:5173</code> You See Every Day</span><span lang="en">0. Introduction: What Exactly Overview of That <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localhost:5173</code> You See Every Day</span></h2>
+<p class="reveal"><span lang="id"><DevServerFlowDemo /></span><span lang="en"><DevServerFlowDemo /></span></p>
+<p class="reveal"><span lang="id">Every developer's daily routine includes this line of output:</span><span lang="en">Every developer's daily routine includes this line of output:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>➜  Local:   http://localhost:5173/</pre>
+</div>
+<p class="reveal"><span lang="id">But have you ever thought about how many key concepts are packed into this short line:</span><span lang="en">But have you ever thought about how many key concepts are packed into this short line:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>http://</b> → The communication protocol (what language to speak)</span><span lang="en"><b>http://</b> → The communication protocol (what language to speak)</span></li>
+<li><span lang="id"><b>localhost</b> → The target address (who to find)</span><span lang="en"><b>localhost</b> → The target address (who to find)</span></li>
+<li><span lang="id"><b>:5173</b> → The port number (which door to knock on after finding the address)</span><span lang="en"><b>:5173</b> → The port number (which door to knock on after finding the address)</span></li>
+</ul>
+<p class="reveal"><span lang="id">Understand these three things, and you'll be able to figure out 90% of development environment networking issues. Let's break them down one by one.</span><span lang="en">Understand these three things, and you'll be able to figure out 90% of development environment networking issues. Let's break them down one by one.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Overview of a Port (IP Is the Building, Port Is the Room Number)</span><span lang="en">1. Overview of a Port (IP Is the Building, Port Is the Room Number)</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 An Intuitive Analogy</span><span lang="en">1.1 An Intuitive Analogy</span></h3>
+<p class="reveal"><span lang="id">Imagine a server is a building:</span><span lang="en">Imagine a server is a building:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">An <b>IP address</b> (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">192.168.1.100</code>) is the building's street address — it tells you "which building to go to."</span><span lang="en">An <b>IP address</b> (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">192.168.1.100</code>) is the building's street address — it tells you "which building to go to."</span></li>
+<li><span lang="id">A <b>port number</b> (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">:80</code>) is the room number inside the building — it tells you "which room to enter."</span><span lang="en">A <b>port number</b> (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">:80</code>) is the room number inside the building — it tells you "which room to enter."</span></li>
+</ul>
+<p class="reveal"><span lang="id">A building can simultaneously have a restaurant (room 80), a cafe (room 443), and an office (room 22). Similarly, a single computer can run a web server, a database, and an SSH service simultaneously, each using a different port.</span><span lang="en">A building can simultaneously have a restaurant (room 80), a cafe (room 443), and an office (room 22). Similarly, a single computer can run a web server, a database, and an SSH service simultaneously, each using a different port.</span></p>
+<p class="reveal"><span lang="id">👇 <b>Try it out</b>:</span><span lang="en">👇 <b>Try it out</b>:</span></p>
+<p class="reveal"><span lang="id">Click the "room numbers" below to simulate connecting to different ports. Notice what happens when a port is "open" (a program is listening) versus "closed."</span><span lang="en">Click the "room numbers" below to simulate connecting to different ports. Notice what happens when a port is "open" (a program is listening) versus "closed."</span></p>
+<p class="reveal"><span lang="id"><PortAnalogyDemo /></span><span lang="en"><PortAnalogyDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 Port Number Ranges</span><span lang="en">1.2 Port Number Ranges</span></h3>
+<p class="reveal"><span lang="id">A port number is an integer between <b>0–65535</b> (65,536 total). These ports are divided into three ranges:</span><span lang="en">A port number is an integer between <b>0–65535</b> (65,536 total). These ports are divided into three ranges:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Range</th><th>Values</th><th>Purpose</th><th>Examples</th></tr>
+<tr><td><b>System Ports</b></td><td>0 – 1023</td><td>Reserved for standard protocols; ordinary users can't freely use them</td><td>80 (HTTP), 443 (HTTPS), 22 (SSH)</td></tr>
+<tr><td><b>Registered Ports</b></td><td>1024 – 49151</td><td>Registered for common applications</td><td>3306 (MySQL), 5432 (PostgreSQL), 6379 (Redis)</td></tr>
+<tr><td><b>Dynamic Ports</b></td><td>49152 – 65535</td><td>Temporarily assigned by the operating system</td><td>When a browser makes a request, the OS randomly assigns a source port</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">> Why does your dev server like to use 3000, 5173, or 8080? Because they're all in the "registered ports" range — no admin privileges needed to listen on them, and they're less likely to conflict with system services.</span><span lang="en">> Why does your dev server like to use 3000, 5173, or 8080? Because they're all in the "registered ports" range — no admin privileges needed to listen on them, and they're less likely to conflict with system services.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.3 Common Port Numbers in Development</span><span lang="en">1.3 Common Port Numbers in Development</span></h3>
+<p class="reveal"><span lang="id">👇 <b>Try it out</b>:</span><span lang="en">👇 <b>Try it out</b>:</span></p>
+<p class="reveal"><span lang="id">Enter a port number or service name to search. Click any row to expand and see usage examples.</span><span lang="en">Enter a port number or service name to search. Click any row to expand and see usage examples.</span></p>
+<p class="reveal"><span lang="id"><CommonPortsDemo /></span><span lang="en"><CommonPortsDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Overview of localhost (Finding Yourself)</span><span lang="en">2. Overview of localhost (Finding Yourself)</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 The Core Concept of "Loopback"</span><span lang="en">2.1 The Core Concept of "Loopback"</span></h3>
+<p class="reveal"><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localhost</code> is a special domain name that always points to <b>your own computer</b>.</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localhost</code> is a special domain name that always points to <b>your own computer</b>.</span></p>
+<p class="reveal"><span lang="id">When you type <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">http://localhost:3000</code> in your browser, here's what happens:</span><span lang="en">When you type <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">http://localhost:3000</code> in your browser, here's what happens:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">The browser asks the OS: "What's the IP for <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localhost</code>?"</span><span lang="en">The browser asks the OS: "What's the IP for <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localhost</code>?"</span></li>
+<li><span lang="id">The OS answers directly: "<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">127.0.0.1</code>" (no need to look up DNS over the network)</span><span lang="en">The OS answers directly: "<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">127.0.0.1</code>" (no need to look up DNS over the network)</span></li>
+<li><span lang="id">The packet is sent to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">127.0.0.1</code>, but <b>never actually leaves your machine</b></span><span lang="en">The packet is sent to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">127.0.0.1</code>, but <b>never actually leaves your machine</b></span></li>
+<li><span lang="id">The OS "loops back" the packet through the <b>loopback interface</b></span><span lang="en">The OS "loops back" the packet through the <b>loopback interface</b></span></li>
+<li><span lang="id">The program listening on port 3000 receives the request and sends a response</span><span lang="en">The program listening on port 3000 receives the request and sends a response</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>The entire process doesn't go through any network cable, router, or internet connection.</b></span><span lang="en"><b>The entire process doesn't go through any network cable, router, or internet connection.</b></span></p>
+<p class="reveal"><span lang="id">👇 <b>Try it out</b>:</span><span lang="en">👇 <b>Try it out</b>:</span></p>
+<p class="reveal"><span lang="id">Click "Send Request" to observe the complete journey of a data packet. Then click the "alias cards" below to learn about the different ways to write localhost and their differences.</span><span lang="en">Click "Send Request" to observe the complete journey of a data packet. Then click the "alias cards" below to learn about the different ways to write localhost and their differences.</span></p>
+<p class="reveal"><span lang="id"><LocalhostLoopbackDemo /></span><span lang="en"><LocalhostLoopbackDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localhost</code> vs <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">127.0.0.1</code> vs <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">0.0.0.0</code></span><span lang="en">2.2 <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localhost</code> vs <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">127.0.0.1</code> vs <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">0.0.0.0</code></span></h3>
+<p class="reveal"><span lang="id">These three concepts are often confused, but they mean entirely different things:</span><span lang="en">These three concepts are often confused, but they mean entirely different things:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Notation</th><th>Meaning</th><th>Who Can Access</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localhost</code> / <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">127.0.0.1</code></td><td>Loopback address, local machine only</td><td>Only your own computer</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">0.0.0.0</code></td><td>Listen on all network interfaces</td><td>Local machine + other devices on the LAN</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">192.168.x.x</code></td><td>LAN IP</td><td>Devices on the local network</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Practical scenarios</b>:</span><span lang="en"><b>Practical scenarios</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Only you can access (secure, good for development)
+npm run dev -- --host localhost
+
+# Your phone can also access (good for mobile debugging)
+npm run dev -- --host 0.0.0.0</pre>
+</div>
+<p class="reveal"><span lang="id">> Many frameworks (like Vite, Next.js) listen on <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localhost</code> by default, so even if your phone is on the same WiFi, it can't access your dev server. Want to debug on mobile? Just add the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">--host</code> flag.</span><span lang="en">> Many frameworks (like Vite, Next.js) listen on <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localhost</code> by default, so even if your phone is on the same WiFi, it can't access your dev server. Want to debug on mobile? Just add the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">--host</code> flag.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Port Conflicts: The Most Common Dev Environment Issue</span><span lang="en">3. Port Conflicts: The Most Common Dev Environment Issue</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Motivation for Conflictsing Happen</span><span lang="en">3.1 Motivation for Conflictsing Happen</span></h3>
+<p class="reveal"><span lang="id"><b>One port can only be listened on by one program at a time.</b> It's like one room can only house one family.</span><span lang="en"><b>One port can only be listened on by one program at a time.</b> It's like one room can only house one family.</span></p>
+<p class="reveal"><span lang="id">If you try to start a second service on the same port, you'll see this classic error:</span><span lang="en">If you try to start a second service on the same port, you'll see this classic error:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Error: listen EADDRINUSE :::3000</pre>
+</div>
+<p class="reveal"><span lang="id">In plain English: <b>"Room 3000 is already occupied — you can't get in!"</b></span><span lang="en">In plain English: <b>"Room 3000 is already occupied — you can't get in!"</b></span></p>
+<p class="reveal"><span lang="id">Common conflict scenarios:</span><span lang="en">Common conflict scenarios:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">The previous dev server wasn't properly shut down and is still running in the background</span><span lang="en">The previous dev server wasn't properly shut down and is still running in the background</span></li>
+<li><span lang="id">Two different projects use the same default port</span><span lang="en">Two different projects use the same default port</span></li>
+<li><span lang="id">Some system service has already taken the port you want</span><span lang="en">Some system service has already taken the port you want</span></li>
+</ul>
+<p class="reveal"><span lang="id">👇 <b>Try it out</b>:</span><span lang="en">👇 <b>Try it out</b>:</span></p>
+<p class="reveal"><span lang="id">Try starting services multiple times in the simulator below. When a port conflict occurs, compare how "direct start" and "smart start" handle it differently.</span><span lang="en">Try starting services multiple times in the simulator below. When a port conflict occurs, compare how "direct start" and "smart start" handle it differently.</span></p>
+<p class="reveal"><span lang="id"><PortConflictDemo /></span><span lang="en"><PortConflictDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Troubleshooting and Resolution</span><span lang="en">3.2 Troubleshooting and Resolution</span></h3>
+<p class="reveal"><span lang="id">When you encounter a port conflict, the troubleshooting steps are very consistent:</span><span lang="en">When you encounter a port conflict, the troubleshooting steps are very consistent:</span></p>
+<p class="reveal"><span lang="id"><b>macOS / Linux:</b></span><span lang="en"><b>macOS / Linux:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Step 1: Check who is using port 3000
+lsof -i :3000
+
+# Step 2: Once you have the PID, force kill it
+kill -9 &lt;PID&gt;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Windows:</b></span><span lang="en"><b>Windows:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Step 1: Check who is using port 3000
+netstat -ano | findstr :3000
+
+# Step 2: Kill the process
+taskkill /PID &lt;PID&gt; /F</pre>
+</div>
+<p class="reveal"><span lang="id">> Many modern frameworks (Vite, Create React App, etc.) will automatically ask "switch to another port?" when they detect a conflict. But understanding the underlying principles helps you troubleshoot those tricky issues that frameworks can't handle.</span><span lang="en">> Many modern frameworks (Vite, Create React App, etc.) will automatically ask "switch to another port?" when they detect a conflict. But understanding the underlying principles helps you troubleshoot those tricky issues that frameworks can't handle.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Same-Origin Policy and CORS in Development</span><span lang="en">4. Same-Origin Policy and CORS in Development</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Overview of an "Origin"</span><span lang="en">4.1 Overview of an "Origin"</span></h3>
+<p class="reveal"><span lang="id">Browsers have a security mechanism called the <b>Same-Origin Policy</b>: only when the <b>protocol, domain, and port</b> are all identical, are two URLs considered the "same origin."</span><span lang="en">Browsers have a security mechanism called the <b>Same-Origin Policy</b>: only when the <b>protocol, domain, and port</b> are all identical, are two URLs considered the "same origin."</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>URL A</th><th>URL B</th><th>Same Origin?</th><th>Reason</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">http://localhost:5173</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">http://localhost:5173/about</code></td><td>✅ Same origin</td><td>Protocol, domain, port are all the same</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">http://localhost:5173</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">http://localhost:3000</code></td><td>❌ Different origin</td><td><b>Different ports</b> (5173 vs 3000)</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">http://localhost:5173</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://localhost:5173</code></td><td>❌ Different origin</td><td><b>Different protocols</b> (http vs https)</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Motivation for Frontending -Backend Separation Always Encounter CORS</span><span lang="en">4.2 Motivation for Frontending -Backend Separation Always Encounter CORS</span></h3>
+<p class="reveal"><span lang="id">When your project architecture is:</span><span lang="en">When your project architecture is:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Frontend (Vite)  →  http://localhost:5173
+Backend (Express) →  http://localhost:3000</pre>
+</div>
+<p class="reveal"><span lang="id">The frontend page loads from <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">:5173</code>, then uses <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fetch('/api/users')</code> to request the API on <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">:3000</code> — <b>different ports trigger the cross-origin restriction!</b></span><span lang="en">The frontend page loads from <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">:5173</code>, then uses <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fetch('/api/users')</code> to request the API on <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">:3000</code> — <b>different ports trigger the cross-origin restriction!</b></span></p>
+<p class="reveal"><span lang="id"><b>Two common solutions:</b></span><span lang="en"><b>Two common solutions:</b></span></p>
+<p class="reveal"><span lang="id"><b>Option 1: Configure CORS on the backend</b></span><span lang="en"><b>Option 1: Configure CORS on the backend</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Express backend
+app.use(cors({ origin: &#039;http://localhost:5173&#039; }))</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Option 2: Configure a proxy on the frontend (recommended)</b></span><span lang="en"><b>Option 2: Configure a proxy on the frontend (recommended)</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// vite.config.js
+export default {
+  server: {
+    proxy: {
+      &#039;/api&#039;: &#039;http://localhost:3000&#039;
+    }
+  }
+}</pre>
+</div>
+<p class="reveal"><span lang="id">How the proxy works: The Vite dev server "forwards" requests on your behalf. The browser thinks it's communicating with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">:5173</code> (same origin), while Vite secretly relays the requests to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">:3000</code> behind the scenes.</span><span lang="en">How the proxy works: The Vite dev server "forwards" requests on your behalf. The browser thinks it's communicating with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">:5173</code> (same origin), while Vite secretly relays the requests to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">:3000</code> behind the scenes.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Practical Troubleshooting: Three Most Common Issues</span><span lang="en">5. Practical Troubleshooting: Three Most Common Issues</span></h2>
+<p class="reveal"><span lang="id">👇 <b>Try it out</b>:</span><span lang="en">👇 <b>Try it out</b>:</span></p>
+<p class="reveal"><span lang="id">Select an issue you've encountered, and follow the steps to troubleshoot. Click "Execute" on each step to see the output.</span><span lang="en">Select an issue you've encountered, and follow the steps to troubleshoot. Click "Execute" on each step to see the output.</span></p>
+<p class="reveal"><span lang="id"><PortTroubleshootDemo /></span><span lang="en"><PortTroubleshootDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Terminology Reference</span><span lang="en">6. Terminology Reference</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>English Term</th><th>Chinese Translation</th><th>Explanation</th></tr>
+<tr><td><b>Port</b></td><td>端口</td><td>A number from 0–65535 used to distinguish different network services on the same machine. Each service "listens" on a port, waiting for client connections.</td></tr>
+<tr><td><b>localhost</b></td><td>本地主机</td><td>A special domain name that always points to the local machine (127.0.0.1). Used to access services running on your own machine without an internet connection.</td></tr>
+<tr><td><b>Loopback Interface</b></td><td>环回接口</td><td>A virtual network interface in the operating system. Packets sent to 127.0.0.1 never leave the machine; they are "looped back" through this interface.</td></tr>
+<tr><td><b>EADDRINUSE</b></td><td>地址已被使用</td><td>An error from Node.js / the OS indicating the port you want to listen on is already occupied by another program.</td></tr>
+<tr><td><b>CORS</b></td><td>跨域资源共享</td><td>A browser security mechanism. When a frontend page tries to request an API from a different origin (different protocol/domain/port), the backend must explicitly grant permission.</td></tr>
+<tr><td><b>Same-Origin Policy</b></td><td>同源策略</td><td>The cornerstone of browser security: only allows free communication between requests with the same protocol, domain, and port, blocking cross-origin data reads.</td></tr>
+<tr><td><b>Proxy</b></td><td>代理</td><td>In a dev environment, a proxy server forwards requests from the browser to the backend, bypassing the browser's same-origin restriction.</td></tr>
+<tr><td><b>0.0.0.0</b></td><td>所有接口</td><td>When a service listens on 0.0.0.0, it accepts connections from any network interface (local machine, LAN, etc.).</td></tr>
+<tr><td><b>Well-known Ports</b></td><td>知名端口</td><td>The collective name for ports 0–1023, reserved for standard protocols like HTTP (80), HTTPS (443), SSH (22).</td></tr>
+<tr><td><b>PID</b></td><td>进程 ID</td><td>A unique number assigned by the OS to each running program, used to manage and terminate processes.</td></tr>
+<tr><td><b>lsof</b></td><td>列出打开的文件</td><td>A macOS/Linux command used to see which process is using a specific port (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">lsof -i :port_number</code>).</td></tr>
+<tr><td><b>HMR</b></td><td>热模块替换</td><td>A dev server feature: when you modify code, the browser updates automatically without manual refresh. Works via WebSocket notifications under the hood.</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary</span><span lang="en">Summary</span></h2>
+<p class="reveal"><span lang="id">Ports and localhost are the most fundamental, most frequently encountered concepts in the development environment:</span><span lang="en">Ports and localhost are the most fundamental, most frequently encountered concepts in the development environment:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Port</b> = A "room number" distinguishing different services on a machine (0–65535)</span><span lang="en"><b>Port</b> = A "room number" distinguishing different services on a machine (0–65535)</span></li>
+<li><span lang="id"><b>localhost</b> = The special "find yourself" address (127.0.0.1), data never leaves your machine</span><span lang="en"><b>localhost</b> = The special "find yourself" address (127.0.0.1), data never leaves your machine</span></li>
+<li><span lang="id"><b>Port conflict</b> is essentially "one room number can only have one sign"</span><span lang="en"><b>Port conflict</b> is essentially "one room number can only have one sign"</span></li>
+<li><span lang="id"><b>CORS</b> is essentially "different ports = different origins," requiring CORS or a proxy to resolve</span><span lang="en"><b>CORS</b> is essentially "different ports = different origins," requiring CORS or a proxy to resolve</span></li>
+</ul>
+<p class="reveal"><span lang="id">Remember these four points, and you'll be able to quickly identify the cause of most networking issues in your development environment.</span><span lang="en">Remember these four points, and you'll be able to quickly identify the cause of most networking issues in your development environment.</span></p>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../2-development-tools/package-managers/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">2-development-tools/package-managers</span><span lang="en">2-development-tools/package-managers</span></b></a>
+      <a class="next" href="../../2-development-tools/regex/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">2-development-tools/regex</span><span lang="en">2-development-tools/regex</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

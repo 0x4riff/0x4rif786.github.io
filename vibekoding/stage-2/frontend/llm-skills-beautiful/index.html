@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mempercantik Tampilan via LLM &amp; Skills — VibeKoding 💅</title>
+<meta name="description" content="Modul praktis Level 2 VibeKoding: Mempercantik Tampilan via LLM &amp; Skills. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-2/frontend/llm-skills-beautiful/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../stage-2/"><span lang="id">Level 2 · Developer</span><span lang="en">Level 2 · Developer</span></a> / <span lang="id">Mempercantik Tampilan via LLM & Skills</span><span lang="en">Mempercantik Tampilan via LLM & Skills</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">💅</div>
+      <div>
+        <h1><span lang="id">Mempercantik Tampilan via LLM & Skills</span><span lang="en">Mempercantik Tampilan via LLM & Skills</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 2 · Developer</span><span lang="en">Level 2 · Developer</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul praktis Level 2 VibeKoding: Mempercantik Tampilan via LLM & Skills.</span><span lang="en">Modul praktis Level 2 VibeKoding: Mempercantik Tampilan via LLM & Skills.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">In the previous chapters, you already learned how to turn designs into code with AI IDEs and how to use component libraries to build interfaces quickly. But you may also have noticed an awkward problem: <b>even with the same requirement, AI-generated pages often feel a bit generic</b>. The font is always Inter, the color palette is some overused purple gradient, the layout is a perfectly symmetrical card grid, and the page gives off a strong "AI-generated" feeling.</span><span lang="en">In the previous chapters, you already learned how to turn designs into code with AI IDEs and how to use component libraries to build interfaces quickly. But you may also have noticed an awkward problem: <b>even with the same requirement, AI-generated pages often feel a bit generic</b>. The font is always Inter, the color palette is some overused purple gradient, the layout is a perfectly symmetrical card grid, and the page gives off a strong "AI-generated" feeling.</span></p>
+<p class="reveal"><span lang="id">This is not really AI's fault. The real issue is that you never told it what kind of <b>style</b> you wanted.</span><span lang="en">This is not really AI's fault. The real issue is that you never told it what kind of <b>style</b> you wanted.</span></p>
+<p class="reveal"><span lang="id">Imagine going to a hair salon. If you only say, "Give me a haircut," the stylist will probably choose something safe but forgettable. But if you say, "I want a soft Japanese-style layered wave, curtain bangs, shoulder length, and strong texture," you are much more likely to get exactly what you want.</span><span lang="en">Imagine going to a hair salon. If you only say, "Give me a haircut," the stylist will probably choose something safe but forgettable. But if you say, "I want a soft Japanese-style layered wave, curtain bangs, shoulder length, and strong texture," you are much more likely to get exactly what you want.</span></p>
+<p class="reveal"><span lang="id">The same is true for AI. <b>It needs a clear aesthetic direction</b> before it can generate a beautiful and distinctive interface.</span><span lang="en">The same is true for AI. <b>It needs a clear aesthetic direction</b> before it can generate a beautiful and distinctive interface.</span></p>
+<p class="reveal"><span lang="id">This chapter introduces two practical ways to make AI-generated interfaces look much better:</span><span lang="en">This chapter introduces two practical ways to make AI-generated interfaces look much better:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Well-designed prompt templates</b> so you can describe the exact aesthetic you want</span><span lang="en"><b>Well-designed prompt templates</b> so you can describe the exact aesthetic you want</span></li>
+<li><span lang="id"><b>Frontend Skills plugins</b> so AI automatically loads reusable design rules</span><span lang="en"><b>Frontend Skills plugins</b> so AI automatically loads reusable design rules</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">What you will learn</span><span lang="en">What you will learn</span></h2>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Why AI-generated interfaces often look "normal" by default</span><span lang="en">Why AI-generated interfaces often look "normal" by default</span></li>
+<li><span lang="id">How to describe a design style through 5 dimensions: typography, color, layout, motion, and details</span><span lang="en">How to describe a design style through 5 dimensions: typography, color, layout, motion, and details</span></li>
+<li><span lang="id">How to use 3 helpful Skills plugins for UI beautification</span><span lang="en">How to use 3 helpful Skills plugins for UI beautification</span></li>
+<li><span lang="id">How to generate better-looking interfaces through prompts + Skills across three practical scenarios</span><span lang="en">How to generate better-looking interfaces through prompts + Skills across three practical scenarios</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Why do AI-generated interfaces look "ordinary" by default?</span><span lang="en">1. Why do AI-generated interfaces look "ordinary" by default?</span></h2>
+<p class="reveal"><span lang="id">AI was trained on massive amounts of frontend code, and most of that code uses safe, highly repeated choices:</span><span lang="en">AI was trained on massive amounts of frontend code, and most of that code uses safe, highly repeated choices:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Dimension</th><th>AI's default choice</th><th>Problem</th></tr>
+<tr><td>Typography</td><td>Inter, Roboto, Arial</td><td>Too common, no personality</td></tr>
+<tr><td>Color</td><td>Purple gradients, blue primary colors</td><td>Overused in the tech world, visually tiring</td></tr>
+<tr><td>Layout</td><td>Symmetrical grids, stacked cards</td><td>Predictable, not memorable</td></tr>
+<tr><td>Motion</td><td>Fade-ins, simple hover effects</td><td>Not refined enough, lacks depth</td></tr>
+<tr><td>Background</td><td>Solid colors, simple gradients</td><td>Flat and low-texture</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">Each of these choices is fine on its own. But <b>once every AI-generated page uses all of them, they start to feel generic and interchangeable</b>.</span><span lang="en">Each of these choices is fine on its own. But <b>once every AI-generated page uses all of them, they start to feel generic and interchangeable</b>.</span></p>
+<p class="reveal"><span lang="id">> 💡 <b>Key insight</b>: AI can design, but by default it gravitates toward the <b>statistical average</b>. Your job is to tell it how to move away from that average.</span><span lang="en">> 💡 <b>Key insight</b>: AI can design, but by default it gravitates toward the <b>statistical average</b>. Your job is to tell it how to move away from that average.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Method One: describe style through prompts</span><span lang="en">2. Method One: describe style through prompts</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 The 5 dimensions of design style</span><span lang="en">2.1 The 5 dimensions of design style</span></h3>
+<p class="reveal"><span lang="id">To generate a visually strong interface, describe what you want across these five dimensions:</span><span lang="en">To generate a visually strong interface, describe what you want across these five dimensions:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Dimension</th><th>What to describe</th><th>Example keywords</th></tr>
+<tr><td><b>Typography</b></td><td>Display font for headings, readable body font for text</td><td>Space Grotesk, Playfair Display, JetBrains Mono</td></tr>
+<tr><td><b>Color</b></td><td>Primary color + accent color, not evenly distributed</td><td>Primary <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">#4F46E5</code> + accent <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">#F59E0B</code></td></tr>
+<tr><td><b>Layout</b></td><td>Asymmetry, overlap, grid-breaking structure</td><td>Bento Grid, asymmetrical sections, floating elements</td></tr>
+<tr><td><b>Motion</b></td><td>Meaningful page-load and micro-interactions</td><td>staggered reveals, scroll-triggered motion</td></tr>
+<tr><td><b>Details</b></td><td>Backgrounds, shadows, borders, textures</td><td>grain, geometry, gradient mesh</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Seeing the difference: generic prompt vs aesthetic prompt</span><span lang="en">2.2 Seeing the difference: generic prompt vs aesthetic prompt</span></h3>
+<p class="reveal"><span lang="id">Let's compare two prompts for the same landing page.</span><span lang="en">Let's compare two prompts for the same landing page.</span></p>
+<p class="reveal"><span lang="id"><b>Generic prompt:</b></span><span lang="en"><b>Generic prompt:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please build a landing page for an AI writing assistant. Include a navbar, hero section, feature section, pricing section, and footer.</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Beautified prompt:</b></span><span lang="en"><b>Beautified prompt:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please build a landing page for an AI writing assistant with the following style requirements:
+
+**Aesthetic style: Neubrutalism**
+
+**Typography:**
+- Headings: Space Grotesk, weight 700-900
+- Body: IBM Plex Sans, weight 400
+
+**Colors:**
+- Primary: #000000
+- Accent: #FF6B00
+- Background: #FFFDF0
+- Borders: 3px solid black
+
+**Layout:**
+- Asymmetrical composition
+- Bold black dividers between regions
+- Cards with hard shadows (box-shadow: 8px 8px 0px #000)
+- Strong contrast through generous whitespace
+
+**Motion:**
+- Elements pop in from below on page load
+- Buttons shift upward by 2px on hover
+
+**Details:**
+- All corners set to 0px
+- Buttons should feel strongly 3D
+- Add subtle grain texture to the background</pre>
+</div>
+<p class="reveal"><span lang="id">The second prompt gives AI enough direction to produce something bold and memorable instead of something merely functional.</span><span lang="en">The second prompt gives AI enough direction to produce something bold and memorable instead of something merely functional.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 A resource list of frontend beautification Skills</span><span lang="en">2.3 A resource list of frontend beautification Skills</span></h3>
+<p class="reveal"><span lang="id">You do not need to invent every style prompt from scratch. Here are some useful resources:</span><span lang="en">You do not need to invent every style prompt from scratch. Here are some useful resources:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Repository</th><th>What it contains</th><th>Stars</th><th>Link</th></tr>
+<tr><td><b>ui-ux-pro-max-skill</b></td><td>57 styles + 95 color systems + 56 font pairings</td><td>10k+</td><td>[GitHub](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)</td></tr>
+<tr><td><b>antigravity-awesome-skills</b></td><td>Helps avoid generic AI visual patterns</td><td>-</td><td>[GitHub](https://github.com/sickn33/antigravity-awesome-skills)</td></tr>
+<tr><td><b>superdesigndev/superdesign</b></td><td>AI-native UI development tooling</td><td>4.7k</td><td>[GitHub](https://github.com/superdesigndev/superdesign)</td></tr>
+<tr><td><b>anthropics/skills/frontend-design</b></td><td>Anthropic's official frontend design Skill</td><td>-</td><td>[GitHub](https://github.com/anthropics/skills)</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">> 💡 For more style prompts, see the [Appendix: Style Prompt Cheatsheet](#style-prompts).</span><span lang="en">> 💡 For more style prompts, see the [Appendix: Style Prompt Cheatsheet](#style-prompts).</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.5 Three reliable style templates</span><span lang="en">2.5 Three reliable style templates</span></h3>
+<p class="reveal"><span lang="id">Here are three proven templates you can copy and adapt directly.</span><span lang="en">Here are three proven templates you can copy and adapt directly.</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Template 1: Minimalism</span><span lang="en">Template 1: Minimalism</span></h4>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>**Aesthetic style: Minimalism**
+
+**Typography:**
+- Headings: PP Neue Montreal, weight 500-700
+- Body: Inter, weight 400
+
+**Colors:**
+- Primary: #FFFFFF
+- Text: #1A1A1A
+- Accent: #3B82F6, used sparingly
+
+**Layout:**
+- Large amounts of whitespace (minimum 64px section padding)
+- One-column or two-column centered layout
+- Use spacing instead of divider lines
+
+**Motion:**
+- Slow fade-in transitions (duration 600ms)
+- Soft color transitions on hover
+
+**Details:**
+- Radius: 8px
+- Shadows: subtle (0 4px 12px rgba(0,0,0,0.08))
+- No decorative background elements</pre>
+</div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Template 2: Glassmorphism</span><span lang="en">Template 2: Glassmorphism</span></h4>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>**Aesthetic style: Glassmorphism**
+
+**Typography:**
+- Headings: Outfit, weight 600-800
+- Body: Plus Jakarta Sans, weight 400-500
+
+**Colors:**
+- Background: gradient from #667eea to #764ba2
+- Card background: rgba(255, 255, 255, 0.1)
+- Text: #FFFFFF
+
+**Layout:**
+- Floating card design
+- Slight overlap between cards
+
+**Motion:**
+- Cards appear in staggered sequence on page load
+- Cards scale to 1.05x on hover
+
+**Details:**
+- Radius: 20px
+- Blur: backdrop-blur-xl
+- Border: 1px rgba(255, 255, 255, 0.2)
+- Subtle glow effects</pre>
+</div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Template 3: Bento Grid</span><span lang="en">Template 3: Bento Grid</span></h4>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>**Aesthetic style: Bento Grid**
+
+**Typography:**
+- Headings: SF Pro Display, weight 700
+- Body: SF Pro Text, weight 400
+
+**Colors:**
+- Background: #F5F5F7
+- Cards: #FFFFFF
+- Accent: #0071E3
+
+**Layout:**
+- Grid-based composition with mixed card sizes
+- 16px gaps
+- 24px radius
+
+**Motion:**
+- Subtle hover lift
+- Press feedback on click
+
+**Details:**
+- Large cards for primary content
+- Smaller cards for secondary info
+- Use icons to replace some text
+- Clean shadows (0 4px 24px rgba(0,0,0,0.06))</pre>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Method Two: use Skills plugins to load design rules automatically</span><span lang="en">3. Method Two: use Skills plugins to load design rules automatically</span></h2>
+<p class="reveal"><span lang="id">Writing style prompts by hand every time is tiring. <b>Skills</b> are reusable design-rule packages that can be installed once and applied repeatedly.</span><span lang="en">Writing style prompts by hand every time is tiring. <b>Skills</b> are reusable design-rule packages that can be installed once and applied repeatedly.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Three Skills that make interfaces look better</span><span lang="en">3.1 Three Skills that make interfaces look better</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Skill</th><th>Key strength</th><th>Install command</th></tr>
+<tr><td><b>UI/UX Pro Max</b></td><td>67 styles, 96 color systems, 57 font combinations</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm install -g uipro-cli && uipro init --ai claude</code></td></tr>
+<tr><td><b>frontend-design</b></td><td>Anthropic official Skill focused on avoiding generic AI aesthetics</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npx skills add anthropics/skills/frontend-design</code></td></tr>
+<tr><td><b>SuperDesign</b></td><td>IDE plugin that generates multiple design variants</td><td>Search for <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SuperDesign</code> in the VS Code extension marketplace</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Install UI/UX Pro Max</span><span lang="en">3.2 Install UI/UX Pro Max</span></h3>
+<p class="reveal"><span lang="id">UI/UX Pro Max is one of the most complete design-rule Skills packages available. It includes:</span><span lang="en">UI/UX Pro Max is one of the most complete design-rule Skills packages available. It includes:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>67 UI styles</b>: Glassmorphism, Neumorphism, Brutalism, Bento Grid, and more</span><span lang="en"><b>67 UI styles</b>: Glassmorphism, Neumorphism, Brutalism, Bento Grid, and more</span></li>
+<li><span lang="id"><b>96 color systems</b>: organized by product type, such as SaaS, e-commerce, and social apps</span><span lang="en"><b>96 color systems</b>: organized by product type, such as SaaS, e-commerce, and social apps</span></li>
+<li><span lang="id"><b>57 font pairings</b>: validated combinations from professional designers</span><span lang="en"><b>57 font pairings</b>: validated combinations from professional designers</span></li>
+<li><span lang="id"><b>100+ design rules</b>: spacing, corner radius, shadows, and more</span><span lang="en"><b>100+ design rules</b>: spacing, corner radius, shadows, and more</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Installation steps:</b></span><span lang="en"><b>Installation steps:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># 1. Install the CLI globally
+npm install -g uipro-cli
+
+# 2. Initialize it for your AI tool
+uipro init --ai claude
+# or
+uipro init --ai cursor
+# or
+uipro init --ai trae</pre>
+</div>
+<p class="reveal"><span lang="id">After installation, you can simply say:</span><span lang="en">After installation, you can simply say:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Use UI/UX Pro Max&#039;s Glassmorphism style to build me a landing page for an AI writing assistant.</pre>
+</div>
+<p class="reveal"><span lang="id">The AI will then automatically apply the matching typography, color, and layout conventions.</span><span lang="en">The AI will then automatically apply the matching typography, color, and layout conventions.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Install Anthropic's official <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">frontend-design</code> Skill</span><span lang="en">3.3 Install Anthropic's official <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">frontend-design</code> Skill</span></h3>
+<p class="reveal"><span lang="id">This is Anthropic's official frontend design Skill, focused specifically on preventing generic AI output:</span><span lang="en">This is Anthropic's official frontend design Skill, focused specifically on preventing generic AI output:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Run in Claude Code
+npx skills add anthropics/skills/frontend-design</pre>
+</div>
+<p class="reveal"><span lang="id">After installation, the AI will tend to avoid:</span><span lang="en">After installation, the AI will tend to avoid:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">❌ Inter, Roboto, Arial</span><span lang="en">❌ Inter, Roboto, Arial</span></li>
+<li><span lang="id">❌ Purple gradient backgrounds</span><span lang="en">❌ Purple gradient backgrounds</span></li>
+<li><span lang="id">❌ Symmetrical grid layouts</span><span lang="en">❌ Symmetrical grid layouts</span></li>
+<li><span lang="id">❌ Overly soft shadows</span><span lang="en">❌ Overly soft shadows</span></li>
+</ul>
+<p class="reveal"><span lang="id">And it will instead lean toward:</span><span lang="en">And it will instead lean toward:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ More distinctive font combinations</span><span lang="en">✅ More distinctive font combinations</span></li>
+<li><span lang="id">✅ Strong primary colors with sharper accents</span><span lang="en">✅ Strong primary colors with sharper accents</span></li>
+<li><span lang="id">✅ Asymmetrical or overlapping layouts</span><span lang="en">✅ Asymmetrical or overlapping layouts</span></li>
+<li><span lang="id">✅ More textured backgrounds such as grain and geometry</span><span lang="en">✅ More textured backgrounds such as grain and geometry</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Practical scenario one: redesign a landing page with aesthetic prompts</span><span lang="en">4. Practical scenario one: redesign a landing page with aesthetic prompts</span></h2>
+<p class="reveal"><span lang="id">Let's take what we just learned and turn a very ordinary landing page into a much more attractive one.</span><span lang="en">Let's take what we just learned and turn a very ordinary landing page into a much more attractive one.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 The plain version</span><span lang="en">4.1 The plain version</span></h3>
+<p class="reveal"><span lang="id">Start by seeing what AI gives you with a generic prompt:</span><span lang="en">Start by seeing what AI gives you with a generic prompt:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please build a landing page for a pet adoption platform. Include:
+- a navbar (logo, links, sign-up button)
+- a hero section (headline, subheadline, CTA button, pet image)
+- a pet gallery (three pet cards)
+- an about-us section
+- a footer</pre>
+</div>
+<p class="reveal"><span lang="id">The result will probably work, but it will feel pretty average.</span><span lang="en">The result will probably work, but it will feel pretty average.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 The improved version</span><span lang="en">4.2 The improved version</span></h3>
+<p class="reveal"><span lang="id">Now add style guidance:</span><span lang="en">Now add style guidance:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please build a landing page for a pet adoption platform with the following design requirements:
+
+**Aesthetic style: warm, soft, with a hand-drawn feeling**
+
+**Typography:**
+- Headings: Nunito, weight 700-800
+- Body: Nunito, weight 400-600
+
+**Colors:**
+- Primary: #FFB347
+- Secondary: #FFCCB3
+- Background: #FFF8F0
+- Text: #5D4037
+
+**Layout:**
+- Rounded cards (border-radius: 24px)
+- Slightly tilted cards at different angles
+- Floating and overlapping elements
+
+**Motion:**
+- Elements slide in from both sides on page load
+- Pet cards slightly rotate on hover like an animal tilting its head
+- Buttons bounce on hover
+
+**Details:**
+- Use 16-24px radii throughout
+- Warm soft shadows (0 8px 24px rgba(255,179,71,0.3))
+- Add paw-print decorations in the background
+- Use irregular image crops via clip-path
+- Use outline-style hand-drawn icons</pre>
+</div>
+<p class="reveal"><span lang="id">That version will generate a much warmer, more emotionally convincing interface.</span><span lang="en">That version will generate a much warmer, more emotionally convincing interface.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Practical scenario two: generate dashboards quickly with Skills</span><span lang="en">5. Practical scenario two: generate dashboards quickly with Skills</span></h2>
+<p class="reveal"><span lang="id">Skills are especially useful for admin dashboards and internal systems where many pages share the same design language.</span><span lang="en">Skills are especially useful for admin dashboards and internal systems where many pages share the same design language.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Using UI/UX Pro Max</span><span lang="en">5.1 Using UI/UX Pro Max</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Use UI/UX Pro Max&#039;s Dashboard Dark style and build a dashboard page for a SaaS admin panel that includes:
+
+**Top:** Four stats cards (users, active users, revenue, API calls)
+
+**Middle:**
+- Left: 7-day user growth line chart
+- Right: subscription plan distribution pie chart
+
+**Bottom:** a recent activity list showing time, user, and action</pre>
+</div>
+<p class="reveal"><span lang="id">The Skill will automatically apply a consistent dashboard look:</span><span lang="en">The Skill will automatically apply a consistent dashboard look:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">dark gray backgrounds such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">#1A1A2E</code></span><span lang="en">dark gray backgrounds such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">#1A1A2E</code></span></li>
+<li><span lang="id">high-contrast cards like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">#16213E</code></span><span lang="en">high-contrast cards like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">#16213E</code></span></li>
+<li><span lang="id">bright data colors such as blue, green, and orange</span><span lang="en">bright data colors such as blue, green, and orange</span></li>
+<li><span lang="id">floating cards with mild glassmorphism effects</span><span lang="en">floating cards with mild glassmorphism effects</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Using <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">frontend-design</code></span><span lang="en">5.2 Using <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">frontend-design</code></span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Use the frontend-design skill and build a homepage for a personal blog. Make it distinctive and full of personality.</pre>
+</div>
+<p class="reveal"><span lang="id">The AI will typically choose a more specific aesthetic direction, such as retro-futurism or editorial magazine style, and implement it with typography, color, and layout decisions that break out of generic patterns.</span><span lang="en">The AI will typically choose a more specific aesthetic direction, such as retro-futurism or editorial magazine style, and implement it with typography, color, and layout decisions that break out of generic patterns.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Practical scenario three: create your own design system Skill</span><span lang="en">6. Practical scenario three: create your own design system Skill</span></h2>
+<p class="reveal"><span lang="id">If your product already has a fixed brand style, you can create your own Skill so every AI-generated page automatically follows it.</span><span lang="en">If your product already has a fixed brand style, you can create your own Skill so every AI-generated page automatically follows it.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Create the Skill file</span><span lang="en">6.1 Create the Skill file</span></h3>
+<p class="reveal"><span lang="id">Create <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.claude/skills/my-brand/SKILL.md</code> in your project:</span><span lang="en">Create <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.claude/skills/my-brand/SKILL.md</code> in your project:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>`markdown</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>---
+name: my-brand
+description: My project&#039;s custom design system, ensuring every UI follows a consistent visual language
+---
+
+# My Project Design System
+
+## Brand Colors
+- Primary: #6366F1 (Indigo 500)
+- Secondary: #8B5CF6 (Violet 500)
+- Success: #10B981
+- Warning: #F59E0B
+- Error: #EF4444
+- Background: #F9FAFB
+- Card: #FFFFFF
+
+## Typography
+- Headings: Plus Jakarta Sans
+  - H1: 700, 48px
+  - H2: 600, 36px
+  - H3: 600, 24px
+- Body: Inter
+  - Body: 400, 16px
+  - Small: 400, 14px
+
+## Spacing
+- Base unit: 4px
+- Component padding: 8px / 12px / 16px
+- Section spacing: 24px / 32px / 48px
+- Page margin: 64px
+
+## Radius
+- Buttons: 8px
+- Cards: 12px
+- Inputs: 8px
+- Modals: 16px
+
+## Shadows
+- Small: 0 1px 3px rgba(0,0,0,0.1)
+- Medium: 0 4px 12px rgba(0,0,0,0.1)
+- Large: 0 8px 24px rgba(0,0,0,0.12)
+
+## Motion
+- Transition duration: 150ms / 300ms
+- Easing: cubic-bezier(0.4, 0, 0.2, 1)
+- Hover effect: slight scale-up (scale-105)
+
+## Forbidden Styles
+- Do not use purple gradient backgrounds
+- Do not use fonts other than Inter for body text
+- Do not use radii larger than 16px
+- Do not use pure black (#000000); use #1F2937 instead</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 Use your custom Skill</span><span lang="en">6.2 Use your custom Skill</span></h3>
+<p class="reveal"><span lang="id">After creating it, you can simply say:</span><span lang="en">After creating it, you can simply say:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Use my-brand skill to build me a user settings page.</pre>
+</div>
+<p class="reveal"><span lang="id">The AI will automatically apply your colors, fonts, spacing system, and other design constraints.</span><span lang="en">The AI will automatically apply your colors, fonts, spacing system, and other design constraints.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Summary</span><span lang="en">7. Summary</span></h2>
+<p class="reveal"><span lang="id">There are two main ways to make AI generate better-looking interfaces:</span><span lang="en">There are two main ways to make AI generate better-looking interfaces:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Method</th><th>Strength</th><th>Weakness</th><th>Best for</th></tr>
+<tr><td><b>Prompt descriptions</b></td><td>Flexible, easy to vary every time</td><td>Must be repeated</td><td>One-off pages, style exploration</td></tr>
+<tr><td><b>Skills plugins</b></td><td>Install once, benefits persist</td><td>Requires setup</td><td>Projects with a stable visual system</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Suggested vibe-coding workflow:</b></span><span lang="en"><b>Suggested vibe-coding workflow:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Exploration phase</b>: try different prompt styles to find an aesthetic direction you like</span><span lang="en"><b>Exploration phase</b>: try different prompt styles to find an aesthetic direction you like</span></li>
+<li><span lang="id"><b>After choosing a style</b>: install the matching Skill, such as UI/UX Pro Max or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">frontend-design</code></span><span lang="en"><b>After choosing a style</b>: install the matching Skill, such as UI/UX Pro Max or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">frontend-design</code></span></li>
+<li><span lang="id"><b>For brand-driven products</b>: build your own Skill so the entire project stays visually consistent</span><span lang="en"><b>For brand-driven products</b>: build your own Skill so the entire project stays visually consistent</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Practice</span><span lang="en">Practice</span></h3>
+<p class="reveal"><span lang="id">Try one of the following:</span><span lang="en">Try one of the following:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Redesign one of your previous projects with a stronger visual style using prompt-based design instructions</span><span lang="en">Redesign one of your previous projects with a stronger visual style using prompt-based design instructions</span></li>
+<li><span lang="id">Install UI/UX Pro Max and use one of its styles to generate a new page</span><span lang="en">Install UI/UX Pro Max and use one of its styles to generate a new page</span></li>
+<li><span lang="id">Create your own design-system Skill with your preferred colors and typography</span><span lang="en">Create your own design-system Skill with your preferred colors and typography</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Appendix: style cheatsheet</span><span lang="en">Appendix: style cheatsheet</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Style</th><th>Keywords</th><th>Best for</th><th>Example</th></tr>
+<tr><td><b>Minimalism</b></td><td>whitespace, mono palette, clean</td><td>premium products, portfolios</td><td>Apple</td></tr>
+<tr><td><b>Glassmorphism</b></td><td>frosted glass, blur, gradients</td><td>SaaS landing pages, tech tools</td><td>macOS Big Sur</td></tr>
+<tr><td><b>Neubrutalism</b></td><td>heavy borders, hard shadows, solid fills</td><td>creative brands, art sites</td><td>Brassius</td></tr>
+<tr><td><b>Bento Grid</b></td><td>modular cards, collage layouts</td><td>dashboards, feature showcases</td><td>Apple marketing pages</td></tr>
+<tr><td><b>Retro Futurism</b></td><td>neon, synthwave, dark contrast</td><td>games, music, entertainment</td><td>Stranger Things aesthetics</td></tr>
+<tr><td><b>Hand-drawn</b></td><td>irregular, soft, illustrated</td><td>education, children-oriented products</td><td>Duolingo vibes</td></tr>
+<tr><td><b>Editorial / Magazine</b></td><td>oversized type, asymmetry, whitespace</td><td>blogs, content sites</td><td>Medium-inspired layouts</td></tr>
+<tr><td><b>Dark Luxury</b></td><td>deep tones, gold accents, fine detail</td><td>premium and luxury products</td><td>luxury branding sites</td></tr>
+</table></div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Appendix: Skills install cheatsheet</span><span lang="en">Appendix: Skills install cheatsheet</span></h2>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># UI/UX Pro Max
+npm install -g uipro-cli
+uipro init --ai claude
+
+# Anthropic frontend-design
+npx skills add anthropics/skills/frontend-design
+
+# Anthropic brand-guidelines
+npx skills add anthropics/skills/brand-guidelines
+
+# Check installed Skills in Claude Code
+/help</pre>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Appendix: recommended color systems</span><span lang="en">Appendix: recommended color systems</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Palette</th><th>Primary</th><th>Accent</th><th>Background</th><th>Mood</th></tr>
+<tr><td><b>Sunset</b></td><td>#F97316</td><td>#FBBF24</td><td>#FFF7ED</td><td>warm, energetic</td></tr>
+<tr><td><b>Ocean</b></td><td>#0EA5E9</td><td>#06B6D4</td><td>#F0F9FF</td><td>fresh, professional</td></tr>
+<tr><td><b>Forest</b></td><td>#10B981</td><td>#34D399</td><td>#ECFDF5</td><td>natural, healthy</td></tr>
+<tr><td><b>Berry</b></td><td>#8B5CF6</td><td>#EC4899</td><td>#FAF5FF</td><td>romantic, creative</td></tr>
+<tr><td><b>Coffee</b></td><td>#78350F</td><td>#D97706</td><td>#FFFBEB</td><td>warm, retro</td></tr>
+<tr><td><b>Monostone</b></td><td>#6B7280</td><td>#9CA3AF</td><td>#F9FAFB</td><td>neutral, professional</td></tr>
+</table></div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Appendix: style prompt cheatsheet {#style-prompts}</span><span lang="en">Appendix: style prompt cheatsheet {#style-prompts}</span></h2>
+<p class="reveal"><span lang="id">Useful visual directions you can try when prompting for better frontend interfaces:</span><span lang="en">Useful visual directions you can try when prompting for better frontend interfaces:</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Style categories</span><span lang="en">Style categories</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Style</th><th>English keywords</th><th>Core visual traits</th><th>Example prompt fragment</th></tr>
+<tr><td><b>Pop Art</b></td><td>Pop Art</td><td>Bold color clashes, black outlines, halftone textures</td><td>Pop art style website, bold colors and comic dots, vibrant</td></tr>
+<tr><td><b>Minimalism</b></td><td>Minimalism</td><td>Lots of whitespace, very little ornament</td><td>Minimalist web design, ample white space, geometric, serene</td></tr>
+<tr><td><b>Abstract Expressionism</b></td><td>Abstract Expressionism</td><td>Energetic brushstrokes, expressive splashes</td><td>Abstract expressionism background, dynamic paint splashes, emotional</td></tr>
+<tr><td><b>Retro</b></td><td>Retro / Vintage</td><td>Vintage type, aged textures, retro palettes</td><td>Retro 80s website design, neon grid and synthwave color palette</td></tr>
+<tr><td><b>Cyberpunk</b></td><td>Cyberpunk</td><td>Neon-on-dark contrast, glitch effects</td><td>Cyberpunk UI, neon lights on dark background, glitch effects</td></tr>
+<tr><td><b>Neumorphism</b></td><td>Neumorphism</td><td>Soft highlights and shadows, raised or sunken surfaces</td><td>Neumorphism design style, soft shadows, clean and modern</td></tr>
+<tr><td><b>Generative Art</b></td><td>Generative Art</td><td>Algorithmic flowing shapes and patterns</td><td>Generative art background, flowing algorithmic patterns, digital</td></tr>
+<tr><td><b>Acid Graphics</b></td><td>Acid Graphics</td><td>Metallic texture, glass effects, chaotic type</td><td>Acid graphics web layout, glass morphism, chaotic typography</td></tr>
+<tr><td><b>Immersive 3D</b></td><td>Immersive 3D</td><td>Highly spatial scenes and product depth</td><td>Immersive 3D website, interactive product model in space</td></tr>
+</table></div>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../frontend/multi-product-ui/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Spesifikasi UI & Desain Multi-Produk</span><span lang="en">Spesifikasi UI & Desain Multi-Produk</span></b></a>
+      <a class="next" href="../../frontend/design-to-code/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Dari Prototipe Desain Menjadi Kode Nyata</span><span lang="en">Dari Prototipe Desain Menjadi Kode Nyata</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

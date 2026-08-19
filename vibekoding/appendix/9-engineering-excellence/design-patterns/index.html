@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Fundamentals of Design Patterns — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Fundamentals of Design Patterns. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/9-engineering-excellence/design-patterns/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Fundamentals of Design Patterns</span><span lang="en">Fundamentals of Design Patterns</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Fundamentals of Design Patterns</span><span lang="en">Fundamentals of Design Patterns</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Fundamentals of Design Patterns.</span><span lang="en">Ensiklopedia VibeKoding: Fundamentals of Design Patterns.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Why is your code always "works but messy"?</b> You may have encountered this: when requirements change, the code needs major rewrites; you want to reuse a piece of logic but find it tangled with other code. Design patterns are "code organization recipes" summarized by predecessors to help you write flexible, maintainable code.
+
+This chapter helps you understand the most practical design patterns — not memorizing them by rote, but understanding "which pattern for which scenario."</span><span lang="en"><b>Why is your code always "works but messy"?</b> You may have encountered this: when requirements change, the code needs major rewrites; you want to reuse a piece of logic but find it tangled with other code. Design patterns are "code organization recipes" summarized by predecessors to help you write flexible, maintainable code.
+
+This chapter helps you understand the most practical design patterns — not memorizing them by rote, but understanding "which pattern for which scenario."</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn in this article?</b></span><span lang="en"><b>What will you learn in this article?</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Core Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>What are design patterns</td><td>The essence and classification of patterns</td></tr>
+<tr><td><b>Chapter 2</b></td><td>Creational patterns</td><td>How to elegantly create objects</td></tr>
+<tr><td><b>Chapter 3</b></td><td>Structural patterns</td><td>How to organize code structure</td></tr>
+<tr><td><b>Chapter 4</b></td><td>Behavioral patterns</td><td>How to manage interactions between objects</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">After reading this chapter, you will master the most commonly used design patterns and be able to identify applicable scenarios and apply them flexibly in real projects.</span><span lang="en">After reading this chapter, you will master the most commonly used design patterns and be able to identify applicable scenarios and apply them flexibly in real projects.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. The Big Picture: The Essence of Design Patterns</span><span lang="en">0. The Big Picture: The Essence of Design Patterns</span></h2>
+<p class="reveal"><span lang="id">Imagine you're learning to cook. You can figure everything out from scratch each time, or you can learn classic recipes — recipes don't limit your creativity; they let you stand on the shoulders of those who came before. Design patterns are the "classic recipes" of the programming world.</span><span lang="en">Imagine you're learning to cook. You can figure everything out from scratch each time, or you can learn classic recipes — recipes don't limit your creativity; they let you stand on the shoulders of those who came before. Design patterns are the "classic recipes" of the programming world.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Common Language</b>: Say "use the Observer pattern here" and the team immediately understands your design intent
+- <b>Experience Reuse</b>: No need to step into the same traps others already fell into
+- <b>Flexible Extension</b>: Good patterns allow code to adapt to changes with minor modifications rather than major rewrites</span><span lang="en">- <b>Common Language</b>: Say "use the Observer pattern here" and the team immediately understands your design intent
+- <b>Experience Reuse</b>: No need to step into the same traps others already fell into
+- <b>Flexible Extension</b>: Good patterns allow code to adapt to changes with minor modifications rather than major rewrites</span></p>
+</div>
+<p class="reveal"><span lang="id">Use the interactive component below to browse the classification and uses of common design patterns:</span><span lang="en">Use the interactive component below to browse the classification and uses of common design patterns:</span></p>
+<p class="reveal"><span lang="id"><DesignPatternCatalogDemo /></span><span lang="en"><DesignPatternCatalogDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Creational Patterns: How to Elegantly Create Objects</span><span lang="en">1. Creational Patterns: How to Elegantly Create Objects</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 Singleton Pattern</span><span lang="en">1.1 Singleton Pattern</span></h3>
+<p class="reveal"><span lang="id"><b>Scenario</b>: Only one instance is needed globally, such as a configuration manager, logger, or database connection pool.</span><span lang="en"><b>Scenario</b>: Only one instance is needed globally, such as a configuration manager, logger, or database connection pool.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>class ConfigManager {
+  static instance = null
+
+  static getInstance() {
+    if (!ConfigManager.instance) {
+      ConfigManager.instance = new ConfigManager()
+    }
+    return ConfigManager.instance
+  }
+
+  constructor() {
+    this.config = {}
+  }
+}
+
+// No matter how many times you call it, it&#039;s always the same instance
+const a = ConfigManager.getInstance()
+const b = ConfigManager.getInstance()
+console.log(a === b) // true</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 Factory Pattern</span><span lang="en">1.2 Factory Pattern</span></h3>
+<p class="reveal"><span lang="id"><b>Scenario</b>: Creating different types of objects based on different conditions, where the caller doesn't need to know the specific creation details.</span><span lang="en"><b>Scenario</b>: Creating different types of objects based on different conditions, where the caller doesn't need to know the specific creation details.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>function createNotification(type, message) {
+  switch (type) {
+    case &#039;email&#039;:
+      return { send: () =&gt; console.log(`Send email: ${message}`) }
+    case &#039;sms&#039;:
+      return { send: () =&gt; console.log(`Send SMS: ${message}`) }
+    case &#039;push&#039;:
+      return { send: () =&gt; console.log(`Push notification: ${message}`) }
+    default:
+      throw new Error(`Unknown notification type: ${type}`)
+  }
+}
+
+// The caller doesn&#039;t care about the specific implementation
+const notification = createNotification(&#039;email&#039;, &#039;Hello&#039;)
+notification.send()</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Structural Patterns: How to Organize Code Structure</span><span lang="en">2. Structural Patterns: How to Organize Code Structure</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Adapter Pattern</span><span lang="en">2.1 Adapter Pattern</span></h3>
+<p class="reveal"><span lang="id"><b>Scenario</b>: Two interfaces are incompatible and need a "converter plug." For example, the data format returned by an old API doesn't match what a new component expects.</span><span lang="en"><b>Scenario</b>: Two interfaces are incompatible and need a "converter plug." For example, the data format returned by an old API doesn't match what a new component expects.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Format returned by the old API
+const oldApi = {
+  getUserInfo: () =&gt; ({ user_name: &#039;Zhang San&#039;, user_age: 25 })
+}
+
+// Adapter: convert to new format
+function adaptUser(oldUser) {
+  return { name: oldUser.user_name, age: oldUser.user_age }
+}
+
+const user = adaptUser(oldApi.getUserInfo())
+// { name: &#039;Zhang San&#039;, age: 25 }</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Decorator Pattern</span><span lang="en">2.2 Decorator Pattern</span></h3>
+<p class="reveal"><span lang="id"><b>Scenario</b>: Adding new functionality to an object without modifying the original code. Like putting a case on your phone — the phone's functionality stays the same, but you gain protection.</span><span lang="en"><b>Scenario</b>: Adding new functionality to an object without modifying the original code. Like putting a case on your phone — the phone's functionality stays the same, but you gain protection.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Basic log function
+function log(message) {
+  console.log(message)
+}
+
+// Decorator: add timestamp
+function withTimestamp(fn) {
+  return (message) =&gt; fn(`[${new Date().toISOString()}] ${message}`)
+}
+
+// Decorator: add log level
+function withLevel(fn, level) {
+  return (message) =&gt; fn(`[${level}] ${message}`)
+}
+
+const enhancedLog = withTimestamp(withLevel(log, &#039;INFO&#039;))
+enhancedLog(&#039;Service started successfully&#039;)
+// [2025-01-15T10:30:00.000Z] [INFO] Service started successfully</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Behavioral Patterns: How to Manage Interactions Between Objects</span><span lang="en">3. Behavioral Patterns: How to Manage Interactions Between Objects</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Observer Pattern</span><span lang="en">3.1 Observer Pattern</span></h3>
+<p class="reveal"><span lang="id"><b>Scenario</b>: When one object's state changes, other objects need to be automatically notified. For example, after a user places an order, you need to simultaneously send an email, deduct inventory, and log the event.</span><span lang="en"><b>Scenario</b>: When one object's state changes, other objects need to be automatically notified. For example, after a user places an order, you need to simultaneously send an email, deduct inventory, and log the event.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>class EventEmitter {
+  constructor() {
+    this.listeners = {}
+  }
+
+  on(event, callback) {
+    if (!this.listeners[event]) this.listeners[event] = []
+    this.listeners[event].push(callback)
+  }
+
+  emit(event, data) {
+    (this.listeners[event] || []).forEach(cb =&gt; cb(data))
+  }
+}
+
+const bus = new EventEmitter()
+bus.on(&#039;order:created&#039;, (order) =&gt; console.log(&#039;Send confirmation email&#039;, order.id))
+bus.on(&#039;order:created&#039;, (order) =&gt; console.log(&#039;Deduct inventory&#039;, order.id))
+bus.emit(&#039;order:created&#039;, { id: &#039;ORD-001&#039; })</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Strategy Pattern</span><span lang="en">3.2 Strategy Pattern</span></h3>
+<p class="reveal"><span lang="id"><b>Scenario</b>: The same operation has multiple algorithms/strategies that need to be switched at runtime. For example, different sorting methods or different pricing rules.</span><span lang="en"><b>Scenario</b>: The same operation has multiple algorithms/strategies that need to be switched at runtime. For example, different sorting methods or different pricing rules.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>const pricingStrategies = {
+  normal: (price) =&gt; price,
+  vip: (price) =&gt; price * 0.8,
+  svip: (price) =&gt; price * 0.6
+}
+
+function calculatePrice(price, memberLevel) {
+  const strategy = pricingStrategies[memberLevel] || pricingStrategies.normal
+  return strategy(price)
+}
+
+calculatePrice(100, &#039;vip&#039;)  // 80
+calculatePrice(100, &#039;svip&#039;) // 60</pre>
+</div>
+<p class="reveal"><span lang="id">Use the interactive component below to try out the effects of different design patterns:</span><span lang="en">Use the interactive component below to try out the effects of different design patterns:</span></p>
+<p class="reveal"><span lang="id"><PatternPlaygroundDemo /></span><span lang="en"><PatternPlaygroundDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Approach to choosing a Design Pattern</span><span lang="en">4. Approach to choosing a Design Pattern</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Problem You Encounter</th><th>Recommended Pattern</th><th>Core Idea</th></tr>
+<tr><td>Only one global instance needed</td><td>Singleton</td><td>Control instance count</td></tr>
+<tr><td>Create different objects based on conditions</td><td>Factory</td><td>Encapsulate creation logic</td></tr>
+<tr><td>Incompatible interfaces need conversion</td><td>Adapter</td><td>Wrap with a conversion layer</td></tr>
+<tr><td>Dynamically add functionality</td><td>Decorator</td><td>Layer-by-layer enhancement</td></tr>
+<tr><td>State changes need to notify multiple parties</td><td>Observer</td><td>Publish-subscribe decoupling</td></tr>
+<tr><td>Multiple algorithms need runtime switching</td><td>Strategy</td><td>Encapsulate algorithms as objects</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Design patterns are not "the more the better." <b>Over-engineering</b> is just as bad as <b>no design</b>. Only use patterns where flexibility is genuinely needed; solve simple problems with simple solutions. Remember the KISS principle: Keep It Simple, Stupid.</span><span lang="en">Design patterns are not "the more the better." <b>Over-engineering</b> is just as bad as <b>no design</b>. Only use patterns where flexibility is genuinely needed; solve simple problems with simple solutions. Remember the KISS principle: Keep It Simple, Stupid.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. AI-Powered: Using LLMs to Learn and Apply Design Patterns</span><span lang="en">5. AI-Powered: Using LLMs to Learn and Apply Design Patterns</span></h2>
+<p class="reveal"><span lang="id">LLMs can help you identify scenarios suitable for design patterns in your code and provide specific refactoring solutions.</span><span lang="en">LLMs can help you identify scenarios suitable for design patterns in your code and provide specific refactoring solutions.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Identifying Applicable Patterns</span><span lang="en">5.1 Identifying Applicable Patterns</span></h3>
+<p class="reveal"><span lang="id">> <b>Prompt</b>:</span><span lang="en">> <b>Prompt</b>:</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<p class="reveal"><span lang="id">> Analyze the following code and determine if there are opportunities</span><span lang="en">> Analyze the following code and determine if there are opportunities</span></p>
+<p class="reveal"><span lang="id">> to improve it with design patterns.</span><span lang="en">> to improve it with design patterns.</span></p>
+<p class="reveal"><span lang="id">> If so, please explain:</span><span lang="en">> If so, please explain:</span></p>
+<p class="reveal"><span lang="id">> 1. Problems with the current code</span><span lang="en">> 1. Problems with the current code</span></p>
+<p class="reveal"><span lang="id">> 2. Which design pattern is recommended</span><span lang="en">> 2. Which design pattern is recommended</span></p>
+<p class="reveal"><span lang="id">> 3. Refactored code example</span><span lang="en">> 3. Refactored code example</span></p>
+<p class="reveal"><span lang="id">> 4. Why this pattern fits this scenario</span><span lang="en">> 4. Why this pattern fits this scenario</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> [Paste your code]</span><span lang="en">> [Paste your code]</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Learning Patterns with Concrete Scenarios</span><span lang="en">5.2 Learning Patterns with Concrete Scenarios</span></h3>
+<p class="reveal"><span lang="id">> <b>Prompt</b>:</span><span lang="en">> <b>Prompt</b>:</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<p class="reveal"><span lang="id">> Using a "food delivery ordering system" as a real scenario,</span><span lang="en">> Using a "food delivery ordering system" as a real scenario,</span></p>
+<p class="reveal"><span lang="id">> demonstrate the application of these design patterns:</span><span lang="en">> demonstrate the application of these design patterns:</span></p>
+<p class="reveal"><span lang="id">> - Factory Pattern: creating different types of orders</span><span lang="en">> - Factory Pattern: creating different types of orders</span></p>
+<p class="reveal"><span lang="id">> - Observer Pattern: order status change notifications</span><span lang="en">> - Observer Pattern: order status change notifications</span></p>
+<p class="reveal"><span lang="id">> - Strategy Pattern: different delivery fee calculation rules</span><span lang="en">> - Strategy Pattern: different delivery fee calculation rules</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> Use JavaScript code examples. For each pattern, first show the</span><span lang="en">> Use JavaScript code examples. For each pattern, first show the</span></p>
+<p class="reveal"><span lang="id">> problem without the pattern, then show the improvement with it.</span><span lang="en">> problem without the pattern, then show the improvement with it.</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 Judging Over-Engineering</span><span lang="en">5.3 Judging Over-Engineering</span></h3>
+<p class="reveal"><span lang="id">> <b>Prompt</b>:</span><span lang="en">> <b>Prompt</b>:</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<p class="reveal"><span lang="id">> Review the following code and determine if there is over-engineering.</span><span lang="en">> Review the following code and determine if there is over-engineering.</span></p>
+<p class="reveal"><span lang="id">> Are there unnecessary abstractions, unused design patterns,</span><span lang="en">> Are there unnecessary abstractions, unused design patterns,</span></p>
+<p class="reveal"><span lang="id">> or premature optimizations?</span><span lang="en">> or premature optimizations?</span></p>
+<p class="reveal"><span lang="id">> If so, suggest how to simplify, following the KISS principle.</span><span lang="en">> If so, suggest how to simplify, following the KISS principle.</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> [Paste your code]</span><span lang="en">> [Paste your code]</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Having AI explain design patterns using business scenarios you're familiar with is much more effective than reading abstract UML diagrams. But remember: AI may tend to recommend more complex solutions — you need to judge for yourself whether they're truly necessary.</span><span lang="en">Having AI explain design patterns using business scenarios you're familiar with is much more effective than reading abstract UML diagrams. But remember: AI may tend to recommend more complex solutions — you need to judge for yourself whether they're truly necessary.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Summary</span><span lang="en">6. Summary</span></h2>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Creational Patterns</b>: Solve "how to create objects" problems, making the creation process more flexible</span><span lang="en"><b>Creational Patterns</b>: Solve "how to create objects" problems, making the creation process more flexible</span></li>
+<li><span lang="id"><b>Structural Patterns</b>: Solve "how to organize code" problems, making the structure clearer</span><span lang="en"><b>Structural Patterns</b>: Solve "how to organize code" problems, making the structure clearer</span></li>
+<li><span lang="id"><b>Behavioral Patterns</b>: Solve "how objects interact" problems, enabling looser coupling</span><span lang="en"><b>Behavioral Patterns</b>: Solve "how objects interact" problems, enabling looser coupling</span></li>
+<li><span lang="id"><b>Flexible Application</b>: Choose based on actual scenarios — don't use patterns just for the sake of using them</span><span lang="en"><b>Flexible Application</b>: Choose based on actual scenarios — don't use patterns just for the sake of using them</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">The essence of design patterns is <b>managing change</b>. Good design makes the changing parts easy to modify while keeping the stable parts unchanged. When writing code, ask yourself: "If requirements change, how many places would I need to modify?" — if the answer is "many places," you might need a design pattern to help.</span><span lang="en">The essence of design patterns is <b>managing change</b>. Good design makes the changing parts easy to modify while keeping the stable parts unchanged. When writing code, ask yourself: "If requirements change, how many places would I need to modify?" — if the answer is "many places," you might need a design pattern to help.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Classic Book</b>: GoF's <i>Design Patterns: Elements of Reusable Object-Oriented Software</i> is the foundational work on design patterns.</span><span lang="en"><b>Classic Book</b>: GoF's <i>Design Patterns: Elements of Reusable Object-Oriented Software</i> is the foundational work on design patterns.</span></li>
+<li><span lang="id"><b>Modern Perspective</b>: Many patterns become more concise in JavaScript thanks to language features (closures, higher-order functions).</span><span lang="en"><b>Modern Perspective</b>: Many patterns become more concise in JavaScript thanks to language features (closures, higher-order functions).</span></li>
+<li><span lang="id"><b>Practical Advice</b>: Understand the problem first, then consider patterns. Don't hold a hammer looking for nails.</span><span lang="en"><b>Practical Advice</b>: Understand the problem first, then consider patterns. Don't hold a hammer looking for nails.</span></li>
+<li><span lang="id"><b>Advanced Learning</b>: Learn the SOLID principles — they are the guiding philosophy behind design patterns.</span><span lang="en"><b>Advanced Learning</b>: Learn the SOLID principles — they are the guiding philosophy behind design patterns.</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../9-engineering-excellence/code-quality-refactoring/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">9-engineering-excellence/code-quality-refactoring</span><span lang="en">9-engineering-excellence/code-quality-refactoring</span></b></a>
+      <a class="next" href="../../9-engineering-excellence/open-source-collaboration/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">9-engineering-excellence/open-source-collaboration</span><span lang="en">9-engineering-excellence/open-source-collaboration</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

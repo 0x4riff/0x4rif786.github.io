@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Type Systems: An Introduction — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Type Systems: An Introduction. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/1-computer-fundamentals/type-systems/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Type Systems: An Introduction</span><span lang="en">Type Systems: An Introduction</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Type Systems: An Introduction</span><span lang="en">Type Systems: An Introduction</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Type Systems: An Introduction.</span><span lang="en">Ensiklopedia VibeKoding: Type Systems: An Introduction.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Why does <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"1" + 1</code> produce <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"11"</code> in JavaScript but throw an error in Python?</b> Behind this is the type system at work. A type system is the "traffic rules" of a programming language — it determines how data can be used, what it can be combined with, and when things are checked for validity. Understanding type systems helps you understand the "personality differences" between languages.</span><span lang="en"><b>Why does <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"1" + 1</code> produce <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"11"</code> in JavaScript but throw an error in Python?</b> Behind this is the type system at work. A type system is the "traffic rules" of a programming language — it determines how data can be used, what it can be combined with, and when things are checked for validity. Understanding type systems helps you understand the "personality differences" between languages.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn from this article?</b></span><span lang="en"><b>What will you learn from this article?</b></span></p>
+<p class="reveal"><span lang="id">After completing this chapter, you will gain:</span><span lang="en">After completing this chapter, you will gain:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Classification ability</b>: Master the four-quadrant classification of static/dynamic and strong/weak typing</span><span lang="en"><b>Classification ability</b>: Master the four-quadrant classification of static/dynamic and strong/weak typing</span></li>
+<li><span lang="id"><b>Problem diagnosis</b>: When you see a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">TypeError</code>, quickly determine if it's a type mismatch or implicit conversion issue</span><span lang="en"><b>Problem diagnosis</b>: When you see a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">TypeError</code>, quickly determine if it's a type mismatch or implicit conversion issue</span></li>
+<li><span lang="id"><b>Language selection</b>: Understand why TypeScript is suitable for large projects and Python for rapid prototyping</span><span lang="en"><b>Language selection</b>: Understand why TypeScript is suitable for large projects and Python for rapid prototyping</span></li>
+<li><span lang="id"><b>Type inference</b>: Understand how modern languages balance conciseness and safety</span><span lang="en"><b>Type inference</b>: Understand how modern languages balance conciseness and safety</span></li>
+<li><span lang="id"><b>Practical awareness</b>: Master type-safe coding habits</span><span lang="en"><b>Practical awareness</b>: Master type-safe coding habits</span></li>
+</ul>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Core Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>What Is a Type System</td><td>The essence of types, why types are needed</td></tr>
+<tr><td><b>Chapter 2</b></td><td>Static vs Dynamic Typing</td><td>Check timing, IDE support, safety</td></tr>
+<tr><td><b>Chapter 3</b></td><td>Strong vs Weak Typing</td><td>Implicit conversion, type safety</td></tr>
+<tr><td><b>Chapter 4</b></td><td>Type Inference</td><td>Automatic inference, best of both worlds</td></tr>
+<tr><td><b>Chapter 5</b></td><td>Generics: Write Once, Work for All Types</td><td>Type parameters, type constraints, reuse</td></tr>
+<tr><td><b>Chapter 6</b></td><td>Type Safety in Practice</td><td>Common pitfalls, defensive strategies</td></tr>
+<tr><td><b>Chapter 7</b></td><td>Language Type Quadrant Chart</td><td>Four-quadrant classification, language selection</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. Big Picture: Type Systems Overview</span><span lang="en">0. Big Picture: Type Systems Overview</span></h2>
+<p class="reveal"><span lang="id">In the real world, you wouldn't stuff a book into a coffee mug — because they are different "types" of things. The programming world is the same: numbers, strings, booleans, arrays... each type of data has its own "identity" that determines what operations it can participate in.</span><span lang="en">In the real world, you wouldn't stuff a book into a coffee mug — because they are different "types" of things. The programming world is the same: numbers, strings, booleans, arrays... each type of data has its own "identity" that determines what operations it can participate in.</span></p>
+<p class="reveal"><span lang="id">A <b>type system</b> is the rule system a programming language uses to manage these "identities." It answers two core questions:</span><span lang="en">A <b>type system</b> is the rule system a programming language uses to manage these "identities." It answers two core questions:</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>When to check?</b> At compile time (static typing) or at runtime (dynamic typing)?
+- <b>How strict?</b> Strictly prohibit mixing (strong typing) or automatically convert for you (weak typing)?</span><span lang="en">- <b>When to check?</b> At compile time (static typing) or at runtime (dynamic typing)?
+- <b>How strict?</b> Strictly prohibit mixing (strong typing) or automatically convert for you (weak typing)?</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Type Systems: Classification and Constraints of Data</span><span lang="en">1. Type Systems: Classification and Constraints of Data</span></h2>
+<p class="reveal"><span lang="id"><TypeSystemDemo /></span><span lang="en"><TypeSystemDemo /></span></p>
+<p class="reveal"><span lang="id">The essence of a type system is a set of <b>constraint rules</b> that tell the compiler or interpreter:</span><span lang="en">The essence of a type system is a set of <b>constraint rules</b> that tell the compiler or interpreter:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">What values can this variable hold?</span><span lang="en">What values can this variable hold?</span></li>
+<li><span lang="id">Can these two values be added together?</span><span lang="en">Can these two values be added together?</span></li>
+<li><span lang="id">What type should this function's parameter be?</span><span lang="en">What type should this function's parameter be?</span></li>
+</ul>
+<p class="reveal"><span lang="id">A world without a type system is like a road without traffic rules — any data can be combined with any other data, with completely unpredictable results.</span><span lang="en">A world without a type system is like a road without traffic rules — any data can be combined with any other data, with completely unpredictable results.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Role of Type Systems</th><th>Description</th><th>Example</th></tr>
+<tr><td>Prevent illegal operations</td><td>Block meaningless operations</td><td>Can't divide a string</td></tr>
+<tr><td>Provide documentation</td><td>Types are the best documentation</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">function add(a: number, b: number)</code> is self-explanatory</td></tr>
+<tr><td>Support IDE tooling</td><td>Auto-completion, refactoring, navigation</td><td>Type <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">user.</code> and get suggestions for all properties</td></tr>
+<tr><td>Optimize performance</td><td>Compilers can generate faster code knowing the types</td><td>Use integer instructions when the type is known to be an integer</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Static vs. Dynamic Typing</span><span lang="en">2. Static vs. Dynamic Typing</span></h2>
+<p class="reveal"><span lang="id">This is the most important classification dimension of type systems — <b>check timing</b>.</span><span lang="en">This is the most important classification dimension of type systems — <b>check timing</b>.</span></p>
+<p class="reveal"><span lang="id"><StaticVsDynamicDemo /></span><span lang="en"><StaticVsDynamicDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Static typing</b>: Variable types are determined at compile time. Type errors are caught before the code even runs. Representatives: Java, TypeScript, Rust, Go.
+- <b>Dynamic typing</b>: Variable types are determined at runtime. The same variable can store a number first and then a string. Representatives: Python, JavaScript, Ruby, PHP.</span><span lang="en">- <b>Static typing</b>: Variable types are determined at compile time. Type errors are caught before the code even runs. Representatives: Java, TypeScript, Rust, Go.
+- <b>Dynamic typing</b>: Variable types are determined at runtime. The same variable can store a number first and then a string. Representatives: Python, JavaScript, Ruby, PHP.</span></p>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Dimension</th><th>Static Typing</th><th>Dynamic Typing</th></tr>
+<tr><td>Check timing</td><td>Compile time (checked before running)</td><td>Runtime (checked when that line executes)</td></tr>
+<tr><td>Bug detection</td><td>Early (known right after writing)</td><td>Late (exposed during user interaction)</td></tr>
+<tr><td>Flexibility</td><td>Lower (fixed types)</td><td>Higher (types can change)</td></tr>
+<tr><td>IDE support</td><td>Good (auto-completion, refactoring)</td><td>Weaker (types only known at runtime)</td></tr>
+<tr><td>Development speed</td><td>Slower initially (must write types)</td><td>Faster initially (no need to manage types)</td></tr>
+<tr><td>Maintenance cost</td><td>Low (types serve as documentation)</td><td>High (lack of type information)</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Python added Type Hints, and the JavaScript community shifted to TypeScript — dynamic languages are embracing the benefits of static typing. This shows that in large projects, the safety advantages of static typing are increasingly recognized.</span><span lang="en">Python added Type Hints, and the JavaScript community shifted to TypeScript — dynamic languages are embracing the benefits of static typing. This shows that in large projects, the safety advantages of static typing are increasingly recognized.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Strong vs. Weak Typing</span><span lang="en">3. Strong vs. Weak Typing</span></h2>
+<p class="reveal"><span lang="id">The second classification dimension is <b>strictness of type conversion</b>.</span><span lang="en">The second classification dimension is <b>strictness of type conversion</b>.</span></p>
+<p class="reveal"><span lang="id"><StrongVsWeakDemo /></span><span lang="en"><StrongVsWeakDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Strong typing</b>: Implicit type conversions are not allowed. Type mismatches cause errors. You must explicitly tell the language "I want to convert this string to a number."
+- <b>Weak typing</b>: Implicit type conversions are allowed. The language "helpfully" converts types automatically. But this "helpfulness" often introduces unexpected bugs.</span><span lang="en">- <b>Strong typing</b>: Implicit type conversions are not allowed. Type mismatches cause errors. You must explicitly tell the language "I want to convert this string to a number."
+- <b>Weak typing</b>: Implicit type conversions are allowed. The language "helpfully" converts types automatically. But this "helpfulness" often introduces unexpected bugs.</span></p>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Dimension</th><th>Strong Typing</th><th>Weak Typing</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"1" + 1</code></td><td>Error or requires explicit conversion</td><td>Auto-converts (may produce <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"11"</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">2</code>)</td></tr>
+<tr><td>Safety</td><td>High (won't fail silently)</td><td>Low (implicit conversions can cause bugs)</td></tr>
+<tr><td>Convenience</td><td>Low (requires manual conversion)</td><td>High (auto-conversion saves effort)</td></tr>
+<tr><td>Predictability</td><td>High (behavior is deterministic)</td><td>Low (conversion rules are complex)</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Type Inference: The Best of Both Worlds</span><span lang="en">4. Type Inference: The Best of Both Worlds</span></h2>
+<p class="reveal"><span lang="id">Early statically typed languages (like Java) required you to explicitly declare the type of every variable, which was verbose. Modern languages solve this through <b>type inference</b> — the compiler automatically infers types. You don't have to write them, but the compiler still checks strictly.</span><span lang="en">Early statically typed languages (like Java) required you to explicitly declare the type of every variable, which was verbose. Modern languages solve this through <b>type inference</b> — the compiler automatically infers types. You don't have to write them, but the compiler still checks strictly.</span></p>
+<p class="reveal"><span lang="id"><TypeInferenceFlowDemo /></span><span lang="en"><TypeInferenceFlowDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Write code as concisely as a dynamic language, with compiler checking as strict as a static language. This is the mainstream direction of modern programming languages.
+- <b>TypeScript</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">let x = 42</code> is automatically inferred as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">number</code>
+- <b>Rust</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">let v = vec![1, 2, 3]</code> is automatically inferred as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Vec<i32></code>
+- <b>Kotlin</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">val name = "Alice"</code> is automatically inferred as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">String</code>
+- <b>Go</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">x := 42</code> short variable declaration automatically infers the type</span><span lang="en">Write code as concisely as a dynamic language, with compiler checking as strict as a static language. This is the mainstream direction of modern programming languages.
+- <b>TypeScript</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">let x = 42</code> is automatically inferred as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">number</code>
+- <b>Rust</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">let v = vec![1, 2, 3]</code> is automatically inferred as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Vec<i32></code>
+- <b>Kotlin</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">val name = "Alice"</code> is automatically inferred as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">String</code>
+- <b>Go</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">x := 42</code> short variable declaration automatically infers the type</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Generics: Write Once, Work for All Types</span><span lang="en">5. Generics: Write Once, Work for All Types</span></h2>
+<p class="reveal"><span lang="id">When you write a function to "get the first element of an array," you'll find: you need one version for number arrays, another for string arrays, yet another for object arrays... The code is exactly the same, only the type differs. <b>Generics</b> solve this problem — use a "type parameter" in place of a concrete type, letting one piece of code work for all types.</span><span lang="en">When you write a function to "get the first element of an array," you'll find: you need one version for number arrays, another for string arrays, yet another for object arrays... The code is exactly the same, only the type differs. <b>Generics</b> solve this problem — use a "type parameter" in place of a concrete type, letting one piece of code work for all types.</span></p>
+<p class="reveal"><span lang="id"><GenericTypeDemo /></span><span lang="en"><GenericTypeDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Code reuse</b>: One function/class works for all types without repetition
+- <b>Type safety</b>: Unlike <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">any</code> which abandons type checking, generics preserve type information throughout
+- <b>Type constraints</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">extends</code> to limit the scope of generics, achieving both flexibility and safety</span><span lang="en">- <b>Code reuse</b>: One function/class works for all types without repetition
+- <b>Type safety</b>: Unlike <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">any</code> which abandons type checking, generics preserve type information throughout
+- <b>Type constraints</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">extends</code> to limit the scope of generics, achieving both flexibility and safety</span></p>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Generic Feature</th><th>Description</th><th>Example</th></tr>
+<tr><td>Generic function</td><td>Function parameters/return values use type parameters</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">function first<T>(arr: T[]): T</code></td></tr>
+<tr><td>Generic class</td><td>Class properties/methods use type parameters</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">class Box<T> { value: T }</code></td></tr>
+<tr><td>Generic constraints</td><td>Use extends to limit T's scope</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><T extends HasLength></code></td></tr>
+<tr><td>Multiple type parameters</td><td>Use multiple type variables simultaneously</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">function pair<K, V>(k: K, v: V)</code></td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Type Safety in Practice: Common Pitfalls and Defenses</span><span lang="en">6. Type Safety in Practice: Common Pitfalls and Defenses</span></h2>
+<p class="reveal"><span lang="id">Having covered the theory, let's look at the most common type-related pitfalls in real development. These pitfalls span languages — almost every developer encounters them.</span><span lang="en">Having covered the theory, let's look at the most common type-related pitfalls in real development. These pitfalls span languages — almost every developer encounters them.</span></p>
+<p class="reveal"><span lang="id"><TypeSafetyPracticeDemo /></span><span lang="en"><TypeSafetyPracticeDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">1. <b>Enable strict mode</b>: TypeScript's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">strict: true</code>, Python's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">mypy --strict</code>
+2. <b>Avoid any</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">unknown</code> instead of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">any</code>, forcing you to perform type checks before using the value
+3. <b>Handle null explicitly</b>: Use optional chaining <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">?.</code> and nullish coalescing <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">??</code> for safe access
+4. <b>Define interfaces for APIs</b>: External data is never trustworthy — use interfaces + runtime validation for double protection</span><span lang="en">1. <b>Enable strict mode</b>: TypeScript's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">strict: true</code>, Python's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">mypy --strict</code>
+2. <b>Avoid any</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">unknown</code> instead of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">any</code>, forcing you to perform type checks before using the value
+3. <b>Handle null explicitly</b>: Use optional chaining <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">?.</code> and nullish coalescing <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">??</code> for safe access
+4. <b>Define interfaces for APIs</b>: External data is never trustworthy — use interfaces + runtime validation for double protection</span></p>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Pitfall</th><th>Danger Level</th><th>Defense</th></tr>
+<tr><td>null/undefined references</td><td>⭐⭐⭐⭐⭐</td><td>strictNullChecks + optional chaining</td></tr>
+<tr><td>any type abuse</td><td>⭐⭐⭐⭐</td><td>Use unknown + type guards</td></tr>
+<tr><td>Implicit type conversion</td><td>⭐⭐⭐</td><td>Strict comparison === + ESLint</td></tr>
+<tr><td>Inconsistent array types</td><td>⭐⭐⭐</td><td>Explicitly declare array element types</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Language Type Quadrant Chart</span><span lang="en">7. Language Type Quadrant Chart</span></h2>
+<p class="reveal"><span lang="id">Combining the "static/dynamic" and "strong/weak" dimensions creates a four-quadrant classification chart. Every programming language can be placed on this chart.</span><span lang="en">Combining the "static/dynamic" and "strong/weak" dimensions creates a four-quadrant classification chart. Every programming language can be placed on this chart.</span></p>
+<p class="reveal"><span lang="id"><LanguageTypeModelDemo /></span><span lang="en"><LanguageTypeModelDemo /></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Quadrant</th><th>Characteristics</th><th>Representative Languages</th><th>Use Cases</th></tr>
+<tr><td>Static + Strong</td><td>Safest, strict compile-time checking</td><td>Rust, Java, Haskell</td><td>Large systems, safety-critical</td></tr>
+<tr><td>Static + Weak</td><td>Compile-time checking but allows implicit conversion</td><td>C, C++</td><td>Systems programming, performance-sensitive</td></tr>
+<tr><td>Dynamic + Strong</td><td>Runtime checking, no implicit conversion</td><td>Python, Ruby</td><td>Scripts, rapid prototyping</td></tr>
+<tr><td>Dynamic + Weak</td><td>Most flexible, also most bug-prone</td><td>JavaScript, PHP</td><td>Web frontend, small scripts</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">When choosing a language, the type system is an important consideration:
+- <b>Rapid prototyping</b>: Dynamic typing (Python) for fast development
+- <b>Large projects</b>: Static typing (TypeScript, Java) for lower maintenance costs
+- <b>Systems programming</b>: Strong + static (Rust) for highest safety
+- <b>Team collaboration</b>: Static typing provides better code readability and IDE support</span><span lang="en">When choosing a language, the type system is an important consideration:
+- <b>Rapid prototyping</b>: Dynamic typing (Python) for fast development
+- <b>Large projects</b>: Static typing (TypeScript, Java) for lower maintenance costs
+- <b>Systems programming</b>: Strong + static (Rust) for highest safety
+- <b>Team collaboration</b>: Static typing provides better code readability and IDE support</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary</span><span lang="en">Summary</span></h2>
+<p class="reveal"><span lang="id">Type systems are a key perspective for understanding differences between programming languages. They're not dry theory — they directly affect your coding experience and code quality.</span><span lang="en">Type systems are a key perspective for understanding differences between programming languages. They're not dry theory — they directly affect your coding experience and code quality.</span></p>
+<p class="reveal"><span lang="id">Review the key points of this chapter:</span><span lang="en">Review the key points of this chapter:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Types are ID cards</b>: Every piece of data has a type that determines what operations it can participate in</span><span lang="en"><b>Types are ID cards</b>: Every piece of data has a type that determines what operations it can participate in</span></li>
+<li><span lang="id"><b>Static vs Dynamic</b>: When to check types — compile time or runtime</span><span lang="en"><b>Static vs Dynamic</b>: When to check types — compile time or runtime</span></li>
+<li><span lang="id"><b>Strong vs Weak</b>: Whether implicit type conversions are allowed</span><span lang="en"><b>Strong vs Weak</b>: Whether implicit type conversions are allowed</span></li>
+<li><span lang="id"><b>Type inference</b>: Modern languages let you enjoy dynamic conciseness with static safety</span><span lang="en"><b>Type inference</b>: Modern languages let you enjoy dynamic conciseness with static safety</span></li>
+<li><span lang="id"><b>Generics</b>: Use type parameters for code reuse, balancing flexibility and type safety</span><span lang="en"><b>Generics</b>: Use type parameters for code reuse, balancing flexibility and type safety</span></li>
+<li><span lang="id"><b>Type safety in practice</b>: null references, any abuse, and implicit conversion are the most common type pitfalls</span><span lang="en"><b>Type safety in practice</b>: null references, any abuse, and implicit conversion are the most common type pitfalls</span></li>
+<li><span lang="id"><b>Four-quadrant classification</b>: There's no best type system, only the most suitable choice for the scenario</span><span lang="en"><b>Four-quadrant classification</b>: There's no best type system, only the most suitable choice for the scenario</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[TypeScript Official Documentation](https://www.typescriptlang.org/docs/) - The most popular statically typed JavaScript superset</span><span lang="en">[TypeScript Official Documentation](https://www.typescriptlang.org/docs/) - The most popular statically typed JavaScript superset</span></li>
+<li><span lang="id">[Python Type Hints](https://docs.python.org/3/library/typing.html) - Python's type hint system</span><span lang="en">[Python Type Hints](https://docs.python.org/3/library/typing.html) - Python's type hint system</span></li>
+<li><span lang="id">[Rust Book - Data Types](https://doc.rust-lang.org/book/ch03-02-data-types.html) - Introduction to Rust's type system</span><span lang="en">[Rust Book - Data Types](https://doc.rust-lang.org/book/ch03-02-data-types.html) - Introduction to Rust's type system</span></li>
+<li><span lang="id">[Type Systems (Wikipedia)](https://en.wikipedia.org/wiki/Type_system) - Academic overview of type systems</span><span lang="en">[Type Systems (Wikipedia)](https://en.wikipedia.org/wiki/Type_system) - Academic overview of type systems</span></li>
+<li><span lang="id">[What To Know Before Debating Type Systems](https://cdsmith.wordpress.com/2011/01/09/an-old-article-i-wrote/) - A classic discussion about type systems</span><span lang="en">[What To Know Before Debating Type Systems](https://cdsmith.wordpress.com/2011/01/09/an-old-article-i-wrote/) - A classic discussion about type systems</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../1-computer-fundamentals/transistor-to-cpu/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">1-computer-fundamentals/transistor-to-cpu</span><span lang="en">1-computer-fundamentals/transistor-to-cpu</span></b></a>
+      <a class="next" href="../../1-computer-fundamentals/vibe-coding-fullstack/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">1-computer-fundamentals/vibe-coding-fullstack</span><span lang="en">1-computer-fundamentals/vibe-coding-fullstack</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

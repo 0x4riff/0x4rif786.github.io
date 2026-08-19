@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Desain &amp; Pembuatan API Backend dengan LLM — VibeKoding 🔌</title>
+<meta name="description" content="Modul praktis Level 2 VibeKoding: Desain &amp; Pembuatan API Backend dengan LLM. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-2/backend/ai-interface-code/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../stage-2/"><span lang="id">Level 2 · Developer</span><span lang="en">Level 2 · Developer</span></a> / <span lang="id">Desain & Pembuatan API Backend dengan LLM</span><span lang="en">Desain & Pembuatan API Backend dengan LLM</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">🔌</div>
+      <div>
+        <h1><span lang="id">Desain & Pembuatan API Backend dengan LLM</span><span lang="en">Desain & Pembuatan API Backend dengan LLM</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 2 · Developer</span><span lang="en">Level 2 · Developer</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul praktis Level 2 VibeKoding: Desain & Pembuatan API Backend dengan LLM.</span><span lang="en">Modul praktis Level 2 VibeKoding: Desain & Pembuatan API Backend dengan LLM.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">In the previous chapters, we learned how to use tools like Figma to create UI drafts, how to use AI to quickly generate static frontend pages, and how to use Supabase to build databases and basic authentication. That naturally leads to a new question: when someone clicks those lively buttons on the frontend, how does the data actually get stored in Supabase? And when we need more complex business logic such as concurrent payments, scheduled pushes, or sensitive data processing, is it still safe to let the frontend talk directly to the database?</span><span lang="en">In the previous chapters, we learned how to use tools like Figma to create UI drafts, how to use AI to quickly generate static frontend pages, and how to use Supabase to build databases and basic authentication. That naturally leads to a new question: when someone clicks those lively buttons on the frontend, how does the data actually get stored in Supabase? And when we need more complex business logic such as concurrent payments, scheduled pushes, or sensitive data processing, is it still safe to let the frontend talk directly to the database?</span></p>
+<p class="reveal"><span lang="id">That question introduces one of the most important parts of modern web architecture: the <b>backend API</b>.</span><span lang="en">That question introduces one of the most important parts of modern web architecture: the <b>backend API</b>.</span></p>
+<p class="reveal"><span lang="id">In the past, backend developers often wrote hundreds or thousands of lines of routing, controller, and validation logic by hand. Today, we can hand much of that repetitive scaffolding to large language models. In this chapter, we will move beyond vague "AI-generated code" and look at a real workflow for using strong prompts to guide an LLM into writing solid Node.js backend interfaces, plus the corresponding documentation and test cases.</span><span lang="en">In the past, backend developers often wrote hundreds or thousands of lines of routing, controller, and validation logic by hand. Today, we can hand much of that repetitive scaffolding to large language models. In this chapter, we will move beyond vague "AI-generated code" and look at a real workflow for using strong prompts to guide an LLM into writing solid Node.js backend interfaces, plus the corresponding documentation and test cases.</span></p>
+<p class="reveal"><span lang="id">> 💡 <b>Prerequisites</b></span><span lang="en">> 💡 <b>Prerequisites</b></span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> Before starting this chapter, it helps to understand:</span><span lang="en">> Before starting this chapter, it helps to understand:</span></p>
+<p class="reveal"><span lang="id">> - [From Database to Supabase](../database-supabase/) for basic database and data-model concepts</span><span lang="en">> - [From Database to Supabase](../database-supabase/) for basic database and data-model concepts</span></p>
+<p class="reveal"><span lang="id">> - [Git and GitHub Workflow](../git-workflow/) for project collaboration and version control</span><span lang="en">> - [Git and GitHub Workflow](../git-workflow/) for project collaboration and version control</span></p>
+<p class="reveal"><span lang="id">> - [What Is the Terminal / Command Line](/en/appendix/2-development-tools/command-line-shell) for project initialization and startup commands</span><span lang="en">> - [What Is the Terminal / Command Line](/en/appendix/2-development-tools/command-line-shell) for project initialization and startup commands</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>What an API is</b>: Understand the bridge between frontend and backend, plus basic RESTful design.</span><span lang="en"><b>What an API is</b>: Understand the bridge between frontend and backend, plus basic RESTful design.</span></li>
+<li><span lang="id"><b>How LLMs help service construction</b>: Use structured prompts to generate a clean Node.js + Express starter project.</span><span lang="en"><b>How LLMs help service construction</b>: Use structured prompts to generate a clean Node.js + Express starter project.</span></li>
+<li><span lang="id"><b>Interface logic development</b>: Guide the model to generate CRUD APIs with proper business validation and Supabase integration.</span><span lang="en"><b>Interface logic development</b>: Guide the model to generate CRUD APIs with proper business validation and Supabase integration.</span></li>
+<li><span lang="id"><b>Automatic API documentation</b>: Ask the model to reverse-generate OpenAPI/Swagger docs from your code.</span><span lang="en"><b>Automatic API documentation</b>: Ask the model to reverse-generate OpenAPI/Swagger docs from your code.</span></li>
+<li><span lang="id"><b>Testing and integration loops</b>: Use the model to create Postman collections and Jest unit tests to protect code quality.</span><span lang="en"><b>Testing and integration loops</b>: Use the model to create Postman collections and Jest unit tests to protect code quality.</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">Traditionally, the frontend is "the visible part" and the database is "the storage room." But something is missing between them: a coordinator.</span><span lang="en">Traditionally, the frontend is "the visible part" and the database is "the storage room." But something is missing between them: a coordinator.</span></p>
+<p class="reveal"><span lang="id">If you imagine the application as a restaurant:</span><span lang="en">If you imagine the application as a restaurant:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">The <b>frontend (client)</b> is the menu and ordering table, where customers browse and make requests.</span><span lang="en">The <b>frontend (client)</b> is the menu and ordering table, where customers browse and make requests.</span></li>
+<li><span lang="id">The <b>database (Supabase, etc.)</b> is the kitchen storeroom, where ingredients and records are kept.</span><span lang="en">The <b>database (Supabase, etc.)</b> is the kitchen storeroom, where ingredients and records are kept.</span></li>
+<li><span lang="id">The <b>backend API</b> is the waiter. Customers should not run straight into the kitchen to grab ingredients. Instead, they tell the waiter what they want through an HTTP request. The waiter checks the request, verifies permissions, talks to the kitchen, and brings the result back through an HTTP response, usually in JSON.</span><span lang="en">The <b>backend API</b> is the waiter. Customers should not run straight into the kitchen to grab ingredients. Instead, they tell the waiter what they want through an HTTP request. The waiter checks the request, verifies permissions, talks to the kitchen, and brings the result back through an HTTP response, usually in JSON.</span></li>
+</ul>
+<p class="reveal"><span lang="id">Through APIs, we achieve a clean <b>frontend-backend separation</b>: the frontend focuses on rendering, while the backend focuses on business logic, data processing, and security.</span><span lang="en">Through APIs, we achieve a clean <b>frontend-backend separation</b>: the frontend focuses on rendering, while the backend focuses on business logic, data processing, and security.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">A clear project skeleton is a prerequisite for getting high-quality code from an LLM. Before you ask AI to write code, you should already have a mental model of the structure you want.</span><span lang="en">A clear project skeleton is a prerequisite for getting high-quality code from an LLM. Before you ask AI to write code, you should already have a mental model of the structure you want.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.1 A common API project structure</span><span lang="en">2.1 A common API project structure</span></h2>
+<p class="reveal"><span lang="id">Even if an LLM is generating the code, you should not dump everything into one <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">server.js</code> file. A maintainable Node.js backend usually looks something like this:</span><span lang="en">Even if an LLM is generating the code, you should not dump everything into one <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">server.js</code> file. A maintainable Node.js backend usually looks something like this:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>my-api-project/
+├── .env                  # Sensitive environment variables such as API keys and DB URLs
+├── server.js             # Project entry point: boot server, register global middleware
+├── package.json          # Dependency management
+├── src/
+│   ├── routes/           # Route layer: define URLs and HTTP methods
+│   ├── controllers/      # Controller layer: process request params, call services, return responses
+│   ├── services/         # Service layer: database access and core business logic
+│   └── middlewares/      # Middleware: auth, global error handling
+└── docs/                 # API documentation</pre>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.2 Use AI to initialize the project</span><span lang="en">2.2 Use AI to initialize the project</span></h2>
+<p class="reveal"><span lang="id">Instead of manually running <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm init</code> and installing packages one by one, you can give the model the structure above in prompt form:</span><span lang="en">Instead of manually running <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm init</code> and installing packages one by one, you can give the model the structure above in prompt form:</span></p>
+<p class="reveal"><span lang="id">> 🗣️ <b>Prompt example</b></span><span lang="en">> 🗣️ <b>Prompt example</b></span></p>
+<p class="reveal"><span lang="id">> "Help me scaffold a Node.js backend project that can connect to Supabase. Keep the structure clean and easy to maintain later."</span><span lang="en">> "Help me scaffold a Node.js backend project that can connect to Supabase. Keep the structure clean and easy to maintain later."</span></p>
+<p class="reveal"><span lang="id">If the prompt is good, the code you get back can already give you a backend app with a solid foundation running on <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localhost:3000</code>.</span><span lang="en">If the prompt is good, the code you get back can already give you a backend app with a solid foundation running on <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">localhost:3000</code>.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">This is the heart of the chapter. When LLM-generated code feels superficial or unsafe, the root cause is usually missing context. <b>LLMs are not afraid of complex requirements. They are afraid of vague ones.</b></span><span lang="en">This is the heart of the chapter. When LLM-generated code feels superficial or unsafe, the root cause is usually missing context. <b>LLMs are not afraid of complex requirements. They are afraid of vague ones.</b></span></p>
+<p class="reveal"><span lang="id">Take the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">menu_items</code> insert API from the [database chapter](../database-supabase/) as an example.</span><span lang="en">Take the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">menu_items</code> insert API from the [database chapter](../database-supabase/) as an example.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.1 Give the model full context</span><span lang="en">3.1 Give the model full context</span></h2>
+<p class="reveal"><span lang="id">Before asking the model to write an API, provide both the <b>database schema</b> and the <b>business constraints</b>.</span><span lang="en">Before asking the model to write an API, provide both the <b>database schema</b> and the <b>business constraints</b>.</span></p>
+<p class="reveal"><span lang="id">> 🗣️ <b>High-quality prompt template</b></span><span lang="en">> 🗣️ <b>High-quality prompt template</b></span></p>
+<p class="reveal"><span lang="id">> "Help me write an API for creating a menu item. Each item includes a product name, price, category (burger, snack, drink), and whether it is listed. Product name and price are required. Price cannot be negative. Return helpful validation errors when the user input is invalid."</span><span lang="en">> "Help me write an API for creating a menu item. Each item includes a product name, price, category (burger, snack, drink), and whether it is listed. Product name and price are required. Price cannot be negative. Return helpful validation errors when the user input is invalid."</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.2 Review the generated code</span><span lang="en">3.2 Review the generated code</span></h2>
+<p class="reveal"><span lang="id">A good model will often separate responsibilities clearly, for example:</span><span lang="en">A good model will often separate responsibilities clearly, for example:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// services/menuService.js
+const { createClient } = require(&#039;@supabase/supabase-js&#039;);
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
+
+exports.createMenuItem = async (menuData) =&gt; {
+    // Push data into the table via the Supabase SDK
+    const { data, error } = await supabase
+        .from(&#039;menu_items&#039;)
+        .insert([menuData])
+        .select();
+
+    if (error) throw new Error(`Database insert failed: ${error.message}`);
+    return data[0];
+};</pre>
+</div>
+<p class="reveal"><span lang="id">You can see that, with enough context, the model generates something structurally cleaner: Supabase initialization is separated, errors are handled, and the code is easier to reason about. That is very different from the spaghetti code you usually get from a vague request like "write a create endpoint."</span><span lang="en">You can see that, with enough context, the model generates something structurally cleaner: Supabase initialization is separated, errors are handled, and the code is easier to reason about. That is very different from the spaghetti code you usually get from a vague request like "write a create endpoint."</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">For a development team, an undocumented API is a blind box. Frontend engineers cannot guess what parameters are required or what the response shape will be. The most common API description standard in the industry is <b>OpenAPI</b> (formerly often called Swagger).</span><span lang="en">For a development team, an undocumented API is a blind box. Frontend engineers cannot guess what parameters are required or what the response shape will be. The most common API description standard in the industry is <b>OpenAPI</b> (formerly often called Swagger).</span></p>
+<p class="reveal"><span lang="id">Writing Swagger YAML or JSON by hand used to be painful and error-prone. Now it is one of the areas where LLMs help the most.</span><span lang="en">Writing Swagger YAML or JSON by hand used to be painful and error-prone. Now it is one of the areas where LLMs help the most.</span></p>
+<p class="reveal"><span lang="id">You can select your <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">routes</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">controllers</code> code and ask:</span><span lang="en">You can select your <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">routes</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">controllers</code> code and ask:</span></p>
+<p class="reveal"><span lang="id">> 🗣️ <b>Documentation prompt</b></span><span lang="en">> 🗣️ <b>Documentation prompt</b></span></p>
+<p class="reveal"><span lang="id">> "Generate API documentation from the code above. Clearly explain what every parameter means and what data the endpoint returns, so the frontend team can integrate it easily."</span><span lang="en">> "Generate API documentation from the code above. Clearly explain what every parameter means and what data the endpoint returns, so the frontend team can integrate it easily."</span></p>
+<p class="reveal"><span lang="id">You can even ask the model to fill in descriptions and mock example values such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">price_cents: 1200</code> for a $12.00 item. That reduces a lot of back-and-forth communication.</span><span lang="en">You can even ask the model to fill in descriptions and mock example values such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">price_cents: 1200</code> for a $12.00 item. That reduces a lot of back-and-forth communication.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">After the code and docs are ready, there is still one more step: verifying that everything actually works.</span><span lang="en">After the code and docs are ready, there is still one more step: verifying that everything actually works.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5.1 Generate Postman or Apifox test configurations</span><span lang="en">5.1 Generate Postman or Apifox test configurations</span></h2>
+<p class="reveal"><span lang="id">When developing APIs, we often use tools like Postman to simulate HTTP requests. Without AI, you usually have to fill in URLs, headers, and JSON request bodies manually.</span><span lang="en">When developing APIs, we often use tools like Postman to simulate HTTP requests. Without AI, you usually have to fill in URLs, headers, and JSON request bodies manually.</span></p>
+<p class="reveal"><span lang="id">You can simply tell the model:</span><span lang="en">You can simply tell the model:</span></p>
+<p class="reveal"><span lang="id">> "Convert this API documentation into a Postman-importable format and include both successful and failing request examples."</span><span lang="en">> "Convert this API documentation into a Postman-importable format and include both successful and failing request examples."</span></p>
+<p class="reveal"><span lang="id">Once you save the returned JSON as something like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">menu_api.json</code> and import it into Postman, you instantly get a ready-to-use testing panel.</span><span lang="en">Once you save the returned JSON as something like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">menu_api.json</code> and import it into Postman, you instantly get a ready-to-use testing panel.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5.2 Write automated unit tests</span><span lang="en">5.2 Write automated unit tests</span></h2>
+<p class="reveal"><span lang="id">If you want stricter engineering quality, you can also ask the model to write tests with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Jest</code> or a similar framework. That is especially useful for boundary conditions, such as ensuring a negative price is rejected before data reaches the database.</span><span lang="en">If you want stricter engineering quality, you can also ask the model to write tests with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Jest</code> or a similar framework. That is especially useful for boundary conditions, such as ensuring a negative price is rejected before data reaches the database.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<p class="reveal"><span lang="id">Even with AI support, you are still the gatekeeper of the system. You need to review the generated code against a few important principles:</span><span lang="en">Even with AI support, you are still the gatekeeper of the system. You need to review the generated code against a few important principles:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>RESTful path naming</b></span><span lang="en"><b>RESTful path naming</b></span></li>
+<li><span lang="id">Good: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">GET /api/users</code> for listing users, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">POST /api/users</code> for creating users</span><span lang="en">Good: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">GET /api/users</code> for listing users, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">POST /api/users</code> for creating users</span></li>
+<li><span lang="id">Bad: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">POST /api/getUser</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">POST /api/createUser</code></span><span lang="en">Bad: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">POST /api/getUser</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">POST /api/createUser</code></span></li>
+</ul>
+<p class="reveal"><span lang="id">The URL should represent the resource. The action belongs to the HTTP method.</span><span lang="en">The URL should represent the resource. The action belongs to the HTTP method.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Correct HTTP status codes</b></span><span lang="en"><b>Correct HTTP status codes</b></span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">200/201</code>: request succeeded / resource created successfully</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">200/201</code>: request succeeded / resource created successfully</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">400</code>: bad request, invalid parameters or missing required fields</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">400</code>: bad request, invalid parameters or missing required fields</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">401/403</code>: unauthorized / forbidden</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">401/403</code>: unauthorized / forbidden</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">404</code>: resource not found</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">404</code>: resource not found</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">500</code>: server error, such as backend exceptions or database failures</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">500</code>: server error, such as backend exceptions or database failures</span></li>
+</ul>
+<p class="reveal"><span lang="id">Do not expose full backend stack traces to the frontend.</span><span lang="en">Do not expose full backend stack traces to the frontend.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Never trust user input</b></span><span lang="en"><b>Never trust user input</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">Frontend input can be forged. All important validation must run again on the backend.</span><span lang="en">Frontend input can be forged. All important validation must run again on the backend.</span></p>
+<p class="reveal"><span lang="id">After this chapter, your role should start to feel different. You are no longer just a typist trapped in syntax and punctuation. You are becoming a <b>system designer and architecture coordinator</b>.</span><span lang="en">After this chapter, your role should start to feel different. You are no longer just a typist trapped in syntax and punctuation. You are becoming a <b>system designer and architecture coordinator</b>.</span></p>
+<p class="reveal"><span lang="id">You have now learned:</span><span lang="en">You have now learned:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">The core systems thinking behind <b>APIs and frontend-backend separation</b></span><span lang="en">The core systems thinking behind <b>APIs and frontend-backend separation</b></span></li>
+<li><span lang="id">How to dramatically improve LLM-generated backend code by providing <b>good context and layered structure</b></span><span lang="en">How to dramatically improve LLM-generated backend code by providing <b>good context and layered structure</b></span></li>
+<li><span lang="id">How to turn tedious <b>documentation writing</b> and <b>test creation</b> into automation tasks that AI handles well</span><span lang="en">How to turn tedious <b>documentation writing</b> and <b>test creation</b> into automation tasks that AI handles well</span></li>
+<li><span lang="id">How to combine this with what you already learned about <b>Supabase</b> to complete the full flow from frontend request to database update</span><span lang="en">How to combine this with what you already learned about <b>Supabase</b> to complete the full flow from frontend request to database update</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Once your data flow and backend service are ready, they still only run locally on your own machine. In the next chapter, we will learn how to <b>deploy</b> that service to a public server so your product can be accessed by real users.</span><span lang="en">Once your data flow and backend service are ready, they still only run locally on your own machine. In the next chapter, we will learn how to <b>deploy</b> that service to a public server so your product can be accessed by real users.</span></p>
+</div>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../backend/database-supabase/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Database & Supabase: Fondasi Cloud Relasional</span><span lang="en">Database & Supabase: Fondasi Cloud Relasional</span></b></a>
+      <a class="next" href="../../backend/git-workflow/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Alur Kerja Git & GitHub: Mesin Waktu Kode</span><span lang="en">Alur Kerja Git & GitHub: Mesin Waktu Kode</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of Git Version Control — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Git Version Control. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/2-development-tools/git-version-control/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Git Version Control</span><span lang="en">Principles of Git Version Control</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of Git Version Control</span><span lang="en">Principles of Git Version Control</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Git Version Control.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Git Version Control.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">> 💡 <b>Learning Guide</b>: This chapter is written specifically for people who have never used Git. We won't start by making you memorize commands. Instead, we'll first understand "what problem Git is solving for you," and then step-by-step connect commands and concepts. After reading, you should be able to independently: make local commits, create branches, and push to GitHub.</span><span lang="en">> 💡 <b>Learning Guide</b>: This chapter is written specifically for people who have never used Git. We won't start by making you memorize commands. Instead, we'll first understand "what problem Git is solving for you," and then step-by-step connect commands and concepts. After reading, you should be able to independently: make local commits, create branches, and push to GitHub.</span></p>
+<p class="reveal"><span lang="id"><b>Git was created to solve these three problems.</b></span><span lang="en"><b>Git was created to solve these three problems.</b></span></p>
+<p class="reveal"><span lang="id">Git is a <b>Version Control System</b>. Its essence is: <b>recording every "save" operation you make, forming a complete historical timeline that lets you return to any previous point in history at any time.</b></span><span lang="en">Git is a <b>Version Control System</b>. Its essence is: <b>recording every "save" operation you make, forming a complete historical timeline that lets you return to any previous point in history at any time.</b></span></p>
+<p class="reveal"><span lang="id">It's no exaggeration to say that Git is one of the most important tools in modern software development. Nearly every company and every open-source project uses it.</span><span lang="en">It's no exaggeration to say that Git is one of the most important tools in modern software development. Nearly every company and every open-source project uses it.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Overview of Git and GitHub</span><span lang="en">1. Overview of Git and GitHub</span></h2>
+<p class="reveal"><span lang="id">Many beginners confuse these two concepts. Let's clarify:</span><span lang="en">Many beginners confuse these two concepts. Let's clarify:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th></th><th>Git</th><th>GitHub</th></tr>
+<tr><td><b>What is it</b></td><td>A version control tool running on your computer</td><td>A website that hosts Git repositories (in the cloud)</td></tr>
+<tr><td><b>Where is it</b></td><td>Your local computer</td><td>On the internet</td></tr>
+<tr><td><b>Can it be used independently</b></td><td>✅ Yes, it manages local history only</td><td>❌ Needs to be used with Git</td></tr>
+<tr><td><b>Analogy</b></td><td>Your local diary notebook</td><td>Cloud storage for your diary</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">Simply put: <b>Git is the tool, GitHub is the hosting service.</b> Just like Word is the tool and OneDrive is cloud storage — they work together but are not the same thing.</span><span lang="en">Simply put: <b>Git is the tool, GitHub is the hosting service.</b> Just like Word is the tool and OneDrive is cloud storage — they work together but are not the same thing.</span></p>
+<p class="reveal"><span lang="id">Besides GitHub, similar services include GitLab, Gitee (China-based), and others.</span><span lang="en">Besides GitHub, similar services include GitLab, Gitee (China-based), and others.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Core Concept: The Three Areas</span><span lang="en">2. Core Concept: The Three Areas</span></h2>
+<p class="reveal"><span lang="id">This is the most important design in all of Git. Once you understand these three areas, you understand the soul of Git.</span><span lang="en">This is the most important design in all of Git. Once you understand these three areas, you understand the soul of Git.</span></p>
+<p class="reveal"><span lang="id">Git divides your file states into three layers:</span><span lang="en">Git divides your file states into three layers:</span></p>
+<p class="reveal"><span lang="id"><b>Working Directory</b></span><span lang="en"><b>Working Directory</b></span></p>
+<p class="reveal"><span lang="id">This is your <b>regular folder</b> — all the files you can see and are currently editing are here. You can change anything freely; Git will sense what you've changed but won't record anything.</span><span lang="en">This is your <b>regular folder</b> — all the files you can see and are currently editing are here. You can change anything freely; Git will sense what you've changed but won't record anything.</span></p>
+<p class="reveal"><span lang="id"><b>Staging Area (Index)</b></span><span lang="en"><b>Staging Area (Index)</b></span></p>
+<p class="reveal"><span lang="id">This is a <b>"pre-commit transit station."</b> You can "put" files from the working directory that you want to save into the staging area — like putting packages into a shipping box. They haven't been sent out yet, but you've chosen what to send.</span><span lang="en">This is a <b>"pre-commit transit station."</b> You can "put" files from the working directory that you want to save into the staging area — like putting packages into a shipping box. They haven't been sent out yet, but you've chosen what to send.</span></p>
+<p class="reveal"><span lang="id"><b>Repository</b></span><span lang="en"><b>Repository</b></span></p>
+<p class="reveal"><span lang="id">This is the <b>permanent archive of historical records</b>, hidden inside the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.git</code> folder. Every time you run <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git commit</code>, the contents of the staging area are sealed into the repository, forming an immutable historical record.</span><span lang="en">This is the <b>permanent archive of historical records</b>, hidden inside the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.git</code> folder. Every time you run <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git commit</code>, the contents of the staging area are sealed into the repository, forming an immutable historical record.</span></p>
+<p class="reveal"><span lang="id">👇 <b>Try it out</b>: Click the command buttons in order and observe how files flow between the three areas.</span><span lang="en">👇 <b>Try it out</b>: Click the command buttons in order and observe how files flow between the three areas.</span></p>
+<p class="reveal"><span lang="id"><GitCommitFlow /></span><span lang="en"><GitCommitFlow /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Motivation for the "Two-Step" Process (add + commit)</span><span lang="en">Motivation for the "Two-Step" Process (add + commit)</span></h3>
+<p class="reveal"><span lang="id">Many beginners ask: why can't you just save with one click? Why <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">add</code> first, then <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">commit</code>?</span><span lang="en">Many beginners ask: why can't you just save with one click? Why <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">add</code> first, then <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">commit</code>?</span></p>
+<p class="reveal"><span lang="id"><b>Because in real-world development, you often don't want to commit all changes together.</b></span><span lang="en"><b>Because in real-world development, you often don't want to commit all changes together.</b></span></p>
+<p class="reveal"><span lang="id">For example: today you modified 5 files:</span><span lang="en">For example: today you modified 5 files:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">login.js</code>: completed the login feature (want to commit)</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">login.js</code>: completed the login feature (want to commit)</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">style.css</code>: adjusted the login page styles (want to commit)</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">style.css</code>: adjusted the login page styles (want to commit)</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">debug.log</code>: temporary debug output (<b>don't</b> want to commit)</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">debug.log</code>: temporary debug output (<b>don't</b> want to commit)</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">experiment.js</code>: testing a new feature, not finished yet (<b>don't</b> want to commit)</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">experiment.js</code>: testing a new feature, not finished yet (<b>don't</b> want to commit)</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">todo.txt</code>: your personal notes (<b>don't</b> want to commit)</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">todo.txt</code>: your personal notes (<b>don't</b> want to commit)</span></li>
+</ul>
+<p class="reveal"><span lang="id">Without a staging area, you'd either commit all 5 files (messy commit history) or commit none of them.</span><span lang="en">Without a staging area, you'd either commit all 5 files (messy commit history) or commit none of them.</span></p>
+<p class="reveal"><span lang="id">With a staging area, you can precisely control: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git add login.js style.css</code> — only put these two files into the shipping box, then <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">commit</code>. This commit clearly records "login feature completed."</span><span lang="en">With a staging area, you can precisely control: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git add login.js style.css</code> — only put these two files into the shipping box, then <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">commit</code>. This commit clearly records "login feature completed."</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Using Git for the First Time: Initialization and Basic Workflow</span><span lang="en">3. Using Git for the First Time: Initialization and Basic Workflow</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Installation and Initialization</span><span lang="en">3.1 Installation and Initialization</span></h3>
+<p class="reveal"><span lang="id">After installing Git (macOS comes with it; for Windows, download from git-scm.com), open the terminal and navigate to your project folder:</span><span lang="en">After installing Git (macOS comes with it; for Windows, download from git-scm.com), open the terminal and navigate to your project folder:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Initialize a Git repository in the current folder
+git init
+
+# Git will create a hidden .git folder where all history is stored
+# Output: Initialized empty Git repository in .../your-project/.git/</pre>
+</div>
+<p class="reveal"><span lang="id">The first time you use it, you also need to tell Git who you are (this information will be attached to every commit):</span><span lang="en">The first time you use it, you also need to tell Git who you are (this information will be attached to every commit):</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>git config --global user.name &quot;Your Name&quot;
+git config --global user.email &quot;your@email.com&quot;</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Daily Workflow: The Three-Step Save</span><span lang="en">3.2 Daily Workflow: The Three-Step Save</span></h3>
+<p class="reveal"><span lang="id">After initialization, 90% of daily development is just repeating these three steps:</span><span lang="en">After initialization, 90% of daily development is just repeating these three steps:</span></p>
+<p class="reveal"><span lang="id"><b>Step 1: Check Status</b></span><span lang="en"><b>Step 1: Check Status</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>git status</pre>
+</div>
+<p class="reveal"><span lang="id">This is the command you'll use the most, bar none. It tells you:</span><span lang="en">This is the command you'll use the most, bar none. It tells you:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Which branch you're on</span><span lang="en">Which branch you're on</span></li>
+<li><span lang="id">Which files have been modified (red = unstaged)</span><span lang="en">Which files have been modified (red = unstaged)</span></li>
+<li><span lang="id">Which files are in the staging area (green = staged, ready to commit)</span><span lang="en">Which files are in the staging area (green = staged, ready to commit)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Step 2: Put Files into the Staging Area</b></span><span lang="en"><b>Step 2: Put Files into the Staging Area</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Add a single file
+git add login.js
+
+# Add multiple files
+git add login.js style.css
+
+# Add all modified files in the current folder (. means &quot;everything&quot;)
+git add .</pre>
+</div>
+<p class="reveal"><span lang="id">> ⚠️ Common beginner pitfall: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git add .</code> is very convenient but adds all changes, including files you may not want to commit. Build the habit of precise adds, or use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.gitignore</code> to exclude files you don't want to track (covered later).</span><span lang="en">> ⚠️ Common beginner pitfall: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git add .</code> is very convenient but adds all changes, including files you may not want to commit. Build the habit of precise adds, or use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.gitignore</code> to exclude files you don't want to track (covered later).</span></p>
+<p class="reveal"><span lang="id"><b>Step 3: Commit with a Message</b></span><span lang="en"><b>Step 3: Commit with a Message</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>git commit -m &quot;feat: add user login feature&quot;</pre>
+</div>
+<p class="reveal"><span lang="id">The text in quotes after <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">-m</code> is called the <b>commit message</b>. This is written for your future self and your teammates — make it meaningful.</span><span lang="en">The text in quotes after <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">-m</code> is called the <b>commit message</b>. This is written for your future self and your teammates — make it meaningful.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 How to Write Professional Commit Messages</span><span lang="en">3.3 How to Write Professional Commit Messages</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># ❌ Bad examples — reading them tells you nothing about what was done
+git commit -m &quot;update&quot;
+git commit -m &quot;fix&quot;
+git commit -m &quot;changed some things&quot;
+
+# ✅ Good examples: type + colon + one-sentence description
+git commit -m &quot;feat: add user login feature&quot;
+git commit -m &quot;fix: fix white screen issue on iOS Safari homepage&quot;
+git commit -m &quot;docs: update deployment instructions in README&quot;
+git commit -m &quot;refactor: split UserService into independent module&quot;
+git commit -m &quot;style: unify code indentation to 2 spaces&quot;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Common prefix meanings:</b></span><span lang="en"><b>Common prefix meanings:</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Prefix</th><th>Meaning</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">feat:</code></td><td>New feature</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fix:</code></td><td>Bug fix</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">docs:</code></td><td>Documentation changes</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">style:</code></td><td>Code formatting (no functional change)</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">refactor:</code></td><td>Code refactoring (same functionality, improved structure)</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">chore:</code></td><td>Build, tools, dependencies</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">test:</code></td><td>Testing related</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">Build this habit, and months later when you browse the history, you'll know at a glance what each commit did. This is especially important in team collaboration.</span><span lang="en">Build this habit, and months later when you browse the history, you'll know at a glance what each commit did. This is especially important in team collaboration.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.4 Viewing History</span><span lang="en">3.4 Viewing History</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Detailed format (full info for each commit)
+git log
+
+# Compact format (one line per commit, recommended for daily use)
+git log --oneline
+
+# Example output:
+# a1b2c3d (HEAD -&gt; main) feat: add user login feature
+# 9f3e1b2 init: project initialization</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Branch Concepts</span><span lang="en">4. Branch Concepts</span></h2>
+<p class="reveal"><span lang="id"><b>Branches</b> are Git's most powerful — and also most confusing for beginners — feature. But once you understand them, you'll find the design very elegant.</span><span lang="en"><b>Branches</b> are Git's most powerful — and also most confusing for beginners — feature. But once you understand them, you'll find the design very elegant.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Overview of Branches Understanding Through Branch Isolation</span><span lang="en">4.1 Overview of Branches Understanding Through Branch Isolation</span></h3>
+<p class="reveal"><span lang="id">Imagine you're playing an RPG game with a critical choice:</span><span lang="en">Imagine you're playing an RPG game with a critical choice:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Choice A: Challenge the final boss (develop a new feature)</span><span lang="en">Choice A: Challenge the final boss (develop a new feature)</span></li>
+<li><span lang="id">Choice B: Continue stabilizing the current situation (keep the main storyline intact)</span><span lang="en">Choice B: Continue stabilizing the current situation (keep the main storyline intact)</span></li>
+</ul>
+<p class="reveal"><span lang="id">If you make Choice A directly on your main save file and fail, your entire game progress is ruined.</span><span lang="en">If you make Choice A directly on your main save file and fail, your entire game progress is ruined.</span></p>
+<p class="reveal"><span lang="id">But if you <b>copy your save file</b> and challenge the boss in the copy:</span><span lang="en">But if you <b>copy your save file</b> and challenge the boss in the copy:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Won? Merge the copy's progress back into the main save</span><span lang="en">Won? Merge the copy's progress back into the main save</span></li>
+<li><span lang="id">Lost? The main save is completely unaffected — delete the copy and try again</span><span lang="en">Lost? The main save is completely unaffected — delete the copy and try again</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Git branches are this "copy save" mechanism.</b></span><span lang="en"><b>Git branches are this "copy save" mechanism.</b></span></p>
+<p class="reveal"><span lang="id">In Git, the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">main</code> (or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">master</code>) branch is your "main save," which should always remain stable and usable. When you want to develop a new feature, you create a new branch from main, develop and test there, and merge back to main when done.</span><span lang="en">In Git, the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">main</code> (or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">master</code>) branch is your "main save," which should always remain stable and usable. When you want to develop a new feature, you create a new branch from main, develop and test there, and merge back to main when done.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Branch Visualization Demo</span><span lang="en">4.2 Branch Visualization Demo</span></h3>
+<p class="reveal"><span lang="id">👇 <b>Try it out</b>: Click the command buttons in order and observe how the branch graph below forks, extends, and eventually merges. Pay close attention to the HEAD label's position — it always points to "where you currently are."</span><span lang="en">👇 <b>Try it out</b>: Click the command buttons in order and observe how the branch graph below forks, extends, and eventually merges. Pay close attention to the HEAD label's position — it always points to "where you currently are."</span></p>
+<p class="reveal"><span lang="id"><GitBranchVisual /></span><span lang="en"><GitBranchVisual /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 Branch Operations in Detail</span><span lang="en">4.3 Branch Operations in Detail</span></h3>
+<p class="reveal"><span lang="id"><b>Create and switch to a new branch:</b></span><span lang="en"><b>Create and switch to a new branch:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Method 1: Create first, then switch (two steps)
+git branch feature-login      # Create branch
+git checkout feature-login    # Switch to it
+
+# Method 2: One step (recommended)
+git checkout -b feature-login
+
+# Output: Switched to a new branch &#039;feature-login&#039;</pre>
+</div>
+<p class="reveal"><span lang="id">After creating a branch, your command prompt will show the current branch name, for example:</span><span lang="en">After creating a branch, your command prompt will show the current branch name, for example:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>user@mac ~/project (feature-login) $</pre>
+</div>
+<p class="reveal"><span lang="id"><b>View all branches:</b></span><span lang="en"><b>View all branches:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>git branch
+
+# Output (* indicates the current branch):
+# * feature-login
+#   main</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Develop normally on a branch:</b></span><span lang="en"><b>Develop normally on a branch:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># On the feature-login branch, modify code, add, commit — exactly the same as usual
+git add login.js
+git commit -m &quot;feat: add login form HTML structure&quot;
+
+git add login.js api.js
+git commit -m &quot;feat: complete login API integration&quot;</pre>
+</div>
+<p class="reveal"><span lang="id">These commits exist only on the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">feature-login</code> branch. The <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">main</code> branch has no idea what you've done.</span><span lang="en">These commits exist only on the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">feature-login</code> branch. The <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">main</code> branch has no idea what you've done.</span></p>
+<p class="reveal"><span lang="id"><b>Switch back to the main branch and merge:</b></span><span lang="en"><b>Switch back to the main branch and merge:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Switch back to main
+git checkout main
+
+# Merge all changes from feature-login
+git merge feature-login
+
+# After merging, you can delete the branch (optional)
+git branch -d feature-login</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.4 Criteria for Branch Creation</span><span lang="en">4.4 Criteria for Branch Creation</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Scenario</th><th>Recommendation</th><th>Reason</th></tr>
+<tr><td>Developing a new feature</td><td>✅ Create a branch</td><td>Doesn't affect main line until feature is done; can abandon at any time</td></tr>
+<tr><td>Fixing an urgent production bug</td><td>✅ Create a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">hotfix-xxx</code> branch from main</td><td>Fix and merge directly to production, without bringing in unfinished features</td></tr>
+<tr><td>Parallel development with teammates</td><td>✅ Each person creates their own branch</td><td>No interference; merge via Pull Request when done</td></tr>
+<tr><td>Fixing a single typo</td><td>❌ Just fix it on main</td><td>Very low risk, no need for a separate branch</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.5 Common Team Branching Strategies</span><span lang="en">4.5 Common Team Branching Strategies</span></h3>
+<p class="reveal"><span lang="id">In real projects, teams usually agree on branch naming conventions and purposes:</span><span lang="en">In real projects, teams usually agree on branch naming conventions and purposes:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Branch Name</th><th>Purpose</th><th>Characteristics</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">main</code> / <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">master</code></td><td>Stable production code</td><td>Only tested code can enter; no direct pushes</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dev</code> / <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">develop</code></td><td>Daily integration branch</td><td>All feature branches merge here first; after testing, goes to main</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">feature/xxx</code></td><td>Specific feature development</td><td>e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">feature/user-login</code>; merges to dev when complete</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">hotfix/xxx</code></td><td>Urgent fixes</td><td>Created from main; after fixing, merges directly back to main and dev</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Collaborating with Teammates: Remote Repositories</span><span lang="en">5. Collaborating with Teammates: Remote Repositories</span></h2>
+<p class="reveal"><span lang="id">Everything you've learned so far is about <b>local</b> Git operations — all history is stored on your own computer. To share code with teammates, you need a <b>remote repository</b>, such as GitHub or GitLab.</span><span lang="en">Everything you've learned so far is about <b>local</b> Git operations — all history is stored on your own computer. To share code with teammates, you need a <b>remote repository</b>, such as GitHub or GitLab.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 How Remote Repositories Work</span><span lang="en">5.1 How Remote Repositories Work</span></h3>
+<p class="reveal"><span lang="id">Think of a remote repository as the <b>team's "shared save file"</b>:</span><span lang="en">Think of a remote repository as the <b>team's "shared save file"</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Each person writes code locally and commits</span><span lang="en">Each person writes code locally and commits</span></li>
+<li><span lang="id">When done, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">push</code> (upload) to the remote repository</span><span lang="en">When done, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">push</code> (upload) to the remote repository</span></li>
+<li><span lang="id">Teammates <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">pull</code> (download) the latest content from the remote to their local machine</span><span lang="en">Teammates <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">pull</code> (download) the latest content from the remote to their local machine</span></li>
+<li><span lang="id">This keeps everyone's code in sync</span><span lang="en">This keeps everyone's code in sync</span></li>
+</ul>
+<p class="reveal"><span lang="id">👇 <b>Try it out</b>: Click the commands in order to experience the complete flow from linking a remote repository, pushing, to pulling teammates' updates.</span><span lang="en">👇 <b>Try it out</b>: Click the commands in order to experience the complete flow from linking a remote repository, pushing, to pulling teammates' updates.</span></p>
+<p class="reveal"><span lang="id"><GitSyncDemo /></span><span lang="en"><GitSyncDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Pushing a Project to GitHub for the First Time</span><span lang="en">5.2 Pushing a Project to GitHub for the First Time</span></h3>
+<p class="reveal"><span lang="id"><b>Step 1</b>: Create a new repository on GitHub (click the + in the upper right corner → New repository). Don't check any initialization options.</span><span lang="en"><b>Step 1</b>: Create a new repository on GitHub (click the + in the upper right corner → New repository). Don't check any initialization options.</span></p>
+<p class="reveal"><span lang="id"><b>Step 2</b>: Back in your local terminal, link the remote repository:</span><span lang="en"><b>Step 2</b>: Back in your local terminal, link the remote repository:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Link the local repository with the GitHub repository
+# &quot;origin&quot; is the remote repository&#039;s alias — a conventional name (you can change it, but there&#039;s no need)
+git remote add origin https://github.com/your-username/your-repo.git
+
+# Confirm the link was successful
+git remote -v
+# Output:
+# origin https://github.com/your-username/your-repo.git (fetch)
+
+# origin https://github.com/your-username/your-repo.git (push)
+</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 3</b>: Push local content to remote:</span><span lang="en"><b>Step 3</b>: Push local content to remote:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># First push. -u means &quot;for future git push, default to origin&#039;s main branch&quot;
+git push -u origin main
+
+# After that, each push only needs:
+git push</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 Daily Collaboration Commands</span><span lang="en">5.3 Daily Collaboration Commands</span></h3>
+<p class="reveal"><span lang="id"><b>Push (you made changes and want teammates to see them):</b></span><span lang="en"><b>Push (you made changes and want teammates to see them):</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>git push</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Pull (teammates made changes and you need to sync):</b></span><span lang="en"><b>Pull (teammates made changes and you need to sync):</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>git pull</pre>
+</div>
+<p class="reveal"><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git pull</code> is actually a combination of two commands:</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git pull</code> is actually a combination of two commands:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git fetch</code>: Download the latest commits from the remote repository</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git fetch</code>: Download the latest commits from the remote repository</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git merge</code>: Merge the downloaded content into your current branch</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git merge</code>: Merge the downloaded content into your current branch</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Getting someone else's project from GitHub for the first time:</b></span><span lang="en"><b>Getting someone else's project from GitHub for the first time:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Copy the entire remote repository to your local machine (only needs to be done once)
+git clone https://github.com/someone/some-project.git
+
+# clone automatically sets up the remote link, so you can just push/pull afterwards</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.4 The Direction of Push and Pull</span><span lang="en">5.4 The Direction of Push and Pull</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Your Computer (Local Repo)  ←→  GitHub (Remote Repo)
+
+git push:   Local → Remote   (you made changes, upload for teammates)
+git pull:   Remote → Local   (teammates made changes, download to your machine)
+git clone:  Remote → Local   (first-time full copy of the entire repository)</pre>
+</div>
+<p class="reveal"><span lang="id">> <b>Best practice</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git pull</code> at the start of each workday to get the latest code; <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git push</code> when finishing work or completing a feature to back up promptly and let teammates see your progress.</span><span lang="en">> <b>Best practice</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git pull</code> at the start of each workday to get the latest code; <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git push</code> when finishing work or completing a feature to back up promptly and let teammates see your progress.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Advanced: Resolving Conflicts</span><span lang="en">6. Advanced: Resolving Conflicts</span></h2>
+<p class="reveal"><span lang="id">Conflicts are inevitable in collaboration, but they're not that scary.</span><span lang="en">Conflicts are inevitable in collaboration, but they're not that scary.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Method for Conflictsing Happen</span><span lang="en">6.1 Method for Conflictsing Happen</span></h3>
+<p class="reveal"><span lang="id">When you and a teammate <b>both modify the same line in the same file</b>, Git doesn't know whose version to use during a merge, so a conflict occurs.</span><span lang="en">When you and a teammate <b>both modify the same line in the same file</b>, Git doesn't know whose version to use during a merge, so a conflict occurs.</span></p>
+<p class="reveal"><span lang="id">For example:</span><span lang="en">For example:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">You wrote on line 5 of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">login.js</code>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">const timeout = 3000</code></span><span lang="en">You wrote on line 5 of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">login.js</code>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">const timeout = 3000</code></span></li>
+<li><span lang="id">Your teammate simultaneously wrote on the same line: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">const timeout = 5000</code></span><span lang="en">Your teammate simultaneously wrote on the same line: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">const timeout = 5000</code></span></li>
+<li><span lang="id">When you <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git pull</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git merge</code>, Git discovers this contradiction and "pauses" to tell you: I don't know which one to use — you decide.</span><span lang="en">When you <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git pull</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git merge</code>, Git discovers this contradiction and "pauses" to tell you: I don't know which one to use — you decide.</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 What Does a Conflicted File Look Like</span><span lang="en">6.2 What Does a Conflicted File Look Like</span></h3>
+<p class="reveal"><span lang="id">Git inserts special markers at the conflict location:</span><span lang="en">Git inserts special markers at the conflict location:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>function login() {
+  const url = &#039;/api/login&#039;
+
+ &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+  const timeout = 3000   // Your version
+ =======
+  const timeout = 5000   // Teammate&#039;s version
+ &gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/update-timeout
+
+  return fetch(url, { timeout })
+}</pre>
+</div>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Between <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><<<<<<< HEAD</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">=======</code>: your current branch's content</span><span lang="en">Between <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><<<<<<< HEAD</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">=======</code>: your current branch's content</span></li>
+<li><span lang="id">Between <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">=======</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">>>>>>>> xxx</code>: the content being merged in</span><span lang="en">Between <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">=======</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">>>>>>>> xxx</code>: the content being merged in</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.3 Approach to resolving Conflicts</span><span lang="en">6.3 Approach to resolving Conflicts</span></h3>
+<p class="reveal"><span lang="id"><b>Step 1</b>: Open the conflicted file and find all <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><<<<<<<</code> markers (editors like VS Code will usually highlight them automatically)</span><span lang="en"><b>Step 1</b>: Open the conflicted file and find all <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><<<<<<<</code> markers (editors like VS Code will usually highlight them automatically)</span></p>
+<p class="reveal"><span lang="id"><b>Step 2</b>: Decide which code to keep, then manually edit the file, removing all marker symbols (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><<<<<<<</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">=======</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">>>>>>>></code>).</span><span lang="en"><b>Step 2</b>: Decide which code to keep, then manually edit the file, removing all marker symbols (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><<<<<<<</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">=======</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">>>>>>>></code>).</span></p>
+<p class="reveal"><span lang="id">For example, deciding to use 5000 (teammate's version):</span><span lang="en">For example, deciding to use 5000 (teammate's version):</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>function login() {
+  const url = &#039;/api/login&#039;
+  const timeout = 5000   // Adopt teammate&#039;s change
+  return fetch(url, { timeout })
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 3</b>: Commit again</span><span lang="en"><b>Step 3</b>: Commit again</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Mark the conflict as resolved
+git add login.js
+
+# Complete the merge commit (Git will auto-generate a merge commit message)
+git commit</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.4 Good Habits to Reduce Conflicts</span><span lang="en">6.4 Good Habits to Reduce Conflicts</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Pull frequently</b>: Sync the latest code before starting work to reduce "falling too far behind"</span><span lang="en"><b>Pull frequently</b>: Sync the latest code before starting work to reduce "falling too far behind"</span></li>
+<li><span lang="id"><b>Small, frequent commits</b>: Don't write code for a week before committing once. Frequent small commits make conflicts easier to find and resolve</span><span lang="en"><b>Small, frequent commits</b>: Don't write code for a week before committing once. Frequent small commits make conflicts easier to find and resolve</span></li>
+<li><span lang="id"><b>Branch isolation</b>: Use different branches for different features to reduce competition over the same lines of code</span><span lang="en"><b>Branch isolation</b>: Use different branches for different features to reduce competition over the same lines of code</span></li>
+<li><span lang="id"><b>Communicate</b>: Before modifying shared files (like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">config.js</code>), give your teammates a heads-up</span><span lang="en"><b>Communicate</b>: Before modifying shared files (like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">config.js</code>), give your teammates a heads-up</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Common Command Cheat Sheet</span><span lang="en">7. Common Command Cheat Sheet</span></h2>
+<p class="reveal"><span lang="id"><GitCommandCheatsheet /></span><span lang="en"><GitCommandCheatsheet /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8. Practical: Complete Workflow for Joining a Team Project</span><span lang="en">8. Practical: Complete Workflow for Joining a Team Project</span></h2>
+<p class="reveal"><span lang="id">This is the standard workflow when you join a new team or project — you can follow it directly:</span><span lang="en">This is the standard workflow when you join a new team or project — you can follow it directly:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># ① Day one: clone the project to your local machine (only once)
+git clone https://github.com/team/project.git
+cd project
+
+# ② Start of each workday: pull the latest code to ensure yours is up to date
+git pull origin main
+
+# ③ Create your own feature branch (don&#039;t modify main directly)
+git checkout -b feature/user-profile
+
+# ④ Normal development... write code...
+
+# ⑤ After completing a small feature, commit immediately (don&#039;t hoard changes)
+git add src/UserProfile.vue
+git commit -m &quot;feat: complete user avatar upload feature&quot;
+
+git add src/UserProfile.vue src/api/user.js
+git commit -m &quot;feat: complete user profile editing API&quot;
+
+# ⑥ Push your branch to remote so teammates can see it
+git push origin feature/user-profile
+
+# ⑦ Create a Pull Request (PR) on GitHub, requesting merge into main
+# (This step is done on the GitHub website)
+
+# ⑧ Wait for teammates&#039; Code Review, make changes based on feedback, continue committing + pushing
+
+# ⑨ After PR is merged, go back to main, update local, delete the feature branch
+git checkout main
+git pull
+git branch -d feature/user-profile</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">9. .gitignore: Selection of Files Should Not Be Tracked</span><span lang="en">9. .gitignore: Selection of Files Should Not Be Tracked</span></h2>
+<p class="reveal"><span lang="id">Some files you <b>don't</b> want to commit to the Git repository, for example:</span><span lang="en">Some files you <b>don't</b> want to commit to the Git repository, for example:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">node_modules/</code>: dependency packages, huge in size, can be regenerated with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm install</code></span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">node_modules/</code>: dependency packages, huge in size, can be regenerated with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm install</code></span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.env</code>: environment variable file that may contain database passwords, API keys — <b>absolutely must not be uploaded to public repositories</b></span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.env</code>: environment variable file that may contain database passwords, API keys — <b>absolutely must not be uploaded to public repositories</b></span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">*.log</code>: log files</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">*.log</code>: log files</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.DS_Store</code>: macOS auto-generated hidden files</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.DS_Store</code>: macOS auto-generated hidden files</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dist/</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">build/</code>: build artifacts that can be rebuilt</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dist/</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">build/</code>: build artifacts that can be rebuilt</span></li>
+</ul>
+<p class="reveal"><span lang="id">Create a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.gitignore</code> file in the project root directory with rules for files you don't want to track:</span><span lang="en">Create a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.gitignore</code> file in the project root directory with rules for files you don't want to track:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>gitignore</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Dependencies
+node_modules/
+
+# Environment variables (important! passwords must not be committed)
+.env
+.env.local
+
+# Build output
+dist/
+build/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log</pre>
+</div>
+<p class="reveal"><span lang="id">GitHub has .gitignore templates for various languages and frameworks: [github.com/github/gitignore](https://github.com/github/gitignore)</span><span lang="en">GitHub has .gitignore templates for various languages and frameworks: [github.com/github/gitignore](https://github.com/github/gitignore)</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Glossary</span><span lang="en">Glossary</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Term</th><th>English</th><th>Explanation</th></tr>
+<tr><td><b>Repository</b></td><td>Repository (Repo)</td><td>The database storing all version history of a project, inside the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.git</code> folder</td></tr>
+<tr><td><b>Commit</b></td><td>Commit</td><td>A complete version record, like a game save point, with a description and timestamp</td></tr>
+<tr><td><b>Branch</b></td><td>Branch</td><td>An independent line of development, like parallel timelines that don't affect each other</td></tr>
+<tr><td><b>Merge</b></td><td>Merge</td><td>Integrating changes from one branch into another</td></tr>
+<tr><td><b>Conflict</b></td><td>Conflict</td><td>When the same line of code is modified by multiple people and Git doesn't know which version to use, requiring manual resolution</td></tr>
+<tr><td><b>Stage</b></td><td>Stage / Index</td><td>The action of putting modifications into the "ready to commit" list</td></tr>
+<tr><td><b>Remote</b></td><td>Remote</td><td>A cloud copy of the repository (GitHub / GitLab / Gitee)</td></tr>
+<tr><td><b>Clone</b></td><td>Clone</td><td>Copying an entire remote repository to your local machine</td></tr>
+<tr><td><b>Push</b></td><td>Push</td><td>Uploading local commits to a remote repository</td></tr>
+<tr><td><b>Pull</b></td><td>Pull</td><td>Downloading the latest content from remote and merging it locally</td></tr>
+<tr><td><b>HEAD</b></td><td>HEAD</td><td>A pointer to the current branch/commit, indicating "where you are now"</td></tr>
+<tr><td><b>origin</b></td><td>origin</td><td>The default alias for a remote repository (a conventional name)</td></tr>
+<tr><td><b>stash</b></td><td>Stash</td><td>Temporarily saving uncommitted changes, useful when switching tasks</td></tr>
+<tr><td><b>PR / MR</b></td><td>Pull Request / Merge Request</td><td>A request to merge your branch into the main branch, usually requiring teammate review</td></tr>
+</table></div>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../2-development-tools/environment-path/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">2-development-tools/environment-path</span><span lang="en">2-development-tools/environment-path</span></b></a>
+      <a class="next" href="../../2-development-tools/ide-basics/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">2-development-tools/ide-basics</span><span lang="en">2-development-tools/ide-basics</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

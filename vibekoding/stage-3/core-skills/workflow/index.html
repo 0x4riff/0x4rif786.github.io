@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Alur Kerja Praktik Terbaik Berbantuan AI — VibeKoding 🗺️</title>
+<meta name="description" content="Modul master Level 3 VibeKoding: Alur Kerja Praktik Terbaik Berbantuan AI. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-3/core-skills/workflow/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../stage-3/"><span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></a> / <span lang="id">Alur Kerja Praktik Terbaik Berbantuan AI</span><span lang="en">Alur Kerja Praktik Terbaik Berbantuan AI</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">🗺️</div>
+      <div>
+        <h1><span lang="id">Alur Kerja Praktik Terbaik Berbantuan AI</span><span lang="en">Alur Kerja Praktik Terbaik Berbantuan AI</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul master Level 3 VibeKoding: Alur Kerja Praktik Terbaik Berbantuan AI.</span><span lang="en">Modul master Level 3 VibeKoding: Alur Kerja Praktik Terbaik Berbantuan AI.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">In the previous chapters, we learned how to use AI IDEs to write code, how to manage code versions with Git, and how to design and implement API interfaces. But when you face a real development task, you may run into questions like these:</span><span lang="en">In the previous chapters, we learned how to use AI IDEs to write code, how to manage code versions with Git, and how to design and implement API interfaces. But when you face a real development task, you may run into questions like these:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">"This project has thousands of files. Where should I start?"</span><span lang="en">"This project has thousands of files. Where should I start?"</span></li>
+<li><span lang="id">"My boss asked me to add a new feature, but I'm not familiar with this part of the codebase."</span><span lang="en">"My boss asked me to add a new feature, but I'm not familiar with this part of the codebase."</span></li>
+<li><span lang="id">"I have no idea where this bug is. There is just too much code."</span><span lang="en">"I have no idea where this bug is. There is just too much code."</span></li>
+<li><span lang="id">"I need to refactor this pile of code, but I'm afraid of breaking something."</span><span lang="en">"I need to refactor this pile of code, but I'm afraid of breaking something."</span></li>
+</ul>
+<p class="reveal"><span lang="id">The essence of these questions is: <b>how do you use AI tools efficiently in real development scenarios to get work done?</b></span><span lang="en">The essence of these questions is: <b>how do you use AI tools efficiently in real development scenarios to get work done?</b></span></p>
+<p class="reveal"><span lang="id">In this lesson, we will learn how to build a systematic AI-assisted development workflow so that you can use AI efficiently across different development scenarios. Through concrete examples, we will show how to use AI in new feature development, bug fixing, code refactoring, and more.</span><span lang="en">In this lesson, we will learn how to build a systematic AI-assisted development workflow so that you can use AI efficiently across different development scenarios. Through concrete examples, we will show how to use AI in new feature development, bug fixing, code refactoring, and more.</span></p>
+<p class="reveal"><span lang="id">> 💡 <b>Prerequisites</b></span><span lang="en">> 💡 <b>Prerequisites</b></span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> Before studying this section, it is recommended that you first understand:</span><span lang="en">> Before studying this section, it is recommended that you first understand:</span></p>
+<p class="reveal"><span lang="id">> - [AI IDE Basics](../../stage-1/ai-ide/) - master the basic use of AI IDEs</span><span lang="en">> - [AI IDE Basics](../../stage-1/ai-ide/) - master the basic use of AI IDEs</span></p>
+<p class="reveal"><span lang="id">> - [Git and GitHub Workflow](../../stage-2/backend/git-workflow/) - understand code version management</span><span lang="en">> - [Git and GitHub Workflow](../../stage-2/backend/git-workflow/) - understand code version management</span></p>
+<p class="reveal"><span lang="id">> - [Using Large Models to Help Write API Code](../../stage-2/backend/ai-interface-code/) - understand the basic concept of AI-assisted development</span><span lang="en">> - [Using Large Models to Help Write API Code](../../stage-2/backend/ai-interface-code/) - understand the basic concept of AI-assisted development</span></p>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">1. Understand AI's role in the development process and its capability boundaries
+2. Master AI-assisted development strategies for different project types
+3. Learn how to use Claude Code in scenarios such as new feature development, bug fixing, and code refactoring
+4. Build a project knowledge base to improve collaboration efficiency with Claude Code
+5. Master practical techniques for improving AI collaboration efficiency</span><span lang="en">1. Understand AI's role in the development process and its capability boundaries
+2. Master AI-assisted development strategies for different project types
+3. Learn how to use Claude Code in scenarios such as new feature development, bug fixing, and code refactoring
+4. Build a project knowledge base to improve collaboration efficiency with Claude Code
+5. Master practical techniques for improving AI collaboration efficiency</span></p>
+</div>
+<p class="reveal"><span lang="id">Before we start using AI to assist development, we first need to understand what AI can and cannot do. Only then can we build the right collaboration model.</span><span lang="en">Before we start using AI to assist development, we first need to understand what AI can and cannot do. Only then can we build the right collaboration model.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.1 What AI Is Good At</span><span lang="en">1.1 What AI Is Good At</span></h2>
+<p class="reveal"><span lang="id">Think of AI as a very smart assistant that still needs clear instructions. It can quickly generate a code skeleton based on your description, and it can also read thousands of lines of code in seconds to find the part you need. If there are obvious syntax errors or common security vulnerabilities, it can help you discover them too. Repetitive tasks such as batch-renaming variables, formatting code, and generating documentation comments are especially suitable to hand over to AI.</span><span lang="en">Think of AI as a very smart assistant that still needs clear instructions. It can quickly generate a code skeleton based on your description, and it can also read thousands of lines of code in seconds to find the part you need. If there are obvious syntax errors or common security vulnerabilities, it can help you discover them too. Repetitive tasks such as batch-renaming variables, formatting code, and generating documentation comments are especially suitable to hand over to AI.</span></p>
+<p class="reveal"><span lang="id">Put simply, AI is good at work that has clear rules and can be automated.</span><span lang="en">Put simply, AI is good at work that has clear rules and can be automated.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.2 What AI Is Not Good At</span><span lang="en">1.2 What AI Is Not Good At</span></h2>
+<p class="reveal"><span lang="id">But AI also has its limitations. It does not understand your business logic. Unless you tell it in detail, it will not know how your company's order flow works. It also cannot make decisions such as technical selection or architecture design that require weighing trade-offs, because those depend on your experience and understanding of the project. AI also does not know your team's special conventions, such as "all APIs must have logging" or "error codes must use enums." You need to configure those rules or tell it explicitly.</span><span lang="en">But AI also has its limitations. It does not understand your business logic. Unless you tell it in detail, it will not know how your company's order flow works. It also cannot make decisions such as technical selection or architecture design that require weighing trade-offs, because those depend on your experience and understanding of the project. AI also does not know your team's special conventions, such as "all APIs must have logging" or "error codes must use enums." You need to configure those rules or tell it explicitly.</span></p>
+<p class="reveal"><span lang="id">Most importantly, code generated by AI cannot be used directly. You must review and test it. It may generate code that looks correct but is actually problematic, and it may ignore certain edge cases.</span><span lang="en">Most importantly, code generated by AI cannot be used directly. You must review and test it. It may generate code that looks correct but is actually problematic, and it may ignore certain edge cases.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.3 How to Collaborate with AI</span><span lang="en">1.3 How to Collaborate with AI</span></h2>
+<p class="reveal"><span lang="id">Once you understand AI's capability boundaries, the collaboration model becomes clear: you are responsible for deciding what to build, making decisions, and ensuring quality; AI is responsible for executing concrete coding work, finding information, and surfacing obvious problems.</span><span lang="en">Once you understand AI's capability boundaries, the collaboration model becomes clear: you are responsible for deciding what to build, making decisions, and ensuring quality; AI is responsible for executing concrete coding work, finding information, and surfacing obvious problems.</span></p>
+<p class="reveal"><span lang="id">It is like working with a junior developer. You tell them what needs to be done, they implement it, and then you review the code. The difference is that AI executes much faster, but its judgment is weaker than a human's.</span><span lang="en">It is like working with a junior developer. You tell them what needs to be done, they implement it, and then you review the code. The difference is that AI executes much faster, but its judgment is weaker than a human's.</span></p>
+<p class="reveal"><span lang="id">Different types of projects require different development styles and AI usage strategies. Choosing the right strategy can greatly improve development efficiency.</span><span lang="en">Different types of projects require different development styles and AI usage strategies. Choosing the right strategy can greatly improve development efficiency.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.1 Brand-New Projects (Starting from Scratch)</span><span lang="en">2.1 Brand-New Projects (Starting from Scratch)</span></h2>
+<p class="reveal"><span lang="id"><b>Project characteristics:</b></span><span lang="en"><b>Project characteristics:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">No historical baggage, so you can design freely</span><span lang="en">No historical baggage, so you can design freely</span></li>
+<li><span lang="id">You need to establish project structure and code conventions</span><span lang="en">You need to establish project structure and code conventions</span></li>
+<li><span lang="id">Suitable for fast iteration and trial-and-error</span><span lang="en">Suitable for fast iteration and trial-and-error</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Recommended workflow:</b></span><span lang="en"><b>Recommended workflow:</b></span></p>
+<p class="reveal"><span lang="id"><b>Step 1: Plan the project structure</b></span><span lang="en"><b>Step 1: Plan the project structure</b></span></p>
+<p class="reveal"><span lang="id">Before you start coding, first ask AI to help you plan the project structure and technical choices:</span><span lang="en">Before you start coding, first ask AI to help you plan the project structure and technical choices:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>I want to build a task management app with these features:
+- User registration and login
+- Create, edit, and delete tasks
+- Task categories and tags
+- Task reminders
+
+Please help me:
+1. Recommend a suitable tech stack
+2. Design the project directory structure
+3. Plan the database schema</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 2: Build the basic framework</b></span><span lang="en"><b>Step 2: Build the basic framework</b></span></p>
+<p class="reveal"><span lang="id">Based on the plan, ask AI to create the basic project structure:</span><span lang="en">Based on the plan, ask AI to create the basic project structure:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Based on the plan we just discussed, help me:
+1. Create the project directory structure
+2. Initialize config files (package.json, .env, etc.)
+3. Create the basic server code</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 3: Implement features one by one</b></span><span lang="en"><b>Step 3: Implement features one by one</b></span></p>
+<p class="reveal"><span lang="id">Implement feature modules one at a time by priority:</span><span lang="en">Implement feature modules one at a time by priority:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Now implement the user registration feature with these requirements:
+- Register with email and password
+- Store passwords in encrypted form
+- Email verification</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Key points:</b></span><span lang="en"><b>Key points:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Establish code conventions early so AI generates code that follows them</span><span lang="en">Establish code conventions early so AI generates code that follows them</span></li>
+<li><span lang="id">Test and verify every feature module as soon as it is completed</span><span lang="en">Test and verify every feature module as soon as it is completed</span></li>
+<li><span lang="id">Keep project documentation updated in time</span><span lang="en">Keep project documentation updated in time</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.2 Mature Projects (Large Existing Codebases)</span><span lang="en">2.2 Mature Projects (Large Existing Codebases)</span></h2>
+<p class="reveal"><span lang="id"><b>Project characteristics:</b></span><span lang="en"><b>Project characteristics:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Large codebase with historical conventions</span><span lang="en">Large codebase with historical conventions</span></li>
+<li><span lang="id">You need to keep coding style consistent</span><span lang="en">You need to keep coding style consistent</span></li>
+<li><span lang="id">Changes must consider the scope of impact</span><span lang="en">Changes must consider the scope of impact</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Recommended workflow:</b></span><span lang="en"><b>Recommended workflow:</b></span></p>
+<p class="reveal"><span lang="id"><b>Step 1: Understand the project structure</b></span><span lang="en"><b>Step 1: Understand the project structure</b></span></p>
+<p class="reveal"><span lang="id">Before changing code, first ask AI to help you understand the project:</span><span lang="en">Before changing code, first ask AI to help you understand the project:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>This is an e-commerce project, and I need to add a coupon feature.
+Please help me:
+1. Analyze the overall project structure
+2. Find the order-related code
+3. See how other similar features are implemented</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 2: Find reference code</b></span><span lang="en"><b>Step 2: Find reference code</b></span></p>
+<p class="reveal"><span lang="id">Ask AI to find similar implementations in the project as references:</span><span lang="en">Ask AI to find similar implementations in the project as references:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Find how other promotional features in the project, such as full reduction and discounts, are implemented</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 3: Follow the existing style</b></span><span lang="en"><b>Step 3: Follow the existing style</b></span></p>
+<p class="reveal"><span lang="id">Ask AI to implement the new feature in the style of the existing code:</span><span lang="en">Ask AI to implement the new feature in the style of the existing code:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please implement the coupon feature by referring to how the full-reduction promotion is implemented.
+Keep the same code style and directory structure.</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Key points:</b></span><span lang="en"><b>Key points:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Understand first, then change things, so you do not damage the existing architecture</span><span lang="en">Understand first, then change things, so you do not damage the existing architecture</span></li>
+<li><span lang="id">Keep coding style consistent</span><span lang="en">Keep coding style consistent</span></li>
+<li><span lang="id">Test related functionality after the change</span><span lang="en">Test related functionality after the change</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.3 Rapid Prototypes (Validating Ideas)</span><span lang="en">2.3 Rapid Prototypes (Validating Ideas)</span></h2>
+<p class="reveal"><span lang="id"><b>Project characteristics:</b></span><span lang="en"><b>Project characteristics:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Speed matters most, code quality matters less</span><span lang="en">Speed matters most, code quality matters less</span></li>
+<li><span lang="id">Used to validate product ideas or technical approaches</span><span lang="en">Used to validate product ideas or technical approaches</span></li>
+<li><span lang="id">May later be discarded or rewritten</span><span lang="en">May later be discarded or rewritten</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Recommended workflow:</b></span><span lang="en"><b>Recommended workflow:</b></span></p>
+<p class="reveal"><span lang="id"><b>Describe the requirement directly and implement quickly:</b></span><span lang="en"><b>Describe the requirement directly and implement quickly:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Build a simple todo app with these requirements:
+- Add, delete, and mark tasks as completed
+- Store data locally
+- Keep the UI simple, as long as it works</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Iterate quickly:</b></span><span lang="en"><b>Iterate quickly:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Add search
+Switch it to a dark theme
+Add task categories</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Key points:</b></span><span lang="en"><b>Key points:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Do not worry too much about code quality or conventions</span><span lang="en">Do not worry too much about code quality or conventions</span></li>
+<li><span lang="id">Validate ideas quickly and adjust direction in time</span><span lang="en">Validate ideas quickly and adjust direction in time</span></li>
+<li><span lang="id">If the prototype succeeds, it will need refactoring later</span><span lang="en">If the prototype succeeds, it will need refactoring later</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.4 Maintenance Projects (Mostly Bug Fixes)</span><span lang="en">2.4 Maintenance Projects (Mostly Bug Fixes)</span></h2>
+<p class="reveal"><span lang="id"><b>Project characteristics:</b></span><span lang="en"><b>Project characteristics:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">The code is already stable, and the main task is fixing issues</span><span lang="en">The code is already stable, and the main task is fixing issues</span></li>
+<li><span lang="id">You need to locate problems quickly</span><span lang="en">You need to locate problems quickly</span></li>
+<li><span lang="id">Changes must be made carefully to avoid introducing new issues</span><span lang="en">Changes must be made carefully to avoid introducing new issues</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Recommended workflow:</b></span><span lang="en"><b>Recommended workflow:</b></span></p>
+<p class="reveal"><span lang="id"><b>Step 1: Locate the problem</b></span><span lang="en"><b>Step 1: Locate the problem</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>User feedback: after clicking the &quot;Submit Order&quot; button, the page freezes
+Console error: TypeError: Cannot read property &#039;id&#039; of undefined
+
+Please help me:
+1. Analyze possible causes
+2. Find the relevant code</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 2: Analyze the root cause</b></span><span lang="en"><b>Step 2: Analyze the root cause</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Check in what situations this error occurs
+Inspect the data flow</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 3: Apply the fix</b></span><span lang="en"><b>Step 3: Apply the fix</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Fix this problem, and:
+1. Add defensive code to avoid similar issues
+2. Add error messages to improve user experience</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Key points:</b></span><span lang="en"><b>Key points:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Test thoroughly after the fix to ensure it does not affect other functionality</span><span lang="en">Test thoroughly after the fix to ensure it does not affect other functionality</span></li>
+<li><span lang="id">Add defensive code to improve system robustness</span><span lang="en">Add defensive code to improve system robustness</span></li>
+<li><span lang="id">Record the problem and solution for future reference</span><span lang="en">Record the problem and solution for future reference</span></li>
+</ul>
+<p class="reveal"><span lang="id">In day-to-day development, we encounter many different types of tasks. Below are several of the most common AI-assisted workflows.</span><span lang="en">In day-to-day development, we encounter many different types of tasks. Below are several of the most common AI-assisted workflows.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.1 Developing a New Feature</span><span lang="en">3.1 Developing a New Feature</span></h2>
+<p class="reveal"><span lang="id"><b>Scenario:</b> the product manager gives you a new requirement, and you need to implement a new feature.</span><span lang="en"><b>Scenario:</b> the product manager gives you a new requirement, and you need to implement a new feature.</span></p>
+<p class="reveal"><span lang="id"><b>Complete workflow:</b></span><span lang="en"><b>Complete workflow:</b></span></p>
+<p class="reveal"><span lang="id"><b>Step 1: Understand the requirement</b> (done by you)</span><span lang="en"><b>Step 1: Understand the requirement</b> (done by you)</span></p>
+<p class="reveal"><span lang="id">Before you start coding, first clarify:</span><span lang="en">Before you start coding, first clarify:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">What feature needs to be implemented?</span><span lang="en">What feature needs to be implemented?</span></li>
+<li><span lang="id">What are the inputs and outputs?</span><span lang="en">What are the inputs and outputs?</span></li>
+<li><span lang="id">What are the edge conditions and exceptional cases?</span><span lang="en">What are the edge conditions and exceptional cases?</span></li>
+<li><span lang="id">What are the performance and security requirements?</span><span lang="en">What are the performance and security requirements?</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Step 2: Understand the existing code</b> (ask AI to help)</span><span lang="en"><b>Step 2: Understand the existing code</b> (ask AI to help)</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>I need to implement a user comment feature. Please help me:
+1. Check whether there is anything similar in the project
+2. Find how user data and article data are stored
+3. Understand the database operation conventions in this project</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 3: Make an implementation plan</b> (with AI)</span><span lang="en"><b>Step 3: Make an implementation plan</b> (with AI)</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Based on the analysis we just did, implementing the comment feature requires:
+1. Creating a comment data model
+2. Implementing CRUD APIs for comments
+3. Adding comment display and posting functionality to the frontend
+
+Please help me confirm whether this plan is reasonable and whether anything is missing</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 4: Implement the feature</b> (AI generates, you review)</span><span lang="en"><b>Step 4: Implement the feature</b> (AI generates, you review)</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>According to the plan, first implement the comment data model.
+Requirements:
+- Include comment content, author, article ID, and creation time
+- Support nested comment replies
+- Add necessary indexes</pre>
+</div>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Now implement the comment API endpoints.
+Requirements:
+- Post a comment
+- Delete a comment (only your own comments can be deleted)
+- Get all comments for an article
+- Support pagination</pre>
+</div>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Finally implement the frontend comment component.
+Requirements:
+- Show the comment list
+- Comment posting form
+- Support replying to comments</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 5: Test and verify</b> (done by you)</span><span lang="en"><b>Step 5: Test and verify</b> (done by you)</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Manually test the main flow</span><span lang="en">Manually test the main flow</span></li>
+<li><span lang="id">Test edge cases such as empty content and overly long content</span><span lang="en">Test edge cases such as empty content and overly long content</span></li>
+<li><span lang="id">Test permission control such as being unable to delete someone else's comment</span><span lang="en">Test permission control such as being unable to delete someone else's comment</span></li>
+<li><span lang="id">Ask AI to help you write automated tests</span><span lang="en">Ask AI to help you write automated tests</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Real conversation example:</b></span><span lang="en"><b>Real conversation example:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>You: I want to add a user comment feature so users can post comments on articles
+
+AI: Okay, let me first understand the project structure.
+    [AI analyzes the project code]
+    I see that the project already has a user system (models/user.js)
+    and an article system (models/article.js).
+
+    Implementing the comment feature requires:
+    1. Creating a comment data model (models/comment.js)
+    2. Adding comment-related APIs (routes/comment.js)
+    3. Adding comment display and posting functionality to the article detail page
+
+    Should I start implementing it?
+
+You: Yes, let&#039;s start. Create the data model first
+
+AI: [Generates models/comment.js]
+    I have created the comment data model with these fields:
+    - id: comment ID
+    - content: comment content
+    - userId: author ID
+    - articleId: article ID
+    - parentId: parent comment ID (for nested replies)
+    - createdAt: creation time
+
+    Should I implement the API next?
+
+You: Yes, implement the API</pre>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.2 Fixing Bugs</span><span lang="en">3.2 Fixing Bugs</span></h2>
+<p class="reveal"><span lang="id"><b>Scenario:</b> a user reports a problem, and you need to locate and fix it quickly.</span><span lang="en"><b>Scenario:</b> a user reports a problem, and you need to locate and fix it quickly.</span></p>
+<p class="reveal"><span lang="id"><b>Complete workflow:</b></span><span lang="en"><b>Complete workflow:</b></span></p>
+<p class="reveal"><span lang="id"><b>Step 1: Gather information</b> (done by you)</span><span lang="en"><b>Step 1: Gather information</b> (done by you)</span></p>
+<p class="reveal"><span lang="id">Record the following information:</span><span lang="en">Record the following information:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">What is the error message?</span><span lang="en">What is the error message?</span></li>
+<li><span lang="id">How can this problem be reproduced?</span><span lang="en">How can this problem be reproduced?</span></li>
+<li><span lang="id">When did it start happening?</span><span lang="en">When did it start happening?</span></li>
+<li><span lang="id">How large is the impact scope?</span><span lang="en">How large is the impact scope?</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Step 2: Locate the problem</b> (ask AI to help)</span><span lang="en"><b>Step 2: Locate the problem</b> (ask AI to help)</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>User feedback: after clicking the &quot;Submit Order&quot; button, the page freezes
+Browser console error: TypeError: Cannot read property &#039;id&#039; of undefined
+The error occurs on line 45 of checkout.js
+
+Please help me:
+1. Analyze possible causes
+2. Find the relevant code
+3. Check the data flow</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 3: Analyze the root cause</b> (with AI)</span><span lang="en"><b>Step 3: Analyze the root cause</b> (with AI)</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Check where this user object comes from
+Inspect under what circumstances user could be undefined</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 4: Implement the fix</b> (AI generates, you review)</span><span lang="en"><b>Step 4: Implement the fix</b> (AI generates, you review)</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Fix this problem with these requirements:
+1. Add defensive code to check whether user exists
+2. If user does not exist, redirect to the login page
+3. Add a friendly error message</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 5: Verify the fix</b> (done by you)</span><span lang="en"><b>Step 5: Verify the fix</b> (done by you)</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Reproduce the issue using the original steps and confirm the problem is solved</span><span lang="en">Reproduce the issue using the original steps and confirm the problem is solved</span></li>
+<li><span lang="id">Test related functionality to ensure no new problems were introduced</span><span lang="en">Test related functionality to ensure no new problems were introduced</span></li>
+<li><span lang="id">Think about whether similar problems exist elsewhere</span><span lang="en">Think about whether similar problems exist elsewhere</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Real conversation example:</b></span><span lang="en"><b>Real conversation example:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>You: A user reported that after logging in, refreshing the page logs them out
+
+AI: This is usually a token storage or validation issue. Let me check:
+    1. Where is the token stored, localStorage or cookies?
+    2. Is the token reloaded when the page refreshes?
+
+    Please tell me which file contains the token-related code
+
+You: utils/auth.js
+
+AI: [Analyzes utils/auth.js]
+    I found the issue: the token is stored in sessionStorage,
+    and sessionStorage is cleared when the page is refreshed.
+
+    Solution: use localStorage instead
+
+    Would you like me to change it?
+
+You: Yes, change it
+
+AI: [Modifies the code]
+    The change is complete. The token is now stored in localStorage,
+    so it will not be lost after a page refresh.
+
+    I recommend that you test:
+    1. Log in and refresh the page to confirm the user stays logged in
+    2. Close and reopen the browser to confirm the user stays logged in</pre>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.3 Refactoring Code</span><span lang="en">3.3 Refactoring Code</span></h2>
+<p class="reveal"><span lang="id"><b>Scenario:</b> the code has become hard to maintain, and it needs refactoring to improve code quality.</span><span lang="en"><b>Scenario:</b> the code has become hard to maintain, and it needs refactoring to improve code quality.</span></p>
+<p class="reveal"><span lang="id"><b>Complete workflow:</b></span><span lang="en"><b>Complete workflow:</b></span></p>
+<p class="reveal"><span lang="id"><b>Step 1: Define the refactoring goal</b> (done by you)</span><span lang="en"><b>Step 1: Define the refactoring goal</b> (done by you)</span></p>
+<p class="reveal"><span lang="id">Clarify the following:</span><span lang="en">Clarify the following:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">What problem are you trying to solve? (duplicate code? messy structure? performance issues?)</span><span lang="en">What problem are you trying to solve? (duplicate code? messy structure? performance issues?)</span></li>
+<li><span lang="id">How large is the scope of the refactor?</span><span lang="en">How large is the scope of the refactor?</span></li>
+<li><span lang="id">What level of risk is acceptable?</span><span lang="en">What level of risk is acceptable?</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Step 2: Make a refactoring plan</b> (with AI)</span><span lang="en"><b>Step 2: Make a refactoring plan</b> (with AI)</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>These three functions (getUserList, getArticleList, getCommentList)
+contain a lot of duplicated code for pagination, sorting, and filtering.
+
+Please help me:
+1. Analyze the duplicated parts
+2. Propose a refactoring plan
+3. Evaluate the risk of the refactor</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 3: Prepare a safety net</b> (ask AI to help)</span><span lang="en"><b>Step 3: Prepare a safety net</b> (ask AI to help)</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Before refactoring, please write test cases for me first
+so that the behavior stays the same after the refactor</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 4: Refactor step by step</b> (AI executes, you verify)</span><span lang="en"><b>Step 4: Refactor step by step</b> (AI executes, you verify)</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>According to the plan we just discussed, first extract the shared function</pre>
+</div>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Now optimize the data structure</pre>
+</div>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Finally update the call sites</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 5: Verify the result</b> (done by you)</span><span lang="en"><b>Step 5: Verify the result</b> (done by you)</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Run all tests and make sure they pass</span><span lang="en">Run all tests and make sure they pass</span></li>
+<li><span lang="id">Manually test key functionality</span><span lang="en">Manually test key functionality</span></li>
+<li><span lang="id">Check whether code quality has improved</span><span lang="en">Check whether code quality has improved</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Real conversation example:</b></span><span lang="en"><b>Real conversation example:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>You: These three functions have a lot of duplicate code. Can you help me refactor them?
+    [Paste the code of the three functions]
+
+AI: I analyzed them, and the main differences are:
+    - getUserList: gets the user list
+    - getArticleList: gets the article list
+    - getCommentList: gets the comment list
+
+    Their common logic is pagination, sorting, and filtering.
+
+    Refactoring plan:
+    1. Extract a generic getList function
+    2. Pass the different parts as parameters
+
+    This can reduce 80% of the duplicated code.
+
+    Should I implement it?
+
+You: Yes, but first help me write test cases
+
+AI: [Generates tests]
+    I have written tests for all three functions,
+    covering the main use cases.
+
+    Can I start refactoring now?
+
+You: Yes, start refactoring
+
+AI: [Refactors the code]
+    Refactoring is complete. I created a generic getList function,
+    and the original three functions now all call that shared function.
+
+    Please run the tests to confirm everything works: npm test</pre>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.4 Code Review</span><span lang="en">3.4 Code Review</span></h2>
+<p class="reveal"><span lang="id"><b>Scenario:</b> a teammate submitted code, and you need to review it.</span><span lang="en"><b>Scenario:</b> a teammate submitted code, and you need to review it.</span></p>
+<p class="reveal"><span lang="id"><b>Complete workflow:</b></span><span lang="en"><b>Complete workflow:</b></span></p>
+<p class="reveal"><span lang="id"><b>Step 1: Quickly understand the change</b> (ask AI to help)</span><span lang="en"><b>Step 1: Quickly understand the change</b> (ask AI to help)</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Summarize what this PR changed
+Which files were mainly modified</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 2: Check common issues</b> (ask AI to help)</span><span lang="en"><b>Step 2: Check common issues</b> (ask AI to help)</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Check this change for:
+1. Security issues (SQL injection, XSS, etc.)
+2. Performance problems (N+1 queries, memory leaks, etc.)
+3. Obvious bugs
+4. Whether the coding style follows the project conventions</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 3: Deep review</b> (done by you)</span><span lang="en"><b>Step 3: Deep review</b> (done by you)</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Whether the business logic is correct</span><span lang="en">Whether the business logic is correct</span></li>
+<li><span lang="id">Whether edge cases were considered</span><span lang="en">Whether edge cases were considered</span></li>
+<li><span lang="id">Whether there is a better implementation approach</span><span lang="en">Whether there is a better implementation approach</span></li>
+<li><span lang="id">Whether tests should be added</span><span lang="en">Whether tests should be added</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Step 4: Give feedback</b> (done by you)</span><span lang="en"><b>Step 4: Give feedback</b> (done by you)</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Point out the places that need changes</span><span lang="en">Point out the places that need changes</span></li>
+<li><span lang="id">Explain why they should be changed</span><span lang="en">Explain why they should be changed</span></li>
+<li><span lang="id">Provide improvement suggestions</span><span lang="en">Provide improvement suggestions</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Real conversation example:</b></span><span lang="en"><b>Real conversation example:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>You: Help me review this PR
+    [Provide the PR link or code]
+
+AI: I reviewed the change and found these issues:
+
+    1. Security issues:
+       - Line 23: user input is not escaped, which may lead to XSS risk
+       - Line 45: the SQL query is built by string concatenation, which risks injection
+
+    2. Performance problems:
+       - Line 67: the database is queried inside a loop, which creates an N+1 problem
+
+    3. Code quality:
+       - The handleSubmit function is too long (200 lines); consider splitting it
+       - Error handling is missing
+
+    Would you like me to explain any of these in more detail?
+
+You: Explain the SQL injection issue in detail
+
+AI: On line 45:</pre>
+</div>
+<p class="reveal"><span lang="id">const query = <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SELECT * FROM users WHERE name = '${userName}'</code>;</span><span lang="en">const query = <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SELECT * FROM users WHERE name = '${userName}'</code>;</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>
+    This directly concatenates user input into the SQL statement.
+    If a user enters `&#039; OR &#039;1&#039;=&#039;1`, it becomes:</pre>
+</div>
+<p class="reveal"><span lang="id">SELECT * FROM users WHERE name = '' OR '1'='1'</span><span lang="en">SELECT * FROM users WHERE name = '' OR '1'='1'</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>    This would return all user data.
+
+    The correct approach is to use a parameterized query:</pre>
+</div>
+<p class="reveal"><span lang="id">const query = 'SELECT * FROM users WHERE name = ?';</span><span lang="en">const query = 'SELECT * FROM users WHERE name = ?';</span></p>
+<p class="reveal"><span lang="id">db.query(query, [userName]);</span><span lang="en">db.query(query, [userName]);</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>
+    Would you like me to fix it?</pre>
+</div>
+<p class="reveal"><span lang="id">To help AI understand your project better, it is recommended to build a knowledge base inside the project. That way AI can work according to your conventions and habits.</span><span lang="en">To help AI understand your project better, it is recommended to build a knowledge base inside the project. That way AI can work according to your conventions and habits.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4.1 Create a Project Description File</span><span lang="en">4.1 Create a Project Description File</span></h2>
+<p class="reveal"><span lang="id">Create a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE.md</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">AGENTS.md</code> file in the project root to record key project information:</span><span lang="en">Create a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CLAUDE.md</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">AGENTS.md</code> file in the project root to record key project information:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>markdown</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Project Overview
+
+## Project Summary
+This is an online learning platform that provides course management, user learning, assignment submission, and other features.
+
+## Tech Stack
+- Frontend: React 18 + TypeScript + Vite
+- Backend: Node.js + Express + PostgreSQL
+- Deployment: Vercel (frontend) + Railway (backend)
+
+## Project Structure</pre>
+</div>
+<p class="reveal"><span lang="id">src/</span><span lang="en">src/</span></p>
+<p class="reveal"><span lang="id">├── components/     # React components</span><span lang="en">├── components/     # React components</span></p>
+<p class="reveal"><span lang="id">├── pages/          # Page components</span><span lang="en">├── pages/          # Page components</span></p>
+<p class="reveal"><span lang="id">├── api/            # API calls</span><span lang="en">├── api/            # API calls</span></p>
+<p class="reveal"><span lang="id">├── utils/          # Utility functions</span><span lang="en">├── utils/          # Utility functions</span></p>
+<p class="reveal"><span lang="id">└── types/          # TypeScript type definitions</span><span lang="en">└── types/          # TypeScript type definitions</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>
+## Code Conventions
+- Use ESLint and Prettier to format code
+- Component files use PascalCase (such as UserProfile.tsx)
+- Utility functions use camelCase (such as formatDate.ts)
+- Constants use UPPER_SNAKE_CASE (such as API_BASE_URL)
+
+## Development Flow
+1. Create a feature branch from main
+2. Submit a PR after development is complete
+3. Merge after code review passes
+
+## Common Tasks
+- Start the development server: `npm run dev`
+- Run tests: `npm test`
+- Build for production: `npm run build`
+- Format code: `npm run format`
+
+## Notes
+- All API calls must include error handling
+- User input must be validated and escaped
+- Use parameterized queries for database operations to avoid SQL injection
+- Sensitive information (passwords, tokens) must not be written to logs
+
+## Database Schema
+- users: user table (id, email, password_hash, created_at)
+- courses: course table (id, title, description, teacher_id)
+- enrollments: enrollment table (id, user_id, course_id, enrolled_at)</pre>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4.2 Record Common Problems and Solutions</span><span lang="en">4.2 Record Common Problems and Solutions</span></h2>
+<p class="reveal"><span lang="id">Create <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">docs/troubleshooting.md</code> in the project to record common problems:</span><span lang="en">Create <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">docs/troubleshooting.md</code> in the project to record common problems:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>markdown</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Common Problems
+
+## Development Environment Problems
+
+### Problem: npm install fails
+**Cause:** Node version is incompatible
+**Solution:** Use Node.js 18 or higher
+
+### Problem: database connection fails
+**Cause:** environment variables are not configured
+**Solution:** Copy .env.example to .env and fill in the database connection info
+
+## Feature Problems
+
+### Problem: after users log in, refreshing the page logs them out
+**Cause:** the token is stored in sessionStorage
+**Solution:** switch to localStorage
+
+### Problem: image upload fails
+**Cause:** file size exceeds the limit
+**Solution:** add a file size check on the frontend and limit it to 5MB</pre>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4.3 Maintain Technical Decision Records</span><span lang="en">4.3 Maintain Technical Decision Records</span></h2>
+<p class="reveal"><span lang="id">Create a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">docs/decisions/</code> directory to record important technical decisions:</span><span lang="en">Create a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">docs/decisions/</code> directory to record important technical decisions:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>markdown</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># ADR-001: Choosing PostgreSQL as the Database
+
+## Status
+Accepted
+
+## Background
+The project needs to choose a relational database. The candidates are MySQL and PostgreSQL.
+
+## Decision
+Choose PostgreSQL
+
+## Rationale
+1. Better JSON support, suitable for storing course content
+2. Stronger full-text search
+3. The team is more familiar with PostgreSQL
+
+## Consequences
+- We need to learn PostgreSQL-specific features
+- Deployment requires a PostgreSQL environment</pre>
+</div>
+<p class="reveal"><span lang="id">By mastering some practical techniques, you can make your collaboration with AI more efficient.</span><span lang="en">By mastering some practical techniques, you can make your collaboration with AI more efficient.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5.1 Be Clear and Specific When Describing Problems</span><span lang="en">5.1 Be Clear and Specific When Describing Problems</span></h2>
+<p class="reveal"><span lang="id"><b>Bad description:</b></span><span lang="en"><b>Bad description:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>This feature has a problem
+Help me optimize it</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Good description:</b></span><span lang="en"><b>Good description:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>After the user clicks the &quot;Submit&quot; button, the form is not submitted
+The browser console reports: Uncaught TypeError: Cannot read property &#039;value&#039; of null
+The error occurs on line 23 of form.js
+
+This list loads very slowly and has 1000 items
+Please help me add pagination with 20 items per page</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Key points:</b></span><span lang="en"><b>Key points:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Provide specific error information</span><span lang="en">Provide specific error information</span></li>
+<li><span lang="id">Explain the expected result</span><span lang="en">Explain the expected result</span></li>
+<li><span lang="id">Give relevant context</span><span lang="en">Give relevant context</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5.2 Do Only One Thing at a Time</span><span lang="en">5.2 Do Only One Thing at a Time</span></h2>
+<p class="reveal"><span lang="id"><b>Bad approach:</b></span><span lang="en"><b>Bad approach:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Help me implement login, registration, password recovery, profile center,
+password change, and email verification</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Good approach:</b></span><span lang="en"><b>Good approach:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Implement the login feature first, with these requirements:
+- Email and password login
+- Remember login state
+- Error messages
+
+(After it is done) Now implement the registration feature
+
+(After it is done) Now implement the password recovery feature</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Key points:</b></span><span lang="en"><b>Key points:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Break large tasks into small tasks</span><span lang="en">Break large tasks into small tasks</span></li>
+<li><span lang="id">Test and verify after every completed task</span><span lang="en">Test and verify after every completed task</span></li>
+<li><span lang="id">Confirm there are no issues before moving to the next one</span><span lang="en">Confirm there are no issues before moving to the next one</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5.3 Verify Results Promptly</span><span lang="en">5.3 Verify Results Promptly</span></h2>
+<p class="reveal"><span lang="id"><b>Bad approach:</b></span><span lang="en"><b>Bad approach:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Let AI modify 10 files in a row</span><span lang="en">Let AI modify 10 files in a row</span></li>
+<li><span lang="id">Only discover at the end that the first change was already wrong</span><span lang="en">Only discover at the end that the first change was already wrong</span></li>
+<li><span lang="id">Waste a lot of time</span><span lang="en">Waste a lot of time</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Good approach:</b></span><span lang="en"><b>Good approach:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Modify one file and test immediately</span><span lang="en">Modify one file and test immediately</span></li>
+<li><span lang="id">Confirm there is no problem, then continue</span><span lang="en">Confirm there is no problem, then continue</span></li>
+<li><span lang="id">Correct issues as soon as they are found</span><span lang="en">Correct issues as soon as they are found</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Key points:</b></span><span lang="en"><b>Key points:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Move in small steps and get fast feedback</span><span lang="en">Move in small steps and get fast feedback</span></li>
+<li><span lang="id">Do not blindly trust AI</span><span lang="en">Do not blindly trust AI</span></li>
+<li><span lang="id">Stay in control of the code</span><span lang="en">Stay in control of the code</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5.4 Make Good Use of Context</span><span lang="en">5.4 Make Good Use of Context</span></h2>
+<p class="reveal"><span lang="id"><b>Technique 1: refer to previous conversation</b></span><span lang="en"><b>Technique 1: refer to previous conversation</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Implement according to the plan we just discussed
+Refer to the previous getUserList function</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Technique 2: provide related code</b></span><span lang="en"><b>Technique 2: provide related code</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>This is the existing user model code:
+[paste code]
+
+Please implement the article model in the same style</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Technique 3: explain project background</b></span><span lang="en"><b>Technique 3: explain project background</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>This is an e-commerce project using React + Node.js
+It already has a user system and a product system
+Now we need to add a shopping cart feature</pre>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5.5 Save Useful Conversations</span><span lang="en">5.5 Save Useful Conversations</span></h2>
+<p class="reveal"><span lang="id"><b>Scenario:</b> you solved a complex problem</span><span lang="en"><b>Scenario:</b> you solved a complex problem</span></p>
+<p class="reveal"><span lang="id"><b>How to do it:</b></span><span lang="en"><b>How to do it:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Record the solution in project documentation</span><span lang="en">Record the solution in project documentation</span></li>
+<li><span lang="id">Refer to it the next time a similar issue appears</span><span lang="en">Refer to it the next time a similar issue appears</span></li>
+<li><span lang="id">Share it with other team members</span><span lang="en">Share it with other team members</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Example:</b></span><span lang="en"><b>Example:</b></span></p>
+<p class="reveal"><span lang="id">Create a document under <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">docs/solutions/</code>:</span><span lang="en">Create a document under <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">docs/solutions/</code>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>markdown</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Solving the N+1 Query Problem
+
+## Problem Description
+When fetching the article list, the system queries the author information once per article,
+which causes a performance problem.
+
+## Solution
+Use a JOIN query to fetch all the data in one go:
+</pre>
+</div>
+<p class="reveal"><span lang="id">SELECT articles.*, users.name as author_name</span><span lang="en">SELECT articles.*, users.name as author_name</span></p>
+<p class="reveal"><span lang="id">FROM articles</span><span lang="en">FROM articles</span></p>
+<p class="reveal"><span lang="id">LEFT JOIN users ON articles.author_id = users.id</span><span lang="en">LEFT JOIN users ON articles.author_id = users.id</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>
+**Result:** query time dropped from 2000ms to 50ms
+
+## 5.6 Learn the Art of Asking Questions
+
+**Technique 1: ask &quot;why&quot; first**</pre>
+</div>
+<p class="reveal"><span lang="id">Why does this code cause a memory leak?</span><span lang="en">Why does this code cause a memory leak?</span></p>
+<p class="reveal"><span lang="id">Why should we use useCallback instead of a normal function?</span><span lang="en">Why should we use useCallback instead of a normal function?</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>
+**Technique 2: ask for multiple options**</pre>
+</div>
+<p class="reveal"><span lang="id">What are the different ways to implement user authentication?</span><span lang="en">What are the different ways to implement user authentication?</span></p>
+<p class="reveal"><span lang="id">What are the pros and cons of each?</span><span lang="en">What are the pros and cons of each?</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>
+**Technique 3: ask for explanations**</pre>
+</div>
+<p class="reveal"><span lang="id">How does this code work?</span><span lang="en">How does this code work?</span></p>
+<p class="reveal"><span lang="id">Can you explain this algorithm in detail?</span><span lang="en">Can you explain this algorithm in detail?</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>
+# 6. Frequently Asked Questions
+
+## Q1: Can I use AI-generated code directly?
+
+**A:** No, not directly. It needs review and testing.
+
+AI-generated code may have the following problems:
+- logical errors or poor handling of edge cases
+- failure to match the project&#039;s coding conventions
+- security risks
+- insufficient performance optimization
+
+You need to:
+- carefully read the generated code
+- understand its logic
+- test different scenarios
+- confirm that it follows the project conventions
+
+## Q2: What if AI misunderstands what I mean?
+
+**A:** Correct it in time and describe the requirement again.
+</pre>
+</div>
+<p class="reveal"><span lang="id">That's not what I meant. What I mean is...</span><span lang="en">That's not what I meant. What I mean is...</span></p>
+<p class="reveal"><span lang="id">This understanding is incorrect. It should be...</span><span lang="en">This understanding is incorrect. It should be...</span></p>
+<p class="reveal"><span lang="id">Let me describe the requirement again...</span><span lang="en">Let me describe the requirement again...</span></p>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../core-skills/agent-teams/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Claude Agent Teams: Tim Pengembang Serba AI</span><span lang="en">Claude Agent Teams: Tim Pengembang Serba AI</span></b></a>
+      <a class="next" href="../../core-skills/mobile-development/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Remote Development Claude Code dari Smartphone</span><span lang="en">Remote Development Claude Code dari Smartphone</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

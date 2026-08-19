@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aplikasi Store Inspection: React Native &amp; Expo — VibeKoding ⚛️</title>
+<meta name="description" content="Modul master Level 3 VibeKoding: Aplikasi Store Inspection: React Native &amp; Expo. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-3/cross-platform/react-native-expo/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../stage-3/"><span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></a> / <span lang="id">Aplikasi Store Inspection: React Native & Expo</span><span lang="en">Aplikasi Store Inspection: React Native & Expo</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">⚛️</div>
+      <div>
+        <h1><span lang="id">Aplikasi Store Inspection: React Native & Expo</span><span lang="en">Aplikasi Store Inspection: React Native & Expo</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul master Level 3 VibeKoding: Aplikasi Store Inspection: React Native & Expo.</span><span lang="en">Modul master Level 3 VibeKoding: Aplikasi Store Inspection: React Native & Expo.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">Suppose a retail team needs one small application for daily store inspections. Staff open a checklist, mark each item, leave a note, and save the result. The same project should eventually run on Android and iPhone, while a browser version is useful for quick internal reviews.</span><span lang="en">Suppose a retail team needs one small application for daily store inspections. Staff open a checklist, mark each item, leave a note, and save the result. The same project should eventually run on Android and iPhone, while a browser version is useful for quick internal reviews.</span></p>
+<p class="reveal"><span lang="id">This is a good React Native and Expo project: the product is mainly forms, lists, photos, and business data, and the team wants to share most of the TypeScript code across platforms.</span><span lang="en">This is a good React Native and Expo project: the product is mainly forms, lists, photos, and business data, and the team wants to share most of the TypeScript code across platforms.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. What React Native and Expo do</span><span lang="en">1. What React Native and Expo do</span></h2>
+<p class="reveal"><span lang="id"><b>React Native</b> lets you build Android and iOS interfaces with React and TypeScript. It renders native controls rather than placing the website inside an app window.</span><span lang="en"><b>React Native</b> lets you build Android and iOS interfaces with React and TypeScript. It renders native controls rather than placing the website inside an app window.</span></p>
+<p class="reveal"><span lang="id"><b>Expo</b> supplies the project tools around React Native: project creation, development servers, common device APIs, builds, updates, and store submission services. You can begin with Expo and still use native code later when the product needs it.</span><span lang="en"><b>Expo</b> supplies the project tools around React Native: project creation, development servers, common device APIs, builds, updates, and store submission services. You can begin with Expo and still use native code later when the product needs it.</span></p>
+<p class="reveal"><span lang="id">The project in this chapter is a <b>store inspection app</b>. “Inspection” simply means that an employee checks a short list—entrance lighting, shelf labels, fire exits, and so on—and records the result.</span><span lang="en">The project in this chapter is a <b>store inspection app</b>. “Inspection” simply means that an employee checks a short list—entrance lighting, shelf labels, fire exits, and so on—and records the result.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. See how real products use this stack</span><span lang="en">2. See how real products use this stack</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Shopify POS: a point-of-sale platform for physical stores</span><span lang="en">Shopify POS: a point-of-sale platform for physical stores</span></h3>
+<p class="reveal"><span lang="id">Shopify POS is the application employees use at a shop counter to sell products, check stock, and work with retail hardware. Shopify has described moving its POS application to React Native while continuing to test on the lower-powered devices that stores actually use.</span><span lang="en">Shopify POS is the application employees use at a shop counter to sell products, check stock, and work with retail hardware. Shopify has described moving its POS application to React Native while continuing to test on the lower-powered devices that stores actually use.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Shopify POS inventory and store screens from its official product page</span><span lang="en">Shopify POS inventory and store screens from its official product page</span></p>
+</div>
+<p class="reveal"><span lang="id">The lesson for our inspection app is practical: the home screen should show the next task and today's progress immediately. A real store worker should not have to navigate through several decorative pages.</span><span lang="en">The lesson for our inspection app is practical: the home screen should show the next task and today's progress immediately. A real store worker should not have to navigate through several decorative pages.</span></p>
+<p class="reveal"><span lang="id">Read: [Shopify's React Native migration](https://shopify.engineering/migrating-our-largest-mobile-app-to-react-native).</span><span lang="en">Read: [Shopify's React Native migration](https://shopify.engineering/migrating-our-largest-mobile-app-to-react-native).</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Discord: one product on Android and iOS</span><span lang="en">Discord: one product on Android and iOS</span></h3>
+<p class="reveal"><span lang="id">Discord is a communication platform for communities, friends, and work groups. Its mobile team uses React Native to share product work between Android and iOS while keeping room for platform-specific behavior.</span><span lang="en">Discord is a communication platform for communities, friends, and work groups. Its mobile team uses React Native to share product work between Android and iOS while keeping room for platform-specific behavior.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Discord's official comparison of the Android roles screen</span><span lang="en">Discord's official comparison of the Android roles screen</span></p>
+</div>
+<p class="reveal"><span lang="id">This is the second lesson: share the screen and business logic first. Add an Android-only or iOS-only file only when the two platforms genuinely need different behavior.</span><span lang="en">This is the second lesson: share the screen and business logic first. Add an Android-only or iOS-only file only when the two platforms genuinely need different behavior.</span></p>
+<p class="reveal"><span lang="id">Read: [How Discord improved React Native on Android](https://discord.com/blog/how-discord-achieves-native-ios-performance-with-react-native).</span><span lang="en">Read: [How Discord improved React Native on Android](https://discord.com/blog/how-discord-achieves-native-ios-performance-with-react-native).</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">MTA TrainTime: a production app built with Expo</span><span lang="en">MTA TrainTime: a production app built with Expo</span></h3>
+<p class="reveal"><span lang="id">MTA TrainTime is the official journey-planning and ticketing application for commuter rail services around New York. Expo's case study explains how its team uses Expo tooling for builds and releases.</span><span lang="en">MTA TrainTime is the official journey-planning and ticketing application for commuter rail services around New York. Expo's case study explains how its team uses Expo tooling for builds and releases.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">The MTA TrainTime application in Expo's official case study</span><span lang="en">The MTA TrainTime application in Expo's official case study</span></p>
+</div>
+<p class="reveal"><span lang="id">Its value here is not the railway interface. It shows that Expo can support a production release process, not only classroom demos.</span><span lang="en">Its value here is not the railway interface. It shows that Expo can support a production release process, not only classroom demos.</span></p>
+<p class="reveal"><span lang="id">Read: [MTA's Expo case study](https://expo.dev/customers/mta).</span><span lang="en">Read: [MTA's Expo case study](https://expo.dev/customers/mta).</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. How one project reaches several platforms</span><span lang="en">3. How one project reaches several platforms</span></h2>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">How React Native and Expo organize a multi-platform project</span><span lang="en">How React Native and Expo organize a multi-platform project</span></p>
+</div>
+<p class="reveal"><span lang="id">You write screens and state in TypeScript. React Native supplies the mobile controls. Expo starts the project, provides common APIs, and creates builds. A web build can reuse much of the same project, although not every native capability has an identical browser equivalent.</span><span lang="en">You write screens and state in TypeScript. React Native supplies the mobile controls. Expo starts the project, provides common APIs, and creates builds. A web build can reuse much of the same project, although not every native capability has an identical browser equivalent.</span></p>
+<p class="reveal"><span lang="id">That is why “one codebase” does not mean “every line is identical.” It means the shared product logic stays together and the few real platform differences remain small and explicit.</span><span lang="en">That is why “one codebase” does not mean “every line is identical.” It means the shared product logic stays together and the few real platform differences remain small and explicit.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Create the first project</span><span lang="en">4. Create the first project</span></h2>
+<p class="reveal"><span lang="id">Install a current Node.js LTS release, then open a terminal in the folder where you keep projects:</span><span lang="en">Install a current Node.js LTS release, then open a terminal in the folder where you keep projects:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>npx create-expo-app@latest store-inspection
+cd store-inspection
+npm run web</pre>
+</div>
+<p class="reveal"><span lang="id">When the browser shows the starter application, stop and keep that version working. It gives you a safe point to return to.</span><span lang="en">When the browser shows the starter application, stop and keep that version working. It gives you a safe point to return to.</span></p>
+<p class="reveal"><span lang="id">Now ask your coding assistant:</span><span lang="en">Now ask your coding assistant:</span></p>
+<p class="reveal"><span lang="id">> Turn this Expo starter into a store inspection home page. Show the store name, today's progress, and one button that opens the inspection checklist.</span><span lang="en">> Turn this Expo starter into a store inspection home page. Show the store name, today's progress, and one button that opens the inspection checklist.</span></p>
+<p class="reveal"><span lang="id">Do not ask for login, camera access, offline sync, and a backend in the same message. First confirm that the home page opens.</span><span lang="en">Do not ask for login, camera access, offline sync, and a backend in the same message. First confirm that the home page opens.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Add a checklist</span><span lang="en">5. Add a checklist</span></h2>
+<p class="reveal"><span lang="id">Use four ordinary items for the first version: entrance lighting, price labels, aisle cleanliness, and fire exits.</span><span lang="en">Use four ordinary items for the first version: entrance lighting, price labels, aisle cleanliness, and fire exits.</span></p>
+<p class="reveal"><span lang="id">> Add an inspection page with four checklist items. Tapping an item should switch it between complete and incomplete, and the progress number should update.</span><span lang="en">> Add an inspection page with four checklist items. Tapping an item should switch it between complete and incomplete, and the progress number should update.</span></p>
+<p class="reveal"><span lang="id">Run the page again. Click every item once, then click one item a second time. The count should increase and decrease correctly.</span><span lang="en">Run the page again. Click every item once, then click one item a second time. The count should increase and decrease correctly.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">The store inspection app running in Expo Web</span><span lang="en">The store inspection app running in Expo Web</span></p>
+</div>
+<p class="reveal"><span lang="id">Next narrow the browser window. The controls should remain readable without horizontal scrolling.</span><span lang="en">Next narrow the browser window. The controls should remain readable without horizontal scrolling.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">The same Expo Web app in a narrow layout</span><span lang="en">The same Expo Web app in a narrow layout</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Save one inspection record</span><span lang="en">6. Save one inspection record</span></h2>
+<p class="reveal"><span lang="id">The first record needs only a note and a Save button.</span><span lang="en">The first record needs only a note and a Save button.</span></p>
+<p class="reveal"><span lang="id">> Add a note field and a Save button. After saving, show the time, completed item count, and note in a record card below the checklist.</span><span lang="en">> Add a note field and a Save button. After saving, show the time, completed item count, and note in a record card below the checklist.</span></p>
+<p class="reveal"><span lang="id">Test three cases:</span><span lang="en">Test three cases:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">save a normal note;</span><span lang="en">save a normal note;</span></li>
+<li><span lang="id">try to save when no item is complete;</span><span lang="en">try to save when no item is complete;</span></li>
+<li><span lang="id">save a second record and confirm the first one remains visible.</span><span lang="en">save a second record and confirm the first one remains visible.</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">A real inspection record after clicking and saving</span><span lang="en">A real inspection record after clicking and saving</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Make the record survive a restart</span><span lang="en">7. Make the record survive a restart</span></h2>
+<p class="reveal"><span lang="id">At the moment, refreshing the page may erase the record. “Local storage” means keeping a copy on the current device so the user can close the app and continue later.</span><span lang="en">At the moment, refreshing the page may erase the record. “Local storage” means keeping a copy on the current device so the user can close the app and continue later.</span></p>
+<p class="reveal"><span lang="id">> Save the checklist progress and records on this device. Restore them when the app opens again. Do not add a server yet.</span><span lang="en">> Save the checklist progress and records on this device. Restore them when the app opens again. Do not add a server yet.</span></p>
+<p class="reveal"><span lang="id">For a few simple values, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">AsyncStorage</code> is usually enough on mobile. When the data grows into inspections, line items, and a retry queue, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">expo-sqlite</code> is easier to manage. The browser version needs an equivalent web storage path.</span><span lang="en">For a few simple values, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">AsyncStorage</code> is usually enough on mobile. When the data grows into inspections, line items, and a retry queue, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">expo-sqlite</code> is easier to manage. The browser version needs an equivalent web storage path.</span></p>
+<p class="reveal"><span lang="id">After the change, save two records, close the tab, reopen it, and confirm both records return.</span><span lang="en">After the change, save two records, close the tab, reopen it, and confirm both records return.</span></p>
+<p class="reveal"><span lang="id">References: [AsyncStorage](https://react-native-async-storage.github.io/async-storage/) and [Expo SQLite](https://docs.expo.dev/versions/latest/sdk/sqlite/).</span><span lang="en">References: [AsyncStorage](https://react-native-async-storage.github.io/async-storage/) and [Expo SQLite](https://docs.expo.dev/versions/latest/sdk/sqlite/).</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8. Add the camera only after saving works</span><span lang="en">8. Add the camera only after saving works</span></h2>
+<p class="reveal"><span lang="id">Photos are useful when an employee needs to record a damaged sign or blocked exit. First add one small action:</span><span lang="en">Photos are useful when an employee needs to record a damaged sign or blocked exit. First add one small action:</span></p>
+<p class="reveal"><span lang="id">> Let the user attach one photo to an incomplete checklist item. Show a preview and allow the photo to be removed.</span><span lang="en">> Let the user attach one photo to an incomplete checklist item. Show a preview and allow the photo to be removed.</span></p>
+<p class="reveal"><span lang="id">Expo's [ImagePicker guide](https://docs.expo.dev/versions/latest/sdk/imagepicker/) covers the system photo picker. A camera adds permission prompts and more device-specific testing, so do not claim it works until it has been tried on the target phone.</span><span lang="en">Expo's [ImagePicker guide](https://docs.expo.dev/versions/latest/sdk/imagepicker/) covers the system photo picker. A camera adds permission prompts and more device-specific testing, so do not claim it works until it has been tried on the target phone.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">9. Connect a company backend</span><span lang="en">9. Connect a company backend</span></h2>
+<p class="reveal"><span lang="id">A backend is the server that owns accounts, store permissions, shared records, and uploaded photos. The mobile app should display that data; it should not decide who is a manager by itself.</span><span lang="en">A backend is the server that owns accounts, store permissions, shared records, and uploaded photos. The mobile app should display that data; it should not decide who is a manager by itself.</span></p>
+<p class="reveal"><span lang="id">Begin with the data relationships:</span><span lang="en">Begin with the data relationships:</span></p>
+<p class="reveal"><span lang="id">> Describe how users, stores, inspections, checklist items, and photos relate. Do not write code yet.</span><span lang="en">> Describe how users, stores, inspections, checklist items, and photos relate. Do not write code yet.</span></p>
+<p class="reveal"><span lang="id">Then connect login:</span><span lang="en">Then connect login:</span></p>
+<p class="reveal"><span lang="id">> Connect the existing login API. A user may only see stores assigned by the server.</span><span lang="en">> Connect the existing login API. A user may only see stores assigned by the server.</span></p>
+<p class="reveal"><span lang="id">Keep mobile login tokens in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SecureStore</code>, not ordinary text storage. Never put a server secret in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">EXPO_PUBLIC_</code> variables: values shipped inside an app can ultimately be read by the user.</span><span lang="en">Keep mobile login tokens in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SecureStore</code>, not ordinary text storage. Never put a server secret in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">EXPO_PUBLIC_</code> variables: values shipped inside an app can ultimately be read by the user.</span></p>
+<p class="reveal"><span lang="id">For photo upload:</span><span lang="en">For photo upload:</span></p>
+<p class="reveal"><span lang="id">> Upload inspection photos through the backend. Limit file type and size, show progress, and keep the local record when an upload fails.</span><span lang="en">> Upload inspection photos through the backend. Limit file type and size, show progress, and keep the local record when an upload fails.</span></p>
+<p class="reveal"><span lang="id">Test with two accounts. Account A must not read account B's stores, records, photos, or retry queue. Hiding a button is not access control; the backend must reject the request.</span><span lang="en">Test with two accounts. Account A must not read account B's stores, records, photos, or retry queue. Hiding a button is not access control; the backend must reject the request.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">10. Understand offline synchronization</span><span lang="en">10. Understand offline synchronization</span></h2>
+<p class="reveal"><span lang="id">“Offline sync” means the device saves work locally when the network is unavailable and uploads it later. It is not required for the first prototype.</span><span lang="en">“Offline sync” means the device saves work locally when the network is unavailable and uploads it later. It is not required for the first prototype.</span></p>
+<p class="reveal"><span lang="id">Once ordinary local saving and the backend both work, add one state at a time:</span><span lang="en">Once ordinary local saving and the backend both work, add one state at a time:</span></p>
+<p class="reveal"><span lang="id">> Mark unsent records as Pending. Add a Retry button that sends one pending record when the network returns.</span><span lang="en">> Mark unsent records as Pending. Add a Retry button that sends one pending record when the network returns.</span></p>
+<p class="reveal"><span lang="id">Later you can add Sending, Synced, and Failed states. Give every submission a unique request ID so a retry cannot create the same inspection twice.</span><span lang="en">Later you can add Sending, Synced, and Failed states. Give every submission a unique request ID so a retry cannot create the same inspection twice.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">11. Run on phones and prepare a release</span><span lang="en">11. Run on phones and prepare a release</span></h2>
+<p class="reveal"><span lang="id">During early work, Expo Go is convenient for features supported by its built-in native modules. A <b>development build</b> is your own installable test app and is the better choice once you add custom native code.</span><span lang="en">During early work, Expo Go is convenient for features supported by its built-in native modules. A <b>development build</b> is your own installable test app and is the better choice once you add custom native code.</span></p>
+<p class="reveal"><span lang="id">Follow Expo's [development build guide](https://docs.expo.dev/develop/development-builds/introduction/) and [EAS Build guide](https://docs.expo.dev/build/introduction/).</span><span lang="en">Follow Expo's [development build guide](https://docs.expo.dev/develop/development-builds/introduction/) and [EAS Build guide](https://docs.expo.dev/build/introduction/).</span></p>
+<p class="reveal"><span lang="id">Before release, test the actual Android and iOS builds on real devices:</span><span lang="en">Before release, test the actual Android and iOS builds on real devices:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">first launch and permission prompts;</span><span lang="en">first launch and permission prompts;</span></li>
+<li><span lang="id">text entry with the on-screen keyboard;</span><span lang="en">text entry with the on-screen keyboard;</span></li>
+<li><span lang="id">photo selection or camera capture;</span><span lang="en">photo selection or camera capture;</span></li>
+<li><span lang="id">closing and reopening the app;</span><span lang="en">closing and reopening the app;</span></li>
+<li><span lang="id">weak network, retry, and duplicate submission;</span><span lang="en">weak network, retry, and duplicate submission;</span></li>
+<li><span lang="id">account isolation and logout;</span><span lang="en">account isolation and logout;</span></li>
+<li><span lang="id">upgrade from the previous version without losing local records.</span><span lang="en">upgrade from the previous version without losing local records.</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">12. What was verified for this chapter</span><span lang="en">12. What was verified for this chapter</span></h2>
+<p class="reveal"><span lang="id">The prototype was created with Expo SDK 57 and TypeScript. Type checking passed, the web production export completed, and the application was opened in a browser. Checklist interaction, saving a record, and the narrow layout shown above were tested in the running build.</span><span lang="en">The prototype was created with Expo SDK 57 and TypeScript. Type checking passed, the web production export completed, and the application was opened in a browser. Checklist interaction, saving a record, and the narrow layout shown above were tested in the running build.</span></p>
+<p class="reveal"><span lang="id">This machine did not have a usable Android emulator or iOS Simulator runtime, so this chapter does not pretend that mobile builds, camera permissions, signing, or store submission were completed. Use the same rule in your own project: write down exactly what ran, on which device, and with which build.</span><span lang="en">This machine did not have a usable Android emulator or iOS Simulator runtime, so this chapter does not pretend that mobile builds, camera permissions, signing, or store submission were completed. Use the same rule in your own project: write down exactly what ran, on which device, and with which build.</span></p>
+<p class="reveal"><span lang="id">The first useful milestone is small: open the checklist, complete an item, save a note, and see the record again. Once that path is dependable, add photos, accounts, synchronization, and release work in that order.</span><span lang="en">The first useful milestone is small: open the checklist, complete an item, save a note, and see the record again. Once that path is dependable, add photos, accounts, synchronization, and release work in that order.</span></p>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../cross-platform/ios-app/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span><span lang="en">Aplikasi iOS dengan SwiftUI & Apple Ecosystem</span></b></a>
+      <a class="next" href="../../cross-platform/flutter-app/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Flutter & Dart: Satu Kode untuk iOS & Android</span><span lang="en">Flutter & Dart: Satu Kode untuk iOS & Android</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

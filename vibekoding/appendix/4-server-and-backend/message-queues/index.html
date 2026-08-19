@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of Message Queues and Event-Driven Architecture — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Message Queues and Event-Driven Architecture. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/4-server-and-backend/message-queues/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Message Queues and Event-Driven Architecture</span><span lang="en">Principles of Message Queues and Event-Driven Architecture</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of Message Queues and Event-Driven Architecture</span><span lang="en">Principles of Message Queues and Event-Driven Architecture</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Message Queues and Event-Driven Architecture.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Message Queues and Event-Driven Architecture.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>When systems are tightly coupled and traffic spikes, how do you ensure the critical path remains stable?</b> Message queues are the "buffer" and "decoupler" of modern distributed systems. This article uses real-world cases (restaurant queuing, package sorting, flash sale systems) to deeply understand the design philosophy and engineering practices of message queues.</span><span lang="en"><b>When systems are tightly coupled and traffic spikes, how do you ensure the critical path remains stable?</b> Message queues are the "buffer" and "decoupler" of modern distributed systems. This article uses real-world cases (restaurant queuing, package sorting, flash sale systems) to deeply understand the design philosophy and engineering practices of message queues.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Motivation for the "Message Queues"</span><span lang="en">1. Motivation for the "Message Queues"</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 A Real-World Case: The Evolution of Taobao's Order System</span><span lang="en">1.1 A Real-World Case: The Evolution of Taobao's Order System</span></h3>
+<p class="reveal"><span lang="id">In 2012, Taobao's order system suffered a severe outage. At midnight on Double 11, traffic flooded in instantly. The order service directly called the inventory service, payment service, logistics service... the entire chain collapsed like dominoes.</span><span lang="en">In 2012, Taobao's order system suffered a severe outage. At midnight on Double 11, traffic flooded in instantly. The order service directly called the inventory service, payment service, logistics service... the entire chain collapsed like dominoes.</span></p>
+<p class="reveal"><span lang="id"><b>The architecture at the time (tight coupling):</b></span><span lang="en"><b>The architecture at the time (tight coupling):</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>User places order → Order service → Sync call inventory service → Sync call payment service → Sync call logistics service
+                    ↓                    ↓                    ↓
+                 Response 200ms       Response 500ms       Response 300ms</pre>
+</div>
+
+<div class="callout warn reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div>
+  <p><span lang="id">- <b>Total response time</b> = 200 + 500 + 300 = 1000ms (user waits 1 second)
+- <b>Inventory service down</b> → Order service also goes down (thread pool exhausted)
+- <b>Payment service slows down</b> → Entire chain is dragged down
+- <b>Cannot scale horizontally</b> → Can only scale vertically (expensive and limited)</span><span lang="en">- <b>Total response time</b> = 200 + 500 + 300 = 1000ms (user waits 1 second)
+- <b>Inventory service down</b> → Order service also goes down (thread pool exhausted)
+- <b>Payment service slows down</b> → Entire chain is dragged down
+- <b>Cannot scale horizontally</b> → Can only scale vertically (expensive and limited)</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Improved architecture (introducing message queues):</b></span><span lang="en"><b>Improved architecture (introducing message queues):</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>User places order → Order service → Send &quot;order created&quot; message → Immediate return (50ms)
+                              ↓
+                        Message queue (Kafka)
+                              ↓
+        ┌─────────────┬─────────────┬─────────────┐
+        ▼             ▼             ▼             ▼
+   Inventory      Payment       Logistics     Notification
+   service        service       service       service
+   (async deduct) (async process) (async create) (async send)</pre>
+</div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>User response time</b> = 50ms (20x experience improvement)
+- <b>Inventory service down</b> → Messages stay in queue, continue processing after recovery
+- <b>Payment service slows down</b> → Doesn't affect order creation
+- <b>Can scale horizontally</b> → Just add more consumer instances</span><span lang="en">- <b>User response time</b> = 50ms (20x experience improvement)
+- <b>Inventory service down</b> → Messages stay in queue, continue processing after recovery
+- <b>Payment service slows down</b> → Doesn't affect order creation
+- <b>Can scale horizontally</b> → Just add more consumer instances</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 Everyday Analogies for Message Queues</span><span lang="en">1.2 Everyday Analogies for Message Queues</span></h3>
+<p class="reveal"><span lang="id"><b>Restaurant Queuing System</b></span><span lang="en"><b>Restaurant Queuing System</b></span></p>
+<p class="reveal"><span lang="id">Imagine going to a popular restaurant:</span><span lang="en">Imagine going to a popular restaurant:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>No queuing system</b>: Customers must stand at the window waiting; limited window space, long lines behind, restaurant under pressure</span><span lang="en"><b>No queuing system</b>: Customers must stand at the window waiting; limited window space, long lines behind, restaurant under pressure</span></li>
+<li><span lang="id"><b>With queuing system</b>: After ordering, you get a number; you can sit down first, pick up food when your number is called</span><span lang="en"><b>With queuing system</b>: After ordering, you get a number; you can sit down first, pick up food when your number is called</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>A message queue is the software system's "queuing system":</b></span><span lang="en"><b>A message queue is the software system's "queuing system":</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Producer</b> (the person ordering) → Puts messages (orders) into the queue</span><span lang="en"><b>Producer</b> (the person ordering) → Puts messages (orders) into the queue</span></li>
+<li><span lang="id"><b>Queue</b> (the number dispenser) → Temporarily stores messages</span><span lang="en"><b>Queue</b> (the number dispenser) → Temporarily stores messages</span></li>
+<li><span lang="id"><b>Consumer</b> (the chef) → Processes messages at their own pace</span><span lang="en"><b>Consumer</b> (the chef) → Processes messages at their own pace</span></li>
+</ul>
+<p class="reveal"><span lang="id"><PeakShavingDemo /></span><span lang="en"><PeakShavingDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Overview of a Message Queue (Definition + Core Three Elements)</span><span lang="en">2. Overview of a Message Queue (Definition + Core Three Elements)</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Overview of a "Message Queue"</span><span lang="en">2.1 Overview of a "Message Queue"</span></h3>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Message Queue (MQ)</b> is a container for storing messages. Producers put messages in, consumers take messages out for processing. It enables "asynchronous communication" — the sender doesn't need to wait for the receiver to finish processing.
+
+<b>Synchronous vs Asynchronous</b>:
+
+- <b>Synchronous</b>: Like a phone call — the other party must answer to communicate
+- <b>Asynchronous</b>: Like sending a text — you send it, they read it when available
+
+It's like calling a friend (synchronous) vs sending them a message (asynchronous).</span><span lang="en"><b>Message Queue (MQ)</b> is a container for storing messages. Producers put messages in, consumers take messages out for processing. It enables "asynchronous communication" — the sender doesn't need to wait for the receiver to finish processing.
+
+<b>Synchronous vs Asynchronous</b>:
+
+- <b>Synchronous</b>: Like a phone call — the other party must answer to communicate
+- <b>Asynchronous</b>: Like sending a text — you send it, they read it when available
+
+It's like calling a friend (synchronous) vs sending them a message (asynchronous).</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 The Three Core Elements of a Message Queue</span><span lang="en">2.2 The Three Core Elements of a Message Queue</span></h3>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Element 1: Producer</span><span lang="en">Element 1: Producer</span></h4>
+<p class="reveal"><span lang="id"><b>Responsibility</b>: Create and send messages to the queue.</span><span lang="en"><b>Responsibility</b>: Create and send messages to the queue.</span></p>
+<p class="reveal"><span lang="id"><b>Analogy</b>: The producer is like a "sender," delivering letters (messages) to the post office (queue).</span><span lang="en"><b>Analogy</b>: The producer is like a "sender," delivering letters (messages) to the post office (queue).</span></p>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">- <b>Send method</b>: Synchronous send (reliable but blocking) vs asynchronous send (high performance but needs callback handling)
+- <b>Message confirmation</b>: Wait for Broker confirmation (At Least Once) vs fire-and-forget (At Most Once)
+- <b>Failure handling</b>: Retry strategy, local log backup, dead letter queue</span><span lang="en">- <b>Send method</b>: Synchronous send (reliable but blocking) vs asynchronous send (high performance but needs callback handling)
+- <b>Message confirmation</b>: Wait for Broker confirmation (At Least Once) vs fire-and-forget (At Most Once)
+- <b>Failure handling</b>: Retry strategy, local log backup, dead letter queue</span></p>
+</div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Element 2: Consumer</span><span lang="en">Element 2: Consumer</span></h4>
+<p class="reveal"><span lang="id"><b>Responsibility</b>: Get messages from the queue and process them.</span><span lang="en"><b>Responsibility</b>: Get messages from the queue and process them.</span></p>
+<p class="reveal"><span lang="id"><b>Analogy</b>: The consumer is like a "recipient," taking letters (messages) from the mailbox (queue) and processing them.</span><span lang="en"><b>Analogy</b>: The consumer is like a "recipient," taking letters (messages) from the mailbox (queue) and processing them.</span></p>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">- <b>Consumption mode</b>: Push mode (Broker actively pushes) vs Pull mode (consumer actively pulls)
+- <b>Consumption confirmation</b>: Auto ACK (efficient but may lose messages) vs manual ACK (reliable but needs timeout handling)
+- <b>Concurrency control</b>: Single-threaded sequential consumption vs multi-threaded parallel consumption
+- <b>Failure handling</b>: Retry strategy, dead letter queue, compensation mechanism</span><span lang="en">- <b>Consumption mode</b>: Push mode (Broker actively pushes) vs Pull mode (consumer actively pulls)
+- <b>Consumption confirmation</b>: Auto ACK (efficient but may lose messages) vs manual ACK (reliable but needs timeout handling)
+- <b>Concurrency control</b>: Single-threaded sequential consumption vs multi-threaded parallel consumption
+- <b>Failure handling</b>: Retry strategy, dead letter queue, compensation mechanism</span></p>
+</div>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Element 3: Broker (Message Broker)</span><span lang="en">Element 3: Broker (Message Broker)</span></h4>
+<p class="reveal"><span lang="id"><b>Responsibility</b>: Receive, store, and forward messages.</span><span lang="en"><b>Responsibility</b>: Receive, store, and forward messages.</span></p>
+<p class="reveal"><span lang="id"><b>Analogy</b>: The Broker is like a "post office" or "package sorting station," responsible for receiving, sorting, and delivering letters.</span><span lang="en"><b>Analogy</b>: The Broker is like a "post office" or "package sorting station," responsible for receiving, sorting, and delivering letters.</span></p>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">- <b>Storage model</b>: In-memory storage (low latency) vs disk storage (high reliability)
+- <b>Replication strategy</b>: Primary-secondary replication, multi-replica synchronization
+- <b>High availability</b>: Cluster deployment, automatic failover
+- <b>Scalability</b>: Partitions, Sharding</span><span lang="en">- <b>Storage model</b>: In-memory storage (low latency) vs disk storage (high reliability)
+- <b>Replication strategy</b>: Primary-secondary replication, multi-replica synchronization
+- <b>High availability</b>: Cluster deployment, automatic failover
+- <b>Scalability</b>: Partitions, Sharding</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Core Problem 1: Approach to Decoupling Systems and Avoid "Pulling One Thread and Moving the Whole System"</span><span lang="en">3. Core Problem 1: Approach to Decoupling Systems and Avoid "Pulling One Thread and Moving the Whole System"</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 The Tragedy of Tight Coupling: One Service Goes Down, Everything Falls</span><span lang="en">3.1 The Tragedy of Tight Coupling: One Service Goes Down, Everything Falls</span></h3>
+<p class="reveal"><span lang="id"><b>Scenario recreation</b>: An e-commerce platform's early architecture</span><span lang="en"><b>Scenario recreation</b>: An e-commerce platform's early architecture</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Order service directly calls downstream services:
+┌─────────────┐
+│  Order       │
+│  Service     │
+└──────┬──────┘
+       │
+       ├───────────┬───────────┬───────────┐
+       ▼           ▼           ▼           ▼
+┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐
+│Inventory │ │Payment   │ │Logistics │ │SMS       │
+│Service   │ │Service   │ │Service   │ │Service   │
+│  200ms   │ │  500ms   │ │  300ms   │ │  100ms   │
+└──────────┘ └──────────┘ └──────────┘ └──────────┘</pre>
+</div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">| Pain Point | Specific Manifestation | Consequence |
+|------|----------|------|
+| <b>Cascading failure</b> | Inventory service goes down, order service sync call times out | Order service thread pool exhausted, cannot process new requests |
+| <b>Response latency</b> | Must wait for all downstream service responses | User waits over 1 second, terrible experience |
+| <b>Difficult to extend</b> | Adding a points service requires modifying order service code | Longer release cycles, increased risk |
+| <b>Resource waste</b> | Order service must wait for SMS service | Database connections occupied for long periods |</span><span lang="en">| Pain Point | Specific Manifestation | Consequence |
+|------|----------|------|
+| <b>Cascading failure</b> | Inventory service goes down, order service sync call times out | Order service thread pool exhausted, cannot process new requests |
+| <b>Response latency</b> | Must wait for all downstream service responses | User waits over 1 second, terrible experience |
+| <b>Difficult to extend</b> | Adding a points service requires modifying order service code | Longer release cycles, increased risk |
+| <b>Resource waste</b> | Order service must wait for SMS service | Database connections occupied for long periods |</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Decoupling Solution: Introduce Message Queue as "Middle Layer"</span><span lang="en">3.2 Decoupling Solution: Introduce Message Queue as "Middle Layer"</span></h3>
+<p class="reveal"><span lang="id"><b>Architecture after decoupling:</b></span><span lang="en"><b>Architecture after decoupling:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Order service only sends messages, doesn&#039;t care who consumes:
+
+┌─────────────┐
+│  Order       │ ──Send &quot;order created&quot; message──┐
+│  Service     │                                │
+└─────────────┘                                ▼
+                                    ┌───────────────────┐
+                                    │   Message Queue    │
+                                    │  (Kafka/RabbitMQ)  │
+                                    │   - Reliable store │
+                                    │   - Multi-replica  │
+                                    │   - Order guarantee│
+                                    └─────────┬─────────┘
+                                              │
+              ┌───────────────────────┼───────────────────────┐
+              │                       │                       │
+              ▼                       ▼                       ▼
+       ┌──────────────┐      ┌──────────────┐      ┌──────────────┐
+       │  Inventory   │      │  Payment     │      │  Logistics   │
+       │  Service     │      │  Service     │      │  Service     │
+       │  Subscribe   │      │  Subscribe   │      │  Subscribe   │
+       │  order events│      │  order events│      │  order events│
+       └──────────────┘      └──────────────┘      └──────────────┘</pre>
+</div>
+<p class="reveal"><span lang="id"><DecouplingDemo /></span><span lang="en"><DecouplingDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">| Dimension | Before Decoupling | After Decoupling |
+|------|--------|--------|
+| <b>Fault isolation</b> | Inventory down = Order down | Inventory down, messages stay in queue, consumed after recovery |
+| <b>Response time</b> | 1000ms (synchronous wait) | 50ms (return after sending message) |
+| <b>Extensibility</b> | New service requires changing order code | New service just subscribes to topic |
+| <b>System complexity</b> | Order service tightly depends on downstream | Order service only depends on message queue |</span><span lang="en">| Dimension | Before Decoupling | After Decoupling |
+|------|--------|--------|
+| <b>Fault isolation</b> | Inventory down = Order down | Inventory down, messages stay in queue, consumed after recovery |
+| <b>Response time</b> | 1000ms (synchronous wait) | 50ms (return after sending message) |
+| <b>Extensibility</b> | New service requires changing order code | New service just subscribes to topic |
+| <b>System complexity</b> | Order service tightly depends on downstream | Order service only depends on message queue |</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 The Essence of Decoupling: From "Direct Calls" to "Event-Driven"</span><span lang="en">3.3 The Essence of Decoupling: From "Direct Calls" to "Event-Driven"</span></h3>
+<p class="reveal"><span lang="id"><b>Paradigm shift:</b></span><span lang="en"><b>Paradigm shift:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Traditional thinking (imperative):
+&quot;Order service commands inventory service: Deduct inventory for me!&quot;
+  ↓ Direct call
+  ↓ High coupling, callee must be online
+  ↓ Caller needs to know callee&#039;s interface
+
+Event-driven thinking (declarative):
+&quot;Order service declares: Order has been created. Whoever cares, handle it.&quot;
+  ↓ Send event to message queue
+  ↓ Decoupled, consumers can be offline
+  ↓ Producer doesn&#039;t need to know consumers exist</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Core Problem 2: Approach to handling Traffic Spikes with Peak Shaving</span><span lang="en">4. Core Problem 2: Approach to handling Traffic Spikes with Peak Shaving</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Flash Sale Scenario: Approach to handling 100K QPS Smoothly</span><span lang="en">4.1 Flash Sale Scenario: Approach to handling 100K QPS Smoothly</span></h3>
+<p class="reveal"><span lang="id"><b>Scenario recreation</b>: An e-commerce platform's Double 11 flash sale, expected peak 100K QPS, but the database can only handle 1,000 QPS.</span><span lang="en"><b>Scenario recreation</b>: An e-commerce platform's Double 11 flash sale, expected peak 100K QPS, but the database can only handle 1,000 QPS.</span></p>
+<p class="reveal"><span lang="id"><b>Consequences of direct impact:</b></span><span lang="en"><b>Consequences of direct impact:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>User requests ──→ App server ──→ Database
+  100K/s         100K/s          1K/s (limit)
+                              ↓
+                         Connection pool exhausted
+                         Response timeout
+                         Database crash
+                              ↓
+                         Cascading failure (all services depending on DB go down)</pre>
+</div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>QPS (Queries Per Second)</b>: Queries per second, a metric for measuring system throughput.
+
+<b>100K QPS</b> means 100,000 requests per second, like 100,000 people rushing into a store simultaneously.</span><span lang="en"><b>QPS (Queries Per Second)</b>: Queries per second, a metric for measuring system throughput.
+
+<b>100K QPS</b> means 100,000 requests per second, like 100,000 people rushing into a store simultaneously.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Peak Shaving Solution: Message Queue as "Reservoir"</span><span lang="en">4.2 Peak Shaving Solution: Message Queue as "Reservoir"</span></h3>
+<p class="reveal"><span lang="id"><b>Architecture design:</b></span><span lang="en"><b>Architecture design:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>┌───────────────────────────────────────────────────────────────────────┐
+│                     Flash Sale System Architecture                    │
+├───────────────────────────────────────────────────────────────────────┤
+│                                                                       │
+│  Layer 1: Gateway (hard rate limiting)                               │
+│  ┌───────────────────────────────────────────────────────────────┐   │
+│  │  - Token bucket: 100K/s → 10K/s (drop 90% of requests)       │   │
+│  │  - CDN caches static resources (product detail pages)         │   │
+│  │  - CAPTCHA / queue page (first layer of peak shaving)         │   │
+│  └───────────────────────────────────────────────────────────────┘   │
+│                            │                                          │
+│                            ▼                                          │
+│  Layer 2: Service (soft rate limiting)                               │
+│  ┌───────────────────────────────────────────────────────────────┐   │
+│  │  - Nginx rate limiting: 10K/s → 5K/s                         │   │
+│  │  - Redis pre-deduct inventory (atomic operation):             │   │
+│  │    * Use Lua script for atomicity                              │   │
+│  │    * Insufficient stock → return &quot;Sold out&quot; directly           │   │
+│  │  - Generate order token (queue voucher)                        │   │
+│  └───────────────────────────────────────────────────────────────┘   │
+│                            │                                          │
+│                            ▼                                          │
+│  Layer 3: Message Queue (core peak shaving)                          │
+│  ┌───────────────────────────────────────────────────────────────┐   │
+│  │  Kafka/RocketMQ:                                               │   │
+│  │  - Batch write: 5K/s → 1K/s (matching DB capacity)           │   │
+│  │  - Message persistence: disk write guarantees no message loss  │   │
+│  │  - Multi-partition parallel consumption: boost throughput      │   │
+│  │  - Consumer offset management: support failure recovery        │   │
+│  │                                                                 │   │
+│  │  Key metrics monitoring:                                        │   │
+│  │  - Produce Rate                                                 │   │
+│  │  - Consume Rate                                                 │   │
+│  │  - Lag (message backlog)                                        │   │
+│  └───────────────────────────────────────────────────────────────┘   │
+│                            │                                          │
+│                            ▼                                          │
+│  Layer 4: Consumer (async processing)                                │
+│  ┌───────────────────────────────────────────────────────────────┐   │
+│  │  Order processing consumers (multiple instances):              │   │
+│  │  - Pull messages from Kafka (1K/s, matching DB capacity)       │   │
+│  │  - DB transaction: create order + deduct inventory              │   │
+│  │  - Update order status to &quot;Created&quot;                             │   │
+│  │  - Send order creation success notification (email/SMS/push)    │   │
+│  │  - Confirm message consumption (ACK)                            │   │
+│  │                                                                 │   │
+│  │  Consumer scaling strategy:                                     │   │
+│  │  - When Lag &gt; 10,000, auto-scale up consumer instances          │   │
+│  │  - When Lag &lt; 1,000, scale down consumer instances (save cost) │   │
+│  └───────────────────────────────────────────────────────────────┘   │
+│                                                                       │
+└───────────────────────────────────────────────────────────────────────┘</pre>
+</div>
+<p class="reveal"><span lang="id"><PeakShavingDemo /></span><span lang="en"><PeakShavingDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 Mathematical Principles of Peak Shaving</span><span lang="en">4.3 Mathematical Principles of Peak Shaving</span></h3>
+<p class="reveal"><span lang="id"><b>Traffic smoothing effect:</b></span><span lang="en"><b>Traffic smoothing effect:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Original traffic (spike):              Smoothed traffic:
+
+100K/s │    ╱╲                  1K/s │████████████████
+       │   ╱  ╲                      │
+       │  ╱    ╲                     │
+   1K/s│╱        ╲               0/s │
+       └───────────────               └────────────────
+       0s   1s   2s                   0s              20s
+
+Original: 100K/s peak, lasting 1 second
+Smoothed: 1K/s constant rate, lasting 100 seconds</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Key formulas:</b></span><span lang="en"><b>Key formulas:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Queue length = Producer rate × Duration - Consumer rate × Duration
+            = 100,000 × 1 - 1,000 × 1
+            = 99,000 messages (peak queue backlog)
+
+Time to consume all messages = Queue length / Consumer rate
+                             = 99,000 / 1,000
+                             = 99 seconds</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Core Problem 3: Approach to ensuring Messages Are Not Lost, Not Duplicated, and In Order</span><span lang="en">5. Core Problem 3: Approach to ensuring Messages Are Not Lost, Not Duplicated, and In Order</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Message Reliability: Three Lines of Defense</span><span lang="en">5.1 Message Reliability: Three Lines of Defense</span></h3>
+<p class="reveal"><span lang="id">Messages can be lost at three stages: during producer sending, during Broker storage, and during consumer processing.</span><span lang="en">Messages can be lost at three stages: during producer sending, during Broker storage, and during consumer processing.</span></p>
+
+<div class="callout warn reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div>
+  <p><span lang="id"><b>Defense 1: Producer ACK</b>
+
+- When sending a message, wait for the Broker to confirm receipt
+- If no confirmation received, retry or log locally
+
+<b>Defense 2: Broker Persistence</b>
+
+- Write messages to disk, not just in memory
+- Multi-replica synchronization to ensure no data loss
+
+<b>Defense 3: Consumer ACK</b>
+
+- After processing a message, manually confirm (ACK)
+- If processing fails, don't confirm; Broker will redeliver</span><span lang="en"><b>Defense 1: Producer ACK</b>
+
+- When sending a message, wait for the Broker to confirm receipt
+- If no confirmation received, retry or log locally
+
+<b>Defense 2: Broker Persistence</b>
+
+- Write messages to disk, not just in memory
+- Multi-replica synchronization to ensure no data loss
+
+<b>Defense 3: Consumer ACK</b>
+
+- After processing a message, manually confirm (ACK)
+- If processing fails, don't confirm; Broker will redeliver</span></p>
+</div>
+<p class="reveal"><span lang="id"><ReliabilityDemo /></span><span lang="en"><ReliabilityDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Approach to handling Duplicate Message Consumption</span><span lang="en">5.2 Approach to handling Duplicate Message Consumption</span></h3>
+<p class="reveal"><span lang="id"><b>Message duplication can occur in the following scenarios:</b></span><span lang="en"><b>Message duplication can occur in the following scenarios:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Producer retry</b>: Producer sends message but doesn't receive ACK, retries sending the same message</span><span lang="en"><b>Producer retry</b>: Producer sends message but doesn't receive ACK, retries sending the same message</span></li>
+<li><span lang="id"><b>Consumer ACK timeout</b>: Consumer finishes processing but ACK times out, Broker redelivers</span><span lang="en"><b>Consumer ACK timeout</b>: Consumer finishes processing but ACK times out, Broker redelivers</span></li>
+<li><span lang="id"><b>Network jitter</b>: Consumer ACK doesn't reach Broker, Broker considers message unconsumed</span><span lang="en"><b>Network jitter</b>: Consumer ACK doesn't reach Broker, Broker considers message unconsumed</span></li>
+<li><span lang="id"><b>Consumer restart</b>: After consumer restarts, re-consumes the same batch of messages</span><span lang="en"><b>Consumer restart</b>: After consumer restarts, re-consumes the same batch of messages</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Idempotency</b>: Executing the same operation multiple times produces the same result as executing it once.
+
+<b>Everyday idempotency examples</b>:
+
+- <b>Idempotent</b>: Pressing an elevator button (pressing 10 times or once, the elevator still comes)
+- <b>Non-idempotent</b>: Bank transfer (transferring $10, executing twice transfers $20)
+
+<b>Technical solution</b>: Generate a unique ID for each message; check if already processed before handling.</span><span lang="en"><b>Idempotency</b>: Executing the same operation multiple times produces the same result as executing it once.
+
+<b>Everyday idempotency examples</b>:
+
+- <b>Idempotent</b>: Pressing an elevator button (pressing 10 times or once, the elevator still comes)
+- <b>Non-idempotent</b>: Bank transfer (transferring $10, executing twice transfers $20)
+
+<b>Technical solution</b>: Generate a unique ID for each message; check if already processed before handling.</span></p>
+</div>
+<p class="reveal"><span lang="id"><IdempotenceDemo /></span><span lang="en"><IdempotenceDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Practice: Approach to choosing a Message Queue</span><span lang="en">6. Practice: Approach to choosing a Message Queue</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Comparison of Four Mainstream Message Queues</span><span lang="en">6.1 Comparison of Four Mainstream Message Queues</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Feature</th><th>RabbitMQ</th><th>Kafka</th><th>RocketMQ</th><th>Redis Stream</th></tr>
+<tr><td><b>Positioning</b></td><td>Traditional MQ</td><td>Distributed log stream</td><td>E-commerce-grade MQ</td><td>Lightweight queue</td></tr>
+<tr><td><b>Throughput</b></td><td>~10K/s</td><td>~1M/s</td><td>~100K/s</td><td>~50K/s</td></tr>
+<tr><td><b>Latency</b></td><td>Microseconds</td><td>Milliseconds</td><td>Milliseconds</td><td>Milliseconds</td></tr>
+<tr><td><b>Reliability</b></td><td>High (persistence)</td><td>High (multi-replica)</td><td>High (sync flush)</td><td>Medium (AOF)</td></tr>
+<tr><td><b>Message replay</b></td><td>Not supported</td><td>Supported</td><td>Supported</td><td>Supported</td></tr>
+<tr><td><b>Transactional messages</b></td><td>Supported (weak)</td><td>Not supported</td><td>Supported (strong)</td><td>Not supported</td></tr>
+<tr><td><b>Delayed messages</b></td><td>Supported</td><td>Not supported</td><td>Supported</td><td>Not supported</td></tr>
+<tr><td><b>Use cases</b></td><td>Traditional enterprise apps</td><td>Logs, big data</td><td>E-commerce, finance</td><td>Small-scale apps</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Decision tree:</b>
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+Choosing a message queue:
+│
+├─ Need transactional messages (distributed transactions)?
+│  ├─ Yes → RocketMQ (first choice) or RabbitMQ
+│  └─ No → continue
+│
+├─ Need to process massive logs/real-time streams?
+│  ├─ Yes → Kafka (first choice)
+│  └─ No → continue
+│
+├─ QPS > 10K/s?
+│  ├─ Yes → RocketMQ or Kafka
+│  └─ No → continue
+│
+├─ Need complex routing (e.g., header matching)?
+│  ├─ Yes → RabbitMQ
+│  └─ No → continue
+│
+├─ Already have Redis infrastructure?
+│  ├─ Yes → Redis Stream (quick start)
+│  └─ No → RabbitMQ (full-featured, moderate learning curve)
+</code>``</span><span lang="en"><b>Decision tree:</b>
+
+``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+Choosing a message queue:
+│
+├─ Need transactional messages (distributed transactions)?
+│  ├─ Yes → RocketMQ (first choice) or RabbitMQ
+│  └─ No → continue
+│
+├─ Need to process massive logs/real-time streams?
+│  ├─ Yes → Kafka (first choice)
+│  └─ No → continue
+│
+├─ QPS > 10K/s?
+│  ├─ Yes → RocketMQ or Kafka
+│  └─ No → continue
+│
+├─ Need complex routing (e.g., header matching)?
+│  ├─ Yes → RabbitMQ
+│  └─ No → continue
+│
+├─ Already have Redis infrastructure?
+│  ├─ Yes → Redis Stream (quick start)
+│  └─ No → RabbitMQ (full-featured, moderate learning curve)
+</code>``</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Summary: Message Queue Design Principles</span><span lang="en">7. Summary: Message Queue Design Principles</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.1 Core Principles Review</span><span lang="en">7.1 Core Principles Review</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Principle</th><th>Meaning</th><th>Practice Points</th></tr>
+<tr><td><b>Decoupling</b></td><td>Services don't directly depend on each other</td><td>Communicate via message queue; consumer failure doesn't affect producer</td></tr>
+<tr><td><b>Peak shaving</b></td><td>Smooth traffic fluctuations</td><td>Message queue as reservoir; consumers process at constant rate</td></tr>
+<tr><td><b>Reliability</b></td><td>Messages not lost</td><td>Producer ACK + Broker persistence + Consumer ACK</td></tr>
+<tr><td><b>Idempotency</b></td><td>Duplicate consumption has no effect</td><td>Business-level idempotency guarantees (unique keys, state machines)</td></tr>
+<tr><td><b>Ordering</b></td><td>Message order guarantee</td><td>Single-partition ordering or consumer-side sorting</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.2 Design Checklist</span><span lang="en">7.2 Design Checklist</span></h3>
+<p class="reveal"><span lang="id">Before introducing a message queue, ask yourself:</span><span lang="en">Before introducing a message queue, ask yourself:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[ ] Do you really need a message queue? (Simple async can use thread pools)</span><span lang="en">[ ] Do you really need a message queue? (Simple async can use thread pools)</span></li>
+<li><span lang="id">[ ] Is message loss acceptable? (Determines reliability level)</span><span lang="en">[ ] Is message loss acceptable? (Determines reliability level)</span></li>
+<li><span lang="id">[ ] Will message duplication affect the business? (Determines idempotency investment)</span><span lang="en">[ ] Will message duplication affect the business? (Determines idempotency investment)</span></li>
+<li><span lang="id">[ ] Is message order important? (Determines partition strategy)</span><span lang="en">[ ] Is message order important? (Determines partition strategy)</span></li>
+<li><span lang="id">[ ] What's the consumer processing capacity? (Determines queue size and alert thresholds)</span><span lang="en">[ ] What's the consumer processing capacity? (Determines queue size and alert thresholds)</span></li>
+<li><span lang="id">[ ] How to handle consumption failures? (Determines retry and dead letter strategies)</span><span lang="en">[ ] How to handle consumption failures? (Determines retry and dead letter strategies)</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8. Glossary</span><span lang="en">8. Glossary</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Term</th><th>Full Name</th><th>Description</th></tr>
+<tr><td><b>MQ</b></td><td>Message Queue</td><td>Middleware for asynchronous communication, decoupling producers and consumers.</td></tr>
+<tr><td><b>Producer</b></td><td>-</td><td>The party that sends messages.</td></tr>
+<tr><td><b>Consumer</b></td><td>-</td><td>The party that receives and processes messages.</td></tr>
+<tr><td><b>Broker</b></td><td>-</td><td>The server program that stores and forwards messages.</td></tr>
+<tr><td><b>Topic</b></td><td>-</td><td>Logical categorization of messages (e.g., "orders").</td></tr>
+<tr><td><b>Queue</b></td><td>-</td><td>Physical container storing messages.</td></tr>
+<tr><td><b>Partition</b></td><td>-</td><td>A Kafka concept; one Topic can be split into multiple Partitions for higher concurrency.</td></tr>
+<tr><td><b>ACK</b></td><td>Acknowledgment</td><td>Consumer confirms to Broker after processing a message.</td></tr>
+<tr><td><b>Pub/Sub</b></td><td>Publish/Subscribe</td><td>A messaging pattern where one message can be received by multiple consumers.</td></tr>
+<tr><td><b>P2P</b></td><td>Point-to-Point</td><td>A messaging pattern where one message can only be received by one consumer.</td></tr>
+<tr><td><b>DLQ</b></td><td>Dead Letter Queue</td><td>Stores messages that cannot be consumed.</td></tr>
+<tr><td><b>Idempotence</b></td><td>-</td><td>Multiple executions produce the same result.</td></tr>
+<tr><td><b>Throughput</b></td><td>-</td><td>Number of messages processed per unit time.</td></tr>
+<tr><td><b>Latency</b></td><td>-</td><td>Time difference from message send to receipt.</td></tr>
+<tr><td><b>Persistence</b></td><td>-</td><td>Messages written to disk, not just stored in memory.</td></tr>
+<tr><td><b>Replication</b></td><td>-</td><td>Messages copied to multiple nodes for high availability.</td></tr>
+<tr><td><b>Transaction Message</b></td><td>-</td><td>Guarantees consistency between local transaction and message sending.</td></tr>
+<tr><td><b>Backpressure</b></td><td>-</td><td>When consumers can't keep up, they notify producers to slow down.</td></tr>
+<tr><td><b>Offset</b></td><td>-</td><td>The consumer's consumption position within a partition.</td></tr>
+<tr><td><b>Rebalance</b></td><td>-</td><td>Reassigning partitions when consumer group members change.</td></tr>
+</table></div>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../4-server-and-backend/http-protocol/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">4-server-and-backend/http-protocol</span><span lang="en">4-server-and-backend/http-protocol</span></b></a>
+      <a class="next" href="../../4-server-and-backend/rate-limiting-backpressure/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">4-server-and-backend/rate-limiting-backpressure</span><span lang="en">4-server-and-backend/rate-limiting-backpressure</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

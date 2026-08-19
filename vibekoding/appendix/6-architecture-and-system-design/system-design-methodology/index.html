@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>System Design Methodology — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: System Design Methodology. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/6-architecture-and-system-design/system-design-methodology/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">System Design Methodology</span><span lang="en">System Design Methodology</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">System Design Methodology</span><span lang="en">System Design Methodology</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: System Design Methodology.</span><span lang="en">Ensiklopedia VibeKoding: System Design Methodology.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>System design is not about sketching architecture diagrams on a whim — it's a structured methodology.</b> Whether it's a system design interview question or real-world architecture design, both follow a similar thinking framework: first understand the problem, then estimate the scale, then design the solution, and finally dive deep into optimization.</span><span lang="en"><b>System design is not about sketching architecture diagrams on a whim — it's a structured methodology.</b> Whether it's a system design interview question or real-world architecture design, both follow a similar thinking framework: first understand the problem, then estimate the scale, then design the solution, and finally dive deep into optimization.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn from this article?</b></span><span lang="en"><b>What will you learn from this article?</b></span></p>
+<p class="reveal"><span lang="id">After reading this chapter, you will gain:</span><span lang="en">After reading this chapter, you will gain:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Design Process</b>: Master the four-step framework for system design</span><span lang="en"><b>Design Process</b>: Master the four-step framework for system design</span></li>
+<li><span lang="id"><b>Capacity Estimation</b>: Learn the art of "back-of-envelope estimation"</span><span lang="en"><b>Capacity Estimation</b>: Learn the art of "back-of-envelope estimation"</span></li>
+<li><span lang="id"><b>Common Patterns</b>: Get familiar with core patterns like caching, database sharding, and message queues</span><span lang="en"><b>Common Patterns</b>: Get familiar with core patterns like caching, database sharding, and message queues</span></li>
+<li><span lang="id"><b>Trade-off Thinking</b>: Understand the trade-off mindset in architecture design</span><span lang="en"><b>Trade-off Thinking</b>: Understand the trade-off mindset in architecture design</span></li>
+<li><span lang="id"><b>Practical Case Studies</b>: Understand the design process through cases like URL shorteners and feed systems</span><span lang="en"><b>Practical Case Studies</b>: Understand the design process through cases like URL shorteners and feed systems</span></li>
+</ul>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Core Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>Four-Step Design Method</td><td>Requirements clarification, capacity estimation, architecture design, deep optimization</td></tr>
+<tr><td><b>Chapter 2</b></td><td>Capacity Estimation</td><td>QPS, storage, bandwidth, back-of-envelope estimation</td></tr>
+<tr><td><b>Chapter 3</b></td><td>Core Design Patterns</td><td>Caching, database sharding, message queues, CDN</td></tr>
+<tr><td><b>Chapter 4</b></td><td>Trade-off Thinking</td><td>Consistency vs. availability, performance vs. cost</td></tr>
+<tr><td><b>Chapter 5</b></td><td>Classic Case Studies</td><td>URL shortener, feed system, flash sale system</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. The Four-Step System Design Method</span><span lang="en">1. The Four-Step System Design Method</span></h2>
+<p class="reveal"><span lang="id">System design is not about drawing architecture diagrams right away. Whether in an interview or in practice, you should follow a structured process.</span><span lang="en">System design is not about drawing architecture diagrams right away. Whether in an interview or in practice, you should follow a structured process.</span></p>
+<p class="reveal"><span lang="id"><SystemDesignStepsDemo /></span><span lang="en"><SystemDesignStepsDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Many people start drawing diagrams as soon as they get the prompt, only to design a system that is "correct but not what the interviewer wanted." Spending 5 minutes clarifying requirements can prevent 30 minutes of rework later.
+
+Common clarification questions:
+- What are the core features of the system? (Don't design every feature)
+- What is the user scale? (Determines whether distribution is needed)
+- What is the read/write ratio? (Determines caching strategy)
+- How long does data need to be retained? (Determines the storage solution)</span><span lang="en">Many people start drawing diagrams as soon as they get the prompt, only to design a system that is "correct but not what the interviewer wanted." Spending 5 minutes clarifying requirements can prevent 30 minutes of rework later.
+
+Common clarification questions:
+- What are the core features of the system? (Don't design every feature)
+- What is the user scale? (Determines whether distribution is needed)
+- What is the read/write ratio? (Determines caching strategy)
+- How long does data need to be retained? (Determines the storage solution)</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Capacity Estimation: The Art of Back-of-Envelope Calculations</span><span lang="en">2. Capacity Estimation: The Art of Back-of-Envelope Calculations</span></h2>
+<p class="reveal"><span lang="id">"Back-of-envelope estimation" is a core skill in system design. You don't need precise calculations — just knowing the order of magnitude is enough.</span><span lang="en">"Back-of-envelope estimation" is a core skill in system design. You don't need precise calculations — just knowing the order of magnitude is enough.</span></p>
+<p class="reveal"><span lang="id"><CapacityEstimationDemo /></span><span lang="en"><CapacityEstimationDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Quick Reference for Common Conversions</span><span lang="en">Quick Reference for Common Conversions</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Magnitude</th><th>Conversion</th><th>Memory Trick</th></tr>
+<tr><td>1 day</td><td>86,400 seconds</td><td>≈ 100K seconds</td></tr>
+<tr><td>100M requests/day</td><td>≈ 1,200 QPS</td><td>Divide by 100K</td></tr>
+<tr><td>1 KB × 100M</td><td>≈ 100 GB</td><td>100M small records</td></tr>
+<tr><td>1 MB × 1M</td><td>≈ 1 TB</td><td>1M images</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">The 80/20 Rule in Estimation</span><span lang="en">The 80/20 Rule in Estimation</span></h3>
+<p class="reveal"><span lang="id">Most systems follow the 80/20 rule: 20% of the data handles 80% of the requests. This means:</span><span lang="en">Most systems follow the 80/20 rule: 20% of the data handles 80% of the requests. This means:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Cache size</b> ≈ Total data volume × 20%</span><span lang="en"><b>Cache size</b> ≈ Total data volume × 20%</span></li>
+<li><span lang="id"><b>Hot key QPS</b> ≈ Total QPS × 80% concentrated on 20% of keys</span><span lang="en"><b>Hot key QPS</b> ≈ Total QPS × 80% concentrated on 20% of keys</span></li>
+<li><span lang="id"><b>Cache hit rate</b> target ≈ 80%+ (below this suggests a caching strategy problem)</span><span lang="en"><b>Cache hit rate</b> target ≈ 80%+ (below this suggests a caching strategy problem)</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Core Design Patterns</span><span lang="en">3. Core Design Patterns</span></h2>
+<p class="reveal"><span lang="id">Patterns that appear repeatedly in system design — mastering these will prepare you for most scenarios.</span><span lang="en">Patterns that appear repeatedly in system design — mastering these will prepare you for most scenarios.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Caching Patterns</span><span lang="en">3.1 Caching Patterns</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Pattern</th><th>Read Path</th><th>Write Path</th><th>Use Cases</th></tr>
+<tr><td>Cache-Aside</td><td>Check cache first; on miss, query DB and backfill</td><td>Write DB first, then invalidate cache</td><td>General purpose, most commonly used</td></tr>
+<tr><td>Read-Through</td><td>Cache layer automatically loads from DB</td><td>Same as Cache-Aside</td><td>Requires caching framework support</td></tr>
+<tr><td>Write-Behind</td><td>Same as Cache-Aside</td><td>Write to cache first, async write to DB</td><td>Write-heavy, can tolerate data loss</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Updating the cache is prone to data inconsistency in concurrent scenarios: threads A and B update simultaneously, A writes to DB first but B updates the cache first, resulting in B's stale value in the cache. Invalidating the cache causes the next read request to reload from DB, naturally avoiding this problem.</span><span lang="en">Updating the cache is prone to data inconsistency in concurrent scenarios: threads A and B update simultaneously, A writes to DB first but B updates the cache first, resulting in B's stale value in the cache. Invalidating the cache causes the next read request to reload from DB, naturally avoiding this problem.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Database Sharding</span><span lang="en">3.2 Database Sharding</span></h3>
+<p class="reveal"><span lang="id">When a single table exceeds tens of millions of rows, or when a single database's QPS hits a bottleneck, it's time to consider database sharding.</span><span lang="en">When a single table exceeds tens of millions of rows, or when a single database's QPS hits a bottleneck, it's time to consider database sharding.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Strategy</th><th>Approach</th><th>Advantages</th><th>Disadvantages</th></tr>
+<tr><td>Vertical sharding</td><td>Split databases by business domain</td><td>Business decoupling, independent scaling</td><td>Cross-database JOINs are difficult</td></tr>
+<tr><td>Horizontal sharding</td><td>Split one table into multiple tables by rule</td><td>Controllable data volume per table</td><td>Shard key selection is critical</td></tr>
+<tr><td>Vertical table splitting</td><td>Split large columns into a separate table</td><td>Reduces I/O, improves query efficiency</td><td>Requires additional JOINs</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Shard Key Selection Principles</b>:</span><span lang="en"><b>Shard Key Selection Principles</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Choose the most frequently queried field (e.g., user_id)</span><span lang="en">Choose the most frequently queried field (e.g., user_id)</span></li>
+<li><span lang="id">Data distribution should be even to avoid hotspots</span><span lang="en">Data distribution should be even to avoid hotspots</span></li>
+<li><span lang="id">Try to keep the same user's data on the same shard (minimizes cross-shard queries)</span><span lang="en">Try to keep the same user's data on the same shard (minimizes cross-shard queries)</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Message Queues</span><span lang="en">3.3 Message Queues</span></h3>
+<p class="reveal"><span lang="id">Message queues are the "shock absorbers" of distributed systems. Their core roles are decoupling, async processing, and peak shaving.</span><span lang="en">Message queues are the "shock absorbers" of distributed systems. Their core roles are decoupling, async processing, and peak shaving.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Scenario</th><th>Without Queue</th><th>With Queue</th></tr>
+<tr><td>Send notification after order</td><td>Order API calls notification service synchronously; notification failure causes order failure</td><td>Send message after order success; notification service consumes asynchronously</td></tr>
+<tr><td>Flash sale</td><td>Burst traffic overwhelms the database</td><td>Requests enter queue first; backend processes at its own pace</td></tr>
+<tr><td>Data synchronization</td><td>Service A calls Service B's API directly</td><td>Service A publishes event; Service B subscribes and handles it</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Trade-off Thinking: There Are No Silver Bullets</span><span lang="en">4. Trade-off Thinking: There Are No Silver Bullets</span></h2>
+<p class="reveal"><span lang="id">The essence of architecture design is trade-offs. Every decision has a cost — the key is understanding the cost and making choices appropriate for the current stage.</span><span lang="en">The essence of architecture design is trade-offs. Every decision has a cost — the key is understanding the cost and making choices appropriate for the current stage.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Trade-off Dimension</th><th>Option A</th><th>Option B</th><th>Decision Basis</th></tr>
+<tr><td>Consistency vs. Availability</td><td>Strong consistency (CP)</td><td>High availability (AP)</td><td>Can the business tolerate brief inconsistency?</td></tr>
+<tr><td>Performance vs. Cost</td><td>Full caching</td><td>On-demand caching</td><td>Data volume and budget</td></tr>
+<tr><td>Simplicity vs. Flexibility</td><td>Monolithic architecture</td><td>Microservices</td><td>Team size and business complexity</td></tr>
+<tr><td>Real-time vs. Batch</td><td>Stream processing</td><td>Batch processing</td><td>Data timeliness requirements</td></tr>
+<tr><td>Self-managed vs. Hosted</td><td>Build your own MySQL</td><td>Use cloud database RDS</td><td>Operations capability and cost</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Every important architecture decision should be documented: <b>what was the context, what options were considered, why this one was chosen, and what the trade-offs are</b>. This isn't about assigning blame — it's about helping future teams understand "why it was designed this way."
+
+The format is simple:
+- <b>Title</b>: Using X instead of Y
+- <b>Context</b>: What problem we encountered
+- <b>Decision</b>: What solution we chose
+- <b>Rationale</b>: Why we chose this
+- <b>Consequences</b>: The drawbacks and risks of this decision</span><span lang="en">Every important architecture decision should be documented: <b>what was the context, what options were considered, why this one was chosen, and what the trade-offs are</b>. This isn't about assigning blame — it's about helping future teams understand "why it was designed this way."
+
+The format is simple:
+- <b>Title</b>: Using X instead of Y
+- <b>Context</b>: What problem we encountered
+- <b>Decision</b>: What solution we chose
+- <b>Rationale</b>: Why we chose this
+- <b>Consequences</b>: The drawbacks and risks of this decision</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Common Trade-off Mistakes</span><span lang="en">Common Trade-off Mistakes</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Mistake</th><th>Manifestation</th><th>Correct Approach</th></tr>
+<tr><td>Premature optimization</td><td>Sharding at 1,000 daily active users</td><td>Start with a single database; shard when you hit bottlenecks</td></tr>
+<tr><td>Technology-driven</td><td>"I want to use Kafka" instead of "I need async processing"</td><td>Start from the problem, not the technology</td></tr>
+<tr><td>Ignoring operations cost</td><td>Choosing the optimal solution that the team can't maintain</td><td>Solutions must match team capability</td></tr>
+<tr><td>Pursuing perfect consistency</td><td>Using distributed transactions for every scenario</td><td>Eventual consistency is sufficient for most scenarios</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Classic Case Studies</span><span lang="en">5. Classic Case Studies</span></h2>
+<p class="reveal"><span lang="id">Let's connect the methodology we've learned through three classic examples.</span><span lang="en">Let's connect the methodology we've learned through three classic examples.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 URL Shortener (TinyURL)</span><span lang="en">5.1 URL Shortener (TinyURL)</span></h3>
+<p class="reveal"><span lang="id">The URL shortener is a classic system design interview question — small but comprehensive.</span><span lang="en">The URL shortener is a classic system design interview question — small but comprehensive.</span></p>
+<p class="reveal"><span lang="id"><b>Requirements Clarification</b>:</span><span lang="en"><b>Requirements Clarification</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Core features: Long URL → short URL (write), short URL → redirect (read)</span><span lang="en">Core features: Long URL → short URL (write), short URL → redirect (read)</span></li>
+<li><span lang="id">Read/write ratio: approximately 100:1 (reads far outnumber writes)</span><span lang="en">Read/write ratio: approximately 100:1 (reads far outnumber writes)</span></li>
+<li><span lang="id">Daily redirects: 100 million</span><span lang="en">Daily redirects: 100 million</span></li>
+<li><span lang="id">Short URLs never expire</span><span lang="en">Short URLs never expire</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Capacity Estimation</b>:</span><span lang="en"><b>Capacity Estimation</b>:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Metric</th><th>Calculation</th><th>Result</th></tr>
+<tr><td>Write QPS</td><td>100M / 100 / 86,400</td><td>≈ 12 QPS</td></tr>
+<tr><td>Read QPS</td><td>100M / 86,400</td><td>≈ 1,200 QPS</td></tr>
+<tr><td>Peak read QPS</td><td>1,200 × 3</td><td>≈ 3,600 QPS</td></tr>
+<tr><td>5-year storage</td><td>1M/day × 365 × 5 × 100B</td><td>≈ 18 GB</td></tr>
+<tr><td>Cache (20%)</td><td>18 GB × 20%</td><td>≈ 3.6 GB</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Architecture Design</b>:</span><span lang="en"><b>Architecture Design</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Write path: Client → API Server → ID Generator → Base62 Encode → Write to MySQL + Redis
+Read path: Client → CDN → API Server → Redis lookup → 302 redirect
+                                    ↓ (cache miss)
+                                  MySQL query → backfill Redis</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Key Design Decisions</b>:</span><span lang="en"><b>Key Design Decisions</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Short code generation: Snowflake distributed ID + Base62 encoding to avoid hash collisions</span><span lang="en">Short code generation: Snowflake distributed ID + Base62 encoding to avoid hash collisions</span></li>
+<li><span lang="id">Caching strategy: Cache-Aside, CDN acceleration for hot short URLs</span><span lang="en">Caching strategy: Cache-Aside, CDN acceleration for hot short URLs</span></li>
+<li><span lang="id">Database: Single table suffices (18GB is small), index by short code</span><span lang="en">Database: Single table suffices (18GB is small), index by short code</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Feed System</span><span lang="en">5.2 Feed System</span></h3>
+<p class="reveal"><span lang="id">Social platform feeds (WeChat Moments, Twitter home timeline) are another classic question.</span><span lang="en">Social platform feeds (WeChat Moments, Twitter home timeline) are another classic question.</span></p>
+<p class="reveal"><span lang="id"><b>Core Challenge</b>: When a user publishes a post, how do all their followers see it?</span><span lang="en"><b>Core Challenge</b>: When a user publishes a post, how do all their followers see it?</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Approach</th><th>How It Works</th><th>Advantages</th><th>Disadvantages</th></tr>
+<tr><td>Pull model</td><td>Aggregate followees' posts in real time at read time</td><td>Simple writes, less storage</td><td>Slow reads; high latency with many followees</td></tr>
+<tr><td>Push model</td><td>Write to all followers' inboxes at publish time</td><td>Extremely fast reads</td><td>Severe write amplification for accounts with many followers</td></tr>
+<tr><td>Hybrid (Push-Pull)</td><td>Push for regular users, pull for celebrities</td><td>Balanced read/write performance</td><td>Complex implementation</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Hybrid Push-Pull Approach</b>:</span><span lang="en"><b>Hybrid Push-Pull Approach</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Followers < 10K: Push to all followers' feed caches at publish time (push model)</span><span lang="en">Followers < 10K: Push to all followers' feed caches at publish time (push model)</span></li>
+<li><span lang="id">Followers > 10K: Don't push; followers pull in real time when reading (pull model)</span><span lang="en">Followers > 10K: Don't push; followers pull in real time when reading (pull model)</span></li>
+<li><span lang="id">When a user opens their feed: Merge pushed content + real-time pulled celebrity content, sorted by time</span><span lang="en">When a user opens their feed: Merge pushed content + real-time pulled celebrity content, sorted by time</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 Flash Sale System</span><span lang="en">5.3 Flash Sale System</span></h3>
+<p class="reveal"><span lang="id">The core challenge of a flash sale: instant ultra-high concurrency + inventory must not be oversold.</span><span lang="en">The core challenge of a flash sale: instant ultra-high concurrency + inventory must not be oversold.</span></p>
+<p class="reveal"><span lang="id"><b>Traffic Characteristics</b>:</span><span lang="en"><b>Traffic Characteristics</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Before the sale starts: Many users refresh the page waiting</span><span lang="en">Before the sale starts: Many users refresh the page waiting</span></li>
+<li><span lang="id">At the moment of sale: QPS can be 100x or more above normal</span><span lang="en">At the moment of sale: QPS can be 100x or more above normal</span></li>
+<li><span lang="id">After the sale ends: Traffic drops quickly</span><span lang="en">After the sale ends: Traffic drops quickly</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Layered Peak Shaving Strategy</b>:</span><span lang="en"><b>Layered Peak Shaving Strategy</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>User request → CDN (static pages) → Gateway (rate limiting) → Message queue (peak shaving) → Inventory service (deduction)</pre>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Layer</th><th>Strategy</th><th>Effect</th></tr>
+<tr><td>Frontend</td><td>Button gray-out + random delay + CAPTCHA</td><td>Filters bots, disperses requests</td></tr>
+<tr><td>CDN</td><td>Static resource caching</td><td>Reduces 90% of page requests</td></tr>
+<tr><td>Gateway</td><td>Token bucket rate limiting</td><td>Only allows traffic the system can handle</td></tr>
+<tr><td>Message queue</td><td>Requests queued, processed asynchronously</td><td>Peak shaving, protects the database</td></tr>
+<tr><td>Inventory service</td><td>Redis pre-deduction + Lua atomic operations</td><td>Prevents overselling, millisecond response</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">1. <b>Intercept upstream whenever possible</b>: If you can block it at the CDN, don't let it reach the application layer
+2. <b>Separate reads and writes</b>: Product detail pages use cache; only orders go to the database
+3. <b>Async processing</b>: After the user clicks "buy," immediately return "queuing" and process in the background
+4. <b>Fallback plans</b>: Rate limiting, circuit breaking, degradation — every layer needs a Plan B</span><span lang="en">1. <b>Intercept upstream whenever possible</b>: If you can block it at the CDN, don't let it reach the application layer
+2. <b>Separate reads and writes</b>: Product detail pages use cache; only orders go to the database
+3. <b>Async processing</b>: After the user clicks "buy," immediately return "queuing" and process in the background
+4. <b>Fallback plans</b>: Rate limiting, circuit breaking, degradation — every layer needs a Plan B</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary</span><span lang="en">Summary</span></h2>
+<p class="reveal"><span lang="id">System design is a highly practical skill. The core lies in structured thinking and making trade-offs.</span><span lang="en">System design is a highly practical skill. The core lies in structured thinking and making trade-offs.</span></p>
+<p class="reveal"><span lang="id">Key takeaways from this chapter:</span><span lang="en">Key takeaways from this chapter:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Four-Step Framework</b>: Requirements clarification → capacity estimation → architecture design → deep optimization — every step is essential</span><span lang="en"><b>Four-Step Framework</b>: Requirements clarification → capacity estimation → architecture design → deep optimization — every step is essential</span></li>
+<li><span lang="id"><b>Back-of-Envelope Estimation</b>: Precision isn't needed — just knowing the order of magnitude guides architecture decisions</span><span lang="en"><b>Back-of-Envelope Estimation</b>: Precision isn't needed — just knowing the order of magnitude guides architecture decisions</span></li>
+<li><span lang="id"><b>Core Patterns</b>: Caching, database sharding, message queues, CDN, rate limiting, circuit breaking — these are the "building blocks" of system design</span><span lang="en"><b>Core Patterns</b>: Caching, database sharding, message queues, CDN, rate limiting, circuit breaking — these are the "building blocks" of system design</span></li>
+<li><span lang="id"><b>Trade-off Thinking</b>: There are no perfect solutions, only solutions appropriate for the current stage — document the rationale and cost of every decision</span><span lang="en"><b>Trade-off Thinking</b>: There are no perfect solutions, only solutions appropriate for the current stage — document the rationale and cost of every decision</span></li>
+<li><span lang="id"><b>Classic Cases</b>: URL shorteners for fundamentals, feed systems for push-pull models, flash sales for high concurrency — mastering these three lets you reason by analogy</span><span lang="en"><b>Classic Cases</b>: URL shorteners for fundamentals, feed systems for push-pull models, flash sales for high concurrency — mastering these three lets you reason by analogy</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[System Design Interview](https://www.amazon.com/System-Design-Interview-insiders-Second/dp/B08CMF2CQF) - Alex Xu's system design interview classic</span><span lang="en">[System Design Interview](https://www.amazon.com/System-Design-Interview-insiders-Second/dp/B08CMF2CQF) - Alex Xu's system design interview classic</span></li>
+<li><span lang="id">[Designing Data-Intensive Applications](https://dataintensive.net/) - Martin Kleppmann's data-intensive application design</span><span lang="en">[Designing Data-Intensive Applications](https://dataintensive.net/) - Martin Kleppmann's data-intensive application design</span></li>
+<li><span lang="id">[The System Design Primer](https://github.com/donnemartin/system-design-primer) - The most comprehensive system design learning resource on GitHub</span><span lang="en">[The System Design Primer](https://github.com/donnemartin/system-design-primer) - The most comprehensive system design learning resource on GitHub</span></li>
+<li><span lang="id">[ByteByteGo](https://bytebytego.com/) - Alex Xu's visual system design blog</span><span lang="en">[ByteByteGo](https://bytebytego.com/) - Alex Xu's visual system design blog</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../6-architecture-and-system-design/monolith-to-microservices/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">6-architecture-and-system-design/monolith-to-microservices</span><span lang="en">6-architecture-and-system-design/monolith-to-microservices</span></b></a>
+      <a class="next" href="../../7-infrastructure-and-operations/ci-cd/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">7-infrastructure-and-operations/ci-cd</span><span lang="en">7-infrastructure-and-operations/ci-cd</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

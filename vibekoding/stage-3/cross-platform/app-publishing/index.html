@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Penerbitan &amp; Distribusi Aplikasi ke App Store / Play Store — VibeKoding 🚀</title>
+<meta name="description" content="Modul master Level 3 VibeKoding: Penerbitan &amp; Distribusi Aplikasi ke App Store / Play Store. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-3/cross-platform/app-publishing/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../stage-3/"><span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></a> / <span lang="id">Penerbitan & Distribusi Aplikasi ke App Store / Play Store</span><span lang="en">Penerbitan & Distribusi Aplikasi ke App Store / Play Store</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">🚀</div>
+      <div>
+        <h1><span lang="id">Penerbitan & Distribusi Aplikasi ke App Store / Play Store</span><span lang="en">Penerbitan & Distribusi Aplikasi ke App Store / Play Store</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul master Level 3 VibeKoding: Penerbitan & Distribusi Aplikasi ke App Store / Play Store.</span><span lang="en">Modul master Level 3 VibeKoding: Penerbitan & Distribusi Aplikasi ke App Store / Play Store.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">An application that runs on your computer is not yet a product that users can safely install.</span><span lang="en">An application that runs on your computer is not yet a product that users can safely install.</span></p>
+<p class="reveal"><span lang="id">Whether it was built with Flutter, React Native, Electron, Qt, or native tools, a public release follows the same broad path:</span><span lang="en">Whether it was built with Flutter, React Native, Electron, Qt, or native tools, a public release follows the same broad path:</span></p>
+<p class="reveal"><span lang="id">> Choose a channel → fix the application identity → create a release build → sign it → test it → prepare store materials → submit for review → roll out gradually → monitor and update</span><span lang="en">> Choose a channel → fix the application identity → create a release build → sign it → test it → prepare store materials → submit for review → roll out gradually → monitor and update</span></p>
+<p class="reveal"><span lang="id">Store requirements change. Check the current console and official documentation again immediately before submitting.</span><span lang="en">Store requirements change. Check the current console and official documentation again immediately before submitting.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Separate packaging, signing, distribution, and review</span><span lang="en">1. Separate packaging, signing, distribution, and review</span></h2>
+<p class="reveal"><span lang="id"><b>Packaging</b> turns the project into an installable artifact. <b>Signing</b> proves who produced it and protects the update chain. <b>Distribution</b> makes it available through a store, website, or company system. <b>Review</b> is the platform's policy and quality check.</span><span lang="en"><b>Packaging</b> turns the project into an installable artifact. <b>Signing</b> proves who produced it and protects the update chain. <b>Distribution</b> makes it available through a store, website, or company system. <b>Review</b> is the platform's policy and quality check.</span></p>
+<p class="reveal"><span lang="id">A build can be packaged but unsigned, signed but not distributed, or distributed privately without a public store review. Knowing which step failed makes release problems much easier to solve.</span><span lang="en">A build can be packaged but unsigned, signed but not distributed, or distributed privately without a public store review. Knowing which step failed makes release problems much easier to solve.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Prepare ownership before the first release</span><span lang="en">2. Prepare ownership before the first release</span></h2>
+<p class="reveal"><span lang="id">Use organization-controlled accounts, email, domains, cloud services, and payment records for a real product. Do not permanently tie the app to a contractor's or employee's private account.</span><span lang="en">Use organization-controlled accounts, email, domains, cloud services, and payment records for a real product. Do not permanently tie the app to a contractor's or employee's private account.</span></p>
+<p class="reveal"><span lang="id">Record an owner and enable two-factor authentication for:</span><span lang="en">Record an owner and enable two-factor authentication for:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">developer and store accounts;</span><span lang="en">developer and store accounts;</span></li>
+<li><span lang="id">domains, DNS, and the support website;</span><span lang="en">domains, DNS, and the support website;</span></li>
+<li><span lang="id">signing certificates, keystores, and recovery material;</span><span lang="en">signing certificates, keystores, and recovery material;</span></li>
+<li><span lang="id">cloud services, databases, storage, and monitoring;</span><span lang="en">cloud services, databases, storage, and monitoring;</span></li>
+<li><span lang="id">payment, tax, and contract records.</span><span lang="en">payment, tax, and contract records.</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Fix the application identity and versions</span><span lang="en">3. Fix the application identity and versions</span></h2>
+<p class="reveal"><span lang="id">Android package names, Apple Bundle IDs, and store product records are the application's identity. Changing them after release usually creates a different application rather than an update.</span><span lang="en">Android package names, Apple Bundle IDs, and store product records are the application's identity. Changing them after release usually creates a different application rather than an update.</span></p>
+<p class="reveal"><span lang="id">Use a reverse-domain name such as:</span><span lang="en">Use a reverse-domain name such as:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>com.example.fridgechef</pre>
+</div>
+<p class="reveal"><span lang="id">Do not publish a tutorial value such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">com.example.myapplication</code>.</span><span lang="en">Do not publish a tutorial value such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">com.example.myapplication</code>.</span></p>
+<p class="reveal"><span lang="id">Keep the user-facing version and the upload build number separate:</span><span lang="en">Keep the user-facing version and the upload build number separate:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Version: 1.0.0
+Build: 1
+Git tag: v1.0.0
+Planned release date: 2026-09-01</pre>
+</div>
+<p class="reveal"><span lang="id">Every new upload needs a higher build number, even when the version name remains the same.</span><span lang="en">Every new upload needs a higher build number, even when the version name remains the same.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Build a real release environment</span><span lang="en">4. Build a real release environment</span></h2>
+<p class="reveal"><span lang="id">The release build must not use localhost, a test database, or sandbox payment by accident. Confirm that:</span><span lang="en">The release build must not use localhost, a test database, or sandbox payment by accident. Confirm that:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">APIs use production HTTPS domains;</span><span lang="en">APIs use production HTTPS domains;</span></li>
+<li><span lang="id">server, administrator, and model secrets are not inside the client;</span><span lang="en">server, administrator, and model secrets are not inside the client;</span></li>
+<li><span lang="id">demo accounts and debug menus are not exposed to normal users;</span><span lang="en">demo accounts and debug menus are not exposed to normal users;</span></li>
+<li><span lang="id">unnecessary detailed logging is disabled;</span><span lang="en">unnecessary detailed logging is disabled;</span></li>
+<li><span lang="id">crash reporting, service alerts, and customer support are ready;</span><span lang="en">crash reporting, service alerts, and customer support are ready;</span></li>
+<li><span lang="id">database upgrades preserve existing user data.</span><span lang="en">database upgrades preserve existing user data.</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Prepare store materials from the real build</span><span lang="en">5. Prepare store materials from the real build</span></h2>
+<p class="reveal"><span lang="id">Keep icons, screenshots, descriptions, privacy documents, review notes, and license records together. Screenshots must show the version being submitted, not a design mock-up.</span><span lang="en">Keep icons, screenshots, descriptions, privacy documents, review notes, and license records together. Screenshots must show the version being submitted, not a design mock-up.</span></p>
+<p class="reveal"><span lang="id">Remove phone numbers, private conversations, access tokens, customer data, and local file paths from every image.</span><span lang="en">Remove phone numbers, private conversations, access tokens, customer data, and local file paths from every image.</span></p>
+<p class="reveal"><span lang="id">The privacy policy and store questionnaire must match what the app and its SDKs actually collect. Check permissions for location, photos, camera, contacts, and microphone, plus analytics, advertising, crash reporting, login, account deletion, and data retention.</span><span lang="en">The privacy policy and store questionnaire must match what the app and its SDKs actually collect. Check permissions for location, photos, camera, contacts, and microphone, plus analytics, advertising, crash reporting, login, account deletion, and data retention.</span></p>
+<p class="reveal"><span lang="id">If review requires login, provide a dedicated account and a path that does not depend on SMS or an expired invitation. Ask someone outside the development team to follow the review notes exactly.</span><span lang="en">If review requires login, provide a dedicated account and a path that does not depend on SMS or an expired invitation. Ask someone outside the development team to follow the review notes exactly.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Publish Android applications</span><span lang="en">6. Publish Android applications</span></h2>
+<p class="reveal"><span lang="id">In Android Studio, use <b>Build → Generate Signed Bundle / APK</b>. New Google Play applications normally upload an Android App Bundle (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.aab</code>); an APK is mainly for direct installation and testing.</span><span lang="en">In Android Studio, use <b>Build → Generate Signed Bundle / APK</b>. New Google Play applications normally upload an Android App Bundle (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.aab</code>); an APK is mainly for direct installation and testing.</span></p>
+<p class="reveal"><span lang="id">Protect the keystore and recovery instructions, never commit them to Git, and install the release build on a real device.</span><span lang="en">Protect the keystore and recovery instructions, never commit them to Git, and install the release build on a real device.</span></p>
+<p class="reveal"><span lang="id">In Google Play Console:</span><span lang="en">In Google Play Console:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">verify the developer account and create the application;</span><span lang="en">verify the developer account and create the application;</span></li>
+<li><span lang="id">complete the listing, content rating, target audience, ads, and Data safety forms;</span><span lang="en">complete the listing, content rating, target audience, ads, and Data safety forms;</span></li>
+<li><span lang="id">upload the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.aab</code> and resolve target API and permission checks;</span><span lang="en">upload the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.aab</code> and resolve target API and permission checks;</span></li>
+<li><span lang="id">release to an internal or closed testing track;</span><span lang="en">release to an internal or closed testing track;</span></li>
+<li><span lang="id">install the store-delivered build and retest login, payment, notifications, and upgrades;</span><span lang="en">install the store-delivered build and retest login, payment, notifications, and upgrades;</span></li>
+<li><span lang="id">begin production with a staged rollout.</span><span lang="en">begin production with a staged rollout.</span></li>
+</ul>
+<p class="reveal"><span lang="id">Official guide: [Upload an app to Play Console](https://developer.android.com/studio/publish/upload-bundle).</span><span lang="en">Official guide: [Upload an app to Play Console](https://developer.android.com/studio/publish/upload-bundle).</span></p>
+<p class="reveal"><span lang="id">Mainland China has several Android stores rather than one universal store. Teams often publish separately to Huawei, Xiaomi, OPPO, vivo, Honor, and Tencent MyApp, depending on their users. Keep the package name, compatible signing identity, increasing version codes, privacy declarations, and source/build records consistent across channels. Check current APP filing and business-license requirements before submission.</span><span lang="en">Mainland China has several Android stores rather than one universal store. Teams often publish separately to Huawei, Xiaomi, OPPO, vivo, Honor, and Tencent MyApp, depending on their users. Keep the package name, compatible signing identity, increasing version codes, privacy declarations, and source/build records consistent across channels. Check current APP filing and business-license requirements before submission.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Publish iOS applications</span><span lang="en">7. Publish iOS applications</span></h2>
+<p class="reveal"><span lang="id">The standard public channel for iPhone users is the App Store.</span><span lang="en">The standard public channel for iPhone users is the App Store.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">join the appropriate Apple Developer Program with an organization-controlled Apple Account;</span><span lang="en">join the appropriate Apple Developer Program with an organization-controlled Apple Account;</span></li>
+<li><span lang="id">create the App ID and capabilities;</span><span lang="en">create the App ID and capabilities;</span></li>
+<li><span lang="id">create the app record in App Store Connect;</span><span lang="en">create the app record in App Store Connect;</span></li>
+<li><span lang="id">keep its Bundle ID identical to Xcode;</span><span lang="en">keep its Bundle ID identical to Xcode;</span></li>
+<li><span lang="id">archive from Xcode with a real-device destination;</span><span lang="en">archive from Xcode with a real-device destination;</span></li>
+<li><span lang="id">validate and upload the archive;</span><span lang="en">validate and upload the archive;</span></li>
+<li><span lang="id">test the processed build through TestFlight;</span><span lang="en">test the processed build through TestFlight;</span></li>
+<li><span lang="id">complete screenshots, privacy, age rating, export compliance, and review information;</span><span lang="en">complete screenshots, privacy, age rating, export compliance, and review information;</span></li>
+<li><span lang="id">add the version for review and then submit it.</span><span lang="en">add the version for review and then submit it.</span></li>
+</ul>
+<p class="reveal"><span lang="id">Test first installation, upgrades, login, subscription restoration, notifications, and background recovery using the exact build you submit.</span><span lang="en">Test first installation, upgrades, login, subscription restoration, notifications, and background recovery using the exact build you submit.</span></p>
+<p class="reveal"><span lang="id">Official guides: [App Store Connect workflow](https://developer.apple.com/help/app-store-connect/get-started/app-store-connect-workflow) and [Submit an app](https://developer.apple.com/help/app-store-connect/manage-submissions-to-app-review/submit-an-app).</span><span lang="en">Official guides: [App Store Connect workflow](https://developer.apple.com/help/app-store-connect/get-started/app-store-connect-workflow) and [Submit an app](https://developer.apple.com/help/app-store-connect/manage-submissions-to-app-review/submit-an-app).</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8. Publish Windows and macOS applications</span><span lang="en">8. Publish Windows and macOS applications</span></h2>
+<p class="reveal"><span lang="id">For Windows, the Microsoft Store provides a consistent installation and update path. Reserve the name in Partner Center, build and test an MSIX package, complete the listing, run the required certification checks, and install the published store version again.</span><span lang="en">For Windows, the Microsoft Store provides a consistent installation and update path. Reserve the name in Partner Center, build and test an MSIX package, complete the listing, run the required certification checks, and install the published store version again.</span></p>
+<p class="reveal"><span lang="id">Direct website distribution means you own code signing, HTTPS hosting, checksums, SmartScreen reputation, installation, uninstall, updates, rollback, and supported Windows versions.</span><span lang="en">Direct website distribution means you own code signing, HTTPS hosting, checksums, SmartScreen reputation, installation, uninstall, updates, rollback, and supported Windows versions.</span></p>
+<p class="reveal"><span lang="id">Official guide: [Publish your first Windows app](https://learn.microsoft.com/windows/apps/package-and-deploy/publish-first-app).</span><span lang="en">Official guide: [Publish your first Windows app](https://learn.microsoft.com/windows/apps/package-and-deploy/publish-first-app).</span></p>
+<p class="reveal"><span lang="id">For macOS, a Mac App Store build follows App Store Connect, signing, sandbox, archive, and review rules. A website-delivered DMG or PKG still needs Developer ID signing, hardened runtime checks, Apple notarization, stapling, a clean-Mac Gatekeeper test, and a safe update path.</span><span lang="en">For macOS, a Mac App Store build follows App Store Connect, signing, sandbox, archive, and review rules. A website-delivered DMG or PKG still needs Developer ID signing, hardened runtime checks, Apple notarization, stapling, a clean-Mac Gatekeeper test, and a safe update path.</span></p>
+<p class="reveal"><span lang="id">Official guide: [Distribute apps for testing and release](https://developer.apple.com/documentation/xcode/distributing-your-app-for-beta-testing-and-releases/).</span><span lang="en">Official guide: [Distribute apps for testing and release](https://developer.apple.com/documentation/xcode/distributing-your-app-for-beta-testing-and-releases/).</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">9. Publish Linux and Web applications</span><span lang="en">9. Publish Linux and Web applications</span></h2>
+<p class="reveal"><span lang="id">Linux has no single store for every distribution. Common choices are Flathub, Snap Store, AppImage, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.deb</code>, and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.rpm</code>. Whichever you choose, publish checksums, architectures, dependency notes, update instructions, and a trusted download source.</span><span lang="en">Linux has no single store for every distribution. Common choices are Flathub, Snap Store, AppImage, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.deb</code>, and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.rpm</code>. Whichever you choose, publish checksums, architectures, dependency notes, update instructions, and a trusted download source.</span></p>
+<p class="reveal"><span lang="id">References: [Flathub submission](https://docs.flathub.org/docs/for-app-authors/submission) and [Publish a snap](https://documentation.ubuntu.com/snapcraft/latest/how-to/publishing/publish-a-snap/).</span><span lang="en">References: [Flathub submission](https://docs.flathub.org/docs/for-app-authors/submission) and [Publish a snap](https://documentation.ubuntu.com/snapcraft/latest/how-to/publishing/publish-a-snap/).</span></p>
+<p class="reveal"><span lang="id">For Web and PWA products, deployment to a stable HTTPS domain is the main release. Check DNS and certificate renewal, production environment variables, 404 and offline behavior, Manifest values, Service Worker updates, accessibility, monitoring, backup, and rollback.</span><span lang="en">For Web and PWA products, deployment to a stable HTTPS domain is the main release. Check DNS and certificate renewal, production environment variables, 404 and offline behavior, Manifest values, Service Worker updates, accessibility, monitoring, backup, and rollback.</span></p>
+<p class="reveal"><span lang="id">Continue with [How to Build a Local PWA](../pwa-local-app/).</span><span lang="en">Continue with [How to Build a Local PWA](../pwa-local-app/).</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">10. Publish mini programs and browser extensions</span><span lang="en">10. Publish mini programs and browser extensions</span></h2>
+<p class="reveal"><span lang="id">A WeChat Mini Program is normally uploaded from WeChat DevTools, selected in the management console, completed with category and privacy information, submitted for review, and published after approval. Recheck API domains, cloud environments, payments, and privacy prompts in the review build.</span><span lang="en">A WeChat Mini Program is normally uploaded from WeChat DevTools, selected in the management console, completed with category and privacy information, submitted for review, and published after approval. Recheck API domains, cloud environments, payments, and privacy prompts in the review build.</span></p>
+<p class="reveal"><span lang="id">Chrome Web Store, Microsoft Edge Add-ons, and Firefox AMO each have their own console. Upload the extension package, explain every requested permission, provide screenshots and privacy information, and use the least permission required.</span><span lang="en">Chrome Web Store, Microsoft Edge Add-ons, and Firefox AMO each have their own console. Upload the extension package, explain every requested permission, provide screenshots and privacy information, and use the least permission required.</span></p>
+<p class="reveal"><span lang="id">References: [Chrome Web Store](https://developer.chrome.com/docs/webstore/) and [Publish a Microsoft Edge extension](https://learn.microsoft.com/microsoft-edge/extensions/publish/publish-extension).</span><span lang="en">References: [Chrome Web Store](https://developer.chrome.com/docs/webstore/) and [Publish a Microsoft Edge extension](https://learn.microsoft.com/microsoft-edge/extensions/publish/publish-extension).</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">11. Respond to review failures</span><span lang="en">11. Respond to review failures</span></h2>
+<p class="reveal"><span lang="id">Frequent causes include a release-only crash, an unusable review account, privacy declarations that disagree with SDK behavior, unfinished buttons, prohibited payment flows, excessive permissions, unlicensed assets, and screenshots from an older version.</span><span lang="en">Frequent causes include a release-only crash, an unusable review account, privacy declarations that disagree with SDK behavior, unfinished buttons, prohibited payment flows, excessive permissions, unlicensed assets, and screenshots from an older version.</span></p>
+<p class="reveal"><span lang="id">Give AI the exact review message and current behavior, not a vague summary:</span><span lang="en">Give AI the exact review message and current behavior, not a vague summary:</span></p>
+<p class="reveal"><span lang="id">> This is the store review message: 【paste it】. Identify the rule and the product behavior that must change. Do not guess.</span><span lang="en">> This is the store review message: 【paste it】. Identify the rule and the product behavior that must change. Do not guess.</span></p>
+<p class="reveal"><span lang="id">After the fix:</span><span lang="en">After the fix:</span></p>
+<p class="reveal"><span lang="id">> List the actions to retest and the store materials that must be updated before resubmission.</span><span lang="en">> List the actions to retest and the store materials that must be updated before resubmission.</span></p>
+<p class="reveal"><span lang="id">The platform's own response remains the authority.</span><span lang="en">The platform's own response remains the authority.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">12. Roll out gradually and preserve updates</span><span lang="en">12. Roll out gradually and preserve updates</span></h2>
+<p class="reveal"><span lang="id">A dependable release order is: developer testing, internal testing, a small closed beta, store review, staged production, and then wider availability after crash, API, login, payment, and support signals remain healthy.</span><span lang="en">A dependable release order is: developer testing, internal testing, a small closed beta, store review, staged production, and then wider availability after crash, API, login, payment, and support signals remain healthy.</span></p>
+<p class="reveal"><span lang="id">Write down who presses Release, who watches monitoring, which signal pauses the rollout, how rollback works, and how users will be informed.</span><span lang="en">Write down who presses Release, who watches monitoring, which signal pauses the rollout, how rollback works, and how users will be informed.</span></p>
+<p class="reveal"><span lang="id">Every update must preserve the application identity and compatible signing chain, increase the build number, migrate local data safely, keep backend APIs compatible with older clients, and update privacy declarations when SDKs or features change.</span><span lang="en">Every update must preserve the application identity and compatible signing chain, increase the build number, migrate local data safely, keep backend APIs compatible with older clients, and update privacy declarations when SDKs or features change.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">13. A first-release checklist</span><span lang="en">13. A first-release checklist</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[ ] Choose one first platform and one distribution channel.</span><span lang="en">[ ] Choose one first platform and one distribution channel.</span></li>
+<li><span lang="id">[ ] Register the developer account with the organization identity.</span><span lang="en">[ ] Register the developer account with the organization identity.</span></li>
+<li><span lang="id">[ ] Fix the application name and package or Bundle ID.</span><span lang="en">[ ] Fix the application name and package or Bundle ID.</span></li>
+<li><span lang="id">[ ] Create and securely back up signing material.</span><span lang="en">[ ] Create and securely back up signing material.</span></li>
+<li><span lang="id">[ ] Build Release and install it on a clean device.</span><span lang="en">[ ] Build Release and install it on a clean device.</span></li>
+<li><span lang="id">[ ] Prepare real screenshots, descriptions, support, and privacy pages.</span><span lang="en">[ ] Prepare real screenshots, descriptions, support, and privacy pages.</span></li>
+<li><span lang="id">[ ] Provide a long-lived review account.</span><span lang="en">[ ] Provide a long-lived review account.</span></li>
+<li><span lang="id">[ ] Install from the testing channel and complete the core workflow.</span><span lang="en">[ ] Install from the testing channel and complete the core workflow.</span></li>
+<li><span lang="id">[ ] Save every review message and the corresponding change.</span><span lang="en">[ ] Save every review message and the corresponding change.</span></li>
+<li><span lang="id">[ ] Begin with a small rollout and expand only when monitoring is healthy.</span><span lang="en">[ ] Begin with a small rollout and expand only when monitoring is healthy.</span></li>
+</ul>
+<p class="reveal"><span lang="id">Publishing is not administrative work after development. Identity, signing, privacy, testing, monitoring, and rollback are part of the product. Treat them that way in version one and every later release becomes safer and faster.</span><span lang="en">Publishing is not administrative work after development. Identity, signing, privacy, testing, monitoring, and rollback are part of the product. Treat them that way in version one and every later release becomes safer and faster.</span></p>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../personal-brand/personal-website-blog/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Website Pribadi & Blog Portofolio Akademik</span><span lang="en">Website Pribadi & Blog Portofolio Akademik</span></b></a>
+      <a class="next" href="../../ai-advanced/rag-introduction/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">RAG Mendalam: Chunking, Vector Embeddings & Retrieval</span><span lang="en">RAG Mendalam: Chunking, Vector Embeddings & Retrieval</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

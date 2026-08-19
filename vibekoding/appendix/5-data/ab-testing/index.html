@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of A/B Testing: Decision-Making with Data — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of A/B Testing: Decision-Making with Data. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/5-data/ab-testing/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of A/B Testing: Decision-Making with Data</span><span lang="en">Principles of A/B Testing: Decision-Making with Data</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of A/B Testing: Decision-Making with Data</span><span lang="en">Principles of A/B Testing: Decision-Making with Data</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of A/B Testing: Decision-Making with Data.</span><span lang="en">Ensiklopedia VibeKoding: Principles of A/B Testing: Decision-Making with Data.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>How do you scientifically validate the impact of product changes?</b>
+You may have experienced this scenario: the team spends a month building a new feature, and after launch, the metrics soar! Everyone celebrates, but three weeks later the numbers mysteriously drop back to where they were. Was it because the new feature was genuinely good, or just because it coincided with a holiday traffic spike? A/B testing solves the problem of filtering out external noise and letting the data reveal the truth.</span><span lang="en"><b>How do you scientifically validate the impact of product changes?</b>
+You may have experienced this scenario: the team spends a month building a new feature, and after launch, the metrics soar! Everyone celebrates, but three weeks later the numbers mysteriously drop back to where they were. Was it because the new feature was genuinely good, or just because it coincided with a holiday traffic spike? A/B testing solves the problem of filtering out external noise and letting the data reveal the truth.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. The Big Picture: A Scientific Weapon Against Guesswork</span><span lang="en">0. The Big Picture: A Scientific Weapon Against Guesswork</span></h2>
+<p class="reveal"><span lang="id">Before diving into the technical details, let's think about how humans make decisions.</span><span lang="en">Before diving into the technical details, let's think about how humans make decisions.</span></p>
+<p class="reveal"><span lang="id">You're faced with two button color designs: a calm blue and an eye-catching red. Typically, decision-makers rely on their own experience, intuition, or even the preferences of the highest-ranking leader (known in the industry as <b>HiPPO</b> — Highest Paid Person's Opinion).</span><span lang="en">You're faced with two button color designs: a calm blue and an eye-catching red. Typically, decision-makers rely on their own experience, intuition, or even the preferences of the highest-ranking leader (known in the industry as <b>HiPPO</b> — Highest Paid Person's Opinion).</span></p>
+<p class="reveal"><span lang="id">But users' actual behavior often defies our imagination. Maybe red is too glaring and actually reduces conversion rates, or maybe blue isn't attention-grabbing enough... How can we be certain that a particular change is truly better?</span><span lang="en">But users' actual behavior often defies our imagination. Maybe red is too glaring and actually reduces conversion rates, or maybe blue isn't attention-grabbing enough... How can we be certain that a particular change is truly better?</span></p>
+<p class="reveal"><span lang="id">The answer comes from classical scientific methodology, the same approach used in modern medicine to validate new drugs: <b>controlled experiments</b>.</span><span lang="en">The answer comes from classical scientific methodology, the same approach used in modern medicine to validate new drugs: <b>controlled experiments</b>.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>A/B Testing = Comparison + Observation</b>
+It's like a "double-blind test" in medical research:
+- <b>Control group (Group A)</b>: Takes a placebo that looks like the real drug (sees the old version of the page).
+- <b>Experimental group (Group B)</b>: Takes the new drug being developed (sees the new version of the page).
+Only when the cure rate (conversion rate) of the experimental group is consistently and significantly higher than the control group can we declare that the new drug (new change) is truly effective.</span><span lang="en"><b>A/B Testing = Comparison + Observation</b>
+It's like a "double-blind test" in medical research:
+- <b>Control group (Group A)</b>: Takes a placebo that looks like the real drug (sees the old version of the page).
+- <b>Experimental group (Group B)</b>: Takes the new drug being developed (sees the new version of the page).
+Only when the cure rate (conversion rate) of the experimental group is consistently and significantly higher than the control group can we declare that the new drug (new change) is truly effective.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Traffic Allocation: Splitting Branch Isolation</span><span lang="en">1. Traffic Allocation: Splitting Branch Isolation</span></h2>
+<p class="reveal"><span lang="id">The first iron rule of A/B testing is: <b>simultaneous, random, and isolated</b>.</span><span lang="en">The first iron rule of A/B testing is: <b>simultaneous, random, and isolated</b>.</span></p>
+<p class="reveal"><span lang="id">You absolutely cannot say: "All users see the blue button for the first half of the month, then all users see the red button for the second half." Because the time span introduces countless variables — you'd have no way of knowing whether the conversion rate increase in the second half was because of the red button or because it happened to be peak shopping season.</span><span lang="en">You absolutely cannot say: "All users see the blue button for the first half of the month, then all users see the red button for the second half." Because the time span introduces countless variables — you'd have no way of knowing whether the conversion rate increase in the second half was because of the red button or because it happened to be peak shopping season.</span></p>
+<p class="reveal"><span lang="id">What we need to do is create "parallel universes" at the same moment. Every user entering the website triggers a digital coin flip at the system level, determining whether they're assigned to Universe A or Universe B.</span><span lang="en">What we need to do is create "parallel universes" at the same moment. Every user entering the website triggers a digital coin flip at the system level, determining whether they're assigned to Universe A or Universe B.</span></p>
+<p class="reveal"><span lang="id">You can observe how the system splits traffic through the demo below:</span><span lang="en">You can observe how the system splits traffic through the demo below:</span></p>
+<p class="reveal"><span lang="id"><ABTestingDemo tab="traffic" /></span><span lang="en"><ABTestingDemo tab="traffic" /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 Motivation for Randoming Assignment So Important</span><span lang="en">1.1 Motivation for Randoming Assignment So Important</span></h3>
+<p class="reveal"><span lang="id">Only with 100% randomness can we maximally eliminate differences caused by all other characteristics. If we perform a perfectly random split on a sufficiently large sample, the proportion of young users, income levels, and geographic distribution between Group A and Group B should be remarkably consistent.</span><span lang="en">Only with 100% randomness can we maximally eliminate differences caused by all other characteristics. If we perform a perfectly random split on a sufficiently large sample, the proportion of young users, income levels, and geographic distribution between Group A and Group B should be remarkably consistent.</span></p>
+<p class="reveal"><span lang="id">At that point, if the data performance differs between the two groups, all other confounding factors are ruled out. The only difference can be the red button you changed.</span><span lang="en">At that point, if the data performance differs between the two groups, all other confounding factors are ruled out. The only difference can be the red button you changed.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Sample Size and Testing: The Math That Defeats Illusions</span><span lang="en">2. Sample Size and Testing: The Math That Defeats Illusions</span></h2>
+<p class="reveal"><span lang="id">Now that we've split the groups, can we just test with 10 users and call it a day? This brings us to the most ruthless mathematical law in A/B testing: <b>the Law of Large Numbers and Sample Size</b>.</span><span lang="en">Now that we've split the groups, can we just test with 10 users and call it a day? This brings us to the most ruthless mathematical law in A/B testing: <b>the Law of Large Numbers and Sample Size</b>.</span></p>
+<p class="reveal"><span lang="id">Imagine flipping a coin 10 times and getting 7 heads and 3 tails. Does this prove the coin is rigged? Obviously not — the sample size is too small, and 7:3 is purely fluctuation and luck. But if you flipped it 100,000 times and got 70,000 heads, you could confidently assert that the coin is biased.</span><span lang="en">Imagine flipping a coin 10 times and getting 7 heads and 3 tails. Does this prove the coin is rigged? Obviously not — the sample size is too small, and 7:3 is purely fluctuation and luck. But if you flipped it 100,000 times and got 70,000 heads, you could confidently assert that the coin is biased.</span></p>
+<p class="reveal"><span lang="id">Similarly, if only 100 people are tested, even one extra click causes a 1% surge or drop. This is why we need to calculate the required sample size using formulas before starting the experiment.</span><span lang="en">Similarly, if only 100 people are tested, even one extra click causes a 1% surge or drop. This is why we need to calculate the required sample size using formulas before starting the experiment.</span></p>
+<p class="reveal"><span lang="id"><ABTestingDemo tab="calculator" /></span><span lang="en"><ABTestingDemo tab="calculator" /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 The Two Guardians of Statistics</span><span lang="en">2.1 The Two Guardians of Statistics</span></h3>
+<p class="reveal"><span lang="id">Once you've reached the required traffic volume, statistics places two gatekeepers on our journey to find the truth:</span><span lang="en">Once you've reached the required traffic volume, statistics places two gatekeepers on our journey to find the truth:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Statistical Power (usually required to be 80%)</b>: This represents how confident you can be that if your new change is truly effective, you'll be able to detect it rather than mistaking it for noise. (Prevents false negatives — saying "ineffective" when it's actually "effective")</span><span lang="en"><b>Statistical Power (usually required to be 80%)</b>: This represents how confident you can be that if your new change is truly effective, you'll be able to detect it rather than mistaking it for noise. (Prevents false negatives — saying "ineffective" when it's actually "effective")</span></li>
+<li><span lang="id"><b>Significance Level (P-Value, usually required to be less than 0.05)</b>: This is the commonly cited "P<0.05." It means: is the probability that this difference between the two groups occurred purely by chance less than 5%? If the luck factor is below 5%, we accept this as <b>statistically significant</b> — the change genuinely produced an extraordinary effect. (Prevents false positives — saying "effective" when it was just luck)</span><span lang="en"><b>Significance Level (P-Value, usually required to be less than 0.05)</b>: This is the commonly cited "P<0.05." It means: is the probability that this difference between the two groups occurred purely by chance less than 5%? If the luck factor is below 5%, we accept this as <b>statistically significant</b> — the change genuinely produced an extraordinary effect. (Prevents false positives — saying "effective" when it was just luck)</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Results Showdown: The Verdict</span><span lang="en">3. Results Showdown: The Verdict</span></h2>
+<p class="reveal"><span lang="id">After collecting sufficient data, we need to evaluate the results precisely through a professional funnel model. Comparing results isn't simple arithmetic — it involves confidence intervals and normal distribution calculations:</span><span lang="en">After collecting sufficient data, we need to evaluate the results precisely through a professional funnel model. Comparing results isn't simple arithmetic — it involves confidence intervals and normal distribution calculations:</span></p>
+<p class="reveal"><span lang="id"><ABTestingDemo tab="results" /></span><span lang="en"><ABTestingDemo tab="results" /></span></p>
+<p class="reveal"><span lang="id">When you see a clear <b>"Significant"</b> result on the page, it means we can proudly announce to the entire company: set aside our subjective and naive debates, roll out Plan B to all users immediately! Everything is backed by solid mathematical principles.</span><span lang="en">When you see a clear <b>"Significant"</b> result on the page, it means we can proudly announce to the entire company: set aside our subjective and naive debates, roll out Plan B to all users immediately! Everything is backed by solid mathematical principles.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Hidden Traps: Pitfalls in Analysis</span><span lang="en">4. Hidden Traps: Pitfalls in Analysis</span></h2>
+<p class="reveal"><span lang="id">Although A/B testing itself is a rational and scientific method, the people running it are deeply influenced by human weaknesses. People tend to see only what they want to see, which can easily distort the entire test and lead to terrible backlash:</span><span lang="en">Although A/B testing itself is a rational and scientific method, the people running it are deeply influenced by human weaknesses. People tend to see only what they want to see, which can easily distort the entire test and lead to terrible backlash:</span></p>
+<p class="reveal"><span lang="id"><ABTestingDemo tab="pitfalls" /></span><span lang="en"><ABTestingDemo tab="pitfalls" /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Beware of the "Novelty Effect"</span><span lang="en">4.1 Beware of the "Novelty Effect"</span></h3>
+<p class="reveal"><span lang="id">When something new appears, users may click on your messy-looking new button purely out of curiosity and novelty, causing conversion rates to skyrocket in the first three days.</span><span lang="en">When something new appears, users may click on your messy-looking new button purely out of curiosity and novelty, causing conversion rates to skyrocket in the first three days.</span></p>
+<p class="reveal"><span lang="id">Many product managers will confidently stop the experiment on day three with perfect data and send out a victory report. But if you patiently wait two weeks, you'll find that once the novelty wears off, the numbers drop below the old version's baseline. This is why the experiment duration is critically important — never be blinded by short-term inflated numbers.</span><span lang="en">Many product managers will confidently stop the experiment on day three with perfect data and send out a victory report. But if you patiently wait two weeks, you'll find that once the novelty wears off, the numbers drop below the old version's baseline. This is why the experiment duration is critically important — never be blinded by short-term inflated numbers.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Summary: Cultivating the Courage to Submit to Data</span><span lang="en">5. Summary: Cultivating the Courage to Submit to Data</span></h2>
+<p class="reveal"><span lang="id">In summary, moving from "intuitive guessing" to "A/B testing" is a massive mindset shift for any team.</span><span lang="en">In summary, moving from "intuitive guessing" to "A/B testing" is a massive mindset shift for any team.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Formulate cautious hypotheses</b>: Build a quantifiable hypothesis based on rigorous observation of users.</span><span lang="en"><b>Formulate cautious hypotheses</b>: Build a quantifiable hypothesis based on rigorous observation of users.</span></li>
+<li><span lang="id"><b>Split parallel worlds</b>: Use pure randomness to divide traffic, eliminating external noise.</span><span lang="en"><b>Split parallel worlds</b>: Use pure randomness to divide traffic, eliminating external noise.</span></li>
+<li><span lang="id"><b>Accept the baptism of samples</b>: Wait for the Law of Large Numbers to take effect, using sufficient time and samples to reduce fluctuation.</span><span lang="en"><b>Accept the baptism of samples</b>: Wait for the Law of Large Numbers to take effect, using sufficient time and samples to reduce fluctuation.</span></li>
+<li><span lang="id"><b>Conduct a mathematical verdict</b>: Let the P-value determine which plan is better, strictly following the facts of statistical significance.</span><span lang="en"><b>Conduct a mathematical verdict</b>: Let the P-value determine which plan is better, strictly following the facts of statistical significance.</span></li>
+</ul>
+<p class="reveal"><span lang="id">As software creators, the greatest wisdom is this — <b>the courage to submit to facts. We no longer need to spend hours in meeting rooms arguing over blue versus red until we're red in the face; we simply wait two weeks, and the click-through rate will prove which one users truly prefer.</b></span><span lang="en">As software creators, the greatest wisdom is this — <b>the courage to submit to facts. We no longer need to spend hours in meeting rooms arguing over blue versus red until we're red in the face; we simply wait two weeks, and the click-through rate will prove which one users truly prefer.</b></span></p>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../4-server-and-backend/web-frameworks/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">4-server-and-backend/web-frameworks</span><span lang="en">4-server-and-backend/web-frameworks</span></b></a>
+      <a class="next" href="../../5-data/data-analysis/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">5-data/data-analysis</span><span lang="en">5-data/data-analysis</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

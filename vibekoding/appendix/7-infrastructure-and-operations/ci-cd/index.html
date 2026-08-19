@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>An Introduction to CI/CD Automation — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: An Introduction to CI/CD Automation. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/7-infrastructure-and-operations/ci-cd/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">An Introduction to CI/CD Automation</span><span lang="en">An Introduction to CI/CD Automation</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">An Introduction to CI/CD Automation</span><span lang="en">An Introduction to CI/CD Automation</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: An Introduction to CI/CD Automation.</span><span lang="en">Ensiklopedia VibeKoding: An Introduction to CI/CD Automation.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Your code runs fine locally, but how do you make it accessible to people around the world?</b></span><span lang="en"><b>Your code runs fine locally, but how do you make it accessible to people around the world?</b></span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Motivation for needing to "Go Live"</span><span lang="en">1. Motivation for needing to "Go Live"</span></h2>
+<p class="reveal"><span lang="id">Imagine you've cooked a feast at home, and it's delicious. But the problem is, only your family can taste it. Your neighbors, the security guard, strangers — none of them can try it.</span><span lang="en">Imagine you've cooked a feast at home, and it's delicious. But the problem is, only your family can taste it. Your neighbors, the security guard, strangers — none of them can try it.</span></p>
+<p class="reveal"><span lang="id">What do you do? You need to <b>bring the food to a restaurant</b>. That's what "going live" does — it moves the code you wrote from your personal computer to a "public computer" that's always on 24/7. This way, anyone with internet access can visit your website.</span><span lang="en">What do you do? You need to <b>bring the food to a restaurant</b>. That's what "going live" does — it moves the code you wrote from your personal computer to a "public computer" that's always on 24/7. This way, anyone with internet access can visit your website.</span></p>
+<p class="reveal"><span lang="id"><DeploymentOverviewDemo /></span><span lang="en"><DeploymentOverviewDemo /></span></p>
+<p class="reveal"><span lang="id">Going live involves many steps. Just like opening a restaurant isn't just about serving food — you also need to rent a space, renovate, get permits, hire staff, and so on. The same applies to web development. From code to a website that users can access, there are many steps in between. You need to complete building, deploying, configuring the network, ensuring security, and more.</span><span lang="en">Going live involves many steps. Just like opening a restaurant isn't just about serving food — you also need to rent a space, renovate, get permits, hire staff, and so on. The same applies to web development. From code to a website that users can access, there are many steps in between. You need to complete building, deploying, configuring the network, ensuring security, and more.</span></p>
+<p class="reveal"><span lang="id">Below, I'll break down the entire process. Every step will be explained in detail. Even complete beginners with no prior experience will be able to understand.</span><span lang="en">Below, I'll break down the entire process. Every step will be explained in detail. Even complete beginners with no prior experience will be able to understand.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Building: Turning Code into a "Portable Build Artifact"</span><span lang="en">2. Building: Turning Code into a "Portable Build Artifact"</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Motivation for needing to Build</span><span lang="en">2.1 Motivation for needing to Build</span></h3>
+<p class="reveal"><span lang="id">Beginners often ask: once the code is written, why can't we just put it on a server for users to access?</span><span lang="en">Beginners often ask: once the code is written, why can't we just put it on a server for users to access?</span></p>
+<p class="reveal"><span lang="id">To answer this question, first understand what format your code is in. You might use frameworks like Vue, React, Express, or Koa. These frameworks share a common characteristic: <b>they are not meant for direct use by browsers or servers</b>.</span><span lang="en">To answer this question, first understand what format your code is in. You might use frameworks like Vue, React, Express, or Koa. These frameworks share a common characteristic: <b>they are not meant for direct use by browsers or servers</b>.</span></p>
+<p class="reveal"><span lang="id">For example, when writing Vue code, don't you use tags like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><template></code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><script setup></code>? Only Vue understands this syntax. Browsers can't make sense of it at all. Browsers only understand three languages: HTML (webpage structure), CSS (webpage styles), and JavaScript (webpage logic). Vue component syntax is like gibberish to browsers — completely incomprehensible.</span><span lang="en">For example, when writing Vue code, don't you use tags like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><template></code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"><script setup></code>? Only Vue understands this syntax. Browsers can't make sense of it at all. Browsers only understand three languages: HTML (webpage structure), CSS (webpage styles), and JavaScript (webpage logic). Vue component syntax is like gibberish to browsers — completely incomprehensible.</span></p>
+<p class="reveal"><span lang="id">So before putting the code on a server, there's one important thing you must do: <b>translate it into a language the browser can understand</b>. This translation process is called "Build."</span><span lang="en">So before putting the code on a server, there's one important thing you must do: <b>translate it into a language the browser can understand</b>. This translation process is called "Build."</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 What Does Building Actually Do</span><span lang="en">2.2 What Does Building Actually Do</span></h3>
+<p class="reveal"><span lang="id">Building is more than just translation. It also performs many optimizations to make the website run faster and use fewer resources. Let's look at what it specifically does:</span><span lang="en">Building is more than just translation. It also performs many optimizations to make the website run faster and use fewer resources. Let's look at what it specifically does:</span></p>
+<p class="reveal"><span lang="id"><b>Step 1: Resolve Dependencies</b></span><span lang="en"><b>Step 1: Resolve Dependencies</b></span></p>
+<p class="reveal"><span lang="id">When writing code, you use various third-party libraries. Like Vue, Vue Router, Axios, Vite, etc. Users can't download these from npm every time — that would be too slow. The build tool analyzes the code, finds all dependencies, and "bundles" them together.</span><span lang="en">When writing code, you use various third-party libraries. Like Vue, Vue Router, Axios, Vite, etc. Users can't download these from npm every time — that would be too slow. The build tool analyzes the code, finds all dependencies, and "bundles" them together.</span></p>
+<p class="reveal"><span lang="id"><b>Step 2: Compile and Transform</b></span><span lang="en"><b>Step 2: Compile and Transform</b></span></p>
+<p class="reveal"><span lang="id">This is the most critical step. It compiles Vue components into HTML and JavaScript. It compiles SASS/LESS into CSS. It converts ES6+ syntax into more compatible ES5 code. After this step, the code goes from "a format developers can read" to "a format machines can execute."</span><span lang="en">This is the most critical step. It compiles Vue components into HTML and JavaScript. It compiles SASS/LESS into CSS. It converts ES6+ syntax into more compatible ES5 code. After this step, the code goes from "a format developers can read" to "a format machines can execute."</span></p>
+<p class="reveal"><span lang="id"><b>Step 3: Minification and Obfuscation</b></span><span lang="en"><b>Step 3: Minification and Obfuscation</b></span></p>
+<p class="reveal"><span lang="id">Minification removes all spaces, line breaks, and comments. It renames variables from English words to single letters. For example, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">userName</code> becomes <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">a</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">calculateTotalPrice</code> becomes <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">b</code>. This dramatically reduces file size, making downloads much faster for users. The obfuscated code is nearly unreadable by humans, which also provides some "code protection."</span><span lang="en">Minification removes all spaces, line breaks, and comments. It renames variables from English words to single letters. For example, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">userName</code> becomes <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">a</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">calculateTotalPrice</code> becomes <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">b</code>. This dramatically reduces file size, making downloads much faster for users. The obfuscated code is nearly unreadable by humans, which also provides some "code protection."</span></p>
+<p class="reveal"><span lang="id"><b>Step 4: Code Splitting</b></span><span lang="en"><b>Step 4: Code Splitting</b></span></p>
+<p class="reveal"><span lang="id">You might have written 10 pages, each with its own code. But a user might only visit one page. Why should they download the code for the other 9 pages? The build tool splits the code into multiple chunks. Users only download the code for the page they visit. This is "lazy loading" and can significantly improve the speed of the first visit.</span><span lang="en">You might have written 10 pages, each with its own code. But a user might only visit one page. Why should they download the code for the other 9 pages? The build tool splits the code into multiple chunks. Users only download the code for the page they visit. This is "lazy loading" and can significantly improve the speed of the first visit.</span></p>
+<p class="reveal"><span lang="id"><b>Step 5: Generate Hashes</b></span><span lang="en"><b>Step 5: Generate Hashes</b></span></p>
+<p class="reveal"><span lang="id">This is a very important step that many people overlook. After building, file names become something like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">app.abc123.js</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">vendor.def456.css</code>. That alphanumeric string at the end is called a "hash."</span><span lang="en">This is a very important step that many people overlook. After building, file names become something like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">app.abc123.js</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">vendor.def456.css</code>. That alphanumeric string at the end is called a "hash."</span></p>
+<p class="reveal"><span lang="id">The hash works like this: when the code changes in any way, the hash value changes. The browser then knows "this file has changed, I need to re-download it." For unchanged files, the browser continues using the cache without re-downloading. This ensures users always see the latest code while fully utilizing the cache to improve speed.</span><span lang="en">The hash works like this: when the code changes in any way, the hash value changes. The browser then knows "this file has changed, I need to re-download it." For unchanged files, the browser continues using the cache without re-downloading. This ensures users always see the latest code while fully utilizing the cache to improve speed.</span></p>
+<p class="reveal"><span lang="id"><DeploymentBuildDemo /></span><span lang="en"><DeploymentBuildDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 Approach to running a Build</span><span lang="en">2.3 Approach to running a Build</span></h3>
+<p class="reveal"><span lang="id">Most modern frontend projects already have build tools configured. Just remember one command:</span><span lang="en">Most modern frontend projects already have build tools configured. Just remember one command:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># If using npm
+npm run build
+
+# If using yarn
+yarn build
+
+# If using pnpm
+pnpm build</pre>
+</div>
+<p class="reveal"><span lang="id">After running, look for a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dist</code> folder in the project root directory (sometimes called <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">build</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.output</code>). It contains all the built files. These are the files that will ultimately be uploaded to the server. No further modifications are needed — just drag them to the server.</span><span lang="en">After running, look for a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dist</code> folder in the project root directory (sometimes called <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">build</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.output</code>). It contains all the built files. These are the files that will ultimately be uploaded to the server. No further modifications are needed — just drag them to the server.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.4 What's Inside the Build Output</span><span lang="en">2.4 What's Inside the Build Output</span></h3>
+<p class="reveal"><span lang="id">Open the dist folder and you'll see mainly three types of files:</span><span lang="en">Open the dist folder and you'll see mainly three types of files:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>HTML files</b>: Usually called <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">index.html</code>. This is the entry file — the browser loads it first.</span><span lang="en"><b>HTML files</b>: Usually called <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">index.html</code>. This is the entry file — the browser loads it first.</span></li>
+<li><span lang="id"><b>JS files</b>: All JavaScript code. There might be one or several.</span><span lang="en"><b>JS files</b>: All JavaScript code. There might be one or several.</span></li>
+<li><span lang="id"><b>CSS files</b>: All style code. It might be inline in the HTML or separate CSS files.</span><span lang="en"><b>CSS files</b>: All style code. It might be inline in the HTML or separate CSS files.</span></li>
+</ul>
+<p class="reveal"><span lang="id">For more complex backend projects (like Node.js), the build output might be an executable file or a Docker image. But the principle is the same: turn the code into a form the server can run directly.</span><span lang="en">For more complex backend projects (like Node.js), the build output might be an executable file or a Docker image. But the principle is the same: turn the code into a form the server can run directly.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Server: Finding a "House" That Never Closes</span><span lang="en">3. Server: Finding a "House" That Never Closes</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 What Exactly Overview of a Server</span><span lang="en">3.1 What Exactly Overview of a Server</span></h3>
+<p class="reveal"><span lang="id">Many people think a "server" is some mysterious, high-end device when they first hear about it. It's really not that complicated. <b>A server is just a computer</b> — a computer that never shuts down and is always connected to the internet.</span><span lang="en">Many people think a "server" is some mysterious, high-end device when they first hear about it. It's really not that complicated. <b>A server is just a computer</b> — a computer that never shuts down and is always connected to the internet.</span></p>
+<p class="reveal"><span lang="id">You might ask: I already have a computer at home, why would I pay extra to rent a server?</span><span lang="en">You might ask: I already have a computer at home, why would I pay extra to rent a server?</span></p>
+<p class="reveal"><span lang="id">Good question. Let me break it down for you:</span><span lang="en">Good question. Let me break it down for you:</span></p>
+<p class="reveal"><span lang="id">First, your home computer can't stay on 24 hours a day. You need to go out, sleep, and occasionally it crashes and restarts. But a server is different — it's specifically built for this purpose. It can run 365 days a year without interruption. The website is always accessible.</span><span lang="en">First, your home computer can't stay on 24 hours a day. You need to go out, sleep, and occasionally it crashes and restarts. But a server is different — it's specifically built for this purpose. It can run 365 days a year without interruption. The website is always accessible.</span></p>
+<p class="reveal"><span lang="id">Second, your home network isn't good enough either. Home broadband upload speeds are usually slow. And home broadband IPs are dynamic — today it's one IP, tomorrow it might be a different one. It's impossible to use as a website server. Servers use high-speed data center networks with fixed IPs and blazing-fast speeds.</span><span lang="en">Second, your home network isn't good enough either. Home broadband upload speeds are usually slow. And home broadband IPs are dynamic — today it's one IP, tomorrow it might be a different one. It's impossible to use as a website server. Servers use high-speed data center networks with fixed IPs and blazing-fast speeds.</span></p>
+<p class="reveal"><span lang="id">Third, your home computer doesn't have a "public IP." What's a public IP? It's a globally unique address. Only with this address can others find your computer on the internet. Your home computer's IP usually only works within your home network. People outside can't find you at all. A server is different — it has a fixed public IP. People all over the world can find it through this IP.</span><span lang="en">Third, your home computer doesn't have a "public IP." What's a public IP? It's a globally unique address. Only with this address can others find your computer on the internet. Your home computer's IP usually only works within your home network. People outside can't find you at all. A server is different — it has a fixed public IP. People all over the world can find it through this IP.</span></p>
+<p class="reveal"><span lang="id"><DeploymentServerDemo /></span><span lang="en"><DeploymentServerDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Approach to choosing a Server</span><span lang="en">3.2 Approach to choosing a Server</span></h3>
+<p class="reveal"><span lang="id">When choosing a server, look at three main metrics: <b>CPU cores</b>, <b>memory size</b>, and <b>disk space</b>. The higher these three metrics, the better the server performance, and the more expensive it is.</span><span lang="en">When choosing a server, look at three main metrics: <b>CPU cores</b>, <b>memory size</b>, and <b>disk space</b>. The higher these three metrics, the better the server performance, and the more expensive it is.</span></p>
+<p class="reveal"><span lang="id">For beginners, there's absolutely no need to buy an expensive configuration. Remember this simple guideline:</span><span lang="en">For beginners, there's absolutely no need to buy an expensive configuration. Remember this simple guideline:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Personal projects, learning and practice</b>: 1 core, 2GB memory is sufficient. About a few dozen yuan per month.</span><span lang="en"><b>Personal projects, learning and practice</b>: 1 core, 2GB memory is sufficient. About a few dozen yuan per month.</span></li>
+<li><span lang="id"><b>Small business projects</b>: 2 cores, 4GB memory. Can handle thousands to tens of thousands of daily visits.</span><span lang="en"><b>Small business projects</b>: 2 cores, 4GB memory. Can handle thousands to tens of thousands of daily visits.</span></li>
+<li><span lang="id"><b>Medium projects</b>: 4 cores, 8GB or higher. Requires a professional operations team.</span><span lang="en"><b>Medium projects</b>: 4 cores, 8GB or higher. Requires a professional operations team.</span></li>
+</ul>
+<p class="reveal"><span lang="id">Another factor to consider: <b>location</b>. If your users are mainly in China, buy domestic servers (Alibaba Cloud, Tencent Cloud) for faster access. If users are mainly overseas, buy foreign servers (AWS, Google Cloud, DigitalOcean), or servers in Hong Kong. Fast speed and no ICP filing required.</span><span lang="en">Another factor to consider: <b>location</b>. If your users are mainly in China, buy domestic servers (Alibaba Cloud, Tencent Cloud) for faster access. If users are mainly overseas, buy foreign servers (AWS, Google Cloud, DigitalOcean), or servers in Hong Kong. Fast speed and no ICP filing required.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Domestic or Foreign</span><span lang="en">3.3 Domestic or Foreign</span></h3>
+<p class="reveal"><span lang="id">This is a very important question. Many people don't think it through at first and run into trouble later.</span><span lang="en">This is a very important question. Many people don't think it through at first and run into trouble later.</span></p>
+<p class="reveal"><span lang="id"><b>Buying domestic servers</b> means faster speeds and lower latency. The downside is that you need to file for ICP registration (submitting website information to relevant government departments for review). This usually takes one week to one month. And domestic servers are relatively more expensive.</span><span lang="en"><b>Buying domestic servers</b> means faster speeds and lower latency. The downside is that you need to file for ICP registration (submitting website information to relevant government departments for review). This usually takes one week to one month. And domestic servers are relatively more expensive.</span></p>
+<p class="reveal"><span lang="id"><b>Buying foreign servers</b> means no ICP filing is needed. Buy it and use it right away. Prices may also be cheaper. The downside is that users in mainland China may experience slower access. Hong Kong or Singapore data centers are much better in this regard.</span><span lang="en"><b>Buying foreign servers</b> means no ICP filing is needed. Buy it and use it right away. Prices may also be cheaper. The downside is that users in mainland China may experience slower access. Hong Kong or Singapore data centers are much better in this regard.</span></p>
+<p class="reveal"><span lang="id">The recommendation is: for personal projects and learning/demo websites, buy Hong Kong or overseas servers to skip the ICP filing hassle. For legitimate business projects that need long-term operation, buy domestic servers and file for ICP properly — it will save you a lot of trouble in the long run.</span><span lang="en">The recommendation is: for personal projects and learning/demo websites, buy Hong Kong or overseas servers to skip the ICP filing hassle. For legitimate business projects that need long-term operation, buy domestic servers and file for ICP properly — it will save you a lot of trouble in the long run.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.4 Major Cloud Providers Comparison</span><span lang="en">3.4 Major Cloud Providers Comparison</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Provider</th><th>Best For</th><th>Features</th><th>New User Price</th></tr>
+<tr><td>Alibaba Cloud</td><td>Domestic business</td><td>Largest market share, comprehensive ecosystem</td><td>Dozens to over 100 yuan for the first year</td></tr>
+<tr><td>Tencent Cloud</td><td>Mini-programs, gaming</td><td>Good cloud development support for mini-programs</td><td>Large first-year discounts</td></tr>
+<tr><td>Huawei Cloud</td><td>Enterprise users</td><td>Preferred for government and政务 projects</td><td>Relatively expensive</td></tr>
+<tr><td>DigitalOcean</td><td>Developers</td><td>Simple to use, transparent pricing</td><td>From $4/month</td></tr>
+<tr><td>Vercel</td><td>Frontend projects</td><td>Zero configuration, push to deploy</td><td>Free tier is sufficient</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">For beginners, the most recommended options are <b>Alibaba Cloud</b> or <b>Tencent Cloud</b> student/new user discounts. Usually only a few dozen yuan per year. Excellent value. If you're working on a pure frontend project and want to keep things simple, you can also use <b>Vercel</b> or <b>Netlify</b> directly. No need to buy a server at all — just push the code and it deploys automatically.</span><span lang="en">For beginners, the most recommended options are <b>Alibaba Cloud</b> or <b>Tencent Cloud</b> student/new user discounts. Usually only a few dozen yuan per year. Excellent value. If you're working on a pure frontend project and want to keep things simple, you can also use <b>Vercel</b> or <b>Netlify</b> directly. No need to buy a server at all — just push the code and it deploys automatically.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.5 What to Do After Getting a Server</span><span lang="en">3.5 What to Do After Getting a Server</span></h3>
+<p class="reveal"><span lang="id">After purchasing a server, you'll receive an email containing several important pieces of information:</span><span lang="en">After purchasing a server, you'll receive an email containing several important pieces of information:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>IP Address</b>: A string of numbers like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">123.45.67.89</code>. This is the server's address on the internet.</span><span lang="en"><b>IP Address</b>: A string of numbers like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">123.45.67.89</code>. This is the server's address on the internet.</span></li>
+<li><span lang="id"><b>Login Username</b>: Usually <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">root</code> (administrator account).</span><span lang="en"><b>Login Username</b>: Usually <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">root</code> (administrator account).</span></li>
+<li><span lang="id"><b>Login Password</b>: Initial password, or a link to set your password.</span><span lang="en"><b>Login Password</b>: Initial password, or a link to set your password.</span></li>
+</ul>
+<p class="reveal"><span lang="id">With this information, you can use <b>SSH (Secure Shell)</b> to remotely log into the server and configure it. SSH is like sending an encrypted remote control command to the server, allowing you to operate a server that's far away right from your own computer.</span><span lang="en">With this information, you can use <b>SSH (Secure Shell)</b> to remotely log into the server and configure it. SSH is like sending an encrypted remote control command to the server, allowing you to operate a server that's far away right from your own computer.</span></p>
+<p class="reveal"><span lang="id">The login command looks like this:</span><span lang="en">The login command looks like this:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>ssh root@123.45.67.89
+# Press Enter and you&#039;ll be prompted for the password. Enter the correct password and you&#039;re logged in.</pre>
+</div>
+<p class="reveal"><span lang="id">After logging in successfully, you'll enter the server's command-line interface. It looks similar to opening a terminal window on your own computer. You can install software, create folders, and modify configurations here. Everything works just like on a local computer.</span><span lang="en">After logging in successfully, you'll enter the server's command-line interface. It looks similar to opening a terminal window on your own computer. You can install software, create folders, and modify configurations here. Everything works just like on a local computer.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Deployment: Moving Code into the "House"</span><span lang="en">4. Deployment: Moving Code into the "House"</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Overview of Deployment</span><span lang="en">4.1 Overview of Deployment</span></h3>
+<p class="reveal"><span lang="id">Deployment is like renting a server (the house) and then moving your code (the furniture) in, opening the door, and starting business.</span><span lang="en">Deployment is like renting a server (the house) and then moving your code (the furniture) in, opening the door, and starting business.</span></p>
+<p class="reveal"><span lang="id">Specifically, deployment includes the following steps:</span><span lang="en">Specifically, deployment includes the following steps:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Upload code to the server</b>: Transfer the build output from your local computer to the server.</span><span lang="en"><b>Upload code to the server</b>: Transfer the build output from your local computer to the server.</span></li>
+<li><span lang="id"><b>Install dependencies</b>: The server might not have the packages the project needs. They need to be installed.</span><span lang="en"><b>Install dependencies</b>: The server might not have the packages the project needs. They need to be installed.</span></li>
+<li><span lang="id"><b>Configure environment variables</b>: Sensitive information like database passwords and API keys.</span><span lang="en"><b>Configure environment variables</b>: Sensitive information like database passwords and API keys.</span></li>
+<li><span lang="id"><b>Start the service</b>: Get the application running and start listening for user requests.</span><span lang="en"><b>Start the service</b>: Get the application running and start listening for user requests.</span></li>
+</ul>
+<p class="reveal"><span lang="id">These four steps sound complicated, but they're not that hard in practice. Below, I'll walk you through each step in detail.</span><span lang="en">These four steps sound complicated, but they're not that hard in practice. Below, I'll walk you through each step in detail.</span></p>
+<p class="reveal"><span lang="id"><DeploymentServerDemo /></span><span lang="en"><DeploymentServerDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Approach to Uploading Code to the Server</span><span lang="en">4.2 Approach to Uploading Code to the Server</span></h3>
+<p class="reveal"><span lang="id"><b>Method 1: FTP/SFTP Upload</b></span><span lang="en"><b>Method 1: FTP/SFTP Upload</b></span></p>
+<p class="reveal"><span lang="id">This is the most intuitive method. It's like using cloud storage — drag files to the server. You can download a free program called <b>FileZilla</b> on your computer. Enter the server's IP, username, and password, and you can manage server files just like managing local files.</span><span lang="en">This is the most intuitive method. It's like using cloud storage — drag files to the server. You can download a free program called <b>FileZilla</b> on your computer. Enter the server's IP, username, and password, and you can manage server files just like managing local files.</span></p>
+<p class="reveal"><span lang="id"><b>Method 2: Git Pull</b></span><span lang="en"><b>Method 2: Git Pull</b></span></p>
+<p class="reveal"><span lang="id">This is the recommended method. First, create a code repository on GitHub, GitLab, or Gitee. Push the code to the cloud. Then use the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git clone</code> command on the server to pull the code down.</span><span lang="en">This is the recommended method. First, create a code repository on GitHub, GitLab, or Gitee. Push the code to the cloud. Then use the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git clone</code> command on the server to pull the code down.</span></p>
+<p class="reveal"><span lang="id">The benefit is: for subsequent code updates, you just need to run <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git pull</code> on the server. No need to manually upload every time. And the code is safely stored in the cloud — even if the server is reinstalled, it's fine.</span><span lang="en">The benefit is: for subsequent code updates, you just need to run <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git pull</code> on the server. No need to manually upload every time. And the code is safely stored in the cloud — even if the server is reinstalled, it's fine.</span></p>
+<p class="reveal"><span lang="id"><b>Method 3: CI/CD Automatic Deployment</b></span><span lang="en"><b>Method 3: CI/CD Automatic Deployment</b></span></p>
+<p class="reveal"><span lang="id">This is the most professional method and the one I strongly recommend. By configuring CI/CD (Continuous Integration/Continuous Deployment), you only need to push code to GitHub. The CI/CD system automatically handles the entire process: pulling code → installing dependencies → building → deploying. You don't even need to log into the server. Everything is done automatically.</span><span lang="en">This is the most professional method and the one I strongly recommend. By configuring CI/CD (Continuous Integration/Continuous Deployment), you only need to push code to GitHub. The CI/CD system automatically handles the entire process: pulling code → installing dependencies → building → deploying. You don't even need to log into the server. Everything is done automatically.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 Specific Deployment Steps</span><span lang="en">4.3 Specific Deployment Steps</span></h3>
+<p class="reveal"><span lang="id">Let's demonstrate the entire process using the simplest method — manual Git deployment:</span><span lang="en">Let's demonstrate the entire process using the simplest method — manual Git deployment:</span></p>
+<p class="reveal"><span lang="id"><b>Step 1: Connect to the Server</b></span><span lang="en"><b>Step 1: Connect to the Server</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>ssh root@123.45.67.89</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 2: Install Necessary Software</b></span><span lang="en"><b>Step 2: Install Necessary Software</b></span></p>
+<p class="reveal"><span lang="id">For a Node.js project, you need to install Node.js first:</span><span lang="en">For a Node.js project, you need to install Node.js first:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Using Ubuntu system as an example
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt install -y nodejs</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 3: Pull the Code</b></span><span lang="en"><b>Step 3: Pull the Code</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Create a directory for the website
+mkdir -p /var/www/my-website
+cd /var/www/my-website
+
+# Clone the code repository (need to create the repository on GitHub first)
+git clone https://github.com/your-username/your-repo-name.git .</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 4: Install Dependencies and Build</b></span><span lang="en"><b>Step 4: Install Dependencies and Build</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Install project dependencies
+npm install
+
+# Build the project (generates the dist directory)
+npm run build</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 5: Start the Service with PM2</b></span><span lang="en"><b>Step 5: Start the Service with PM2</b></span></p>
+<p class="reveal"><span lang="id">Why use PM2? It's a process management tool that keeps the website running in the background. Even if the server restarts, it can automatically start up again.</span><span lang="en">Why use PM2? It's a process management tool that keeps the website running in the background. Even if the server restarts, it can automatically start up again.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Install PM2 globally
+sudo npm install -g pm2
+
+# Start the website (assuming the entry file is index.js)
+pm2 start index.js
+
+# Set up auto-start on boot
+pm2 startup
+pm2 save</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Step 6: Configure Nginx Reverse Proxy</b></span><span lang="en"><b>Step 6: Configure Nginx Reverse Proxy</b></span></p>
+<p class="reveal"><span lang="id">Node.js applications typically run on ports like 3000 or 8080. But users access port 80 (HTTP default port). You need Nginx to forward requests from port 80 to the application port.</span><span lang="en">Node.js applications typically run on ports like 3000 or 8080. But users access port 80 (HTTP default port). You need Nginx to forward requests from port 80 to the application port.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Install Nginx
+sudo apt install -y nginx
+
+# Create an Nginx configuration file
+sudo nano /etc/nginx/sites-available/my-website</pre>
+</div>
+<p class="reveal"><span lang="id">In the editor that opens, write the following configuration:</span><span lang="en">In the editor that opens, write the following configuration:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>nginx</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>server {
+    listen 80;
+    server_name example.com www.example.com;
+
+    # Static files (build output) returned directly
+    location / {
+        root /var/www/my-website/dist;
+        index index.html;
+        try_files $uri $uri/ /index.html;
+    }
+
+    # API requests forwarded to Node.js backend
+    location /api/ {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection &#039;upgrade&#039;;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}</pre>
+</div>
+<p class="reveal"><span lang="id">After saving and exiting, enable this configuration:</span><span lang="en">After saving and exiting, enable this configuration:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Enable the configuration
+sudo ln -s /etc/nginx/sites-available/my-website /etc/nginx/sites-enabled/
+
+# Test the configuration for errors
+sudo nginx -t
+
+# Restart Nginx
+sudo systemctl restart nginx</pre>
+</div>
+<p class="reveal"><span lang="id">Now visit <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">http://example.com</code> (remember to point the domain to this server's IP first), and you should see the website!</span><span lang="en">Now visit <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">http://example.com</code> (remember to point the domain to this server's IP first), and you should see the website!</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Domain Name and DNS: Giving Your Website a Good Name</span><span lang="en">5. Domain Name and DNS: Giving Your Website a Good Name</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Motivation for buying a Domain Name</span><span lang="en">5.1 Motivation for buying a Domain Name</span></h3>
+<p class="reveal"><span lang="id">With a server IP, why do you still need to buy a domain name?</span><span lang="en">With a server IP, why do you still need to buy a domain name?</span></p>
+<p class="reveal"><span lang="id">Think about it. Memorizing a string of numbers like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">123.45.67.89</code> — isn't that difficult? Isn't it easy to mistype? But remembering names like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">baidu.com</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">taobao.com</code> is much easier, right?</span><span lang="en">Think about it. Memorizing a string of numbers like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">123.45.67.89</code> — isn't that difficult? Isn't it easy to mistype? But remembering names like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">baidu.com</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">taobao.com</code> is much easier, right?</span></p>
+<p class="reveal"><span lang="id">A domain name is your website's name. It's memorable, professional, and can reflect your brand image. Imagine telling someone "visit my website, the IP is 123.45.67.89" versus "visit imcool.com" — which one sounds more legit?</span><span lang="en">A domain name is your website's name. It's memorable, professional, and can reflect your brand image. Imagine telling someone "visit my website, the IP is 123.45.67.89" versus "visit imcool.com" — which one sounds more legit?</span></p>
+<p class="reveal"><span lang="id"><DeploymentDnsDemo /></span><span lang="en"><DeploymentDnsDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Overview of DNS</span><span lang="en">5.2 Overview of DNS</span></h3>
+<p class="reveal"><span lang="id">Okay. Now you've bought a domain name, say <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">my-awesome-website.com</code>. But here's the problem: computers only understand IP addresses, not human language like "my-awesome-website.com."</span><span lang="en">Okay. Now you've bought a domain name, say <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">my-awesome-website.com</code>. But here's the problem: computers only understand IP addresses, not human language like "my-awesome-website.com."</span></p>
+<p class="reveal"><span lang="id">This is where DNS comes in. DNS stands for "Domain Name System." You can think of it as a giant "phonebook" specifically responsible for translating human-friendly domain names into IP addresses that computers can understand.</span><span lang="en">This is where DNS comes in. DNS stands for "Domain Name System." You can think of it as a giant "phonebook" specifically responsible for translating human-friendly domain names into IP addresses that computers can understand.</span></p>
+<p class="reveal"><span lang="id">When you type <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">my-awesome-website.com</code> in your browser and press Enter, here's what happens behind the scenes:</span><span lang="en">When you type <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">my-awesome-website.com</code> in your browser and press Enter, here's what happens behind the scenes:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">The browser asks DNS: "Hey, what's the IP address for my-awesome-website.com?"</span><span lang="en">The browser asks DNS: "Hey, what's the IP address for my-awesome-website.com?"</span></li>
+<li><span lang="id">DNS checks the "phonebook" and tells the browser: "Its IP is 123.45.67.89"</span><span lang="en">DNS checks the "phonebook" and tells the browser: "Its IP is 123.45.67.89"</span></li>
+<li><span lang="id">The browser uses this IP address to find the server and sends the request</span><span lang="en">The browser uses this IP address to find the server and sends the request</span></li>
+</ul>
+<p class="reveal"><span lang="id">The whole process usually takes only tens of milliseconds. Users don't notice it at all.</span><span lang="en">The whole process usually takes only tens of milliseconds. Users don't notice it at all.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 Approach to configuring DNS</span><span lang="en">5.3 Approach to configuring DNS</span></h3>
+<p class="reveal"><span lang="id">DNS configuration can usually be done in two places:</span><span lang="en">DNS configuration can usually be done in two places:</span></p>
+<p class="reveal"><span lang="id"><b>Method 1: Configure at the Domain Registrar</b></span><span lang="en"><b>Method 1: Configure at the Domain Registrar</b></span></p>
+<p class="reveal"><span lang="id">Configure DNS records wherever you bought the domain. The most common record type is the <b>A Record</b>:</span><span lang="en">Configure DNS records wherever you bought the domain. The most common record type is the <b>A Record</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Record Type</b>: A</span><span lang="en"><b>Record Type</b>: A</span></li>
+<li><span lang="id"><b>Host Record</b>: Usually <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">@</code> (representing the domain itself, e.g., my-awesome-website.com) or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">www</code> (representing www.my-awesome-website.com)</span><span lang="en"><b>Host Record</b>: Usually <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">@</code> (representing the domain itself, e.g., my-awesome-website.com) or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">www</code> (representing www.my-awesome-website.com)</span></li>
+<li><span lang="id"><b>Record Value</b>: Server IP address, e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">123.45.67.89</code></span><span lang="en"><b>Record Value</b>: Server IP address, e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">123.45.67.89</code></span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Method 2: Use a Third-Party DNS Service</b></span><span lang="en"><b>Method 2: Use a Third-Party DNS Service</b></span></p>
+<p class="reveal"><span lang="id">Many professionals don't use the domain registrar's built-in DNS. Instead, they use specialized DNS providers like Cloudflare, Alibaba Cloud DNSPod, or Tencent Cloud DNS. These services are usually more stable, have faster resolution speeds, and come with value-added features like CDN and DDoS protection.</span><span lang="en">Many professionals don't use the domain registrar's built-in DNS. Instead, they use specialized DNS providers like Cloudflare, Alibaba Cloud DNSPod, or Tencent Cloud DNS. These services are usually more stable, have faster resolution speeds, and come with value-added features like CDN and DDoS protection.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.4 Method for Longing Does DNS Take to Propagate</span><span lang="en">5.4 Method for Longing Does DNS Take to Propagate</span></h3>
+<p class="reveal"><span lang="id">This is a question many people ask. The answer is: <b>it varies. Usually from a few minutes to 24 hours.</b></span><span lang="en">This is a question many people ask. The answer is: <b>it varies. Usually from a few minutes to 24 hours.</b></span></p>
+<p class="reveal"><span lang="id">After modifying DNS, all DNS servers worldwide need to sync this change. It's like throwing a stone into the ocean — the ripples take time to reach distant shores. Some DNS servers update quickly, taking effect in minutes. Others are slower and may take a long time.</span><span lang="en">After modifying DNS, all DNS servers worldwide need to sync this change. It's like throwing a stone into the ocean — the ripples take time to reach distant shores. Some DNS servers update quickly, taking effect in minutes. Others are slower and may take a long time.</span></p>
+<p class="reveal"><span lang="id">You can use the following commands to check if DNS has propagated:</span><span lang="en">You can use the following commands to check if DNS has propagated:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Windows
+ping your-domain.com
+
+# Mac/Linux
+ping your-domain.com</pre>
+</div>
+<p class="reveal"><span lang="id">If the ping succeeds and shows the server's IP, DNS has propagated.</span><span lang="en">If the ping succeeds and shows the server's IP, DNS has propagated.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. HTTPS: Installing a "Lock" on Your Website</span><span lang="en">6. HTTPS: Installing a "Lock" on Your Website</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 The Difference Between HTTP and HTTPS</span><span lang="en">6.1 The Difference Between HTTP and HTTPS</span></h3>
+<p class="reveal"><span lang="id">You may have noticed that some website addresses start with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">http://</code> and others with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://</code>. That "s" is important — it stands for "Secure."</span><span lang="en">You may have noticed that some website addresses start with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">http://</code> and others with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://</code>. That "s" is important — it stands for "Secure."</span></p>
+<p class="reveal"><span lang="id"><b>HTTP (HyperText Transfer Protocol)</b> is the protocol used to transmit web pages. Think of it as a truck that transports data. But this truck is <b>transparent</b> — everything inside is visible to everyone. Passwords and personal information entered on an HTTP website can potentially be intercepted by anyone in the middle during transmission.</span><span lang="en"><b>HTTP (HyperText Transfer Protocol)</b> is the protocol used to transmit web pages. Think of it as a truck that transports data. But this truck is <b>transparent</b> — everything inside is visible to everyone. Passwords and personal information entered on an HTTP website can potentially be intercepted by anyone in the middle during transmission.</span></p>
+<p class="reveal"><span lang="id"><b>HTTPS (HTTP Secure)</b> adds a <b>sealed container</b> to this truck, along with a key. Only the sender and receiver have the key. Even if someone in the middle intercepts it, they can't understand what's inside. This is encrypted transmission.</span><span lang="en"><b>HTTPS (HTTP Secure)</b> adds a <b>sealed container</b> to this truck, along with a key. Only the sender and receiver have the key. Even if someone in the middle intercepts it, they can't understand what's inside. This is encrypted transmission.</span></p>
+<p class="reveal"><span lang="id"><DeploymentHttpsDemo /></span><span lang="en"><DeploymentHttpsDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 Motivation for HTTPSing</span><span lang="en">6.2 Motivation for HTTPSing</span></h3>
+<p class="reveal"><span lang="id">First reason: <b>Security</b>. Without HTTPS, passwords users enter on the website are transmitted in plain text. Anyone with a bit of technical skill can intercept them. These days, who would dare use a website without HTTPS?</span><span lang="en">First reason: <b>Security</b>. Without HTTPS, passwords users enter on the website are transmitted in plain text. Anyone with a bit of technical skill can intercept them. These days, who would dare use a website without HTTPS?</span></p>
+<p class="reveal"><span lang="id">Second reason: <b>Browser Warnings</b>. Modern browsers like Chrome and Edge now display "Not Secure" warnings for websites without HTTPS. Users see the warning icon and leave immediately — let alone register or make payments.</span><span lang="en">Second reason: <b>Browser Warnings</b>. Modern browsers like Chrome and Edge now display "Not Secure" warnings for websites without HTTPS. Users see the warning icon and leave immediately — let alone register or make payments.</span></p>
+<p class="reveal"><span lang="id">Third reason: <b>SEO</b>. Search engines like Google and Baidu prioritize indexing HTTPS websites. Your SEO results will be better.</span><span lang="en">Third reason: <b>SEO</b>. Search engines like Google and Baidu prioritize indexing HTTPS websites. Your SEO results will be better.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.3 Approach to getting an HTTPS Certificate</span><span lang="en">6.3 Approach to getting an HTTPS Certificate</span></h3>
+<p class="reveal"><span lang="id">In the past, HTTPS certificates were expensive, costing hundreds or even thousands of yuan per year. Now there's an organization called <b>Let's Encrypt</b> that provides completely free SSL/TLS certificates. And the community has many automated tools to help you install and renew them.</span><span lang="en">In the past, HTTPS certificates were expensive, costing hundreds or even thousands of yuan per year. Now there's an organization called <b>Let's Encrypt</b> that provides completely free SSL/TLS certificates. And the community has many automated tools to help you install and renew them.</span></p>
+<p class="reveal"><span lang="id"><b>Method 1: Using Certbot (Recommended)</b></span><span lang="en"><b>Method 1: Using Certbot (Recommended)</b></span></p>
+<p class="reveal"><span lang="id">Certbot is a tool that automatically applies for and configures Let's Encrypt certificates. It's very simple:</span><span lang="en">Certbot is a tool that automatically applies for and configures Let's Encrypt certificates. It's very simple:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Install Certbot
+sudo apt install -y certbot python3-certbot-nginx
+
+# One-click certificate application and Nginx configuration
+sudo certbot --nginx -d example.com -d www.example.com</pre>
+</div>
+<p class="reveal"><span lang="id">During the process, you'll be asked a few questions, like your email (for certificate expiry reminders). After answering, the certificate is automatically configured. Visit the website and you'll see a small lock icon in the address bar.</span><span lang="en">During the process, you'll be asked a few questions, like your email (for certificate expiry reminders). After answering, the certificate is automatically configured. Visit the website and you'll see a small lock icon in the address bar.</span></p>
+<p class="reveal"><span lang="id">The certificate is valid for 90 days, but Certbot will set up an automatic renewal cron job. You basically don't need to worry about it.</span><span lang="en">The certificate is valid for 90 days, but Certbot will set up an automatic renewal cron job. You basically don't need to worry about it.</span></p>
+<p class="reveal"><span lang="id"><b>Method 2: Using Cloudflare</b></span><span lang="en"><b>Method 2: Using Cloudflare</b></span></p>
+<p class="reveal"><span lang="id">If you use Cloudflare's DNS service, you don't need to configure HTTPS certificates at all. Cloudflare automatically provides HTTPS support for your domain. It even takes care of the 90-day renewal for you.</span><span lang="en">If you use Cloudflare's DNS service, you don't need to configure HTTPS certificates at all. Cloudflare automatically provides HTTPS support for your domain. It even takes care of the 90-day renewal for you.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.4 What Changes After Configuring HTTPS</span><span lang="en">6.4 What Changes After Configuring HTTPS</span></h3>
+<p class="reveal"><span lang="id">After configuring HTTPS, user access changes from <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">http://example.com</code> to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://example.com</code>. This change brings a series of security guarantees:</span><span lang="en">After configuring HTTPS, user access changes from <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">http://example.com</code> to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://example.com</code>. This change brings a series of security guarantees:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Encrypted Transmission</b>: All communication between users and the server is encrypted.</span><span lang="en"><b>Encrypted Transmission</b>: All communication between users and the server is encrypted.</span></li>
+<li><span lang="id"><b>Identity Verification</b>: The certificate can prove "I really am this website," preventing phishing sites.</span><span lang="en"><b>Identity Verification</b>: The certificate can prove "I really am this website," preventing phishing sites.</span></li>
+<li><span lang="id"><b>Data Integrity</b>: It can detect whether data has been tampered with.</span><span lang="en"><b>Data Integrity</b>: It can detect whether data has been tampered with.</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. CI/CD: Letting Robots Do the Work</span><span lang="en">7. CI/CD: Letting Robots Do the Work</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.1 Overview of CI/CD</span><span lang="en">7.1 Overview of CI/CD</span></h3>
+<p class="reveal"><span lang="id">CI/CD is an abbreviation of two terms: <b>C</b>ontinuous <b>I</b>ntegration and <b>C</b>ontinuous <b>D</b>eployment. You can think of it as a robotic system that does the work for you automatically.</span><span lang="en">CI/CD is an abbreviation of two terms: <b>C</b>ontinuous <b>I</b>ntegration and <b>C</b>ontinuous <b>D</b>eployment. You can think of it as a robotic system that does the work for you automatically.</span></p>
+<p class="reveal"><span lang="id">Without CI/CD, every time you want to release a new feature, the process looks like this:</span><span lang="en">Without CI/CD, every time you want to release a new feature, the process looks like this:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Open your computer, log into GitHub</span><span lang="en">Open your computer, log into GitHub</span></li>
+<li><span lang="id">Pull the latest code</span><span lang="en">Pull the latest code</span></li>
+<li><span lang="id">Run tests to check for bugs</span><span lang="en">Run tests to check for bugs</span></li>
+<li><span lang="id">Manually build the project</span><span lang="en">Manually build the project</span></li>
+<li><span lang="id">Log into the server</span><span lang="en">Log into the server</span></li>
+<li><span lang="id">Pull the latest code</span><span lang="en">Pull the latest code</span></li>
+<li><span lang="id">Install dependencies</span><span lang="en">Install dependencies</span></li>
+<li><span lang="id">Build the project</span><span lang="en">Build the project</span></li>
+<li><span lang="id">Restart the service</span><span lang="en">Restart the service</span></li>
+</ul>
+<p class="reveal"><span lang="id">These 9 steps need to be done manually every time you release. Annoying, right? And it's easy to miss a step, like forgetting to run tests or forgetting to restart the service.</span><span lang="en">These 9 steps need to be done manually every time you release. Annoying, right? And it's easy to miss a step, like forgetting to run tests or forgetting to restart the service.</span></p>
+<p class="reveal"><span lang="id">With CI/CD, the process becomes:</span><span lang="en">With CI/CD, the process becomes:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Push code to GitHub</span><span lang="en">Push code to GitHub</span></li>
+<li><span lang="id">Have some tea and wait</span><span lang="en">Have some tea and wait</span></li>
+<li><span lang="id">(The robot automatically completes the 9 steps above)</span><span lang="en">(The robot automatically completes the 9 steps above)</span></li>
+<li><span lang="id">The website is automatically updated</span><span lang="en">The website is automatically updated</span></li>
+</ul>
+<p class="reveal"><span lang="id"><DeploymentCicdDemo /></span><span lang="en"><DeploymentCicdDemo /></span></p>
+<p class="reveal"><span lang="id">That's the charm of CI/CD: <b>just push the code, and everything else is done automatically.</b></span><span lang="en">That's the charm of CI/CD: <b>just push the code, and everything else is done automatically.</b></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.2 How CI/CD Works</span><span lang="en">7.2 How CI/CD Works</span></h3>
+<p class="reveal"><span lang="id">A typical CI/CD process looks like this:</span><span lang="en">A typical CI/CD process looks like this:</span></p>
+<p class="reveal"><span lang="id"><b>Step 1: Code Push</b></span><span lang="en"><b>Step 1: Code Push</b></span></p>
+<p class="reveal"><span lang="id">You've finished developing a new feature. Push the code to GitHub.</span><span lang="en">You've finished developing a new feature. Push the code to GitHub.</span></p>
+<p class="reveal"><span lang="id"><b>Step 2: CI (Continuous Integration) Triggered</b></span><span lang="en"><b>Step 2: CI (Continuous Integration) Triggered</b></span></p>
+<p class="reveal"><span lang="id">GitHub detects the code change and notifies the CI system (GitHub Actions, GitLab CI, etc.) to start working.</span><span lang="en">GitHub detects the code change and notifies the CI system (GitHub Actions, GitLab CI, etc.) to start working.</span></p>
+<p class="reveal"><span lang="id"><b>Step 3: Install Dependencies and Test</b></span><span lang="en"><b>Step 3: Install Dependencies and Test</b></span></p>
+<p class="reveal"><span lang="id">The CI system launches a virtual machine and on it:</span><span lang="en">The CI system launches a virtual machine and on it:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Installs all the dependencies the project needs</span><span lang="en">Installs all the dependencies the project needs</span></li>
+<li><span lang="id">Runs test code to ensure there are no bugs</span><span lang="en">Runs test code to ensure there are no bugs</span></li>
+<li><span lang="id">Builds the project to generate the output</span><span lang="en">Builds the project to generate the output</span></li>
+</ul>
+<p class="reveal"><span lang="id">If tests fail, CI sends an email notification. This deployment stops. Problematic code won't be deployed to the production environment.</span><span lang="en">If tests fail, CI sends an email notification. This deployment stops. Problematic code won't be deployed to the production environment.</span></p>
+<p class="reveal"><span lang="id"><b>Step 4: CD (Continuous Deployment) Executed</b></span><span lang="en"><b>Step 4: CD (Continuous Deployment) Executed</b></span></p>
+<p class="reveal"><span lang="id">After all tests pass, the CI system:</span><span lang="en">After all tests pass, the CI system:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Connects to the server via SSH</span><span lang="en">Connects to the server via SSH</span></li>
+<li><span lang="id">Pulls the latest code</span><span lang="en">Pulls the latest code</span></li>
+<li><span lang="id">Installs dependencies</span><span lang="en">Installs dependencies</span></li>
+<li><span lang="id">Builds the project</span><span lang="en">Builds the project</span></li>
+<li><span lang="id">Restarts the service</span><span lang="en">Restarts the service</span></li>
+</ul>
+<p class="reveal"><span lang="id">The whole process might take only a few minutes. All automatic.</span><span lang="en">The whole process might take only a few minutes. All automatic.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.3 Approach to configuring GitHub Actions</span><span lang="en">7.3 Approach to configuring GitHub Actions</span></h3>
+<p class="reveal"><span lang="id">GitHub Actions is GitHub's built-in CI/CD feature. No extra cost (the free tier is sufficient for personal projects). And it's very simple to configure.</span><span lang="en">GitHub Actions is GitHub's built-in CI/CD feature. No extra cost (the free tier is sufficient for personal projects). And it's very simple to configure.</span></p>
+<p class="reveal"><span lang="id">Create a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.github/workflows/deploy.yml</code> file in the project root directory and write the following configuration:</span><span lang="en">Create a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.github/workflows/deploy.yml</code> file in the project root directory and write the following configuration:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>yaml</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>name: Deploy to Production
+
+# Trigger condition: whenever code is pushed to the main branch
+on:
+  push:
+    branches: [main]
+
+# Job list
+jobs:
+  # Deploy job
+  deploy:
+    # What system to run on
+    runs-on: ubuntu-latest
+
+    # Specific steps
+    steps:
+      # 1. Check out code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Set up Node.js environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: &#039;18&#039;
+
+      # 3. Install dependencies and build
+      - name: Install and Build
+        run: |
+          npm ci
+          npm run build
+
+      # 4. Deploy to server
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /var/www/my-website
+            git pull origin main
+            npm install
+            npm run build
+            pm2 restart all</pre>
+</div>
+<p class="reveal"><span lang="id">This configuration file tells GitHub Actions:</span><span lang="en">This configuration file tells GitHub Actions:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Trigger when there's new code on the main branch</span><span lang="en">Trigger when there's new code on the main branch</span></li>
+<li><span lang="id">Execute tasks on an Ubuntu machine</span><span lang="en">Execute tasks on an Ubuntu machine</span></li>
+<li><span lang="id">First install Node.js 18</span><span lang="en">First install Node.js 18</span></li>
+<li><span lang="id">Then install dependencies and build the project</span><span lang="en">Then install dependencies and build the project</span></li>
+<li><span lang="id">Finally connect to the server via SSH and execute a series of deployment commands</span><span lang="en">Finally connect to the server via SSH and execute a series of deployment commands</span></li>
+</ul>
+<p class="reveal"><span lang="id">After configuring this, every time you <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git push origin main</code>, GitHub will automatically start the deployment. Very convenient.</span><span lang="en">After configuring this, every time you <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git push origin main</code>, GitHub will automatically start the deployment. Very convenient.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8. Monitoring and Logging: Being the "Night Watchman" for Your Website</span><span lang="en">8. Monitoring and Logging: Being the "Night Watchman" for Your Website</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">8.1 Motivation for monitoring</span><span lang="en">8.1 Motivation for monitoring</span></h3>
+<p class="reveal"><span lang="id">After a website goes live, it should theoretically run 24/7 without interruption. But the real world isn't that perfect. Servers can go down. Networks can hiccup. Code can have bugs. In a real production environment, all kinds of unexpected things can happen.</span><span lang="en">After a website goes live, it should theoretically run 24/7 without interruption. But the real world isn't that perfect. Servers can go down. Networks can hiccup. Code can have bugs. In a real production environment, all kinds of unexpected things can happen.</span></p>
+<p class="reveal"><span lang="id">Without monitoring, you can only wait for users to call and tell you "the website won't open." By then, it's often too late. Users may have already left.</span><span lang="en">Without monitoring, you can only wait for users to call and tell you "the website won't open." By then, it's often too late. Users may have already left.</span></p>
+<p class="reveal"><span lang="id">With monitoring, you can:</span><span lang="en">With monitoring, you can:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Detect problems early</b>: CPU usage at 90%? Add servers in advance.</span><span lang="en"><b>Detect problems early</b>: CPU usage at 90%? Add servers in advance.</span></li>
+<li><span lang="id"><b>Quickly locate problems</b>: Website slow? Check monitoring to find the bottleneck.</span><span lang="en"><b>Quickly locate problems</b>: Website slow? Check monitoring to find the bottleneck.</span></li>
+<li><span lang="id"><b>Know what's happening</b>: How many visitors per day, when is traffic highest.</span><span lang="en"><b>Know what's happening</b>: How many visitors per day, when is traffic highest.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><DeploymentMonitorDemo /></span><span lang="en"><DeploymentMonitorDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">8.2 What Metrics to Monitor</span><span lang="en">8.2 What Metrics to Monitor</span></h3>
+<p class="reveal"><span lang="id">The most important monitoring metrics are these:</span><span lang="en">The most important monitoring metrics are these:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Metric</th><th>Normal Range</th><th>What to Do If Exceeded</th></tr>
+<tr><td>CPU Usage</td><td>< 70%</td><td>Upgrade server or optimize code</td></tr>
+<tr><td>Memory Usage</td><td>< 80%</td><td>Check for memory leaks</td></tr>
+<tr><td>Disk Usage</td><td>< 80%</td><td>Clean up logs or unnecessary files</td></tr>
+<tr><td>Website Availability</td><td>100%</td><td>Check if the service is running properly</td></tr>
+<tr><td>Response Time</td><td>< 2 seconds</td><td>Optimize database queries or add caching</td></tr>
+<tr><td>Error Rate</td><td>< 1%</td><td>Check error logs to locate the problem</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">8.3 Approach to configuring Monitoring</span><span lang="en">8.3 Approach to configuring Monitoring</span></h3>
+<p class="reveal"><span lang="id"><b>Simplest Solution: Uptime Robot</b></span><span lang="en"><b>Simplest Solution: Uptime Robot</b></span></p>
+<p class="reveal"><span lang="id">Register at uptimerobot.com. Add your website URL. It will automatically check every 5 minutes whether your website is working. If the site goes down, it sends you an email notification. The free version can monitor 50 websites — more than enough for personal projects.</span><span lang="en">Register at uptimerobot.com. Add your website URL. It will automatically check every 5 minutes whether your website is working. If the site goes down, it sends you an email notification. The free version can monitor 50 websites — more than enough for personal projects.</span></p>
+<p class="reveal"><span lang="id"><b>Intermediate Solution: Alibaba Cloud/Tencent Cloud Monitoring</b></span><span lang="en"><b>Intermediate Solution: Alibaba Cloud/Tencent Cloud Monitoring</b></span></p>
+<p class="reveal"><span lang="id">If your server is on Alibaba Cloud or Tencent Cloud, they have built-in monitoring. Just configure threshold alerts.</span><span lang="en">If your server is on Alibaba Cloud or Tencent Cloud, they have built-in monitoring. Just configure threshold alerts.</span></p>
+<p class="reveal"><span lang="id"><b>Professional Solution: Prometheus + Grafana</b></span><span lang="en"><b>Professional Solution: Prometheus + Grafana</b></span></p>
+<p class="reveal"><span lang="id">These two are the "Swiss Army Knife" of the monitoring world. Very powerful. They can monitor any metric you can think of and create beautiful visualizations. But the configuration is relatively complex. Suitable for experienced developers.</span><span lang="en">These two are the "Swiss Army Knife" of the monitoring world. Very powerful. They can monitor any metric you can think of and create beautiful visualizations. But the configuration is relatively complex. Suitable for experienced developers.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">8.4 Logs: Approach to Investigating Problems</span><span lang="en">8.4 Logs: Approach to Investigating Problems</span></h3>
+<p class="reveal"><span lang="id">Monitoring tells you "the website has a problem." But what exactly the problem is and why it happened — you need <b>logs</b> to figure that out.</span><span lang="en">Monitoring tells you "the website has a problem." But what exactly the problem is and why it happened — you need <b>logs</b> to figure that out.</span></p>
+<p class="reveal"><span lang="id">Logs are the "diary" of the program. They record everything that happens during the program's execution:</span><span lang="en">Logs are the "diary" of the program. They record everything that happens during the program's execution:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Which user accessed which page at what time</span><span lang="en">Which user accessed which page at what time</span></li>
+<li><span lang="id">How long a database query took</span><span lang="en">How long a database query took</span></li>
+<li><span lang="id">Whether there were errors and what the error messages were</span><span lang="en">Whether there were errors and what the error messages were</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Basic Log Usage</b></span><span lang="en"><b>Basic Log Usage</b></span></p>
+<p class="reveal"><span lang="id">View application logs on the server:</span><span lang="en">View application logs on the server:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># View PM2 logs
+pm2 logs
+
+# View Nginx access logs
+tail -f /var/log/nginx/access.log
+
+# View Nginx error logs
+tail -f /var/log/nginx/error.log</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Advanced Log Solutions</b></span><span lang="en"><b>Advanced Log Solutions</b></span></p>
+<p class="reveal"><span lang="id">For more complex projects, professional log collection tools are recommended:</span><span lang="en">For more complex projects, professional log collection tools are recommended:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Loki</b>: Free and open source. From the same team as Prometheus.</span><span lang="en"><b>Loki</b>: Free and open source. From the same team as Prometheus.</span></li>
+<li><span lang="id"><b>ELK (Elasticsearch + Logstash + Kibana)</b>: Powerful but complex to configure.</span><span lang="en"><b>ELK (Elasticsearch + Logstash + Kibana)</b>: Powerful but complex to configure.</span></li>
+<li><span lang="id"><b>Sentry</b>: A tool specifically for collecting application errors. Automatically collects error information.</span><span lang="en"><b>Sentry</b>: A tool specifically for collecting application errors. Automatically collects error information.</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">8.5 Alerts: Approach to knowing About Problems Immediately</span><span lang="en">8.5 Alerts: Approach to knowing About Problems Immediately</span></h3>
+<p class="reveal"><span lang="id">Monitoring tells you there's a problem. But what if you're not staring at the monitoring dashboard? This is where <b>alerts</b> come in.</span><span lang="en">Monitoring tells you there's a problem. But what if you're not staring at the monitoring dashboard? This is where <b>alerts</b> come in.</span></p>
+<p class="reveal"><span lang="id">Alerts automatically notify you via SMS, WeChat, DingTalk, email, etc. when the monitoring system detects an anomaly. You can set different alert levels:</span><span lang="en">Alerts automatically notify you via SMS, WeChat, DingTalk, email, etc. when the monitoring system detects an anomaly. You can set different alert levels:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Critical (website completely down)</b>: SMS + phone call. Must know immediately.</span><span lang="en"><b>Critical (website completely down)</b>: SMS + phone call. Must know immediately.</span></li>
+<li><span lang="id"><b>Severe (error rate spike)</b>: DingTalk/WeChat message. Handle when seen.</span><span lang="en"><b>Severe (error rate spike)</b>: DingTalk/WeChat message. Handle when seen.</span></li>
+<li><span lang="id"><b>Normal (CPU slightly high)</b>: Email summary. Check once a day.</span><span lang="en"><b>Normal (CPU slightly high)</b>: Email summary. Check once a day.</span></li>
+</ul>
+<p class="reveal"><span lang="id">The core principle of alert configuration is: <b>tiered alerts, don't annoy yourself to death.</b> If every little thing sends you an SMS, you'll turn off alerts before long.</span><span lang="en">The core principle of alert configuration is: <b>tiered alerts, don't annoy yourself to death.</b> If every little thing sends you an SMS, you'll turn off alerts before long.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">9. Common Issues Quick Reference</span><span lang="en">9. Common Issues Quick Reference</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Symptom</th><th>Possible Cause</th><th>Solution</th></tr>
+<tr><td>Website won't open</td><td>Domain not resolved / Server down / Nginx not started</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ping domain</code> to check connectivity; <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">pm2 list</code> to check service status; <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">systemctl status nginx</code> for Nginx</td></tr>
+<tr><td>Blank page</td><td>Build output path incorrect / Static files not properly configured</td><td>Check Nginx root path points to dist directory</td></tr>
+<tr><td>404 Page Not Found</td><td>Routes not properly configured / Path typo</td><td>Add <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">try_files $uri $uri/ /index.html</code> in Nginx config</td></tr>
+<tr><td>502 Bad Gateway</td><td>Backend service down / Port not open</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">pm2 list</code> to check if process is running; verify port is correct</td></tr>
+<tr><td>403 Forbidden</td><td>Incorrect permissions / Index directory not enabled</td><td>Check file permissions <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">chmod -R 755</code>; Add <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">autoindex on</code> to Nginx config</td></tr>
+<tr><td>HTTPS certificate expired</td><td>Certificate not renewed</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">certbot renew</code> for manual renewal; check auto-renewal cron job</td></tr>
+<tr><td>No changes visible after update</td><td>Browser cache / CDN cache</td><td>Ctrl+Shift+R for hard refresh; Go to CDN console and "purge cache"</td></tr>
+<tr><td>Website loads slowly</td><td>Insufficient bandwidth / No caching / No CDN</td><td>Upgrade server bandwidth; Configure Redis caching; Connect CDN</td></tr>
+<tr><td>Database connection fails</td><td>Database not started / Wrong password / Permission issues</td><td>Check database service status; Verify connection info in config</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary</span><span lang="en">Summary</span></h2>
+<p class="reveal"><span lang="id">Going live with a service is a systematic engineering effort. It involves everything from code building to server deployment, from network configuration to security protection, from monitoring and alerting to log analysis. For beginners, there's no need to pursue perfection from the start. First get the minimum viable version (MVP) running, then gradually improve on that foundation.</span><span lang="en">Going live with a service is a systematic engineering effort. It involves everything from code building to server deployment, from network configuration to security protection, from monitoring and alerting to log analysis. For beginners, there's no need to pursue perfection from the start. First get the minimum viable version (MVP) running, then gradually improve on that foundation.</span></p>
+<p class="reveal"><span lang="id">The key points of the entire process can be summarized as follows:</span><span lang="en">The key points of the entire process can be summarized as follows:</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Core Process</span><span lang="en">Core Process</span></h3>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Build</b> → Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm run build</code> to turn code into HTML/CSS/JS the browser can understand</span><span lang="en"><b>Build</b> → Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm run build</code> to turn code into HTML/CSS/JS the browser can understand</span></li>
+<li><span lang="id"><b>Deploy</b> → Upload build output to the server. Configure Nginx reverse proxy.</span><span lang="en"><b>Deploy</b> → Upload build output to the server. Configure Nginx reverse proxy.</span></li>
+<li><span lang="id"><b>Domain</b> → Purchase a domain and configure DNS resolution to the server IP</span><span lang="en"><b>Domain</b> → Purchase a domain and configure DNS resolution to the server IP</span></li>
+<li><span lang="id"><b>HTTPS</b> → Use Let's Encrypt to apply for a free certificate. Protect data transmission security.</span><span lang="en"><b>HTTPS</b> → Use Let's Encrypt to apply for a free certificate. Protect data transmission security.</span></li>
+<li><span lang="id"><b>CI/CD</b> → Configure automated deployment. Code goes live automatically after push.</span><span lang="en"><b>CI/CD</b> → Configure automated deployment. Code goes live automatically after push.</span></li>
+<li><span lang="id"><b>Monitoring</b> → Configure monitoring and alerts. Know about problems immediately.</span><span lang="en"><b>Monitoring</b> → Configure monitoring and alerts. Know about problems immediately.</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Learning Path Suggestions</span><span lang="en">Learning Path Suggestions</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Day 1</b>: Deploy a static webpage with Vercel/Netlify. Experience the feeling of "code becoming a website."</span><span lang="en"><b>Day 1</b>: Deploy a static webpage with Vercel/Netlify. Experience the feeling of "code becoming a website."</span></li>
+<li><span lang="id"><b>Week 1</b>: Rent a cloud server. Manually deploy a Node.js project. Configure domain and HTTPS.</span><span lang="en"><b>Week 1</b>: Rent a cloud server. Manually deploy a Node.js project. Configure domain and HTTPS.</span></li>
+<li><span lang="id"><b>Weeks 2-4</b>: Configure a complete CI/CD pipeline. Establish monitoring and alerting systems.</span><span lang="en"><b>Weeks 2-4</b>: Configure a complete CI/CD pipeline. Establish monitoring and alerting systems.</span></li>
+<li><span lang="id"><b>Ongoing</b>: Learn Docker containerization, Kubernetes clusters, and microservice architecture.</span><span lang="en"><b>Ongoing</b>: Learn Docker containerization, Kubernetes clusters, and microservice architecture.</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Glossary</span><span lang="en">Glossary</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Term</th><th>English</th><th>Plain Language Explanation</th></tr>
+<tr><td>Build</td><td>Build</td><td>Translate and package source code into a format the browser can execute</td></tr>
+<tr><td>Deploy</td><td>Deploy</td><td>Put code on a server so users can access it</td></tr>
+<tr><td>Server</td><td>Server</td><td>A computer that's always on 24/7 and connected to the internet</td></tr>
+<tr><td>Domain Name</td><td>Domain</td><td>A memorable name for a website (like baidu.com)</td></tr>
+<tr><td>DNS</td><td>Domain Name System</td><td>The "phonebook" that translates domain names into IP addresses</td></tr>
+<tr><td>HTTP</td><td>HyperText Transfer Protocol</td><td>Web page transmission protocol (insecure, plain text)</td></tr>
+<tr><td>HTTPS</td><td>HTTP Secure</td><td>Encrypted web page transmission protocol (secure)</td></tr>
+<tr><td>Nginx</td><td>Engine X</td><td>High-performance web server. Used as a reverse proxy.</td></tr>
+<tr><td>Reverse Proxy</td><td>Reverse Proxy</td><td>A "receptionist at the door" that forwards requests to the backend.</td></tr>
+<tr><td>SSH</td><td>Secure Shell</td><td>An encrypted tool for remotely logging into servers</td></tr>
+<tr><td>CDN</td><td>Content Delivery Network</td><td>A globally distributed server network. Speeds up access.</td></tr>
+<tr><td>CI/CD</td><td>Continuous Integration/Deployment</td><td>An automated pipeline. Code is automatically tested and deployed after push.</td></tr>
+<tr><td>SSL/TLS</td><td>Secure Sockets Layer / Transport Layer Security</td><td>Encryption protocol. Provides security for HTTPS.</td></tr>
+<tr><td>PM2</td><td>Process Manager 2</td><td>Node.js process manager. Keeps applications running.</td></tr>
+</table></div>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../6-architecture-and-system-design/system-design-methodology/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">6-architecture-and-system-design/system-design-methodology</span><span lang="en">6-architecture-and-system-design/system-design-methodology</span></b></a>
+      <a class="next" href="../../7-infrastructure-and-operations/cloud-iam/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">7-infrastructure-and-operations/cloud-iam</span><span lang="en">7-infrastructure-and-operations/cloud-iam</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

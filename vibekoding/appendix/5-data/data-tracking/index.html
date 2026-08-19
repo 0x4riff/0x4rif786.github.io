@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>An Introduction to Event Tracking — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: An Introduction to Event Tracking. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/5-data/data-tracking/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">An Introduction to Event Tracking</span><span lang="en">An Introduction to Event Tracking</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">An Introduction to Event Tracking</span><span lang="en">An Introduction to Event Tracking</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: An Introduction to Event Tracking.</span><span lang="en">Ensiklopedia VibeKoding: An Introduction to Event Tracking.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>How do we know what users are doing inside our app?</b>
+
+Imagine you run a physical bubble tea shop. You can stand behind the counter and directly observe every customer: how long did they look at the menu before ordering? Which drink did they order? Did they hesitate and leave without buying?
+
+But if your "shop" is a mobile app or website, you can't directly see users' actions. This is where you need a technical solution — embedding recording points at key locations in your app to automatically log every step a user takes. This is <b>Event Tracking</b>.
+
+The term "tracking" sounds technical, but the core idea is simple: <b>place a "recorder" wherever users might take an action, and log what they did.</b>
+
+This chapter explains the process in four steps:
+
+1. <b>Choose a collection method</b> — Decide where to place recorders and how
+2. <b>Design the data format</b> — Decide what information each record should contain
+3. <b>Transmission and caching</b> — Get records from the user's phone to the server safely
+4. <b>Cleaning and storage</b> — Organize data, remove duplicates and errors, and store in a database</span><span lang="en"><b>How do we know what users are doing inside our app?</b>
+
+Imagine you run a physical bubble tea shop. You can stand behind the counter and directly observe every customer: how long did they look at the menu before ordering? Which drink did they order? Did they hesitate and leave without buying?
+
+But if your "shop" is a mobile app or website, you can't directly see users' actions. This is where you need a technical solution — embedding recording points at key locations in your app to automatically log every step a user takes. This is <b>Event Tracking</b>.
+
+The term "tracking" sounds technical, but the core idea is simple: <b>place a "recorder" wherever users might take an action, and log what they did.</b>
+
+This chapter explains the process in four steps:
+
+1. <b>Choose a collection method</b> — Decide where to place recorders and how
+2. <b>Design the data format</b> — Decide what information each record should contain
+3. <b>Transmission and caching</b> — Get records from the user's phone to the server safely
+4. <b>Cleaning and storage</b> — Organize data, remove duplicates and errors, and store in a database</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Choose a Collection Method — Where to Place Collectors</span><span lang="en">Choose a Collection Method — Where to Place Collectors</span></h2>
+<p class="reveal"><span lang="id"><b>Goal</b>: Decide how to record user actions.</span><span lang="en"><b>Goal</b>: Decide how to record user actions.</span></p>
+<p class="reveal"><span lang="id">For example: a product manager wants to know "how many users clicked the purchase button." To answer this, a developer needs to add logging logic to the "purchase button" code — every time a user clicks this button, a record is automatically created.</span><span lang="en">For example: a product manager wants to know "how many users clicked the purchase button." To answer this, a developer needs to add logging logic to the "purchase button" code — every time a user clicks this button, a record is automatically created.</span></p>
+<p class="reveal"><span lang="id">But here's a choice: should we <b>only place recorders at important locations</b> (such as only tracking "purchases" and "registrations"), or <b>place recorders everywhere</b> (tracking every click, swipe, and停留)?</span><span lang="en">But here's a choice: should we <b>only place recorders at important locations</b> (such as only tracking "purchases" and "registrations"), or <b>place recorders everywhere</b> (tracking every click, swipe, and停留)?</span></p>
+<p class="reveal"><span lang="id">Different choices correspond to different tracking approaches.</span><span lang="en">Different choices correspond to different tracking approaches.</span></p>
+<p class="reveal"><span lang="id"><DataTrackingDemo tab="methods" /></span><span lang="en"><DataTrackingDemo tab="methods" /></span></p>
+<p class="reveal"><span lang="id"><b>Three mainstream tracking methods</b></span><span lang="en"><b>Three mainstream tracking methods</b></span></p>
+<p class="reveal"><span lang="id">There are three commonly used tracking approaches in the industry, each with its own pros and cons:</span><span lang="en">There are three commonly used tracking approaches in the industry, each with its own pros and cons:</span></p>
+<p class="reveal"><span lang="id"><b>Method 1: Code Tracking — Manual, precise recording</b></span><span lang="en"><b>Method 1: Code Tracking — Manual, precise recording</b></span></p>
+<p class="reveal"><span lang="id">Developers manually specify in code: when a user performs a certain action, record a data entry.</span><span lang="en">Developers manually specify in code: when a user performs a certain action, record a data entry.</span></p>
+<p class="reveal"><span lang="id">An analogy: it's like assigning someone at the bubble tea shop's register to specifically record "who bought what and how much they spent." The recorded information is very detailed and accurate.</span><span lang="en">An analogy: it's like assigning someone at the bubble tea shop's register to specifically record "who bought what and how much they spent." The recorded information is very detailed and accurate.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><i>Advantage</i>: Can record very detailed business information, such as which coupon a user used and their account balance</span><span lang="en"><i>Advantage</i>: Can record very detailed business information, such as which coupon a user used and their account balance</span></li>
+<li><span lang="id"><i>Cost</i>: Every new tracking point requires a developer to write code, test, and release a new version — a lengthy process</span><span lang="en"><i>Cost</i>: Every new tracking point requires a developer to write code, test, and release a new version — a lengthy process</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Method 2: Visual Tracking — Click-and-select recording</b></span><span lang="en"><b>Method 2: Visual Tracking — Click-and-select recording</b></span></p>
+<p class="reveal"><span lang="id">No code required. The system provides a visual tool where operations staff can directly "select" buttons or areas on the app interface to monitor, and the system automatically starts recording.</span><span lang="en">No code required. The system provides a visual tool where operations staff can directly "select" buttons or areas on the app interface to monitor, and the system automatically starts recording.</span></p>
+<p class="reveal"><span lang="id">An analogy: it's like using your mouse to draw a selection box around the "cash register area" on the shop's surveillance feed, and the system automatically starts counting foot traffic in that area.</span><span lang="en">An analogy: it's like using your mouse to draw a selection box around the "cash register area" on the shop's surveillance feed, and the system automatically starts counting foot traffic in that area.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><i>Advantage</i>: No developer involvement needed; operations staff can configure it themselves, very efficient</span><span lang="en"><i>Advantage</i>: No developer involvement needed; operations staff can configure it themselves, very efficient</span></li>
+<li><span lang="id"><i>Cost</i>: Can only record interface interactions like "what the user clicked," unable to capture deep business data like "order amount"</span><span lang="en"><i>Cost</i>: Can only record interface interactions like "what the user clicked," unable to capture deep business data like "order amount"</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Method 3: Auto Tracking — Automatically record everything</b></span><span lang="en"><b>Method 3: Auto Tracking — Automatically record everything</b></span></p>
+<p class="reveal"><span lang="id">Integrate an SDK (think of it as a "toolkit") into the app that automatically records all user actions: every click, every swipe, how long they stayed on each page.</span><span lang="en">Integrate an SDK (think of it as a "toolkit") into the app that automatically records all user actions: every click, every swipe, how long they stayed on each page.</span></p>
+<p class="reveal"><span lang="id">An analogy: it's like installing cameras in every corner of the bubble tea shop, recording every move customers make.</span><span lang="en">An analogy: it's like installing cameras in every corner of the bubble tea shop, recording every move customers make.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><i>Advantage</i>: No actions are missed, the most comprehensive coverage</span><span lang="en"><i>Advantage</i>: No actions are missed, the most comprehensive coverage</span></li>
+<li><span lang="id"><i>Cost</i>: Data volume is very large, with much of it being useless information (like unintentional swipes); significant effort is needed afterward to filter and clean</span><span lang="en"><i>Cost</i>: Data volume is very large, with much of it being useless information (like unintentional swipes); significant effort is needed afterward to filter and clean</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Step summary</b>: After choosing a tracking method, your app now has the ability to "record user actions."</span><span lang="en"><b>Step summary</b>: After choosing a tracking method, your app now has the ability to "record user actions."</span></p>
+<p class="reveal"><span lang="id"><b>But there's a new problem</b>: While recorders can capture user actions, if each recorder logs data in a different format (e.g., some write "user ID," some write "userID," some don't record it at all), unified analysis becomes impossible. So the next step is to define a unified recording format.</span><span lang="en"><b>But there's a new problem</b>: While recorders can capture user actions, if each recorder logs data in a different format (e.g., some write "user ID," some write "userID," some don't record it at all), unified analysis becomes impossible. So the next step is to define a unified recording format.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Design the Data Format — What Should Each Record Contain</span><span lang="en">Design the Data Format — What Should Each Record Contain</span></h2>
+<p class="reveal"><span lang="id"><b>Prerequisite</b>: We've chosen a tracking method (e.g., code tracking), and the app can now capture user actions.</span><span lang="en"><b>Prerequisite</b>: We've chosen a tracking method (e.g., code tracking), and the app can now capture user actions.</span></p>
+<p class="reveal"><span lang="id"><b>Goal</b>: Define a unified "recording template" so that all tracking records follow a consistent format.</span><span lang="en"><b>Goal</b>: Define a unified "recording template" so that all tracking records follow a consistent format.</span></p>
+<p class="reveal"><span lang="id"><b>Why do we need a unified format?</b> Imagine: if the bubble tea shop has three employees recording sales simultaneously — one writes "Xiao Ming bought pearl milk tea for 15 yuan," another writes "15, milk tea, pearl," and a third writes "one cup of pearl milk tea." At month-end, these completely different record formats would make consolidation extremely painful. That's why we need a unified "record form" that specifies which fields must be filled in for each record.</span><span lang="en"><b>Why do we need a unified format?</b> Imagine: if the bubble tea shop has three employees recording sales simultaneously — one writes "Xiao Ming bought pearl milk tea for 15 yuan," another writes "15, milk tea, pearl," and a third writes "one cup of pearl milk tea." At month-end, these completely different record formats would make consolidation extremely painful. That's why we need a unified "record form" that specifies which fields must be filled in for each record.</span></p>
+<p class="reveal"><span lang="id"><DataTrackingDemo tab="model" /></span><span lang="en"><DataTrackingDemo tab="model" /></span></p>
+<p class="reveal"><span lang="id"><b>Core Principle: The 4W1H Recording Template</b></span><span lang="en"><b>Core Principle: The 4W1H Recording Template</b></span></p>
+<p class="reveal"><span lang="id">Regardless of what action is being recorded, each data entry needs to answer five questions (abbreviated as 4W1H):</span><span lang="en">Regardless of what action is being recorded, each data entry needs to answer five questions (abbreviated as 4W1H):</span></p>
+<p class="reveal"><span lang="id"><b>Who — Who did it?</b></span><span lang="en"><b>Who — Who did it?</b></span></p>
+<p class="reveal"><span lang="id">We need to know which user generated this record.</span><span lang="en">We need to know which user generated this record.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">If the user is logged in, use their account ID (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">user_id: "zhangsan123"</code>)</span><span lang="en">If the user is logged in, use their account ID (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">user_id: "zhangsan123"</code>)</span></li>
+<li><span lang="id">If the user is not logged in, use the device's unique identifier (e.g., the phone's device number), so at least we can distinguish "this is an action from the same phone"</span><span lang="en">If the user is not logged in, use the device's unique identifier (e.g., the phone's device number), so at least we can distinguish "this is an action from the same phone"</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>When — When did they do it?</b></span><span lang="en"><b>When — When did they do it?</b></span></p>
+<p class="reveal"><span lang="id">Record the precise time the action occurred, accurate to the millisecond.</span><span lang="en">Record the precise time the action occurred, accurate to the millisecond.</span></p>
+<p class="reveal"><span lang="id">One detail here: if your app has overseas users, 3 PM Beijing time and 3 PM New York time actually differ by 13 hours. To avoid confusion, all times are uniformly converted to UTC standard time (think of it as "world unified time").</span><span lang="en">One detail here: if your app has overseas users, 3 PM Beijing time and 3 PM New York time actually differ by 13 hours. To avoid confusion, all times are uniformly converted to UTC standard time (think of it as "world unified time").</span></p>
+<p class="reveal"><span lang="id"><b>Where & How — Under what environment?</b></span><span lang="en"><b>Where & How — Under what environment?</b></span></p>
+<p class="reveal"><span lang="id">This part records the device and network environment when the user performed the action, called <b>common attributes</b>. They're called "common" because regardless of what action the user took, this information is automatically attached. For example:</span><span lang="en">This part records the device and network environment when the user performed the action, called <b>common attributes</b>. They're called "common" because regardless of what action the user took, this information is automatically attached. For example:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Device model: iPhone 15 / Xiaomi 14</span><span lang="en">Device model: iPhone 15 / Xiaomi 14</span></li>
+<li><span lang="id">Network type: WiFi / 5G / 4G</span><span lang="en">Network type: WiFi / 5G / 4G</span></li>
+<li><span lang="id">App version: v1.2.3</span><span lang="en">App version: v1.2.3</span></li>
+<li><span lang="id">Operating system: iOS 18 / Android 15</span><span lang="en">Operating system: iOS 18 / Android 15</span></li>
+</ul>
+<p class="reveal"><span lang="id">The value of this information: if a bug is found that only occurs on a specific device model, common attributes can help quickly pinpoint the problem.</span><span lang="en">The value of this information: if a bug is found that only occurs on a specific device model, common attributes can help quickly pinpoint the problem.</span></p>
+<p class="reveal"><span lang="id"><b>What — What exactly did they do?</b></span><span lang="en"><b>What — What exactly did they do?</b></span></p>
+<p class="reveal"><span lang="id">This part records the specific business details of the action, called <b>custom attributes</b>. Different actions require recording different information. For example:</span><span lang="en">This part records the specific business details of the action, called <b>custom attributes</b>. Different actions require recording different information. For example:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">User clicks "Add to Cart": needs to record product name, product price, quantity</span><span lang="en">User clicks "Add to Cart": needs to record product name, product price, quantity</span></li>
+<li><span lang="id">User completes payment: needs to record order amount, payment method, coupon code</span><span lang="en">User completes payment: needs to record order amount, payment method, coupon code</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Step summary</b>: Through the 4W1H template, we've transformed every user action into a uniformly formatted data record. In technical implementation, this record is typically stored in JSON format (JSON is a universal data format; the interactive component above shows what it looks like).</span><span lang="en"><b>Step summary</b>: Through the 4W1H template, we've transformed every user action into a uniformly formatted data record. In technical implementation, this record is typically stored in JSON format (JSON is a universal data format; the interactive component above shows what it looks like).</span></p>
+<p class="reveal"><span lang="id"><b>But there's another problem</b>: The data format is now unified, but if the app has a large user base (e.g., during a promotional event, tens of thousands of records might be generated per second), the user's phone can't send a network request every time a record is generated — this would drain the battery and data, and the server couldn't handle it. So the next step is to design a smarter transmission method.</span><span lang="en"><b>But there's another problem</b>: The data format is now unified, but if the app has a large user base (e.g., during a promotional event, tens of thousands of records might be generated per second), the user's phone can't send a network request every time a record is generated — this would drain the battery and data, and the server couldn't handle it. So the next step is to design a smarter transmission method.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Transmission and Caching — How to Safely Deliver Data to the Server</span><span lang="en">Transmission and Caching — How to Safely Deliver Data to the Server</span></h2>
+<p class="reveal"><span lang="id"><b>Prerequisite</b>: Every user action has been recorded as a uniformly formatted JSON data entry.</span><span lang="en"><b>Prerequisite</b>: Every user action has been recorded as a uniformly formatted JSON data entry.</span></p>
+<p class="reveal"><span lang="id"><b>Goal</b>: Reliably transmit this data from the user's phone (or browser) to our server, without losing data even when the network is poor.</span><span lang="en"><b>Goal</b>: Reliably transmit this data from the user's phone (or browser) to our server, without losing data even when the network is poor.</span></p>
+<p class="reveal"><span lang="id"><b>Why can't we just send it directly?</b> If a network request is sent every time a record is generated, it's like running to the post office every time you write a letter — extremely inefficient. A more sensible approach: collect a batch of letters and send them all at once.</span><span lang="en"><b>Why can't we just send it directly?</b> If a network request is sent every time a record is generated, it's like running to the post office every time you write a letter — extremely inefficient. A more sensible approach: collect a batch of letters and send them all at once.</span></p>
+<p class="reveal"><span lang="id"><DataTrackingDemo tab="pipeline" /></span><span lang="en"><DataTrackingDemo tab="pipeline" /></span></p>
+<p class="reveal"><span lang="id"><b>Core Principle: Three Layers of Data Transmission Assurance</b></span><span lang="en"><b>Core Principle: Three Layers of Data Transmission Assurance</b></span></p>
+<p class="reveal"><span lang="id">Data travels from the user's phone to the server through three assurance mechanisms, ensuring both efficiency and zero data loss:</span><span lang="en">Data travels from the user's phone to the server through three assurance mechanisms, ensuring both efficiency and zero data loss:</span></p>
+<p class="reveal"><span lang="id"><b>First Layer: Batch before sending (Batch Aggregation)</b></span><span lang="en"><b>First Layer: Batch before sending (Batch Aggregation)</b></span></p>
+<p class="reveal"><span lang="id">The SDK (tracking toolkit) doesn't send a request every time a record is generated. Instead, it temporarily stores records in the phone's memory. When a certain number is collected (e.g., 30 records), or after a certain time passes (e.g., 5 seconds), it packages this batch and sends it all at once.</span><span lang="en">The SDK (tracking toolkit) doesn't send a request every time a record is generated. Instead, it temporarily stores records in the phone's memory. When a certain number is collected (e.g., 30 records), or after a certain time passes (e.g., 5 seconds), it packages this batch and sends it all at once.</span></p>
+<p class="reveal"><span lang="id">It's like shipping packages: you don't run to the delivery station every time you buy something; you collect a few items and ship them together, saving time and effort. For the phone, this reduces network requests, saving battery and data.</span><span lang="en">It's like shipping packages: you don't run to the delivery station every time you buy something; you collect a few items and ship them together, saving time and effort. For the phone, this reduces network requests, saving battery and data.</span></p>
+<p class="reveal"><span lang="id"><b>Second Layer: No data loss even when offline (Local Storage)</b></span><span lang="en"><b>Second Layer: No data loss even when offline (Local Storage)</b></span></p>
+<p class="reveal"><span lang="id">In elevators or subway tunnels, phones frequently lose network signal. If data is only stored in memory, closing the app would lose the data.</span><span lang="en">In elevators or subway tunnels, phones frequently lose network signal. If data is only stored in memory, closing the app would lose the data.</span></p>
+<p class="reveal"><span lang="id">So the SDK saves unsent data to the phone's local storage (similar to putting letters in a drawer first). When the network recovers, it automatically resends this data. This way, even if the user is briefly offline, no data is lost.</span><span lang="en">So the SDK saves unsent data to the phone's local storage (similar to putting letters in a drawer first). When the network recovers, it automatically resends this data. This way, even if the user is briefly offline, no data is lost.</span></p>
+<p class="reveal"><span lang="id"><b>Third Layer: Don't overwhelm the server (Message Queue)</b></span><span lang="en"><b>Third Layer: Don't overwhelm the server (Message Queue)</b></span></p>
+<p class="reveal"><span lang="id">After data reaches the server, it's not written directly to the database. Why? Because during peak periods like promotional events, tens of thousands of data entries might flood in per second. If the database processes this volume directly, it could crash.</span><span lang="en">After data reaches the server, it's not written directly to the database. Why? Because during peak periods like promotional events, tens of thousands of data entries might flood in per second. If the database processes this volume directly, it could crash.</span></p>
+<p class="reveal"><span lang="id">The solution is to add a "buffer" in between — technically called a <b>message queue</b> (a commonly used tool is Kafka). Its role is like a restaurant's queuing system: during peak hours, customers (data) wait in line, while the kitchen (database) processes them at its own pace, without being overwhelmed by the simultaneous influx of orders.</span><span lang="en">The solution is to add a "buffer" in between — technically called a <b>message queue</b> (a commonly used tool is Kafka). Its role is like a restaurant's queuing system: during peak hours, customers (data) wait in line, while the kitchen (database) processes them at its own pace, without being overwhelmed by the simultaneous influx of orders.</span></p>
+<p class="reveal"><span lang="id"><b>Step summary</b>: Through "batch sending → offline local storage → message queue buffering," data has safely arrived at the server.</span><span lang="en"><b>Step summary</b>: Through "batch sending → offline local storage → message queue buffering," data has safely arrived at the server.</span></p>
+<p class="reveal"><span lang="id"><b>But there's one more issue</b>: Because data is automatically resent after reconnection, the same record might be sent twice. If not handled before being stored in the database, data will be duplicated (e.g., a 100-yuan order might be recorded twice, inflating the sales figures). So the next step is to "clean" the data.</span><span lang="en"><b>But there's one more issue</b>: Because data is automatically resent after reconnection, the same record might be sent twice. If not handled before being stored in the database, data will be duplicated (e.g., a 100-yuan order might be recorded twice, inflating the sales figures). So the next step is to "clean" the data.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Cleaning and Storage — Organize Data, Remove "Dirty Data"</span><span lang="en">Cleaning and Storage — Organize Data, Remove "Dirty Data"</span></h2>
+<p class="reveal"><span lang="id"><b>Prerequisite</b>: Data has safely arrived at the server through the transmission pipeline.</span><span lang="en"><b>Prerequisite</b>: Data has safely arrived at the server through the transmission pipeline.</span></p>
+<p class="reveal"><span lang="id"><b>Goal</b>: Before data is formally stored in the database, perform a "health check" — remove duplicates, fix formatting issues, and ensure the final stored data is clean and accurate.</span><span lang="en"><b>Goal</b>: Before data is formally stored in the database, perform a "health check" — remove duplicates, fix formatting issues, and ensure the final stored data is clean and accurate.</span></p>
+<p class="reveal"><span lang="id"><b>Why do we need cleaning?</b> Just like receiving a shipment of packages, you need to check: are there any duplicate shipments? Any wrong deliveries? Any damaged packaging? Data is the same — before storing it in the database, it needs to be checked and organized.</span><span lang="en"><b>Why do we need cleaning?</b> Just like receiving a shipment of packages, you need to check: are there any duplicate shipments? Any wrong deliveries? Any damaged packaging? Data is the same — before storing it in the database, it needs to be checked and organized.</span></p>
+<p class="reveal"><span lang="id">This process is technically called <b>ETL</b>, an abbreviation of three English words:</span><span lang="en">This process is technically called <b>ETL</b>, an abbreviation of three English words:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>E</b>xtract: Retrieve data from the message queue</span><span lang="en"><b>E</b>xtract: Retrieve data from the message queue</span></li>
+<li><span lang="id"><b>T</b>ransform: Check and fix data formats</span><span lang="en"><b>T</b>ransform: Check and fix data formats</span></li>
+<li><span lang="id"><b>L</b>oad: Write cleaned data into the database</span><span lang="en"><b>L</b>oad: Write cleaned data into the database</span></li>
+</ul>
+<p class="reveal"><span lang="id"><DataTrackingDemo tab="overview" /></span><span lang="en"><DataTrackingDemo tab="overview" /></span></p>
+<p class="reveal"><span lang="id"><b>Core Principle: Two Key Actions in Data Cleaning</b></span><span lang="en"><b>Core Principle: Two Key Actions in Data Cleaning</b></span></p>
+<p class="reveal"><span lang="id"><b>Action 1: Deduplication — Remove duplicate records</b></span><span lang="en"><b>Action 1: Deduplication — Remove duplicate records</b></span></p>
+<p class="reveal"><span lang="id">As mentioned earlier, the SDK automatically resends data after reconnection, which may cause the same record to be sent multiple times. How do you identify which ones are duplicates?</span><span lang="en">As mentioned earlier, the SDK automatically resends data after reconnection, which may cause the same record to be sent multiple times. How do you identify which ones are duplicates?</span></p>
+<p class="reveal"><span lang="id">The method is simple: when the client packages data, assign each record a globally unique identifier (called <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dedup_id</code>, similar to a tracking number). Before storing data, the server checks whether this ID already exists — if it does, it's a duplicate and is discarded.</span><span lang="en">The method is simple: when the client packages data, assign each record a globally unique identifier (called <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dedup_id</code>, similar to a tracking number). Before storing data, the server checks whether this ID already exists — if it does, it's a duplicate and is discarded.</span></p>
+<p class="reveal"><span lang="id"><b>Action 2: Validation and Format Standardization — Fix non-standard records</b></span><span lang="en"><b>Action 2: Validation and Format Standardization — Fix non-standard records</b></span></p>
+<p class="reveal"><span lang="id">Apps are continuously updated, and tracking code across different versions may have subtle differences. For example:</span><span lang="en">Apps are continuously updated, and tracking code across different versions may have subtle differences. For example:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">An older version named the user ID field <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">userId</code>, while a newer version changed it to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">user_id</code></span><span lang="en">An older version named the user ID field <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">userId</code>, while a newer version changed it to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">user_id</code></span></li>
+<li><span lang="id">Some records have clearly unreasonable timestamps (e.g., showing 1970)</span><span lang="en">Some records have clearly unreasonable timestamps (e.g., showing 1970)</span></li>
+<li><span lang="id">Some field values are unrecognizable</span><span lang="en">Some field values are unrecognizable</span></li>
+</ul>
+<p class="reveal"><span lang="id">At this step, the system writes transformation rules to handle these issues uniformly: misaligned field names are standardized, records with abnormal timestamps are discarded, and unrecognizable values are marked as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">unknown</code>.</span><span lang="en">At this step, the system writes transformation rules to handle these issues uniformly: misaligned field names are standardized, records with abnormal timestamps are discarded, and unrecognizable values are marked as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">unknown</code>.</span></p>
+<p class="reveal"><span lang="id"><b>Step summary</b>: After deduplication and format validation, data is written in a clean, unified format to a <b>data warehouse</b> (a specialized database for storing and analyzing large volumes of data; common ones include ClickHouse, Hive, etc.). Data analysts can directly query this data using SQL statements and obtain reliable analysis results.</span><span lang="en"><b>Step summary</b>: After deduplication and format validation, data is written in a clean, unified format to a <b>data warehouse</b> (a specialized database for storing and analyzing large volumes of data; common ones include ClickHouse, Hive, etc.). Data analysts can directly query this data using SQL statements and obtain reliable analysis results.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Complete Process Review</span><span lang="en">Complete Process Review</span></h2>
+<p class="reveal"><span lang="id">Here's a summary of the four-step process from collection to storage:</span><span lang="en">Here's a summary of the four-step process from collection to storage:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Step</th><th>What Was Done</th><th>What Was Gained</th><th>Remaining Issue</th></tr>
+<tr><td><b>1. Choose collection method</b></td><td>Decide which tracking method to use</td><td>App has recording capability</td><td>Data formats are inconsistent across recorders</td></tr>
+<tr><td><b>2. Design data format</b></td><td>Standardize recording format with 4W1H template</td><td>Each record is standard JSON</td><td>Can't handle sending one-by-one at scale</td></tr>
+<tr><td><b>3. Transmission and caching</b></td><td>Batch sending, offline storage, queue buffering</td><td>Data safely arrives at server</td><td>Retries may cause duplicate data</td></tr>
+<tr><td><b>4. Cleaning and storage</b></td><td>Deduplication, validation, format standardization</td><td>Clean data stored in data warehouse</td><td>—</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Conclusion</span><span lang="en">Conclusion</span></h2>
+<p class="reveal"><span lang="id">When a user taps a button in your app, it appears to be just a momentary action on the surface. But behind the scenes, a complete data pipeline has already begun running:</span><span lang="en">When a user taps a button in your app, it appears to be just a momentary action on the surface. But behind the scenes, a complete data pipeline has already begun running:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Tracking code captures the click and generates a standard record using the 4W1H template</span><span lang="en">Tracking code captures the click and generates a standard record using the 4W1H template</span></li>
+<li><span lang="id">The record is temporarily stored locally on the phone, then sent in batches to the server</span><span lang="en">The record is temporarily stored locally on the phone, then sent in batches to the server</span></li>
+<li><span lang="id">The server receives data smoothly through a message queue, then performs deduplication and format validation</span><span lang="en">The server receives data smoothly through a message queue, then performs deduplication and format validation</span></li>
+<li><span lang="id">Finally, a clean, accurate data record is written to the data warehouse</span><span lang="en">Finally, a clean, accurate data record is written to the data warehouse</span></li>
+</ul>
+<p class="reveal"><span lang="id">This is the complete process of event tracking. It transforms scattered, invisible user actions into queryable, analyzable structured data. Product managers can use it to understand which features users like and where they drop off; operations teams can evaluate campaign effectiveness; developers can pinpoint which version has issues.</span><span lang="en">This is the complete process of event tracking. It transforms scattered, invisible user actions into queryable, analyzable structured data. Product managers can use it to understand which features users like and where they drop off; operations teams can evaluate campaign effectiveness; developers can pinpoint which version has issues.</span></p>
+<p class="reveal"><span lang="id">This "collection → modeling → transmission → cleaning" system is the foundational infrastructure for data-driven decision-making.</span><span lang="en">This "collection → modeling → transmission → cleaning" system is the foundational infrastructure for data-driven decision-making.</span></p>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../5-data/data-models/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">5-data/data-models</span><span lang="en">5-data/data-models</span></b></a>
+      <a class="next" href="../../5-data/data-visualization/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">5-data/data-visualization</span><span lang="en">5-data/data-visualization</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

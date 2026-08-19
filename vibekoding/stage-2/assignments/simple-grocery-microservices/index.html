@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Proyek: E-Commerce Sembako Berbasis Microservices — VibeKoding 🛒</title>
+<meta name="description" content="Modul praktis Level 2 VibeKoding: Proyek: E-Commerce Sembako Berbasis Microservices. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-2/assignments/simple-grocery-microservices/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../stage-2/"><span lang="id">Level 2 · Developer</span><span lang="en">Level 2 · Developer</span></a> / <span lang="id">Proyek: E-Commerce Sembako Berbasis Microservices</span><span lang="en">Proyek: E-Commerce Sembako Berbasis Microservices</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">🛒</div>
+      <div>
+        <h1><span lang="id">Proyek: E-Commerce Sembako Berbasis Microservices</span><span lang="en">Proyek: E-Commerce Sembako Berbasis Microservices</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 2 · Developer</span><span lang="en">Level 2 · Developer</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul praktis Level 2 VibeKoding: Proyek: E-Commerce Sembako Berbasis Microservices.</span><span lang="en">Modul praktis Level 2 VibeKoding: Proyek: E-Commerce Sembako Berbasis Microservices.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Overview</span><span lang="en">Overview</span></h2>
+<p class="reveal"><span lang="id">This project requires you to build a grocery e-commerce microservices system from scratch, based on a real PRD. Unlike previous single-service projects, the backend here is split into multiple independent services by business domain, unified through an API gateway. You'll learn how to design service boundaries and handle cross-service data consistency.</span><span lang="en">This project requires you to build a grocery e-commerce microservices system from scratch, based on a real PRD. Unlike previous single-service projects, the backend here is split into multiple independent services by business domain, unified through an API gateway. You'll learn how to design service boundaries and handle cross-service data consistency.</span></p>
+<p class="reveal"><span lang="id">This is the comprehensive practical section of Stage 2. Microservices architecture is very common in real-world applications. Once you understand service decomposition and gateway routing, you'll be able to handle more complex backend system designs.</span><span lang="en">This is the comprehensive practical section of Stage 2. Microservices architecture is very common in real-world applications. Once you understand service decomposition and gateway routing, you'll be able to handle more complex backend system designs.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Prerequisites</span><span lang="en">Prerequisites</span></h2>
+<p class="reveal"><span lang="id">Before starting this project, you should already be familiar with:</span><span lang="en">Before starting this project, you should already be familiar with:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Frontend page design and component libraries ([UI Design](../../frontend/ui-design/), [Modern Component Libraries](../../frontend/modern-component-library/))</span><span lang="en">Frontend page design and component libraries ([UI Design](../../frontend/ui-design/), [Modern Component Libraries](../../frontend/modern-component-library/))</span></li>
+<li><span lang="id">Backend API design and development ([API Code](../../backend/ai-interface-code/))</span><span lang="en">Backend API design and development ([API Code](../../backend/ai-interface-code/))</span></li>
+<li><span lang="id">Database fundamentals and Supabase ([Database to Supabase](../../backend/database-supabase/))</span><span lang="en">Database fundamentals and Supabase ([Database to Supabase](../../backend/database-supabase/))</span></li>
+<li><span lang="id">Git workflow and deployment ([Git & GitHub](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/))</span><span lang="en">Git workflow and deployment ([Git & GitHub](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/))</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Learning Objectives</span><span lang="en">Learning Objectives</span></h2>
+<p class="reveal"><span lang="id">After completing this project, you will be able to:</span><span lang="en">After completing this project, you will be able to:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Read a PRD and extract a development task list for a microservices system</span><span lang="en">Read a PRD and extract a development task list for a microservices system</span></li>
+<li><span lang="id">Decompose service boundaries by business domain (auth, catalog, inventory, order)</span><span lang="en">Decompose service boundaries by business domain (auth, catalog, inventory, order)</span></li>
+<li><span lang="id">Design and implement API gateway routing</span><span lang="en">Design and implement API gateway routing</span></li>
+<li><span lang="id">Handle cross-service issues like inventory deduction and order consistency</span><span lang="en">Handle cross-service issues like inventory deduction and order consistency</span></li>
+<li><span lang="id">Complete end-to-end integration and deliver a demo-ready microservices prototype</span><span lang="en">Complete end-to-end integration and deliver a demo-ready microservices prototype</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Project Overview</span><span lang="en">Project Overview</span></h2>
+<p class="reveal"><span lang="id">You will build a grocery e-commerce microservices system:</span><span lang="en">You will build a grocery e-commerce microservices system:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Subsystem</th><th>Responsibility</th></tr>
+<tr><td><b>User Frontend</b></td><td>Browse products, place orders, view order history</td></tr>
+<tr><td><b>Admin Portal</b></td><td>Product management, inventory management, order management</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">The backend is split into these services:</span><span lang="en">The backend is split into these services:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Service</th><th>Responsibility</th></tr>
+<tr><td><b>API Gateway</b></td><td>Unified entry point, route forwarding, auth verification</td></tr>
+<tr><td><b>Auth Service</b></td><td>User registration, login, JWT issuance</td></tr>
+<tr><td><b>Catalog Service</b></td><td>Product information management</td></tr>
+<tr><td><b>Inventory Service</b></td><td>Stock quantity management</td></tr>
+<tr><td><b>Order Service</b></td><td>Order creation, status management</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">The requirements document for this project is on GitHub: [View PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/en/stage-2/assignments/simple-grocery-microservices/PRD.md)</span><span lang="en">The requirements document for this project is on GitHub: [View PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/en/stage-2/assignments/simple-grocery-microservices/PRD.md)</span></p>
+</div>
+<p class="reveal"><span lang="id"><div style="margin: 32px 0;"></span><span lang="en"><div style="margin: 32px 0;"></span></p>
+<p class="reveal"><span lang="id"><ClientOnly></span><span lang="en"><ClientOnly></span></p>
+<p class="reveal"><span lang="id"><StepBar :active="0" :items="[</span><span lang="en"><StepBar :active="0" :items="[</span></p>
+<p class="reveal"><span lang="id">{ title: 'Requirements', description: 'Read PRD, define service decomposition, pages, and transaction flow' },</span><span lang="en">{ title: 'Requirements', description: 'Read PRD, define service decomposition, pages, and transaction flow' },</span></p>
+<p class="reveal"><span lang="id">{ title: 'Scaffold', description: 'Generate frontend, gateway, and service skeletons' },</span><span lang="en">{ title: 'Scaffold', description: 'Generate frontend, gateway, and service skeletons' },</span></p>
+<p class="reveal"><span lang="id">{ title: 'Iterate', description: 'Add APIs module by module, fix inventory and order consistency' },</span><span lang="en">{ title: 'Iterate', description: 'Add APIs module by module, fix inventory and order consistency' },</span></p>
+<p class="reveal"><span lang="id">{ title: 'Launch', description: 'End-to-end testing, deploy, and prepare demo' }</span><span lang="en">{ title: 'Launch', description: 'End-to-end testing, deploy, and prepare demo' }</span></p>
+<p class="reveal"><span lang="id">]" /></span><span lang="en">]" /></span></p>
+<p class="reveal"><span lang="id"></ClientOnly></span><span lang="en"></ClientOnly></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Part 1: Requirements Analysis</span><span lang="en">Part 1: Requirements Analysis</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 Read the PRD</span><span lang="en">1.1 Read the PRD</span></h3>
+<p class="reveal"><span lang="id">Open the PRD document and answer these key questions:</span><span lang="en">Open the PRD document and answer these key questions:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">How should services be decomposed? What are the responsibility boundaries of each service?</span><span lang="en">How should services be decomposed? What are the responsibility boundaries of each service?</span></li>
+<li><span lang="id">What pages do the user frontend and admin portal each need?</span><span lang="en">What pages do the user frontend and admin portal each need?</span></li>
+<li><span lang="id">What is the inventory deduction strategy after an order is placed? How to handle success / failure / timeout?</span><span lang="en">What is the inventory deduction strategy after an order is placed? How to handle success / failure / timeout?</span></li>
+<li><span lang="id">Which complex capabilities (distributed transactions, message queues) should be skipped in the first version?</span><span lang="en">Which complex capabilities (distributed transactions, message queues) should be skipped in the first version?</span></li>
+</ul>
+
+<div class="callout warn reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div>
+  <p><span lang="id">If the above questions don't have clear answers, don't start coding. Unclear requirements are the most common cause of rework.</span><span lang="en">If the above questions don't have clear answers, don't start coding. Unclear requirements are the most common cause of rework.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 Confirm System Architecture</span><span lang="en">1.2 Confirm System Architecture</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>mermaid</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>flowchart TD
+  prd[&quot;PRD&quot;] --&gt; fe[&quot;Frontend Pages&quot;]
+  fe --&gt; gw[&quot;API Gateway&quot;]
+  gw --&gt; auth[&quot;Auth Service&quot;]
+  gw --&gt; catalog[&quot;Catalog Service&quot;]
+  gw --&gt; inventory[&quot;Inventory Service&quot;]
+  gw --&gt; order[&quot;Order Service&quot;]
+  order --&gt; inventory</pre>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Part 2: Project Scaffolding</span><span lang="en">Part 2: Project Scaffolding</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Generate Project Structure</span><span lang="en">2.1 Generate Project Structure</span></h3>
+<p class="reveal"><span lang="id">Prompt reference:</span><span lang="en">Prompt reference:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Based on the current PRD, help me generate a project scaffold for a grocery e-commerce microservices system.
+
+Requirements:
+1. Generate user frontend and admin portal skeletons
+2. Generate five directories: api-gateway, auth-service, catalog-service, inventory-service, order-service
+3. Each service should only have a minimal runnable entry point
+4. Don&#039;t connect to a real database or payment system yet</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Verify Project Structure</span><span lang="en">2.2 Verify Project Structure</span></h3>
+<p class="reveal"><span lang="id">Check each item:</span><span lang="en">Check each item:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[ ] Five service directories have clear structure</span><span lang="en">[ ] Five service directories have clear structure</span></li>
+<li><span lang="id">[ ] API Gateway starts and forwards requests</span><span lang="en">[ ] API Gateway starts and forwards requests</span></li>
+<li><span lang="id">[ ] Each service's health check endpoint works</span><span lang="en">[ ] Each service's health check endpoint works</span></li>
+<li><span lang="id">[ ] User frontend and admin portal pages are accessible</span><span lang="en">[ ] User frontend and admin portal pages are accessible</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Part 3: Iterative Development</span><span lang="en">Part 3: Iterative Development</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Module-by-Module Progress</span><span lang="en">3.1 Module-by-Module Progress</span></h3>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>API Gateway</b>: Route configuration, JWT verification middleware</span><span lang="en"><b>API Gateway</b>: Route configuration, JWT verification middleware</span></li>
+<li><span lang="id"><b>Auth Service</b>: Registration, login, JWT issuance</span><span lang="en"><b>Auth Service</b>: Registration, login, JWT issuance</span></li>
+<li><span lang="id"><b>Catalog Service</b>: Product CRUD, list queries</span><span lang="en"><b>Catalog Service</b>: Product CRUD, list queries</span></li>
+<li><span lang="id"><b>Inventory Service</b>: Stock queries, stock deduction</span><span lang="en"><b>Inventory Service</b>: Stock queries, stock deduction</span></li>
+<li><span lang="id"><b>Order Service</b>: Order creation, status transitions, inventory integration</span><span lang="en"><b>Order Service</b>: Order creation, status transitions, inventory integration</span></li>
+<li><span lang="id"><b>Admin Portal</b>: Product management, inventory management, order management</span><span lang="en"><b>Admin Portal</b>: Product management, inventory management, order management</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Module Self-Check</span><span lang="en">3.2 Module Self-Check</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Check Item</th><th>Verification Method</th></tr>
+<tr><td>Gateway routing</td><td>Are service APIs correctly forwarded through the gateway?</td></tr>
+<tr><td>Auth isolation</td><td>Are user and admin APIs properly separated?</td></tr>
+<tr><td>Data consistency</td><td>Are product and inventory data in sync?</td></tr>
+<tr><td>Transaction loop</td><td>After ordering, are inventory deduction and order status consistent?</td></tr>
+<tr><td>Failure handling</td><td>Is there a compensation mechanism for insufficient stock or timeout?</td></tr>
+</table></div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Part 4: Integration & Launch</span><span lang="en">Part 4: Integration & Launch</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 End-to-End Testing</span><span lang="en">4.1 End-to-End Testing</span></h3>
+<p class="reveal"><span lang="id">At minimum, verify these scenarios:</span><span lang="en">At minimum, verify these scenarios:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Browse products → Add to cart → Place order → View order</span><span lang="en">Browse products → Add to cart → Place order → View order</span></li>
+<li><span lang="id">Admin → Add product → Update inventory → View orders</span><span lang="en">Admin → Add product → Update inventory → View orders</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Deliverables</span><span lang="en">Deliverables</span></h2>
+<p class="reveal"><span lang="id">After completing this project, submit the following:</span><span lang="en">After completing this project, submit the following:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[ ] Accessible live demo link</span><span lang="en">[ ] Accessible live demo link</span></li>
+<li><span lang="id">[ ] Source code repository link (with README)</span><span lang="en">[ ] Source code repository link (with README)</span></li>
+<li><span lang="id">[ ] PRD document</span><span lang="en">[ ] PRD document</span></li>
+<li><span lang="id">[ ] Core page screenshots (product list, order page, order history, admin dashboard)</span><span lang="en">[ ] Core page screenshots (product list, order page, order history, admin dashboard)</span></li>
+<li><span lang="id">[ ] 60-second demo video</span><span lang="en">[ ] 60-second demo video</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Grading Criteria</span><span lang="en">Grading Criteria</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Dimension</th><th>Basic Requirements</th><th>Advanced Requirements</th></tr>
+<tr><td>PRD Alignment</td><td>Pages, features, and service decomposition basically match PRD</td><td>Can clearly explain service decomposition rationale</td></tr>
+<tr><td>Product Loop</td><td>Browse → Order → Inventory deduction → View order works end-to-end</td><td>Order timeout or insufficient stock has compensation mechanism</td></tr>
+<tr><td>Service Architecture</td><td>Each service starts independently, accessible through gateway</td><td>Inter-service communication has error handling and retry</td></tr>
+<tr><td>Admin Capability</td><td>Product, inventory, and order management are functional</td><td>Admin portal has data statistics</td></tr>
+<tr><td>Engineering Completeness</td><td>Frontend, gateway, services, database pipeline connected</td><td>Has Docker Compose or similar orchestration</td></tr>
+</table></div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">References</span><span lang="en">References</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[UI Design](../../frontend/ui-design/)</span><span lang="en">[UI Design](../../frontend/ui-design/)</span></li>
+<li><span lang="id">[Modern Component Libraries](../../frontend/modern-component-library/)</span><span lang="en">[Modern Component Libraries](../../frontend/modern-component-library/)</span></li>
+<li><span lang="id">[Database to Supabase](../../backend/database-supabase/)</span><span lang="en">[Database to Supabase](../../backend/database-supabase/)</span></li>
+<li><span lang="id">[API Code with LLM Assistance](../../backend/ai-interface-code/)</span><span lang="en">[API Code with LLM Assistance](../../backend/ai-interface-code/)</span></li>
+<li><span lang="id">[Git & GitHub Workflow](../../backend/git-workflow/)</span><span lang="en">[Git & GitHub Workflow](../../backend/git-workflow/)</span></li>
+<li><span lang="id">[Web App Deployment](../../backend/zeabur-deployment/)</span><span lang="en">[Web App Deployment](../../backend/zeabur-deployment/)</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../assignments/movie-recommendation-springboot/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Proyek: Sistem Rekomendasi Film Enterprise (Spring Boot)</span><span lang="en">Proyek: Sistem Rekomendasi Film Enterprise (Spring Boot)</span></b></a>
+      <a class="next" href="../../assignments/traffic-data-visualization-go/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Proyek: Analisis & Visualisasi Data Lalu Lintas (Go)</span><span lang="en">Proyek: Analisis & Visualisasi Data Lalu Lintas (Go)</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>An Introduction to Technical Writing — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: An Introduction to Technical Writing. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/9-engineering-excellence/technical-writing/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">An Introduction to Technical Writing</span><span lang="en">An Introduction to Technical Writing</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">An Introduction to Technical Writing</span><span lang="en">An Introduction to Technical Writing</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: An Introduction to Technical Writing.</span><span lang="en">Ensiklopedia VibeKoding: An Introduction to Technical Writing.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Does anyone read the documentation you write?</b> Many developers think "if the code works, that's enough — documentation can wait." The result: new hires can't understand the project, API integration relies entirely on verbal communication, and six months later even you've forgotten why you designed it that way.
+
+This chapter helps you master the core methods of technical writing so your documentation is actually read, understood, and useful.</span><span lang="en"><b>Does anyone read the documentation you write?</b> Many developers think "if the code works, that's enough — documentation can wait." The result: new hires can't understand the project, API integration relies entirely on verbal communication, and six months later even you've forgotten why you designed it that way.
+
+This chapter helps you master the core methods of technical writing so your documentation is actually read, understood, and useful.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn in this article?</b></span><span lang="en"><b>What will you learn in this article?</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Core Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>Document types and structure</td><td>How to write different documents</td></tr>
+<tr><td><b>Chapter 2</b></td><td>Writing principles</td><td>Clear, accurate, concise</td></tr>
+<tr><td><b>Chapter 3</b></td><td>Practical comparisons</td><td>Good docs vs. bad docs</td></tr>
+<tr><td><b>Chapter 4</b></td><td>Document maintenance</td><td>Keeping documentation up to date</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">After reading this chapter, you will be able to write technical documentation that is well-structured, accurate, and easy to maintain.</span><span lang="en">After reading this chapter, you will be able to write technical documentation that is well-structured, accurate, and easy to maintain.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. The Big Picture: Why Technical Documentation Matters</span><span lang="en">0. The Big Picture: Why Technical Documentation Matters</span></h2>
+<p class="reveal"><span lang="id">Code tells the computer "how"; documentation tells people "why." A project without documentation is like an appliance without a manual — it works, but using it is pure guesswork.</span><span lang="en">Code tells the computer "how"; documentation tells people "why." A project without documentation is like an appliance without a manual — it works, but using it is pure guesswork.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Reduced Communication Costs</b>: New team members can onboard independently, reducing repeated explanations
+- <b>Preserved Decision Context</b>: Recording "why," not just "what"
+- <b>Increased Project Credibility</b>: Good documentation is the face of an open source project
+- <b>Accelerated Collaboration</b>: API documentation enables parallel front-end and back-end development</span><span lang="en">- <b>Reduced Communication Costs</b>: New team members can onboard independently, reducing repeated explanations
+- <b>Preserved Decision Context</b>: Recording "why," not just "what"
+- <b>Increased Project Credibility</b>: Good documentation is the face of an open source project
+- <b>Accelerated Collaboration</b>: API documentation enables parallel front-end and back-end development</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Document Types and Structure</span><span lang="en">1. Document Types and Structure</span></h2>
+<p class="reveal"><span lang="id">Use the interactive component below to learn the standard structure for different types of documents:</span><span lang="en">Use the interactive component below to learn the standard structure for different types of documents:</span></p>
+<p class="reveal"><span lang="id"><DocStructureDemo /></span><span lang="en"><DocStructureDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 Common Document Types</span><span lang="en">1.1 Common Document Types</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Document Type</th><th>Target Audience</th><th>Core Content</th></tr>
+<tr><td><b>README</b></td><td>Everyone</td><td>What the project is, how to use it, how to contribute</td></tr>
+<tr><td><b>API Documentation</b></td><td>API consumers</td><td>Endpoints, parameters, responses, error codes</td></tr>
+<tr><td><b>Architecture Docs</b></td><td>Development team</td><td>System design, technology choices, data flow</td></tr>
+<tr><td><b>Changelog</b></td><td>Users/developers</td><td>Version changes, additions/fixes/breaking changes</td></tr>
+<tr><td><b>Contributing Guide</b></td><td>Contributors</td><td>Dev environment, code standards, PR process</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 The Golden Structure of a README</span><span lang="en">1.2 The Golden Structure of a README</span></h3>
+<p class="reveal"><span lang="id">A good README should include:</span><span lang="en">A good README should include:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Project name + one-line description</b>: Let people know what this is in 3 seconds</span><span lang="en"><b>Project name + one-line description</b>: Let people know what this is in 3 seconds</span></li>
+<li><span lang="id"><b>Quick start</b>: Run it with minimal steps</span><span lang="en"><b>Quick start</b>: Run it with minimal steps</span></li>
+<li><span lang="id"><b>Features</b>: Core selling points</span><span lang="en"><b>Features</b>: Core selling points</span></li>
+<li><span lang="id"><b>Installation</b>: Detailed environment requirements and installation steps</span><span lang="en"><b>Installation</b>: Detailed environment requirements and installation steps</span></li>
+<li><span lang="id"><b>Usage examples</b>: Copy-paste-ready code</span><span lang="en"><b>Usage examples</b>: Copy-paste-ready code</span></li>
+<li><span lang="id"><b>Contributing guide</b>: How to participate</span><span lang="en"><b>Contributing guide</b>: How to participate</span></li>
+<li><span lang="id"><b>License</b>: Legal information</span><span lang="en"><b>License</b>: Legal information</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Writing Principles</span><span lang="en">2. Writing Principles</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Clarity First</span><span lang="en">2.1 Clarity First</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>markdown</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;!-- Bad: vague and unclear --&gt;
+This function processes data.
+
+&lt;!-- Good: specific and clear --&gt;
+Converts raw order data to invoice format, including tax calculation and currency conversion.</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Audience-Oriented</span><span lang="en">2.2 Audience-Oriented</span></h3>
+<p class="reveal"><span lang="id">Before writing documentation, ask: <b>Who will read this? What information do they need?</b></span><span lang="en">Before writing documentation, ask: <b>Who will read this? What information do they need?</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Writing for beginners: Explain terminology, provide complete examples</span><span lang="en">Writing for beginners: Explain terminology, provide complete examples</span></li>
+<li><span lang="id">Writing for experienced developers: Get to the point, provide API references</span><span lang="en">Writing for experienced developers: Get to the point, provide API references</span></li>
+<li><span lang="id">Writing for non-technical people: Use analogies, avoid jargon</span><span lang="en">Writing for non-technical people: Use analogies, avoid jargon</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 Code Examples Are the Best Documentation</span><span lang="en">2.3 Code Examples Are the Best Documentation</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>markdown</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;!-- Bad: text description only --&gt;
+Call the createUser function, passing in the username and email parameters.
+
+&lt;!-- Good: runnable example --&gt;
+const user = await createUser({
+  name: &#039;Zhang San&#039;,
+  email: &#039;zhangsan@example.com&#039;
+})
+// Returns: { id: &#039;u_123&#039;, name: &#039;Zhang San&#039;, createdAt: &#039;2025-01-15&#039; }</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Practical Comparisons</span><span lang="en">3. Practical Comparisons</span></h2>
+<p class="reveal"><span lang="id">Use the interactive component below to compare good and bad technical writing:</span><span lang="en">Use the interactive component below to compare good and bad technical writing:</span></p>
+<p class="reveal"><span lang="id"><TechWritingPracticeDemo /></span><span lang="en"><TechWritingPracticeDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Commit Message Standards</span><span lang="en">3.1 Commit Message Standards</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Bad
+fix bug
+update code
+
+# Good (Conventional Commits)
+fix: resolve login page white screen issue on Safari
+feat: support batch export of PDF reports
+docs: update example code in API authentication section</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 The Art of Comments</span><span lang="en">3.2 The Art of Comments</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Bad: describes &quot;what&quot; (the code already says this)
+// Iterate through the array
+for (const item of items) { ... }
+
+// Good: explains &quot;why&quot;
+// Iterate in reverse because forward iteration skips the next item when deleting
+for (let i = items.length - 1; i &gt;= 0; i--) { ... }</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Document Maintenance</span><span lang="en">4. Document Maintenance</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Docs as Code</span><span lang="en">4.1 Docs as Code</span></h3>
+<p class="reveal"><span lang="id">Keep documentation and code in the same repository, managed with the same workflow:</span><span lang="en">Keep documentation and code in the same repository, managed with the same workflow:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Submit documentation changes alongside code in the same PR</span><span lang="en">Submit documentation changes alongside code in the same PR</span></li>
+<li><span lang="id">Use CI to check documentation formatting and link validity</span><span lang="en">Use CI to check documentation formatting and link validity</span></li>
+<li><span lang="id">Update documentation in sync with version releases</span><span lang="en">Update documentation in sync with version releases</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Preventing Documentation Rot</span><span lang="en">4.2 Preventing Documentation Rot</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Problem</th><th>Solution</th></tr>
+<tr><td>Outdated documentation</td><td>Force documentation updates with code changes (PR checks)</td></tr>
+<tr><td>No one maintains it</td><td>Assign documentation owners</td></tr>
+<tr><td>Content duplication</td><td>Single source of truth, link to it elsewhere</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. AI-Powered: Using LLMs to Improve Documentation Quality</span><span lang="en">5. AI-Powered: Using LLMs to Improve Documentation Quality</span></h2>
+<p class="reveal"><span lang="id">LLMs are almost "naturally gifted" in technical writing — generating documentation, improving expression, and translating content are all strong suits.</span><span lang="en">LLMs are almost "naturally gifted" in technical writing — generating documentation, improving expression, and translating content are all strong suits.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Generating API Documentation</span><span lang="en">5.1 Generating API Documentation</span></h3>
+<p class="reveal"><span lang="id">> <b>Prompt</b>:</span><span lang="en">> <b>Prompt</b>:</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<p class="reveal"><span lang="id">> Based on the following Express route code, generate complete API documentation including:</span><span lang="en">> Based on the following Express route code, generate complete API documentation including:</span></p>
+<p class="reveal"><span lang="id">> - Endpoint path and method</span><span lang="en">> - Endpoint path and method</span></p>
+<p class="reveal"><span lang="id">> - Request parameters (path params, query params, request body) and types</span><span lang="en">> - Request parameters (path params, query params, request body) and types</span></p>
+<p class="reveal"><span lang="id">> - Success and error response examples</span><span lang="en">> - Success and error response examples</span></p>
+<p class="reveal"><span lang="id">> - curl usage examples</span><span lang="en">> - curl usage examples</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> [Paste your route code]</span><span lang="en">> [Paste your route code]</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Improving Technical Writing</span><span lang="en">5.2 Improving Technical Writing</span></h3>
+<p class="reveal"><span lang="id">> <b>Prompt</b>:</span><span lang="en">> <b>Prompt</b>:</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<p class="reveal"><span lang="id">> Please improve the expression of the following technical documentation:</span><span lang="en">> Please improve the expression of the following technical documentation:</span></p>
+<p class="reveal"><span lang="id">> 1. Use concise and clear language, remove redundant expressions</span><span lang="en">> 1. Use concise and clear language, remove redundant expressions</span></p>
+<p class="reveal"><span lang="id">> 2. Replace passive voice with active voice</span><span lang="en">> 2. Replace passive voice with active voice</span></p>
+<p class="reveal"><span lang="id">> 3. Keep technical terms accurate</span><span lang="en">> 3. Keep technical terms accurate</span></p>
+<p class="reveal"><span lang="id">> 4. Add necessary code examples</span><span lang="en">> 4. Add necessary code examples</span></p>
+<p class="reveal"><span lang="id">> Preserve the original meaning; only improve the quality of expression.</span><span lang="en">> Preserve the original meaning; only improve the quality of expression.</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> [Paste your documentation content]</span><span lang="en">> [Paste your documentation content]</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 Generating a README</span><span lang="en">5.3 Generating a README</span></h3>
+<p class="reveal"><span lang="id">> <b>Prompt</b>:</span><span lang="en">> <b>Prompt</b>:</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+<p class="reveal"><span lang="id">> Based on the following project information, generate a high-quality README.md:</span><span lang="en">> Based on the following project information, generate a high-quality README.md:</span></p>
+<p class="reveal"><span lang="id">> - Project name: [name]</span><span lang="en">> - Project name: [name]</span></p>
+<p class="reveal"><span lang="id">> - One-line description: [description]</span><span lang="en">> - One-line description: [description]</span></p>
+<p class="reveal"><span lang="id">> - Tech stack: [list]</span><span lang="en">> - Tech stack: [list]</span></p>
+<p class="reveal"><span lang="id">> - Core features: [list]</span><span lang="en">> - Core features: [list]</span></p>
+<p class="reveal"><span lang="id">></span><span lang="en">></span></p>
+<p class="reveal"><span lang="id">> Must include: project introduction, quick start, features,</span><span lang="en">> Must include: project introduction, quick start, features,</span></p>
+<p class="reveal"><span lang="id">> installation steps (with code), usage examples, contributing guide, license.</span><span lang="en">> installation steps (with code), usage examples, contributing guide, license.</span></p>
+<p class="reveal"><span lang="id">> ```</span><span lang="en">> ```</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Always verify technical details in AI-generated documentation — it may fabricate non-existent API parameters or incorrect return values. Always cross-check against the actual code.</span><span lang="en">Always verify technical details in AI-generated documentation — it may fabricate non-existent API parameters or incorrect return values. Always cross-check against the actual code.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Summary</span><span lang="en">6. Summary</span></h2>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Type Matching</b>: Different documents have different structures and writing styles</span><span lang="en"><b>Type Matching</b>: Different documents have different structures and writing styles</span></li>
+<li><span lang="id"><b>Clarity First</b>: Be specific, accurate, and audience-oriented</span><span lang="en"><b>Clarity First</b>: Be specific, accurate, and audience-oriented</span></li>
+<li><span lang="id"><b>Example-Driven</b>: Good code examples are worth a thousand words</span><span lang="en"><b>Example-Driven</b>: Good code examples are worth a thousand words</span></li>
+<li><span lang="id"><b>Continuous Maintenance</b>: Treat docs as code, evolving with the project</span><span lang="en"><b>Continuous Maintenance</b>: Treat docs as code, evolving with the project</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Writing documentation is not wasting time — it's <b>saving future time</b>. The 30 minutes you spend writing documentation today could save 10 people an hour each. Good documentation is the best investment you can make for your team.</span><span lang="en">Writing documentation is not wasting time — it's <b>saving future time</b>. The 30 minutes you spend writing documentation today could save 10 people an hour each. Good documentation is the best investment you can make for your team.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Writing Guide</b>: Google's Technical Writing course is free and practical.</span><span lang="en"><b>Writing Guide</b>: Google's Technical Writing course is free and practical.</span></li>
+<li><span lang="id"><b>Documentation Tools</b>: VitePress, Docusaurus, GitBook, and other modern documentation frameworks.</span><span lang="en"><b>Documentation Tools</b>: VitePress, Docusaurus, GitBook, and other modern documentation frameworks.</span></li>
+<li><span lang="id"><b>API Documentation</b>: The OpenAPI/Swagger specification is the industry standard for API documentation.</span><span lang="en"><b>API Documentation</b>: The OpenAPI/Swagger specification is the industry standard for API documentation.</span></li>
+<li><span lang="id"><b>Practical Advice</b>: Start by writing a good README for your own project.</span><span lang="en"><b>Practical Advice</b>: Start by writing a good README for your own project.</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../9-engineering-excellence/security-thinking/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">9-engineering-excellence/security-thinking</span><span lang="en">9-engineering-excellence/security-thinking</span></b></a>
+      <a class="next" href="../../9-engineering-excellence/technology-selection/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">9-engineering-excellence/technology-selection</span><span lang="en">9-engineering-excellence/technology-selection</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

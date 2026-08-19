@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Programming Language Concepts: Paradigms, Evolution, and Selection — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Programming Language Concepts: Paradigms, Evolution, and Selection. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/1-computer-fundamentals/programming-languages/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Programming Language Concepts: Paradigms, Evolution, and Selection</span><span lang="en">Programming Language Concepts: Paradigms, Evolution, and Selection</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Programming Language Concepts: Paradigms, Evolution, and Selection</span><span lang="en">Programming Language Concepts: Paradigms, Evolution, and Selection</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Programming Language Concepts: Paradigms, Evolution, and Selection.</span><span lang="en">Ensiklopedia VibeKoding: Programming Language Concepts: Paradigms, Evolution, and Selection.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Why are there so many programming languages? Which one should you learn? This chapter takes you from "language evolution" to "programming paradigms" to "how to choose," building a panoramic understanding of programming languages. <b>Bottom line first: there is no best language, only the most suitable language for the scenario.</b></span><span lang="en">Why are there so many programming languages? Which one should you learn? This chapter takes you from "language evolution" to "programming paradigms" to "how to choose," building a panoramic understanding of programming languages. <b>Bottom line first: there is no best language, only the most suitable language for the scenario.</b></span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn from this article?</b></span><span lang="en"><b>What will you learn from this article?</b></span></p>
+<p class="reveal"><span lang="id">After completing this chapter, you will gain:</span><span lang="en">After completing this chapter, you will gain:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Rational technology selection</b>: When facing "what language to learn," make judgments based on project requirements rather than blindly following trends</span><span lang="en"><b>Rational technology selection</b>: When facing "what language to learn," make judgments based on project requirements rather than blindly following trends</span></li>
+<li><span lang="id"><b>Deep paradigm understanding</b>: Understand that "object-oriented" and "functional programming" are different ways of thinking, not just syntax differences</span><span lang="en"><b>Deep paradigm understanding</b>: Understand that "object-oriented" and "functional programming" are different ways of thinking, not just syntax differences</span></li>
+<li><span lang="id"><b>Historical evolution perspective</b>: See 70+ years of language evolution — from hand-writing 0s and 1s to natural language generating code</span><span lang="en"><b>Historical evolution perspective</b>: See 70+ years of language evolution — from hand-writing 0s and 1s to natural language generating code</span></li>
+<li><span lang="id"><b>Foundation for further learning</b>: Build a foundation for understanding new language design philosophies and making technology selection decisions</span><span lang="en"><b>Foundation for further learning</b>: Build a foundation for understanding new language design philosophies and making technology selection decisions</span></li>
+</ul>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Core Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>Language Evolution</td><td>From machine language to high-level languages</td></tr>
+<tr><td><b>Chapter 2</b></td><td>Programming Paradigms</td><td>Imperative, object-oriented, functional</td></tr>
+<tr><td><b>Chapter 3</b></td><td>Language Selection</td><td>Scenario-driven selection method</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. Introduction: The Role of Programming Languages</span><span lang="en">0. Introduction: The Role of Programming Languages</span></h2>
+<p class="reveal"><span lang="id">Imagine you need to communicate with a robot that only understands binary:</span><span lang="en">Imagine you need to communicate with a robot that only understands binary:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Directly typing 0s and 1s</b> — Most primitive, extremely inefficient; one wrong 0 or 1 and everything breaks (machine language)</span><span lang="en"><b>Directly typing 0s and 1s</b> — Most primitive, extremely inefficient; one wrong 0 or 1 and everything breaks (machine language)</span></li>
+<li><span lang="id"><b>Using mnemonics instead</b> — <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">MOV AX, 1</code> is much easier to recognize than <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">10110000 00000001</code> (assembly language)</span><span lang="en"><b>Using mnemonics instead</b> — <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">MOV AX, 1</code> is much easier to recognize than <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">10110000 00000001</code> (assembly language)</span></li>
+<li><span lang="id"><b>Using near-natural language</b> — <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">int sum = 1 + 2;</code> humans can read it directly (high-level language)</span><span lang="en"><b>Using near-natural language</b> — <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">int sum = 1 + 2;</code> humans can read it directly (high-level language)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Programming languages are the bridge for human-computer communication</b>, evolving for over 70 years toward "closer to human thinking."</span><span lang="en"><b>Programming languages are the bridge for human-computer communication</b>, evolving for over 70 years toward "closer to human thinking."</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. The Evolution of Programming Languages</span><span lang="en">1. The Evolution of Programming Languages</span></h2>
+<p class="reveal"><span lang="id"><b>Click around below</b>: Explore the evolution of programming languages from the 1940s to today</span><span lang="en"><b>Click around below</b>: Explore the evolution of programming languages from the 1940s to today</span></p>
+<p class="reveal"><span lang="id"><LanguageMapDemo /></span><span lang="en"><LanguageMapDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">The trend in programming language evolution: <b>increasingly close to human thinking, increasingly safe, increasingly efficient.</b> From hand-writing 0/1, to assembly mnemonics, to C's structured programming, to Java's object-oriented approach, to Rust's memory safety — each generation of languages solves the pain points of the previous one.</span><span lang="en">The trend in programming language evolution: <b>increasingly close to human thinking, increasingly safe, increasingly efficient.</b> From hand-writing 0/1, to assembly mnemonics, to C's structured programming, to Java's object-oriented approach, to Rust's memory safety — each generation of languages solves the pain points of the previous one.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Programming Paradigms: Ways of Thinking About Problems</span><span lang="en">2. Programming Paradigms: Ways of Thinking About Problems</span></h2>
+<p class="reveal"><span lang="id">Programming paradigms are not language features but <b>ways of thinking</b> — just as writing has different genres like poetry, novels, and essays.</span><span lang="en">Programming paradigms are not language features but <b>ways of thinking</b> — just as writing has different genres like poetry, novels, and essays.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Imperative Programming: Step-by-Step Execution Description</span><span lang="en">2.1 Imperative Programming: Step-by-Step Execution Description</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>c</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>int sum = 0;
+for (int i = 0; i &lt; n; i++) {
+    sum += arr[i];
+}</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Object-Oriented Programming: Encapsulation of Data and Behavior</span><span lang="en">2.2 Object-Oriented Programming: Encapsulation of Data and Behavior</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>python</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>class Dog:
+    def __init__(self, name):
+        self.name = name
+    def bark(self):
+        print(f&quot;{self.name} says woof!&quot;)</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 Functional Programming: Pure Functions and Immutable State</span><span lang="en">2.3 Functional Programming: Pure Functions and Immutable State</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>haskell</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>sum = foldl (+) 0
+-- Same input always produces the same output</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.4 Declarative Programming: Describing Goals Rather Than Steps</span><span lang="en">2.4 Declarative Programming: Describing Goals Rather Than Steps</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>sql</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>SELECT name FROM users WHERE active = true
+-- The database decides the most efficient way to query</pre>
+</div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Most modern languages are <b>multi-paradigm</b>. Python supports both object-oriented and functional programming; JavaScript does the same. Don't fixate on "which paradigm is best" — choose the most appropriate approach for the problem.</span><span lang="en">Most modern languages are <b>multi-paradigm</b>. Python supports both object-oriented and functional programming; JavaScript does the same. Don't fixate on "which paradigm is best" — choose the most appropriate approach for the problem.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Type System Fundamentals</span><span lang="en">3. Type System Fundamentals</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th></th><th>Strongly Typed</th><th>Weakly Typed</th></tr>
+<tr><td><b>Static</b></td><td>Java, Rust, TypeScript — Safest</td><td>C, C++ — Efficient but requires caution</td></tr>
+<tr><td><b>Dynamic</b></td><td>Python, Ruby — Flexible and safe</td><td>JavaScript, PHP — Flexible but error-prone</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Key question</b>: What does <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"1" + 1</code> equal?</span><span lang="en"><b>Key question</b>: What does <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"1" + 1</code> equal?</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>JavaScript (weakly typed)</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"11"</code> — silently converted for you</span><span lang="en"><b>JavaScript (weakly typed)</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"11"</code> — silently converted for you</span></li>
+<li><span lang="id"><b>Python (strongly typed)</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">TypeError</code> — forces you to think clearly</span><span lang="en"><b>Python (strongly typed)</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">TypeError</code> — forces you to think clearly</span></li>
+</ul>
+<p class="reveal"><span lang="id">Want to dive deeper into type systems? → [Type Systems: An Introduction](./type-systems) | [Compiler Principles](./compilers)</span><span lang="en">Want to dive deeper into type systems? → [Type Systems: An Introduction](./type-systems) | [Compiler Principles](./compilers)</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Compiled vs Interpreted</span><span lang="en">4. Compiled vs Interpreted</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th></th><th>Compiled</th><th>Interpreted</th><th>JIT</th></tr>
+<tr><td><b>Process</b></td><td>Translate everything first, then run</td><td>Read and execute line by line</td><td>Interpret first, compile hot spots later</td></tr>
+<tr><td><b>Speed</b></td><td>Fastest</td><td>Slower</td><td>Medium</td></tr>
+<tr><td><b>Debugging</b></td><td>Requires compilation wait</td><td>Instant feedback</td><td>Instant + optimization</td></tr>
+<tr><td><b>Representatives</b></td><td>C, Rust, Go</td><td>Python, Ruby</td><td>Java, JavaScript</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Programming Language Selection</span><span lang="en">5. Programming Language Selection</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Choose by Scenario</span><span lang="en">Choose by Scenario</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Scenario</th><th>Recommended Language</th><th>Reason</th></tr>
+<tr><td><b>Web Frontend</b></td><td>JavaScript, TypeScript</td><td>Browsers only understand JS</td></tr>
+<tr><td><b>Web Backend</b></td><td>Go, Java, Python, Node.js</td><td>Mature ecosystems</td></tr>
+<tr><td><b>Mobile Development</b></td><td>Swift (iOS), Kotlin (Android)</td><td>Official recommendations</td></tr>
+<tr><td><b>AI / Data</b></td><td>Python</td><td>PyTorch, Pandas are all in Python</td></tr>
+<tr><td><b>Systems Programming</b></td><td>C, Rust</td><td>Direct hardware control</td></tr>
+<tr><td><b>Cloud Native</b></td><td>Go, Rust</td><td>Docker/K8s are written in Go</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Learning Path Recommendation</span><span lang="en">Learning Path Recommendation</span></h3>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Python</b> — Simplest syntax, entry point for the AI era</span><span lang="en"><b>Python</b> — Simplest syntax, entry point for the AI era</span></li>
+<li><span lang="id"><b>JavaScript</b> — Essential for web development, covers both frontend and backend</span><span lang="en"><b>JavaScript</b> — Essential for web development, covers both frontend and backend</span></li>
+<li><span lang="id"><b>TypeScript</b> — Adds a type system to JS, experience static typing</span><span lang="en"><b>TypeScript</b> — Adds a type system to JS, experience static typing</span></li>
+<li><span lang="id"><b>Go or Rust</b> — Understand compiled languages and low-level concepts</span><span lang="en"><b>Go or Rust</b> — Understand compiled languages and low-level concepts</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Summary</span><span lang="en">6. Summary</span></h2>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">1. <b>Language evolution</b>: From machine language to high-level languages, increasingly close to human thinking
+2. <b>Programming paradigms</b>: Imperative, object-oriented, functional, declarative — each has applicable scenarios
+3. <b>Type systems</b>: Static/dynamic, strong/weak — affect safety and flexibility
+4. <b>Execution models</b>: Compiled is fast, interpreted is flexible, JIT combines both
+5. <b>No silver bullet</b>: Choose languages based on scenarios rather than pursuing the "best language"</span><span lang="en">1. <b>Language evolution</b>: From machine language to high-level languages, increasingly close to human thinking
+2. <b>Programming paradigms</b>: Imperative, object-oriented, functional, declarative — each has applicable scenarios
+3. <b>Type systems</b>: Static/dynamic, strong/weak — affect safety and flexibility
+4. <b>Execution models</b>: Compiled is fast, interpreted is flexible, JIT combines both
+5. <b>No silver bullet</b>: Choose languages based on scenarios rather than pursuing the "best language"</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>Next steps for learning</b>:</span><span lang="en"><b>Next steps for learning</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[Compiler Principles](./compilers) - Deepen your understanding of the compilation process and code optimization</span><span lang="en">[Compiler Principles](./compilers) - Deepen your understanding of the compilation process and code optimization</span></li>
+<li><span lang="id">[Type Systems: An Introduction](./type-systems) - Deepen your understanding of type systems and type safety</span><span lang="en">[Type Systems: An Introduction](./type-systems) - Deepen your understanding of type systems and type safety</span></li>
+<li><span lang="id">[Data Structures: An Introduction](./data-structures) - Understand how data is organized</span><span lang="en">[Data Structures: An Introduction](./data-structures) - Understand how data is organized</span></li>
+<li><span lang="id">[Introduction to Algorithms](./algorithm-thinking) - Learn methods for solving problems</span><span lang="en">[Introduction to Algorithms](./algorithm-thinking) - Learn methods for solving problems</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../1-computer-fundamentals/power-on-to-web/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">1-computer-fundamentals/power-on-to-web</span><span lang="en">1-computer-fundamentals/power-on-to-web</span></b></a>
+      <a class="next" href="../../1-computer-fundamentals/transistor-to-cpu/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">1-computer-fundamentals/transistor-to-cpu</span><span lang="en">1-computer-fundamentals/transistor-to-cpu</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>An Introduction to Environment Variables and PATH — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: An Introduction to Environment Variables and PATH. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/2-development-tools/environment-path/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">An Introduction to Environment Variables and PATH</span><span lang="en">An Introduction to Environment Variables and PATH</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">An Introduction to Environment Variables and PATH</span><span lang="en">An Introduction to Environment Variables and PATH</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: An Introduction to Environment Variables and PATH.</span><span lang="en">Ensiklopedia VibeKoding: An Introduction to Environment Variables and PATH.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">> 💡 <b>Learning Guide</b>: Every time you type <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">python</code> in the terminal, the system has to find where that program is located. Every time your code calls a large model API, the program needs to know which key to use. Both of these tasks rely on the same underlying mechanism — <b>environment variables</b>.</span><span lang="en">> 💡 <b>Learning Guide</b>: Every time you type <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">python</code> in the terminal, the system has to find where that program is located. Every time your code calls a large model API, the program needs to know which key to use. Both of these tasks rely on the same underlying mechanism — <b>environment variables</b>.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. PATH: How Shell Finds the Command You Typed</span><span lang="en">1. PATH: How Shell Finds the Command You Typed</span></h2>
+<p class="reveal"><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">PATH</code> is a special environment variable that stores a list of directory paths (separated by colons). When you type <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git</code>, Shell searches through these directories one by one for an executable file named <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git</code> — stopping as soon as it finds the first match.</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">PATH</code> is a special environment variable that stores a list of directory paths (separated by colons). When you type <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git</code>, Shell searches through these directories one by one for an executable file named <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">git</code> — stopping as soon as it finds the first match.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>$ echo $PATH
+/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</pre>
+</div>
+<p class="reveal"><span lang="id">Select a command and observe how Shell searches through directories step by step:</span><span lang="en">Select a command and observe how Shell searches through directories step by step:</span></p>
+<p class="reveal"><span lang="id"><PathSearchDemo /></span><span lang="en"><PathSearchDemo /></span></p>
+<p class="reveal"><span lang="id"><b>Three key rules</b>:</span><span lang="en"><b>Three key rules</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Directories listed earlier in PATH have higher priority</span><span lang="en">Directories listed earlier in PATH have higher priority</span></li>
+<li><span lang="id">Searching stops at the first match — no further directories are checked</span><span lang="en">Searching stops at the first match — no further directories are checked</span></li>
+<li><span lang="id">If none of the directories contain the command → <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">command not found</code></span><span lang="en">If none of the directories contain the command → <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">command not found</code></span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Motivation for needing to Restart the Terminal After Installing a Tool</span><span lang="en">2. Motivation for needing to Restart the Terminal After Installing a Tool</span></h2>
+<p class="reveal"><span lang="id">When you install tools like nvm, Homebrew, or conda, the installation script automatically appends a line to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">~/.zshrc</code> to add its directory to PATH:</span><span lang="en">When you install tools like nvm, Homebrew, or conda, the installation script automatically appends a line to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">~/.zshrc</code> to add its directory to PATH:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Content automatically written by the installer (example)
+export PATH=&quot;/usr/local/opt/python@3.12/bin:$PATH&quot;</pre>
+</div>
+<p class="reveal"><span lang="id">This line only executes when a <b>new Shell starts</b>. Already-open terminal windows are unaffected, so:</span><span lang="en">This line only executes when a <b>new Shell starts</b>. Already-open terminal windows are unaffected, so:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Take effect immediately without restarting
+source ~/.zshrc</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Common scenarios with AI development tools</b>:</span><span lang="en"><b>Common scenarios with AI development tools</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Ollama / pipx installed but getting &quot;command not found&quot;
+which ollama          # Check actual installation location
+
+# pip-installed CLI tool paths (add to PATH)
+# macOS: ~/Library/Python/3.x/bin
+# Linux: ~/.local/bin
+export PATH=&quot;$PATH:$HOME/.local/bin&quot;
+
+# Recommended: use pipx to install CLI tools, manages PATH automatically
+pipx install aider-chat</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Variable Scope: Who Can See ThOverview of Variable</span><span lang="en">3. Variable Scope: Who Can See ThOverview of Variable</span></h2>
+<p class="reveal"><span lang="id">Environment variables are not broadcast to all programs — each process holds <b>its own copy</b>, inherited from the parent process. Modifying your own copy does not affect the parent process.</span><span lang="en">Environment variables are not broadcast to all programs — each process holds <b>its own copy</b>, inherited from the parent process. Modifying your own copy does not affect the parent process.</span></p>
+<p class="reveal"><span lang="id">The diagram below shows three levels. Export a new variable at the "User Level" and see whether it appears at the "Process Level":</span><span lang="en">The diagram below shows three levels. Export a new variable at the "User Level" and see whether it appears at the "Process Level":</span></p>
+<p class="reveal"><span lang="id"><EnvScopeDemo /></span><span lang="en"><EnvScopeDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. export: Determining Whether Child Processes Can Read a Variable</span><span lang="en">4. export: Determining Whether Child Processes Can Read a Variable</span></h2>
+<p class="reveal"><span lang="id">When setting a variable, including or omitting <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">export</code> makes a completely different difference:</span><span lang="en">When setting a variable, including or omitting <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">export</code> makes a completely different difference:</span></p>
+<p class="reveal"><span lang="id"><EnvExportDemo /></span><span lang="en"><EnvExportDemo /></span></p>
+<p class="reveal"><span lang="id">To make a variable persist across sessions, write the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">export</code> statement into a configuration file:</span><span lang="en">To make a variable persist across sessions, write the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">export</code> statement into a configuration file:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># macOS (zsh)
+echo &#039;export MY_VAR=&quot;value&quot;&#039; &gt;&gt; ~/.zshrc
+source ~/.zshrc       # Takes effect immediately, no need to reopen the terminal
+
+# Linux (bash)
+echo &#039;export MY_VAR=&quot;value&quot;&#039; &gt;&gt; ~/.bashrc
+source ~/.bashrc</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. API Keys: Never Hardcode Them in Your Source Code</span><span lang="en">5. API Keys: Never Hardcode Them in Your Source Code</span></h2>
+<p class="reveal"><span lang="id">When calling APIs from OpenAI, Anthropic, DeepSeek, and others, your key is essentially your "ID card + credit card." If it leaks, others can spend your quota — and you foot the bill.</span><span lang="en">When calling APIs from OpenAI, Anthropic, DeepSeek, and others, your key is essentially your "ID card + credit card." If it leaks, others can spend your quota — and you foot the bill.</span></p>
+<p class="reveal"><span lang="id">The most common mistake is hardcoding the key directly in source code:</span><span lang="en">The most common mistake is hardcoding the key directly in source code:</span></p>
+<p class="reveal"><span lang="id"><ApiKeyDangerDemo /></span><span lang="en"><ApiKeyDangerDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Local Development: Managing Keys with .env Files</span><span lang="en">6. Local Development: Managing Keys with .env Files</span></h2>
+<p class="reveal"><span lang="id">During local development, store keys in a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.env</code> file in the project root directory. Your code reads them via the dotenv library. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.env</code> must be added to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.gitignore</code> and never committed to Git.</span><span lang="en">During local development, store keys in a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.env</code> file in the project root directory. Your code reads them via the dotenv library. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.env</code> must be added to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.gitignore</code> and never committed to Git.</span></p>
+<p class="reveal"><span lang="id">Configure on the left, read on the right — switch languages to see both approaches:</span><span lang="en">Configure on the left, read on the right — switch languages to see both approaches:</span></p>
+<p class="reveal"><span lang="id"><DotEnvDemo /></span><span lang="en"><DotEnvDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Production: Let the Runtime Platform Inject Keys</span><span lang="en">7. Production: Let the Runtime Platform Inject Keys</span></h2>
+<p class="reveal"><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.env</code> is a convenience tool for the development phase. On servers and cloud platforms, the <b>runtime environment</b> should be responsible for injecting keys. The code itself should be completely unaware of where the keys are stored:</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.env</code> is a convenience tool for the development phase. On servers and cloud platforms, the <b>runtime environment</b> should be responsible for injecting keys. The code itself should be completely unaware of where the keys are stored:</span></p>
+<p class="reveal"><span lang="id"><ServerSecretDemo /></span><span lang="en"><ServerSecretDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8. Practical Troubleshooting</span><span lang="en">8. Practical Troubleshooting</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">command not found</code></span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">command not found</code></span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Step 1: Check if it&#039;s in PATH
+which python3         # If there&#039;s output, it was found
+
+# Step 2: Find the program&#039;s actual location (macOS)
+brew list python | grep bin
+
+# Step 3: Add the directory to PATH
+export PATH=&quot;/found/path:$PATH&quot;
+source ~/.zshrc       # Remember to source after writing to config file</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Installed Two Versions, Not Using the One I Want</span><span lang="en">Installed Two Versions, Not Using the One I Want</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>which python
+# /usr/bin/python ← Old system version, earlier in PATH
+
+# Put the new version&#039;s directory at the front of PATH
+export PATH=&quot;/usr/local/bin:$PATH&quot;
+
+which python
+# /usr/local/bin/python ← New version, now takes priority</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Variable Is Set, But the Program Can't Read It</span><span lang="en">Variable Is Set, But the Program Can't Read It</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Cause</th><th>Solution</th></tr>
+<tr><td>Forgot <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">export</code></td><td>Add <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">export</code> and try again</td></tr>
+<tr><td>Modified <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">~/.zshrc</code> but it didn't take effect</td><td>Run <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">source ~/.zshrc</code></td></tr>
+<tr><td>Using <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.env</code> but didn't install dotenv</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">pip install python-dotenv</code> / <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">npm install dotenv</code></td></tr>
+<tr><td>On server, variable only works in SSH session</td><td>Use systemd <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">EnvironmentFile</code> instead</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Quick Glossary</span><span lang="en">Quick Glossary</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Term</th><th>Meaning</th></tr>
+<tr><td><b>PATH</b></td><td>A list of directories where Shell searches for executables, colon-separated; order determines priority</td></tr>
+<tr><td><b>export</b></td><td>Marks a variable as inheritable so child processes automatically get a copy</td></tr>
+<tr><td><b>source</b></td><td>Re-executes a configuration file in the current Shell, making changes take effect immediately</td></tr>
+<tr><td><b>which</b></td><td>Shows the executable file path for a command (the result of a PATH search)</td></tr>
+<tr><td><b>.env</b></td><td>A project-local configuration file for development keys; must be added to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.gitignore</code></td></tr>
+<tr><td><b>.env.example</b></td><td>A template with complete variable names but empty values; safe to commit to Git</td></tr>
+<tr><td><b>chmod 600</b></td><td>File permission: only the owner can read and write; suitable for protecting key files</td></tr>
+<tr><td><b>Secret Scanner</b></td><td>GitHub and other platforms automatically scan for leaked keys and notify vendors to revoke them</td></tr>
+</table></div>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../2-development-tools/debugging-art/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">2-development-tools/debugging-art</span><span lang="en">2-development-tools/debugging-art</span></b></a>
+      <a class="next" href="../../2-development-tools/git-version-control/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">2-development-tools/git-version-control</span><span lang="en">2-development-tools/git-version-control</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

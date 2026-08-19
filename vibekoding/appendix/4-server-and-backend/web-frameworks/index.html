@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of Web Frameworks — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Web Frameworks. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/4-server-and-backend/web-frameworks/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Web Frameworks</span><span lang="en">Principles of Web Frameworks</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of Web Frameworks</span><span lang="en">Principles of Web Frameworks</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Web Frameworks.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Web Frameworks.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>You've written the code — how do you make it accessible to people around the world?</b> It's like asking: do you want to open a roadside food stall, or run a multinational restaurant chain? Your choice of backend architecture determines how many customers your "restaurant" can serve.</span><span lang="en"><b>You've written the code — how do you make it accessible to people around the world?</b> It's like asking: do you want to open a roadside food stall, or run a multinational restaurant chain? Your choice of backend architecture determines how many customers your "restaurant" can serve.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Motivation for Understanding Architectural Evolution</span><span lang="en">1. Motivation for Understanding Architectural Evolution</span></h2>
+<p class="reveal"><span lang="id">Imagine you're planning a long-distance trip. You could choose to ride a bicycle, drive a car, take a high-speed train, or fly. Each mode of transport has its own sweet spot: a bicycle works for short distances when you want exercise; a plane is ideal for transcontinental journeys.</span><span lang="en">Imagine you're planning a long-distance trip. You could choose to ride a bicycle, drive a car, take a high-speed train, or fly. Each mode of transport has its own sweet spot: a bicycle works for short distances when you want exercise; a plane is ideal for transcontinental journeys.</span></p>
+<p class="reveal"><span lang="id"><b>The same goes for backend architecture choices.</b></span><span lang="en"><b>The same goes for backend architecture choices.</b></span></p>
+<p class="reveal"><span lang="id">From the birth of the internet to today, backend architecture has undergone several major transformations. Each transformation wasn't about "chasing the new" — it was about solving specific problems at the time:</span><span lang="en">From the birth of the internet to today, backend architecture has undergone several major transformations. Each transformation wasn't about "chasing the new" — it was about solving specific problems at the time:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Era</th><th>Core Problem</th><th>Architectural Evolution</th></tr>
+<tr><td>1990s</td><td>How to get a website running</td><td>Physical servers</td></tr>
+<tr><td>2000s</td><td>Code is getting messy — how to maintain it</td><td>Monolithic architecture + MVC</td></tr>
+<tr><td>2010s</td><td>Systems are too large — how to scale and collaborate</td><td>Microservices + containerization</td></tr>
+<tr><td>2020s</td><td>How to reduce operational costs and complexity</td><td>Serverless + cloud-native</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Let's interpret it row by row:
+
+<b>1990s → 2000s</b>: From "just get it running" to "it needs to be maintainable." Websites evolved from static pages to dynamic applications, and code volume exploded — better organization was needed.
+
+<b>2000s → 2010s</b>: From "single machine" to "distributed." User numbers grew exponentially; a single server couldn't handle the load anymore. Systems needed to be split and scaled horizontally.
+
+<b>2010s → 2020s</b>: From "self-managed operations" to "cloud services." Containers and microservices, while powerful, came with high operational costs. Serverless lets developers focus solely on business logic.
+
+<b>Core insight</b>: Architectural evolution isn't a game of technology selection — it's a process of <b>solving real problems</b>. Every stage has its applicable scenarios. There is no "best architecture," only the "most suitable architecture."</span><span lang="en">Let's interpret it row by row:
+
+<b>1990s → 2000s</b>: From "just get it running" to "it needs to be maintainable." Websites evolved from static pages to dynamic applications, and code volume exploded — better organization was needed.
+
+<b>2000s → 2010s</b>: From "single machine" to "distributed." User numbers grew exponentially; a single server couldn't handle the load anymore. Systems needed to be split and scaled horizontally.
+
+<b>2010s → 2020s</b>: From "self-managed operations" to "cloud services." Containers and microservices, while powerful, came with high operational costs. Serverless lets developers focus solely on business logic.
+
+<b>Core insight</b>: Architectural evolution isn't a game of technology selection — it's a process of <b>solving real problems</b>. Every stage has its applicable scenarios. There is no "best architecture," only the "most suitable architecture."</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>The value of understanding architectural evolution:</b></span><span lang="en"><b>The value of understanding architectural evolution:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Avoid reinventing the wheel</b>: Many "new" concepts had prototypes decades ago. Understanding history lets you stand on the shoulders of giants.</span><span lang="en"><b>Avoid reinventing the wheel</b>: Many "new" concepts had prototypes decades ago. Understanding history lets you stand on the shoulders of giants.</span></li>
+<li><span lang="id"><b>Make sound technology choices</b>: There is no best architecture, only the one best suited to your current stage.</span><span lang="en"><b>Make sound technology choices</b>: There is no best architecture, only the one best suited to your current stage.</span></li>
+<li><span lang="id"><b>Understand the trade-offs behind technology</b>: Every architectural evolution involves balancing <b>development efficiency</b>, <b>system performance</b>, and <b>operational complexity</b>.</span><span lang="en"><b>Understand the trade-offs behind technology</b>: Every architectural evolution involves balancing <b>development efficiency</b>, <b>system performance</b>, and <b>operational complexity</b>.</span></li>
+<li><span lang="id"><b>Anticipate technology trends</b>: History rhymes. Understanding past evolutionary patterns helps you grasp future directions.</span><span lang="en"><b>Anticipate technology trends</b>: History rhymes. Understanding past evolutionary patterns helps you grasp future directions.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><EvolutionIntroDemo /></span><span lang="en"><EvolutionIntroDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. The Physical Server Era (1990s)</span><span lang="en">2. The Physical Server Era (1990s)</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Overview of a Physical Server</span><span lang="en">2.1 Overview of a Physical Server</span></h3>
+<p class="reveal"><span lang="id">When the internet was just getting started, the backend was simply a <b>physical server</b> (a real computer) sitting in a data center.</span><span lang="en">When the internet was just getting started, the backend was simply a <b>physical server</b> (a real computer) sitting in a data center.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">A <b>physical server</b> is like your desktop computer at home, but it:
+
+- Runs 24/7 without shutting down
+- Sits in a dedicated data center (with air conditioning, UPS power, fire suppression systems)
+- Has faster network bandwidth (enterprise-grade fiber)
+- Has a fixed public IP address (accessible from anywhere in the world)
+
+It's like your home kitchen vs. a restaurant: your home kitchen cooks occasionally; a restaurant is a professional kitchen, open all day, with professional-grade equipment.</span><span lang="en">A <b>physical server</b> is like your desktop computer at home, but it:
+
+- Runs 24/7 without shutting down
+- Sits in a dedicated data center (with air conditioning, UPS power, fire suppression systems)
+- Has faster network bandwidth (enterprise-grade fiber)
+- Has a fixed public IP address (accessible from anywhere in the world)
+
+It's like your home kitchen vs. a restaurant: your home kitchen cooks occasionally; a restaurant is a professional kitchen, open all day, with professional-grade equipment.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Core Characteristics</span><span lang="en">2.2 Core Characteristics</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Single-machine deployment</b>: All applications run on one physical machine</span><span lang="en"><b>Single-machine deployment</b>: All applications run on one physical machine</span></li>
+<li><span lang="id"><b>Manual operations</b>: Requires manual racking, cabling, and system installation</span><span lang="en"><b>Manual operations</b>: Requires manual racking, cabling, and system installation</span></li>
+<li><span lang="id"><b>Vertical scaling</b>: When performance is insufficient, the only option is to buy a more powerful machine</span><span lang="en"><b>Vertical scaling</b>: When performance is insufficient, the only option is to buy a more powerful machine</span></li>
+</ul>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id"><b>Vertical Scaling</b> (Scale Up): Upgrading a single server's configuration (more CPU, more RAM, faster disks).
+
+<b>Horizontal Scaling</b> (Scale Out): Adding more servers and having them work together.
+
+<b>Analogy</b>:
+
+- Vertical scaling: Turning a small restaurant into a larger one with fancier decor, but still only one chef
+- Horizontal scaling: Opening a chain — each location is modest, but there are 100 of them
+
+<b>Pros and Cons</b>:
+
+- Vertical scaling is simple but has a ceiling (top-tier servers are expensive and have limits)
+- Horizontal scaling is theoretically unlimited but requires solving data consistency challenges</span><span lang="en"><b>Vertical Scaling</b> (Scale Up): Upgrading a single server's configuration (more CPU, more RAM, faster disks).
+
+<b>Horizontal Scaling</b> (Scale Out): Adding more servers and having them work together.
+
+<b>Analogy</b>:
+
+- Vertical scaling: Turning a small restaurant into a larger one with fancier decor, but still only one chef
+- Horizontal scaling: Opening a chain — each location is modest, but there are 100 of them
+
+<b>Pros and Cons</b>:
+
+- Vertical scaling is simple but has a ceiling (top-tier servers are expensive and have limits)
+- Horizontal scaling is theoretically unlimited but requires solving data consistency challenges</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 Pain Points</span><span lang="en">2.3 Pain Points</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Slow</b>: Every code change required manual upload and server restart</span><span lang="en"><b>Slow</b>: Every code change required manual upload and server restart</span></li>
+<li><span lang="id"><b>Expensive</b>: Scaling meant buying bigger machines (vertical scaling only)</span><span lang="en"><b>Expensive</b>: Scaling meant buying bigger machines (vertical scaling only)</span></li>
+<li><span lang="id"><b>Hard to scale</b>: One machine handles all requests; when the CPU is maxed out, everyone queues up</span><span lang="en"><b>Hard to scale</b>: One machine handles all requests; when the CPU is maxed out, everyone queues up</span></li>
+</ul>
+<p class="reveal"><span lang="id"><PhysicalServerDemo /></span><span lang="en"><PhysicalServerDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.4 Pros and Cons of the Physical Server Era</span><span lang="en">2.4 Pros and Cons of the Physical Server Era</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Dimension</th><th>Assessment</th></tr>
+<tr><td><b>Pros</b></td><td>Full hardware control, predictable performance; no virtualization overhead; physical data isolation, high security</td></tr>
+<tr><td><b>Cons</b></td><td>Long procurement cycles (weeks); high upfront investment (CapEx); low resource utilization; difficult to scale</td></tr>
+<tr><td><b>Suitable for</b></td><td>Financial core systems, government classified systems, scenarios with strict data sovereignty requirements</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>CapEx</b> (Capital Expenditure): A large one-time investment to purchase hardware.
+
+<b>OpEx</b> (Operating Expenditure): Pay-as-you-go based on usage (e.g., cloud servers).
+
+<b>Analogy</b>:
+
+- CapEx: Buying a house — pay a large lump sum upfront, then only monthly property fees
+- OpEx: Renting — pay monthly rent, no huge upfront cost
+
+<b>Cloud-era insight</b>: Serverless and cloud services enable more companies to shift from CapEx to OpEx, lowering the barrier to starting a business.</span><span lang="en"><b>CapEx</b> (Capital Expenditure): A large one-time investment to purchase hardware.
+
+<b>OpEx</b> (Operating Expenditure): Pay-as-you-go based on usage (e.g., cloud servers).
+
+<b>Analogy</b>:
+
+- CapEx: Buying a house — pay a large lump sum upfront, then only monthly property fees
+- OpEx: Renting — pay monthly rent, no huge upfront cost
+
+<b>Cloud-era insight</b>: Serverless and cloud services enable more companies to shift from CapEx to OpEx, lowering the barrier to starting a business.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. The Monolithic Architecture Era (2000s)</span><span lang="en">3. The Monolithic Architecture Era (2000s)</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Overview of Monolithic Architecture</span><span lang="en">3.1 Overview of Monolithic Architecture</span></h3>
+<p class="reveal"><span lang="id">With the rise of frameworks (Rails / Django / Spring), everyone started packing all functionality into a single application.</span><span lang="en">With the rise of frameworks (Rails / Django / Spring), everyone started packing all functionality into a single application.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Monolithic architecture</b> (Monolith) is like a super-mall:
+
+- Clothing, food, and electronics sections are all in the same building
+- All employees work within a single management system
+- If the whole building loses power, every section shuts down
+
+In contrast, microservices are like a commercial street: each shop operates independently; one shop closing doesn't affect the others.</span><span lang="en"><b>Monolithic architecture</b> (Monolith) is like a super-mall:
+
+- Clothing, food, and electronics sections are all in the same building
+- All employees work within a single management system
+- If the whole building loses power, every section shuts down
+
+In contrast, microservices are like a commercial street: each shop operates independently; one shop closing doesn't affect the others.</span></p>
+</div>
+<p class="reveal"><span lang="id"><MonolithDemo /></span><span lang="en"><MonolithDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Core Characteristics</span><span lang="en">3.2 Core Characteristics</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Single codebase</b>: All functional modules live in the same project</span><span lang="en"><b>Single codebase</b>: All functional modules live in the same project</span></li>
+<li><span lang="id"><b>Shared database</b>: All modules share the same database</span><span lang="en"><b>Shared database</b>: All modules share the same database</span></li>
+<li><span lang="id"><b>Unified deployment</b>: The entire application is packaged and deployed as a whole</span><span lang="en"><b>Unified deployment</b>: The entire application is packaged and deployed as a whole</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Advantages</span><span lang="en">3.3 Advantages</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Simple to develop</b>: One project handles all functionality</span><span lang="en"><b>Simple to develop</b>: One project handles all functionality</span></li>
+<li><span lang="id"><b>Easy to deploy</b>: Just throw one big package onto the server</span><span lang="en"><b>Easy to deploy</b>: Just throw one big package onto the server</span></li>
+<li><span lang="id"><b>Easy to debug</b>: Start it locally and you can debug everything</span><span lang="en"><b>Easy to debug</b>: Start it locally and you can debug everything</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.4 Pain Point: The Avalanche Effect</span><span lang="en">3.4 Pain Point: The Avalanche Effect</span></h3>
+<p class="reveal"><span lang="id">Imagine the chef "chopping vegetables" accidentally cuts their hand (a bug in the code). The entire kitchen has to stop to treat the wound, and every customer goes hungry.</span><span lang="en">Imagine the chef "chopping vegetables" accidentally cuts their hand (a bug in the code). The entire kitchen has to stop to treat the wound, and every customer goes hungry.</span></p>
+<p class="reveal"><span lang="id">This is the biggest risk of monolithic architecture: <b>poor isolation</b>.</span><span lang="en">This is the biggest risk of monolithic architecture: <b>poor isolation</b>.</span></p>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">An e-commerce company during a Double 11 mega-sale:
+
+- The order service throws an exception due to a pricing calculation error on a specific item
+- The exception isn't properly caught, exhausting the thread pool
+- All subsequent requests (including product browsing, search, user login) get blocked
+- The entire website goes down completely for 1 hour
+
+<b>If they had used microservices</b>:
+
+- The order service would be down, but product browsing, search, and user login would still work
+- Users could at least continue browsing products, minimizing losses</span><span lang="en">An e-commerce company during a Double 11 mega-sale:
+
+- The order service throws an exception due to a pricing calculation error on a specific item
+- The exception isn't properly caught, exhausting the thread pool
+- All subsequent requests (including product browsing, search, user login) get blocked
+- The entire website goes down completely for 1 hour
+
+<b>If they had used microservices</b>:
+
+- The order service would be down, but product browsing, search, and user login would still work
+- Users could at least continue browsing products, minimizing losses</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.5 Pros, Cons, and Suitable Scenarios for Monolithic Architecture</span><span lang="en">3.5 Pros, Cons, and Suitable Scenarios for Monolithic Architecture</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Dimension</th><th>Assessment</th></tr>
+<tr><td><b>Pros</b></td><td>Simple to develop, no distributed complexity to worry about; easy to debug — start locally and debug everything; simple deployment — one package runs it all; easy transaction management — a single-machine database ensures ACID</td></tr>
+<tr><td><b>Cons</b></td><td>High code coupling, codebase bloats as the business grows; single technology stack, hard to upgrade partially; difficult to scale — can only scale the whole thing; poor fault isolation — one module failure affects the entire system; low team collaboration efficiency — many people editing the same codebase</td></tr>
+<tr><td><b>Suitable for</b></td><td>Startup MVP validation, small teams (<10 people), relatively simple business, scenarios where delivery speed matters more than scalability</td></tr>
+<tr><td><b>Not suitable for</b></td><td>Large teams doing parallel development, scenarios requiring frequent independent module releases, scenarios where certain modules need independent scaling</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">If you're learning backend development, <b>I strongly recommend starting with monolithic architecture</b>:
+
+1. <b>Learn to walk first</b>: Understand HTTP, databases, and basic MVC architecture
+2. <b>Then consider running</b>: When your project genuinely encounters scalability issues, then consider microservices
+3. <b>Avoid over-engineering</b>: Many companies' "microservices" are actually "distributed monoliths" — even harder to maintain
+
+<b>Learning path</b>:
+
+- Phase 1: Build a complete monolithic application with Spring Boot / Django / Rails
+- Phase 2: When you hit performance bottlenecks, try splitting out 1–2 services
+- Phase 3: When the team exceeds 50 people and the system is genuinely complex, then go full microservices</span><span lang="en">If you're learning backend development, <b>I strongly recommend starting with monolithic architecture</b>:
+
+1. <b>Learn to walk first</b>: Understand HTTP, databases, and basic MVC architecture
+2. <b>Then consider running</b>: When your project genuinely encounters scalability issues, then consider microservices
+3. <b>Avoid over-engineering</b>: Many companies' "microservices" are actually "distributed monoliths" — even harder to maintain
+
+<b>Learning path</b>:
+
+- Phase 1: Build a complete monolithic application with Spring Boot / Django / Rails
+- Phase 2: When you hit performance bottlenecks, try splitting out 1–2 services
+- Phase 3: When the team exceeds 50 people and the system is genuinely complex, then go full microservices</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.6 Technology Stack for Monolithic Architecture</span><span lang="en">3.6 Technology Stack for Monolithic Architecture</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Language/Framework</th><th>Characteristics</th><th>Representative Companies</th></tr>
+<tr><td><b>Java + Spring</b></td><td>Enterprise-grade development standard, mature ecosystem</td><td>Alibaba, JD.com</td></tr>
+<tr><td><b>PHP + Laravel/ThinkPHP</b></td><td>Rapid development, suitable for small-to-medium projects</td><td>Early Facebook, Weibo</td></tr>
+<tr><td><b>Python + Django/Flask</b></td><td>High development efficiency, great for rapid prototyping</td><td>Instagram, Pinterest</td></tr>
+<tr><td><b>Ruby on Rails</b></td><td>Convention over configuration, startup favorite</td><td>GitHub, Twitter (early days)</td></tr>
+<tr><td><b>Node.js + Express</b></td><td>Unified language for frontend and backend, I/O-intensive scenarios</td><td>Netflix, Uber</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Containerization and Microservices (2010s)</span><span lang="en">4. Containerization and Microservices (2010s)</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Motivation for Microservicesing</span><span lang="en">4.1 Motivation for Microservicesing</span></h3>
+<p class="reveal"><span lang="id">The pain points of monolithic architecture erupted in the 2010s:</span><span lang="en">The pain points of monolithic architecture erupted in the 2010s:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Code too massive</b>: A project with millions of lines of code — new hires need a month just to understand it</span><span lang="en"><b>Code too massive</b>: A project with millions of lines of code — new hires need a month just to understand it</span></li>
+<li><span lang="id"><b>Deployment too slow</b>: A build takes 30 minutes; every release requires extreme caution</span><span lang="en"><b>Deployment too slow</b>: A build takes 30 minutes; every release requires extreme caution</span></li>
+<li><span lang="id"><b>Collaboration too hard</b>: 100 developers editing the same project — code conflicts happen daily</span><span lang="en"><b>Collaboration too hard</b>: 100 developers editing the same project — code conflicts happen daily</span></li>
+<li><span lang="id"><b>Scaling too expensive</b>: You only need to scale the "chat service," but you have to replicate the entire application</span><span lang="en"><b>Scaling too expensive</b>: You only need to scale the "chat service," but you have to replicate the entire application</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>The core idea of microservices</b>: Split the big application into many small services, each:</span><span lang="en"><b>The core idea of microservices</b>: Split the big application into many small services, each:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Independently developed and deployed</span><span lang="en">Independently developed and deployed</span></li>
+<li><span lang="id">With its own database</span><span lang="en">With its own database</span></li>
+<li><span lang="id">Communicating via APIs</span><span lang="en">Communicating via APIs</span></li>
+</ul>
+<p class="reveal"><span lang="id"><ContainerDockerDemo /></span><span lang="en"><ContainerDockerDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Docker</b> is like a "shipping container":
+
+- Each container holds independent cargo (code + dependencies + runtime environment)
+- No matter where it's shipped (which server), you open the container and it's ready to work
+- No more worrying about "this machine doesn't have Python 3.9" or "that machine is missing a library"
+
+<b>Analogy</b>:
+
+- Without Docker: Every time you move, you have to carry furniture, appliances, and clothes piece by piece onto the truck, then arrange them one by one at the new place
+- With Docker: Everything is packed into a container; the truck moves it directly; at the new place, you drop it and it's ready to use
+
+<b>Core value</b>: "Build once, run anywhere."</span><span lang="en"><b>Docker</b> is like a "shipping container":
+
+- Each container holds independent cargo (code + dependencies + runtime environment)
+- No matter where it's shipped (which server), you open the container and it's ready to work
+- No more worrying about "this machine doesn't have Python 3.9" or "that machine is missing a library"
+
+<b>Analogy</b>:
+
+- Without Docker: Every time you move, you have to carry furniture, appliances, and clothes piece by piece onto the truck, then arrange them one by one at the new place
+- With Docker: Everything is packed into a container; the truck moves it directly; at the new place, you drop it and it's ready to use
+
+<b>Core value</b>: "Build once, run anywhere."</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Technology Stack Timeline</span><span lang="en">4.2 Technology Stack Timeline</span></h3>
+<p class="reveal"><span lang="id"><TechStackTimelineDemo /></span><span lang="en"><TechStackTimelineDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 Microservices Architecture</span><span lang="en">4.3 Microservices Architecture</span></h3>
+<p class="reveal"><span lang="id">To solve the monolith's problems, we split the big kitchen into many small kitchens (services):</span><span lang="en">To solve the monolith's problems, we split the big kitchen into many small kitchens (services):</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">A service dedicated to users</span><span lang="en">A service dedicated to users</span></li>
+<li><span lang="id">A service dedicated to orders</span><span lang="en">A service dedicated to orders</span></li>
+<li><span lang="id">A service dedicated to payments</span><span lang="en">A service dedicated to payments</span></li>
+</ul>
+<p class="reveal"><span lang="id"><MicroservicesDemo /></span><span lang="en"><MicroservicesDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.4 Kubernetes Orchestration</span><span lang="en">4.4 Kubernetes Orchestration</span></h3>
+<p class="reveal"><span lang="id">When the number of containers reaches hundreds or thousands, you need a "port dispatching system":</span><span lang="en">When the number of containers reaches hundreds or thousands, you need a "port dispatching system":</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Kubernetes (K8s)</b>: Responsible for scheduling containers onto appropriate machines (scheduling, scaling, rolling updates)</span><span lang="en"><b>Kubernetes (K8s)</b>: Responsible for scheduling containers onto appropriate machines (scheduling, scaling, rolling updates)</span></li>
+<li><span lang="id"><b>Service Mesh</b>: Responsible for traffic rules between services (circuit breaking, rate limiting, retries, observability)</span><span lang="en"><b>Service Mesh</b>: Responsible for traffic rules between services (circuit breaking, rate limiting, retries, observability)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><KubernetesDemo /></span><span lang="en"><KubernetesDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Orchestration</b> refers to a system that automatically manages large numbers of containers.
+
+<b>Analogy</b>:
+
+- Without K8s: You manually manage 100 containers — restart the ones that crash, add machines manually when traffic spikes
+- With K8s: You tell it "I want this service to always have 10 instances running," and it automatically:
+  - Schedules containers to servers with sufficient resources
+  - Auto-restarts containers that crash
+  - Auto-scales to 20 instances when traffic spikes
+  - Performs rolling updates when deploying new code (stop one old instance, start one new instance, replace one by one)
+
+<b>Key point</b>: Microservices aren't just about "splitting things up." The real challenge lies in <b>governance and operations</b>.</span><span lang="en"><b>Orchestration</b> refers to a system that automatically manages large numbers of containers.
+
+<b>Analogy</b>:
+
+- Without K8s: You manually manage 100 containers — restart the ones that crash, add machines manually when traffic spikes
+- With K8s: You tell it "I want this service to always have 10 instances running," and it automatically:
+  - Schedules containers to servers with sufficient resources
+  - Auto-restarts containers that crash
+  - Auto-scales to 20 instances when traffic spikes
+  - Performs rolling updates when deploying new code (stop one old instance, start one new instance, replace one by one)
+
+<b>Key point</b>: Microservices aren't just about "splitting things up." The real challenge lies in <b>governance and operations</b>.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.5 Pros and Cons of Microservices and Containerization</span><span lang="en">4.5 Pros and Cons of Microservices and Containerization</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Dimension</th><th>Assessment</th></tr>
+<tr><td><b>Pros</b></td><td>Independent service deployment, heterogeneous technology stacks possible; fault isolation — a single service crash doesn't affect the whole; on-demand scaling — scale only hot services; team-friendly — different teams own different services; smaller codebases, easier to understand and maintain</td></tr>
+<tr><td><b>Cons</b></td><td>High distributed complexity (network latency, distributed transactions, service discovery); high operational cost, requires a professional DevOps team; difficult to debug — issues may need tracing across multiple services; hard to guarantee data consistency; complex deployment and monitoring infrastructure requirements</td></tr>
+<tr><td><b>Suitable for</b></td><td>Large teams (>50 people), complex business requiring independent module evolution, certain modules needing independent scaling, multi-language tech stacks, systems with high availability requirements</td></tr>
+<tr><td><b>Not suitable for</b></td><td>Small teams, simple business, low and stable traffic, situations without a professional operations team</td></tr>
+</table></div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id"><b>Pitfall 1: The Distributed Monolith</b>
+
+You split into 10 microservices, but they're tightly coupled:
+
+- Service A calls Service B, Service B calls Service C, Service C calls Service A again
+- Changing one feature requires modifying 5 services simultaneously
+- Deployment must follow a strict sequence, or the system throws errors
+
+<b>This is worse than a monolith</b>: you have all the complexity of a monolith without enjoying the independent deployment benefits of microservices.
+
+<b>Pitfall 2: Over-Splitting</b>
+
+Splitting a 100-line feature into its own independent service:
+
+- 10 services, each with only 100 lines of code
+- The overhead of inter-service communication (network serialization/deserialization) outweighs the actual business logic
+- Operational costs explode: you need to deploy, monitor, and collect logs for 10 services
+
+<b>The right approach</b>: Split from the perspective of functional cohesion. A microservice should represent a complete business capability (e.g., "Order Service," not "Order Creation Service" and "Order Query Service").</span><span lang="en"><b>Pitfall 1: The Distributed Monolith</b>
+
+You split into 10 microservices, but they're tightly coupled:
+
+- Service A calls Service B, Service B calls Service C, Service C calls Service A again
+- Changing one feature requires modifying 5 services simultaneously
+- Deployment must follow a strict sequence, or the system throws errors
+
+<b>This is worse than a monolith</b>: you have all the complexity of a monolith without enjoying the independent deployment benefits of microservices.
+
+<b>Pitfall 2: Over-Splitting</b>
+
+Splitting a 100-line feature into its own independent service:
+
+- 10 services, each with only 100 lines of code
+- The overhead of inter-service communication (network serialization/deserialization) outweighs the actual business logic
+- Operational costs explode: you need to deploy, monitor, and collect logs for 10 services
+
+<b>The right approach</b>: Split from the perspective of functional cohesion. A microservice should represent a complete business capability (e.g., "Order Service," not "Order Creation Service" and "Order Query Service").</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.6 Microservices Technology Stack</span><span lang="en">4.6 Microservices Technology Stack</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Category</th><th>Technology/Tool</th><th>Purpose</th></tr>
+<tr><td><b>Containerization</b></td><td>Docker, containerd</td><td>Application packaging and isolation</td></tr>
+<tr><td><b>Orchestration</b></td><td>Kubernetes, Docker Swarm</td><td>Container management and auto-scaling</td></tr>
+<tr><td><b>Service Discovery</b></td><td>Consul, etcd, ZooKeeper</td><td>Service registration and discovery</td></tr>
+<tr><td><b>API Gateway</b></td><td>Kong, Zuul, Envoy</td><td>Unified entry point, routing, rate limiting</td></tr>
+<tr><td><b>Config Center</b></td><td>Apollo, Nacos, Spring Cloud Config</td><td>Centralized configuration management</td></tr>
+<tr><td><b>Monitoring & Alerting</b></td><td>Prometheus, Grafana, ELK</td><td>Metrics monitoring and log analysis</td></tr>
+<tr><td><b>Distributed Tracing</b></td><td>Jaeger, Zipkin, SkyWalking</td><td>Distributed request tracing</td></tr>
+<tr><td><b>Service Mesh</b></td><td>Istio, Linkerd</td><td>Traffic governance and security</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. The Serverless and Cloud-Native Era (2020s+)</span><span lang="en">5. The Serverless and Cloud-Native Era (2020s+)</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Motivation for Serverlessing</span><span lang="en">5.1 Motivation for Serverlessing</span></h3>
+<p class="reveal"><span lang="id">Microservices are great, but maintaining dozens of small kitchens is still exhausting. You still need to worry about:</span><span lang="en">Microservices are great, but maintaining dozens of small kitchens is still exhausting. You still need to worry about:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Is the kitchen big enough? (server scaling)</span><span lang="en">Is the kitchen big enough? (server scaling)</span></li>
+<li><span lang="id">What if the power goes out? (high availability)</span><span lang="en">What if the power goes out? (high availability)</span></li>
+<li><span lang="id">How to manage so many containers? (operational costs)</span><span lang="en">How to manage so many containers? (operational costs)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><ServerlessDemo /></span><span lang="en"><ServerlessDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Serverless</b> means "you don't need to manage servers," not that there are literally no servers.
+
+<b>Analogy</b>:
+
+- <b>Physical server era</b>: You buy the land, build the house, decorate, hire chefs, buy ingredients... everything yourself
+- <b>Cloud server era</b>: You rent an already-renovated restaurant, but you still hire chefs and manage operations
+- <b>Serverless era</b>: You only need to design the menu. The cloud has a shared kitchen with professional chefs. You place orders, they cook, and you pay per use
+
+<b>The core change</b>:
+
+- Before: Buy servers → configure environments → deploy code → monitor → scale → maintain
+- Now: Write code → upload → pay per usage
+
+<b>It's like food delivery</b>: you don't need a kitchen — you just design the menu, and someone else does the cooking.</span><span lang="en"><b>Serverless</b> means "you don't need to manage servers," not that there are literally no servers.
+
+<b>Analogy</b>:
+
+- <b>Physical server era</b>: You buy the land, build the house, decorate, hire chefs, buy ingredients... everything yourself
+- <b>Cloud server era</b>: You rent an already-renovated restaurant, but you still hire chefs and manage operations
+- <b>Serverless era</b>: You only need to design the menu. The cloud has a shared kitchen with professional chefs. You place orders, they cook, and you pay per use
+
+<b>The core change</b>:
+
+- Before: Buy servers → configure environments → deploy code → monitor → scale → maintain
+- Now: Write code → upload → pay per usage
+
+<b>It's like food delivery</b>: you don't need a kitchen — you just design the menu, and someone else does the cooking.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Overview of Serverless</span><span lang="en">5.2 Overview of Serverless</span></h3>
+<p class="reveal"><span lang="id"><b>Serverless = FaaS + BaaS</b></span><span lang="en"><b>Serverless = FaaS + BaaS</b></span></p>
+<p class="reveal"><span lang="id"><b>FaaS</b> (Function as a Service):</span><span lang="en"><b>FaaS</b> (Function as a Service):</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">You only write functions (e.g., "send a welcome email when a user registers")</span><span lang="en">You only write functions (e.g., "send a welcome email when a user registers")</span></li>
+<li><span lang="id">The cloud provider runs the function and auto-scales it</span><span lang="en">The cloud provider runs the function and auto-scales it</span></li>
+<li><span lang="id">Typical examples: AWS Lambda, Alibaba Cloud Function Compute</span><span lang="en">Typical examples: AWS Lambda, Alibaba Cloud Function Compute</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>BaaS</b> (Backend as a Service):</span><span lang="en"><b>BaaS</b> (Backend as a Service):</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Authentication → Auth0 / Supabase Auth</span><span lang="en">Authentication → Auth0 / Supabase Auth</span></li>
+<li><span lang="id">Payments → Stripe</span><span lang="en">Payments → Stripe</span></li>
+<li><span lang="id">Database → Supabase / Firebase / DynamoDB</span><span lang="en">Database → Supabase / Firebase / DynamoDB</span></li>
+<li><span lang="id">Messaging → Kafka / SQS</span><span lang="en">Messaging → Kafka / SQS</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Best scenarios</b>:
+
+1. <b>Tidal traffic</b>: Food delivery apps — heavy traffic at noon, almost none at midnight. Serverless automatically allocates 1,000 machines at noon and scales down to 0 at midnight
+2. <b>Event-driven</b>: "When a user uploads an image, automatically compress it"
+3. <b>Rapid validation</b>: Small teams, MVPs, hackathon projects
+
+<b>Unsuitable scenarios</b>:
+
+1. <b>Long-running tasks</b>: Video transcoding (may run for 1 hour, but function max execution time is typically 15 minutes)
+2. <b>Low-latency applications</b>: High-frequency trading (cold start latency can range from tens of milliseconds to several seconds)
+3. <b>Fine-grained low-level control</b>: OS kernel tuning, direct GPU access</span><span lang="en"><b>Best scenarios</b>:
+
+1. <b>Tidal traffic</b>: Food delivery apps — heavy traffic at noon, almost none at midnight. Serverless automatically allocates 1,000 machines at noon and scales down to 0 at midnight
+2. <b>Event-driven</b>: "When a user uploads an image, automatically compress it"
+3. <b>Rapid validation</b>: Small teams, MVPs, hackathon projects
+
+<b>Unsuitable scenarios</b>:
+
+1. <b>Long-running tasks</b>: Video transcoding (may run for 1 hour, but function max execution time is typically 15 minutes)
+2. <b>Low-latency applications</b>: High-frequency trading (cold start latency can range from tens of milliseconds to several seconds)
+3. <b>Fine-grained low-level control</b>: OS kernel tuning, direct GPU access</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 Pros and Cons of Serverless and Cloud-Native</span><span lang="en">5.3 Pros and Cons of Serverless and Cloud-Native</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Dimension</th><th>Assessment</th></tr>
+<tr><td><b>Pros</b></td><td>Zero operational cost — developers only focus on business code; automatic scaling, perfectly handles traffic spikes; pay-per-use, near-zero cost when idle; rapid time-to-market, deploy globally in minutes; built-in high availability, cloud services handle failover automatically</td></tr>
+<tr><td><b>Cons</b></td><td>Cold start latency (hundreds of milliseconds to several seconds); runtime duration limits (typically 5–15 minutes); difficult to debug — hard to fully simulate the cloud environment locally; vendor lock-in risk; unsuitable for long-running or compute-intensive tasks; costs can exceed traditional approaches under sustained high traffic</td></tr>
+<tr><td><b>Suitable for</b></td><td>Event-driven processing (image processing, message notifications); tidal traffic applications (campaign pages, promotions); rapid prototyping and MVP validation; low-frequency APIs or background tasks; small teams without dedicated operations</td></tr>
+<tr><td><b>Not suitable for</b></td><td>Applications requiring consistently low latency; long-running compute tasks; scenarios sensitive to cold starts (high-frequency trading); scenarios requiring fine-grained control over underlying infrastructure</td></tr>
+</table></div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id"><b>Scenario 1: Low-frequency access</b>
+
+- Traditional server: $20/month (regardless of traffic)
+- Serverless: 1 million requests × $0.0002/request = $20 (pay only when there's traffic)
+- <b>Conclusion</b>: For low-frequency scenarios, Serverless is cheaper
+
+<b>Scenario 2: High-frequency sustained access</b>
+
+- Traditional server: $20/month
+- Serverless: 100 million requests × $0.0002/request = $20,000
+- <b>Conclusion</b>: For sustained high-frequency scenarios, traditional servers are cheaper
+
+<b>Scenario 3: Tidal traffic</b>
+
+- Traditional server: To handle peak traffic, you need a $100/month server (average resource utilization is only 10%)
+- Serverless: $20 during peaks, nearly $0 during off-peak
+- <b>Conclusion</b>: For tidal traffic scenarios, Serverless saves costs
+
+<b>Takeaway</b>: Don't blindly adopt Serverless. Run cost estimates based on your actual traffic patterns.</span><span lang="en"><b>Scenario 1: Low-frequency access</b>
+
+- Traditional server: $20/month (regardless of traffic)
+- Serverless: 1 million requests × $0.0002/request = $20 (pay only when there's traffic)
+- <b>Conclusion</b>: For low-frequency scenarios, Serverless is cheaper
+
+<b>Scenario 2: High-frequency sustained access</b>
+
+- Traditional server: $20/month
+- Serverless: 100 million requests × $0.0002/request = $20,000
+- <b>Conclusion</b>: For sustained high-frequency scenarios, traditional servers are cheaper
+
+<b>Scenario 3: Tidal traffic</b>
+
+- Traditional server: To handle peak traffic, you need a $100/month server (average resource utilization is only 10%)
+- Serverless: $20 during peaks, nearly $0 during off-peak
+- <b>Conclusion</b>: For tidal traffic scenarios, Serverless saves costs
+
+<b>Takeaway</b>: Don't blindly adopt Serverless. Run cost estimates based on your actual traffic patterns.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.4 Serverless Technology Stack and Platforms</span><span lang="en">5.4 Serverless Technology Stack and Platforms</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Category</th><th>Technology/Platform</th><th>Characteristics</th></tr>
+<tr><td><b>FaaS Platforms</b></td><td>AWS Lambda</td><td>The earliest FaaS service, most mature ecosystem</td></tr>
+<tr><td></td><td>Azure Functions</td><td>Deep Microsoft cloud integration, .NET-friendly</td></tr>
+<tr><td></td><td>Google Cloud Functions</td><td>Deep integration with GCP services</td></tr>
+<tr><td></td><td>Alibaba Cloud Function Compute</td><td>Mature domestic ecosystem, good cold-start optimization</td></tr>
+<tr><td></td><td>Tencent Cloud SCF</td><td>Integrated with WeChat ecosystem</td></tr>
+<tr><td></td><td>Vercel/Netlify Functions</td><td>Frontend-developer-friendly, edge deployment</td></tr>
+<tr><td><b>BaaS Services</b></td><td>Firebase</td><td>Google's mobile backend solution</td></tr>
+<tr><td></td><td>Supabase</td><td>Open-source Firebase alternative for PostgreSQL</td></tr>
+<tr><td></td><td>AWS Amplify</td><td>AWS development platform for mobile and web apps</td></tr>
+<tr><td><b>Deployment Tools</b></td><td>Serverless Framework</td><td>Multi-cloud deployment, active community</td></tr>
+<tr><td></td><td>Terraform</td><td>Infrastructure as Code</td></tr>
+<tr><td></td><td>Pulumi</td><td>Define infrastructure using programming languages</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Architecture Comparison and Selection Guide</span><span lang="en">6. Architecture Comparison and Selection Guide</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Full Architecture Evolution Comparison</span><span lang="en">6.1 Full Architecture Evolution Comparison</span></h3>
+<p class="reveal"><span lang="id"><ArchitectureComparisonDemo /></span><span lang="en"><ArchitectureComparisonDemo /></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Dimension</th><th>Physical Servers</th><th>Monolithic Architecture</th><th>Microservices + Containers</th><th>Serverless</th></tr>
+<tr><td><b>Team Size</b></td><td>1–5 people</td><td>5–50 people</td><td>50–500 people</td><td>1–20 people</td></tr>
+<tr><td><b>Deployment Complexity</b></td><td>Extremely high</td><td>Low</td><td>Extremely high</td><td>Extremely low</td></tr>
+<tr><td><b>Operational Cost</b></td><td>High</td><td>Medium</td><td>Very high</td><td>Low</td></tr>
+<tr><td><b>Scalability</b></td><td>Poor</td><td>Limited vertical scaling</td><td>Excellent horizontal scaling</td><td>Auto-scaling</td></tr>
+<tr><td><b>Tech Stack Flexibility</b></td><td>None</td><td>Single</td><td>Diverse</td><td>Limited</td></tr>
+<tr><td><b>Cold Start</b></td><td>None</td><td>None</td><td>Container startup time</td><td>Has latency</td></tr>
+<tr><td><b>Suitable for</b></td><td>Legacy systems, special compliance requirements</td><td>Startups, simple business</td><td>Large internet companies, complex business</td><td>Rapid validation, event-driven</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 Technology Selection Decision Tree</span><span lang="en">6.2 Technology Selection Decision Tree</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Start Selection
+    │
+    ├─ Does the team have professional ops personnel?
+    │   ├─ Yes → Consider microservices or physical machines
+    │   └─ No → Continue evaluating
+    │
+    ├─ Need to launch quickly to validate an idea?
+    │   ├─ Yes → Serverless or monolith
+    │   └─ No → Continue evaluating
+    │
+    ├─ Team size &gt; 50 people?
+    │   ├─ Yes → Consider microservices
+    │   └─ No → Continue evaluating
+    │
+    ├─ Does traffic have clear peak/off-peak patterns?
+    │   ├─ Yes → Serverless
+    │   └─ No → Monolithic architecture (recommended for startups)
+    │
+    └─ Special requirements (compliance, legacy systems)?
+        └─ Yes → Physical servers</pre>
+</div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>If you're an individual developer or a small team:</b>
+
+1. <b>Phase 0 (Learning)</b>: Run a monolithic app locally; understand HTTP, databases, and basic architecture
+2. <b>Phase 1 (MVP)</b>: Deploy the monolithic app to a cloud server (e.g., Alibaba Cloud ECS, AWS EC2)
+3. <b>Phase 2 (Growth)</b>: When the team exceeds 10 people and the business becomes complex, consider splitting out 1–2 microservices
+4. <b>Phase 3 (Maturity)</b>: When the team exceeds 50 people and traffic reaches millions, go full microservices
+
+<b>Key principle</b>: Don't start with microservices — that's "premature optimization." Let the architecture evolve as the business grows.</span><span lang="en"><b>If you're an individual developer or a small team:</b>
+
+1. <b>Phase 0 (Learning)</b>: Run a monolithic app locally; understand HTTP, databases, and basic architecture
+2. <b>Phase 1 (MVP)</b>: Deploy the monolithic app to a cloud server (e.g., Alibaba Cloud ECS, AWS EC2)
+3. <b>Phase 2 (Growth)</b>: When the team exceeds 10 people and the business becomes complex, consider splitting out 1–2 microservices
+4. <b>Phase 3 (Maturity)</b>: When the team exceeds 50 people and traffic reaches millions, go full microservices
+
+<b>Key principle</b>: Don't start with microservices — that's "premature optimization." Let the architecture evolve as the business grows.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.3 Recommended Architecture for Different Scenarios</span><span lang="en">6.3 Recommended Architecture for Different Scenarios</span></h3>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Scenario 1: Solo Developer / Side Project</span><span lang="en">Scenario 1: Solo Developer / Side Project</span></h4>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Recommended architecture</b>: Serverless (Vercel/Netlify) or monolithic application</span><span lang="en"><b>Recommended architecture</b>: Serverless (Vercel/Netlify) or monolithic application</span></li>
+<li><span lang="id"><b>Rationale</b>: Near-zero operational cost, pay-per-use, rapid time-to-market</span><span lang="en"><b>Rationale</b>: Near-zero operational cost, pay-per-use, rapid time-to-market</span></li>
+<li><span lang="id"><b>Example tech stack</b>: Next.js + Vercel + Supabase</span><span lang="en"><b>Example tech stack</b>: Next.js + Vercel + Supabase</span></li>
+</ul>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Scenario 2: Startup MVP Validation</span><span lang="en">Scenario 2: Startup MVP Validation</span></h4>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Recommended architecture</b>: Monolithic architecture + cloud server</span><span lang="en"><b>Recommended architecture</b>: Monolithic architecture + cloud server</span></li>
+<li><span lang="id"><b>Rationale</b>: Fast development speed; the team can focus on business logic rather than infrastructure</span><span lang="en"><b>Rationale</b>: Fast development speed; the team can focus on business logic rather than infrastructure</span></li>
+<li><span lang="id"><b>Example tech stack</b>: Spring Boot / Django / Rails + RDS + ECS</span><span lang="en"><b>Example tech stack</b>: Spring Boot / Django / Rails + RDS + ECS</span></li>
+</ul>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Scenario 3: Growing Company (10–50 person team)</span><span lang="en">Scenario 3: Growing Company (10–50 person team)</span></h4>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Recommended architecture</b>: Modular monolith or lightweight microservices</span><span lang="en"><b>Recommended architecture</b>: Modular monolith or lightweight microservices</span></li>
+<li><span lang="id"><b>Rationale</b>: Starting to face code coupling issues, but not yet needing full microservices complexity</span><span lang="en"><b>Rationale</b>: Starting to face code coupling issues, but not yet needing full microservices complexity</span></li>
+<li><span lang="id"><b>Example tech stack</b>: Spring Cloud / Go Micro + Kubernetes</span><span lang="en"><b>Example tech stack</b>: Spring Cloud / Go Micro + Kubernetes</span></li>
+</ul>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Scenario 4: Large Internet Company</span><span lang="en">Scenario 4: Large Internet Company</span></h4>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Recommended architecture</b>: Microservices + Service Mesh + middle-platform architecture</span><span lang="en"><b>Recommended architecture</b>: Microservices + Service Mesh + middle-platform architecture</span></li>
+<li><span lang="id"><b>Rationale</b>: Large team, complex business, need independent release cadences and technology stacks</span><span lang="en"><b>Rationale</b>: Large team, complex business, need independent release cadences and technology stacks</span></li>
+<li><span lang="id"><b>Example tech stack</b>: In-house RPC framework + Istio + self-built PaaS platform</span><span lang="en"><b>Example tech stack</b>: In-house RPC framework + Istio + self-built PaaS platform</span></li>
+</ul>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Scenario 5: Event-Driven / Tidal Traffic Applications</span><span lang="en">Scenario 5: Event-Driven / Tidal Traffic Applications</span></h4>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Recommended architecture</b>: Serverless + event bus</span><span lang="en"><b>Recommended architecture</b>: Serverless + event bus</span></li>
+<li><span lang="id"><b>Rationale</b>: High traffic volatility, need extreme cost optimization and auto-scaling</span><span lang="en"><b>Rationale</b>: High traffic volatility, need extreme cost optimization and auto-scaling</span></li>
+<li><span lang="id"><b>Example tech stack</b>: AWS Lambda + API Gateway + EventBridge</span><span lang="en"><b>Example tech stack</b>: AWS Lambda + API Gateway + EventBridge</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Summary and Learning Roadmap</span><span lang="en">7. Summary and Learning Roadmap</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.1 Key Takeaways</span><span lang="en">7.1 Key Takeaways</span></h3>
+<p class="reveal"><span lang="id">The evolution of backend architecture is fundamentally about <b>addition</b> and <b>subtraction</b>:</span><span lang="en">The evolution of backend architecture is fundamentally about <b>addition</b> and <b>subtraction</b>:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Era</th><th>Architecture</th><th>What Developers Do</th><th>What Ops Do</th></tr>
+<tr><td><b>Physical Era</b></td><td>Single machine</td><td>Write scripts, deploy manually</td><td>Maintain data centers and hardware</td></tr>
+<tr><td><b>Monolith Era</b></td><td>One big block</td><td>Write all business logic</td><td>Maintain a few large servers</td></tr>
+<tr><td><b>Microservices Era</b></td><td>Split up</td><td>Focus on a single business domain</td><td>Maintain K8s clusters (exhausting!)</td></tr>
+<tr><td><b>Serverless</b></td><td>Functions</td><td>Write only core functions</td><td>Drink tea (cloud provider handles everything)</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Key insights</b>:</span><span lang="en"><b>Key insights</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Architectural evolution isn't "new technology replacing old technology" — it's about <b>changes in applicable scenarios</b></span><span lang="en">Architectural evolution isn't "new technology replacing old technology" — it's about <b>changes in applicable scenarios</b></span></li>
+<li><span lang="id">There is no silver bullet; every architecture has its boundaries</span><span lang="en">There is no silver bullet; every architecture has its boundaries</span></li>
+<li><span lang="id">When choosing an architecture, consider: team size, business complexity, traffic patterns, and operational capability</span><span lang="en">When choosing an architecture, consider: team size, business complexity, traffic patterns, and operational capability</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.2 Recommended Learning Roadmap</span><span lang="en">7.2 Recommended Learning Roadmap</span></h3>
+<p class="reveal"><span lang="id">Based on your career stage, here are the recommended learning paths:</span><span lang="en">Based on your career stage, here are the recommended learning paths:</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Phase 1: Build the Foundation (0–1 year)</span><span lang="en">Phase 1: Build the Foundation (0–1 year)</span></h4>
+<p class="reveal"><span lang="id"><b>Goal</b>: Understand core backend concepts; be able to independently develop a monolithic application</span><span lang="en"><b>Goal</b>: Understand core backend concepts; be able to independently develop a monolithic application</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Master one backend language (choose from Java/Python/Go)</span><span lang="en">Master one backend language (choose from Java/Python/Go)</span></li>
+<li><span lang="id">Learn the HTTP protocol and RESTful API design</span><span lang="en">Learn the HTTP protocol and RESTful API design</span></li>
+<li><span lang="id">Master relational databases (MySQL/PostgreSQL)</span><span lang="en">Master relational databases (MySQL/PostgreSQL)</span></li>
+<li><span lang="id">Understand caching basics (Redis)</span><span lang="en">Understand caching basics (Redis)</span></li>
+<li><span lang="id">Learn Git and basic Linux commands</span><span lang="en">Learn Git and basic Linux commands</span></li>
+<li><span lang="id"><b>Practice project</b>: Build a CRUD application with monolithic architecture (e.g., a blog system, a to-do app)</span><span lang="en"><b>Practice project</b>: Build a CRUD application with monolithic architecture (e.g., a blog system, a to-do app)</span></li>
+</ul>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Phase 2: Expand Capabilities (1–3 years)</span><span lang="en">Phase 2: Expand Capabilities (1–3 years)</span></h4>
+<p class="reveal"><span lang="id"><b>Goal</b>: Understand distributed systems; be able to participate in microservices development</span><span lang="en"><b>Goal</b>: Understand distributed systems; be able to participate in microservices development</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Deep-dive into microservices architecture and splitting strategies</span><span lang="en">Deep-dive into microservices architecture and splitting strategies</span></li>
+<li><span lang="id">Master Docker and Kubernetes basics</span><span lang="en">Master Docker and Kubernetes basics</span></li>
+<li><span lang="id">Learn message queues (Kafka/RabbitMQ)</span><span lang="en">Learn message queues (Kafka/RabbitMQ)</span></li>
+<li><span lang="id">Understand distributed transactions and consistency</span><span lang="en">Understand distributed transactions and consistency</span></li>
+<li><span lang="id">Master monitoring and logging (Prometheus/ELK)</span><span lang="en">Master monitoring and logging (Prometheus/ELK)</span></li>
+<li><span lang="id"><b>Practice project</b>: Split a monolithic application into 3–5 microservices and deploy with Docker</span><span lang="en"><b>Practice project</b>: Split a monolithic application into 3–5 microservices and deploy with Docker</span></li>
+</ul>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">Phase 3: Professional Deepening (3–5 years)</span><span lang="en">Phase 3: Professional Deepening (3–5 years)</span></h4>
+<p class="reveal"><span lang="id"><b>Goal</b>: Be able to design large-scale systems; possess technology selection skills</span><span lang="en"><b>Goal</b>: Be able to design large-scale systems; possess technology selection skills</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Deeply understand cloud-native architecture (Service Mesh, Serverless)</span><span lang="en">Deeply understand cloud-native architecture (Service Mesh, Serverless)</span></li>
+<li><span lang="id">Master capacity planning and performance tuning</span><span lang="en">Master capacity planning and performance tuning</span></li>
+<li><span lang="id">Understand multi-active architecture and disaster recovery design</span><span lang="en">Understand multi-active architecture and disaster recovery design</span></li>
+<li><span lang="id">Learn DDD (Domain-Driven Design)</span><span lang="en">Learn DDD (Domain-Driven Design)</span></li>
+<li><span lang="id">Cultivate technical judgment and architectural thinking</span><span lang="en">Cultivate technical judgment and architectural thinking</span></li>
+<li><span lang="id"><b>Practice project</b>: Design a system architecture supporting millions of users, including high availability and elastic scaling solutions</span><span lang="en"><b>Practice project</b>: Design a system architecture supporting millions of users, including high availability and elastic scaling solutions</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.3 Recommended Continuous Learning Resources</span><span lang="en">7.3 Recommended Continuous Learning Resources</span></h3>
+<p class="reveal"><span lang="id"><b>Books</b>:</span><span lang="en"><b>Books</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><i>Designing Data-Intensive Applications</i> (DDIA) — essential reading for distributed systems</span><span lang="en"><i>Designing Data-Intensive Applications</i> (DDIA) — essential reading for distributed systems</span></li>
+<li><span lang="id"><i>Cloud Native Patterns</i></span><span lang="en"><i>Cloud Native Patterns</i></span></li>
+<li><span lang="id"><i>Building Microservices</i></span><span lang="en"><i>Building Microservices</i></span></li>
+<li><span lang="id"><i>Domain-Driven Design</i></span><span lang="en"><i>Domain-Driven Design</i></span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Online Resources</b>:</span><span lang="en"><b>Online Resources</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Official architecture documentation from AWS/Azure/Alibaba Cloud</span><span lang="en">Official architecture documentation from AWS/Azure/Alibaba Cloud</span></li>
+<li><span lang="id">CNCF (Cloud Native Computing Foundation) project documentation</span><span lang="en">CNCF (Cloud Native Computing Foundation) project documentation</span></li>
+<li><span lang="id">Tech blogs from major companies (Netflix Tech Blog, Alibaba Tech, etc.)</span><span lang="en">Tech blogs from major companies (Netflix Tech Blog, Alibaba Tech, etc.)</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8. Glossary</span><span lang="en">8. Glossary</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Term</th><th>Full Name</th><th>Explanation</th></tr>
+<tr><td><b>Backend</b></td><td>—</td><td>Server-side system responsible for business logic, data storage, and external APIs</td></tr>
+<tr><td><b>CGI</b></td><td>Common Gateway Interface</td><td>Early dynamic web technology; processes requests via scripts and returns results</td></tr>
+<tr><td><b>Monolith</b></td><td>—</td><td>Monolithic architecture; packages all business logic in a single application</td></tr>
+<tr><td><b>Microservices</b></td><td>—</td><td>Microservices architecture; splits business logic into multiple independent services</td></tr>
+<tr><td><b>Container</b></td><td>—</td><td>Containerization technology; packages applications and dependencies into portable units</td></tr>
+<tr><td><b>K8s</b></td><td>Kubernetes</td><td>Container orchestration platform for scheduling, scaling, and governing containers</td></tr>
+<tr><td><b>Service Mesh</b></td><td>—</td><td>Service mesh; responsible for inter-service communication governance, observability, and security in microservices</td></tr>
+<tr><td><b>Serverless</b></td><td>—</td><td>Serverless computing; developers write only functions, the platform automatically runs and scales them</td></tr>
+<tr><td><b>BaaS</b></td><td>Backend as a Service</td><td>Plug-and-play backend cloud services (authentication, database, payments, etc.)</td></tr>
+<tr><td><b>CI/CD</b></td><td>Continuous Integration / Delivery</td><td>Automated testing and deployment pipelines</td></tr>
+<tr><td><b>Observability</b></td><td>—</td><td>Using logs, metrics, and traces to understand system runtime state</td></tr>
+</table></div>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../4-server-and-backend/serialization/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">4-server-and-backend/serialization</span><span lang="en">4-server-and-backend/serialization</span></b></a>
+      <a class="next" href="../../5-data/ab-testing/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">5-data/ab-testing</span><span lang="en">5-data/ab-testing</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Compiler Principles — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Compiler Principles. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/1-computer-fundamentals/compilers/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Compiler Principles</span><span lang="en">Compiler Principles</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Compiler Principles</span><span lang="en">Compiler Principles</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Compiler Principles.</span><span lang="en">Ensiklopedia VibeKoding: Compiler Principles.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>When you press the "Run" button, how does your code become the result on screen?</b> The computer actually can't "understand" any line of code you write — it only recognizes 0s and 1s. The compiler is the "translator" that converts human language into machine language. Understanding compiler principles helps you understand where error messages come from, why some languages are faster than others, and the underlying logic of code optimization.</span><span lang="en"><b>When you press the "Run" button, how does your code become the result on screen?</b> The computer actually can't "understand" any line of code you write — it only recognizes 0s and 1s. The compiler is the "translator" that converts human language into machine language. Understanding compiler principles helps you understand where error messages come from, why some languages are faster than others, and the underlying logic of code optimization.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn from this article?</b></span><span lang="en"><b>What will you learn from this article?</b></span></p>
+<p class="reveal"><span lang="id">After completing this chapter, you will gain:</span><span lang="en">After completing this chapter, you will gain:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Big picture view</b>: Master the complete compilation pipeline from source code to executable program</span><span lang="en"><b>Big picture view</b>: Master the complete compilation pipeline from source code to executable program</span></li>
+<li><span lang="id"><b>Lexical analysis</b>: Understand how compilers break code into tokens</span><span lang="en"><b>Lexical analysis</b>: Understand how compilers break code into tokens</span></li>
+<li><span lang="id"><b>Syntax analysis</b>: Understand the construction of AST (Abstract Syntax Tree)</span><span lang="en"><b>Syntax analysis</b>: Understand the construction of AST (Abstract Syntax Tree)</span></li>
+<li><span lang="id"><b>AST visualization</b>: Intuitively see the tree structure of code</span><span lang="en"><b>AST visualization</b>: Intuitively see the tree structure of code</span></li>
+<li><span lang="id"><b>Semantic analysis and optimization</b>: Understand the principles of type checking and code optimization</span><span lang="en"><b>Semantic analysis and optimization</b>: Understand the principles of type checking and code optimization</span></li>
+<li><span lang="id"><b>Optimization techniques in practice</b>: Master core optimizations like constant folding and dead code elimination</span><span lang="en"><b>Optimization techniques in practice</b>: Master core optimizations like constant folding and dead code elimination</span></li>
+<li><span lang="id"><b>Execution models</b>: Distinguish between compiled, interpreted, and JIT execution approaches</span><span lang="en"><b>Execution models</b>: Distinguish between compiled, interpreted, and JIT execution approaches</span></li>
+</ul>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Core Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>What Is a Compiler</td><td>Translator analogy, compilation pipeline</td></tr>
+<tr><td><b>Chapter 2</b></td><td>Lexical Analysis</td><td>Tokens, lexical rules</td></tr>
+<tr><td><b>Chapter 3</b></td><td>Syntax Analysis</td><td>AST, syntax trees, precedence</td></tr>
+<tr><td><b>Chapter 4</b></td><td>AST Visualization</td><td>Interactive syntax tree, node types</td></tr>
+<tr><td><b>Chapter 5</b></td><td>Semantic Analysis and Optimization</td><td>Type checking, constant folding, dead code elimination</td></tr>
+<tr><td><b>Chapter 6</b></td><td>Optimization Techniques in Practice</td><td>Function inlining, loop hoisting, constant propagation</td></tr>
+<tr><td><b>Chapter 7</b></td><td>Compiled vs Interpreted vs JIT</td><td>Comparison of three execution models</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. Big Picture: Compilation Pipeline Overview</span><span lang="en">0. Big Picture: Compilation Pipeline Overview</span></h2>
+<p class="reveal"><span lang="id">Imagine you're a translator tasked with translating a Chinese novel into English. You wouldn't translate word by word literally. Instead, you would:</span><span lang="en">Imagine you're a translator tasked with translating a Chinese novel into English. You wouldn't translate word by word literally. Instead, you would:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Identify words</b> — Break sentences into individual words (lexical analysis)</span><span lang="en"><b>Identify words</b> — Break sentences into individual words (lexical analysis)</span></li>
+<li><span lang="id"><b>Understand syntax</b> — Determine if sentence structure is correct (syntax analysis)</span><span lang="en"><b>Understand syntax</b> — Determine if sentence structure is correct (syntax analysis)</span></li>
+<li><span lang="id"><b>Understand semantics</b> — Ensure the meaning is coherent and contradiction-free (semantic analysis)</span><span lang="en"><b>Understand semantics</b> — Ensure the meaning is coherent and contradiction-free (semantic analysis)</span></li>
+<li><span lang="id"><b>Polish and refine</b> — Make the translation more natural and fluent (code optimization)</span><span lang="en"><b>Polish and refine</b> — Make the translation more natural and fluent (code optimization)</span></li>
+<li><span lang="id"><b>Output the translation</b> — Write the final English version (code generation)</span><span lang="en"><b>Output the translation</b> — Write the final English version (code generation)</span></li>
+</ul>
+<p class="reveal"><span lang="id">A compiler does exactly the same thing, except it translates programming languages.</span><span lang="en">A compiler does exactly the same thing, except it translates programming languages.</span></p>
+<p class="reveal"><span lang="id"><CompilerAnalogyDemo /></span><span lang="en"><CompilerAnalogyDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. The Compiler's Six-Stage Pipeline</span><span lang="en">1. The Compiler's Six-Stage Pipeline</span></h2>
+<p class="reveal"><span lang="id">A compiler's work can be divided into six stages, like a factory assembly line where each stage hands off to the next.</span><span lang="en">A compiler's work can be divided into six stages, like a factory assembly line where each stage hands off to the next.</span></p>
+<p class="reveal"><span lang="id"><CompilerDemo /></span><span lang="en"><CompilerDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">1. <b>Lexical Analysis</b>: Break source code into tokens (words)
+2. <b>Syntax Analysis</b>: Organize tokens into a syntax tree (AST)
+3. <b>Semantic Analysis</b>: Check if types are correct and variables are declared
+4. <b>Intermediate Code Generation (IR Generation)</b>: Generate platform-independent intermediate representation
+5. <b>Code Optimization</b>: Make the intermediate code more efficient
+6. <b>Code Generation</b>: Generate machine code for the target platform</span><span lang="en">1. <b>Lexical Analysis</b>: Break source code into tokens (words)
+2. <b>Syntax Analysis</b>: Organize tokens into a syntax tree (AST)
+3. <b>Semantic Analysis</b>: Check if types are correct and variables are declared
+4. <b>Intermediate Code Generation (IR Generation)</b>: Generate platform-independent intermediate representation
+5. <b>Code Optimization</b>: Make the intermediate code more efficient
+6. <b>Code Generation</b>: Generate machine code for the target platform</span></p>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Stage</th><th>Input</th><th>Output</th><th>Analogy</th></tr>
+<tr><td>Lexical Analysis</td><td>Source code character stream</td><td>Token stream</td><td>Break sentences into words</td></tr>
+<tr><td>Syntax Analysis</td><td>Token stream</td><td>AST (syntax tree)</td><td>Analyze sentence structure</td></tr>
+<tr><td>Semantic Analysis</td><td>AST</td><td>Typed AST</td><td>Check if the meaning makes sense</td></tr>
+<tr><td>Intermediate Code</td><td>Typed AST</td><td>IR</td><td>Write a first draft</td></tr>
+<tr><td>Code Optimization</td><td>IR</td><td>Optimized IR</td><td>Polish and trim</td></tr>
+<tr><td>Code Generation</td><td>Optimized IR</td><td>Machine code</td><td>Output the final version</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Lexical Analysis: Tokenization of Source Code</span><span lang="en">2. Lexical Analysis: Tokenization of Source Code</span></h2>
+<p class="reveal"><span lang="id">Lexical analysis is the first step of compilation. The compiler scans each character of the source code from left to right, combining them into meaningful <b>tokens</b>.</span><span lang="en">Lexical analysis is the first step of compilation. The compiler scans each character of the source code from left to right, combining them into meaningful <b>tokens</b>.</span></p>
+<p class="reveal"><span lang="id"><LexerTokenDemo /></span><span lang="en"><LexerTokenDemo /></span></p>
+<p class="reveal"><span lang="id">Just as your brain automatically combines letters into words when reading an English sentence, the lexer combines characters into tokens:</span><span lang="en">Just as your brain automatically combines letters into words when reading an English sentence, the lexer combines characters into tokens:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Source code: let x = 10 + 5;
+
+Token stream:
+[let]   → Keyword (language reserved word)
+[x]     → Identifier (variable name)
+[=]     → Operator (assignment)
+[10]    → Numeric literal
+[+]     → Operator (addition)
+[5]     → Numeric literal
+[;]     → Separator (statement end)</pre>
+</div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Keywords</b>: Special words reserved by the language, such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">let</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">if</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">return</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">function</code>
+- <b>Identifiers</b>: Names defined by programmers, such as variable names and function names
+- <b>Literals</b>: Values written directly in code, such as the number <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">42</code> and the string <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"hello"</code>
+- <b>Operators</b>: Symbols that perform operations, such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">+</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">-</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">=</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">===</code>
+- <b>Separators</b>: Symbols that separate code structures, such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">;</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">,</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">(</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">)</code></span><span lang="en">- <b>Keywords</b>: Special words reserved by the language, such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">let</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">if</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">return</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">function</code>
+- <b>Identifiers</b>: Names defined by programmers, such as variable names and function names
+- <b>Literals</b>: Values written directly in code, such as the number <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">42</code> and the string <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"hello"</code>
+- <b>Operators</b>: Symbols that perform operations, such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">+</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">-</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">=</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">===</code>
+- <b>Separators</b>: Symbols that separate code structures, such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">;</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">,</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">(</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">)</code></span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Syntax Analysis: Building the Syntax Tree (AST)</span><span lang="en">3. Syntax Analysis: Building the Syntax Tree (AST)</span></h2>
+<p class="reveal"><span lang="id">Lexical analysis breaks code into tokens, but tokens are just isolated "words." The task of syntax analysis is to organize these tokens into an <b>Abstract Syntax Tree (AST)</b> according to grammar rules — it reflects the structure of the code and operator precedence.</span><span lang="en">Lexical analysis breaks code into tokens, but tokens are just isolated "words." The task of syntax analysis is to organize these tokens into an <b>Abstract Syntax Tree (AST)</b> according to grammar rules — it reflects the structure of the code and operator precedence.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Expression: 1 + 2 * 3
+
+Syntax tree:        Why this way?
+       +       Because * has higher
+      / \      precedence than +,
+     1   *     so 2 * 3 groups
+        / \    together first
+       2   3</pre>
+</div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">AST is the "core data structure" of a compiler. Subsequent semantic analysis, optimization, and code generation are all based on it. Modern development tools also heavily use AST:
+- <b>ESLint</b>: Parses code into AST and checks for rule violations
+- <b>Prettier</b>: Parses into AST and reformats the output
+- <b>Babel</b>: Parses AST → transforms → generates compatible code
+- <b>IDE refactoring</b>: Performs safe variable renaming and function extraction based on AST</span><span lang="en">AST is the "core data structure" of a compiler. Subsequent semantic analysis, optimization, and code generation are all based on it. Modern development tools also heavily use AST:
+- <b>ESLint</b>: Parses code into AST and checks for rule violations
+- <b>Prettier</b>: Parses into AST and reformats the output
+- <b>Babel</b>: Parses AST → transforms → generates compatible code
+- <b>IDE refactoring</b>: Performs safe variable renaming and function extraction based on AST</span></p>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Syntax Structure</th><th>Token Sequence</th><th>AST Node</th></tr>
+<tr><td>Variable declaration</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">let</code> <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">x</code> <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">=</code> <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">10</code></td><td>VariableDeclaration → Identifier + Literal</td></tr>
+<tr><td>Function call</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">add</code> <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">(</code> <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1</code> <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">,</code> <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">2</code> <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">)</code></td><td>CallExpression → Identifier + Arguments</td></tr>
+<tr><td>Conditional statement</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">if</code> <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">(</code> <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">a</code> <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">></code> <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">b</code> <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">)</code></td><td>IfStatement → BinaryExpression + Block</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. AST Visualization: Intuitive Presentation of Code Structure</span><span lang="en">4. AST Visualization: Intuitive Presentation of Code Structure</span></h2>
+<p class="reveal"><span lang="id">Above we described AST structure in text, but "seeing" is more intuitive than "reading." The interactive component below lets you select different expressions and observe their syntax trees in real time.</span><span lang="en">Above we described AST structure in text, but "seeing" is more intuitive than "reading." The interactive component below lets you select different expressions and observe their syntax trees in real time.</span></p>
+<p class="reveal"><span lang="id"><ASTVisualizerDemo /></span><span lang="en"><ASTVisualizerDemo /></span></p>
+<p class="reveal"><span lang="id">Through visualization, you'll find that the core patterns of AST are actually quite simple:</span><span lang="en">Through visualization, you'll find that the core patterns of AST are actually quite simple:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Code Structure</th><th>AST Root Node</th><th>Child Nodes</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1 + 2 * 3</code></td><td>BinaryExpression (+)</td><td>Left: NumericLiteral(1), Right: BinaryExpression(*)</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">let x = 10</code></td><td>VariableDeclaration</td><td>VariableDeclarator → Identifier(x) + NumericLiteral(10)</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">add(a, b)</code></td><td>CallExpression</td><td>Identifier(add) + Arguments(a, b)</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">You may not have written a compiler directly, but you use AST-based tools every day:
+- <b>ESLint / Prettier</b>: Parse code into AST for rule checking or reformatting
+- <b>Babel / SWC</b>: Parse AST → transform syntax → generate compatible code
+- <b>IDE refactoring</b>: Safe renaming and function extraction based on AST
+- <b>Tree-shaking</b>: Analyze import/export in AST to remove unused code</span><span lang="en">You may not have written a compiler directly, but you use AST-based tools every day:
+- <b>ESLint / Prettier</b>: Parse code into AST for rule checking or reformatting
+- <b>Babel / SWC</b>: Parse AST → transform syntax → generate compatible code
+- <b>IDE refactoring</b>: Safe renaming and function extraction based on AST
+- <b>Tree-shaking</b>: Analyze import/export in AST to remove unused code</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Semantic Analysis and Code Optimization</span><span lang="en">5. Semantic Analysis and Code Optimization</span></h2>
+<p class="reveal"><span lang="id">Syntax analysis ensures code is "structurally correct," but structural correctness doesn't mean "semantically correct." Semantic analysis checks whether the meaning of the code is valid, while code optimization makes programs run faster.</span><span lang="en">Syntax analysis ensures code is "structurally correct," but structural correctness doesn't mean "semantically correct." Semantic analysis checks whether the meaning of the code is valid, while code optimization makes programs run faster.</span></p>
+<p class="reveal"><span lang="id"><CompilationPracticeDemo /></span><span lang="en"><CompilationPracticeDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Semantic Analysis and Type Checking</span><span lang="en">5.1 Semantic Analysis and Type Checking</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Check</th><th>Example</th><th>Result</th></tr>
+<tr><td>Type checking</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">int x = "hello"</code></td><td>Type mismatch</td></tr>
+<tr><td>Scope checking</td><td>Using undeclared variable <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">y</code></td><td>Variable does not exist</td></tr>
+<tr><td>Type inference</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1 + 2.0</code></td><td>Inferred result is float</td></tr>
+<tr><td>Parameter checking</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">add(1, 2, 3)</code> but function only accepts 2 parameters</td><td>Parameter count mismatch</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">TypeError: Cannot read properties of undefined</code> — Type checking
+- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ReferenceError: x is not defined</code> — Scope checking
+- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Expected 2 arguments, but got 3</code> — Parameter checking</span><span lang="en">- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">TypeError: Cannot read properties of undefined</code> — Type checking
+- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ReferenceError: x is not defined</code> — Scope checking
+- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Expected 2 arguments, but got 3</code> — Parameter checking</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Code Optimization: Equivalent Transformation of Intermediate Representation</span><span lang="en">5.2 Code Optimization: Equivalent Transformation of Intermediate Representation</span></h3>
+<p class="reveal"><span lang="id">Before generating the final code, the compiler applies various optimizations to the intermediate code. These optimizations are transparent to the programmer but can significantly improve performance.</span><span lang="en">Before generating the final code, the compiler applies various optimizations to the intermediate code. These optimizations are transparent to the programmer but can significantly improve performance.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Optimization Technique</th><th>Before</th><th>After</th><th>Principle</th></tr>
+<tr><td>Constant folding</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">x = 10 + 5</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">x = 15</code></td><td>Compute the result at compile time</td></tr>
+<tr><td>Dead code elimination</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">if (false) { ... }</code></td><td>Removed entirely</td><td>Code that will never execute</td></tr>
+<tr><td>Constant propagation</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">x = 15; y = x * 2</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">y = 30</code></td><td>Replace with known values directly</td></tr>
+<tr><td>Loop-invariant code motion</td><td>Repeatedly computing <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">len = arr.length</code> inside a loop</td><td>Move outside the loop</td><td>Avoid redundant computation</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Optimization Techniques in Practice: How Compilers Make Code Faster</span><span lang="en">6. Optimization Techniques in Practice: How Compilers Make Code Faster</span></h2>
+<p class="reveal"><span lang="id">Above we mentioned several optimization technique names. Now let's dive deeper into exactly how compilers do this. The interactive component below demonstrates 5 of the most common compiler optimizations. You can intuitively compare the code before and after optimization.</span><span lang="en">Above we mentioned several optimization technique names. Now let's dive deeper into exactly how compilers do this. The interactive component below demonstrates 5 of the most common compiler optimizations. You can intuitively compare the code before and after optimization.</span></p>
+<p class="reveal"><span lang="id"><CodeOptimizationDemo /></span><span lang="en"><CodeOptimizationDemo /></span></p>
+<p class="reveal"><span lang="id">Modern compilers and JIT engines (such as V8, GCC, LLVM) automatically apply dozens of optimizations. As a developer, you don't need to perform these optimizations manually, but understanding them helps you:</span><span lang="en">Modern compilers and JIT engines (such as V8, GCC, LLVM) automatically apply dozens of optimizations. As a developer, you don't need to perform these optimizations manually, but understanding them helps you:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Write code that's easier to optimize</b>: For example, using <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">const</code> instead of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">let</code> makes it easier for the compiler to apply constant folding</span><span lang="en"><b>Write code that's easier to optimize</b>: For example, using <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">const</code> instead of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">let</code> makes it easier for the compiler to apply constant folding</span></li>
+<li><span lang="id"><b>Understand performance differences</b>: Why are small functions faster than large ones? Because the compiler can inline them</span><span lang="en"><b>Understand performance differences</b>: Why are small functions faster than large ones? Because the compiler can inline them</span></li>
+<li><span lang="id"><b>Avoid "de-optimization"</b>: Certain coding patterns prevent compiler optimization, such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">eval()</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">with</code></span><span lang="en"><b>Avoid "de-optimization"</b>: Certain coding patterns prevent compiler optimization, such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">eval()</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">with</code></span></li>
+</ul>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Optimization Technique</th><th>Trigger Condition</th><th>Performance Impact</th><th>What Developers Can Do</th></tr>
+<tr><td>Constant folding</td><td>All constants in an expression</td><td>Eliminates runtime computation</td><td>Use const declarations more</td></tr>
+<tr><td>Dead code elimination</td><td>Unreachable code or unused results</td><td>Reduces code size</td><td>Clean up unused code promptly</td></tr>
+<tr><td>Loop-invariant code motion</td><td>Invariant computation inside a loop</td><td>Reduces redundant computation</td><td>Manual extraction is also a good habit</td></tr>
+<tr><td>Function inlining</td><td>Small functions called frequently</td><td>Eliminates call overhead</td><td>Keep functions small and focused</td></tr>
+<tr><td>Constant propagation</td><td>Variable values known at compile time</td><td>Entire computation chain eliminated</td><td>Use constants instead of magic numbers</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Compiled vs Interpreted vs JIT</span><span lang="en">7. Compiled vs Interpreted vs JIT</span></h2>
+<p class="reveal"><span lang="id">After writing code, there are three "translation methods" to make it run. Each has its own strengths and weaknesses, directly determining the performance characteristics and use cases of the language.</span><span lang="en">After writing code, there are three "translation methods" to make it run. Each has its own strengths and weaknesses, directly determining the performance characteristics and use cases of the language.</span></p>
+<p class="reveal"><span lang="id"><CompileVsInterpretDemo /></span><span lang="en"><CompileVsInterpretDemo /></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Dimension</th><th>Compiled</th><th>Interpreted</th><th>JIT (Just-In-Time)</th></tr>
+<tr><td>Process</td><td>Fully compile to machine code first, then execute</td><td>Translate and execute line by line</td><td>Interpret first, then compile hot code</td></tr>
+<tr><td>Execution speed</td><td>Fastest</td><td>Slowest</td><td>Medium (hot code接近compiled speed)</td></tr>
+<tr><td>Startup speed</td><td>Slow (requires compilation)</td><td>Fast (runs directly)</td><td>Medium (requires warm-up)</td></tr>
+<tr><td>Cross-platform</td><td>Requires recompilation</td><td>Naturally cross-platform</td><td>Cross-platform</td></tr>
+<tr><td>Representative languages</td><td>C, Rust, Go</td><td>Python, Ruby</td><td>JavaScript (V8), Java</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">V8's JIT compiler monitors which code is executed frequently (hot code) and compiles it into highly optimized machine code. So although JavaScript is an "interpreted language," its performance in V8 can approach that of compiled languages. This is also the foundation that enables Node.js to be used on the server side.</span><span lang="en">V8's JIT compiler monitors which code is executed frequently (hot code) and compiles it into highly optimized machine code. So although JavaScript is an "interpreted language," its performance in V8 can approach that of compiled languages. This is also the foundation that enables Node.js to be used on the server side.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary</span><span lang="en">Summary</span></h2>
+<p class="reveal"><span lang="id">Compiler principles aren't just knowledge for compiler developers. Understanding the compilation process helps you better understand error messages, choose appropriate languages, and write more efficient code.</span><span lang="en">Compiler principles aren't just knowledge for compiler developers. Understanding the compilation process helps you better understand error messages, choose appropriate languages, and write more efficient code.</span></p>
+<p class="reveal"><span lang="id">Review the key points of this chapter:</span><span lang="en">Review the key points of this chapter:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>A compiler is a translator</b>: Converts human-readable code into machine-executable instructions</span><span lang="en"><b>A compiler is a translator</b>: Converts human-readable code into machine-executable instructions</span></li>
+<li><span lang="id"><b>Six-stage pipeline</b>: Lexical analysis → Syntax analysis → Semantic analysis → Intermediate code → Optimization → Code generation</span><span lang="en"><b>Six-stage pipeline</b>: Lexical analysis → Syntax analysis → Semantic analysis → Intermediate code → Optimization → Code generation</span></li>
+<li><span lang="id"><b>Lexical analysis breaks tokens</b>: Breaks character streams into meaningful units like keywords, identifiers, and operators</span><span lang="en"><b>Lexical analysis breaks tokens</b>: Breaks character streams into meaningful units like keywords, identifiers, and operators</span></li>
+<li><span lang="id"><b>Syntax analysis builds AST</b>: Organizes tokens into a tree structure according to grammar rules, reflecting operator precedence</span><span lang="en"><b>Syntax analysis builds AST</b>: Organizes tokens into a tree structure according to grammar rules, reflecting operator precedence</span></li>
+<li><span lang="id"><b>Semantic analysis ensures correctness</b>: Type checking, scope checking — most errors you encounter come from here</span><span lang="en"><b>Semantic analysis ensures correctness</b>: Type checking, scope checking — most errors you encounter come from here</span></li>
+<li><span lang="id"><b>Compilers optimize automatically</b>: Techniques like constant folding, dead code elimination, and function inlining make code automatically faster</span><span lang="en"><b>Compilers optimize automatically</b>: Techniques like constant folding, dead code elimination, and function inlining make code automatically faster</span></li>
+<li><span lang="id"><b>Three execution models</b>: Compiled is fastest, interpreted is most flexible, JIT combines the best of both</span><span lang="en"><b>Three execution models</b>: Compiled is fastest, interpreted is most flexible, JIT combines the best of both</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[AST Explorer](https://astexplorer.net/) - View the AST structure of code online</span><span lang="en">[AST Explorer](https://astexplorer.net/) - View the AST structure of code online</span></li>
+<li><span lang="id">[Crafting Interpreters](https://craftinginterpreters.com/) - Build a programming language from scratch (free online book)</span><span lang="en">[Crafting Interpreters](https://craftinginterpreters.com/) - Build a programming language from scratch (free online book)</span></li>
+<li><span lang="id">[The Super Tiny Compiler](https://github.com/jamiebuilds/the-super-tiny-compiler) - A super small compiler implemented in JavaScript</span><span lang="en">[The Super Tiny Compiler](https://github.com/jamiebuilds/the-super-tiny-compiler) - A super small compiler implemented in JavaScript</span></li>
+<li><span lang="id">[V8 Blog](https://v8.dev/blog) - V8 engine's JIT compilation technology blog</span><span lang="en">[V8 Blog](https://v8.dev/blog) - V8 engine's JIT compilation technology blog</span></li>
+<li><span lang="id">[LLVM Official Site](https://llvm.org/) - The most popular compiler infrastructure</span><span lang="en">[LLVM Official Site](https://llvm.org/) - The most popular compiler infrastructure</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../1-computer-fundamentals/algorithm-thinking/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">1-computer-fundamentals/algorithm-thinking</span><span lang="en">1-computer-fundamentals/algorithm-thinking</span></b></a>
+      <a class="next" href="../../1-computer-fundamentals/computer-networks/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">1-computer-fundamentals/computer-networks</span><span lang="en">1-computer-fundamentals/computer-networks</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

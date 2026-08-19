@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>An Introduction to File and Object Storage — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: An Introduction to File and Object Storage. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/4-server-and-backend/file-storage/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">An Introduction to File and Object Storage</span><span lang="en">An Introduction to File and Object Storage</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">An Introduction to File and Object Storage</span><span lang="en">An Introduction to File and Object Storage</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: An Introduction to File and Object Storage.</span><span lang="en">Ensiklopedia VibeKoding: An Introduction to File and Object Storage.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>A user uploads an avatar, and you save it in the server's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/uploads</code> directory — then the server's disk fills up, or you add a second server and the user finds their avatar appears and disappears.</b> File storage seems simple, but in distributed environments it's an architectural problem that requires serious attention. Object storage is the standard answer to this problem in the internet age.</span><span lang="en"><b>A user uploads an avatar, and you save it in the server's <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/uploads</code> directory — then the server's disk fills up, or you add a second server and the user finds their avatar appears and disappears.</b> File storage seems simple, but in distributed environments it's an architectural problem that requires serious attention. Object storage is the standard answer to this problem in the internet age.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn in this article?</b></span><span lang="en"><b>What will you learn in this article?</b></span></p>
+<p class="reveal"><span lang="id">After reading this chapter, you will gain:</span><span lang="en">After reading this chapter, you will gain:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Storage type awareness</b>: Understand the differences and use cases for block storage, file storage, and object storage</span><span lang="en"><b>Storage type awareness</b>: Understand the differences and use cases for block storage, file storage, and object storage</span></li>
+<li><span lang="id"><b>Object storage core concepts</b>: Master Bucket, Object, Key, Pre-signed URL, and other core concepts</span><span lang="en"><b>Object storage core concepts</b>: Master Bucket, Object, Key, Pre-signed URL, and other core concepts</span></li>
+<li><span lang="id"><b>Upload solution design</b>: Learn to choose between client-side direct upload and server-side relay</span><span lang="en"><b>Upload solution design</b>: Learn to choose between client-side direct upload and server-side relay</span></li>
+<li><span lang="id"><b>CDN acceleration principles</b>: Understand how CDN accelerates global distribution of static assets</span><span lang="en"><b>CDN acceleration principles</b>: Understand how CDN accelerates global distribution of static assets</span></li>
+<li><span lang="id"><b>Best practices</b>: Master file naming, access control, lifecycle management, and other practical techniques</span><span lang="en"><b>Best practices</b>: Master file naming, access control, lifecycle management, and other practical techniques</span></li>
+</ul>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Core Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>Storage type comparison</td><td>Block storage, file storage, object storage</td></tr>
+<tr><td><b>Chapter 2</b></td><td>Object storage core concepts</td><td>Bucket, Object, Key, Metadata</td></tr>
+<tr><td><b>Chapter 3</b></td><td>File upload solutions</td><td>Client-side direct upload, Pre-signed URL</td></tr>
+<tr><td><b>Chapter 4</b></td><td>CDN acceleration</td><td>Edge nodes, cache policies, origin fetch</td></tr>
+<tr><td><b>Chapter 5</b></td><td>Best practices</td><td>Naming conventions, permissions, lifecycle</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. The Big Picture: Motivation for Caning 't You Store Files on the Server Locally</span><span lang="en">0. The Big Picture: Motivation for Caning 't You Store Files on the Server Locally</span></h2>
+<p class="reveal"><span lang="id">When starting a project, saving user-uploaded files in a local server directory is the most intuitive approach. But as the project grows, you'll encounter a series of problems:</span><span lang="en">When starting a project, saving user-uploaded files in a local server directory is the most intuitive approach. But as the project grows, you'll encounter a series of problems:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Limited disk space</b>: Server disks always fill up; expanding capacity is troublesome</span><span lang="en"><b>Limited disk space</b>: Server disks always fill up; expanding capacity is troublesome</span></li>
+<li><span lang="id"><b>Multi-server non-sharing</b>: With load balancing, user requests may hit different servers, and files can't be found</span><span lang="en"><b>Multi-server non-sharing</b>: With load balancing, user requests may hit different servers, and files can't be found</span></li>
+<li><span lang="id"><b>No backup</b>: If the server goes down, the files are gone</span><span lang="en"><b>No backup</b>: If the server goes down, the files are gone</span></li>
+<li><span lang="id"><b>No CDN</b>: Users worldwide accessing a single server experience slow speeds</span><span lang="en"><b>No CDN</b>: Users worldwide accessing a single server experience slow speeds</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Object storage (like AWS S3, Alibaba Cloud OSS) solves all these problems: <b>infinite capacity, globally accessible, automatic backup, native CDN support</b>. It has become the de facto standard for file storage in internet applications.</span><span lang="en">Object storage (like AWS S3, Alibaba Cloud OSS) solves all these problems: <b>infinite capacity, globally accessible, automatic backup, native CDN support</b>. It has become the de facto standard for file storage in internet applications.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Storage Type Comparison: Block, File, Object</span><span lang="en">1. Storage Type Comparison: Block, File, Object</span></h2>
+<p class="reveal"><span lang="id">There are three main storage types in the computing world, each solving problems at different levels.</span><span lang="en">There are three main storage types in the computing world, each solving problems at different levels.</span></p>
+<p class="reveal"><span lang="id"><FileStorageTypeDemo /></span><span lang="en"><FileStorageTypeDemo /></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Dimension</th><th>Block Storage</th><th>File Storage</th><th>Object Storage</th></tr>
+<tr><td>Data unit</td><td>Fixed-size blocks</td><td>Files + directories</td><td>Objects (Key-Value)</td></tr>
+<tr><td>Access protocol</td><td>iSCSI/FC</td><td>NFS/SMB</td><td>HTTP REST API</td></tr>
+<tr><td>Performance</td><td>Highest (millisecond)</td><td>Medium</td><td>Lower (but sufficient)</td></tr>
+<tr><td>Scalability</td><td>Limited</td><td>Medium</td><td>Nearly infinite</td></tr>
+<tr><td>Cost</td><td>Highest</td><td>Medium</td><td>Lowest</td></tr>
+<tr><td>Typical use case</td><td>Databases</td><td>Shared files</td><td>Images/video/backups</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Block storage</b> is like a hard drive — for databases
+- <b>File storage</b> is like a network shared folder — for sharing configurations across multiple servers
+- <b>Object storage</b> is like cloud storage — for user-uploaded images and videos</span><span lang="en">- <b>Block storage</b> is like a hard drive — for databases
+- <b>File storage</b> is like a network shared folder — for sharing configurations across multiple servers
+- <b>Object storage</b> is like cloud storage — for user-uploaded images and videos</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Object Storage Core Concepts</span><span lang="en">2. Object Storage Core Concepts</span></h2>
+<p class="reveal"><span lang="id">The data model of object storage is very simple: a <b>Bucket</b> is the container, an <b>Object</b> is the file, and each object is identified by a unique <b>Key</b>.</span><span lang="en">The data model of object storage is very simple: a <b>Bucket</b> is the container, an <b>Object</b> is the file, and each object is identified by a unique <b>Key</b>.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>my-app-bucket/                    ← Bucket
+├── avatars/user-123.jpg          ← Object Key
+├── avatars/user-456.png          ← Object Key
+├── reports/2024/q1-report.pdf    ← Object Key (&quot;directory&quot; is just a Key prefix)
+└── uploads/temp/file.zip         ← Object Key</pre>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Concept</th><th>Description</th><th>Example</th></tr>
+<tr><td>Bucket</td><td>Storage container, globally unique name</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">my-app-prod</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">company-assets</code></td></tr>
+<tr><td>Object</td><td>The stored file itself + metadata</td><td>An image, a PDF</td></tr>
+<tr><td>Key</td><td>The object's unique identifier</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">avatars/user-123.jpg</code></td></tr>
+<tr><td>Metadata</td><td>Additional information about the object</td><td>Content-Type, custom tags</td></tr>
+<tr><td>ACL</td><td>Access Control List</td><td>public-read, private</td></tr>
+<tr><td>Pre-signed URL</td><td>Temporary authorized access link</td><td>Upload/download link valid for 15 minutes</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">avatars/user-123.jpg</code> — the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">avatars/</code> part is not a directory, just a Key prefix. Object storage is a flat structure; all objects are at the same level. The "folders" displayed in the console are just visual grouping by prefix.</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">avatars/user-123.jpg</code> — the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">avatars/</code> part is not a directory, just a Key prefix. Object storage is a flat structure; all objects are at the same level. The "folders" displayed in the console are just visual grouping by prefix.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. File Upload Solutions: Who Uploads the File</span><span lang="en">3. File Upload Solutions: Who Uploads the File</span></h2>
+<p class="reveal"><span lang="id">There are two mainstream approaches for file upload: server-side relay and client-side direct upload. For most scenarios, <b>client-side direct upload</b> is the better choice.</span><span lang="en">There are two mainstream approaches for file upload: server-side relay and client-side direct upload. For most scenarios, <b>client-side direct upload</b> is the better choice.</span></p>
+<p class="reveal"><span lang="id"><FileUploadFlowDemo /></span><span lang="en"><FileUploadFlowDemo /></span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">1. <b>Saves server bandwidth</b>: Files don't pass through your server; they go directly to OSS
+2. <b>Avoids timeouts</b>: Large file uploads won't trigger Nginx/gateway timeout limits
+3. <b>Reduces server load</b>: The server only needs to issue credentials, not process file streams
+4. <b>Supports resumable uploads</b>: OSS natively supports multipart upload; the frontend can implement resumable uploads
+
+Implementation steps: Frontend requests a Pre-signed URL from the backend → Frontend uses this URL to upload directly to OSS → OSS callback notifies the backend</span><span lang="en">1. <b>Saves server bandwidth</b>: Files don't pass through your server; they go directly to OSS
+2. <b>Avoids timeouts</b>: Large file uploads won't trigger Nginx/gateway timeout limits
+3. <b>Reduces server load</b>: The server only needs to issue credentials, not process file streams
+4. <b>Supports resumable uploads</b>: OSS natively supports multipart upload; the frontend can implement resumable uploads
+
+Implementation steps: Frontend requests a Pre-signed URL from the backend → Frontend uses this URL to upload directly to OSS → OSS callback notifies the backend</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. CDN Acceleration: Making It Fast for Users Worldwide</span><span lang="en">4. CDN Acceleration: Making It Fast for Users Worldwide</span></h2>
+<p class="reveal"><span lang="id">When your users are distributed globally, downloading files from a single origin server is slow. CDN (Content Delivery Network) deploys edge nodes worldwide, caching files at nodes closest to users, dramatically reducing access latency.</span><span lang="en">When your users are distributed globally, downloading files from a single origin server is slow. CDN (Content Delivery Network) deploys edge nodes worldwide, caching files at nodes closest to users, dramatically reducing access latency.</span></p>
+<p class="reveal"><span lang="id"><CDNAccelerationDemo /></span><span lang="en"><CDNAccelerationDemo /></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>CDN Concept</th><th>Description</th></tr>
+<tr><td>Edge node</td><td>Cache servers distributed around the world</td></tr>
+<tr><td>Origin fetch</td><td>When an edge node doesn't have a cached copy, it requests the file from the origin server</td></tr>
+<tr><td>Cache hit rate</td><td>The proportion of requests served directly by edge nodes; the higher the better</td></tr>
+<tr><td>TTL</td><td>Cache validity period; after expiration, a new origin fetch is needed</td></tr>
+<tr><td>Cache invalidation</td><td>Proactively clearing edge node caches to make new files take effect</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">- <b>Add hash to filenames</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">logo.a3f2b1.png</code> instead of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">logo.png</code>, so you don't need to invalidate cache when updating files
+- <b>Set reasonable TTLs</b>: Static assets (JS/CSS/images) get long TTLs (1 year), HTML gets short TTLs (5 minutes)
+- <b>Enable Gzip/Brotli compression</b>: Text-based resources can be reduced by 60-80% after compression</span><span lang="en">- <b>Add hash to filenames</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">logo.a3f2b1.png</code> instead of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">logo.png</code>, so you don't need to invalidate cache when updating files
+- <b>Set reasonable TTLs</b>: Static assets (JS/CSS/images) get long TTLs (1 year), HTML gets short TTLs (5 minutes)
+- <b>Enable Gzip/Brotli compression</b>: Text-based resources can be reduced by 60-80% after compression</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Best Practices</span><span lang="en">5. Best Practices</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Practice</th><th>Description</th><th>Example</th></tr>
+<tr><td>Key naming convention</td><td>Use meaningful prefixes to organize files</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">{type}/{date}/{uuid}.{ext}</code></td></tr>
+<tr><td>Avoid hot spot Keys</td><td>Don't start with incrementing numbers</td><td>Use UUID or hash prefixes</td></tr>
+<tr><td>Minimum necessary permissions</td><td>Bucket defaults to private</td><td>Only set public-read for files that need to be public</td></tr>
+<tr><td>Lifecycle rules</td><td>Automatically clean up expired files</td><td>Temp files auto-deleted after 7 days</td></tr>
+<tr><td>CORS configuration</td><td>Frontend direct upload requires CORS setup</td><td>Allow your domain to PUT/POST</td></tr>
+<tr><td>Server-side encryption</td><td>Enable SSE for sensitive files</td><td>SSE-S3 or SSE-KMS</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary</span><span lang="en">Summary</span></h2>
+<p class="reveal"><span lang="id">File storage is a fundamental issue that every web application encounters. Object storage, with its infinite capacity, low cost, and high availability, has become the standard choice for internet applications.</span><span lang="en">File storage is a fundamental issue that every web application encounters. Object storage, with its infinite capacity, low cost, and high availability, has become the standard choice for internet applications.</span></p>
+<p class="reveal"><span lang="id">Key takeaways from this chapter:</span><span lang="en">Key takeaways from this chapter:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Three storage types</b>: Block storage for databases, file storage for sharing, object storage for user files</span><span lang="en"><b>Three storage types</b>: Block storage for databases, file storage for sharing, object storage for user files</span></li>
+<li><span lang="id"><b>Object storage model</b>: Bucket + Key + Object, flat structure, HTTP API access</span><span lang="en"><b>Object storage model</b>: Bucket + Key + Object, flat structure, HTTP API access</span></li>
+<li><span lang="id"><b>Client-side direct upload</b>: Pre-signed URL approach — files don't pass through the server, efficient and resource-saving</span><span lang="en"><b>Client-side direct upload</b>: Pre-signed URL approach — files don't pass through the server, efficient and resource-saving</span></li>
+<li><span lang="id"><b>CDN acceleration</b>: Edge node caching + filename hashing, making it fast for users worldwide</span><span lang="en"><b>CDN acceleration</b>: Edge node caching + filename hashing, making it fast for users worldwide</span></li>
+<li><span lang="id"><b>Security and management</b>: Minimum necessary permissions, lifecycle rules, server-side encryption</span><span lang="en"><b>Security and management</b>: Minimum necessary permissions, lifecycle rules, server-side encryption</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[AWS S3 Developer Guide](https://docs.aws.amazon.com/s3/) - The benchmark documentation for object storage</span><span lang="en">[AWS S3 Developer Guide](https://docs.aws.amazon.com/s3/) - The benchmark documentation for object storage</span></li>
+<li><span lang="id">[Alibaba Cloud OSS Best Practices](https://help.aliyun.com/document_detail/31853.html) - The most commonly used object storage in China</span><span lang="en">[Alibaba Cloud OSS Best Practices](https://help.aliyun.com/document_detail/31853.html) - The most commonly used object storage in China</span></li>
+<li><span lang="id">[MinIO Documentation](https://min.io/docs/minio/linux/index.html) - Open-source S3-compatible object storage</span><span lang="en">[MinIO Documentation](https://min.io/docs/minio/linux/index.html) - Open-source S3-compatible object storage</span></li>
+<li><span lang="id">[Cloudflare R2](https://developers.cloudflare.com/r2/) - Object storage with zero egress fees</span><span lang="en">[Cloudflare R2](https://developers.cloudflare.com/r2/) - Object storage with zero egress fees</span></li>
+<li><span lang="id">[Pre-signed URL Details](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html) - The core mechanism for client-side direct upload</span><span lang="en">[Pre-signed URL Details](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html) - The core mechanism for client-side direct upload</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../4-server-and-backend/domain-specific-languages/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">4-server-and-backend/domain-specific-languages</span><span lang="en">4-server-and-backend/domain-specific-languages</span></b></a>
+      <a class="next" href="../../4-server-and-backend/http-protocol/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">4-server-and-backend/http-protocol</span><span lang="en">4-server-and-backend/http-protocol</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

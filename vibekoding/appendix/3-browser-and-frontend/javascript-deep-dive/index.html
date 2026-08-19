@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of JavaScript — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of JavaScript. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/3-browser-and-frontend/javascript-deep-dive/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of JavaScript</span><span lang="en">Principles of JavaScript</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of JavaScript</span><span lang="en">Principles of JavaScript</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of JavaScript.</span><span lang="en">Ensiklopedia VibeKoding: Principles of JavaScript.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">By now you've learned HTML and CSS and can make decent-looking web pages. But you might have noticed: buttons don't respond to clicks, forms can't be submitted, and the page feels like a "static" picture.
+
+That's why we need JavaScript — it brings web pages to life. Click a button to open a menu, type to search in real time, scroll to load more content… these interactive effects all rely on JavaScript.
+
+In vibecoding, AI writes most of the code for you. But you at least need to be able to read what the code is doing, otherwise you won't catch it when AI gets things wrong. After reading this article, you'll be able to:
+
+- Understand what AI-generated code is doing
+- Spot where the code has problems
+- Tell AI exactly how to fix it in clear, precise language</span><span lang="en">By now you've learned HTML and CSS and can make decent-looking web pages. But you might have noticed: buttons don't respond to clicks, forms can't be submitted, and the page feels like a "static" picture.
+
+That's why we need JavaScript — it brings web pages to life. Click a button to open a menu, type to search in real time, scroll to load more content… these interactive effects all rely on JavaScript.
+
+In vibecoding, AI writes most of the code for you. But you at least need to be able to read what the code is doing, otherwise you won't catch it when AI gets things wrong. After reading this article, you'll be able to:
+
+- Understand what AI-generated code is doing
+- Spot where the code has problems
+- Tell AI exactly how to fix it in clear, precise language</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will this article teach you?</b></span><span lang="en"><b>What will this article teach you?</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>What You'll Be Able to Do</th></tr>
+<tr><td><b>Chapter 1</b></td><td>What JavaScript is</td><td>Understand its role in a web page</td></tr>
+<tr><td><b>Chapter 2</b></td><td>Data and Variables</td><td>Know how programs store and use information</td></tr>
+<tr><td><b>Chapter 3</b></td><td>Functions and Logic</td><td>Read code that makes decisions, loops, and reuses logic</td></tr>
+<tr><td><b>Chapter 4</b></td><td>DOM and Events</td><td>Know how code controls the page and responds to user actions</td></tr>
+<tr><td><b>Chapter 5</b></td><td>Practical Skills</td><td>How to read AI code and describe errors precisely</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">Each chapter starts from "being able to recognize code" — you don't need to write it by hand. Whenever you encounter code you don't understand, come back and use this as a reference.</span><span lang="en">Each chapter starts from "being able to recognize code" — you don't need to write it by hand. Whenever you encounter code you don't understand, come back and use this as a reference.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. What Is JavaScript</span><span lang="en">1. What Is JavaScript</span></h2>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>Why do web pages need JavaScript?</b> HTML and CSS already give pages content and styling — why learn yet another language?</span><span lang="en"><b>Why do web pages need JavaScript?</b> HTML and CSS already give pages content and styling — why learn yet another language?</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 From "Static Pages" to "Dynamic Applications"</span><span lang="en">1.1 From "Static Pages" to "Dynamic Applications"</span></h3>
+<p class="reveal"><span lang="id"><div style="display: flex; gap: 20px; margin: 20px 0;"></span><span lang="en"><div style="display: flex; gap: 20px; margin: 20px 0;"></span></p>
+<p class="reveal"><span lang="id"><div style="flex: 1; padding: 16px; border: 1px solid #e4e7ed; border-radius: 12px;"></span><span lang="en"><div style="flex: 1; padding: 16px; border: 1px solid #e4e7ed; border-radius: 12px;"></span></p>
+<p class="reveal"><span lang="id"><b>📄 Web Pages Without JavaScript</b></span><span lang="en"><b>📄 Web Pages Without JavaScript</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Content is fixed, no interaction</span><span lang="en">Content is fixed, no interaction</span></li>
+<li><span lang="id">Clicking buttons does nothing</span><span lang="en">Clicking buttons does nothing</span></li>
+<li><span lang="id">Filling out forms goes nowhere</span><span lang="en">Filling out forms goes nowhere</span></li>
+<li><span lang="id">Page never updates automatically</span><span lang="en">Page never updates automatically</span></li>
+</ul>
+<p class="reveal"><span lang="id"><i>Like a paper poster — you can only look at it</i></span><span lang="en"><i>Like a paper poster — you can only look at it</i></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"><div style="flex: 1; padding: 16px; border: 1px solid #e4e7ed; border-radius: 12px;"></span><span lang="en"><div style="flex: 1; padding: 16px; border: 1px solid #e4e7ed; border-radius: 12px;"></span></p>
+<p class="reveal"><span lang="id"><b>🚀 Web Pages With JavaScript</b></span><span lang="en"><b>🚀 Web Pages With JavaScript</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Click a button to open a menu</span><span lang="en">Click a button to open a menu</span></li>
+<li><span lang="id">Type to search in real time</span><span lang="en">Type to search in real time</span></li>
+<li><span lang="id">Scroll to auto-load more content</span><span lang="en">Scroll to auto-load more content</span></li>
+<li><span lang="id">Data updates and displays live</span><span lang="en">Data updates and displays live</span></li>
+</ul>
+<p class="reveal"><span lang="id"><i>Like a real application</i></span><span lang="en"><i>Like a real application</i></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"><b>Understanding the relationship between the three in one sentence:</b></span><span lang="en"><b>Understanding the relationship between the three in one sentence:</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Technology</th><th>Analogy</th><th>Role</th></tr>
+<tr><td><b>HTML</b></td><td>Skeleton</td><td>Defines the structure and content of the page</td></tr>
+<tr><td><b>CSS</b></td><td>Skin</td><td>Defines the appearance and styling of the page</td></tr>
+<tr><td><b>JavaScript</b></td><td>Muscles and nervous system</td><td>Makes the page responsive, interactive, and capable of logic</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 Motivation for Vibecodinging Also Require Understanding JavaScript</span><span lang="en">1.2 Motivation for Vibecodinging Also Require Understanding JavaScript</span></h3>
+
+<div class="callout warn reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div>
+  <p><span lang="id">A developer new to JavaScript used AI to build a "counter" app: click a button, and the number increases by 1. The AI-generated code worked fine.
+
+But they wanted to change it to "increase by 2 on each click" and told the AI: "Make each click add 2." The AI modified the code, but the number still only increased by 1.
+
+They asked the AI why it didn't work, and the AI gave an explanation — but they couldn't understand what <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count = count + 1</code> meant in the code, or whether the AI had even changed the right place. All they could do was keep saying "adding 2 doesn't work," and the AI churned out several more versions — some changed the initial value to 2, others added 2 in completely unrelated places.
+
+Finally, after reading Chapter 2's concept of "variables," they understood that <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count = count + 1</code> means taking the value of count, adding 1, and storing it back. Then they told the AI: "Change <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count + 1</code> to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count + 2</code>."
+
+It worked on the first try.
+
+<b>This is why you need to understand JavaScript — not to write code by hand, but so that when the AI doesn't get it right, you can spot the problem at a glance and describe it in one precise sentence.</b></span><span lang="en">A developer new to JavaScript used AI to build a "counter" app: click a button, and the number increases by 1. The AI-generated code worked fine.
+
+But they wanted to change it to "increase by 2 on each click" and told the AI: "Make each click add 2." The AI modified the code, but the number still only increased by 1.
+
+They asked the AI why it didn't work, and the AI gave an explanation — but they couldn't understand what <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count = count + 1</code> meant in the code, or whether the AI had even changed the right place. All they could do was keep saying "adding 2 doesn't work," and the AI churned out several more versions — some changed the initial value to 2, others added 2 in completely unrelated places.
+
+Finally, after reading Chapter 2's concept of "variables," they understood that <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count = count + 1</code> means taking the value of count, adding 1, and storing it back. Then they told the AI: "Change <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count + 1</code> to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">count + 2</code>."
+
+It worked on the first try.
+
+<b>This is why you need to understand JavaScript — not to write code by hand, but so that when the AI doesn't get it right, you can spot the problem at a glance and describe it in one precise sentence.</b></span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.3 A Sneak Peek: Real AI-Generated Code</span><span lang="en">1.3 A Sneak Peek: Real AI-Generated Code</span></h3>
+<p class="reveal"><span lang="id">Before diving deep, let's look at a real piece of AI-generated code. Don't worry about understanding it all — just get a general impression. We'll explain each part later.</span><span lang="en">Before diving deep, let's look at a real piece of AI-generated code. Don't worry about understanding it all — just get a general impression. We'll explain each part later.</span></p>
+<p class="reveal"><span lang="id"><b>Scenario</b>: Build a "click a button to switch background color" feature</span><span lang="en"><b>Scenario</b>: Build a "click a button to switch background color" feature</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Define a set of colors
+const colors = [&#039;#ff6b6b&#039;, &#039;#4ecdc4&#039;, &#039;#45b7d1&#039;, &#039;#96ceb4&#039;]
+let currentIndex = 0
+
+// Find the button on the page
+const button = document.querySelector(&#039;#changeBtn&#039;)
+
+// Add a click event to the button
+button.addEventListener(&#039;click&#039;, () =&gt; {
+  currentIndex = (currentIndex + 1) % colors.length
+  document.body.style.backgroundColor = colors[currentIndex]
+})</pre>
+</div>
+<p class="reveal"><span lang="id"><b>What does this code do?</b></span><span lang="en"><b>What does this code do?</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Code</th><th>Purpose</th><th>See Chapter</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">const colors = [...]</code></td><td>Define a set of color data</td><td>Chapter 2: Arrays</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">let currentIndex = 0</code></td><td>Track which color is currently shown</td><td>Chapter 2: Variables</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">document.querySelector(...)</code></td><td>Find the button on the page</td><td>Chapter 4: DOM Lookup</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">button.addEventListener(...)</code></td><td>Add a click event to the button</td><td>Chapter 4: Event Listeners</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">() => {...}</code></td><td>Define the code to run when clicked</td><td>Chapter 3: Arrow Functions</td></tr>
+</table></div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">You don't need to understand every line of code right now. Just remember: <b>JavaScript code is a series of instructions that tell the browser "when the user does something, here's what should happen."</b></span><span lang="en">You don't need to understand every line of code right now. Just remember: <b>JavaScript code is a series of instructions that tell the browser "when the user does something, here's what should happen."</b></span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Data: Variables and Data Types</span><span lang="en">2. Data: Variables and Data Types</span></h2>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>How does a program "remember" things?</b> User input, data fetched from servers, intermediate results during computation — where is all this information stored?</span><span lang="en"><b>How does a program "remember" things?</b> User input, data fetched from servers, intermediate results during computation — where is all this information stored?</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Variables: Giving Data a Name</span><span lang="en">2.1 Variables: Giving Data a Name</span></h3>
+<p class="reveal"><span lang="id"><b>A variable is like a labeled box</b> — you can put data inside it and later retrieve it by the label.</span><span lang="en"><b>A variable is like a labeled box</b> — you can put data inside it and later retrieve it by the label.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>const name = &quot;Zhang San&quot;   // This name won&#039;t change, use const
+let age = 25                // Age might change, use let</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Why distinguish between const and let?</b></span><span lang="en"><b>Why distinguish between const and let?</b></span></p>
+<p class="reveal"><span lang="id">Think of it this way: your ID number (const) will never change in your lifetime, but your age (let) changes every year. JavaScript lets you use different keywords to express this intent of "changeable vs. unchangeable."</span><span lang="en">Think of it this way: your ID number (const) will never change in your lifetime, but your age (let) changes every year. JavaScript lets you use different keywords to express this intent of "changeable vs. unchangeable."</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Keyword</th><th>Can Be Reassigned</th><th>When to Use</th><th>Example</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">const</code></td><td>❌ No</td><td>Data that won't change</td><td>ID number, config values, color lists</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">let</code></td><td>✅ Yes</td><td>Data that changes</td><td>Counters, currently selected item, user input</td></tr>
+</table></div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+// Using const: these values won't change
+const PI = 3.14159
+const MAX_USERS = 100
+const APP_NAME = "TodoList"
+
+// Using let: these values will change
+let count = 0
+count = 1  // ✅ Can be reassigned
+
+count = count + 1  // ✅ Can compute based on the original value
+
+// What happens if you use const?
+const fixedCount = 0
+fixedCount = 1  // ❌ Error! const can't be reassigned
+</code>``</span><span lang="en">``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+// Using const: these values won't change
+const PI = 3.14159
+const MAX_USERS = 100
+const APP_NAME = "TodoList"
+
+// Using let: these values will change
+let count = 0
+count = 1  // ✅ Can be reassigned
+
+count = count + 1  // ✅ Can compute based on the original value
+
+// What happens if you use const?
+const fixedCount = 0
+fixedCount = 1  // ❌ Error! const can't be reassigned
+</code>``</span></p>
+</div>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>: Modify the code below to see the difference between const and let</span><span lang="en">👇 <b>Try it yourself</b>: Modify the code below to see the difference between const and let</span></p>
+<p class="reveal"><span lang="id"><VariableBoxDemo /></span><span lang="en"><VariableBoxDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Data Types: The Kinds of "Things" in JavaScript</span><span lang="en">2.2 Data Types: The Kinds of "Things" in JavaScript</span></h3>
+<p class="reveal"><span lang="id">JavaScript categorizes data into several types. The three most commonly used are:</span><span lang="en">JavaScript categorizes data into several types. The three most commonly used are:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Type</th><th>Description</th><th>Example</th><th>Real-World Scenario</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">string</code></td><td>Text content</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">"hello"</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">'你好'</code></td><td>Usernames, product descriptions, tooltips</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">number</code></td><td>Numeric values</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">42</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">3.14</code></td><td>Prices, quantities, ratings</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">boolean</code></td><td>Yes/no values</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">true</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">false</code></td><td>Logged in, completed, visible</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Two special values worth knowing:</b></span><span lang="en"><b>Two special values worth knowing:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">undefined</code> → A variable has been declared but not yet assigned a value</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">undefined</code> → A variable has been declared but not yet assigned a value</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">null</code> → Intentionally set to empty (meaning "there is no value here")</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">null</code> → Intentionally set to empty (meaning "there is no value here")</span></li>
+</ul>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">In AI-generated code, you'll often see strings wrapped in backticks (`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> </code> `<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">) with </code>${...}<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> inside them:
+
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+const name = "Zhang San"
+const age = 25
+
+// Traditional approach (cumbersome)
+const message = "I'm " + name + ", " + age + " years old"
+
+// Template literal (concise)
+const message = </code>I'm ${name}, ${age} years old<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+// Result: "I'm Zhang San, 25 years old"
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Recognition tip</b>: When you see backticks and </code>${}`, you know variables are being inserted into text.</span><span lang="en">In AI-generated code, you'll often see strings wrapped in backticks (`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> </code> `<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">) with </code>${...}<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> inside them:
+
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">javascript
+const name = "Zhang San"
+const age = 25
+
+// Traditional approach (cumbersome)
+const message = "I'm " + name + ", " + age + " years old"
+
+// Template literal (concise)
+const message = </code>I'm ${name}, ${age} years old<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+// Result: "I'm Zhang San, 25 years old"
+</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
+
+<b>Recognition tip</b>: When you see backticks and </code>${}`, you know variables are being inserted into text.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 Objects and Arrays: Organizing Data</span><span lang="en">2.3 Objects and Arrays: Organizing Data</span></h3>
+<p class="reveal"><span lang="id"><b>Object = a set of named properties</b> (like a personal information card)</span><span lang="en"><b>Object = a set of named properties</b> (like a personal information card)</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>const user = {
+  name: &quot;Zhang San&quot;,
+  age: 25,
+  isVIP: true
+}
+
+// Use dot notation to access properties
+console.log(user.name)    // &quot;Zhang San&quot;
+console.log(user.age)     // 25</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Array = an ordered collection of data</b> (like a list)</span><span lang="en"><b>Array = an ordered collection of data</b> (like a list)</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>const colors = [&#039;Red&#039;, &#039;Green&#039;, &#039;Blue&#039;]
+
+// Access by index (starting from 0)
+console.log(colors[0])  // &quot;Red&quot;
+console.log(colors[1])  // &quot;Green&quot;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Nested structures: objects inside arrays, arrays inside objects</b></span><span lang="en"><b>Nested structures: objects inside arrays, arrays inside objects</b></span></p>
+<p class="reveal"><span lang="id">This is the most common data structure in AI-generated code:</span><span lang="en">This is the most common data structure in AI-generated code:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>const todos = [
+  { id: 1, text: &quot;Learn JavaScript&quot;, done: false },
+  { id: 2, text: &quot;Build a project&quot;, done: true },
+  { id: 3, text: &quot;Write documentation&quot;, done: false }
+]
+
+// Access: first take item 0 of the array, then its text property
+console.log(todos[0].text)  // &quot;Learn JavaScript&quot;</pre>
+</div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">{}</code> → This is an object, containing a set of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">name: value</code> pairs
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">[]</code> → This is an array, containing an ordered list of values
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">data[0].name</code> → First take item 0 of the array, then its name property</span><span lang="en">- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">{}</code> → This is an object, containing a set of <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">name: value</code> pairs
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">[]</code> → This is an array, containing an ordered list of values
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">data[0].name</code> → First take item 0 of the array, then its name property</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.4 Value vs. Reference: A Common Pitfall</span><span lang="en">2.4 Value vs. Reference: A Common Pitfall</span></h3>
+<p class="reveal"><span lang="id">This is one of the most common issues beginners run into!</span><span lang="en">This is one of the most common issues beginners run into!</span></p>
+<p class="reveal"><span lang="id"><b>Primitive types (string, number, boolean) assignment = copying a brand new piece of data:</b></span><span lang="en"><b>Primitive types (string, number, boolean) assignment = copying a brand new piece of data:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>let a = 10
+let b = a      // b gets a copy of a
+b = 20
+console.log(a) // 10 (a is unaffected)</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Object and array assignment = copying the "address" (both point to the same thing):</b></span><span lang="en"><b>Object and array assignment = copying the "address" (both point to the same thing):</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>let user1 = { name: &quot;Zhang San&quot; }
+let user2 = user1      // user2 points to the same object
+user2.name = &quot;Li Si&quot;   // modifying user2 affects user1
+console.log(user1.name) // &quot;Li Si&quot; (user1 changed too!)</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Why create copies?</b></span><span lang="en"><b>Why create copies?</b></span></p>
+<p class="reveal"><span lang="id">In React/Vue, directly mutating data prevents the UI from updating. That's why you often see <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">[...array]</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">{...obj}</code> in AI code — it's creating a copy to avoid mutual interference.</span><span lang="en">In React/Vue, directly mutating data prevents the UI from updating. That's why you often see <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">[...array]</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">{...obj}</code> in AI code — it's creating a copy to avoid mutual interference.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Create a copy using the spread operator
+const arr1 = [1, 2, 3]
+const arr2 = [...arr1]     // Create a new array
+arr2.push(4)
+console.log(arr1)          // [1, 2, 3] (unaffected)
+console.log(arr2)          // [1, 2, 3, 4]</pre>
+</div>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>: Observe how the original data changes when you modify a copy</span><span lang="en">👇 <b>Try it yourself</b>: Observe how the original data changes when you modify a copy</span></p>
+<p class="reveal"><span lang="id"><ReferenceDemo /></span><span lang="en"><ReferenceDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.5 Destructuring and Spread: Modern JavaScript Shortcuts</span><span lang="en">2.5 Destructuring and Spread: Modern JavaScript Shortcuts</span></h3>
+<p class="reveal"><span lang="id">These two syntax patterns are everywhere in AI code — if you don't recognize them, you can't read the code.</span><span lang="en">These two syntax patterns are everywhere in AI code — if you don't recognize them, you can't read the code.</span></p>
+<p class="reveal"><span lang="id"><b>Destructuring assignment: quickly extract data from objects or arrays</b></span><span lang="en"><b>Destructuring assignment: quickly extract data from objects or arrays</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>const user = { name: &quot;Zhang San&quot;, age: 25, city: &quot;Beijing&quot; }
+
+// Traditional approach (cumbersome)
+const name = user.name
+const age = user.age
+
+// Destructuring (concise)
+const { name, age } = user
+// Same result, but done in one line</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Spread operator: copy and extend data</b></span><span lang="en"><b>Spread operator: copy and extend data</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Copy an array and add new elements
+const arr1 = [1, 2, 3]
+const arr2 = [...arr1, 4, 5]  // [1, 2, 3, 4, 5]
+
+// Copy an object and add new properties
+const user1 = { name: &quot;Zhang San&quot;, age: 25 }
+const user2 = { ...user1, city: &quot;Beijing&quot; }
+// { name: &quot;Zhang San&quot;, age: 25, city: &quot;Beijing&quot; }</pre>
+</div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">const { name, age } = person</code> → Extracting name and age from the person object
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">...array</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">...obj</code> → Spreading/flattening the array or object
+- You don't need to write these by hand, but you must be able to read them</span><span lang="en">- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">const { name, age } = person</code> → Extracting name and age from the person object
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">...array</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">...obj</code> → Spreading/flattening the array or object
+- You don't need to write these by hand, but you must be able to read them</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Logic: Functions and Flow Control</span><span lang="en">3. Logic: Functions and Flow Control</span></h2>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>How does code "make decisions" and "repeat tasks"?</b> Programs need to execute different operations based on conditions and repeat certain tasks — how is this logic expressed?</span><span lang="en"><b>How does code "make decisions" and "repeat tasks"?</b> Programs need to execute different operations based on conditions and repeat certain tasks — how is this logic expressed?</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Conditionals: If... Then... Otherwise...</span><span lang="en">3.1 Conditionals: If... Then... Otherwise...</span></h3>
+<p class="reveal"><span lang="id"><b>if/else: the most basic conditional</b></span><span lang="en"><b>if/else: the most basic conditional</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>const age = 18
+
+if (age &gt;= 18) {
+  console.log(&quot;Adult&quot;)
+} else {
+  console.log(&quot;Minor&quot;)
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Ternary operator: shorthand if/else</b></span><span lang="en"><b>Ternary operator: shorthand if/else</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Full form (4 lines)
+let message
+if (age &gt;= 18) {
+  message = &quot;Adult&quot;
+} else {
+  message = &quot;Minor&quot;
+}
+
+// Ternary operator (1 line)
+const message = age &gt;= 18 ? &quot;Adult&quot; : &quot;Minor&quot;
+// Format: condition ? value_if_true : value_if_false</pre>
+</div>
+<p class="reveal"><span lang="id"><b>&& short-circuit: common in React code</b></span><span lang="en"><b>&& short-circuit: common in React code</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Only show the user panel when isLoggedIn is true
+isLoggedIn &amp;&amp; &lt;UserPanel /&gt;
+
+// Equivalent to
+if (isLoggedIn) {
+  return &lt;UserPanel /&gt;
+}</pre>
+</div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">? :</code> → This is the ternary operator, shorthand for if/else
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">&&</code> → The part after && only executes if the part before it is true</span><span lang="en">- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">? :</code> → This is the ternary operator, shorthand for if/else
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">&&</code> → The part after && only executes if the part before it is true</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Functions: Packaging Operations</span><span lang="en">3.2 Functions: Packaging Operations</span></h3>
+<p class="reveal"><span lang="id"><b>Function = a recipe for a dish</b></span><span lang="en"><b>Function = a recipe for a dish</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Defining a function = writing down the recipe</span><span lang="en">Defining a function = writing down the recipe</span></li>
+<li><span lang="id">Calling a function = cooking according to the recipe</span><span lang="en">Calling a function = cooking according to the recipe</span></li>
+<li><span lang="id">Parameters = ingredients</span><span lang="en">Parameters = ingredients</span></li>
+<li><span lang="id">Return value = the finished dish</span><span lang="en">Return value = the finished dish</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Define a function (write down the recipe)
+function greet(name) {
+  return &quot;Hello &quot; + name
+}
+
+// Call the function (cook according to the recipe)
+console.log(greet(&quot;Zhang San&quot;))  // &quot;Hello Zhang San&quot;
+console.log(greet(&quot;Li Si&quot;))      // &quot;Hello Li Si&quot;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Three forms, recognizable at a glance:</b></span><span lang="en"><b>Three forms, recognizable at a glance:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// 1. function declaration (traditional)
+function greet(name) {
+  return &quot;Hello &quot; + name
+}
+
+// 2. Arrow function (most common in AI code)
+const greet = (name) =&gt; {
+  return &quot;Hello &quot; + name
+}
+
+// 3. Arrow function shorthand (when there&#039;s only one line)
+const greet = (name) =&gt; &quot;Hello &quot; + name</pre>
+</div>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>: Enter different names and see how the function works</span><span lang="en">👇 <b>Try it yourself</b>: Enter different names and see how the function works</span></p>
+<p class="reveal"><span lang="id"><FunctionMachineDemo /></span><span lang="en"><FunctionMachineDemo /></span></p>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">function</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">=></code> → This is a function
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fn()</code> → This function is being called
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">() => {}</code> → Arrow function, the mainstream style in modern JS</span><span lang="en">- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">function</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">=></code> → This is a function
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fn()</code> → This function is being called
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">() => {}</code> → Arrow function, the mainstream style in modern JS</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Array Methods: Power Tools for Processing Lists</span><span lang="en">3.3 Array Methods: Power Tools for Processing Lists</span></h3>
+<p class="reveal"><span lang="id">In React/Vue, almost every list rendering uses these methods.</span><span lang="en">In React/Vue, almost every list rendering uses these methods.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>const todos = [
+  { id: 1, text: &quot;Study&quot;, done: false },
+  { id: 2, text: &quot;Work&quot;, done: true }
+]
+
+// .map(): transform each item in the array into something else
+const texts = todos.map(todo =&gt; todo.text)
+// [&quot;Study&quot;, &quot;Work&quot;]
+
+// .filter(): filter out items that match a condition
+const unfinished = todos.filter(todo =&gt; !todo.done)
+// [{ id: 1, text: &quot;Study&quot;, done: false }]
+
+// .find(): find the first item that matches a condition
+const found = todos.find(todo =&gt; todo.id === 1)
+// { id: 1, text: &quot;Study&quot;, done: false }</pre>
+</div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.map()</code> → Transforming an array, returns a new array
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.filter()</code> → Filtering an array
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">items.map(item => <li>{item.name}</li>)</code> → Turning each data item into a list element</span><span lang="en">- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.map()</code> → Transforming an array, returns a new array
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.filter()</code> → Filtering an array
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">items.map(item => <li>{item.name}</li>)</code> → Turning each data item into a list element</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.4 Scope: The "Visibility Range" of Variables</span><span lang="en">3.4 Scope: The "Visibility Range" of Variables</span></h3>
+<p class="reveal"><span lang="id"><b>Use the "room" analogy:</b></span><span lang="en"><b>Use the "room" analogy:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Variables inside a function are like things in a room — invisible from outside</span><span lang="en">Variables inside a function are like things in a room — invisible from outside</span></li>
+<li><span lang="id">But people inside the room can see things in the hallway (outer scope)</span><span lang="en">But people inside the room can see things in the hallway (outer scope)</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>const global = &quot;Global variable&quot;  // Something in the hallway
+
+function room() {
+  const local = &quot;Something in the room&quot;  // Something in the room
+  console.log(global)  // ✅ Can see the hallway
+}
+
+console.log(local)  // ❌ Error! Can&#039;t see into the room from outside</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Core intuition:</b> Where code is written determines what variables it can see.</span><span lang="en"><b>Core intuition:</b> Where code is written determines what variables it can see.</span></p>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>: Click on different scopes to see which variables are accessible</span><span lang="en">👇 <b>Try it yourself</b>: Click on different scopes to see which variables are accessible</span></p>
+<p class="reveal"><span lang="id"><ScopeDemo /></span><span lang="en"><ScopeDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.5 Closures: Functions "Remember" the Environment They Were Born In</span><span lang="en">3.5 Closures: Functions "Remember" the Environment They Were Born In</span></h3>
+<p class="reveal"><span lang="id"><b>Don't treat this as an isolated concept — understand it from a concrete scenario:</b></span><span lang="en"><b>Don't treat this as an isolated concept — understand it from a concrete scenario:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>function setupCounter() {
+  let count = 0  // This variable is inside the function
+
+  return {
+    add: () =&gt; { count++; return count },
+    getCount: () =&gt; count
+  }
+}
+
+const counter = setupCounter()
+console.log(counter.add())      // 1
+console.log(counter.add())      // 2
+console.log(counter.getCount()) // 2</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Core intuition:</b> When a function is created, it "remembers" the variables around it, even after the outer function has finished executing.</span><span lang="en"><b>Core intuition:</b> When a function is created, it "remembers" the variables around it, even after the outer function has finished executing.</span></p>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>: Observe how closures let functions "remember" state</span><span lang="en">👇 <b>Try it yourself</b>: Observe how closures let functions "remember" state</span></p>
+<p class="reveal"><span lang="id"><ClosureDemo /></span><span lang="en"><ClosureDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.6 this: Whoever Calls the Function</span><span lang="en">3.6 this: Whoever Calls the Function</span></h3>
+<p class="reveal"><span lang="id"><b>No complex binding rules — just the most common scenarios:</b></span><span lang="en"><b>No complex binding rules — just the most common scenarios:</b></span></p>
+<p class="reveal"><span lang="id"><b>Scenario 1: In an object's method, this points to that object</b></span><span lang="en"><b>Scenario 1: In an object's method, this points to that object</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>const user = {
+  name: &quot;Zhang San&quot;,
+  sayHi() {
+    console.log(&quot;Hello, I&#039;m &quot; + this.name)  // this points to user
+  }
+}
+user.sayHi()  // &quot;Hello, I&#039;m Zhang San&quot;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Scenario 2: In event listeners, this points to the element that fired the event</b></span><span lang="en"><b>Scenario 2: In event listeners, this points to the element that fired the event</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>button.addEventListener(&#039;click&#039;, function() {
+  console.log(this)  // this points to the button element
+})
+
+// But arrow functions don&#039;t change this
+button.addEventListener(&#039;click&#039;, () =&gt; {
+  console.log(this)  // this points to the outer this
+})</pre>
+</div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">If a this-related bug appears in AI code (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Cannot read property of undefined</code>), tell the AI: "The this binding in this method is wrong — switch to an arrow function or use bind."</span><span lang="en">If a this-related bug appears in AI code (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Cannot read property of undefined</code>), tell the AI: "The this binding in this method is wrong — switch to an arrow function or use bind."</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Interaction: DOM, Events, and Asynchrony</span><span lang="en">4. Interaction: DOM, Events, and Asynchrony</span></h2>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>How does JavaScript "interact" with a web page?</b> How do you find elements on the page? How do you respond to user clicks and input? How do you fetch data from a server?</span><span lang="en"><b>How does JavaScript "interact" with a web page?</b> How do you find elements on the page? How do you respond to user clicks and input? How do you fetch data from a server?</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 DOM: How JavaScript Sees a Web Page</span><span lang="en">4.1 DOM: How JavaScript Sees a Web Page</span></h3>
+<p class="reveal"><span lang="id">In JavaScript's view, a web page is a "tree," and every HTML tag is a "node" on that tree.</span><span lang="en">In JavaScript's view, a web page is a "tree," and every HTML tag is a "node" on that tree.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>html</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>&lt;html&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Title&lt;/h1&gt;
+    &lt;p&gt;Paragraph&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Item 1&lt;/li&gt;
+      &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>JS controlling the page = finding nodes + modifying nodes + creating/deleting nodes</b></span><span lang="en"><b>JS controlling the page = finding nodes + modifying nodes + creating/deleting nodes</b></span></p>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>: Click on nodes to see how the DOM tree is organized</span><span lang="en">👇 <b>Try it yourself</b>: Click on nodes to see how the DOM tree is organized</span></p>
+<p class="reveal"><span lang="id"><DOMTreeDemo /></span><span lang="en"><DOMTreeDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Finding and Modifying Elements</span><span lang="en">4.2 Finding and Modifying Elements</span></h3>
+<p class="reveal"><span lang="id"><b>Finding elements:</b></span><span lang="en"><b>Finding elements:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Find by CSS selector (most common)
+const title = document.querySelector(&#039;h1&#039;)      // Find the first h1
+const button = document.querySelector(&#039;#btn&#039;)   // Find the element with id=&quot;btn&quot;
+const items = document.querySelectorAll(&#039;.item&#039;) // Find all elements with class=&quot;item&quot;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Modifying elements:</b></span><span lang="en"><b>Modifying elements:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Change text
+title.textContent = &quot;New Title&quot;
+
+// Change styles
+element.style.color = &quot;red&quot;
+element.style.fontSize = &quot;20px&quot;
+
+// Change CSS classes
+element.classList.add(&#039;active&#039;)      // Add a class
+element.classList.remove(&#039;hidden&#039;)   // Remove a class
+element.classList.toggle(&#039;open&#039;)     // Toggle a class (add if absent, remove if present)</pre>
+</div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">document.querySelector</code> → Looking up a page element
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.textContent</code> → Changing text
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.style.xxx</code> → Changing styles
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.classList.add/remove/toggle</code> → Changing CSS classes</span><span lang="en">- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">document.querySelector</code> → Looking up a page element
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.textContent</code> → Changing text
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.style.xxx</code> → Changing styles
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.classList.add/remove/toggle</code> → Changing CSS classes</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 Events: When the User Does Something...</span><span lang="en">4.3 Events: When the User Does Something...</span></h3>
+<p class="reveal"><span lang="id"><b>addEventListener: add an event listener to an element</b></span><span lang="en"><b>addEventListener: add an event listener to an element</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>button.addEventListener(&#039;click&#039;, () =&gt; {
+  console.log(&quot;Button was clicked&quot;)
+})</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Common events:</b></span><span lang="en"><b>Common events:</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Event</th><th>Trigger</th><th>Real-World Scenario</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">click</code></td><td>Clicking</td><td>Button clicks, link navigation</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">input</code></td><td>Input field content changes</td><td>Real-time search, form validation</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">submit</code></td><td>Form submission</td><td>Login, registration, submitting data</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">scroll</code></td><td>Scrolling the page</td><td>Lazy loading, back-to-top button</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Event object: getting more information</b></span><span lang="en"><b>Event object: getting more information</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>input.addEventListener(&#039;input&#039;, (e) =&gt; {
+  console.log(e.target.value)  // Get the input field&#039;s value
+  e.preventDefault()            // Prevent default behavior (e.g., page refresh on form submit)
+})</pre>
+</div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">When you want to add functionality to a button, you're essentially telling the AI: "Add a click event to this button, and execute X operation when clicked."</span><span lang="en">When you want to add functionality to a button, you're essentially telling the AI: "Add a click event to this button, and execute X operation when clicked."</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.4 Asynchrony: Why Some Operations Don't Complete Immediately</span><span lang="en">4.4 Asynchrony: Why Some Operations Don't Complete Immediately</span></h3>
+<p class="reveal"><span lang="id"><b>Restaurant analogy:</b></span><span lang="en"><b>Restaurant analogy:</b></span></p>
+<p class="reveal"><span lang="id">After ordering, you don't have to stand at the kitchen door waiting — you can do other things, and the server will bring the food when it's ready.</span><span lang="en">After ordering, you don't have to stand at the kitchen door waiting — you can do other things, and the server will bring the food when it's ready.</span></p>
+<p class="reveal"><span lang="id"><b>Most common scenario: fetching data from a server</b></span><span lang="en"><b>Most common scenario: fetching data from a server</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Synchronous approach (blocks the page — don&#039;t use)
+const data = fetch(&#039;/api/data&#039;)  // ❌ Writing it this way will block
+
+// Asynchronous approach (correct)
+async function loadData() {
+  try {
+    const response = await fetch(&#039;/api/data&#039;)
+    const data = await response.json()
+    console.log(data)
+  } catch (error) {
+    console.error(&#039;Error:&#039;, error)
+  }
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>async/await syntax:</b></span><span lang="en"><b>async/await syntax:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">async</code> → Marks this function as containing asynchronous operations</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">async</code> → Marks this function as containing asynchronous operations</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">await</code> → Wait for this operation to complete (without blocking the page)</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">await</code> → Wait for this operation to complete (without blocking the page)</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">try/catch</code> → Handle potential errors</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">try/catch</code> → Handle potential errors</span></li>
+</ul>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>: Observe the execution order of asynchronous operations</span><span lang="en">👇 <b>Try it yourself</b>: Observe the execution order of asynchronous operations</span></p>
+<p class="reveal"><span lang="id"><AsyncRestaurantDemo /></span><span lang="en"><AsyncRestaurantDemo /></span></p>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">async/await</code> → Waiting for a time-consuming operation
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fetch()</code> → Fetching data from a server
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">try/catch</code> → Handling potential errors</span><span lang="en">- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">async/await</code> → Waiting for a time-consuming operation
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fetch()</code> → Fetching data from a server
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">try/catch</code> → Handling potential errors</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.5 Event Loop: How JavaScript Actually Works</span><span lang="en">4.5 Event Loop: How JavaScript Actually Works</span></h3>
+<p class="reveal"><span lang="id"><b>No jargon like "microtasks/macrotasks" — understand it with a simple model:</b></span><span lang="en"><b>No jargon like "microtasks/macrotasks" — understand it with a simple model:</b></span></p>
+<p class="reveal"><span lang="id"><b>JS is a "single-person workstation"</b> — it can only do one thing at a time, but it has a "sticky note board" (task queue).</span><span lang="en"><b>JS is a "single-person workstation"</b> — it can only do one thing at a time, but it has a "sticky note board" (task queue).</span></p>
+<p class="reveal"><span lang="id">When it encounters an operation that requires waiting (network requests, timers), JS doesn't just wait idly — instead, it sticks a note about "what to do when this is ready" onto the board and continues executing. Only when the current work is done does it check the board.</span><span lang="en">When it encounters an operation that requires waiting (network requests, timers), JS doesn't just wait idly — instead, it sticks a note about "what to do when this is ready" onto the board and continues executing. Only when the current work is done does it check the board.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>console.log(&quot;1&quot;)
+
+setTimeout(() =&gt; console.log(&quot;2&quot;), 0)  // Even with 0ms delay, it gets deferred
+
+console.log(&quot;3&quot;)
+
+// Output: 1, 3, 2 (not 1, 2, 3!)</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Why?</b></span><span lang="en"><b>Why?</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Execute <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console.log("1")</code> → outputs 1</span><span lang="en">Execute <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console.log("1")</code> → outputs 1</span></li>
+<li><span lang="id">Encounter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">setTimeout</code> → stick the callback on the board, continue</span><span lang="en">Encounter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">setTimeout</code> → stick the callback on the board, continue</span></li>
+<li><span lang="id">Execute <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console.log("3")</code> → outputs 3</span><span lang="en">Execute <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console.log("3")</code> → outputs 3</span></li>
+<li><span lang="id">Current code is done, check the board</span><span lang="en">Current code is done, check the board</span></li>
+<li><span lang="id">Execute the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">setTimeout</code> callback → outputs 2</span><span lang="en">Execute the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">setTimeout</code> callback → outputs 2</span></li>
+</ul>
+<p class="reveal"><span lang="id">👇 <b>Try it yourself</b>: Observe the execution order of code</span><span lang="en">👇 <b>Try it yourself</b>: Observe the execution order of code</span></p>
+<p class="reveal"><span lang="id"><JSEventLoopDemo /></span><span lang="en"><JSEventLoopDemo /></span></p>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">If the page renders before data is fetched in AI code, tell the AI: "The data hasn't finished loading but the page is already rendering — add a loading state and only render once the data arrives."</span><span lang="en">If the page renders before data is fetched in AI code, tell the AI: "The data hasn't finished loading but the page is already rendering — add a loading state and only render once the data arrives."</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.6 Modules: import and export</span><span lang="en">4.6 Modules: import and export</span></h3>
+<p class="reveal"><span lang="id">The first line of AI-generated React/Vue code is almost always <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">import</code>.</span><span lang="en">The first line of AI-generated React/Vue code is almost always <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">import</code>.</span></p>
+<p class="reveal"><span lang="id"><b>import = bring in functionality from another file</b></span><span lang="en"><b>import = bring in functionality from another file</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Import a function from a utility file
+import { formatDate } from &#039;./utils&#039;
+
+// Import from a third-party package
+import React from &#039;react&#039;
+import { useState } from &#039;react&#039;</pre>
+</div>
+<p class="reveal"><span lang="id"><b>export = expose functionality for others to use</b></span><span lang="en"><b>export = expose functionality for others to use</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// utils.js
+export function formatDate(date) {
+  // ...
+}
+
+// Or default export
+export default function formatDate(date) {
+  // ...
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>npm packages = pre-built tools by others, use them after installing</b></span><span lang="en"><b>npm packages = pre-built tools by others, use them after installing</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Install package: npm install lodash
+// Use the package
+import _ from &#039;lodash&#039;</pre>
+</div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">import</code> → Bringing in functionality from another file
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">export</code> → Exposing functionality for others to use
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">from 'react'</code> → Importing from the React package
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">from './utils'</code> → Importing from a local file</span><span lang="en">- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">import</code> → Bringing in functionality from another file
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">export</code> → Exposing functionality for others to use
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">from 'react'</code> → Importing from the React package
+- See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">from './utils'</code> → Importing from a local file</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Practical Skills: Reading Code, Understanding Errors, Describing Precisely</span><span lang="en">5. Practical Skills: Reading Code, Understanding Errors, Describing Precisely</span></h2>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>You've learned all this syntax — now how do you actually use it when you get AI-generated code?</b> How do you quickly read through code? What do you do when you encounter errors? How do you get AI to accurately fix your code?</span><span lang="en"><b>You've learned all this syntax — now how do you actually use it when you get AI-generated code?</b> How do you quickly read through code? What do you do when you encounter errors? How do you get AI to accurately fix your code?</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 How to Read AI-Generated Code</span><span lang="en">5.1 How to Read AI-Generated Code</span></h3>
+<p class="reveal"><span lang="id"><b>The four-step method:</b></span><span lang="en"><b>The four-step method:</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Step</th><th>What to Look At</th><th>Example</th></tr>
+<tr><td><b>Step 1: Overall structure</b></td><td>How many functions? What does each do?</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">loadData()</code> loads data, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">renderList()</code> renders the list</td></tr>
+<tr><td><b>Step 2: Find the entry point</b></td><td>Where does the program start executing?</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">addEventListener('click', ...)</code> starts on click</td></tr>
+<tr><td><b>Step 3: Trace the data flow</b></td><td>Where does data come from? Where does it go?</td><td>Fetch from API → parse → render to page</td></tr>
+<tr><td><b>Step 4: Examine the logic</b></td><td>How does each function handle things?</td><td>Loops, conditionals, calculations</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>A complete "reading demo" using the code example from Chapter 1:</b></span><span lang="en"><b>A complete "reading demo" using the code example from Chapter 1:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Step 1: Overall structure
+// - An array of colors
+// - A variable tracking the current index
+// - A click event on a button
+
+// Step 2: Entry point
+// button.addEventListener(&#039;click&#039;, ...) → executes when the button is clicked
+
+// Step 3: Data flow
+// colors (color array) → currentIndex (current index) → backgroundColor (background color)
+
+// Step 4: Detailed logic
+// currentIndex = (currentIndex + 1) % colors.length
+// This formula means: increment by 1 each time, but cycle back when reaching the array length</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Common Error Quick Reference</span><span lang="en">5.2 Common Error Quick Reference</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Error</th><th>Plain English Explanation</th><th>How to Tell AI</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">TypeError: Cannot read properties of undefined</code></td><td>You're trying to access a property on something that doesn't exist</td><td>"Line X has an error — a certain variable is undefined, check its assignment logic"</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ReferenceError: xxx is not defined</code></td><td>You used a variable name that hasn't been declared</td><td>"Variable xxx is not defined — check for typos or missing imports"</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">TypeError: xxx is not a function</code></td><td>You're calling something as a function that isn't one</td><td>"xxx is not a function — check its type and where it comes from"</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SyntaxError: Unexpected token</code></td><td>Syntax error (mismatched brackets, missing comma, etc.)</td><td>"Line X has a syntax error — check brackets and punctuation"</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CORS error</code></td><td>The browser blocked a cross-origin request</td><td>"Encountered a CORS error — need to configure cross-origin resource sharing"</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">404 Not Found</code></td><td>The requested resource doesn't exist</td><td>"The API returned 404 — check if the endpoint URL is correct"</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 How to Describe Problems Precisely</span><span lang="en">5.3 How to Describe Problems Precisely</span></h3>
+<p class="reveal"><span lang="id">The gap between beginners and experienced developers often comes down to the <b>precision of problem descriptions</b>.</span><span lang="en">The gap between beginners and experienced developers often comes down to the <b>precision of problem descriptions</b>.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>❌ Poor Description</th><th>✅ Good Description</th></tr>
+<tr><td>"The code has a bug"</td><td>"When clicking the delete button, it deletes the last item instead of the current one"</td></tr>
+<tr><td>"The styling is wrong"</td><td>"The title should be centered but it's currently left-aligned"</td></tr>
+<tr><td>"The data won't display"</td><td>"The fetch request returns data (visible in the console), but the page isn't re-rendering"</td></tr>
+<tr><td>"Add a feature"</td><td>"Add a search box to the user list page that filters the list in real-time as the user types, fuzzy-matching against the name field"</td></tr>
+<tr><td>"Clicking does nothing"</td><td>"Clicking the button throws 'Cannot read property of undefined' in the console, error on line X"</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>A practical exercise:</b></span><span lang="en"><b>A practical exercise:</b></span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Buggy code
+function deleteTodo(index) {
+  todos.splice(index, 1)  // Always deletes the last item
+}
+
+// Observed behavior: no matter which delete button you click, it always deletes the last item</pre>
+</div>
+<p class="reveal"><span lang="id"><b>❌ Poor description:</b> "The delete function has a bug"</span><span lang="en"><b>❌ Poor description:</b> "The delete function has a bug"</span></p>
+<p class="reveal"><span lang="id"><b>✅ Good description:</b> "When clicking the delete button, it deletes the last item instead of the current one. The code uses splice(index, 1), but the index might be incorrect. It should be changed to match deletion by each item's unique id."</span><span lang="en"><b>✅ Good description:</b> "When clicking the delete button, it deletes the last item instead of the current one. The code uses splice(index, 1), but the index might be incorrect. It should be changed to match deletion by each item's unique id."</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.4 What You Should Now Be Able to Recognize</span><span lang="en">5.4 What You Should Now Be Able to Recognize</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">const/let</code> → Know whether a variable can be reassigned</span><span lang="en">See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">const/let</code> → Know whether a variable can be reassigned</span></li>
+<li><span lang="id">See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">{}</code> → Object / See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">[]</code> → Array</span><span lang="en">See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">{}</code> → Object / See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">[]</code> → Array</span></li>
+<li><span lang="id">See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">{...obj}</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">[...arr]</code> → Creating a copy</span><span lang="en">See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">{...obj}</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">[...arr]</code> → Creating a copy</span></li>
+<li><span lang="id">See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">function</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">=></code> → Defining a reusable block of operations</span><span lang="en">See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">function</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">=></code> → Defining a reusable block of operations</span></li>
+<li><span lang="id">See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">if/else</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">? :</code> → Code is making a decision</span><span lang="en">See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">if/else</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">? :</code> → Code is making a decision</span></li>
+<li><span lang="id">See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.map()</code> / <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.filter()</code> → Transforming or filtering an array</span><span lang="en">See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.map()</code> / <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.filter()</code> → Transforming or filtering an array</span></li>
+<li><span lang="id">See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">document.querySelector</code> → Looking up a page element</span><span lang="en">See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">document.querySelector</code> → Looking up a page element</span></li>
+<li><span lang="id">See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">addEventListener</code> → Listening for user actions</span><span lang="en">See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">addEventListener</code> → Listening for user actions</span></li>
+<li><span lang="id">See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">async/await</code> → Waiting for a time-consuming operation</span><span lang="en">See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">async/await</code> → Waiting for a time-consuming operation</span></li>
+<li><span lang="id">See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">import/export</code> → Importing or exporting modules</span><span lang="en">See <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">import/export</code> → Importing or exporting modules</span></li>
+<li><span lang="id">Encounter an error → Can understand the gist and describe it precisely to AI</span><span lang="en">Encounter an error → Can understand the gist and describe it precisely to AI</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>If you carefully read the "deep dive" sections of each chapter, you've also grasped these core concepts:</b></span><span lang="en"><b>If you carefully read the "deep dive" sections of each chapter, you've also grasped these core concepts:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Value vs. Reference</b>: Primitives copy values, objects/arrays copy addresses</span><span lang="en"><b>Value vs. Reference</b>: Primitives copy values, objects/arrays copy addresses</span></li>
+<li><span lang="id"><b>Scope and Closures</b>: Functions can "remember" the variables from where they were born</span><span lang="en"><b>Scope and Closures</b>: Functions can "remember" the variables from where they were born</span></li>
+<li><span lang="id"><b>The Essence of this</b>: Depends on who calls the function, not where it's written</span><span lang="en"><b>The Essence of this</b>: Depends on who calls the function, not where it's written</span></li>
+<li><span lang="id"><b>Event Loop</b>: JS is single-threaded and uses a task queue to stay "non-blocking"</span><span lang="en"><b>Event Loop</b>: JS is single-threaded and uses a task queue to stay "non-blocking"</span></li>
+</ul>
+<p class="reveal"><span lang="id">These concepts will help you locate problems faster.</span><span lang="en">These concepts will help you locate problems faster.</span></p>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">- "Line X throws error XXX — help me figure out what's wrong"
+- "This function's logic is XXX, but the result is wrong — it should be XXX"
+- "I want to modify the XXX feature — the specific requirements are XXX"</span><span lang="en">- "Line X throws error XXX — help me figure out what's wrong"
+- "This function's logic is XXX, but the result is wrong — it should be XXX"
+- "I want to modify the XXX feature — the specific requirements are XXX"</span></p>
+</div>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../3-browser-and-frontend/html-css-layout/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">3-browser-and-frontend/html-css-layout</span><span lang="en">3-browser-and-frontend/html-css-layout</span></b></a>
+      <a class="next" href="../../3-browser-and-frontend/javascript-runtime/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">3-browser-and-frontend/javascript-runtime</span><span lang="en">3-browser-and-frontend/javascript-runtime</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

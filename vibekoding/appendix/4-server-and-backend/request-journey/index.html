@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>A Panorama of Request Flow — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: A Panorama of Request Flow. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/4-server-and-backend/request-journey/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">A Panorama of Request Flow</span><span lang="en">A Panorama of Request Flow</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">A Panorama of Request Flow</span><span lang="en">A Panorama of Request Flow</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: A Panorama of Request Flow.</span><span lang="en">Ensiklopedia VibeKoding: A Panorama of Request Flow.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>When you type a URL in your browser and press Enter, what exactly happens before the page appears?</b> This is a classic interview question, and more importantly, a key to understanding the entire Web architecture. Understanding this chain lets you see how frontend, backend, network, and databases work together.</span><span lang="en"><b>When you type a URL in your browser and press Enter, what exactly happens before the page appears?</b> This is a classic interview question, and more importantly, a key to understanding the entire Web architecture. Understanding this chain lets you see how frontend, backend, network, and databases work together.</span></p>
+</div>
+<p class="reveal"><span lang="id"><b>What will you learn in this article?</b></span><span lang="en"><b>What will you learn in this article?</b></span></p>
+<p class="reveal"><span lang="id">After reading this chapter, you will gain:</span><span lang="en">After reading this chapter, you will gain:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Full-chain perspective</b>: Understand the complete process of an HTTP request from sending to returning</span><span lang="en"><b>Full-chain perspective</b>: Understand the complete process of an HTTP request from sending to returning</span></li>
+<li><span lang="id"><b>Layer-by-layer responsibility awareness</b>: Know what DNS, TCP, load balancing, web servers, application servers, and databases each do</span><span lang="en"><b>Layer-by-layer responsibility awareness</b>: Know what DNS, TCP, load balancing, web servers, application servers, and databases each do</span></li>
+<li><span lang="id"><b>Problem diagnosis ability</b>: Know which layer to start investigating when requests are slow or fail</span><span lang="en"><b>Problem diagnosis ability</b>: Know which layer to start investigating when requests are slow or fail</span></li>
+<li><span lang="id"><b>Performance optimization thinking</b>: Each layer has optimization potential; know where the optimization points are</span><span lang="en"><b>Performance optimization thinking</b>: Each layer has optimization potential; know where the optimization points are</span></li>
+</ul>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chapter</th><th>Content</th><th>Core Concepts</th></tr>
+<tr><td><b>Chapter 1</b></td><td>Browser initiates request</td><td>DNS resolution, TCP connection, HTTP request</td></tr>
+<tr><td><b>Chapter 2</b></td><td>Network transmission</td><td>Routing, CDN, load balancing</td></tr>
+<tr><td><b>Chapter 3</b></td><td>Server processing</td><td>Web server, application logic, database queries</td></tr>
+<tr><td><b>Chapter 4</b></td><td>Response return</td><td>Serialization, compression, rendering</td></tr>
+<tr><td><b>Chapter 5</b></td><td>Full-chain optimization</td><td>Caching, connection reuse, async processing</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. The Big Picture: What Does a Request Go Through</span><span lang="en">0. The Big Picture: What Does a Request Go Through</span></h2>
+<p class="reveal"><span lang="id">Use an analogy to understand: you order a book online. This process is strikingly similar to an HTTP request.</span><span lang="en">Use an analogy to understand: you order a book online. This process is strikingly similar to an HTTP request.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Request Stage</th><th>Book Ordering Analogy</th><th>Technical Equivalent</th></tr>
+<tr><td>Enter URL</td><td>You say "I want to go to that bookstore"</td><td>Browser parses URL</td></tr>
+<tr><td>DNS resolution</td><td>Look at a map to find the bookstore's address</td><td>Domain → IP address</td></tr>
+<tr><td>TCP connection</td><td>Walk to the bookstore door, push it open</td><td>Three-way handshake establishes connection</td></tr>
+<tr><td>Send request</td><td>Tell the clerk "I want the book 'xxx'"</td><td>HTTP request message</td></tr>
+<tr><td>Server processing</td><td>Clerk goes to warehouse to find the book, checks inventory, calculates price</td><td>Application logic + database query</td></tr>
+<tr><td>Return response</td><td>Clerk hands you the book</td><td>HTTP response message</td></tr>
+<tr><td>Browser rendering</td><td>You open the book and start reading</td><td>HTML/CSS/JS parsing and rendering</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><RequestJourneyFlow /></span><span lang="en"><RequestJourneyFlow /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Browser Initiates the Request</span><span lang="en">1. Browser Initiates the Request</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 URL Parsing</span><span lang="en">1.1 URL Parsing</span></h3>
+<p class="reveal"><span lang="id">When you enter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://api.example.com/books?id=123</code>, the browser breaks it into several parts:</span><span lang="en">When you enter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://api.example.com/books?id=123</code>, the browser breaks it into several parts:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Part</th><th>Value</th><th>Meaning</th></tr>
+<tr><td>Protocol</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https</code></td><td>Encrypted communication</td></tr>
+<tr><td>Domain</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">api.example.com</code></td><td>The server's "name"</td></tr>
+<tr><td>Path</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/books</code></td><td>The resource to access</td></tr>
+<tr><td>Query parameters</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">id=123</code></td><td>Additional conditions</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 DNS Resolution: Domain → IP Address</span><span lang="en">1.2 DNS Resolution: Domain → IP Address</span></h3>
+<p class="reveal"><span lang="id">Computers don't understand domain names; they only understand IP addresses (like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">93.184.216.34</code>). DNS is the internet's "phone book."</span><span lang="en">Computers don't understand domain names; they only understand IP addresses (like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">93.184.216.34</code>). DNS is the internet's "phone book."</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Browser cache → System cache → Router cache → ISP DNS → Root name server
+     ↓ Hit = use directly; miss = check next level</pre>
+</div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">If every request had to query from the root name server, the global internet would be overwhelmed by DNS queries. That's why every layer has caching; most requests can be resolved at the browser or system level.</span><span lang="en">If every request had to query from the root name server, the global internet would be overwhelmed by DNS queries. That's why every layer has caching; most requests can be resolved at the browser or system level.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.3 TCP Three-Way Handshake</span><span lang="en">1.3 TCP Three-Way Handshake</span></h3>
+<p class="reveal"><span lang="id">After finding the IP address, the browser needs to "establish a connection" with the server. TCP uses a three-way handshake to ensure both sides are ready:</span><span lang="en">After finding the IP address, the browser needs to "establish a connection" with the server. TCP uses a three-way handshake to ensure both sides are ready:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Client → Server: Hello, I&#039;d like to connect (SYN)
+Server → Client: OK, I&#039;m ready (SYN + ACK)
+Client → Server: Received, let&#039;s start communicating (ACK)</pre>
+</div>
+<p class="reveal"><span lang="id">If using HTTPS, an additional TLS handshake is needed to negotiate encryption.</span><span lang="en">If using HTTPS, an additional TLS handshake is needed to negotiate encryption.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.4 Sending the HTTP Request</span><span lang="en">1.4 Sending the HTTP Request</span></h3>
+<p class="reveal"><span lang="id">After the connection is established, the browser sends the HTTP request message:</span><span lang="en">After the connection is established, the browser sends the HTTP request message:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>http</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>GET /books?id=123 HTTP/1.1
+Host: api.example.com
+Accept: application/json
+Authorization: Bearer eyJhbGci...
+User-Agent: Chrome/120.0</pre>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Component</th><th>Content</th></tr>
+<tr><td>Request line</td><td>Method (GET) + Path + Protocol version</td></tr>
+<tr><td>Request headers</td><td>Metadata: authentication, expected data format, etc.</td></tr>
+<tr><td>Request body</td><td>Only for POST/PUT requests; carries the data to submit</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Network Transmission: The Request on the Road</span><span lang="en">2. Network Transmission: The Request on the Road</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Routing and Forwarding</span><span lang="en">2.1 Routing and Forwarding</span></h3>
+<p class="reveal"><span lang="id">After leaving your computer, the request passes through multiple routers for forwarding, like a package going through multiple transit stations:</span><span lang="en">After leaving your computer, the request passes through multiple routers for forwarding, like a package going through multiple transit stations:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Your computer → Home router → ISP network → Backbone network → Target data center</pre>
+</div>
+<p class="reveal"><span lang="id">Each router decides the "next hop" based on the IP address. You can use the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">traceroute</code> command to see which nodes a request passes through.</span><span lang="en">Each router decides the "next hop" based on the IP address. You can use the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">traceroute</code> command to see which nodes a request passes through.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 CDN Acceleration</span><span lang="en">2.2 CDN Acceleration</span></h3>
+<p class="reveal"><span lang="id">If the target website uses a CDN (Content Delivery Network), the request may not need to reach the origin server:</span><span lang="en">If the target website uses a CDN (Content Delivery Network), the request may not need to reach the origin server:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Scenario</th><th>Routing</th></tr>
+<tr><td>Requesting static resources (images, CSS, JS)</td><td>CDN edge node returns directly</td></tr>
+<tr><td>Requesting dynamic data (API)</td><td>Passes through CDN, reaches origin server</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">The essence of CDN is "pre-placing content as close to users as possible."</span><span lang="en">The essence of CDN is "pre-placing content as close to users as possible."</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 Load Balancing</span><span lang="en">2.3 Load Balancing</span></h3>
+<p class="reveal"><span lang="id">Large websites don't have just one server. A load balancer distributes requests across multiple servers:</span><span lang="en">Large websites don't have just one server. A load balancer distributes requests across multiple servers:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>User requests → Load balancer → Server A (30% traffic)
+                              → Server B (30% traffic)
+                              → Server C (40% traffic)</pre>
+</div>
+<p class="reveal"><span lang="id">Common distribution strategies:</span><span lang="en">Common distribution strategies:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Strategy</th><th>Principle</th><th>Use Case</th></tr>
+<tr><td>Round robin</td><td>Distribute sequentially</td><td>Servers with identical specs</td></tr>
+<tr><td>Weighted round robin</td><td>Distribute by weight</td><td>Servers with different specs</td></tr>
+<tr><td>IP hash</td><td>Same user → same server</td><td>When session persistence is needed</td></tr>
+<tr><td>Least connections</td><td>Assign to server with fewest connections</td><td>When request processing times vary greatly</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Server Processing: What Happens in the Kitchen</span><span lang="en">3. Server Processing: What Happens in the Kitchen</span></h2>
+<p class="reveal"><span lang="id">After the request arrives at the server, it goes through multiple layers of processing.</span><span lang="en">After the request arrives at the server, it goes through multiple layers of processing.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Web Server (Nginx / Apache)</span><span lang="en">3.1 Web Server (Nginx / Apache)</span></h3>
+<p class="reveal"><span lang="id">The first to receive the request is typically the web server, responsible for:</span><span lang="en">The first to receive the request is typically the web server, responsible for:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Responsibility</th><th>Description</th></tr>
+<tr><td>Static file serving</td><td>Directly returns HTML, CSS, JS, images</td></tr>
+<tr><td>Reverse proxy</td><td>Forwards API requests to the backend application</td></tr>
+<tr><td>SSL termination</td><td>Handles HTTPS encryption/decryption</td></tr>
+<tr><td>Request filtering</td><td>Blocks malicious requests, rate limiting</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Application Server Processing</span><span lang="en">3.2 Application Server Processing</span></h3>
+<p class="reveal"><span lang="id">The web server forwards the request to the application server (Node.js, Spring, Django, etc.). The processing flow:</span><span lang="en">The web server forwards the request to the application server (Node.js, Spring, Django, etc.). The processing flow:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Request enters → Middleware chain → Route matching → Controller → Service layer → Data access layer</pre>
+</div>
+<p class="reveal"><span lang="id"><b>What middleware does:</b></span><span lang="en"><b>What middleware does:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Parse request body (JSON, form data)</span><span lang="en">Parse request body (JSON, form data)</span></li>
+<li><span lang="id">Verify identity (check Token)</span><span lang="en">Verify identity (check Token)</span></li>
+<li><span lang="id">Check permissions (can this user access this endpoint?)</span><span lang="en">Check permissions (can this user access this endpoint?)</span></li>
+<li><span lang="id">Log (who accessed what, when)</span><span lang="en">Log (who accessed what, when)</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Database Query</span><span lang="en">3.3 Database Query</span></h3>
+<p class="reveal"><span lang="id">Most requests ultimately need to interact with the database:</span><span lang="en">Most requests ultimately need to interact with the database:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Application code: SELECT * FROM books WHERE id = 123
+    ↓
+Database engine: Parse SQL → Query optimization → Execution plan → Read data
+    ↓
+Return result: { id: 123, title: &quot;xxx&quot;, price: 59.9 }</pre>
+</div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Network transmission is typically millisecond-level, application logic is fast too, but an unindexed database query can take several seconds or even tens of seconds. So "slow requests" are most likely caused by slow database queries.</span><span lang="en">Network transmission is typically millisecond-level, application logic is fast too, but an unindexed database query can take several seconds or even tens of seconds. So "slow requests" are most likely caused by slow database queries.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Response Return: The Data's Journey Back</span><span lang="en">4. Response Return: The Data's Journey Back</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Constructing the HTTP Response</span><span lang="en">4.1 Constructing the HTTP Response</span></h3>
+<p class="reveal"><span lang="id">After processing, the server constructs the response message:</span><span lang="en">After processing, the server constructs the response message:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>http</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Encoding: gzip
+Cache-Control: max-age=3600
+
+{&quot;id&quot;: 123, &quot;title&quot;: &quot;xxx&quot;, &quot;price&quot;: 59.9}</pre>
+</div>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Component</th><th>Content</th></tr>
+<tr><td>Status line</td><td>Protocol version + Status code (200 success, 404 not found, 500 server error)</td></tr>
+<tr><td>Response headers</td><td>Data format, caching policy, compression method, etc.</td></tr>
+<tr><td>Response body</td><td>The actual data content (JSON, HTML, etc.)</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Data Compression</span><span lang="en">4.2 Data Compression</span></h3>
+<p class="reveal"><span lang="id">The server typically compresses the response body with gzip or brotli to reduce transmission size:</span><span lang="en">The server typically compresses the response body with gzip or brotli to reduce transmission size:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Compression Algorithm</th><th>Compression Ratio</th><th>Speed</th></tr>
+<tr><td>gzip</td><td>~70%</td><td>Fast</td></tr>
+<tr><td>brotli</td><td>~80%</td><td>Slower but better compression</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">A 100KB JSON file might be only 20-30KB after compression.</span><span lang="en">A 100KB JSON file might be only 20-30KB after compression.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 Browser Rendering</span><span lang="en">4.3 Browser Rendering</span></h3>
+<p class="reveal"><span lang="id">After the browser receives the response:</span><span lang="en">After the browser receives the response:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Parse HTML</b> → Build DOM tree</span><span lang="en"><b>Parse HTML</b> → Build DOM tree</span></li>
+<li><span lang="id"><b>Parse CSS</b> → Build style tree</span><span lang="en"><b>Parse CSS</b> → Build style tree</span></li>
+<li><span lang="id"><b>Merge</b> → Generate render tree</span><span lang="en"><b>Merge</b> → Generate render tree</span></li>
+<li><span lang="id"><b>Layout</b> → Calculate each element's position and size</span><span lang="en"><b>Layout</b> → Calculate each element's position and size</span></li>
+<li><span lang="id"><b>Paint</b> → Draw pixels onto the screen</span><span lang="en"><b>Paint</b> → Draw pixels onto the screen</span></li>
+</ul>
+<p class="reveal"><span lang="id"><RequestTimeline /></span><span lang="en"><RequestTimeline /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Full-Chain Optimization: Every Layer Can Be Faster</span><span lang="en">5. Full-Chain Optimization: Every Layer Can Be Faster</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Optimization Methods at Each Layer</span><span lang="en">5.1 Optimization Methods at Each Layer</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Layer</th><th>Optimization Method</th><th>Effect</th></tr>
+<tr><td>DNS</td><td>DNS prefetching, use fast DNS services</td><td>Reduce DNS query time</td></tr>
+<tr><td>Network</td><td>CDN, HTTP/2, connection reuse</td><td>Reduce transmission latency</td></tr>
+<tr><td>Server</td><td>Caching (Redis), async processing</td><td>Reduce processing time</td></tr>
+<tr><td>Database</td><td>Indexes, query optimization, read-write splitting</td><td>Reduce query time</td></tr>
+<tr><td>Frontend</td><td>Lazy loading, code splitting, asset compression</td><td>Reduce rendering time</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Caching: The Most Effective Optimization</span><span lang="en">5.2 Caching: The Most Effective Optimization</span></h3>
+<p class="reveal"><span lang="id">Caching exists at every layer of the request chain:</span><span lang="en">Caching exists at every layer of the request chain:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Browser cache → CDN cache → Reverse proxy cache → Application cache (Redis) → Database cache</pre>
+</div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">Trading space for time. Store computed results so next time you can use them directly without recomputing. Every 10% improvement in cache hit rate can multiply system performance.</span><span lang="en">Trading space for time. Store computed results so next time you can use them directly without recomputing. Every 10% improvement in cache hit rate can multiply system performance.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 Troubleshooting When Requests Fail</span><span lang="en">5.3 Troubleshooting When Requests Fail</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Symptom</th><th>Possible Problem Layer</th><th>Investigation Method</th></tr>
+<tr><td>No response at all</td><td>DNS / Network</td><td>ping, nslookup</td></tr>
+<tr><td>Connection timeout</td><td>Network / Server down</td><td>telnet, curl</td></tr>
+<tr><td>Returns 4xx</td><td>Client request error</td><td>Check URL, parameters, Token</td></tr>
+<tr><td>Returns 5xx</td><td>Server internal error</td><td>Check server logs</td></tr>
+<tr><td>Slow response</td><td>Database / Application logic</td><td>Check slow query logs, APM tools</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Summary</span><span lang="en">6. Summary</span></h2>
+<p class="reveal"><span lang="id">The complete journey of an HTTP request:</span><span lang="en">The complete journey of an HTTP request:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Browser</b>: Parse URL → DNS query → TCP connection → Send request</span><span lang="en"><b>Browser</b>: Parse URL → DNS query → TCP connection → Send request</span></li>
+<li><span lang="id"><b>Network</b>: Route forwarding → CDN check → Load balancing distribution</span><span lang="en"><b>Network</b>: Route forwarding → CDN check → Load balancing distribution</span></li>
+<li><span lang="id"><b>Server</b>: Web server receives → Middleware processes → Business logic → Database query</span><span lang="en"><b>Server</b>: Web server receives → Middleware processes → Business logic → Database query</span></li>
+<li><span lang="id"><b>Return</b>: Construct response → Compress → Network transmission → Browser rendering</span><span lang="en"><b>Return</b>: Construct response → Compress → Network transmission → Browser rendering</span></li>
+</ul>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">When you can draw the complete request chain in your mind, you'll be able to quickly identify which layer has a problem no matter what issue you encounter. This is the key leap from "junior developer" to "someone who can independently troubleshoot problems."</span><span lang="en">When you can draw the complete request chain in your mind, you'll be able to quickly identify which layer has a problem no matter what issue you encounter. This is the key leap from "junior developer" to "someone who can independently troubleshoot problems."</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[HTTP Documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP) — MDN's HTTP documentation</span><span lang="en">[HTTP Documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP) — MDN's HTTP documentation</span></li>
+<li><span lang="id">[High Performance Browser Networking](https://hpbn.co/) — Browser network performance optimization</span><span lang="en">[High Performance Browser Networking](https://hpbn.co/) — Browser network performance optimization</span></li>
+<li><span lang="id">[What happens when...](https://github.com/alex/what-happens-when) — The classic "what happens after you type a URL" deep dive</span><span lang="en">[What happens when...](https://github.com/alex/what-happens-when) — The classic "what happens after you type a URL" deep dive</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../4-server-and-backend/rate-limiting-backpressure/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">4-server-and-backend/rate-limiting-backpressure</span><span lang="en">4-server-and-backend/rate-limiting-backpressure</span></b></a>
+      <a class="next" href="../../4-server-and-backend/search-engines/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">4-server-and-backend/search-engines</span><span lang="en">4-server-and-backend/search-engines</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of Monitoring, Logging, and Alerting — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Monitoring, Logging, and Alerting. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/7-infrastructure-and-operations/monitoring-logging/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Monitoring, Logging, and Alerting</span><span lang="en">Principles of Monitoring, Logging, and Alerting</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of Monitoring, Logging, and Alerting</span><span lang="en">Principles of Monitoring, Logging, and Alerting</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Monitoring, Logging, and Alerting.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Monitoring, Logging, and Alerting.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">> 💡 <b>Learning Guide</b>: This chapter requires no programming background. Through interactive demos, you'll gain a comprehensive understanding of operations — from monitoring and alerting to troubleshooting, from capacity planning to automated operations, mastering all the skills needed to run production systems.</span><span lang="en">> 💡 <b>Learning Guide</b>: This chapter requires no programming background. Through interactive demos, you'll gain a comprehensive understanding of operations — from monitoring and alerting to troubleshooting, from capacity planning to automated operations, mastering all the skills needed to run production systems.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. Introduction: Deployment Is Just the Beginning</span><span lang="en">0. Introduction: Deployment Is Just the Beginning</span></h2>
+<p class="reveal"><span lang="id">Many beginners think: "Once the code is deployed, the job is done."</span><span lang="en">Many beginners think: "Once the code is deployed, the job is done."</span></p>
+<p class="reveal"><span lang="id"><b>That couldn't be more wrong!</b></span><span lang="en"><b>That couldn't be more wrong!</b></span></p>
+<p class="reveal"><span lang="id">Deployment is merely the <b>starting point of operations work</b>. It's like buying a new car — the real work of maintenance, repairs, and refueling is what follows.</span><span lang="en">Deployment is merely the <b>starting point of operations work</b>. It's like buying a new car — the real work of maintenance, repairs, and refueling is what follows.</span></p>
+<p class="reveal"><span lang="id">Operations has three goals:</span><span lang="en">Operations has three goals:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Stability</b>: The system stays up and services remain available</span><span lang="en"><b>Stability</b>: The system stays up and services remain available</span></li>
+<li><span lang="id"><b>Performance</b>: Fast responses and a great user experience</span><span lang="en"><b>Performance</b>: Fast responses and a great user experience</span></li>
+<li><span lang="id"><b>Security</b>: No data leaks and protection against attacks</span><span lang="en"><b>Security</b>: No data leaks and protection against attacks</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Monitoring</span><span lang="en">1. Monitoring</span></h2>
+<p class="reveal"><span lang="id">Monitoring is the "eyes" of operations. A system without monitoring is like driving blind — you won't even know when something goes wrong.</span><span lang="en">Monitoring is the "eyes" of operations. A system without monitoring is like driving blind — you won't even know when something goes wrong.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 The Three Layers of Monitoring</span><span lang="en">1.1 The Three Layers of Monitoring</span></h3>
+<p class="reveal"><span lang="id"><MonitoringDashboardDemo /></span><span lang="en"><MonitoringDashboardDemo /></span></p>
+<p class="reveal"><span lang="id"><b>Infrastructure Monitoring</b>: Tracking server hardware resources</span><span lang="en"><b>Infrastructure Monitoring</b>: Tracking server hardware resources</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">CPU usage</span><span lang="en">CPU usage</span></li>
+<li><span lang="id">Memory usage</span><span lang="en">Memory usage</span></li>
+<li><span lang="id">Disk space and I/O</span><span lang="en">Disk space and I/O</span></li>
+<li><span lang="id">Network bandwidth</span><span lang="en">Network bandwidth</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Application Monitoring</b>: Tracking software runtime state</span><span lang="en"><b>Application Monitoring</b>: Tracking software runtime state</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">QPS (Queries Per Second)</span><span lang="en">QPS (Queries Per Second)</span></li>
+<li><span lang="id">Response time (latency)</span><span lang="en">Response time (latency)</span></li>
+<li><span lang="id">Error rate</span><span lang="en">Error rate</span></li>
+<li><span lang="id">Dependency service call status</span><span lang="en">Dependency service call status</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Business Monitoring</b>: Tracking business health</span><span lang="en"><b>Business Monitoring</b>: Tracking business health</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">DAU/MAU (Daily/Monthly Active Users)</span><span lang="en">DAU/MAU (Daily/Monthly Active Users)</span></li>
+<li><span lang="id">Order volume</span><span lang="en">Order volume</span></li>
+<li><span lang="id">Payment success rate</span><span lang="en">Payment success rate</span></li>
+<li><span lang="id">User retention rate</span><span lang="en">User retention rate</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 Monitoring Tool Stack</span><span lang="en">1.2 Monitoring Tool Stack</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Tool</th><th>Purpose</th><th>Characteristics</th></tr>
+<tr><td><b>Prometheus</b></td><td>Metric collection & storage</td><td>Time-series database, ideal for monitoring data</td></tr>
+<tr><td><b>Grafana</b></td><td>Visualization dashboards</td><td>Powerful charts and dashboards</td></tr>
+<tr><td><b>Zabbix</b></td><td>Comprehensive monitoring</td><td>Veteran tool with full-featured capabilities</td></tr>
+<tr><td><b>Datadog</b></td><td>SaaS monitoring platform</td><td>One-stop solution, paid</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Key Point</b>: Monitoring must be layered, covering everything from infrastructure to business to avoid blind spots.</span><span lang="en"><b>Key Point</b>: Monitoring must be layered, covering everything from infrastructure to business to avoid blind spots.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Alerting</span><span lang="en">2. Alerting</span></h2>
+<p class="reveal"><span lang="id">Once monitoring detects an issue, operations staff need to be notified promptly — that's <b>alerting</b>.</span><span lang="en">Once monitoring detects an issue, operations staff need to be notified promptly — that's <b>alerting</b>.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Alerting Flow</span><span lang="en">2.1 Alerting Flow</span></h3>
+<p class="reveal"><span lang="id"><AlertFlowDemo /></span><span lang="en"><AlertFlowDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Alert Severity Levels</span><span lang="en">2.2 Alert Severity Levels</span></h3>
+<p class="reveal"><span lang="id">Proper alert classification helps prevent "alert fatigue":</span><span lang="en">Proper alert classification helps prevent "alert fatigue":</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Level</th><th>Response Time</th><th>Typical Scenario</th><th>Notification Channels</th></tr>
+<tr><td><b>P0</b></td><td>Immediate (within 5 min)</td><td>Core service down, payment failures</td><td>Phone + SMS + IM</td></tr>
+<tr><td><b>P1</b></td><td>Within 30 minutes</td><td>Partial feature outage, severe performance degradation</td><td>SMS + IM + Email</td></tr>
+<tr><td><b>P2</b></td><td>Same day</td><td>High resource usage, occasional errors</td><td>IM + Email</td></tr>
+<tr><td><b>P3</b></td><td>Within the week</td><td>Non-critical issues, optimization suggestions</td><td>Email</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 Alert Deduplication & Noise Reduction</span><span lang="en">2.3 Alert Deduplication & Noise Reduction</span></h3>
+<p class="reveal"><span lang="id"><b>Pain Point</b>: A single small issue can trigger hundreds or thousands of alerts, numbing on-call staff.</span><span lang="en"><b>Pain Point</b>: A single small issue can trigger hundreds or thousands of alerts, numbing on-call staff.</span></p>
+<p class="reveal"><span lang="id"><b>Solutions</b>:</span><span lang="en"><b>Solutions</b>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Alert Grouping</b>: Merge similar alerts (e.g., multiple issues on the same server combined into one)</span><span lang="en"><b>Alert Grouping</b>: Merge similar alerts (e.g., multiple issues on the same server combined into one)</span></li>
+<li><span lang="id"><b>Alert Suppression</b>: If a parent issue has already fired, don't repeat alerts for child issues</span><span lang="en"><b>Alert Suppression</b>: If a parent issue has already fired, don't repeat alerts for child issues</span></li>
+<li><span lang="id"><b>Silence Rules</b>: Automatically suppress alerts during maintenance windows</span><span lang="en"><b>Silence Rules</b>: Automatically suppress alerts during maintenance windows</span></li>
+<li><span lang="id"><b>Rate Limiting</b>: Don't repeat the same alert notification within a short time window</span><span lang="en"><b>Rate Limiting</b>: Don't repeat the same alert notification within a short time window</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Key Point</b>: Alerts should be "few but meaningful" — every alert must be worth acting on.</span><span lang="en"><b>Key Point</b>: Alerts should be "few but meaningful" — every alert must be worth acting on.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Logging</span><span lang="en">3. Logging</span></h2>
+<p class="reveal"><span lang="id">Logs are the "black box" for troubleshooting.</span><span lang="en">Logs are the "black box" for troubleshooting.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Log Levels</span><span lang="en">3.1 Log Levels</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>console.debug(&#039;Verbose debug info&#039;)  // Used during development
+console.info(&#039;General information&#039;)   // Normal flow logging
+console.warn(&#039;Warning&#039;)               // Potential issues
+console.error(&#039;Error&#039;)                // Errors that need attention</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Structured Logging</span><span lang="en">3.2 Structured Logging</span></h3>
+<p class="reveal"><span lang="id">Traditional logging (not ideal):</span><span lang="en">Traditional logging (not ideal):</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>2024-01-15 10:23:45 ERROR User john failed to login, attempts=3, ip=192.168.1.100</pre>
+</div>
+<p class="reveal"><span lang="id">Structured logging (recommended):</span><span lang="en">Structured logging (recommended):</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>json</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>{
+  &quot;timestamp&quot;: &quot;2024-01-15T10:23:45Z&quot;,
+  &quot;level&quot;: &quot;ERROR&quot;,
+  &quot;message&quot;: &quot;User login failed&quot;,
+  &quot;user&quot;: &quot;john&quot;,
+  &quot;attempts&quot;: 3,
+  &quot;ip&quot;: &quot;192.168.1.100&quot;,
+  &quot;service&quot;: &quot;auth-service&quot;
+}</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 The ELK Stack</span><span lang="en">3.3 The ELK Stack</span></h3>
+<p class="reveal"><span lang="id"><b>ELK = Elasticsearch + Logstash + Kibana</b></span><span lang="en"><b>ELK = Elasticsearch + Logstash + Kibana</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Logstash</b>: Log collection and filtering</span><span lang="en"><b>Logstash</b>: Log collection and filtering</span></li>
+<li><span lang="id"><b>Elasticsearch</b>: Log storage and search</span><span lang="en"><b>Elasticsearch</b>: Log storage and search</span></li>
+<li><span lang="id"><b>Kibana</b>: Log visualization and querying</span><span lang="en"><b>Kibana</b>: Log visualization and querying</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Best Practices</b>:</span><span lang="en"><b>Best Practices</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ Don't log sensitive information (passwords, tokens)</span><span lang="en">✅ Don't log sensitive information (passwords, tokens)</span></li>
+<li><span lang="id">✅ Critical operations (login, payment, permission changes) must be logged</span><span lang="en">✅ Critical operations (login, payment, permission changes) must be logged</span></li>
+<li><span lang="id">✅ Logs should include context (user ID, request ID, timestamp)</span><span lang="en">✅ Logs should include context (user ID, request ID, timestamp)</span></li>
+<li><span lang="id">✅ Regularly purge expired logs to avoid running out of disk space</span><span lang="en">✅ Regularly purge expired logs to avoid running out of disk space</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Distributed Tracing</span><span lang="en">4. Distributed Tracing</span></h2>
+<p class="reveal"><span lang="id">In a microservices architecture, a single request may pass through dozens of services — how do you trace its complete path?</span><span lang="en">In a microservices architecture, a single request may pass through dozens of services — how do you trace its complete path?</span></p>
+<p class="reveal"><span lang="id"><b>Trace ID and Span ID</b></span><span lang="en"><b>Trace ID and Span ID</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Trace ID</b>: The unique identifier for an entire request chain (like a package tracking number)</span><span lang="en"><b>Trace ID</b>: The unique identifier for an entire request chain (like a package tracking number)</span></li>
+<li><span lang="id"><b>Span ID</b>: The identifier for a single service call (like each transfer hub)</span><span lang="en"><b>Span ID</b>: The identifier for a single service call (like each transfer hub)</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Distributed Tracing Demo</span><span lang="en">4.1 Distributed Tracing Demo</span></h3>
+<p class="reveal"><span lang="id"><TraceVisualizationDemo /></span><span lang="en"><TraceVisualizationDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 The OpenTelemetry Standard</span><span lang="en">4.2 The OpenTelemetry Standard</span></h3>
+<p class="reveal"><span lang="id">OpenTelemetry (OTel) is the <b>industry standard</b> for distributed tracing, providing a unified API and SDK.</span><span lang="en">OpenTelemetry (OTel) is the <b>industry standard</b> for distributed tracing, providing a unified API and SDK.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// Example: Recording a Span with OpenTelemetry
+import { trace } from &#039;@opentelemetry/api&#039;
+
+const tracer = trace.getTracer(&#039;my-service&#039;)
+
+async function processOrder(orderId) {
+  // Create a Span
+  const span = tracer.startSpan(&#039;processOrder&#039;)
+
+  try {
+    // Set attributes
+    span.setAttribute(&#039;order.id&#039;, orderId)
+
+    // Business logic...
+    await validateOrder(orderId)
+    await saveToDatabase(orderId)
+
+    span.setStatus({ code: SpanStatusCode.OK })
+  } catch (error) {
+    span.recordException(error)
+    span.setStatus({ code: SpanStatusCode.ERROR, message: error.message })
+  } finally {
+    span.end() // End the Span
+  }
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Key Point</b>: Distributed tracing quickly identifies performance bottlenecks and failure points — an essential tool for microservices.</span><span lang="en"><b>Key Point</b>: Distributed tracing quickly identifies performance bottlenecks and failure points — an essential tool for microservices.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Troubleshooting Process</span><span lang="en">5. Troubleshooting Process</span></h2>
+<p class="reveal"><span lang="id">Production incidents are inevitable. The key is <b>fast response and fast recovery</b>.</span><span lang="en">Production incidents are inevitable. The key is <b>fast response and fast recovery</b>.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Incident Response Process</span><span lang="en">5.1 Incident Response Process</span></h3>
+<p class="reveal"><span lang="id"><IncidentResponseDemo /></span><span lang="en"><IncidentResponseDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Common Troubleshooting Tools</span><span lang="en">5.2 Common Troubleshooting Tools</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Tool</th><th>Purpose</th><th>Typical Scenario</th></tr>
+<tr><td><b>tcpdump</b></td><td>Packet capture analysis</td><td>Network issues, packet loss</td></tr>
+<tr><td><b>strace</b></td><td>System call tracing</td><td>Process hanging, file permission issues</td></tr>
+<tr><td><b>Arthas</b></td><td>Java diagnostics</td><td>CPU spikes, memory leaks, deadlocks</td></tr>
+<tr><td><b>top/htop</b></td><td>System resource monitoring</td><td>High CPU/memory usage</td></tr>
+<tr><td><b>netstat</b></td><td>Network connection inspection</td><td>Port conflicts, abnormal connection counts</td></tr>
+<tr><td><b>lsof</b></td><td>Open file inspection</td><td>File locks, disk full</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Arthas Example</b> (Alibaba's open-source Java diagnostic tool):</span><span lang="en"><b>Arthas Example</b> (Alibaba's open-source Java diagnostic tool):</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># View top 5 threads by CPU usage
+$ top -H -p 12345
+
+# Trace the execution time of a method
+$ trace com.example.OrderService createOrder
+
+# View a class&#039;s static fields
+$ getstatic com.example.Config MAX_CONNECTIONS
+
+# Hot-reload code (no restart needed)
+$ mc /tmp/Test.java
+$ redefine /tmp/Test.class</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 Post-mortem Analysis</span><span lang="en">5.3 Post-mortem Analysis</span></h3>
+<p class="reveal"><span lang="id"><b>A post-mortem is not a blame session!</b></span><span lang="en"><b>A post-mortem is not a blame session!</b></span></p>
+<p class="reveal"><span lang="id">The purpose of a post-mortem is:</span><span lang="en">The purpose of a post-mortem is:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Reconstruct the incident timeline</span><span lang="en">Reconstruct the incident timeline</span></li>
+<li><span lang="id">Identify the root cause (Root Cause Analysis)</span><span lang="en">Identify the root cause (Root Cause Analysis)</span></li>
+<li><span lang="id">Summarize lessons learned</span><span lang="en">Summarize lessons learned</span></li>
+<li><span lang="id">Define improvement actions</span><span lang="en">Define improvement actions</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>The 5 Whys Analysis</b>:</span><span lang="en"><b>The 5 Whys Analysis</b>:</span></p>
+<p class="reveal"><span lang="id">Ask "why" at least 5 times to find the root cause:</span><span lang="en">Ask "why" at least 5 times to find the root cause:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Why did the service go down?</span><span lang="en">Why did the service go down?</span></li>
+<li><span lang="id">Because of an out-of-memory error</span><span lang="en">Because of an out-of-memory error</span></li>
+<li><span lang="id">Why did memory overflow?</span><span lang="en">Why did memory overflow?</span></li>
+<li><span lang="id">Because cached data grew too large</span><span lang="en">Because cached data grew too large</span></li>
+<li><span lang="id">Why was cached data too large?</span><span lang="en">Why was cached data too large?</span></li>
+<li><span lang="id">Because no expiration time was set</span><span lang="en">Because no expiration time was set</span></li>
+<li><span lang="id">Why was no expiration time set?</span><span lang="en">Why was no expiration time set?</span></li>
+<li><span lang="id">Because it was overlooked during development</span><span lang="en">Because it was overlooked during development</span></li>
+<li><span lang="id"><b>Root cause</b>: Lack of code review and test coverage</span><span lang="en"><b>Root cause</b>: Lack of code review and test coverage</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Key Point</b>: Build a blameless culture — focus on process improvement, not individual accountability.</span><span lang="en"><b>Key Point</b>: Build a blameless culture — focus on process improvement, not individual accountability.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Performance Optimization</span><span lang="en">6. Performance Optimization</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Performance Bottleneck Analysis</span><span lang="en">6.1 Performance Bottleneck Analysis</span></h3>
+<p class="reveal"><span lang="id"><b>Top-down optimization approach</b>:</span><span lang="en"><b>Top-down optimization approach</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>User Experience
+  ↓
+Frontend Optimization (reduce requests, CDN, lazy loading)
+  ↓
+Network Optimization (HTTP/2, compression, persistent connections)
+  ↓
+Backend Optimization (caching, async, batching)
+  ↓
+Database Optimization (indexes, query tuning, sharding)
+  ↓
+System Optimization (kernel parameters, JVM tuning)</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 Database Optimization</span><span lang="en">6.2 Database Optimization</span></h3>
+<p class="reveal"><span lang="id"><b>Index Optimization</b>:</span><span lang="en"><b>Index Optimization</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>sql</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>-- Slow query (no index)
+SELECT * FROM orders WHERE user_id = 12345;
+
+-- 100x faster after creating an index
+CREATE INDEX idx_user_id ON orders(user_id);</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Query Optimization</b>:</span><span lang="en"><b>Query Optimization</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>sql</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>-- ❌ Avoid SELECT *
+SELECT * FROM users WHERE id = 123;
+
+-- ✅ Only query needed fields
+SELECT id, name, email FROM users WHERE id = 123;
+
+-- ❌ Avoid overly large IN clauses
+SELECT * FROM orders WHERE user_id IN (1, 2, 3, ..., 10000);
+
+-- ✅ Use JOIN or batch queries
+SELECT * FROM orders o JOIN user_ids u ON o.user_id = u.id;</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.3 Cache Optimization</span><span lang="en">6.3 Cache Optimization</span></h3>
+<p class="reveal"><span lang="id"><b>Multi-level Cache Architecture</b>:</span><span lang="en"><b>Multi-level Cache Architecture</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Browser Cache (CDN)
+  ↓
+Local Cache (In-memory/Guava)
+  ↓
+Distributed Cache (Redis/Memcached)
+  ↓
+Database (MySQL/PostgreSQL)</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Cache Update Strategies</b>:</span><span lang="en"><b>Cache Update Strategies</b>:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Strategy</th><th>Pros</th><th>Cons</th><th>Use Case</th></tr>
+<tr><td><b>Cache-Aside</b></td><td>Simple, reliable</td><td>Slow on first query</td><td>Read-heavy, write-light</td></tr>
+<tr><td><b>Write-Through</b></td><td>Good data consistency</td><td>Slow writes</td><td>Balanced read/write</td></tr>
+<tr><td><b>Write-Behind</b></td><td>Extremely fast writes</td><td>Potential data loss</td><td>Write-heavy, tolerates brief inconsistency</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>Key Point</b>: Caching is not a silver bullet — consider consistency, avalanche, and penetration issues (refer to the "System Cache Design" chapter).</span><span lang="en"><b>Key Point</b>: Caching is not a silver bullet — consider consistency, avalanche, and penetration issues (refer to the "System Cache Design" chapter).</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Capacity Planning</span><span lang="en">7. Capacity Planning</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.1 Capacity Assessment</span><span lang="en">7.1 Capacity Assessment</span></h3>
+<p class="reveal"><span lang="id"><CapacityPlanningDemo /></span><span lang="en"><CapacityPlanningDemo /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.2 Stress Testing</span><span lang="en">7.2 Stress Testing</span></h3>
+<p class="reveal"><span lang="id"><b>Tool Selection</b>:</span><span lang="en"><b>Tool Selection</b>:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Tool</th><th>Characteristics</th><th>Use Case</th></tr>
+<tr><td><b>JMeter</b></td><td>Feature-rich, visual</td><td>HTTP API stress testing</td></tr>
+<tr><td><b>wrk/ab</b></td><td>Lightweight, command-line</td><td>Quick benchmarking</td></tr>
+<tr><td><b>Locust</b></td><td>Python scripting, distributed</td><td>Complex scenario testing</td></tr>
+<tr><td><b>K6</b></td><td>Modern, JS scripting</td><td>CI/CD integration</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>wrk Example</b>:</span><span lang="en"><b>wrk Example</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Install wrk
+$ brew install wrk  # macOS
+$ apt install wrk   # Ubuntu
+
+# Stress test an HTTP endpoint (10 threads, 30 seconds)
+$ wrk -t10 -c100 -d30s http://example.com/api/users
+
+# Output:
+# Running 30s test @ http://example.com/api/users
+#   10 threads and 100 connections
+# Thread Stats Avg Stdev Max +/- Stdev
+
+# Latency 45.32ms 12.45ms 120.50ms 87.56%
+
+# Req/Sec 2.12k 123.45 3.45k 89.01%
+
+#   632450 requests in 30.00s, 1.23GB read
+# Requests/sec: 21081.67
+</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.3 Elastic Scaling</span><span lang="en">7.3 Elastic Scaling</span></h3>
+<p class="reveal"><span lang="id"><b>Auto-scaling in the cloud-native era</b>:</span><span lang="en"><b>Auto-scaling in the cloud-native era</b>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>yaml</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># Kubernetes HPA (Horizontal Pod Autoscaler)
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: my-app-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: my-app
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70</pre>
+</div>
+<p class="reveal"><span lang="id"><b>When CPU usage exceeds 70%, pods automatically scale up (up to 10)</b></span><span lang="en"><b>When CPU usage exceeds 70%, pods automatically scale up (up to 10)</b></span></p>
+<p class="reveal"><span lang="id"><b>Key Point</b>: Combine business forecasting (e.g., Black Friday sales) with proactive scaling to avoid last-minute scrambling.</span><span lang="en"><b>Key Point</b>: Combine business forecasting (e.g., Black Friday sales) with proactive scaling to avoid last-minute scrambling.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8. Security Operations</span><span lang="en">8. Security Operations</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">8.1 Access Control</span><span lang="en">8.1 Access Control</span></h3>
+<p class="reveal"><span lang="id"><b>Principle of Least Privilege</b>:</span><span lang="en"><b>Principle of Least Privilege</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Developers can only access the development environment</span><span lang="en">Developers can only access the development environment</span></li>
+<li><span lang="id">Operations staff can only access production, and require approval</span><span lang="en">Operations staff can only access production, and require approval</span></li>
+<li><span lang="id">Sensitive database operations require secondary confirmation</span><span lang="en">Sensitive database operations require secondary confirmation</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Jump Server (Bastion Host)</b>:</span><span lang="en"><b>Jump Server (Bastion Host)</b>:</span></p>
+<p class="reveal"><span lang="id">All operations tasks go through the bastion host, which records complete operation logs.</span><span lang="en">All operations tasks go through the bastion host, which records complete operation logs.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">8.2 Data Backup</span><span lang="en">8.2 Data Backup</span></h3>
+<p class="reveal"><span lang="id"><b>The 3-2-1 Backup Rule</b>:</span><span lang="en"><b>The 3-2-1 Backup Rule</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>3</b> copies of data (1 original + 2 backups)</span><span lang="en"><b>3</b> copies of data (1 original + 2 backups)</span></li>
+<li><span lang="id"><b>2</b> different storage media (local disk + cloud storage)</span><span lang="en"><b>2</b> different storage media (local disk + cloud storage)</span></li>
+<li><span lang="id"><b>1</b> offsite backup (to prevent single-point disasters)</span><span lang="en"><b>1</b> offsite backup (to prevent single-point disasters)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Backup Strategies</b>:</span><span lang="en"><b>Backup Strategies</b>:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Type</th><th>Frequency</th><th>Retention</th><th>RTO</th><th>RPO</th></tr>
+<tr><td><b>Full Backup</b></td><td>Weekly</td><td>1 month</td><td>4 hours</td><td>24 hours</td></tr>
+<tr><td><b>Incremental Backup</b></td><td>Daily</td><td>1 week</td><td>2 hours</td><td>1 hour</td></tr>
+<tr><td><b>Real-time Backup</b></td><td>Per second</td><td>7 days</td><td>Minutes</td><td>Seconds</td></tr>
+</table></div>
+<p class="reveal"><span lang="id"><b>RTO (Recovery Time Objective)</b>: The maximum acceptable downtime duration</span><span lang="en"><b>RTO (Recovery Time Objective)</b>: The maximum acceptable downtime duration</span></p>
+<p class="reveal"><span lang="id"><b>RPO (Recovery Point Objective)</b>: The maximum acceptable data loss</span><span lang="en"><b>RPO (Recovery Point Objective)</b>: The maximum acceptable data loss</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">8.3 Vulnerability Scanning</span><span lang="en">8.3 Vulnerability Scanning</span></h3>
+<p class="reveal"><span lang="id"><b>Regular Scanning</b>:</span><span lang="en"><b>Regular Scanning</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Code Scanning</b>: SonarQube, ESLint (detect potential vulnerabilities)</span><span lang="en"><b>Code Scanning</b>: SonarQube, ESLint (detect potential vulnerabilities)</span></li>
+<li><span lang="id"><b>Dependency Scanning</b>: npm audit, Snyk (detect third-party library vulnerabilities)</span><span lang="en"><b>Dependency Scanning</b>: npm audit, Snyk (detect third-party library vulnerabilities)</span></li>
+<li><span lang="id"><b>Container Scanning</b>: Trivy, Clair (detect image vulnerabilities)</span><span lang="en"><b>Container Scanning</b>: Trivy, Clair (detect image vulnerabilities)</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># npm audit example
+$ npm audit
+
+found 3 vulnerabilities (1 moderate, 2 high)
+
+Package         Severity  Vulnerable versions
+lodash          high      &lt;4.17.21
+express         moderate  4.0.0 - 4.18.2
+
+# Auto-fix
+$ npm audit fix</pre>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">9. Automated Operations (DevOps)</span><span lang="en">9. Automated Operations (DevOps)</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">9.1 CI/CD Pipeline</span><span lang="en">9.1 CI/CD Pipeline</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>yaml</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># .gitlab-ci.yml example
+stages:
+  - test
+  - build
+  - deploy
+
+test:
+  stage: test
+  script:
+    - npm install
+    - npm test
+  tags:
+    - docker
+
+build:
+  stage: build
+  script:
+    - docker build -t myapp:$CI_COMMIT_SHA .
+    - docker push registry.example.com/myapp:$CI_COMMIT_SHA
+  only:
+    - main
+
+deploy:
+  stage: deploy
+  script:
+    - kubectl set image deployment/myapp myapp=registry.example.com/myapp:$CI_COMMIT_SHA
+  environment:
+    name: production
+  when: manual # Manually triggered deployment</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">9.2 Infrastructure as Code (IaC)</span><span lang="en">9.2 Infrastructure as Code (IaC)</span></h3>
+<p class="reveal"><span lang="id"><b>Terraform Example</b> (managing cloud resources):</span><span lang="en"><b>Terraform Example</b> (managing cloud resources):</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>hcl</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre># main.tf
+resource &quot;aws_instance&quot; &quot;web&quot; {
+  ami           = &quot;ami-0c55b159cbfafe1f0&quot;
+  instance_type = &quot;t2.micro&quot;
+
+  tags = {
+    Name = &quot;WebServer&quot;
+    Env  = &quot;production&quot;
+  }
+}
+
+resource &quot;aws_security_group&quot; &quot;web&quot; {
+  name = &quot;web-sg&quot;
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = &quot;tcp&quot;
+    cidr_blocks = [&quot;0.0.0.0/0&quot;]
+  }
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Advantages</b>:</span><span lang="en"><b>Advantages</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">✅ Version Control: All configuration lives in Git</span><span lang="en">✅ Version Control: All configuration lives in Git</span></li>
+<li><span lang="id">✅ Reproducibility: Environment consistency</span><span lang="en">✅ Reproducibility: Environment consistency</span></li>
+<li><span lang="id">✅ Auditability: Clear change history</span><span lang="en">✅ Auditability: Clear change history</span></li>
+<li><span lang="id">✅ Rollback: Quickly revert to previous versions</span><span lang="en">✅ Rollback: Quickly revert to previous versions</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">9.3 GitOps Practices</span><span lang="en">9.3 GitOps Practices</span></h3>
+<p class="reveal"><span lang="id"><b>GitOps = Git + IaC + Automation</b></span><span lang="en"><b>GitOps = Git + IaC + Automation</b></span></p>
+<p class="reveal"><span lang="id">Core principle: <b>The Git repository is the single source of truth for infrastructure</b></span><span lang="en">Core principle: <b>The Git repository is the single source of truth for infrastructure</b></span></p>
+<p class="reveal"><span lang="id">Workflow:</span><span lang="en">Workflow:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>1. Modify config files (push to Git)
+   ↓
+2. Git repository changes trigger CI/CD
+   ↓
+3. Automatically run terraform apply / kubectl apply
+   ↓
+4. Infrastructure updates automatically
+   ↓
+5. Monitor and reconcile actual state vs. desired state</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Tools</b>: ArgoCD, Flux (Kubernetes deployment)</span><span lang="en"><b>Tools</b>: ArgoCD, Flux (Kubernetes deployment)</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">10. Summary & Best Practices</span><span lang="en">10. Summary & Best Practices</span></h2>
+<p class="reveal"><span lang="id">Operations is a vast domain, but the core can be distilled into the following:</span><span lang="en">Operations is a vast domain, but the core can be distilled into the following:</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">10.1 Operations Maturity Model</span><span lang="en">10.1 Operations Maturity Model</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Level</th><th>Characteristics</th><th>Practices</th></tr>
+<tr><td><b>Beginner</b></td><td>Reactive, manual operations</td><td>Fix issues only when they arise, manual deploys</td></tr>
+<tr><td><b>Intermediate</b></td><td>Automated, standardized</td><td>CI/CD, monitoring & alerting, documentation</td></tr>
+<tr><td><b>Advanced</b></td><td>Proactive, self-healing</td><td>Capacity planning, chaos drills, auto-scaling</td></tr>
+<tr><td><b>Expert</b></td><td>Intelligent, unattended</td><td>AIOps, chaos engineering, serverless</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">10.2 A Day in the Life of an SRE</span><span lang="en">10.2 A Day in the Life of an SRE</span></h3>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>CODE</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>09:00 - Review overnight alerts, confirm system status
+10:00 - Handle user-reported issues
+11:00 - Attend engineering weekly, assess operational risk of new proposals
+14:00 - Optimize slow queries, improve performance
+15:00 - Code review
+16:00 - Write deployment docs, update monitoring rules
+17:00 - Chaos engineering drills
+18:00 - On-call handoff</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">10.3 Learning Roadmap</span><span lang="en">10.3 Learning Roadmap</span></h3>
+<p class="reveal"><span lang="id"><b>Beginner Stage</b> (1–3 months):</span><span lang="en"><b>Beginner Stage</b> (1–3 months):</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Learn common Linux commands</span><span lang="en">Learn common Linux commands</span></li>
+<li><span lang="id">Understand monitoring systems (Prometheus + Grafana)</span><span lang="en">Understand monitoring systems (Prometheus + Grafana)</span></li>
+<li><span lang="id">Master log querying (ELK)</span><span lang="en">Master log querying (ELK)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Intermediate Stage</b> (3–6 months):</span><span lang="en"><b>Intermediate Stage</b> (3–6 months):</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Deep dive into container technology (Docker + K8s)</span><span lang="en">Deep dive into container technology (Docker + K8s)</span></li>
+<li><span lang="id">Master a diagnostic tool (Arthas, tcpdump)</span><span lang="en">Master a diagnostic tool (Arthas, tcpdump)</span></li>
+<li><span lang="id">Practice CI/CD pipelines</span><span lang="en">Practice CI/CD pipelines</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Advanced Stage</b> (6–12 months):</span><span lang="en"><b>Advanced Stage</b> (6–12 months):</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Performance tuning (database, JVM, network)</span><span lang="en">Performance tuning (database, JVM, network)</span></li>
+<li><span lang="id">Capacity planning and cost optimization</span><span lang="en">Capacity planning and cost optimization</span></li>
+<li><span lang="id">Post-mortems and process improvement</span><span lang="en">Post-mortems and process improvement</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Expert Stage</b> (1+ year):</span><span lang="en"><b>Expert Stage</b> (1+ year):</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Architecture design (high availability, disaster recovery)</span><span lang="en">Architecture design (high availability, disaster recovery)</span></li>
+<li><span lang="id">Chaos engineering (proactively inject failures)</span><span lang="en">Chaos engineering (proactively inject failures)</span></li>
+<li><span lang="id">AIOps (intelligent operations)</span><span lang="en">AIOps (intelligent operations)</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">11. Glossary</span><span lang="en">11. Glossary</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Term</th><th>Full Name</th><th>Explanation</th></tr>
+<tr><td><b>Monitoring</b></td><td>-</td><td>Real-time observation of system health.</td></tr>
+<tr><td><b>Alerting</b></td><td>-</td><td>Notifying relevant personnel when anomalies occur.</td></tr>
+<tr><td><b>Logging</b></td><td>-</td><td>Recording events during system operation.</td></tr>
+<tr><td><b>Tracing</b></td><td>-</td><td>Tracking the full path of a request across a distributed system.</td></tr>
+<tr><td><b>QPS</b></td><td>Queries Per Second</td><td>Queries per second, a measure of system throughput.</td></tr>
+<tr><td><b>Latency</b></td><td>-</td><td>The time from request initiation to response.</td></tr>
+<tr><td><b>RTO</b></td><td>Recovery Time Objective</td><td>Maximum acceptable downtime duration.</td></tr>
+<tr><td><b>RPO</b></td><td>Recovery Point Objective</td><td>Maximum acceptable data loss.</td></tr>
+<tr><td><b>Post-mortem</b></td><td>-</td><td>Incident review to analyze root causes and improvement actions.</td></tr>
+<tr><td><b>CI/CD</b></td><td>Continuous Integration/Delivery</td><td>Automated testing and deployment.</td></tr>
+<tr><td><b>IaC</b></td><td>Infrastructure as Code</td><td>Managing servers, networks, and other resources via code.</td></tr>
+<tr><td><b>GitOps</b></td><td>-</td><td>Git-driven operations — Git is the single source of truth.</td></tr>
+<tr><td><b>ELK</b></td><td>Elasticsearch + Logstash + Kibana</td><td>The log collection, storage, and visualization trifecta.</td></tr>
+<tr><td><b>SLA</b></td><td>Service Level Agreement</td><td>Committed service availability (e.g., 99.9%).</td></tr>
+<tr><td><b>Blameless</b></td><td>-</td><td>A no-blame culture where post-mortems focus on process over individuals.</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">12. Further Reading</span><span lang="en">12. Further Reading</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>[System Cache Design](/en/appendix/4-server-and-backend/caching)</b> - Caching principles, patterns & best practices</span><span lang="en"><b>[System Cache Design](/en/appendix/4-server-and-backend/caching)</b> - Caching principles, patterns & best practices</span></li>
+<li><span lang="id"><b>[Message Queue Design](/en/appendix/4-server-and-backend/message-queues)</b> - Peak shaving, async decoupling</span><span lang="en"><b>[Message Queue Design](/en/appendix/4-server-and-backend/message-queues)</b> - Peak shaving, async decoupling</span></li>
+<li><span lang="id"><b>[Authentication & Authorization in Practice](/en/appendix/4-server-and-backend/auth-authorization)</b> - AuthN/AuthZ and security hardening</span><span lang="en"><b>[Authentication & Authorization in Practice](/en/appendix/4-server-and-backend/auth-authorization)</b> - AuthN/AuthZ and security hardening</span></li>
+<li><span lang="id"><b>[Backend Evolution](/en/appendix/4-server-and-backend/backend-layered-architecture)</b> - From monoliths to microservices to serverless</span><span lang="en"><b>[Backend Evolution](/en/appendix/4-server-and-backend/backend-layered-architecture)</b> - From monoliths to microservices to serverless</span></li>
+<li><span lang="id"><b>[Deployment & Go-Live](/en/appendix/7-infrastructure-and-operations/ci-cd)</b> - The last mile from development to production</span><span lang="en"><b>[Deployment & Go-Live](/en/appendix/7-infrastructure-and-operations/ci-cd)</b> - The last mile from development to production</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../7-infrastructure-and-operations/load-balancing-gateway/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">7-infrastructure-and-operations/load-balancing-gateway</span><span lang="en">7-infrastructure-and-operations/load-balancing-gateway</span></b></a>
+      <a class="next" href="../../8-artificial-intelligence/ai-agents/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">8-artificial-intelligence/ai-agents</span><span lang="en">8-artificial-intelligence/ai-agents</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

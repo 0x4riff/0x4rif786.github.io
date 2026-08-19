@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ekstensi Asisten Browser AI (Chrome / Edge) — VibeKoding 🧩</title>
+<meta name="description" content="Modul master Level 3 VibeKoding: Ekstensi Asisten Browser AI (Chrome / Edge). - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-3/cross-platform/browser-ai-extension/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../stage-3/"><span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></a> / <span lang="id">Ekstensi Asisten Browser AI (Chrome / Edge)</span><span lang="en">Ekstensi Asisten Browser AI (Chrome / Edge)</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">🧩</div>
+      <div>
+        <h1><span lang="id">Ekstensi Asisten Browser AI (Chrome / Edge)</span><span lang="en">Ekstensi Asisten Browser AI (Chrome / Edge)</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul master Level 3 VibeKoding: Ekstensi Asisten Browser AI (Chrome / Edge).</span><span lang="en">Modul master Level 3 VibeKoding: Ekstensi Asisten Browser AI (Chrome / Edge).</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">In this tutorial, we will complete a full closed loop: build an AI-driven Chrome browser extension from scratch. It can read the content of any webpage you are browsing, then use AI to generate a one-click summary. You will personally complete the extension development, debugging, and learn how to publish it to the Chrome Web Store.</span><span lang="en">In this tutorial, we will complete a full closed loop: build an AI-driven Chrome browser extension from scratch. It can read the content of any webpage you are browsing, then use AI to generate a one-click summary. You will personally complete the extension development, debugging, and learn how to publish it to the Chrome Web Store.</span></p>
+<p class="reveal"><span lang="id">For this tutorial, you should at least have:</span><span lang="en">For this tutorial, you should at least have:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Chrome browser (version 138+ recommended if you want to use built-in AI)</span><span lang="en">Chrome browser (version 138+ recommended if you want to use built-in AI)</span></li>
+<li><span lang="id">A code editor (VS Code / Cursor / Trae)</span><span lang="en">A code editor (VS Code / Cursor / Trae)</span></li>
+<li><span lang="id">(Optional) An OpenAI or Claude API Key</span><span lang="en">(Optional) An OpenAI or Claude API Key</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.1 What Is a Browser Extension?</span><span lang="en">1.1 What Is a Browser Extension?</span></h2>
+<p class="reveal"><span lang="id">You have definitely used browser extensions before: ad blockers, translation tools, password managers... They are like "extra gear" for your browser, giving you superpowers while browsing the web.</span><span lang="en">You have definitely used browser extensions before: ad blockers, translation tools, password managers... They are like "extra gear" for your browser, giving you superpowers while browsing the web.</span></p>
+<p class="reveal"><span lang="id">Imagine this: you open a 5,000-word technical blog post, click the extension button once, and a few seconds later a concise Chinese summary appears in the side panel. That is exactly what we are going to build.</span><span lang="en">Imagine this: you open a 5,000-word technical blog post, click the extension button once, and a few seconds later a concise Chinese summary appears in the side panel. That is exactly what we are going to build.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: A preview image showing a long article webpage on the left and an AI-generated summary displayed in the Chrome side panel on the right</span><span lang="en">placeholder: A preview image showing a long article webpage on the left and an AI-generated summary displayed in the Chrome side panel on the right</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: A preview image showing a long article webpage on the left and an AI-generated summary displayed in the Chrome side panel on the right</span><span lang="en">placeholder: A preview image showing a long article webpage on the left and an AI-generated summary displayed in the Chrome side panel on the right</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.2 The Basic Architecture of a Chrome Extension</span><span lang="en">1.2 The Basic Architecture of a Chrome Extension</span></h2>
+<p class="reveal"><span lang="id">Chrome extensions (based on Manifest V3) consist of several core parts, each with its own role:</span><span lang="en">Chrome extensions (based on Manifest V3) consist of several core parts, each with its own role:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Manifest file (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">manifest.json</code>)</b>: the extension's "ID card," declaring its name, permissions, entry files, and more.</span><span lang="en"><b>Manifest file (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">manifest.json</code>)</b>: the extension's "ID card," declaring its name, permissions, entry files, and more.</span></li>
+<li><span lang="id"><b>Service Worker (background script)</b>: the extension's "brain," handling events and calling APIs in the background. It does not run continuously, but starts when needed.</span><span lang="en"><b>Service Worker (background script)</b>: the extension's "brain," handling events and calling APIs in the background. It does not run continuously, but starts when needed.</span></li>
+<li><span lang="id"><b>Content Script</b>: the extension's "eyes," injected into webpages and able to read DOM content.</span><span lang="en"><b>Content Script</b>: the extension's "eyes," injected into webpages and able to read DOM content.</span></li>
+<li><span lang="id"><b>Side Panel</b>: the extension's "face," showing UI on the right side of the browser where users see AI summary results.</span><span lang="en"><b>Side Panel</b>: the extension's "face," showing UI on the right side of the browser where users see AI summary results.</span></li>
+<li><span lang="id"><b>Options Page</b>: lets users configure API Key and related settings.</span><span lang="en"><b>Options Page</b>: lets users configure API Key and related settings.</span></li>
+</ul>
+<p class="reveal"><span lang="id">Their workflow looks like this:</span><span lang="en">Their workflow looks like this:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>User clicks the extension icon
+    -&gt; Side panel opens
+    -&gt; User clicks the &quot;Summarize&quot; button
+    -&gt; Side panel notifies the Service Worker
+    -&gt; Service Worker asks Content Script to read page text
+    -&gt; Content Script returns page content
+    -&gt; Service Worker sends content to AI API
+    -&gt; AI returns the summary
+    -&gt; Service Worker sends the summary back to the side panel for display</pre>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: An architecture flowchart showing how Content Script, Service Worker, and Side Panel pass messages to each other</span><span lang="en">placeholder: An architecture flowchart showing how Content Script, Service Worker, and Side Panel pass messages to each other</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: An architecture flowchart showing how Content Script, Service Worker, and Side Panel pass messages to each other</span><span lang="en">placeholder: An architecture flowchart showing how Content Script, Service Worker, and Side Panel pass messages to each other</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.3 Two AI Options: Cloud API vs Built-in Browser AI</span><span lang="en">1.3 Two AI Options: Cloud API vs Built-in Browser AI</span></h2>
+<p class="reveal"><span lang="id">Our extension has two ways to access AI capability:</span><span lang="en">Our extension has two ways to access AI capability:</span></p>
+<p class="reveal"><span lang="id"><b>Option A: Call cloud AI APIs (OpenAI / Claude)</b></span><span lang="en"><b>Option A: Call cloud AI APIs (OpenAI / Claude)</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Pros: powerful model capability, supports all devices</span><span lang="en">Pros: powerful model capability, supports all devices</span></li>
+<li><span lang="id">Cons: needs an API Key, requires internet, has usage cost</span><span lang="en">Cons: needs an API Key, requires internet, has usage cost</span></li>
+<li><span lang="id">Best for: high-quality summaries and handling more complex content</span><span lang="en">Best for: high-quality summaries and handling more complex content</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Option B: Use Chrome built-in AI (Summarizer API)</b></span><span lang="en"><b>Option B: Use Chrome built-in AI (Summarizer API)</b></span></p>
+<p class="reveal"><span lang="id">Starting from Chrome 138, Google built AI capability based on Gemini Nano directly into the browser. One of them is the <b>Summarizer API</b> - it runs entirely locally, requires no API Key, no internet, and is completely free.</span><span lang="en">Starting from Chrome 138, Google built AI capability based on Gemini Nano directly into the browser. One of them is the <b>Summarizer API</b> - it runs entirely locally, requires no API Key, no internet, and is completely free.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Pros: free, privacy-friendly, no API Key needed</span><span lang="en">Pros: free, privacy-friendly, no API Key needed</span></li>
+<li><span lang="id">Cons: requires Chrome 138+, better hardware (4GB+ VRAM or 16GB+ RAM), model capability is weaker than cloud AI</span><span lang="en">Cons: requires Chrome 138+, better hardware (4GB+ VRAM or 16GB+ RAM), model capability is weaker than cloud AI</span></li>
+<li><span lang="id">Best for: users who care about privacy, do not want to pay, and have sufficient hardware</span><span lang="en">Best for: users who care about privacy, do not want to pay, and have sufficient hardware</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>This tutorial will implement both options</b>, and you can choose based on your own situation.</span><span lang="en"><b>This tutorial will implement both options</b>, and you can choose based on your own situation.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.4 Tutorial Roadmap</span><span lang="en">1.4 Tutorial Roadmap</span></h2>
+<p class="reveal"><span lang="id">We will build a Chrome extension called <b>"AI Page Summarizer"</b> from scratch, following these steps:</span><span lang="en">We will build a Chrome extension called <b>"AI Page Summarizer"</b> from scratch, following these steps:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Build the extension skeleton</b>: create a Manifest V3 project structure and load it into Chrome</span><span lang="en"><b>Build the extension skeleton</b>: create a Manifest V3 project structure and load it into Chrome</span></li>
+<li><span lang="id"><b>Implement the core feature</b>: Content Script reads the page + Service Worker calls AI API + side panel shows results</span><span lang="en"><b>Implement the core feature</b>: Content Script reads the page + Service Worker calls AI API + side panel shows results</span></li>
+<li><span lang="id"><b>Integrate Chrome built-in AI</b>: use Summarizer API to provide free local summarization</span><span lang="en"><b>Integrate Chrome built-in AI</b>: use Summarizer API to provide free local summarization</span></li>
+<li><span lang="id"><b>Testing and debugging</b>: learn Chrome extension debugging techniques</span><span lang="en"><b>Testing and debugging</b>: learn Chrome extension debugging techniques</span></li>
+<li><span lang="id"><b>Publish to Chrome Web Store</b>: package and submit for review</span><span lang="en"><b>Publish to Chrome Web Store</b>: package and submit for review</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.1 Create the Project Structure</span><span lang="en">2.1 Create the Project Structure</span></h2>
+<p class="reveal"><span lang="id">Open your AI coding assistant (Cursor / Trae / Claude Code), create an empty folder named <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ai-page-summarizer</code>, then enter the following in the chat box:</span><span lang="en">Open your AI coding assistant (Cursor / Trae / Claude Code), create an empty folder named <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ai-page-summarizer</code>, then enter the following in the chat box:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please help me create a Chrome browser extension project using Manifest V3.
+The project name is ai-page-summarizer, and its function is to summarize webpage content with AI.
+Please create the following file structure:
+
+ai-page-summarizer/
+├── manifest.json          # MV3 manifest file
+├── background.js          # Service Worker background script
+├── content.js             # Content script (reads webpage text)
+├── sidepanel.html         # Side panel HTML
+├── sidepanel.js           # Side panel logic
+├── sidepanel.css          # Side panel styling
+├── options.html           # Settings page
+├── options.js             # Settings page logic
+└── icons/                 # Icons folder
+
+Requirements for manifest.json:
+1. manifest_version: 3
+2. Permissions: storage, activeTab, scripting, sidePanel
+3. Use service_worker: &quot;background.js&quot; for background
+4. Configure side_panel with default path sidepanel.html
+5. Configure default icon and title for action</pre>
+</div>
+<p class="reveal"><span lang="id">AI will generate the full project skeleton for you. Let us look at what each file does.</span><span lang="en">AI will generate the full project skeleton for you. Let us look at what each file does.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.2 <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">manifest.json</code>: The Extension's "ID Card"</span><span lang="en">2.2 <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">manifest.json</code>: The Extension's "ID Card"</span></h2>
+<p class="reveal"><span lang="id">This is the most important file in a Chrome extension. It tells the browser what the extension is, what permissions it needs, and which components it contains:</span><span lang="en">This is the most important file in a Chrome extension. It tells the browser what the extension is, what permissions it needs, and which components it contains:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>json</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>{
+  &quot;manifest_version&quot;: 3,
+  &quot;name&quot;: &quot;AI Page Summarizer&quot;,
+  &quot;version&quot;: &quot;1.0&quot;,
+  &quot;description&quot;: &quot;Use AI to summarize any webpage in one click&quot;,
+  &quot;permissions&quot;: [&quot;storage&quot;, &quot;activeTab&quot;, &quot;scripting&quot;, &quot;sidePanel&quot;],
+  &quot;background&quot;: {
+    &quot;service_worker&quot;: &quot;background.js&quot;
+  },
+  &quot;action&quot;: {
+    &quot;default_title&quot;: &quot;AI Page Summarizer&quot;,
+    &quot;default_icon&quot;: {
+      &quot;16&quot;: &quot;icons/icon-16.png&quot;,
+      &quot;48&quot;: &quot;icons/icon-48.png&quot;,
+      &quot;128&quot;: &quot;icons/icon-128.png&quot;
+    }
+  },
+  &quot;side_panel&quot;: {
+    &quot;default_path&quot;: &quot;sidepanel.html&quot;
+  },
+  &quot;options_page&quot;: &quot;options.html&quot;,
+  &quot;icons&quot;: {
+    &quot;16&quot;: &quot;icons/icon-16.png&quot;,
+    &quot;48&quot;: &quot;icons/icon-48.png&quot;,
+    &quot;128&quot;: &quot;icons/icon-128.png&quot;
+  }
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Permission explanation:</b></span><span lang="en"><b>Permission explanation:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">storage</code>: lets the extension store data such as the user's API Key</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">storage</code>: lets the extension store data such as the user's API Key</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">activeTab</code>: lets the extension access the current tab the user is viewing (only after user interaction, so it is very safe)</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">activeTab</code>: lets the extension access the current tab the user is viewing (only after user interaction, so it is very safe)</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">scripting</code>: lets the extension inject scripts into pages to read content</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">scripting</code>: lets the extension inject scripts into pages to read content</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sidePanel</code>: lets the extension use Chrome side panel API</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sidePanel</code>: lets the extension use Chrome side panel API</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of manifest.json in the editor</span><span lang="en">placeholder: Screenshot of manifest.json in the editor</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of manifest.json in the editor</span><span lang="en">placeholder: Screenshot of manifest.json in the editor</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.3 Prepare Icons</span><span lang="en">2.3 Prepare Icons</span></h2>
+<p class="reveal"><span lang="id">Chrome extensions need icons in three sizes: 16x16, 48x48, and 128x128. You can ask AI to generate them:</span><span lang="en">Chrome extensions need icons in three sizes: 16x16, 48x48, and 128x128. You can ask AI to generate them:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please help me generate three simple Chrome extension icons (16x16, 48x48, 128x128),
+with a rounded rectangle, gradient purple background, and a white AI lightning symbol in the center.
+Save them in the icons/ directory as icon-16.png, icon-48.png, and icon-128.png.</pre>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.4 Load the Extension into Chrome</span><span lang="en">2.4 Load the Extension into Chrome</span></h2>
+<p class="reveal"><span lang="id">Before writing code, let us first load this "empty shell" extension into Chrome, so every later change can be previewed immediately:</span><span lang="en">Before writing code, let us first load this "empty shell" extension into Chrome, so every later change can be previewed immediately:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Open Chrome and enter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">chrome://extensions/</code> in the address bar</span><span lang="en">Open Chrome and enter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">chrome://extensions/</code> in the address bar</span></li>
+<li><span lang="id">Turn on <b>Developer mode</b> in the top-right corner</span><span lang="en">Turn on <b>Developer mode</b> in the top-right corner</span></li>
+<li><span lang="id">Click <b>Load unpacked</b></span><span lang="en">Click <b>Load unpacked</b></span></li>
+<li><span lang="id">Select your <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ai-page-summarizer</code> folder</span><span lang="en">Select your <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ai-page-summarizer</code> folder</span></li>
+</ul>
+<p class="reveal"><span lang="id">You will see the extension appear in the list, and its icon will show up in the Chrome toolbar.</span><span lang="en">You will see the extension appear in the list, and its icon will show up in the Chrome toolbar.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of Chrome extensions page showing how to enable developer mode and load an extension</span><span lang="en">placeholder: Screenshot of Chrome extensions page showing how to enable developer mode and load an extension</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of Chrome extensions page showing how to enable developer mode and load an extension</span><span lang="en">placeholder: Screenshot of Chrome extensions page showing how to enable developer mode and load an extension</span></p>
+</div>
+<p class="reveal"><span lang="id">> <b>Tip</b>: after every code change, go back to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">chrome://extensions/</code> and click the <b>refresh button (🔄)</b> on the extension card to update it.</span><span lang="en">> <b>Tip</b>: after every code change, go back to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">chrome://extensions/</code> and click the <b>refresh button (🔄)</b> on the extension card to update it.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.1 Content Script: Read Page Text</span><span lang="en">3.1 Content Script: Read Page Text</span></h2>
+<p class="reveal"><span lang="id">Content Script is a script injected into the webpage. It can directly access the page DOM. We use it to extract page text.</span><span lang="en">Content Script is a script injected into the webpage. It can directly access the page DOM. We use it to extract page text.</span></p>
+<p class="reveal"><span lang="id">Ask AI to write <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">content.js</code>:</span><span lang="en">Ask AI to write <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">content.js</code>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please help me write content.js with the following functions:
+1. Listen for messages from Service Worker
+2. When receiving a &quot;getPageContent&quot; message, extract the current page text content
+3. Extraction logic: get document.body.innerText, and also get the page title and URL
+4. Return the extracted content via sendResponse</pre>
+</div>
+<p class="reveal"><span lang="id">AI will generate code like this:</span><span lang="en">AI will generate code like this:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// content.js
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) =&gt; {
+  if (request.action === &#039;getPageContent&#039;) {
+    const content = document.body.innerText || document.body.textContent
+    sendResponse({
+      content: content.trim(),
+      title: document.title,
+      url: window.location.href
+    })
+  }
+  return true // Keep the message channel open
+})</pre>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.2 Service Worker: Call AI API</span><span lang="en">3.2 Service Worker: Call AI API</span></h2>
+<p class="reveal"><span lang="id">Service Worker is the extension's "brain." It coordinates communication among components and calls external AI APIs.</span><span lang="en">Service Worker is the extension's "brain." It coordinates communication among components and calls external AI APIs.</span></p>
+<p class="reveal"><span lang="id">Ask AI to write <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">background.js</code>:</span><span lang="en">Ask AI to write <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">background.js</code>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please help me write background.js with the following functions:
+1. When the user clicks the extension icon, open the side panel
+2. Listen for &quot;summarize&quot; messages from the side panel
+3. After receiving the message, send &quot;getPageContent&quot; to the content script in the current tab to get page content
+4. After receiving the page content, read the user&#039;s configured API Key and model selection from chrome.storage.local
+5. Call the corresponding AI API according to the configuration (support OpenAI and Claude)
+6. Send the AI summary back to the side panel
+
+For OpenAI, call https://api.openai.com/v1/chat/completions and use model gpt-4o-mini
+For Claude, call https://api.anthropic.com/v1/messages and use model claude-sonnet-4-20250514
+System prompt: Please summarize the following webpage content in Chinese, extract the key points, and keep it within 300 Chinese characters.</pre>
+</div>
+<p class="reveal"><span lang="id">Core code looks like this:</span><span lang="en">Core code looks like this:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// background.js
+
+// Open the side panel when the user clicks the icon
+chrome.sidePanel.setPanelBehavior({ openPanelOnActionClick: true })
+
+// Listen for messages from the side panel
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) =&gt; {
+  if (request.action === &#039;summarize&#039;) {
+    handleSummarize(request.tabId).then(sendResponse)
+    return true // Async response
+  }
+})
+
+async function handleSummarize(tabId) {
+  // 1. Get page content
+  const [response] = await chrome.tabs.sendMessage(tabId, {
+    action: &#039;getPageContent&#039;
+  })
+
+  // 2. Read user settings
+  const { apiKey, provider } = await chrome.storage.local.get([
+    &#039;apiKey&#039;, &#039;provider&#039;
+  ])
+
+  if (!apiKey) {
+    return { error: &#039;Please configure your API Key in the settings page first&#039; }
+  }
+
+  // 3. Call AI API
+  const summary = provider === &#039;claude&#039;
+    ? await callClaude(response.content, apiKey)
+    : await callOpenAI(response.content, apiKey)
+
+  return { summary, title: response.title }
+}</pre>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Ekstensi Asisten Browser AI (Chrome / Edge)</span><span lang="en">Ekstensi Asisten Browser AI (Chrome / Edge)</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of background.js code in the editor</span><span lang="en">placeholder: Screenshot of background.js code in the editor</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.3 Side Panel UI: Show Summary Result</span><span lang="en">3.3 Side Panel UI: Show Summary Result</span></h2>
+<p class="reveal"><span lang="id">The side panel is the main interaction UI for users. Ask AI to write the HTML, CSS, and JS for the side panel:</span><span lang="en">The side panel is the main interaction UI for users. Ask AI to write the HTML, CSS, and JS for the side panel:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please help me write these three files for the side panel:
+
+sidepanel.html:
+- Show the plugin name &quot;AI Page Summarizer&quot; at the top
+- A blue &quot;Summarize Current Page&quot; button
+- A loading animation area (hidden by default)
+- A result display area showing the page title and AI summary
+- A &quot;Copy Summary&quot; button at the bottom
+
+sidepanel.css:
+- Clean modern design, similar to Notion typography
+- Width adapts to the side panel
+- Buttons have hover effects
+- Loading animation implemented with CSS
+
+sidepanel.js:
+- When clicking the &quot;Summarize&quot; button, get the current tab ID
+- Send a summarize message to background.js
+- Show loading animation
+- Hide loading and display summary after receiving result
+- Use navigator.clipboard.writeText in the &quot;Copy&quot; button to copy text</pre>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of side panel UI showing three states: summary button, loading state, and summary result</span><span lang="en">placeholder: Screenshot of side panel UI showing three states: summary button, loading state, and summary result</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of side panel UI showing three states: summary button, loading state, and summary result</span><span lang="en">placeholder: Screenshot of side panel UI showing three states: summary button, loading state, and summary result</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.4 Settings Page: Configure API Key</span><span lang="en">3.4 Settings Page: Configure API Key</span></h2>
+<p class="reveal"><span lang="id">Users need a place to enter their own API Key. Ask AI to write the settings page:</span><span lang="en">Users need a place to enter their own API Key. Ask AI to write the settings page:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please help me write options.html and options.js:
+- A dropdown to choose AI provider (OpenAI / Claude)
+- A password input for API Key (type=&quot;password&quot;)
+- A &quot;Save&quot; button
+- Save config with chrome.storage.local.set
+- Read saved config from storage and fill the form on page load
+- Show &quot;Settings saved&quot; after saving</pre>
+</div>
+<p class="reveal"><span lang="id">> <b>Security reminder</b>: the API Key is stored in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">chrome.storage.local</code> and only kept on the local device. But if you want to publish this extension to the Chrome Web Store for others to use, a safer approach is to build a backend proxy server so the API Key is not exposed directly on the client side.</span><span lang="en">> <b>Security reminder</b>: the API Key is stored in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">chrome.storage.local</code> and only kept on the local device. But if you want to publish this extension to the Chrome Web Store for others to use, a safer approach is to build a backend proxy server so the API Key is not exposed directly on the client side.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of settings page showing provider selection and API Key input p1</span><span lang="en">placeholder: Screenshot of settings page showing provider selection and API Key input p1</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of settings page showing provider selection and API Key input p2</span><span lang="en">placeholder: Screenshot of settings page showing provider selection and API Key input p2</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of settings page showing provider selection and API Key input p3</span><span lang="en">placeholder: Screenshot of settings page showing provider selection and API Key input p3</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of settings page showing provider selection and API Key input</span><span lang="en">placeholder: Screenshot of settings page showing provider selection and API Key input</span></p>
+</div>
+<p class="reveal"><span lang="id">Starting from Chrome 138, Google built AI capability based on <b>Gemini Nano</b> directly into the browser. The one best suited for our case is the <b>Summarizer API</b> - it runs entirely locally, needs no API Key, needs no internet, and is free.</span><span lang="en">Starting from Chrome 138, Google built AI capability based on <b>Gemini Nano</b> directly into the browser. The one best suited for our case is the <b>Summarizer API</b> - it runs entirely locally, needs no API Key, needs no internet, and is free.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4.1 Check Browser Support</span><span lang="en">4.1 Check Browser Support</span></h2>
+<p class="reveal"><span lang="id">Built-in AI has hardware requirements:</span><span lang="en">Built-in AI has hardware requirements:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Desktop Chrome 138+ (Windows 10+, macOS 13+, Linux, ChromeOS)</span><span lang="en">Desktop Chrome 138+ (Windows 10+, macOS 13+, Linux, ChromeOS)</span></li>
+<li><span lang="id">22 GB available storage space (for model download)</span><span lang="en">22 GB available storage space (for model download)</span></li>
+<li><span lang="id">4GB+ GPU VRAM, or 16GB+ system RAM with 4+ CPU cores</span><span lang="en">4GB+ GPU VRAM, or 16GB+ system RAM with 4+ CPU cores</span></li>
+</ul>
+<p class="reveal"><span lang="id">Enter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">chrome://flags</code> in Chrome address bar, search for the flag related to Summarization, and ensure it is <b>Enabled</b>.</span><span lang="en">Enter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">chrome://flags</code> in Chrome address bar, search for the flag related to Summarization, and ensure it is <b>Enabled</b>.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">In Chrome 131-137, this switch is called Summarization API.</span><span lang="en">In Chrome 131-137, this switch is called Summarization API.</span></li>
+<li><span lang="id">In Chrome 138-144, it was renamed to Summarization API for Gemini Nano.</span><span lang="en">In Chrome 138-144, it was renamed to Summarization API for Gemini Nano.</span></li>
+<li><span lang="id">In Chrome 145+, Summarization API for Gemini Nano was removed, and its summarization function was integrated into Prompt API for Gemini Nano.</span><span lang="en">In Chrome 145+, Summarization API for Gemini Nano was removed, and its summarization function was integrated into Prompt API for Gemini Nano.</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of chrome://flags showing the Summarization API switch</span><span lang="en">placeholder: Screenshot of chrome://flags showing the Summarization API switch</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of chrome://flags showing the Summarization API switch</span><span lang="en">placeholder: Screenshot of chrome://flags showing the Summarization API switch</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4.2 Use Summarizer API</span><span lang="en">4.2 Use Summarizer API</span></h2>
+<p class="reveal"><span lang="id">Ask AI to add built-in AI support in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">background.js</code>:</span><span lang="en">Ask AI to add built-in AI support in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">background.js</code>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please help me add Chrome built-in Summarizer API support in background.js:
+1. Add a summarizeWithBuiltinAI function
+2. First check whether Summarizer.availability() returns &#039;readily-available&#039;
+3. If available, create a summarizer instance, configure type as &#039;key-points&#039;, format as &#039;markdown&#039;, and length as &#039;medium&#039;
+4. Call summarizer.summarize() to summarize
+5. In handleSummarize, add a branch for provider === &#039;builtin&#039;</pre>
+</div>
+<p class="reveal"><span lang="id">Core code:</span><span lang="en">Core code:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>javascript</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>async function summarizeWithBuiltinAI(text) {
+  // Check availability
+  const availability = await Summarizer.availability()
+  if (availability !== &#039;readily-available&#039;) {
+    throw new Error(&#039;Chrome built-in AI is not available. Please check browser version and hardware requirements.&#039;)
+  }
+
+  // Create summarizer
+  const summarizer = await Summarizer.create({
+    type: &#039;key-points&#039;,
+    format: &#039;markdown&#039;,
+    length: &#039;medium&#039;
+  })
+
+  // Run summary
+  const summary = await summarizer.summarize(text, {
+    context: &#039;This is a webpage article&#039;
+  })
+
+  return summary
+}</pre>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4.3 Update the Settings Page</span><span lang="en">4.3 Update the Settings Page</span></h2>
+<p class="reveal"><span lang="id">Add a <b>"Chrome Built-in AI (Free, No API Key Needed)"</b> option to the provider dropdown in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">options.html</code>. When users choose it, hide the API Key input because it is no longer needed.</span><span lang="en">Add a <b>"Chrome Built-in AI (Free, No API Key Needed)"</b> option to the provider dropdown in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">options.html</code>. When users choose it, hide the API Key input because it is no longer needed.</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please help me modify options.html and options.js:
+1. Add an option &quot;Chrome built-in AI (free, no API Key needed)&quot; to the provider dropdown, with value &quot;builtin&quot;
+2. Hide the API Key input when builtin is selected
+3. Show the API Key input when OpenAI or Claude is selected</pre>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of updated settings page showing three AI provider options, with API Key input hidden when Chrome built-in AI is selected</span><span lang="en">placeholder: Screenshot of updated settings page showing three AI provider options, with API Key input hidden when Chrome built-in AI is selected</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of updated settings page showing three AI provider options, with API Key input hidden when Chrome built-in AI is selected</span><span lang="en">placeholder: Screenshot of updated settings page showing three AI provider options, with API Key input hidden when Chrome built-in AI is selected</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5.1 Local Testing Workflow</span><span lang="en">5.1 Local Testing Workflow</span></h2>
+<p class="reveal"><span lang="id">Debugging Chrome extensions is a bit different from debugging normal webpages:</span><span lang="en">Debugging Chrome extensions is a bit different from debugging normal webpages:</span></p>
+<p class="reveal"><span lang="id"><b>Debug Service Worker:</b></span><span lang="en"><b>Debug Service Worker:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Open <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">chrome://extensions/</code></span><span lang="en">Open <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">chrome://extensions/</code></span></li>
+<li><span lang="id">Find your extension and click the <b>Service Worker</b> link</span><span lang="en">Find your extension and click the <b>Service Worker</b> link</span></li>
+<li><span lang="id">A dedicated DevTools window opens where you can see <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console.log</code> output and network requests</span><span lang="en">A dedicated DevTools window opens where you can see <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console.log</code> output and network requests</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Debug Side Panel:</b></span><span lang="en"><b>Debug Side Panel:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Open the side panel</span><span lang="en">Open the side panel</span></li>
+<li><span lang="id">Right-click inside the side panel content</span><span lang="en">Right-click inside the side panel content</span></li>
+<li><span lang="id">Choose <b>Inspect</b></span><span lang="en">Choose <b>Inspect</b></span></li>
+<li><span lang="id">This opens DevTools for the side panel</span><span lang="en">This opens DevTools for the side panel</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Debug Content Script:</b></span><span lang="en"><b>Debug Content Script:</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Open DevTools with F12 on any webpage</span><span lang="en">Open DevTools with F12 on any webpage</span></li>
+<li><span lang="id">In the Console panel, click the execution context dropdown in the top-left</span><span lang="en">In the Console panel, click the execution context dropdown in the top-left</span></li>
+<li><span lang="id">Select your extension name</span><span lang="en">Select your extension name</span></li>
+<li><span lang="id">Then you can see <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console</code> output from the Content Script</span><span lang="en">Then you can see <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console</code> output from the Content Script</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of Chrome DevTools showing how to choose different execution contexts to debug different extension components</span><span lang="en">placeholder: Screenshot of Chrome DevTools showing how to choose different execution contexts to debug different extension components</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of Chrome DevTools showing how to choose different execution contexts to debug different extension components</span><span lang="en">placeholder: Screenshot of Chrome DevTools showing how to choose different execution contexts to debug different extension components</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5.2 Common Troubleshooting</span><span lang="en">5.2 Common Troubleshooting</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Problem</th><th>Possible Cause</th><th>Solution</th></tr>
+<tr><td>Clicking the icon does nothing</td><td>Service Worker error</td><td>Check the Service Worker DevTools Console</td></tr>
+<tr><td>Cannot get page content</td><td>Content Script not injected</td><td>Refresh the page and try again, check <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">matches</code> config in manifest</td></tr>
+<tr><td>API call fails</td><td>API Key is wrong or expired</td><td>Re-enter the API Key in the settings page</td></tr>
+<tr><td>Side panel is blank</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sidepanel.html</code> path is wrong</td><td>Check <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">side_panel.default_path</code> in manifest</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">If you want to share the extension with others, you can publish it to the Chrome Web Store.</span><span lang="en">If you want to share the extension with others, you can publish it to the Chrome Web Store.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6.1 Prepare for Publishing</span><span lang="en">6.1 Prepare for Publishing</span></h2>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Register a developer account</b>: visit [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole) and pay the one-time $5 registration fee</span><span lang="en"><b>Register a developer account</b>: visit [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole) and pay the one-time $5 registration fee</span></li>
+<li><span lang="id"><b>Enable 2-Step Verification</b>: your Google account must enable 2-Step Verification before publishing</span><span lang="en"><b>Enable 2-Step Verification</b>: your Google account must enable 2-Step Verification before publishing</span></li>
+<li><span lang="id"><b>Prepare assets</b>:</span><span lang="en"><b>Prepare assets</b>:</span></li>
+<li><span lang="id">Extension icon: 128x128 PNG</span><span lang="en">Extension icon: 128x128 PNG</span></li>
+<li><span lang="id">At least one screenshot: 1280x800 recommended</span><span lang="en">At least one screenshot: 1280x800 recommended</span></li>
+<li><span lang="id">Detailed functional description</span><span lang="en">Detailed functional description</span></li>
+<li><span lang="id">Privacy policy explanation (if your extension processes user data)</span><span lang="en">Privacy policy explanation (if your extension processes user data)</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6.2 Package and Upload</span><span lang="en">6.2 Package and Upload</span></h2>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Compress the extension folder as a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.zip</code> file (not <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.crx</code>)</span><span lang="en">Compress the extension folder as a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.zip</code> file (not <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.crx</code>)</span></li>
+<li><span lang="id">Click <b>New Item</b> in Developer Dashboard</span><span lang="en">Click <b>New Item</b> in Developer Dashboard</span></li>
+<li><span lang="id">Upload the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.zip</code> file</span><span lang="en">Upload the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">.zip</code> file</span></li>
+<li><span lang="id">Fill in store information (name, description, screenshots, category, etc.)</span><span lang="en">Fill in store information (name, description, screenshots, category, etc.)</span></li>
+<li><span lang="id">Fill in privacy practices (declare what user data your extension collects)</span><span lang="en">Fill in privacy practices (declare what user data your extension collects)</span></li>
+<li><span lang="id">Click <b>Submit for Review</b></span><span lang="en">Click <b>Submit for Review</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">Google will review submitted extensions, which usually takes several business days. The fewer permissions you request and the clearer your description is, the faster the review usually goes.</span><span lang="en">Google will review submitted extensions, which usually takes several business days. The fewer permissions you request and the clearer your description is, the faster the review usually goes.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of Chrome Web Store Developer Dashboard showing extension upload and metadata form</span><span lang="en">placeholder: Screenshot of Chrome Web Store Developer Dashboard showing extension upload and metadata form</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of Chrome Web Store Developer Dashboard showing extension upload and metadata form p2</span><span lang="en">placeholder: Screenshot of Chrome Web Store Developer Dashboard showing extension upload and metadata form p2</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of Chrome Web Store Developer Dashboard showing extension upload and metadata form</span><span lang="en">placeholder: Screenshot of Chrome Web Store Developer Dashboard showing extension upload and metadata form</span></p>
+</div>
+<p class="reveal"><span lang="id">Congratulations! You have built an AI-driven browser extension from scratch. Let us review what we did:</span><span lang="en">Congratulations! You have built an AI-driven browser extension from scratch. Let us review what we did:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Understood the Manifest V3 architecture of Chrome extensions</span><span lang="en">Understood the Manifest V3 architecture of Chrome extensions</span></li>
+<li><span lang="id">Used Content Script to read webpage content</span><span lang="en">Used Content Script to read webpage content</span></li>
+<li><span lang="id">Used Service Worker to call AI APIs and generate summaries</span><span lang="en">Used Service Worker to call AI APIs and generate summaries</span></li>
+<li><span lang="id">Used Side Panel to display the summary result</span><span lang="en">Used Side Panel to display the summary result</span></li>
+<li><span lang="id">Also learned how to use Chrome built-in AI without any API Key</span><span lang="en">Also learned how to use Chrome built-in AI without any API Key</span></li>
+</ul>
+<p class="reveal"><span lang="id">Browser extension development is a very interesting field - it lets you "enhance" any webpage on the internet. Besides summarizing pages, you can build many more things with a similar architecture:</span><span lang="en">Browser extension development is a very interesting field - it lets you "enhance" any webpage on the internet. Besides summarizing pages, you can build many more things with a similar architecture:</span></p>
+<p class="reveal"><span lang="id"><b>Advanced directions:</b></span><span lang="en"><b>Advanced directions:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Translation assistant</b>: translate foreign webpages into Chinese in one click</span><span lang="en"><b>Translation assistant</b>: translate foreign webpages into Chinese in one click</span></li>
+<li><span lang="id"><b>Reading annotations</b>: highlight and annotate pages, then save to the cloud</span><span lang="en"><b>Reading annotations</b>: highlight and annotate pages, then save to the cloud</span></li>
+<li><span lang="id"><b>Price tracking</b>: monitor price changes on e-commerce pages and notify users</span><span lang="en"><b>Price tracking</b>: monitor price changes on e-commerce pages and notify users</span></li>
+<li><span lang="id"><b>Code explainer</b>: select code on GitHub and let AI explain it automatically</span><span lang="en"><b>Code explainer</b>: select code on GitHub and let AI explain it automatically</span></li>
+</ul>
+<p class="reveal"><span lang="id">The arrival of Chrome built-in AI lowers the barrier even further - you do not even need an API Key to build AI-powered extensions. As browser AI capabilities continue to grow, the imagination space in this field will only get larger.</span><span lang="en">The arrival of Chrome built-in AI lowers the barrier even further - you do not even need an API Key to build AI-powered extensions. As browser AI capabilities continue to grow, the imagination space in this field will only get larger.</span></p>
+<p class="reveal"><span lang="id"><b><i>Go give your browser some superpowers!</b></i></span><span lang="en"><b><i>Go give your browser some superpowers!</b></i></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[Chrome Extension Official Docs - Manifest V3](https://developer.chrome.com/docs/extensions/develop/)</span><span lang="en">[Chrome Extension Official Docs - Manifest V3](https://developer.chrome.com/docs/extensions/develop/)</span></li>
+<li><span lang="id">[Publish Chrome Extension to Chrome Web Store](https://developer.chrome.com/docs/webstore/publish?hl=zh-cn)</span><span lang="en">[Publish Chrome Extension to Chrome Web Store](https://developer.chrome.com/docs/webstore/publish?hl=zh-cn)</span></li>
+<li><span lang="id">[Chrome Side Panel API](https://developer.chrome.com/docs/extensions/reference/api/sidePanel)</span><span lang="en">[Chrome Side Panel API](https://developer.chrome.com/docs/extensions/reference/api/sidePanel)</span></li>
+<li><span lang="id">[Chrome Built-in AI - Summarizer API](https://developer.chrome.com/docs/ai/summarizer-api)</span><span lang="en">[Chrome Built-in AI - Summarizer API](https://developer.chrome.com/docs/ai/summarizer-api)</span></li>
+<li><span lang="id">[Chrome Built-in AI - Prompt API](https://developer.chrome.com/docs/ai/prompt-api)</span><span lang="en">[Chrome Built-in AI - Prompt API](https://developer.chrome.com/docs/ai/prompt-api)</span></li>
+<li><span lang="id">[OpenAI API Docs](https://platform.openai.com/docs/api-reference)</span><span lang="en">[OpenAI API Docs](https://platform.openai.com/docs/api-reference)</span></li>
+<li><span lang="id">[Anthropic Claude API Docs](https://docs.anthropic.com/en/docs/)</span><span lang="en">[Anthropic Claude API Docs](https://docs.anthropic.com/en/docs/)</span></li>
+<li><span lang="id">[Anthropic Claude API Docs](https://developer.chrome.com/docs/webstore/publish?hl=zh-cn)</span><span lang="en">[Anthropic Claude API Docs](https://developer.chrome.com/docs/webstore/publish?hl=zh-cn)</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../cross-platform/pwa-local-app/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Progressive Web App (PWA): Web Rasa Native Offline</span><span lang="en">Progressive Web App (PWA): Web Rasa Native Offline</span></b></a>
+      <a class="next" href="../../cross-platform/electron-voice-to-text/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Aplikasi Desktop Suara-ke-Teks dengan Electron</span><span lang="en">Aplikasi Desktop Suara-ke-Teks dengan Electron</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

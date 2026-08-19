@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>An Introduction to Command Line and Shell Scripts — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: An Introduction to Command Line and Shell Scripts. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/2-development-tools/command-line-shell/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">An Introduction to Command Line and Shell Scripts</span><span lang="en">An Introduction to Command Line and Shell Scripts</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">An Introduction to Command Line and Shell Scripts</span><span lang="en">An Introduction to Command Line and Shell Scripts</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: An Introduction to Command Line and Shell Scripts.</span><span lang="en">Ensiklopedia VibeKoding: An Introduction to Command Line and Shell Scripts.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">> 💡 <b>Learning Guide</b>: This chapter aims to provide readers with zero prior experience a systematic understanding of how the terminal (Terminal) works. No computer science background is required — we will use interactive demonstrations to explain the terminal's operating mechanisms step by step.</span><span lang="en">> 💡 <b>Learning Guide</b>: This chapter aims to provide readers with zero prior experience a systematic understanding of how the terminal (Terminal) works. No computer science background is required — we will use interactive demonstrations to explain the terminal's operating mechanisms step by step.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. Quick Start: Approach to opening the Terminal</span><span lang="en">0. Quick Start: Approach to opening the Terminal</span></h2>
+<p class="reveal"><span lang="id">Before you start learning, you first need to find it. The terminal comes pre-installed on every operating system — you don't need to install any additional software to use it.</span><span lang="en">Before you start learning, you first need to find it. The terminal comes pre-installed on every operating system — you don't need to install any additional software to use it.</span></p>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id"><b> macOS (Mac)</b>
+
+1. Press <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Command (⌘) + Space</code> to open Spotlight Search.
+2. Type <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Terminal</code>.
+3. Press Enter, and you'll see a window with white text on black (or black text on white).
+
+<b>🪟 Windows</b>
+
+- <b>Method 1 (CMD)</b>: Press <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Win + R</code>, type <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">cmd</code>, and press Enter. This is the oldest command line.
+- <b>Method 2 (PowerShell)</b>: Press <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Win + R</code>, type <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">powershell</code>, and press Enter. This is a more modern and powerful terminal.
+- _Tip: Either works for simple tasks, but PowerShell or WSL (Windows Subsystem for Linux) is recommended for development._
+
+<b>🐧 Linux</b>
+
+- The shortcut is usually <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl + Alt + T</code>.
+- Or search for <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Terminal</code> in the application menu.</span><span lang="en"><b> macOS (Mac)</b>
+
+1. Press <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Command (⌘) + Space</code> to open Spotlight Search.
+2. Type <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Terminal</code>.
+3. Press Enter, and you'll see a window with white text on black (or black text on white).
+
+<b>🪟 Windows</b>
+
+- <b>Method 1 (CMD)</b>: Press <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Win + R</code>, type <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">cmd</code>, and press Enter. This is the oldest command line.
+- <b>Method 2 (PowerShell)</b>: Press <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Win + R</code>, type <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">powershell</code>, and press Enter. This is a more modern and powerful terminal.
+- _Tip: Either works for simple tasks, but PowerShell or WSL (Windows Subsystem for Linux) is recommended for development._
+
+<b>🐧 Linux</b>
+
+- The shortcut is usually <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl + Alt + T</code>.
+- Or search for <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Terminal</code> in the application menu.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">0.1 Hands-on Lab: Try It Yourself</span><span lang="en">0.1 Hands-on Lab: Try It Yourself</span></h3>
+<p class="reveal"><span lang="id">Practice makes perfect. Before diving into dry theory, let's get a feel for "typing commands" firsthand.</span><span lang="en">Practice makes perfect. Before diving into dry theory, let's get a feel for "typing commands" firsthand.</span></p>
+<p class="reveal"><span lang="id">> 💡 <b>Tip</b>: For safety and convenience, we recommend using the <b>web simulator</b> below. If you're confident, you can also open your computer's real terminal using the method from Chapter 0 and follow along (the experience is the same).</span><span lang="en">> 💡 <b>Tip</b>: For safety and convenience, we recommend using the <b>web simulator</b> below. If you're confident, you can also open your computer's real terminal using the method from Chapter 0 and follow along (the experience is the same).</span></p>
+<p class="reveal"><span lang="id">In this exercise, you will learn to:</span><span lang="en">In this exercise, you will learn to:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>View files</b>: Learn to use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ls</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dir</code> to see what's in the current directory.</span><span lang="en"><b>View files</b>: Learn to use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ls</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dir</code> to see what's in the current directory.</span></li>
+<li><span lang="id"><b>Create and navigate</b>: Learn to use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">mkdir</code> to create new folders and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">cd</code> to enter them like a portal.</span><span lang="en"><b>Create and navigate</b>: Learn to use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">mkdir</code> to create new folders and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">cd</code> to enter them like a portal.</span></li>
+<li><span lang="id"><b>Create files</b>: Learn to quickly create a new file using commands.</span><span lang="en"><b>Create files</b>: Learn to quickly create a new file using commands.</span></li>
+<li><span lang="id"><b>Install software</b>: Experience the thrill of installing a Python library or system software with a single line of code.</span><span lang="en"><b>Install software</b>: Experience the thrill of installing a Python library or system software with a single line of code.</span></li>
+<li><span lang="id"><b>Delete and clean up</b>: Learn how to delete unwanted files (use with caution!).</span><span lang="en"><b>Delete and clean up</b>: Learn how to delete unwanted files (use with caution!).</span></li>
+<li><span lang="id"><b>Ask AI for help</b>: This is the most important one! When you forget a command, learn to ask AI: "How do I delete a file on Mac?" — it will give you the answer directly.</span><span lang="en"><b>Ask AI for help</b>: This is the most important one! When you forget a command, learn to ask AI: "How do I delete a file on Mac?" — it will give you the answer directly.</span></li>
+</ul>
+<p class="reveal"><span lang="id">_Please select your operating system below, then follow the guided steps to begin:_</span><span lang="en">_Please select your operating system below, then follow the guided steps to begin:_</span></p>
+<p class="reveal"><span lang="id"><TerminalHandsOn /></span><span lang="en"><TerminalHandsOn /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">0.2 Motivation for Giving Up the Mouse (Motivation for Giving Up the Mouse)</span><span lang="en">0.2 Motivation for Giving Up the Mouse (Motivation for Giving Up the Mouse)</span></h3>
+<p class="reveal"><span lang="id">You might ask: _"Graphical interfaces (GUIs) are so easy to use — just click with the mouse. Why bother typing complex commands into a black-and-white window?"_</span><span lang="en">You might ask: _"Graphical interfaces (GUIs) are so easy to use — just click with the mouse. Why bother typing complex commands into a black-and-white window?"_</span></p>
+<p class="reveal"><span lang="id">This isn't about "acting like a hacker." It's because in certain situations, <b>language (commands) is more powerful than gestures (mouse clicks)</b>.</span><span lang="en">This isn't about "acting like a hacker." It's because in certain situations, <b>language (commands) is more powerful than gestures (mouse clicks)</b>.</span></p>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">1. The Mouse Struggles with "Batch Operations" and "Logic"</span><span lang="en">1. The Mouse Struggles with "Batch Operations" and "Logic"</span></h4>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>GUI (mouse)</b>: Good for "click what you see." If you want to delete one photo, right-clicking is quick. But if you want to "delete all photos taken in 2023 that are larger than 5MB and in PNG format," the mouse can't help — you'd have to manually filter for ages.</span><span lang="en"><b>GUI (mouse)</b>: Good for "click what you see." If you want to delete one photo, right-clicking is quick. But if you want to "delete all photos taken in 2023 that are larger than 5MB and in PNG format," the mouse can't help — you'd have to manually filter for ages.</span></li>
+<li><span lang="id"><b>CLI (commands)</b>: Good for "describing what you want to do." The above requirement only needs one line of command, and the computer will automatically find and process matching files — even if there are 10,000 of them.</span><span lang="en"><b>CLI (commands)</b>: Good for "describing what you want to do." The above requirement only needs one line of command, and the computer will automatically find and process matching files — even if there are 10,000 of them.</span></li>
+</ul>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">2. Commands Can Be Recorded and Reused</span><span lang="en">2. Commands Can Be Recorded and Reused</span></h4>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>GUI</b>: Configuring an environment requires dozens of menu clicks. When you switch to a new computer, you have to re-do everything from memory — and it's easy to miss steps.</span><span lang="en"><b>GUI</b>: Configuring an environment requires dozens of menu clicks. When you switch to a new computer, you have to re-do everything from memory — and it's easy to miss steps.</span></li>
+<li><span lang="id"><b>CLI</b>: You can write all commands into a file (a script). Next time, just run that file and the computer will reproduce your operations with <b>zero errors</b>. This is the foundation of "automation."</span><span lang="en"><b>CLI</b>: You can write all commands into a file (a script). Next time, just run that file and the computer will reproduce your operations with <b>zero errors</b>. This is the foundation of "automation."</span></li>
+</ul>
+<h4 class="reveal" style="margin:18px 0 8px;font-size:1.08rem"><span lang="id">3. The Only Option for Remote Control</span><span lang="en">3. The Only Option for Remote Control</span></h4>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>GUI</b>: Transmitting visuals is like watching HD video — it requires very high bandwidth. If the network is even slightly slow, the mouse stutters and becomes unusable.</span><span lang="en"><b>GUI</b>: Transmitting visuals is like watching HD video — it requires very high bandwidth. If the network is even slightly slow, the mouse stutters and becomes unusable.</span></li>
+<li><span lang="id"><b>CLI</b>: Only plain text is transmitted — just a few dozen characters. Even in a remote mountain area with poor signal, you can smoothly control a data center server on the other side of the planet.</span><span lang="en"><b>CLI</b>: Only plain text is transmitted — just a few dozen characters. Even in a remote mountain area with poor signal, you can smoothly control a data center server on the other side of the planet.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Summary</b>: GUI is for <b>exploration</b> (browsing the web, viewing images), CLI is for <b>production</b> (development, operations, batch processing). As developers, we use the terminal because it is <b>more precise, more controllable, and more efficient</b>.</span><span lang="en"><b>Summary</b>: GUI is for <b>exploration</b> (browsing the web, viewing images), CLI is for <b>production</b> (development, operations, batch processing). As developers, we use the terminal because it is <b>more precise, more controllable, and more efficient</b>.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Concept Definition: Overview of a Terminal</span><span lang="en">1. Concept Definition: Overview of a Terminal</span></h2>
+<p class="reveal"><span lang="id">_Different operating systems have different-looking terminals, and <b>different command syntax</b>. Click the buttons below to switch views — notice how macOS, Windows, and Linux use different commands (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dir</code> vs <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ls</code>) to do the same thing:_</span><span lang="en">_Different operating systems have different-looking terminals, and <b>different command syntax</b>. Click the buttons below to switch views — notice how macOS, Windows, and Linux use different commands (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">dir</code> vs <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ls</code>) to do the same thing:_</span></p>
+<p class="reveal"><span lang="id"><TerminalOSDemo /></span><span lang="en"><TerminalOSDemo /></span></p>
+<p class="reveal"><span lang="id">Before graphical user interfaces (GUIs) became widespread, the terminal was the primary way humans interacted with computers. Even today, it remains the most precise and efficient tool for developers to control a computer.</span><span lang="en">Before graphical user interfaces (GUIs) became widespread, the terminal was the primary way humans interacted with computers. Even today, it remains the most precise and efficient tool for developers to control a computer.</span></p>
+<p class="reveal"><span lang="id"><TerminalDefinition /></span><span lang="en"><TerminalDefinition /></span></p>
+<p class="reveal"><span lang="id">At its core, a terminal is a <b>character stream input/output environment</b>:</span><span lang="en">At its core, a terminal is a <b>character stream input/output environment</b>:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Input</b>: Send instructions via the keyboard (character signals).</span><span lang="en"><b>Input</b>: Send instructions via the keyboard (character signals).</span></li>
+<li><span lang="id"><b>Output</b>: Display text feedback on a screen grid.</span><span lang="en"><b>Output</b>: Display text feedback on a screen grid.</span></li>
+</ul>
+<p class="reveal"><span lang="id">It doesn't handle complex graphics, images, or video — it focuses on <b>text-based interaction</b>.</span><span lang="en">It doesn't handle complex graphics, images, or video — it focuses on <b>text-based interaction</b>.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Core Architecture: The Art of Decoupling (The Big Picture)</span><span lang="en">2. Core Architecture: The Art of Decoupling (The Big Picture)</span></h2>
+<p class="reveal"><span lang="id">Before diving deeper, consider this question: <b>Does the terminal window itself actually understand what you're saying?</b></span><span lang="en">Before diving deeper, consider this question: <b>Does the terminal window itself actually understand what you're saying?</b></span></p>
+<p class="reveal"><span lang="id">In reality, the terminal is like a <b>display that only relays messages</b>. When you type the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">date</code> command, the terminal doesn't know it means "show the date" — it just packages those 4 letters and sends them to the real boss behind the scenes: <b>the Shell</b>.</span><span lang="en">In reality, the terminal is like a <b>display that only relays messages</b>. When you type the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">date</code> command, the terminal doesn't know it means "show the date" — it just packages those 4 letters and sends them to the real boss behind the scenes: <b>the Shell</b>.</span></p>
+<p class="reveal"><span lang="id">The Shell is the "brain" that can understand your commands and direct the computer to do the work.</span><span lang="en">The Shell is the "brain" that can understand your commands and direct the computer to do the work.</span></p>
+<p class="reveal"><span lang="id">To understand how they work together, let's look at these three components with clear roles. The best analogy for understanding their relationship is that of a <b>web browser</b> and a <b>web server</b>.</span><span lang="en">To understand how they work together, let's look at these three components with clear roles. The best analogy for understanding their relationship is that of a <b>web browser</b> and a <b>web server</b>.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Role Division</span><span lang="en">2.1 Role Division</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>🖥️ Terminal — Like the "Browser"</b></span><span lang="en"><b>🖥️ Terminal — Like the "Browser"</b></span></li>
+<li><span lang="id"><b>Responsibility</b>: It only handles <b>input</b> (relaying your keystrokes to the other party) and <b>display</b> (rendering the characters sent back on screen).</span><span lang="en"><b>Responsibility</b>: It only handles <b>input</b> (relaying your keystrokes to the other party) and <b>display</b> (rendering the characters sent back on screen).</span></li>
+<li><span lang="id"><b>Characteristic</b>: It has <b>no intelligence of its own</b> and doesn't understand what <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ls</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">cd</code> means. It's like the Chrome browser — whether you visit Baidu or Google, it just renders the page.</span><span lang="en"><b>Characteristic</b>: It has <b>no intelligence of its own</b> and doesn't understand what <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ls</code> or <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">cd</code> means. It's like the Chrome browser — whether you visit Baidu or Google, it just renders the page.</span></li>
+<li><span lang="id">_Common terminals_: Windows CMD/PowerShell window, macOS Terminal.app, VS Code's built-in terminal.</span><span lang="en">_Common terminals_: Windows CMD/PowerShell window, macOS Terminal.app, VS Code's built-in terminal.</span></li>
+</ul>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>🧠 Shell — Like the "Web Server"</b></span><span lang="en"><b>🧠 Shell — Like the "Web Server"</b></span></li>
+<li><span lang="id"><b>Responsibility</b>: It's the logical brain. It runs in the background, <b>receiving</b> the command strings you send, <b>parsing</b> their meaning, and then <b>directing</b> the operating system to execute them.</span><span lang="en"><b>Responsibility</b>: It's the logical brain. It runs in the background, <b>receiving</b> the command strings you send, <b>parsing</b> their meaning, and then <b>directing</b> the operating system to execute them.</span></li>
+<li><span lang="id"><b>Characteristic</b>: It's invisible and intangible, communicating only through text streams.</span><span lang="en"><b>Characteristic</b>: It's invisible and intangible, communicating only through text streams.</span></li>
+<li><span lang="id">_Common Shells_: Bash, Zsh, Fish, PowerShell.</span><span lang="en">_Common Shells_: Bash, Zsh, Fish, PowerShell.</span></li>
+</ul>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>⚙️ Kernel — The "Grand Manager" Behind the Scenes</b></span><span lang="en"><b>⚙️ Kernel — The "Grand Manager" Behind the Scenes</b></span></li>
+<li><span lang="id"><b>Responsibility</b>: The core of the operating system — only it can directly control hardware (read/write disks, allocate memory, control the CPU).</span><span lang="en"><b>Responsibility</b>: The core of the operating system — only it can directly control hardware (read/write disks, allocate memory, control the CPU).</span></li>
+<li><span lang="id"><b>Relationship</b>: The Shell is the kernel's "secretary," translating your human language into something the kernel can understand.</span><span lang="en"><b>Relationship</b>: The Shell is the kernel's "secretary," translating your human language into something the kernel can understand.</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Motivation for separating Them (Replaceability)</span><span lang="en">2.2 Motivation for separating Them (Replaceability)</span></h3>
+<p class="reveal"><span lang="id">Because the <b>display layer</b> (terminal) and the <b>logic layer</b> (Shell) are completely separate, they can be freely combined:</span><span lang="en">Because the <b>display layer</b> (terminal) and the <b>logic layer</b> (Shell) are completely separate, they can be freely combined:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Change the "skin"</b>: On macOS, you can use the built-in Terminal, download iTerm2, or use VS Code's terminal. They look different but all connect to the same Shell (zsh), so the commands are identical.</span><span lang="en"><b>Change the "skin"</b>: On macOS, you can use the built-in Terminal, download iTerm2, or use VS Code's terminal. They look different but all connect to the same Shell (zsh), so the commands are identical.</span></li>
+<li><span lang="id"><b>Change the "brain"</b>: In the same terminal window, you can switch from bash to zsh, or to a Python interactive session. The terminal hasn't changed, but the logic processing commands has.</span><span lang="en"><b>Change the "brain"</b>: In the same terminal window, you can switch from bash to zsh, or to a Python interactive session. The terminal hasn't changed, but the logic processing commands has.</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 Interaction Flow: The Vanishing Keystroke</span><span lang="en">2.3 Interaction Flow: The Vanishing Keystroke</span></h3>
+<p class="reveal"><span lang="id">You might think: _"I press 'a' on the keyboard, and the terminal draws 'a' on the screen."_</span><span lang="en">You might think: _"I press 'a' on the keyboard, and the terminal draws 'a' on the screen."_</span></p>
+<p class="reveal"><span lang="id"><b>Wrong!</b> The real process works like this (called <b>Echo</b>):</span><span lang="en"><b>Wrong!</b> The real process works like this (called <b>Echo</b>):</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Press 'a'</b>: The keyboard signal is sent to the terminal.</span><span lang="en"><b>Press 'a'</b>: The keyboard signal is sent to the terminal.</span></li>
+<li><span lang="id"><b>Send signal</b>: The terminal sends the encoding of 'a' to the Shell.</span><span lang="en"><b>Send signal</b>: The terminal sends the encoding of 'a' to the Shell.</span></li>
+<li><span lang="id"><b>Shell processes it</b>: The Shell receives 'a', finds no issue, and sends 'a' back to the terminal unchanged.</span><span lang="en"><b>Shell processes it</b>: The Shell receives 'a', finds no issue, and sends 'a' back to the terminal unchanged.</span></li>
+<li><span lang="id"><b>Display character</b>: The terminal receives the 'a' sent back by the Shell and only then draws it on screen.</span><span lang="en"><b>Display character</b>: The terminal receives the 'a' sent back by the Shell and only then draws it on screen.</span></li>
+</ul>
+<p class="reveal"><span lang="id">> 💡 <b>Mini experiment</b>: Some commands (like when entering a password) disable the Shell's echo function. At that point, you press keys and the terminal sends them to the Shell, but the Shell <b>doesn't send anything back</b>, so the screen stays blank. This is a privacy protection measure.</span><span lang="en">> 💡 <b>Mini experiment</b>: Some commands (like when entering a password) disable the Shell's echo function. At that point, you press keys and the terminal sends them to the Shell, but the Shell <b>doesn't send anything back</b>, so the screen stays blank. This is a privacy protection measure.</span></p>
+<p class="reveal"><span lang="id"><b>One-sentence summary of the flow</b>:</span><span lang="en"><b>One-sentence summary of the flow</b>:</span></p>
+<p class="reveal"><span lang="id">You type in the terminal ➡️ signal goes to the Shell ➡️ Shell sends it back unchanged (you see the characters) and interprets it ➡️ Shell directs the kernel to do the work.</span><span lang="en">You type in the terminal ➡️ signal goes to the Shell ➡️ Shell sends it back unchanged (you see the characters) and interprets it ➡️ Shell directs the kernel to do the work.</span></p>
+<p class="reveal"><span lang="id">_The demo below illustrates this process. Watch the "wall" between the Shell and kernel, and how characters travel back and forth:_</span><span lang="en">_The demo below illustrates this process. Watch the "wall" between the Shell and kernel, and how characters travel back and forth:_</span></p>
+<p class="reveal"><span lang="id"><ArchitectureDemo /></span><span lang="en"><ArchitectureDemo /></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Visual Model: The Grid System</span><span lang="en">3. Visual Model: The Grid System</span></h2>
+<p class="reveal"><span lang="id">Unlike modern graphical interfaces that use "pixels," the terminal's display foundation is the <b>character grid (Character Grid)</b>.</span><span lang="en">Unlike modern graphical interfaces that use "pixels," the terminal's display foundation is the <b>character grid (Character Grid)</b>.</span></p>
+<p class="reveal"><span lang="id">The terminal screen is divided into rows and columns, and each cell is called a <b>cell (Cell)</b>.</span><span lang="en">The terminal screen is divided into rows and columns, and each cell is called a <b>cell (Cell)</b>.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Cell Composition</span><span lang="en">3.1 Cell Composition</span></h3>
+<p class="reveal"><span lang="id">Each cell is the smallest unit of terminal display, containing two types of core information:</span><span lang="en">Each cell is the smallest unit of terminal display, containing two types of core information:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Glyph</b>: The actual displayed character (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">A</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">中</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">$</code>).</span><span lang="en"><b>Glyph</b>: The actual displayed character (e.g., <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">A</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">中</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">$</code>).</span></li>
+<li><span lang="id"><b>Attributes</b>: The character's styling (e.g., foreground color, background color, bold, underline).</span><span lang="en"><b>Attributes</b>: The character's styling (e.g., foreground color, background color, bold, underline).</span></li>
+</ul>
+<p class="reveal"><span lang="id">When you resize the terminal window, you're essentially changing the grid's <b>rows</b> and <b>columns</b>.</span><span lang="en">When you resize the terminal window, you're essentially changing the grid's <b>rows</b> and <b>columns</b>.</span></p>
+<p class="reveal"><span lang="id">_Try interacting with the area below and observe how the grid carries characters:_</span><span lang="en">_Try interacting with the area below and observe how the grid carries characters:_</span></p>
+<p class="reveal"><span lang="id"><TerminalGrid /></span><span lang="en"><TerminalGrid /></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Style Inspection</span><span lang="en">3.2 Style Inspection</span></h3>
+<p class="reveal"><span lang="id">The terminal cannot display images — all "interfaces" are achieved through combinations of character colors and styles.</span><span lang="en">The terminal cannot display images — all "interfaces" are achieved through combinations of character colors and styles.</span></p>
+<p class="reveal"><span lang="id">_Click on the cells below to see the style attributes behind each one:_</span><span lang="en">_Click on the cells below to see the style attributes behind each one:_</span></p>
+<p class="reveal"><span lang="id"><CellInspector /></span><span lang="en"><CellInspector /></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Communication Protocol: Escape Sequences</span><span lang="en">4. Communication Protocol: Escape Sequences</span></h2>
+<p class="reveal"><span lang="id">You might wonder: if the terminal only transmits text, how are colored text, moving cursors, and screen clearing achieved?</span><span lang="en">You might wonder: if the terminal only transmits text, how are colored text, moving cursors, and screen clearing achieved?</span></p>
+<p class="reveal"><span lang="id">The answer is <b>escape sequences (Escape Sequences)</b>.</span><span lang="en">The answer is <b>escape sequences (Escape Sequences)</b>.</span></p>
+<p class="reveal"><span lang="id">These are special character instructions (usually starting with the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ESC</code> character). When the terminal receives these characters, it <b>doesn't display them on screen</b> but instead interprets them as <b>control commands</b>.</span><span lang="en">These are special character instructions (usually starting with the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ESC</code> character). When the terminal receives these characters, it <b>doesn't display them on screen</b> but instead interprets them as <b>control commands</b>.</span></p>
+<p class="reveal"><span lang="id">For example:</span><span lang="en">For example:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Regular character <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">A</code> → draw A on screen.</span><span lang="en">Regular character <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">A</code> → draw A on screen.</span></li>
+<li><span lang="id">Sequence <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">\033[31m</code> → <b>command</b>: set subsequent text color to red.</span><span lang="en">Sequence <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">\033[31m</code> → <b>command</b>: set subsequent text color to red.</span></li>
+<li><span lang="id">Sequence <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">\033[2J</code> → <b>command</b>: clear the screen.</span><span lang="en">Sequence <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">\033[2J</code> → <b>command</b>: clear the screen.</span></li>
+</ul>
+<p class="reveal"><span lang="id">This is like an agreement with a friend: if I speak normally, you write it down; if I raise my left hand (equivalent to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ESC</code>), the next sentence is a command, not content.</span><span lang="en">This is like an agreement with a friend: if I speak normally, you write it down; if I raise my left hand (equivalent to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ESC</code>), the next sentence is a command, not content.</span></p>
+<p class="reveal"><span lang="id">_Click the "play" button below to watch the terminal process the character stream one by one and identify hidden commands:_</span><span lang="en">_Click the "play" button below to watch the terminal process the character stream one by one and identify hidden commands:_</span></p>
+<p class="reveal"><span lang="id"><EscapeParserDemo /></span><span lang="en"><EscapeParserDemo /></span></p>
+<p class="reveal"><span lang="id">_The component below shows more types of escape sequences and their rendering effects:_</span><span lang="en">_The component below shows more types of escape sequences and their rendering effects:_</span></p>
+<p class="reveal"><span lang="id"><EscapeSequences /></span><span lang="en"><EscapeSequences /></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Input Mechanism: Byte Stream</span><span lang="en">5. Input Mechanism: Byte Stream</span></h2>
+<p class="reveal"><span lang="id">The input process is often misunderstood. When you press a key, the terminal doesn't directly "draw" the character on screen — it performs an <b>encoding transmission</b>.</span><span lang="en">The input process is often misunderstood. When you press a key, the terminal doesn't directly "draw" the character on screen — it performs an <b>encoding transmission</b>.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Key capture</b>: The terminal captures your physical key press.</span><span lang="en"><b>Key capture</b>: The terminal captures your physical key press.</span></li>
+<li><span lang="id"><b>Encoding conversion</b>: Converts the key press into a specific <b>byte sequence</b>.</span><span lang="en"><b>Encoding conversion</b>: Converts the key press into a specific <b>byte sequence</b>.</span></li>
+<li><span lang="id">Pressing <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">a</code> → sends byte <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">a</code>.</span><span lang="en">Pressing <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">a</code> → sends byte <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">a</code>.</span></li>
+<li><span lang="id">Pressing <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Up Arrow</code> → sends sequence <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">^[[A</code>.</span><span lang="en">Pressing <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Up Arrow</code> → sends sequence <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">^[[A</code>.</span></li>
+<li><span lang="id"><b>Send</b>: Sends the byte stream to the Shell or the currently running program.</span><span lang="en"><b>Send</b>: Sends the byte stream to the Shell or the currently running program.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b>Key point</b>: All key presses (including function keys and mouse clicks) are <b>byte data</b> at the transmission level.</span><span lang="en"><b>Key point</b>: All key presses (including function keys and mouse clicks) are <b>byte data</b> at the transmission level.</span></p>
+<p class="reveal"><span lang="id">_Try pressing keys below and observe how your input is converted to underlying data:_</span><span lang="en">_Try pressing keys below and observe how your input is converted to underlying data:_</span></p>
+<p class="reveal"><span lang="id"><InputVisualizer /></span><span lang="en"><InputVisualizer /></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Running Modes: Typewriter vs. Game Console (Cooked vs. Raw Mode)</span><span lang="en">6. Running Modes: Typewriter vs. Game Console (Cooked vs. Raw Mode)</span></h2>
+<p class="reveal"><span lang="id">The terminal has two very different "personalities." Understanding this helps you see why <b>typing commands</b> and <b>playing Snake</b> in the terminal are completely different experiences.</span><span lang="en">The terminal has two very different "personalities." Understanding this helps you see why <b>typing commands</b> and <b>playing Snake</b> in the terminal are completely different experiences.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Cooked Mode — Like a Typewriter</b></span><span lang="en"><b>Cooked Mode — Like a Typewriter</b></span></li>
+<li><span lang="id">This is the default mode.</span><span lang="en">This is the default mode.</span></li>
+<li><span lang="id"><b>Behavior</b>: Characters you type are <b>temporarily held</b> by the terminal until you press Enter.</span><span lang="en"><b>Behavior</b>: Characters you type are <b>temporarily held</b> by the terminal until you press Enter.</span></li>
+<li><span lang="id"><b>Benefit</b>: This gives you a chance to correct mistakes. Made a typo? Press Backspace to delete and retype — the program never knows you made a mistake.</span><span lang="en"><b>Benefit</b>: This gives you a chance to correct mistakes. Made a typo? Press Backspace to delete and retype — the program never knows you made a mistake.</span></li>
+<li><span lang="id">_Use case: Typing everyday commands (like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ls</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">cd</code>)._</span><span lang="en">_Use case: Typing everyday commands (like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ls</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">cd</code>)._</span></li>
+</ul>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Raw Mode — Like a Game Controller</b></span><span lang="en"><b>Raw Mode — Like a Game Controller</b></span></li>
+<li><span lang="id">This is the "expert" mode.</span><span lang="en">This is the "expert" mode.</span></li>
+<li><span lang="id"><b>Behavior</b>: Every key you press (including arrow keys, Ctrl combinations) is <b>instantly</b> sent to the program with no buffering.</span><span lang="en"><b>Behavior</b>: Every key you press (including arrow keys, Ctrl combinations) is <b>instantly</b> sent to the program with no buffering.</span></li>
+<li><span lang="id"><b>Benefit</b>: The program can respond to your actions in real time.</span><span lang="en"><b>Benefit</b>: The program can respond to your actions in real time.</span></li>
+<li><span lang="id">_Use case: Playing terminal games (like Snake), using the Vim editor (a keyboard-only editor)._</span><span lang="en">_Use case: Playing terminal games (like Snake), using the Vim editor (a keyboard-only editor)._</span></li>
+</ul>
+<p class="reveal"><span lang="id">_Click the buttons below to switch modes and experience the different "feel" of "writing a letter" vs "playing a game":_</span><span lang="en">_Click the buttons below to switch modes and experience the different "feel" of "writing a letter" vs "playing a game":_</span></p>
+<p class="reveal"><span lang="id"><CookedRawDemo /></span><span lang="en"><CookedRawDemo /></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Process Control: Signals</span><span lang="en">7. Process Control: Signals</span></h2>
+<p class="reveal"><span lang="id">Pressing <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl+C</code> in the terminal usually stops a program. This isn't achieved by sending characters — it triggers a <b>signal (Signal)</b>.</span><span lang="en">Pressing <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Ctrl+C</code> in the terminal usually stops a program. This isn't achieved by sending characters — it triggers a <b>signal (Signal)</b>.</span></p>
+<p class="reveal"><span lang="id">Signals are an operating system-level notification mechanism used to tell a program that a specific event has occurred.</span><span lang="en">Signals are an operating system-level notification mechanism used to tell a program that a specific event has occurred.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Ctrl+C</b> → sends <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SIGINT</code> (Interrupt): notifies the program "please interrupt the current operation."</span><span lang="en"><b>Ctrl+C</b> → sends <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SIGINT</code> (Interrupt): notifies the program "please interrupt the current operation."</span></li>
+<li><span lang="id"><b>Ctrl+Z</b> → sends <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SIGTSTP</code> (Suspend): notifies the program "please pause and suspend to background."</span><span lang="en"><b>Ctrl+Z</b> → sends <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SIGTSTP</code> (Suspend): notifies the program "please pause and suspend to background."</span></li>
+</ul>
+<p class="reveal"><span lang="id">This mechanism bypasses the standard data input channel, ensuring users retain control even when a program is frozen.</span><span lang="en">This mechanism bypasses the standard data input channel, ensuring users retain control even when a program is frozen.</span></p>
+<p class="reveal"><span lang="id"><SignalsDemo /></span><span lang="en"><SignalsDemo /></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8. Advanced Application: Full-screen Interfaces & Buffers</span><span lang="en">8. Advanced Application: Full-screen Interfaces & Buffers</span></h2>
+<p class="reveal"><span lang="id">Have you noticed that when you edit a file with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">vim</code> or check system status with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">htop</code>, they take over the entire screen? And when you exit, the screen instantly returns to its previous state with all your command history intact?</span><span lang="en">Have you noticed that when you edit a file with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">vim</code> or check system status with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">htop</code>, they take over the entire screen? And when you exit, the screen instantly returns to its previous state with all your command history intact?</span></p>
+<p class="reveal"><span lang="id">This is because the terminal has two "canvases" that switch back and forth:</span><span lang="en">This is because the terminal has two "canvases" that switch back and forth:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Primary Buffer — Like a Scratchpad</b></span><span lang="en"><b>Primary Buffer — Like a Scratchpad</b></span></li>
+<li><span lang="id">You write a line, the system responds with a line.</span><span lang="en">You write a line, the system responds with a line.</span></li>
+<li><span lang="id">When it's full, it scrolls — everything you wrote before is still there.</span><span lang="en">When it's full, it scrolls — everything you wrote before is still there.</span></li>
+<li><span lang="id">_Used for: Everyday command typing._</span><span lang="en">_Used for: Everyday command typing._</span></li>
+</ul>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Alternate Buffer — Like a Blackboard</b></span><span lang="en"><b>Alternate Buffer — Like a Blackboard</b></span></li>
+<li><span lang="id">The program wipes the blackboard clean and draws on it (full-screen display).</span><span lang="en">The program wipes the blackboard clean and draws on it (full-screen display).</span></li>
+<li><span lang="id">No matter what's drawn, it never affects the scratchpad on your desk.</span><span lang="en">No matter what's drawn, it never affects the scratchpad on your desk.</span></li>
+<li><span lang="id">When you exit the program, it's like putting the blackboard away — you're back to your scratchpad.</span><span lang="en">When you exit the program, it's like putting the blackboard away — you're back to your scratchpad.</span></li>
+<li><span lang="id">_Used for: Vim, Nano, games, and other full-screen software._</span><span lang="en">_Used for: Vim, Nano, games, and other full-screen software._</span></li>
+</ul>
+<p class="reveal"><span lang="id">_Click the button below to experience how the "scratchpad" and "blackboard" switch instantly:_</span><span lang="en">_Click the button below to experience how the "scratchpad" and "blackboard" switch instantly:_</span></p>
+<p class="reveal"><span lang="id"><BufferSwitchDemo /></span><span lang="en"><BufferSwitchDemo /></span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">9. Summary</span><span lang="en">9. Summary</span></h2>
+<p class="reveal"><span lang="id">The terminal is not a mysterious black box — it's a standardized text interaction interface.</span><span lang="en">The terminal is not a mysterious black box — it's a standardized text interaction interface.</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Display</b>: Based on grids and characters.</span><span lang="en"><b>Display</b>: Based on grids and characters.</span></li>
+<li><span lang="id"><b>Control</b>: Based on escape sequences.</span><span lang="en"><b>Control</b>: Based on escape sequences.</span></li>
+<li><span lang="id"><b>Interaction</b>: Based on input/output streams and signals.</span><span lang="en"><b>Interaction</b>: Based on input/output streams and signals.</span></li>
+</ul>
+<p class="reveal"><span lang="id">By understanding these underlying principles, you no longer need to blindly memorize commands — you can truly understand the logical flow behind every keystroke.</span><span lang="en">By understanding these underlying principles, you no longer need to blindly memorize commands — you can truly understand the logical flow behind every keystroke.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Appendix: Common Terminology (Vocabulary)</span><span lang="en">Appendix: Common Terminology (Vocabulary)</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Term</th><th>English</th><th>Explanation</th></tr>
+<tr><td><b>Terminal</b></td><td>Terminal</td><td>The window program responsible for display and input (front-end).</td></tr>
+<tr><td><b>Shell</b></td><td>Shell</td><td>The program responsible for parsing commands and executing logic (back-end).</td></tr>
+<tr><td><b>CLI</b></td><td>Command Line Interface</td><td>A text-based interaction method.</td></tr>
+<tr><td><b>TUI</b></td><td>Text User Interface</td><td>A pseudo-graphical interface built with characters in the terminal.</td></tr>
+<tr><td><b>Escape Sequence</b></td><td>Escape Sequence</td><td>Special character instructions used to control terminal cursor, colors, etc.</td></tr>
+<tr><td><b>Standard Input/Output</b></td><td>Stdin/Stdout</td><td>Standard channels for programs to receive and output data.</td></tr>
+</table></div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">References</span><span lang="en">References</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[How Terminals Work](https://how-terminals-work.vercel.app/): The structure and demonstrations in this article are deeply inspired by this project. If you want to dive deeper into engineering implementation details, we highly recommend reading the original tutorial.</span><span lang="en">[How Terminals Work](https://how-terminals-work.vercel.app/): The structure and demonstrations in this article are deeply inspired by this project. If you want to dive deeper into engineering implementation details, we highly recommend reading the original tutorial.</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../1-computer-fundamentals/vibe-coding-fullstack/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">1-computer-fundamentals/vibe-coding-fullstack</span><span lang="en">1-computer-fundamentals/vibe-coding-fullstack</span></b></a>
+      <a class="next" href="../../2-development-tools/debugging-art/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">2-development-tools/debugging-art</span><span lang="en">2-development-tools/debugging-art</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

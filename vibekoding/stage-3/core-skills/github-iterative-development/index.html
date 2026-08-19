@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Siklus Lengkap Pengembangan via GitHub Issues — VibeKoding 🌿</title>
+<meta name="description" content="Modul master Level 3 VibeKoding: Siklus Lengkap Pengembangan via GitHub Issues. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-3/core-skills/github-iterative-development/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../stage-3/"><span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></a> / <span lang="id">Siklus Lengkap Pengembangan via GitHub Issues</span><span lang="en">Siklus Lengkap Pengembangan via GitHub Issues</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">🌿</div>
+      <div>
+        <h1><span lang="id">Siklus Lengkap Pengembangan via GitHub Issues</span><span lang="en">Siklus Lengkap Pengembangan via GitHub Issues</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul master Level 3 VibeKoding: Siklus Lengkap Pengembangan via GitHub Issues.</span><span lang="en">Modul master Level 3 VibeKoding: Siklus Lengkap Pengembangan via GitHub Issues.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">This tutorial follows one complete Spec-driven development cycle. We begin with a rough product idea, clarify it with an AI agent, turn the agreement into a written specification, publish prioritized GitHub Issues, implement them in dependency order, and review the finished software.</span><span lang="en">This tutorial follows one complete Spec-driven development cycle. We begin with a rough product idea, clarify it with an AI agent, turn the agreement into a written specification, publish prioritized GitHub Issues, implement them in dependency order, and review the finished software.</span></p>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">[From Vibe Coding to Spec Coding](/en/stage-3/core-skills/spec-coding/) explains why specifications are becoming central to AI development. This chapter is the practical companion: a real public repository shows how a specification becomes Issues, dependencies, commits, tests, and a working product.</span><span lang="en">[From Vibe Coding to Spec Coding](/en/stage-3/core-skills/spec-coding/) explains why specifications are becoming central to AI development. This chapter is the practical companion: a real public repository shows how a specification becomes Issues, dependencies, commits, tests, and a working product.</span></p>
+</div>
+<p class="reveal"><span lang="id">Our starting point was one sentence:</span><span lang="en">Our starting point was one sentence:</span></p>
+<p class="reveal"><span lang="id">> I want to build a macOS CRM that helps me manage imported contacts and understand my relationships. We can use sample data first.</span><span lang="en">> I want to build a macOS CRM that helps me manage imported contacts and understand my relationships. We can use sample data first.</span></p>
+<p class="reveal"><span lang="id">The result is <b>Relationship Compass</b>, a native macOS application that searches and filters contacts, edits relationship profiles, imports CSV files, records interactions, and calculates who needs a follow-up.</span><span lang="en">The result is <b>Relationship Compass</b>, a native macOS application that searches and filters contacts, edits relationship profiles, imports CSV files, records interactions, and calculates who needs a follow-up.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">The finished Relationship Compass contact-management interface</span><span lang="en">The finished Relationship Compass contact-management interface</span></p>
+</div>
+<p class="reveal"><span lang="id">Explore the complete [public example repository](https://github.com/sanbuphy/relationship-compass-macos). It contains only sample data and preserves the specification, Issues, commit history, source code, and tests.</span><span lang="en">Explore the complete [public example repository](https://github.com/sanbuphy/relationship-compass-macos). It contains only sample data and preserves the specification, Issues, commit history, source code, and tests.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. What Spec-driven development means</span><span lang="en">1. What Spec-driven development means</span></h2>
+<p class="reveal"><span lang="id">A common AI coding loop looks like this:</span><span lang="en">A common AI coding loop looks like this:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Describe an idea → AI writes code → something is wrong → add another instruction → modify again</pre>
+</div>
+<p class="reveal"><span lang="id">That can work for a small page. As a project grows, however, earlier requirements disappear from the conversation, large changes become hard to track, and a feature may run without actually satisfying the original request.</span><span lang="en">That can work for a small page. As a project grows, however, earlier requirements disappear from the conversation, large changes become hard to track, and a feature may run without actually satisfying the original request.</span></p>
+<p class="reveal"><span lang="id">Matt Pocock's Skills address this by giving the agent a repeatable workflow. A <b>Skill</b> tells the agent what to establish, what artifact to produce, and when to stop for confirmation—not merely which code to write.</span><span lang="en">Matt Pocock's Skills address this by giving the agent a repeatable workflow. A <b>Skill</b> tells the agent what to establish, what artifact to produce, and when to stop for confirmation—not merely which code to write.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 Chat-first versus Spec-driven work</span><span lang="en">1.1 Chat-first versus Spec-driven work</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Chat-first implementation</th><th>Spec-driven implementation</th></tr>
+<tr><td>The current conversation is the main source of truth</td><td>A versioned Spec is the source of truth</td></tr>
+<tr><td>New requirements are appended informally</td><td>Scope changes update the Spec and tasks first</td></tr>
+<tr><td>Progress lives in agent summaries</td><td>Progress lives in Issues and commits</td></tr>
+<tr><td>“It runs” is the main completion signal</td><td>Every acceptance criterion is checked</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">The goal is not paperwork. It is to turn intent into a shared, durable standard that humans and agents can inspect, update, and verify.</span><span lang="en">The goal is not paperwork. It is to turn intent into a shared, durable standard that humans and agents can inspect, update, and verify.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 GitHub's role in the workflow</span><span lang="en">1.2 GitHub's role in the workflow</span></h3>
+<p class="reveal"><span lang="id">GitHub is more than code storage here. It is simultaneously:</span><span lang="en">GitHub is more than code storage here. It is simultaneously:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">a <b>project archive</b> for the Spec, terminology, and architecture decisions;</span><span lang="en">a <b>project archive</b> for the Spec, terminology, and architecture decisions;</span></li>
+<li><span lang="id">a <b>task board</b> where Issues, priority, and dependencies express the work order;</span><span lang="en">a <b>task board</b> where Issues, priority, and dependencies express the work order;</span></li>
+<li><span lang="id">a <b>completion record</b> where commits, tests, comments, and closed Issues show what happened.</span><span lang="en">a <b>completion record</b> where commits, tests, comments, and closed Issues show what happened.</span></li>
+</ul>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>GitHub artifact</th><th>Plain-language meaning</th><th>Example</th></tr>
+<tr><td>Spec</td><td>What the finished software must do</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">specs/relationship-compass-mvp.md</code></td></tr>
+<tr><td>Issue</td><td>One independently deliverable task</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">#2 Browse sample Contacts</code></td></tr>
+<tr><td>Dependency</td><td>Which task must finish first</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">#3</code> is blocked by <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">#2</code></td></tr>
+<tr><td>Commit</td><td>What changed in one implementation step</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">feat: browse sample contacts</code></td></tr>
+<tr><td>Tests</td><td>Evidence that behavior still works</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">swift test</code></td></tr>
+<tr><td>ADR</td><td>Why an important technical choice was made</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">docs/adr/0002-native-swiftui-macos.md</code></td></tr>
+</table></div>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>mermaid</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>flowchart LR
+  A[&quot;Agreed decisions&quot;] --&gt; B[&quot;Versioned Spec&quot;]
+  B --&gt; C[&quot;Parent Issue #1&quot;]
+  C --&gt; D[&quot;Implementation Issues #2–#6&quot;]
+  D --&gt; E[&quot;Priority + dependencies&quot;]
+  E --&gt; F[&quot;Commits + tests&quot;]
+  F --&gt; G[&quot;Close implementation Issues&quot;]
+  G --&gt; H[&quot;Final review&quot;]
+  H --&gt; I[&quot;Close the parent Issue&quot;]</pre>
+</div>
+<p class="reveal"><span lang="id">GitHub therefore becomes a development workspace with memory. A new session can reconstruct the project's decisions and current frontier without replaying the entire conversation.</span><span lang="en">GitHub therefore becomes a development workspace with memory. A new session can reconstruct the project's decisions and current frontier without replaying the entire conversation.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.3 The complete route</span><span lang="en">1.3 The complete route</span></h3>
+<p class="reveal"><span lang="id">This example uses five Skills:</span><span lang="en">This example uses five Skills:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">grill-with-docs</code> clarifies the product and technical boundaries;</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">grill-with-docs</code> clarifies the product and technical boundaries;</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">to-spec</code> writes the agreement as a formal specification;</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">to-spec</code> writes the agreement as a formal specification;</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">to-tickets</code> creates prioritized, dependency-aware GitHub Issues;</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">to-tickets</code> creates prioritized, dependency-aware GitHub Issues;</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">implement</code> completes the ready Issues one at a time;</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">implement</code> completes the ready Issues one at a time;</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">code-review</code> checks code health and requirement coverage.</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">code-review</code> checks code health and requirement coverage.</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Idea → clarify → specify → create tickets → implement → review</pre>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Before you begin</span><span lang="en">2. Before you begin</span></h2>
+<p class="reveal"><span lang="id">To reproduce the example, prepare:</span><span lang="en">To reproduce the example, prepare:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">a GitHub account;</span><span lang="en">a GitHub account;</span></li>
+<li><span lang="id">GitHub CLI (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">gh</code>) authenticated in your terminal;</span><span lang="en">GitHub CLI (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">gh</code>) authenticated in your terminal;</span></li>
+<li><span lang="id">Node.js 18 or newer;</span><span lang="en">Node.js 18 or newer;</span></li>
+<li><span lang="id">an AI coding tool that can load project Skills;</span><span lang="en">an AI coding tool that can load project Skills;</span></li>
+<li><span lang="id">a Mac with Xcode if you want to run the finished application.</span><span lang="en">a Mac with Xcode if you want to run the finished application.</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Install Matt Pocock's Skills</span><span lang="en">2.1 Install Matt Pocock's Skills</span></h3>
+<p class="reveal"><span lang="id">Run this inside your project directory:</span><span lang="en">Run this inside your project directory:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>npx skills@latest add mattpocock/skills</pre>
+</div>
+<p class="reveal"><span lang="id">To install every Skill without selecting them individually:</span><span lang="en">To install every Skill without selecting them individually:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>npx skills@latest add mattpocock/skills -y</pre>
+</div>
+<p class="reveal"><span lang="id">The practical flow is:</span><span lang="en">The practical flow is:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>grill-with-docs → to-spec → to-tickets → implement → code-review</pre>
+</div>
+<p class="reveal"><span lang="id">For a very large or uncertain project, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">wayfinder</code> can identify the decisions that must be made before this flow begins.</span><span lang="en">For a very large or uncertain project, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">wayfinder</code> can identify the decisions that must be made before this flow begins.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Create a public example repository</span><span lang="en">2.2 Create a public example repository</span></h3>
+<p class="reveal"><span lang="id">Check GitHub authentication:</span><span lang="en">Check GitHub authentication:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>gh auth status</pre>
+</div>
+<p class="reveal"><span lang="id">If necessary, sign in with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">gh auth login -h github.com</code>. Then create and push the repository:</span><span lang="en">If necessary, sign in with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">gh auth login -h github.com</code>. Then create and push the repository:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>gh repo create relationship-compass-macos \
+  --public \
+  --source . \
+  --remote origin \
+  --push</pre>
+</div>
+
+<div class="callout warn reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div>
+  <p><span lang="id">This tutorial uses a public repository because every record is fictional. For a personal relationship manager, use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">--private</code> and check samples, logs, and Git history for names, email addresses, or private notes before pushing.</span><span lang="en">This tutorial uses a public repository because every record is fictional. For a personal relationship manager, use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">--private</code> and check samples, logs, and Git history for names, email addresses, or private notes before pushing.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 Prepare task labels</span><span lang="en">2.3 Prepare task labels</span></h3>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Label</th><th>Meaning</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ready-for-agent</code></td><td>The requirement is clear enough to implement</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">priority:P0</code></td><td>Foundation work that must happen first</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">priority:P1</code></td><td>Core work waiting on a dependency</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">priority:P2</code></td><td>Polish, documentation, and final verification</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">completed-by-agent</code></td><td>Implemented and verified by the agent</td></tr>
+</table></div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. The product we will build</span><span lang="en">3. The product we will build</span></h2>
+<p class="reveal"><span lang="id">Relationship Compass is a personal relationship manager rather than a sales pipeline. The first release:</span><span lang="en">Relationship Compass is a personal relationship manager rather than a sales pipeline. The first release:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">starts with six deterministic sample contacts;</span><span lang="en">starts with six deterministic sample contacts;</span></li>
+<li><span lang="id">searches contacts and filters by relationship strength and circle;</span><span lang="en">searches contacts and filters by relationship strength and circle;</span></li>
+<li><span lang="id">edits organization, role, email, notes, and follow-up rhythm;</span><span lang="en">edits organization, role, email, notes, and follow-up rhythm;</span></li>
+<li><span lang="id">imports UTF-8 CSV files;</span><span lang="en">imports UTF-8 CSV files;</span></li>
+<li><span lang="id">records an interaction and calculates the next follow-up date;</span><span lang="en">records an interaction and calculates the next follow-up date;</span></li>
+<li><span lang="id">persists data in a local JSON file and restores it on launch.</span><span lang="en">persists data in a local JSON file and restores it on launch.</span></li>
+</ul>
+<p class="reveal"><span lang="id">It deliberately excludes cloud sync, AI relationship scoring, accounts, a backend, and macOS Contacts access. This preserves a complete but privacy-safe MVP.</span><span lang="en">It deliberately excludes cloud sync, AI relationship scoring, accounts, a backend, and macOS Contacts access. This preserves a complete but privacy-safe MVP.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Step one: clarify the request with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">grill-with-docs</code></span><span lang="en">4. Step one: clarify the request with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">grill-with-docs</code></span></h2>
+<p class="reveal"><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">grill-with-docs</code> behaves like an experienced product and technical partner. It asks about decisions that materially change the implementation before any code is written.</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">grill-with-docs</code> behaves like an experienced product and technical partner. It asks about decisions that materially change the implementation before any code is written.</span></p>
+<p class="reveal"><span lang="id"><div class="workflow-chat"></span><span lang="en"><div class="workflow-chat"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message workflow-message--user"></span><span lang="en"><div class="workflow-message workflow-message--user"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__speaker">🙋 You</div></span><span lang="en"><div class="workflow-message__speaker">🙋 You</div></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__command">/grill-with-docs</div></span><span lang="en"><div class="workflow-message__command">/grill-with-docs</div></span></p>
+<p class="reveal"><span lang="id"><p>I want to build a macOS CRM that manages imported contacts and helps me understand my relationships. We can start with sample data.</p></span><span lang="en"><p>I want to build a macOS CRM that manages imported contacts and helps me understand my relationships. We can start with sample data.</p></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message workflow-message--agent"></span><span lang="en"><div class="workflow-message workflow-message--agent"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__speaker">✨ Agent</div></span><span lang="en"><div class="workflow-message__speaker">✨ Agent</div></span></p>
+<p class="reveal"><span lang="id"><p>Let's clarify the first release before writing code. We will agree on what it does, what it excludes, where data lives, and how completion will be verified. I will explain the trade-offs and recommend an option whenever a decision is needed.</p></span><span lang="en"><p>Let's clarify the first release before writing code. We will agree on what it does, what it excludes, where data lives, and how completion will be verified. I will explain the trade-offs and recommend an option whenever a decision is needed.</p></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Let the conversation converge</span><span lang="en">4.1 Let the conversation converge</span></h3>
+<p class="reveal"><span lang="id">The user does not need to know SwiftUI or database design. They only need to describe the desired experience clearly.</span><span lang="en">The user does not need to know SwiftUI or database design. They only need to describe the desired experience clearly.</span></p>
+<p class="reveal"><span lang="id"><div class="workflow-chat"></span><span lang="en"><div class="workflow-chat"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message workflow-message--agent"></span><span lang="en"><div class="workflow-message workflow-message--agent"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__speaker">✨ Agent</div></span><span lang="en"><div class="workflow-message__speaker">✨ Agent</div></span></p>
+<p class="reveal"><span lang="id"><p>I recommend native SwiftUI and a local-first architecture. Should the first release read macOS Contacts, sync to the cloud, or import a file?</p></span><span lang="en"><p>I recommend native SwiftUI and a local-first architecture. Should the first release read macOS Contacts, sync to the cloud, or import a file?</p></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message workflow-message--user"></span><span lang="en"><div class="workflow-message workflow-message--user"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__speaker">🙋 You</div></span><span lang="en"><div class="workflow-message__speaker">🙋 You</div></span></p>
+<p class="reveal"><span lang="id"><p>Use native SwiftUI and import UTF-8 CSV only. Keep everything local, with no account, network access, backend, or Contacts permission.</p></span><span lang="en"><p>Use native SwiftUI and import UTF-8 CSV only. Keep everything local, with no account, network access, backend, or Contacts permission.</p></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message workflow-message--agent"></span><span lang="en"><div class="workflow-message workflow-message--agent"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__speaker">✨ Agent</div></span><span lang="en"><div class="workflow-message__speaker">✨ Agent</div></span></p>
+<p class="reveal"><span lang="id"><p>Then this is a private relationship-maintenance tool, not a sales funnel. Which relationship details and actions form the smallest useful loop?</p></span><span lang="en"><p>Then this is a private relationship-maintenance tool, not a sales funnel. Which relationship details and actions form the smallest useful loop?</p></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message workflow-message--user"></span><span lang="en"><div class="workflow-message workflow-message--user"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__speaker">🙋 You</div></span><span lang="en"><div class="workflow-message__speaker">🙋 You</div></span></p>
+<p class="reveal"><span lang="id"><p>I need relationship strength, circles, notes, interaction history, and a view of who needs attention. Calculate it from the latest interaction and a follow-up interval.</p></span><span lang="en"><p>I need relationship strength, circles, notes, interaction history, and a view of who needs attention. Calculate it from the latest interaction and a follow-up interval.</p></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message workflow-message--agent"></span><span lang="en"><div class="workflow-message workflow-message--agent"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__speaker">✨ Agent</div></span><span lang="en"><div class="workflow-message__speaker">✨ Agent</div></span></p>
+<p class="reveal"><span lang="id"><p>Contacts with no interaction can appear immediately in Follow-ups. We will use six fixed samples and test search, import, persistence, and date calculations. Does that define the MVP?</p></span><span lang="en"><p>Contacts with no interaction can appear immediately in Follow-ups. We will use six fixed samples and test search, import, persistence, and date calculations. Does that define the MVP?</p></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message workflow-message--user"></span><span lang="en"><div class="workflow-message workflow-message--user"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__speaker">🙋 You</div></span><span lang="en"><div class="workflow-message__speaker">🙋 You</div></span></p>
+<p class="reveal"><span lang="id"><p>Yes. Exclude cloud sync, AI scoring, and Contacts access. We agree; generate the specification.</p></span><span lang="en"><p>Yes. Exclude cloud sync, AI scoring, and Contacts access. We agree; generate the specification.</p></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id">The conversation established these durable decisions:</span><span lang="en">The conversation established these durable decisions:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Decision</th><th>Choice</th><th>Reason</th></tr>
+<tr><td>Platform</td><td>Native SwiftUI on macOS 14+</td><td>Native file selection, keyboard behavior, and accessibility</td></tr>
+<tr><td>Seed data</td><td>Six deterministic samples</td><td>No sensitive data needed to evaluate the app</td></tr>
+<tr><td>Import</td><td>UTF-8 CSV</td><td>Easy to prepare, inspect, and repair</td></tr>
+<tr><td>Persistence</td><td>Local JSON</td><td>Transparent and backend-free</td></tr>
+<tr><td>Strength</td><td>Close / Active / Dormant</td><td>Avoid turning relationships into sales scores</td></tr>
+<tr><td>Privacy</td><td>No Contacts access or network</td><td>No sensitive permission in the MVP</td></tr>
+<tr><td>Test surface</td><td>Public <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">RelationshipStore</code> behavior</td><td>Verify outcomes rather than implementation details</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Establish a shared project vocabulary</span><span lang="en">4.2 Establish a shared project vocabulary</span></h3>
+<p class="reveal"><span lang="id">The team records ambiguous terms in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CONTEXT.md</code>:</span><span lang="en">The team records ambiguous terms in <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CONTEXT.md</code>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>markdown</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>**Interaction**:
+A dated note that records a meaningful exchange with a Contact.
+_Avoid_: Activity, event, touchpoint
+
+**Follow-up**:
+A suggested next connection date derived from the latest Interaction
+and the Relationship Profile&#039;s rhythm.
+_Avoid_: Task, reminder, notification</pre>
+</div>
+<p class="reveal"><span lang="id">This keeps code, tests, and Issues from drifting between <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Contact</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Lead</code>, and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Customer</code>, or between follow-ups, reminders, and notifications.</span><span lang="en">This keeps code, tests, and Issues from drifting between <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Contact</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Lead</code>, and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Customer</code>, or between follow-ups, reminders, and notifications.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 Record only consequential architecture decisions</span><span lang="en">4.3 Record only consequential architecture decisions</span></h3>
+<p class="reveal"><span lang="id">The project contains two short ADRs:</span><span lang="en">The project contains two short ADRs:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">0001-local-first-private-data.md</code>: relationship data stays local and no Contacts permission is requested;</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">0001-local-first-private-data.md</code>: relationship data stays local and no Contacts permission is requested;</span></li>
+<li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">0002-native-swiftui-macos.md</code>: the app uses SwiftUI instead of Electron or a web shell.</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">0002-native-swiftui-macos.md</code>: the app uses SwiftUI instead of Electron or a web shell.</span></li>
+</ul>
+<p class="reveal"><span lang="id">ADRs are valuable for decisions that are expensive to reverse and have real trade-offs. They are not needed for every small implementation choice.</span><span lang="en">ADRs are valuable for decisions that are expensive to reverse and have real trade-offs. They are not needed for every small implementation choice.</span></p>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">The discussion happens in chat, but agreed facts are committed as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CONTEXT.md</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">docs/adr/*</code>. GitHub preserves the confirmed context so a later session can recover it. No implementation ticket exists yet.</span><span lang="en">The discussion happens in chat, but agreed facts are committed as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">CONTEXT.md</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">docs/adr/*</code>. GitHub preserves the confirmed context so a later session can recover it. No implementation ticket exists yet.</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Step two: write the specification with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">to-spec</code></span><span lang="en">5. Step two: write the specification with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">to-spec</code></span></h2>
+<p class="reveal"><span lang="id"><div class="workflow-chat"></span><span lang="en"><div class="workflow-chat"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message workflow-message--user"></span><span lang="en"><div class="workflow-message workflow-message--user"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__speaker">🙋 You</div></span><span lang="en"><div class="workflow-message__speaker">🙋 You</div></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__command">/to-spec</div></span><span lang="en"><div class="workflow-message__command">/to-spec</div></span></p>
+<p class="reveal"><span lang="id"><p>Turn our agreed discussion into a complete specification, save it in the repository, and publish it as a GitHub Issue labeled ready-for-agent.</p></span><span lang="en"><p>Turn our agreed discussion into a complete specification, save it in the repository, and publish it as a GitHub Issue labeled ready-for-agent.</p></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message workflow-message--agent"></span><span lang="en"><div class="workflow-message workflow-message--agent"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__speaker">✨ Agent</div></span><span lang="en"><div class="workflow-message__speaker">✨ Agent</div></span></p>
+<p class="reveal"><span lang="id"><p>I will organize the decisions we already confirmed, save the document, and create one parent GitHub Issue as the project's entry point.</p></span><span lang="en"><p>I will organize the decisions we already confirmed, save the document, and create one parent GitHub Issue as the project's entry point.</p></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id">The resulting Spec covers the problem, proposed MVP, 24 user stories, accepted technical decisions, verification strategy, and explicit non-goals. Read it at [<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">specs/relationship-compass-mvp.md</code>](https://github.com/sanbuphy/relationship-compass-macos/blob/main/specs/relationship-compass-mvp.md) or [Issue #1](https://github.com/sanbuphy/relationship-compass-macos/issues/1).</span><span lang="en">The resulting Spec covers the problem, proposed MVP, 24 user stories, accepted technical decisions, verification strategy, and explicit non-goals. Read it at [<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">specs/relationship-compass-mvp.md</code>](https://github.com/sanbuphy/relationship-compass-macos/blob/main/specs/relationship-compass-mvp.md) or [Issue #1](https://github.com/sanbuphy/relationship-compass-macos/issues/1).</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Specify behavior, not filenames</span><span lang="en">5.1 Specify behavior, not filenames</span></h3>
+<p class="reveal"><span lang="id">A useful user story says:</span><span lang="en">A useful user story says:</span></p>
+<p class="reveal"><span lang="id">> As a user, I want contacts with no interaction history to appear in Follow-ups so newly imported people are not silently forgotten.</span><span lang="en">> As a user, I want contacts with no interaction history to appear in Follow-ups so newly imported people are not silently forgotten.</span></p>
+<p class="reveal"><span lang="id">It identifies the user, desired behavior, and value without freezing the Swift file structure. The requirement survives refactoring.</span><span lang="en">It identifies the user, desired behavior, and value without freezing the Swift file structure. The requirement survives refactoring.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Define verification early</span><span lang="en">5.2 Define verification early</span></h3>
+<p class="reveal"><span lang="id">The Spec requires public-behavior tests for sample initialization, combined filtering, CSV validation and deduplication, JSON persistence, profile editing, interaction ordering, and follow-up calculations at a controlled date.</span><span lang="en">The Spec requires public-behavior tests for sample initialization, combined filtering, CSV validation and deduplication, JSON persistence, profile editing, interaction ordering, and follow-up calculations at a controlled date.</span></p>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">The Markdown file supports version history and review; Issue #1 provides a visible project entry point. A later scope change must update the Spec in a commit instead of living only in a new chat.</span><span lang="en">The Markdown file supports version history and review; Issue #1 provides a visible project entry point. A later scope change must update the Spec in a commit instead of living only in a new chat.</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Step three: turn the Spec into ordered Issues with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">to-tickets</code></span><span lang="en">6. Step three: turn the Spec into ordered Issues with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">to-tickets</code></span></h2>
+<p class="reveal"><span lang="id"><div class="workflow-chat"></span><span lang="en"><div class="workflow-chat"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message workflow-message--user"></span><span lang="en"><div class="workflow-message workflow-message--user"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__speaker">🙋 You</div></span><span lang="en"><div class="workflow-message__speaker">🙋 You</div></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__command">/to-tickets</div></span><span lang="en"><div class="workflow-message__command">/to-tickets</div></span></p>
+<p class="reveal"><span lang="id"><p>Create GitHub Issues from the Relationship Compass MVP Spec. Each ticket must deliver a demonstrable vertical slice and state its priority, acceptance criteria, and prerequisites.</p></span><span lang="en"><p>Create GitHub Issues from the Relationship Compass MVP Spec. Each ticket must deliver a demonstrable vertical slice and state its priority, acceptance criteria, and prerequisites.</p></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message workflow-message--agent"></span><span lang="en"><div class="workflow-message workflow-message--agent"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__speaker">✨ Agent</div></span><span lang="en"><div class="workflow-message__speaker">✨ Agent</div></span></p>
+<p class="reveal"><span lang="id"><p>I will show the proposed tickets and dependency order first. After confirmation, I will publish them to GitHub.</p></span><span lang="en"><p>I will show the proposed tickets and dependency order first. After confirmation, I will publish them to GitHub.</p></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id">Avoid horizontal tickets such as “all models,” “all stores,” “all UI,” and “tests at the end.” A vertical slice joins the minimum data, interface, and tests needed to demonstrate one user outcome.</span><span lang="en">Avoid horizontal tickets such as “all models,” “all stores,” “all UI,” and “tests at the end.” A vertical slice joins the minimum data, interface, and tests needed to demonstrate one user outcome.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Issue</th><th>Priority</th><th>Demonstrable result</th><th>Blocked by</th></tr>
+<tr><td>[#2 Browse sample Contacts](https://github.com/sanbuphy/relationship-compass-macos/issues/2)</td><td>P0</td><td>Launch, samples, search, and details</td><td>None</td></tr>
+<tr><td>[#3 Import and persist private Contact data](https://github.com/sanbuphy/relationship-compass-macos/issues/3)</td><td>P0</td><td>CSV deduplication and JSON persistence</td><td>#2</td></tr>
+<tr><td>[#4 Organize Relationship Profiles](https://github.com/sanbuphy/relationship-compass-macos/issues/4)</td><td>P1</td><td>Profile editing, strength, circles, filters</td><td>#2</td></tr>
+<tr><td>[#5 Record Interactions and plan Follow-ups](https://github.com/sanbuphy/relationship-compass-macos/issues/5)</td><td>P1</td><td>History and Follow-ups</td><td>#4</td></tr>
+<tr><td>[#6 Polish and verify the MVP](https://github.com/sanbuphy/relationship-compass-macos/issues/6)</td><td>P2</td><td>Errors, docs, packaging, full verification</td><td>#3 and #5</td></tr>
+</table></div>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>mermaid</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>flowchart LR
+  T1[&quot;P0 · Browse sample Contacts&quot;] --&gt; T2[&quot;P0 · Import and persist&quot;]
+  T1 --&gt; T3[&quot;P1 · Organize Profiles&quot;]
+  T3 --&gt; T4[&quot;P1 · Interactions and Follow-ups&quot;]
+  T2 --&gt; T5[&quot;P2 · Polish and verify&quot;]
+  T4 --&gt; T5</pre>
+</div>
+<p class="reveal"><span lang="id">Priority says how important a task is; a dependency says whether it can start now. The ready, unblocked tickets form the current <b>task frontier</b>.</span><span lang="en">Priority says how important a task is; a dependency says whether it can start now. The ready, unblocked tickets form the current <b>task frontier</b>.</span></p>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">The Spec becomes five independently trackable Issues with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">priority:P0/P1/P2</code> and native <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Blocked by</code> relationships. GitHub has now changed from an archive into the live task board.</span><span lang="en">The Spec becomes five independently trackable Issues with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">priority:P0/P1/P2</code> and native <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Blocked by</code> relationships. GitHub has now changed from an archive into the live task board.</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. Step four: implement one ready Issue at a time</span><span lang="en">7. Step four: implement one ready Issue at a time</span></h2>
+<p class="reveal"><span lang="id"><div class="workflow-chat"></span><span lang="en"><div class="workflow-chat"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message workflow-message--user"></span><span lang="en"><div class="workflow-message workflow-message--user"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__speaker">🙋 You</div></span><span lang="en"><div class="workflow-message__speaker">🙋 You</div></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__command">/implement</div></span><span lang="en"><div class="workflow-message__command">/implement</div></span></p>
+<p class="reveal"><span lang="id"><p>Implement every ready-for-agent Issue in priority and dependency order. Start with the first unblocked ticket. Use TDD, run type checks and relevant tests, and commit each ticket separately.</p></span><span lang="en"><p>Implement every ready-for-agent Issue in priority and dependency order. Start with the first unblocked ticket. Use TDD, run type checks and relevant tests, and commit each ticket separately.</p></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message workflow-message--agent"></span><span lang="en"><div class="workflow-message workflow-message--agent"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__speaker">✨ Agent</div></span><span lang="en"><div class="workflow-message__speaker">✨ Agent</div></span></p>
+<p class="reveal"><span lang="id"><p>I will work on one ready ticket at a time: failing test, implementation, full verification, commit, and Issue update. Then I will move to the next unblocked ticket.</p></span><span lang="en"><p>I will work on one ready ticket at a time: failing test, implementation, full verification, commit, and Issue update. Then I will move to the next unblocked ticket.</p></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Issue</th><th>Main commit</th></tr>
+<tr><td>#2 Browse samples</td><td>[<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">9d9d7bd</code>](https://github.com/sanbuphy/relationship-compass-macos/commit/9d9d7bd)</td></tr>
+<tr><td>#3 Import and persist</td><td>[<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">935750b</code>](https://github.com/sanbuphy/relationship-compass-macos/commit/935750b)</td></tr>
+<tr><td>#4 Organize profiles</td><td>[<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">329bd67</code>](https://github.com/sanbuphy/relationship-compass-macos/commit/329bd67)</td></tr>
+<tr><td>#5 Interactions and follow-ups</td><td>[<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">83f4af6</code>](https://github.com/sanbuphy/relationship-compass-macos/commit/83f4af6)</td></tr>
+<tr><td>#6 Polish and verify</td><td>[<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">3ae0bbf</code>](https://github.com/sanbuphy/relationship-compass-macos/commit/3ae0bbf)</td></tr>
+<tr><td>Review fixes</td><td>[<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">cbad102</code>](https://github.com/sanbuphy/relationship-compass-macos/commit/cbad102), [<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">11361ca</code>](https://github.com/sanbuphy/relationship-compass-macos/commit/11361ca), [<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">d1c83be</code>](https://github.com/sanbuphy/relationship-compass-macos/commit/d1c83be)</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.1 Prove the behavior is missing first</span><span lang="en">7.1 Prove the behavior is missing first</span></h3>
+<p class="reveal"><span lang="id">For the CSV ticket, the agent:</span><span lang="en">For the CSV ticket, the agent:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">wrote a test proving that importing the same CSV twice must not duplicate contacts;</span><span lang="en">wrote a test proving that importing the same CSV twice must not duplicate contacts;</span></li>
+<li><span lang="id">ran it and confirmed the behavior was absent;</span><span lang="en">ran it and confirmed the behavior was absent;</span></li>
+<li><span lang="id">implemented parsing and deduplication;</span><span lang="en">implemented parsing and deduplication;</span></li>
+<li><span lang="id">added a test proving an invalid header cannot corrupt existing contacts;</span><span lang="en">added a test proving an invalid header cannot corrupt existing contacts;</span></li>
+<li><span lang="id">reran the focused tests and full build;</span><span lang="en">reran the focused tests and full build;</span></li>
+<li><span lang="id">committed the change and closed the Issue.</span><span lang="en">committed the change and closed the Issue.</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>swift test --filter RelationshipStoreTests
+swift build
+swift test</pre>
+</div>
+<p class="reveal"><span lang="id">The final project passes all 13 public-behavior tests.</span><span lang="en">The final project passes all 13 public-behavior tests.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.2 Inspect the real code</span><span lang="en">7.2 Inspect the real code</span></h3>
+<p class="reveal"><span lang="id">The committed [<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">RelationshipStore.importCSV</code>](https://github.com/sanbuphy/relationship-compass-macos/blob/main/Sources/RelationshipCompass/RelationshipStore.swift#L69-L154) reads UTF-8, validates headers, identifies duplicates, and builds a candidate result before replacing live data. A failure therefore cannot leave a half-imported state.</span><span lang="en">The committed [<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">RelationshipStore.importCSV</code>](https://github.com/sanbuphy/relationship-compass-macos/blob/main/Sources/RelationshipCompass/RelationshipStore.swift#L69-L154) reads UTF-8, validates headers, identifies duplicates, and builds a candidate result before replacing live data. A failure therefore cannot leave a half-imported state.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">CSV parsing, header validation, and safe deduplication in Xcode</span><span lang="en">CSV parsing, header validation, and safe deduplication in Xcode</span></p>
+</div>
+<p class="reveal"><span lang="id">The matching [<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">RelationshipStoreTests</code>](https://github.com/sanbuphy/relationship-compass-macos/blob/main/Tests/RelationshipCompassTests/RelationshipStoreTests.swift#L29-L69) cover repeated imports, duplicate headers, malformed input, and UTF-8 BOM files.</span><span lang="en">The matching [<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">RelationshipStoreTests</code>](https://github.com/sanbuphy/relationship-compass-macos/blob/main/Tests/RelationshipCompassTests/RelationshipStoreTests.swift#L29-L69) cover repeated imports, duplicate headers, malformed input, and UTF-8 BOM files.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Public-behavior tests for repeated imports and invalid CSV headers</span><span lang="en">Public-behavior tests for repeated imports and invalid CSV headers</span></p>
+</div>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">The agent selects work using <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ready-for-agent</code>, priority, and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Blocked by</code>. On completion it posts the commit and test result, removes the ready label, adds <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">completed-by-agent</code>, and closes the Issue. Issue state is therefore the real project state.</span><span lang="en">The agent selects work using <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ready-for-agent</code>, priority, and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Blocked by</code>. On completion it posts the commit and test result, removes the ready label, adds <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">completed-by-agent</code>, and closes the Issue. Issue state is therefore the real project state.</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8. Step five: review code and requirement coverage</span><span lang="en">8. Step five: review code and requirement coverage</span></h2>
+<p class="reveal"><span lang="id">Closing the implementation Issues is not enough. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">code-review</code> performs two distinct passes.</span><span lang="en">Closing the implementation Issues is not enough. <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">code-review</code> performs two distinct passes.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">8.1 Review code health</span><span lang="en">8.1 Review code health</span></h3>
+<p class="reveal"><span lang="id">The first pass checks naming, duplication, oversized files, coupling, and repository conventions. It found that the main SwiftUI view carried too many responsibilities and that the follow-up interval could bypass its minimum-one-day rule. The implementation was refactored and a validated value type was introduced.</span><span lang="en">The first pass checks naming, duplication, oversized files, coupling, and repository conventions. It found that the main SwiftUI view carried too many responsibilities and that the follow-up interval could bypass its minimum-one-day rule. The implementation was refactored and a validated value type was introduced.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">8.2 Review completion against the Spec</span><span lang="en">8.2 Review completion against the Spec</span></h3>
+<p class="reveal"><span lang="id">The second pass rereads the Spec and every Issue. It found real gaps that the initial test suite missed:</span><span lang="en">The second pass rereads the Spec and every Issue. It found real gaps that the initial test suite missed:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">duplicate CSV headers produced a runtime error rather than a safe message;</span><span lang="en">duplicate CSV headers produced a runtime error rather than a safe message;</span></li>
+<li><span lang="id">contacts without email could not be deduplicated by name and organization;</span><span lang="en">contacts without email could not be deduplicated by name and organization;</span></li>
+<li><span lang="id">the Follow-ups list ignored filters applied to the main contact list;</span><span lang="en">the Follow-ups list ignored filters applied to the main contact list;</span></li>
+<li><span lang="id">saved data was not restored automatically on launch;</span><span lang="en">saved data was not restored automatically on launch;</span></li>
+<li><span lang="id">the detail view did not show the calculated next follow-up date.</span><span lang="en">the detail view did not show the calculated next follow-up date.</span></li>
+</ul>
+<p class="reveal"><span lang="id">Tests were added first, the defects were fixed, and both review passes were rerun. This matters because green tests prove only the behavior those tests describe; they do not prove that every original requirement was tested.</span><span lang="en">Tests were added first, the defects were fixed, and both review passes were rerun. This matters because green tests prove only the behavior those tests describe; they do not prove that every original requirement was tested.</span></p>
+
+<div class="callout info reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
+  <p><span lang="id">Review fixes remain visible as separate commits. Completion comments on Issues #2–#6 link the commits and verification results; only after both reviews pass is parent Issue #1 closed.</span><span lang="en">Review fixes remain visible as separate commits. Completion comments on Issues #2–#6 link the commits and verification results; only after both reviews pass is parent Issue #1 closed.</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">9. The finished application</span><span lang="en">9. The finished application</span></h2>
+<p class="reveal"><span lang="id">Relationship Compass is a buildable, testable, packageable native macOS application—not a mockup.</span><span lang="en">Relationship Compass is a buildable, testable, packageable native macOS application—not a mockup.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Deliverable</th><th>Result</th></tr>
+<tr><td>GitHub planning</td><td>One parent requirement Issue and five implementation Issues, all closed</td></tr>
+<tr><td>Implementation history</td><td>Nine focused commits completed in dependency order</td></tr>
+<tr><td>Automated verification</td><td>13/13 behavior tests pass and the project builds</td></tr>
+<tr><td>Final review</td><td>Code-health and Spec-completion reviews pass</td></tr>
+<tr><td>Runnable artifact</td><td>A script creates <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Relationship Compass.app</code></td></tr>
+<tr><td>Privacy boundary</td><td>Local-only data, no Contacts access, no relationship upload</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">9.1 Search and combined filters</span><span lang="en">9.1 Search and combined filters</span></h3>
+<p class="reveal"><span lang="id">Searching for <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Founder</code> narrows six sample contacts to Maya Chen. Relationship strength and circle filters can be combined, and the main list and Follow-ups use the same rules.</span><span lang="en">Searching for <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Founder</code> narrows six sample contacts to Maya Chen. Relationship strength and circle filters can be combined, and the main list and Follow-ups use the same rules.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Searching by role leaves only Maya Chen</span><span lang="en">Searching by role leaves only Maya Chen</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">9.2 Edit a relationship profile</span><span lang="en">9.2 Edit a relationship profile</span></h3>
+<p class="reveal"><span lang="id">The detail view edits organization, role, email, relationship strength, circles, rhythm, and notes. Duplicate circles are normalized and the follow-up interval must be at least one day.</span><span lang="en">The detail view edits organization, role, email, relationship strength, circles, rhythm, and notes. Duplicate circles are normalized and the follow-up interval must be at least one day.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">Editing a Relationship Compass contact profile</span><span lang="en">Editing a Relationship Compass contact profile</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">9.3 Record an interaction and calculate the next follow-up</span><span lang="en">9.3 Record an interaction and calculate the next follow-up</span></h3>
+<p class="reveal"><span lang="id">After an interaction on August 9, 2026, a 30-day rhythm produces September 8, 2026 as the next connection date. The entry appears in Interaction History and the contact moves into Follow-ups when due.</span><span lang="en">After an interaction on August 9, 2026, a 30-day rhythm produces September 8, 2026 as the next connection date. The entry appears in Interaction History and the contact moves into Follow-ups when due.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">The next follow-up date calculated from a new interaction</span><span lang="en">The next follow-up date calculated from a new interaction</span></p>
+</div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">The new entry in Interaction History</span><span lang="en">The new entry in Interaction History</span></p>
+</div>
+<p class="reveal"><span lang="id">On a Mac, run the complete project with:</span><span lang="en">On a Mac, run the complete project with:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>bash</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>git clone https://github.com/sanbuphy/relationship-compass-macos.git
+cd relationship-compass-macos
+swift build
+swift test
+./scripts/package-app.sh
+open &quot;dist/Relationship Compass.app&quot;</pre>
+</div>
+
+<div class="callout warn reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div>
+  <p><span lang="id">Cloud sync, Contacts permission, encryption, and AI analysis would require a new privacy discussion and new architecture decisions.</span><span lang="en">Cloud sync, Contacts permission, encryption, and AI analysis would require a new privacy discussion and new architecture decisions.</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">10. Copy-ready prompts</span><span lang="en">10. Copy-ready prompts</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">10.1 Clarify the request</span><span lang="en">10.1 Clarify the request</span></h3>
+<p class="reveal"><span lang="id"><div class="workflow-chat"></span><span lang="en"><div class="workflow-chat"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message workflow-message--user"></span><span lang="en"><div class="workflow-message workflow-message--user"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__speaker">🙋 You · Copy this</div></span><span lang="en"><div class="workflow-message__speaker">🙋 You · Copy this</div></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__command">/grill-with-docs</div></span><span lang="en"><div class="workflow-message__command">/grill-with-docs</div></span></p>
+<p class="reveal"><span lang="id"><p>I want to build a macOS CRM that manages imported contacts and helps me understand my relationships. Sample data is fine initially.</p></span><span lang="en"><p>I want to build a macOS CRM that manages imported contacts and helps me understand my relationships. Sample data is fine initially.</p></span></p>
+<p class="reveal"><span lang="id"><p>Discuss what the first release does and excludes, where data lives, which technology to use, and how we will verify completion. Ask only the most important current question, explain trade-offs, and recommend an option. Do not write code until I explicitly confirm our shared understanding.</p></span><span lang="en"><p>Discuss what the first release does and excludes, where data lives, which technology to use, and how we will verify completion. Ask only the most important current question, explain trade-offs, and recommend an option. Do not write code until I explicitly confirm our shared understanding.</p></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">10.2 Generate the Spec</span><span lang="en">10.2 Generate the Spec</span></h3>
+<p class="reveal"><span lang="id"><div class="workflow-chat"></span><span lang="en"><div class="workflow-chat"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message workflow-message--user"></span><span lang="en"><div class="workflow-message workflow-message--user"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__speaker">🙋 You · Copy this</div></span><span lang="en"><div class="workflow-message__speaker">🙋 You · Copy this</div></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__command">/to-spec</div></span><span lang="en"><div class="workflow-message__command">/to-spec</div></span></p>
+<p class="reveal"><span lang="id"><p>Turn our confirmed discussion into a complete requirements document, save it in the repository, and publish one parent GitHub Issue with the ready-for-agent label. Include user behavior, acceptance criteria, and explicit non-goals.</p></span><span lang="en"><p>Turn our confirmed discussion into a complete requirements document, save it in the repository, and publish one parent GitHub Issue with the ready-for-agent label. Include user behavior, acceptance criteria, and explicit non-goals.</p></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">10.3 Create Issues</span><span lang="en">10.3 Create Issues</span></h3>
+<p class="reveal"><span lang="id"><div class="workflow-chat"></span><span lang="en"><div class="workflow-chat"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message workflow-message--user"></span><span lang="en"><div class="workflow-message workflow-message--user"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__speaker">🙋 You · Copy this</div></span><span lang="en"><div class="workflow-message__speaker">🙋 You · Copy this</div></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__command">/to-tickets</div></span><span lang="en"><div class="workflow-message__command">/to-tickets</div></span></p>
+<p class="reveal"><span lang="id"><p>Create GitHub Issues from the Spec. Each ticket should deliver a demonstrable vertical slice and state priority, completion criteria, and prerequisites. Show me the list and dependency graph before publishing.</p></span><span lang="en"><p>Create GitHub Issues from the Spec. Each ticket should deliver a demonstrable vertical slice and state priority, completion criteria, and prerequisites. Show me the list and dependency graph before publishing.</p></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">10.4 Implement everything</span><span lang="en">10.4 Implement everything</span></h3>
+<p class="reveal"><span lang="id"><div class="workflow-chat"></span><span lang="en"><div class="workflow-chat"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message workflow-message--user"></span><span lang="en"><div class="workflow-message workflow-message--user"></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__speaker">🙋 You · Copy this</div></span><span lang="en"><div class="workflow-message__speaker">🙋 You · Copy this</div></span></p>
+<p class="reveal"><span lang="id"><div class="workflow-message__command">/implement</div></span><span lang="en"><div class="workflow-message__command">/implement</div></span></p>
+<p class="reveal"><span lang="id"><p>Implement every ready-for-agent Issue by priority and dependency. Work on one unblocked ticket at a time, write a failing behavior test first, run tests and the full build frequently, and commit each ticket separately. Afterward, review both code quality and Spec completion, fix all findings, and rerun verification.</p></span><span lang="en"><p>Implement every ready-for-agent Issue by priority and dependency. Work on one unblocked ticket at a time, write a failing behavior test first, run tests and the full build frequently, and commit each ticket separately. Afterward, review both code quality and Spec completion, fix all findings, and rerun verification.</p></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">11. When full-autonomy mode is appropriate</span><span lang="en">11. When full-autonomy mode is appropriate</span></h2>
+<p class="reveal"><span lang="id">This workflow suits scoped MVPs, sites, apps, and backends with observable behavior and reliable test or build commands. It is a poor fit when requirements change hourly, verification is impossible, or the work directly mutates production data.</span><span lang="en">This workflow suits scoped MVPs, sites, apps, and backends with observable behavior and reliable test or build commands. It is a poor fit when requirements change hourly, verification is impossible, or the work directly mutates production data.</span></p>
+<p class="reveal"><span lang="id">Even during continuous implementation, a person should confirm:</span><span lang="en">Even during continuous implementation, a person should confirm:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">the MVP boundary after the requirements conversation;</span><span lang="en">the MVP boundary after the requirements conversation;</span></li>
+<li><span lang="id">ticket coverage and dependency order before Issues are published;</span><span lang="en">ticket coverage and dependency order before Issues are published;</span></li>
+<li><span lang="id">any payment, deployment, deletion, permission, privacy, or production operation;</span><span lang="en">any payment, deployment, deletion, permission, privacy, or production operation;</span></li>
+<li><span lang="id">the real interface, build artifact, and review results at the end.</span><span lang="en">the real interface, build artifact, and review results at the end.</span></li>
+</ul>
+<p class="reveal"><span lang="id">Reliable autonomy does not outsource every decision. The human owns goals, boundaries, and acceptance; the agent executes the agreed work consistently.</span><span lang="en">Reliable autonomy does not outsource every decision. The human owns goals, boundaries, and acceptance; the agent executes the agreed work consistently.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary</span><span lang="en">Summary</span></h2>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Rough idea
+  ↓ grill-with-docs
+Agreed scope + vocabulary + durable technical decisions
+  ↓ to-spec
+Versioned, testable requirements
+  ↓ to-tickets
+Prioritized, dependency-aware GitHub Issues
+  ↓ implement
+One ticket, test, and commit at a time
+  ↓ code-review
+Code-health review + Spec-completion review
+  ↓
+Buildable and verifiable software</pre>
+</div>
+<p class="reveal"><span lang="id">When a chat ends, the Spec, Issues, dependency graph, commits, and test evidence remain in GitHub. The next session can resume from recorded project state instead of guessing the user's intent again.</span><span lang="en">When a chat ends, the Spec, Issues, dependency graph, commits, and test evidence remain in GitHub. The next session can resume from recorded project state instead of guessing the user's intent again.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">References</span><span lang="en">References</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[Skills to Spec](https://www.aihero.dev/skills-to-spec)</span><span lang="en">[Skills to Spec](https://www.aihero.dev/skills-to-spec)</span></li>
+<li><span lang="id">[AI Skills for Real Engineers](https://www.aihero.dev/skills)</span><span lang="en">[AI Skills for Real Engineers](https://www.aihero.dev/skills)</span></li>
+<li><span lang="id">[Skills v1.1 changelog](https://www.aihero.dev/skills/skills-changelog-v1-1-wayfinder-to-spec-to-tickets-grilling-improvements)</span><span lang="en">[Skills v1.1 changelog](https://www.aihero.dev/skills/skills-changelog-v1-1-wayfinder-to-spec-to-tickets-grilling-improvements)</span></li>
+<li><span lang="id">[OpenAI: Save repeatable workflows as Skills](https://learn.chatgpt.com/codex/use-cases/reusable-codex-skills)</span><span lang="en">[OpenAI: Save repeatable workflows as Skills](https://learn.chatgpt.com/codex/use-cases/reusable-codex-skills)</span></li>
+<li><span lang="id">[Relationship Compass public example repository](https://github.com/sanbuphy/relationship-compass-macos)</span><span lang="en">[Relationship Compass public example repository](https://github.com/sanbuphy/relationship-compass-macos)</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../core-skills/spec-coding/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Dari Vibe Coding Menuju Spec Coding</span><span lang="en">Dari Vibe Coding Menuju Spec Coding</span></b></a>
+      <a class="next" href="../../cross-platform/ai-native-creator/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Dari Halaman Web Menjadi Produk AI-Native Penuh</span><span lang="en">Dari Halaman Web Menjadi Produk AI-Native Penuh</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

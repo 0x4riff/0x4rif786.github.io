@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Proyek: SaaS Generator Gambar AI Modern — VibeKoding 🖼️</title>
+<meta name="description" content="Modul praktis Level 2 VibeKoding: Proyek: SaaS Generator Gambar AI Modern. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-2/assignments/modern-landing-page/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../stage-2/"><span lang="id">Level 2 · Developer</span><span lang="en">Level 2 · Developer</span></a> / <span lang="id">Proyek: SaaS Generator Gambar AI Modern</span><span lang="en">Proyek: SaaS Generator Gambar AI Modern</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">🖼️</div>
+      <div>
+        <h1><span lang="id">Proyek: SaaS Generator Gambar AI Modern</span><span lang="en">Proyek: SaaS Generator Gambar AI Modern</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 2 · Developer</span><span lang="en">Level 2 · Developer</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul praktis Level 2 VibeKoding: Proyek: SaaS Generator Gambar AI Modern.</span><span lang="en">Modul praktis Level 2 VibeKoding: Proyek: SaaS Generator Gambar AI Modern.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Overview</span><span lang="en">Overview</span></h2>
+<p class="reveal"><span lang="id">This project requires you to build a Midjourney-inspired AI image generation SaaS product from scratch, based on a real PRD. You'll go through the full process: requirements analysis, project breakdown, iterative development, and integration testing.</span><span lang="en">This project requires you to build a Midjourney-inspired AI image generation SaaS product from scratch, based on a real PRD. You'll go through the full process: requirements analysis, project breakdown, iterative development, and integration testing.</span></p>
+<p class="reveal"><span lang="id">This is the comprehensive practical section of Stage 2. In previous chapters, you've learned individual skills — frontend design, backend APIs, databases, payment integration. This project ties them all together into a runnable product prototype.</span><span lang="en">This is the comprehensive practical section of Stage 2. In previous chapters, you've learned individual skills — frontend design, backend APIs, databases, payment integration. This project ties them all together into a runnable product prototype.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Prerequisites</span><span lang="en">Prerequisites</span></h2>
+<p class="reveal"><span lang="id">Before starting this project, you should already be familiar with:</span><span lang="en">Before starting this project, you should already be familiar with:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Frontend page design and component libraries ([UI Design](../../frontend/ui-design/), [Modern Component Libraries](../../frontend/modern-component-library/))</span><span lang="en">Frontend page design and component libraries ([UI Design](../../frontend/ui-design/), [Modern Component Libraries](../../frontend/modern-component-library/))</span></li>
+<li><span lang="id">Backend API design and development ([API Code](../../backend/ai-interface-code/))</span><span lang="en">Backend API design and development ([API Code](../../backend/ai-interface-code/))</span></li>
+<li><span lang="id">Database fundamentals and Supabase ([Database to Supabase](../../backend/database-supabase/))</span><span lang="en">Database fundamentals and Supabase ([Database to Supabase](../../backend/database-supabase/))</span></li>
+<li><span lang="id">Payment integration ([Stripe Payment System](../../backend/stripe-payment/))</span><span lang="en">Payment integration ([Stripe Payment System](../../backend/stripe-payment/))</span></li>
+<li><span lang="id">Git workflow and deployment ([Git & GitHub](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/))</span><span lang="en">Git workflow and deployment ([Git & GitHub](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/))</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Learning Objectives</span><span lang="en">Learning Objectives</span></h2>
+<p class="reveal"><span lang="id">After completing this project, you will be able to:</span><span lang="en">After completing this project, you will be able to:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Read and understand a real PRD, extracting a development task list</span><span lang="en">Read and understand a real PRD, extracting a development task list</span></li>
+<li><span lang="id">Break down modules based on the PRD and create a step-by-step plan</span><span lang="en">Break down modules based on the PRD and create a step-by-step plan</span></li>
+<li><span lang="id">Use AI assistance to build frontend scaffolds and backend APIs</span><span lang="en">Use AI assistance to build frontend scaffolds and backend APIs</span></li>
+<li><span lang="id">Verify and iterate on each module</span><span lang="en">Verify and iterate on each module</span></li>
+<li><span lang="id">Complete end-to-end integration, taking the project from "runs locally" to "deliverable"</span><span lang="en">Complete end-to-end integration, taking the project from "runs locally" to "deliverable"</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Project Overview</span><span lang="en">Project Overview</span></h2>
+<p class="reveal"><span lang="id">You will build a modern AI image generation SaaS platform with three subsystems:</span><span lang="en">You will build a modern AI image generation SaaS platform with three subsystems:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Subsystem</th><th>Responsibility</th></tr>
+<tr><td><b>Public Website</b></td><td>Product intro, pricing, FAQ, registration conversion</td></tr>
+<tr><td><b>User Workspace</b></td><td>Prompt input, image generation, gallery, credits, plans, community interaction</td></tr>
+<tr><td><b>Admin Dashboard</b></td><td>User management, task management, payment management, content moderation, SaaS metrics, system monitoring</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">The backend needs to support: user auth, image generation tasks, OSS object storage, credits and plan payments, image social interaction, and operations data monitoring.</span><span lang="en">The backend needs to support: user auth, image generation tasks, OSS object storage, credits and plan payments, image social interaction, and operations data monitoring.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">The requirements document for this project is on GitHub: [View PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/en/stage-2/assignments/modern-landing-page/PRD.md)</span><span lang="en">The requirements document for this project is on GitHub: [View PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/en/stage-2/assignments/modern-landing-page/PRD.md)</span></p>
+</div>
+<p class="reveal"><span lang="id"><div style="margin: 32px 0;"></span><span lang="en"><div style="margin: 32px 0;"></span></p>
+<p class="reveal"><span lang="id"><ClientOnly></span><span lang="en"><ClientOnly></span></p>
+<p class="reveal"><span lang="id"><StepBar :active="0" :items="[</span><span lang="en"><StepBar :active="0" :items="[</span></p>
+<p class="reveal"><span lang="id">{ title: 'Requirements', description: 'Read PRD, extract pages, modules, data models, and scope' },</span><span lang="en">{ title: 'Requirements', description: 'Read PRD, extract pages, modules, data models, and scope' },</span></p>
+<p class="reveal"><span lang="id">{ title: 'Scaffold', description: 'Use AI to generate three frontend skeletons (www / app / admin)' },</span><span lang="en">{ title: 'Scaffold', description: 'Use AI to generate three frontend skeletons (www / app / admin)' },</span></p>
+<p class="reveal"><span lang="id">{ title: 'Iterate', description: 'Add APIs, auth, payments, monitoring module by module' },</span><span lang="en">{ title: 'Iterate', description: 'Add APIs, auth, payments, monitoring module by module' },</span></p>
+<p class="reveal"><span lang="id">{ title: 'Launch', description: 'End-to-end testing, deploy, and prepare demo' }</span><span lang="en">{ title: 'Launch', description: 'End-to-end testing, deploy, and prepare demo' }</span></p>
+<p class="reveal"><span lang="id">]" /></span><span lang="en">]" /></span></p>
+<p class="reveal"><span lang="id"></ClientOnly></span><span lang="en"></ClientOnly></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Part 1: Requirements Analysis</span><span lang="en">Part 1: Requirements Analysis</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 Read the PRD</span><span lang="en">1.1 Read the PRD</span></h3>
+<p class="reveal"><span lang="id">Open the PRD document and answer these key questions:</span><span lang="en">Open the PRD document and answer these key questions:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">How many entry points does the system have? Which pages does each cover?</span><span lang="en">How many entry points does the system have? Which pages does each cover?</span></li>
+<li><span lang="id">What is the core functionality of each page?</span><span lang="en">What is the core functionality of each page?</span></li>
+<li><span lang="id">What modules and database tables does the backend include?</span><span lang="en">What modules and database tables does the backend include?</span></li>
+<li><span lang="id">What is the MVP scope? What goes in the first version and what doesn't?</span><span lang="en">What is the MVP scope? What goes in the first version and what doesn't?</span></li>
+</ul>
+
+<div class="callout warn reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div>
+  <p><span lang="id">If the above questions don't have clear answers, don't start coding. Unclear requirements are the most common cause of rework.</span><span lang="en">If the above questions don't have clear answers, don't start coding. Unclear requirements are the most common cause of rework.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 Confirm System Architecture</span><span lang="en">1.2 Confirm System Architecture</span></h3>
+<p class="reveal"><span lang="id">Map out the overall architecture based on the PRD:</span><span lang="en">Map out the overall architecture based on the PRD:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>mermaid</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>flowchart TD
+  prd[&quot;PRD&quot;] --&gt; web[&quot;Public Website&quot;]
+  prd --&gt; app[&quot;User Workspace&quot;]
+  prd --&gt; admin[&quot;Admin Dashboard&quot;]
+  app --&gt; auth[&quot;Auth&quot;]
+  app --&gt; gen[&quot;Image Generation Task&quot;]
+  gen --&gt; oss[&quot;OSS Storage&quot;]
+  gen --&gt; db[&quot;Database&quot;]
+  billing[&quot;Payments &amp; Plans&quot;] --&gt; db
+  social[&quot;Share / Like / Comment / Repost&quot;] --&gt; db
+  admin --&gt; analytics[&quot;SaaS Metrics Dashboard&quot;]
+  admin --&gt; observability[&quot;API / DB / Provider Monitoring&quot;]</pre>
+</div>
+<p class="reveal"><span lang="id">We recommend drawing the architecture diagram in your own words to confirm your understanding is complete.</span><span lang="en">We recommend drawing the architecture diagram in your own words to confirm your understanding is complete.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Part 2: Project Scaffolding</span><span lang="en">Part 2: Project Scaffolding</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Generate Frontend Pages</span><span lang="en">2.1 Generate Frontend Pages</span></h3>
+<p class="reveal"><span lang="id">Use AI to generate the basic structure and mock data for all pages. The goal here is to set up the information architecture and routing — no real API integration yet.</span><span lang="en">Use AI to generate the basic structure and mock data for all pages. The goal here is to set up the information architecture and routing — no real API integration yet.</span></p>
+<p class="reveal"><span lang="id">Prompt reference:</span><span lang="en">Prompt reference:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Based on the current PRD, help me generate a frontend scaffold for a modern AI image generation SaaS.
+
+Requirements:
+1. Three entry points: www, app, admin
+2. www: homepage, pricing, FAQ
+3. app: login, register, generation workspace, gallery, plans, credits, community, artwork detail, profile
+4. admin: dashboard homepage, user management, task management, content management, plan management, payment orders, operations config, SaaS metrics, system monitoring
+5. Only generate page structure with mock data, no real API integration
+6. Style reference: Midjourney — clean, modern, product-like</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Verify Page Structure</span><span lang="en">2.2 Verify Page Structure</span></h3>
+<p class="reveal"><span lang="id">After generating the scaffold, check each item:</span><span lang="en">After generating the scaffold, check each item:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[ ] Three entry point routes are independent (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/app</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/admin</code>)</span><span lang="en">[ ] Three entry point routes are independent (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/app</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/admin</code>)</span></li>
+<li><span lang="id">[ ] Page count matches the PRD</span><span lang="en">[ ] Page count matches the PRD</span></li>
+<li><span lang="id">[ ] Each page is accessible and navigable</span><span lang="en">[ ] Each page is accessible and navigable</span></li>
+<li><span lang="id">[ ] Mock data shows basic UI states (lists, empty states, forms, etc.)</span><span lang="en">[ ] Mock data shows basic UI states (lists, empty states, forms, etc.)</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Part 3: Iterative Development</span><span lang="en">Part 3: Iterative Development</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Module-by-Module Progress</span><span lang="en">3.1 Module-by-Module Progress</span></h3>
+<p class="reveal"><span lang="id">On top of the scaffold, add features module by module in this order:</span><span lang="en">On top of the scaffold, add features module by module in this order:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Authentication</b>: Registration, login, role differentiation</span><span lang="en"><b>Authentication</b>: Registration, login, role differentiation</span></li>
+<li><span lang="id"><b>Database</b>: Table creation, read/write APIs</span><span lang="en"><b>Database</b>: Table creation, read/write APIs</span></li>
+<li><span lang="id"><b>Core Business</b>: Image generation tasks, result storage</span><span lang="en"><b>Core Business</b>: Image generation tasks, result storage</span></li>
+<li><span lang="id"><b>OSS Storage</b>: Image upload and access</span><span lang="en"><b>OSS Storage</b>: Image upload and access</span></li>
+<li><span lang="id"><b>Payments</b>: Plans, credits, Stripe integration</span><span lang="en"><b>Payments</b>: Plans, credits, Stripe integration</span></li>
+<li><span lang="id"><b>Social Interaction</b>: Sharing, likes, comments</span><span lang="en"><b>Social Interaction</b>: Sharing, likes, comments</span></li>
+<li><span lang="id"><b>Admin Dashboard</b>: User management, task management, content moderation</span><span lang="en"><b>Admin Dashboard</b>: User management, task management, content moderation</span></li>
+<li><span lang="id"><b>Data Monitoring</b>: SaaS metrics dashboard, system monitoring</span><span lang="en"><b>Data Monitoring</b>: SaaS metrics dashboard, system monitoring</span></li>
+</ul>
+<p class="reveal"><span lang="id">After each module, use this self-check table:</span><span lang="en">After each module, use this self-check table:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Check Item</th><th>Verification Method</th></tr>
+<tr><td>Page consistency</td><td>Do page count, entry points, and features match the PRD?</td></tr>
+<tr><td>API correctness</td><td>Are request params, response structure, and status handling reasonable?</td></tr>
+<tr><td>Auth isolation</td><td>Are regular users and admins properly separated?</td></tr>
+<tr><td>Data consistency</td><td>Do database, OSS, payment, and credits data align?</td></tr>
+<tr><td>Demo readiness</td><td>Can you demo a complete business flow to someone else?</td></tr>
+</table></div>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">If AI-generated content drifts from the PRD, don't throw away the whole page — just ask it to fix the specific module.</span><span lang="en">If AI-generated content drifts from the PRD, don't throw away the whole page — just ask it to fix the specific module.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Roles & Responsibilities</span><span lang="en">3.2 Roles & Responsibilities</span></h3>
+<p class="reveal"><span lang="id">During iteration, you need to play three roles simultaneously:</span><span lang="en">During iteration, you need to play three roles simultaneously:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Product Manager</b>: Confirm each module's features match the PRD</span><span lang="en"><b>Product Manager</b>: Confirm each module's features match the PRD</span></li>
+<li><span lang="id"><b>Tech Lead</b>: Confirm the implementation approach is reasonable</span><span lang="en"><b>Tech Lead</b>: Confirm the implementation approach is reasonable</span></li>
+<li><span lang="id"><b>QA Engineer</b>: Confirm the features actually work</span><span lang="en"><b>QA Engineer</b>: Confirm the features actually work</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Part 4: Integration & Launch</span><span lang="en">Part 4: Integration & Launch</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 End-to-End Testing</span><span lang="en">4.1 End-to-End Testing</span></h3>
+<p class="reveal"><span lang="id">The focus at this stage is not adding new pages but running complete business flows. At minimum, verify:</span><span lang="en">The focus at this stage is not adding new pages but running complete business flows. At minimum, verify:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Register → Buy credits → Generate image → View history → Share and interact</span><span lang="en">Register → Buy credits → Generate image → View history → Share and interact</span></li>
+<li><span lang="id">Admin login → View user data → View task statistics → View system monitoring</span><span lang="en">Admin login → View user data → View task statistics → View system monitoring</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Deployment</span><span lang="en">4.2 Deployment</span></h3>
+<p class="reveal"><span lang="id">Deploy the project to a public environment, ensuring:</span><span lang="en">Deploy the project to a public environment, ensuring:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Environment variables are fully configured</span><span lang="en">Environment variables are fully configured</span></li>
+<li><span lang="id">Login callback URLs are correct</span><span lang="en">Login callback URLs are correct</span></li>
+<li><span lang="id">Payment callback URLs are correct</span><span lang="en">Payment callback URLs are correct</span></li>
+<li><span lang="id">Pages don't have missing loading, empty states, or error messages</span><span lang="en">Pages don't have missing loading, empty states, or error messages</span></li>
+</ul>
+<p class="reveal"><span lang="id">For deployment instructions, see: [Git & GitHub Workflow](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/).</span><span lang="en">For deployment instructions, see: [Git & GitHub Workflow](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/).</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Deliverables</span><span lang="en">Deliverables</span></h2>
+<p class="reveal"><span lang="id">After completing this project, submit the following:</span><span lang="en">After completing this project, submit the following:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[ ] Accessible live demo link</span><span lang="en">[ ] Accessible live demo link</span></li>
+<li><span lang="id">[ ] Source code repository link (with README)</span><span lang="en">[ ] Source code repository link (with README)</span></li>
+<li><span lang="id">[ ] PRD document</span><span lang="en">[ ] PRD document</span></li>
+<li><span lang="id">[ ] Core page screenshots (homepage, generation workspace, gallery, plans page, admin dashboard)</span><span lang="en">[ ] Core page screenshots (homepage, generation workspace, gallery, plans page, admin dashboard)</span></li>
+<li><span lang="id">[ ] 60-second demo video (covering register → generate → view → admin management)</span><span lang="en">[ ] 60-second demo video (covering register → generate → view → admin management)</span></li>
+</ul>
+<p class="reveal"><span lang="id">README should include at minimum: project overview, core page descriptions, tech stack, local setup steps, and environment variable list.</span><span lang="en">README should include at minimum: project overview, core page descriptions, tech stack, local setup steps, and environment variable list.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Grading Criteria</span><span lang="en">Grading Criteria</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Dimension</th><th>Basic Requirements</th><th>Advanced Requirements</th></tr>
+<tr><td>PRD Alignment</td><td>Pages, features, and data structures basically match PRD</td><td>Can clearly explain each design decision's PRD correspondence</td></tr>
+<tr><td>Product Loop</td><td>Register → Buy credits → Generate image → View history → Share works end-to-end</td><td>Payment status, credit balance, and generation count data are consistent</td></tr>
+<tr><td>Admin Capability</td><td>Users, tasks, payments, and content management are viewable</td><td>SaaS metrics dashboard and system monitoring page are fully functional</td></tr>
+<tr><td>Engineering Completeness</td><td>Frontend, backend, database, OSS, payment pipeline connected</td><td>Has error handling, empty states, and loading states</td></tr>
+<tr><td>Delivery Quality</td><td>Deployable and runnable</td><td>README is clear, demo video is well-structured</td></tr>
+</table></div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">References</span><span lang="en">References</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[UI Design](../../frontend/ui-design/)</span><span lang="en">[UI Design](../../frontend/ui-design/)</span></li>
+<li><span lang="id">[Multi-Product UI Design](../../frontend/multi-product-ui/)</span><span lang="en">[Multi-Product UI Design](../../frontend/multi-product-ui/)</span></li>
+<li><span lang="id">[LLM & Skills Interface Beautification](../../frontend/llm-skills-beautiful/)</span><span lang="en">[LLM & Skills Interface Beautification](../../frontend/llm-skills-beautiful/)</span></li>
+<li><span lang="id">[Design Prototype to Project Code](../../frontend/design-to-code/)</span><span lang="en">[Design Prototype to Project Code](../../frontend/design-to-code/)</span></li>
+<li><span lang="id">[Modern Component Libraries](../../frontend/modern-component-library/)</span><span lang="en">[Modern Component Libraries](../../frontend/modern-component-library/)</span></li>
+<li><span lang="id">[Database to Supabase](../../backend/database-supabase/)</span><span lang="en">[Database to Supabase](../../backend/database-supabase/)</span></li>
+<li><span lang="id">[API Code with LLM Assistance](../../backend/ai-interface-code/)</span><span lang="en">[API Code with LLM Assistance](../../backend/ai-interface-code/)</span></li>
+<li><span lang="id">[Git & GitHub Workflow](../../backend/git-workflow/)</span><span lang="en">[Git & GitHub Workflow](../../backend/git-workflow/)</span></li>
+<li><span lang="id">[Web App Deployment](../../backend/zeabur-deployment/)</span><span lang="en">[Web App Deployment](../../backend/zeabur-deployment/)</span></li>
+<li><span lang="id">[Stripe Payment Integration](../../backend/stripe-payment/)</span><span lang="en">[Stripe Payment Integration](../../backend/stripe-payment/)</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../assignments/exam-management-express/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Proyek: Sistem Ujian Online & Panel Manajemen</span><span lang="en">Proyek: Sistem Ujian Online & Panel Manajemen</span></b></a>
+      <a class="next" href="../../assignments/custom-dify-agent-platform/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Proyek: Platform Agen AI Kustom Mirip Dify</span><span lang="en">Proyek: Platform Agen AI Kustom Mirip Dify</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

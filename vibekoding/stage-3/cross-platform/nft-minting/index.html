@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Smart Contract &amp; Pembuatan DApp NFT Minting — VibeKoding 🪙</title>
+<meta name="description" content="Modul master Level 3 VibeKoding: Smart Contract &amp; Pembuatan DApp NFT Minting. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-3/cross-platform/nft-minting/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../stage-3/"><span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></a> / <span lang="id">Smart Contract & Pembuatan DApp NFT Minting</span><span lang="en">Smart Contract & Pembuatan DApp NFT Minting</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">🪙</div>
+      <div>
+        <h1><span lang="id">Smart Contract & Pembuatan DApp NFT Minting</span><span lang="en">Smart Contract & Pembuatan DApp NFT Minting</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 3 · Master</span><span lang="en">Level 3 · Master</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul master Level 3 VibeKoding: Smart Contract & Pembuatan DApp NFT Minting.</span><span lang="en">Modul master Level 3 VibeKoding: Smart Contract & Pembuatan DApp NFT Minting.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id">In this tutorial, we will complete a full closed loop: write an NFT smart contract from scratch, deploy it to the Ethereum testnet, mint your own NFT, and view it on OpenSea. The whole process uses browser-based tools with no local environment setup required, and can be finished in 10 minutes.</span><span lang="en">In this tutorial, we will complete a full closed loop: write an NFT smart contract from scratch, deploy it to the Ethereum testnet, mint your own NFT, and view it on OpenSea. The whole process uses browser-based tools with no local environment setup required, and can be finished in 10 minutes.</span></p>
+<p class="reveal"><span lang="id">For this tutorial, you should at least have:</span><span lang="en">For this tutorial, you should at least have:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Chrome browser (with MetaMask wallet extension installed)</span><span lang="en">Chrome browser (with MetaMask wallet extension installed)</span></li>
+<li><span lang="id">A MetaMask wallet account</span><span lang="en">A MetaMask wallet account</span></li>
+<li><span lang="id">A small amount of Sepolia testnet ETH (free to claim, shown below)</span><span lang="en">A small amount of Sepolia testnet ETH (free to claim, shown below)</span></li>
+</ul>
+<p class="reveal"><span lang="id">> <b>Zero cost, zero setup</b>: the entire process uses browser-based tools (Remix IDE), no Node.js / Hardhat installation needed; code uses OpenZeppelin official secure templates; after minting, you can view your NFT on OpenSea testnet.</span><span lang="en">> <b>Zero cost, zero setup</b>: the entire process uses browser-based tools (Remix IDE), no Node.js / Hardhat installation needed; code uses OpenZeppelin official secure templates; after minting, you can view your NFT on OpenSea testnet.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.1 What Is an NFT?</span><span lang="en">1.1 What Is an NFT?</span></h2>
+<p class="reveal"><span lang="id">NFT (Non-Fungible Token) is a type of digital asset on blockchain. Unlike fungible tokens such as Bitcoin or Ether, every NFT is unique, like no two paintings in the world being exactly the same.</span><span lang="en">NFT (Non-Fungible Token) is a type of digital asset on blockchain. Unlike fungible tokens such as Bitcoin or Ether, every NFT is unique, like no two paintings in the world being exactly the same.</span></p>
+<p class="reveal"><span lang="id">You can understand an NFT as a <b>"certificate of collection in the digital world."</b> It can represent:</span><span lang="en">You can understand an NFT as a <b>"certificate of collection in the digital world."</b> It can represent:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">ownership of a digital artwork</span><span lang="en">ownership of a digital artwork</span></li>
+<li><span lang="id">an event ticket</span><span lang="en">an event ticket</span></li>
+<li><span lang="id">a game item</span><span lang="en">a game item</span></li>
+<li><span lang="id">a learning certificate</span><span lang="en">a learning certificate</span></li>
+<li><span lang="id">even a tweet</span><span lang="en">even a tweet</span></li>
+</ul>
+<p class="reveal"><span lang="id">The core value of NFTs is: <b>they use blockchain technology to prove "this digital item belongs to you," and that proof is public, transparent, and tamper-resistant.</b></span><span lang="en">The core value of NFTs is: <b>they use blockchain technology to prove "this digital item belongs to you," and that proof is public, transparent, and tamper-resistant.</b></span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: A concept diagram of NFTs: a digital artwork on the left, ownership record on blockchain on the right, connected by arrows</span><span lang="en">placeholder: A concept diagram of NFTs: a digital artwork on the left, ownership record on blockchain on the right, connected by arrows</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.2 What Is a Smart Contract?</span><span lang="en">1.2 What Is a Smart Contract?</span></h2>
+<p class="reveal"><span lang="id">A smart contract is a piece of code that runs on blockchain. You can think of it as an <b>"automatically executed contract"</b>. Once deployed on-chain, it runs automatically according to code logic, and no one can tamper with it.</span><span lang="en">A smart contract is a piece of code that runs on blockchain. You can think of it as an <b>"automatically executed contract"</b>. Once deployed on-chain, it runs automatically according to code logic, and no one can tamper with it.</span></p>
+<p class="reveal"><span lang="id">NFTs are created and managed through smart contracts. When you "mint" an NFT, you are actually calling a function in the smart contract to write on-chain: "NFT #0 belongs to your wallet address."</span><span lang="en">NFTs are created and managed through smart contracts. When you "mint" an NFT, you are actually calling a function in the smart contract to write on-chain: "NFT #0 belongs to your wallet address."</span></p>
+<p class="reveal"><span lang="id">We will use <b>Solidity</b> to write the contract. Do not worry. With ready-made templates from OpenZeppelin, you only need to write fewer than 15 lines of code.</span><span lang="en">We will use <b>Solidity</b> to write the contract. Do not worry. With ready-made templates from OpenZeppelin, you only need to write fewer than 15 lines of code.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.3 What NFT Are We Minting?</span><span lang="en">1.3 What NFT Are We Minting?</span></h2>
+<p class="reveal"><span lang="id">We will mint a <b>"Vibe Coder Learning Certificate"</b> NFT to prove you completed this tutorial and learned blockchain development basics. This NFT will:</span><span lang="en">We will mint a <b>"Vibe Coder Learning Certificate"</b> NFT to prove you completed this tutorial and learned blockchain development basics. This NFT will:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">have a unique token ID</span><span lang="en">have a unique token ID</span></li>
+<li><span lang="id">be recorded on Ethereum Sepolia testnet</span><span lang="en">be recorded on Ethereum Sepolia testnet</span></li>
+<li><span lang="id">be viewable and displayable on OpenSea testnet</span><span lang="en">be viewable and displayable on OpenSea testnet</span></li>
+<li><span lang="id">(optional) include your custom image</span><span lang="en">(optional) include your custom image</span></li>
+</ul>
+<p class="reveal"><span lang="id">Of course, you can change it to any theme you like: AI-generated artwork, event souvenir card, pixel avatar, and more. The NFT content is fully up to you.</span><span lang="en">Of course, you can change it to any theme you like: AI-generated artwork, event souvenir card, pixel avatar, and more. The NFT content is fully up to you.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.4 Why Use a Testnet?</span><span lang="en">1.4 Why Use a Testnet?</span></h2>
+<p class="reveal"><span lang="id">Ethereum has "mainnet" and "testnet":</span><span lang="en">Ethereum has "mainnet" and "testnet":</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Comparison</th><th>Mainnet</th><th>Testnet (Sepolia)</th></tr>
+<tr><td>ETH value</td><td>Real money</td><td>Free to claim, no real value</td></tr>
+<tr><td>Deployment cost</td><td>Requires real gas fees</td><td>Completely free</td></tr>
+<tr><td>Use case</td><td>Production release</td><td>Learning, testing, development</td></tr>
+<tr><td>Functional difference</td><td>None</td><td>Same as mainnet</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">Testnet and mainnet are functionally the same. The only difference is that testnet ETH has no real value. So you can safely learn and experiment on testnet without worrying about spending money.</span><span lang="en">Testnet and mainnet are functionally the same. The only difference is that testnet ETH has no real value. So you can safely learn and experiment on testnet without worrying about spending money.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1.5 Tutorial Roadmap</span><span lang="en">1.5 Tutorial Roadmap</span></h2>
+<p class="reveal"><span lang="id">We will complete the flow in these steps:</span><span lang="en">We will complete the flow in these steps:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Prepare wallet and test ETH</b> (2 minutes): install MetaMask and claim free test ETH</span><span lang="en"><b>Prepare wallet and test ETH</b> (2 minutes): install MetaMask and claim free test ETH</span></li>
+<li><span lang="id"><b>Write and deploy contract</b> (4 minutes): write NFT contract in Remix IDE and deploy to Sepolia</span><span lang="en"><b>Write and deploy contract</b> (4 minutes): write NFT contract in Remix IDE and deploy to Sepolia</span></li>
+<li><span lang="id"><b>Mint NFT and check result</b> (4 minutes): call contract to mint NFT and verify on OpenSea and Etherscan</span><span lang="en"><b>Mint NFT and check result</b> (4 minutes): call contract to mint NFT and verify on OpenSea and Etherscan</span></li>
+<li><span lang="id"><b>Advanced: add image to NFT</b> (optional): store image on IPFS to make NFT complete</span><span lang="en"><b>Advanced: add image to NFT</b> (optional): store image on IPFS to make NFT complete</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.1 Install MetaMask Wallet</span><span lang="en">2.1 Install MetaMask Wallet</span></h2>
+<p class="reveal"><span lang="id">MetaMask is the most popular Ethereum wallet. It is a browser extension that lets you interact with blockchain apps.</span><span lang="en">MetaMask is the most popular Ethereum wallet. It is a browser extension that lets you interact with blockchain apps.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Open Chrome and visit [MetaMask official site](https://metamask.io/)</span><span lang="en">Open Chrome and visit [MetaMask official site](https://metamask.io/)</span></li>
+<li><span lang="id">Click <b>"Download"</b> and install the Chrome extension</span><span lang="en">Click <b>"Download"</b> and install the Chrome extension</span></li>
+<li><span lang="id">After installation, click the MetaMask fox icon in the top-right corner</span><span lang="en">After installation, click the MetaMask fox icon in the top-right corner</span></li>
+<li><span lang="id">Choose <b>"Create a new wallet"</b> and set a password</span><span lang="en">Choose <b>"Create a new wallet"</b> and set a password</span></li>
+<li><span lang="id"><b>Important</b>: keep your recovery phrase (12 words) safe. Losing a test wallet is fine, but good habits matter</span><span lang="en"><b>Important</b>: keep your recovery phrase (12 words) safe. Losing a test wallet is fine, but good habits matter</span></li>
+</ul>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: MetaMask installation and wallet creation flow screenshots: install extension -> create wallet -> set password -> backup recovery phrase</span><span lang="en">placeholder: MetaMask installation and wallet creation flow screenshots: install extension -> create wallet -> set password -> backup recovery phrase</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.2 Switch to Sepolia Testnet</span><span lang="en">2.2 Switch to Sepolia Testnet</span></h2>
+<p class="reveal"><span lang="id">MetaMask connects to Ethereum mainnet by default. We need to switch to Sepolia testnet:</span><span lang="en">MetaMask connects to Ethereum mainnet by default. We need to switch to Sepolia testnet:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Click the network dropdown at the top of MetaMask (default: "Ethereum Mainnet")</span><span lang="en">Click the network dropdown at the top of MetaMask (default: "Ethereum Mainnet")</span></li>
+<li><span lang="id">Click <b>"Show test networks"</b></span><span lang="en">Click <b>"Show test networks"</b></span></li>
+<li><span lang="id">Select <b>"Sepolia test network"</b></span><span lang="en">Select <b>"Sepolia test network"</b></span></li>
+</ul>
+<p class="reveal"><span lang="id">If you do not see Sepolia, click <b>"Add network"</b> and add manually:</span><span lang="en">If you do not see Sepolia, click <b>"Add network"</b> and add manually:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Config Item</th><th>Value</th></tr>
+<tr><td>Network Name</td><td>Sepolia test network</td></tr>
+<tr><td>RPC URL</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://rpc.sepolia.org</code></td></tr>
+<tr><td>Chain ID</td><td>11155111</td></tr>
+<tr><td>Currency Symbol</td><td>SepoliaETH</td></tr>
+<tr><td>Block Explorer</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://sepolia.etherscan.io</code></td></tr>
+</table></div>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of switching MetaMask to Sepolia testnet via network dropdown</span><span lang="en">placeholder: Screenshot of switching MetaMask to Sepolia testnet via network dropdown</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2.3 Claim Free Test ETH</span><span lang="en">2.3 Claim Free Test ETH</span></h2>
+<p class="reveal"><span lang="id">Deploying contracts and minting NFTs requires gas fees. On testnet, gas is paid with test ETH, which is free.</span><span lang="en">Deploying contracts and minting NFTs requires gas fees. On testnet, gas is paid with test ETH, which is free.</span></p>
+<p class="reveal"><span lang="id">Visit any faucet below and input your wallet address to claim free Sepolia ETH:</span><span lang="en">Visit any faucet below and input your wallet address to claim free Sepolia ETH:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Faucet</th><th>URL</th><th>Per-claim Amount</th><th>Login Required</th></tr>
+<tr><td>QuickNode</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://faucet.quicknode.com/ethereum/sepolia</code></td><td>0.1 ETH</td><td>Yes</td></tr>
+<tr><td>Alchemy</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://www.alchemy.com/faucets/ethereum-sepolia</code></td><td>0.1 ETH</td><td>Yes</td></tr>
+<tr><td>Google Cloud</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https://cloud.google.com/application/web3/faucet/ethereum/sepolia</code></td><td>0.05 ETH</td><td>Yes (Google account)</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">> <b>Tip</b>: 0.1 test ETH is enough for deploying a contract and minting dozens of NFTs. If one faucet fails, try another.</span><span lang="en">> <b>Tip</b>: 0.1 test ETH is enough for deploying a contract and minting dozens of NFTs. If one faucet fails, try another.</span></p>
+<p class="reveal"><span lang="id">After claiming successfully, return to MetaMask and your balance should change from 0 to 0.1 ETH (it may take a few seconds).</span><span lang="en">After claiming successfully, return to MetaMask and your balance should change from 0 to 0.1 ETH (it may take a few seconds).</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Faucet website screenshot showing wallet address input and claiming test ETH</span><span lang="en">placeholder: Faucet website screenshot showing wallet address input and claiming test ETH</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.1 Open Remix IDE</span><span lang="en">3.1 Open Remix IDE</span></h2>
+<p class="reveal"><span lang="id">Remix is the official Ethereum-recommended online smart contract development environment. It runs fully in the browser and requires no installation.</span><span lang="en">Remix is the official Ethereum-recommended online smart contract development environment. It runs fully in the browser and requires no installation.</span></p>
+<p class="reveal"><span lang="id">Open: <b>https://remix.ethereum.org/</b></span><span lang="en">Open: <b>https://remix.ethereum.org/</b></span></p>
+<p class="reveal"><span lang="id">You will see a VS Code-like interface: file explorer on the left, code editor in the middle, and compile/deploy panel on the right.</span><span lang="en">You will see a VS Code-like interface: file explorer on the left, code editor in the middle, and compile/deploy panel on the right.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Remix IDE home screenshot showing file explorer, code editor, and right-side panel</span><span lang="en">placeholder: Remix IDE home screenshot showing file explorer, code editor, and right-side panel</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.2 Create Contract File</span><span lang="en">3.2 Create Contract File</span></h2>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">In the left file explorer, click the <b>"contracts"</b> folder</span><span lang="en">In the left file explorer, click the <b>"contracts"</b> folder</span></li>
+<li><span lang="id">Click the <b>"+"</b> button above to create a new file</span><span lang="en">Click the <b>"+"</b> button above to create a new file</span></li>
+<li><span lang="id">Name it <b><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">MySimpleNFT.sol</code></b></span><span lang="en">Name it <b><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">MySimpleNFT.sol</code></b></span></li>
+<li><span lang="id">Paste the code below:</span><span lang="en">Paste the code below:</span></li>
+</ul>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>solidity</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+// Import OpenZeppelin official secure ERC721 template
+import &quot;@openzeppelin/contracts/token/ERC721/ERC721.sol&quot;;
+
+// Simplest NFT contract: name, symbol, mint function only
+contract MySimpleNFT is ERC721 {
+    uint256 private _tokenId;
+
+    // Initialize collection name and symbol
+    constructor() ERC721(&quot;VibeCoder&quot;, &quot;VIBE&quot;) {}
+
+    // Mint NFT: call once to mint one token to caller
+    function mint() public {
+        _safeMint(msg.sender, _tokenId);
+        _tokenId++;
+    }
+}</pre>
+</div>
+<p class="reveal"><span lang="id"><b>Code walkthrough (fewer than 15 lines, and each line is understandable):</b></span><span lang="en"><b>Code walkthrough (fewer than 15 lines, and each line is understandable):</b></span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Code</th><th>Meaning</th></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">pragma solidity ^0.8.20</code></td><td>Specify Solidity compiler version</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">import "@openzeppelin/..."</code></td><td>Import OpenZeppelin ERC721 standard implementation (security-audited template)</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">contract MySimpleNFT is ERC721</code></td><td>Create a contract inheriting ERC721 standard</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ERC721("VibeCoder", "VIBE")</code></td><td>Set collection name "VibeCoder" and symbol "VIBE"</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">_safeMint(msg.sender, _tokenId)</code></td><td>Mint a new NFT to caller</td></tr>
+<tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">_tokenId++</code></td><td>Increment token ID after each mint</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">> <b>What is ERC721?</b> It is the NFT standard on Ethereum, defining basic NFT capabilities (transfer, owner query, etc.). OpenZeppelin provides a security-audited implementation, so we can inherit directly instead of building from scratch.</span><span lang="en">> <b>What is ERC721?</b> It is the NFT standard on Ethereum, defining basic NFT capabilities (transfer, owner query, etc.). OpenZeppelin provides a security-audited implementation, so we can inherit directly instead of building from scratch.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of contract code pasted in Remix IDE</span><span lang="en">placeholder: Screenshot of contract code pasted in Remix IDE</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.3 Compile the Contract</span><span lang="en">3.3 Compile the Contract</span></h2>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Click <b>"Solidity Compiler"</b> in the left panel (hammer icon)</span><span lang="en">Click <b>"Solidity Compiler"</b> in the left panel (hammer icon)</span></li>
+<li><span lang="id">Select compiler version <b>0.8.20</b> (or higher in 0.8.x)</span><span lang="en">Select compiler version <b>0.8.20</b> (or higher in 0.8.x)</span></li>
+<li><span lang="id">Click <b>"Compile MySimpleNFT.sol"</b></span><span lang="en">Click <b>"Compile MySimpleNFT.sol"</b></span></li>
+<li><span lang="id">A green check ✅ means compilation succeeded</span><span lang="en">A green check ✅ means compilation succeeded</span></li>
+</ul>
+<p class="reveal"><span lang="id">> If there is an error, check whether Solidity version matches and OpenZeppelin import path is correct. Remix automatically downloads OpenZeppelin dependencies from npm.</span><span lang="en">> If there is an error, check whether Solidity version matches and OpenZeppelin import path is correct. Remix automatically downloads OpenZeppelin dependencies from npm.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Remix compile success screenshot with green check and selected compiler version</span><span lang="en">placeholder: Remix compile success screenshot with green check and selected compiler version</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3.4 Deploy Contract to Sepolia Testnet</span><span lang="en">3.4 Deploy Contract to Sepolia Testnet</span></h2>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Click <b>"Deploy & Run Transactions"</b> in the left panel (Ethereum icon)</span><span lang="en">Click <b>"Deploy & Run Transactions"</b> in the left panel (Ethereum icon)</span></li>
+<li><span lang="id">Set <b>Environment</b> to <b>"Injected Provider - MetaMask"</b></span><span lang="en">Set <b>Environment</b> to <b>"Injected Provider - MetaMask"</b></span></li>
+<li><span lang="id">This auto-connects your MetaMask wallet</span><span lang="en">This auto-connects your MetaMask wallet</span></li>
+<li><span lang="id">MetaMask will pop up a connection request, click <b>"Connect"</b></span><span lang="en">MetaMask will pop up a connection request, click <b>"Connect"</b></span></li>
+<li><span lang="id">Confirm network is <b>Sepolia (11155111)</b></span><span lang="en">Confirm network is <b>Sepolia (11155111)</b></span></li>
+<li><span lang="id">Select <b>MySimpleNFT</b> in Contract dropdown</span><span lang="en">Select <b>MySimpleNFT</b> in Contract dropdown</span></li>
+<li><span lang="id">Click <b>"Deploy"</b></span><span lang="en">Click <b>"Deploy"</b></span></li>
+<li><span lang="id">MetaMask pops up transaction confirmation, click <b>"Confirm"</b> (gas is very low; testnet is free)</span><span lang="en">MetaMask pops up transaction confirmation, click <b>"Confirm"</b> (gas is very low; testnet is free)</span></li>
+</ul>
+<p class="reveal"><span lang="id">After a few seconds, when deployment succeeds, the <b>"Deployed Contracts"</b> section below will show your contract address. <b>Copy and save this address</b>; you will need it later.</span><span lang="en">After a few seconds, when deployment succeeds, the <b>"Deployed Contracts"</b> section below will show your contract address. <b>Copy and save this address</b>; you will need it later.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Remix deployment screenshot showing environment selection, MetaMask confirmation, Deploy button, and deployed contract address</span><span lang="en">placeholder: Remix deployment screenshot showing environment selection, MetaMask confirmation, Deploy button, and deployed contract address</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4.1 Mint Your First NFT</span><span lang="en">4.1 Mint Your First NFT</span></h2>
+<p class="reveal"><span lang="id">After successful deployment, in the <b>"Deployed Contracts"</b> section in Remix, you will see the contract interaction panel.</span><span lang="en">After successful deployment, in the <b>"Deployed Contracts"</b> section in Remix, you will see the contract interaction panel.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Expand the contract panel and find the <b>"mint"</b> button (orange)</span><span lang="en">Expand the contract panel and find the <b>"mint"</b> button (orange)</span></li>
+<li><span lang="id">Click <b>"mint"</b> directly (no input parameters required)</span><span lang="en">Click <b>"mint"</b> directly (no input parameters required)</span></li>
+<li><span lang="id">MetaMask pops up transaction confirmation, click <b>"Confirm"</b></span><span lang="en">MetaMask pops up transaction confirmation, click <b>"Confirm"</b></span></li>
+<li><span lang="id">Wait a few seconds for completion</span><span lang="en">Wait a few seconds for completion</span></li>
+</ul>
+<p class="reveal"><span lang="id">Congratulations! You just minted NFT #0, and it now belongs to your wallet address.</span><span lang="en">Congratulations! You just minted NFT #0, and it now belongs to your wallet address.</span></p>
+<p class="reveal"><span lang="id">You can continue clicking "mint" to create more. Token IDs auto-increment each time (#1, #2, #3...).</span><span lang="en">You can continue clicking "mint" to create more. Token IDs auto-increment each time (#1, #2, #3...).</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of clicking mint in Remix and confirming transaction in MetaMask</span><span lang="en">placeholder: Screenshot of clicking mint in Remix and confirming transaction in MetaMask</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4.2 Verify Mint Result</span><span lang="en">4.2 Verify Mint Result</span></h2>
+<p class="reveal"><span lang="id"><b>Method 1: Verify in Remix</b></span><span lang="en"><b>Method 1: Verify in Remix</b></span></p>
+<p class="reveal"><span lang="id">In the contract panel, find <b>"balanceOf"</b> (blue button), input your wallet address, and call it. If it returns <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1</code> (or the number you minted), minting succeeded.</span><span lang="en">In the contract panel, find <b>"balanceOf"</b> (blue button), input your wallet address, and call it. If it returns <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">1</code> (or the number you minted), minting succeeded.</span></p>
+<p class="reveal"><span lang="id">You can also call <b>"ownerOf"</b>, input <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">0</code> (token ID), and it returns your wallet address, proving NFT #0 belongs to you.</span><span lang="en">You can also call <b>"ownerOf"</b>, input <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">0</code> (token ID), and it returns your wallet address, proving NFT #0 belongs to you.</span></p>
+<p class="reveal"><span lang="id"><b>Method 2: Verify on Etherscan (recommended)</b></span><span lang="en"><b>Method 2: Verify on Etherscan (recommended)</b></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Open [Sepolia Etherscan](https://sepolia.etherscan.io/)</span><span lang="en">Open [Sepolia Etherscan](https://sepolia.etherscan.io/)</span></li>
+<li><span lang="id">Paste your <b>contract address</b> into search</span><span lang="en">Paste your <b>contract address</b> into search</span></li>
+<li><span lang="id">You will see the contract details page with all transaction records</span><span lang="en">You will see the contract details page with all transaction records</span></li>
+<li><span lang="id">Click <b>"Token Tracker"</b> to view all NFTs minted by your contract</span><span lang="en">Click <b>"Token Tracker"</b> to view all NFTs minted by your contract</span></li>
+</ul>
+<p class="reveal"><span lang="id">On Etherscan, every mint transaction has complete records: who minted, when minted, and token ID. This is the charm of blockchain being "public, transparent, and tamper-resistant."</span><span lang="en">On Etherscan, every mint transaction has complete records: who minted, when minted, and token ID. This is the charm of blockchain being "public, transparent, and tamper-resistant."</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of viewing contract and NFT mint records on Sepolia Etherscan, including transaction list and Token Tracker</span><span lang="en">placeholder: Screenshot of viewing contract and NFT mint records on Sepolia Etherscan, including transaction list and Token Tracker</span></p>
+</div>
+<p class="reveal"><span lang="id">The NFTs minted so far only have IDs, without image or description. To make NFTs complete, we need <b>IPFS (InterPlanetary File System)</b> to store images and metadata.</span><span lang="en">The NFTs minted so far only have IDs, without image or description. To make NFTs complete, we need <b>IPFS (InterPlanetary File System)</b> to store images and metadata.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5.1 What Is IPFS?</span><span lang="en">5.1 What Is IPFS?</span></h2>
+<p class="reveal"><span lang="id">IPFS is a decentralized file storage network. Unlike regular cloud storage, files on IPFS do not depend on one server, but are distributed across global nodes. This means:</span><span lang="en">IPFS is a decentralized file storage network. Unlike regular cloud storage, files on IPFS do not depend on one server, but are distributed across global nodes. This means:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">files are not lost if one server goes down</span><span lang="en">files are not lost if one server goes down</span></li>
+<li><span lang="id">file content is uniquely identified by hashes and cannot be tampered with</span><span lang="en">file content is uniquely identified by hashes and cannot be tampered with</span></li>
+<li><span lang="id">it is ideal for storing NFT images and metadata</span><span lang="en">it is ideal for storing NFT images and metadata</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5.2 Upload Image to Pinata</span><span lang="en">5.2 Upload Image to Pinata</span></h2>
+<p class="reveal"><span lang="id">[Pinata](https://pinata.cloud/) is the most popular IPFS storage service. The free tier provides 1GB storage, which is enough for us.</span><span lang="en">[Pinata](https://pinata.cloud/) is the most popular IPFS storage service. The free tier provides 1GB storage, which is enough for us.</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Visit https://pinata.cloud/ and register a free account</span><span lang="en">Visit https://pinata.cloud/ and register a free account</span></li>
+<li><span lang="id">After login, click <b>"Upload"</b> -> <b>"File"</b></span><span lang="en">After login, click <b>"Upload"</b> -> <b>"File"</b></span></li>
+<li><span lang="id">Select the image you want as NFT artwork (AI-generated image is fine, or any image)</span><span lang="en">Select the image you want as NFT artwork (AI-generated image is fine, or any image)</span></li>
+<li><span lang="id">After upload succeeds, copy the <b>CID</b> (a string like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">QmXyz...</code>)</span><span lang="en">After upload succeeds, copy the <b>CID</b> (a string like <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">QmXyz...</code>)</span></li>
+</ul>
+<p class="reveal"><span lang="id">Your image URI is: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ipfs://yourCID</code></span><span lang="en">Your image URI is: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ipfs://yourCID</code></span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of image upload in Pinata, including upload button and resulting CID</span><span lang="en">placeholder: Screenshot of image upload in Pinata, including upload button and resulting CID</span></p>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5.3 Create Metadata JSON</span><span lang="en">5.3 Create Metadata JSON</span></h2>
+<p class="reveal"><span lang="id">NFT metadata is a JSON file describing NFT name, description, and image URI. Create a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">metadata.json</code>:</span><span lang="en">NFT metadata is a JSON file describing NFT name, description, and image URI. Create a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">metadata.json</code>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>json</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>{
+  &quot;name&quot;: &quot;Vibe Coder Certificate #0&quot;,
+  &quot;description&quot;: &quot;This NFT certifies that the holder has completed the NFT minting tutorial and entered the world of Web3.&quot;,
+  &quot;image&quot;: &quot;ipfs://your-image-cid&quot;,
+  &quot;attributes&quot;: [
+    { &quot;trait_type&quot;: &quot;Course&quot;, &quot;value&quot;: &quot;Easy Vibe&quot; },
+    { &quot;trait_type&quot;: &quot;Skill&quot;, &quot;value&quot;: &quot;Smart Contract&quot; },
+    { &quot;trait_type&quot;: &quot;Level&quot;, &quot;value&quot;: &quot;Beginner&quot; }
+  ]
+}</pre>
+</div>
+<p class="reveal"><span lang="id">Upload <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">metadata.json</code> to Pinata too, and get a metadata CID.</span><span lang="en">Upload <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">metadata.json</code> to Pinata too, and get a metadata CID.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5.4 Upgrade Contract to Support Images</span><span lang="en">5.4 Upgrade Contract to Support Images</span></h2>
+<p class="reveal"><span lang="id">To include images in NFTs, we need to slightly upgrade the contract by adding <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">tokenURI</code>. Go back to Remix and create a new file <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">MyNFTWithImage.sol</code>:</span><span lang="en">To include images in NFTs, we need to slightly upgrade the contract by adding <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">tokenURI</code>. Go back to Remix and create a new file <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">MyNFTWithImage.sol</code>:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>solidity</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import &quot;@openzeppelin/contracts/token/ERC721/ERC721.sol&quot;;
+import &quot;@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol&quot;;
+
+contract MyNFTWithImage is ERC721, ERC721URIStorage {
+    uint256 private _tokenId;
+
+    constructor() ERC721(&quot;VibeCoder&quot;, &quot;VIBE&quot;) {}
+
+    // Pass metadata URI when minting
+    function mint(string memory uri) public {
+        _safeMint(msg.sender, _tokenId);
+        _setTokenURI(_tokenId, uri);
+        _tokenId++;
+    }
+
+    // Overrides required by Solidity
+    function tokenURI(uint256 tokenId)
+        public view override(ERC721, ERC721URIStorage)
+        returns (string memory)
+    {
+        return super.tokenURI(tokenId);
+    }
+
+    function supportsInterface(bytes4 interfaceId)
+        public view override(ERC721, ERC721URIStorage)
+        returns (bool)
+    {
+        return super.supportsInterface(interfaceId);
+    }
+}</pre>
+</div>
+<p class="reveal"><span lang="id">After deployment, call <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">mint</code> and pass your metadata URI (for example <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ipfs://QmAbc.../metadata.json</code>). Then your minted NFT will include image and description.</span><span lang="en">After deployment, call <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">mint</code> and pass your metadata URI (for example <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">ipfs://QmAbc.../metadata.json</code>). Then your minted NFT will include image and description.</span></p>
+
+<div class="reveal" style="text-align:center;margin:26px 0">
+  <p class="small" style="margin-top:6px;font-style:italic">🖼️ <span lang="id">placeholder: Screenshot of NFT details with image shown on Etherscan</span><span lang="en">placeholder: Screenshot of NFT details with image shown on Etherscan</span></p>
+</div>
+<p class="reveal"><span lang="id">Congratulations! You have completed a full NFT development loop from scratch. Let's recap:</span><span lang="en">Congratulations! You have completed a full NFT development loop from scratch. Let's recap:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Understood core concepts of NFTs and smart contracts</span><span lang="en">Understood core concepts of NFTs and smart contracts</span></li>
+<li><span lang="id">Installed MetaMask and switched to Sepolia testnet</span><span lang="en">Installed MetaMask and switched to Sepolia testnet</span></li>
+<li><span lang="id">Wrote an NFT smart contract with fewer than 15 lines in Remix IDE</span><span lang="en">Wrote an NFT smart contract with fewer than 15 lines in Remix IDE</span></li>
+<li><span lang="id">Deployed the contract to Ethereum testnet</span><span lang="en">Deployed the contract to Ethereum testnet</span></li>
+<li><span lang="id">Minted your own NFT and verified it on Etherscan</span><span lang="en">Minted your own NFT and verified it on Etherscan</span></li>
+<li><span lang="id">(Optional) Learned how to add image and metadata with IPFS</span><span lang="en">(Optional) Learned how to add image and metadata with IPFS</span></li>
+</ul>
+<p class="reveal"><span lang="id">The whole process required no local environment installation, cost no money, and was completed fully in the browser. This is the appeal of blockchain development: the barrier is much lower than most people expect.</span><span lang="en">The whole process required no local environment installation, cost no money, and was completed fully in the browser. This is the appeal of blockchain development: the barrier is much lower than most people expect.</span></p>
+<p class="reveal"><span lang="id"><b>Advanced directions:</b></span><span lang="en"><b>Advanced directions:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Use Hardhat / Foundry for local development</b>: when contract logic becomes complex, Remix is not enough. Hardhat and Foundry are professional local frameworks with automated testing, script-based deployment, gas optimization, and more</span><span lang="en"><b>Use Hardhat / Foundry for local development</b>: when contract logic becomes complex, Remix is not enough. Hardhat and Foundry are professional local frameworks with automated testing, script-based deployment, gas optimization, and more</span></li>
+<li><span lang="id"><b>Add whitelist and mint limits</b>: control who can mint, max mints per wallet, mint price, and similar rules</span><span lang="en"><b>Add whitelist and mint limits</b>: control who can mint, max mints per wallet, mint price, and similar rules</span></li>
+<li><span lang="id"><b>Build a mint frontend</b>: use React + ethers.js / viem to build a polished mint page for one-click web minting</span><span lang="en"><b>Build a mint frontend</b>: use React + ethers.js / viem to build a polished mint page for one-click web minting</span></li>
+<li><span lang="id"><b>Explore ERC1155 multi-edition NFTs</b>: ERC1155 allows multiple copies under one token ID, useful for game items and tickets</span><span lang="en"><b>Explore ERC1155 multi-edition NFTs</b>: ERC1155 allows multiple copies under one token ID, useful for game items and tickets</span></li>
+<li><span lang="id"><b>Deploy to mainnet</b>: when ready, deploy to Ethereum mainnet (or L2 chains like Polygon or Base with lower gas fees)</span><span lang="en"><b>Deploy to mainnet</b>: when ready, deploy to Ethereum mainnet (or L2 chains like Polygon or Base with lower gas fees)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><b><i>Your first NFT is already on-chain. The door to the blockchain world is now open.</b></i></span><span lang="en"><b><i>Your first NFT is already on-chain. The door to the blockchain world is now open.</b></i></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[OpenZeppelin ERC721 Docs](https://docs.openzeppelin.com/contracts/5.x/erc721)</span><span lang="en">[OpenZeppelin ERC721 Docs](https://docs.openzeppelin.com/contracts/5.x/erc721)</span></li>
+<li><span lang="id">[Remix IDE Official Docs](https://remix-ide.readthedocs.io/)</span><span lang="en">[Remix IDE Official Docs](https://remix-ide.readthedocs.io/)</span></li>
+<li><span lang="id">[MetaMask Official Docs](https://docs.metamask.io/)</span><span lang="en">[MetaMask Official Docs](https://docs.metamask.io/)</span></li>
+<li><span lang="id">[Solidity Official Docs](https://docs.soliditylang.org/)</span><span lang="en">[Solidity Official Docs](https://docs.soliditylang.org/)</span></li>
+<li><span lang="id">[Sepolia Etherscan](https://sepolia.etherscan.io/)</span><span lang="en">[Sepolia Etherscan](https://sepolia.etherscan.io/)</span></li>
+<li><span lang="id">[Pinata IPFS Storage Service](https://pinata.cloud/)</span><span lang="en">[Pinata IPFS Storage Service](https://pinata.cloud/)</span></li>
+<li><span lang="id">[ERC721 Standard Spec (EIP-721)](https://eips.ethereum.org/EIPS/eip-721)</span><span lang="en">[ERC721 Standard Spec (EIP-721)](https://eips.ethereum.org/EIPS/eip-721)</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../cross-platform/godot-game-development/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Pengembangan Game 2D & 3D dengan Godot Engine</span><span lang="en">Pengembangan Game 2D & 3D dengan Godot Engine</span></b></a>
+      <a class="next" href="../../cross-platform/vscode-extension/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Ekstensi VS Code: Membuat Alat untuk Developer Lain</span><span lang="en">Ekstensi VS Code: Membuat Alat untuk Developer Lain</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

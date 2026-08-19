@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Validasi Kebutuhan dengan The Mom Test — VibeKoding 👩</title>
+<meta name="description" content="Modul referensi resmi Level 1 VibeKoding: Validasi Kebutuhan dengan The Mom Test. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-1/appendix-mom-test/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../">VibeKoding</a> / <a href="../../stage-1/"><span lang="id">Level 1 · Pemula</span><span lang="en">Level 1 · Pemula</span></a> / <span lang="id">Validasi Kebutuhan dengan The Mom Test</span><span lang="en">Validasi Kebutuhan dengan The Mom Test</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">👩</div>
+      <div>
+        <h1><span lang="id">Validasi Kebutuhan dengan The Mom Test</span><span lang="en">Validasi Kebutuhan dengan The Mom Test</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 1 · Pemula</span><span lang="en">Level 1 · Pemula</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul referensi resmi Level 1 VibeKoding: Validasi Kebutuhan dengan The Mom Test.</span><span lang="en">Modul referensi resmi Level 1 VibeKoding: Validasi Kebutuhan dengan The Mom Test.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <p class="reveal"><span lang="id"><script setup></span><span lang="en"><script setup></span></p>
+<p class="reveal"><span lang="id">import StageAssignmentCard from '@theme/components/StageAssignmentCard.vue'</span><span lang="en">import StageAssignmentCard from '@theme/components/StageAssignmentCard.vue'</span></p>
+<p class="reveal"><span lang="id"></script></span><span lang="en"></script></span></p>
+<p class="reveal"><span lang="id"><a id="top-mom"></a></span><span lang="en"><a id="top-mom"></a></span></p>
+<p class="reveal"><span lang="id">The JTBD statement from the previous chapter is still a hypothesis. Interviews help us check whether the problem has occurred recently and whether users have already spent time, money, or effort on it.</span><span lang="en">The JTBD statement from the previous chapter is still a hypothesis. Interviews help us check whether the problem has occurred recently and whether users have already spent time, money, or effort on it.</span></p>
+<p class="reveal"><span lang="id">This sounds straightforward. Yet if we directly ask whether someone likes an idea, we often receive polite, general replies. For example:</span><span lang="en">This sounds straightforward. Yet if we directly ask whether someone likes an idea, we often receive polite, general replies. For example:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">What do you think of this idea?</span><span lang="en">What do you think of this idea?</span></li>
+<li><span lang="id">Would you use this if I built it?</span><span lang="en">Would you use this if I built it?</span></li>
+<li><span lang="id">Does this feature sound useful?</span><span lang="en">Does this feature sound useful?</span></li>
+</ul>
+<p class="reveal"><span lang="id">The replies usually sound encouraging:</span><span lang="en">The replies usually sound encouraging:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Sounds good</span><span lang="en">Sounds good</span></li>
+<li><span lang="id">That seems useful</span><span lang="en">That seems useful</span></li>
+<li><span lang="id">I think you should try it</span><span lang="en">I think you should try it</span></li>
+</ul>
+<p class="reveal"><span lang="id">The problem is that these answers usually do not help you decide anything. They are often just politeness, support, or a natural instinct not to discourage you in the moment. You think you collected "market validation," but what you really collected was a pile of comforting feedback that is hard to use.</span><span lang="en">The problem is that these answers usually do not help you decide anything. They are often just politeness, support, or a natural instinct not to discourage you in the moment. You think you collected "market validation," but what you really collected was a pile of comforting feedback that is hard to use.</span></p>
+<p class="reveal"><span lang="id">These answers are not wrong, but they are difficult to use for product decisions. The Mom Test asks us to spend less time on future intentions and more on what happened in the past, how the user handled it, and what it already cost them.</span><span lang="en">These answers are not wrong, but they are difficult to use for product decisions. The Mom Test asks us to spend less time on future intentions and more on what happened in the past, how the user handled it, and what it already cost them.</span></p>
+<p class="reveal"><span lang="id">This chapter explains how to avoid such false-positive feedback and shift the interview from opinions and hypothetical futures toward past behavior, current workarounds, and costs already incurred.</span><span lang="en">This chapter explains how to avoid such false-positive feedback and shift the interview from opinions and hypothetical futures toward past behavior, current workarounds, and costs already incurred.</span></p>
+<p class="reveal"><span lang="id"><a id="mom-what"></a></span><span lang="en"><a id="mom-what"></a></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">[1. Why Interviews Produce False Positives](#top-mom)</span><span lang="en">[1. Why Interviews Produce False Positives](#top-mom)</span></h2>
+<p class="reveal"><span lang="id">The Mom Test comes from Rob Fitzpatrick's book of the same name. The title sounds playful, but the point is sharp:</span><span lang="en">The Mom Test comes from Rob Fitzpatrick's book of the same name. The title sounds playful, but the point is sharp:</span></p>
+<p class="reveal"><span lang="id"><b>even your mom will struggle to tell you your idea is bad if you ask the wrong way.</b></span><span lang="en"><b>even your mom will struggle to tell you your idea is bad if you ask the wrong way.</b></span></p>
+<p class="reveal"><span lang="id">The reason is not that she is dishonest. It is that:</span><span lang="en">The reason is not that she is dishonest. It is that:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">she does not want to hurt you</span><span lang="en">she does not want to hurt you</span></li>
+<li><span lang="id">she naturally wants to encourage you</span><span lang="en">she naturally wants to encourage you</span></li>
+<li><span lang="id">she will often answer in the direction your question already suggests</span><span lang="en">she will often answer in the direction your question already suggests</span></li>
+</ul>
+<p class="reveal"><span lang="id">And this is not only about your mom. Friends, coworkers, former classmates, and even strangers often do the same thing when they react to a product idea. A positive answer does not necessarily mean the demand is real. It may simply mean you asked in a way that made a flattering answer easy.</span><span lang="en">And this is not only about your mom. Friends, coworkers, former classmates, and even strangers often do the same thing when they react to a product idea. A positive answer does not necessarily mean the demand is real. It may simply mean you asked in a way that made a flattering answer easy.</span></p>
+<p class="reveal"><span lang="id">The point of The Mom Test is therefore not whom to interview, but how to structure the questions. An interview should look for verifiable experiences instead of collecting evaluations of the product idea.</span><span lang="en">The point of The Mom Test is therefore not whom to interview, but how to structure the questions. An interview should look for verifiable experiences instead of collecting evaluations of the product idea.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Opinions and Behavioral Evidence</span><span lang="en">2. Opinions and Behavioral Evidence</span></h2>
+<p class="reveal"><span lang="id">The Mom Test mainly helps you avoid one very common cognitive mistake:</span><span lang="en">The Mom Test mainly helps you avoid one very common cognitive mistake:</span></p>
+<p class="reveal"><span lang="id"><b>mistaking polite positive feedback for real demand.</b></span><span lang="en"><b>mistaking polite positive feedback for real demand.</b></span></p>
+<p class="reveal"><span lang="id">For example, people often ask:</span><span lang="en">For example, people often ask:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">What do you think of this app idea?</span><span lang="en">What do you think of this app idea?</span></li>
+<li><span lang="id">If I built an AI tool that rewrites resumes, would you use it?</span><span lang="en">If I built an AI tool that rewrites resumes, would you use it?</span></li>
+<li><span lang="id">Does this feature sound valuable?</span><span lang="en">Does this feature sound valuable?</span></li>
+</ul>
+<p class="reveal"><span lang="id">These questions have three things in common:</span><span lang="en">These questions have three things in common:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">they ask for opinions</span><span lang="en">they ask for opinions</span></li>
+<li><span lang="id">they contain some amount of suggestion or framing</span><span lang="en">they contain some amount of suggestion or framing</span></li>
+<li><span lang="id">they talk about a future that has not happened yet</span><span lang="en">they talk about a future that has not happened yet</span></li>
+</ul>
+<p class="reveal"><span lang="id">People are usually unreliable when answering about opinion and imagined future behavior. They tend to overestimate their own interest, their own follow-through, and their own willingness to pay.</span><span lang="en">People are usually unreliable when answering about opinion and imagined future behavior. They tend to overestimate their own interest, their own follow-through, and their own willingness to pay.</span></p>
+<p class="reveal"><span lang="id">That is why The Mom Test keeps reminding you:</span><span lang="en">That is why The Mom Test keeps reminding you:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">do not trust praise for your idea too quickly</span><span lang="en">do not trust praise for your idea too quickly</span></li>
+<li><span lang="id">do not trust predictions about future behavior too quickly</span><span lang="en">do not trust predictions about future behavior too quickly</span></li>
+<li><span lang="id">bring the conversation back to what the user has already done in real life</span><span lang="en">bring the conversation back to what the user has already done in real life</span></li>
+</ul>
+<p class="reveal"><span lang="id">Compared with "Would you use this?", a question like "How did you handle this last time?" is usually much closer to truth.</span><span lang="en">Compared with "Would you use this?", a question like "How did you handle this last time?" is usually much closer to truth.</span></p>
+<p class="reveal"><span lang="id"><a id="mom-principles"></a></span><span lang="en"><a id="mom-principles"></a></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">[3. Three Principles for Asking Questions](#top-mom)</span><span lang="en">[3. Three Principles for Asking Questions](#top-mom)</span></h2>
+<p class="reveal"><span lang="id">If you want to remember only the most important part first, remember these three principles.</span><span lang="en">If you want to remember only the most important part first, remember these three principles.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Talk less about your idea and more about the user's real past experience</span><span lang="en">3.1 Talk less about your idea and more about the user's real past experience</span></h3>
+<p class="reveal"><span lang="id">Many weak interviews start with too much explanation: your solution, your excitement, your product concept, your feature plan. Once you do that, the other person often shifts into "supportive mode."</span><span lang="en">Many weak interviews start with too much explanation: your solution, your excitement, your product concept, your feature plan. Once you do that, the other person often shifts into "supportive mode."</span></p>
+<p class="reveal"><span lang="id">A better direction is to center the conversation on their real experience:</span><span lang="en">A better direction is to center the conversation on their real experience:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">When was the last time this happened?</span><span lang="en">When was the last time this happened?</span></li>
+<li><span lang="id">What were you doing at the time?</span><span lang="en">What were you doing at the time?</span></li>
+<li><span lang="id">How did you handle it?</span><span lang="en">How did you handle it?</span></li>
+<li><span lang="id">Which step felt the most annoying?</span><span lang="en">Which step felt the most annoying?</span></li>
+</ul>
+<p class="reveal"><span lang="id">Questions like these pull the conversation back into reality instead of keeping it in imagined preference.</span><span lang="en">Questions like these pull the conversation back into reality instead of keeping it in imagined preference.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Ask less about abstract opinions and more about concrete facts</span><span lang="en">3.2 Ask less about abstract opinions and more about concrete facts</span></h3>
+<p class="reveal"><span lang="id">"That sounds useful," "Seems nice," and "I think I would like that" are all too abstract to guide product decisions.</span><span lang="en">"That sounds useful," "Seems nice," and "I think I would like that" are all too abstract to guide product decisions.</span></p>
+<p class="reveal"><span lang="id">Higher-value information usually looks more like this:</span><span lang="en">Higher-value information usually looks more like this:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">I spent two hours dealing with this last week</span><span lang="en">I spent two hours dealing with this last week</span></li>
+<li><span lang="id">Right now I am holding it together with Excel and chat</span><span lang="en">Right now I am holding it together with Excel and chat</span></li>
+<li><span lang="id">I already paid for something related to this last month</span><span lang="en">I already paid for something related to this last month</span></li>
+<li><span lang="id">My biggest fear is not slowness, it is making a mistake</span><span lang="en">My biggest fear is not slowness, it is making a mistake</span></li>
+</ul>
+<p class="reveal"><span lang="id">That kind of information helps you judge the intensity of the problem, how often it happens, and whether anyone might pay to solve it.</span><span lang="en">That kind of information helps you judge the intensity of the problem, how often it happens, and whether anyone might pay to solve it.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Ask less about the user's preferred solution and pay more attention to how they solve the problem today</span><span lang="en">3.3 Ask less about the user's preferred solution and pay more attention to how they solve the problem today</span></h3>
+<p class="reveal"><span lang="id">Users are often good at describing pain, but not always good at designing the best product.</span><span lang="en">Users are often good at describing pain, but not always good at designing the best product.</span></p>
+<p class="reveal"><span lang="id">If you ask:</span><span lang="en">If you ask:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Would you want an AI to do this automatically?</span><span lang="en">Would you want an AI to do this automatically?</span></li>
+<li><span lang="id">Would a smart feature help?</span><span lang="en">Would a smart feature help?</span></li>
+</ul>
+<p class="reveal"><span lang="id">you usually get a vague opinion about a proposed solution, not evidence about the underlying need.</span><span lang="en">you usually get a vague opinion about a proposed solution, not evidence about the underlying need.</span></p>
+<p class="reveal"><span lang="id">Better questions are:</span><span lang="en">Better questions are:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">What do you do today?</span><span lang="en">What do you do today?</span></li>
+<li><span lang="id">Why do you do it that way?</span><span lang="en">Why do you do it that way?</span></li>
+<li><span lang="id">What is bad about that method?</span><span lang="en">What is bad about that method?</span></li>
+</ul>
+<p class="reveal"><span lang="id">Seeing the current workaround clearly is often more valuable than asking "What do you want us to build?"</span><span lang="en">Seeing the current workaround clearly is often more valuable than asking "What do you want us to build?"</span></p>
+<p class="reveal"><span lang="id"><figure class="field-figure"></span><span lang="en"><figure class="field-figure"></span></p>
+<p class="reveal"><span lang="id"><a href="https://commons.wikimedia.org/wiki/File:Participants_-_Interview.jpg" target="_blank" rel="noreferrer"></span><span lang="en"><a href="https://commons.wikimedia.org/wiki/File:Participants_-_Interview.jpg" target="_blank" rel="noreferrer"></span></p>
+<p class="reveal"><span lang="id"><img src="/images/product-discovery/mom-test/user-interview-session.jpg" alt="A real interview in which an interviewer holds a microphone while speaking with a participant, with a computer and notes on the table" loading="lazy" /></span><span lang="en"><img src="/images/product-discovery/mom-test/user-interview-session.jpg" alt="A real interview in which an interviewer holds a microphone while speaking with a participant, with a computer and notes on the table" loading="lazy" /></span></p>
+<p class="reveal"><span lang="id"></a></span><span lang="en"></a></span></p>
+<p class="reveal"><span lang="id"><figcaption><strong>The participant, not the script, is the center of the interview.</strong> The interviewer in this photograph attends to the participant's account; the computer and paper are only recording tools. There is no need to rush through a checklist. When phrases such as “last week,” “eventually I had to,” or “I already spent” appear, follow the experience with another question. Photograph: <a href="https://commons.wikimedia.org/wiki/File:Participants_-_Interview.jpg" target="_blank" rel="noreferrer">ManonB2018 / Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a>.</figcaption></span><span lang="en"><figcaption><strong>The participant, not the script, is the center of the interview.</strong> The interviewer in this photograph attends to the participant's account; the computer and paper are only recording tools. There is no need to rush through a checklist. When phrases such as “last week,” “eventually I had to,” or “I already spent” appear, follow the experience with another question. Photograph: <a href="https://commons.wikimedia.org/wiki/File:Participants_-_Interview.jpg" target="_blank" rel="noreferrer">ManonB2018 / Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a>.</figcaption></span></p>
+<p class="reveal"><span lang="id"></figure></span><span lang="en"></figure></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Why People Keep Giving Nice but Unhelpful Answers</span><span lang="en">4. Why People Keep Giving Nice but Unhelpful Answers</span></h2>
+<p class="reveal"><span lang="id">If you understand this part, you will make fewer mistakes during interviews.</span><span lang="en">If you understand this part, you will make fewer mistakes during interviews.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 People naturally try to be polite</span><span lang="en">4.1 People naturally try to be polite</span></h3>
+<p class="reveal"><span lang="id">Especially when the person knows you, it is hard for them to say:</span><span lang="en">Especially when the person knows you, it is hard for them to say:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">this direction does not sound very strong</span><span lang="en">this direction does not sound very strong</span></li>
+<li><span lang="id">I would never use this</span><span lang="en">I would never use this</span></li>
+<li><span lang="id">this is not important enough for me</span><span lang="en">this is not important enough for me</span></li>
+</ul>
+<p class="reveal"><span lang="id">They are much more likely to say something like "sounds interesting" or "could be useful."</span><span lang="en">They are much more likely to say something like "sounds interesting" or "could be useful."</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 People overestimate their future selves</span><span lang="en">4.2 People overestimate their future selves</span></h3>
+<p class="reveal"><span lang="id">Many people honestly believe their future self will:</span><span lang="en">Many people honestly believe their future self will:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">be more disciplined</span><span lang="en">be more disciplined</span></li>
+<li><span lang="id">be more willing to learn</span><span lang="en">be more willing to learn</span></li>
+<li><span lang="id">be more willing to pay</span><span lang="en">be more willing to pay</span></li>
+<li><span lang="id">be more willing to try new tools</span><span lang="en">be more willing to try new tools</span></li>
+</ul>
+<p class="reveal"><span lang="id">So the sentence "I would probably use that" often does not mean they really will.</span><span lang="en">So the sentence "I would probably use that" often does not mean they really will.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 Your question format is already shaping the answer</span><span lang="en">4.3 Your question format is already shaping the answer</span></h3>
+<p class="reveal"><span lang="id">When you ask:</span><span lang="en">When you ask:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">My idea sounds pretty good, right?</span><span lang="en">My idea sounds pretty good, right?</span></li>
+<li><span lang="id">This feature would help you, right?</span><span lang="en">This feature would help you, right?</span></li>
+</ul>
+<p class="reveal"><span lang="id">you are already hiding the "good answer" inside the question.</span><span lang="en">you are already hiding the "good answer" inside the question.</span></p>
+<p class="reveal"><span lang="id">That is one reason The Mom Test strongly warns you:</span><span lang="en">That is one reason The Mom Test strongly warns you:</span></p>
+<p class="reveal"><span lang="id"><b>do not turn the interview into a search for reassurance.</b></span><span lang="en"><b>do not turn the interview into a search for reassurance.</b></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Weak Questions vs Better Questions</span><span lang="en">5. Weak Questions vs Better Questions</span></h2>
+<p class="reveal"><span lang="id">These comparisons are useful because almost every beginner asks some version of them.</span><span lang="en">These comparisons are useful because almost every beginner asks some version of them.</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Weak question</th><th>Better question</th></tr>
+<tr><td>What do you think of this idea?</td><td>When was the last time this happened to you?</td></tr>
+<tr><td>Would you use this if it existed?</td><td>How do you handle this now?</td></tr>
+<tr><td>Would you pay for this?</td><td>Have you already spent time or money on this problem? What did you spend it on?</td></tr>
+<tr><td>Is this feature important?</td><td>Which step in the process feels slowest, most frustrating, or least trustworthy?</td></tr>
+<tr><td>Would you want an AI to do this automatically?</td><td>Why have you not found a better workaround yet?</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">The most important thing in the table is not the wording itself, but the direction of the shift:</span><span lang="en">The most important thing in the table is not the wording itself, but the direction of the shift:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">from opinion to fact</span><span lang="en">from opinion to fact</span></li>
+<li><span lang="id">from future to past</span><span lang="en">from future to past</span></li>
+<li><span lang="id">from your solution to the user's problem</span><span lang="en">from your solution to the user's problem</span></li>
+</ul>
+<p class="reveal"><span lang="id">The exercise below presents six common interview statements. Decide which ones provide usable evidence and which ones are only opinions.</span><span lang="en">The exercise below presents six common interview statements. Decide which ones provide usable evidence and which ones are only opinions.</span></p>
+<p class="reveal"><span lang="id"><InterviewEvidenceLab /></span><span lang="en"><InterviewEvidenceLab /></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. A Basic Interview Sequence</span><span lang="en">6. A Basic Interview Sequence</span></h2>
+<p class="reveal"><span lang="id">If you want to talk to someone now, you can use this order directly.</span><span lang="en">If you want to talk to someone now, you can use this order directly.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Open as a learner, not a seller</span><span lang="en">6.1 Open as a learner, not a seller</span></h3>
+<p class="reveal"><span lang="id">For example:</span><span lang="en">For example:</span></p>
+<p class="reveal"><span lang="id">> I am trying to understand how people actually deal with this in real life. I am not selling anything right now.</span><span lang="en">> I am trying to understand how people actually deal with this in real life. I am not selling anything right now.</span></p>
+<p class="reveal"><span lang="id">That makes it easier for the other person to drop the instinct to encourage you.</span><span lang="en">That makes it easier for the other person to drop the instinct to encourage you.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 Start from the last real incident</span><span lang="en">6.2 Start from the last real incident</span></h3>
+<p class="reveal"><span lang="id">Good opening questions are:</span><span lang="en">Good opening questions are:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">When was the last time this happened?</span><span lang="en">When was the last time this happened?</span></li>
+<li><span lang="id">What happened?</span><span lang="en">What happened?</span></li>
+<li><span lang="id">What did you do first?</span><span lang="en">What did you do first?</span></li>
+</ul>
+<p class="reveal"><span lang="id">Once the conversation enters one specific real event, the quality of the information usually improves a lot.</span><span lang="en">Once the conversation enters one specific real event, the quality of the information usually improves a lot.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.3 Then ask about behavior, cost, and alternatives</span><span lang="en">6.3 Then ask about behavior, cost, and alternatives</span></h3>
+<p class="reveal"><span lang="id">Continue with questions like:</span><span lang="en">Continue with questions like:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">What do you do today?</span><span lang="en">What do you do today?</span></li>
+<li><span lang="id">What feels worst about that method?</span><span lang="en">What feels worst about that method?</span></li>
+<li><span lang="id">How much time, money, or energy does it cost?</span><span lang="en">How much time, money, or energy does it cost?</span></li>
+<li><span lang="id">Have you tried anything else? Why did you stop?</span><span lang="en">Have you tried anything else? Why did you stop?</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.4 Only then judge pain and priority</span><span lang="en">6.4 Only then judge pain and priority</span></h3>
+<p class="reveal"><span lang="id">You do not have to ask directly, "How painful is this?" You can often judge it from the details:</span><span lang="en">You do not have to ask directly, "How painful is this?" You can often judge it from the details:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">does this happen often?</span><span lang="en">does this happen often?</span></li>
+<li><span lang="id">are they already actively patching the problem?</span><span lang="en">are they already actively patching the problem?</span></li>
+<li><span lang="id">have they already paid some real cost?</span><span lang="en">have they already paid some real cost?</span></li>
+<li><span lang="id">do they talk about it with visible frustration or emotion?</span><span lang="en">do they talk about it with visible frustration or emotion?</span></li>
+</ul>
+<p class="reveal"><span lang="id">Those clues are much more useful than asking, "Is this a pain point for you?"</span><span lang="en">Those clues are much more useful than asking, "Is this a pain point for you?"</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">7. A More Complete Example</span><span lang="en">7. A More Complete Example</span></h2>
+<p class="reveal"><span lang="id">Suppose you want to build an AI product that helps college students improve resumes.</span><span lang="en">Suppose you want to build an AI product that helps college students improve resumes.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Weak questions</span><span lang="en">Weak questions</span></h3>
+<p class="reveal"><span lang="id">You ask a classmate:</span><span lang="en">You ask a classmate:</span></p>
+<p class="reveal"><span lang="id">> I want to build an AI resume optimizer. What do you think?</span><span lang="en">> I want to build an AI resume optimizer. What do you think?</span></p>
+<p class="reveal"><span lang="id">> If it could automatically rewrite your resume for a job description, would you use it?</span><span lang="en">> If it could automatically rewrite your resume for a job description, would you use it?</span></p>
+<p class="reveal"><span lang="id">They will probably say:</span><span lang="en">They will probably say:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">sounds good</span><span lang="en">sounds good</span></li>
+<li><span lang="id">I think that could be useful</span><span lang="en">I think that could be useful</span></li>
+<li><span lang="id">I would try it if it were free</span><span lang="en">I would try it if it were free</span></li>
+</ul>
+<p class="reveal"><span lang="id">Those answers give you almost no reliable signal about the actual strength of the demand.</span><span lang="en">Those answers give you almost no reliable signal about the actual strength of the demand.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Better questions</span><span lang="en">Better questions</span></h3>
+<p class="reveal"><span lang="id">You can change the conversation to this:</span><span lang="en">You can change the conversation to this:</span></p>
+<p class="reveal"><span lang="id">> When was the last time you edited your resume?</span><span lang="en">> When was the last time you edited your resume?</span></p>
+<p class="reveal"><span lang="id">> Why did you need to change it?</span><span lang="en">> Why did you need to change it?</span></p>
+<p class="reveal"><span lang="id">> How did you do it?</span><span lang="en">> How did you do it?</span></p>
+<p class="reveal"><span lang="id">> Which step felt hardest?</span><span lang="en">> Which step felt hardest?</span></p>
+<p class="reveal"><span lang="id">> Did you ask anyone else to review it?</span><span lang="en">> Did you ask anyone else to review it?</span></p>
+<p class="reveal"><span lang="id">> Have you ever spent money or a lot of time on this?</span><span lang="en">> Have you ever spent money or a lot of time on this?</span></p>
+<p class="reveal"><span lang="id">From these questions, you may learn things like:</span><span lang="en">From these questions, you may learn things like:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">many people are not bad at writing, but bad at tailoring the resume for different roles</span><span lang="en">many people are not bad at writing, but bad at tailoring the resume for different roles</span></li>
+<li><span lang="id">the biggest pain is often not formatting, but not knowing which experience belongs</span><span lang="en">the biggest pain is often not formatting, but not knowing which experience belongs</span></li>
+<li><span lang="id">they delay not because they are lazy, but because every revision round drains them</span><span lang="en">they delay not because they are lazy, but because every revision round drains them</span></li>
+<li><span lang="id">current workarounds already include seniors, templates, AI tools, and friends</span><span lang="en">current workarounds already include seniors, templates, AI tools, and friends</span></li>
+</ul>
+<p class="reveal"><span lang="id">That gets you much closer to the real problem.</span><span lang="en">That gets you much closer to the real problem.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8. How The Mom Test Works with JTBD</span><span lang="en">8. How The Mom Test Works with JTBD</span></h2>
+<p class="reveal"><span lang="id">If JTBD helps you see what kind of progress the user is trying to make, The Mom Test teaches you:</span><span lang="en">If JTBD helps you see what kind of progress the user is trying to make, The Mom Test teaches you:</span></p>
+<p class="reveal"><span lang="id"><b>how to verify through interviews whether that job is actually real.</b></span><span lang="en"><b>how to verify through interviews whether that job is actually real.</b></span></p>
+<p class="reveal"><span lang="id">You can combine the two like this:</span><span lang="en">You can combine the two like this:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">use JTBD to draft one job hypothesis</span><span lang="en">use JTBD to draft one job hypothesis</span></li>
+<li><span lang="id">use The Mom Test style questions to ask about the last real situation</span><span lang="en">use The Mom Test style questions to ask about the last real situation</span></li>
+<li><span lang="id">judge whether that job is frequent, painful, and worth prioritizing</span><span lang="en">judge whether that job is frequent, painful, and worth prioritizing</span></li>
+</ul>
+<p class="reveal"><span lang="id">Example JTBD hypothesis:</span><span lang="en">Example JTBD hypothesis:</span></p>
+<p class="reveal"><span lang="id">> When I am preparing internship applications, I want to adapt my old resume into a role-specific version so I can submit faster.</span><span lang="en">> When I am preparing internship applications, I want to adapt my old resume into a role-specific version so I can submit faster.</span></p>
+<p class="reveal"><span lang="id">Now validate it with questions like:</span><span lang="en">Now validate it with questions like:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">When was your last internship application?</span><span lang="en">When was your last internship application?</span></li>
+<li><span lang="id">How did you edit your resume?</span><span lang="en">How did you edit your resume?</span></li>
+<li><span lang="id">Which part was hardest to rewrite?</span><span lang="en">Which part was hardest to rewrite?</span></li>
+<li><span lang="id">How did you judge whether it was ready?</span><span lang="en">How did you judge whether it was ready?</span></li>
+</ul>
+<p class="reveal"><span lang="id">That is how the two methods connect:</span><span lang="en">That is how the two methods connect:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">JTBD helps define the need hypothesis</span><span lang="en">JTBD helps define the need hypothesis</span></li>
+<li><span lang="id">The Mom Test helps validate it through conversation</span><span lang="en">The Mom Test helps validate it through conversation</span></li>
+</ul>
+<p class="reveal"><span lang="id">Interviews help us understand what happened in the past, but they are not the final step. Once a prototype exists, users should operate it directly so we can compare what they described with what they actually do.</span><span lang="en">Interviews help us understand what happened in the past, but they are not the final step. Once a prototype exists, users should operate it directly so we can compare what they described with what they actually do.</span></p>
+<p class="reveal"><span lang="id"><figure class="field-figure"></span><span lang="en"><figure class="field-figure"></span></p>
+<p class="reveal"><span lang="id"><a href="https://commons.wikimedia.org/wiki/File:03-Pau-DevCamp-usability-testing.jpg" target="_blank" rel="noreferrer"></span><span lang="en"><a href="https://commons.wikimedia.org/wiki/File:03-Pau-DevCamp-usability-testing.jpg" target="_blank" rel="noreferrer"></span></p>
+<p class="reveal"><span lang="id"><img src="/images/product-discovery/mom-test/usability-testing-session.jpg" alt="At Bangalore DevCamp, a participant operates a new translation application during a usability test" loading="lazy" /></span><span lang="en"><img src="/images/product-discovery/mom-test/usability-testing-session.jpg" alt="At Bangalore DevCamp, a participant operates a new translation application during a usability test" loading="lazy" /></span></p>
+<p class="reveal"><span lang="id"></a></span><span lang="en"></a></span></p>
+<p class="reveal"><span lang="id"><figcaption><strong>After “I would use it,” examine whether the solution is usable.</strong> This photograph records a 2012 Bangalore DevCamp usability test of a new translation application. A participant completes a task on the computer while researchers observe points of difficulty. Interviews test whether the problem exists; usability testing then examines whether the solution helps complete the task. Photograph: <a href="https://commons.wikimedia.org/wiki/File:03-Pau-DevCamp-usability-testing.jpg" target="_blank" rel="noreferrer">Amire80 / Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noreferrer">CC BY-SA 3.0</a>.</figcaption></span><span lang="en"><figcaption><strong>After “I would use it,” examine whether the solution is usable.</strong> This photograph records a 2012 Bangalore DevCamp usability test of a new translation application. A participant completes a task on the computer while researchers observe points of difficulty. Interviews test whether the problem exists; usability testing then examines whether the solution helps complete the task. Photograph: <a href="https://commons.wikimedia.org/wiki/File:03-Pau-DevCamp-usability-testing.jpg" target="_blank" rel="noreferrer">Amire80 / Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noreferrer">CC BY-SA 3.0</a>.</figcaption></span></p>
+<p class="reveal"><span lang="id"></figure></span><span lang="en"></figure></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">9. Common Beginner Mistakes in Interviews</span><span lang="en">9. Common Beginner Mistakes in Interviews</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">9.1 Turning the interview into a product presentation</span><span lang="en">9.1 Turning the interview into a product presentation</span></h3>
+<p class="reveal"><span lang="id">If you explain too much about your idea, the other person starts helping you instead of telling you the truth.</span><span lang="en">If you explain too much about your idea, the other person starts helping you instead of telling you the truth.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">9.2 Interviewing only friends</span><span lang="en">9.2 Interviewing only friends</span></h3>
+<p class="reveal"><span lang="id">Friends are not useless, but they are more likely to encourage you. You need at least some people who are closer to real users and less emotionally invested in you.</span><span lang="en">Friends are not useless, but they are more likely to encourage you. You need at least some people who are closer to real users and less emotionally invested in you.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">9.3 Asking about features too early</span><span lang="en">9.3 Asking about features too early</span></h3>
+<p class="reveal"><span lang="id">If the problem is still unclear, detailed feature questions usually mean you are moving into solution mode too early.</span><span lang="en">If the problem is still unclear, detailed feature questions usually mean you are moving into solution mode too early.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">9.4 Treating "I would use it" as validation</span><span lang="en">9.4 Treating "I would use it" as validation</span></h3>
+<p class="reveal"><span lang="id">Interviews can help you judge direction, but interviews are not the whole validation step. Real validation still depends on real cost: time, switching effort, trial behavior, or payment.</span><span lang="en">Interviews can help you judge direction, but interviews are not the whole validation step. Real validation still depends on real cost: time, switching effort, trial behavior, or payment.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">9.5 Not organizing what you learned</span><span lang="en">9.5 Not organizing what you learned</span></h3>
+<p class="reveal"><span lang="id">If you do not organize the conversation afterward, it quickly becomes a blurry impression. Try to capture:</span><span lang="en">If you do not organize the conversation afterward, it quickly becomes a blurry impression. Try to capture:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">repeated problems</span><span lang="en">repeated problems</span></li>
+<li><span lang="id">emotional words in the user's own phrasing</span><span lang="en">emotional words in the user's own phrasing</span></li>
+<li><span lang="id">current workarounds</span><span lang="en">current workarounds</span></li>
+<li><span lang="id">costs already paid</span><span lang="en">costs already paid</span></li>
+<li><span lang="id">your updated judgment</span><span lang="en">your updated judgment</span></li>
+</ul>
+<p class="reveal"><span lang="id"><figure class="field-figure"></span><span lang="en"><figure class="field-figure"></span></p>
+<p class="reveal"><span lang="id"><a href="https://commons.wikimedia.org/wiki/File:Wikipedia-Affinity.jpg" target="_blank" rel="noreferrer"></span><span lang="en"><a href="https://commons.wikimedia.org/wiki/File:Wikipedia-Affinity.jpg" target="_blank" rel="noreferrer"></span></p>
+<p class="reveal"><span lang="id"><img src="/images/product-discovery/mom-test/wikipedia-affinity-synthesis.jpg" alt="A Wikipedia usability project clustering interview and observation evidence into an affinity diagram" loading="lazy" /></span><span lang="en"><img src="/images/product-discovery/mom-test/wikipedia-affinity-synthesis.jpg" alt="A Wikipedia usability project clustering interview and observation evidence into an affinity diagram" loading="lazy" /></span></p>
+<p class="reveal"><span lang="id"></a></span><span lang="en"></a></span></p>
+<p class="reveal"><span lang="id"><figcaption><strong>Finishing the interviews only means the raw material is ready.</strong> This affinity diagram comes from a Wikimedia Foundation usability project. Observations were first separated into individual pieces of evidence and then clustered by recurring theme. This produces a pattern across interviews rather than the impression that everyone needs the product. Photograph: Parul Vora / Wikimedia Foundation, <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noreferrer">CC BY-SA 3.0</a>.</figcaption></span><span lang="en"><figcaption><strong>Finishing the interviews only means the raw material is ready.</strong> This affinity diagram comes from a Wikimedia Foundation usability project. Observations were first separated into individual pieces of evidence and then clustered by recurring theme. This produces a pattern across interviews rather than the impression that everyone needs the product. Photograph: Parul Vora / Wikimedia Foundation, <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noreferrer">CC BY-SA 3.0</a>.</figcaption></span></p>
+<p class="reveal"><span lang="id"></figure></span><span lang="en"></figure></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">10. A Reusable Question Checklist</span><span lang="en">10. A Reusable Question Checklist</span></h2>
+<p class="reveal"><span lang="id">If you want to start quickly, this set is broad enough for many interviews.</span><span lang="en">If you want to start quickly, this set is broad enough for many interviews.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Opening questions</span><span lang="en">Opening questions</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">When was the last time this problem happened?</span><span lang="en">When was the last time this problem happened?</span></li>
+<li><span lang="id">What exactly happened?</span><span lang="en">What exactly happened?</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Behavior questions</span><span lang="en">Behavior questions</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">How did you handle it?</span><span lang="en">How did you handle it?</span></li>
+<li><span lang="id">Why did you do it that way?</span><span lang="en">Why did you do it that way?</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Cost questions</span><span lang="en">Cost questions</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">How much time or energy does this usually cost?</span><span lang="en">How much time or energy does this usually cost?</span></li>
+<li><span lang="id">Have you ever spent money to solve it?</span><span lang="en">Have you ever spent money to solve it?</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Alternative questions</span><span lang="en">Alternative questions</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">What other tools or methods have you tried?</span><span lang="en">What other tools or methods have you tried?</span></li>
+<li><span lang="id">Why did you stop using them?</span><span lang="en">Why did you stop using them?</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">Closing question</span><span lang="en">Closing question</span></h3>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">If this problem came up again, what would an ideal solution feel like?</span><span lang="en">If this problem came up again, what would an ideal solution feel like?</span></li>
+</ul>
+<p class="reveal"><span lang="id">This is fine near the end, but it should not come first. Earlier in the conversation, you want facts more than wishes.</span><span lang="en">This is fine near the end, but it should not come first. Earlier in the conversation, you want facts more than wishes.</span></p>
+<p class="reveal"><span lang="id"><a id="mom-ai"></a></span><span lang="en"><a id="mom-ai"></a></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">[11. Using AI to Prepare and Organize Interviews](#top-mom)</span><span lang="en">[11. Using AI to Prepare and Organize Interviews](#top-mom)</span></h2>
+<p class="reveal"><span lang="id">The Mom Test is still a method for talking to real people, so AI cannot replace real interviews. But AI is extremely useful before, during, and after interviews, especially for beginners who need structure.</span><span lang="en">The Mom Test is still a method for talking to real people, so AI cannot replace real interviews. But AI is extremely useful before, during, and after interviews, especially for beginners who need structure.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">12.1 Rewrite weak questions</span><span lang="en">12.1 Rewrite weak questions</span></h3>
+<p class="reveal"><span lang="id">Many people know they should not ask, "What do you think of my idea?", but they still drift back to that kind of wording. You can ask AI to rewrite your draft questions first:</span><span lang="en">Many people know they should not ask, "What do you think of my idea?", but they still drift back to that kind of wording. You can ask AI to rewrite your draft questions first:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Below are the questions I plan to ask in user interviews:
+[paste your questions]
+
+Please rewrite them using The Mom Test principles:
+1. remove opinion-based questions
+2. remove future hypothetical questions
+3. turn them into questions about real past behavior, current alternatives, and real costs
+4. organize the result into 8-10 interview questions I can actually use</pre>
+</div>
+<p class="reveal"><span lang="id">A very beginner-style input also works:</span><span lang="en">A very beginner-style input also works:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>I want to ask users:
+1. What do you think of my AI resume tool?
+2. Would you use it?
+3. Would you pay for it?
+
+Please turn these into better interview questions.</pre>
+</div>
+<p class="reveal"><span lang="id">Possible AI output:</span><span lang="en">Possible AI output:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Rewritten questions:
+
+1. When was the last time you edited your resume?
+2. Why did you need to edit it?
+3. How did you do it?
+4. Which part took the most time?
+5. Did you ask anyone else to review it?
+6. Have you ever spent money or a lot of time solving this?</pre>
+</div>
+<p class="reveal"><span lang="id">That output is useful because it turns opinion-seeking questions into behavior-seeking questions.</span><span lang="en">That output is useful because it turns opinion-seeking questions into behavior-seeking questions.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">12.2 Create different interview guides for different user types</span><span lang="en">12.2 Create different interview guides for different user types</span></h3>
+<p class="reveal"><span lang="id">The same problem feels different to different user groups. Students, HR people, and senior peers often care about different parts of the workflow. AI can generate separate interview guides for each group.</span><span lang="en">The same problem feels different to different user groups. Students, HR people, and senior peers often care about different parts of the workflow. AI can generate separate interview guides for each group.</span></p>
+<p class="reveal"><span lang="id">For example:</span><span lang="en">For example:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>I want to talk to two groups:
+1. college students applying for internships for the first time
+2. seniors who have reviewed many resumes
+
+Please create a 6-question interview guide for each group.</pre>
+</div>
+<p class="reveal"><span lang="id">Possible AI output:</span><span lang="en">Possible AI output:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>For students:
+1. When was your last internship application?
+2. What part felt hardest?
+3. How do you judge whether your resume is ready?
+...
+
+For seniors:
+1. When did you last review a junior&#039;s resume?
+2. What common issues do you see most often?
+3. Where do students usually get stuck?
+...</pre>
+</div>
+<p class="reveal"><span lang="id">That makes interview prep much easier because you do not need to invent every question from scratch.</span><span lang="en">That makes interview prep much easier because you do not need to invent every question from scratch.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">12.3 Sort interview notes into facts vs opinions</span><span lang="en">12.3 Sort interview notes into facts vs opinions</span></h3>
+<p class="reveal"><span lang="id"><figure class="field-figure"></span><span lang="en"><figure class="field-figure"></span></p>
+<p class="reveal"><span lang="id"><a href="https://commons.wikimedia.org/wiki/File:Volunteer_Molly_conducting_an_interview._Over_200_prospects_still_need_to_be_interviewed._Plus_the_park_needs_help_transcribing_(791cd068-1dd8-b71b-0b4d-48151192c96f).jpg" target="_blank" rel="noreferrer"></span><span lang="en"><a href="https://commons.wikimedia.org/wiki/File:Volunteer_Molly_conducting_an_interview._Over_200_prospects_still_need_to_be_interviewed._Plus_the_park_needs_help_transcribing_(791cd068-1dd8-b71b-0b4d-48151192c96f).jpg" target="_blank" rel="noreferrer"></span></p>
+<p class="reveal"><span lang="id"><img src="/images/product-discovery/mom-test/oral-history-interview.jpg" alt="A face-to-face oral-history interview for the U.S. National Park Service, with an interview guide, photographs, and notes on the table" loading="lazy" /></span><span lang="en"><img src="/images/product-discovery/mom-test/oral-history-interview.jpg" alt="A face-to-face oral-history interview for the U.S. National Park Service, with an interview guide, photographs, and notes on the table" loading="lazy" /></span></p>
+<p class="reveal"><span lang="id"></a></span><span lang="en"></a></span></p>
+<p class="reveal"><span lang="id"><figcaption><strong>Synthesis must remain connected to the source material.</strong> This oral-history interview uses a guide, historical photographs, and field notes together. The project description also identifies transcription as a key step in making the record usable. AI can assist with transcription and classification, but every conclusion should remain traceable to the participant's words. Photograph: U.S. National Park Service, public domain.</figcaption></span><span lang="en"><figcaption><strong>Synthesis must remain connected to the source material.</strong> This oral-history interview uses a guide, historical photographs, and field notes together. The project description also identifies transcription as a key step in making the record usable. AI can assist with transcription and classification, but every conclusion should remain traceable to the participant's words. Photograph: U.S. National Park Service, public domain.</figcaption></span></p>
+<p class="reveal"><span lang="id"></figure></span><span lang="en"></figure></span></p>
+<p class="reveal"><span lang="id">After interviews, the problem is often not "too little information," but "too much scattered information." AI is good at turning messy notes into structured evidence:</span><span lang="en">After interviews, the problem is often not "too little information," but "too much scattered information." AI is good at turning messy notes into structured evidence:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Below are notes from 3 user interviews.
+Please organize them using The Mom Test:
+1. which parts are facts and which are opinions
+2. what the user&#039;s last real behavior was
+3. what the current workaround is
+4. what time, money, or effort cost they have already paid
+5. which problems show up repeatedly
+6. which statements sound positive but have weak evidence</pre>
+</div>
+<p class="reveal"><span lang="id">Simple beginner input:</span><span lang="en">Simple beginner input:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Here are my notes from one interview:
+
+- she said she would probably try such a tool
+- last week she spent one full evening editing her resume
+- she currently asks friends for feedback
+- she is not sure when a resume is &quot;good enough&quot;
+
+Please separate facts from opinions.</pre>
+</div>
+<p class="reveal"><span lang="id">Possible AI output:</span><span lang="en">Possible AI output:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Opinion:
+- she would probably try such a tool
+
+Facts:
+- she spent one full evening editing her resume
+- she currently depends on friends for feedback
+- she is not sure when the resume is good enough
+
+Useful evidence:
+- the problem happened recently
+- she already paid a meaningful time cost
+- the current workaround depends on other people</pre>
+</div>
+<p class="reveal"><span lang="id">This is especially useful because it helps beginners separate "sounds nice" from "supports a real decision."</span><span lang="en">This is especially useful because it helps beginners separate "sounds nice" from "supports a real decision."</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">12.4 Do a light web search before interviews</span><span lang="en">12.4 Do a light web search before interviews</span></h3>
+<p class="reveal"><span lang="id">Before interviews even begin, AI can help with a light external scan:</span><span lang="en">Before interviews even begin, AI can help with a light external scan:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">how people complain about the problem in public communities</span><span lang="en">how people complain about the problem in public communities</span></li>
+<li><span lang="id">which tools get criticized most often</span><span lang="en">which tools get criticized most often</span></li>
+<li><span lang="id">whether people already spend money on related solutions</span><span lang="en">whether people already spend money on related solutions</span></li>
+<li><span lang="id">what alternatives already exist</span><span lang="en">what alternatives already exist</span></li>
+</ul>
+<p class="reveal"><span lang="id">Example prompt:</span><span lang="en">Example prompt:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Please look up:
+&quot;What do students complain about most when editing resumes?&quot;
+Summarize the 5 most common complaints in simple language.</pre>
+</div>
+<p class="reveal"><span lang="id">Possible AI output:</span><span lang="en">Possible AI output:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Common complaints:
+1. I don&#039;t know what belongs on the resume
+2. I have to rewrite it for every role and it is exhausting
+3. I keep editing but still do not know if it is good enough
+4. I do not have reliable feedback
+5. I keep delaying because I never feel ready</pre>
+</div>
+<p class="reveal"><span lang="id">This does not replace real interviews, but it helps you enter them with a better starting map.</span><span lang="en">This does not replace real interviews, but it helps you enter them with a better starting map.</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">12.5 Ask AI to review your interview technique</span><span lang="en">12.5 Ask AI to review your interview technique</span></h3>
+<p class="reveal"><span lang="id">You can also paste one interview transcript and ask AI to critique your questioning:</span><span lang="en">You can also paste one interview transcript and ask AI to critique your questioning:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Here is a transcript from one user interview.
+Please review it using The Mom Test:
+1. Which questions sound like I was seeking reassurance?
+2. Which questions were leading?
+3. Where should I have asked more about facts?
+4. How could I ask this better next time?</pre>
+</div>
+<p class="reveal"><span lang="id">That is especially helpful for beginners because it trains the instinct to ask:</span><span lang="en">That is especially helpful for beginners because it trains the instinct to ask:</span></p>
+<p class="reveal"><span lang="id"><b>am I collecting evidence, or am I just collecting encouragement?</b></span><span lang="en"><b>am I collecting evidence, or am I just collecting encouragement?</b></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">12. Summary</span><span lang="en">12. Summary</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">A positive evaluation of a product idea is not sufficient evidence of demand.</span><span lang="en">A positive evaluation of a product idea is not sufficient evidence of demand.</span></li>
+<li><span lang="id">Interviews should prioritize specific past experiences over predictions of future behavior.</span><span lang="en">Interviews should prioritize specific past experiences over predictions of future behavior.</span></li>
+<li><span lang="id">Behavior, time, money, and current alternatives are the main evidence for judging problem intensity.</span><span lang="en">Behavior, time, money, and current alternatives are the main evidence for judging problem intensity.</span></li>
+<li><span lang="id">AI can help prepare a guide and organize notes, but it cannot replace real interviews.</span><span lang="en">AI can help prepare a guide and organize notes, but it cannot replace real interviews.</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">13. Exercise</span><span lang="en">13. Exercise</span></h2>
+<p class="reveal"><span lang="id"><StageAssignmentCard title="Run a User Interview Without Pitching Your Idea"></span><span lang="en"><StageAssignmentCard title="Run a User Interview Without Pitching Your Idea"></span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Write 5 weak interview questions you might normally ask</span><span lang="en">Write 5 weak interview questions you might normally ask</span></li>
+<li><span lang="id">Rewrite them in The Mom Test style</span><span lang="en">Rewrite them in The Mom Test style</span></li>
+<li><span lang="id">Interview 3 potential users about the last time the problem happened</span><span lang="en">Interview 3 potential users about the last time the problem happened</span></li>
+<li><span lang="id">Sort your notes into facts, workarounds, costs, and repeated pain points</span><span lang="en">Sort your notes into facts, workarounds, costs, and repeated pain points</span></li>
+</ul>
+<p class="reveal"><span lang="id"></StageAssignmentCard></span><span lang="en"></StageAssignmentCard></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Further Reading</span><span lang="en">Further Reading</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[The Mom Test official site](https://momtestbook.com/)</span><span lang="en">[The Mom Test official site](https://momtestbook.com/)</span></li>
+<li><span lang="id">[Rob Fitzpatrick: The Mom Test](https://www.robfitz.com/the-mom-test/)</span><span lang="en">[Rob Fitzpatrick: The Mom Test](https://www.robfitz.com/the-mom-test/)</span></li>
+</ul>
+<p class="reveal"><span lang="id"><style scoped></span><span lang="en"><style scoped></span></p>
+<p class="reveal"><span lang="id">.field-figure { margin: 24px 0 32px; overflow: hidden; border: 1px solid var(--vp-c-divider); border-radius: 12px; background: var(--vp-c-bg-soft); }</span><span lang="en">.field-figure { margin: 24px 0 32px; overflow: hidden; border: 1px solid var(--vp-c-divider); border-radius: 12px; background: var(--vp-c-bg-soft); }</span></p>
+<p class="reveal"><span lang="id">.field-figure > a { display: block; background: #f4f4f1; }</span><span lang="en">.field-figure > a { display: block; background: #f4f4f1; }</span></p>
+<p class="reveal"><span lang="id">.field-figure img { display: block; width: 100%; max-height: 520px; object-fit: contain; }</span><span lang="en">.field-figure img { display: block; width: 100%; max-height: 520px; object-fit: contain; }</span></p>
+<p class="reveal"><span lang="id">.field-figure figcaption { padding: 13px 16px 15px; border-top: 1px solid var(--vp-c-divider); color: var(--vp-c-text-2); font-size: 13px; line-height: 1.75; }</span><span lang="en">.field-figure figcaption { padding: 13px 16px 15px; border-top: 1px solid var(--vp-c-divider); color: var(--vp-c-text-2); font-size: 13px; line-height: 1.75; }</span></p>
+<p class="reveal"><span lang="id">.field-figure figcaption strong { color: var(--vp-c-text-1); }</span><span lang="en">.field-figure figcaption strong { color: var(--vp-c-text-1); }</span></p>
+<p class="reveal"><span lang="id">@media (max-width: 640px) { .field-figure { margin: 20px 0 28px; } }</span><span lang="en">@media (max-width: 640px) { .field-figure { margin: 20px 0 28px; } }</span></p>
+<p class="reveal"><span lang="id"></style></span><span lang="en"></style></span></p>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../appendix-jobs-to-be-done/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Memahami Kebutuhan Sejati (JTBD)</span><span lang="en">Memahami Kebutuhan Sejati (JTBD)</span></b></a>
+      <a class="next" href="../appendix-double-diamond/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Mempersempit Solusi (Double Diamond)</span><span lang="en">Mempersempit Solusi (Double Diamond)</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../assets/vibekoding.js"></script>
+</body>
+</html>

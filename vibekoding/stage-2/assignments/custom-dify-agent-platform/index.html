@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Proyek: Platform Agen AI Kustom Mirip Dify — VibeKoding 🤖</title>
+<meta name="description" content="Modul praktis Level 2 VibeKoding: Proyek: Platform Agen AI Kustom Mirip Dify. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-2/assignments/custom-dify-agent-platform/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../stage-2/"><span lang="id">Level 2 · Developer</span><span lang="en">Level 2 · Developer</span></a> / <span lang="id">Proyek: Platform Agen AI Kustom Mirip Dify</span><span lang="en">Proyek: Platform Agen AI Kustom Mirip Dify</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">🤖</div>
+      <div>
+        <h1><span lang="id">Proyek: Platform Agen AI Kustom Mirip Dify</span><span lang="en">Proyek: Platform Agen AI Kustom Mirip Dify</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Level 2 · Developer</span><span lang="en">Level 2 · Developer</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Modul praktis Level 2 VibeKoding: Proyek: Platform Agen AI Kustom Mirip Dify.</span><span lang="en">Modul praktis Level 2 VibeKoding: Proyek: Platform Agen AI Kustom Mirip Dify.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Overview</span><span lang="en">Overview</span></h2>
+<p class="reveal"><span lang="id">This project requires you to build an agent platform that replicates the core Dify experience, based on a real PRD. You'll build a user console, admin dashboard, and platform backend, implementing core features like agent management, conversations, logging, and knowledge base.</span><span lang="en">This project requires you to build an agent platform that replicates the core Dify experience, based on a real PRD. You'll build a user console, admin dashboard, and platform backend, implementing core features like agent management, conversations, logging, and knowledge base.</span></p>
+<p class="reveal"><span lang="id">This is the comprehensive practical section of Stage 2. Unlike previous single-page or single-feature projects, this one requires building a "platform-like" AI product — with multiple roles, multiple modules, data persistence, and model call pipelines.</span><span lang="en">This is the comprehensive practical section of Stage 2. Unlike previous single-page or single-feature projects, this one requires building a "platform-like" AI product — with multiple roles, multiple modules, data persistence, and model call pipelines.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Prerequisites</span><span lang="en">Prerequisites</span></h2>
+<p class="reveal"><span lang="id">Before starting this project, you should already be familiar with:</span><span lang="en">Before starting this project, you should already be familiar with:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Frontend page design and component libraries ([UI Design](../../frontend/ui-design/), [Modern Component Libraries](../../frontend/modern-component-library/))</span><span lang="en">Frontend page design and component libraries ([UI Design](../../frontend/ui-design/), [Modern Component Libraries](../../frontend/modern-component-library/))</span></li>
+<li><span lang="id">Backend API design and development ([API Code](../../backend/ai-interface-code/))</span><span lang="en">Backend API design and development ([API Code](../../backend/ai-interface-code/))</span></li>
+<li><span lang="id">Database fundamentals and Supabase ([Database to Supabase](../../backend/database-supabase/))</span><span lang="en">Database fundamentals and Supabase ([Database to Supabase](../../backend/database-supabase/))</span></li>
+<li><span lang="id">Git workflow and deployment ([Git & GitHub](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/))</span><span lang="en">Git workflow and deployment ([Git & GitHub](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/))</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Learning Objectives</span><span lang="en">Learning Objectives</span></h2>
+<p class="reveal"><span lang="id">After completing this project, you will be able to:</span><span lang="en">After completing this project, you will be able to:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Read and understand a real PRD, extracting a development task list</span><span lang="en">Read and understand a real PRD, extracting a development task list</span></li>
+<li><span lang="id">Design the page architecture and data models for an agent platform</span><span lang="en">Design the page architecture and data models for an agent platform</span></li>
+<li><span lang="id">Implement the full pipeline for agent creation, conversation, and logging</span><span lang="en">Implement the full pipeline for agent creation, conversation, and logging</span></li>
+<li><span lang="id">Use AI assistance to build a platform-type product</span><span lang="en">Use AI assistance to build a platform-type product</span></li>
+<li><span lang="id">Complete end-to-end integration and deliver a demo-ready AI platform prototype</span><span lang="en">Complete end-to-end integration and deliver a demo-ready AI platform prototype</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Project Overview</span><span lang="en">Project Overview</span></h2>
+<p class="reveal"><span lang="id">You will build a Dify-like agent platform with two subsystems:</span><span lang="en">You will build a Dify-like agent platform with two subsystems:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Subsystem</th><th>Responsibility</th></tr>
+<tr><td><b>User Console</b></td><td>Create agents, configure prompts, start conversations, view logs, manage knowledge base</td></tr>
+<tr><td><b>Admin Dashboard</b></td><td>View user data, platform resource usage, API call statistics</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">The backend needs to support: agent management, session management, message storage, model calls, call logging, and knowledge base integration.</span><span lang="en">The backend needs to support: agent management, session management, message storage, model calls, call logging, and knowledge base integration.</span></p>
+
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id">The requirements document for this project is on GitHub: [View PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/en/stage-2/assignments/custom-dify-agent-platform/PRD.md)</span><span lang="en">The requirements document for this project is on GitHub: [View PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/en/stage-2/assignments/custom-dify-agent-platform/PRD.md)</span></p>
+</div>
+<p class="reveal"><span lang="id"><div style="margin: 32px 0;"></span><span lang="en"><div style="margin: 32px 0;"></span></p>
+<p class="reveal"><span lang="id"><ClientOnly></span><span lang="en"><ClientOnly></span></p>
+<p class="reveal"><span lang="id"><StepBar :active="0" :items="[</span><span lang="en"><StepBar :active="0" :items="[</span></p>
+<p class="reveal"><span lang="id">{ title: 'Requirements', description: 'Read PRD, define pages, capability scope, auth, and data models' },</span><span lang="en">{ title: 'Requirements', description: 'Read PRD, define pages, capability scope, auth, and data models' },</span></p>
+<p class="reveal"><span lang="id">{ title: 'Scaffold', description: 'Use AI to generate user console and admin dashboard skeletons' },</span><span lang="en">{ title: 'Scaffold', description: 'Use AI to generate user console and admin dashboard skeletons' },</span></p>
+<p class="reveal"><span lang="id">{ title: 'Iterate', description: 'Add agents, conversations, logs, and knowledge base module by module' },</span><span lang="en">{ title: 'Iterate', description: 'Add agents, conversations, logs, and knowledge base module by module' },</span></p>
+<p class="reveal"><span lang="id">{ title: 'Launch', description: 'End-to-end testing, deploy, and prepare demo' }</span><span lang="en">{ title: 'Launch', description: 'End-to-end testing, deploy, and prepare demo' }</span></p>
+<p class="reveal"><span lang="id">]" /></span><span lang="en">]" /></span></p>
+<p class="reveal"><span lang="id"></ClientOnly></span><span lang="en"></ClientOnly></span></p>
+<p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Part 1: Requirements Analysis</span><span lang="en">Part 1: Requirements Analysis</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 Read the PRD</span><span lang="en">1.1 Read the PRD</span></h3>
+<p class="reveal"><span lang="id">Open the PRD document and answer these key questions:</span><span lang="en">Open the PRD document and answer these key questions:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Which of agents, sessions, logs, and knowledge base should go into the MVP?</span><span lang="en">Which of agents, sessions, logs, and knowledge base should go into the MVP?</span></li>
+<li><span lang="id">Is the page and route list finalized?</span><span lang="en">Is the page and route list finalized?</span></li>
+<li><span lang="id">What are the boundaries of model calls and log recording?</span><span lang="en">What are the boundaries of model calls and log recording?</span></li>
+<li><span lang="id">Should multi-tenancy and complex workflows be deferred?</span><span lang="en">Should multi-tenancy and complex workflows be deferred?</span></li>
+</ul>
+
+<div class="callout warn reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div>
+  <p><span lang="id">If the above questions don't have clear answers, don't start coding. Unclear requirements are the most common cause of rework.</span><span lang="en">If the above questions don't have clear answers, don't start coding. Unclear requirements are the most common cause of rework.</span></p>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 Confirm System Architecture</span><span lang="en">1.2 Confirm System Architecture</span></h3>
+<p class="reveal"><span lang="id">Map out the overall architecture based on the PRD:</span><span lang="en">Map out the overall architecture based on the PRD:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>mermaid</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>flowchart TD
+  prd[&quot;PRD&quot;] --&gt; app[&quot;User Console&quot;]
+  prd --&gt; admin[&quot;Admin Dashboard&quot;]
+  app --&gt; auth[&quot;Auth&quot;]
+  app --&gt; agent[&quot;Agent Configuration&quot;]
+  app --&gt; chat[&quot;Conversation&quot;]
+  chat --&gt; llm[&quot;Model Call&quot;]
+  chat --&gt; db[&quot;Database&quot;]
+  app --&gt; kb[&quot;Knowledge Base&quot;]
+  admin --&gt; logs[&quot;Call Logs &amp; Platform Overview&quot;]
+  logs --&gt; db</pre>
+</div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Part 2: Project Scaffolding</span><span lang="en">Part 2: Project Scaffolding</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Generate Frontend Pages</span><span lang="en">2.1 Generate Frontend Pages</span></h3>
+<p class="reveal"><span lang="id">Prompt reference:</span><span lang="en">Prompt reference:</span></p>
+
+<div class="prompt-card reveal" style="margin:22px 0">
+  <div class="p-head">
+    <b><code>text</code></b>
+    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
+  </div>
+  <pre>Based on the current PRD, help me generate a frontend scaffold for a Dify-like agent platform.
+
+Requirements:
+1. User side: login, agent list, agent configuration, conversation page, logs page, knowledge base page
+2. Admin side: dashboard homepage, user overview, resource usage overview
+3. Only generate page structure with mock data first, no real API integration
+4. Style should look like a modern AI platform</pre>
+</div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Verify Page Structure</span><span lang="en">2.2 Verify Page Structure</span></h3>
+<p class="reveal"><span lang="id">Check each item:</span><span lang="en">Check each item:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[ ] User console and admin dashboard entry points are separate</span><span lang="en">[ ] User console and admin dashboard entry points are separate</span></li>
+<li><span lang="id">[ ] Agent list, configuration, conversation, logs, and knowledge base pages are complete</span><span lang="en">[ ] Agent list, configuration, conversation, logs, and knowledge base pages are complete</span></li>
+<li><span lang="id">[ ] Admin dashboard homepage and user overview pages are accessible</span><span lang="en">[ ] Admin dashboard homepage and user overview pages are accessible</span></li>
+<li><span lang="id">[ ] Mock data shows basic UI states</span><span lang="en">[ ] Mock data shows basic UI states</span></li>
+</ul>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Part 3: Iterative Development</span><span lang="en">Part 3: Iterative Development</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Module-by-Module Progress</span><span lang="en">3.1 Module-by-Module Progress</span></h3>
+<p class="reveal"><span lang="id">On top of the scaffold, add features module by module in this order:</span><span lang="en">On top of the scaffold, add features module by module in this order:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Authentication</b>: Registration, login, role differentiation</span><span lang="en"><b>Authentication</b>: Registration, login, role differentiation</span></li>
+<li><span lang="id"><b>Agent Management</b>: Create, edit, delete, prompt configuration</span><span lang="en"><b>Agent Management</b>: Create, edit, delete, prompt configuration</span></li>
+<li><span lang="id"><b>Conversation</b>: Session creation, message exchange, model calls</span><span lang="en"><b>Conversation</b>: Session creation, message exchange, model calls</span></li>
+<li><span lang="id"><b>Logging</b>: Latency, token usage, error recording</span><span lang="en"><b>Logging</b>: Latency, token usage, error recording</span></li>
+<li><span lang="id"><b>Knowledge Base</b> (bonus): Document upload, retrieval, result injection</span><span lang="en"><b>Knowledge Base</b> (bonus): Document upload, retrieval, result injection</span></li>
+<li><span lang="id"><b>Admin Dashboard</b>: User data, resource usage, call statistics</span><span lang="en"><b>Admin Dashboard</b>: User data, resource usage, call statistics</span></li>
+</ul>
+<p class="reveal"><span lang="id">After each module, use this self-check table:</span><span lang="en">After each module, use this self-check table:</span></p>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Check Item</th><th>Verification Method</th></tr>
+<tr><td>Page consistency</td><td>Do page count and features match the PRD?</td></tr>
+<tr><td>API completeness</td><td>Are agents, chat, logs, knowledge APIs complete?</td></tr>
+<tr><td>Auth isolation</td><td>Can users only manage their own agents and sessions?</td></tr>
+<tr><td>Data consistency</td><td>Do messages, logs, and documents data align?</td></tr>
+<tr><td>Demo readiness</td><td>Can you demo "create agent → chat → view logs" end-to-end?</td></tr>
+</table></div>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Knowledge Base Integration (Bonus)</span><span lang="en">3.2 Knowledge Base Integration (Bonus)</span></h3>
+<p class="reveal"><span lang="id">If you want to add knowledge base capabilities, add a "knowledge base toggle" for each agent:</span><span lang="en">If you want to add knowledge base capabilities, add a "knowledge base toggle" for each agent:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">When enabled: retrieve knowledge snippets first, then send them along with the user's question to the model</span><span lang="en">When enabled: retrieve knowledge snippets first, then send them along with the user's question to the model</span></li>
+<li><span lang="id">When disabled: respond in normal conversation mode</span><span lang="en">When disabled: respond in normal conversation mode</span></li>
+</ul>
+<p class="reveal"><span lang="id">For the first version, don't aim for complex RAG — just ensure "retrieval results are visible and the call chain is explainable."</span><span lang="en">For the first version, don't aim for complex RAG — just ensure "retrieval results are visible and the call chain is explainable."</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Part 4: Integration & Launch</span><span lang="en">Part 4: Integration & Launch</span></h2>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 End-to-End Testing</span><span lang="en">4.1 End-to-End Testing</span></h3>
+<p class="reveal"><span lang="id">At minimum, verify these scenarios:</span><span lang="en">At minimum, verify these scenarios:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">Register → Create agent → Configure prompt → Start conversation → View logs</span><span lang="en">Register → Create agent → Configure prompt → Start conversation → View logs</span></li>
+<li><span lang="id">Admin login → View user data → View call statistics</span><span lang="en">Admin login → View user data → View call statistics</span></li>
+</ul>
+<p class="reveal"><span lang="id">Pre-deployment checklist:</span><span lang="en">Pre-deployment checklist:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[ ] All core APIs require login verification</span><span lang="en">[ ] All core APIs require login verification</span></li>
+<li><span lang="id">[ ] Agent ownership permission checks pass</span><span lang="en">[ ] Agent ownership permission checks pass</span></li>
+<li><span lang="id">[ ] Conversation and log records are persisted to the database</span><span lang="en">[ ] Conversation and log records are persisted to the database</span></li>
+<li><span lang="id">[ ] Model API keys use environment variables, not hardcoded</span><span lang="en">[ ] Model API keys use environment variables, not hardcoded</span></li>
+<li><span lang="id">[ ] Error messages are visible on the frontend, not just in the console</span><span lang="en">[ ] Error messages are visible on the frontend, not just in the console</span></li>
+</ul>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Deployment</span><span lang="en">4.2 Deployment</span></h3>
+<p class="reveal"><span lang="id">Deploy the project to a public environment. For deployment instructions, see: [Git & GitHub Workflow](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/).</span><span lang="en">Deploy the project to a public environment. For deployment instructions, see: [Git & GitHub Workflow](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/).</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Deliverables</span><span lang="en">Deliverables</span></h2>
+<p class="reveal"><span lang="id">After completing this project, submit the following:</span><span lang="en">After completing this project, submit the following:</span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[ ] Accessible live demo link</span><span lang="en">[ ] Accessible live demo link</span></li>
+<li><span lang="id">[ ] Source code repository link (with README)</span><span lang="en">[ ] Source code repository link (with README)</span></li>
+<li><span lang="id">[ ] PRD document</span><span lang="en">[ ] PRD document</span></li>
+<li><span lang="id">[ ] Core page screenshots (agent management, conversation, logs, admin dashboard)</span><span lang="en">[ ] Core page screenshots (agent management, conversation, logs, admin dashboard)</span></li>
+<li><span lang="id">[ ] 60-second demo video (covering create agent → chat → view logs)</span><span lang="en">[ ] 60-second demo video (covering create agent → chat → view logs)</span></li>
+</ul>
+<p class="reveal"><span lang="id">README should include at minimum: project overview, architecture description, tech stack, local setup steps, environment variable list, and API documentation.</span><span lang="en">README should include at minimum: project overview, architecture description, tech stack, local setup steps, environment variable list, and API documentation.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Grading Criteria</span><span lang="en">Grading Criteria</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Dimension</th><th>Basic Requirements</th><th>Advanced Requirements</th></tr>
+<tr><td>Platform Completeness</td><td>agents / chat / logs pages are functional</td><td>Has clear navigation and unified design language</td></tr>
+<tr><td>Business Loop</td><td>Can create agents and have real conversations</td><td>Supports multi-agent switching and session history</td></tr>
+<tr><td>Data & Tracking</td><td>Messages and call logs are queryable</td><td>Has token / latency statistics dashboard</td></tr>
+<tr><td>Auth & Security</td><td>Only logged-in users can access core APIs</td><td>Resource ownership verification is robust</td></tr>
+<tr><td>Engineering Delivery</td><td>Deployable, demoable, clear README</td><td>Knowledge base integrated with explainable retrieval</td></tr>
+</table></div>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Pre-Submission Checklist</span><span lang="en">Pre-Submission Checklist</span></h2>
+<p class="reveal"><span lang="id"><el-card shadow="hover" style="margin: 20px 0; border-radius: 12px;"></span><span lang="en"><el-card shadow="hover" style="margin: 20px 0; border-radius: 12px;"></span></p>
+<p class="reveal"><span lang="id"><template #header></span><span lang="en"><template #header></span></p>
+<p class="reveal"><span lang="id"><div style="font-weight: bold; font-size: 16px;">Final check before submission</div></span><span lang="en"><div style="font-weight: bold; font-size: 16px;">Final check before submission</div></span></p>
+<p class="reveal"><span lang="id"></template></span><span lang="en"></template></span></p>
+<p class="reveal"><span lang="id"><ul style="list-style-type: none; padding-left: 0;"></span><span lang="en"><ul style="list-style-type: none; padding-left: 0;"></span></p>
+<p class="reveal"><span lang="id"><li><label><input type="checkbox" disabled /> Agent management, conversation, and logs pages accessible after login</label></li></span><span lang="en"><li><label><input type="checkbox" disabled /> Agent management, conversation, and logs pages accessible after login</label></li></span></p>
+<p class="reveal"><span lang="id"><li><label><input type="checkbox" disabled /> At least 1 agent can be created and successfully conversed with</label></li></span><span lang="en"><li><label><input type="checkbox" disabled /> At least 1 agent can be created and successfully conversed with</label></li></span></p>
+<p class="reveal"><span lang="id"><li><label><input type="checkbox" disabled /> Each Q&A round can be found in the database</label></li></span><span lang="en"><li><label><input type="checkbox" disabled /> Each Q&A round can be found in the database</label></li></span></p>
+<p class="reveal"><span lang="id"><li><label><input type="checkbox" disabled /> Call failures show error messages on the frontend and are logged</label></li></span><span lang="en"><li><label><input type="checkbox" disabled /> Call failures show error messages on the frontend and are logged</label></li></span></p>
+<p class="reveal"><span lang="id"><li><label><input type="checkbox" disabled /> Project is deployed, README and demo video are complete</label></li></span><span lang="en"><li><label><input type="checkbox" disabled /> Project is deployed, README and demo video are complete</label></li></span></p>
+<p class="reveal"><span lang="id"></ul></span><span lang="en"></ul></span></p>
+<p class="reveal"><span lang="id"></el-card></span><span lang="en"></el-card></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">References</span><span lang="en">References</span></h2>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">[UI Design](../../frontend/ui-design/)</span><span lang="en">[UI Design](../../frontend/ui-design/)</span></li>
+<li><span lang="id">[Modern Component Libraries](../../frontend/modern-component-library/)</span><span lang="en">[Modern Component Libraries](../../frontend/modern-component-library/)</span></li>
+<li><span lang="id">[Database to Supabase](../../backend/database-supabase/)</span><span lang="en">[Database to Supabase](../../backend/database-supabase/)</span></li>
+<li><span lang="id">[API Code with LLM Assistance](../../backend/ai-interface-code/)</span><span lang="en">[API Code with LLM Assistance](../../backend/ai-interface-code/)</span></li>
+<li><span lang="id">[Git & GitHub Workflow](../../backend/git-workflow/)</span><span lang="en">[Git & GitHub Workflow](../../backend/git-workflow/)</span></li>
+<li><span lang="id">[Web App Deployment](../../backend/zeabur-deployment/)</span><span lang="en">[Web App Deployment](../../backend/zeabur-deployment/)</span></li>
+</ul>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../assignments/modern-landing-page/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">Proyek: SaaS Generator Gambar AI Modern</span><span lang="en">Proyek: SaaS Generator Gambar AI Modern</span></b></a>
+      <a class="next" href="../../assignments/travel-planning-agent-platform/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">Proyek: Platform Agen Perencana Liburan & Wisata</span><span lang="en">Proyek: Platform Agen Perencana Liburan & Wisata</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Principles of Real-Time Communication: Polling, SSE, and WebSocket — VibeKoding 📚</title>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Real-Time Communication: Polling, SSE, and WebSocket. - Kurikulum VibeKoding dual bahasa ID/EN."/>
+
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="theme-color" content="#07070f"/>
+<link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/3-browser-and-frontend/realtime-communication/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../../assets/vibekoding.css"/>
+</head>
+<body>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+<div id="scroll-progress"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
+    <div class="nav-links">
+      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
+      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
+      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
+      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
+      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
+    </div>
+    <div class="nav-cta">
+      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
+      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<section class="lesson-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Real-Time Communication: Polling, SSE, and WebSocket</span><span lang="en">Principles of Real-Time Communication: Polling, SSE, and WebSocket</span></div>
+    <div class="lesson-head">
+      <div class="lesson-mascot">📚</div>
+      <div>
+        <h1><span lang="id">Principles of Real-Time Communication: Polling, SSE, and WebSocket</span><span lang="en">Principles of Real-Time Communication: Polling, SSE, and WebSocket</span></h1>
+        <div class="meta-row">
+          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
+          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
+          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Real-Time Communication: Polling, SSE, and WebSocket.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Real-Time Communication: Polling, SSE, and WebSocket.</span></p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap prose">
+    
+<div class="callout tip reveal" style="margin:24px 0">
+  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
+  <p><span lang="id"><b>How does the browser achieve real-time data updates?</b>
+The traditional HTTP protocol is based on a "request-response" model, where the client must proactively initiate a request before the server can return data. If we need to implement real-time scenarios such as chat rooms or stock market feeds, this model faces significant challenges.
+
+This chapter introduces three main technologies the frontend uses for real-time data communication: Short Polling, Server-Sent Events (SSE), and full-duplex WebSocket, and explores their principles and applicable scenarios.</span><span lang="en"><b>How does the browser achieve real-time data updates?</b>
+The traditional HTTP protocol is based on a "request-response" model, where the client must proactively initiate a request before the server can return data. If we need to implement real-time scenarios such as chat rooms or stock market feeds, this model faces significant challenges.
+
+This chapter introduces three main technologies the frontend uses for real-time data communication: Short Polling, Server-Sent Events (SSE), and full-duplex WebSocket, and explores their principles and applicable scenarios.</span></p>
+</div>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Limitations of Traditional HTTP</span><span lang="en">1. Limitations of Traditional HTTP</span></h2>
+<p class="reveal"><span lang="id">The HTTP protocol was originally designed for document retrieval. It has the characteristics of being <b>stateless</b> and <b>unidirectionally initiated by the client</b>:</span><span lang="en">The HTTP protocol was originally designed for document retrieval. It has the characteristics of being <b>stateless</b> and <b>unidirectionally initiated by the client</b>:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id">The client initiates an HTTP request.</span><span lang="en">The client initiates an HTTP request.</span></li>
+<li><span lang="id">The server processes the request and returns a response.</span><span lang="en">The server processes the request and returns a response.</span></li>
+<li><span lang="id">After the task is completed, the connection is typically released (although HTTP/1.1 supports persistent connection reuse, the request-response model at the business level remains unchanged).</span><span lang="en">After the task is completed, the connection is typically released (although HTTP/1.1 supports persistent connection reuse, the request-response model at the business level remains unchanged).</span></li>
+</ul>
+<p class="reveal"><span lang="id">In this model, the server cannot proactively notify waiting clients of state changes at any time. To obtain the latest data, other technical architecture solutions must be sought.</span><span lang="en">In this model, the server cannot proactively notify waiting clients of state changes at any time. To obtain the latest data, other technical architecture solutions must be sought.</span></p>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Short Polling</span><span lang="en">2. Short Polling</span></h2>
+<p class="reveal"><span lang="id">The most straightforward solution is <b>short polling</b>. The client uses a timer (such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">setInterval</code>) to automatically send an HTTP request to the server at fixed intervals, asking whether new data has arrived.</span><span lang="en">The most straightforward solution is <b>short polling</b>. The client uses a timer (such as <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">setInterval</code>) to automatically send an HTTP request to the server at fixed intervals, asking whether new data has arrived.</span></p>
+<p class="reveal"><span lang="id"><PollingDemo /></span><span lang="en"><PollingDemo /></span></p>
+<p class="reveal"><span lang="id"><b>Technical Characteristics and Limitations:</b></span><span lang="en"><b>Technical Characteristics and Limitations:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Advantages</b>: Extremely simple implementation mechanism, relying entirely on standard HTTP protocol and AJAX/Fetch technology.</span><span lang="en"><b>Advantages</b>: Extremely simple implementation mechanism, relying entirely on standard HTTP protocol and AJAX/Fetch technology.</span></li>
+<li><span lang="id"><b>Disadvantages</b>: Can generate massive network overhead and resource waste. Most of the time, the server's response may be "no new data." Regardless of whether there is data, each request must carry complete HTTP headers (Headers, Cookies, etc.). In high-concurrency scenarios, network resources can be occupied by large amounts of meaningless queries.</span><span lang="en"><b>Disadvantages</b>: Can generate massive network overhead and resource waste. Most of the time, the server's response may be "no new data." Regardless of whether there is data, each request must carry complete HTTP headers (Headers, Cookies, etc.). In high-concurrency scenarios, network resources can be occupied by large amounts of meaningless queries.</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Server-Sent Events (SSE)</span><span lang="en">3. Server-Sent Events (SSE)</span></h2>
+<p class="reveal"><span lang="id">To reduce the overhead of frequently establishing HTTP connections, <b>Server-Sent Events (SSE)</b> provides a lightweight unidirectional data stream push architecture.</span><span lang="en">To reduce the overhead of frequently establishing HTTP connections, <b>Server-Sent Events (SSE)</b> provides a lightweight unidirectional data stream push architecture.</span></p>
+<p class="reveal"><span lang="id">SSE is built on top of the HTTP protocol. After the client initiates an HTTP request with a special header (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Accept: text/event-stream</code>), the server keeps the underlying TCP connection open when returning the response. Subsequently, the server can continuously push text-formatted data to the client through this persistent channel.</span><span lang="en">SSE is built on top of the HTTP protocol. After the client initiates an HTTP request with a special header (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Accept: text/event-stream</code>), the server keeps the underlying TCP connection open when returning the response. Subsequently, the server can continuously push text-formatted data to the client through this persistent channel.</span></p>
+<p class="reveal"><span lang="id"><SSEDemo /></span><span lang="en"><SSEDemo /></span></p>
+<p class="reveal"><span lang="id"><b>Technical Characteristics and Limitations:</b></span><span lang="en"><b>Technical Characteristics and Limitations:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Advantages</b>: Persistent connection with low network overhead; browser natively supports automatic reconnection on disconnection; very suitable for <b>unidirectional</b> streaming data transmission from server to client (such as large language model text output token by token, real-time trading feeds).</span><span lang="en"><b>Advantages</b>: Persistent connection with low network overhead; browser natively supports automatic reconnection on disconnection; very suitable for <b>unidirectional</b> streaming data transmission from server to client (such as large language model text output token by token, real-time trading feeds).</span></li>
+<li><span lang="id"><b>Disadvantages</b>: The communication channel is unidirectional. If the client needs to send control commands or new data to the server, it must establish a separate regular HTTP request.</span><span lang="en"><b>Disadvantages</b>: The communication channel is unidirectional. If the client needs to send control commands or new data to the server, it must establish a separate regular HTTP request.</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. WebSocket: Full-Duplex Communication Protocol</span><span lang="en">4. WebSocket: Full-Duplex Communication Protocol</span></h2>
+<p class="reveal"><span lang="id">When application scenarios involve high-frequency bidirectional interaction (such as multiplayer online action games, precision collaborative document editing), we need a technology that both reduces communication overhead and enables true duplex communication — <b>WebSocket</b>.</span><span lang="en">When application scenarios involve high-frequency bidirectional interaction (such as multiplayer online action games, precision collaborative document editing), we need a technology that both reduces communication overhead and enables true duplex communication — <b>WebSocket</b>.</span></p>
+<p class="reveal"><span lang="id">WebSocket is an independent network communication protocol. It elegantly leverages the HTTP protocol to complete the initial connection:</span><span lang="en">WebSocket is an independent network communication protocol. It elegantly leverages the HTTP protocol to complete the initial connection:</span></p>
+<ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Handshake Phase</b>: The client sends a special HTTP request declaring the intention to upgrade to a new protocol (carrying the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Upgrade: websocket</code> header).</span><span lang="en"><b>Handshake Phase</b>: The client sends a special HTTP request declaring the intention to upgrade to a new protocol (carrying the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Upgrade: websocket</code> header).</span></li>
+<li><span lang="id"><b>Connection Transformation</b>: If the server supports and agrees to the protocol, it responds with a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">101 Switching Protocols</code> status code.</span><span lang="en"><b>Connection Transformation</b>: If the server supports and agrees to the protocol, it responds with a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">101 Switching Protocols</code> status code.</span></li>
+<li><span lang="id"><b>Complete Freedom</b>: At this point, HTTP's specification mission ends, and the underlying TCP connection is handed over to the WebSocket protocol. Thereafter, the client and server enjoy equal full-duplex communication rights, and both sides can send and receive minimal-format data frames at any time.</span><span lang="en"><b>Complete Freedom</b>: At this point, HTTP's specification mission ends, and the underlying TCP connection is handed over to the WebSocket protocol. Thereafter, the client and server enjoy equal full-duplex communication rights, and both sides can send and receive minimal-format data frames at any time.</span></li>
+</ul>
+<p class="reveal"><span lang="id"><WebSocketDemo /></span><span lang="en"><WebSocketDemo /></span></p>
+<p class="reveal"><span lang="id"><b>Technical Characteristics and Limitations:</b></span><span lang="en"><b>Technical Characteristics and Limitations:</b></span></p>
+<ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
+<li><span lang="id"><b>Advantages</b>: Supports true bidirectional real-time communication; data frame headers are extremely small, with low communication latency and high throughput efficiency; supports native binary data (ArrayBuffer) transmission.</span><span lang="en"><b>Advantages</b>: Supports true bidirectional real-time communication; data frame headers are extremely small, with low communication latency and high throughput efficiency; supports native binary data (ArrayBuffer) transmission.</span></li>
+<li><span lang="id"><b>Disadvantages</b>: Higher architectural and development complexity; due to maintaining persistent long connections, it places stricter engineering requirements on server-side system architecture, load balancing strategies, and heartbeat monitoring design.</span><span lang="en"><b>Disadvantages</b>: Higher architectural and development complexity; due to maintaining persistent long connections, it places stricter engineering requirements on server-side system architecture, load balancing strategies, and heartbeat monitoring design.</span></li>
+</ul>
+<p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Summary: Technology Selection Comparison</span><span lang="en">5. Summary: Technology Selection Comparison</span></h2>
+<div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
+<tr><th>Dimension</th><th>Short Polling</th><th>Server-Sent Events (SSE)</th><th>WebSocket</th></tr>
+<tr><td><b>Communication Direction</b></td><td>Client proactively polls and pulls (unidirectional)</td><td>Server continuously pushes proactively (unidirectional)</td><td>Client and server have equal send/receive rights (bidirectional full-duplex)</td></tr>
+<tr><td><b>Underlying Protocol</b></td><td>Standard HTTP</td><td>Standard HTTP</td><td>Independent WebSocket protocol (based on TCP)</td></tr>
+<tr><td><b>Data Overhead</b></td><td>Extremely high (includes complete HTTP headers)</td><td>Low</td><td>Extremely low (minimal data frame headers)</td></tr>
+<tr><td><b>Typical Use Cases</b></td><td>Periodically checking completion status of backend async tasks</td><td>LLM dialogue unidirectional stream output, news or system notification push</td><td>Real-time audio/video signaling, multiplayer online gaming, collaborative whiteboard and editing</td></tr>
+</table></div>
+<p class="reveal"><span lang="id">In actual engineering, developers should balance system maintenance complexity and communication efficiency based on the specific business scenario's requirements for real-time performance and bidirectional interaction frequency, choosing the most fitting technology stack.</span><span lang="en">In actual engineering, developers should balance system maintenance complexity and communication efficiency based on the specific business scenario's requirements for real-time performance and bidirectional interaction frequency, choosing the most fitting technology stack.</span></p>
+
+
+    <div class="pager" style="margin-top:54px">
+      <a href="../../3-browser-and-frontend/javascript-runtime/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">3-browser-and-frontend/javascript-runtime</span><span lang="en">3-browser-and-frontend/javascript-runtime</span></b></a>
+      <a class="next" href="../../3-browser-and-frontend/routing-navigation/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">3-browser-and-frontend/routing-navigation</span><span lang="en">3-browser-and-frontend/routing-navigation</span></b></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="license-box">
+      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
+      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
+    </div>
+    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
+  </div>
+</footer>
+
+<script src="../../../assets/vibekoding.js"></script>
+</body>
+</html>
