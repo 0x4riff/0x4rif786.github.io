@@ -4,9 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>An Introduction to APIs: Understanding Inter-Program Communication from Scratch — VibeKoding 📚</title>
-<meta name="description" content="Ensiklopedia VibeKoding: An Introduction to APIs: Understanding Inter-Program Communication from Scratch. - Kurikulum VibeKoding dual bahasa ID/EN."/>
-
-<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="description" content="Ensiklopedia VibeKoding: An Introduction to APIs: Understanding Inter-Program Communication from Scratch. - Kurikulum VibeKoding dual bahasa ID/EN."/> <link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
 <meta name="theme-color" content="#07070f"/>
 <link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/4-server-and-backend/api-intro/"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -17,64 +15,14 @@
 <body>
 <div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
 <div class="grain"></div>
-<div id="scroll-progress"></div>
-
-<nav class="nav">
-  <div class="nav-inner">
-    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
-    <div class="nav-links">
-      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
-      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
-      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
-      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
-      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
-    </div>
-    <div class="nav-cta">
-      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
-      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
-      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
-    </div>
-  </div>
-</nav>
-
-<section class="lesson-hero">
-  <div class="wrap">
-    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">An Introduction to APIs: Understanding Inter-Program Communication from Scratch</span><span lang="en">An Introduction to APIs: Understanding Inter-Program Communication from Scratch</span></div>
-    <div class="lesson-head">
-      <div class="lesson-mascot">📚</div>
-      <div>
-        <h1><span lang="id">An Introduction to APIs: Understanding Inter-Program Communication from Scratch</span><span lang="en">An Introduction to APIs: Understanding Inter-Program Communication from Scratch</span></h1>
-        <div class="meta-row">
-          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
-          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
-          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
-        </div>
-      </div>
-    </div>
-    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: An Introduction to APIs: Understanding Inter-Program Communication from Scratch.</span><span lang="en">Ensiklopedia VibeKoding: An Introduction to APIs: Understanding Inter-Program Communication from Scratch.</span></p>
-  </div>
-</section>
-
-<section style="padding-top:10px">
-  <div class="wrap prose">
-    
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id"><b>What is an API?</b> It's like asking: how should a restaurant design its menu so guests can understand it at a glance? How should waiters take orders without making mistakes? APIs solve the problem of "how programs communicate with each other." You've been using APIs since your first day of coding — you just might not have realized it.</span><span lang="en"><b>What is an API?</b> It's like asking: how should a restaurant design its menu so guests can understand it at a glance? How should waiters take orders without making mistakes? APIs solve the problem of "how programs communicate with each other." You've been using APIs since your first day of coding — you just might not have realized it.</span></p>
+<div id="scroll-progress"></div> <nav class="nav"> <div class="nav-inner"> <a class="brand" href="../../../"><span class="logo">VK</span>Vibe<span class="grad-text">Koding</span></a> <div class="nav-links"> <a href="../../../stage-1/"><span lang="id"> Pemula</span><span lang="en"> Beginner</span></a> <a href="../../../stage-2/"><span lang="id">Level 2: Full-Stack</span><span lang="en">Level 2: Full-Stack</span></a> <a href="../../../stage-3/"><span lang="id"> Master</span><span lang="en"> Master</span></a> <a href="../../../appendix/"><span lang="id">Ensiklopedia</span><span lang="en">Encyclopedia</span></a> <a href="../../../stories/" class="hide-sm"><span lang="id"> Cerita</span><span lang="en"> Stories</span></a> </div> <div class="nav-cta"> <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button> <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button> <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button> </div> </div>
+</nav> <section class="lesson-hero"> <div class="wrap"> <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">An Introduction to APIs: Understanding Inter-Program Communication from Scratch</span><span lang="en">An Introduction to APIs: Understanding Inter-Program Communication from Scratch</span></div> <div class="lesson-head"> <div class="lesson-mascot"><span style="font-size:1.1rem;font-weight:800;color:var(--text);font-family:var(--font-mono)">VK</span></div> <div> <h1><span lang="id">An Introduction to APIs: Understanding Inter-Program Communication from Scratch</span><span lang="en">An Introduction to APIs: Understanding Inter-Program Communication from Scratch</span></h1> <div class="meta-row"> <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span> <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span> <span class="meta-chip">⚡ <span>VibeKoding Native</span></span> </div> </div> </div> <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: An Introduction to APIs: Understanding Inter-Program Communication from Scratch.</span><span lang="en">Ensiklopedia VibeKoding: An Introduction to APIs: Understanding Inter-Program Communication from Scratch.</span></p> </div>
+</section> <section style="padding-top:10px"> <div class="wrap prose"> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id"><b>What is an API?</b> It's like asking: how should a restaurant design its menu so guests can understand it at a glance? How should waiters take orders without making mistakes? APIs solve the problem of "how programs communicate with each other." You've been using APIs since your first day of coding — you just might not have realized it.</span><span lang="en"><b>What is an API?</b> It's like asking: how should a restaurant design its menu so guests can understand it at a glance? How should waiters take orders without making mistakes? APIs solve the problem of "how programs communicate with each other." You've been using APIs since your first day of coding — you just might not have realized it.</span></p>
 </div>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
 <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. Three Common Confusions for Beginners</span><span lang="en">0. Three Common Confusions for Beginners</span></h2>
 <p class="reveal"><span lang="id"><b>Confusion 1: Are APIs something advanced?</b></span><span lang="en"><b>Confusion 1: Are APIs something advanced?</b></span></p>
-<p class="reveal"><span lang="id">Many people think APIs are only for senior engineers. But you've already used APIs:</span><span lang="en">Many people think APIs are only for senior engineers. But you've already used APIs:</span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>python</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>len(&quot;hello&quot;)        # This is a Python API
-open(&quot;file.txt&quot;)    # This is also an API
-requests.get(url)   # This is still an API</pre>
+<p class="reveal"><span lang="id">Many people think APIs are only for senior engineers. But you've already used APIs:</span><span lang="en">Many people think APIs are only for senior engineers. But you've already used APIs:</span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>python</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>len(&quot;hello&quot;) # This is a Python API open(&quot;file.txt&quot;) # This is also an API requests.get(url) # This is still an API</pre>
 </div>
 <p class="reveal"><span lang="id"><b>Confusion 2: What's the difference between Web APIs and regular APIs?</b></span><span lang="en"><b>Confusion 2: What's the difference between Web APIs and regular APIs?</b></span></p>
 <div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
@@ -83,30 +31,7 @@ requests.get(url)   # This is still an API</pre>
 <tr><td><b>OS API</b></td><td>Operating system</td><td>System call</td><td>File I/O, process creation</td></tr>
 <tr><td><b>Web API</b></td><td>Remote server</td><td>HTTP request</td><td>Calling AI models, getting weather</td></tr>
 </table></div>
-<p class="reveal"><span lang="id"><b>Confusion 3: Should I use HTTP or SDK?</b></span><span lang="en"><b>Confusion 3: Should I use HTTP or SDK?</b></span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>python</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre># HTTP approach: handle all details yourself
-import requests
-response = requests.post(
-    &quot;https://api.deepseek.com/v1/chat/completions&quot;,
-    headers={&quot;Authorization&quot;: &quot;Bearer sk-xxx&quot;},
-    json={&quot;model&quot;: &quot;deepseek-chat&quot;, &quot;messages&quot;: [...]}
-)
-result = response.json()[&quot;choices&quot;][0][&quot;message&quot;][&quot;content&quot;]
-
-# SDK approach: let the butler handle it
-from openai import OpenAI
-client = OpenAI(api_key=&quot;sk-xxx&quot;)
-response = client.chat.completions.create(
-    model=&quot;deepseek-chat&quot;,
-    messages=[...]
-)
-result = response.choices[0].message.content</pre>
+<p class="reveal"><span lang="id"><b>Confusion 3: Should I use HTTP or SDK?</b></span><span lang="en"><b>Confusion 3: Should I use HTTP or SDK?</b></span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>python</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre># HTTP approach: handle all details yourself import requests response = requests.post( &quot;https://api.deepseek.com/v1/chat/completions&quot;, headers={&quot;Authorization&quot;: &quot;Bearer sk-xxx&quot;}, json={&quot;model&quot;: &quot;deepseek-chat&quot;, &quot;messages&quot;: [...]} ) result = response.json()[&quot;choices&quot;][0][&quot;message&quot;][&quot;content&quot;] # SDK approach: let the butler handle it from openai import OpenAI client = OpenAI(api_key=&quot;sk-xxx&quot;) response = client.chat.completions.create( model=&quot;deepseek-chat&quot;, messages=[...] ) result = response.choices[0].message.content</pre>
 </div>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
 <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. The Essence of APIs: Plugs and Sockets</span><span lang="en">1. The Essence of APIs: Plugs and Sockets</span></h2>
@@ -158,21 +83,7 @@ result = response.choices[0].message.content</pre>
 <tr><td>You want to change the flavor</td><td>"No peanuts in the Kung Pao Chicken"</td><td><b>PATCH</b> - Partial modification</td></tr>
 <tr><td>You don't want it anymore</td><td>"Never mind, cancel that dish"</td><td><b>DELETE</b> - Delete data</td></tr>
 </table></div>
-<p class="reveal"><span lang="id"><HttpMethodsDemo /></span><span lang="en"><HttpMethodsDemo /></span></p>
-
-<div class="callout warn reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div>
-  <p><span lang="id"><b>Idempotency</b>: Do multiple executions produce the same result?
-
-- <b>Idempotent operations</b> (GET/PUT/DELETE): Clicking 10 times produces the same result as clicking once
-- <b>Non-idempotent operations</b> (POST): Clicking 10 times might create 10 orders
-
-<b>Solution</b>: Use unique IDs for POST operations to prevent duplicate processing.</span><span lang="en"><b>Idempotency</b>: Do multiple executions produce the same result?
-
-- <b>Idempotent operations</b> (GET/PUT/DELETE): Clicking 10 times produces the same result as clicking once
-- <b>Non-idempotent operations</b> (POST): Clicking 10 times might create 10 orders
-
-<b>Solution</b>: Use unique IDs for POST operations to prevent duplicate processing.</span></p>
+<p class="reveal"><span lang="id"><HttpMethodsDemo /></span><span lang="en"><HttpMethodsDemo /></span></p> <div class="callout warn reveal" style="margin:24px 0"> <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div> <p><span lang="id"><b>Idempotency</b>: Do multiple executions produce the same result? - <b>Idempotent operations</b> (GET/PUT/DELETE): Clicking 10 times produces the same result as clicking once - <b>Non-idempotent operations</b> (POST): Clicking 10 times might create 10 orders <b>Solution</b>: Use unique IDs for POST operations to prevent duplicate processing.</span><span lang="en"><b>Idempotency</b>: Do multiple executions produce the same result? - <b>Idempotent operations</b> (GET/PUT/DELETE): Clicking 10 times produces the same result as clicking once - <b>Non-idempotent operations</b> (POST): Clicking 10 times might create 10 orders <b>Solution</b>: Use unique IDs for POST operations to prevent duplicate processing.</span></p>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 HTTP Methods Quick Reference</span><span lang="en">3.2 HTTP Methods Quick Reference</span></h3>
 <div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
@@ -219,11 +130,7 @@ result = response.choices[0].message.content</pre>
 <tr><td><b>Learning principles</b></td><td>HTTP</td><td>Understand underlying mechanisms</td></tr>
 <tr><td><b>Unsupported language</b></td><td>HTTP</td><td>Works with any language</td></tr>
 <tr><td><b>Need customization</b></td><td>HTTP</td><td>Flexible control over every detail</td></tr>
-</table></div>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id"><b>Use SDK when available.</b> Leave the hassle to the library, save time for yourself.</span><span lang="en"><b>Use SDK when available.</b> Leave the hassle to the library, save time for yourself.</span></p>
+</table></div> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id"><b>Use SDK when available.</b> Leave the hassle to the library, save time for yourself.</span><span lang="en"><b>Use SDK when available.</b> Leave the hassle to the library, save time for yourself.</span></p>
 </div>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
 <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Approach to reading API Documentation</span><span lang="en">6. Approach to reading API Documentation</span></h2>
@@ -258,19 +165,7 @@ result = response.choices[0].message.content</pre>
 <li><span lang="id">❌ <b>404 Error</b>: Enter a non-existent address</span><span lang="en">❌ <b>404 Error</b>: Enter a non-existent address</span></li>
 </ul>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
-<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8. Summary</span><span lang="en">8. Summary</span></h2>
-
-<div class="callout info reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
-  <p><span lang="id">1. <b>APIs are like megaphones</b>, helping you pass messages to other code or remote servers
-2. <b>You've already used APIs</b>, from <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">len()</code> to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">open()</code>, they're all APIs
-3. <b>Web APIs are superpowers</b>, letting you call supercomputers thousands of miles away
-4. <b>SDKs are good butlers</b>, use SDKs when available instead of running errands yourself
-5. <b>Look for three things in documentation</b>: address, authentication, and parameters</span><span lang="en">1. <b>APIs are like megaphones</b>, helping you pass messages to other code or remote servers
-2. <b>You've already used APIs</b>, from <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">len()</code> to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">open()</code>, they're all APIs
-3. <b>Web APIs are superpowers</b>, letting you call supercomputers thousands of miles away
-4. <b>SDKs are good butlers</b>, use SDKs when available instead of running errands yourself
-5. <b>Look for three things in documentation</b>: address, authentication, and parameters</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8. Summary</span><span lang="en">8. Summary</span></h2> <div class="callout info reveal" style="margin:24px 0"> <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div> <p><span lang="id">1. <b>APIs are like megaphones</b>, helping you pass messages to other code or remote servers 2. <b>You've already used APIs</b>, from <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">len()</code> to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">open()</code>, they're all APIs 3. <b>Web APIs are superpowers</b>, letting you call supercomputers thousands of miles away 4. <b>SDKs are good butlers</b>, use SDKs when available instead of running errands yourself 5. <b>Look for three things in documentation</b>: address, authentication, and parameters</span><span lang="en">1. <b>APIs are like megaphones</b>, helping you pass messages to other code or remote servers 2. <b>You've already used APIs</b>, from <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">len()</code> to <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">open()</code>, they're all APIs 3. <b>Web APIs are superpowers</b>, letting you call supercomputers thousands of miles away 4. <b>SDKs are good butlers</b>, use SDKs when available instead of running errands yourself 5. <b>Look for three things in documentation</b>: address, authentication, and parameters</span></p>
 </div>
 <p class="reveal"><span lang="id">In the era of AI programming, you only need to remember these core concepts. The rest of the details will be handled by your IDE and AI assistant.</span><span lang="en">In the era of AI programming, you only need to remember these core concepts. The rest of the details will be handled by your IDE and AI assistant.</span></p>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
@@ -298,26 +193,8 @@ result = response.choices[0].message.content</pre>
 <tr><td><b>RPC</b></td><td>Remote Procedure Call</td><td>Remote procedure call</td></tr>
 <tr><td><b>GraphQL</b></td><td>-</td><td>A query language API</td></tr>
 <tr><td><b>gRPC</b></td><td>-</td><td>High-performance RPC framework developed by Google</td></tr>
-</table></div>
-
-
-    <div class="pager" style="margin-top:54px">
-      <a href="../../4-server-and-backend/api-design/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">4-server-and-backend/api-design</span><span lang="en">4-server-and-backend/api-design</span></b></a>
-      <a class="next" href="../../4-server-and-backend/async-task-queues/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">4-server-and-backend/async-task-queues</span><span lang="en">4-server-and-backend/async-task-queues</span></b></a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="license-box">
-      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
-      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
-    </div>
-    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
-  </div>
-</footer>
-
-<script src="../../../assets/vibekoding.js"></script>
+</table></div> <div class="pager" style="margin-top:54px"> <a href="../../4-server-and-backend/api-design/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">4-server-and-backend/api-design</span><span lang="en">4-server-and-backend/api-design</span></b></a> <a class="next" href="../../4-server-and-backend/async-task-queues/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">4-server-and-backend/async-task-queues</span><span lang="en">4-server-and-backend/async-task-queues</span></b></a> </div> </div>
+</section> <footer> <div class="wrap"> <div class="license-box"> <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span> <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span> </div> <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p> </div>
+</footer> <script src="../../../assets/vibekoding.js"></script>
 </body>
 </html>

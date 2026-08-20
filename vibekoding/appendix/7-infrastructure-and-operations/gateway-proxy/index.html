@@ -4,9 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Principles of Gateways and Reverse Proxies — VibeKoding 📚</title>
-<meta name="description" content="Ensiklopedia VibeKoding: Principles of Gateways and Reverse Proxies. - Kurikulum VibeKoding dual bahasa ID/EN."/>
-
-<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Gateways and Reverse Proxies. - Kurikulum VibeKoding dual bahasa ID/EN."/> <link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
 <meta name="theme-color" content="#07070f"/>
 <link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/7-infrastructure-and-operations/gateway-proxy/"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -17,103 +15,19 @@
 <body>
 <div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
 <div class="grain"></div>
-<div id="scroll-progress"></div>
-
-<nav class="nav">
-  <div class="nav-inner">
-    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
-    <div class="nav-links">
-      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
-      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
-      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
-      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
-      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
-    </div>
-    <div class="nav-cta">
-      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
-      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
-      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
-    </div>
-  </div>
-</nav>
-
-<section class="lesson-hero">
-  <div class="wrap">
-    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Gateways and Reverse Proxies</span><span lang="en">Principles of Gateways and Reverse Proxies</span></div>
-    <div class="lesson-head">
-      <div class="lesson-mascot">📚</div>
-      <div>
-        <h1><span lang="id">Principles of Gateways and Reverse Proxies</span><span lang="en">Principles of Gateways and Reverse Proxies</span></h1>
-        <div class="meta-row">
-          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
-          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
-          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
-        </div>
-      </div>
-    </div>
-    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Gateways and Reverse Proxies.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Gateways and Reverse Proxies.</span></p>
-  </div>
-</section>
-
-<section style="padding-top:10px">
-  <div class="wrap prose">
-    
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id"><b>In high-concurrency internet architectures, how do you route traffic to the right service safely and efficiently?</b> Reverse proxies solve "how to distribute traffic," and API gateways solve "how to process requests." This article uses real-world analogies (reception desk, security system, intelligent routing) to explore the design philosophy and engineering practices of gateways.</span><span lang="en"><b>In high-concurrency internet architectures, how do you route traffic to the right service safely and efficiently?</b> Reverse proxies solve "how to distribute traffic," and API gateways solve "how to process requests." This article uses real-world analogies (reception desk, security system, intelligent routing) to explore the design philosophy and engineering practices of gateways.</span></p>
+<div id="scroll-progress"></div> <nav class="nav"> <div class="nav-inner"> <a class="brand" href="../../../"><span class="logo">VK</span>Vibe<span class="grad-text">Koding</span></a> <div class="nav-links"> <a href="../../../stage-1/"><span lang="id"> Pemula</span><span lang="en"> Beginner</span></a> <a href="../../../stage-2/"><span lang="id">Level 2: Full-Stack</span><span lang="en">Level 2: Full-Stack</span></a> <a href="../../../stage-3/"><span lang="id"> Master</span><span lang="en"> Master</span></a> <a href="../../../appendix/"><span lang="id">Ensiklopedia</span><span lang="en">Encyclopedia</span></a> <a href="../../../stories/" class="hide-sm"><span lang="id"> Cerita</span><span lang="en"> Stories</span></a> </div> <div class="nav-cta"> <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button> <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button> <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button> </div> </div>
+</nav> <section class="lesson-hero"> <div class="wrap"> <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Gateways and Reverse Proxies</span><span lang="en">Principles of Gateways and Reverse Proxies</span></div> <div class="lesson-head"> <div class="lesson-mascot"><span style="font-size:1.1rem;font-weight:800;color:var(--text);font-family:var(--font-mono)">VK</span></div> <div> <h1><span lang="id">Principles of Gateways and Reverse Proxies</span><span lang="en">Principles of Gateways and Reverse Proxies</span></h1> <div class="meta-row"> <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span> <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span> <span class="meta-chip">⚡ <span>VibeKoding Native</span></span> </div> </div> </div> <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Gateways and Reverse Proxies.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Gateways and Reverse Proxies.</span></p> </div>
+</section> <section style="padding-top:10px"> <div class="wrap prose"> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id"><b>In high-concurrency internet architectures, how do you route traffic to the right service safely and efficiently?</b> Reverse proxies solve "how to distribute traffic," and API gateways solve "how to process requests." This article uses real-world analogies (reception desk, security system, intelligent routing) to explore the design philosophy and engineering practices of gateways.</span><span lang="en"><b>In high-concurrency internet architectures, how do you route traffic to the right service safely and efficiently?</b> Reverse proxies solve "how to distribute traffic," and API gateways solve "how to process requests." This article uses real-world analogies (reception desk, security system, intelligent routing) to explore the design philosophy and engineering practices of gateways.</span></p>
 </div>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
 <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Motivation for the "Gateway"</span><span lang="en">1. Motivation for the "Gateway"</span></h2>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 A Real-World Case: The Architecture Evolution of an E-Commerce Platform</span><span lang="en">1.1 A Real-World Case: The Architecture Evolution of an E-Commerce Platform</span></h3>
 <p class="reveal"><span lang="id">An e-commerce platform encountered serious architectural problems during rapid business growth:</span><span lang="en">An e-commerce platform encountered serious architectural problems during rapid business growth:</span></p>
-<p class="reveal"><span lang="id"><b>Scenario:</b></span><span lang="en"><b>Scenario:</b></span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>CODE</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>Phase 1: Directly Exposing Services
-Client → Directly calls User Service, Order Service, Payment Service...
-         ↓
-Problem 1: Service IPs are exposed — security risk
-Problem 2: No unified authentication or rate limiting
-Problem 3: Adding a new service requires modifying client configuration</pre>
+<p class="reveal"><span lang="id"><b>Scenario:</b></span><span lang="en"><b>Scenario:</b></span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>CODE</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>Phase 1: Directly Exposing Services Client → Directly calls User Service, Order Service, Payment Service... ↓ Problem 1: Service IPs are exposed — security risk Problem 2: No unified authentication or rate limiting Problem 3: Adding a new service requires modifying client configuration</pre>
+</div> <div class="callout warn reveal" style="margin:24px 0"> <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div> <p><span lang="id">- <b>Security risk</b>: All service IPs are exposed and vulnerable to attacks - <b>Redundant functionality</b>: Every service must implement authentication, rate limiting, and logging - <b>Scaling difficulty</b>: Adding a new service requires changes to all clients - <b>Protocol chaos</b>: Some services use HTTP, others gRPC — clients must adapt to all</span><span lang="en">- <b>Security risk</b>: All service IPs are exposed and vulnerable to attacks - <b>Redundant functionality</b>: Every service must implement authentication, rate limiting, and logging - <b>Scaling difficulty</b>: Adding a new service requires changes to all clients - <b>Protocol chaos</b>: Some services use HTTP, others gRPC — clients must adapt to all</span></p>
 </div>
-
-<div class="callout warn reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div>
-  <p><span lang="id">- <b>Security risk</b>: All service IPs are exposed and vulnerable to attacks
-- <b>Redundant functionality</b>: Every service must implement authentication, rate limiting, and logging
-- <b>Scaling difficulty</b>: Adding a new service requires changes to all clients
-- <b>Protocol chaos</b>: Some services use HTTP, others gRPC — clients must adapt to all</span><span lang="en">- <b>Security risk</b>: All service IPs are exposed and vulnerable to attacks
-- <b>Redundant functionality</b>: Every service must implement authentication, rate limiting, and logging
-- <b>Scaling difficulty</b>: Adding a new service requires changes to all clients
-- <b>Protocol chaos</b>: Some services use HTTP, others gRPC — clients must adapt to all</span></p>
-</div>
-<p class="reveal"><span lang="id"><b>Improved Architecture (with Gateway):</b></span><span lang="en"><b>Improved Architecture (with Gateway):</b></span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>CODE</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>Client → API Gateway (Nginx/Kong) → Internal Services
-         ↓
-      Unified authentication, rate limiting, routing
-         ↓
-      Client only knows the gateway address</pre>
-</div>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">- <b>Security</b>: Real service IPs are hidden; only the gateway is exposed externally
-- <b>Consolidation</b>: Authentication, rate limiting, and logging are handled centrally
-- <b>Easy scaling</b>: Adding a new service only requires configuring a route on the gateway
-- <b>Protocol unification</b>: HTTP externally, gRPC internally</span><span lang="en">- <b>Security</b>: Real service IPs are hidden; only the gateway is exposed externally
-- <b>Consolidation</b>: Authentication, rate limiting, and logging are handled centrally
-- <b>Easy scaling</b>: Adding a new service only requires configuring a route on the gateway
-- <b>Protocol unification</b>: HTTP externally, gRPC internally</span></p>
+<p class="reveal"><span lang="id"><b>Improved Architecture (with Gateway):</b></span><span lang="en"><b>Improved Architecture (with Gateway):</b></span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>CODE</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>Client → API Gateway (Nginx/Kong) → Internal Services ↓ Unified authentication, rate limiting, routing ↓ Client only knows the gateway address</pre>
+</div> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">- <b>Security</b>: Real service IPs are hidden; only the gateway is exposed externally - <b>Consolidation</b>: Authentication, rate limiting, and logging are handled centrally - <b>Easy scaling</b>: Adding a new service only requires configuring a route on the gateway - <b>Protocol unification</b>: HTTP externally, gRPC internally</span><span lang="en">- <b>Security</b>: Real service IPs are hidden; only the gateway is exposed externally - <b>Consolidation</b>: Authentication, rate limiting, and logging are handled centrally - <b>Easy scaling</b>: Adding a new service only requires configuring a route on the gateway - <b>Protocol unification</b>: HTTP externally, gRPC internally</span></p>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 A Real-Life Analogy for Gateways</span><span lang="en">1.2 A Real-Life Analogy for Gateways</span></h3>
 <p class="reveal"><span lang="id"><b>The Reception Desk</b></span><span lang="en"><b>The Reception Desk</b></span></p>
@@ -130,35 +44,7 @@ Problem 3: Adding a new service requires modifying client configuration</pre>
 <p class="reveal"><span lang="id"><ReverseProxyDemo /></span><span lang="en"><ReverseProxyDemo /></span></p>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
 <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Overview of a Reverse Proxy</span><span lang="en">2. Overview of a Reverse Proxy</span></h2>
-<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Forward Proxy vs. Reverse Proxy</span><span lang="en">2.1 Forward Proxy vs. Reverse Proxy</span></h3>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id"><b>Forward Proxy</b>:
-
-- Deployed on the client side
-- Accesses external resources on behalf of the client
-- Typical applications: VPNs, circumvention tools
-- Example: In a corporate network, you access the internet through a proxy
-
-<b>Reverse Proxy</b>:
-
-- Deployed on the server side
-- Receives client requests and forwards them to internal services
-- Clients only know the proxy exists, not the real servers
-- Examples: Nginx, HAProxy</span><span lang="en"><b>Forward Proxy</b>:
-
-- Deployed on the client side
-- Accesses external resources on behalf of the client
-- Typical applications: VPNs, circumvention tools
-- Example: In a corporate network, you access the internet through a proxy
-
-<b>Reverse Proxy</b>:
-
-- Deployed on the server side
-- Receives client requests and forwards them to internal services
-- Clients only know the proxy exists, not the real servers
-- Examples: Nginx, HAProxy</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Forward Proxy vs. Reverse Proxy</span><span lang="en">2.1 Forward Proxy vs. Reverse Proxy</span></h3> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id"><b>Forward Proxy</b>: - Deployed on the client side - Accesses external resources on behalf of the client - Typical applications: VPNs, circumvention tools - Example: In a corporate network, you access the internet through a proxy <b>Reverse Proxy</b>: - Deployed on the server side - Receives client requests and forwards them to internal services - Clients only know the proxy exists, not the real servers - Examples: Nginx, HAProxy</span><span lang="en"><b>Forward Proxy</b>: - Deployed on the client side - Accesses external resources on behalf of the client - Typical applications: VPNs, circumvention tools - Example: In a corporate network, you access the internet through a proxy <b>Reverse Proxy</b>: - Deployed on the server side - Receives client requests and forwards them to internal services - Clients only know the proxy exists, not the real servers - Examples: Nginx, HAProxy</span></p>
 </div>
 <p class="reveal"><span lang="id"><b>Comparison:</b></span><span lang="en"><b>Comparison:</b></span></p>
 <div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
@@ -169,63 +55,9 @@ Problem 3: Adding a new service requires modifying client configuration</pre>
 <tr><td><b>Transparency</b></td><td>Server sees the proxy IP</td><td>Client sees the proxy IP</td></tr>
 <tr><td><b>Purpose</b></td><td>Hide real client, accelerate access</td><td>Hide real server, load balance</td></tr>
 </table></div>
-<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Core Value of a Reverse Proxy</span><span lang="en">2.2 Core Value of a Reverse Proxy</span></h3>
-
-<div class="callout info reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
-  <p><span lang="id">Distributes traffic across multiple backend servers to avoid single-point overload.
-
-``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
-Client
-  ↓
-Nginx (Reverse Proxy)
-  ↓
-┌──────────┬──────────┬──────────┐
-│ Server 1 │ Server 2 │ Server 3 │
-└──────────┴──────────┴──────────┘
-</code>``</span><span lang="en">Distributes traffic across multiple backend servers to avoid single-point overload.
-
-``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
-Client
-  ↓
-Nginx (Reverse Proxy)
-  ↓
-┌──────────┬──────────┬──────────┐
-│ Server 1 │ Server 2 │ Server 3 │
-└──────────┴──────────┴──────────┘
-</code>``</span></p>
-</div>
-
-<div class="callout info reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
-  <p><span lang="id">Hides real server IPs to prevent direct attacks. Security is enforced at the proxy layer.
-
-``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
-Client → Only sees Nginx's IP
-Real servers → Only on the internal network, inaccessible externally
-</code>``</span><span lang="en">Hides real server IPs to prevent direct attacks. Security is enforced at the proxy layer.
-
-``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
-Client → Only sees Nginx's IP
-Real servers → Only on the internal network, inaccessible externally
-</code>``</span></p>
-</div>
-
-<div class="callout info reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
-  <p><span lang="id">Handles HTTPS encryption/decryption at the proxy layer; backend services use HTTP, reducing backend computational overhead.
-
-``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
-HTTPS Client → Nginx (encrypt/decrypt) → HTTP Backend Services
-                   ↑
-              SSL termination point
-</code>``</span><span lang="en">Handles HTTPS encryption/decryption at the proxy layer; backend services use HTTP, reducing backend computational overhead.
-
-``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
-HTTPS Client → Nginx (encrypt/decrypt) → HTTP Backend Services
-                   ↑
-              SSL termination point
-</code>``</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Core Value of a Reverse Proxy</span><span lang="en">2.2 Core Value of a Reverse Proxy</span></h3> <div class="callout info reveal" style="margin:24px 0"> <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div> <p><span lang="id">Distributes traffic across multiple backend servers to avoid single-point overload. ``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> Client ↓ Nginx (Reverse Proxy) ↓ ┌──────────┬──────────┬──────────┐ │ Server 1 │ Server 2 │ Server 3 │ └──────────┴──────────┴──────────┘ </code>``</span><span lang="en">Distributes traffic across multiple backend servers to avoid single-point overload. ``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> Client ↓ Nginx (Reverse Proxy) ↓ ┌──────────┬──────────┬──────────┐ │ Server 1 │ Server 2 │ Server 3 │ └──────────┴──────────┴──────────┘ </code>``</span></p>
+</div> <div class="callout info reveal" style="margin:24px 0"> <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div> <p><span lang="id">Hides real server IPs to prevent direct attacks. Security is enforced at the proxy layer. ``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> Client → Only sees Nginx's IP Real servers → Only on the internal network, inaccessible externally </code>``</span><span lang="en">Hides real server IPs to prevent direct attacks. Security is enforced at the proxy layer. ``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> Client → Only sees Nginx's IP Real servers → Only on the internal network, inaccessible externally </code>``</span></p>
+</div> <div class="callout info reveal" style="margin:24px 0"> <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div> <p><span lang="id">Handles HTTPS encryption/decryption at the proxy layer; backend services use HTTP, reducing backend computational overhead. ``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> HTTPS Client → Nginx (encrypt/decrypt) → HTTP Backend Services ↑ SSL termination point </code>``</span><span lang="en">Handles HTTPS encryption/decryption at the proxy layer; backend services use HTTP, reducing backend computational overhead. ``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> HTTPS Client → Nginx (encrypt/decrypt) → HTTP Backend Services ↑ SSL termination point </code>``</span></p>
 </div>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
 <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Nginx: Method for handling Millions of Concurrent Connections</span><span lang="en">3. Nginx: Method for handling Millions of Concurrent Connections</span></h2>
@@ -242,15 +74,7 @@ HTTPS Client → Nginx (encrypt/decrypt) → HTTP Backend Services
 <li><span lang="id">Actually handle HTTP requests</span><span lang="en">Actually handle HTTP requests</span></li>
 <li><span lang="id">Each Worker is an independent, isolated process</span><span lang="en">Each Worker is an independent, isolated process</span></li>
 <li><span lang="id">The number is typically set to the number of CPU cores to avoid context-switching overhead</span><span lang="en">The number is typically set to the number of CPU cores to avoid context-switching overhead</span></li>
-</ul>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">- <b>Strong isolation</b>: One Worker crash does not affect other Workers
-- <b>Full multi-core utilization</b>: Each Worker runs independently
-- <b>Avoids multi-threading complexity</b>: No need to deal with locks, race conditions, etc.</span><span lang="en">- <b>Strong isolation</b>: One Worker crash does not affect other Workers
-- <b>Full multi-core utilization</b>: Each Worker runs independently
-- <b>Avoids multi-threading complexity</b>: No need to deal with locks, race conditions, etc.</span></p>
+</ul> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">- <b>Strong isolation</b>: One Worker crash does not affect other Workers - <b>Full multi-core utilization</b>: Each Worker runs independently - <b>Avoids multi-threading complexity</b>: No need to deal with locks, race conditions, etc.</span><span lang="en">- <b>Strong isolation</b>: One Worker crash does not affect other Workers - <b>Full multi-core utilization</b>: Each Worker runs independently - <b>Avoids multi-threading complexity</b>: No need to deal with locks, race conditions, etc.</span></p>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Event-Driven + Async Non-Blocking</span><span lang="en">3.2 Event-Driven + Async Non-Blocking</span></h3>
 <p class="reveal"><span lang="id">This is the core secret of Nginx's high performance:</span><span lang="en">This is the core secret of Nginx's high performance:</span></p>
@@ -265,13 +89,7 @@ HTTPS Client → Nginx (encrypt/decrypt) → HTTP Backend Services
 <li><span lang="id">Uses efficient I/O multiplexing mechanisms like epoll (Linux) / kqueue (macOS)</span><span lang="en">Uses efficient I/O multiplexing mechanisms like epoll (Linux) / kqueue (macOS)</span></li>
 <li><span lang="id">A single Worker process can handle tens of thousands of connections simultaneously</span><span lang="en">A single Worker process can handle tens of thousands of connections simultaneously</span></li>
 <li><span lang="id">When a connection has no data, it consumes no CPU; it is woken up by event notifications when new data arrives</span><span lang="en">When a connection has no data, it consumes no CPU; it is woken up by event notifications when new data arrives</span></li>
-</ul>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">- <b>Apache</b>: A restaurant where every diner gets a dedicated waiter (process); many diners require many waiters
-- <b>Nginx</b>: One super-waiter serving all diners simultaneously, going to whoever needs service rather than standing next to a single diner</span><span lang="en">- <b>Apache</b>: A restaurant where every diner gets a dedicated waiter (process); many diners require many waiters
-- <b>Nginx</b>: One super-waiter serving all diners simultaneously, going to whoever needs service rather than standing next to a single diner</span></p>
+</ul> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">- <b>Apache</b>: A restaurant where every diner gets a dedicated waiter (process); many diners require many waiters - <b>Nginx</b>: One super-waiter serving all diners simultaneously, going to whoever needs service rather than standing next to a single diner</span><span lang="en">- <b>Apache</b>: A restaurant where every diner gets a dedicated waiter (process); many diners require many waiters - <b>Nginx</b>: One super-waiter serving all diners simultaneously, going to whoever needs service rather than standing next to a single diner</span></p>
 </div>
 <p class="reveal"><span lang="id"><NginxArchitectureDemo /></span><span lang="en"><NginxArchitectureDemo /></span></p>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
@@ -283,17 +101,7 @@ HTTPS Client → Nginx (encrypt/decrypt) → HTTP Backend Services
 <li><span lang="id">Each service must implement its own authentication, rate limiting, and logging</span><span lang="en">Each service must implement its own authentication, rate limiting, and logging</span></li>
 <li><span lang="id">Protocols are inconsistent — some use HTTP, others gRPC</span><span lang="en">Protocols are inconsistent — some use HTTP, others gRPC</span></li>
 <li><span lang="id">When services upgrade, clients must change too</span><span lang="en">When services upgrade, clients must change too</span></li>
-</ul>
-
-<div class="callout warn reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div>
-  <p><span lang="id">- <b>Client complexity</b>: Must configure multiple service addresses
-- <b>Redundant functionality</b>: Every service must implement authentication and rate limiting
-- <b>Protocol chaos</b>: Clients must adapt to multiple protocols
-- <b>Upgrade difficulty</b>: Service upgrades force client-side changes</span><span lang="en">- <b>Client complexity</b>: Must configure multiple service addresses
-- <b>Redundant functionality</b>: Every service must implement authentication and rate limiting
-- <b>Protocol chaos</b>: Clients must adapt to multiple protocols
-- <b>Upgrade difficulty</b>: Service upgrades force client-side changes</span></p>
+</ul> <div class="callout warn reveal" style="margin:24px 0"> <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div> <p><span lang="id">- <b>Client complexity</b>: Must configure multiple service addresses - <b>Redundant functionality</b>: Every service must implement authentication and rate limiting - <b>Protocol chaos</b>: Clients must adapt to multiple protocols - <b>Upgrade difficulty</b>: Service upgrades force client-side changes</span><span lang="en">- <b>Client complexity</b>: Must configure multiple service addresses - <b>Redundant functionality</b>: Every service must implement authentication and rate limiting - <b>Protocol chaos</b>: Clients must adapt to multiple protocols - <b>Upgrade difficulty</b>: Service upgrades force client-side changes</span></p>
 </div>
 <p class="reveal"><span lang="id"><b>With an API gateway:</b></span><span lang="en"><b>With an API gateway:</b></span></p>
 <ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
@@ -316,261 +124,11 @@ HTTPS Client → Nginx (encrypt/decrypt) → HTTP Backend Services
 </table></div>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
 <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Gateway in Practice: Approach to building a Complete Gateway Architecture</span><span lang="en">5. Gateway in Practice: Approach to building a Complete Gateway Architecture</span></h2>
-<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Full Architecture Diagram</span><span lang="en">5.1 Full Architecture Diagram</span></h3>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>CODE</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>┌───────────────────────────────────────────────────────────────────────┐
-│                           Client (Browser/App)                         │
-└───────────────────────────┬─────────────────────────────────────────┘
-                                │ HTTPS
-                                ▼
-┌───────────────────────────────────────────────────────────────────────┐
-│                      Outer Layer: CDN + WAF                            │
-│  ┌─────────────────────────────────────────────────────────────┐  │
-│  │  CDN (Content Delivery Network)                              │  │
-│  │  - Static asset caching (images, CSS, JS)                    │  │
-│  │  - Nearby access, reduced latency                            │  │
-│  └───────────────────────────────────────────────────────────────┘  │
-│  ┌───────────────────────────────────────────────────────────────┐  │
-│  │  WAF (Web Application Firewall)                               │  │
-│  │  - Protection against SQL injection, XSS attacks              │  │
-│  │  - Block malicious bots and crawlers                          │  │
-│  │  - CC attack protection                                       │  │
-│  └───────────────────────────────────────────────────────────────┘  │
-└───────────────────────────────────────────────────────────────────────┘
-                                │
-                                ▼
-┌───────────────────────────────────────────────────────────────────────┐
-│                  Middle Layer: API Gateway (Nginx/Kong)                │
-│  ┌───────────────────────────────────────────────────────────────┐  │
-│  │  Layer 1: SSL Termination + Security                          │  │
-│  │  - HTTPS / TLS 1.3                                            │  │
-│  │  - HSTS, security response headers                            │  │
-│  └───────────────────────────────────────────────────────────────┘  │
-│  ┌───────────────────────────────────────────────────────────────┐  │
-│  │  Layer 2: Authentication &amp; Authorization                      │  │
-│  │  - JWT Token validation                                       │  │
-│  │  - OAuth 2.0 / SSO integration                                │  │
-│  │  - API Key management                                         │  │
-│  │  - Permission checks (RBAC)                                   │  │
-│  └───────────────────────────────────────────────────────────────┘  │
-│  ┌───────────────────────────────────────────────────────────────┐  │
-│  │  Layer 3: Traffic Control                                     │  │
-│  │  - Rate limiting — token bucket / leaky bucket algorithms     │  │
-│  │  - Circuit breaking — prevent fault propagation               │  │
-│  │  - Degradation — fallback when a service is unavailable       │  │
-│  │  - Canary release — traffic splitting by ratio                │  │
-│  └───────────────────────────────────────────────────────────────┘  │
-│  ┌───────────────────────────────────────────────────────────────┐  │
-│  │  Layer 4: Routing &amp; Load Balancing                            │  │
-│  │  - Path-based Routing                                         │  │
-│  │  - Host-based Routing                                         │  │
-│  │  - Header-based Routing                                       │  │
-│  │  - Load balancing algorithms — round-robin / weighted /       │  │
-│  │    least connections / IP hash                                │  │
-│  │  - Service Discovery integration                              │  │
-│  └───────────────────────────────────────────────────────────────┘  │
-│  ┌───────────────────────────────────────────────────────────────┐  │
-│  │  Layer 5: Protocol Translation &amp; Data Processing              │  │
-│  │  - SSL Termination — HTTPS ↔ HTTP                             │  │
-│  │  - Protocol translation — HTTP ↔ gRPC / WebSocket             │  │
-│  │  - Request/Response transformation — JSON ↔ XML               │  │
-│  │  - Data compression — Gzip / Brotli                           │  │
-│  │  - Caching — static assets and API responses                  │  │
-│  └───────────────────────────────────────────────────────────────┘  │
-└───────────────────────────────────────────────────────────────────────┘
-                                │
-                                ▼
-┌───────────────────────────────────────────────────────────────────────┐
-│                    Inner Layer: Microservice Cluster                   │
-│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐      │
-│  │ User Svc    │ │ Order Svc   │ │ Product Svc │ │ Payment Svc │      │
-│  │             │ │             │ │             │ │             │      │
-│  └──────┬──────┘ └──────┬──────┘ └──────┬──────┘ └──────┬──────┘      │
-│         │                │                │                │               │
-│         └────────────────┴────────────────┴────────────────┘               │
-│                                       │                              │
-│                Service Discovery &amp; Config Center (etcd)              │
-│                - Service registration &amp; discovery                    │
-│                - Health checks                                       │
-│                - KV config storage                                   │
-└───────────────────────────────────────────────────────────────────────┘</pre>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Full Architecture Diagram</span><span lang="en">5.1 Full Architecture Diagram</span></h3> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>CODE</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>┌───────────────────────────────────────────────────────────────────────┐ │ Client (Browser/App) │ └───────────────────────────┬─────────────────────────────────────────┘ │ HTTPS ▼ ┌───────────────────────────────────────────────────────────────────────┐ │ Outer Layer: CDN + WAF │ │ ┌─────────────────────────────────────────────────────────────┐ │ │ │ CDN (Content Delivery Network) │ │ │ │ - Static asset caching (images, CSS, JS) │ │ │ │ - Nearby access, reduced latency │ │ │ └───────────────────────────────────────────────────────────────┘ │ │ ┌───────────────────────────────────────────────────────────────┐ │ │ │ WAF (Web Application Firewall) │ │ │ │ - Protection against SQL injection, XSS attacks │ │ │ │ - Block malicious bots and crawlers │ │ │ │ - CC attack protection │ │ │ └───────────────────────────────────────────────────────────────┘ │ └───────────────────────────────────────────────────────────────────────┘ │ ▼ ┌───────────────────────────────────────────────────────────────────────┐ │ Middle Layer: API Gateway (Nginx/Kong) │ │ ┌───────────────────────────────────────────────────────────────┐ │ │ │ Layer 1: SSL Termination + Security │ │ │ │ - HTTPS / TLS 1.3 │ │ │ │ - HSTS, security response headers │ │ │ └───────────────────────────────────────────────────────────────┘ │ │ ┌───────────────────────────────────────────────────────────────┐ │ │ │ Layer 2: Authentication &amp; Authorization │ │ │ │ - JWT Token validation │ │ │ │ - OAuth 2.0 / SSO integration │ │ │ │ - API Key management │ │ │ │ - Permission checks (RBAC) │ │ │ └───────────────────────────────────────────────────────────────┘ │ │ ┌───────────────────────────────────────────────────────────────┐ │ │ │ Layer 3: Traffic Control │ │ │ │ - Rate limiting — token bucket / leaky bucket algorithms │ │ │ │ - Circuit breaking — prevent fault propagation │ │ │ │ - Degradation — fallback when a service is unavailable │ │ │ │ - Canary release — traffic splitting by ratio │ │ │ └───────────────────────────────────────────────────────────────┘ │ │ ┌───────────────────────────────────────────────────────────────┐ │ │ │ Layer 4: Routing &amp; Load Balancing │ │ │ │ - Path-based Routing │ │ │ │ - Host-based Routing │ │ │ │ - Header-based Routing │ │ │ │ - Load balancing algorithms — round-robin / weighted / │ │ │ │ least connections / IP hash │ │ │ │ - Service Discovery integration │ │ │ └───────────────────────────────────────────────────────────────┘ │ │ ┌───────────────────────────────────────────────────────────────┐ │ │ │ Layer 5: Protocol Translation &amp; Data Processing │ │ │ │ - SSL Termination — HTTPS ↔ HTTP │ │ │ │ - Protocol translation — HTTP ↔ gRPC / WebSocket │ │ │ │ - Request/Response transformation — JSON ↔ XML │ │ │ │ - Data compression — Gzip / Brotli │ │ │ │ - Caching — static assets and API responses │ │ │ └───────────────────────────────────────────────────────────────┘ │ └───────────────────────────────────────────────────────────────────────┘ │ ▼ ┌───────────────────────────────────────────────────────────────────────┐ │ Inner Layer: Microservice Cluster │ │ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ │ │ │ User Svc │ │ Order Svc │ │ Product Svc │ │ Payment Svc │ │ │ │ │ │ │ │ │ │ │ │ │ └──────┬──────┘ └──────┬──────┘ └──────┬──────┘ └──────┬──────┘ │ │ │ │ │ │ │ │ └────────────────┴────────────────┴────────────────┘ │ │ │ │ │ Service Discovery &amp; Config Center (etcd) │ │ - Service registration &amp; discovery │ │ - Health checks │ │ - KV config storage │ └───────────────────────────────────────────────────────────────────────┘</pre>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 Routing & Load Balancing</span><span lang="en">5.2 Routing & Load Balancing</span></h3>
-<p class="reveal"><span lang="id">One of the gateway's core responsibilities is <b>getting requests to the right place</b>. This involves two key capabilities: <b>routing</b> (which server to go to) and <b>load balancing</b> (how to distribute traffic).</span><span lang="en">One of the gateway's core responsibilities is <b>getting requests to the right place</b>. This involves two key capabilities: <b>routing</b> (which server to go to) and <b>load balancing</b> (how to distribute traffic).</span></p>
-
-<div class="callout info reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
-  <p><span lang="id">Imagine an e-commerce system where different URLs map to different services:
-
-- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/api/users/*</code> → User Service
-- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/api/orders/*</code> → Order Service
-- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/api/products/*</code> → Product Service
-- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/api/pay/*</code> → Payment Service
-
-<b>Nginx configuration example:</b>
-
-``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">nginx
-server {
-    listen 80;
-    server_name api.example.com;
-
-    # User Service
-    location /api/users/ {
-        proxy_pass http://user-service;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-    }
-
-    # Order Service
-    location /api/orders/ {
-        proxy_pass http://order-service;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-    }
-
-    # Product Service
-    location /api/products/ {
-        proxy_pass http://product-service;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-    }
-
-    # Payment Service (requires higher security)
-    location /api/pay/ {
-        # Restrict IP access
-        allow 10.0.0.0/8;
-        deny all;
-
-        proxy_pass http://payment-service;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-    }
-}
-</code>``</span><span lang="en">Imagine an e-commerce system where different URLs map to different services:
-
-- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/api/users/*</code> → User Service
-- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/api/orders/*</code> → Order Service
-- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/api/products/*</code> → Product Service
-- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/api/pay/*</code> → Payment Service
-
-<b>Nginx configuration example:</b>
-
-``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">nginx
-server {
-    listen 80;
-    server_name api.example.com;
-
-    # User Service
-    location /api/users/ {
-        proxy_pass http://user-service;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-    }
-
-    # Order Service
-    location /api/orders/ {
-        proxy_pass http://order-service;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-    }
-
-    # Product Service
-    location /api/products/ {
-        proxy_pass http://product-service;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-    }
-
-    # Payment Service (requires higher security)
-    location /api/pay/ {
-        # Restrict IP access
-        allow 10.0.0.0/8;
-        deny all;
-
-        proxy_pass http://payment-service;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-    }
-}
-</code>``</span></p>
-</div>
-
-<div class="callout info reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
-  <p><span lang="id">When a service has multiple instances, how do you choose?
-
-| Strategy              | Principle                                                       | Use Case                    | Pros                              | Cons                                      |
-| :-------------------- | :-------------------------------------------------------------- | :-------------------------- | :-------------------------------- | :---------------------------------------- |
-| <b>Round-robin</b>       | Assigns to each server in order                                 | Servers with similar specs  | Simple and fair                   | Doesn't consider current server load      |
-| <b>Weighted round-robin</b> | Assigns by weight ratio; higher weight = more traffic         | Servers with uneven specs   | Fully utilizes high-perf servers  | Requires sensible weight configuration    |
-| <b>Least connections</b> | Assigns to the server with the fewest active connections        | Long-lived connections, video streaming | Dynamically adapts to load changes | Requires real-time connection tracking |
-| <b>IP hash</b>           | Hashes client IP; same IP always goes to the same server        | Session persistence needed  | Guarantees session consistency     | A heavy-traffic IP can create a hotspot   |
-
-<b>Nginx configuration example:</b>
-
-``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">nginx
-# Weighted round-robin
-upstream backend_weighted {
-    server 10.0.1.10:8080 weight=3;  # High performance, handles more traffic
-    server 10.0.1.11:8080 weight=2;
-    server 10.0.1.12:8080 weight=1;  # Lower performance, handles less traffic
-}
-
-# Least connections
-upstream backend_least_conn {
-    least_conn;
-    server 10.0.1.10:8080;
-    server 10.0.1.11:8080;
-    server 10.0.1.12:8080;
-}
-
-# IP hash (session persistence)
-upstream backend_ip_hash {
-    ip_hash;
-    server 10.0.1.10:8080;
-    server 10.0.1.11:8080;
-    server 10.0.1.12:8080;
-}
-</code>``</span><span lang="en">When a service has multiple instances, how do you choose?
-
-| Strategy              | Principle                                                       | Use Case                    | Pros                              | Cons                                      |
-| :-------------------- | :-------------------------------------------------------------- | :-------------------------- | :-------------------------------- | :---------------------------------------- |
-| <b>Round-robin</b>       | Assigns to each server in order                                 | Servers with similar specs  | Simple and fair                   | Doesn't consider current server load      |
-| <b>Weighted round-robin</b> | Assigns by weight ratio; higher weight = more traffic         | Servers with uneven specs   | Fully utilizes high-perf servers  | Requires sensible weight configuration    |
-| <b>Least connections</b> | Assigns to the server with the fewest active connections        | Long-lived connections, video streaming | Dynamically adapts to load changes | Requires real-time connection tracking |
-| <b>IP hash</b>           | Hashes client IP; same IP always goes to the same server        | Session persistence needed  | Guarantees session consistency     | A heavy-traffic IP can create a hotspot   |
-
-<b>Nginx configuration example:</b>
-
-``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">nginx
-# Weighted round-robin
-upstream backend_weighted {
-    server 10.0.1.10:8080 weight=3;  # High performance, handles more traffic
-    server 10.0.1.11:8080 weight=2;
-    server 10.0.1.12:8080 weight=1;  # Lower performance, handles less traffic
-}
-
-# Least connections
-upstream backend_least_conn {
-    least_conn;
-    server 10.0.1.10:8080;
-    server 10.0.1.11:8080;
-    server 10.0.1.12:8080;
-}
-
-# IP hash (session persistence)
-upstream backend_ip_hash {
-    ip_hash;
-    server 10.0.1.10:8080;
-    server 10.0.1.11:8080;
-    server 10.0.1.12:8080;
-}
-</code>``</span></p>
+<p class="reveal"><span lang="id">One of the gateway's core responsibilities is <b>getting requests to the right place</b>. This involves two key capabilities: <b>routing</b> (which server to go to) and <b>load balancing</b> (how to distribute traffic).</span><span lang="en">One of the gateway's core responsibilities is <b>getting requests to the right place</b>. This involves two key capabilities: <b>routing</b> (which server to go to) and <b>load balancing</b> (how to distribute traffic).</span></p> <div class="callout info reveal" style="margin:24px 0"> <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div> <p><span lang="id">Imagine an e-commerce system where different URLs map to different services: - <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/api/users/*</code> → User Service - <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/api/orders/*</code> → Order Service - <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/api/products/*</code> → Product Service - <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/api/pay/*</code> → Payment Service <b>Nginx configuration example:</b> ``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">nginx server { listen 80; server_name api.example.com; # User Service location /api/users/ { proxy_pass http://user-service; proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; } # Order Service location /api/orders/ { proxy_pass http://order-service; proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; } # Product Service location /api/products/ { proxy_pass http://product-service; proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; } # Payment Service (requires higher security) location /api/pay/ { # Restrict IP access allow 10.0.0.0/8; deny all; proxy_pass http://payment-service; proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; } } </code>``</span><span lang="en">Imagine an e-commerce system where different URLs map to different services: - <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/api/users/*</code> → User Service - <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/api/orders/*</code> → Order Service - <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/api/products/*</code> → Product Service - <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">/api/pay/*</code> → Payment Service <b>Nginx configuration example:</b> ``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">nginx server { listen 80; server_name api.example.com; # User Service location /api/users/ { proxy_pass http://user-service; proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; } # Order Service location /api/orders/ { proxy_pass http://order-service; proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; } # Product Service location /api/products/ { proxy_pass http://product-service; proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; } # Payment Service (requires higher security) location /api/pay/ { # Restrict IP access allow 10.0.0.0/8; deny all; proxy_pass http://payment-service; proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; } } </code>``</span></p>
+</div> <div class="callout info reveal" style="margin:24px 0"> <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div> <p><span lang="id">When a service has multiple instances, how do you choose? | Strategy | Principle | Use Case | Pros | Cons | | :-------------------- | :-------------------------------------------------------------- | :-------------------------- | :-------------------------------- | :---------------------------------------- | | <b>Round-robin</b> | Assigns to each server in order | Servers with similar specs | Simple and fair | Doesn't consider current server load | | <b>Weighted round-robin</b> | Assigns by weight ratio; higher weight = more traffic | Servers with uneven specs | Fully utilizes high-perf servers | Requires sensible weight configuration | | <b>Least connections</b> | Assigns to the server with the fewest active connections | Long-lived connections, video streaming | Dynamically adapts to load changes | Requires real-time connection tracking | | <b>IP hash</b> | Hashes client IP; same IP always goes to the same server | Session persistence needed | Guarantees session consistency | A heavy-traffic IP can create a hotspot | <b>Nginx configuration example:</b> ``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">nginx # Weighted round-robin upstream backend_weighted { server 10.0.1.10:8080 weight=3; # High performance, handles more traffic server 10.0.1.11:8080 weight=2; server 10.0.1.12:8080 weight=1; # Lower performance, handles less traffic } # Least connections upstream backend_least_conn { least_conn; server 10.0.1.10:8080; server 10.0.1.11:8080; server 10.0.1.12:8080; } # IP hash (session persistence) upstream backend_ip_hash { ip_hash; server 10.0.1.10:8080; server 10.0.1.11:8080; server 10.0.1.12:8080; } </code>``</span><span lang="en">When a service has multiple instances, how do you choose? | Strategy | Principle | Use Case | Pros | Cons | | :-------------------- | :-------------------------------------------------------------- | :-------------------------- | :-------------------------------- | :---------------------------------------- | | <b>Round-robin</b> | Assigns to each server in order | Servers with similar specs | Simple and fair | Doesn't consider current server load | | <b>Weighted round-robin</b> | Assigns by weight ratio; higher weight = more traffic | Servers with uneven specs | Fully utilizes high-perf servers | Requires sensible weight configuration | | <b>Least connections</b> | Assigns to the server with the fewest active connections | Long-lived connections, video streaming | Dynamically adapts to load changes | Requires real-time connection tracking | | <b>IP hash</b> | Hashes client IP; same IP always goes to the same server | Session persistence needed | Guarantees session consistency | A heavy-traffic IP can create a hotspot | <b>Nginx configuration example:</b> ``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">nginx # Weighted round-robin upstream backend_weighted { server 10.0.1.10:8080 weight=3; # High performance, handles more traffic server 10.0.1.11:8080 weight=2; server 10.0.1.12:8080 weight=1; # Lower performance, handles less traffic } # Least connections upstream backend_least_conn { least_conn; server 10.0.1.10:8080; server 10.0.1.11:8080; server 10.0.1.12:8080; } # IP hash (session persistence) upstream backend_ip_hash { ip_hash; server 10.0.1.10:8080; server 10.0.1.11:8080; server 10.0.1.12:8080; } </code>``</span></p>
 </div>
 <p class="reveal"><span lang="id"><LoadBalancingDemo /></span><span lang="en"><LoadBalancingDemo /></span></p>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
@@ -588,21 +146,7 @@ upstream backend_ip_hash {
 <li><span lang="id">Gateway validates the token (signature, expiration)</span><span lang="en">Gateway validates the token (signature, expiration)</span></li>
 <li><span lang="id">After validation, user info (e.g., user_id) is added to request headers and forwarded to backend services</span><span lang="en">After validation, user info (e.g., user_id) is added to request headers and forwarded to backend services</span></li>
 <li><span lang="id">Backend services don't need to validate; they read user info directly from headers</span><span lang="en">Backend services don't need to validate; they read user info directly from headers</span></li>
-</ul>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id"><b>Authenticate at the gateway, authorize at the service</b>:
-
-- <b>Authentication</b>: Who are you? (Validate token, obtain user identity)
-- <b>Authorization</b>: What can you do? (Determine permissions based on user role)
-
-Like a company reception desk: reception authenticates your identity (ID card), but specific permissions are determined by each department.</span><span lang="en"><b>Authenticate at the gateway, authorize at the service</b>:
-
-- <b>Authentication</b>: Who are you? (Validate token, obtain user identity)
-- <b>Authorization</b>: What can you do? (Determine permissions based on user role)
-
-Like a company reception desk: reception authenticates your identity (ID card), but specific permissions are determined by each department.</span></p>
+</ul> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id"><b>Authenticate at the gateway, authorize at the service</b>: - <b>Authentication</b>: Who are you? (Validate token, obtain user identity) - <b>Authorization</b>: What can you do? (Determine permissions based on user role) Like a company reception desk: reception authenticates your identity (ID card), but specific permissions are determined by each department.</span><span lang="en"><b>Authenticate at the gateway, authorize at the service</b>: - <b>Authentication</b>: Who are you? (Validate token, obtain user identity) - <b>Authorization</b>: What can you do? (Determine permissions based on user role) Like a company reception desk: reception authenticates your identity (ID card), but specific permissions are determined by each department.</span></p>
 </div>
 <p class="reveal"><span lang="id"><AuthMiddlewareDemo /></span><span lang="en"><AuthMiddlewareDemo /></span></p>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 HTTPS & SSL Termination</span><span lang="en">6.2 HTTPS & SSL Termination</span></h3>
@@ -618,15 +162,7 @@ Like a company reception desk: reception authenticates your identity (ID card), 
 <li><span lang="id">The gateway handles TLS handshakes and encryption/decryption</span><span lang="en">The gateway handles TLS handshakes and encryption/decryption</span></li>
 <li><span lang="id">Communication between gateway and backend services uses plain HTTP (internal network is trusted)</span><span lang="en">Communication between gateway and backend services uses plain HTTP (internal network is trusted)</span></li>
 <li><span lang="id">Backend services focus on business logic without handling TLS</span><span lang="en">Backend services focus on business logic without handling TLS</span></li>
-</ul>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">- <b>Simplified management</b>: Certificates only configured on the gateway, not on backends
-- <b>Reduced overhead</b>: Backend services don't need to handle TLS handshakes
-- <b>Unified updates</b>: Certificate renewal only needs to happen on the gateway</span><span lang="en">- <b>Simplified management</b>: Certificates only configured on the gateway, not on backends
-- <b>Reduced overhead</b>: Backend services don't need to handle TLS handshakes
-- <b>Unified updates</b>: Certificate renewal only needs to happen on the gateway</span></p>
+</ul> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">- <b>Simplified management</b>: Certificates only configured on the gateway, not on backends - <b>Reduced overhead</b>: Backend services don't need to handle TLS handshakes - <b>Unified updates</b>: Certificate renewal only needs to happen on the gateway</span><span lang="en">- <b>Simplified management</b>: Certificates only configured on the gateway, not on backends - <b>Reduced overhead</b>: Backend services don't need to handle TLS handshakes - <b>Unified updates</b>: Certificate renewal only needs to happen on the gateway</span></p>
 </div>
 <p class="reveal"><span lang="id"><SslTerminationDemo /></span><span lang="en"><SslTerminationDemo /></span></p>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
@@ -638,74 +174,8 @@ Like a company reception desk: reception authenticates your identity (ID card), 
 <tr><td><b>Leaky bucket</b></td><td>Requests enter the bucket and are processed at a steady rate</td><td>Enforces smoothing; bursts are queued or rejected</td><td>Scenarios requiring strict steady processing</td><td>Medium</td></tr>
 <tr><td><b>Sliding window</b></td><td>Counts requests within a time window</td><td>Strictly counts by window; excess is rejected</td><td>Precise counting (e.g., "max 100 per minute")</td><td>High</td></tr>
 </table></div>
-<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.2 Nginx Rate Limiting Configuration in Practice</span><span lang="en">7.2 Nginx Rate Limiting Configuration in Practice</span></h3>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>nginx</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre># Define rate-limiting zones (place in the http block)
-
-# 1. IP-based rate limiting (leaky bucket algorithm)
-# zone=mylimit:10m — zone name and memory size (10 MB ≈ 160k IPs)
-# rate=10r/s — 10 requests per second
-limit_req_zone $binary_remote_addr zone=mylimit:10m rate=10r/s;
-
-# 2. IP-based connection limit (prevents a single IP from opening too many connections)
-limit_conn_zone $binary_remote_addr zone=addr:10m;
-
-# 3. Endpoint-based rate limiting (not per-IP; protects the backend as a whole)
-limit_req_zone $server_name zone=server_limit:10m rate=100r/s;
-
-server {
-    listen 80;
-    server_name api.example.com;
-
-    # User Service — normal rate limiting
-    location /api/users/ {
-        # Apply rate limiting
-        # burst=20 — bucket capacity, allows 20 burst requests
-        # nodelay — don&#039;t delay burst requests (process or reject immediately)
-        limit_req zone=mylimit burst=20 nodelay;
-
-        # Limit connections per IP
-        limit_conn addr 10;
-
-        proxy_pass http://user-service;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-    }
-
-    # Order Service — stricter rate limiting
-    location /api/orders/ {
-        # Stricter: 5 requests per second
-        limit_req_zone $binary_remote_addr zone=order_limit:10m rate=5r/s;
-        limit_req zone=order_limit burst=10 nodelay;
-
-        proxy_pass http://order-service;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-    }
-
-    # Handling after rate limiting
-    # When a request is rate-limited, return 429 Too Many Requests
-    error_page 429 /429.html;
-    location = /429.html {
-        internal;
-        return 429 &#039;{&quot;error&quot;: &quot;Too Many Requests&quot;, &quot;message&quot;: &quot;Rate limit exceeded. Please try again later.&quot;}&#039;;
-        add_header Content-Type application/json;
-    }
-}</pre>
-</div>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">- <b>Normal endpoints</b>: 10 requests/second, allow 20 burst
-- <b>Critical endpoints</b> (payment, orders): 5 requests/second, allow 10 burst
-- <b>Global protection</b>: Total across all requests no more than 100/second</span><span lang="en">- <b>Normal endpoints</b>: 10 requests/second, allow 20 burst
-- <b>Critical endpoints</b> (payment, orders): 5 requests/second, allow 10 burst
-- <b>Global protection</b>: Total across all requests no more than 100/second</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.2 Nginx Rate Limiting Configuration in Practice</span><span lang="en">7.2 Nginx Rate Limiting Configuration in Practice</span></h3> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>nginx</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre># Define rate-limiting zones (place in the http block) # 1. IP-based rate limiting (leaky bucket algorithm) # zone=mylimit:10m — zone name and memory size (10 MB ≈ 160k IPs) # rate=10r/s — 10 requests per second limit_req_zone $binary_remote_addr zone=mylimit:10m rate=10r/s; # 2. IP-based connection limit (prevents a single IP from opening too many connections) limit_conn_zone $binary_remote_addr zone=addr:10m; # 3. Endpoint-based rate limiting (not per-IP; protects the backend as a whole) limit_req_zone $server_name zone=server_limit:10m rate=100r/s; server { listen 80; server_name api.example.com; # User Service — normal rate limiting location /api/users/ { # Apply rate limiting # burst=20 — bucket capacity, allows 20 burst requests # nodelay — don&#039;t delay burst requests (process or reject immediately) limit_req zone=mylimit burst=20 nodelay; # Limit connections per IP limit_conn addr 10; proxy_pass http://user-service; proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; } # Order Service — stricter rate limiting location /api/orders/ { # Stricter: 5 requests per second limit_req_zone $binary_remote_addr zone=order_limit:10m rate=5r/s; limit_req zone=order_limit burst=10 nodelay; proxy_pass http://order-service; proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; } # Handling after rate limiting # When a request is rate-limited, return 429 Too Many Requests error_page 429 /429.html; location = /429.html { internal; return 429 &#039;{&quot;error&quot;: &quot;Too Many Requests&quot;, &quot;message&quot;: &quot;Rate limit exceeded. Please try again later.&quot;}&#039;; add_header Content-Type application/json; } }</pre>
+</div> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">- <b>Normal endpoints</b>: 10 requests/second, allow 20 burst - <b>Critical endpoints</b> (payment, orders): 5 requests/second, allow 10 burst - <b>Global protection</b>: Total across all requests no more than 100/second</span><span lang="en">- <b>Normal endpoints</b>: 10 requests/second, allow 20 burst - <b>Critical endpoints</b> (payment, orders): 5 requests/second, allow 10 burst - <b>Global protection</b>: Total across all requests no more than 100/second</span></p>
 </div>
 <p class="reveal"><span lang="id"><RateLimitingDemo /></span><span lang="en"><RateLimitingDemo /></span></p>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">7.3 Circuit Breaking: Preventing Fault Propagation</span><span lang="en">7.3 Circuit Breaking: Preventing Fault Propagation</span></h3>
@@ -714,15 +184,7 @@ server {
 <li><span lang="id"><b>Closed state</b>: Requests are forwarded normally; error rate is tracked</span><span lang="en"><b>Closed state</b>: Requests are forwarded normally; error rate is tracked</span></li>
 <li><span lang="id"><b>Open state</b>: When the error rate exceeds the threshold, the circuit breaker opens, immediately returning errors without forwarding requests</span><span lang="en"><b>Open state</b>: When the error rate exceeds the threshold, the circuit breaker opens, immediately returning errors without forwarding requests</span></li>
 <li><span lang="id"><b>Half-open state</b>: After a period, a small number of requests are allowed through as probes; if successful, the circuit breaker closes</span><span lang="en"><b>Half-open state</b>: After a period, a small number of requests are allowed through as probes; if successful, the circuit breaker closes</span></li>
-</ul>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id"><b>A circuit breaker is like an electrical fuse</b>: when current is too high, the fuse blows automatically, protecting the entire circuit from burning out.
-
-Similarly, when a backend service has a high error rate, the circuit breaker "trips," failing fast to prevent the fault from spreading across the entire system.</span><span lang="en"><b>A circuit breaker is like an electrical fuse</b>: when current is too high, the fuse blows automatically, protecting the entire circuit from burning out.
-
-Similarly, when a backend service has a high error rate, the circuit breaker "trips," failing fast to prevent the fault from spreading across the entire system.</span></p>
+</ul> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id"><b>A circuit breaker is like an electrical fuse</b>: when current is too high, the fuse blows automatically, protecting the entire circuit from burning out. Similarly, when a backend service has a high error rate, the circuit breaker "trips," failing fast to prevent the fault from spreading across the entire system.</span><span lang="en"><b>A circuit breaker is like an electrical fuse</b>: when current is too high, the fuse blows automatically, protecting the entire circuit from burning out. Similarly, when a backend service has a high error rate, the circuit breaker "trips," failing fast to prevent the fault from spreading across the entire system.</span></p>
 </div>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
 <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">8. Summary: Core Thinking in Gateway Design</span><span lang="en">8. Summary: Core Thinking in Gateway Design</span></h2>
@@ -736,39 +198,7 @@ Similarly, when a backend service has a high error rate, the circuit breaker "tr
 <tr><td><b>Circuit breaking</b></td><td>Prevent fault propagation</td><td>Fail fast, degradation strategies</td></tr>
 <tr><td><b>Observability</b></td><td>Monitoring and troubleshooting</td><td>Logging, metrics, distributed tracing</td></tr>
 </table></div>
-<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">8.2 Technology Selection Advice</span><span lang="en">8.2 Technology Selection Advice</span></h3>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
-Choosing a gateway:
-│
-├─ Only need reverse proxy & load balancing?
-│  ├─ Yes → Nginx (first choice)
-│  └─ No → Continue
-│
-├─ Need a rich plugin ecosystem?
-│  ├─ Yes → Kong (built on Nginx)
-│  └─ No → Continue
-│
-├─ Spring Cloud ecosystem?
-│  ├─ Yes → Spring Cloud Gateway
-│  └─ No → Nginx
-</code>``</span><span lang="en">``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
-Choosing a gateway:
-│
-├─ Only need reverse proxy & load balancing?
-│  ├─ Yes → Nginx (first choice)
-│  └─ No → Continue
-│
-├─ Need a rich plugin ecosystem?
-│  ├─ Yes → Kong (built on Nginx)
-│  └─ No → Continue
-│
-├─ Spring Cloud ecosystem?
-│  ├─ Yes → Spring Cloud Gateway
-│  └─ No → Nginx
-</code>``</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">8.2 Technology Selection Advice</span><span lang="en">8.2 Technology Selection Advice</span></h3> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> Choosing a gateway: │ ├─ Only need reverse proxy & load balancing? │ ├─ Yes → Nginx (first choice) │ └─ No → Continue │ ├─ Need a rich plugin ecosystem? │ ├─ Yes → Kong (built on Nginx) │ └─ No → Continue │ ├─ Spring Cloud ecosystem? │ ├─ Yes → Spring Cloud Gateway │ └─ No → Nginx </code>``</span><span lang="en">``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> Choosing a gateway: │ ├─ Only need reverse proxy & load balancing? │ ├─ Yes → Nginx (first choice) │ └─ No → Continue │ ├─ Need a rich plugin ecosystem? │ ├─ Yes → Kong (built on Nginx) │ └─ No → Continue │ ├─ Spring Cloud ecosystem? │ ├─ Yes → Spring Cloud Gateway │ └─ No → Nginx </code>``</span></p>
 </div>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
 <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">9. Glossary</span><span lang="en">9. Glossary</span></h2>
@@ -786,26 +216,8 @@ Choosing a gateway:
 <tr><td><b>Canary Release</b></td><td>Routing a small portion of traffic to a new version, verifying stability, then gradually increasing the ratio to reduce release risk.</td></tr>
 <tr><td><b>WAF</b></td><td>Web Application Firewall — protects against SQL injection, XSS, CC attacks, and other web security threats.</td></tr>
 <tr><td><b>CDN</b></td><td>Content Delivery Network — deploys edge nodes globally to accelerate access to static assets.</td></tr>
-</table></div>
-
-
-    <div class="pager" style="margin-top:54px">
-      <a href="../../7-infrastructure-and-operations/docker-containers/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">7-infrastructure-and-operations/docker-containers</span><span lang="en">7-infrastructure-and-operations/docker-containers</span></b></a>
-      <a class="next" href="../../7-infrastructure-and-operations/incident-response/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">7-infrastructure-and-operations/incident-response</span><span lang="en">7-infrastructure-and-operations/incident-response</span></b></a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="license-box">
-      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
-      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
-    </div>
-    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
-  </div>
-</footer>
-
-<script src="../../../assets/vibekoding.js"></script>
+</table></div> <div class="pager" style="margin-top:54px"> <a href="../../7-infrastructure-and-operations/docker-containers/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">7-infrastructure-and-operations/docker-containers</span><span lang="en">7-infrastructure-and-operations/docker-containers</span></b></a> <a class="next" href="../../7-infrastructure-and-operations/incident-response/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">7-infrastructure-and-operations/incident-response</span><span lang="en">7-infrastructure-and-operations/incident-response</span></b></a> </div> </div>
+</section> <footer> <div class="wrap"> <div class="license-box"> <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span> <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span> </div> <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p> </div>
+</footer> <script src="../../../assets/vibekoding.js"></script>
 </body>
 </html>

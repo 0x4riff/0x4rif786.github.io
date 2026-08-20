@@ -4,9 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Principles of Asynchronous Task Queues — VibeKoding 📚</title>
-<meta name="description" content="Ensiklopedia VibeKoding: Principles of Asynchronous Task Queues. - Kurikulum VibeKoding dual bahasa ID/EN."/>
-
-<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Asynchronous Task Queues. - Kurikulum VibeKoding dual bahasa ID/EN."/> <link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
 <meta name="theme-color" content="#07070f"/>
 <link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/4-server-and-backend/async-task-queues/"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -17,50 +15,9 @@
 <body>
 <div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
 <div class="grain"></div>
-<div id="scroll-progress"></div>
-
-<nav class="nav">
-  <div class="nav-inner">
-    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
-    <div class="nav-links">
-      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
-      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
-      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
-      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
-      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
-    </div>
-    <div class="nav-cta">
-      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
-      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
-      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
-    </div>
-  </div>
-</nav>
-
-<section class="lesson-hero">
-  <div class="wrap">
-    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Asynchronous Task Queues</span><span lang="en">Principles of Asynchronous Task Queues</span></div>
-    <div class="lesson-head">
-      <div class="lesson-mascot">📚</div>
-      <div>
-        <h1><span lang="id">Principles of Asynchronous Task Queues</span><span lang="en">Principles of Asynchronous Task Queues</span></h1>
-        <div class="meta-row">
-          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
-          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
-          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
-        </div>
-      </div>
-    </div>
-    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Asynchronous Task Queues.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Asynchronous Task Queues.</span></p>
-  </div>
-</section>
-
-<section style="padding-top:10px">
-  <div class="wrap prose">
-    
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id"><b>A user clicks "Export Report" and stares at a spinning loading animation for 30 seconds — is this reasonable?</b> When an operation takes several seconds or even minutes to complete, making the user wait is clearly a poor experience. Async task queues are the core architectural pattern for solving this problem — offloading time-consuming operations to background processing so the user gets an immediate response.</span><span lang="en"><b>A user clicks "Export Report" and stares at a spinning loading animation for 30 seconds — is this reasonable?</b> When an operation takes several seconds or even minutes to complete, making the user wait is clearly a poor experience. Async task queues are the core architectural pattern for solving this problem — offloading time-consuming operations to background processing so the user gets an immediate response.</span></p>
+<div id="scroll-progress"></div> <nav class="nav"> <div class="nav-inner"> <a class="brand" href="../../../"><span class="logo">VK</span>Vibe<span class="grad-text">Koding</span></a> <div class="nav-links"> <a href="../../../stage-1/"><span lang="id"> Pemula</span><span lang="en"> Beginner</span></a> <a href="../../../stage-2/"><span lang="id">Level 2: Full-Stack</span><span lang="en">Level 2: Full-Stack</span></a> <a href="../../../stage-3/"><span lang="id"> Master</span><span lang="en"> Master</span></a> <a href="../../../appendix/"><span lang="id">Ensiklopedia</span><span lang="en">Encyclopedia</span></a> <a href="../../../stories/" class="hide-sm"><span lang="id"> Cerita</span><span lang="en"> Stories</span></a> </div> <div class="nav-cta"> <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button> <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button> <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button> </div> </div>
+</nav> <section class="lesson-hero"> <div class="wrap"> <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Asynchronous Task Queues</span><span lang="en">Principles of Asynchronous Task Queues</span></div> <div class="lesson-head"> <div class="lesson-mascot"><span style="font-size:1.1rem;font-weight:800;color:var(--text);font-family:var(--font-mono)">VK</span></div> <div> <h1><span lang="id">Principles of Asynchronous Task Queues</span><span lang="en">Principles of Asynchronous Task Queues</span></h1> <div class="meta-row"> <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span> <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span> <span class="meta-chip">⚡ <span>VibeKoding Native</span></span> </div> </div> </div> <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Asynchronous Task Queues.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Asynchronous Task Queues.</span></p> </div>
+</section> <section style="padding-top:10px"> <div class="wrap prose"> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id"><b>A user clicks "Export Report" and stares at a spinning loading animation for 30 seconds — is this reasonable?</b> When an operation takes several seconds or even minutes to complete, making the user wait is clearly a poor experience. Async task queues are the core architectural pattern for solving this problem — offloading time-consuming operations to background processing so the user gets an immediate response.</span><span lang="en"><b>A user clicks "Export Report" and stares at a spinning loading animation for 30 seconds — is this reasonable?</b> When an operation takes several seconds or even minutes to complete, making the user wait is clearly a poor experience. Async task queues are the core architectural pattern for solving this problem — offloading time-consuming operations to background processing so the user gets an immediate response.</span></p>
 </div>
 <p class="reveal"><span lang="id"><b>What will you learn in this article?</b></span><span lang="en"><b>What will you learn in this article?</b></span></p>
 <p class="reveal"><span lang="id">After reading this chapter, you will gain:</span><span lang="en">After reading this chapter, you will gain:</span></p>
@@ -88,11 +45,7 @@
 <li><span lang="id"><b>Generating reports/PDFs</b>: Heavy data computation, which may take dozens of seconds</span><span lang="en"><b>Generating reports/PDFs</b>: Heavy data computation, which may take dozens of seconds</span></li>
 <li><span lang="id"><b>Image/video processing</b>: Compression, transcoding, watermarking, which may take several minutes</span><span lang="en"><b>Image/video processing</b>: Compression, transcoding, watermarking, which may take several minutes</span></li>
 <li><span lang="id"><b>Data synchronization</b>: Cross-system data sync, unpredictable duration</span><span lang="en"><b>Data synchronization</b>: Cross-system data sync, unpredictable duration</span></li>
-</ul>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">Strip time-consuming operations out of the main "request-response" flow and place them in a background queue for async processing. After the user submits a request, they immediately receive a "Received, processing" response. When processing is complete, the result is communicated via notifications, polling, or WebSocket.</span><span lang="en">Strip time-consuming operations out of the main "request-response" flow and place them in a background queue for async processing. After the user submits a request, they immediately receive a "Received, processing" response. When processing is complete, the result is communicated via notifications, polling, or WebSocket.</span></p>
+</ul> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">Strip time-consuming operations out of the main "request-response" flow and place them in a background queue for async processing. After the user submits a request, they immediately receive a "Received, processing" response. When processing is complete, the result is communicated via notifications, polling, or WebSocket.</span><span lang="en">Strip time-consuming operations out of the main "request-response" flow and place them in a background queue for async processing. After the user submits a request, they immediately receive a "Received, processing" response. When processing is complete, the result is communicated via notifications, polling, or WebSocket.</span></p>
 </div>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
 <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Synchronous vs Asynchronous: A Story About an Order</span><span lang="en">1. Synchronous vs Asynchronous: A Story About an Order</span></h2>
@@ -106,11 +59,7 @@
 <tr><td>Failure impact</td><td>Non-core failures cause overall failure</td><td>Non-core failures don't affect the main flow</td></tr>
 <tr><td>Implementation complexity</td><td>Simple</td><td>Requires additional queue infrastructure</td></tr>
 <tr><td>Data consistency</td><td>Strong consistency</td><td>Eventual consistency</td></tr>
-</table></div>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">Three criteria: <b>Time-consuming</b> (over 1-2 seconds), <b>Non-core</b> (failure shouldn't affect the main flow), <b>Delayable</b> (result not needed immediately). If any two of these are met, you should consider making it asynchronous.</span><span lang="en">Three criteria: <b>Time-consuming</b> (over 1-2 seconds), <b>Non-core</b> (failure shouldn't affect the main flow), <b>Delayable</b> (result not needed immediately). If any two of these are met, you should consider making it asynchronous.</span></p>
+</table></div> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">Three criteria: <b>Time-consuming</b> (over 1-2 seconds), <b>Non-core</b> (failure shouldn't affect the main flow), <b>Delayable</b> (result not needed immediately). If any two of these are met, you should consider making it asynchronous.</span><span lang="en">Three criteria: <b>Time-consuming</b> (over 1-2 seconds), <b>Non-core</b> (failure shouldn't affect the main flow), <b>Delayable</b> (result not needed immediately). If any two of these are met, you should consider making it asynchronous.</span></p>
 </div>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
 <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Producer-Consumer Model: The Task "Assembly Line"</span><span lang="en">2. Producer-Consumer Model: The Task "Assembly Line"</span></h2>
@@ -120,15 +69,7 @@
 <li><span lang="id"><b>Queue</b>: The buffer storing pending tasks, typically implemented with Redis, RabbitMQ, etc.</span><span lang="en"><b>Queue</b>: The buffer storing pending tasks, typically implemented with Redis, RabbitMQ, etc.</span></li>
 <li><span lang="id"><b>Consumer/Worker</b>: The worker process that takes tasks from the queue and executes them</span><span lang="en"><b>Consumer/Worker</b>: The worker process that takes tasks from the queue and executes them</span></li>
 </ul>
-<p class="reveal"><span lang="id"><TaskWorkerDemo /></span><span lang="en"><TaskWorkerDemo /></span></p>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">1. <b>Decoupling</b>: Producers don't need to know who processes tasks; consumers don't need to know where tasks come from
-2. <b>Peak shaving and valley filling</b>: During traffic spikes, tasks pile up in the queue first; consumers process them at their own pace
-3. <b>Reliability</b>: Tasks are persisted in the queue; even if a consumer crashes, tasks won't be lost</span><span lang="en">1. <b>Decoupling</b>: Producers don't need to know who processes tasks; consumers don't need to know where tasks come from
-2. <b>Peak shaving and valley filling</b>: During traffic spikes, tasks pile up in the queue first; consumers process them at their own pace
-3. <b>Reliability</b>: Tasks are persisted in the queue; even if a consumer crashes, tasks won't be lost</span></p>
+<p class="reveal"><span lang="id"><TaskWorkerDemo /></span><span lang="en"><TaskWorkerDemo /></span></p> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">1. <b>Decoupling</b>: Producers don't need to know who processes tasks; consumers don't need to know where tasks come from 2. <b>Peak shaving and valley filling</b>: During traffic spikes, tasks pile up in the queue first; consumers process them at their own pace 3. <b>Reliability</b>: Tasks are persisted in the queue; even if a consumer crashes, tasks won't be lost</span><span lang="en">1. <b>Decoupling</b>: Producers don't need to know who processes tasks; consumers don't need to know where tasks come from 2. <b>Peak shaving and valley filling</b>: During traffic spikes, tasks pile up in the queue first; consumers process them at their own pace 3. <b>Reliability</b>: Tasks are persisted in the queue; even if a consumer crashes, tasks won't be lost</span></p>
 </div>
 <div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
 <tr><th>Component</th><th>Responsibility</th><th>Common Implementations</th></tr>
@@ -141,15 +82,7 @@
 <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Reliability Guarantees: Tasks Must Not Be "Lost" or "Duplicated"</span><span lang="en">3. Reliability Guarantees: Tasks Must Not Be "Lost" or "Duplicated"</span></h2>
 <p class="reveal"><span lang="id">In distributed environments, network jitter, service restarts, and resource shortages can happen at any time. Async task systems must have robust reliability mechanisms.</span><span lang="en">In distributed environments, network jitter, service restarts, and resource shortages can happen at any time. Async task systems must have robust reliability mechanisms.</span></p>
 <p class="reveal"><span lang="id">The two most critical issues: <b>Task loss</b> (a consumer crashes midway through processing) and <b>Duplicate execution</b> (a task is delivered twice).</span><span lang="en">The two most critical issues: <b>Task loss</b> (a consumer crashes midway through processing) and <b>Duplicate execution</b> (a task is delivered twice).</span></p>
-<p class="reveal"><span lang="id"><TaskRetryDemo /></span><span lang="en"><TaskRetryDemo /></span></p>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">1. <b>ACK mechanism</b>: Consumers only send an acknowledgment (ACK) after completing a task; unacknowledged tasks are redelivered
-2. <b>Retry strategy</b>: Failed tasks are retried according to a policy; exponential backoff with jitter is the best practice
-3. <b>Idempotency design</b>: Executing the same task multiple times produces the same result as executing it once, achieved through unique ID deduplication</span><span lang="en">1. <b>ACK mechanism</b>: Consumers only send an acknowledgment (ACK) after completing a task; unacknowledged tasks are redelivered
-2. <b>Retry strategy</b>: Failed tasks are retried according to a policy; exponential backoff with jitter is the best practice
-3. <b>Idempotency design</b>: Executing the same task multiple times produces the same result as executing it once, achieved through unique ID deduplication</span></p>
+<p class="reveal"><span lang="id"><TaskRetryDemo /></span><span lang="en"><TaskRetryDemo /></span></p> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">1. <b>ACK mechanism</b>: Consumers only send an acknowledgment (ACK) after completing a task; unacknowledged tasks are redelivered 2. <b>Retry strategy</b>: Failed tasks are retried according to a policy; exponential backoff with jitter is the best practice 3. <b>Idempotency design</b>: Executing the same task multiple times produces the same result as executing it once, achieved through unique ID deduplication</span><span lang="en">1. <b>ACK mechanism</b>: Consumers only send an acknowledgment (ACK) after completing a task; unacknowledged tasks are redelivered 2. <b>Retry strategy</b>: Failed tasks are retried according to a policy; exponential backoff with jitter is the best practice 3. <b>Idempotency design</b>: Executing the same task multiple times produces the same result as executing it once, achieved through unique ID deduplication</span></p>
 </div>
 <div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
 <tr><th>Mechanism</th><th>Problem Solved</th><th>Implementation</th></tr>
@@ -162,23 +95,7 @@
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
 <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Framework Selection: Choose the Right Tool</span><span lang="en">4. Framework Selection: Choose the Right Tool</span></h2>
 <p class="reveal"><span lang="id">Different language ecosystems have different async task frameworks, each with different emphases on feature richness, performance, and ease of use. When choosing a framework, first consider your tech stack, then decide based on project scale and requirements.</span><span lang="en">Different language ecosystems have different async task frameworks, each with different emphases on feature richness, performance, and ease of use. When choosing a framework, first consider your tech stack, then decide based on project scale and requirements.</span></p>
-<p class="reveal"><span lang="id"><AsyncComparisonDemo /></span><span lang="en"><AsyncComparisonDemo /></span></p>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">- <b>Python projects</b>: Celery for medium-to-large projects, RQ for small projects
-- <b>Node.js projects</b>: BullMQ (the next generation of Bull) is the top choice
-- <b>Ruby projects</b>: Sidekiq is essentially the only choice
-- <b>Java projects</b>: Spring Batch for the Spring ecosystem, Kafka Streams for high throughput
-- <b>Go projects</b>: Asynq (Redis-based) or Machinery
-
-If your project is already using Redis, then Redis-based solutions (Celery+Redis, BullMQ, Sidekiq) are the easiest way to get started.</span><span lang="en">- <b>Python projects</b>: Celery for medium-to-large projects, RQ for small projects
-- <b>Node.js projects</b>: BullMQ (the next generation of Bull) is the top choice
-- <b>Ruby projects</b>: Sidekiq is essentially the only choice
-- <b>Java projects</b>: Spring Batch for the Spring ecosystem, Kafka Streams for high throughput
-- <b>Go projects</b>: Asynq (Redis-based) or Machinery
-
-If your project is already using Redis, then Redis-based solutions (Celery+Redis, BullMQ, Sidekiq) are the easiest way to get started.</span></p>
+<p class="reveal"><span lang="id"><AsyncComparisonDemo /></span><span lang="en"><AsyncComparisonDemo /></span></p> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">- <b>Python projects</b>: Celery for medium-to-large projects, RQ for small projects - <b>Node.js projects</b>: BullMQ (the next generation of Bull) is the top choice - <b>Ruby projects</b>: Sidekiq is essentially the only choice - <b>Java projects</b>: Spring Batch for the Spring ecosystem, Kafka Streams for high throughput - <b>Go projects</b>: Asynq (Redis-based) or Machinery If your project is already using Redis, then Redis-based solutions (Celery+Redis, BullMQ, Sidekiq) are the easiest way to get started.</span><span lang="en">- <b>Python projects</b>: Celery for medium-to-large projects, RQ for small projects - <b>Node.js projects</b>: BullMQ (the next generation of Bull) is the top choice - <b>Ruby projects</b>: Sidekiq is essentially the only choice - <b>Java projects</b>: Spring Batch for the Spring ecosystem, Kafka Streams for high throughput - <b>Go projects</b>: Asynq (Redis-based) or Machinery If your project is already using Redis, then Redis-based solutions (Celery+Redis, BullMQ, Sidekiq) are the easiest way to get started.</span></p>
 </div>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
 <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">Summary</span><span lang="en">Summary</span></h2>
@@ -198,26 +115,8 @@ If your project is already using Redis, then Redis-based solutions (Celery+Redis
 <li><span lang="id">[Sidekiq Wiki](https://github.com/sidekiq/sidekiq/wiki) - The gold standard for task processing in the Ruby ecosystem</span><span lang="en">[Sidekiq Wiki](https://github.com/sidekiq/sidekiq/wiki) - The gold standard for task processing in the Ruby ecosystem</span></li>
 <li><span lang="id">[RabbitMQ Tutorials](https://www.rabbitmq.com/tutorials) - Message broker introductory tutorials</span><span lang="en">[RabbitMQ Tutorials](https://www.rabbitmq.com/tutorials) - Message broker introductory tutorials</span></li>
 <li><span lang="id">[Async Task Best Practices](https://brandur.org/job-drain) - Design patterns and pitfalls of task queues</span><span lang="en">[Async Task Best Practices](https://brandur.org/job-drain) - Design patterns and pitfalls of task queues</span></li>
-</ul>
-
-
-    <div class="pager" style="margin-top:54px">
-      <a href="../../4-server-and-backend/api-intro/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">4-server-and-backend/api-intro</span><span lang="en">4-server-and-backend/api-intro</span></b></a>
-      <a class="next" href="../../4-server-and-backend/auth-authorization/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">4-server-and-backend/auth-authorization</span><span lang="en">4-server-and-backend/auth-authorization</span></b></a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="license-box">
-      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
-      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
-    </div>
-    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
-  </div>
-</footer>
-
-<script src="../../../assets/vibekoding.js"></script>
+</ul> <div class="pager" style="margin-top:54px"> <a href="../../4-server-and-backend/api-intro/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">4-server-and-backend/api-intro</span><span lang="en">4-server-and-backend/api-intro</span></b></a> <a class="next" href="../../4-server-and-backend/auth-authorization/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">4-server-and-backend/auth-authorization</span><span lang="en">4-server-and-backend/auth-authorization</span></b></a> </div> </div>
+</section> <footer> <div class="wrap"> <div class="license-box"> <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span> <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span> </div> <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p> </div>
+</footer> <script src="../../../assets/vibekoding.js"></script>
 </body>
 </html>

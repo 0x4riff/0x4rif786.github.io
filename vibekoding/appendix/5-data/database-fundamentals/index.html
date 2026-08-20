@@ -4,9 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Principles of Databases: Indexes, Transactions, and Query Optimization — VibeKoding 📚</title>
-<meta name="description" content="Ensiklopedia VibeKoding: Principles of Databases: Indexes, Transactions, and Query Optimization. - Kurikulum VibeKoding dual bahasa ID/EN."/>
-
-<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Databases: Indexes, Transactions, and Query Optimization. - Kurikulum VibeKoding dual bahasa ID/EN."/> <link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
 <meta name="theme-color" content="#07070f"/>
 <link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/5-data/database-fundamentals/"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -17,63 +15,14 @@
 <body>
 <div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
 <div class="grain"></div>
-<div id="scroll-progress"></div>
-
-<nav class="nav">
-  <div class="nav-inner">
-    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
-    <div class="nav-links">
-      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
-      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
-      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
-      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
-      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
-    </div>
-    <div class="nav-cta">
-      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
-      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
-      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
-    </div>
-  </div>
-</nav>
-
-<section class="lesson-hero">
-  <div class="wrap">
-    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Databases: Indexes, Transactions, and Query Optimization</span><span lang="en">Principles of Databases: Indexes, Transactions, and Query Optimization</span></div>
-    <div class="lesson-head">
-      <div class="lesson-mascot">📚</div>
-      <div>
-        <h1><span lang="id">Principles of Databases: Indexes, Transactions, and Query Optimization</span><span lang="en">Principles of Databases: Indexes, Transactions, and Query Optimization</span></h1>
-        <div class="meta-row">
-          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
-          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
-          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
-        </div>
-      </div>
-    </div>
-    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Databases: Indexes, Transactions, and Query Optimization.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Databases: Indexes, Transactions, and Query Optimization.</span></p>
-  </div>
-</section>
-
-<section style="padding-top:10px">
-  <div class="wrap prose">
-    
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id"><b>Why does your Excel query take 10 seconds, while Taobao's search takes only 0.01 seconds?</b> When data grows from "a few thousand rows" to "a billion rows," and from "one person using it" to "tens of millions accessing it simultaneously," Excel is no longer enough. Databases were created to solve this problem — they are "super Excels" specifically designed to handle massive data and high-concurrency access. This chapter will take you from zero to understanding the core principles of databases.</span><span lang="en"><b>Why does your Excel query take 10 seconds, while Taobao's search takes only 0.01 seconds?</b> When data grows from "a few thousand rows" to "a billion rows," and from "one person using it" to "tens of millions accessing it simultaneously," Excel is no longer enough. Databases were created to solve this problem — they are "super Excels" specifically designed to handle massive data and high-concurrency access. This chapter will take you from zero to understanding the core principles of databases.</span></p>
+<div id="scroll-progress"></div> <nav class="nav"> <div class="nav-inner"> <a class="brand" href="../../../"><span class="logo">VK</span>Vibe<span class="grad-text">Koding</span></a> <div class="nav-links"> <a href="../../../stage-1/"><span lang="id"> Pemula</span><span lang="en"> Beginner</span></a> <a href="../../../stage-2/"><span lang="id">Level 2: Full-Stack</span><span lang="en">Level 2: Full-Stack</span></a> <a href="../../../stage-3/"><span lang="id"> Master</span><span lang="en"> Master</span></a> <a href="../../../appendix/"><span lang="id">Ensiklopedia</span><span lang="en">Encyclopedia</span></a> <a href="../../../stories/" class="hide-sm"><span lang="id"> Cerita</span><span lang="en"> Stories</span></a> </div> <div class="nav-cta"> <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button> <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button> <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button> </div> </div>
+</nav> <section class="lesson-hero"> <div class="wrap"> <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Databases: Indexes, Transactions, and Query Optimization</span><span lang="en">Principles of Databases: Indexes, Transactions, and Query Optimization</span></div> <div class="lesson-head"> <div class="lesson-mascot"><span style="font-size:1.1rem;font-weight:800;color:var(--text);font-family:var(--font-mono)">VK</span></div> <div> <h1><span lang="id">Principles of Databases: Indexes, Transactions, and Query Optimization</span><span lang="en">Principles of Databases: Indexes, Transactions, and Query Optimization</span></h1> <div class="meta-row"> <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span> <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span> <span class="meta-chip">⚡ <span>VibeKoding Native</span></span> </div> </div> </div> <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Databases: Indexes, Transactions, and Query Optimization.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Databases: Indexes, Transactions, and Query Optimization.</span></p> </div>
+</section> <section style="padding-top:10px"> <div class="wrap prose"> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id"><b>Why does your Excel query take 10 seconds, while Taobao's search takes only 0.01 seconds?</b> When data grows from "a few thousand rows" to "a billion rows," and from "one person using it" to "tens of millions accessing it simultaneously," Excel is no longer enough. Databases were created to solve this problem — they are "super Excels" specifically designed to handle massive data and high-concurrency access. This chapter will take you from zero to understanding the core principles of databases.</span><span lang="en"><b>Why does your Excel query take 10 seconds, while Taobao's search takes only 0.01 seconds?</b> When data grows from "a few thousand rows" to "a billion rows," and from "one person using it" to "tens of millions accessing it simultaneously," Excel is no longer enough. Databases were created to solve this problem — they are "super Excels" specifically designed to handle massive data and high-concurrency access. This chapter will take you from zero to understanding the core principles of databases.</span></p>
 </div>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
 <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Motivation for the "Databases"</span><span lang="en">1. Motivation for the "Databases"</span></h2>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 From a Small Bookstore to Taobao: The Evolution of Data Scale</span><span lang="en">1.1 From a Small Bookstore to Taobao: The Evolution of Data Scale</span></h3>
-<p class="reveal"><span lang="id">Imagine you run a small bookstore that sells a few books each day. You casually jot down notes in a notebook:</span><span lang="en">Imagine you run a small bookstore that sells a few books each day. You casually jot down notes in a notebook:</span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>CODE</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>2024-01-15: Zhang San bought &quot;One Hundred Years of Solitude&quot;, 59 yuan
-2024-01-16: Li Si bought &quot;To Live&quot;, 39 yuan</pre>
+<p class="reveal"><span lang="id">Imagine you run a small bookstore that sells a few books each day. You casually jot down notes in a notebook:</span><span lang="en">Imagine you run a small bookstore that sells a few books each day. You casually jot down notes in a notebook:</span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>CODE</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>2024-01-15: Zhang San bought &quot;One Hundred Years of Solitude&quot;, 59 yuan 2024-01-16: Li Si bought &quot;To Live&quot;, 39 yuan</pre>
 </div>
 <p class="reveal"><span lang="id">At this point, a notebook works perfectly fine. But when your bookstore becomes the next "Amazon" with millions of orders pouring in daily, problems arise:</span><span lang="en">At this point, a notebook works perfectly fine. But when your bookstore becomes the next "Amazon" with millions of orders pouring in daily, problems arise:</span></p>
 <ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
@@ -104,79 +53,11 @@
 <p class="reveal"><span lang="id"></div></span><span lang="en"></div></span></p>
 <p class="reveal"><span lang="id"><b>This is the problem "databases" solve: how to efficiently store, quickly query, and securely manage massive amounts of data?</b></span><span lang="en"><b>This is the problem "databases" solve: how to efficiently store, quickly query, and securely manage massive amounts of data?</b></span></p>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.2 A Real Cautionary Tale: Why You Can't Use Excel for User Data</span><span lang="en">1.2 A Real Cautionary Tale: Why You Can't Use Excel for User Data</span></h3>
-<p class="reveal"><span lang="id">You might say: "My project only has tens of thousands of users — isn't Excel enough?" Let me tell you a true story.</span><span lang="en">You might say: "My project only has tens of thousands of users — isn't Excel enough?" Let me tell you a true story.</span></p>
-
-<div class="callout warn reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div>
-  <p><span lang="id">Xiao Lin built a social app as a startup. Initially, there weren't many users, so he used Excel to store user information (name, phone, registration time, etc.). Exporting Excel daily to track user growth worked fine.
-
-When users surpassed 100,000, problems started appearing:
-- Excel took 5 minutes to open
-- Filtering "users in Beijing" caused long freezes
-- One time, the Excel file got corrupted, and thousands of user records were permanently lost
-
-The most critical issue was that he wanted to implement "view all orders for a specific user" — but user information and orders were in different Excel files. He had to manually copy and paste, taking 30 minutes each time.
-
-He later asked a senior colleague for advice. The colleague took one look and laughed: "What you need isn't Excel — it's a database."
-
-After switching to a database, everything changed:
-- Querying "users in Beijing" took only 0.01 seconds
-- Users and orders were automatically linked through "relationships" — one SQL statement did the job
-- Data was automatically backed up — no more fear of file corruption
-
-Xiao Lin learned an important lesson: <b>When data is small, anything works; but once data grows, Excel is a disaster.</b></span><span lang="en">Xiao Lin built a social app as a startup. Initially, there weren't many users, so he used Excel to store user information (name, phone, registration time, etc.). Exporting Excel daily to track user growth worked fine.
-
-When users surpassed 100,000, problems started appearing:
-- Excel took 5 minutes to open
-- Filtering "users in Beijing" caused long freezes
-- One time, the Excel file got corrupted, and thousands of user records were permanently lost
-
-The most critical issue was that he wanted to implement "view all orders for a specific user" — but user information and orders were in different Excel files. He had to manually copy and paste, taking 30 minutes each time.
-
-He later asked a senior colleague for advice. The colleague took one look and laughed: "What you need isn't Excel — it's a database."
-
-After switching to a database, everything changed:
-- Querying "users in Beijing" took only 0.01 seconds
-- Users and orders were automatically linked through "relationships" — one SQL statement did the job
-- Data was automatically backed up — no more fear of file corruption
-
-Xiao Lin learned an important lesson: <b>When data is small, anything works; but once data grows, Excel is a disaster.</b></span></p>
-</div>
-
-<div class="callout info reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
-  <p><span lang="id">A database isn't "a more complex Excel" — it's an entirely different design philosophy:
-- <b>Excel</b>: Designed for small data, single-user usage
-- <b>Database</b>: Designed for big data, high concurrency, and complex relationships
-
-Choosing the right tool can improve your system performance by thousands of times.</span><span lang="en">A database isn't "a more complex Excel" — it's an entirely different design philosophy:
-- <b>Excel</b>: Designed for small data, single-user usage
-- <b>Database</b>: Designed for big data, high concurrency, and complex relationships
-
-Choosing the right tool can improve your system performance by thousands of times.</span></p>
+<p class="reveal"><span lang="id">You might say: "My project only has tens of thousands of users — isn't Excel enough?" Let me tell you a true story.</span><span lang="en">You might say: "My project only has tens of thousands of users — isn't Excel enough?" Let me tell you a true story.</span></p> <div class="callout warn reveal" style="margin:24px 0"> <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div> <p><span lang="id">Xiao Lin built a social app as a startup. Initially, there weren't many users, so he used Excel to store user information (name, phone, registration time, etc.). Exporting Excel daily to track user growth worked fine. When users surpassed 100,000, problems started appearing: - Excel took 5 minutes to open - Filtering "users in Beijing" caused long freezes - One time, the Excel file got corrupted, and thousands of user records were permanently lost The most critical issue was that he wanted to implement "view all orders for a specific user" — but user information and orders were in different Excel files. He had to manually copy and paste, taking 30 minutes each time. He later asked a senior colleague for advice. The colleague took one look and laughed: "What you need isn't Excel — it's a database." After switching to a database, everything changed: - Querying "users in Beijing" took only 0.01 seconds - Users and orders were automatically linked through "relationships" — one SQL statement did the job - Data was automatically backed up — no more fear of file corruption Xiao Lin learned an important lesson: <b>When data is small, anything works; but once data grows, Excel is a disaster.</b></span><span lang="en">Xiao Lin built a social app as a startup. Initially, there weren't many users, so he used Excel to store user information (name, phone, registration time, etc.). Exporting Excel daily to track user growth worked fine. When users surpassed 100,000, problems started appearing: - Excel took 5 minutes to open - Filtering "users in Beijing" caused long freezes - One time, the Excel file got corrupted, and thousands of user records were permanently lost The most critical issue was that he wanted to implement "view all orders for a specific user" — but user information and orders were in different Excel files. He had to manually copy and paste, taking 30 minutes each time. He later asked a senior colleague for advice. The colleague took one look and laughed: "What you need isn't Excel — it's a database." After switching to a database, everything changed: - Querying "users in Beijing" took only 0.01 seconds - Users and orders were automatically linked through "relationships" — one SQL statement did the job - Data was automatically backed up — no more fear of file corruption Xiao Lin learned an important lesson: <b>When data is small, anything works; but once data grows, Excel is a disaster.</b></span></p>
+</div> <div class="callout info reveal" style="margin:24px 0"> <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div> <p><span lang="id">A database isn't "a more complex Excel" — it's an entirely different design philosophy: - <b>Excel</b>: Designed for small data, single-user usage - <b>Database</b>: Designed for big data, high concurrency, and complex relationships Choosing the right tool can improve your system performance by thousands of times.</span><span lang="en">A database isn't "a more complex Excel" — it's an entirely different design philosophy: - <b>Excel</b>: Designed for small data, single-user usage - <b>Database</b>: Designed for big data, high concurrency, and complex relationships Choosing the right tool can improve your system performance by thousands of times.</span></p>
 </div>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
-<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Core Concepts: Tables, Rows, Columns, Primary Keys</span><span lang="en">2. Core Concepts: Tables, Rows, Columns, Primary Keys</span></h2>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">Tables, rows, columns, and primary keys are the "building blocks" of databases.
-
-Imagine building a house:
-- <b>Table</b> = A room (stores one type of data)
-- <b>Row</b> = A box in the room (one complete record)
-- <b>Column</b> = A label on the box (name, age, etc.)
-- <b>Primary Key</b> = The box's unique serial number (never duplicated)
-
-Understanding these foundational concepts will help you know how data is organized.</span><span lang="en">Tables, rows, columns, and primary keys are the "building blocks" of databases.
-
-Imagine building a house:
-- <b>Table</b> = A room (stores one type of data)
-- <b>Row</b> = A box in the room (one complete record)
-- <b>Column</b> = A label on the box (name, age, etc.)
-- <b>Primary Key</b> = The box's unique serial number (never duplicated)
-
-Understanding these foundational concepts will help you know how data is organized.</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Core Concepts: Tables, Rows, Columns, Primary Keys</span><span lang="en">2. Core Concepts: Tables, Rows, Columns, Primary Keys</span></h2> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">Tables, rows, columns, and primary keys are the "building blocks" of databases. Imagine building a house: - <b>Table</b> = A room (stores one type of data) - <b>Row</b> = A box in the room (one complete record) - <b>Column</b> = A label on the box (name, age, etc.) - <b>Primary Key</b> = The box's unique serial number (never duplicated) Understanding these foundational concepts will help you know how data is organized.</span><span lang="en">Tables, rows, columns, and primary keys are the "building blocks" of databases. Imagine building a house: - <b>Table</b> = A room (stores one type of data) - <b>Row</b> = A box in the room (one complete record) - <b>Column</b> = A label on the box (name, age, etc.) - <b>Primary Key</b> = The box's unique serial number (never duplicated) Understanding these foundational concepts will help you know how data is organized.</span></p>
 </div>
 <p class="reveal"><span lang="id">Before diving deeper into databases, we need to clarify these core concepts. To help you understand, we'll use a library analogy.</span><span lang="en">Before diving deeper into databases, we need to clarify these core concepts. To help you understand, we'll use a library analogy.</span></p>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Understanding Database Structure Through a Library Analogy</span><span lang="en">2.1 Understanding Database Structure Through a Library Analogy</span></h3>
@@ -202,63 +83,14 @@ Understanding these foundational concepts will help you know how data is organiz
 <li><span lang="id"><b>Row</b>: Each row is one user (e.g., "Zhang San, 25, Beijing")</span><span lang="en"><b>Row</b>: Each row is one user (e.g., "Zhang San, 25, Beijing")</span></li>
 <li><span lang="id"><b>Primary Key</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">user_id</code> (1001, 1002, 1003 — never duplicated)</span><span lang="en"><b>Primary Key</b>: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">user_id</code> (1001, 1002, 1003 — never duplicated)</span></li>
 </ul>
-<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Primary Key: The "Unique Identifier" for Data</span><span lang="en">2.2 Primary Key: The "Unique Identifier" for Data</span></h3>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">A <b>primary key</b> is the unique identifier for each row in a table, just like an ID number.
-
-<b>Key Characteristics</b>:
-- <b>Uniqueness</b>: Absolutely never duplicated (no two people have the same ID number)
-- <b>Non-null</b>: Must have a value (there's no such thing as a person "without an ID number")
-- <b>Immutability</b>: Once set, it doesn't change (your ID number doesn't change)
-
-<b>Common Approaches</b>:
-- Use auto-incrementing integers: 1, 2, 3, 4...
-- Use UUID (Universally Unique Identifier): <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">550e8400-e29b-41d4-a716-446655440000</code></span><span lang="en">A <b>primary key</b> is the unique identifier for each row in a table, just like an ID number.
-
-<b>Key Characteristics</b>:
-- <b>Uniqueness</b>: Absolutely never duplicated (no two people have the same ID number)
-- <b>Non-null</b>: Must have a value (there's no such thing as a person "without an ID number")
-- <b>Immutability</b>: Once set, it doesn't change (your ID number doesn't change)
-
-<b>Common Approaches</b>:
-- Use auto-incrementing integers: 1, 2, 3, 4...
-- Use UUID (Universally Unique Identifier): <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">550e8400-e29b-41d4-a716-446655440000</code></span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Primary Key: The "Unique Identifier" for Data</span><span lang="en">2.2 Primary Key: The "Unique Identifier" for Data</span></h3> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">A <b>primary key</b> is the unique identifier for each row in a table, just like an ID number. <b>Key Characteristics</b>: - <b>Uniqueness</b>: Absolutely never duplicated (no two people have the same ID number) - <b>Non-null</b>: Must have a value (there's no such thing as a person "without an ID number") - <b>Immutability</b>: Once set, it doesn't change (your ID number doesn't change) <b>Common Approaches</b>: - Use auto-incrementing integers: 1, 2, 3, 4... - Use UUID (Universally Unique Identifier): <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">550e8400-e29b-41d4-a716-446655440000</code></span><span lang="en">A <b>primary key</b> is the unique identifier for each row in a table, just like an ID number. <b>Key Characteristics</b>: - <b>Uniqueness</b>: Absolutely never duplicated (no two people have the same ID number) - <b>Non-null</b>: Must have a value (there's no such thing as a person "without an ID number") - <b>Immutability</b>: Once set, it doesn't change (your ID number doesn't change) <b>Common Approaches</b>: - Use auto-incrementing integers: 1, 2, 3, 4... - Use UUID (Universally Unique Identifier): <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">550e8400-e29b-41d4-a716-446655440000</code></span></p>
 </div>
 <p class="reveal"><span lang="id">Why do we need primary keys? Imagine a world without them:</span><span lang="en">Why do we need primary keys? Imagine a world without them:</span></p>
-<p class="reveal"><span lang="id"><b>Scenario</b>: You want to change "Zhang San's" age, but there are 3 "Zhang Sans" in the table. Which one should the system update?</span><span lang="en"><b>Scenario</b>: You want to change "Zhang San's" age, but there are 3 "Zhang Sans" in the table. Which one should the system update?</span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>sql</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>-- Without a primary key, this updates ALL people named &quot;Zhang San&quot;!
-UPDATE users SET age = 26 WHERE name = &#039;Zhang San&#039;;
-
--- With a primary key, precise update
-UPDATE users SET age = 26 WHERE user_id = 1001;</pre>
+<p class="reveal"><span lang="id"><b>Scenario</b>: You want to change "Zhang San's" age, but there are 3 "Zhang Sans" in the table. Which one should the system update?</span><span lang="en"><b>Scenario</b>: You want to change "Zhang San's" age, but there are 3 "Zhang Sans" in the table. Which one should the system update?</span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>sql</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>-- Without a primary key, this updates ALL people named &quot;Zhang San&quot;! UPDATE users SET age = 26 WHERE name = &#039;Zhang San&#039;; -- With a primary key, precise update UPDATE users SET age = 26 WHERE user_id = 1001;</pre>
 </div>
 <p class="reveal"><span lang="id"><b>The Golden Rule of Primary Keys</b>: Every table should have a primary key, and you should never modify it.</span><span lang="en"><b>The Golden Rule of Primary Keys</b>: Every table should have a primary key, and you should never modify it.</span></p>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 Foreign Key: The Bridge Connecting Tables</span><span lang="en">2.3 Foreign Key: The Bridge Connecting Tables</span></h3>
-<p class="reveal"><span lang="id">This is what makes databases more powerful than Excel — <b>tables can establish relationships with each other</b>.</span><span lang="en">This is what makes databases more powerful than Excel — <b>tables can establish relationships with each other</b>.</span></p>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">A <b>foreign key</b> is a column that points to another table's primary key, used to establish associations between tables.
-
-<b>Simple understanding</b>:
-- Primary key = My own ID number
-- Foreign key = Someone else's ID number that I reference
-
-<b>Example</b>: The <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">user_id</code> in the orders table is a foreign key that points to the primary key of the users table.</span><span lang="en">A <b>foreign key</b> is a column that points to another table's primary key, used to establish associations between tables.
-
-<b>Simple understanding</b>:
-- Primary key = My own ID number
-- Foreign key = Someone else's ID number that I reference
-
-<b>Example</b>: The <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">user_id</code> in the orders table is a foreign key that points to the primary key of the users table.</span></p>
+<p class="reveal"><span lang="id">This is what makes databases more powerful than Excel — <b>tables can establish relationships with each other</b>.</span><span lang="en">This is what makes databases more powerful than Excel — <b>tables can establish relationships with each other</b>.</span></p> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">A <b>foreign key</b> is a column that points to another table's primary key, used to establish associations between tables. <b>Simple understanding</b>: - Primary key = My own ID number - Foreign key = Someone else's ID number that I reference <b>Example</b>: The <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">user_id</code> in the orders table is a foreign key that points to the primary key of the users table.</span><span lang="en">A <b>foreign key</b> is a column that points to another table's primary key, used to establish associations between tables. <b>Simple understanding</b>: - Primary key = My own ID number - Foreign key = Someone else's ID number that I reference <b>Example</b>: The <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">user_id</code> in the orders table is a foreign key that points to the primary key of the users table.</span></p>
 </div>
 <p class="reveal"><span lang="id">Let's look at a real example:</span><span lang="en">Let's look at a real example:</span></p>
 <p class="reveal"><span lang="id"><b>Users table (users)</b>:</span><span lang="en"><b>Users table (users)</b>:</span></p>
@@ -299,34 +131,11 @@ UPDATE users SET age = 26 WHERE user_id = 1001;</pre>
 <tr><td><b>R</b>ead</td><td>Read</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">SELECT</code></td><td>Query data</td></tr>
 <tr><td><b>U</b>pdate</td><td>Update</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">UPDATE</code></td><td>Modify data</td></tr>
 <tr><td><b>D</b>elete</td><td>Delete</td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">DELETE</code></td><td>Delete data</td></tr>
-</table></div>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">These four operations cover all data processing scenarios:
-- <b>Create</b>: When a user registers, insert a new user record
-- <b>Read</b>: When a user logs in, query their username and password
-- <b>Update</b>: When a user edits their profile, update the data in the table
-- <b>Delete</b>: When a user deletes their account, remove their user data
-
-Master these four, and you've got 80% of everyday SQL operations.</span><span lang="en">These four operations cover all data processing scenarios:
-- <b>Create</b>: When a user registers, insert a new user record
-- <b>Read</b>: When a user logs in, query their username and password
-- <b>Update</b>: When a user edits their profile, update the data in the table
-- <b>Delete</b>: When a user deletes their account, remove their user data
-
-Master these four, and you've got 80% of everyday SQL operations.</span></p>
+</table></div> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">These four operations cover all data processing scenarios: - <b>Create</b>: When a user registers, insert a new user record - <b>Read</b>: When a user logs in, query their username and password - <b>Update</b>: When a user edits their profile, update the data in the table - <b>Delete</b>: When a user deletes their account, remove their user data Master these four, and you've got 80% of everyday SQL operations.</span><span lang="en">These four operations cover all data processing scenarios: - <b>Create</b>: When a user registers, insert a new user record - <b>Read</b>: When a user logs in, query their username and password - <b>Update</b>: When a user edits their profile, update the data in the table - <b>Delete</b>: When a user deletes their account, remove their user data Master these four, and you've got 80% of everyday SQL operations.</span></p>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Querying Data (SELECT): The Most Common Database Operation</span><span lang="en">3.2 Querying Data (SELECT): The Most Common Database Operation</span></h3>
 <p class="reveal"><span lang="id">Querying is the most important function of a database and the key to performance optimization.</span><span lang="en">Querying is the most important function of a database and the key to performance optimization.</span></p>
-<p class="reveal"><span lang="id"><b>Example 1</b>: Find all users in Beijing</span><span lang="en"><b>Example 1</b>: Find all users in Beijing</span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>sql</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>SELECT name, age FROM users WHERE city = &#039;Beijing&#039;;</pre>
+<p class="reveal"><span lang="id"><b>Example 1</b>: Find all users in Beijing</span><span lang="en"><b>Example 1</b>: Find all users in Beijing</span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>sql</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>SELECT name, age FROM users WHERE city = &#039;Beijing&#039;;</pre>
 </div>
 <p class="reveal"><span lang="id"><b>Word-by-word understanding</b>:</span><span lang="en"><b>Word-by-word understanding</b>:</span></p>
 <ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
@@ -340,52 +149,13 @@ Master these four, and you've got 80% of everyday SQL operations.</span></p>
 <tr><td>Zhang San</td><td>25</td></tr>
 <tr><td>Wang Wu</td><td>28</td></tr>
 </table></div>
-<p class="reveal"><span lang="id"><b>Example 2</b>: Find products priced between 5000 and 15000</span><span lang="en"><b>Example 2</b>: Find products priced between 5000 and 15000</span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>sql</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>SELECT name, price FROM products
-WHERE price BETWEEN 5000 AND 15000;</pre>
+<p class="reveal"><span lang="id"><b>Example 2</b>: Find products priced between 5000 and 15000</span><span lang="en"><b>Example 2</b>: Find products priced between 5000 and 15000</span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>sql</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>SELECT name, price FROM products WHERE price BETWEEN 5000 AND 15000;</pre>
 </div>
-<p class="reveal"><span lang="id"><b>Example 3</b>: Fuzzy search (find users whose names contain "Zhang")</span><span lang="en"><b>Example 3</b>: Fuzzy search (find users whose names contain "Zhang")</span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>sql</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>SELECT name FROM users WHERE name LIKE &#039;%Zhang%&#039;;</pre>
-</div>
-
-<div class="callout warn reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div>
-  <p><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">LIKE '%Zhang%'</code> causes a <b>full table scan</b>, which is very slow with large data volumes.
-
-<b>Optimization advice</b>:
-- Don't use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">LIKE '%Zhang%'</code> (wildcards on both sides)
-- You can use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">LIKE 'Zhang%'</code> (wildcard only on the right side)
-
-Because <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">LIKE 'Zhang%'</code> can use an index, while <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">LIKE '%Zhang%'</code> cannot.</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">LIKE '%Zhang%'</code> causes a <b>full table scan</b>, which is very slow with large data volumes.
-
-<b>Optimization advice</b>:
-- Don't use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">LIKE '%Zhang%'</code> (wildcards on both sides)
-- You can use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">LIKE 'Zhang%'</code> (wildcard only on the right side)
-
-Because <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">LIKE 'Zhang%'</code> can use an index, while <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">LIKE '%Zhang%'</code> cannot.</span></p>
+<p class="reveal"><span lang="id"><b>Example 3</b>: Fuzzy search (find users whose names contain "Zhang")</span><span lang="en"><b>Example 3</b>: Fuzzy search (find users whose names contain "Zhang")</span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>sql</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>SELECT name FROM users WHERE name LIKE &#039;%Zhang%&#039;;</pre>
+</div> <div class="callout warn reveal" style="margin:24px 0"> <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div> <p><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">LIKE '%Zhang%'</code> causes a <b>full table scan</b>, which is very slow with large data volumes. <b>Optimization advice</b>: - Don't use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">LIKE '%Zhang%'</code> (wildcards on both sides) - You can use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">LIKE 'Zhang%'</code> (wildcard only on the right side) Because <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">LIKE 'Zhang%'</code> can use an index, while <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">LIKE '%Zhang%'</code> cannot.</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">LIKE '%Zhang%'</code> causes a <b>full table scan</b>, which is very slow with large data volumes. <b>Optimization advice</b>: - Don't use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">LIKE '%Zhang%'</code> (wildcards on both sides) - You can use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">LIKE 'Zhang%'</code> (wildcard only on the right side) Because <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">LIKE 'Zhang%'</code> can use an index, while <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">LIKE '%Zhang%'</code> cannot.</span></p>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Inserting Data (INSERT): Adding Records</span><span lang="en">3.3 Inserting Data (INSERT): Adding Records</span></h3>
-<p class="reveal"><span lang="id"><b>Example</b>: Add a new user</span><span lang="en"><b>Example</b>: Add a new user</span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>sql</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>INSERT INTO users (user_id, name, age, city, email)
-VALUES (1004, &#039;Zhao Liu&#039;, 35, &#039;Guangzhou&#039;, &#039;zhaoliu@example.com&#039;);</pre>
+<p class="reveal"><span lang="id"><b>Example</b>: Add a new user</span><span lang="en"><b>Example</b>: Add a new user</span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>sql</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>INSERT INTO users (user_id, name, age, city, email) VALUES (1004, &#039;Zhao Liu&#039;, 35, &#039;Guangzhou&#039;, &#039;zhaoliu@example.com&#039;);</pre>
 </div>
 <p class="reveal"><span lang="id"><b>Word-by-word understanding</b>:</span><span lang="en"><b>Word-by-word understanding</b>:</span></p>
 <ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
@@ -393,89 +163,15 @@ VALUES (1004, &#039;Zhao Liu&#039;, 35, &#039;Guangzhou&#039;, &#039;zhaoliu@exa
 <li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">(user_id, name, age, city, email)</code>: Specify the columns to insert</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">(user_id, name, age, city, email)</code>: Specify the columns to insert</span></li>
 <li><span lang="id"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">VALUES (1004, 'Zhao Liu', ...)</code>: The corresponding values</span><span lang="en"><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">VALUES (1004, 'Zhao Liu', ...)</code>: The corresponding values</span></li>
 </ul>
-<p class="reveal"><span lang="id"><b>Batch insert</b> (more efficient):</span><span lang="en"><b>Batch insert</b> (more efficient):</span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>sql</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>INSERT INTO users (name, age, city) VALUES
-(&#039;Xiao Ming&#039;, 25, &#039;Beijing&#039;),
-(&#039;Xiao Hong&#039;, 28, &#039;Shanghai&#039;),
-(&#039;Xiao Gang&#039;, 30, &#039;Guangzhou&#039;);</pre>
+<p class="reveal"><span lang="id"><b>Batch insert</b> (more efficient):</span><span lang="en"><b>Batch insert</b> (more efficient):</span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>sql</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>INSERT INTO users (name, age, city) VALUES (&#039;Xiao Ming&#039;, 25, &#039;Beijing&#039;), (&#039;Xiao Hong&#039;, 28, &#039;Shanghai&#039;), (&#039;Xiao Gang&#039;, 30, &#039;Guangzhou&#039;);</pre>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.4 Updating Data (UPDATE): Modifying Records</span><span lang="en">3.4 Updating Data (UPDATE): Modifying Records</span></h3>
-<p class="reveal"><span lang="id"><b>Example</b>: Add 1 to the age of all users in Beijing</span><span lang="en"><b>Example</b>: Add 1 to the age of all users in Beijing</span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>sql</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>UPDATE users SET age = age + 1 WHERE city = &#039;Beijing&#039;;</pre>
-</div>
-
-<div class="callout warn reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div>
-  <p><span lang="id">If you forget to write the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">WHERE</code> clause, you'll modify <b>all rows</b>!
-
-``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sql
--- Dangerous! Changes ALL users' age to 26
-UPDATE users SET age = 26;
-
--- Correct: Only modify user with user_id = 1001
-UPDATE users SET age = 26 WHERE user_id = 1001;
-</code>``
-
-<b>Real lesson</b>: In 2012, a well-known company had an engineer forget to write WHERE, causing millions of user records to be incorrectly updated in production. The system was down for 4 hours, resulting in massive losses.</span><span lang="en">If you forget to write the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">WHERE</code> clause, you'll modify <b>all rows</b>!
-
-``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sql
--- Dangerous! Changes ALL users' age to 26
-UPDATE users SET age = 26;
-
--- Correct: Only modify user with user_id = 1001
-UPDATE users SET age = 26 WHERE user_id = 1001;
-</code>``
-
-<b>Real lesson</b>: In 2012, a well-known company had an engineer forget to write WHERE, causing millions of user records to be incorrectly updated in production. The system was down for 4 hours, resulting in massive losses.</span></p>
+<p class="reveal"><span lang="id"><b>Example</b>: Add 1 to the age of all users in Beijing</span><span lang="en"><b>Example</b>: Add 1 to the age of all users in Beijing</span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>sql</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>UPDATE users SET age = age + 1 WHERE city = &#039;Beijing&#039;;</pre>
+</div> <div class="callout warn reveal" style="margin:24px 0"> <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div> <p><span lang="id">If you forget to write the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">WHERE</code> clause, you'll modify <b>all rows</b>! ``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sql -- Dangerous! Changes ALL users' age to 26 UPDATE users SET age = 26; -- Correct: Only modify user with user_id = 1001 UPDATE users SET age = 26 WHERE user_id = 1001; </code>`` <b>Real lesson</b>: In 2012, a well-known company had an engineer forget to write WHERE, causing millions of user records to be incorrectly updated in production. The system was down for 4 hours, resulting in massive losses.</span><span lang="en">If you forget to write the <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">WHERE</code> clause, you'll modify <b>all rows</b>! ``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sql -- Dangerous! Changes ALL users' age to 26 UPDATE users SET age = 26; -- Correct: Only modify user with user_id = 1001 UPDATE users SET age = 26 WHERE user_id = 1001; </code>`` <b>Real lesson</b>: In 2012, a well-known company had an engineer forget to write WHERE, causing millions of user records to be incorrectly updated in production. The system was down for 4 hours, resulting in massive losses.</span></p>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.5 Deleting Data (DELETE): Removing Records</span><span lang="en">3.5 Deleting Data (DELETE): Removing Records</span></h3>
-<p class="reveal"><span lang="id"><b>Example</b>: Delete the user with user_id = 1004</span><span lang="en"><b>Example</b>: Delete the user with user_id = 1004</span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>sql</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>DELETE FROM users WHERE user_id = 1004;</pre>
-</div>
-
-<div class="callout warn reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div>
-  <p><span lang="id">``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sql
--- Dangerous! Deletes ALL data in the table!
-DELETE FROM users;
-
--- Correct: Only delete the specified row
-DELETE FROM users WHERE user_id = 1004;
-</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
-
-<b>Best practices</b>:
-1. Always use SELECT to confirm data before deleting
-2. In critical systems, use "soft delete" (add an </code>is_deleted` field to mark deletion)
-3. Back up data before operations in production environments</span><span lang="en">``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sql
--- Dangerous! Deletes ALL data in the table!
-DELETE FROM users;
-
--- Correct: Only delete the specified row
-DELETE FROM users WHERE user_id = 1004;
-</code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">
-
-<b>Best practices</b>:
-1. Always use SELECT to confirm data before deleting
-2. In critical systems, use "soft delete" (add an </code>is_deleted` field to mark deletion)
-3. Back up data before operations in production environments</span></p>
+<p class="reveal"><span lang="id"><b>Example</b>: Delete the user with user_id = 1004</span><span lang="en"><b>Example</b>: Delete the user with user_id = 1004</span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>sql</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>DELETE FROM users WHERE user_id = 1004;</pre>
+</div> <div class="callout warn reveal" style="margin:24px 0"> <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div> <p><span lang="id">``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sql -- Dangerous! Deletes ALL data in the table! DELETE FROM users; -- Correct: Only delete the specified row DELETE FROM users WHERE user_id = 1004; </code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> <b>Best practices</b>: 1. Always use SELECT to confirm data before deleting 2. In critical systems, use "soft delete" (add an </code>is_deleted` field to mark deletion) 3. Back up data before operations in production environments</span><span lang="en">``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sql -- Dangerous! Deletes ALL data in the table! DELETE FROM users; -- Correct: Only delete the specified row DELETE FROM users WHERE user_id = 1004; </code>`<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px"> <b>Best practices</b>: 1. Always use SELECT to confirm data before deleting 2. In critical systems, use "soft delete" (add an </code>is_deleted` field to mark deletion) 3. Back up data before operations in production environments</span></p>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.6 Multi-table Queries (JOIN): The Magic Moment of Databases</span><span lang="en">3.6 Multi-table Queries (JOIN): The Magic Moment of Databases</span></h3>
 <p class="reveal"><span lang="id">Remember the "foreign keys" we discussed? The most powerful aspect of SQL is the ability to query multiple related tables at once.</span><span lang="en">Remember the "foreign keys" we discussed? The most powerful aspect of SQL is the ability to query multiple related tables at once.</span></p>
@@ -498,18 +194,7 @@ DELETE FROM users WHERE user_id = 1004;
 <tr><td>5001</td><td>1001</td><td>201</td><td>1</td></tr>
 <tr><td>5002</td><td>1001</td><td>202</td><td>2</td></tr>
 </table></div>
-<p class="reveal"><span lang="id"><b>SQL Query</b>:</span><span lang="en"><b>SQL Query</b>:</span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>sql</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>SELECT u.name, p.name AS product_name, p.price, o.quantity
-FROM orders o
-JOIN users u ON o.user_id = u.user_id
-JOIN products p ON o.product_id = p.product_id
-WHERE u.name = &#039;Zhang San&#039;;</pre>
+<p class="reveal"><span lang="id"><b>SQL Query</b>:</span><span lang="en"><b>SQL Query</b>:</span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>sql</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>SELECT u.name, p.name AS product_name, p.price, o.quantity FROM orders o JOIN users u ON o.user_id = u.user_id JOIN products p ON o.product_id = p.product_id WHERE u.name = &#039;Zhang San&#039;;</pre>
 </div>
 <p class="reveal"><span lang="id"><b>Return result</b>:</span><span lang="en"><b>Return result</b>:</span></p>
 <div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
@@ -555,60 +240,10 @@ WHERE u.name = &#039;Zhang San&#039;;</pre>
 <tr><td><b>Full Table Scan</b></td><td>Start from row 1, check one by one</td><td>Average 5 million rows</td><td>5-30 seconds</td></tr>
 <tr><td><b>Index Lookup</b></td><td>Search the index tree, jump directly to the target</td><td>3-4 comparisons</td><td>0.003 seconds</td></tr>
 </table></div>
-<p class="reveal"><span lang="id"><b>Speed difference: thousands of times!</b></span><span lang="en"><b>Speed difference: thousands of times!</b></span></p>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">Indexes are not a silver bullet — they have costs:
-- <b>Storage overhead</b>: Indexes require additional storage space
-- <b>Slower writes</b>: Every INSERT/UPDATE/DELETE must also update the index
-
-<b>When to create indexes?</b>
-- Columns frequently used in queries (WHERE, JOIN conditions)
-- Large data volumes (indexes are unnecessary for tables with a few thousand rows or fewer)
-
-<b>When NOT to create indexes?</b>
-- Rarely queried columns
-- Frequently updated columns
-- Small tables</span><span lang="en">Indexes are not a silver bullet — they have costs:
-- <b>Storage overhead</b>: Indexes require additional storage space
-- <b>Slower writes</b>: Every INSERT/UPDATE/DELETE must also update the index
-
-<b>When to create indexes?</b>
-- Columns frequently used in queries (WHERE, JOIN conditions)
-- Large data volumes (indexes are unnecessary for tables with a few thousand rows or fewer)
-
-<b>When NOT to create indexes?</b>
-- Rarely queried columns
-- Frequently updated columns
-- Small tables</span></p>
+<p class="reveal"><span lang="id"><b>Speed difference: thousands of times!</b></span><span lang="en"><b>Speed difference: thousands of times!</b></span></p> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">Indexes are not a silver bullet — they have costs: - <b>Storage overhead</b>: Indexes require additional storage space - <b>Slower writes</b>: Every INSERT/UPDATE/DELETE must also update the index <b>When to create indexes?</b> - Columns frequently used in queries (WHERE, JOIN conditions) - Large data volumes (indexes are unnecessary for tables with a few thousand rows or fewer) <b>When NOT to create indexes?</b> - Rarely queried columns - Frequently updated columns - Small tables</span><span lang="en">Indexes are not a silver bullet — they have costs: - <b>Storage overhead</b>: Indexes require additional storage space - <b>Slower writes</b>: Every INSERT/UPDATE/DELETE must also update the index <b>When to create indexes?</b> - Columns frequently used in queries (WHERE, JOIN conditions) - Large data volumes (indexes are unnecessary for tables with a few thousand rows or fewer) <b>When NOT to create indexes?</b> - Rarely queried columns - Frequently updated columns - Small tables</span></p>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 Underlying Data Structure: B+ Trees</span><span lang="en">4.3 Underlying Data Structure: B+ Trees</span></h3>
-<p class="reveal"><span lang="id">Real indexes aren't simple "alphabetical lists" — they're a carefully designed data structure called a <b>B+ Tree</b>.</span><span lang="en">Real indexes aren't simple "alphabetical lists" — they're a carefully designed data structure called a <b>B+ Tree</b>.</span></p>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">A <b>B+ Tree</b> is a "short and wide" tree data structure:
-
-- <b>Short</b>: From root to leaf is typically only 3-4 levels
-- <b>Wide</b>: Each node can store hundreds of key values
-
-<b>Why "short and wide"?</b>
-
-Because data is stored on disk, and every disk read (I/O) is extremely slow (thousands of times slower than memory). The B+ Tree's design goal is to <b>minimize disk I/O operations</b>.
-
-- 3-4 levels of height = at most 3-4 disk reads
-- Large amounts of data stored per level = ensures the tree doesn't grow too tall</span><span lang="en">A <b>B+ Tree</b> is a "short and wide" tree data structure:
-
-- <b>Short</b>: From root to leaf is typically only 3-4 levels
-- <b>Wide</b>: Each node can store hundreds of key values
-
-<b>Why "short and wide"?</b>
-
-Because data is stored on disk, and every disk read (I/O) is extremely slow (thousands of times slower than memory). The B+ Tree's design goal is to <b>minimize disk I/O operations</b>.
-
-- 3-4 levels of height = at most 3-4 disk reads
-- Large amounts of data stored per level = ensures the tree doesn't grow too tall</span></p>
+<p class="reveal"><span lang="id">Real indexes aren't simple "alphabetical lists" — they're a carefully designed data structure called a <b>B+ Tree</b>.</span><span lang="en">Real indexes aren't simple "alphabetical lists" — they're a carefully designed data structure called a <b>B+ Tree</b>.</span></p> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">A <b>B+ Tree</b> is a "short and wide" tree data structure: - <b>Short</b>: From root to leaf is typically only 3-4 levels - <b>Wide</b>: Each node can store hundreds of key values <b>Why "short and wide"?</b> Because data is stored on disk, and every disk read (I/O) is extremely slow (thousands of times slower than memory). The B+ Tree's design goal is to <b>minimize disk I/O operations</b>. - 3-4 levels of height = at most 3-4 disk reads - Large amounts of data stored per level = ensures the tree doesn't grow too tall</span><span lang="en">A <b>B+ Tree</b> is a "short and wide" tree data structure: - <b>Short</b>: From root to leaf is typically only 3-4 levels - <b>Wide</b>: Each node can store hundreds of key values <b>Why "short and wide"?</b> Because data is stored on disk, and every disk read (I/O) is extremely slow (thousands of times slower than memory). The B+ Tree's design goal is to <b>minimize disk I/O operations</b>. - 3-4 levels of height = at most 3-4 disk reads - Large amounts of data stored per level = ensures the tree doesn't grow too tall</span></p>
 </div>
 <p class="reveal"><span lang="id"><b>A real example</b>:</span><span lang="en"><b>A real example</b>:</span></p>
 <p class="reveal"><span lang="id">Suppose a B+ Tree where each node can store 1,000 key values:</span><span lang="en">Suppose a B+ Tree where each node can store 1,000 key values:</span></p>
@@ -633,29 +268,7 @@ Because data is stored on disk, and every disk read (I/O) is extremely slow (tho
 </ul>
 <p class="reveal"><span lang="id">This is a classic <b>concurrency conflict</b> problem.</span><span lang="en">This is a classic <b>concurrency conflict</b> problem.</span></p>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Overview of a Transaction</span><span lang="en">5.1 Overview of a Transaction</span></h3>
-<p class="reveal"><span lang="id">A <b>transaction</b> is a group of database operations that <b>either all succeed or all fail</b> — there's no "half-done" state.</span><span lang="en">A <b>transaction</b> is a group of database operations that <b>either all succeed or all fail</b> — there's no "half-done" state.</span></p>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id"><b>Bank transfer</b> is a classic transaction:
-
-1. Deduct 100 yuan from Account A
-2. Add 100 yuan to Account B
-
-If step 1 succeeds but step 2 fails (e.g., power outage), what happens?
-- <b>Without transactions</b>: Account A's money is gone, Account B never received it — money vanished into thin air
-- <b>With transactions</b>: The system detects step 2 failed and automatically rolls back step 1. Both accounts return to their original state
-
-This is the <b>atomicity</b> of transactions: all or nothing.</span><span lang="en"><b>Bank transfer</b> is a classic transaction:
-
-1. Deduct 100 yuan from Account A
-2. Add 100 yuan to Account B
-
-If step 1 succeeds but step 2 fails (e.g., power outage), what happens?
-- <b>Without transactions</b>: Account A's money is gone, Account B never received it — money vanished into thin air
-- <b>With transactions</b>: The system detects step 2 failed and automatically rolls back step 1. Both accounts return to their original state
-
-This is the <b>atomicity</b> of transactions: all or nothing.</span></p>
+<p class="reveal"><span lang="id">A <b>transaction</b> is a group of database operations that <b>either all succeed or all fail</b> — there's no "half-done" state.</span><span lang="en">A <b>transaction</b> is a group of database operations that <b>either all succeed or all fail</b> — there's no "half-done" state.</span></p> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id"><b>Bank transfer</b> is a classic transaction: 1. Deduct 100 yuan from Account A 2. Add 100 yuan to Account B If step 1 succeeds but step 2 fails (e.g., power outage), what happens? - <b>Without transactions</b>: Account A's money is gone, Account B never received it — money vanished into thin air - <b>With transactions</b>: The system detects step 2 failed and automatically rolls back step 1. Both accounts return to their original state This is the <b>atomicity</b> of transactions: all or nothing.</span><span lang="en"><b>Bank transfer</b> is a classic transaction: 1. Deduct 100 yuan from Account A 2. Add 100 yuan to Account B If step 1 succeeds but step 2 fails (e.g., power outage), what happens? - <b>Without transactions</b>: Account A's money is gone, Account B never received it — money vanished into thin air - <b>With transactions</b>: The system detects step 2 failed and automatically rolls back step 1. Both accounts return to their original state This is the <b>atomicity</b> of transactions: all or nothing.</span></p>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.2 The Four Properties of Transactions (ACID)</span><span lang="en">5.2 The Four Properties of Transactions (ACID)</span></h3>
 <p class="reveal"><span lang="id">Transactions have four properties, abbreviated as <b>ACID</b>:</span><span lang="en">Transactions have four properties, abbreviated as <b>ACID</b>:</span></p>
@@ -665,25 +278,7 @@ This is the <b>atomicity</b> of transactions: all or nothing.</span></p>
 <tr><td><b>C</b>onsistency</td><td>Consistency</td><td>Data always remains in a valid state</td><td>Before and after transfer, the total amount in both accounts should remain unchanged</td></tr>
 <tr><td><b>I</b>solation</td><td>Isolation</td><td>Multiple transactions don't affect each other</td><td>When A is transferring, B should see the balance "before transfer" or "after transfer," not an intermediate state</td></tr>
 <tr><td><b>D</b>urability</td><td>Durability</td><td>Once committed, data is permanently saved</td><td>After a successful transfer, even a power outage won't revert the account balance</td></tr>
-</table></div>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">These four properties ensure data safety:
-
-- <b>Atomicity</b>: Prevents "half-done" operations (deducted but not credited)
-- <b>Consistency</b>: Prevents invalid data (total amount changed after transfer)
-- <b>Isolation</b>: Prevents concurrency conflicts (two people modifying the same data simultaneously)
-- <b>Durability</b>: Prevents data loss (committed data survives power outages)
-
-Without these guarantees, banking systems could never function.</span><span lang="en">These four properties ensure data safety:
-
-- <b>Atomicity</b>: Prevents "half-done" operations (deducted but not credited)
-- <b>Consistency</b>: Prevents invalid data (total amount changed after transfer)
-- <b>Isolation</b>: Prevents concurrency conflicts (two people modifying the same data simultaneously)
-- <b>Durability</b>: Prevents data loss (committed data survives power outages)
-
-Without these guarantees, banking systems could never function.</span></p>
+</table></div> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">These four properties ensure data safety: - <b>Atomicity</b>: Prevents "half-done" operations (deducted but not credited) - <b>Consistency</b>: Prevents invalid data (total amount changed after transfer) - <b>Isolation</b>: Prevents concurrency conflicts (two people modifying the same data simultaneously) - <b>Durability</b>: Prevents data loss (committed data survives power outages) Without these guarantees, banking systems could never function.</span><span lang="en">These four properties ensure data safety: - <b>Atomicity</b>: Prevents "half-done" operations (deducted but not credited) - <b>Consistency</b>: Prevents invalid data (total amount changed after transfer) - <b>Isolation</b>: Prevents concurrency conflicts (two people modifying the same data simultaneously) - <b>Durability</b>: Prevents data loss (committed data survives power outages) Without these guarantees, banking systems could never function.</span></p>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 Transaction Isolation Levels: Balancing Safety and Performance</span><span lang="en">5.3 Transaction Isolation Levels: Balancing Safety and Performance</span></h3>
 <p class="reveal"><span lang="id">In theory, we want transactions to be fully isolated. But <b>full isolation = very poor performance</b> (because it requires extensive locking, causing other transactions to wait).</span><span lang="en">In theory, we want transactions to be fully isolated. But <b>full isolation = very poor performance</b> (because it requires extensive locking, causing other transactions to wait).</span></p>
@@ -694,166 +289,27 @@ Without these guarantees, banking systems could never function.</span></p>
 <tr><td><b>Read Committed</b></td><td>Not possible</td><td>Possible</td><td>Possible</td><td>Fast</td><td>General business (Oracle default)</td></tr>
 <tr><td><b>Repeatable Read</b></td><td>Not possible</td><td>Not possible</td><td>Possible</td><td>Medium</td><td>Bank transfers (MySQL default)</td></tr>
 <tr><td><b>Serializable</b></td><td>Not possible</td><td>Not possible</td><td>Not possible</td><td>Slowest</td><td>Extremely strict scenarios (rarely used)</td></tr>
-</table></div>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">- <b>Dirty Read</b>: Reading data that another transaction hasn't committed yet (may be rolled back, so data is inaccurate)
-- <b>Non-Repeatable Read</b>: Within the same transaction, two reads of the same data return different results (modified by another transaction)
-- <b>Phantom Read</b>: Within the same transaction, two queries return different numbers of rows (another transaction inserted/deleted data)
-
-<b>Plain examples</b> (checking bank balance):
-- <b>Dirty Read</b>: You see a balance of 1,000 yuan, but the other transaction was rolled back — the actual balance is only 100 yuan
-- <b>Non-Repeatable Read</b>: You check your balance the first time and see 1,000 yuan, the second time it's 800 yuan (a deduction occurred)
-- <b>Phantom Read</b>: You find 5 transactions the first time, 6 the second time (a new transaction was added)</span><span lang="en">- <b>Dirty Read</b>: Reading data that another transaction hasn't committed yet (may be rolled back, so data is inaccurate)
-- <b>Non-Repeatable Read</b>: Within the same transaction, two reads of the same data return different results (modified by another transaction)
-- <b>Phantom Read</b>: Within the same transaction, two queries return different numbers of rows (another transaction inserted/deleted data)
-
-<b>Plain examples</b> (checking bank balance):
-- <b>Dirty Read</b>: You see a balance of 1,000 yuan, but the other transaction was rolled back — the actual balance is only 100 yuan
-- <b>Non-Repeatable Read</b>: You check your balance the first time and see 1,000 yuan, the second time it's 800 yuan (a deduction occurred)
-- <b>Phantom Read</b>: You find 5 transactions the first time, 6 the second time (a new transaction was added)</span></p>
+</table></div> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">- <b>Dirty Read</b>: Reading data that another transaction hasn't committed yet (may be rolled back, so data is inaccurate) - <b>Non-Repeatable Read</b>: Within the same transaction, two reads of the same data return different results (modified by another transaction) - <b>Phantom Read</b>: Within the same transaction, two queries return different numbers of rows (another transaction inserted/deleted data) <b>Plain examples</b> (checking bank balance): - <b>Dirty Read</b>: You see a balance of 1,000 yuan, but the other transaction was rolled back — the actual balance is only 100 yuan - <b>Non-Repeatable Read</b>: You check your balance the first time and see 1,000 yuan, the second time it's 800 yuan (a deduction occurred) - <b>Phantom Read</b>: You find 5 transactions the first time, 6 the second time (a new transaction was added)</span><span lang="en">- <b>Dirty Read</b>: Reading data that another transaction hasn't committed yet (may be rolled back, so data is inaccurate) - <b>Non-Repeatable Read</b>: Within the same transaction, two reads of the same data return different results (modified by another transaction) - <b>Phantom Read</b>: Within the same transaction, two queries return different numbers of rows (another transaction inserted/deleted data) <b>Plain examples</b> (checking bank balance): - <b>Dirty Read</b>: You see a balance of 1,000 yuan, but the other transaction was rolled back — the actual balance is only 100 yuan - <b>Non-Repeatable Read</b>: You check your balance the first time and see 1,000 yuan, the second time it's 800 yuan (a deduction occurred) - <b>Phantom Read</b>: You find 5 transactions the first time, 6 the second time (a new transaction was added)</span></p>
 </div>
 <p class="reveal"><span lang="id"><TransactionACIDDemo /></span><span lang="en"><TransactionACIDDemo /></span></p>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
 <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Performance Optimization: Practical Tips to Make Queries 1000x Faster</span><span lang="en">6. Performance Optimization: Practical Tips to Make Queries 1000x Faster</span></h2>
 <p class="reveal"><span lang="id">Now you understand core concepts like indexes and transactions. But in real projects, you may encounter various performance issues.</span><span lang="en">Now you understand core concepts like indexes and transactions. But in real projects, you may encounter various performance issues.</span></p>
 <p class="reveal"><span lang="id">This section provides <b>actionable optimization strategies</b>.</span><span lang="en">This section provides <b>actionable optimization strategies</b>.</span></p>
-<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Index Pitfall Guide</span><span lang="en">6.1 Index Pitfall Guide</span></h3>
-
-<div class="callout warn reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div>
-  <p><span lang="id">Often, you've created an index, but queries are still slow — because the index became <b>invalid</b>.
-
-<b>Common causes of index invalidation</b>:
-1. Using functions on indexed columns
-2. Implicit type conversion
-3. LIKE queries starting with %
-4. OR conditions (in some cases)
-5. Composite indexes not satisfying the leftmost prefix rule</span><span lang="en">Often, you've created an index, but queries are still slow — because the index became <b>invalid</b>.
-
-<b>Common causes of index invalidation</b>:
-1. Using functions on indexed columns
-2. Implicit type conversion
-3. LIKE queries starting with %
-4. OR conditions (in some cases)
-5. Composite indexes not satisfying the leftmost prefix rule</span></p>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Index Pitfall Guide</span><span lang="en">6.1 Index Pitfall Guide</span></h3> <div class="callout warn reveal" style="margin:24px 0"> <div class="t"><span lang="id">⚠️ Catatan Keamanan / Peringatan</span><span lang="en">⚠️ Warning / Security Note</span></div> <p><span lang="id">Often, you've created an index, but queries are still slow — because the index became <b>invalid</b>. <b>Common causes of index invalidation</b>: 1. Using functions on indexed columns 2. Implicit type conversion 3. LIKE queries starting with % 4. OR conditions (in some cases) 5. Composite indexes not satisfying the leftmost prefix rule</span><span lang="en">Often, you've created an index, but queries are still slow — because the index became <b>invalid</b>. <b>Common causes of index invalidation</b>: 1. Using functions on indexed columns 2. Implicit type conversion 3. LIKE queries starting with % 4. OR conditions (in some cases) 5. Composite indexes not satisfying the leftmost prefix rule</span></p>
 </div>
-<p class="reveal"><span lang="id"><b>Pitfall 1: Using functions on indexed columns</b></span><span lang="en"><b>Pitfall 1: Using functions on indexed columns</b></span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>sql</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>-- Wrong: Using a function on the indexed column, cannot use index
-SELECT * FROM users WHERE YEAR(created_at) = 2024;
-
--- Correct: Rewrite as a range query, can use index
-SELECT * FROM users
-WHERE created_at &gt;= &#039;2024-01-01&#039; AND created_at &lt; &#039;2025-01-01&#039;;</pre>
+<p class="reveal"><span lang="id"><b>Pitfall 1: Using functions on indexed columns</b></span><span lang="en"><b>Pitfall 1: Using functions on indexed columns</b></span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>sql</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>-- Wrong: Using a function on the indexed column, cannot use index SELECT * FROM users WHERE YEAR(created_at) = 2024; -- Correct: Rewrite as a range query, can use index SELECT * FROM users WHERE created_at &gt;= &#039;2024-01-01&#039; AND created_at &lt; &#039;2025-01-01&#039;;</pre>
 </div>
-<p class="reveal"><span lang="id"><b>Pitfall 2: Implicit type conversion</b></span><span lang="en"><b>Pitfall 2: Implicit type conversion</b></span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>sql</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>-- Assume user_id is int type
--- Wrong: Passing a string causes implicit conversion, cannot use index
-SELECT * FROM users WHERE user_id = &#039;123&#039;;
-
--- Correct: Pass the matching type
-SELECT * FROM users WHERE user_id = 123;</pre>
+<p class="reveal"><span lang="id"><b>Pitfall 2: Implicit type conversion</b></span><span lang="en"><b>Pitfall 2: Implicit type conversion</b></span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>sql</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>-- Assume user_id is int type -- Wrong: Passing a string causes implicit conversion, cannot use index SELECT * FROM users WHERE user_id = &#039;123&#039;; -- Correct: Pass the matching type SELECT * FROM users WHERE user_id = 123;</pre>
 </div>
-<p class="reveal"><span lang="id"><b>Pitfall 3: LIKE starting with %</b></span><span lang="en"><b>Pitfall 3: LIKE starting with %</b></span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>sql</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>-- Wrong: Starting with %, cannot use index
-SELECT * FROM users WHERE name LIKE &#039;%Zhang San%&#039;;
-
--- Correct: Starting with a fixed prefix, can use index
-SELECT * FROM users WHERE name LIKE &#039;Zhang San%&#039;;
-
--- Or use full-text index (suitable for text search)
-SELECT * FROM users WHERE MATCH(name) AGAINST(&#039;Zhang San&#039;);</pre>
+<p class="reveal"><span lang="id"><b>Pitfall 3: LIKE starting with %</b></span><span lang="en"><b>Pitfall 3: LIKE starting with %</b></span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>sql</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>-- Wrong: Starting with %, cannot use index SELECT * FROM users WHERE name LIKE &#039;%Zhang San%&#039;; -- Correct: Starting with a fixed prefix, can use index SELECT * FROM users WHERE name LIKE &#039;Zhang San%&#039;; -- Or use full-text index (suitable for text search) SELECT * FROM users WHERE MATCH(name) AGAINST(&#039;Zhang San&#039;);</pre>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 SQL Optimization Practical Templates</span><span lang="en">6.2 SQL Optimization Practical Templates</span></h3>
-<p class="reveal"><span lang="id"><b>Template 1: Pagination Optimization (Deep Pagination Problem)</b></span><span lang="en"><b>Template 1: Pagination Optimization (Deep Pagination Problem)</b></span></p>
-
-<div class="callout info reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
-  <p><span lang="id">``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sql
--- Problem: When OFFSET is large, queries get progressively slower
-SELECT * FROM orders
-ORDER BY created_at DESC
-LIMIT 10 OFFSET 1000000;
-
--- Optimization 1: Use the last query's timestamp as a cursor
-SELECT * FROM orders
-WHERE created_at < '2024-01-15 12:00:00'
-ORDER BY created_at DESC
-LIMIT 10;
-
--- Optimization 2: Use primary key range query
-SELECT * FROM orders
-WHERE order_id > 1000000
-ORDER BY order_id
-LIMIT 10;
-</code>``</span><span lang="en">``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sql
--- Problem: When OFFSET is large, queries get progressively slower
-SELECT * FROM orders
-ORDER BY created_at DESC
-LIMIT 10 OFFSET 1000000;
-
--- Optimization 1: Use the last query's timestamp as a cursor
-SELECT * FROM orders
-WHERE created_at < '2024-01-15 12:00:00'
-ORDER BY created_at DESC
-LIMIT 10;
-
--- Optimization 2: Use primary key range query
-SELECT * FROM orders
-WHERE order_id > 1000000
-ORDER BY order_id
-LIMIT 10;
-</code>``</span></p>
+<p class="reveal"><span lang="id"><b>Template 1: Pagination Optimization (Deep Pagination Problem)</b></span><span lang="en"><b>Template 1: Pagination Optimization (Deep Pagination Problem)</b></span></p> <div class="callout info reveal" style="margin:24px 0"> <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div> <p><span lang="id">``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sql -- Problem: When OFFSET is large, queries get progressively slower SELECT * FROM orders ORDER BY created_at DESC LIMIT 10 OFFSET 1000000; -- Optimization 1: Use the last query's timestamp as a cursor SELECT * FROM orders WHERE created_at < '2024-01-15 12:00:00' ORDER BY created_at DESC LIMIT 10; -- Optimization 2: Use primary key range query SELECT * FROM orders WHERE order_id > 1000000 ORDER BY order_id LIMIT 10; </code>``</span><span lang="en">``<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">sql -- Problem: When OFFSET is large, queries get progressively slower SELECT * FROM orders ORDER BY created_at DESC LIMIT 10 OFFSET 1000000; -- Optimization 1: Use the last query's timestamp as a cursor SELECT * FROM orders WHERE created_at < '2024-01-15 12:00:00' ORDER BY created_at DESC LIMIT 10; -- Optimization 2: Use primary key range query SELECT * FROM orders WHERE order_id > 1000000 ORDER BY order_id LIMIT 10; </code>``</span></p>
 </div>
-<p class="reveal"><span lang="id"><b>Template 2: Batch Insert Optimization</b></span><span lang="en"><b>Template 2: Batch Insert Optimization</b></span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>sql</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>-- Inefficient: Multiple single inserts (multiple network round trips)
-INSERT INTO users (name, age) VALUES (&#039;Zhang San&#039;, 25);
-INSERT INTO users (name, age) VALUES (&#039;Li Si&#039;, 30);
-INSERT INTO users (name, age) VALUES (&#039;Wang Wu&#039;, 28);
-
--- Efficient: Single SQL batch insert (only one network round trip)
-INSERT INTO users (name, age) VALUES
-(&#039;Zhang San&#039;, 25),
-(&#039;Li Si&#039;, 30),
-(&#039;Wang Wu&#039;, 28);</pre>
+<p class="reveal"><span lang="id"><b>Template 2: Batch Insert Optimization</b></span><span lang="en"><b>Template 2: Batch Insert Optimization</b></span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>sql</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>-- Inefficient: Multiple single inserts (multiple network round trips) INSERT INTO users (name, age) VALUES (&#039;Zhang San&#039;, 25); INSERT INTO users (name, age) VALUES (&#039;Li Si&#039;, 30); INSERT INTO users (name, age) VALUES (&#039;Wang Wu&#039;, 28); -- Efficient: Single SQL batch insert (only one network round trip) INSERT INTO users (name, age) VALUES (&#039;Zhang San&#039;, 25), (&#039;Li Si&#039;, 30), (&#039;Wang Wu&#039;, 28);</pre>
 </div>
-<p class="reveal"><span lang="id"><b>Template 3: Avoid SELECT </b>*</span><span lang="en"><b>Template 3: Avoid SELECT </b>*</span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>sql</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>-- Inefficient: Returns all columns (including unnecessary large fields)
-SELECT * FROM users WHERE user_id = 1;
-
--- Efficient: Only return needed columns
-SELECT user_id, name, email FROM users WHERE user_id = 1;</pre>
+<p class="reveal"><span lang="id"><b>Template 3: Avoid SELECT </b>*</span><span lang="en"><b>Template 3: Avoid SELECT </b>*</span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>sql</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>-- Inefficient: Returns all columns (including unnecessary large fields) SELECT * FROM users WHERE user_id = 1; -- Efficient: Only return needed columns SELECT user_id, name, email FROM users WHERE user_id = 1;</pre>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.3 Strategies for High-Concurrency Scenarios</span><span lang="en">6.3 Strategies for High-Concurrency Scenarios</span></h3>
 <div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
@@ -862,19 +318,7 @@ SELECT user_id, name, email FROM users WHERE user_id = 1;</pre>
 <tr><td><b>Flash Sales</b></td><td>Instantaneous high-concurrency inventory deduction</td><td>Optimistic locking + inventory pre-warming + message queue peak shaving</td></tr>
 <tr><td><b>Slow Queries</b></td><td>Complex queries overwhelm the database</td><td>Index optimization + query splitting + read-write separation</td></tr>
 <tr><td><b>Connection Exhaustion</b></td><td>Too many concurrent requests deplete the connection pool</td><td>Connection pool optimization + rate limiting + service degradation</td></tr>
-</table></div>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">Basic principles of performance optimization:
-1. <b>Measure first, optimize later</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">EXPLAIN</code> to analyze query plans and find the real bottleneck
-2. <b>Indexes first</b>: 80% of performance issues can be solved by optimizing indexes
-3. <b>Reduce database pressure</b>: Use caching where possible, make things async where possible
-4. <b>Divide and conquer</b>: Split large tables into small tables, split large queries into small queries</span><span lang="en">Basic principles of performance optimization:
-1. <b>Measure first, optimize later</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">EXPLAIN</code> to analyze query plans and find the real bottleneck
-2. <b>Indexes first</b>: 80% of performance issues can be solved by optimizing indexes
-3. <b>Reduce database pressure</b>: Use caching where possible, make things async where possible
-4. <b>Divide and conquer</b>: Split large tables into small tables, split large queries into small queries</span></p>
+</table></div> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">Basic principles of performance optimization: 1. <b>Measure first, optimize later</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">EXPLAIN</code> to analyze query plans and find the real bottleneck 2. <b>Indexes first</b>: 80% of performance issues can be solved by optimizing indexes 3. <b>Reduce database pressure</b>: Use caching where possible, make things async where possible 4. <b>Divide and conquer</b>: Split large tables into small tables, split large queries into small queries</span><span lang="en">Basic principles of performance optimization: 1. <b>Measure first, optimize later</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">EXPLAIN</code> to analyze query plans and find the real bottleneck 2. <b>Indexes first</b>: 80% of performance issues can be solved by optimizing indexes 3. <b>Reduce database pressure</b>: Use caching where possible, make things async where possible 4. <b>Divide and conquer</b>: Split large tables into small tables, split large queries into small queries</span></p>
 </div>
 <p class="reveal"><span lang="id"><QueryOptimizationDemo /></span><span lang="en"><QueryOptimizationDemo /></span></p>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
@@ -888,49 +332,9 @@ SELECT user_id, name, email FROM users WHERE user_id = 1;</pre>
 <tr><td><b>SQL</b></td><td>Language for talking to databases</td><td>How to CRUD data</td><td>SELECT, INSERT, UPDATE, DELETE</td></tr>
 <tr><td><b>Index</b></td><td>Data structure that speeds up queries</td><td>How to quickly find data</td><td>B+ Tree, reduces disk I/O</td></tr>
 <tr><td><b>Transaction</b></td><td>Mechanism that ensures data safety</td><td>How to prevent concurrency conflicts and data loss</td><td>ACID: Atomicity, Consistency, Isolation, Durability</td></tr>
-</table></div>
-
-<div class="callout info reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
-  <p><span lang="id">Databases are a vast and deep subject — this article is just an introduction. If you want to continue learning in depth, we recommend following this path:
-
-<b>Next steps</b>:
-1. <b>Hands-on practice</b>: Install MySQL or PostgreSQL, create tables, insert data, write SQL queries
-2. <b>ORM frameworks</b>: Learn how to use databases in code (e.g., SQLAlchemy, Prisma, TypeORM)
-3. <b>Index optimization</b>: Dive deeper into composite indexes, covering indexes, index condition pushdown, and other advanced topics
-4. <b>Transaction principles</b>: Learn about MVCC (Multi-Version Concurrency Control), lock mechanisms, isolation level implementations
-5. <b>Distributed databases</b>: Learn about table sharding, read-write separation, master-slave replication architectures
-
-Remember: <b>Theory + Practice = True Mastery</b>.</span><span lang="en">Databases are a vast and deep subject — this article is just an introduction. If you want to continue learning in depth, we recommend following this path:
-
-<b>Next steps</b>:
-1. <b>Hands-on practice</b>: Install MySQL or PostgreSQL, create tables, insert data, write SQL queries
-2. <b>ORM frameworks</b>: Learn how to use databases in code (e.g., SQLAlchemy, Prisma, TypeORM)
-3. <b>Index optimization</b>: Dive deeper into composite indexes, covering indexes, index condition pushdown, and other advanced topics
-4. <b>Transaction principles</b>: Learn about MVCC (Multi-Version Concurrency Control), lock mechanisms, isolation level implementations
-5. <b>Distributed databases</b>: Learn about table sharding, read-write separation, master-slave replication architectures
-
-Remember: <b>Theory + Practice = True Mastery</b>.</span></p>
-</div>
-
-
-    <div class="pager" style="margin-top:54px">
-      <a href="../../5-data/data-visualization/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">5-data/data-visualization</span><span lang="en">5-data/data-visualization</span></b></a>
-      <a class="next" href="../../6-architecture-and-system-design/distributed-systems/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">6-architecture-and-system-design/distributed-systems</span><span lang="en">6-architecture-and-system-design/distributed-systems</span></b></a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="license-box">
-      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
-      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
-    </div>
-    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
-  </div>
-</footer>
-
-<script src="../../../assets/vibekoding.js"></script>
+</table></div> <div class="callout info reveal" style="margin:24px 0"> <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div> <p><span lang="id">Databases are a vast and deep subject — this article is just an introduction. If you want to continue learning in depth, we recommend following this path: <b>Next steps</b>: 1. <b>Hands-on practice</b>: Install MySQL or PostgreSQL, create tables, insert data, write SQL queries 2. <b>ORM frameworks</b>: Learn how to use databases in code (e.g., SQLAlchemy, Prisma, TypeORM) 3. <b>Index optimization</b>: Dive deeper into composite indexes, covering indexes, index condition pushdown, and other advanced topics 4. <b>Transaction principles</b>: Learn about MVCC (Multi-Version Concurrency Control), lock mechanisms, isolation level implementations 5. <b>Distributed databases</b>: Learn about table sharding, read-write separation, master-slave replication architectures Remember: <b>Theory + Practice = True Mastery</b>.</span><span lang="en">Databases are a vast and deep subject — this article is just an introduction. If you want to continue learning in depth, we recommend following this path: <b>Next steps</b>: 1. <b>Hands-on practice</b>: Install MySQL or PostgreSQL, create tables, insert data, write SQL queries 2. <b>ORM frameworks</b>: Learn how to use databases in code (e.g., SQLAlchemy, Prisma, TypeORM) 3. <b>Index optimization</b>: Dive deeper into composite indexes, covering indexes, index condition pushdown, and other advanced topics 4. <b>Transaction principles</b>: Learn about MVCC (Multi-Version Concurrency Control), lock mechanisms, isolation level implementations 5. <b>Distributed databases</b>: Learn about table sharding, read-write separation, master-slave replication architectures Remember: <b>Theory + Practice = True Mastery</b>.</span></p>
+</div> <div class="pager" style="margin-top:54px"> <a href="../../5-data/data-visualization/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">5-data/data-visualization</span><span lang="en">5-data/data-visualization</span></b></a> <a class="next" href="../../6-architecture-and-system-design/distributed-systems/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">6-architecture-and-system-design/distributed-systems</span><span lang="en">6-architecture-and-system-design/distributed-systems</span></b></a> </div> </div>
+</section> <footer> <div class="wrap"> <div class="license-box"> <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span> <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span> </div> <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p> </div>
+</footer> <script src="../../../assets/vibekoding.js"></script>
 </body>
 </html>

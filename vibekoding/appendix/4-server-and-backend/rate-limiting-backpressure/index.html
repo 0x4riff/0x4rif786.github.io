@@ -4,9 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Principles of Rate Limiting and Backpressure — VibeKoding 📚</title>
-<meta name="description" content="Ensiklopedia VibeKoding: Principles of Rate Limiting and Backpressure. - Kurikulum VibeKoding dual bahasa ID/EN."/>
-
-<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of Rate Limiting and Backpressure. - Kurikulum VibeKoding dual bahasa ID/EN."/> <link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
 <meta name="theme-color" content="#07070f"/>
 <link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/4-server-and-backend/rate-limiting-backpressure/"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -17,50 +15,9 @@
 <body>
 <div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
 <div class="grain"></div>
-<div id="scroll-progress"></div>
-
-<nav class="nav">
-  <div class="nav-inner">
-    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
-    <div class="nav-links">
-      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
-      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
-      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
-      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
-      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
-    </div>
-    <div class="nav-cta">
-      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
-      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
-      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
-    </div>
-  </div>
-</nav>
-
-<section class="lesson-hero">
-  <div class="wrap">
-    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Rate Limiting and Backpressure</span><span lang="en">Principles of Rate Limiting and Backpressure</span></div>
-    <div class="lesson-head">
-      <div class="lesson-mascot">📚</div>
-      <div>
-        <h1><span lang="id">Principles of Rate Limiting and Backpressure</span><span lang="en">Principles of Rate Limiting and Backpressure</span></h1>
-        <div class="meta-row">
-          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
-          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
-          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
-        </div>
-      </div>
-    </div>
-    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Rate Limiting and Backpressure.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Rate Limiting and Backpressure.</span></p>
-  </div>
-</section>
-
-<section style="padding-top:10px">
-  <div class="wrap prose">
-    
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id"><b>On Double 11 at midnight, hundreds of millions of users flood in simultaneously — can the servers handle it?</b> Every system has a processing capacity limit. When request volume exceeds what the system can bear, without control, the result is that nobody can use the service. Rate limiting and backpressure are the two lines of defense that protect systems from being "overwhelmed."</span><span lang="en"><b>On Double 11 at midnight, hundreds of millions of users flood in simultaneously — can the servers handle it?</b> Every system has a processing capacity limit. When request volume exceeds what the system can bear, without control, the result is that nobody can use the service. Rate limiting and backpressure are the two lines of defense that protect systems from being "overwhelmed."</span></p>
+<div id="scroll-progress"></div> <nav class="nav"> <div class="nav-inner"> <a class="brand" href="../../../"><span class="logo">VK</span>Vibe<span class="grad-text">Koding</span></a> <div class="nav-links"> <a href="../../../stage-1/"><span lang="id"> Pemula</span><span lang="en"> Beginner</span></a> <a href="../../../stage-2/"><span lang="id">Level 2: Full-Stack</span><span lang="en">Level 2: Full-Stack</span></a> <a href="../../../stage-3/"><span lang="id"> Master</span><span lang="en"> Master</span></a> <a href="../../../appendix/"><span lang="id">Ensiklopedia</span><span lang="en">Encyclopedia</span></a> <a href="../../../stories/" class="hide-sm"><span lang="id"> Cerita</span><span lang="en"> Stories</span></a> </div> <div class="nav-cta"> <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button> <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button> <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button> </div> </div>
+</nav> <section class="lesson-hero"> <div class="wrap"> <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of Rate Limiting and Backpressure</span><span lang="en">Principles of Rate Limiting and Backpressure</span></div> <div class="lesson-head"> <div class="lesson-mascot"><span style="font-size:1.1rem;font-weight:800;color:var(--text);font-family:var(--font-mono)">VK</span></div> <div> <h1><span lang="id">Principles of Rate Limiting and Backpressure</span><span lang="en">Principles of Rate Limiting and Backpressure</span></h1> <div class="meta-row"> <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span> <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span> <span class="meta-chip">⚡ <span>VibeKoding Native</span></span> </div> </div> </div> <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of Rate Limiting and Backpressure.</span><span lang="en">Ensiklopedia VibeKoding: Principles of Rate Limiting and Backpressure.</span></p> </div>
+</section> <section style="padding-top:10px"> <div class="wrap prose"> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id"><b>On Double 11 at midnight, hundreds of millions of users flood in simultaneously — can the servers handle it?</b> Every system has a processing capacity limit. When request volume exceeds what the system can bear, without control, the result is that nobody can use the service. Rate limiting and backpressure are the two lines of defense that protect systems from being "overwhelmed."</span><span lang="en"><b>On Double 11 at midnight, hundreds of millions of users flood in simultaneously — can the servers handle it?</b> Every system has a processing capacity limit. When request volume exceeds what the system can bear, without control, the result is that nobody can use the service. Rate limiting and backpressure are the two lines of defense that protect systems from being "overwhelmed."</span></p>
 </div>
 <p class="reveal"><span lang="id"><b>What will you learn in this article?</b></span><span lang="en"><b>What will you learn in this article?</b></span></p>
 <p class="reveal"><span lang="id">After reading this chapter, you will gain:</span><span lang="en">After reading this chapter, you will gain:</span></p>
@@ -82,15 +39,7 @@
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
 <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">0. The Big Picture: Motivation for the "Reject" Users</span><span lang="en">0. The Big Picture: Motivation for the "Reject" Users</span></h2>
 <p class="reveal"><span lang="id">This sounds counterintuitive — shouldn't we serve every user well? But the reality is: <b>if you don't reject some requests, all requests will fail.</b></span><span lang="en">This sounds counterintuitive — shouldn't we serve every user well? But the reality is: <b>if you don't reject some requests, all requests will fail.</b></span></p>
-<p class="reveal"><span lang="id">Imagine a restaurant that can only seat 100 people, and suddenly 1,000 people rush in. Without rate limiting, the result isn't that all 1,000 get to eat — it's that the kitchen crashes, the servers are overwhelmed, and nobody gets fed. The right approach is to queue and limit at the door, letting 100 people in first while the rest wait.</span><span lang="en">Imagine a restaurant that can only seat 100 people, and suddenly 1,000 people rush in. Without rate limiting, the result isn't that all 1,000 get to eat — it's that the kitchen crashes, the servers are overwhelmed, and nobody gets fed. The right approach is to queue and limit at the door, letting 100 people in first while the rest wait.</span></p>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">- <b>Protect the system</b>: Prevent overload from causing complete service unavailability
-- <b>Fair allocation</b>: Ensure accepted requests can be processed normally
-- <b>Graceful degradation</b>: Rate-limited requests receive a clear 429 status code, rather than a timeout or 500 error</span><span lang="en">- <b>Protect the system</b>: Prevent overload from causing complete service unavailability
-- <b>Fair allocation</b>: Ensure accepted requests can be processed normally
-- <b>Graceful degradation</b>: Rate-limited requests receive a clear 429 status code, rather than a timeout or 500 error</span></p>
+<p class="reveal"><span lang="id">Imagine a restaurant that can only seat 100 people, and suddenly 1,000 people rush in. Without rate limiting, the result isn't that all 1,000 get to eat — it's that the kitchen crashes, the servers are overwhelmed, and nobody gets fed. The right approach is to queue and limit at the door, letting 100 people in first while the rest wait.</span><span lang="en">Imagine a restaurant that can only seat 100 people, and suddenly 1,000 people rush in. Without rate limiting, the result isn't that all 1,000 get to eat — it's that the kitchen crashes, the servers are overwhelmed, and nobody gets fed. The right approach is to queue and limit at the door, letting 100 people in first while the rest wait.</span></p> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">- <b>Protect the system</b>: Prevent overload from causing complete service unavailability - <b>Fair allocation</b>: Ensure accepted requests can be processed normally - <b>Graceful degradation</b>: Rate-limited requests receive a clear 429 status code, rather than a timeout or 500 error</span><span lang="en">- <b>Protect the system</b>: Prevent overload from causing complete service unavailability - <b>Fair allocation</b>: Ensure accepted requests can be processed normally - <b>Graceful degradation</b>: Rate-limited requests receive a clear 429 status code, rather than a timeout or 500 error</span></p>
 </div>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
 <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Rate Limiting Algorithms: Three Classic Approaches</span><span lang="en">1. Rate Limiting Algorithms: Three Classic Approaches</span></h2>
@@ -102,31 +51,13 @@
 <tr><td>Leaky bucket</td><td>Requests queue up; processed at a fixed rate</td><td>Not allowed (fully smoothed)</td><td>High</td><td>Medium</td></tr>
 <tr><td>Sliding window</td><td>Counts requests within a time window</td><td>Partially allowed</td><td>Fairly high</td><td>Low</td></tr>
 <tr><td>Fixed window</td><td>Counts by fixed time window</td><td>May burst at boundaries</td><td>Low</td><td>Lowest</td></tr>
-</table></div>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">- <b>API rate limiting</b>: Token bucket is most commonly used, allowing reasonable burst traffic
-- <b>Traffic shaping</b>: Leaky bucket suits scenarios requiring constant output rate
-- <b>Simple counting</b>: Sliding window is easy to implement, suitable for most web applications</span><span lang="en">- <b>API rate limiting</b>: Token bucket is most commonly used, allowing reasonable burst traffic
-- <b>Traffic shaping</b>: Leaky bucket suits scenarios requiring constant output rate
-- <b>Simple counting</b>: Sliding window is easy to implement, suitable for most web applications</span></p>
+</table></div> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">- <b>API rate limiting</b>: Token bucket is most commonly used, allowing reasonable burst traffic - <b>Traffic shaping</b>: Leaky bucket suits scenarios requiring constant output rate - <b>Simple counting</b>: Sliding window is easy to implement, suitable for most web applications</span><span lang="en">- <b>API rate limiting</b>: Token bucket is most commonly used, allowing reasonable burst traffic - <b>Traffic shaping</b>: Leaky bucket suits scenarios requiring constant output rate - <b>Simple counting</b>: Sliding window is easy to implement, suitable for most web applications</span></p>
 </div>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
 <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Backpressure Control: When Upstream Is Faster Than Downstream</span><span lang="en">2. Backpressure Control: When Upstream Is Faster Than Downstream</span></h2>
 <p class="reveal"><span lang="id">Rate limiting solves the problem of "too many external requests," while <b>backpressure</b> solves the problem of "internal component speed mismatch."</span><span lang="en">Rate limiting solves the problem of "too many external requests," while <b>backpressure</b> solves the problem of "internal component speed mismatch."</span></p>
 <p class="reveal"><span lang="id">When a producer generates data faster than a consumer can process it, the intermediate buffer keeps growing, eventually leading to memory overflow or data loss. Backpressure mechanisms allow consumers to "notify upstream to slow down."</span><span lang="en">When a producer generates data faster than a consumer can process it, the intermediate buffer keeps growing, eventually leading to memory overflow or data loss. Backpressure mechanisms allow consumers to "notify upstream to slow down."</span></p>
-<p class="reveal"><span lang="id"><BackpressureDemo /></span><span lang="en"><BackpressureDemo /></span></p>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">1. <b>Drop</b>: When the buffer is full, discard new or old data; suitable for scenarios with high real-time requirements but tolerable data loss
-2. <b>Block</b>: Pause the producer until the consumer finishes processing; suitable for scenarios where data cannot be lost
-3. <b>Sample</b>: Only process a portion of the data; suitable for high-frequency data streams
-4. <b>Elastic Scaling</b>: Dynamically increase the number of consumers; suitable for cloud-native environments</span><span lang="en">1. <b>Drop</b>: When the buffer is full, discard new or old data; suitable for scenarios with high real-time requirements but tolerable data loss
-2. <b>Block</b>: Pause the producer until the consumer finishes processing; suitable for scenarios where data cannot be lost
-3. <b>Sample</b>: Only process a portion of the data; suitable for high-frequency data streams
-4. <b>Elastic Scaling</b>: Dynamically increase the number of consumers; suitable for cloud-native environments</span></p>
+<p class="reveal"><span lang="id"><BackpressureDemo /></span><span lang="en"><BackpressureDemo /></span></p> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">1. <b>Drop</b>: When the buffer is full, discard new or old data; suitable for scenarios with high real-time requirements but tolerable data loss 2. <b>Block</b>: Pause the producer until the consumer finishes processing; suitable for scenarios where data cannot be lost 3. <b>Sample</b>: Only process a portion of the data; suitable for high-frequency data streams 4. <b>Elastic Scaling</b>: Dynamically increase the number of consumers; suitable for cloud-native environments</span><span lang="en">1. <b>Drop</b>: When the buffer is full, discard new or old data; suitable for scenarios with high real-time requirements but tolerable data loss 2. <b>Block</b>: Pause the producer until the consumer finishes processing; suitable for scenarios where data cannot be lost 3. <b>Sample</b>: Only process a portion of the data; suitable for high-frequency data streams 4. <b>Elastic Scaling</b>: Dynamically increase the number of consumers; suitable for cloud-native environments</span></p>
 </div>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
 <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Multi-Layer Rate Limiting Architecture</span><span lang="en">3. Multi-Layer Rate Limiting Architecture</span></h2>
@@ -138,19 +69,7 @@
 <tr><td>API Gateway</td><td>Entry gateway</td><td>Route-level, user-level</td><td>Nginx limit_req, Kong</td></tr>
 <tr><td>Server side</td><td>Inside application</td><td>Interface-level, resource-level</td><td>Sentinel, Resilience4j</td></tr>
 <tr><td>Database</td><td>Storage layer</td><td>Connection count, QPS</td><td>Connection pool configuration, slow query circuit breaking</td></tr>
-</table></div>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">Rate-limited requests should return a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">429 Too Many Requests</code> status code with response headers including:
-- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Retry-After</code>: How long the client should wait before retrying (seconds or date)
-- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">X-RateLimit-Limit</code>: Rate limit ceiling
-- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">X-RateLimit-Remaining</code>: Remaining quota
-- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">X-RateLimit-Reset</code>: Quota reset time</span><span lang="en">Rate-limited requests should return a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">429 Too Many Requests</code> status code with response headers including:
-- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Retry-After</code>: How long the client should wait before retrying (seconds or date)
-- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">X-RateLimit-Limit</code>: Rate limit ceiling
-- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">X-RateLimit-Remaining</code>: Remaining quota
-- <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">X-RateLimit-Reset</code>: Quota reset time</span></p>
+</table></div> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">Rate-limited requests should return a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">429 Too Many Requests</code> status code with response headers including: - <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Retry-After</code>: How long the client should wait before retrying (seconds or date) - <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">X-RateLimit-Limit</code>: Rate limit ceiling - <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">X-RateLimit-Remaining</code>: Remaining quota - <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">X-RateLimit-Reset</code>: Quota reset time</span><span lang="en">Rate-limited requests should return a <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">429 Too Many Requests</code> status code with response headers including: - <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Retry-After</code>: How long the client should wait before retrying (seconds or date) - <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">X-RateLimit-Limit</code>: Rate limit ceiling - <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">X-RateLimit-Remaining</code>: Remaining quota - <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">X-RateLimit-Reset</code>: Quota reset time</span></p>
 </div>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
 <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Practical Selection</span><span lang="en">4. Practical Selection</span></h2>
@@ -180,26 +99,8 @@
 <li><span lang="id">[Alibaba Sentinel](https://sentinelguard.io/) - Traffic control component for distributed services</span><span lang="en">[Alibaba Sentinel](https://sentinelguard.io/) - Traffic control component for distributed services</span></li>
 <li><span lang="id">[Resilience4j](https://resilience4j.readme.io/) - Lightweight fault tolerance library for Java</span><span lang="en">[Resilience4j](https://resilience4j.readme.io/) - Lightweight fault tolerance library for Java</span></li>
 <li><span lang="id">[Token Bucket Algorithm Details](https://en.wikipedia.org/wiki/Token_bucket) - Mathematical principles of the token bucket algorithm</span><span lang="en">[Token Bucket Algorithm Details](https://en.wikipedia.org/wiki/Token_bucket) - Mathematical principles of the token bucket algorithm</span></li>
-</ul>
-
-
-    <div class="pager" style="margin-top:54px">
-      <a href="../../4-server-and-backend/message-queues/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">4-server-and-backend/message-queues</span><span lang="en">4-server-and-backend/message-queues</span></b></a>
-      <a class="next" href="../../4-server-and-backend/request-journey/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">4-server-and-backend/request-journey</span><span lang="en">4-server-and-backend/request-journey</span></b></a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="license-box">
-      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
-      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
-    </div>
-    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
-  </div>
-</footer>
-
-<script src="../../../assets/vibekoding.js"></script>
+</ul> <div class="pager" style="margin-top:54px"> <a href="../../4-server-and-backend/message-queues/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">4-server-and-backend/message-queues</span><span lang="en">4-server-and-backend/message-queues</span></b></a> <a class="next" href="../../4-server-and-backend/request-journey/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">4-server-and-backend/request-journey</span><span lang="en">4-server-and-backend/request-journey</span></b></a> </div> </div>
+</section> <footer> <div class="wrap"> <div class="license-box"> <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span> <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span> </div> <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p> </div>
+</footer> <script src="../../../assets/vibekoding.js"></script>
 </body>
 </html>

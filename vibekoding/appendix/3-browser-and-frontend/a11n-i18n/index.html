@@ -4,9 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>The Hidden Dimensions of Web: Internationalization and Accessibility — VibeKoding 📚</title>
-<meta name="description" content="Ensiklopedia VibeKoding: The Hidden Dimensions of Web: Internationalization and Accessibility. - Kurikulum VibeKoding dual bahasa ID/EN."/>
-
-<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="description" content="Ensiklopedia VibeKoding: The Hidden Dimensions of Web: Internationalization and Accessibility. - Kurikulum VibeKoding dual bahasa ID/EN."/> <link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
 <meta name="theme-color" content="#07070f"/>
 <link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/3-browser-and-frontend/a11n-i18n/"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -17,64 +15,9 @@
 <body>
 <div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
 <div class="grain"></div>
-<div id="scroll-progress"></div>
-
-<nav class="nav">
-  <div class="nav-inner">
-    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
-    <div class="nav-links">
-      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
-      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
-      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
-      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
-      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
-    </div>
-    <div class="nav-cta">
-      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
-      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
-      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
-    </div>
-  </div>
-</nav>
-
-<section class="lesson-hero">
-  <div class="wrap">
-    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">The Hidden Dimensions of Web: Internationalization and Accessibility</span><span lang="en">The Hidden Dimensions of Web: Internationalization and Accessibility</span></div>
-    <div class="lesson-head">
-      <div class="lesson-mascot">📚</div>
-      <div>
-        <h1><span lang="id">The Hidden Dimensions of Web: Internationalization and Accessibility</span><span lang="en">The Hidden Dimensions of Web: Internationalization and Accessibility</span></h1>
-        <div class="meta-row">
-          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
-          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
-          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
-        </div>
-      </div>
-    </div>
-    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: The Hidden Dimensions of Web: Internationalization and Accessibility.</span><span lang="en">Ensiklopedia VibeKoding: The Hidden Dimensions of Web: Internationalization and Accessibility.</span></p>
-  </div>
-</section>
-
-<section style="padding-top:10px">
-  <div class="wrap prose">
-    
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id"><b>What is i18n and where does it come from?</b>
-In the frontend and software engineering world, what we commonly call <b>i18n</b> actually refers to <b>multilingual support (Internationalization)</b>. Because there happen to be 18 letters between the first letter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">i</code> and the last letter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">n</code> of this English word, the industry coined this specific abbreviation for convenience.
-Similarly, <b>Accessibility</b> has 11 letters between the first letter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">a</code> and the last letter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">y</code>, so it is collectively referred to as <b>a11y</b>.
-
-Behind the browser rendering colorful web pages, there are actually two "hidden threads" running in parallel that are often invisible to the naked eye:
-When you type a URL to visit a web page, how does the browser know whether to show you Chinese or German (i.e., the i18n multilingual process)? While the browser parses HTML into a DOM tree and prepares to draw, how does it also build another "braille tree" specifically for visually impaired users (i.e., the a11y accessibility process)?
-
-In this chapter, we will return to the micro-level process of "web page access and rendering" to decode how browsers and frontend engineering silently work in these two areas that embody technological humanistic care.</span><span lang="en"><b>What is i18n and where does it come from?</b>
-In the frontend and software engineering world, what we commonly call <b>i18n</b> actually refers to <b>multilingual support (Internationalization)</b>. Because there happen to be 18 letters between the first letter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">i</code> and the last letter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">n</code> of this English word, the industry coined this specific abbreviation for convenience.
-Similarly, <b>Accessibility</b> has 11 letters between the first letter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">a</code> and the last letter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">y</code>, so it is collectively referred to as <b>a11y</b>.
-
-Behind the browser rendering colorful web pages, there are actually two "hidden threads" running in parallel that are often invisible to the naked eye:
-When you type a URL to visit a web page, how does the browser know whether to show you Chinese or German (i.e., the i18n multilingual process)? While the browser parses HTML into a DOM tree and prepares to draw, how does it also build another "braille tree" specifically for visually impaired users (i.e., the a11y accessibility process)?
-
-In this chapter, we will return to the micro-level process of "web page access and rendering" to decode how browsers and frontend engineering silently work in these two areas that embody technological humanistic care.</span></p>
+<div id="scroll-progress"></div> <nav class="nav"> <div class="nav-inner"> <a class="brand" href="../../../"><span class="logo">VK</span>Vibe<span class="grad-text">Koding</span></a> <div class="nav-links"> <a href="../../../stage-1/"><span lang="id"> Pemula</span><span lang="en"> Beginner</span></a> <a href="../../../stage-2/"><span lang="id">Level 2: Full-Stack</span><span lang="en">Level 2: Full-Stack</span></a> <a href="../../../stage-3/"><span lang="id"> Master</span><span lang="en"> Master</span></a> <a href="../../../appendix/"><span lang="id">Ensiklopedia</span><span lang="en">Encyclopedia</span></a> <a href="../../../stories/" class="hide-sm"><span lang="id"> Cerita</span><span lang="en"> Stories</span></a> </div> <div class="nav-cta"> <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button> <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button> <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button> </div> </div>
+</nav> <section class="lesson-hero"> <div class="wrap"> <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">The Hidden Dimensions of Web: Internationalization and Accessibility</span><span lang="en">The Hidden Dimensions of Web: Internationalization and Accessibility</span></div> <div class="lesson-head"> <div class="lesson-mascot"><span style="font-size:1.1rem;font-weight:800;color:var(--text);font-family:var(--font-mono)">VK</span></div> <div> <h1><span lang="id">The Hidden Dimensions of Web: Internationalization and Accessibility</span><span lang="en">The Hidden Dimensions of Web: Internationalization and Accessibility</span></h1> <div class="meta-row"> <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span> <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span> <span class="meta-chip">⚡ <span>VibeKoding Native</span></span> </div> </div> </div> <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: The Hidden Dimensions of Web: Internationalization and Accessibility.</span><span lang="en">Ensiklopedia VibeKoding: The Hidden Dimensions of Web: Internationalization and Accessibility.</span></p> </div>
+</section> <section style="padding-top:10px"> <div class="wrap prose"> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id"><b>What is i18n and where does it come from?</b> In the frontend and software engineering world, what we commonly call <b>i18n</b> actually refers to <b>multilingual support (Internationalization)</b>. Because there happen to be 18 letters between the first letter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">i</code> and the last letter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">n</code> of this English word, the industry coined this specific abbreviation for convenience. Similarly, <b>Accessibility</b> has 11 letters between the first letter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">a</code> and the last letter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">y</code>, so it is collectively referred to as <b>a11y</b>. Behind the browser rendering colorful web pages, there are actually two "hidden threads" running in parallel that are often invisible to the naked eye: When you type a URL to visit a web page, how does the browser know whether to show you Chinese or German (i.e., the i18n multilingual process)? While the browser parses HTML into a DOM tree and prepares to draw, how does it also build another "braille tree" specifically for visually impaired users (i.e., the a11y accessibility process)? In this chapter, we will return to the micro-level process of "web page access and rendering" to decode how browsers and frontend engineering silently work in these two areas that embody technological humanistic care.</span><span lang="en"><b>What is i18n and where does it come from?</b> In the frontend and software engineering world, what we commonly call <b>i18n</b> actually refers to <b>multilingual support (Internationalization)</b>. Because there happen to be 18 letters between the first letter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">i</code> and the last letter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">n</code> of this English word, the industry coined this specific abbreviation for convenience. Similarly, <b>Accessibility</b> has 11 letters between the first letter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">a</code> and the last letter <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">y</code>, so it is collectively referred to as <b>a11y</b>. Behind the browser rendering colorful web pages, there are actually two "hidden threads" running in parallel that are often invisible to the naked eye: When you type a URL to visit a web page, how does the browser know whether to show you Chinese or German (i.e., the i18n multilingual process)? While the browser parses HTML into a DOM tree and prepares to draw, how does it also build another "braille tree" specifically for visually impaired users (i.e., the a11y accessibility process)? In this chapter, we will return to the micro-level process of "web page access and rendering" to decode how browsers and frontend engineering silently work in these two areas that embody technological humanistic care.</span></p>
 </div>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
 <h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Language Negotiation in Web Page Access (i18n)</span><span lang="en">1. Language Negotiation in Web Page Access (i18n)</span></h2>
@@ -121,26 +64,8 @@ In this chapter, we will return to the micro-level process of "web page access a
 <tr><td><b>Internationalization (i18n)</b></td><td>Negotiation through request headers, formatting based on Intl API, flexible support for RTL layout mirror reversal.</td><td>Bridging the <b>language and cultural divide</b>, enabling applications to seamlessly match different countries' language standards and typographic conventions.</td></tr>
 <tr><td><b>Accessibility (a11y)</b></td><td>Beyond building the render tree, also building a high-clarity <b>AOM tree</b> based on semantic HTML and ARIA specifications.</td><td>Bridging the <b>physical and device divide</b>, smoothly handing control to assistive tools like screen readers.</td></tr>
 </table></div>
-<p class="reveal"><span lang="id">True senior engineers, behind the dazzling interfaces their code produces, still carefully craft those invisible communication headers and semantic trees, enabling the Web's power to radiate to every ordinary person using completely different languages or operating devices. This is the Web's most confident humanistic foundation as the world's largest platform.</span><span lang="en">True senior engineers, behind the dazzling interfaces their code produces, still carefully craft those invisible communication headers and semantic trees, enabling the Web's power to radiate to every ordinary person using completely different languages or operating devices. This is the Web's most confident humanistic foundation as the world's largest platform.</span></p>
-
-
-    <div class="pager" style="margin-top:54px">
-      <a href="../../2-development-tools/ssh-authentication/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">2-development-tools/ssh-authentication</span><span lang="en">2-development-tools/ssh-authentication</span></b></a>
-      <a class="next" href="../../3-browser-and-frontend/browser-as-os-rendering/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">3-browser-and-frontend/browser-as-os-rendering</span><span lang="en">3-browser-and-frontend/browser-as-os-rendering</span></b></a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="license-box">
-      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
-      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
-    </div>
-    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
-  </div>
-</footer>
-
-<script src="../../../assets/vibekoding.js"></script>
+<p class="reveal"><span lang="id">True senior engineers, behind the dazzling interfaces their code produces, still carefully craft those invisible communication headers and semantic trees, enabling the Web's power to radiate to every ordinary person using completely different languages or operating devices. This is the Web's most confident humanistic foundation as the world's largest platform.</span><span lang="en">True senior engineers, behind the dazzling interfaces their code produces, still carefully craft those invisible communication headers and semantic trees, enabling the Web's power to radiate to every ordinary person using completely different languages or operating devices. This is the Web's most confident humanistic foundation as the world's largest platform.</span></p> <div class="pager" style="margin-top:54px"> <a href="../../2-development-tools/ssh-authentication/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">2-development-tools/ssh-authentication</span><span lang="en">2-development-tools/ssh-authentication</span></b></a> <a class="next" href="../../3-browser-and-frontend/browser-as-os-rendering/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">3-browser-and-frontend/browser-as-os-rendering</span><span lang="en">3-browser-and-frontend/browser-as-os-rendering</span></b></a> </div> </div>
+</section> <footer> <div class="wrap"> <div class="license-box"> <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span> <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span> </div> <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p> </div>
+</footer> <script src="../../../assets/vibekoding.js"></script>
 </body>
 </html>

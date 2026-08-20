@@ -4,9 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Pelajaran 5: Bangun Prototipe Pertamamu — VibeKoding 🏗️</title>
-<meta name="description" content="Pelajaran 5 VibeKoding: mengubah satu ide produk menjadi aplikasi web prototipe multi-halaman dengan AI IDE. Langkah demi langkah untuk pemula."/>
-
-<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg"/>
+<meta name="description" content="Pelajaran 5 VibeKoding: mengubah satu ide produk menjadi aplikasi web prototipe multi-halaman dengan AI IDE. Langkah demi langkah untuk pemula."/> <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg"/>
 <meta name="theme-color" content="#07070f"/>
 <link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/stage-1/lesson-5.html"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -17,214 +15,40 @@
 <body data-lesson="s1l5">
 <div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
 <div class="grain"></div>
-<div id="scroll-progress"></div>
-
-<nav class="nav">
-  <div class="nav-inner">
-    <a class="brand" href="../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
-    <div class="nav-links">
-      <a href="./" class="active"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
-      <a href="../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
-      <a href="../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
-      <a href="../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
-      <a href="../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
-    </div>
-    <div class="nav-cta">
-      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
-      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
-      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
-    </div>
-  </div>
-</nav>
-
-<section class="lesson-hero">
-  <div class="wrap">
-    <div class="crumb"><a href="../">VibeKoding</a> / <a href="./"><span lang="id">Level 1</span><span lang="en">Level 1</span></a> / <span lang="id">Pelajaran 5</span><span lang="en">Lesson 5</span></div>
-    <div class="lesson-head">
-      <div class="lesson-mascot">🏗️</div>
-      <div>
-        <h1><span lang="id">Bangun <span class="grad-text">Prototipe Pertamamu</span> 🏗️</span>
-        <span lang="en">Build Your <span class="grad-text">First Prototype</span> 🏗️</span></h1>
-        <div class="meta-row">
-          <span class="meta-chip">⏱️ <span lang="id">~4 jam (cicil santai)</span><span lang="en">~4 hours (spread it out)</span></span>
-          <span class="meta-chip">🎯 <span lang="id">Output: Aplikasi web multi-halaman</span><span lang="en">Output: Multi-page web app</span></span>
-          <span class="meta-chip">💻 <span lang="id">Alat: AI IDE dari Pelajaran 3</span><span lang="en">Tools: AI IDE from Lesson 3</span></span>
-        </div>
-      </div>
-    </div>
-    <div id="xp-box" style="max-width:420px;margin-top:26px">
-      <div class="small"><span lang="id">Progres pelajaranmu</span><span lang="en">Your lesson progress</span>: <b id="xp-pct">0%</b></div>
-      <div class="xp-bar"><i id="xp-fill"></i></div>
-    </div>
-  </div>
-</section>
-
-<section style="padding-top:10px">
-  <div class="wrap prose">
-
-    <div class="callout joke reveal">
-      <div class="t">😂 <span lang="id">Jokes Pembuka</span><span lang="en">Opening Joke</span></div>
-      <p><span lang="id">Di pelajaran asli Easy-Vibe, tantangannya: bos melempar satu kalimat, <i>"Gunakan AI untuk meningkatkan efisiensi publikasi produk e-commerce"</i>, dan kamu harus mengubah kalimat samar itu jadi produk nyata. 😅 Versi kita lebih akrab: <b>kalimat konsep dari Pelajaran 4-mu sendiri</b>. Bedanya? Boss di sini adalah kamu, dan bos ini baik hati — dia nggak marah kalau ada typo. 👼</span>
-      <span lang="en">In the original Easy-Vibe lesson, the challenge is: the boss throws one sentence at you, <i>"Use AI to improve e-commerce product publishing efficiency"</i>, and you must turn that vague sentence into a real product. 😅 Our version is friendlier: <b>your own concept sentence from Lesson 4</b>. The difference? The boss here is you, and this boss is kind — no yelling about typos. 👼</span></p>
-    </div>
-
-    <h2 class="reveal"><span lang="id">1. Kenapa Nggak Langsung Ngoding? 🧱</span><span lang="en">1. Why Not Just Start Coding? 🧱</span></h2>
-    <p class="reveal"><span lang="id">Ada jurang besar antara <b>tahu "apa yang mau dibuat"</b> dan <b>tahu "cara membuatnya"</b>. Jembatan di atas jurang itu namanya: <b>memperjelas kebutuhan</b> (requirements). Kalau kamu langsung bilang ke AI <i>"bikinin aplikasi kas kelas"</i>, hasilnya bakal umum dan membosankan. Tapi kalau kamu jelasin dulu fitur-fiturnya, hasilnya langsung on-point. 🎯</span>
-    <span lang="en">There's a huge gap between <b>knowing "what to build"</b> and <b>knowing "how to build it"</b>. The bridge over that gap is called: <b>clarifying requirements</b>. If you just tell AI <i>"make me a class treasury app"</i>, the result will be generic and boring. But if you first explain the features, the result is instantly on-point. 🎯</span></p>
-    <div class="callout tip reveal">
-      <div class="t">🔨 <span lang="id">Rumus 4 Langkah Pelajaran Ini</span><span lang="en">This Lesson's 4-Step Formula</span></div>
-      <p><span lang="id"><b>1. Perjelas kebutuhan</b> — dari samar jadi konkret 📋<br/>
-      <b>2. Validasi satu halaman</b> — bikin halaman inti dulu 🎯<br/>
-      <b>3. Kembangkan multi-halaman</b> — tambah halaman lain 📄<br/>
-      <b>4. Poles &amp; uji</b> — bikin enak dilihat &amp; dipakai ✨</span>
-      <span lang="en"><b>1. Clarify needs</b> — from vague to concrete 📋<br/>
-      <b>2. Validate one page</b> — build the core page first 🎯<br/>
-      <b>3. Expand to multi-page</b> — add the other pages 📄<br/>
-      <b>4. Polish &amp; test</b> — make it look &amp; feel great ✨</span></p>
-    </div>
-
-    <h2 class="reveal"><span lang="id">2. Langkah 1: Ubah Kalimat Samarmu Jadi Daftar Fitur 📋</span><span lang="en">2. Step 1: Turn Your Vague Sentence into a Feature List 📋</span></h2>
-    <p class="reveal"><span lang="id">Ingat contoh Si Ming dari Pelajaran 4? Kalimat konsepnya: <i>"Untuk bendahara kelas yang sering salah catat uang kas, aplikasi KasKu membantu mencatat pemasukan &amp; pengeluaran otomatis di HP."</i> Sekarang kita bongkar jadi fitur konkret:</span>
-    <span lang="en">Remember Ming from Lesson 4? His concept sentence: <i>"For class treasurers who keep mis-recording treasury money, the KasKu app helps log income &amp; expenses automatically on the phone."</i> Now we break it into concrete features:</span></p>
-    <div class="prompt-card reveal">
-      <div class="p-head"><b><span lang="id">💬 PROMPT ANALISIS KEBUTUHAN</span><span lang="en">💬 REQUIREMENTS ANALYSIS PROMPT</span></b>
-        <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button></div>
-      <pre><span lang="id">Aku mau bikin aplikasi bernama KasKu untuk bendahara kelas.
+<div id="scroll-progress"></div> <nav class="nav"> <div class="nav-inner"> <a class="brand" href="../"><span class="logo">VK</span>Vibe<span class="grad-text">Koding</span></a> <div class="nav-links"> <a href="./" class="active"><span lang="id"> Pemula</span><span lang="en"> Beginner</span></a> <a href="../stage-2/"><span lang="id">Level 2: Full-Stack</span><span lang="en">Level 2: Full-Stack</span></a> <a href="../stage-3/"><span lang="id"> Master</span><span lang="en"> Master</span></a> <a href="../appendix/"><span lang="id">Ensiklopedia</span><span lang="en">Encyclopedia</span></a> <a href="../stories/" class="hide-sm"><span lang="id"> Cerita</span><span lang="en"> Stories</span></a> </div> <div class="nav-cta"> <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button> <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button> <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button> </div> </div>
+</nav> <section class="lesson-hero"> <div class="wrap"> <div class="crumb"><a href="../">VibeKoding</a> / <a href="./"><span lang="id">Level 1</span><span lang="en">Level 1</span></a> / <span lang="id">Pelajaran 5</span><span lang="en">Lesson 5</span></div> <div class="lesson-head"> <div class="lesson-mascot"><span style="font-size:1.1rem;font-weight:800;color:var(--text);font-family:var(--font-mono)">VK</span></div> <div> <h1><span lang="id">Bangun <span class="grad-text">Prototipe Pertamamu</span> 🏗️</span> <span lang="en">Build Your <span class="grad-text">First Prototype</span> 🏗️</span></h1> <div class="meta-row"> <span class="meta-chip">⏱️ <span lang="id">~4 jam (cicil santai)</span><span lang="en">~4 hours (spread it out)</span></span> <span class="meta-chip">🎯 <span lang="id">Output: Aplikasi web multi-halaman</span><span lang="en">Output: Multi-page web app</span></span> <span class="meta-chip">💻 <span lang="id">Alat: AI IDE dari Pelajaran 3</span><span lang="en">Tools: AI IDE from Lesson 3</span></span> </div> </div> </div> <div id="xp-box" style="max-width:420px;margin-top:26px"> <div class="small"><span lang="id">Progres pelajaranmu</span><span lang="en">Your lesson progress</span>: <b id="xp-pct">0%</b></div> <div class="xp-bar"><i id="xp-fill"></i></div> </div> </div>
+</section> <section style="padding-top:10px"> <div class="wrap prose"> <div class="callout joke reveal"> <div class="t">💡 <span lang="id">Jokes Pembuka</span><span lang="en">Opening Joke</span></div> <p><span lang="id">Di pelajaran asli Easy-Vibe, tantangannya: bos melempar satu kalimat, <i>"Gunakan AI untuk meningkatkan efisiensi publikasi produk e-commerce"</i>, dan kamu harus mengubah kalimat samar itu jadi produk nyata. 😅 Versi kita lebih akrab: <b>kalimat konsep dari Pelajaran 4-mu sendiri</b>. Bedanya? Boss di sini adalah kamu, dan bos ini baik hati — dia nggak marah kalau ada typo. 👼</span> <span lang="en">In the original Easy-Vibe lesson, the challenge is: the boss throws one sentence at you, <i>"Use AI to improve e-commerce product publishing efficiency"</i>, and you must turn that vague sentence into a real product. 😅 Our version is friendlier: <b>your own concept sentence from Lesson 4</b>. The difference? The boss here is you, and this boss is kind — no yelling about typos. 👼</span></p> </div> <h2 class="reveal"><span lang="id">1. Kenapa Nggak Langsung Ngoding? 🧱</span><span lang="en">1. Why Not Just Start Coding? 🧱</span></h2> <p class="reveal"><span lang="id">Ada jurang besar antara <b>tahu "apa yang mau dibuat"</b> dan <b>tahu "cara membuatnya"</b>. Jembatan di atas jurang itu namanya: <b>memperjelas kebutuhan</b> (requirements). Kalau kamu langsung bilang ke AI <i>"bikinin aplikasi kas kelas"</i>, hasilnya bakal umum dan membosankan. Tapi kalau kamu jelasin dulu fitur-fiturnya, hasilnya langsung on-point. 🎯</span> <span lang="en">There's a huge gap between <b>knowing "what to build"</b> and <b>knowing "how to build it"</b>. The bridge over that gap is called: <b>clarifying requirements</b>. If you just tell AI <i>"make me a class treasury app"</i>, the result will be generic and boring. But if you first explain the features, the result is instantly on-point. 🎯</span></p> <div class="callout tip reveal"> <div class="t">🔨 <span lang="id">Rumus 4 Langkah Pelajaran Ini</span><span lang="en">This Lesson's 4-Step Formula</span></div> <p><span lang="id"><b>1. Perjelas kebutuhan</b> — dari samar jadi konkret 📋<br/> <b>2. Validasi satu halaman</b> — bikin halaman inti dulu 🎯<br/> <b>3. Kembangkan multi-halaman</b> — tambah halaman lain 📄<br/> <b>4. Poles &amp; uji</b> — bikin enak dilihat &amp; dipakai </span> <span lang="en"><b>1. Clarify needs</b> — from vague to concrete 📋<br/> <b>2. Validate one page</b> — build the core page first 🎯<br/> <b>3. Expand to multi-page</b> — add the other pages 📄<br/> <b>4. Polish &amp; test</b> — make it look &amp; feel great </span></p> </div> <h2 class="reveal"><span lang="id">2. Langkah 1: Ubah Kalimat Samarmu Jadi Daftar Fitur 📋</span><span lang="en">2. Step 1: Turn Your Vague Sentence into a Feature List 📋</span></h2> <p class="reveal"><span lang="id">Ingat contoh Si Ming dari Pelajaran 4? Kalimat konsepnya: <i>"Untuk bendahara kelas yang sering salah catat uang kas, aplikasi KasKu membantu mencatat pemasukan &amp; pengeluaran otomatis di HP."</i> Sekarang kita bongkar jadi fitur konkret:</span> <span lang="en">Remember Ming from Lesson 4? His concept sentence: <i>"For class treasurers who keep mis-recording treasury money, the KasKu app helps log income &amp; expenses automatically on the phone."</i> Now we break it into concrete features:</span></p> <div class="prompt-card reveal"> <div class="p-head"><b><span lang="id">💬 PROMPT ANALISIS KEBUTUHAN</span><span lang="en">💬 REQUIREMENTS ANALYSIS PROMPT</span></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button></div> <pre><span lang="id">Aku mau bikin aplikasi bernama KasKu untuk bendahara kelas.
 Konsepnya: "Untuk bendahara kelas yang sering salah catat uang kas,
-aplikasi ini membantu mencatat pemasukan & pengeluaran dengan mudah."
-
-Pengguna utamanya: siswa SMP yang jadi bendahara (bukan programmer).
+aplikasi ini membantu mencatat pemasukan & pengeluaran dengan mudah." Pengguna utamanya: siswa SMP yang jadi bendahara (bukan programmer).
 Situasi pakai: narik kas tiap Jumat, bayar jajan kegiatan kelas,
-laporan ke wali kelas tiap bulan.
-
-Bantu aku:
+laporan ke wali kelas tiap bulan. Bantu aku:
 1. Daftar fitur yang wajib ada (prioritas tinggi)
 2. Daftar fitur pelengkap (prioritas rendah)
 3. Saran halaman-halaman aplikasinya (misal: beranda, catatan, laporan)
 4. Apa yang TIDAK perlu dibuat di versi pertama</span><span lang="en">I want to build an app called KasKu for class treasurers.
 The concept: "For class treasurers who keep mis-recording treasury
-money, this app helps log income &amp; expenses easily."
-
-Main users: middle-school students serving as treasurer (not programmers).
+money, this app helps log income &amp; expenses easily." Main users: middle-school students serving as treasurer (not programmers).
 Usage situations: weekly collection on Fridays, paying for class events,
-monthly report to the homeroom teacher.
-
-Help me:
+monthly report to the homeroom teacher. Help me:
 1. Must-have features (high priority)
 2. Nice-to-have features (low priority)
 3. Suggested app pages (e.g. home, records, report)
-4. What NOT to build in the first version</span></pre>
-    </div>
-    <p class="reveal"><span lang="id">AI bakal kasih daftar fitur yang rapi. Tugasmu: <b>pilih maksimal 5 fitur inti</b> untuk versi pertama. Lebih dari itu = resep utama buat gagal total dan nggak selesai-selesai. 🍲💥 Percayalah, bahkan programmer profesional sering terjebak bikin terlalu banyak fitur (disebut <i>feature creep</i> — fitur yang merayap kayak zombie 🧟).</span>
-    <span lang="en">AI will give you a clean feature list. Your job: <b>pick at most 5 core features</b> for version one. More than that = the main recipe for failure and never finishing. 🍲💥 Trust us, even professional programmers often fall into building too many features (called <i>feature creep</i> — features creeping in like zombies 🧟).</span></p>
-
-    <h2 class="reveal"><span lang="id">3. Langkah 2: Satu Halaman Dulu Aja 🎯</span><span lang="en">3. Step 2: One Page First 🎯</span></h2>
-    <p class="reveal"><span lang="id">Jangan minta 5 halaman sekaligus! Mulai dari <b>halaman paling penting</b> (biasanya halaman utama yang melakukan aksi inti). Untuk KasKu: halaman <b>catat pemasukan/pengeluaran</b>.</span>
-    <span lang="en">Don't ask for 5 pages at once! Start with <b>the most important page</b> (usually the home page doing the core action). For KasKu: the <b>record income/expense</b> page.</span></p>
-    <div class="prompt-card reveal">
-      <div class="p-head"><b><span lang="id">💬 PROMPT HALAMAN PERTAMA</span><span lang="en">💬 FIRST PAGE PROMPT</span></b>
-        <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button></div>
-      <pre><span lang="id">Buatkan halaman web "Catat Transaksi" untuk aplikasi KasKu:
+4. What NOT to build in the first version</span></pre> </div> <p class="reveal"><span lang="id">AI bakal kasih daftar fitur yang rapi. Tugasmu: <b>pilih maksimal 5 fitur inti</b> untuk versi pertama. Lebih dari itu = resep utama buat gagal total dan nggak selesai-selesai. 🍲💥 Percayalah, bahkan programmer profesional sering terjebak bikin terlalu banyak fitur (disebut <i>feature creep</i> — fitur yang merayap kayak zombie 🧟).</span> <span lang="en">AI will give you a clean feature list. Your job: <b>pick at most 5 core features</b> for version one. More than that = the main recipe for failure and never finishing. 🍲💥 Trust us, even professional programmers often fall into building too many features (called <i>feature creep</i> — features creeping in like zombies 🧟).</span></p> <h2 class="reveal"><span lang="id">3. Langkah 2: Satu Halaman Dulu Aja 🎯</span><span lang="en">3. Step 2: One Page First 🎯</span></h2> <p class="reveal"><span lang="id">Jangan minta 5 halaman sekaligus! Mulai dari <b>halaman paling penting</b> (biasanya halaman utama yang melakukan aksi inti). Untuk KasKu: halaman <b>catat pemasukan/pengeluaran</b>.</span> <span lang="en">Don't ask for 5 pages at once! Start with <b>the most important page</b> (usually the home page doing the core action). For KasKu: the <b>record income/expense</b> page.</span></p> <div class="prompt-card reveal"> <div class="p-head"><b><span lang="id">💬 PROMPT HALAMAN PERTAMA</span><span lang="en">💬 FIRST PAGE PROMPT</span></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button></div> <pre><span lang="id">Buatkan halaman web "Catat Transaksi" untuk aplikasi KasKu:
 - Form input: jenis (masuk/keluar), jumlah uang, keterangan, tanggal
 - Tombol "Catat" yang menambahkan transaksi ke daftar di bawahnya
-- Daftar transaksi terbaru (5 terakhir) dengan warna beda untuk
-  pemasukan (hijau) dan pengeluaran (merah)
+- Daftar transaksi terbaru (5 terakhir) dengan warna beda untuk pemasukan (hijau) dan pengeluaran (merah)
 - Saldo total di bagian atas, besar dan jelas
 - Data tersimpan di localStorage browser (jelaskan cara kerjanya)
 - Desain mobile-first, tombol besar-besar, warna ceria
 - Semua teks dalam Bahasa Indonesia</span><span lang="en">Build the "Record Transaction" web page for the KasKu app:
 - Input form: type (income/expense), amount, note, date
 - A "Record" button that adds the transaction to the list below
-- A list of the latest 5 transactions with different colors for
-  income (green) and expense (red)
+- A list of the latest 5 transactions with different colors for income (green) and expense (red)
 - Total balance at the top, big and clear
 - Data saved in the browser's localStorage (explain how it works)
 - Mobile-first design, big buttons, cheerful colors
-- All text in English</span></pre>
-    </div>
-    <p class="reveal"><span lang="id">Jalankan, tes semua tombolnya, perbaiki yang aneh. <b>Jangan lanjut sebelum halaman ini jalan!</b> Fondasi yang rapuh = rumah yang roboh. 🏚️</span>
-    <span lang="en">Run it, test every button, fix what's off. <b>Don't move on until this page works!</b> A shaky foundation = a collapsed house. 🏚️</span></p>
-
-    <h2 class="reveal"><span lang="id">4. Langkah 3: Kembangin Jadi Multi-Halaman 📄📄</span><span lang="en">4. Step 3: Expand to Multi-Page 📄📄</span></h2>
-    <p class="reveal"><span lang="id">Setelah halaman inti jalan, minta AI menambahkan halaman lain <b>satu per satu</b> (ingat: satu permintaan besar = satu bencana; satu permintaan kecil = satu kemenangan 🏆):</span>
-    <span lang="en">Once the core page works, ask AI to add other pages <b>one at a time</b> (remember: one huge request = one disaster; one small request = one win 🏆):</span></p>
-    <ol class="reveal">
-      <li><span lang="id"><b>Halaman Riwayat</b>: <i>"Tambahkan halaman riwayat yang menampilkan semua transaksi, bisa difilter per bulan."</i> 📅</span><span lang="en"><b>History page</b>: <i>"Add a history page showing all transactions, filterable by month."</i> 📅</span></li>
-      <li><span lang="id"><b>Halaman Laporan</b>: <i>"Tambahkan halaman laporan bulanan dengan ringkasan total masuk, total keluar, dan grafik batang sederhana."</i> 📊</span><span lang="en"><b>Report page</b>: <i>"Add a monthly report page with total income, total expense, and a simple bar chart."</i> 📊</span></li>
-      <li><span lang="id"><b>Menu Navigasi</b>: <i>"Buat menu bawah (bottom navigation) dengan 3 tombol untuk pindah antar halaman, kayak aplikasi HP."</i> 📱</span><span lang="en"><b>Navigation menu</b>: <i>"Create a bottom navigation with 3 buttons to switch pages, like a phone app."</i> 📱</span></li>
-    </ol>
-    <div class="callout info reveal">
-      <div class="t">🧠 <span lang="id">Momen "Aha!" untuk Anak SMP</span><span lang="en">The "Aha!" Moment for Middle Schoolers</span></div>
-      <p><span lang="id">Perhatikan: kamu baru aja belajar <b>arsitektur aplikasi</b> tanpa sadar! Halaman-halaman = bagian-bagian aplikasi. localStorage = tempat nyimpen data (versi mini dari database!). Grafik = visualisasi data (pelajaran matematika terpakai juga ternyata 📈😄). Di Level 2, kita bakal bikin versi "dewasa"-nya dengan database sungguhan.</span>
-      <span lang="en">Notice: you just learned <b>app architecture</b> without realizing it! Pages = app sections. localStorage = where data lives (a mini version of a database!). Charts = data visualization (math class pays off after all 📈😄). In Level 2, we'll build the "grown-up" version with a real database.</span></p>
-    </div>
-
-    <h2 class="reveal"><span lang="id">5. Langkah 4: Poles Sampai Kinclong ✨</span><span lang="en">5. Step 4: Polish Until It Shines ✨</span></h2>
-    <p class="reveal"><span lang="id">Prototipe yang udah jalan tapi jelek itu kayak <b>kue enak yang penyok</b> — rasanya oke tapi orang males nyoba. 🎂 Waktu poles:</span>
-    <span lang="en">A working but ugly prototype is like <b>a delicious but squished cake</b> — tastes fine but nobody wants to try it. 🎂 Time to polish:</span></p>
-    <ul class="reveal">
-      <li><span lang="id">🎨 Minta AI: <i>"Rapikan desainnya: spacing konsisten, pilih palet 3 warna yang serasi, pastikan semua tombol gampang dipencet di HP."</i></span><span lang="en">🎨 Ask AI: <i>"Clean up the design: consistent spacing, pick a matching 3-color palette, make sure all buttons are easy to tap on a phone."</i></span></li>
-      <li><span lang="id">📱 Tes di HP sungguhan (kalau bisa) — ukuran tombol minimal sebesar jempol! 👍</span><span lang="en">📱 Test on a real phone (if possible) — buttons at least thumb-sized! 👍</span></li>
-      <li><span lang="id">🧪 Minta 2 teman mencoba tanpa kamu bantu. Lihat mereka bingung di mana. Kebingungan mereka = PR-mu. 📝</span><span lang="en">🧪 Have 2 friends try it without your help. Watch where they get confused. Their confusion = your homework. 📝</span></li>
-      <li><span lang="id">🚫 Cek halaman error: coba input angka minus, teks di kolom jumlah, dll. Minta AI tangani dengan pesan ramah, bukan error serem. 😇</span><span lang="en">🚫 Test error cases: try negative numbers, text in the amount field, etc. Ask AI to handle them with friendly messages, not scary errors. 😇</span></li>
-    </ul>
-
-    <h2 class="reveal"><span lang="id">6. Misi Rahasiamu 🕵️</span><span lang="en">6. Your Secret Mission 🕵️</span></h2>
-    <div class="mission reveal">
-      <div class="t">🎯 <span lang="id">MISI LEVEL 1-E: Prototipe Impianmu</span><span lang="en">MISSION LEVEL 1-E: Your Dream Prototype</span></div>
-      <p><span lang="id">Bangun prototipe dari <b>ide pemenangmu sendiri</b> di Pelajaran 4 (boleh juga pakai contoh KasKu kalau butuh panduan). Target akhir pelajaran ini:</span>
-      <span lang="en">Build a prototype from <b>your own winning idea</b> in Lesson 4 (you may use the KasKu example if you need guidance). End-of-lesson target:</span></p>
-      <ol>
-        <li><span lang="id">✅ Daftar fitur tertulis (maks 5 fitur inti)</span><span lang="en">✅ Written feature list (max 5 core features)</span></li>
-        <li><span lang="id">✅ Minimal 3 halaman yang jalan dan bisa diklik-klik</span><span lang="en">✅ At least 3 working, clickable pages</span></li>
-        <li><span lang="id">✅ Data tersimpan (localStorage cukup!)</span><span lang="en">✅ Data persists (localStorage is enough!)</span></li>
-        <li><span lang="id">✅ Udah dites minimal 1 orang lain</span><span lang="en">✅ Tested by at least 1 other person</span></li>
-      </ol>
-      <p><span lang="id">Kalau mentok di tengah jalan, itu <b>bagian dari pelajaran</b>. Balik ke loop: tanya AI → coba → lapor hasil. Kamu udah punya senjatanya. ⚔️</span>
-      <span lang="en">If you get stuck midway, that's <b>part of the lesson</b>. Back to the loop: ask AI → try → report the result. You already have the weapon. ⚔️</span></p>
-    </div>
-
-    <h2 class="reveal"><span lang="id">7. Uji Pemahaman 🧪</span><span lang="en">7. Knowledge Check 🧪</span></h2>
-    <div class="quiz reveal">
-      <div class="q"><div class="question"><span lang="id">❓ Kenapa versi pertama harus maksimal 5 fitur inti?</span><span lang="en">❓ Why max 5 core features in version one?</span></span><span class="chev">▶</span>
-        <div class="answer"><span lang="id">Karena <b>produk kecil yang selesai &amp; jalan</b> jauh lebih berharga daripada produk besar yang nggak pernah kelar. Fitur bisa ditambah belakangan setelah ada feedback pengguna nyata. Prinsipnya: <i>selesaikan dulu, sempurnakan kemudian</i>. 🏁</span>
-        <span lang="en">Because a <b>small, finished, working product</b> is worth far more than a big one that never ships. Features can be added later after real user feedback. The principle: <i>finish first, perfect later</i>. 🏁</span></div></div>
-      <div class="q"><div class="question"><span lang="id">❓ Apa itu localStorage dan kenapa kita pakai itu dulu?</span><span lang="en">❓ What is localStorage and why use it first?</span></span><span class="chev">▶</span>
-        <div class="answer"><span lang="id">localStorage = <b>gudang kecil di browser</b> tempat data web-mu disimpan, dan nggak hilang walau browser ditutup. Cocok buat prototipe karena: gratis, tanpa server, tanpa daftar apa pun. Kekurangannya: data cuma ada di satu perangkat. Versi dewasanya (database sungguhan) kita belajar di Level 2. 🗄️</span>
-        <span lang="en">localStorage = a <b>tiny storage room in the browser</b> where your web data is kept, surviving even when the browser closes. Great for prototypes: free, no server, no signup. Downside: data lives on one device only. The grown-up version (a real database) comes in Level 2. 🗄️</span></div></div>
-      <div class="q"><div class="question"><span lang="id">❓ Kenapa harus ngetes ke orang lain tanpa dibantu?</span><span lang="en">❓ Why test with other people without helping them?</span></span><span class="chev">▶</span>
-        <div class="answer"><span lang="id">Karena kamu <b>nggak bisa jadi pengguna produkmu sendiri</b> — kamu udah terlalu paham cara kerjanya. Kebingungan pengguna baru itu jujur dan berharga. Kalau kamu bantu, kamu nutupi kelemahan desainmu sendiri. Malu sebentar, produk bagus selamanya. 😅➡️🏆</span>
-        <span lang="en">Because you <b>can't be your own user</b> — you already know how it works too well. New users' confusion is honest and valuable. If you help them, you're hiding your design's weaknesses. Short-term awkwardness, long-term quality. 😅➡️🏆</span></div></div>
-    </div>
-
-    <div class="complete-row reveal">
-      <input type="checkbox" id="lesson-done"/>
-      <label for="lesson-done"><span lang="id">✅ Prototipe 3 halamanku udah jalan dan dites orang lain! 🎉</span><span lang="en">✅ My 3-page prototype works and has been tested by others! 🎉</span></label>
-    </div>
-
-    <div class="callout joke reveal">
-      <div class="t">😂 <span lang="id">Jokes Penutup</span><span lang="en">Closing Joke</span></div>
-      <p><span lang="id">Prototipe itu kayak <b>mie instan sebelum dikasih bumbu</b>: bentuknya udah bener, tinggal disempurnakan. 🍜<br/><br/>Dan kamu baru aja masak mie pertamamu sendiri. Di pelajaran berikutnya, kita kasih bumbu rahasianya: <b>kekuatan AI di dalam produkmu</b>, lalu kita sajikan ke dunia. 🌍✨</span>
-      <span lang="en">A prototype is like <b>instant noodles before the seasoning</b>: the shape is right, just needs perfecting. 🍜<br/><br/>And you just cooked your first batch yourself. Next lesson, we add the secret seasoning: <b>AI powers inside your product</b>, then we serve it to the world. 🌍✨</span></p>
-    </div>
-
-    <div class="pager">
-      <a href="lesson-4.html"><span class="dir">← <span lang="id">Pelajaran Sebelumnya</span><span lang="en">Previous Lesson</span></span><b><span lang="id">💡 Berburu Ide Produk</span><span lang="en">💡 Hunting for Product Ideas</span></b></a>
-      <a class="next" href="lesson-6.html"><span class="dir"><span lang="id">Pelajaran Berikutnya</span><span lang="en">Next Lesson</span> →</span><b><span lang="id">✨ Kekuatan AI + Publish!</span><span lang="en">✨ AI Powers + Publish!</span></b></a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="license-box">
-      <span lang="id">📜 Diadaptasi dari <a href="./" target="_blank" rel="noopener">Easy-Vibe</a> oleh Datawhale · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></span>
-      <span lang="en">📜 Adapted from <a href="./" target="_blank" rel="noopener">Easy-Vibe</a> by Datawhale · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></span>
-    </div>
-    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
-  </div>
-</footer>
-
-<script src="../assets/vibekoding.js"></script>
+- All text in English</span></pre> </div> <p class="reveal"><span lang="id">Jalankan, tes semua tombolnya, perbaiki yang aneh. <b>Jangan lanjut sebelum halaman ini jalan!</b> Fondasi yang rapuh = rumah yang roboh. 🏚️</span> <span lang="en">Run it, test every button, fix what's off. <b>Don't move on until this page works!</b> A shaky foundation = a collapsed house. 🏚️</span></p> <h2 class="reveal"><span lang="id">4. Langkah 3: Kembangin Jadi Multi-Halaman 📄📄</span><span lang="en">4. Step 3: Expand to Multi-Page 📄📄</span></h2> <p class="reveal"><span lang="id">Setelah halaman inti jalan, minta AI menambahkan halaman lain <b>satu per satu</b> (ingat: satu permintaan besar = satu bencana; satu permintaan kecil = satu kemenangan 🏆):</span> <span lang="en">Once the core page works, ask AI to add other pages <b>one at a time</b> (remember: one huge request = one disaster; one small request = one win 🏆):</span></p> <ol class="reveal"> <li><span lang="id"><b>Halaman Riwayat</b>: <i>"Tambahkan halaman riwayat yang menampilkan semua transaksi, bisa difilter per bulan."</i> 📅</span><span lang="en"><b>History page</b>: <i>"Add a history page showing all transactions, filterable by month."</i> 📅</span></li> <li><span lang="id"><b>Halaman Laporan</b>: <i>"Tambahkan halaman laporan bulanan dengan ringkasan total masuk, total keluar, dan grafik batang sederhana."</i> 📊</span><span lang="en"><b>Report page</b>: <i>"Add a monthly report page with total income, total expense, and a simple bar chart."</i> 📊</span></li> <li><span lang="id"><b>Menu Navigasi</b>: <i>"Buat menu bawah (bottom navigation) dengan 3 tombol untuk pindah antar halaman, kayak aplikasi HP."</i> 📱</span><span lang="en"><b>Navigation menu</b>: <i>"Create a bottom navigation with 3 buttons to switch pages, like a phone app."</i> 📱</span></li> </ol> <div class="callout info reveal"> <div class="t">🧠 <span lang="id">Momen "Aha!" untuk Anak SMP</span><span lang="en">The "Aha!" Moment for Middle Schoolers</span></div> <p><span lang="id">Perhatikan: kamu baru aja belajar <b>arsitektur aplikasi</b> tanpa sadar! Halaman-halaman = bagian-bagian aplikasi. localStorage = tempat nyimpen data (versi mini dari database!). Grafik = visualisasi data (pelajaran matematika terpakai juga ternyata 📈😄). Di Level 2, kita bakal bikin versi "dewasa"-nya dengan database sungguhan.</span> <span lang="en">Notice: you just learned <b>app architecture</b> without realizing it! Pages = app sections. localStorage = where data lives (a mini version of a database!). Charts = data visualization (math class pays off after all 📈😄). In Level 2, we'll build the "grown-up" version with a real database.</span></p> </div> <h2 class="reveal"><span lang="id">5. Langkah 4: Poles Sampai Kinclong </span><span lang="en">5. Step 4: Polish Until It Shines </span></h2> <p class="reveal"><span lang="id">Prototipe yang udah jalan tapi jelek itu kayak <b>kue enak yang penyok</b> — rasanya oke tapi orang males nyoba. 🎂 Waktu poles:</span> <span lang="en">A working but ugly prototype is like <b>a delicious but squished cake</b> — tastes fine but nobody wants to try it. 🎂 Time to polish:</span></p> <ul class="reveal"> <li><span lang="id">🎨 Minta AI: <i>"Rapikan desainnya: spacing konsisten, pilih palet 3 warna yang serasi, pastikan semua tombol gampang dipencet di HP."</i></span><span lang="en">🎨 Ask AI: <i>"Clean up the design: consistent spacing, pick a matching 3-color palette, make sure all buttons are easy to tap on a phone."</i></span></li> <li><span lang="id">📱 Tes di HP sungguhan (kalau bisa) — ukuran tombol minimal sebesar jempol! 👍</span><span lang="en">📱 Test on a real phone (if possible) — buttons at least thumb-sized! 👍</span></li> <li><span lang="id">🧪 Minta 2 teman mencoba tanpa kamu bantu. Lihat mereka bingung di mana. Kebingungan mereka = PR-mu. 📝</span><span lang="en">🧪 Have 2 friends try it without your help. Watch where they get confused. Their confusion = your homework. 📝</span></li> <li><span lang="id">🚫 Cek halaman error: coba input angka minus, teks di kolom jumlah, dll. Minta AI tangani dengan pesan ramah, bukan error serem. 😇</span><span lang="en">🚫 Test error cases: try negative numbers, text in the amount field, etc. Ask AI to handle them with friendly messages, not scary errors. 😇</span></li> </ul> <h2 class="reveal"><span lang="id">6. Misi Rahasiamu 🕵️</span><span lang="en">6. Your Secret Mission 🕵️</span></h2> <div class="mission reveal"> <div class="t">🎯 <span lang="id">MISI LEVEL 1-E: Prototipe Impianmu</span><span lang="en">MISSION LEVEL 1-E: Your Dream Prototype</span></div> <p><span lang="id">Bangun prototipe dari <b>ide pemenangmu sendiri</b> di Pelajaran 4 (boleh juga pakai contoh KasKu kalau butuh panduan). Target akhir pelajaran ini:</span> <span lang="en">Build a prototype from <b>your own winning idea</b> in Lesson 4 (you may use the KasKu example if you need guidance). End-of-lesson target:</span></p> <ol> <li><span lang="id">✅ Daftar fitur tertulis (maks 5 fitur inti)</span><span lang="en">✅ Written feature list (max 5 core features)</span></li> <li><span lang="id">✅ Minimal 3 halaman yang jalan dan bisa diklik-klik</span><span lang="en">✅ At least 3 working, clickable pages</span></li> <li><span lang="id">✅ Data tersimpan (localStorage cukup!)</span><span lang="en">✅ Data persists (localStorage is enough!)</span></li> <li><span lang="id">✅ Udah dites minimal 1 orang lain</span><span lang="en">✅ Tested by at least 1 other person</span></li> </ol> <p><span lang="id">Kalau mentok di tengah jalan, itu <b>bagian dari pelajaran</b>. Balik ke loop: tanya AI → coba → lapor hasil. Kamu udah punya senjatanya. ⚔️</span> <span lang="en">If you get stuck midway, that's <b>part of the lesson</b>. Back to the loop: ask AI → try → report the result. You already have the weapon. ⚔️</span></p> </div> <h2 class="reveal"><span lang="id">7. Uji Pemahaman 🧪</span><span lang="en">7. Knowledge Check 🧪</span></h2> <div class="quiz reveal"> <div class="q"><div class="question"><span lang="id">❓ Kenapa versi pertama harus maksimal 5 fitur inti?</span><span lang="en">❓ Why max 5 core features in version one?</span></span><span class="chev">▶</span> <div class="answer"><span lang="id">Karena <b>produk kecil yang selesai &amp; jalan</b> jauh lebih berharga daripada produk besar yang nggak pernah kelar. Fitur bisa ditambah belakangan setelah ada feedback pengguna nyata. Prinsipnya: <i>selesaikan dulu, sempurnakan kemudian</i>. 🏁</span> <span lang="en">Because a <b>small, finished, working product</b> is worth far more than a big one that never ships. Features can be added later after real user feedback. The principle: <i>finish first, perfect later</i>. 🏁</span></div></div> <div class="q"><div class="question"><span lang="id">❓ Apa itu localStorage dan kenapa kita pakai itu dulu?</span><span lang="en">❓ What is localStorage and why use it first?</span></span><span class="chev">▶</span> <div class="answer"><span lang="id">localStorage = <b>gudang kecil di browser</b> tempat data web-mu disimpan, dan nggak hilang walau browser ditutup. Cocok buat prototipe karena: gratis, tanpa server, tanpa daftar apa pun. Kekurangannya: data cuma ada di satu perangkat. Versi dewasanya (database sungguhan) kita belajar di Level 2. 🗄️</span> <span lang="en">localStorage = a <b>tiny storage room in the browser</b> where your web data is kept, surviving even when the browser closes. Great for prototypes: free, no server, no signup. Downside: data lives on one device only. The grown-up version (a real database) comes in Level 2. 🗄️</span></div></div> <div class="q"><div class="question"><span lang="id">❓ Kenapa harus ngetes ke orang lain tanpa dibantu?</span><span lang="en">❓ Why test with other people without helping them?</span></span><span class="chev">▶</span> <div class="answer"><span lang="id">Karena kamu <b>nggak bisa jadi pengguna produkmu sendiri</b> — kamu udah terlalu paham cara kerjanya. Kebingungan pengguna baru itu jujur dan berharga. Kalau kamu bantu, kamu nutupi kelemahan desainmu sendiri. Malu sebentar, produk bagus selamanya. 😅➡️🏆</span> <span lang="en">Because you <b>can't be your own user</b> — you already know how it works too well. New users' confusion is honest and valuable. If you help them, you're hiding your design's weaknesses. Short-term awkwardness, long-term quality. 😅➡️🏆</span></div></div> </div> <div class="complete-row reveal"> <input type="checkbox" id="lesson-done"/> <label for="lesson-done"><span lang="id">✅ Prototipe 3 halamanku udah jalan dan dites orang lain! 🎉</span><span lang="en">✅ My 3-page prototype works and has been tested by others! 🎉</span></label> </div> <div class="callout joke reveal"> <div class="t">💡 <span lang="id">Jokes Penutup</span><span lang="en">Closing Joke</span></div> <p><span lang="id">Prototipe itu kayak <b>mie instan sebelum dikasih bumbu</b>: bentuknya udah bener, tinggal disempurnakan. 🍜<br/><br/>Dan kamu baru aja masak mie pertamamu sendiri. Di pelajaran berikutnya, kita kasih bumbu rahasianya: <b>kekuatan AI di dalam produkmu</b>, lalu kita sajikan ke dunia. 🌍</span> <span lang="en">A prototype is like <b>instant noodles before the seasoning</b>: the shape is right, just needs perfecting. 🍜<br/><br/>And you just cooked your first batch yourself. Next lesson, we add the secret seasoning: <b>AI powers inside your product</b>, then we serve it to the world. 🌍</span></p> </div> <div class="pager"> <a href="lesson-4.html"><span class="dir">← <span lang="id">Pelajaran Sebelumnya</span><span lang="en">Previous Lesson</span></span><b><span lang="id">💡 Berburu Ide Produk</span><span lang="en">💡 Hunting for Product Ideas</span></b></a> <a class="next" href="lesson-6.html"><span class="dir"><span lang="id">Pelajaran Berikutnya</span><span lang="en">Next Lesson</span> →</span><b><span lang="id"> Kekuatan AI + Publish!</span><span lang="en"> AI Powers + Publish!</span></b></a> </div> </div>
+</section> <footer> <div class="wrap"> <div class="license-box"> <span lang="id">📜 Diadaptasi dari <a href="./" target="_blank" rel="noopener">Easy-Vibe</a> oleh Datawhale · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></span> <span lang="en">📜 Adapted from <a href="./" target="_blank" rel="noopener">Easy-Vibe</a> by Datawhale · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></span> </div> <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p> </div>
+</footer> <script src="../assets/vibekoding.js"></script>
 </body>
 </html>

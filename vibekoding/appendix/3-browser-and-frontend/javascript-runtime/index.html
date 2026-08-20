@@ -4,9 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Principles of JavaScript Runtime — VibeKoding 📚</title>
-<meta name="description" content="Ensiklopedia VibeKoding: Principles of JavaScript Runtime. - Kurikulum VibeKoding dual bahasa ID/EN."/>
-
-<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
+<meta name="description" content="Ensiklopedia VibeKoding: Principles of JavaScript Runtime. - Kurikulum VibeKoding dual bahasa ID/EN."/> <link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg"/>
 <meta name="theme-color" content="#07070f"/>
 <link rel="canonical" href="https://arifwidiyanto.web.id/vibekoding/appendix/3-browser-and-frontend/javascript-runtime/"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -17,60 +15,9 @@
 <body>
 <div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
 <div class="grain"></div>
-<div id="scroll-progress"></div>
-
-<nav class="nav">
-  <div class="nav-inner">
-    <a class="brand" href="../../../"><span class="logo">🤖</span>Vibe<span class="grad-text">Koding</span></a>
-    <div class="nav-links">
-      <a href="../../../stage-1/"><span lang="id">🎒 Pemula</span><span lang="en">🎒 Beginner</span></a>
-      <a href="../../../stage-2/"><span lang="id">⚡ Developer</span><span lang="en">⚡ Developer</span></a>
-      <a href="../../../stage-3/"><span lang="id">🧙 Master</span><span lang="en">🧙 Master</span></a>
-      <a href="../../../appendix/"><span lang="id">📚 Ensiklopedia</span><span lang="en">📚 Encyclopedia</span></a>
-      <a href="../../../stories/" class="hide-sm"><span lang="id">✨ Cerita</span><span lang="en">✨ Stories</span></a>
-    </div>
-    <div class="nav-cta">
-      <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button>
-      <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button>
-      <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button>
-    </div>
-  </div>
-</nav>
-
-<section class="lesson-hero">
-  <div class="wrap">
-    <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of JavaScript Runtime</span><span lang="en">Principles of JavaScript Runtime</span></div>
-    <div class="lesson-head">
-      <div class="lesson-mascot">📚</div>
-      <div>
-        <h1><span lang="id">Principles of JavaScript Runtime</span><span lang="en">Principles of JavaScript Runtime</span></h1>
-        <div class="meta-row">
-          <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span>
-          <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span>
-          <span class="meta-chip">⚡ <span>VibeKoding Native</span></span>
-        </div>
-      </div>
-    </div>
-    <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of JavaScript Runtime.</span><span lang="en">Ensiklopedia VibeKoding: Principles of JavaScript Runtime.</span></p>
-  </div>
-</section>
-
-<section style="padding-top:10px">
-  <div class="wrap prose">
-    
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id">You've already learned JavaScript basics, but have you ever wondered:
-- Where exactly does your code run?
-- Why does the same code behave differently in the browser versus Node.js?
-- Why does code sometimes "freeze up," while at other times it seems to run "in parallel"?
-
-This article will take you deep into the JavaScript runtime environment, including the event loop, call stack, memory management, and more. After reading this, you'll understand why code executes in a particular order, quickly locate async-related bugs, optimize code performance, and avoid memory leaks.</span><span lang="en">You've already learned JavaScript basics, but have you ever wondered:
-- Where exactly does your code run?
-- Why does the same code behave differently in the browser versus Node.js?
-- Why does code sometimes "freeze up," while at other times it seems to run "in parallel"?
-
-This article will take you deep into the JavaScript runtime environment, including the event loop, call stack, memory management, and more. After reading this, you'll understand why code executes in a particular order, quickly locate async-related bugs, optimize code performance, and avoid memory leaks.</span></p>
+<div id="scroll-progress"></div> <nav class="nav"> <div class="nav-inner"> <a class="brand" href="../../../"><span class="logo">VK</span>Vibe<span class="grad-text">Koding</span></a> <div class="nav-links"> <a href="../../../stage-1/"><span lang="id"> Pemula</span><span lang="en"> Beginner</span></a> <a href="../../../stage-2/"><span lang="id">Level 2: Full-Stack</span><span lang="en">Level 2: Full-Stack</span></a> <a href="../../../stage-3/"><span lang="id"> Master</span><span lang="en"> Master</span></a> <a href="../../../appendix/"><span lang="id">Ensiklopedia</span><span lang="en">Encyclopedia</span></a> <a href="../../../stories/" class="hide-sm"><span lang="id"> Cerita</span><span lang="en"> Stories</span></a> </div> <div class="nav-cta"> <button class="icon-btn lang-btn" data-lang="id" title="Bahasa Indonesia">ID</button> <button class="icon-btn lang-btn" data-lang="en" title="English">EN</button> <button class="icon-btn" id="theme-toggle" title="Toggle theme">☀️</button> </div> </div>
+</nav> <section class="lesson-hero"> <div class="wrap"> <div class="crumb"><a href="../../../">VibeKoding</a> / <a href="../../../appendix/"><span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></a> / <span lang="id">Principles of JavaScript Runtime</span><span lang="en">Principles of JavaScript Runtime</span></div> <div class="lesson-head"> <div class="lesson-mascot"><span style="font-size:1.1rem;font-weight:800;color:var(--text);font-family:var(--font-mono)">VK</span></div> <div> <h1><span lang="id">Principles of JavaScript Runtime</span><span lang="en">Principles of JavaScript Runtime</span></h1> <div class="meta-row"> <span class="meta-chip">📚 <span lang="id">Ensiklopedia · Fondasi Kuat</span><span lang="en">Ensiklopedia · Fondasi Kuat</span></span> <span class="meta-chip">🌏 <span>Dual Bahasa (ID / EN)</span></span> <span class="meta-chip">⚡ <span>VibeKoding Native</span></span> </div> </div> </div> <p style="max-width:760px;margin-top:24px"><span lang="id">Ensiklopedia VibeKoding: Principles of JavaScript Runtime.</span><span lang="en">Ensiklopedia VibeKoding: Principles of JavaScript Runtime.</span></p> </div>
+</section> <section style="padding-top:10px"> <div class="wrap prose"> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id">You've already learned JavaScript basics, but have you ever wondered: - Where exactly does your code run? - Why does the same code behave differently in the browser versus Node.js? - Why does code sometimes "freeze up," while at other times it seems to run "in parallel"? This article will take you deep into the JavaScript runtime environment, including the event loop, call stack, memory management, and more. After reading this, you'll understand why code executes in a particular order, quickly locate async-related bugs, optimize code performance, and avoid memory leaks.</span><span lang="en">You've already learned JavaScript basics, but have you ever wondered: - Where exactly does your code run? - Why does the same code behave differently in the browser versus Node.js? - Why does code sometimes "freeze up," while at other times it seems to run "in parallel"? This article will take you deep into the JavaScript runtime environment, including the event loop, call stack, memory management, and more. After reading this, you'll understand why code executes in a particular order, quickly locate async-related bugs, optimize code performance, and avoid memory leaks.</span></p>
 </div>
 <p class="reveal"><span lang="id"><b>What will you learn in this article?</b></span><span lang="en"><b>What will you learn in this article?</b></span></p>
 <div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
@@ -83,28 +30,11 @@ This article will take you deep into the JavaScript runtime environment, includi
 <tr><td><b>Chapter 6</b></td><td>Practical tips</td><td>Optimize performance and debug memory leaks</td></tr>
 </table></div>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
-<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Runtime Overview</span><span lang="en">1. Runtime Overview</span></h2>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id"><b>What is a "runtime"?</b> JavaScript is just a language — why does the same code behave differently in different environments?</span><span lang="en"><b>What is a "runtime"?</b> JavaScript is just a language — why does the same code behave differently in different environments?</span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">1. Runtime Overview</span><span lang="en">1. Runtime Overview</span></h2> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id"><b>What is a "runtime"?</b> JavaScript is just a language — why does the same code behave differently in different environments?</span><span lang="en"><b>What is a "runtime"?</b> JavaScript is just a language — why does the same code behave differently in different environments?</span></p>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">1.1 Overview of a Runtime</span><span lang="en">1.1 Overview of a Runtime</span></h3>
 <p class="reveal"><span lang="id"><b>Runtime = JavaScript Engine + Environment-provided APIs</b></span><span lang="en"><b>Runtime = JavaScript Engine + Environment-provided APIs</b></span></p>
-<p class="reveal"><span lang="id">If JavaScript is the "programming language," then the runtime is the "operating system" — it determines what your code can and cannot do.</span><span lang="en">If JavaScript is the "programming language," then the runtime is the "operating system" — it determines what your code can and cannot do.</span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>CODE</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>┌─────────────────────────────────────┐
-│         JavaScript Code             │
-├─────────────────────────────────────┤
-│      JavaScript Engine (V8)         │  ← Responsible for parsing and executing code
-├─────────────────────────────────────┤
-│      Runtime Environment (Browser/Node.js) │  ← Provides additional capabilities
-└─────────────────────────────────────┘</pre>
+<p class="reveal"><span lang="id">If JavaScript is the "programming language," then the runtime is the "operating system" — it determines what your code can and cannot do.</span><span lang="en">If JavaScript is the "programming language," then the runtime is the "operating system" — it determines what your code can and cannot do.</span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>CODE</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>┌─────────────────────────────────────┐ │ JavaScript Code │ ├─────────────────────────────────────┤ │ JavaScript Engine (V8) │ ← Responsible for parsing and executing code ├─────────────────────────────────────┤ │ Runtime Environment (Browser/Node.js) │ ← Provides additional capabilities └─────────────────────────────────────┘</pre>
 </div>
 <p class="reveal"><span lang="id"><b>An analogy: JavaScript is "Mandarin," the runtime is the "city"</b></span><span lang="en"><b>An analogy: JavaScript is "Mandarin," the runtime is the "city"</b></span></p>
 <ul class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
@@ -125,102 +55,22 @@ This article will take you deep into the JavaScript runtime environment, includi
 <tr><td><b>Network requests</b></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">fetch</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">XMLHttpRequest</code></td><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">http</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">https</code> modules</td></tr>
 </table></div>
 <p class="reveal"><span lang="id">👇 <b>Try it out</b>: Compare the environment differences between the browser and Node.js</span><span lang="en">👇 <b>Try it out</b>: Compare the environment differences between the browser and Node.js</span></p>
-<p class="reveal"><span lang="id"><RuntimeEnvironmentDemo /></span><span lang="en"><RuntimeEnvironmentDemo /></span></p>
-
-<div class="callout info reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
-  <p><span lang="id">The runtime determines which APIs you can use. DOM APIs available in the browser won't work in Node.js; file APIs available in Node.js won't work in the browser. That's why some code needs "environment detection."</span><span lang="en">The runtime determines which APIs you can use. DOM APIs available in the browser won't work in Node.js; file APIs available in Node.js won't work in the browser. That's why some code needs "environment detection."</span></p>
+<p class="reveal"><span lang="id"><RuntimeEnvironmentDemo /></span><span lang="en"><RuntimeEnvironmentDemo /></span></p> <div class="callout info reveal" style="margin:24px 0"> <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div> <p><span lang="id">The runtime determines which APIs you can use. DOM APIs available in the browser won't work in Node.js; file APIs available in Node.js won't work in the browser. That's why some code needs "environment detection."</span><span lang="en">The runtime determines which APIs you can use. DOM APIs available in the browser won't work in Node.js; file APIs available in Node.js won't work in the browser. That's why some code needs "environment detection."</span></p>
 </div>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
-<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Browser Runtime</span><span lang="en">2. Browser Runtime</span></h2>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id"><b>What capabilities does the browser provide for JavaScript to manipulate web pages?</b></span><span lang="en"><b>What capabilities does the browser provide for JavaScript to manipulate web pages?</b></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">2. Browser Runtime</span><span lang="en">2. Browser Runtime</span></h2> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id"><b>What capabilities does the browser provide for JavaScript to manipulate web pages?</b></span><span lang="en"><b>What capabilities does the browser provide for JavaScript to manipulate web pages?</b></span></p>
 </div>
-<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Components of the Browser Runtime</span><span lang="en">2.1 Components of the Browser Runtime</span></h3>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>CODE</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>┌─────────────────────────────────────────────┐
-│            JavaScript Engine                │
-│            (V8 / SpiderMonkey)              │
-└─────────────────────────────────────────────┘
-                    ↓
-┌─────────────────────────────────────────────┐
-│              Web APIs                        │
-│  ┌─────────┐ ┌──────────┐ ┌──────────┐     │
-│  │   DOM   │ │   BOM    │ │ Network  │     │
-│  │Manipulate│ │Manipulate│ │ Network  │     │
-│  │   pages  │ │ browser  │ │ requests │     │
-│  └─────────┘ └──────────┘ └──────────┘     │
-└─────────────────────────────────────────────┘
-                    ↓
-┌─────────────────────────────────────────────┐
-│           Event Loop                        │
-│     Coordinates code execution, event       │
-│     handling, and task scheduling            │
-└─────────────────────────────────────────────┘</pre>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.1 Components of the Browser Runtime</span><span lang="en">2.1 Components of the Browser Runtime</span></h3> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>CODE</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>┌─────────────────────────────────────────────┐ │ JavaScript Engine │ │ (V8 / SpiderMonkey) │ └─────────────────────────────────────────────┘ ↓ ┌─────────────────────────────────────────────┐ │ Web APIs │ │ ┌─────────┐ ┌──────────┐ ┌──────────┐ │ │ │ DOM │ │ BOM │ │ Network │ │ │ │Manipulate│ │Manipulate│ │ Network │ │ │ │ pages │ │ browser │ │ requests │ │ │ └─────────┘ └──────────┘ └──────────┘ │ └─────────────────────────────────────────────┘ ↓ ┌─────────────────────────────────────────────┐ │ Event Loop │ │ Coordinates code execution, event │ │ handling, and task scheduling │ └─────────────────────────────────────────────┘</pre>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.2 Three Categories of Web APIs</span><span lang="en">2.2 Three Categories of Web APIs</span></h3>
-<p class="reveal"><span lang="id"><b>1. DOM API - Manipulate page content</b></span><span lang="en"><b>1. DOM API - Manipulate page content</b></span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>javascript</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>// Find elements
-const title = document.querySelector(&#039;h1&#039;)
-
-// Modify content
-title.textContent = &#039;New Title&#039;
-
-// Add styles
-title.style.color = &#039;red&#039;</pre>
+<p class="reveal"><span lang="id"><b>1. DOM API - Manipulate page content</b></span><span lang="en"><b>1. DOM API - Manipulate page content</b></span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>javascript</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>// Find elements const title = document.querySelector(&#039;h1&#039;) // Modify content title.textContent = &#039;New Title&#039; // Add styles title.style.color = &#039;red&#039;</pre>
 </div>
-<p class="reveal"><span lang="id"><b>2. BOM API - Manipulate the browser</b></span><span lang="en"><b>2. BOM API - Manipulate the browser</b></span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>javascript</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>// Page navigation
-window.location.href = &#039;https://example.com&#039;
-
-// Browser storage
-localStorage.setItem(&#039;key&#039;, &#039;value&#039;)
-
-// Browser history
-history.back()</pre>
+<p class="reveal"><span lang="id"><b>2. BOM API - Manipulate the browser</b></span><span lang="en"><b>2. BOM API - Manipulate the browser</b></span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>javascript</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>// Page navigation window.location.href = &#039;https://example.com&#039; // Browser storage localStorage.setItem(&#039;key&#039;, &#039;value&#039;) // Browser history history.back()</pre>
 </div>
-<p class="reveal"><span lang="id"><b>3. Network API - Network requests</b></span><span lang="en"><b>3. Network API - Network requests</b></span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>javascript</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>// Send HTTP request
-fetch(&#039;/api/data&#039;)
-  .then(response =&gt; response.json())
-  .then(data =&gt; console.log(data))</pre>
+<p class="reveal"><span lang="id"><b>3. Network API - Network requests</b></span><span lang="en"><b>3. Network API - Network requests</b></span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>javascript</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>// Send HTTP request fetch(&#039;/api/data&#039;) .then(response =&gt; response.json()) .then(data =&gt; console.log(data))</pre>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">2.3 Browser-Specific Event Mechanism</span><span lang="en">2.3 Browser-Specific Event Mechanism</span></h3>
-<p class="reveal"><span lang="id">One of the most powerful features of the browser runtime is "event-driven" programming — code doesn't need to run continuously, but executes when the user performs actions.</span><span lang="en">One of the most powerful features of the browser runtime is "event-driven" programming — code doesn't need to run continuously, but executes when the user performs actions.</span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>javascript</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>button.addEventListener(&#039;click&#039;, () =&gt; {
-  console.log(&#039;Button was clicked&#039;)
-})</pre>
+<p class="reveal"><span lang="id">One of the most powerful features of the browser runtime is "event-driven" programming — code doesn't need to run continuously, but executes when the user performs actions.</span><span lang="en">One of the most powerful features of the browser runtime is "event-driven" programming — code doesn't need to run continuously, but executes when the user performs actions.</span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>javascript</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>button.addEventListener(&#039;click&#039;, () =&gt; { console.log(&#039;Button was clicked&#039;) })</pre>
 </div>
 <p class="reveal"><span lang="id"><b>Common event types:</b></span><span lang="en"><b>Common event types:</b></span></p>
 <div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
@@ -232,90 +82,16 @@ fetch(&#039;/api/data&#039;)
 <tr><td><code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">error</code></td><td>Error occurred</td><td>Error handling</td></tr>
 </table></div>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
-<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Node.js Runtime</span><span lang="en">3. Node.js Runtime</span></h2>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id"><b>What enables JavaScript to run on the server side?</b></span><span lang="en"><b>What enables JavaScript to run on the server side?</b></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">3. Node.js Runtime</span><span lang="en">3. Node.js Runtime</span></h2> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id"><b>What enables JavaScript to run on the server side?</b></span><span lang="en"><b>What enables JavaScript to run on the server side?</b></span></p>
 </div>
-<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Components of Node.js</span><span lang="en">3.1 Components of Node.js</span></h3>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>CODE</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>┌─────────────────────────────────────────────┐
-│            JavaScript Engine                │
-│                 (V8)                        │
-└─────────────────────────────────────────────┘
-                    ↓
-┌─────────────────────────────────────────────┐
-│           Node.js Built-in Modules           │
-│  ┌─────────┐ ┌──────────┐ ┌──────────┐     │
-│  │   fs    │ │   http   │ │   path   │     │
-│  │  File   │ │  HTTP    │ │  Path    │     │
-│  │operations│ │  server  │ │ handling │     │
-│  └─────────┘ └──────────┘ └──────────┘     │
-└─────────────────────────────────────────────┘
-                    ↓
-┌─────────────────────────────────────────────┐
-│          libuv Event Loop Library           │
-│      Cross-platform async I/O support       │
-└─────────────────────────────────────────────┘</pre>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.1 Components of Node.js</span><span lang="en">3.1 Components of Node.js</span></h3> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>CODE</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>┌─────────────────────────────────────────────┐ │ JavaScript Engine │ │ (V8) │ └─────────────────────────────────────────────┘ ↓ ┌─────────────────────────────────────────────┐ │ Node.js Built-in Modules │ │ ┌─────────┐ ┌──────────┐ ┌──────────┐ │ │ │ fs │ │ http │ │ path │ │ │ │ File │ │ HTTP │ │ Path │ │ │ │operations│ │ server │ │ handling │ │ │ └─────────┘ └──────────┘ └──────────┘ │ └─────────────────────────────────────────────┘ ↓ ┌─────────────────────────────────────────────┐ │ libuv Event Loop Library │ │ Cross-platform async I/O support │ └─────────────────────────────────────────────┘</pre>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.2 Node.js-Specific Capabilities</span><span lang="en">3.2 Node.js-Specific Capabilities</span></h3>
-<p class="reveal"><span lang="id"><b>1. File System Operations</b></span><span lang="en"><b>1. File System Operations</b></span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>javascript</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>const fs = require(&#039;fs&#039;)
-
-// Read file
-fs.readFile(&#039;./data.txt&#039;, &#039;utf8&#039;, (err, data) =&gt; {
-  if (err) throw err
-  console.log(data)
-})
-
-// Write file
-fs.writeFile(&#039;./output.txt&#039;, &#039;Hello&#039;, (err) =&gt; {
-  if (err) throw err
-  console.log(&#039;Write successful&#039;)
-})</pre>
+<p class="reveal"><span lang="id"><b>1. File System Operations</b></span><span lang="en"><b>1. File System Operations</b></span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>javascript</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>const fs = require(&#039;fs&#039;) // Read file fs.readFile(&#039;./data.txt&#039;, &#039;utf8&#039;, (err, data) =&gt; { if (err) throw err console.log(data) }) // Write file fs.writeFile(&#039;./output.txt&#039;, &#039;Hello&#039;, (err) =&gt; { if (err) throw err console.log(&#039;Write successful&#039;) })</pre>
 </div>
-<p class="reveal"><span lang="id"><b>2. HTTP Server</b></span><span lang="en"><b>2. HTTP Server</b></span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>javascript</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>const http = require(&#039;http&#039;)
-
-const server = http.createServer((req, res) =&gt; {
-  res.writeHead(200, { &#039;Content-Type&#039;: &#039;text/html&#039; })
-  res.end(&#039;&lt;h1&gt;Hello World&lt;/h1&gt;&#039;)
-})
-
-server.listen(3000)</pre>
+<p class="reveal"><span lang="id"><b>2. HTTP Server</b></span><span lang="en"><b>2. HTTP Server</b></span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>javascript</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>const http = require(&#039;http&#039;) const server = http.createServer((req, res) =&gt; { res.writeHead(200, { &#039;Content-Type&#039;: &#039;text/html&#039; }) res.end(&#039;&lt;h1&gt;Hello World&lt;/h1&gt;&#039;) }) server.listen(3000)</pre>
 </div>
-<p class="reveal"><span lang="id"><b>3. Module System</b></span><span lang="en"><b>3. Module System</b></span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>javascript</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>// CommonJS (Node.js default)
-const fs = require(&#039;fs&#039;)
-module.exports = { myFunction }
-
-// ES Modules (modern approach)
-import fs from &#039;fs&#039;
-export { myFunction }</pre>
+<p class="reveal"><span lang="id"><b>3. Module System</b></span><span lang="en"><b>3. Module System</b></span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>javascript</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>// CommonJS (Node.js default) const fs = require(&#039;fs&#039;) module.exports = { myFunction } // ES Modules (modern approach) import fs from &#039;fs&#039; export { myFunction }</pre>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">3.3 Browser vs Node.js Comparison</span><span lang="en">3.3 Browser vs Node.js Comparison</span></h3>
 <div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
@@ -327,11 +103,7 @@ export { myFunction }</pre>
 <tr><td><b>Use case</b></td><td>User interfaces</td><td>Backend services, tools</td></tr>
 </table></div>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
-<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Event Loop Deep Dive</span><span lang="en">4. Event Loop Deep Dive</span></h2>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id"><b>JavaScript is single-threaded — how does it achieve "non-blocking" behavior?</b></span><span lang="en"><b>JavaScript is single-threaded — how does it achieve "non-blocking" behavior?</b></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">4. Event Loop Deep Dive</span><span lang="en">4. Event Loop Deep Dive</span></h2> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id"><b>JavaScript is single-threaded — how does it achieve "non-blocking" behavior?</b></span><span lang="en"><b>JavaScript is single-threaded — how does it achieve "non-blocking" behavior?</b></span></p>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.1 Overview of the Event Loop</span><span lang="en">4.1 Overview of the Event Loop</span></h3>
 <p class="reveal"><span lang="id"><b>Event Loop = JavaScript's "task scheduling center"</b></span><span lang="en"><b>Event Loop = JavaScript's "task scheduling center"</b></span></p>
@@ -341,22 +113,7 @@ export { myFunction }</pre>
 <li><span lang="id"><b>Execute synchronous code</b> (call stack)</span><span lang="en"><b>Execute synchronous code</b> (call stack)</span></li>
 <li><span lang="id"><b>Process asynchronous tasks</b> (task queues)</span><span lang="en"><b>Process asynchronous tasks</b> (task queues)</span></li>
 <li><span lang="id"><b>Wait for new tasks</b> (loop continuously)</span><span lang="en"><b>Wait for new tasks</b> (loop continuously)</span></li>
-</ul>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>CODE</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>Call Stack                 Task Queue
-┌─────────┐              ┌──────────┐
-│ Task 1  │              │ Macro 1  │
-│ Task 2  │ ←──────────── │ Macro 2  │
-│ Task 3  │   After one    │ Macro 3  │
-└─────────┘   completes,   └──────────┘
-      ↓        take next         ↑
-      └──────────────────────────┘
-         Event loop checks continuously</pre>
+</ul> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>CODE</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>Call Stack Task Queue ┌─────────┐ ┌──────────┐ │ Task 1 │ │ Macro 1 │ │ Task 2 │ ←──────────── │ Macro 2 │ │ Task 3 │ After one │ Macro 3 │ └─────────┘ completes, └──────────┘ ↓ take next ↑ └──────────────────────────┘ Event loop checks continuously</pre>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.2 Macrotasks vs Microtasks</span><span lang="en">4.2 Macrotasks vs Microtasks</span></h3>
 <p class="reveal"><span lang="id">This is the concept most easily confused in interviews and actual development!</span><span lang="en">This is the concept most easily confused in interviews and actual development!</span></p>
@@ -375,98 +132,23 @@ export { myFunction }</pre>
 <p class="reveal"><span lang="id"><b>Execution order: Synchronous code → Microtasks → Macrotasks</b></span><span lang="en"><b>Execution order: Synchronous code → Microtasks → Macrotasks</b></span></p>
 <p class="reveal"><span lang="id">👇 <b>Try it out</b>: Observe the execution order of macrotasks and microtasks</span><span lang="en">👇 <b>Try it out</b>: Observe the execution order of macrotasks and microtasks</span></p>
 <p class="reveal"><span lang="id"><TaskQueueDemo /></span><span lang="en"><TaskQueueDemo /></span></p>
-<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 Classic Interview Question</span><span lang="en">4.3 Classic Interview Question</span></h3>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>javascript</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>console.log(&#039;1&#039;)
-
-setTimeout(() =&gt; console.log(&#039;2&#039;), 0)
-
-Promise.resolve().then(() =&gt; console.log(&#039;3&#039;))
-
-console.log(&#039;4&#039;)
-
-// Output: 1, 4, 3, 2</pre>
+<h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">4.3 Classic Interview Question</span><span lang="en">4.3 Classic Interview Question</span></h3> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>javascript</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>console.log(&#039;1&#039;) setTimeout(() =&gt; console.log(&#039;2&#039;), 0) Promise.resolve().then(() =&gt; console.log(&#039;3&#039;)) console.log(&#039;4&#039;) // Output: 1, 4, 3, 2</pre>
 </div>
 <p class="reveal"><span lang="id"><b>Why this order?</b></span><span lang="en"><b>Why this order?</b></span></p>
 <ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
 <li><span lang="id">Execute synchronous code: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console.log('1')</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console.log('4')</code> → outputs 1, 4</span><span lang="en">Execute synchronous code: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console.log('1')</code>, <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console.log('4')</code> → outputs 1, 4</span></li>
 <li><span lang="id">Check microtask queue: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Promise.then</code> → outputs 3</span><span lang="en">Check microtask queue: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Promise.then</code> → outputs 3</span></li>
 <li><span lang="id">Check macrotask queue: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">setTimeout</code> → outputs 2</span><span lang="en">Check macrotask queue: <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">setTimeout</code> → outputs 2</span></li>
-</ul>
-
-<div class="callout info reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
-  <p><span lang="id">- If you want code to execute as soon as possible, use microtasks (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Promise.then</code>)
-- If you want delayed execution, use macrotasks (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">setTimeout</code>)
-- Never mix too many async operations, or you'll fall into "callback hell"</span><span lang="en">- If you want code to execute as soon as possible, use microtasks (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Promise.then</code>)
-- If you want delayed execution, use macrotasks (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">setTimeout</code>)
-- Never mix too many async operations, or you'll fall into "callback hell"</span></p>
+</ul> <div class="callout info reveal" style="margin:24px 0"> <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div> <p><span lang="id">- If you want code to execute as soon as possible, use microtasks (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Promise.then</code>) - If you want delayed execution, use macrotasks (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">setTimeout</code>) - Never mix too many async operations, or you'll fall into "callback hell"</span><span lang="en">- If you want code to execute as soon as possible, use microtasks (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">Promise.then</code>) - If you want delayed execution, use macrotasks (<code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">setTimeout</code>) - Never mix too many async operations, or you'll fall into "callback hell"</span></p>
 </div>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
-<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Call Stack and Memory</span><span lang="en">5. Call Stack and Memory</span></h2>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id"><b>How is code executed? Where are variables stored? When are they garbage collected?</b></span><span lang="en"><b>How is code executed? Where are variables stored? When are they garbage collected?</b></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">5. Call Stack and Memory</span><span lang="en">5. Call Stack and Memory</span></h2> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id"><b>How is code executed? Where are variables stored? When are they garbage collected?</b></span><span lang="en"><b>How is code executed? Where are variables stored? When are they garbage collected?</b></span></p>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.1 Call Stack: The "Footprint" of Function Execution</span><span lang="en">5.1 Call Stack: The "Footprint" of Function Execution</span></h3>
 <p class="reveal"><span lang="id"><b>Call stack = A "notebook" that records function calls</b></span><span lang="en"><b>Call stack = A "notebook" that records function calls</b></span></p>
-<p class="reveal"><span lang="id">Every time you call a function, a new record is added to the stack; when the function finishes, the record is removed.</span><span lang="en">Every time you call a function, a new record is added to the stack; when the function finishes, the record is removed.</span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>javascript</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>function a() {
-  b()
-}
-
-function b() {
-  c()
-}
-
-function c() {
-  console.log(&#039;Execution complete&#039;)
-}
-
-a()</pre>
+<p class="reveal"><span lang="id">Every time you call a function, a new record is added to the stack; when the function finishes, the record is removed.</span><span lang="en">Every time you call a function, a new record is added to the stack; when the function finishes, the record is removed.</span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>javascript</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>function a() { b() } function b() { c() } function c() { console.log(&#039;Execution complete&#039;) } a()</pre>
 </div>
-<p class="reveal"><span lang="id"><b>Call stack changes:</b></span><span lang="en"><b>Call stack changes:</b></span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>CODE</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>Step 1: Call a()
-┌─────────┐
-│    a    │
-└─────────┘
-
-Step 2: a() calls b()
-┌─────────┐
-│    b    │
-│    a    │
-└─────────┘
-
-Step 3: b() calls c()
-┌─────────┐
-│    c    │
-│    b    │
-│    a    │
-└─────────┘
-
-Step 4: c() completes, pop in order
-┌─────────┐
-│    b    │
-│    a    │
-└─────────┘</pre>
+<p class="reveal"><span lang="id"><b>Call stack changes:</b></span><span lang="en"><b>Call stack changes:</b></span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>CODE</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>Step 1: Call a() ┌─────────┐ │ a │ └─────────┘ Step 2: a() calls b() ┌─────────┐ │ b │ │ a │ └─────────┘ Step 3: b() calls c() ┌─────────┐ │ c │ │ b │ │ a │ └─────────┘ Step 4: c() completes, pop in order ┌─────────┐ │ b │ │ a │ └─────────┘</pre>
 </div>
 <p class="reveal"><span lang="id">👇 <b>Try it out</b>: Observe the call stack changes</span><span lang="en">👇 <b>Try it out</b>: Observe the call stack changes</span></p>
 <p class="reveal"><span lang="id"><CallStackDemo /></span><span lang="en"><CallStackDemo /></span></p>
@@ -476,208 +158,38 @@ Step 4: c() completes, pop in order
 <ol class="reveal" style="margin:14px 0 20px 24px;line-height:1.8">
 <li><span lang="id"><b>Mark phase</b>: Starting from "roots," find all reachable variables</span><span lang="en"><b>Mark phase</b>: Starting from "roots," find all reachable variables</span></li>
 <li><span lang="id"><b>Sweep phase</b>: Unmarked variables are "garbage" and will be collected</span><span lang="en"><b>Sweep phase</b>: Unmarked variables are "garbage" and will be collected</span></li>
-</ul>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>javascript</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>// Garbage collection example
-let obj1 = { name: &#039;Object 1&#039; }
-let obj2 = { name: &#039;Object 2&#039; }
-
-// obj1 is reassigned, the original object loses its reference
-obj1 = null  // The original { name: &#039;Object 1&#039; } will be collected
-
-// obj2 is still in use, won&#039;t be collected
-console.log(obj2.name)</pre>
+</ul> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>javascript</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>// Garbage collection example let obj1 = { name: &#039;Object 1&#039; } let obj2 = { name: &#039;Object 2&#039; } // obj1 is reassigned, the original object loses its reference obj1 = null // The original { name: &#039;Object 1&#039; } will be collected // obj2 is still in use, won&#039;t be collected console.log(obj2.name)</pre>
 </div>
 <p class="reveal"><span lang="id">👇 <b>Try it out</b>: Observe the garbage collection process</span><span lang="en">👇 <b>Try it out</b>: Observe the garbage collection process</span></p>
 <p class="reveal"><span lang="id"><GarbageCollectionDemo /></span><span lang="en"><GarbageCollectionDemo /></span></p>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">5.3 Memory Leaks: The Consequences of Forgetting to Clean Up</span><span lang="en">5.3 Memory Leaks: The Consequences of Forgetting to Clean Up</span></h3>
 <p class="reveal"><span lang="id"><b>Memory leak = Memory that should be freed isn't freed, accumulating over time</b></span><span lang="en"><b>Memory leak = Memory that should be freed isn't freed, accumulating over time</b></span></p>
 <p class="reveal"><span lang="id">Common causes:</span><span lang="en">Common causes:</span></p>
-<p class="reveal"><span lang="id"><b>1. Too many global variables</b></span><span lang="en"><b>1. Too many global variables</b></span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>javascript</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>// ❌ Wrong: Global variables won&#039;t be collected
-globalCache = []
-
-function addItem(item) {
-  globalCache.push(item)
-}</pre>
+<p class="reveal"><span lang="id"><b>1. Too many global variables</b></span><span lang="en"><b>1. Too many global variables</b></span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>javascript</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>// ❌ Wrong: Global variables won&#039;t be collected globalCache = [] function addItem(item) { globalCache.push(item) }</pre>
 </div>
-<p class="reveal"><span lang="id"><b>2. Event listeners not removed</b></span><span lang="en"><b>2. Event listeners not removed</b></span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>javascript</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>// ❌ Wrong: Listener not removed
-button.addEventListener(&#039;click&#039;, handleClick)
-
-// ✅ Correct: Remove listener when no longer needed
-button.removeEventListener(&#039;click&#039;, handleClick)</pre>
+<p class="reveal"><span lang="id"><b>2. Event listeners not removed</b></span><span lang="en"><b>2. Event listeners not removed</b></span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>javascript</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>// ❌ Wrong: Listener not removed button.addEventListener(&#039;click&#039;, handleClick) // ✅ Correct: Remove listener when no longer needed button.removeEventListener(&#039;click&#039;, handleClick)</pre>
 </div>
-<p class="reveal"><span lang="id"><b>3. Closures referencing large objects</b></span><span lang="en"><b>3. Closures referencing large objects</b></span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>javascript</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>// ❌ Wrong: Closure keeps referencing large object, won&#039;t be collected
-function createHandler() {
-  const bigData = new Array(1000000).fill(&#039;data&#039;)
-  return function() {
-    console.log(&#039;Processing&#039;)
-  }
-}
-
-const handler = createHandler()  // bigData persists in memory</pre>
+<p class="reveal"><span lang="id"><b>3. Closures referencing large objects</b></span><span lang="en"><b>3. Closures referencing large objects</b></span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>javascript</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>// ❌ Wrong: Closure keeps referencing large object, won&#039;t be collected function createHandler() { const bigData = new Array(1000000).fill(&#039;data&#039;) return function() { console.log(&#039;Processing&#039;) } } const handler = createHandler() // bigData persists in memory</pre>
 </div>
 <p class="reveal"><span lang="id">👇 <b>Try it out</b>: Observe how memory leaks occur</span><span lang="en">👇 <b>Try it out</b>: Observe how memory leaks occur</span></p>
-<p class="reveal"><span lang="id"><MemoryLeakDemo /></span><span lang="en"><MemoryLeakDemo /></span></p>
-
-<div class="callout info reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
-  <p><span lang="id">- <b>Regular checks</b>: Open browser DevTools → Memory → Take Heap Snapshot to view memory usage
-- <b>Avoid global variables</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">const</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">let</code>, not <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">var</code>
-- <b>Clean up promptly</b>: Remove event listeners and timers when done
-- <b>Weak references</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">WeakMap</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">WeakSet</code> to store object references</span><span lang="en">- <b>Regular checks</b>: Open browser DevTools → Memory → Take Heap Snapshot to view memory usage
-- <b>Avoid global variables</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">const</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">let</code>, not <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">var</code>
-- <b>Clean up promptly</b>: Remove event listeners and timers when done
-- <b>Weak references</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">WeakMap</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">WeakSet</code> to store object references</span></p>
+<p class="reveal"><span lang="id"><MemoryLeakDemo /></span><span lang="en"><MemoryLeakDemo /></span></p> <div class="callout info reveal" style="margin:24px 0"> <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div> <p><span lang="id">- <b>Regular checks</b>: Open browser DevTools → Memory → Take Heap Snapshot to view memory usage - <b>Avoid global variables</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">const</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">let</code>, not <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">var</code> - <b>Clean up promptly</b>: Remove event listeners and timers when done - <b>Weak references</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">WeakMap</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">WeakSet</code> to store object references</span><span lang="en">- <b>Regular checks</b>: Open browser DevTools → Memory → Take Heap Snapshot to view memory usage - <b>Avoid global variables</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">const</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">let</code>, not <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">var</code> - <b>Clean up promptly</b>: Remove event listeners and timers when done - <b>Weak references</b>: Use <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">WeakMap</code> and <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">WeakSet</code> to store object references</span></p>
 </div>
 <p class="reveal"><span lang="id">---</span><span lang="en">---</span></p>
-<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Practical Tips</span><span lang="en">6. Practical Tips</span></h2>
-
-<div class="callout tip reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div>
-  <p><span lang="id"><b>How do you write high-performance JavaScript code? How do you debug problems?</b></span><span lang="en"><b>How do you write high-performance JavaScript code? How do you debug problems?</b></span></p>
+<h2 class="reveal" style="margin:36px 0 16px"><span lang="id">6. Practical Tips</span><span lang="en">6. Practical Tips</span></h2> <div class="callout tip reveal" style="margin:24px 0"> <div class="t"><span lang="id">💡 Tips Praktis</span><span lang="en">💡 Pro Tip</span></div> <p><span lang="id"><b>How do you write high-performance JavaScript code? How do you debug problems?</b></span><span lang="en"><b>How do you write high-performance JavaScript code? How do you debug problems?</b></span></p>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.1 Performance Optimization Tips</span><span lang="en">6.1 Performance Optimization Tips</span></h3>
-<p class="reveal"><span lang="id"><b>1. Reduce reflows and repaints</b></span><span lang="en"><b>1. Reduce reflows and repaints</b></span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>javascript</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>// ❌ Wrong: Triggers reflow on every loop iteration
-for (let i = 0; i &lt; 1000; i++) {
-  element.style.top = i + &#039;px&#039;
-}
-
-// ✅ Correct: Batch modification
-element.style.transform = `translateY(${position}px)`</pre>
+<p class="reveal"><span lang="id"><b>1. Reduce reflows and repaints</b></span><span lang="en"><b>1. Reduce reflows and repaints</b></span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>javascript</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>// ❌ Wrong: Triggers reflow on every loop iteration for (let i = 0; i &lt; 1000; i++) { element.style.top = i + &#039;px&#039; } // ✅ Correct: Batch modification element.style.transform = `translateY(${position}px)`</pre>
 </div>
-<p class="reveal"><span lang="id"><b>2. Use event delegation</b></span><span lang="en"><b>2. Use event delegation</b></span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>javascript</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>// ❌ Wrong: Add listener to every button
-buttons.forEach(btn =&gt; {
-  btn.addEventListener(&#039;click&#039;, handleClick)
-})
-
-// ✅ Correct: Add only one listener to parent element
-container.addEventListener(&#039;click&#039;, (e) =&gt; {
-  if (e.target.matches(&#039;.button&#039;)) {
-    handleClick(e)
-  }
-})</pre>
+<p class="reveal"><span lang="id"><b>2. Use event delegation</b></span><span lang="en"><b>2. Use event delegation</b></span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>javascript</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>// ❌ Wrong: Add listener to every button buttons.forEach(btn =&gt; { btn.addEventListener(&#039;click&#039;, handleClick) }) // ✅ Correct: Add only one listener to parent element container.addEventListener(&#039;click&#039;, (e) =&gt; { if (e.target.matches(&#039;.button&#039;)) { handleClick(e) } })</pre>
 </div>
-<p class="reveal"><span lang="id"><b>3. Debounce and throttle</b></span><span lang="en"><b>3. Debounce and throttle</b></span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>javascript</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>// Debounce: Execute after user stops typing
-function debounce(fn, delay) {
-  let timer
-  return function(...args) {
-    clearTimeout(timer)
-    timer = setTimeout(() =&gt; fn.apply(this, args), delay)
-  }
-}
-
-// Throttle: Limit execution frequency
-function throttle(fn, delay) {
-  let lastTime = 0
-  return function(...args) {
-    const now = Date.now()
-    if (now - lastTime &gt;= delay) {
-      fn.apply(this, args)
-      lastTime = now
-    }
-  }
-}</pre>
+<p class="reveal"><span lang="id"><b>3. Debounce and throttle</b></span><span lang="en"><b>3. Debounce and throttle</b></span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>javascript</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>// Debounce: Execute after user stops typing function debounce(fn, delay) { let timer return function(...args) { clearTimeout(timer) timer = setTimeout(() =&gt; fn.apply(this, args), delay) } } // Throttle: Limit execution frequency function throttle(fn, delay) { let lastTime = 0 return function(...args) { const now = Date.now() if (now - lastTime &gt;= delay) { fn.apply(this, args) lastTime = now } } }</pre>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.2 Debugging Tips</span><span lang="en">6.2 Debugging Tips</span></h3>
-<p class="reveal"><span lang="id"><b>1. View call stack with DevTools</b></span><span lang="en"><b>1. View call stack with DevTools</b></span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>javascript</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>function a() {
-  b()
-}
-
-function b() {
-  c()
-}
-
-function c() {
-  debugger  // Pause here to view call stack
-}
-
-a()</pre>
+<p class="reveal"><span lang="id"><b>1. View call stack with DevTools</b></span><span lang="en"><b>1. View call stack with DevTools</b></span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>javascript</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>function a() { b() } function b() { c() } function c() { debugger // Pause here to view call stack } a()</pre>
 </div>
-<p class="reveal"><span lang="id"><b>2. Trace execution path with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console.trace()</code></b></span><span lang="en"><b>2. Trace execution path with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console.trace()</code></b></span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>javascript</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>function trackExecution() {
-  console.trace(&#039;Execution path&#039;)
-  // Will output the complete call stack
-}</pre>
+<p class="reveal"><span lang="id"><b>2. Trace execution path with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console.trace()</code></b></span><span lang="en"><b>2. Trace execution path with <code style="font-family:var(--font-mono);background:var(--panel-strong);padding:2px 7px;border-radius:6px">console.trace()</code></b></span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>javascript</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>function trackExecution() { console.trace(&#039;Execution path&#039;) // Will output the complete call stack }</pre>
 </div>
-<p class="reveal"><span lang="id"><b>3. Analyze performance with the Performance API</b></span><span lang="en"><b>3. Analyze performance with the Performance API</b></span></p>
-
-<div class="prompt-card reveal" style="margin:22px 0">
-  <div class="p-head">
-    <b><code>javascript</code></b>
-    <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button>
-  </div>
-  <pre>performance.mark(&#039;start&#039;)
-
-// Execute some code
-for (let i = 0; i &lt; 10000; i++) {
-  // ...
-}
-
-performance.mark(&#039;end&#039;)
-performance.measure(&#039;Loop performance&#039;, &#039;start&#039;, &#039;end&#039;)
-
-const measure = performance.getEntriesByName(&#039;Loop performance&#039;)[0]
-console.log(`Execution time: ${measure.duration}ms`)</pre>
+<p class="reveal"><span lang="id"><b>3. Analyze performance with the Performance API</b></span><span lang="en"><b>3. Analyze performance with the Performance API</b></span></p> <div class="prompt-card reveal" style="margin:22px 0"> <div class="p-head"> <b><code>javascript</code></b> <button class="copy-btn"><span lang="id">📋 Salin</span><span lang="en">📋 Copy</span></button> </div> <pre>performance.mark(&#039;start&#039;) // Execute some code for (let i = 0; i &lt; 10000; i++) { // ... } performance.mark(&#039;end&#039;) performance.measure(&#039;Loop performance&#039;, &#039;start&#039;, &#039;end&#039;) const measure = performance.getEntriesByName(&#039;Loop performance&#039;)[0] console.log(`Execution time: ${measure.duration}ms`)</pre>
 </div>
 <h3 class="reveal" style="margin:24px 0 12px;font-size:1.25rem"><span lang="id">6.3 Common Problems Quick Reference</span><span lang="en">6.3 Common Problems Quick Reference</span></h3>
 <div class="table-wrap reveal" style="overflow-x:auto;margin:20px 0"><table>
@@ -697,37 +209,9 @@ console.log(`Execution time: ${measure.duration}ms`)</pre>
 <li><span lang="id"><b>Call stack</b> records the function execution process — <b>stack overflow</b> occurs from too-deep recursion</span><span lang="en"><b>Call stack</b> records the function execution process — <b>stack overflow</b> occurs from too-deep recursion</span></li>
 <li><span lang="id"><b>Garbage collection</b> automatically cleans up unused variables, but watch out for <b>memory leaks</b></span><span lang="en"><b>Garbage collection</b> automatically cleans up unused variables, but watch out for <b>memory leaks</b></span></li>
 <li><span lang="id"><b>Performance optimization</b> hinges on reducing reflows/repaints and using async appropriately</span><span lang="en"><b>Performance optimization</b> hinges on reducing reflows/repaints and using async appropriately</span></li>
-</ul>
-
-<div class="callout info reveal" style="margin:24px 0">
-  <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div>
-  <p><span lang="id">- "This function executes too slowly, help me optimize the performance"
-- "Memory usage keeps growing, might be a memory leak, help me check"
-- "Async operations are in the wrong order — should be A then B, but A and B start almost simultaneously"
-- "Event listener isn't firing, check if the element has already been loaded into the DOM"</span><span lang="en">- "This function executes too slowly, help me optimize the performance"
-- "Memory usage keeps growing, might be a memory leak, help me check"
-- "Async operations are in the wrong order — should be A then B, but A and B start almost simultaneously"
-- "Event listener isn't firing, check if the element has already been loaded into the DOM"</span></p>
-</div>
-
-
-    <div class="pager" style="margin-top:54px">
-      <a href="../../3-browser-and-frontend/javascript-deep-dive/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">3-browser-and-frontend/javascript-deep-dive</span><span lang="en">3-browser-and-frontend/javascript-deep-dive</span></b></a>
-      <a class="next" href="../../3-browser-and-frontend/realtime-communication/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">3-browser-and-frontend/realtime-communication</span><span lang="en">3-browser-and-frontend/realtime-communication</span></b></a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="license-box">
-      <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span>
-      <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span>
-    </div>
-    <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p>
-  </div>
-</footer>
-
-<script src="../../../assets/vibekoding.js"></script>
+</ul> <div class="callout info reveal" style="margin:24px 0"> <div class="t"><span lang="id">📖 Konsep Penting</span><span lang="en">📖 Core Concept</span></div> <p><span lang="id">- "This function executes too slowly, help me optimize the performance" - "Memory usage keeps growing, might be a memory leak, help me check" - "Async operations are in the wrong order — should be A then B, but A and B start almost simultaneously" - "Event listener isn't firing, check if the element has already been loaded into the DOM"</span><span lang="en">- "This function executes too slowly, help me optimize the performance" - "Memory usage keeps growing, might be a memory leak, help me check" - "Async operations are in the wrong order — should be A then B, but A and B start almost simultaneously" - "Event listener isn't firing, check if the element has already been loaded into the DOM"</span></p>
+</div> <div class="pager" style="margin-top:54px"> <a href="../../3-browser-and-frontend/javascript-deep-dive/"><span class="dir">← <span lang="id">Sebelumnya</span><span lang="en">Previous</span></span><b><span lang="id">3-browser-and-frontend/javascript-deep-dive</span><span lang="en">3-browser-and-frontend/javascript-deep-dive</span></b></a> <a class="next" href="../../3-browser-and-frontend/realtime-communication/"><span class="dir"><span lang="id">Selanjutnya</span><span lang="en">Next</span> →</span><b><span lang="id">3-browser-and-frontend/realtime-communication</span><span lang="en">3-browser-and-frontend/realtime-communication</span></b></a> </div> </div>
+</section> <footer> <div class="wrap"> <div class="license-box"> <span lang="id">📜 Materi pembelajaran ini disadur dari proyek terbuka <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe oleh Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Ditulis ulang &amp; disajikan secara lokal, independen, dan bilingual oleh VibeKoding.</span> <span lang="en">📜 This educational module is adapted from the open-source project <a href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">Easy-Vibe by Datawhale</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>). Rewritten &amp; hosted locally, independently, and bilingually by VibeKoding.</span> </div> <p class="small" style="margin-top:20px;text-align:center">© 2026 Arif Widiyanto · VibeKoding</p> </div>
+</footer> <script src="../../../assets/vibekoding.js"></script>
 </body>
 </html>
