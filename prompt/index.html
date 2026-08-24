@@ -74,33 +74,36 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Flat Header */
+    /* Precision Engineered Header */
     header {
-      height: 46px;
-      background: var(--bg-rail);
+      height: 48px;
+      background: rgba(8, 8, 10, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-subtle);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 16px;
-      z-index: 40;
+      z-index: 50;
       flex-shrink: 0;
     }
     .header-brand-wrap {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
     .brand-mark {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       font-family: var(--font-mono);
       color: #fff;
       background: var(--bg-surface);
       border: 1px solid var(--border-medium);
-      padding: 2px 6px;
+      padding: 3px 7px;
       border-radius: var(--radius-xs);
       text-decoration: none;
+      letter-spacing: 0.05em;
     }
     .brand-title {
       font-size: 13px;
@@ -108,11 +111,57 @@
       color: var(--text-main);
       text-decoration: none;
       letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
+    .header-breadcrumb-sep {
+      color: var(--text-dim);
+      font-weight: 400;
+    }
+    .header-breadcrumb-current {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Central Segmented Header Tabs */
+    .header-center-nav {
+      display: flex;
+      align-items: center;
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      padding: 2px;
+      border-radius: var(--radius-sm);
+      gap: 2px;
+    }
+    .hdr-tab-item {
+      padding: 4px 10px;
+      background: transparent;
+      border: none;
+      border-radius: var(--radius-xs);
+      color: var(--text-muted);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.1s, background 0.1s;
+    }
+    .hdr-tab-item:hover {
+      color: var(--text-main);
+    }
+    .hdr-tab-item.active {
+      background: var(--bg-surface);
+      color: #fff;
+      font-weight: 600;
+    }
+
     .pill-badge {
       font-family: var(--font-mono);
-      font-size: 11px;
-      padding: 1px 6px;
+      font-size: 10px;
+      padding: 1px 5px;
       border-radius: var(--radius-xs);
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
@@ -955,9 +1004,29 @@
     <div class="header-container">
       <div class="header-brand-wrap">
         <a href="https://arifwidiyanto.web.id" class="brand-mark">AW</a>
-        <a href="https://arifwidiyanto.web.id/prompt/" class="brand-title">Directives Hub</a>
-        <span class="pill-badge">1,015 Prompts</span>
+        <a href="https://arifwidiyanto.web.id/prompt/" class="brand-title">
+          <span>Directives</span>
+          <span class="header-breadcrumb-sep">/</span>
+          <span class="header-breadcrumb-current" id="header-active-module-text">Catalog</span>
+        </a>
+        <span class="pill-badge">1,015</span>
       </div>
+
+      <!-- Segmented Module Navigation in Header -->
+      <nav class="header-center-nav" role="tablist">
+        <button class="hdr-tab-item active" id="hdr-tab-catalog">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          <span>Catalog</span>
+        </button>
+        <button class="hdr-tab-item" id="hdr-tab-studio">
+          <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          <span>Studio Compiler</span>
+        </button>
+        <button class="hdr-tab-item" id="hdr-tab-sandbox">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          <span>Sandbox</span>
+        </button>
+      </nav>
 
       <div class="header-actions">
         <button class="hdr-btn" id="btn-shortcuts" title="Shortcuts (?)">
@@ -1648,6 +1717,17 @@ ${rawBase}
       document.getElementById('rail-studio-btn').classList.toggle('active', viewName === 'studio');
       document.getElementById('rail-sandbox-btn').classList.toggle('active', viewName === 'sandbox');
 
+      document.getElementById('hdr-tab-catalog').classList.toggle('active', viewName === 'catalog');
+      document.getElementById('hdr-tab-studio').classList.toggle('active', viewName === 'studio');
+      document.getElementById('hdr-tab-sandbox').classList.toggle('active', viewName === 'sandbox');
+
+      const titleMap = {
+        catalog: "Catalog",
+        studio: "Studio Compiler",
+        sandbox: "Sandbox"
+      };
+      document.getElementById('header-active-module-text').textContent = titleMap[viewName] || "Catalog";
+
       if (viewName === 'studio') {
         document.getElementById('context-title').textContent = "Studio Engine";
       } else if (viewName === 'sandbox') {
@@ -1891,6 +1971,11 @@ Executed task: "${userInput}" under active system directives.
     }
 
     function bindEvents() {
+      // Header segmented module tabs
+      document.getElementById('hdr-tab-catalog').addEventListener('click', () => switchModuleView('catalog'));
+      document.getElementById('hdr-tab-studio').addEventListener('click', () => switchModuleView('studio'));
+      document.getElementById('hdr-tab-sandbox').addEventListener('click', () => switchModuleView('sandbox'));
+
       // Primary Rail actions
       document.getElementById('rail-catalog-btn').addEventListener('click', () => switchModuleView('catalog'));
       document.getElementById('rail-studio-btn').addEventListener('click', () => switchModuleView('studio'));
