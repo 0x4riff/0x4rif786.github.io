@@ -26,19 +26,19 @@
     :root {
       --bg-base: #000000;
       --bg-rail: #070709;
-      --bg-sidebar: #0c0c0f;
-      --bg-panel: #121216;
-      --bg-surface: #191920;
-      --bg-hover: #21212a;
+      --bg-sidebar: #0b0b0e;
+      --bg-panel: #111114;
+      --bg-surface: #17171d;
+      --bg-hover: #1f1f26;
       --bg-input: #08080a;
 
-      --border-subtle: #1c1c24;
-      --border-medium: #2a2a36;
-      --border-strong: #404050;
+      --border-subtle: #1a1a22;
+      --border-medium: #282834;
+      --border-strong: #3e3e4e;
 
       --text-main: #f4f4f6;
-      --text-muted: #8e8e9a;
-      --text-dim: #545462;
+      --text-muted: #8c8c98;
+      --text-dim: #52525e;
 
       --accent-white: #ffffff;
       --accent-blue: #3291ff;
@@ -60,6 +60,22 @@
       padding: 0;
     }
 
+    /* Global Custom Scrollbars */
+    *::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    *::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    *::-webkit-scrollbar-thumb {
+      background: var(--border-medium);
+      border-radius: 3px;
+    }
+    *::-webkit-scrollbar-thumb:hover {
+      background: var(--border-strong);
+    }
+
     html, body {
       height: 100%;
       width: 100%;
@@ -70,11 +86,13 @@
       font-size: 13px;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-medium) transparent;
     }
 
     /* Precision Clean Top Header (Single Row, Never Wraps) */
     .app-header {
-      height: 46px;
+      height: 44px;
       background: var(--bg-rail);
       border-bottom: 1px solid var(--border-subtle);
       display: flex;
@@ -101,6 +119,7 @@
       padding: 2px 6px;
       border-radius: var(--radius-xs);
       text-decoration: none;
+      letter-spacing: 0.05em;
     }
     .brand-name-link {
       font-size: 13px;
@@ -134,7 +153,7 @@
       flex-shrink: 0;
     }
     .seg-tab-btn {
-      padding: 4px 12px;
+      padding: 4px 14px;
       background: transparent;
       border: none;
       border-radius: var(--radius-xs);
@@ -165,7 +184,7 @@
       flex-shrink: 0;
     }
     .header-btn {
-      padding: 4px 8px;
+      padding: 4px 9px;
       background: transparent;
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
@@ -212,7 +231,7 @@
     .workspace-frame {
       flex: 1;
       display: flex;
-      height: calc(100vh - 46px);
+      height: calc(100vh - 44px);
       min-height: 0;
       overflow: hidden;
     }
@@ -396,7 +415,7 @@
       display: none;
       flex-direction: column;
       height: 100%;
-      padding: 16px;
+      padding: 14px 16px;
       gap: 12px;
       overflow-y: auto;
     }
@@ -420,7 +439,7 @@
     }
     .search-input-wrap {
       flex: 1;
-      min-width: 220px;
+      min-width: 200px;
       position: relative;
       display: flex;
       align-items: center;
@@ -1136,7 +1155,7 @@
         <div class="catalog-toolbar-panel">
           <div class="search-input-wrap">
             <svg class="search-icon-svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            <input type="text" id="main-search-input" class="search-input-box" placeholder="Search directives by keyword, role, or workflow... (Press '/' to focus, 'j/k' to navigate)">
+            <input type="text" id="main-search-input" class="search-input-box" placeholder="Search 1,015 directives... (Press '/' to focus, 'j/k' to navigate)">
             <button id="search-clear-btn" class="search-clear-x">✕</button>
           </div>
 
@@ -2365,7 +2384,7 @@ Chat history cleared. Active system directives preserved.
       const tokens = estimateTokens(prompt.enhancedPrompt);
       const rec = getRecommendedModel(prompt);
 
-      document.getElementById('modal-heading-text').textContent = `#${prompt.id} — ${prompt.title}`;
+      document.getElementById('modal-heading-text').textContent = `#${prompt.id} : ${prompt.title}`;
       document.getElementById('modal-tags-row').innerHTML = `
         <span class="flat-chip">${prompt.mainCategory}</span>
         <span class="flat-chip">${prompt.subCategory}</span>
@@ -2589,7 +2608,7 @@ Chat history cleared. Active system directives preserved.
       filtered.forEach(p => {
         const tokens = estimateTokens(p.enhancedPrompt);
         const rec = getRecommendedModel(p);
-        md += `## #${p.id} - ${p.title}\n**Domain**: ${p.mainCategory} | **Category**: ${p.subCategory} | **Model**: ${rec.label} | **Est. Tokens**: ~${tokens}\n\n### Raw Seed\n> ${p.rawPrompt}\n\n### Enhanced Directive\n\`\`\`markdown\n${p.enhancedPrompt}\n\`\`\`\n\n---\n\n`;
+        md += `## #${p.id} : ${p.title}\n**Domain**: ${p.mainCategory} | **Category**: ${p.subCategory} | **Model**: ${rec.label} | **Est. Tokens**: ~${tokens}\n\n### Raw Seed\n> ${p.rawPrompt}\n\n### Enhanced Directive\n\`\`\`markdown\n${p.enhancedPrompt}\n\`\`\`\n\n---\n\n`;
       });
 
       downloadFile(`ai-agent-directives-${new Date().toISOString().slice(0, 10)}.md`, md, 'text/markdown');
