@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Directives — Production AI Agent Architecture & Compiler</title>
-  <meta name="description" content="A flat, minimal, high-density index of 1,000+ structured AI Agent Directives with invariant schema compilation, live parameter customizers, and test sandbox.">
+  <title>Directives — Production AI Agent Architecture, Studio & Sandbox</title>
+  <meta name="description" content="A flat, dual-sidebar developer workspace featuring 1,000+ structured AI Agent Directives, invariant prompt compiler studio, and execution sandbox.">
   <link rel="canonical" href="https://arifwidiyanto.web.id/prompt/">
 
   <!-- OpenGraph & Twitter Meta Tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Directives — Production AI Agent Hub & Compiler">
-  <meta property="og:description" content="1,000+ structured AI agent directives across 55 categories with zero-latency prompt compilation.">
+  <meta property="og:title" content="Directives — Production AI Agent Hub, Studio & Sandbox">
+  <meta property="og:description" content="Flat dual-sidebar AI Agent workspace with real-time Invariant Compiler, testing Sandbox, and 1,000+ production directives.">
   <meta property="og:url" content="https://arifwidiyanto.web.id/prompt/">
   <meta name="theme-color" content="#000000">
 
@@ -23,26 +23,27 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/mono.css">
 
   <style>
-    /* Strict Vercel / Linear Flat Design System Tokens */
     :root {
-      --bg: #000000;
-      --bg-subtle: #0a0a0a;
-      --bg-panel: #111111;
-      --bg-surface: #171717;
-      --bg-hover: #1f1f1f;
-      --bg-active: #262626;
+      --bg-base: #000000;
+      --bg-rail: #08080a;
+      --bg-sidebar: #0f0f12;
+      --bg-panel: #141418;
+      --bg-surface: #1b1b20;
+      --bg-hover: #23232a;
+      --bg-active: #2b2b34;
+      --bg-input: #0a0a0d;
 
-      --border-subtle: #222222;
-      --border-medium: #333333;
-      --border-strong: #444444;
+      --border-subtle: #1f1f26;
+      --border-medium: #2e2e38;
+      --border-strong: #444452;
 
-      --text-main: #ededed;
-      --text-muted: #888888;
-      --text-dim: #555555;
+      --text-main: #f4f4f6;
+      --text-muted: #8e8e99;
+      --text-dim: #5a5a66;
 
-      --accent: #ffffff;
-      --accent-dim: #cccccc;
+      --accent-white: #ffffff;
       --accent-blue: #3291ff;
+      --accent-cyan: #00e5ff;
       --accent-green: #50e3c2;
       --accent-amber: #f5a623;
 
@@ -51,7 +52,7 @@
 
       --radius-xs: 3px;
       --radius-sm: 5px;
-      --radius-md: 6px;
+      --radius-md: 7px;
     }
 
     * {
@@ -61,12 +62,13 @@
     }
 
     body {
-      background-color: var(--bg);
+      background-color: var(--bg-base);
       color: var(--text-main);
       font-family: var(--font-sans);
       font-size: 13px;
       line-height: 1.5;
-      min-height: 100vh;
+      height: 100vh;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       -webkit-font-smoothing: antialiased;
@@ -74,38 +76,40 @@
 
     /* Flat Header */
     header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: var(--bg);
+      height: 46px;
+      background: var(--bg-rail);
       border-bottom: 1px solid var(--border-subtle);
-    }
-    .header-container {
-      max-width: 1440px;
-      margin: 0 auto;
-      height: 48px;
-      padding: 0 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      padding: 0 16px;
+      z-index: 40;
+      flex-shrink: 0;
     }
-    .brand-section {
+    .header-brand-wrap {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
-    .brand-link {
+    .brand-mark {
+      font-size: 12px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      color: #fff;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-medium);
+      padding: 2px 6px;
+      border-radius: var(--radius-xs);
+      text-decoration: none;
+    }
+    .brand-title {
       font-size: 13px;
       font-weight: 600;
       color: var(--text-main);
       text-decoration: none;
       letter-spacing: -0.01em;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
-    .badge-plain {
+    .pill-badge {
       font-family: var(--font-mono);
       font-size: 11px;
       padding: 1px 6px;
@@ -115,45 +119,13 @@
       color: var(--text-muted);
     }
 
-    /* Top Segmented Navigation Tabs */
-    .module-nav {
-      display: flex;
-      gap: 2px;
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-subtle);
-      padding: 2px;
-      border-radius: var(--radius-sm);
-    }
-    .module-btn {
-      padding: 4px 12px;
-      background: transparent;
-      border: none;
-      border-radius: var(--radius-xs);
-      color: var(--text-muted);
-      font-family: var(--font-sans);
-      font-size: 12px;
-      font-weight: 500;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.1s, background 0.1s;
-    }
-    .module-btn:hover {
-      color: var(--text-main);
-    }
-    .module-btn.active {
-      background: var(--bg-surface);
-      color: #fff;
-    }
-
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
-    .action-btn {
-      padding: 4px 10px;
+    .hdr-btn {
+      padding: 4px 8px;
       background: transparent;
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
@@ -168,12 +140,12 @@
       gap: 6px;
       transition: all 0.1s;
     }
-    .action-btn:hover {
+    .hdr-btn:hover {
       color: var(--text-main);
       border-color: var(--border-medium);
       background: var(--bg-surface);
     }
-    .action-btn.active {
+    .hdr-btn.active {
       background: var(--bg-surface);
       color: #fff;
       border-color: var(--border-medium);
@@ -192,70 +164,122 @@
       stroke-linejoin: round;
     }
 
-    /* Main Workspace Layout */
-    main {
+    /* ======================================================== */
+    /* DOUBLE-SIDEBAR WORKSPACE CONTAINER                       */
+    /* ======================================================== */
+    .workspace-frame {
       flex: 1;
-      max-width: 1440px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 16px;
+      display: flex;
+      height: calc(100vh - 46px);
+      overflow: hidden;
+    }
+
+    /* Column 1: Primary Navigation Rail (ClickUp Style, 52px) */
+    .nav-rail {
+      width: 52px;
+      background: var(--bg-rail);
+      border-right: 1px solid var(--border-subtle);
       display: flex;
       flex-direction: column;
+      align-items: center;
+      padding: 10px 0;
+      gap: 6px;
+      flex-shrink: 0;
+      z-index: 20;
     }
-
-    .view-pane {
-      display: none;
-      width: 100%;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .view-pane.active {
+    .rail-action {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-dim);
       display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.1s;
+      position: relative;
     }
-
-    /* ======================================================== */
-    /* VIEW 1: DIRECTIVES CATALOG                               */
-    /* ======================================================== */
-    .catalog-grid-layout {
-      display: grid;
-      grid-template-columns: 240px 1fr;
-      gap: 20px;
-      align-items: start;
-    }
-
-    /* Sidebar Filters */
-    .filter-sidebar {
-      position: sticky;
-      top: 64px;
+    .rail-action:hover {
+      color: var(--text-main);
       background: var(--bg-panel);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 12px;
+    }
+    .rail-action.active {
+      color: #fff;
+      background: var(--bg-surface);
+      border-color: var(--border-medium);
+    }
+    .rail-action.active::before {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 8px;
+      bottom: 8px;
+      width: 3px;
+      background: var(--accent-white);
+      border-radius: 0 2px 2px 0;
+    }
+    .rail-action-studio.active {
+      color: var(--accent-cyan);
+    }
+    .rail-action-studio.active::before {
+      background: var(--accent-cyan);
+    }
+    .rail-action-sandbox.active {
+      color: var(--accent-green);
+    }
+    .rail-action-sandbox.active::before {
+      background: var(--accent-green);
+    }
+    .rail-divider {
+      width: 20px;
+      height: 1px;
+      background: var(--border-subtle);
+      margin: 4px 0;
+    }
+
+    /* Column 2: Secondary Context Sidebar (Monday.com / ClickUp List, 240px) */
+    .context-sidebar {
+      width: 240px;
+      background: var(--bg-sidebar);
+      border-right: 1px solid var(--border-subtle);
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      max-height: calc(100vh - 80px);
+      flex-shrink: 0;
       overflow-y: auto;
       scrollbar-width: thin;
       scrollbar-color: var(--border-subtle) transparent;
     }
-    .sidebar-heading {
+    .sidebar-section-header {
+      padding: 10px 12px 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .sidebar-section-title {
       font-family: var(--font-mono);
       font-size: 10px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--text-dim);
-      margin-bottom: 6px;
-      padding: 0 4px;
     }
-    .sidebar-nav-tree {
+    .sidebar-tree-container {
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      flex: 1;
+    }
+    .tree-list {
       list-style: none;
       display: flex;
       flex-direction: column;
       gap: 1px;
     }
-    .tree-button {
+    .tree-row-btn {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -271,35 +295,35 @@
       text-align: left;
       transition: all 0.1s;
     }
-    .tree-button:hover {
+    .tree-row-btn:hover {
       color: var(--text-main);
       background: var(--bg-hover);
     }
-    .tree-button.active {
+    .tree-row-btn.active {
       color: #fff;
       background: var(--bg-surface);
       border-color: var(--border-medium);
       font-weight: 550;
     }
-    .tree-label {
+    .tree-row-label {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
       padding-right: 6px;
     }
-    .tree-counter {
+    .tree-row-count {
       font-family: var(--font-mono);
       font-size: 10px;
       color: var(--text-dim);
     }
-    .tree-button.active .tree-counter {
-      color: var(--text-main);
+    .tree-row-btn.active .tree-row-count {
+      color: #fff;
     }
 
     .form-select {
       width: 100%;
       padding: 5px 8px;
-      background: var(--input);
+      background: var(--bg-input);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-xs);
       color: var(--text-main);
@@ -312,14 +336,32 @@
       border-color: var(--border-strong);
     }
 
-    /* Catalog Content Main */
-    .catalog-main {
+    /* Column 3: Main Workspace Center Content */
+    .viewport-content {
+      flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      min-width: 0;
+      overflow-y: auto;
+      position: relative;
+      background: var(--bg-base);
     }
 
+    /* View Switcher Panes */
+    .module-pane {
+      display: none;
+      flex-direction: column;
+      height: 100%;
+      padding: 16px;
+      gap: 14px;
+      overflow-y: auto;
+    }
+    .module-pane.active {
+      display: flex;
+    }
+
+    /* ======================================================== */
+    /* VIEW 1: DIRECTIVES CATALOG DECK                          */
+    /* ======================================================== */
     .catalog-toolbar {
       background: var(--bg-panel);
       border: 1px solid var(--border-subtle);
@@ -330,14 +372,14 @@
       gap: 8px;
       flex-wrap: wrap;
     }
-    .search-wrapper {
+    .search-input-wrap {
       flex: 1;
       min-width: 220px;
       position: relative;
       display: flex;
       align-items: center;
     }
-    .search-glyph {
+    .search-icon-svg {
       position: absolute;
       left: 10px;
       color: var(--text-dim);
@@ -345,10 +387,10 @@
       width: 13px;
       height: 13px;
     }
-    .search-field {
+    .search-input-box {
       width: 100%;
       padding: 5px 28px 5px 30px;
-      background: var(--input);
+      background: var(--bg-input);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-xs);
       color: var(--text-main);
@@ -356,10 +398,10 @@
       font-size: 12px;
       outline: none;
     }
-    .search-field:focus {
+    .search-input-box:focus {
       border-color: var(--border-strong);
     }
-    .search-clear-trigger {
+    .search-clear-x {
       position: absolute;
       right: 8px;
       background: none;
@@ -369,18 +411,18 @@
       display: none;
       font-size: 11px;
     }
-    .search-clear-trigger.visible {
+    .search-clear-x.visible {
       display: block;
     }
 
-    .view-toggle-set {
+    .view-mode-toggle {
       display: flex;
-      background: var(--input);
+      background: var(--bg-input);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-xs);
       padding: 1px;
     }
-    .view-btn {
+    .toggle-btn {
       background: transparent;
       border: none;
       color: var(--text-dim);
@@ -390,18 +432,18 @@
       font-size: 11px;
       font-family: var(--font-mono);
     }
-    .view-btn.active {
+    .toggle-btn.active {
       background: var(--bg-surface);
       color: #fff;
     }
 
-    /* Cards Deck */
-    .cards-deck {
+    /* Directives Grid */
+    .directives-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
       gap: 10px;
     }
-    .cards-deck.list-view {
+    .directives-grid.list-view {
       grid-template-columns: 1fr;
     }
 
@@ -426,7 +468,7 @@
       background: var(--bg-hover);
     }
 
-    .card-top {
+    .card-top-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -499,7 +541,7 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
       margin-bottom: 12px;
-      background: var(--input);
+      background: var(--bg-input);
       padding: 6px 8px;
       border-radius: var(--radius-xs);
       border-left: 2px solid var(--border-medium);
@@ -545,14 +587,11 @@
     }
     .card-btn:hover {
       color: var(--text-main);
-      background: var(--bg-active);
+      background: var(--bg-hover);
     }
     .card-btn-inspect {
       color: var(--text-main);
-      background: var(--bg-hover);
-    }
-    .card-btn-inspect:hover {
-      background: var(--bg-active);
+      background: var(--bg-surface);
     }
     .card-btn-copy {
       background: var(--text-main);
@@ -564,18 +603,14 @@
     }
 
     /* ======================================================== */
-    /* VIEW 2: STUDIO COMPILER                                  */
+    /* VIEW 2: STUDIO COMPILER (Split-Pane Engine)              */
     /* ======================================================== */
-    .studio-container {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
     .studio-split-grid {
       display: grid;
       grid-template-columns: 1fr 1.2fr;
       gap: 14px;
       min-height: 520px;
+      flex: 1;
     }
     .studio-panel-box {
       background: var(--bg-panel);
@@ -614,7 +649,7 @@
       width: 100%;
       flex: 1;
       min-height: 200px;
-      background: var(--input);
+      background: var(--bg-input);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-xs);
       padding: 10px;
@@ -692,7 +727,7 @@
 
     .code-display-block {
       flex: 1;
-      background: var(--input);
+      background: var(--bg-input);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-xs);
       padding: 10px;
@@ -713,6 +748,7 @@
       grid-template-columns: 300px 1fr;
       gap: 14px;
       min-height: 520px;
+      flex: 1;
     }
     .sandbox-panel {
       background: var(--bg-panel);
@@ -778,7 +814,7 @@
     .chat-text-box {
       flex: 1;
       padding: 6px 10px;
-      background: var(--input);
+      background: var(--bg-input);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-xs);
       color: #fff;
@@ -903,10 +939,7 @@
     }
 
     @media (max-width: 900px) {
-      .catalog-grid-layout {
-        grid-template-columns: 1fr;
-      }
-      .filter-sidebar {
+      .context-sidebar {
         display: none;
       }
       .studio-split-grid, .playground-split-grid {
@@ -917,43 +950,25 @@
 </head>
 <body>
 
-  <!-- Top Navigation Header -->
+  <!-- Top Navigation Bar -->
   <header>
     <div class="header-container">
-      <div class="brand-section">
-        <a href="https://arifwidiyanto.web.id" class="brand-link">
-          <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-          <span>Arif Widiyanto</span>
-        </a>
-        <span class="badge-plain">1,015 Directives</span>
+      <div class="header-brand-wrap">
+        <a href="https://arifwidiyanto.web.id" class="brand-mark">AW</a>
+        <a href="https://arifwidiyanto.web.id/prompt/" class="brand-title">Directives Hub</a>
+        <span class="pill-badge">1,015 Prompts</span>
       </div>
 
-      <!-- Segmented Module Navigation -->
-      <nav class="module-nav" role="tablist">
-        <button class="module-btn active" id="tab-catalog" role="tab" aria-selected="true">
-          <svg class="icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-          <span>Catalog</span>
-        </button>
-        <button class="module-btn" id="tab-studio" role="tab" aria-selected="false">
-          <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-          <span>Studio Compiler</span>
-        </button>
-        <button class="module-btn" id="tab-sandbox" role="tab" aria-selected="false">
-          <svg class="icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-          <span>Sandbox</span>
-        </button>
-      </nav>
-
       <div class="header-actions">
-        <button class="action-btn" id="btn-shortcuts" title="Shortcuts (?)">
+        <button class="hdr-btn" id="btn-shortcuts" title="Shortcuts (?)">
           <span style="font-family: var(--font-mono); font-size: 11px;">?</span>
         </button>
-        <button class="action-btn" id="btn-favorites">
-          <svg class="icon" viewBox="0 0 24 24" style="fill: none;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        <button class="hdr-btn" id="btn-favorites">
+          <svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
           <span>Saved</span>
-          <span class="badge-plain" id="badge-favs">0</span>
+          <span class="pill-badge" id="badge-favs">0</span>
         </button>
-        <a href="https://arifwidiyanto.web.id" class="action-btn">
+        <a href="https://arifwidiyanto.web.id" class="hdr-btn">
           <span>Portfolio</span>
           <svg class="icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
         </a>
@@ -961,101 +976,140 @@
     </div>
   </header>
 
-  <!-- Main View Container -->
-  <main>
+  <!-- Main Workspace (Double Sidebar + Viewport) -->
+  <div class="workspace-frame">
     
-    <!-- ======================================================== -->
-    <!-- VIEW 1: DIRECTIVES CATALOG                               -->
-    <!-- ======================================================== -->
-    <div class="view-pane active" id="pane-catalog">
-      <div class="catalog-grid-layout">
-        
-        <!-- Left Filter Sidebar -->
-        <aside class="filter-sidebar" aria-label="Filters">
-          <div>
-            <div class="sidebar-heading">Domains (8)</div>
-            <ul class="sidebar-nav-tree" id="domain-tree">
-              <!-- Rendered via JS -->
-            </ul>
-          </div>
+    <!-- COLUMN 1: Primary Navigation Rail (52px ClickUp Style) -->
+    <nav class="nav-rail" aria-label="Main Module Rail">
+      <button class="rail-action active" id="rail-catalog-btn" title="Directives Catalog (1,015)">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+      </button>
+      <button class="rail-action rail-action-studio" id="rail-studio-btn" title="Prompt-to-Agent Studio Compiler">
+        <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+      </button>
+      <button class="rail-action rail-action-sandbox" id="rail-sandbox-btn" title="Agent Playground Sandbox">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+      </button>
+      <button class="rail-action" id="rail-fav-btn" title="Saved Favorites">
+        <svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+      </button>
 
-          <div>
-            <div class="sidebar-heading">Subcategories (55)</div>
-            <select id="filter-subcat" class="form-select" aria-label="Select Subcategory">
-              <option value="all">All Subcategories (55)</option>
-            </select>
-          </div>
+      <div class="rail-divider"></div>
 
-          <div>
-            <div class="sidebar-heading">Model Recommendation</div>
-            <select id="filter-model" class="form-select" aria-label="Select Model">
-              <option value="all">All Models</option>
-              <option value="claude">Claude 3.5 Sonnet (Coding / Tools)</option>
-              <option value="r1">DeepSeek-R1 / o1 (Reasoning / Math)</option>
-              <option value="gpt">GPT-4o (General / Vision)</option>
-              <option value="ollama">Ollama / Local SLM (Lightweight)</option>
-            </select>
-          </div>
+      <!-- Quick Domain Jumps on Rail -->
+      <button class="rail-action" data-rail-domain="Engineering, Tech & AI" title="Engineering & AI">
+        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 600;">EN</span>
+      </button>
+      <button class="rail-action" data-rail-domain="Business, Strategy & Management" title="Business & Strategy">
+        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 600;">BI</span>
+      </button>
+      <button class="rail-action" data-rail-domain="Finance, Investing & Legal" title="Finance & Legal">
+        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 600;">FN</span>
+      </button>
+      <button class="rail-action" data-rail-domain="Marketing, Sales & Outreach" title="Marketing & Sales">
+        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 600;">MK</span>
+      </button>
 
-          <div style="margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border-subtle); font-size: 11px; color: var(--text-dim);">
-            <div style="margin-bottom: 2px;"><span style="font-family: var(--font-mono);">j / k</span> Move &middot; <span style="font-family: var(--font-mono);">Enter</span> Open</div>
-            <div><span style="font-family: var(--font-mono);">c</span> Copy &middot; <span style="font-family: var(--font-mono);">s</span> Save &middot; <span style="font-family: var(--font-mono);">/</span> Search</div>
-          </div>
-        </aside>
+      <div style="margin-top: auto; display: flex; flex-direction: column; gap: 4px; align-items: center;">
+        <button class="rail-action" id="rail-help-btn" title="Keyboard Shortcuts (?)">
+          <span style="font-family: var(--font-mono); font-size: 11px;">?</span>
+        </button>
+      </div>
+    </nav>
 
-        <!-- Right Main Directives Deck -->
-        <div class="catalog-main">
-          
-          <!-- Controls Toolbar -->
-          <div class="catalog-toolbar">
-            <div class="search-wrapper">
-              <svg class="search-glyph" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-              <input type="text" id="main-search-input" class="search-field" placeholder="Search directives by keyword, role, or workflow... (Press '/' to focus, 'j/k' to navigate)">
-              <button id="search-clear-btn" class="search-clear-trigger">✕</button>
-            </div>
+    <!-- COLUMN 2: Secondary Context Sidebar (240px Monday Style) -->
+    <aside class="context-sidebar" id="context-sidebar" aria-label="Secondary Filters">
+      <div class="sidebar-section-header">
+        <span class="sidebar-section-title" id="context-title">Strategic Clusters</span>
+        <span class="pill-badge" id="context-total-badge">1,015</span>
+      </div>
 
-            <div class="view-toggle-set">
-              <button class="view-btn active" id="btn-grid-mode">GRID</button>
-              <button class="view-btn" id="btn-list-mode">LIST</button>
-            </div>
+      <div class="sidebar-tree-container">
+        <div>
+          <div class="sidebar-section-title" style="margin-bottom: 6px;">Domains (8)</div>
+          <ul class="tree-list" id="domain-tree">
+            <!-- Rendered via JS -->
+          </ul>
+        </div>
 
-            <button class="action-btn" id="btn-copy-master-playbook" title="Copy all saved favorites as a unified system directive">
-              <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-              <span>Copy Playbook</span>
-            </button>
-            <button class="action-btn" id="btn-export-markdown" title="Export filtered directives as Markdown">
-              <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-              <span>Export (.md)</span>
-            </button>
-          </div>
+        <div>
+          <div class="sidebar-section-title" style="margin-bottom: 6px;">Subcategories (55)</div>
+          <select id="filter-subcat" class="form-select" aria-label="Select Subcategory">
+            <option value="all">All Subcategories (55)</option>
+          </select>
+        </div>
 
-          <!-- Active Filter Status -->
-          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-dim); padding: 0 4px;">
-            <div>
-              Showing <strong style="color: var(--text-main);" id="status-count">1,015</strong> directives
-            </div>
-            <div id="status-filter-desc" style="color: var(--text-muted);"></div>
-          </div>
+        <div>
+          <div class="sidebar-section-title" style="margin-bottom: 6px;">Target Model</div>
+          <select id="filter-model" class="form-select" aria-label="Select Model">
+            <option value="all">All Models</option>
+            <option value="claude">Claude 3.5 Sonnet (Coding / Tools)</option>
+            <option value="r1">DeepSeek-R1 / o1 (Reasoning / Math)</option>
+            <option value="gpt">GPT-4o (General / Vision)</option>
+            <option value="ollama">Ollama / Local SLM (Lightweight)</option>
+          </select>
+        </div>
 
-          <!-- Cards Deck -->
-          <div class="cards-deck" id="cards-container">
-            <!-- Rendered by JS -->
-          </div>
-
-          <!-- Load More Pagination -->
-          <div class="load-more-wrap" id="load-more-wrap" style="display: none; justify-content: center; padding: 20px 0;">
-            <button class="action-btn" id="btn-load-more" style="padding: 6px 16px;">Load More Directives</button>
-          </div>
+        <div style="margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border-subtle); font-size: 11px; color: var(--text-dim);">
+          <div style="margin-bottom: 2px;"><span style="font-family: var(--font-mono);">j / k</span> Move &middot; <span style="font-family: var(--font-mono);">Enter</span> Open</div>
+          <div><span style="font-family: var(--font-mono);">c</span> Copy &middot; <span style="font-family: var(--font-mono);">s</span> Save &middot; <span style="font-family: var(--font-mono);">/</span> Search</div>
         </div>
       </div>
-    </div>
+    </aside>
 
-    <!-- ======================================================== -->
-    <!-- VIEW 2: STUDIO COMPILER                                  -->
-    <!-- ======================================================== -->
-    <div class="view-pane" id="pane-studio">
-      <div class="studio-container">
-        
+    <!-- COLUMN 3: Main Viewport Content -->
+    <main class="viewport-content">
+      
+      <!-- ======================================================== -->
+      <!-- VIEW 1: DIRECTIVES CATALOG                               -->
+      <!-- ======================================================== -->
+      <div class="module-pane active" id="pane-catalog">
+        <!-- Controls Toolbar -->
+        <div class="catalog-toolbar">
+          <div class="search-input-wrap">
+            <svg class="search-icon-svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="main-search-input" class="search-input-box" placeholder="Search directives by keyword, role, or workflow... (Press '/' to focus, 'j/k' to navigate)">
+            <button id="search-clear-btn" class="search-clear-x">✕</button>
+          </div>
+
+          <div class="view-mode-toggle">
+            <button class="toggle-btn active" id="btn-grid-mode">GRID</button>
+            <button class="toggle-btn" id="btn-list-mode">LIST</button>
+          </div>
+
+          <button class="hdr-btn" id="btn-copy-master-playbook" title="Copy all saved favorites as a unified system directive">
+            <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            <span>Copy Playbook</span>
+          </button>
+          <button class="hdr-btn" id="btn-export-markdown" title="Export filtered directives as Markdown">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>Export (.md)</span>
+          </button>
+        </div>
+
+        <!-- Active Filter Status -->
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-dim); padding: 0 4px;">
+          <div>
+            Showing <strong style="color: var(--text-main);" id="status-count">1,015</strong> directives
+          </div>
+          <div id="status-filter-desc" style="color: var(--text-muted);"></div>
+        </div>
+
+        <!-- Cards Deck Grid -->
+        <div class="directives-grid" id="cards-container">
+          <!-- Rendered by JS -->
+        </div>
+
+        <!-- Load More Pagination -->
+        <div class="load-more-wrap" id="load-more-wrap" style="display: none; justify-content: center; padding: 20px 0;">
+          <button class="hdr-btn" id="btn-load-more" style="padding: 6px 16px;">Load More Directives</button>
+        </div>
+      </div>
+
+      <!-- ======================================================== -->
+      <!-- VIEW 2: STUDIO COMPILER                                  -->
+      <!-- ======================================================== -->
+      <div class="module-pane" id="pane-studio">
         <div class="studio-split-grid">
           <!-- Left: Input Task Area -->
           <div class="studio-panel-box">
@@ -1095,80 +1149,80 @@
                 <button class="strip-tab" data-studio-fmt="modelfile">Modelfile</button>
                 <button class="strip-tab" data-studio-fmt="cli">CLI Snippet</button>
               </div>
-              <button class="action-btn" id="btn-studio-copy" style="padding: 2px 8px; font-size: 11px;">Copy</button>
+              <button class="hdr-btn" id="btn-studio-copy" style="padding: 2px 8px; font-size: 11px;">Copy</button>
             </div>
             <div class="pane-body">
               <pre id="studio-output-view" class="code-display-block">// Your compiled contract will appear here in real-time.
 // Type an objective on the left or select a preset to start.</pre>
               
-              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: var(--text-dim);">
+              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: var(--text-dim); flex-wrap: wrap; gap: 6px;">
                 <div id="studio-cost-label">Est. Tokens: ~0 &middot; $0.000 / call</div>
                 <div style="display: flex; gap: 4px;">
-                  <button class="action-btn" id="btn-studio-test-sandbox" style="font-size: 11px;">Test in Sandbox</button>
-                  <button class="action-btn" id="btn-studio-chatgpt" style="font-size: 11px;">ChatGPT</button>
-                  <button class="action-btn" id="btn-studio-claude" style="font-size: 11px;">Claude</button>
-                  <button class="action-btn" id="btn-studio-dl" style="font-size: 11px;">Download</button>
+                  <button class="hdr-btn" id="btn-studio-test-sandbox" style="font-size: 11px;">Test in Sandbox</button>
+                  <button class="hdr-btn" id="btn-studio-chatgpt" style="font-size: 11px;">ChatGPT</button>
+                  <button class="hdr-btn" id="btn-studio-claude" style="font-size: 11px;">Claude</button>
+                  <button class="hdr-btn" id="btn-studio-dl" style="font-size: 11px;">Download</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- ======================================================== -->
-    <!-- VIEW 3: CHATBOT PLAYGROUND SANDBOX                       -->
-    <!-- ======================================================== -->
-    <div class="view-pane" id="pane-sandbox">
-      <div class="playground-split-grid">
-        <!-- Left: Active Injected Directive -->
-        <div class="sandbox-panel">
-          <div class="sidebar-heading">Active System Directive</div>
-          <textarea id="sandbox-system-directive" class="form-select" style="min-height: 200px; font-family: var(--font-mono); font-size: 11px; resize: vertical; line-height: 1.5;" placeholder="Active Agent Directive loaded here... (Click 'Test' on any prompt card or Studio Compiler to inject)"></textarea>
+      <!-- ======================================================== -->
+      <!-- VIEW 3: CHATBOT PLAYGROUND SANDBOX                       -->
+      <!-- ======================================================== -->
+      <div class="module-pane" id="pane-sandbox">
+        <div class="playground-split-grid">
+          <!-- Left: Active Injected Directive -->
+          <div class="sandbox-panel">
+            <div class="sidebar-section-title" style="padding: 0;">Active System Directive</div>
+            <textarea id="sandbox-system-directive" class="form-select" style="min-height: 200px; font-family: var(--font-mono); font-size: 11px; resize: vertical; line-height: 1.5;" placeholder="Active Agent Directive loaded here... (Click 'Test' on any prompt card or Studio Compiler to inject)"></textarea>
 
-          <div style="display: flex; flex-direction: column; gap: 8px; padding-top: 8px; border-top: 1px solid var(--border-subtle);">
-            <div>
-              <div class="sidebar-heading" style="padding: 0;">Execution Engine</div>
-              <select id="sandbox-engine-select" class="form-select">
-                <option value="simulated">Intelligent Agentic Simulator (Zero-Latency)</option>
-                <option value="ollama">Ollama Local (http://localhost:11434)</option>
-                <option value="openai">OpenAI (GPT-4o / o3-mini)</option>
-                <option value="anthropic">Anthropic (Claude 3.5 Sonnet)</option>
-              </select>
+            <div style="display: flex; flex-direction: column; gap: 8px; padding-top: 8px; border-top: 1px solid var(--border-subtle);">
+              <div>
+                <div class="sidebar-section-title" style="padding: 0; margin-bottom: 4px;">Execution Engine</div>
+                <select id="sandbox-engine-select" class="form-select">
+                  <option value="simulated">Intelligent Agentic Simulator (Zero-Latency)</option>
+                  <option value="ollama">Ollama Local (http://localhost:11434)</option>
+                  <option value="openai">OpenAI (GPT-4o / o3-mini)</option>
+                  <option value="anthropic">Anthropic (Claude 3.5 Sonnet)</option>
+                </select>
+              </div>
+
+              <label style="font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                <input type="checkbox" id="sandbox-compare-mode" checked>
+                <span>Side-by-side: Raw vs Invariant</span>
+              </label>
+
+              <div id="sandbox-api-key-box" style="display: none; flex-direction: column; gap: 4px;">
+                <div class="sidebar-section-title" style="padding: 0;">API Key (Local only)</div>
+                <input type="password" id="sandbox-api-key" class="form-select" placeholder="sk-...">
+              </div>
+
+              <button class="hdr-btn" id="btn-sandbox-clear-chat" style="justify-content: center;">Clear Chat</button>
             </div>
-
-            <label style="font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; cursor: pointer;">
-              <input type="checkbox" id="sandbox-compare-mode" checked>
-              <span>Side-by-side: Raw vs Invariant</span>
-            </label>
-
-            <div id="sandbox-api-key-box" style="display: none; flex-direction: column; gap: 4px;">
-              <div class="sidebar-heading" style="padding: 0;">API Key (Local only)</div>
-              <input type="password" id="sandbox-api-key" class="form-select" placeholder="sk-...">
-            </div>
-
-            <button class="action-btn" id="btn-sandbox-clear-chat" style="justify-content: center;">Clear Chat</button>
           </div>
-        </div>
 
-        <!-- Right: Interactive Chat Stream -->
-        <div class="chat-display-area">
-          <div class="chat-scroll-stream" id="sandbox-chat-stream">
-            <div class="chat-msg-row msg-agent">
+          <!-- Right: Interactive Chat Stream -->
+          <div class="chat-display-area">
+            <div class="chat-scroll-stream" id="sandbox-chat-stream">
+              <div class="chat-msg-row msg-agent">
 [SYSTEM RUNTIME INITIALIZED]
 Ready to execute test scenarios under strict Invariant Contract standards.
 Send your task below or inject a prompt from the Catalog!
+              </div>
             </div>
-          </div>
 
-          <div class="chat-input-bar">
-            <input type="text" id="sandbox-chat-input" class="chat-text-box" placeholder="Ask the agent to execute a task, evaluate edge-cases, or synthesize code...">
-            <button id="btn-sandbox-submit" class="chat-send-btn">Execute</button>
+            <div class="chat-input-bar">
+              <input type="text" id="sandbox-chat-input" class="chat-text-box" placeholder="Ask the agent to execute a task, evaluate edge-cases, or synthesize code...">
+              <button id="btn-sandbox-submit" class="chat-send-btn">Execute</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </main>
+    </main>
+  </div>
 
   <!-- Modal Directive Inspector -->
   <div class="modal-overlay" id="modal-inspector" role="dialog" aria-modal="true" aria-labelledby="modal-heading-text">
@@ -1185,7 +1239,7 @@ Send your task below or inject a prompt from the Catalog!
 
       <div class="modal-body-content">
         <!-- Runtime Formatter Tabs -->
-        <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; background: var(--input); border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); padding: 4px 8px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; background: var(--bg-input); border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); padding: 4px 8px;">
           <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 600; color: var(--text-dim); text-transform: uppercase;">Runtime Target:</span>
           <div style="display: flex; gap: 2px; flex-wrap: wrap;">
             <button class="strip-tab active" data-modal-fmt="markdown">Markdown</button>
@@ -1201,7 +1255,7 @@ Send your task below or inject a prompt from the Catalog!
         </div>
 
         <!-- In-Modal Variable Customizer -->
-        <div id="modal-param-panel" style="display: none; background: var(--input); border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); padding: 8px;">
+        <div id="modal-param-panel" style="display: none; background: var(--bg-input); border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); padding: 8px;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
             <span style="font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; font-weight: 600; color: var(--text-dim);">Live Parameter Customizer</span>
             <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-dim);" id="modal-metric-indicator">
@@ -1223,26 +1277,26 @@ Send your task below or inject a prompt from the Catalog!
         </div>
 
         <!-- Artifact Exporters -->
-        <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 8px; background: var(--input); border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); font-size: 11px; color: var(--text-dim); flex-wrap: wrap; gap: 6px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 8px; background: var(--bg-input); border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); font-size: 11px; color: var(--text-dim); flex-wrap: wrap; gap: 6px;">
           <span>Export Artifact:</span>
           <div style="display: flex; gap: 4px; flex-wrap: wrap;">
-            <button class="action-btn" id="dl-cursorrules" style="font-size: 11px; padding: 2px 6px;">.cursorrules</button>
-            <button class="action-btn" id="dl-skill" style="font-size: 11px; padding: 2px 6px;">SKILL.md</button>
-            <button class="action-btn" id="dl-modelfile" style="font-size: 11px; padding: 2px 6px;">Modelfile</button>
-            <button class="action-btn" id="dl-txt" style="font-size: 11px; padding: 2px 6px;">system_prompt.txt</button>
+            <button class="hdr-btn" id="dl-cursorrules" style="font-size: 11px; padding: 2px 6px;">.cursorrules</button>
+            <button class="hdr-btn" id="dl-skill" style="font-size: 11px; padding: 2px 6px;">SKILL.md</button>
+            <button class="hdr-btn" id="dl-modelfile" style="font-size: 11px; padding: 2px 6px;">Modelfile</button>
+            <button class="hdr-btn" id="dl-txt" style="font-size: 11px; padding: 2px 6px;">system_prompt.txt</button>
           </div>
         </div>
       </div>
 
       <div class="modal-footer">
         <div style="display: flex; align-items: center; gap: 6px;">
-          <button class="action-btn" id="btn-modal-test-sandbox">Test in Sandbox</button>
-          <button class="action-btn" id="btn-modal-chatgpt">ChatGPT</button>
-          <button class="action-btn" id="btn-modal-claude">Claude</button>
-          <button class="action-btn" id="btn-modal-share-link">Copy Link</button>
+          <button class="hdr-btn" id="btn-modal-test-sandbox">Test in Sandbox</button>
+          <button class="hdr-btn" id="btn-modal-chatgpt">ChatGPT</button>
+          <button class="hdr-btn" id="btn-modal-claude">Claude</button>
+          <button class="hdr-btn" id="btn-modal-share-link">Copy Link</button>
         </div>
         <div style="display: flex; align-items: center; gap: 6px;">
-          <button class="action-btn" id="btn-modal-dismiss">Dismiss</button>
+          <button class="hdr-btn" id="btn-modal-dismiss">Dismiss</button>
           <button class="card-btn card-btn-copy" id="btn-modal-copy-action" style="padding: 4px 12px;">Copy Directive</button>
         </div>
       </div>
@@ -1590,9 +1644,17 @@ ${rawBase}
       document.getElementById('pane-studio').classList.toggle('active', viewName === 'studio');
       document.getElementById('pane-sandbox').classList.toggle('active', viewName === 'sandbox');
 
-      document.getElementById('tab-catalog').classList.toggle('active', viewName === 'catalog');
-      document.getElementById('tab-studio').classList.toggle('active', viewName === 'studio');
-      document.getElementById('tab-sandbox').classList.toggle('active', viewName === 'sandbox');
+      document.getElementById('rail-catalog-btn').classList.toggle('active', viewName === 'catalog');
+      document.getElementById('rail-studio-btn').classList.toggle('active', viewName === 'studio');
+      document.getElementById('rail-sandbox-btn').classList.toggle('active', viewName === 'sandbox');
+
+      if (viewName === 'studio') {
+        document.getElementById('context-title').textContent = "Studio Engine";
+      } else if (viewName === 'sandbox') {
+        document.getElementById('context-title').textContent = "Sandbox Runtime";
+      } else {
+        document.getElementById('context-title').textContent = "Strategic Clusters";
+      }
 
       syncUrlParams();
     }
@@ -1616,7 +1678,7 @@ ${rawBase}
       }
       if (domain && masterData.taxonomySummary[domain]) {
         filterState.domain = domain;
-        document.querySelectorAll('#domain-tree .tree-button').forEach(b => {
+        document.querySelectorAll('#domain-tree .tree-row-btn').forEach(b => {
           b.classList.toggle('active', b.dataset.domain === domain);
         });
         updateSubcatDropdown();
@@ -1661,9 +1723,9 @@ ${rawBase}
       const list = document.getElementById('domain-tree');
       list.innerHTML = `
         <li>
-          <button class="tree-button ${filterState.domain === 'all' ? 'active' : ''}" data-domain="all">
-            <span class="tree-label">All Clusters</span>
-            <span class="tree-counter">${allPrompts.length}</span>
+          <button class="tree-row-btn ${filterState.domain === 'all' ? 'active' : ''}" data-domain="all">
+            <span class="tree-row-label">All Clusters</span>
+            <span class="tree-row-count">${allPrompts.length}</span>
           </button>
         </li>
       `;
@@ -1671,9 +1733,9 @@ ${rawBase}
       for (const [domain, count] of Object.entries(masterData.taxonomySummary)) {
         const li = document.createElement('li');
         li.innerHTML = `
-          <button class="tree-button ${filterState.domain === domain ? 'active' : ''}" data-domain="${domain}">
-            <span class="tree-label">${domain}</span>
-            <span class="tree-counter">${count}</span>
+          <button class="tree-row-btn ${filterState.domain === domain ? 'active' : ''}" data-domain="${domain}">
+            <span class="tree-row-label">${domain}</span>
+            <span class="tree-row-count">${count}</span>
           </button>
         `;
         list.appendChild(li);
@@ -1701,7 +1763,7 @@ ${rawBase}
     }
 
     function updateFocusedCard() {
-      const cards = document.querySelectorAll('.cards-deck .flat-card');
+      const cards = document.querySelectorAll('.directives-grid .flat-card');
       cards.forEach((c, idx) => {
         c.classList.toggle('focused', idx === focusedIndex);
       });
@@ -1786,11 +1848,11 @@ export async function executeDeterministicTask(input: string): Promise<{ success
 
         return `
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%;">
-  <div style="background: var(--input); border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); padding: 8px; font-size: 11px;">
+  <div style="background: var(--bg-input); border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); padding: 8px; font-size: 11px;">
     <div style="color: var(--accent-amber); font-weight: 600; font-size: 11px; margin-bottom: 4px; font-family: var(--font-mono);">RAW UNSTRUCTURED</div>
     <div style="white-space: pre-wrap; font-family: var(--font-sans); color: var(--text-muted);">${rawSim}</div>
   </div>
-  <div style="background: var(--input); border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); padding: 8px; font-size: 11px;">
+  <div style="background: var(--bg-input); border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); padding: 8px; font-size: 11px;">
     <div style="color: var(--accent-blue); font-weight: 600; font-size: 11px; margin-bottom: 4px; font-family: var(--font-mono);">INVARIANT CONTRACT</div>
     <div style="white-space: pre-wrap; font-family: var(--font-mono); color: #e4e4e7;">${agentSim}</div>
   </div>
@@ -1829,10 +1891,26 @@ Executed task: "${userInput}" under active system directives.
     }
 
     function bindEvents() {
-      // Module Nav
-      document.getElementById('tab-catalog').addEventListener('click', () => switchModuleView('catalog'));
-      document.getElementById('tab-studio').addEventListener('click', () => switchModuleView('studio'));
-      document.getElementById('tab-sandbox').addEventListener('click', () => switchModuleView('sandbox'));
+      // Primary Rail actions
+      document.getElementById('rail-catalog-btn').addEventListener('click', () => switchModuleView('catalog'));
+      document.getElementById('rail-studio-btn').addEventListener('click', () => switchModuleView('studio'));
+      document.getElementById('rail-sandbox-btn').addEventListener('click', () => switchModuleView('sandbox'));
+
+      // Quick domain jumps from primary rail
+      document.querySelectorAll('[data-rail-domain]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          switchModuleView('catalog');
+          const targetDomain = btn.dataset.railDomain;
+          filterState.domain = targetDomain;
+          filterState.onlyFavs = false;
+          document.querySelectorAll('#domain-tree .tree-row-btn').forEach(b => {
+            b.classList.toggle('active', b.dataset.domain === targetDomain);
+          });
+          updateSubcatDropdown();
+          syncUrlParams();
+          render();
+        });
+      });
 
       // Studio Compiler Buttons
       document.getElementById('btn-run-compile').addEventListener('click', executeStudioCompilation);
@@ -1929,13 +2007,14 @@ Chat history cleared. Active system directives preserved.
 
       // Sidebar Domain
       document.getElementById('domain-tree').addEventListener('click', (e) => {
-        const btn = e.target.closest('.tree-button');
+        const btn = e.target.closest('.tree-row-btn');
         if (!btn) return;
-        document.querySelectorAll('#domain-tree .tree-button').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('#domain-tree .tree-row-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         filterState.domain = btn.dataset.domain;
         filterState.onlyFavs = false;
         document.getElementById('btn-favorites').classList.remove('active');
+        document.getElementById('rail-fav-btn').classList.remove('active');
         
         visibleCount = PAGE_SIZE;
         updateSubcatDropdown();
@@ -2038,13 +2117,16 @@ Chat history cleared. Active system directives preserved.
       });
 
       // Favorites Toggle
-      document.getElementById('btn-favorites').addEventListener('click', () => {
+      const handleFavToggle = () => {
         switchModuleView('catalog');
         filterState.onlyFavs = !filterState.onlyFavs;
         document.getElementById('btn-favorites').classList.toggle('active', filterState.onlyFavs);
+        document.getElementById('rail-fav-btn').classList.toggle('active', filterState.onlyFavs);
         visibleCount = PAGE_SIZE;
         render();
-      });
+      };
+      document.getElementById('btn-favorites').addEventListener('click', handleFavToggle);
+      document.getElementById('rail-fav-btn').addEventListener('click', handleFavToggle);
 
       document.getElementById('btn-copy-master-playbook').addEventListener('click', copyMegaPlaybook);
 
@@ -2114,6 +2196,7 @@ Chat history cleared. Active system directives preserved.
       // Shortcuts Modal
       const openShortcuts = () => toggleShortcutsModal(true);
       document.getElementById('btn-shortcuts').addEventListener('click', openShortcuts);
+      document.getElementById('rail-help-btn').addEventListener('click', openShortcuts);
       document.getElementById('btn-shortcuts-x').addEventListener('click', () => toggleShortcutsModal(false));
       document.getElementById('btn-shortcuts-ok').addEventListener('click', () => toggleShortcutsModal(false));
       document.getElementById('modal-shortcuts').addEventListener('click', (e) => {
@@ -2306,7 +2389,7 @@ Chat history cleared. Active system directives preserved.
           <div style="grid-column: 1 / -1; text-align: center; padding: 40px 16px; background: var(--bg-panel); border: 1px dashed var(--border-subtle); border-radius: var(--radius-md);">
             <div style="font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 4px;">No matching directives found</div>
             <div style="font-size: 12px; color: var(--text-dim); margin-bottom: 12px;">Try adjusting keywords or resetting filters.</div>
-            <button class="action-btn" id="btn-reset-filters" style="margin: 0 auto;">Reset Filters</button>
+            <button class="hdr-btn" id="btn-reset-filters" style="margin: 0 auto;">Reset Filters</button>
           </div>
         `;
         document.getElementById('btn-reset-filters').addEventListener('click', () => {
@@ -2318,6 +2401,7 @@ Chat history cleared. Active system directives preserved.
           document.getElementById('main-search-input').value = '';
           document.getElementById('search-clear-btn').classList.remove('visible');
           document.getElementById('btn-favorites').classList.remove('active');
+          document.getElementById('rail-fav-btn').classList.remove('active');
           document.getElementById('filter-model').value = 'all';
           buildSidebar();
           syncUrlParams();
@@ -2339,7 +2423,7 @@ Chat history cleared. Active system directives preserved.
 
         card.innerHTML = `
           <div>
-            <div class="card-top">
+            <div class="card-top-row">
               <div class="card-meta-chips">
                 <span class="id-tag">#${p.id}</span>
                 <span class="flat-chip">${p.subCategory}</span>
