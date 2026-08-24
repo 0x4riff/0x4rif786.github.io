@@ -1,58 +1,50 @@
 <!DOCTYPE html>
-<html lang="id" class="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Agent Prompts Hub — 876 Production-Ready Directives</title>
-  <meta name="description" content="Curated & engineered directory of 876 structured AI Agent Prompts with pure Indonesian & English language modes, live variable customizer, keyboard shortcuts, bookmarks, and instant search.">
+  <title>AI Agent Prompts Hub — 876 Production Directives</title>
+  <meta name="description" content="A curated, searchable index of 876 structured AI Agent Directives with live parameter customization, bookmarks, and instant export.">
   <link rel="canonical" href="https://arifwidiyanto.web.id/prompt/">
   
-  <!-- Fonts -->
+  <!-- Premium Engineered Fonts: Inter Display + Inter + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-
   <style>
     :root {
-      --bg-base: #090a0f;
-      --bg-subtle: #0f1219;
-      --bg-card: #131722;
-      --bg-card-hover: #181d2b;
-      --bg-surface: #1e2436;
-      --bg-input: #0b0e14;
+      --bg: #09090b;
+      --bg-subtle: #121215;
+      --panel: #18181b;
+      --panel-hover: #202024;
+      --surface: #27272a;
+      --input: #0e0e11;
       
-      --border-subtle: #1e2638;
-      --border-medium: #2a354d;
-      --border-active: #3b82f6;
+      --border-subtle: #27272a;
+      --border-medium: #3f3f46;
+      --border-focus: #71717a;
       
-      --text-primary: #f8fafc;
-      --text-secondary: #94a3b8;
-      --text-tertiary: #64748b;
-      
-      --accent-primary: #3b82f6;
-      --accent-primary-subtle: rgba(59, 130, 246, 0.12);
-      --accent-emerald: #10b981;
-      --accent-emerald-subtle: rgba(16, 185, 129, 0.12);
-      --accent-amber: #f59e0b;
-      --accent-rose: #f43f5e;
-      --accent-indigo: #6366f1;
+      --fg: #fafafa;
+      --fg-muted: #a1a1aa;
+      --fg-dim: #71717a;
+      --fg-sub: #52525b;
 
-      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      --font-display: 'Sora', var(--font-sans);
+      --blue-accent: #3b82f6;
+      --emerald: #10b981;
+      --amber: #f59e0b;
+
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
 
+      --radius-xs: 4px;
       --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 14px;
-      --radius-xl: 20px;
-      
-      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.4), 0 2px 6px -1px rgba(0, 0, 0, 0.3);
-      --shadow-lg: 0 12px 32px -4px rgba(0, 0, 0, 0.6);
-      --shadow-modal: 0 24px 48px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px var(--border-medium);
+      --radius-md: 8px;
+      --radius-lg: 12px;
+
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
+      --shadow-modal: 0 20px 40px rgba(0,0,0,0.7), 0 0 0 1px var(--border-subtle);
     }
 
     * {
@@ -62,9 +54,11 @@
     }
 
     body {
-      background-color: var(--bg-base);
-      color: var(--text-primary);
+      background-color: var(--bg);
+      color: var(--fg);
       font-family: var(--font-sans);
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+      letter-spacing: -0.011em;
       line-height: 1.5;
       min-height: 100vh;
       display: flex;
@@ -73,790 +67,669 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Top Utility Bar */
-    .top-nav {
+    /* Minimalist Technical Navbar */
+    .nav {
       position: sticky;
       top: 0;
-      z-index: 40;
-      background: rgba(9, 10, 15, 0.84);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      z-index: 30;
+      background: rgba(9, 9, 11, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-subtle);
     }
-    .top-nav-inner {
-      max-width: 1560px;
+    .nav-inner {
+      max-width: 1520px;
       margin: 0 auto;
-      padding: 0.75rem 1.5rem;
+      padding: 0.65rem 1.25rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
     }
-    .brand-link {
+    .nav-brand {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.6rem;
       text-decoration: none;
-      color: var(--text-primary);
+      color: var(--fg);
     }
-    .brand-logo {
-      width: 32px;
-      height: 32px;
-      border-radius: var(--radius-sm);
-      background: linear-gradient(135deg, #2563eb, #7c3aed);
+    .nav-logo {
+      width: 26px;
+      height: 26px;
+      border-radius: var(--radius-xs);
+      background: #27272a;
+      border: 1px solid #3f3f46;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #fff;
-      font-weight: 800;
-      font-family: var(--font-display);
-      font-size: 0.95rem;
-      box-shadow: 0 0 16px rgba(59, 130, 246, 0.35);
-    }
-    .brand-name {
-      font-family: var(--font-display);
       font-weight: 700;
-      font-size: 0.95rem;
-      letter-spacing: -0.01em;
+      font-size: 0.85rem;
     }
-    .brand-subtitle {
-      font-size: 0.75rem;
-      color: var(--text-tertiary);
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    /* Language Switcher Button Segment */
-    .lang-switcher {
-      display: flex;
-      background: var(--bg-input);
-      border: 1px solid var(--border-medium);
-      border-radius: var(--radius-sm);
-      padding: 0.15rem;
-    }
-    .lang-btn {
-      padding: 0.3rem 0.65rem;
-      background: transparent;
-      border: none;
-      border-radius: 4px;
-      color: var(--text-secondary);
-      font-size: 0.775rem;
+    .nav-title {
       font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      transition: all 0.15s ease;
+      font-size: 0.875rem;
+      letter-spacing: -0.015em;
     }
-    .lang-btn:hover {
-      color: var(--text-primary);
-    }
-    .lang-btn.active {
-      background: var(--accent-primary);
-      color: #fff;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-    }
-
-    .nav-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.4rem 0.75rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.825rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      text-decoration: none;
-      border: 1px solid transparent;
-      transition: all 0.15s ease;
-      cursor: pointer;
-      background: transparent;
-    }
-    .nav-btn:hover {
-      color: var(--text-primary);
-      background: var(--bg-surface);
-      border-color: var(--border-subtle);
-    }
-    .nav-btn.active {
-      background: rgba(245, 158, 11, 0.15);
-      border-color: rgba(245, 158, 11, 0.3);
-      color: #fbbf24;
-    }
-    .kbd-shortcut {
-      display: inline-flex;
-      align-items: center;
+    .nav-tag {
       font-size: 0.7rem;
-      padding: 0.15rem 0.4rem;
-      border-radius: 4px;
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-medium);
-      color: var(--text-tertiary);
       font-family: var(--font-mono);
-      font-weight: 600;
+      color: var(--fg-dim);
+      background: var(--surface);
+      padding: 0.1rem 0.4rem;
+      border-radius: var(--radius-xs);
     }
 
-    /* Main App Layout */
-    .app-layout {
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.65rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--fg-muted);
+      text-decoration: none;
+      background: transparent;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.12s ease;
+      user-select: none;
+    }
+    .btn:hover {
+      color: var(--fg);
+      background: var(--surface);
+    }
+    .btn-active {
+      background: var(--surface);
+      color: #fff;
+      border-color: var(--border-medium);
+    }
+    .btn-primary {
+      background: #fafafa;
+      color: #09090b;
+      font-weight: 550;
+    }
+    .btn-primary:hover {
+      background: #e4e4e7;
+      color: #09090b;
+    }
+
+    /* Layout Frame */
+    .workspace {
       flex: 1;
-      max-width: 1560px;
+      max-width: 1520px;
       width: 100%;
       margin: 0 auto;
-      padding: 1.5rem;
+      padding: 1.25rem;
       display: grid;
-      grid-template-columns: 290px 1fr;
-      gap: 2rem;
+      grid-template-columns: 260px 1fr;
+      gap: 1.5rem;
       align-items: start;
     }
 
-    /* Left Sidebar */
+    /* Sidebar Navigation */
     .sidebar {
       position: sticky;
-      top: 4.5rem;
-      background: var(--bg-card);
+      top: 4rem;
+      background: var(--panel);
       border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 1.25rem;
+      border-radius: var(--radius-md);
+      padding: 0.85rem;
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
-      max-height: calc(100vh - 6rem);
+      gap: 1.1rem;
+      max-height: calc(100vh - 5.5rem);
       overflow-y: auto;
       scrollbar-width: thin;
-      scrollbar-color: var(--border-medium) transparent;
+      scrollbar-color: var(--border-subtle) transparent;
     }
-    .sidebar-section-title {
-      font-size: 0.72rem;
+    .sidebar-label {
+      font-size: 0.68rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 700;
-      color: var(--text-tertiary);
-      margin-bottom: 0.5rem;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+      color: var(--fg-dim);
+      margin-bottom: 0.4rem;
+      padding: 0 0.4rem;
     }
-    .sidebar-nav-list {
+    .nav-menu-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.25rem;
+      gap: 0.15rem;
     }
-    .sidebar-item {
+    .nav-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.5rem 0.65rem;
+      padding: 0.4rem 0.55rem;
       border-radius: var(--radius-sm);
-      font-size: 0.835rem;
-      font-weight: 500;
-      color: var(--text-secondary);
+      font-size: 0.8rem;
+      font-weight: 450;
+      color: var(--fg-muted);
       background: transparent;
       border: 1px solid transparent;
       cursor: pointer;
       width: 100%;
       text-align: left;
-      transition: all 0.15s ease;
+      transition: all 0.12s ease;
     }
-    .sidebar-item:hover {
-      color: var(--text-primary);
-      background: var(--bg-surface);
+    .nav-item:hover {
+      color: var(--fg);
+      background: var(--surface);
     }
-    .sidebar-item.active {
-      color: #93c5fd;
-      background: var(--accent-primary-subtle);
-      border-color: rgba(59, 130, 246, 0.3);
-      font-weight: 600;
+    .nav-item.active {
+      color: #fff;
+      background: var(--surface);
+      border-color: var(--border-medium);
+      font-weight: 550;
     }
-    .sidebar-item-left {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+    .nav-item-name {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      padding-right: 0.4rem;
     }
-    .sidebar-badge {
-      font-size: 0.725rem;
+    .count-badge {
+      font-size: 0.68rem;
       font-family: var(--font-mono);
-      color: var(--text-tertiary);
-      padding: 0.1rem 0.35rem;
-      border-radius: 4px;
-      background: rgba(0, 0, 0, 0.2);
+      color: var(--fg-dim);
     }
-    .sidebar-item.active .sidebar-badge {
-      color: var(--accent-primary);
-      background: rgba(59, 130, 246, 0.2);
+    .nav-item.active .count-badge {
+      color: var(--fg);
     }
 
-    .subcat-select {
+    .select-subcat {
       width: 100%;
-      padding: 0.6rem 0.75rem;
-      background: var(--bg-input);
-      border: 1px solid var(--border-medium);
+      padding: 0.45rem 0.6rem;
+      background: var(--input);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
-      color: var(--text-primary);
-      font-size: 0.825rem;
+      color: var(--fg);
+      font-size: 0.78rem;
       font-family: var(--font-sans);
       outline: none;
       cursor: pointer;
     }
-    .subcat-select:focus {
-      border-color: var(--accent-primary);
+    .select-subcat:focus {
+      border-color: var(--border-focus);
     }
 
-    /* Content Area */
-    .content-area {
+    /* Main Deck */
+    .deck {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1rem;
       min-width: 0;
     }
 
-    /* Header Banner Hero */
-    .hub-header {
-      background: linear-gradient(180deg, var(--bg-card) 0%, rgba(19, 23, 34, 0.6) 100%);
+    /* Stream Header */
+    .deck-header {
+      background: var(--panel);
       border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 1.75rem 2rem;
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1rem;
       flex-wrap: wrap;
     }
-    .hub-header-left {
-      max-width: 680px;
-    }
-    .hub-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.25rem 0.65rem;
-      border-radius: 999px;
-      background: var(--accent-primary-subtle);
-      border: 1px solid rgba(59, 130, 246, 0.25);
-      color: #93c5fd;
-      font-size: 0.75rem;
-      font-weight: 600;
-      margin-bottom: 0.6rem;
-    }
-    .hub-title {
-      font-family: var(--font-display);
-      font-size: 1.75rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
+    .deck-title {
+      font-size: 1.25rem;
+      font-weight: 650;
       color: #fff;
-      line-height: 1.25;
-      margin-bottom: 0.4rem;
+      letter-spacing: -0.02em;
     }
-    .hub-desc {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      line-height: 1.6;
+    .deck-desc {
+      color: var(--fg-muted);
+      font-size: 0.84rem;
+      margin-top: 0.2rem;
+      max-width: 600px;
     }
-
-    .hub-metrics {
+    .deck-stats {
       display: flex;
-      gap: 1rem;
+      gap: 0.75rem;
     }
-    .metric-pill {
-      background: var(--bg-base);
+    .stat-pill {
+      background: var(--bg);
       border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 0.6rem 1rem;
+      border-radius: var(--radius-sm);
+      padding: 0.4rem 0.75rem;
       text-align: center;
     }
-    .metric-val {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 1.25rem;
+    .stat-pill-val {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 600;
       color: #fff;
     }
-    .metric-name {
-      font-size: 0.7rem;
+    .stat-pill-lbl {
+      font-size: 0.65rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      color: var(--text-tertiary);
+      color: var(--fg-dim);
     }
 
-    /* Search & Filter Toolbar */
-    .toolbar {
-      background: var(--bg-card);
+    /* Control Bar */
+    .controls {
+      background: var(--panel);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
-      padding: 0.6rem;
+      padding: 0.5rem;
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.6rem;
       flex-wrap: wrap;
     }
-    .search-box {
+    .search-wrapper {
       flex: 1;
-      min-width: 260px;
+      min-width: 240px;
       position: relative;
       display: flex;
       align-items: center;
     }
-    .search-icon {
+    .search-glyph {
       position: absolute;
-      left: 0.85rem;
-      color: var(--text-tertiary);
+      left: 0.75rem;
+      color: var(--fg-dim);
       pointer-events: none;
+      font-size: 0.8rem;
     }
     .search-input {
       width: 100%;
-      padding: 0.65rem 2.4rem 0.65rem 2.3rem;
-      background: var(--bg-input);
+      padding: 0.45rem 2.2rem 0.45rem 2rem;
+      background: var(--input);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
-      color: var(--text-primary);
-      font-size: 0.875rem;
+      color: var(--fg);
+      font-size: 0.825rem;
       font-family: var(--font-sans);
       outline: none;
-      transition: all 0.15s ease;
     }
     .search-input:focus {
-      border-color: var(--accent-primary);
-      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+      border-color: var(--border-focus);
     }
-    .search-clear-btn {
+    .search-clear {
       position: absolute;
-      right: 0.75rem;
+      right: 0.6rem;
       background: none;
       border: none;
-      color: var(--text-tertiary);
+      color: var(--fg-dim);
       cursor: pointer;
       display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 0.2rem;
+      font-size: 0.75rem;
+      padding: 0.15rem;
     }
-    .search-clear-btn.active {
-      display: flex;
+    .search-clear.visible {
+      display: block;
     }
 
-    .view-toggles {
+    .view-group {
       display: flex;
-      align-items: center;
-      gap: 0.25rem;
-      background: var(--bg-input);
+      background: var(--input);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
-      padding: 0.2rem;
+      padding: 0.15rem;
     }
-    .view-toggle-btn {
+    .view-btn {
       background: transparent;
       border: none;
-      color: var(--text-tertiary);
-      padding: 0.35rem 0.5rem;
-      border-radius: 4px;
+      color: var(--fg-dim);
+      padding: 0.25rem 0.45rem;
+      border-radius: 3px;
       cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      transition: all 0.15s;
+      font-size: 0.75rem;
     }
-    .view-toggle-btn.active {
-      background: var(--bg-surface);
+    .view-btn.active {
+      background: var(--surface);
       color: #fff;
     }
 
-    .export-btn {
-      padding: 0.55rem 0.85rem;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-medium);
-      border-radius: var(--radius-sm);
-      color: var(--text-secondary);
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: all 0.15s;
-    }
-    .export-btn:hover {
-      color: #fff;
-      border-color: var(--text-tertiary);
-    }
-
-    /* Stream Grid */
-    .prompt-grid {
+    /* Cards Grid */
+    .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-      gap: 1rem;
+      gap: 0.85rem;
     }
-    .prompt-grid.list-view {
+    .grid.list {
       grid-template-columns: 1fr;
     }
 
-    /* Prompt Card */
-    .p-card {
-      background: var(--bg-card);
+    .card {
+      background: var(--panel);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
-      padding: 1.2rem;
+      padding: 1rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
+      transition: border-color 0.12s, transform 0.12s;
       cursor: pointer;
     }
-    .p-card:hover {
-      background: var(--bg-card-hover);
+    .card:hover {
+      background: var(--panel-hover);
       border-color: var(--border-medium);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
     }
 
-    .p-card-top {
+    .card-meta {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: space-between;
-      gap: 0.5rem;
-      margin-bottom: 0.6rem;
-    }
-    .p-card-meta {
-      display: flex;
-      align-items: center;
       gap: 0.4rem;
-      flex-wrap: wrap;
-    }
-    .p-id {
-      font-family: var(--font-mono);
-      font-size: 0.725rem;
-      font-weight: 600;
-      color: var(--text-tertiary);
-    }
-    .p-tag {
-      font-size: 0.7rem;
-      font-weight: 600;
-      padding: 0.15rem 0.45rem;
-      border-radius: 4px;
-      background: var(--bg-surface);
-      color: var(--text-secondary);
-      border: 1px solid var(--border-subtle);
-    }
-
-    .p-favorite-btn {
-      background: none;
-      border: none;
-      color: var(--text-tertiary);
-      cursor: pointer;
-      padding: 0.25rem;
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      transition: color 0.15s;
-    }
-    .p-favorite-btn:hover {
-      color: var(--accent-amber);
-    }
-    .p-favorite-btn.favorited {
-      color: var(--accent-amber);
-    }
-
-    .p-card-title {
-      font-family: var(--font-display);
-      font-size: 0.975rem;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.35;
       margin-bottom: 0.5rem;
     }
+    .card-badge-group {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .card-id {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--fg-dim);
+    }
+    .card-tag {
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: var(--fg-muted);
+      background: var(--surface);
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      border: 1px solid var(--border-subtle);
+    }
+    .card-fav-btn {
+      background: none;
+      border: none;
+      color: var(--fg-dim);
+      cursor: pointer;
+      font-size: 0.85rem;
+      padding: 0.15rem;
+      line-height: 1;
+    }
+    .card-fav-btn.active {
+      color: var(--amber);
+    }
 
-    .p-card-preview {
-      font-size: 0.825rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
+    .card-title {
+      font-size: 0.925rem;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.35;
+      margin-bottom: 0.45rem;
+    }
+    .card-body-preview {
+      font-size: 0.8rem;
+      color: var(--fg-muted);
+      line-height: 1.45;
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
-      margin-bottom: 1rem;
-      background: var(--bg-input);
-      padding: 0.65rem 0.8rem;
-      border-radius: var(--radius-sm);
-      border-left: 2px solid var(--accent-primary);
+      margin-bottom: 0.85rem;
+      background: var(--input);
+      padding: 0.55rem 0.7rem;
+      border-radius: var(--radius-xs);
+      border-left: 2px solid var(--border-medium);
     }
-    .p-card-preview .var-highlight {
-      color: #93c5fd;
-      background: rgba(59, 130, 246, 0.15);
-      padding: 0.05rem 0.25rem;
-      border-radius: 3px;
+    .var-token {
       font-family: var(--font-mono);
-      font-size: 0.775rem;
+      font-size: 0.75rem;
+      color: #93c5fd;
+      background: rgba(59, 130, 246, 0.12);
+      padding: 0 0.2rem;
+      border-radius: 2px;
     }
 
-    .p-card-actions {
+    .card-foot {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.04);
-      padding-top: 0.75rem;
+      gap: 0.4rem;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 0.65rem;
     }
-    .p-btn {
+    .card-action-btn {
       flex: 1;
-      padding: 0.45rem 0.65rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.775rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.35rem;
+      padding: 0.35rem 0.55rem;
+      border-radius: var(--radius-xs);
+      font-size: 0.75rem;
+      font-weight: 500;
+      background: var(--surface);
+      color: var(--fg-muted);
       border: 1px solid transparent;
-      transition: all 0.15s ease;
+      cursor: pointer;
+      text-align: center;
     }
-    .p-btn-secondary {
-      background: var(--bg-surface);
-      color: var(--text-secondary);
-      border-color: var(--border-subtle);
-    }
-    .p-btn-secondary:hover {
+    .card-action-btn:hover {
       color: #fff;
-      background: #252e42;
+      background: #323238;
     }
-    .p-btn-primary {
-      background: var(--accent-primary-subtle);
-      color: #93c5fd;
-      border-color: rgba(59, 130, 246, 0.25);
-    }
-    .p-btn-primary:hover {
-      background: var(--accent-primary);
+    .card-action-copy {
+      background: rgba(255, 255, 255, 0.06);
       color: #fff;
     }
-    .p-btn-primary.copied {
-      background: var(--accent-emerald);
-      color: #fff;
-      border-color: var(--accent-emerald);
+    .card-action-copy:hover {
+      background: #fafafa;
+      color: #09090b;
     }
 
-    /* Modal Architecture */
-    .modal-backdrop {
+    /* Inspector Modal */
+    .modal {
       position: fixed;
       inset: 0;
-      background: rgba(4, 6, 10, 0.85);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      z-index: 100;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: 50;
       display: none;
       align-items: center;
       justify-content: center;
       padding: 1.25rem;
     }
-    .modal-backdrop.open {
+    .modal.open {
       display: flex;
     }
     .modal-box {
-      background: var(--bg-card);
+      background: var(--panel);
       border: 1px solid var(--border-medium);
-      border-radius: var(--radius-xl);
-      max-width: 860px;
+      border-radius: var(--radius-lg);
+      max-width: 820px;
       width: 100%;
-      max-height: 90vh;
+      max-height: 88vh;
       display: flex;
       flex-direction: column;
       box-shadow: var(--shadow-modal);
-      animation: modalPop 0.18s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    @keyframes modalPop {
-      from { transform: scale(0.96); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    .modal-top {
-      padding: 1.25rem 1.5rem;
+    .modal-head {
+      padding: 1rem 1.25rem;
       border-bottom: 1px solid var(--border-subtle);
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 1rem;
     }
-    .modal-heading {
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      font-weight: 700;
+    .modal-head-title {
+      font-size: 1.05rem;
+      font-weight: 600;
       color: #fff;
     }
-    .modal-close {
-      background: transparent;
+    .modal-close-x {
+      background: none;
       border: none;
-      color: var(--text-tertiary);
+      color: var(--fg-dim);
+      font-size: 1.2rem;
       cursor: pointer;
-      padding: 0.3rem;
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
+      padding: 0.2rem;
+      line-height: 1;
     }
-    .modal-close:hover {
+    .modal-close-x:hover {
       color: #fff;
-      background: var(--bg-surface);
     }
 
-    .modal-content {
-      padding: 1.5rem;
+    .modal-body {
+      padding: 1.25rem;
       overflow-y: auto;
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
+      gap: 1rem;
     }
-
-    /* Modal Tabs */
-    .modal-tabs {
+    .modal-tab-bar {
       display: flex;
-      gap: 0.5rem;
+      gap: 0.35rem;
       border-bottom: 1px solid var(--border-subtle);
-      padding-bottom: 0.65rem;
+      padding-bottom: 0.5rem;
     }
-    .modal-tab-btn {
-      padding: 0.4rem 0.8rem;
+    .modal-tab {
+      padding: 0.3rem 0.65rem;
       background: transparent;
-      border: 1px solid transparent;
-      border-radius: var(--radius-sm);
-      color: var(--text-secondary);
-      font-size: 0.825rem;
-      font-weight: 600;
+      border: none;
+      border-radius: var(--radius-xs);
+      color: var(--fg-dim);
+      font-size: 0.78rem;
+      font-weight: 550;
       cursor: pointer;
-      transition: all 0.15s;
     }
-    .modal-tab-btn.active {
-      background: var(--accent-primary-subtle);
-      border-color: rgba(59, 130, 246, 0.3);
-      color: #93c5fd;
+    .modal-tab.active {
+      background: var(--surface);
+      color: #fff;
     }
 
-    /* Variable Customizer Box in Modal */
-    .customizer-box {
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-medium);
-      border-radius: var(--radius-md);
-      padding: 1rem;
-    }
-    .customizer-title {
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--accent-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.65rem;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-    .customizer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 0.75rem;
-    }
-    .customizer-field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-    }
-    .customizer-label {
-      font-size: 0.75rem;
-      font-family: var(--font-mono);
-      color: var(--text-secondary);
-    }
-    .customizer-input {
-      padding: 0.5rem 0.7rem;
-      background: var(--bg-input);
+    /* Live Parameter Form */
+    .param-box {
+      background: var(--input);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
+      padding: 0.85rem;
+    }
+    .param-box-head {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+      color: var(--fg-dim);
+      margin-bottom: 0.5rem;
+    }
+    .param-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.6rem;
+    }
+    .param-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .param-lbl {
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      color: var(--fg-muted);
+    }
+    .param-field {
+      padding: 0.4rem 0.55rem;
+      background: var(--bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xs);
       color: #fff;
-      font-size: 0.825rem;
+      font-size: 0.78rem;
       font-family: var(--font-sans);
       outline: none;
     }
-    .customizer-input:focus {
-      border-color: var(--accent-primary);
+    .param-field:focus {
+      border-color: var(--border-focus);
     }
 
-    .code-container {
-      background: var(--bg-input);
+    .code-view {
+      background: var(--input);
       border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 1.2rem;
+      border-radius: var(--radius-sm);
+      padding: 1rem;
       font-family: var(--font-mono);
-      font-size: 0.84rem;
-      line-height: 1.7;
-      color: #e2e8f0;
+      font-size: 0.8rem;
+      line-height: 1.65;
+      color: #e4e4e7;
       white-space: pre-wrap;
       overflow-x: auto;
-      max-height: 380px;
+      max-height: 360px;
     }
 
-    .modal-bottom {
-      padding: 1rem 1.5rem;
+    .modal-foot {
+      padding: 0.85rem 1.25rem;
       border-top: 1px solid var(--border-subtle);
       display: flex;
       justify-content: flex-end;
-      align-items: center;
-      gap: 0.75rem;
-      background: rgba(9, 10, 15, 0.4);
-      border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+      gap: 0.5rem;
+      background: var(--bg-subtle);
+      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
     }
 
-    /* Toast notification */
-    .toast-tray {
+    /* Toast */
+    .toast-box {
       position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 120;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 60;
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.4rem;
       pointer-events: none;
     }
-    .toast-msg {
-      background: #182234;
-      border: 1px solid var(--accent-emerald);
+    .toast-item {
+      background: #27272a;
+      border: 1px solid var(--border-medium);
       color: #fff;
-      padding: 0.65rem 1.1rem;
-      border-radius: var(--radius-md);
-      font-size: 0.85rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      box-shadow: var(--shadow-lg);
-      animation: toastSlide 0.2s ease, toastFade 0.2s ease 2.6s forwards;
+      padding: 0.55rem 0.9rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 500;
+      box-shadow: var(--shadow-md);
+      animation: fadePop 0.15s ease, fadeOut 0.2s ease 2.2s forwards;
     }
-    @keyframes toastSlide {
-      from { transform: translateY(12px); opacity: 0; }
+    @keyframes fadePop {
+      from { transform: translateY(6px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
     }
-    @keyframes toastFade {
-      to { transform: translateY(12px); opacity: 0; }
+    @keyframes fadeOut {
+      to { opacity: 0; transform: translateY(6px); }
     }
 
-    /* Empty state */
-    .empty-prompt-state {
+    .empty-state {
       grid-column: 1 / -1;
       text-align: center;
-      padding: 4rem 1.5rem;
-      background: var(--bg-card);
+      padding: 3.5rem 1rem;
+      background: var(--panel);
       border: 1px dashed var(--border-subtle);
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-md);
     }
-    .empty-title {
-      font-family: var(--font-display);
-      font-size: 1.15rem;
+    .empty-state-title {
+      font-size: 0.95rem;
+      font-weight: 600;
       color: #fff;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.25rem;
     }
-    .empty-desc {
-      color: var(--text-tertiary);
-      font-size: 0.85rem;
+    .empty-state-sub {
+      font-size: 0.8rem;
+      color: var(--fg-dim);
     }
 
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .app-layout {
+    /* Key indicator */
+    .kbd {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      color: var(--fg-muted);
+    }
+
+    @media (max-width: 900px) {
+      .workspace {
         grid-template-columns: 1fr;
       }
       .sidebar {
@@ -868,334 +741,205 @@
 <body>
 
   <!-- Top Navigation -->
-  <nav class="top-nav">
-    <div class="top-nav-inner">
-      <a href="https://arifwidiyanto.web.id" class="brand-link">
-        <div class="brand-logo">⚡</div>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="https://arifwidiyanto.web.id" class="nav-brand">
+        <div class="nav-logo">AW</div>
         <div>
-          <div class="brand-name">Arif Widiyanto</div>
-          <div class="brand-subtitle" id="nav-subtitle">AI & DevOps Systems</div>
+          <div class="nav-title">Arif Widiyanto</div>
         </div>
+        <span class="nav-tag">876 Directives</span>
       </a>
 
-      <div class="nav-actions">
-        <!-- Language Switcher: Pure ID or Pure EN -->
-        <div class="lang-switcher">
-          <button class="lang-btn active" id="lang-id" data-lang="id">
-            <span>🇮🇩</span> <span>Bahasa Indonesia</span>
-          </button>
-          <button class="lang-btn" id="lang-en" data-lang="en">
-            <span>🇬🇧</span> <span>English</span>
-          </button>
-        </div>
-
-        <button class="nav-btn" id="fav-filter-btn">
-          <i data-lucide="star" style="width:14px;height:14px;"></i>
-          <span id="fav-btn-label">Favorit</span> (<span id="fav-count-badge">0</span>)
+      <div class="nav-links">
+        <button class="btn" id="fav-btn">
+          <span>★</span>
+          <span>Saved</span>
+          <span class="count-badge" id="fav-count">0</span>
         </button>
-        <a href="https://arifwidiyanto.web.id" class="nav-btn">
-          <i data-lucide="arrow-left" style="width:14px;height:14px;"></i>
-          <span id="nav-portfolio-label">Portfolio</span>
+        <a href="https://arifwidiyanto.web.id" class="btn">
+          <span>← Back to Portfolio</span>
         </a>
       </div>
     </div>
-  </nav>
+  </header>
 
-  <!-- App Workspace -->
-  <div class="app-layout">
+  <div class="workspace">
     
-    <!-- Sidebar Filters -->
-    <aside class="sidebar" id="sidebar">
+    <!-- Sidebar -->
+    <aside class="sidebar">
       <div>
-        <div class="sidebar-section-title" id="sidebar-domain-title">Strategic Domains</div>
-        <ul class="sidebar-nav-list" id="cluster-sidebar-list">
-          <!-- Populated by JS -->
+        <div class="sidebar-label">Strategic Clusters</div>
+        <ul class="nav-menu-list" id="sidebar-domain-list">
+          <!-- Rendered via JS -->
         </ul>
       </div>
 
       <div>
-        <div class="sidebar-section-title" id="sidebar-subcat-title">Subkategori Terarah (45)</div>
-        <div class="subcat-select-wrapper">
-          <select id="sidebar-subcat-select" class="subcat-select">
-            <option value="all">Semua Subkategori (45)</option>
-          </select>
-        </div>
+        <div class="sidebar-label">Subcategories</div>
+        <select id="subcat-select" class="select-subcat">
+          <option value="all">All Subcategories (45)</option>
+        </select>
       </div>
 
-      <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border-subtle);">
-        <div style="font-size: 0.75rem; color: var(--text-tertiary); line-height: 1.5;" id="sidebar-shortcut-tip">
-          💡 Tip: Tekan <span class="kbd-shortcut">/</span> untuk pencarian, dan <span class="kbd-shortcut">Esc</span> untuk menutup modal.
-        </div>
+      <div style="margin-top: auto; padding-top: 0.75rem; border-top: 1px solid var(--border-subtle); font-size: 0.72rem; color: var(--fg-dim);">
+        Press <span class="kbd">/</span> to search &middot; <span class="kbd">Esc</span> to dismiss modal
       </div>
     </aside>
 
-    <!-- Main Stream -->
-    <main class="content-area">
+    <!-- Main Deck Area -->
+    <main class="deck">
       
-      <!-- Hero Header -->
-      <section class="hub-header">
-        <div class="hub-header-left">
-          <div class="hub-badge" id="hero-badge">
-            <i data-lucide="sparkles" style="width:12px;height:12px;"></i>
-            <span>Autonomous AI Agent Directives</span>
-          </div>
-          <h1 class="hub-title" id="hero-title">876 Master AI Agent Prompts</h1>
-          <p class="hub-desc" id="hero-desc">
-            Instruksi modular dengan standar industri (Peran, Sasaran, Konteks, Protokol Keluaran, Protokol Eksekusi) yang siap dieksekusi oleh Claude Code, OpenClaw, ChatGPT, dan Automation Pipelines.
+      <!-- Deck Header -->
+      <section class="deck-header">
+        <div>
+          <h1 class="deck-title">AI Agent Directives Hub</h1>
+          <p class="deck-desc">
+            Production-ready directives engineered for autonomous LLM agents, Claude Code, ChatGPT, OpenClaw, and automation workflows.
           </p>
         </div>
 
-        <div class="hub-metrics">
-          <div class="metric-pill">
-            <div class="metric-val">876</div>
-            <div class="metric-name" id="metric-directives-label">Directives</div>
+        <div class="deck-stats">
+          <div class="stat-pill">
+            <div class="stat-pill-val">876</div>
+            <div class="stat-pill-lbl">Prompts</div>
           </div>
-          <div class="metric-pill">
-            <div class="metric-val">8</div>
-            <div class="metric-name" id="metric-domains-label">Domains</div>
+          <div class="stat-pill">
+            <div class="stat-pill-val">8</div>
+            <div class="stat-pill-lbl">Domains</div>
           </div>
-          <div class="metric-pill">
-            <div class="metric-val">45</div>
-            <div class="metric-name" id="metric-categories-label">Categories</div>
+          <div class="stat-pill">
+            <div class="stat-pill-val">45</div>
+            <div class="stat-pill-lbl">Categories</div>
           </div>
         </div>
       </section>
 
-      <!-- Quick Filter Chips & Toolbar -->
-      <div class="toolbar">
-        <div class="search-box">
-          <i data-lucide="search" class="search-icon" style="width:16px;height:16px;"></i>
-          <input type="text" id="main-search" class="search-input" placeholder="Cari prompt berdasarkan persona, kata kunci, atau fungsi... (Tekan '/' untuk fokus)">
-          <button id="search-clear" class="search-clear-btn">
-            <i data-lucide="x" style="width:14px;height:14px;"></i>
-          </button>
+      <!-- Search & Controls -->
+      <div class="controls">
+        <div class="search-wrapper">
+          <span class="search-glyph">⌕</span>
+          <input type="text" id="search-box" class="search-input" placeholder="Search directives by role, keyword, or workflow... (Press '/' to focus)">
+          <button id="search-clear-btn" class="search-clear">✕</button>
         </div>
 
-        <div class="view-toggles">
-          <button class="view-toggle-btn active" id="view-grid-btn" title="Grid View">
-            <i data-lucide="layout-grid" style="width:15px;height:15px;"></i>
-          </button>
-          <button class="view-toggle-btn" id="view-list-btn" title="List View">
-            <i data-lucide="list" style="width:15px;height:15px;"></i>
-          </button>
+        <div class="view-group">
+          <button class="view-btn active" id="view-grid" title="Grid View">Grid</button>
+          <button class="view-btn" id="view-list" title="List View">List</button>
         </div>
 
-        <button class="export-btn" id="export-md-btn">
-          <i data-lucide="download" style="width:14px;height:14px;"></i>
-          <span id="export-btn-label">Ekspor Filter (.md)</span>
+        <button class="btn" id="export-btn">
+          <span>↓ Export Filter (.md)</span>
         </button>
       </div>
 
-      <!-- Quick Status -->
-      <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.825rem; color: var(--text-tertiary); padding: 0 0.25rem;">
+      <!-- Live Filter Status -->
+      <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--fg-dim); padding: 0 0.25rem;">
         <div>
-          <span id="status-showing-text">Menampilkan</span> <strong style="color: var(--text-primary);" id="rendered-count">876</strong> prompt
+          Showing <strong style="color: var(--fg);" id="results-count">876</strong> directives
         </div>
-        <div id="active-filter-label" style="color: var(--accent-primary);"></div>
+        <div id="filter-state-label" style="color: var(--fg-muted);"></div>
       </div>
 
-      <!-- Prompts Stream Grid -->
-      <div class="prompt-grid" id="prompts-grid">
-        <!-- Rendered by JS -->
+      <!-- Prompts Grid -->
+      <div class="grid" id="prompts-grid">
+        <!-- Rendered via JS -->
       </div>
     </main>
   </div>
 
-  <!-- Interactive Modal Viewer & Live Customizer -->
-  <div class="modal-backdrop" id="prompt-modal">
+  <!-- Modal Inspector -->
+  <div class="modal" id="modal">
     <div class="modal-box">
-      <div class="modal-top">
+      <div class="modal-head">
         <div>
-          <div class="modal-heading" id="modal-heading">Prompt Details</div>
-          <div id="modal-tags" style="display: flex; gap: 0.4rem; margin-top: 0.35rem;"></div>
+          <div class="modal-head-title" id="modal-title">Directive Details</div>
+          <div id="modal-meta-tags" style="display: flex; gap: 0.35rem; margin-top: 0.25rem;"></div>
         </div>
-        <button class="modal-close" id="modal-close-x">
-          <i data-lucide="x" style="width:18px;height:18px;"></i>
-        </button>
+        <button class="modal-close-x" id="modal-x">✕</button>
       </div>
 
-      <div class="modal-content">
-        <!-- Modal Tabs (Enhanced vs Raw) -->
-        <div class="modal-tabs">
-          <button class="modal-tab-btn active" data-modal-tab="enhanced" id="tab-btn-enhanced">⚡ Enhanced Agent Directive</button>
-          <button class="modal-tab-btn" data-modal-tab="raw" id="tab-btn-raw">📝 Raw Prompt Asli</button>
+      <div class="modal-body">
+        <div class="modal-tab-bar">
+          <button class="modal-tab active" data-tab="enhanced" id="tab-enhanced">⚡ Enhanced Agent Directive</button>
+          <button class="modal-tab" data-tab="raw" id="tab-raw">📝 Raw Seed Prompt</button>
         </div>
 
-        <!-- Live Variable Form -->
-        <div class="customizer-box" id="modal-customizer" style="display: none;">
-          <div class="customizer-title" id="customizer-title-text">
-            <i data-lucide="sliders" style="width:14px;height:14px;"></i>
-            Kustomisasi Variabel Prompt Langsung
-          </div>
-          <div class="customizer-grid" id="customizer-inputs"></div>
+        <!-- In-Modal Variable Customizer -->
+        <div class="param-box" id="modal-param-box" style="display: none;">
+          <div class="param-box-head">Live Parameter Customizer</div>
+          <div class="param-grid" id="param-inputs"></div>
         </div>
 
-        <!-- Live Code Block -->
+        <!-- Code Block Payload -->
         <div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-tertiary);" id="modal-payload-label">Directives Payload</span>
-            <span style="font-size: 0.75rem; color: var(--text-tertiary);">Markdown format</span>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem; font-size: 0.72rem; color: var(--fg-dim);">
+            <span>DIRECTIVE PAYLOAD (MARKDOWN)</span>
+            <span id="copy-status-indicator">Ready to copy</span>
           </div>
-          <pre class="code-container" id="modal-code-payload"></pre>
+          <pre class="code-view" id="modal-payload"></pre>
         </div>
       </div>
 
-      <div class="modal-bottom">
-        <button class="p-btn p-btn-secondary" id="modal-close-btn" style="flex: 0 0 auto; min-width: 100px;">Tutup</button>
-        <button class="p-btn p-btn-primary" id="modal-copy-btn" style="flex: 0 0 auto; min-width: 180px;">
-          <i data-lucide="copy" style="width:14px;height:14px;"></i>
-          <span id="modal-copy-btn-text">Salin Prompt Kustom</span>
-        </button>
+      <div class="modal-foot">
+        <button class="btn" id="modal-cancel-btn">Dismiss</button>
+        <button class="btn btn-primary" id="modal-copy-action">Copy Directive</button>
       </div>
     </div>
   </div>
 
-  <!-- Toast Container -->
-  <div class="toast-tray" id="toast-tray"></div>
+  <!-- Toast Notification Tray -->
+  <div class="toast-box" id="toast-box"></div>
 
   <script>
-    let masterPayload = null;
+    let masterData = null;
     let allPrompts = [];
     let favorites = new Set();
-    let currentLang = 'id'; // 'id' or 'en'
-    let currentFilter = {
+    let filterState = {
       search: '',
       domain: 'all',
       subcat: 'all',
-      onlyFavorites: false,
-      viewMode: 'grid'
+      onlyFavs: false,
+      view: 'grid'
     };
 
     let activeModalItem = null;
-    let activeModalTab = 'enhanced'; // 'enhanced' or 'raw'
+    let activeModalTab = 'enhanced';
     let variableValues = {};
 
-    // UI Dictionary for Full Pure Language Switch
-    const UI_I18N = {
-      id: {
-        pageTitle: "AI Agent Prompts Hub — 876 Directives Siap Pakai",
-        navSubtitle: "Sistem AI & DevOps",
-        navPortfolio: "Portfolio",
-        favBtn: "Favorit",
-        sidebarDomainTitle: "Domain Strategis",
-        sidebarSubcatTitle: "Subkategori Terarah (45)",
-        sidebarAllDomain: "Semua Domain",
-        sidebarAllSubcat: "Semua Subkategori (45)",
-        sidebarShortcutTip: "💡 Tip: Tekan <span class='kbd-shortcut'>/</span> untuk pencarian, dan <span class='kbd-shortcut'>Esc</span> untuk menutup modal.",
-        heroBadge: "Instruksi Agen AI Otonom",
-        heroTitle: "876 Master AI Agent Prompts",
-        heroDesc: "Koleksi instruksi modular dengan standar industri (Peran, Sasaran, Konteks, Protokol Keluaran, Protokol Eksekusi) yang siap dieksekusi oleh Claude Code, OpenClaw, ChatGPT, dan Otomasi AI.",
-        metricDirectives: "Instruksi",
-        metricDomains: "Domain",
-        metricCategories: "Kategori",
-        searchPlaceholder: "Cari prompt berdasarkan persona, kata kunci, atau fungsi... (Tekan '/' untuk fokus)",
-        exportBtn: "Ekspor Filter (.md)",
-        statusShowing: "Menampilkan",
-        btnDetail: "Detail & Kustomisasi",
-        btnCopy: "Salin",
-        btnCopied: "Tersalin!",
-        toastCopied: "Prompt berhasil disalin ke clipboard!",
-        tabEnhanced: "⚡ Enhanced Agent Directive",
-        tabRaw: "📝 Perintah Dasar (Raw)",
-        customizerTitle: "Kustomisasi Parameter Langsung",
-        customizerPlaceholder: "Isi nilai untuk",
-        modalPayloadLabel: "Struktur Prompt Agen",
-        modalClose: "Tutup",
-        modalCopyBtn: "Salin Prompt Kustom",
-        emptyTitle: "Tidak ada prompt yang sesuai",
-        emptyDesc: "Coba gunakan kata kunci lain atau reset filter domain.",
-        favStatusLabel: "Menampilkan Prompt Favorit",
-        exportSuccess: "prompt berhasil diekspor ke Markdown!"
-      },
-      en: {
-        pageTitle: "AI Agent Prompts Hub — 876 Production-Ready Directives",
-        navSubtitle: "AI & DevOps Systems",
-        navPortfolio: "Portfolio",
-        favBtn: "Favorites",
-        sidebarDomainTitle: "Strategic Domains",
-        sidebarSubcatTitle: "Curated Subcategories (45)",
-        sidebarAllDomain: "All Domains",
-        sidebarAllSubcat: "All Subcategories (45)",
-        sidebarShortcutTip: "💡 Tip: Press <span class='kbd-shortcut'>/</span> to search, and <span class='kbd-shortcut'>Esc</span> to close modal.",
-        heroBadge: "Autonomous AI Agent Directives",
-        heroTitle: "876 Master AI Agent Prompts",
-        heroDesc: "Industry-standard modular directives (Role, Mission, Context, Output Protocol, Execution Workflow) ready for Claude Code, OpenClaw, ChatGPT, and AI Automation Pipelines.",
-        metricDirectives: "Directives",
-        metricDomains: "Domains",
-        metricCategories: "Categories",
-        searchPlaceholder: "Search prompts by persona, keyword, or workflow... (Press '/' to focus)",
-        exportBtn: "Export Filter (.md)",
-        statusShowing: "Showing",
-        btnDetail: "Details & Customize",
-        btnCopy: "Copy",
-        btnCopied: "Copied!",
-        toastCopied: "Prompt successfully copied to clipboard!",
-        tabEnhanced: "⚡ Enhanced Agent Directive",
-        tabRaw: "📝 Raw Original Prompt",
-        customizerTitle: "Live Parameter Customizer",
-        customizerPlaceholder: "Enter value for",
-        modalPayloadLabel: "Agent Directives Payload",
-        modalClose: "Close",
-        modalCopyBtn: "Copy Customized Prompt",
-        emptyTitle: "No matching prompts found",
-        emptyDesc: "Try using different keywords or reset domain filters.",
-        favStatusLabel: "Showing Favorited Prompts",
-        exportSuccess: "prompts exported to Markdown!"
-      }
-    };
-
-    // Load Favorites from LocalStorage
+    // Restore saved favorites
     try {
-      const savedFavs = localStorage.getItem('aw_prompt_favorites');
-      if (savedFavs) {
-        favorites = new Set(JSON.parse(savedFavs));
-      }
-      const savedLang = localStorage.getItem('aw_prompt_lang');
-      if (savedLang === 'en' || savedLang === 'id') {
-        currentLang = savedLang;
-      }
-    } catch (e) {
-      console.warn('LocalStorage error', e);
-    }
+      const saved = localStorage.getItem('aw_prompts_favs');
+      if (saved) favorites = new Set(JSON.parse(saved));
+    } catch (e) {}
 
-    function saveFavorites() {
+    function persistFavorites() {
       try {
-        localStorage.setItem('aw_prompt_favorites', JSON.stringify([...favorites]));
-        document.getElementById('fav-count-badge').textContent = favorites.size;
+        localStorage.setItem('aw_prompts_favs', JSON.stringify([...favorites]));
+        document.getElementById('fav-count').textContent = favorites.size;
       } catch (e) {}
     }
 
-    function showToast(text) {
-      const tray = document.getElementById('toast-tray');
-      const el = document.createElement('div');
-      el.className = 'toast-msg';
-      el.innerHTML = `
-        <i data-lucide="check-circle-2" style="width:16px;height:16px;color:#10b981;"></i>
-        <span>${text}</span>
-      `;
-      tray.appendChild(el);
-      lucide.createIcons({ root: el });
-      setTimeout(() => el.remove(), 2800);
+    function showToast(msg) {
+      const tray = document.getElementById('toast-box');
+      const item = document.createElement('div');
+      item.className = 'toast-item';
+      item.textContent = msg;
+      tray.appendChild(item);
+      setTimeout(() => item.remove(), 2400);
     }
 
-    async function copyText(text, btn = null) {
-      const t = UI_I18N[currentLang];
+    async function copyToClipboard(text, btnElement = null) {
       try {
         await navigator.clipboard.writeText(text);
-        if (btn) {
-          btn.classList.add('copied');
-          const originalHTML = btn.innerHTML;
-          btn.innerHTML = `<i data-lucide="check" style="width:14px;height:14px;"></i><span>${t.btnCopied}</span>`;
-          lucide.createIcons({ root: btn });
-          setTimeout(() => {
-            btn.classList.remove('copied');
-            btn.innerHTML = originalHTML;
-            lucide.createIcons({ root: btn });
-          }, 1800);
+        if (btnElement) {
+          const orig = btnElement.textContent;
+          btnElement.textContent = 'Copied!';
+          setTimeout(() => { btnElement.textContent = orig; }, 1600);
         }
-        showToast(t.toastCopied);
-      } catch (err) {
-        console.error('Copy failed', err);
+        showToast('Directive copied to clipboard');
+      } catch (e) {
+        console.error('Failed to copy', e);
       }
     }
 
@@ -1205,504 +949,366 @@
       return [...new Set(matches.map(m => m.slice(1, -1)))];
     }
 
-    function formatPreview(text) {
-      return text.replace(/\[([^\]]+)\]/g, '<span class="var-highlight">[$1]</span>');
+    function formatVariablesInHtml(text) {
+      return text.replace(/\[([^\]]+)\]/g, '<span class="var-token">[$1]</span>');
     }
 
     async function init() {
       try {
         const res = await fetch('prompts-data.json');
-        masterPayload = await res.json();
-        allPrompts = masterPayload.prompts;
+        masterData = await res.json();
+        allPrompts = masterData.prompts;
 
-        document.getElementById('fav-count-badge').textContent = favorites.size;
+        document.getElementById('fav-count').textContent = favorites.size;
 
-        applyLanguageUI();
-        renderSidebar();
-        setupEvents();
-        applyFilterAndRender();
-        lucide.createIcons();
+        buildSidebar();
+        bindEvents();
+        render();
       } catch (e) {
-        console.error('Failed to init prompts:', e);
+        console.error('Failed to load prompts dataset:', e);
       }
     }
 
-    function switchLanguage(lang) {
-      if (currentLang === lang) return;
-      currentLang = lang;
-      try {
-        localStorage.setItem('aw_prompt_lang', lang);
-      } catch (e) {}
-
-      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById(`lang-${lang}`).classList.add('active');
-
-      applyLanguageUI();
-      renderSidebar();
-      applyFilterAndRender();
-      if (activeModalItem) {
-        openModal(activeModalItem);
-      }
-    }
-
-    function applyLanguageUI() {
-      const t = UI_I18N[currentLang];
-      document.title = t.pageTitle;
-      document.getElementById('nav-subtitle').textContent = t.navSubtitle;
-      document.getElementById('nav-portfolio-label').textContent = t.navPortfolio;
-      document.getElementById('fav-btn-label').textContent = t.favBtn;
-      document.getElementById('sidebar-domain-title').textContent = t.sidebarDomainTitle;
-      document.getElementById('sidebar-subcat-title').textContent = t.sidebarSubcatTitle;
-      document.getElementById('sidebar-shortcut-tip').innerHTML = t.sidebarShortcutTip;
-      
-      document.getElementById('hero-badge').querySelector('span').textContent = t.heroBadge;
-      document.getElementById('hero-title').textContent = t.heroTitle;
-      document.getElementById('hero-desc').textContent = t.heroDesc;
-
-      document.getElementById('metric-directives-label').textContent = t.metricDirectives;
-      document.getElementById('metric-domains-label').textContent = t.metricDomains;
-      document.getElementById('metric-categories-label').textContent = t.metricCategories;
-
-      document.getElementById('main-search').placeholder = t.searchPlaceholder;
-      document.getElementById('export-btn-label').textContent = t.exportBtn;
-      document.getElementById('status-showing-text').textContent = t.statusShowing;
-
-      document.getElementById('tab-btn-enhanced').textContent = t.tabEnhanced;
-      document.getElementById('tab-btn-raw').textContent = t.tabRaw;
-      document.getElementById('modal-close-btn').textContent = t.modalClose;
-      document.getElementById('modal-copy-btn-text').textContent = t.modalCopyBtn;
-      document.getElementById('modal-payload-label').textContent = t.modalPayloadLabel;
-    }
-
-    function renderSidebar() {
-      const t = UI_I18N[currentLang];
-      const list = document.getElementById('cluster-sidebar-list');
-      const taxonomy = currentLang === 'id' ? masterPayload.taxonomySummary_id : masterPayload.taxonomySummary_en;
-
+    function buildSidebar() {
+      const list = document.getElementById('sidebar-domain-list');
       list.innerHTML = `
         <li>
-          <button class="sidebar-item ${currentFilter.domain === 'all' ? 'active' : ''}" data-domain="all">
-            <div class="sidebar-item-left">
-              <i data-lucide="layers" style="width:14px;height:14px;"></i>
-              <span>${t.sidebarAllDomain}</span>
-            </div>
-            <span class="sidebar-badge">${allPrompts.length}</span>
+          <button class="nav-item ${filterState.domain === 'all' ? 'active' : ''}" data-domain="all">
+            <span class="nav-item-name">All Clusters</span>
+            <span class="count-badge">${allPrompts.length}</span>
           </button>
         </li>
       `;
 
-      for (const [domain, count] of Object.entries(taxonomy)) {
+      for (const [domain, count] of Object.entries(masterData.taxonomySummary)) {
         const li = document.createElement('li');
-        const isActive = currentFilter.domain === domain;
         li.innerHTML = `
-          <button class="sidebar-item ${isActive ? 'active' : ''}" data-domain="${domain}">
-            <div class="sidebar-item-left">
-              <i data-lucide="folder" style="width:14px;height:14px;"></i>
-              <span>${domain}</span>
-            </div>
-            <span class="sidebar-badge">${count}</span>
+          <button class="nav-item ${filterState.domain === domain ? 'active' : ''}" data-domain="${domain}">
+            <span class="nav-item-name">${domain}</span>
+            <span class="count-badge">${count}</span>
           </button>
         `;
         list.appendChild(li);
       }
 
-      updateSubcatSelect();
-      lucide.createIcons({ root: list });
+      updateSubcatDropdown();
     }
 
-    function updateSubcatSelect() {
-      const t = UI_I18N[currentLang];
-      const select = document.getElementById('sidebar-subcat-select');
-      select.innerHTML = `<option value="all">${t.sidebarAllSubcat}</option>`;
+    function updateSubcatDropdown() {
+      const select = document.getElementById('subcat-select');
+      select.innerHTML = '<option value="all">All Subcategories (45)</option>';
 
-      let availableCats = masterPayload.categories;
-      if (currentFilter.domain !== 'all') {
-        availableCats = availableCats.filter(c => {
-          return currentLang === 'id' ? c.mainCategory_id === currentFilter.domain : c.mainCategory_en === currentFilter.domain;
-        });
+      let cats = masterData.categories;
+      if (filterState.domain !== 'all') {
+        cats = cats.filter(c => c.mainCategory === filterState.domain);
       }
 
-      availableCats.forEach(c => {
+      cats.forEach(c => {
         const opt = document.createElement('option');
-        const title = currentLang === 'id' ? c.cleanTitle_id : c.cleanTitle_en;
-        const numTitle = currentLang === 'id' ? c.categoryTitle_id : c.categoryTitle_en;
-        opt.value = title;
-        opt.textContent = `${numTitle} (${c.promptsCount})`;
+        opt.value = c.cleanTitle;
+        opt.textContent = `${c.categoryTitle} (${c.promptsCount})`;
         select.appendChild(opt);
       });
-      currentFilter.subcat = 'all';
+      filterState.subcat = 'all';
     }
 
-    function setupEvents() {
-      // Language switchers
-      document.getElementById('lang-id').addEventListener('click', () => switchLanguage('id'));
-      document.getElementById('lang-en').addEventListener('click', () => switchLanguage('en'));
-
-      // Sidebar click delegation
-      document.getElementById('cluster-sidebar-list').addEventListener('click', (e) => {
-        const btn = e.target.closest('.sidebar-item');
+    function bindEvents() {
+      // Sidebar domain selection
+      document.getElementById('sidebar-domain-list').addEventListener('click', (e) => {
+        const btn = e.target.closest('.nav-item');
         if (!btn) return;
-        document.querySelectorAll('#cluster-sidebar-list .sidebar-item').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('#sidebar-domain-list .nav-item').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        currentFilter.domain = btn.dataset.domain;
-        currentFilter.onlyFavorites = false;
-        document.getElementById('fav-filter-btn').classList.remove('active');
-        updateSubcatSelect();
-        applyFilterAndRender();
+        filterState.domain = btn.dataset.domain;
+        filterState.onlyFavs = false;
+        document.getElementById('fav-btn').classList.remove('btn-active');
+        updateSubcatDropdown();
+        render();
       });
 
-      // Subcategory dropdown
-      document.getElementById('sidebar-subcat-select').addEventListener('change', (e) => {
-        currentFilter.subcat = e.target.value;
-        applyFilterAndRender();
+      // Subcat dropdown
+      document.getElementById('subcat-select').addEventListener('change', (e) => {
+        filterState.subcat = e.target.value;
+        render();
       });
 
-      // Search input
-      const searchInput = document.getElementById('main-search');
-      const clearBtn = document.getElementById('search-clear');
-      searchInput.addEventListener('input', (e) => {
-        currentFilter.search = e.target.value.toLowerCase().trim();
-        if (currentFilter.search) {
-          clearBtn.classList.add('active');
+      // Search box
+      const searchBox = document.getElementById('search-box');
+      const clearBtn = document.getElementById('search-clear-btn');
+      searchBox.addEventListener('input', (e) => {
+        filterState.search = e.target.value.toLowerCase().trim();
+        if (filterState.search) {
+          clearBtn.classList.add('visible');
         } else {
-          clearBtn.classList.remove('active');
+          clearBtn.classList.remove('visible');
         }
-        applyFilterAndRender();
+        render();
       });
 
       clearBtn.addEventListener('click', () => {
-        searchInput.value = '';
-        currentFilter.search = '';
-        clearBtn.classList.remove('active');
-        searchInput.focus();
-        applyFilterAndRender();
+        searchBox.value = '';
+        filterState.search = '';
+        clearBtn.classList.remove('visible');
+        searchBox.focus();
+        render();
       });
 
-      // Keyboard shortcuts: '/' for search, 'Esc' for modal
+      // Keyboard shortcuts
       window.addEventListener('keydown', (e) => {
-        if (e.key === '/' && document.activeElement !== searchInput) {
+        if (e.key === '/' && document.activeElement !== searchBox) {
           e.preventDefault();
-          searchInput.focus();
+          searchBox.focus();
         } else if (e.key === 'Escape') {
           closeModal();
         }
       });
 
-      // Favorites toggle button
-      const favBtn = document.getElementById('fav-filter-btn');
+      // Favorites toggle filter
+      const favBtn = document.getElementById('fav-btn');
       favBtn.addEventListener('click', () => {
-        currentFilter.onlyFavorites = !currentFilter.onlyFavorites;
-        favBtn.classList.toggle('active', currentFilter.onlyFavorites);
-        applyFilterAndRender();
+        filterState.onlyFavs = !filterState.onlyFavs;
+        favBtn.classList.toggle('btn-active', filterState.onlyFavs);
+        render();
       });
 
-      // View toggle
-      const gridBtn = document.getElementById('view-grid-btn');
-      const listBtn = document.getElementById('view-list-btn');
+      // View modes
+      const gridBtn = document.getElementById('view-grid');
+      const listBtn = document.getElementById('view-list');
       const gridContainer = document.getElementById('prompts-grid');
 
       gridBtn.addEventListener('click', () => {
         gridBtn.classList.add('active');
         listBtn.classList.remove('active');
-        gridContainer.classList.remove('list-view');
-        currentFilter.viewMode = 'grid';
+        gridContainer.classList.remove('list');
       });
 
       listBtn.addEventListener('click', () => {
         listBtn.classList.add('active');
         gridBtn.classList.remove('active');
-        gridContainer.classList.add('list-view');
-        currentFilter.viewMode = 'list';
+        gridContainer.classList.add('list');
       });
 
-      // Export filtered prompts to Markdown
-      document.getElementById('export-md-btn').addEventListener('click', () => {
-        exportFilteredToMarkdown();
-      });
+      // Export
+      document.getElementById('export-btn').addEventListener('click', exportMarkdown);
 
-      // Modal tabs (Enhanced vs Raw)
-      document.querySelectorAll('.modal-tab-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          document.querySelectorAll('.modal-tab-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          activeModalTab = btn.dataset.modalTab;
-          updateModalLivePreview();
+      // Modal tabs
+      document.querySelectorAll('.modal-tab').forEach(tab => {
+        tab.addEventListener('click', (e) => {
+          document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          activeModalTab = tab.dataset.tab;
+          updateModalPreview();
         });
       });
 
-      // Modal close handlers
-      document.getElementById('modal-close-x').addEventListener('click', closeModal);
-      document.getElementById('modal-close-btn').addEventListener('click', closeModal);
-      document.getElementById('prompt-modal').addEventListener('click', (e) => {
-        if (e.target.id === 'prompt-modal') closeModal();
+      // Modal close events
+      document.getElementById('modal-x').addEventListener('click', closeModal);
+      document.getElementById('modal-cancel-btn').addEventListener('click', closeModal);
+      document.getElementById('modal').addEventListener('click', (e) => {
+        if (e.target.id === 'modal') closeModal();
       });
 
-      // Modal copy with customized variables
-      document.getElementById('modal-copy-btn').addEventListener('click', (e) => {
+      // Modal copy
+      document.getElementById('modal-copy-action').addEventListener('click', (e) => {
         if (!activeModalItem) return;
-        const rawOrEnh = activeModalTab === 'enhanced' 
-          ? (currentLang === 'id' ? activeModalItem.enhancedPrompt_id : activeModalItem.enhancedPrompt_en)
-          : (currentLang === 'id' ? activeModalItem.rawPrompt_id : activeModalItem.rawPrompt_en);
-        
-        let finalPrompt = rawOrEnh;
+        let text = activeModalTab === 'enhanced' ? activeModalItem.enhancedPrompt : activeModalItem.rawPrompt;
         for (const [k, v] of Object.entries(variableValues)) {
-          if (v.trim()) {
-            finalPrompt = finalPrompt.split(`[${k}]`).join(v.trim());
-          }
+          if (v.trim()) text = text.split(`[${k}]`).join(v.trim());
         }
-        copyText(finalPrompt, e.currentTarget);
+        copyToClipboard(text, e.currentTarget);
       });
     }
 
     function closeModal() {
-      document.getElementById('prompt-modal').classList.remove('open');
+      document.getElementById('modal').classList.remove('open');
       activeModalItem = null;
     }
 
     function openModal(prompt) {
       activeModalItem = prompt;
       variableValues = {};
-      const t = UI_I18N[currentLang];
 
-      const title = currentLang === 'id' ? prompt.title_id : prompt.title_en;
-      const mainCat = currentLang === 'id' ? prompt.mainCategory_id : prompt.mainCategory_en;
-      const subCat = currentLang === 'id' ? prompt.subCategory_id : prompt.subCategory_en;
-      const rawText = currentLang === 'id' ? prompt.rawPrompt_id : prompt.rawPrompt_en;
-
-      document.getElementById('modal-heading').textContent = `#${prompt.id} — ${title}`;
-      document.getElementById('modal-tags').innerHTML = `
-        <span class="p-tag" style="color:var(--accent-primary); border-color:rgba(59,130,246,0.3);">${mainCat}</span>
-        <span class="p-tag">${subCat}</span>
+      document.getElementById('modal-title').textContent = `#${prompt.id} — ${prompt.title}`;
+      document.getElementById('modal-meta-tags').innerHTML = `
+        <span class="card-tag">${prompt.mainCategory}</span>
+        <span class="card-tag">${prompt.subCategory}</span>
       `;
 
-      // Extract variables from prompt
-      const vars = extractVariables(rawText);
-      const customizerBox = document.getElementById('modal-customizer');
-      const inputsContainer = document.getElementById('customizer-inputs');
+      const vars = extractVariables(prompt.rawPrompt);
+      const paramBox = document.getElementById('modal-param-box');
+      const paramInputs = document.getElementById('param-inputs');
 
       if (vars.length > 0) {
-        customizerBox.style.display = 'block';
-        document.getElementById('customizer-title-text').innerHTML = `
-          <i data-lucide="sliders" style="width:14px;height:14px;"></i>
-          ${t.customizerTitle}
-        `;
-        inputsContainer.innerHTML = '';
-        vars.forEach(vName => {
-          variableValues[vName] = '';
-          const div = document.createElement('div');
-          div.className = 'customizer-field';
-          div.innerHTML = `
-            <label class="customizer-label">[${vName}]</label>
-            <input type="text" class="customizer-input" placeholder="${t.customizerPlaceholder} ${vName}..." data-var="${vName}">
+        paramBox.style.display = 'block';
+        paramInputs.innerHTML = '';
+        vars.forEach(v => {
+          variableValues[v] = '';
+          const cell = document.createElement('div');
+          cell.className = 'param-cell';
+          cell.innerHTML = `
+            <label class="param-lbl">[${v}]</label>
+            <input type="text" class="param-field" placeholder="Enter ${v}..." data-var="${v}">
           `;
-          div.querySelector('input').addEventListener('input', (e) => {
-            variableValues[vName] = e.target.value;
-            updateModalLivePreview();
+          cell.querySelector('input').addEventListener('input', (e) => {
+            variableValues[v] = e.target.value;
+            updateModalPreview();
           });
-          inputsContainer.appendChild(div);
+          paramInputs.appendChild(cell);
         });
       } else {
-        customizerBox.style.display = 'none';
+        paramBox.style.display = 'none';
       }
 
-      // Reset to enhanced tab by default
+      // Default to enhanced
       activeModalTab = 'enhanced';
-      document.querySelectorAll('.modal-tab-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById('tab-btn-enhanced').classList.add('active');
+      document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+      document.getElementById('tab-enhanced').classList.add('active');
 
-      updateModalLivePreview();
-      document.getElementById('prompt-modal').classList.add('open');
-      lucide.createIcons({ root: document.getElementById('prompt-modal') });
+      updateModalPreview();
+      document.getElementById('modal').classList.add('open');
     }
 
-    function updateModalLivePreview() {
+    function updateModalPreview() {
       if (!activeModalItem) return;
-      const rawOrEnh = activeModalTab === 'enhanced' 
-        ? (currentLang === 'id' ? activeModalItem.enhancedPrompt_id : activeModalItem.enhancedPrompt_en)
-        : (currentLang === 'id' ? activeModalItem.rawPrompt_id : activeModalItem.rawPrompt_en);
-
-      let text = rawOrEnh;
+      let text = activeModalTab === 'enhanced' ? activeModalItem.enhancedPrompt : activeModalItem.rawPrompt;
       for (const [k, v] of Object.entries(variableValues)) {
-        if (v.trim()) {
-          text = text.split(`[${k}]`).join(v.trim());
-        }
+        if (v.trim()) text = text.split(`[${k}]`).join(v.trim());
       }
-      document.getElementById('modal-code-payload').textContent = text;
+      document.getElementById('modal-payload').textContent = text;
     }
 
-    function applyFilterAndRender() {
-      const t = UI_I18N[currentLang];
+    function render() {
       const filtered = allPrompts.filter(p => {
-        // Favorites filter
-        if (currentFilter.onlyFavorites && !favorites.has(p.id)) {
-          return false;
-        }
-        // Domain filter
-        const domainProp = currentLang === 'id' ? p.mainCategory_id : p.mainCategory_en;
-        if (currentFilter.domain !== 'all' && domainProp !== currentFilter.domain) {
-          return false;
-        }
-        // Subcat filter
-        const subcatProp = currentLang === 'id' ? p.subCategory_id : p.subCategory_en;
-        if (currentFilter.subcat !== 'all' && subcatProp !== currentFilter.subcat) {
-          return false;
-        }
-        // Search
-        if (currentFilter.search) {
-          const q = currentFilter.search;
-          const title = (currentLang === 'id' ? p.title_id : p.title_en).toLowerCase();
-          const raw = (currentLang === 'id' ? p.rawPrompt_id : p.rawPrompt_en).toLowerCase();
-          const enh = (currentLang === 'id' ? p.enhancedPrompt_id : p.enhancedPrompt_en).toLowerCase();
-          const sub = (currentLang === 'id' ? p.subCategory_id : p.subCategory_en).toLowerCase();
-          if (!title.includes(q) && !raw.includes(q) && !enh.includes(q) && !sub.includes(q)) return false;
+        if (filterState.onlyFavs && !favorites.has(p.id)) return false;
+        if (filterState.domain !== 'all' && p.mainCategory !== filterState.domain) return false;
+        if (filterState.subcat !== 'all' && p.subCategory !== filterState.subcat) return false;
+        if (filterState.search) {
+          const q = filterState.search;
+          const matchTitle = p.title.toLowerCase().includes(q);
+          const matchRaw = p.rawPrompt.toLowerCase().includes(q);
+          const matchEnh = p.enhancedPrompt.toLowerCase().includes(q);
+          const matchSub = p.subCategory.toLowerCase().includes(q);
+          if (!matchTitle && !matchRaw && !matchEnh && !matchSub) return false;
         }
         return true;
       });
 
-      document.getElementById('rendered-count').textContent = filtered.length;
+      document.getElementById('results-count').textContent = filtered.length;
       
-      const filterLabel = document.getElementById('active-filter-label');
-      if (currentFilter.onlyFavorites) {
-        filterLabel.textContent = t.favStatusLabel;
-      } else if (currentFilter.domain !== 'all') {
-        filterLabel.textContent = `${t.metricDomains}: ${currentFilter.domain}`;
+      const filterLabel = document.getElementById('filter-state-label');
+      if (filterState.onlyFavs) {
+        filterLabel.textContent = 'Filtered by: Favorites';
+      } else if (filterState.domain !== 'all') {
+        filterLabel.textContent = `Filtered by: ${filterState.domain}`;
       } else {
         filterLabel.textContent = '';
       }
 
-      renderPrompts(filtered);
-    }
+      const grid = document.getElementById('prompts-grid');
+      grid.innerHTML = '';
 
-    function renderPrompts(prompts) {
-      const t = UI_I18N[currentLang];
-      const container = document.getElementById('prompts-grid');
-      container.innerHTML = '';
-
-      if (prompts.length === 0) {
-        container.innerHTML = `
-          <div class="empty-prompt-state">
-            <i data-lucide="search-x" style="width:36px;height:36px;color:var(--text-tertiary);margin-bottom:0.75rem;"></i>
-            <h3 class="empty-title">${t.emptyTitle}</h3>
-            <p class="empty-desc">${t.emptyDesc}</p>
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-title">No matching directives found</div>
+            <div class="empty-state-sub">Try changing keywords or resetting cluster filters.</div>
           </div>
         `;
-        lucide.createIcons({ root: container });
         return;
       }
 
       const fragment = document.createDocumentFragment();
 
-      prompts.forEach(p => {
+      filtered.forEach(p => {
         const card = document.createElement('div');
-        card.className = 'p-card';
+        card.className = 'card';
         const isFav = favorites.has(p.id);
-
-        const title = currentLang === 'id' ? p.title_id : p.title_en;
-        const subCat = currentLang === 'id' ? p.subCategory_id : p.subCategory_en;
-        const rawText = currentLang === 'id' ? p.rawPrompt_id : p.rawPrompt_en;
-        const enhancedText = currentLang === 'id' ? p.enhancedPrompt_id : p.enhancedPrompt_en;
 
         card.innerHTML = `
           <div>
-            <div class="p-card-top">
-              <div class="p-card-meta">
-                <span class="p-id">#${p.id}</span>
-                <span class="p-tag">${subCat}</span>
+            <div class="card-meta">
+              <div class="card-badge-group">
+                <span class="card-id">#${p.id}</span>
+                <span class="card-tag">${p.subCategory}</span>
               </div>
-              <button class="p-favorite-btn ${isFav ? 'favorited' : ''}" title="${t.favBtn}" data-fav-id="${p.id}">
-                <i data-lucide="star" style="width:15px;height:15px; fill: ${isFav ? 'currentColor' : 'none'};"></i>
+              <button class="card-fav-btn ${isFav ? 'active' : ''}" data-fav="${p.id}" title="Save directive">
+                ${isFav ? '★' : '☆'}
               </button>
             </div>
-            <h3 class="p-card-title">${title}</h3>
-            <div class="p-card-preview">${formatPreview(rawText)}</div>
+            <h3 class="card-title">${p.title}</h3>
+            <div class="card-body-preview">${formatVariablesInHtml(p.rawPrompt)}</div>
           </div>
 
-          <div class="p-card-actions">
-            <button class="p-btn p-btn-secondary btn-detail">
-              <i data-lucide="eye" style="width:13px;height:13px;"></i>
-              <span>${t.btnDetail}</span>
-            </button>
-            <button class="p-btn p-btn-primary btn-copy">
-              <i data-lucide="copy" style="width:13px;height:13px;"></i>
-              <span>${t.btnCopy}</span>
-            </button>
+          <div class="card-foot">
+            <button class="card-action-btn card-btn-view">Inspect</button>
+            <button class="card-action-btn card-action-copy card-btn-copy">Copy Directive</button>
           </div>
         `;
 
         card.addEventListener('click', (e) => {
-          if (e.target.closest('.p-favorite-btn') || e.target.closest('.btn-copy')) return;
+          if (e.target.closest('.card-fav-btn') || e.target.closest('.card-btn-copy')) return;
           openModal(p);
         });
 
-        card.querySelector('.p-favorite-btn').addEventListener('click', (e) => {
+        card.querySelector('.card-fav-btn').addEventListener('click', (e) => {
           e.stopPropagation();
           const btn = e.currentTarget;
           if (favorites.has(p.id)) {
             favorites.delete(p.id);
-            btn.classList.remove('favorited');
-            btn.querySelector('svg').setAttribute('fill', 'none');
+            btn.classList.remove('active');
+            btn.textContent = '☆';
           } else {
             favorites.add(p.id);
-            btn.classList.add('favorited');
-            btn.querySelector('svg').setAttribute('fill', 'currentColor');
+            btn.classList.add('active');
+            btn.textContent = '★';
           }
-          saveFavorites();
-          if (currentFilter.onlyFavorites) {
-            applyFilterAndRender();
-          }
+          persistFavorites();
+          if (filterState.onlyFavs) render();
         });
 
-        card.querySelector('.btn-copy').addEventListener('click', (e) => {
+        card.querySelector('.card-btn-copy').addEventListener('click', (e) => {
           e.stopPropagation();
-          copyText(enhancedText, e.currentTarget);
+          copyToClipboard(p.enhancedPrompt, e.currentTarget);
         });
 
         fragment.appendChild(card);
       });
 
-      container.appendChild(fragment);
-      lucide.createIcons({ root: container });
+      grid.appendChild(fragment);
     }
 
-    function exportFilteredToMarkdown() {
-      const t = UI_I18N[currentLang];
-      const visibleCards = document.querySelectorAll('.p-card');
-      if (visibleCards.length === 0) {
-        showToast(t.emptyTitle);
-        return;
-      }
-
-      let md = `# AI Agent Prompts Export (${currentLang.toUpperCase()})\n\n*Exported from [arifwidiyanto.web.id/prompt](https://arifwidiyanto.web.id/prompt)*\n\n---\n\n`;
-      
+    function exportMarkdown() {
       const filtered = allPrompts.filter(p => {
-        if (currentFilter.onlyFavorites && !favorites.has(p.id)) return false;
-        const domainProp = currentLang === 'id' ? p.mainCategory_id : p.mainCategory_en;
-        if (currentFilter.domain !== 'all' && domainProp !== currentFilter.domain) return false;
-        const subcatProp = currentLang === 'id' ? p.subCategory_id : p.subCategory_en;
-        if (currentFilter.subcat !== 'all' && subcatProp !== currentFilter.subcat) return false;
+        if (filterState.onlyFavs && !favorites.has(p.id)) return false;
+        if (filterState.domain !== 'all' && p.mainCategory !== filterState.domain) return false;
+        if (filterState.subcat !== 'all' && p.subCategory !== filterState.subcat) return false;
+        if (filterState.search) {
+          const q = filterState.search;
+          if (!p.title.toLowerCase().includes(q) && !p.rawPrompt.toLowerCase().includes(q) && !p.enhancedPrompt.toLowerCase().includes(q)) return false;
+        }
         return true;
       });
 
-      filtered.forEach(p => {
-        const title = currentLang === 'id' ? p.title_id : p.title_en;
-        const mainCat = currentLang === 'id' ? p.mainCategory_id : p.mainCategory_en;
-        const subCat = currentLang === 'id' ? p.subCategory_id : p.subCategory_en;
-        const raw = currentLang === 'id' ? p.rawPrompt_id : p.rawPrompt_en;
-        const enh = currentLang === 'id' ? p.enhancedPrompt_id : p.enhancedPrompt_en;
+      if (filtered.length === 0) {
+        showToast('No directives to export');
+        return;
+      }
 
-        md += `## #${p.id} - ${title}\n**${t.metricDomains}**: ${mainCat} | **${t.metricCategories}**: ${subCat}\n\n### 📝 ${t.tabRaw}\n> ${raw}\n\n### ⚡ ${t.tabEnhanced}\n\`\`\`markdown\n${enh}\n\`\`\`\n\n---\n\n`;
+      let md = `# AI Agent Directives Export\n\n*Source: [arifwidiyanto.web.id/prompt](https://arifwidiyanto.web.id/prompt)*\n\n---\n\n`;
+      filtered.forEach(p => {
+        md += `## #${p.id} - ${p.title}\n**Domain**: ${p.mainCategory} | **Category**: ${p.subCategory}\n\n### 📝 Raw Seed\n> ${p.rawPrompt}\n\n### ⚡ Enhanced AI Directive\n\`\`\`markdown\n${p.enhancedPrompt}\n\`\`\`\n\n---\n\n`;
       });
 
       const blob = new Blob([md], { type: 'text/markdown;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `ai-agent-prompts-${currentLang}-${new Date().toISOString().slice(0, 10)}.md`;
+      a.download = `ai-agent-directives-${new Date().toISOString().slice(0, 10)}.md`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
-      showToast(`${filtered.length} ${t.exportSuccess}`);
+      showToast(`${filtered.length} directives exported as Markdown`);
     }
 
     document.addEventListener('DOMContentLoaded', init);
