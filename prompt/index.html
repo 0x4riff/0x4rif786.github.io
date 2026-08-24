@@ -4,21 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Agent Prompts Hub — 1,000+ Production Directives</title>
-  <meta name="description" content="Production-ready directory of 1,000+ structured AI Agent Directives across 55 categories with live parameter customization, runtime formatters (Markdown, XML, API JSON, CursorRules), keyboard navigation, and instant search.">
+  <meta name="description" content="A developer-grade directory of 1,000+ structured AI Agent Directives with live variable customizers, runtime formatters (Markdown, XML, JSON, CursorRules, Ollama Modelfile, CLI), reasoning model mode (DeepSeek-R1/o1), PWA offline support, and token cost analytics.">
   <link rel="canonical" href="https://arifwidiyanto.web.id/prompt/">
 
   <!-- OpenGraph & Twitter Meta Tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="AI Agent Prompts Hub — 876 Production Directives">
-  <meta property="og:description" content="Search, customize, and deploy 876 engineered AI agent prompts across 8 strategic domains with one-click runtime formatters.">
+  <meta property="og:title" content="AI Agent Prompts Hub — 1,000+ Production Directives">
+  <meta property="og:description" content="Search, customize, and deploy 1,000+ engineered AI agent prompts across 55 categories with one-click runtime formatters, CLI generators, and artifact downloads.">
   <meta property="og:url" content="https://arifwidiyanto.web.id/prompt/">
   <meta property="og:site_name" content="Arif Widiyanto">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AI Agent Prompts Hub — 876 Production Directives">
-  <meta name="twitter:description" content="Production-grade AI agent prompts with live variable injection, XML/JSON adapters, and instant launcher.">
+  <meta name="twitter:title" content="AI Agent Prompts Hub — 1,000+ Production Directives">
+  <meta name="twitter:description" content="Production-grade AI agent prompts with live variable injection, XML/JSON/CLI adapters, and reasoning model support.">
   <meta name="theme-color" content="#09090b">
 
-  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <!-- PWA Manifest & Favicon -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="apple-touch-icon" href="/assets/favicon.svg">
   
   <!-- Engineered Fonts: Inter + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,6 +55,8 @@
       --amber-subtle: rgba(245, 158, 11, 0.12);
       --purple: #a855f7;
       --purple-subtle: rgba(168, 85, 247, 0.12);
+      --cyan: #06b6d4;
+      --cyan-subtle: rgba(6, 182, 212, 0.12);
 
       --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
@@ -86,7 +91,7 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Top Bar */
+    /* Top Navigation */
     .nav {
       position: sticky;
       top: 0;
@@ -159,6 +164,7 @@
       cursor: pointer;
       transition: all 0.12s ease;
       user-select: none;
+      position: relative;
     }
     .btn:hover {
       color: var(--fg);
@@ -177,6 +183,15 @@
     .btn-primary:hover {
       background: #e4e4e7;
       color: #09090b;
+    }
+    .btn-install {
+      background: var(--purple-subtle);
+      color: #c084fc;
+      border: 1px solid rgba(168, 85, 247, 0.3);
+    }
+    .btn-install:hover {
+      background: var(--purple);
+      color: #fff;
     }
     .btn-chatgpt {
       background: rgba(16, 185, 129, 0.12);
@@ -282,7 +297,7 @@
       color: var(--fg);
     }
 
-    .select-subcat {
+    .select-subcat, .select-model-filter {
       width: 100%;
       padding: 0.45rem 0.6rem;
       background: var(--input);
@@ -294,11 +309,11 @@
       outline: none;
       cursor: pointer;
     }
-    .select-subcat:focus {
+    .select-subcat:focus, .select-model-filter:focus {
       border-color: var(--border-focus);
     }
 
-    /* Mobile Domain Drawer / Horizontal Scroller */
+    /* Mobile Domain Chips */
     .mobile-domain-scroller {
       display: none;
       gap: 0.4rem;
@@ -340,7 +355,7 @@
       color: var(--fg-muted);
       font-size: 0.84rem;
       margin-top: 0.2rem;
-      max-width: 600px;
+      max-width: 620px;
     }
     .deck-stats {
       display: flex;
@@ -505,6 +520,19 @@
       border-radius: 3px;
       border: 1px solid var(--border-subtle);
     }
+    .card-model-badge {
+      font-size: 0.65rem;
+      font-weight: 550;
+      padding: 0.08rem 0.35rem;
+      border-radius: 3px;
+      background: var(--input);
+      border: 1px solid var(--border-subtle);
+    }
+    .model-claude { color: #f59e0b; border-color: rgba(245, 158, 11, 0.25); }
+    .model-r1 { color: #c084fc; border-color: rgba(168, 85, 247, 0.25); }
+    .model-gpt { color: #34d399; border-color: rgba(16, 185, 129, 0.25); }
+    .model-ollama { color: #93c5fd; border-color: rgba(59, 130, 246, 0.25); }
+
     .card-token-badge {
       font-family: var(--font-mono);
       font-size: 0.65rem;
@@ -615,7 +643,7 @@
       color: #09090b;
     }
 
-    /* Load More / Infinite Pagination Trigger */
+    /* Load More / Infinite Pagination */
     .load-more-wrapper {
       display: flex;
       justify-content: center;
@@ -657,9 +685,9 @@
       background: var(--panel);
       border: 1px solid var(--border-medium);
       border-radius: var(--radius-lg);
-      max-width: 880px;
+      max-width: 900px;
       width: 100%;
-      max-height: 90vh;
+      max-height: 92vh;
       display: flex;
       flex-direction: column;
       box-shadow: var(--shadow-modal);
@@ -721,6 +749,7 @@
     .runtime-tabs {
       display: flex;
       gap: 0.25rem;
+      flex-wrap: wrap;
     }
     .runtime-tab-btn {
       padding: 0.25rem 0.55rem;
@@ -741,13 +770,24 @@
       color: #fff;
       font-weight: 600;
     }
+    .tab-highlight-r1 {
+      color: #d8b4fe !important;
+      border-color: rgba(168, 85, 247, 0.4) !important;
+      background: var(--purple-subtle) !important;
+    }
 
-    /* Live Parameter Form */
+    /* Live Parameter Form & Realtime Token Meter */
     .param-box {
       background: var(--input);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
       padding: 0.85rem;
+    }
+    .param-box-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
     }
     .param-box-head {
       font-size: 0.72rem;
@@ -755,7 +795,13 @@
       letter-spacing: 0.05em;
       font-weight: 600;
       color: var(--fg-dim);
-      margin-bottom: 0.5rem;
+    }
+    .param-metrics {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--blue);
+      display: flex;
+      gap: 0.6rem;
     }
     .param-grid {
       display: grid;
@@ -798,6 +844,41 @@
       white-space: pre-wrap;
       overflow-x: auto;
       max-height: 360px;
+    }
+
+    /* Artifact Exporters Toolbar in Modal */
+    .artifact-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 0.75rem;
+      background: var(--input);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      font-size: 0.75rem;
+      color: var(--fg-muted);
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .artifact-btns {
+      display: flex;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+    }
+    .btn-artifact {
+      font-size: 0.72rem;
+      padding: 0.25rem 0.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xs);
+      color: var(--fg-muted);
+      cursor: pointer;
+      font-family: var(--font-mono);
+    }
+    .btn-artifact:hover {
+      color: #fff;
+      background: #323238;
+      border-color: var(--border-medium);
     }
 
     .modal-foot {
@@ -928,6 +1009,9 @@
       </a>
 
       <div class="nav-links">
+        <button class="btn btn-install" id="pwa-install-btn" style="display: none;" title="Install as Desktop/Mobile App">
+          <span>⬇ Install App</span>
+        </button>
         <button class="btn" id="shortcuts-help-btn" title="View Keyboard Shortcuts (?)" aria-label="Keyboard Shortcuts">
           <span class="kbd">?</span>
           <span>Shortcuts</span>
@@ -962,6 +1046,17 @@
         </select>
       </div>
 
+      <div>
+        <div class="sidebar-label">Model Target Filter</div>
+        <select id="model-filter-select" class="select-model-filter" aria-label="Select Model Filter">
+          <option value="all">All Recommended Models</option>
+          <option value="claude">Claude 3.5 Sonnet (Coding/Tools)</option>
+          <option value="r1">DeepSeek-R1 / o1 (Reasoning/Math)</option>
+          <option value="gpt">GPT-4o (General/Creative/Vision)</option>
+          <option value="ollama">Ollama / Local SLM (Lightweight)</option>
+        </select>
+      </div>
+
       <div style="margin-top: auto; padding-top: 0.75rem; border-top: 1px solid var(--border-subtle); font-size: 0.72rem; color: var(--fg-dim);">
         <div style="margin-bottom: 0.3rem;"><span class="kbd">j</span> / <span class="kbd">k</span> Navigate cards</div>
         <div style="margin-bottom: 0.3rem;"><span class="kbd">Enter</span> Open &middot; <span class="kbd">c</span> Copy &middot; <span class="kbd">s</span> Save</div>
@@ -977,13 +1072,13 @@
         <div>
           <h1 class="deck-title">AI Agent Directives Hub</h1>
           <p class="deck-desc">
-            Production-ready directives engineered for autonomous LLM agents, Claude Code, ChatGPT, OpenClaw, and automation workflows.
+            Production-ready directives engineered for autonomous LLM agents, Claude Code, DeepSeek-R1, ChatGPT, OpenClaw, and automation workflows.
           </p>
         </div>
 
         <div class="deck-stats">
           <div class="stat-pill">
-            <div class="stat-pill-val" id="stat-total-prompts">1,015</div>
+            <div class="stat-pill-val">1,015</div>
             <div class="stat-pill-lbl">Prompts</div>
           </div>
           <div class="stat-pill">
@@ -991,7 +1086,7 @@
             <div class="stat-pill-lbl">Domains</div>
           </div>
           <div class="stat-pill">
-            <div class="stat-pill-val" id="stat-total-categories">55</div>
+            <div class="stat-pill-val">55</div>
             <div class="stat-pill-lbl">Categories</div>
           </div>
         </div>
@@ -1029,7 +1124,7 @@
       <!-- Live Filter Status -->
       <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--fg-dim); padding: 0 0.25rem;">
         <div>
-          Showing <strong style="color: var(--fg);" id="results-count">876</strong> directives
+          Showing <strong style="color: var(--fg);" id="results-count">1,015</strong> directives
         </div>
         <div id="filter-state-label" style="color: var(--fg-muted);"></div>
       </div>
@@ -1039,7 +1134,7 @@
         <!-- Rendered via JS -->
       </div>
 
-      <!-- Load More / Infinite Pagination Trigger -->
+      <!-- Load More / Infinite Pagination -->
       <div class="load-more-wrapper" id="load-more-container" style="display: none;">
         <button class="btn-load-more" id="load-more-btn">Load More Directives</button>
       </div>
@@ -1063,16 +1158,26 @@
           <span class="runtime-lbl">Runtime Target:</span>
           <div class="runtime-tabs" role="tablist">
             <button class="runtime-tab-btn active" data-runtime="markdown" role="tab" aria-selected="true">Markdown</button>
+            <button class="runtime-tab-btn tab-highlight-r1" data-runtime="reasoning" role="tab" aria-selected="false">🧠 DeepSeek-R1 / o1</button>
             <button class="runtime-tab-btn" data-runtime="xml" role="tab" aria-selected="false">XML System</button>
             <button class="runtime-tab-btn" data-runtime="json" role="tab" aria-selected="false">API JSON</button>
             <button class="runtime-tab-btn" data-runtime="cursorrules" role="tab" aria-selected="false">CursorRules</button>
+            <button class="runtime-tab-btn" data-runtime="modelfile" role="tab" aria-selected="false">Ollama Modelfile</button>
+            <button class="runtime-tab-btn" data-runtime="cli" role="tab" aria-selected="false">CLI / Code SDK</button>
             <button class="runtime-tab-btn" data-runtime="raw" role="tab" aria-selected="false">Raw Seed</button>
           </div>
         </div>
 
-        <!-- In-Modal Variable Customizer -->
+        <!-- In-Modal Variable Customizer with Live Metrics -->
         <div class="param-box" id="modal-param-box" style="display: none;">
-          <div class="param-box-head">Live Parameter Customizer</div>
+          <div class="param-box-top">
+            <div class="param-box-head">Live Parameter Customizer</div>
+            <div class="param-metrics" id="param-live-metrics">
+              <span id="param-chars-count">0 chars</span> &middot;
+              <span id="param-tokens-count">~0 tokens</span> &middot;
+              <span id="param-cost-est">$0.000 / call</span>
+            </div>
+          </div>
           <div class="param-grid" id="param-inputs"></div>
         </div>
 
@@ -1083,6 +1188,17 @@
             <span id="copy-status-indicator">Ready to execute</span>
           </div>
           <pre class="code-view" id="modal-payload" tabindex="0"></pre>
+        </div>
+
+        <!-- One-Click Artifact Exporters Bar -->
+        <div class="artifact-toolbar">
+          <span>Export Artifact:</span>
+          <div class="artifact-btns">
+            <button class="btn-artifact" id="export-cursorrules" title="Download .cursorrules file">💾 .cursorrules</button>
+            <button class="btn-artifact" id="export-skill" title="Download SKILL.md for OpenClaw / AgentForge">💾 SKILL.md</button>
+            <button class="btn-artifact" id="export-modelfile" title="Download Modelfile for Ollama">💾 Modelfile (Ollama)</button>
+            <button class="btn-artifact" id="export-txt" title="Download system_prompt.txt">💾 system_prompt.txt</button>
+          </div>
         </div>
       </div>
 
@@ -1167,6 +1283,7 @@
       search: '',
       domain: 'all',
       subcat: 'all',
+      modelFilter: 'all',
       onlyFavs: false,
       view: 'grid'
     };
@@ -1176,10 +1293,37 @@
     let variableValues = {};
     let focusedIndex = -1;
     let currentRenderedList = [];
+    let deferredPrompt = null;
     
-    // Performance pagination batch
+    // Pagination chunk size
     const PAGE_SIZE = 48;
     let visibleCount = PAGE_SIZE;
+
+    // Service Worker Registration for PWA Offline
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(err => {
+          console.warn('ServiceWorker registration error:', err);
+        });
+      });
+    }
+
+    // PWA Install Prompt Handler
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      const installBtn = document.getElementById('pwa-install-btn');
+      if (installBtn) {
+        installBtn.style.display = 'inline-flex';
+        installBtn.addEventListener('click', () => {
+          installBtn.style.display = 'none';
+          deferredPrompt.prompt();
+          deferredPrompt.userChoice.then(() => {
+            deferredPrompt = null;
+          });
+        });
+      }
+    });
 
     // Restore saved favorites
     try {
@@ -1217,7 +1361,6 @@
       }
     }
 
-    // Token & Complexity Estimator
     function estimateTokens(text) {
       if (!text) return 0;
       return Math.round(text.trim().split(/\s+/).length * 1.3);
@@ -1225,8 +1368,26 @@
 
     function getComplexity(tokens) {
       if (tokens < 140) return { label: 'Compact', cls: 'comp-compact' };
-      if (tokens <= 220) return { label: 'Standard', cls: 'comp-standard' };
+      if (tokens <= 230) return { label: 'Standard', cls: 'comp-standard' };
       return { label: 'Deep Directive', cls: 'comp-deep' };
+    }
+
+    // Model Recommendation Engine
+    function getRecommendedModel(prompt) {
+      const sub = prompt.subCategory.toLowerCase();
+      const main = prompt.mainCategory.toLowerCase();
+      const title = prompt.title.toLowerCase();
+
+      if (sub.includes('quant') || sub.includes('trading') || sub.includes('math') || sub.includes('algorithm') || sub.includes('security') || title.includes('stride') || title.includes('smart contract') || title.includes('consens')) {
+        return { key: 'r1', label: 'DeepSeek-R1 / o1', cls: 'model-r1' };
+      }
+      if (main.includes('engineering') || sub.includes('coding') || sub.includes('frontend') || sub.includes('agent') || sub.includes('devops') || sub.includes('api') || sub.includes('data science') || sub.includes('llmops')) {
+        return { key: 'claude', label: 'Claude 3.5 Sonnet', cls: 'model-claude' };
+      }
+      if (title.includes('recipe') || title.includes('simple') || sub.includes('recipe') || sub.includes('fitness')) {
+        return { key: 'ollama', label: 'Ollama / Local SLM', cls: 'model-ollama' };
+      }
+      return { key: 'gpt', label: 'GPT-4o', cls: 'model-gpt' };
     }
 
     function extractVariables(text) {
@@ -1265,10 +1426,23 @@
       switch (runtime) {
         case 'markdown':
           return baseText;
-        case 'raw':
-          return rawBase;
+
+        case 'reasoning':
+          // Pure First-Principles / CoT Open-Ended Reasoning framing (o1 / DeepSeek-R1 mode)
+          return `# REASONING AGENT MISSION & INCENTIVE CONTRACT
+You are operating in deep reasoning mode. Deconstruct the objective from first principles without relying on superficial boilerplate or rigid formatting templates.
+
+## Primary Objective
+${rawBase}
+
+## Reasoning & Verification Directives
+1. **First-Principles Decomposition**: Analyze underlying constraints, domain mechanics, and edge cases prior to final synthesis.
+2. **Counter-Factual & Invariant Verification**: Actively stress-test intermediate conclusions against counter-examples and extreme failure scenarios.
+3. **Execution Rigor**: Produce mathematically sound, production-grade solutions with concrete implementations rather than high-level commentary.`;
+
         case 'xml':
           return `<system_prompt>\n  <role>${prompt.title} Agent</role>\n  <domain>${prompt.mainCategory} / ${prompt.subCategory}</domain>\n  <directives>\n${baseText.split('\n').map(l => '    ' + l).join('\n')}\n  </directives>\n</system_prompt>`;
+
         case 'json':
           return JSON.stringify({
             "model": "gpt-4o",
@@ -1284,11 +1458,37 @@
             ],
             "temperature": 0.2
           }, null, 2);
+
         case 'cursorrules':
           return `# Cursor / Agent Skill Configuration: ${prompt.title}\n# Domain: ${prompt.mainCategory} > ${prompt.subCategory}\n\n${baseText}\n\n# Operational Constraints:\n- Maintain strict formatting.\n- Provide testable code, formulas, and actionable step plans.`;
+
+        case 'modelfile':
+          return `FROM llama3:latest\n\n# Set parameters\nPARAMETER temperature 0.3\nPARAMETER top_p 0.9\n\n# System prompt\nSYSTEM """\n${baseText}\n"""`;
+
+        case 'cli':
+          const escaped = baseText.replace(/"/g, '\\"').replace(/\n/g, ' ');
+          return `# 1. Claude Code CLI\nclaude --prompt "${escaped.slice(0, 300)}..."\n\n# 2. OpenAI Python SDK Snippet\nimport os\nfrom openai import OpenAI\n\nclient = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))\nresponse = client.chat.completions.create(\n    model="gpt-4o",\n    messages=[\n        {"role": "system", "content": """${baseText}"""},\n        {"role": "user", "content": "Execute this directive."}\n    ],\n    temperature=0.2\n)\nprint(response.choices[0].message.content)\n\n# 3. cURL API Call\ncurl https://api.openai.com/v1/chat/completions \\\n  -H "Content-Type: application/json" \\\n  -H "Authorization: Bearer $OPENAI_API_KEY" \\\n  -d '{\n    "model": "gpt-4o",\n    "messages": [{"role": "system", "content": "${escaped.slice(0, 150)}..."}]\n  }'`;
+
+        case 'raw':
+          return rawBase;
+
         default:
           return baseText;
       }
+    }
+
+    // Artifact File Downloader Helper
+    function downloadFile(filename, content, mimeType = 'text/plain') {
+      const blob = new Blob([content], { type: `${mimeType};charset=utf-8;` });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast(`Downloaded ${filename}`);
     }
 
     async function init() {
@@ -1314,6 +1514,7 @@
       const q = params.get('q');
       const domain = params.get('domain');
       const subcat = params.get('subcat');
+      const model = params.get('model');
 
       if (q) {
         filterState.search = q.toLowerCase().trim();
@@ -1334,6 +1535,10 @@
         filterState.subcat = subcat;
         document.getElementById('subcat-select').value = subcat;
       }
+      if (model) {
+        filterState.modelFilter = model;
+        document.getElementById('model-filter-select').value = model;
+      }
 
       const hash = window.location.hash.replace(/^#/, '');
       if (hash) {
@@ -1352,6 +1557,7 @@
       if (filterState.search) params.set('q', filterState.search);
       if (filterState.domain !== 'all') params.set('domain', filterState.domain);
       if (filterState.subcat !== 'all') params.set('subcat', filterState.subcat);
+      if (filterState.modelFilter !== 'all') params.set('model', filterState.modelFilter);
 
       const qs = params.toString();
       const newUrl = window.location.pathname + (qs ? '?' + qs : '') + (window.location.hash || '');
@@ -1403,7 +1609,7 @@
 
     function updateSubcatDropdown() {
       const select = document.getElementById('subcat-select');
-      select.innerHTML = '<option value="all">All Subcategories (45)</option>';
+      select.innerHTML = '<option value="all">All Subcategories (55)</option>';
 
       let cats = masterData.categories;
       if (filterState.domain !== 'all') {
@@ -1445,13 +1651,13 @@
           b.classList.toggle('btn-active', b.dataset.domain === filterState.domain);
         });
 
-        visibleCount = PAGE_SIZE; // reset pagination
+        visibleCount = PAGE_SIZE;
         updateSubcatDropdown();
         syncUrlParams();
         render();
       });
 
-      // Mobile Domain Chips delegation
+      // Mobile Domain Chips
       document.getElementById('mobile-domain-chips').addEventListener('click', (e) => {
         const btn = e.target.closest('.btn');
         if (!btn) return;
@@ -1480,7 +1686,15 @@
         render();
       });
 
-      // Search box with lightweight debouncing
+      // Model filter select
+      document.getElementById('model-filter-select').addEventListener('change', (e) => {
+        filterState.modelFilter = e.target.value;
+        visibleCount = PAGE_SIZE;
+        syncUrlParams();
+        render();
+      });
+
+      // Search box with debouncing
       const searchBox = document.getElementById('search-box');
       const clearBtn = document.getElementById('search-clear-btn');
       let debounceTimer;
@@ -1514,21 +1728,18 @@
         const isInput = document.activeElement === searchBox || document.activeElement.tagName === 'INPUT';
         const isModalOpen = document.getElementById('modal').classList.contains('open') || document.getElementById('shortcuts-modal').classList.contains('open');
 
-        // Search trigger
         if (e.key === '/' && !isInput && !isModalOpen) {
           e.preventDefault();
           searchBox.focus();
           return;
         }
 
-        // Help modal trigger (?)
         if (e.key === '?' && !isInput && !isModalOpen) {
           e.preventDefault();
           toggleShortcutsModal(true);
           return;
         }
 
-        // Close modal
         if (e.key === 'Escape') {
           if (document.getElementById('shortcuts-modal').classList.contains('open')) {
             toggleShortcutsModal(false);
@@ -1540,7 +1751,6 @@
           return;
         }
 
-        // Vim card navigation (when not typing)
         if (!isInput && !isModalOpen && currentRenderedList.length > 0) {
           if (e.key === 'j' || e.key === 'ArrowDown') {
             e.preventDefault();
@@ -1598,10 +1808,10 @@
         gridContainer.classList.add('list');
       });
 
-      // Export
+      // Export Filtered Markdown
       document.getElementById('export-btn').addEventListener('click', exportMarkdown);
 
-      // Runtime format switcher in modal
+      // Runtime format switcher
       document.querySelectorAll('.runtime-tab-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
           document.querySelectorAll('.runtime-tab-btn').forEach(t => {
@@ -1613,6 +1823,28 @@
           activeRuntime = btn.dataset.runtime;
           updateModalPreview();
         });
+      });
+
+      // Artifact Download Buttons
+      document.getElementById('export-cursorrules').addEventListener('click', () => {
+        if (!activeModalItem) return;
+        const payload = generateFormattedPayload(activeModalItem, 'cursorrules', variableValues);
+        downloadFile('.cursorrules', payload);
+      });
+      document.getElementById('export-skill').addEventListener('click', () => {
+        if (!activeModalItem) return;
+        const payload = generateFormattedPayload(activeModalItem, 'markdown', variableValues);
+        downloadFile('SKILL.md', `---\nname: "${activeModalItem.title}"\ndescription: "${activeModalItem.rawPrompt.slice(0, 120)}..."\n---\n\n${payload}`);
+      });
+      document.getElementById('export-modelfile').addEventListener('click', () => {
+        if (!activeModalItem) return;
+        const payload = generateFormattedPayload(activeModalItem, 'modelfile', variableValues);
+        downloadFile('Modelfile', payload);
+      });
+      document.getElementById('export-txt').addEventListener('click', () => {
+        if (!activeModalItem) return;
+        const payload = generateFormattedPayload(activeModalItem, 'markdown', variableValues);
+        downloadFile('system_prompt.txt', payload);
       });
 
       // Modal close events
@@ -1719,13 +1951,15 @@
 
       const tokens = estimateTokens(prompt.enhancedPrompt);
       const comp = getComplexity(tokens);
+      const rec = getRecommendedModel(prompt);
 
       document.getElementById('modal-title').textContent = `#${prompt.id} — ${prompt.title}`;
       document.getElementById('modal-meta-tags').innerHTML = `
         <span class="card-tag">${prompt.mainCategory}</span>
         <span class="card-tag">${prompt.subCategory}</span>
+        <span class="card-model-badge ${rec.cls}">★ ${rec.label}</span>
         <span class="card-complexity-badge ${comp.cls}">${comp.label}</span>
-        <span class="card-token-badge">~${tokens} tokens · ${prompt.enhancedPrompt.length} chars</span>
+        <span class="card-token-badge">~${tokens} tokens</span>
       `;
 
       const vars = extractVariables(prompt.rawPrompt);
@@ -1773,6 +2007,16 @@
       const text = generateFormattedPayload(activeModalItem, activeRuntime, variableValues);
       document.getElementById('modal-payload').textContent = text;
       document.getElementById('runtime-format-indicator').textContent = `DIRECTIVE PAYLOAD (${activeRuntime.toUpperCase()})`;
+
+      // Dynamic Token, Char and Cost Analytics in Customizer
+      const chars = text.length;
+      const dynamicTokens = estimateTokens(text);
+      // Est Cost based on standard $2.50 / 1M tokens ($0.0000025 per token)
+      const costPerCall = (dynamicTokens * 0.0000025).toFixed(5);
+
+      document.getElementById('param-chars-count').textContent = `${chars} chars`;
+      document.getElementById('param-tokens-count').textContent = `~${dynamicTokens} tokens`;
+      document.getElementById('param-cost-est').textContent = `$${costPerCall} / call`;
     }
 
     function render() {
@@ -1780,6 +2024,14 @@
         if (filterState.onlyFavs && !favorites.has(p.id)) return false;
         if (filterState.domain !== 'all' && p.mainCategory !== filterState.domain) return false;
         if (filterState.subcat !== 'all' && p.subCategory !== filterState.subcat) return false;
+        
+        // Model target filter
+        if (filterState.modelFilter !== 'all') {
+          const rec = getRecommendedModel(p);
+          if (rec.key !== filterState.modelFilter) return false;
+        }
+
+        // Search query
         if (filterState.search) {
           const q = filterState.search;
           const matchTitle = p.title.toLowerCase().includes(q);
@@ -1796,13 +2048,11 @@
       document.getElementById('results-count').textContent = filtered.length;
       
       const filterLabel = document.getElementById('filter-state-label');
-      if (filterState.onlyFavs) {
-        filterLabel.textContent = `Filtered by: Saved (${favorites.size})`;
-      } else if (filterState.domain !== 'all') {
-        filterLabel.textContent = `Filtered by: ${filterState.domain}`;
-      } else {
-        filterLabel.textContent = '';
-      }
+      const labels = [];
+      if (filterState.onlyFavs) labels.push(`Saved (${favorites.size})`);
+      if (filterState.domain !== 'all') labels.push(filterState.domain);
+      if (filterState.modelFilter !== 'all') labels.push(`Model: ${filterState.modelFilter.toUpperCase()}`);
+      filterLabel.textContent = labels.length > 0 ? `Filtered by: ${labels.join(' · ')}` : '';
 
       const grid = document.getElementById('prompts-grid');
       grid.innerHTML = '';
@@ -1819,10 +2069,12 @@
           filterState.search = '';
           filterState.domain = 'all';
           filterState.subcat = 'all';
+          filterState.modelFilter = 'all';
           filterState.onlyFavs = false;
           document.getElementById('search-box').value = '';
           document.getElementById('search-clear-btn').classList.remove('visible');
           document.getElementById('fav-btn').classList.remove('btn-active');
+          document.getElementById('model-filter-select').value = 'all';
           buildSidebar();
           buildMobileChips();
           syncUrlParams();
@@ -1832,7 +2084,7 @@
         return;
       }
 
-      // Sliced render for fast DOM load
+      // Sliced render for ultra-fast DOM load
       const toRender = filtered.slice(0, visibleCount);
       const fragment = document.createDocumentFragment();
 
@@ -1842,6 +2094,7 @@
         const isFav = favorites.has(p.id);
         const tokens = estimateTokens(p.enhancedPrompt);
         const comp = getComplexity(tokens);
+        const rec = getRecommendedModel(p);
 
         card.innerHTML = `
           <div>
@@ -1849,6 +2102,7 @@
               <div class="card-badge-group">
                 <span class="card-id">#${p.id}</span>
                 <span class="card-tag">${p.subCategory}</span>
+                <span class="card-model-badge ${rec.cls}">${rec.label}</span>
                 <span class="card-complexity-badge ${comp.cls}">${comp.label}</span>
                 <span class="card-token-badge">~${tokens}t</span>
               </div>
@@ -1930,19 +2184,11 @@
       let md = `# AI Agent Directives Export\n\n*Source: [arifwidiyanto.web.id/prompt](https://arifwidiyanto.web.id/prompt)*\n\n---\n\n`;
       filtered.forEach(p => {
         const tokens = estimateTokens(p.enhancedPrompt);
-        md += `## #${p.id} - ${p.title}\n**Domain**: ${p.mainCategory} | **Category**: ${p.subCategory} | **Est. Tokens**: ~${tokens}\n\n### 📝 Raw Seed\n> ${p.rawPrompt}\n\n### ⚡ Enhanced AI Directive\n\`\`\`markdown\n${p.enhancedPrompt}\n\`\`\`\n\n---\n\n`;
+        const rec = getRecommendedModel(p);
+        md += `## #${p.id} - ${p.title}\n**Domain**: ${p.mainCategory} | **Category**: ${p.subCategory} | **Model**: ${rec.label} | **Est. Tokens**: ~${tokens}\n\n### 📝 Raw Seed\n> ${p.rawPrompt}\n\n### ⚡ Enhanced AI Directive\n\`\`\`markdown\n${p.enhancedPrompt}\n\`\`\`\n\n---\n\n`;
       });
 
-      const blob = new Blob([md], { type: 'text/markdown;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `ai-agent-directives-${new Date().toISOString().slice(0, 10)}.md`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-      showToast(`${filtered.length} directives exported as Markdown`);
+      downloadFile(`ai-agent-directives-${new Date().toISOString().slice(0, 10)}.md`, md, 'text/markdown');
     }
 
     document.addEventListener('DOMContentLoaded', init);
