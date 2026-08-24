@@ -3,19 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Agent Prompts Hub — 1,000+ Production Directives</title>
-  <meta name="description" content="A developer-grade directory of 1,000+ structured AI Agent Directives with live variable customizers, runtime formatters (Markdown, XML, JSON, CursorRules, Ollama Modelfile, CLI), reasoning model mode (DeepSeek-R1/o1), PWA offline support, and token cost analytics.">
+  <title>AI Agent Prompts Studio & Directives Hub — 1,000+ Production Prompts</title>
+  <meta name="description" content="ClickUp/Monday-inspired dual-sidebar AI Agent Studio and catalog of 1,000+ production directives with zero-latency Prompt-to-Agent Invariant Compiler.">
   <link rel="canonical" href="https://arifwidiyanto.web.id/prompt/">
 
   <!-- OpenGraph & Twitter Meta Tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="AI Agent Prompts Hub — 1,000+ Production Directives">
-  <meta property="og:description" content="Search, customize, and deploy 1,000+ engineered AI agent prompts across 55 categories with one-click runtime formatters, CLI generators, and artifact downloads.">
+  <meta property="og:title" content="AI Agent Prompts Studio & Hub — 1,000+ Directives">
+  <meta property="og:description" content="Dual-sidebar AI Agent workspace with real-time Prompt-to-Agent Compiler, runtime formatters, and production directives.">
   <meta property="og:url" content="https://arifwidiyanto.web.id/prompt/">
   <meta property="og:site_name" content="Arif Widiyanto">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AI Agent Prompts Hub — 1,000+ Production Directives">
-  <meta name="twitter:description" content="Production-grade AI agent prompts with live variable injection, XML/JSON/CLI adapters, and reasoning model support.">
   <meta name="theme-color" content="#09090b">
 
   <!-- PWA Manifest & Favicon -->
@@ -30,33 +28,29 @@
   
   <style>
     :root {
-      --bg: #09090b;
-      --bg-subtle: #121215;
-      --panel: #18181b;
-      --panel-hover: #202024;
-      --surface: #27272a;
-      --surface-active: #323238;
-      --input: #0e0e11;
+      --bg-canvas: #09090b;
+      --bg-rail: #0e0e11;
+      --bg-sidebar: #131317;
+      --bg-panel: #18181c;
+      --bg-panel-hover: #1f1f25;
+      --bg-surface: #26262d;
+      --bg-surface-active: #2f2f37;
+      --bg-input: #0a0a0d;
       
-      --border-subtle: #27272a;
-      --border-medium: #3f3f46;
-      --border-focus: #71717a;
+      --border-subtle: #222228;
+      --border-medium: #32323c;
+      --border-focus: #52525f;
       
-      --fg: #fafafa;
-      --fg-muted: #a1a1aa;
-      --fg-dim: #71717a;
-      --fg-sub: #52525b;
+      --fg-primary: #f4f4f6;
+      --fg-secondary: #a1a1aa;
+      --fg-muted: #71717a;
+      --fg-dim: #52525b;
 
-      --blue: #3b82f6;
-      --blue-subtle: rgba(59, 130, 246, 0.12);
-      --emerald: #10b981;
-      --emerald-subtle: rgba(16, 185, 129, 0.12);
-      --amber: #f59e0b;
-      --amber-subtle: rgba(245, 158, 11, 0.12);
-      --purple: #a855f7;
-      --purple-subtle: rgba(168, 85, 247, 0.12);
-      --cyan: #06b6d4;
-      --cyan-subtle: rgba(6, 182, 212, 0.12);
+      --accent-blue: #3b82f6;
+      --accent-cyan: #06b6d4;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-purple: #a855f7;
 
       --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
@@ -78,264 +72,504 @@
     }
 
     body {
-      background-color: var(--bg);
-      color: var(--fg);
+      background-color: var(--bg-canvas);
+      color: var(--fg-primary);
       font-family: var(--font-sans);
       font-feature-settings: "cv02", "cv03", "cv04", "cv11";
       letter-spacing: -0.011em;
       line-height: 1.5;
-      min-height: 100vh;
+      height: 100vh;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Top Navigation */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      background: rgba(9, 9, 11, 0.88);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+    /* Top Utility Bar */
+    .app-header {
+      height: 48px;
+      background: var(--bg-rail);
       border-bottom: 1px solid var(--border-subtle);
-    }
-    .nav-inner {
-      max-width: 1560px;
-      margin: 0 auto;
-      padding: 0.65rem 1.25rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      padding: 0 1rem;
+      z-index: 30;
+      flex-shrink: 0;
     }
-    .nav-brand {
+    .header-left {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-      text-decoration: none;
-      color: var(--fg);
+      gap: 0.75rem;
     }
-    .nav-logo {
-      width: 26px;
-      height: 26px;
+    .brand-mark {
+      width: 28px;
+      height: 28px;
       border-radius: var(--radius-xs);
-      background: #27272a;
-      border: 1px solid #3f3f46;
+      background: #222228;
+      border: 1px solid #32323c;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #fff;
       font-weight: 700;
       font-size: 0.85rem;
+      text-decoration: none;
     }
-    .nav-title {
+    .brand-text {
+      font-size: 0.85rem;
       font-weight: 600;
-      font-size: 0.875rem;
-      letter-spacing: -0.015em;
-    }
-    .nav-tag {
-      font-size: 0.7rem;
-      font-family: var(--font-mono);
-      color: var(--fg-dim);
-      background: var(--surface);
-      padding: 0.1rem 0.4rem;
-      border-radius: var(--radius-xs);
-    }
-
-    .nav-links {
+      color: var(--fg-primary);
+      text-decoration: none;
       display: flex;
       align-items: center;
       gap: 0.4rem;
     }
-    .btn {
-      display: inline-flex;
+    .badge-count {
+      font-size: 0.68rem;
+      font-family: var(--font-mono);
+      background: var(--bg-surface);
+      color: var(--fg-muted);
+      padding: 0.1rem 0.35rem;
+      border-radius: var(--radius-xs);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .header-right {
+      display: flex;
       align-items: center;
       gap: 0.4rem;
-      padding: 0.35rem 0.65rem;
+    }
+
+    .btn-hdr {
+      padding: 0.3rem 0.6rem;
       border-radius: var(--radius-sm);
-      font-size: 0.8rem;
+      font-size: 0.775rem;
       font-weight: 500;
-      color: var(--fg-muted);
-      text-decoration: none;
+      color: var(--fg-secondary);
       background: transparent;
       border: 1px solid transparent;
       cursor: pointer;
-      transition: all 0.12s ease;
-      user-select: none;
-      position: relative;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.12s;
     }
-    .btn:hover {
-      color: var(--fg);
-      background: var(--surface);
+    .btn-hdr:hover {
+      color: var(--fg-primary);
+      background: var(--bg-surface);
     }
-    .btn-active {
-      background: var(--surface);
-      color: #fff;
+    .btn-hdr.active {
+      background: var(--bg-surface);
       border-color: var(--border-medium);
-    }
-    .btn-primary {
-      background: #fafafa;
-      color: #09090b;
-      font-weight: 550;
-    }
-    .btn-primary:hover {
-      background: #e4e4e7;
-      color: #09090b;
-    }
-    .btn-install {
-      background: var(--purple-subtle);
-      color: #c084fc;
-      border: 1px solid rgba(168, 85, 247, 0.3);
-    }
-    .btn-install:hover {
-      background: var(--purple);
       color: #fff;
     }
-    .btn-chatgpt {
-      background: rgba(16, 185, 129, 0.12);
-      color: #34d399;
-      border: 1px solid rgba(16, 185, 129, 0.25);
+    .btn-hdr-studio {
+      background: rgba(6, 182, 212, 0.12);
+      color: #22d3ee;
+      border-color: rgba(6, 182, 212, 0.25);
+      font-weight: 600;
     }
-    .btn-chatgpt:hover {
-      background: #10b981;
-      color: #fff;
-    }
-    .btn-claude {
-      background: rgba(245, 158, 11, 0.12);
-      color: #fbbf24;
-      border: 1px solid rgba(245, 158, 11, 0.25);
-    }
-    .btn-claude:hover {
-      background: #f59e0b;
+    .btn-hdr-studio:hover {
+      background: var(--accent-cyan);
       color: #09090b;
     }
 
-    /* Workspace */
-    .workspace {
+    /* App Double-Sidebar Workspace Frame */
+    .app-workspace {
       flex: 1;
-      max-width: 1560px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 1.25rem;
-      display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: 1.5rem;
-      align-items: start;
+      display: flex;
+      height: calc(100vh - 48px);
+      overflow: hidden;
     }
 
-    /* Sidebar Navigation */
-    .sidebar {
-      position: sticky;
-      top: 4rem;
-      background: var(--panel);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 0.85rem;
+    /* Column 1: Primary Navigation Rail (ClickUp Style) */
+    .primary-rail {
+      width: 56px;
+      background: var(--bg-rail);
+      border-right: 1px solid var(--border-subtle);
       display: flex;
       flex-direction: column;
-      gap: 1.1rem;
-      max-height: calc(100vh - 5.5rem);
+      align-items: center;
+      padding: 0.75rem 0;
+      gap: 0.5rem;
+      flex-shrink: 0;
+      z-index: 20;
+    }
+    .rail-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-md);
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--fg-muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.12s;
+      position: relative;
+    }
+    .rail-btn:hover {
+      color: var(--fg-primary);
+      background: var(--bg-panel);
+    }
+    .rail-btn.active {
+      color: #fff;
+      background: var(--bg-surface);
+      border-color: var(--border-medium);
+    }
+    .rail-btn.active::before {
+      content: '';
+      position: absolute;
+      left: -9px;
+      top: 8px;
+      bottom: 8px;
+      width: 3px;
+      background: var(--accent-blue);
+      border-radius: 0 3px 3px 0;
+    }
+    .rail-btn-studio.active {
+      color: #22d3ee;
+      border-color: rgba(6, 182, 212, 0.4);
+      background: rgba(6, 182, 212, 0.15);
+    }
+    .rail-btn-studio.active::before {
+      background: var(--accent-cyan);
+    }
+    .rail-divider {
+      width: 24px;
+      height: 1px;
+      background: var(--border-subtle);
+      margin: 0.25rem 0;
+    }
+
+    /* Column 2: Secondary Context Sidebar (Monday.com / ClickUp List) */
+    .secondary-sidebar {
+      width: 260px;
+      background: var(--bg-sidebar);
+      border-right: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
       overflow-y: auto;
       scrollbar-width: thin;
       scrollbar-color: var(--border-subtle) transparent;
+      transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .sidebar-label {
+    .sidebar-head {
+      padding: 0.85rem 1rem 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .sidebar-head-title {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 650;
+      color: var(--fg-muted);
+    }
+    .sidebar-tree {
+      padding: 0.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      flex: 1;
+    }
+    .tree-section-title {
       font-size: 0.68rem;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       font-weight: 600;
       color: var(--fg-dim);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.35rem;
       padding: 0 0.4rem;
     }
-    .nav-menu-list {
+    .tree-list {
       list-style: none;
       display: flex;
       flex-direction: column;
       gap: 0.15rem;
     }
-    .nav-item {
+    .tree-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0.4rem 0.55rem;
       border-radius: var(--radius-sm);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 450;
-      color: var(--fg-muted);
+      color: var(--fg-secondary);
       background: transparent;
       border: 1px solid transparent;
       cursor: pointer;
       width: 100%;
       text-align: left;
-      transition: all 0.12s ease;
+      transition: all 0.12s;
     }
-    .nav-item:hover {
-      color: var(--fg);
-      background: var(--surface);
+    .tree-item:hover {
+      color: var(--fg-primary);
+      background: var(--bg-surface);
     }
-    .nav-item.active {
+    .tree-item.active {
       color: #fff;
-      background: var(--surface);
+      background: var(--bg-surface);
       border-color: var(--border-medium);
       font-weight: 550;
     }
-    .nav-item-name {
+    .tree-item-text {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
       padding-right: 0.4rem;
     }
-    .count-badge {
-      font-size: 0.68rem;
-      font-family: var(--font-mono);
-      color: var(--fg-dim);
-    }
-    .nav-item.active .count-badge {
-      color: var(--fg);
-    }
 
-    .select-subcat, .select-model-filter {
+    .select-sidebar {
       width: 100%;
-      padding: 0.45rem 0.6rem;
-      background: var(--input);
+      padding: 0.4rem 0.55rem;
+      background: var(--bg-input);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
-      color: var(--fg);
-      font-size: 0.78rem;
+      color: var(--fg-primary);
+      font-size: 0.76rem;
       font-family: var(--font-sans);
       outline: none;
       cursor: pointer;
     }
-    .select-subcat:focus, .select-model-filter:focus {
+    .select-sidebar:focus {
       border-color: var(--border-focus);
     }
 
-    /* Mobile Domain Chips */
-    .mobile-domain-scroller {
-      display: none;
-      gap: 0.4rem;
-      overflow-x: auto;
-      scrollbar-width: none;
-      padding-bottom: 0.25rem;
-    }
-    .mobile-domain-scroller::-webkit-scrollbar {
-      display: none;
-    }
-
-    /* Main Deck */
-    .deck {
+    /* Main Center Workspace Content */
+    .main-workspace {
+      flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      min-width: 0;
+      overflow-y: auto;
+      position: relative;
+      background: var(--bg-canvas);
     }
 
-    /* Stream Header */
+    /* VIEW 1: PROMPT-TO-AGENT STUDIO (Split-Pane Compiler) */
+    .view-studio {
+      display: none;
+      flex-direction: column;
+      height: 100%;
+      padding: 1.25rem;
+      gap: 1rem;
+      overflow-y: auto;
+    }
+    .view-studio.active-view {
+      display: flex;
+    }
+    .studio-hero {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .studio-hero-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .studio-hero-badge {
+      font-size: 0.65rem;
+      font-family: var(--font-mono);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      background: rgba(6, 182, 212, 0.15);
+      color: #22d3ee;
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .studio-hero-desc {
+      font-size: 0.825rem;
+      color: var(--fg-muted);
+      margin-top: 0.2rem;
+    }
+
+    .studio-split {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 1.25rem;
+      flex: 1;
+      min-height: 480px;
+    }
+    .studio-pane {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .pane-header {
+      padding: 0.75rem 1rem;
+      background: var(--bg-rail);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .pane-title {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--fg-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .pane-content {
+      padding: 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      overflow-y: auto;
+    }
+    .input-task-area {
+      width: 100%;
+      flex: 1;
+      min-height: 180px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem;
+      color: var(--fg-primary);
+      font-size: 0.85rem;
+      font-family: var(--font-sans);
+      outline: none;
+      resize: none;
+      line-height: 1.6;
+    }
+    .input-task-area:focus {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.15);
+    }
+    .studio-quick-presets {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .preset-chip {
+      padding: 0.25rem 0.55rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xs);
+      font-size: 0.72rem;
+      color: var(--fg-muted);
+      cursor: pointer;
+      transition: all 0.12s;
+    }
+    .preset-chip:hover {
+      color: #fff;
+      background: var(--bg-surface-active);
+    }
+
+    .studio-action-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .btn-compile-run {
+      padding: 0.55rem 1.25rem;
+      background: var(--accent-cyan);
+      color: #09090b;
+      font-size: 0.825rem;
+      font-weight: 650;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.12s;
+    }
+    .btn-compile-run:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    /* Studio Output Pane Specifics */
+    .studio-runtime-selector {
+      display: flex;
+      gap: 0.2rem;
+      flex-wrap: wrap;
+    }
+    .studio-tab {
+      padding: 0.2rem 0.45rem;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: var(--radius-xs);
+      color: var(--fg-muted);
+      font-size: 0.72rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .studio-tab.active {
+      background: var(--bg-surface);
+      border-color: var(--border-medium);
+      color: #fff;
+      font-weight: 600;
+    }
+    .studio-tab-contract.active {
+      color: #67e8f9 !important;
+      border-color: rgba(6, 182, 212, 0.4) !important;
+      background: rgba(6, 182, 212, 0.15) !important;
+    }
+    .studio-output-view {
+      flex: 1;
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      line-height: 1.65;
+      color: #e4e4e7;
+      white-space: pre-wrap;
+      overflow-y: auto;
+      min-height: 240px;
+    }
+    .output-meta-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--fg-dim);
+    }
+
+    /* VIEW 2: DIRECTIVES LIBRARY */
+    .view-library {
+      display: flex;
+      flex-direction: column;
+      padding: 1.25rem;
+      gap: 1rem;
+      overflow-y: auto;
+    }
+    .view-library.active-view {
+      display: flex;
+    }
     .deck-header {
-      background: var(--panel);
+      background: var(--bg-panel);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
       padding: 1.25rem 1.5rem;
@@ -346,47 +580,47 @@
       flex-wrap: wrap;
     }
     .deck-title {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 650;
       color: #fff;
       letter-spacing: -0.02em;
     }
     .deck-desc {
       color: var(--fg-muted);
-      font-size: 0.84rem;
+      font-size: 0.825rem;
       margin-top: 0.2rem;
-      max-width: 620px;
+      max-width: 600px;
     }
     .deck-stats {
       display: flex;
-      gap: 0.75rem;
+      gap: 0.6rem;
     }
     .stat-pill {
-      background: var(--bg);
+      background: var(--bg-canvas);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
-      padding: 0.4rem 0.75rem;
+      padding: 0.35rem 0.65rem;
       text-align: center;
     }
     .stat-pill-val {
       font-family: var(--font-mono);
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 600;
       color: #fff;
     }
     .stat-pill-lbl {
-      font-size: 0.65rem;
+      font-size: 0.62rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: var(--fg-dim);
     }
 
-    /* Control Bar */
+    /* Controls Toolbar */
     .controls {
-      background: var(--panel);
+      background: var(--bg-panel);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
-      padding: 0.5rem;
+      padding: 0.45rem 0.6rem;
       display: flex;
       align-items: center;
       gap: 0.6rem;
@@ -394,7 +628,7 @@
     }
     .search-wrapper {
       flex: 1;
-      min-width: 240px;
+      min-width: 220px;
       position: relative;
       display: flex;
       align-items: center;
@@ -408,12 +642,12 @@
     }
     .search-input {
       width: 100%;
-      padding: 0.45rem 2.2rem 0.45rem 2rem;
-      background: var(--input);
+      padding: 0.4rem 2rem 0.4rem 2rem;
+      background: var(--bg-input);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
-      color: var(--fg);
-      font-size: 0.825rem;
+      color: var(--fg-primary);
+      font-size: 0.8rem;
       font-family: var(--font-sans);
       outline: none;
     }
@@ -437,7 +671,7 @@
 
     .view-group {
       display: flex;
-      background: var(--input);
+      background: var(--bg-input);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
       padding: 0.15rem;
@@ -446,25 +680,20 @@
       background: transparent;
       border: none;
       color: var(--fg-dim);
-      padding: 0.25rem 0.45rem;
+      padding: 0.2rem 0.45rem;
       border-radius: 3px;
       cursor: pointer;
       font-size: 0.75rem;
     }
     .view-btn.active {
-      background: var(--surface);
+      background: var(--bg-surface);
       color: #fff;
-    }
-
-    .playbook-btn-group {
-      display: flex;
-      gap: 0.35rem;
     }
 
     /* Cards Grid */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
       gap: 0.85rem;
     }
     .grid.list {
@@ -472,10 +701,10 @@
     }
 
     .card {
-      background: var(--panel);
+      background: var(--bg-panel);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
-      padding: 1rem;
+      padding: 0.95rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -484,13 +713,13 @@
       position: relative;
     }
     .card:hover {
-      background: var(--panel-hover);
+      background: var(--bg-panel-hover);
       border-color: var(--border-medium);
     }
     .card.card-focused {
-      border-color: var(--blue);
-      box-shadow: 0 0 0 1px var(--blue), var(--shadow-md);
-      background: var(--panel-hover);
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 1px var(--accent-blue), var(--shadow-md);
+      background: var(--bg-panel-hover);
     }
 
     .card-meta {
@@ -498,7 +727,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 0.4rem;
-      margin-bottom: 0.45rem;
+      margin-bottom: 0.4rem;
     }
     .card-badge-group {
       display: flex;
@@ -508,24 +737,24 @@
     }
     .card-id {
       font-family: var(--font-mono);
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       color: var(--fg-dim);
     }
     .card-tag {
-      font-size: 0.68rem;
+      font-size: 0.66rem;
       font-weight: 500;
       color: var(--fg-muted);
-      background: var(--surface);
-      padding: 0.1rem 0.35rem;
+      background: var(--bg-surface);
+      padding: 0.08rem 0.35rem;
       border-radius: 3px;
       border: 1px solid var(--border-subtle);
     }
     .card-model-badge {
-      font-size: 0.65rem;
+      font-size: 0.64rem;
       font-weight: 550;
-      padding: 0.08rem 0.35rem;
+      padding: 0.06rem 0.3rem;
       border-radius: 3px;
-      background: var(--input);
+      background: var(--bg-input);
       border: 1px solid var(--border-subtle);
     }
     .model-claude { color: #f59e0b; border-color: rgba(245, 158, 11, 0.25); }
@@ -533,22 +762,16 @@
     .model-gpt { color: #34d399; border-color: rgba(16, 185, 129, 0.25); }
     .model-ollama { color: #93c5fd; border-color: rgba(59, 130, 246, 0.25); }
 
-    .card-token-badge {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: var(--fg-dim);
-    }
     .card-complexity-badge {
-      font-size: 0.65rem;
+      font-size: 0.62rem;
       font-weight: 600;
-      padding: 0.05rem 0.3rem;
+      padding: 0.05rem 0.25rem;
       border-radius: 3px;
       text-transform: uppercase;
-      letter-spacing: 0.03em;
     }
-    .comp-compact { background: var(--blue-subtle); color: #93c5fd; }
-    .comp-standard { background: var(--emerald-subtle); color: #6ee7b7; }
-    .comp-deep { background: var(--purple-subtle); color: #d8b4fe; }
+    .comp-compact { background: rgba(59, 130, 246, 0.12); color: #93c5fd; }
+    .comp-standard { background: rgba(16, 185, 129, 0.12); color: #6ee7b7; }
+    .comp-deep { background: rgba(168, 85, 247, 0.12); color: #d8b4fe; }
 
     .card-action-icons {
       display: flex;
@@ -561,42 +784,42 @@
       color: var(--fg-dim);
       cursor: pointer;
       font-size: 0.8rem;
-      padding: 0.2rem;
+      padding: 0.15rem;
       line-height: 1;
       border-radius: 3px;
     }
     .card-icon-btn:hover {
-      color: var(--fg);
-      background: var(--surface);
+      color: var(--fg-primary);
+      background: var(--bg-surface);
     }
     .card-fav-btn.active {
-      color: var(--amber);
+      color: var(--accent-amber);
     }
 
     .card-title {
-      font-size: 0.925rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: #fff;
       line-height: 1.35;
-      margin-bottom: 0.45rem;
+      margin-bottom: 0.4rem;
     }
     .card-body-preview {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--fg-muted);
       line-height: 1.45;
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
-      margin-bottom: 0.85rem;
-      background: var(--input);
-      padding: 0.55rem 0.7rem;
+      margin-bottom: 0.75rem;
+      background: var(--bg-input);
+      padding: 0.5rem 0.65rem;
       border-radius: var(--radius-xs);
       border-left: 2px solid var(--border-medium);
     }
     .var-token {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: #93c5fd;
       background: rgba(59, 130, 246, 0.12);
       padding: 0 0.2rem;
@@ -613,17 +836,17 @@
     .card-foot {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
       border-top: 1px solid var(--border-subtle);
-      padding-top: 0.65rem;
+      padding-top: 0.6rem;
     }
     .card-action-btn {
       flex: 1;
-      padding: 0.35rem 0.55rem;
+      padding: 0.32rem 0.5rem;
       border-radius: var(--radius-xs);
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 500;
-      background: var(--surface);
+      background: var(--bg-surface);
       color: var(--fg-muted);
       border: 1px solid transparent;
       cursor: pointer;
@@ -647,21 +870,20 @@
     .load-more-wrapper {
       display: flex;
       justify-content: center;
-      padding: 1.5rem 0 2rem;
+      padding: 1.25rem 0 2rem;
     }
     .btn-load-more {
-      padding: 0.6rem 1.5rem;
-      background: var(--panel);
+      padding: 0.55rem 1.25rem;
+      background: var(--bg-panel);
       border: 1px solid var(--border-medium);
-      color: var(--fg);
-      font-size: 0.85rem;
+      color: var(--fg-primary);
+      font-size: 0.8rem;
       font-weight: 500;
       border-radius: var(--radius-sm);
       cursor: pointer;
-      transition: all 0.15s;
     }
     .btn-load-more:hover {
-      background: var(--surface);
+      background: var(--bg-surface);
       border-color: var(--border-focus);
     }
 
@@ -682,7 +904,7 @@
       display: flex;
     }
     .modal-box {
-      background: var(--panel);
+      background: var(--bg-panel);
       border: 1px solid var(--border-medium);
       border-radius: var(--radius-lg);
       max-width: 900px;
@@ -693,7 +915,7 @@
       box-shadow: var(--shadow-modal);
     }
     .modal-head {
-      padding: 1rem 1.25rem;
+      padding: 0.9rem 1.2rem;
       border-bottom: 1px solid var(--border-subtle);
       display: flex;
       justify-content: space-between;
@@ -701,7 +923,7 @@
       gap: 1rem;
     }
     .modal-head-title {
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 600;
       color: #fff;
     }
@@ -719,28 +941,28 @@
     }
 
     .modal-body {
-      padding: 1.25rem;
+      padding: 1.2rem;
       overflow-y: auto;
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.85rem;
     }
 
-    /* Runtime Formatter Bar */
+    /* Runtime Formatter Bar in Modal */
     .runtime-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 0.5rem;
       flex-wrap: wrap;
-      background: var(--input);
+      background: var(--bg-input);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
-      padding: 0.4rem 0.6rem;
+      padding: 0.35rem 0.55rem;
     }
     .runtime-lbl {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 600;
       color: var(--fg-dim);
       text-transform: uppercase;
@@ -748,24 +970,24 @@
     }
     .runtime-tabs {
       display: flex;
-      gap: 0.25rem;
+      gap: 0.2rem;
       flex-wrap: wrap;
     }
     .runtime-tab-btn {
-      padding: 0.25rem 0.55rem;
+      padding: 0.22rem 0.5rem;
       background: transparent;
       border: 1px solid transparent;
       border-radius: var(--radius-xs);
       color: var(--fg-muted);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 500;
       cursor: pointer;
     }
     .runtime-tab-btn:hover {
-      color: var(--fg);
+      color: var(--fg-primary);
     }
     .runtime-tab-btn.active {
-      background: var(--surface);
+      background: var(--bg-surface);
       border-color: var(--border-medium);
       color: #fff;
       font-weight: 600;
@@ -773,24 +995,29 @@
     .tab-highlight-r1 {
       color: #d8b4fe !important;
       border-color: rgba(168, 85, 247, 0.4) !important;
-      background: var(--purple-subtle) !important;
+      background: rgba(168, 85, 247, 0.12) !important;
+    }
+    .tab-highlight-contract {
+      color: #67e8f9 !important;
+      border-color: rgba(6, 182, 212, 0.4) !important;
+      background: rgba(6, 182, 212, 0.12) !important;
     }
 
     /* Live Parameter Form & Realtime Token Meter */
     .param-box {
-      background: var(--input);
+      background: var(--bg-input);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
-      padding: 0.85rem;
+      padding: 0.75rem;
     }
     .param-box-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.45rem;
     }
     .param-box-head {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       font-weight: 600;
@@ -798,33 +1025,33 @@
     }
     .param-metrics {
       font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--blue);
+      font-size: 0.7rem;
+      color: var(--accent-blue);
       display: flex;
-      gap: 0.6rem;
+      gap: 0.5rem;
     }
     .param-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 0.6rem;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.5rem;
     }
     .param-cell {
       display: flex;
       flex-direction: column;
-      gap: 0.25rem;
+      gap: 0.2rem;
     }
     .param-lbl {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-family: var(--font-mono);
       color: var(--fg-muted);
     }
     .param-field {
-      padding: 0.4rem 0.55rem;
-      background: var(--bg);
+      padding: 0.35rem 0.5rem;
+      background: var(--bg-canvas);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-xs);
       color: #fff;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-family: var(--font-sans);
       outline: none;
     }
@@ -833,17 +1060,17 @@
     }
 
     .code-view {
-      background: var(--input);
+      background: var(--bg-input);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
-      padding: 1rem;
+      padding: 0.85rem;
       font-family: var(--font-mono);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       line-height: 1.65;
       color: #e4e4e7;
       white-space: pre-wrap;
       overflow-x: auto;
-      max-height: 360px;
+      max-height: 340px;
     }
 
     /* Artifact Exporters Toolbar in Modal */
@@ -851,24 +1078,24 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.5rem 0.75rem;
-      background: var(--input);
+      padding: 0.45rem 0.65rem;
+      background: var(--bg-input);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--fg-muted);
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
     .artifact-btns {
       display: flex;
-      gap: 0.35rem;
+      gap: 0.3rem;
       flex-wrap: wrap;
     }
     .btn-artifact {
-      font-size: 0.72rem;
-      padding: 0.25rem 0.5rem;
-      background: var(--surface);
+      font-size: 0.7rem;
+      padding: 0.2rem 0.45rem;
+      background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-xs);
       color: var(--fg-muted);
@@ -882,7 +1109,7 @@
     }
 
     .modal-foot {
-      padding: 0.85rem 1.25rem;
+      padding: 0.75rem 1.2rem;
       border-top: 1px solid var(--border-subtle);
       display: flex;
       justify-content: space-between;
@@ -895,12 +1122,12 @@
     .modal-foot-left {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
     }
     .modal-foot-right {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
     }
 
     /* Shortcuts Cheat Sheet Modal */
@@ -910,13 +1137,13 @@
       font-size: 0.8rem;
     }
     .shortcut-table td {
-      padding: 0.5rem 0.6rem;
+      padding: 0.45rem 0.55rem;
       border-bottom: 1px solid var(--border-subtle);
     }
     .shortcut-table td:first-child {
       width: 35%;
       font-family: var(--font-mono);
-      color: var(--blue);
+      color: var(--accent-blue);
     }
     .shortcut-table td:last-child {
       color: var(--fg-muted);
@@ -934,12 +1161,12 @@
       pointer-events: none;
     }
     .toast-item {
-      background: #27272a;
+      background: #222228;
       border: 1px solid var(--border-medium);
       color: #fff;
-      padding: 0.55rem 0.9rem;
+      padding: 0.5rem 0.85rem;
       border-radius: var(--radius-sm);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 500;
       box-shadow: var(--shadow-md);
       animation: fadePop 0.15s ease, fadeOut 0.2s ease 2.2s forwards;
@@ -955,8 +1182,8 @@
     .empty-state {
       grid-column: 1 / -1;
       text-align: center;
-      padding: 3.5rem 1rem;
-      background: var(--panel);
+      padding: 3rem 1rem;
+      background: var(--bg-panel);
       border: 1px dashed var(--border-subtle);
       border-radius: var(--radius-md);
     }
@@ -975,7 +1202,7 @@
     .kbd {
       font-family: var(--font-mono);
       font-size: 0.65rem;
-      background: var(--surface);
+      background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       padding: 0.1rem 0.35rem;
       border-radius: 3px;
@@ -983,14 +1210,11 @@
     }
 
     @media (max-width: 900px) {
-      .workspace {
-        grid-template-columns: 1fr;
-      }
-      .sidebar {
+      .secondary-sidebar {
         display: none;
       }
-      .mobile-domain-scroller {
-        display: flex;
+      .studio-split {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -998,150 +1222,269 @@
 <body>
 
   <!-- Top Navigation -->
-  <header class="nav">
-    <div class="nav-inner">
-      <a href="https://arifwidiyanto.web.id" class="nav-brand" aria-label="Arif Widiyanto Home">
-        <div class="nav-logo" aria-hidden="true">AW</div>
-        <div>
-          <div class="nav-title">Arif Widiyanto</div>
-        </div>
-        <span class="nav-tag">1,000+ Directives</span>
+  <header class="app-header">
+    <div class="header-left">
+      <a href="https://arifwidiyanto.web.id" class="brand-mark" title="Home">AW</a>
+      <a href="https://arifwidiyanto.web.id/prompt/" class="brand-text">
+        <span>AI Agent Directives</span>
+        <span class="badge-count">1,015 Directives</span>
       </a>
+    </div>
 
-      <div class="nav-links">
-        <button class="btn btn-install" id="pwa-install-btn" style="display: none;" title="Install as Desktop/Mobile App">
-          <span>⬇ Install App</span>
-        </button>
-        <button class="btn" id="shortcuts-help-btn" title="View Keyboard Shortcuts (?)" aria-label="Keyboard Shortcuts">
-          <span class="kbd">?</span>
-          <span>Shortcuts</span>
-        </button>
-        <button class="btn" id="fav-btn" aria-label="View Saved Favorites">
-          <span>★</span>
-          <span>Saved</span>
-          <span class="count-badge" id="fav-count">0</span>
-        </button>
-        <a href="https://arifwidiyanto.web.id" class="btn">
-          <span>← Portfolio</span>
-        </a>
-      </div>
+    <div class="header-right">
+      <button class="btn-hdr btn-hdr-studio" id="hdr-studio-toggle" title="Switch to Studio Compiler Mode">
+        <span>⚡ Studio Compiler</span>
+      </button>
+      <button class="btn-hdr" id="pwa-install-btn" style="display: none;" title="Install as Desktop/Mobile App">
+        <span>⬇ Install App</span>
+      </button>
+      <button class="btn-hdr" id="shortcuts-help-btn" title="View Keyboard Shortcuts (?)">
+        <span class="kbd">?</span>
+        <span>Shortcuts</span>
+      </button>
+      <button class="btn-hdr" id="fav-btn" title="View Saved Favorites">
+        <span>★ Saved</span>
+        <span class="badge-count" id="fav-count">0</span>
+      </button>
+      <a href="https://arifwidiyanto.web.id" class="btn-hdr" title="Back to Portfolio">
+        <span>← Portfolio</span>
+      </a>
     </div>
   </header>
 
-  <div class="workspace">
+  <!-- App Workspace (Double Sidebar + Viewport) -->
+  <div class="app-workspace">
     
-    <!-- Sidebar -->
-    <aside class="sidebar" aria-label="Filters Sidebar">
-      <div>
-        <div class="sidebar-label">Strategic Clusters</div>
-        <ul class="nav-menu-list" id="sidebar-domain-list">
-          <!-- Rendered via JS -->
-        </ul>
+    <!-- COLUMN 1: Primary Navigation Rail (ClickUp Style) -->
+    <nav class="primary-rail" aria-label="Main Module Rail">
+      <button class="rail-btn active" id="rail-library-btn" title="Directives Library (1,000+ Directives)">
+        <span style="font-size: 1.1rem;">📚</span>
+      </button>
+      <button class="rail-btn rail-btn-studio" id="rail-studio-btn" title="Prompt-to-Agent Studio Compiler">
+        <span style="font-size: 1.1rem;">⚡</span>
+      </button>
+      <button class="rail-btn" id="rail-fav-btn" title="Favorited Directives">
+        <span style="font-size: 1.1rem;">★</span>
+      </button>
+
+      <div class="rail-divider"></div>
+
+      <!-- Quick Domain Jumps on Rail -->
+      <button class="rail-btn" data-rail-domain="Engineering, Tech & AI" title="Engineering & AI">
+        <span style="font-size: 0.9rem;">💻</span>
+      </button>
+      <button class="rail-btn" data-rail-domain="Business, Strategy & Management" title="Business & Strategy">
+        <span style="font-size: 0.9rem;">🏢</span>
+      </button>
+      <button class="rail-btn" data-rail-domain="Finance, Investing & Legal" title="Finance & Legal">
+        <span style="font-size: 0.9rem;">🏦</span>
+      </button>
+      <button class="rail-btn" data-rail-domain="Marketing, Sales & Outreach" title="Marketing & Sales">
+        <span style="font-size: 0.9rem;">📈</span>
+      </button>
+
+      <div style="margin-top: auto; display: flex; flex-direction: column; gap: 0.4rem; align-items: center;">
+        <button class="rail-btn" id="rail-help-btn" title="Keyboard Shortcuts (?)">
+          <span style="font-size: 0.8rem; font-family: var(--font-mono);">?</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- COLUMN 2: Secondary Context Panel (Monday/ClickUp List) -->
+    <aside class="secondary-sidebar" id="secondary-sidebar" aria-label="Secondary Context Filter">
+      <div class="sidebar-head">
+        <span class="sidebar-head-title" id="sidebar-context-title">Strategic Clusters</span>
+        <span class="badge-count" id="sidebar-total-badge">1,015</span>
       </div>
 
-      <div>
-        <div class="sidebar-label">Subcategories (55)</div>
-        <select id="subcat-select" class="select-subcat" aria-label="Select Subcategory">
-          <option value="all">All Subcategories (55)</option>
-        </select>
-      </div>
+      <div class="sidebar-tree">
+        <div>
+          <div class="tree-section-title">Domains (8)</div>
+          <ul class="tree-list" id="sidebar-domain-list">
+            <!-- Rendered via JS -->
+          </ul>
+        </div>
 
-      <div>
-        <div class="sidebar-label">Model Target Filter</div>
-        <select id="model-filter-select" class="select-model-filter" aria-label="Select Model Filter">
-          <option value="all">All Recommended Models</option>
-          <option value="claude">Claude 3.5 Sonnet (Coding/Tools)</option>
-          <option value="r1">DeepSeek-R1 / o1 (Reasoning/Math)</option>
-          <option value="gpt">GPT-4o (General/Creative/Vision)</option>
-          <option value="ollama">Ollama / Local SLM (Lightweight)</option>
-        </select>
-      </div>
+        <div>
+          <div class="tree-section-title">Subcategories (55)</div>
+          <select id="subcat-select" class="select-sidebar" aria-label="Select Subcategory">
+            <option value="all">All Subcategories (55)</option>
+          </select>
+        </div>
 
-      <div style="margin-top: auto; padding-top: 0.75rem; border-top: 1px solid var(--border-subtle); font-size: 0.72rem; color: var(--fg-dim);">
-        <div style="margin-bottom: 0.3rem;"><span class="kbd">j</span> / <span class="kbd">k</span> Navigate cards</div>
-        <div style="margin-bottom: 0.3rem;"><span class="kbd">Enter</span> Open &middot; <span class="kbd">c</span> Copy &middot; <span class="kbd">s</span> Save</div>
-        <div><span class="kbd">/</span> Search &middot; <span class="kbd">?</span> Help</div>
+        <div>
+          <div class="tree-section-title">Target Model Gating</div>
+          <select id="model-filter-select" class="select-sidebar" aria-label="Select Model Filter">
+            <option value="all">All Models</option>
+            <option value="claude">Claude 3.5 Sonnet (Coding/Tools)</option>
+            <option value="r1">DeepSeek-R1 / o1 (Reasoning)</option>
+            <option value="gpt">GPT-4o (General/Strategy)</option>
+            <option value="ollama">Ollama / Local SLM (Edge)</option>
+          </select>
+        </div>
+
+        <div style="margin-top: auto; padding: 0.75rem 0.4rem 0.25rem; border-top: 1px solid var(--border-subtle); font-size: 0.7rem; color: var(--fg-dim);">
+          <div style="margin-bottom: 0.25rem;"><span class="kbd">j</span>/<span class="kbd">k</span> Move &middot; <span class="kbd">Enter</span> Open</div>
+          <div><span class="kbd">c</span> Copy &middot; <span class="kbd">s</span> Save &middot; <span class="kbd">/</span> Search</div>
+        </div>
       </div>
     </aside>
 
-    <!-- Main Deck Area -->
-    <main class="deck">
+    <!-- CENTER WORKSPACE: Switchable Views -->
+    <main class="main-workspace">
       
-      <!-- Deck Header -->
-      <section class="deck-header">
-        <div>
-          <h1 class="deck-title">AI Agent Directives Hub</h1>
-          <p class="deck-desc">
-            Production-ready directives engineered for autonomous LLM agents, Claude Code, DeepSeek-R1, ChatGPT, OpenClaw, and automation workflows.
-          </p>
-        </div>
-
-        <div class="deck-stats">
-          <div class="stat-pill">
-            <div class="stat-pill-val">1,015</div>
-            <div class="stat-pill-lbl">Prompts</div>
+      <!-- ======================================================== -->
+      <!-- VIEW 1: PROMPT-TO-AGENT STUDIO (Split-Pane Compiler) -->
+      <!-- ======================================================== -->
+      <div class="view-studio" id="view-studio-compiler">
+        <div class="studio-hero">
+          <div>
+            <div class="studio-hero-title">
+              <span>⚡ Prompt-to-Agent Studio Compiler</span>
+              <span class="studio-hero-badge">Zero-Latency Invariant Engine</span>
+            </div>
+            <div class="studio-hero-desc">
+              Transform any ordinary, messy, or unformatted prompt into a deterministic, enterprise-grade AI Agent Directive or Invariant Contract.
+            </div>
           </div>
-          <div class="stat-pill">
-            <div class="stat-pill-val">8</div>
-            <div class="stat-pill-lbl">Domains</div>
+          <button class="btn-hdr" id="btn-back-to-library">← Back to Catalog</button>
+        </div>
+
+        <!-- Split View Compiler Workspace -->
+        <div class="studio-split">
+          <!-- Left: Input Task Area -->
+          <div class="studio-pane">
+            <div class="pane-header">
+              <span class="pane-title">1. Raw Task / Prompt Input</span>
+              <span style="font-size: 0.7rem; color: var(--fg-dim);">Type or paste any task</span>
+            </div>
+            <div class="pane-content">
+              <div class="studio-quick-presets">
+                <span style="font-size: 0.7rem; color: var(--fg-dim); align-self: center;">Presets:</span>
+                <button class="preset-chip" data-preset="db-backup">PostgreSQL to S3 Backup</button>
+                <button class="preset-chip" data-preset="pentest-idor">BOLA/IDOR Pentest</button>
+                <button class="preset-chip" data-preset="quant-bot">Statistical Arbitrage Bot</button>
+                <button class="preset-chip" data-preset="ui-table">Virtual React Data Table</button>
+              </div>
+
+              <textarea id="studio-raw-input" class="input-task-area" placeholder="Type or paste any task here... e.g., 'Build a high-availability Redis distributed rate limiter with sliding window counter for a multi-tenant API gateway'"></textarea>
+
+              <div class="studio-action-row">
+                <span style="font-size: 0.72rem; color: var(--fg-dim);" id="studio-input-char-count">0 characters</span>
+                <button id="studio-run-compile-btn" class="btn-compile-run">
+                  <span>⚡ Compile Invariant Contract</span>
+                </button>
+              </div>
+            </div>
           </div>
-          <div class="stat-pill">
-            <div class="stat-pill-val">55</div>
-            <div class="stat-pill-lbl">Categories</div>
+
+          <!-- Right: Compiled Output Pane -->
+          <div class="studio-pane">
+            <div class="pane-header">
+              <div class="studio-runtime-selector">
+                <button class="studio-tab studio-tab-contract active" data-studio-runtime="contract">⚡ Invariant Contract</button>
+                <button class="studio-tab" data-studio-runtime="markdown">Standard Agent</button>
+                <button class="studio-tab tab-highlight-r1" data-studio-runtime="reasoning">🧠 DeepSeek-R1</button>
+                <button class="studio-tab" data-studio-runtime="json">API JSON</button>
+                <button class="studio-tab" data-studio-runtime="cursorrules">.cursorrules</button>
+                <button class="studio-tab" data-studio-runtime="modelfile">Modelfile</button>
+                <button class="studio-tab" data-studio-runtime="cli">CLI Snippet</button>
+              </div>
+              <button class="btn-hdr" id="studio-copy-output-btn" style="padding: 0.2rem 0.5rem; font-size: 0.72rem;">Copy Output</button>
+            </div>
+            <div class="pane-content">
+              <pre id="studio-compiled-output" class="studio-output-view">// Your compiled contract will appear here in real-time.
+// Click "Compile Invariant Contract" or select a preset on the left to start.</pre>
+              
+              <div class="output-meta-bar">
+                <div id="studio-output-metrics">Token Cost: ~$0.000 / call</div>
+                <div style="display: flex; gap: 0.3rem;">
+                  <button class="btn-hdr" id="studio-open-chatgpt" style="font-size: 0.72rem;">↗ ChatGPT</button>
+                  <button class="btn-hdr" id="studio-open-claude" style="font-size: 0.72rem;">↗ Claude</button>
+                  <button class="btn-hdr" id="studio-download-file" style="font-size: 0.72rem;">💾 Download</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
-
-      <!-- Mobile Horizontal Domain Chips -->
-      <div class="mobile-domain-scroller" id="mobile-domain-chips" aria-label="Mobile Domain Filter">
-        <!-- Rendered via JS -->
       </div>
 
-      <!-- Search & Controls -->
-      <div class="controls" role="toolbar" aria-label="Prompt controls">
-        <div class="search-wrapper">
-          <span class="search-glyph" aria-hidden="true">⌕</span>
-          <input type="text" id="search-box" class="search-input" placeholder="Search directives by role, keyword, or workflow... (Press '/' to focus, 'j/k' to move)" aria-label="Search directives">
-          <button id="search-clear-btn" class="search-clear" aria-label="Clear search">✕</button>
+      <!-- ======================================================== -->
+      <!-- VIEW 2: DIRECTIVES CATALOG & BROWSER -->
+      <!-- ======================================================== -->
+      <div class="view-library active-view" id="view-library-catalog">
+        
+        <!-- Deck Header -->
+        <section class="deck-header">
+          <div>
+            <h1 class="deck-title">AI Agent Directives Hub</h1>
+            <p class="deck-desc">
+              Production-ready directives engineered for autonomous LLM agents, Claude Code, DeepSeek-R1, ChatGPT, OpenClaw, and automation workflows.
+            </p>
+          </div>
+
+          <div class="deck-stats">
+            <div class="stat-pill">
+              <div class="stat-pill-val">1,015</div>
+              <div class="stat-pill-lbl">Prompts</div>
+            </div>
+            <div class="stat-pill">
+              <div class="stat-pill-val">8</div>
+              <div class="stat-pill-lbl">Domains</div>
+            </div>
+            <div class="stat-pill">
+              <div class="stat-pill-val">55</div>
+              <div class="stat-pill-lbl">Categories</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Controls Bar -->
+        <div class="controls" role="toolbar" aria-label="Prompt controls">
+          <div class="search-wrapper">
+            <span class="search-glyph" aria-hidden="true">⌕</span>
+            <input type="text" id="search-box" class="search-input" placeholder="Search directives by role, keyword, or workflow... (Press '/' to focus, 'j/k' to move)" aria-label="Search directives">
+            <button id="search-clear-btn" class="search-clear" aria-label="Clear search">✕</button>
+          </div>
+
+          <div class="view-group" role="group" aria-label="View toggle">
+            <button class="view-btn active" id="view-grid" title="Grid View" aria-label="Grid View">Grid</button>
+            <button class="view-btn" id="view-list" title="List View" aria-label="List View">List</button>
+          </div>
+
+          <!-- Playbook & Export Suite -->
+          <div class="playbook-btn-group">
+            <button class="btn-hdr" id="copy-playbook-btn" title="Copy all saved favorites as one unified master system prompt">
+              <span>⚡ Copy Playbook</span>
+            </button>
+            <button class="btn-hdr" id="export-btn" title="Download current filtered directives as Markdown">
+              <span>↓ Export (.md)</span>
+            </button>
+          </div>
         </div>
 
-        <div class="view-group" role="group" aria-label="View toggle">
-          <button class="view-btn active" id="view-grid" title="Grid View" aria-label="Grid View">Grid</button>
-          <button class="view-btn" id="view-list" title="List View" aria-label="List View">List</button>
+        <!-- Live Filter Status -->
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--fg-dim); padding: 0 0.25rem;">
+          <div>
+            Showing <strong style="color: var(--fg-primary);" id="results-count">1,015</strong> directives
+          </div>
+          <div id="filter-state-label" style="color: var(--fg-muted);"></div>
         </div>
 
-        <!-- Export & Mega-Playbook Suite -->
-        <div class="playbook-btn-group">
-          <button class="btn" id="copy-playbook-btn" title="Copy all saved favorites as one unified master system prompt" aria-label="Copy Playbook">
-            <span>⚡ Copy Playbook</span>
-          </button>
-          <button class="btn" id="export-btn" title="Download current filtered directives as Markdown" aria-label="Export to Markdown">
-            <span>↓ Export (.md)</span>
-          </button>
+        <!-- Prompts Grid -->
+        <div class="grid" id="prompts-grid" role="region" aria-label="Directives list">
+          <!-- Rendered via JS -->
         </div>
-      </div>
 
-      <!-- Live Filter Status -->
-      <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--fg-dim); padding: 0 0.25rem;">
-        <div>
-          Showing <strong style="color: var(--fg);" id="results-count">1,015</strong> directives
+        <!-- Load More / Infinite Pagination -->
+        <div class="load-more-wrapper" id="load-more-container" style="display: none;">
+          <button class="btn-load-more" id="load-more-btn">Load More Directives</button>
         </div>
-        <div id="filter-state-label" style="color: var(--fg-muted);"></div>
-      </div>
-
-      <!-- Prompts Grid -->
-      <div class="grid" id="prompts-grid" role="region" aria-label="Directives list">
-        <!-- Rendered via JS -->
-      </div>
-
-      <!-- Load More / Infinite Pagination -->
-      <div class="load-more-wrapper" id="load-more-container" style="display: none;">
-        <button class="btn-load-more" id="load-more-btn">Load More Directives</button>
       </div>
     </main>
   </div>
 
-  <!-- Modal Inspector -->
+  <!-- Inspector Modal -->
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal-box">
       <div class="modal-head">
@@ -1158,6 +1501,7 @@
           <span class="runtime-lbl">Runtime Target:</span>
           <div class="runtime-tabs" role="tablist">
             <button class="runtime-tab-btn active" data-runtime="markdown" role="tab" aria-selected="true">Markdown</button>
+            <button class="runtime-tab-btn tab-highlight-contract" data-runtime="contract" role="tab" aria-selected="false">⚡ Invariant Contract</button>
             <button class="runtime-tab-btn tab-highlight-r1" data-runtime="reasoning" role="tab" aria-selected="false">🧠 DeepSeek-R1 / o1</button>
             <button class="runtime-tab-btn" data-runtime="xml" role="tab" aria-selected="false">XML System</button>
             <button class="runtime-tab-btn" data-runtime="json" role="tab" aria-selected="false">API JSON</button>
@@ -1190,7 +1534,7 @@
           <pre class="code-view" id="modal-payload" tabindex="0"></pre>
         </div>
 
-        <!-- One-Click Artifact Exporters Bar -->
+        <!-- Artifact Exporters Toolbar -->
         <div class="artifact-toolbar">
           <span>Export Artifact:</span>
           <div class="artifact-btns">
@@ -1204,20 +1548,20 @@
 
       <div class="modal-foot">
         <div class="modal-foot-left">
-          <button class="btn btn-chatgpt" id="open-chatgpt-btn" title="Copy directive & open ChatGPT">
+          <button class="btn-hdr btn-chatgpt" id="open-chatgpt-btn" title="Copy directive & open ChatGPT">
             <span>↗ Open ChatGPT</span>
           </button>
-          <button class="btn btn-claude" id="open-claude-btn" title="Copy directive & open Claude">
+          <button class="btn-hdr btn-claude" id="open-claude-btn" title="Copy directive & open Claude">
             <span>↗ Open Claude</span>
           </button>
-          <button class="btn" id="modal-share-link-btn" title="Copy direct link to this directive">
+          <button class="btn-hdr" id="modal-share-link-btn" title="Copy direct link to this directive">
             <span>🔗 Copy Link</span>
           </button>
         </div>
 
         <div class="modal-foot-right">
-          <button class="btn" id="modal-cancel-btn">Dismiss</button>
-          <button class="btn btn-primary" id="modal-copy-action">Copy Directive</button>
+          <button class="btn-hdr" id="modal-cancel-btn">Dismiss</button>
+          <button class="btn-hdr btn-primary" id="modal-copy-action">Copy Directive</button>
         </div>
       </div>
     </div>
@@ -1267,7 +1611,7 @@
         </table>
       </div>
       <div class="modal-foot">
-        <button class="btn btn-primary" id="shortcuts-close-btn">Got it</button>
+        <button class="btn-hdr btn-primary" id="shortcuts-close-btn">Got it</button>
       </div>
     </div>
   </div>
@@ -1295,9 +1639,20 @@
     let currentRenderedList = [];
     let deferredPrompt = null;
     
-    // Pagination chunk size
+    // Studio Compiler State
+    let activeStudioItem = null;
+    let activeStudioRuntime = 'contract';
+
     const PAGE_SIZE = 48;
     let visibleCount = PAGE_SIZE;
+
+    // Presets dictionary
+    const STUDIO_PRESETS = {
+      'db-backup': 'Build an automated zero-downtime database backup and point-in-time recovery (PITR) script from PostgreSQL to AWS S3 with KMS envelope encryption and Slack alert notifications.',
+      'pentest-idor': 'Conduct an automated security testing audit for Broken Object-Level Authorization (BOLA/IDOR) across multi-tenant REST and GraphQL endpoints with dual-account token verification.',
+      'quant-bot': 'Design an algorithmic statistical arbitrage and mean-reversion trading bot using VectorBT backtesting, Level-2 order book imbalance signals, and strict Kelly Criterion position sizing.',
+      'ui-table': 'Build a high-performance virtualized React data grid table component with TanStack Virtual supporting 50,000+ rows, sorting, filtering, column reordering, and zero layout shift.'
+    };
 
     // Service Worker Registration for PWA Offline
     if ('serviceWorker' in navigator) {
@@ -1355,7 +1710,7 @@
           btnElement.textContent = 'Copied!';
           setTimeout(() => { btnElement.textContent = orig; }, 1600);
         }
-        showToast('Directive copied to clipboard');
+        showToast('Copied to clipboard');
       } catch (e) {
         console.error('Failed to copy', e);
       }
@@ -1411,7 +1766,74 @@
       return text.replace(regex, '<mark class="highlight-match">$1</mark>');
     }
 
-    function generateFormattedPayload(prompt, runtime, vars) {
+    // Cognitive Heuristic Compiler (Transforms raw input into enterprise AI Agent Contract)
+    function compileRawPromptToAgent(rawText) {
+      const lower = rawText.toLowerCase();
+      let detectedDomain = "Engineering, Tech & AI";
+      let detectedSub = "Autonomous Agents & Tool Use";
+      let detectedRole = "Principal Systems Architect";
+
+      if (lower.includes('docker') || lower.includes('kubernetes') || lower.includes('k8s') || lower.includes('aws') || lower.includes('cloud') || lower.includes('terraform') || lower.includes('ci/cd') || lower.includes('sre') || lower.includes('backup') || lower.includes('database')) {
+        detectedDomain = "Engineering, Tech & AI";
+        detectedSub = "DevOps, Cloud & SRE Automation";
+        detectedRole = "Principal Cloud Infrastructure & SRE Architect";
+      } else if (lower.includes('security') || lower.includes('hack') || lower.includes('audit') || lower.includes('vulnerability') || lower.includes('pentest') || lower.includes('exploit') || lower.includes('auth') || lower.includes('idor')) {
+        detectedDomain = "Engineering, Tech & AI";
+        detectedSub = "Cybersecurity & Vulnerability Research";
+        detectedRole = "Principal Application Security & Red Team Architect";
+      } else if (lower.includes('trade') || lower.includes('finance') || lower.includes('quant') || lower.includes('stock') || lower.includes('crypto') || lower.includes('market') || lower.includes('invest') || lower.includes('price')) {
+        detectedDomain = "Finance, Investing & Legal";
+        detectedSub = "FinTech, Quant & Algorithmic Trading";
+        detectedRole = "Quantitative Financial Analyst & Risk Systems Specialist";
+      } else if (lower.includes('react') || lower.includes('frontend') || lower.includes('css') || lower.includes('ui') || lower.includes('ux') || lower.includes('tailwind') || lower.includes('next.js') || lower.includes('design')) {
+        detectedDomain = "Engineering, Tech & AI";
+        detectedSub = "Modern Frontend & UX Engineering";
+        detectedRole = "Staff Frontend & Design Systems Engineer";
+      } else if (lower.includes('saas') || lower.includes('pricing') || lower.includes('churn') || lower.includes('growth') || lower.includes('marketing') || lower.includes('retention') || lower.includes('sales')) {
+        detectedDomain = "Business, Strategy & Management";
+        detectedSub = "SaaS Product Strategy & Pricing";
+        detectedRole = "VP of Product Strategy & SaaS Monetization Lead";
+      } else if (lower.includes('api') || lower.includes('graphql') || lower.includes('rest') || lower.includes('microservice') || lower.includes('kafka') || lower.includes('redis')) {
+        detectedDomain = "Engineering, Tech & AI";
+        detectedSub = "API Design & Distributed Systems";
+        detectedRole = "Principal Distributed Systems & API Architect";
+      }
+
+      let titleWords = rawText.split(/\s+/).slice(0, 6).map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+      if (!titleWords) titleWords = "Custom Compiled Agent Directive";
+
+      const enhanced = `### 🎯 Agent Role & Persona
+You are an elite, highly experienced **${detectedRole}**. You operate with rigorous domain depth, analytical clarity, and a bias for practical, high-impact results.
+
+### 📋 Objective & Mission
+${rawText.trim()}
+
+### ⚙️ Context & Input Parameters
+- **Target Context / Variables**: When encountering bracketed parameters like \`[parameter]\`, ask clarifying questions if details are missing, or provide a best-in-class generic default that can be easily customized.
+- **Tone & Style**: Authoritative, concise, insightful, and strictly actionable. Avoid superficial fluff.
+
+### 📐 Required Output Structure
+- **Technical Architecture & Specifications**: High-fidelity architectural breakdown with exact schemas, protocols, and interfaces.
+- **Production-Ready Code / Blueprint Implementation**: Clean, modular code with strict typing, error boundaries, and defensive exception handling.
+- **Security, Performance & Edge-Case Guardrails**: Identification of failure modes, race conditions, timeout thresholds, and automated rollback logic.
+- **Verification & Validation Suite**: Executable test cases, unit verification scripts, or audit rubrics to prove 100% operational correctness.
+
+### 💡 Execution Protocol
+1. Analyze the core requirements and identify hidden leverage points.
+2. Execute the output with depth, providing concrete examples, formulas, or code rather than high-level generic advice.
+3. Conclude with a brief 'Next Action / Next Prompt' recommendation to extend this workflow into automated pipelines.`;
+
+      return {
+        id: "STUDIO-" + Math.floor(1000 + Math.random() * 9000),
+        title: titleWords,
+        subCategory: detectedSub,
+        mainCategory: detectedDomain,
+        rawPrompt: rawText.trim(),
+        enhancedPrompt: enhanced
+      };
+    }
+
+    function generateFormattedPayload(prompt, runtime, vars = {}) {
       if (!prompt) return '';
       let baseText = prompt.enhancedPrompt;
       for (const [k, v] of Object.entries(vars)) {
@@ -1427,8 +1849,33 @@
         case 'markdown':
           return baseText;
 
+        case 'contract':
+          return `<<<COGNITIVE_INVARIANT_CONTRACT_V1>>>
+[DOMAIN_TARGET]: ${prompt.mainCategory} > ${prompt.subCategory}
+[AGENT_TITLE]: ${prompt.title}
+
+[PRE_CONDITIONS_{P}]:
+  - All input schemas, dependencies, and environment parameters must be explicitly declared and validated.
+  - Zero tolerance for unresolved external assumptions or placeholder stubs.
+
+[INVARIANT_CONSTRAINTS]:
+  - ∀ state mutation S: Execution(S) must satisfy atomicity, deterministic state transitions, and idempotency.
+  - Safety & Security boundaries must hold true under all concurrent execution traces.
+  - Operational output must adhere strictly to production standards with type annotations and error handling.
+
+[EXECUTION_MISSION]:
+${rawBase}
+
+[ADVERSARIAL_SELF_FALSIFICATION]:
+  1. Stress-test the generated solution against 3 extreme edge-case failure vectors (network partition, concurrency race, corrupted input payloads).
+  2. Prove logically and practically why the architecture does NOT fail under these attack surfaces.
+
+[POST_CONDITIONS_{Q}]:
+  - Complete, zero-omission implementation ready for direct execution or automated CI/CD pipeline deployment.
+  - Measurable verification rubric validating 100% adherence to the core objective.
+<<<END_CONTRACT>>>`;
+
         case 'reasoning':
-          // Pure First-Principles / CoT Open-Ended Reasoning framing (o1 / DeepSeek-R1 mode)
           return `# REASONING AGENT MISSION & INCENTIVE CONTRACT
 You are operating in deep reasoning mode. Deconstruct the objective from first principles without relying on superficial boilerplate or rigid formatting templates.
 
@@ -1477,7 +1924,7 @@ ${rawBase}
       }
     }
 
-    // Artifact File Downloader Helper
+    // Artifact File Downloader
     function downloadFile(filename, content, mimeType = 'text/plain') {
       const blob = new Blob([content], { type: `${mimeType};charset=utf-8;` });
       const url = URL.createObjectURL(blob);
@@ -1500,12 +1947,29 @@ ${rawBase}
         document.getElementById('fav-count').textContent = favorites.size;
 
         buildSidebar();
-        buildMobileChips();
         bindEvents();
         parseUrlState();
         render();
       } catch (e) {
         console.error('Failed to load prompts dataset:', e);
+      }
+    }
+
+    function switchView(viewName) {
+      if (viewName === 'studio') {
+        document.getElementById('view-studio-compiler').classList.add('active-view');
+        document.getElementById('view-library-catalog').classList.remove('active-view');
+        document.getElementById('rail-studio-btn').classList.add('active');
+        document.getElementById('rail-library-btn').classList.remove('active');
+        document.getElementById('hdr-studio-toggle').classList.add('active');
+        document.getElementById('sidebar-context-title').textContent = "Studio Presets";
+      } else {
+        document.getElementById('view-library-catalog').classList.add('active-view');
+        document.getElementById('view-studio-compiler').classList.remove('active-view');
+        document.getElementById('rail-library-btn').classList.add('active');
+        document.getElementById('rail-studio-btn').classList.remove('active');
+        document.getElementById('hdr-studio-toggle').classList.remove('active');
+        document.getElementById('sidebar-context-title').textContent = "Strategic Clusters";
       }
     }
 
@@ -1515,6 +1979,11 @@ ${rawBase}
       const domain = params.get('domain');
       const subcat = params.get('subcat');
       const model = params.get('model');
+      const view = params.get('view');
+
+      if (view === 'studio') {
+        switchView('studio');
+      }
 
       if (q) {
         filterState.search = q.toLowerCase().trim();
@@ -1523,11 +1992,8 @@ ${rawBase}
       }
       if (domain && masterData.taxonomySummary[domain]) {
         filterState.domain = domain;
-        document.querySelectorAll('#sidebar-domain-list .nav-item').forEach(b => {
+        document.querySelectorAll('#sidebar-domain-list .tree-item').forEach(b => {
           b.classList.toggle('active', b.dataset.domain === domain);
-        });
-        document.querySelectorAll('#mobile-domain-chips .btn').forEach(b => {
-          b.classList.toggle('btn-active', b.dataset.domain === domain);
         });
         updateSubcatDropdown();
       }
@@ -1568,8 +2034,8 @@ ${rawBase}
       const list = document.getElementById('sidebar-domain-list');
       list.innerHTML = `
         <li>
-          <button class="nav-item ${filterState.domain === 'all' ? 'active' : ''}" data-domain="all">
-            <span class="nav-item-name">All Clusters</span>
+          <button class="tree-item ${filterState.domain === 'all' ? 'active' : ''}" data-domain="all">
+            <span class="tree-item-text">All Clusters</span>
             <span class="count-badge">${allPrompts.length}</span>
           </button>
         </li>
@@ -1578,8 +2044,8 @@ ${rawBase}
       for (const [domain, count] of Object.entries(masterData.taxonomySummary)) {
         const li = document.createElement('li');
         li.innerHTML = `
-          <button class="nav-item ${filterState.domain === domain ? 'active' : ''}" data-domain="${domain}">
-            <span class="nav-item-name">${domain}</span>
+          <button class="tree-item ${filterState.domain === domain ? 'active' : ''}" data-domain="${domain}">
+            <span class="tree-item-text">${domain}</span>
             <span class="count-badge">${count}</span>
           </button>
         `;
@@ -1587,24 +2053,6 @@ ${rawBase}
       }
 
       updateSubcatDropdown();
-    }
-
-    function buildMobileChips() {
-      const container = document.getElementById('mobile-domain-chips');
-      container.innerHTML = `
-        <button class="btn ${filterState.domain === 'all' ? 'btn-active' : ''}" data-domain="all" style="white-space: nowrap;">
-          All Clusters (${allPrompts.length})
-        </button>
-      `;
-
-      for (const [domain, count] of Object.entries(masterData.taxonomySummary)) {
-        const btn = document.createElement('button');
-        btn.className = `btn ${filterState.domain === domain ? 'btn-active' : ''}`;
-        btn.dataset.domain = domain;
-        btn.style.whiteSpace = 'nowrap';
-        btn.textContent = `${domain} (${count})`;
-        container.appendChild(btn);
-      }
     }
 
     function updateSubcatDropdown() {
@@ -1635,43 +2083,118 @@ ${rawBase}
       }
     }
 
+    function executeStudioCompilation() {
+      const input = document.getElementById('studio-raw-input').value.trim();
+      if (!input) {
+        showToast('Please type a prompt or task first');
+        return;
+      }
+      activeStudioItem = compileRawPromptToAgent(input);
+      updateStudioOutput();
+      showToast('Compiled into Invariant Agent Contract!');
+    }
+
+    function updateStudioOutput() {
+      if (!activeStudioItem) return;
+      const text = generateFormattedPayload(activeStudioItem, activeStudioRuntime);
+      document.getElementById('studio-compiled-output').textContent = text;
+
+      const tokens = estimateTokens(text);
+      const cost = (tokens * 0.0000025).toFixed(5);
+      document.getElementById('studio-output-metrics').textContent = `${text.length} chars · ~${tokens} tokens · Est. $${cost}/call`;
+    }
+
     function bindEvents() {
+      // Header & Rail Mode Toggles
+      document.getElementById('hdr-studio-toggle').addEventListener('click', () => switchView('studio'));
+      document.getElementById('rail-studio-btn').addEventListener('click', () => switchView('studio'));
+      document.getElementById('rail-library-btn').addEventListener('click', () => switchView('library'));
+      document.getElementById('btn-back-to-library').addEventListener('click', () => switchView('library'));
+
+      // Quick domain jumps from primary rail
+      document.querySelectorAll('[data-rail-domain]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          switchView('library');
+          const targetDomain = btn.dataset.railDomain;
+          filterState.domain = targetDomain;
+          filterState.onlyFavs = false;
+          document.querySelectorAll('#sidebar-domain-list .tree-item').forEach(b => {
+            b.classList.toggle('active', b.dataset.domain === targetDomain);
+          });
+          updateSubcatDropdown();
+          syncUrlParams();
+          render();
+        });
+      });
+
+      // Studio Compiler Buttons
+      document.getElementById('studio-run-compile-btn').addEventListener('click', executeStudioCompilation);
+      
+      document.getElementById('studio-raw-input').addEventListener('input', (e) => {
+        document.getElementById('studio-input-char-count').textContent = `${e.target.value.length} characters`;
+      });
+
+      // Studio Preset Chips
+      document.querySelectorAll('.preset-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          const key = chip.dataset.preset;
+          if (STUDIO_PRESETS[key]) {
+            document.getElementById('studio-raw-input').value = STUDIO_PRESETS[key];
+            document.getElementById('studio-input-char-count').textContent = `${STUDIO_PRESETS[key].length} characters`;
+            executeStudioCompilation();
+          }
+        });
+      });
+
+      // Studio Runtime Tabs
+      document.querySelectorAll('.studio-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          document.querySelectorAll('.studio-tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          activeStudioRuntime = tab.dataset.studioRuntime;
+          updateStudioOutput();
+        });
+      });
+
+      // Studio Actions (Copy, Launch, Download)
+      document.getElementById('studio-copy-output-btn').addEventListener('click', (e) => {
+        if (!activeStudioItem) return;
+        const text = generateFormattedPayload(activeStudioItem, activeStudioRuntime);
+        copyToClipboard(text, e.currentTarget);
+      });
+
+      document.getElementById('studio-open-chatgpt').addEventListener('click', () => {
+        if (!activeStudioItem) return;
+        const text = generateFormattedPayload(activeStudioItem, activeStudioRuntime);
+        navigator.clipboard.writeText(text);
+        showToast('Copied! Opening ChatGPT...');
+        window.open('https://chatgpt.com/', '_blank', 'noopener,noreferrer');
+      });
+
+      document.getElementById('studio-open-claude').addEventListener('click', () => {
+        if (!activeStudioItem) return;
+        const text = generateFormattedPayload(activeStudioItem, activeStudioRuntime);
+        navigator.clipboard.writeText(text);
+        showToast('Copied! Opening Claude...');
+        window.open('https://claude.ai/new', '_blank', 'noopener,noreferrer');
+      });
+
+      document.getElementById('studio-download-file').addEventListener('click', () => {
+        if (!activeStudioItem) return;
+        const text = generateFormattedPayload(activeStudioItem, activeStudioRuntime);
+        downloadFile(`${activeStudioItem.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-directive.md`, text);
+      });
+
       // Sidebar domain selection
       document.getElementById('sidebar-domain-list').addEventListener('click', (e) => {
-        const btn = e.target.closest('.nav-item');
+        const btn = e.target.closest('.tree-item');
         if (!btn) return;
-        document.querySelectorAll('#sidebar-domain-list .nav-item').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('#sidebar-domain-list .tree-item').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         filterState.domain = btn.dataset.domain;
         filterState.onlyFavs = false;
         document.getElementById('fav-btn').classList.remove('btn-active');
         
-        // Sync mobile chips
-        document.querySelectorAll('#mobile-domain-chips .btn').forEach(b => {
-          b.classList.toggle('btn-active', b.dataset.domain === filterState.domain);
-        });
-
-        visibleCount = PAGE_SIZE;
-        updateSubcatDropdown();
-        syncUrlParams();
-        render();
-      });
-
-      // Mobile Domain Chips
-      document.getElementById('mobile-domain-chips').addEventListener('click', (e) => {
-        const btn = e.target.closest('.btn');
-        if (!btn) return;
-        document.querySelectorAll('#mobile-domain-chips .btn').forEach(b => b.classList.remove('btn-active'));
-        btn.classList.add('btn-active');
-        filterState.domain = btn.dataset.domain;
-        filterState.onlyFavs = false;
-        document.getElementById('fav-btn').classList.remove('btn-active');
-
-        // Sync sidebar
-        document.querySelectorAll('#sidebar-domain-list .nav-item').forEach(b => {
-          b.classList.toggle('active', b.dataset.domain === filterState.domain);
-        });
-
         visibleCount = PAGE_SIZE;
         updateSubcatDropdown();
         syncUrlParams();
@@ -1725,7 +2248,7 @@ ${rawBase}
 
       // Global Vim & Keyboard Navigation
       window.addEventListener('keydown', (e) => {
-        const isInput = document.activeElement === searchBox || document.activeElement.tagName === 'INPUT';
+        const isInput = document.activeElement === searchBox || document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA';
         const isModalOpen = document.getElementById('modal').classList.contains('open') || document.getElementById('shortcuts-modal').classList.contains('open');
 
         if (e.key === '/' && !isInput && !isModalOpen) {
@@ -1746,7 +2269,7 @@ ${rawBase}
           } else if (isModalOpen) {
             closeModal(true);
           } else if (isInput) {
-            searchBox.blur();
+            document.activeElement.blur();
           }
           return;
         }
@@ -1775,12 +2298,17 @@ ${rawBase}
 
       // Favorites toggle filter
       const favBtn = document.getElementById('fav-btn');
-      favBtn.addEventListener('click', () => {
+      const railFavBtn = document.getElementById('rail-fav-btn');
+      const handleFavToggle = () => {
+        switchView('library');
         filterState.onlyFavs = !filterState.onlyFavs;
         favBtn.classList.toggle('btn-active', filterState.onlyFavs);
+        railFavBtn.classList.toggle('active', filterState.onlyFavs);
         visibleCount = PAGE_SIZE;
         render();
-      });
+      };
+      favBtn.addEventListener('click', handleFavToggle);
+      railFavBtn.addEventListener('click', handleFavToggle);
 
       // Mega-Playbook Copy
       document.getElementById('copy-playbook-btn').addEventListener('click', copyMegaPlaybook);
@@ -1811,7 +2339,7 @@ ${rawBase}
       // Export Filtered Markdown
       document.getElementById('export-btn').addEventListener('click', exportMarkdown);
 
-      // Runtime format switcher
+      // Runtime format switcher in modal
       document.querySelectorAll('.runtime-tab-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
           document.querySelectorAll('.runtime-tab-btn').forEach(t => {
@@ -1855,7 +2383,9 @@ ${rawBase}
       });
 
       // Shortcuts help modal
-      document.getElementById('shortcuts-help-btn').addEventListener('click', () => toggleShortcutsModal(true));
+      const openShortcuts = () => toggleShortcutsModal(true);
+      document.getElementById('shortcuts-help-btn').addEventListener('click', openShortcuts);
+      document.getElementById('rail-help-btn').addEventListener('click', openShortcuts);
       document.getElementById('shortcuts-x').addEventListener('click', () => toggleShortcutsModal(false));
       document.getElementById('shortcuts-close-btn').addEventListener('click', () => toggleShortcutsModal(false));
       document.getElementById('shortcuts-modal').addEventListener('click', (e) => {
@@ -1945,7 +2475,7 @@ ${rawBase}
       activeModalItem = prompt;
       variableValues = {};
 
-      if (updateHash) {
+      if (updateHash && prompt.id && !String(prompt.id).startsWith('STUDIO-')) {
         history.replaceState(null, '', `${window.location.pathname}${window.location.search}#${prompt.id}`);
       }
 
@@ -2008,10 +2538,8 @@ ${rawBase}
       document.getElementById('modal-payload').textContent = text;
       document.getElementById('runtime-format-indicator').textContent = `DIRECTIVE PAYLOAD (${activeRuntime.toUpperCase()})`;
 
-      // Dynamic Token, Char and Cost Analytics in Customizer
       const chars = text.length;
       const dynamicTokens = estimateTokens(text);
-      // Est Cost based on standard $2.50 / 1M tokens ($0.0000025 per token)
       const costPerCall = (dynamicTokens * 0.0000025).toFixed(5);
 
       document.getElementById('param-chars-count').textContent = `${chars} chars`;
@@ -2025,13 +2553,11 @@ ${rawBase}
         if (filterState.domain !== 'all' && p.mainCategory !== filterState.domain) return false;
         if (filterState.subcat !== 'all' && p.subCategory !== filterState.subcat) return false;
         
-        // Model target filter
         if (filterState.modelFilter !== 'all') {
           const rec = getRecommendedModel(p);
           if (rec.key !== filterState.modelFilter) return false;
         }
 
-        // Search query
         if (filterState.search) {
           const q = filterState.search;
           const matchTitle = p.title.toLowerCase().includes(q);
@@ -2062,7 +2588,7 @@ ${rawBase}
           <div class="empty-state">
             <div class="empty-state-title">No matching directives found</div>
             <div class="empty-state-sub">Try changing keywords, clearing search, or resetting filters.</div>
-            <button class="btn btn-primary" id="reset-filter-btn">Reset All Filters</button>
+            <button class="btn-hdr btn-primary" id="reset-filter-btn">Reset All Filters</button>
           </div>
         `;
         document.getElementById('reset-filter-btn').addEventListener('click', () => {
@@ -2076,7 +2602,6 @@ ${rawBase}
           document.getElementById('fav-btn').classList.remove('btn-active');
           document.getElementById('model-filter-select').value = 'all';
           buildSidebar();
-          buildMobileChips();
           syncUrlParams();
           render();
         });
@@ -2084,7 +2609,6 @@ ${rawBase}
         return;
       }
 
-      // Sliced render for ultra-fast DOM load
       const toRender = filtered.slice(0, visibleCount);
       const fragment = document.createDocumentFragment();
 
@@ -2154,7 +2678,6 @@ ${rawBase}
 
       grid.appendChild(fragment);
 
-      // Pagination Button
       const loadMoreContainer = document.getElementById('load-more-container');
       if (filtered.length > visibleCount) {
         loadMoreContainer.style.display = 'flex';
