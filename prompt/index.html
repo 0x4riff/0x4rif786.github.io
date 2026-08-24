@@ -4,10 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Agent Prompts Hub — 876 Production Directives</title>
-  <meta name="description" content="A curated index of 876 structured AI Agent Directives with live parameter customization, runtime formatters, keyboard navigation (j/k/c/s), token estimation, and Mega-Playbook export.">
+  <meta name="description" content="Production-ready directory of 876 structured AI Agent Directives with live parameter customization, runtime formatters (Markdown, XML, API JSON, CursorRules), keyboard navigation, and instant search.">
   <link rel="canonical" href="https://arifwidiyanto.web.id/prompt/">
+
+  <!-- OpenGraph & Twitter Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AI Agent Prompts Hub — 876 Production Directives">
+  <meta property="og:description" content="Search, customize, and deploy 876 engineered AI agent prompts across 8 strategic domains with one-click runtime formatters.">
+  <meta property="og:url" content="https://arifwidiyanto.web.id/prompt/">
+  <meta property="og:site_name" content="Arif Widiyanto">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Agent Prompts Hub — 876 Production Directives">
+  <meta name="twitter:description" content="Production-grade AI agent prompts with live variable injection, XML/JSON adapters, and instant launcher.">
+  <meta name="theme-color" content="#09090b">
+
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   
-  <!-- Premium Technical Fonts: Inter + JetBrains Mono -->
+  <!-- Engineered Fonts: Inter + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -77,8 +90,8 @@
     .nav {
       position: sticky;
       top: 0;
-      z-index: 30;
-      background: rgba(9, 9, 11, 0.85);
+      z-index: 40;
+      background: rgba(9, 9, 11, 0.88);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-subtle);
@@ -285,6 +298,18 @@
       border-color: var(--border-focus);
     }
 
+    /* Mobile Domain Drawer / Horizontal Scroller */
+    .mobile-domain-scroller {
+      display: none;
+      gap: 0.4rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 0.25rem;
+    }
+    .mobile-domain-scroller::-webkit-scrollbar {
+      display: none;
+    }
+
     /* Main Deck */
     .deck {
       display: flex;
@@ -416,7 +441,6 @@
       color: #fff;
     }
 
-    /* Mega-Playbook Dropdown in Controls */
     .playbook-btn-group {
       display: flex;
       gap: 0.35rem;
@@ -448,7 +472,6 @@
       background: var(--panel-hover);
       border-color: var(--border-medium);
     }
-    /* Vim Keyboard Focus Outline */
     .card.card-focused {
       border-color: var(--blue);
       box-shadow: 0 0 0 1px var(--blue), var(--shadow-md);
@@ -551,6 +574,13 @@
       padding: 0 0.2rem;
       border-radius: 2px;
     }
+    .highlight-match {
+      background: rgba(245, 158, 11, 0.25);
+      color: #fef08a;
+      padding: 0 0.15rem;
+      border-radius: 2px;
+      font-weight: 600;
+    }
 
     .card-foot {
       display: flex;
@@ -585,12 +615,35 @@
       color: #09090b;
     }
 
+    /* Load More / Infinite Pagination Trigger */
+    .load-more-wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 1.5rem 0 2rem;
+    }
+    .btn-load-more {
+      padding: 0.6rem 1.5rem;
+      background: var(--panel);
+      border: 1px solid var(--border-medium);
+      color: var(--fg);
+      font-size: 0.85rem;
+      font-weight: 500;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-load-more:hover {
+      background: var(--surface);
+      border-color: var(--border-focus);
+    }
+
     /* Inspector Modal */
     .modal {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(4px);
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
       z-index: 50;
       display: none;
       align-items: center;
@@ -835,6 +888,7 @@
     .empty-state-sub {
       font-size: 0.8rem;
       color: var(--fg-dim);
+      margin-bottom: 1rem;
     }
 
     .kbd {
@@ -854,6 +908,9 @@
       .sidebar {
         display: none;
       }
+      .mobile-domain-scroller {
+        display: flex;
+      }
     }
   </style>
 </head>
@@ -862,8 +919,8 @@
   <!-- Top Navigation -->
   <header class="nav">
     <div class="nav-inner">
-      <a href="https://arifwidiyanto.web.id" class="nav-brand">
-        <div class="nav-logo">AW</div>
+      <a href="https://arifwidiyanto.web.id" class="nav-brand" aria-label="Arif Widiyanto Home">
+        <div class="nav-logo" aria-hidden="true">AW</div>
         <div>
           <div class="nav-title">Arif Widiyanto</div>
         </div>
@@ -871,11 +928,11 @@
       </a>
 
       <div class="nav-links">
-        <button class="btn" id="shortcuts-help-btn" title="View Keyboard Shortcuts (?)">
+        <button class="btn" id="shortcuts-help-btn" title="View Keyboard Shortcuts (?)" aria-label="Keyboard Shortcuts">
           <span class="kbd">?</span>
           <span>Shortcuts</span>
         </button>
-        <button class="btn" id="fav-btn">
+        <button class="btn" id="fav-btn" aria-label="View Saved Favorites">
           <span>★</span>
           <span>Saved</span>
           <span class="count-badge" id="fav-count">0</span>
@@ -890,7 +947,7 @@
   <div class="workspace">
     
     <!-- Sidebar -->
-    <aside class="sidebar">
+    <aside class="sidebar" aria-label="Filters Sidebar">
       <div>
         <div class="sidebar-label">Strategic Clusters</div>
         <ul class="nav-menu-list" id="sidebar-domain-list">
@@ -900,7 +957,7 @@
 
       <div>
         <div class="sidebar-label">Subcategories</div>
-        <select id="subcat-select" class="select-subcat">
+        <select id="subcat-select" class="select-subcat" aria-label="Select Subcategory">
           <option value="all">All Subcategories (45)</option>
         </select>
       </div>
@@ -940,25 +997,30 @@
         </div>
       </section>
 
+      <!-- Mobile Horizontal Domain Chips -->
+      <div class="mobile-domain-scroller" id="mobile-domain-chips" aria-label="Mobile Domain Filter">
+        <!-- Rendered via JS -->
+      </div>
+
       <!-- Search & Controls -->
-      <div class="controls">
+      <div class="controls" role="toolbar" aria-label="Prompt controls">
         <div class="search-wrapper">
-          <span class="search-glyph">⌕</span>
-          <input type="text" id="search-box" class="search-input" placeholder="Search directives by role, keyword, or workflow... (Press '/' to focus, 'j/k' to move)">
-          <button id="search-clear-btn" class="search-clear">✕</button>
+          <span class="search-glyph" aria-hidden="true">⌕</span>
+          <input type="text" id="search-box" class="search-input" placeholder="Search directives by role, keyword, or workflow... (Press '/' to focus, 'j/k' to move)" aria-label="Search directives">
+          <button id="search-clear-btn" class="search-clear" aria-label="Clear search">✕</button>
         </div>
 
-        <div class="view-group">
-          <button class="view-btn active" id="view-grid" title="Grid View">Grid</button>
-          <button class="view-btn" id="view-list" title="List View">List</button>
+        <div class="view-group" role="group" aria-label="View toggle">
+          <button class="view-btn active" id="view-grid" title="Grid View" aria-label="Grid View">Grid</button>
+          <button class="view-btn" id="view-list" title="List View" aria-label="List View">List</button>
         </div>
 
         <!-- Export & Mega-Playbook Suite -->
         <div class="playbook-btn-group">
-          <button class="btn" id="copy-playbook-btn" title="Copy all saved favorites as one unified master system prompt">
+          <button class="btn" id="copy-playbook-btn" title="Copy all saved favorites as one unified master system prompt" aria-label="Copy Playbook">
             <span>⚡ Copy Playbook</span>
           </button>
-          <button class="btn" id="export-btn" title="Download current filtered directives as Markdown">
+          <button class="btn" id="export-btn" title="Download current filtered directives as Markdown" aria-label="Export to Markdown">
             <span>↓ Export (.md)</span>
           </button>
         </div>
@@ -973,33 +1035,38 @@
       </div>
 
       <!-- Prompts Grid -->
-      <div class="grid" id="prompts-grid">
+      <div class="grid" id="prompts-grid" role="region" aria-label="Directives list">
         <!-- Rendered via JS -->
+      </div>
+
+      <!-- Load More / Infinite Pagination Trigger -->
+      <div class="load-more-wrapper" id="load-more-container" style="display: none;">
+        <button class="btn-load-more" id="load-more-btn">Load More Directives</button>
       </div>
     </main>
   </div>
 
   <!-- Modal Inspector -->
-  <div class="modal" id="modal">
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal-box">
       <div class="modal-head">
         <div>
           <div class="modal-head-title" id="modal-title">Directive Details</div>
           <div id="modal-meta-tags" style="display: flex; gap: 0.35rem; margin-top: 0.25rem; flex-wrap: wrap;"></div>
         </div>
-        <button class="modal-close-x" id="modal-x">✕</button>
+        <button class="modal-close-x" id="modal-x" aria-label="Close modal">✕</button>
       </div>
 
       <div class="modal-body">
         <!-- Runtime Formatter Bar -->
         <div class="runtime-bar">
           <span class="runtime-lbl">Runtime Target:</span>
-          <div class="runtime-tabs">
-            <button class="runtime-tab-btn active" data-runtime="markdown">Markdown</button>
-            <button class="runtime-tab-btn" data-runtime="xml">XML System</button>
-            <button class="runtime-tab-btn" data-runtime="json">API JSON</button>
-            <button class="runtime-tab-btn" data-runtime="cursorrules">CursorRules</button>
-            <button class="runtime-tab-btn" data-runtime="raw">Raw Seed</button>
+          <div class="runtime-tabs" role="tablist">
+            <button class="runtime-tab-btn active" data-runtime="markdown" role="tab" aria-selected="true">Markdown</button>
+            <button class="runtime-tab-btn" data-runtime="xml" role="tab" aria-selected="false">XML System</button>
+            <button class="runtime-tab-btn" data-runtime="json" role="tab" aria-selected="false">API JSON</button>
+            <button class="runtime-tab-btn" data-runtime="cursorrules" role="tab" aria-selected="false">CursorRules</button>
+            <button class="runtime-tab-btn" data-runtime="raw" role="tab" aria-selected="false">Raw Seed</button>
           </div>
         </div>
 
@@ -1015,7 +1082,7 @@
             <span id="runtime-format-indicator">DIRECTIVE PAYLOAD (MARKDOWN)</span>
             <span id="copy-status-indicator">Ready to execute</span>
           </div>
-          <pre class="code-view" id="modal-payload"></pre>
+          <pre class="code-view" id="modal-payload" tabindex="0"></pre>
         </div>
       </div>
 
@@ -1041,11 +1108,11 @@
   </div>
 
   <!-- Keyboard Shortcuts Cheat Sheet Modal -->
-  <div class="modal" id="shortcuts-modal">
+  <div class="modal" id="shortcuts-modal" role="dialog" aria-modal="true" aria-labelledby="shortcuts-title">
     <div class="modal-box" style="max-width: 520px;">
       <div class="modal-head">
-        <div class="modal-head-title">Keyboard Shortcuts</div>
-        <button class="modal-close-x" id="shortcuts-x">✕</button>
+        <div class="modal-head-title" id="shortcuts-title">Keyboard Shortcuts</div>
+        <button class="modal-close-x" id="shortcuts-x" aria-label="Close shortcuts help">✕</button>
       </div>
       <div class="modal-body">
         <table class="shortcut-table">
@@ -1090,7 +1157,7 @@
   </div>
 
   <!-- Toast Notification Tray -->
-  <div class="toast-box" id="toast-box"></div>
+  <div class="toast-box" id="toast-box" aria-live="polite"></div>
 
   <script>
     let masterData = null;
@@ -1109,6 +1176,10 @@
     let variableValues = {};
     let focusedIndex = -1;
     let currentRenderedList = [];
+    
+    // Performance pagination batch
+    const PAGE_SIZE = 48;
+    let visibleCount = PAGE_SIZE;
 
     // Restore saved favorites
     try {
@@ -1164,8 +1235,19 @@
       return [...new Set(matches.map(m => m.slice(1, -1)))];
     }
 
-    function formatVariablesInHtml(text) {
-      return text.replace(/\[([^\]]+)\]/g, '<span class="var-token">[$1]</span>');
+    function formatVariablesInHtml(text, query = '') {
+      let formatted = text.replace(/\[([^\]]+)\]/g, '<span class="var-token">[$1]</span>');
+      if (query && query.length >= 2) {
+        const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        formatted = formatted.replace(regex, '<mark class="highlight-match">$1</mark>');
+      }
+      return formatted;
+    }
+
+    function highlightText(text, query = '') {
+      if (!query || query.length < 2) return text;
+      const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+      return text.replace(regex, '<mark class="highlight-match">$1</mark>');
     }
 
     function generateFormattedPayload(prompt, runtime, vars) {
@@ -1218,6 +1300,7 @@
         document.getElementById('fav-count').textContent = favorites.size;
 
         buildSidebar();
+        buildMobileChips();
         bindEvents();
         parseUrlState();
         render();
@@ -1241,6 +1324,9 @@
         filterState.domain = domain;
         document.querySelectorAll('#sidebar-domain-list .nav-item').forEach(b => {
           b.classList.toggle('active', b.dataset.domain === domain);
+        });
+        document.querySelectorAll('#mobile-domain-chips .btn').forEach(b => {
+          b.classList.toggle('btn-active', b.dataset.domain === domain);
         });
         updateSubcatDropdown();
       }
@@ -1297,6 +1383,24 @@
       updateSubcatDropdown();
     }
 
+    function buildMobileChips() {
+      const container = document.getElementById('mobile-domain-chips');
+      container.innerHTML = `
+        <button class="btn ${filterState.domain === 'all' ? 'btn-active' : ''}" data-domain="all" style="white-space: nowrap;">
+          All Clusters (${allPrompts.length})
+        </button>
+      `;
+
+      for (const [domain, count] of Object.entries(masterData.taxonomySummary)) {
+        const btn = document.createElement('button');
+        btn.className = `btn ${filterState.domain === domain ? 'btn-active' : ''}`;
+        btn.dataset.domain = domain;
+        btn.style.whiteSpace = 'nowrap';
+        btn.textContent = `${domain} (${count})`;
+        container.appendChild(btn);
+      }
+    }
+
     function updateSubcatDropdown() {
       const select = document.getElementById('subcat-select');
       select.innerHTML = '<option value="all">All Subcategories (45)</option>';
@@ -1326,7 +1430,7 @@
     }
 
     function bindEvents() {
-      // Sidebar selection
+      // Sidebar domain selection
       document.getElementById('sidebar-domain-list').addEventListener('click', (e) => {
         const btn = e.target.closest('.nav-item');
         if (!btn) return;
@@ -1335,6 +1439,34 @@
         filterState.domain = btn.dataset.domain;
         filterState.onlyFavs = false;
         document.getElementById('fav-btn').classList.remove('btn-active');
+        
+        // Sync mobile chips
+        document.querySelectorAll('#mobile-domain-chips .btn').forEach(b => {
+          b.classList.toggle('btn-active', b.dataset.domain === filterState.domain);
+        });
+
+        visibleCount = PAGE_SIZE; // reset pagination
+        updateSubcatDropdown();
+        syncUrlParams();
+        render();
+      });
+
+      // Mobile Domain Chips delegation
+      document.getElementById('mobile-domain-chips').addEventListener('click', (e) => {
+        const btn = e.target.closest('.btn');
+        if (!btn) return;
+        document.querySelectorAll('#mobile-domain-chips .btn').forEach(b => b.classList.remove('btn-active'));
+        btn.classList.add('btn-active');
+        filterState.domain = btn.dataset.domain;
+        filterState.onlyFavs = false;
+        document.getElementById('fav-btn').classList.remove('btn-active');
+
+        // Sync sidebar
+        document.querySelectorAll('#sidebar-domain-list .nav-item').forEach(b => {
+          b.classList.toggle('active', b.dataset.domain === filterState.domain);
+        });
+
+        visibleCount = PAGE_SIZE;
         updateSubcatDropdown();
         syncUrlParams();
         render();
@@ -1343,22 +1475,28 @@
       // Subcat dropdown
       document.getElementById('subcat-select').addEventListener('change', (e) => {
         filterState.subcat = e.target.value;
+        visibleCount = PAGE_SIZE;
         syncUrlParams();
         render();
       });
 
-      // Search box
+      // Search box with lightweight debouncing
       const searchBox = document.getElementById('search-box');
       const clearBtn = document.getElementById('search-clear-btn');
+      let debounceTimer;
       searchBox.addEventListener('input', (e) => {
-        filterState.search = e.target.value.toLowerCase().trim();
-        if (filterState.search) {
-          clearBtn.classList.add('visible');
-        } else {
-          clearBtn.classList.remove('visible');
-        }
-        syncUrlParams();
-        render();
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          filterState.search = e.target.value.toLowerCase().trim();
+          if (filterState.search) {
+            clearBtn.classList.add('visible');
+          } else {
+            clearBtn.classList.remove('visible');
+          }
+          visibleCount = PAGE_SIZE;
+          syncUrlParams();
+          render();
+        }, 80);
       });
 
       clearBtn.addEventListener('click', () => {
@@ -1366,6 +1504,7 @@
         filterState.search = '';
         clearBtn.classList.remove('visible');
         searchBox.focus();
+        visibleCount = PAGE_SIZE;
         syncUrlParams();
         render();
       });
@@ -1401,7 +1540,7 @@
           return;
         }
 
-        // Vim card navigation (only when not typing in an input and no modal is open)
+        // Vim card navigation (when not typing)
         if (!isInput && !isModalOpen && currentRenderedList.length > 0) {
           if (e.key === 'j' || e.key === 'ArrowDown') {
             e.preventDefault();
@@ -1429,11 +1568,18 @@
       favBtn.addEventListener('click', () => {
         filterState.onlyFavs = !filterState.onlyFavs;
         favBtn.classList.toggle('btn-active', filterState.onlyFavs);
+        visibleCount = PAGE_SIZE;
         render();
       });
 
       // Mega-Playbook Copy
       document.getElementById('copy-playbook-btn').addEventListener('click', copyMegaPlaybook);
+
+      // Load More Button
+      document.getElementById('load-more-btn').addEventListener('click', () => {
+        visibleCount += PAGE_SIZE;
+        render();
+      });
 
       // View modes
       const gridBtn = document.getElementById('view-grid');
@@ -1458,8 +1604,12 @@
       // Runtime format switcher in modal
       document.querySelectorAll('.runtime-tab-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
-          document.querySelectorAll('.runtime-tab-btn').forEach(t => t.classList.remove('active'));
+          document.querySelectorAll('.runtime-tab-btn').forEach(t => {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
           btn.classList.add('active');
+          btn.setAttribute('aria-selected', 'true');
           activeRuntime = btn.dataset.runtime;
           updateModalPreview();
         });
@@ -1604,8 +1754,15 @@
       }
 
       activeRuntime = 'markdown';
-      document.querySelectorAll('.runtime-tab-btn').forEach(t => t.classList.remove('active'));
-      document.querySelector('.runtime-tab-btn[data-runtime="markdown"]').classList.add('active');
+      document.querySelectorAll('.runtime-tab-btn').forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      const mdTab = document.querySelector('.runtime-tab-btn[data-runtime="markdown"]');
+      if (mdTab) {
+        mdTab.classList.add('active');
+        mdTab.setAttribute('aria-selected', 'true');
+      }
 
       updateModalPreview();
       document.getElementById('modal').classList.add('open');
@@ -1635,7 +1792,7 @@
       });
 
       currentRenderedList = filtered;
-      focusedIndex = -1; // Reset focus on render
+      focusedIndex = -1;
       document.getElementById('results-count').textContent = filtered.length;
       
       const filterLabel = document.getElementById('filter-state-label');
@@ -1655,14 +1812,31 @@
           <div class="empty-state">
             <div class="empty-state-title">No matching directives found</div>
             <div class="empty-state-sub">Try changing keywords, clearing search, or resetting filters.</div>
+            <button class="btn btn-primary" id="reset-filter-btn">Reset All Filters</button>
           </div>
         `;
+        document.getElementById('reset-filter-btn').addEventListener('click', () => {
+          filterState.search = '';
+          filterState.domain = 'all';
+          filterState.subcat = 'all';
+          filterState.onlyFavs = false;
+          document.getElementById('search-box').value = '';
+          document.getElementById('search-clear-btn').classList.remove('visible');
+          document.getElementById('fav-btn').classList.remove('btn-active');
+          buildSidebar();
+          buildMobileChips();
+          syncUrlParams();
+          render();
+        });
+        document.getElementById('load-more-container').style.display = 'none';
         return;
       }
 
+      // Sliced render for fast DOM load
+      const toRender = filtered.slice(0, visibleCount);
       const fragment = document.createDocumentFragment();
 
-      filtered.forEach((p, idx) => {
+      toRender.forEach((p, idx) => {
         const card = document.createElement('div');
         card.className = 'card';
         const isFav = favorites.has(p.id);
@@ -1679,19 +1853,19 @@
                 <span class="card-token-badge">~${tokens}t</span>
               </div>
               <div class="card-action-icons">
-                <button class="card-icon-btn btn-share-quick" data-share-id="${p.id}" title="Copy direct share link">🔗</button>
-                <button class="card-icon-btn card-fav-btn ${isFav ? 'active' : ''}" data-fav="${p.id}" title="Save directive (s)">
+                <button class="card-icon-btn btn-share-quick" data-share-id="${p.id}" title="Copy direct share link" aria-label="Copy share link">🔗</button>
+                <button class="card-icon-btn card-fav-btn ${isFav ? 'active' : ''}" data-fav="${p.id}" title="Save directive (s)" aria-label="Save directive">
                   ${isFav ? '★' : '☆'}
                 </button>
               </div>
             </div>
-            <h3 class="card-title">${p.title}</h3>
-            <div class="card-body-preview">${formatVariablesInHtml(p.rawPrompt)}</div>
+            <h3 class="card-title">${highlightText(p.title, filterState.search)}</h3>
+            <div class="card-body-preview">${formatVariablesInHtml(p.rawPrompt, filterState.search)}</div>
           </div>
 
           <div class="card-foot">
-            <button class="card-action-btn card-btn-view">Inspect</button>
-            <button class="card-action-btn card-action-copy card-btn-copy">Copy Directive (c)</button>
+            <button class="card-action-btn card-btn-view" aria-label="Inspect Directive">Inspect</button>
+            <button class="card-action-btn card-action-copy card-btn-copy" aria-label="Copy Directive">Copy Directive (c)</button>
           </div>
         `;
 
@@ -1725,6 +1899,15 @@
       });
 
       grid.appendChild(fragment);
+
+      // Pagination Button
+      const loadMoreContainer = document.getElementById('load-more-container');
+      if (filtered.length > visibleCount) {
+        loadMoreContainer.style.display = 'flex';
+        document.getElementById('load-more-btn').textContent = `Load More (${visibleCount} of ${filtered.length})`;
+      } else {
+        loadMoreContainer.style.display = 'none';
+      }
     }
 
     function exportMarkdown() {
