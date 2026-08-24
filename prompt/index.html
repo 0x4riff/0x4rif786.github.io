@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Directives | Production AI Agent Architecture, Studio & Sandbox</title>
+  <title>Directives: Production AI Agent Hub & Compiler</title>
   <meta name="description" content="A flat, dual-sidebar developer workspace featuring 1,000+ structured AI Agent Directives, invariant prompt compiler studio, and execution sandbox.">
   <link rel="canonical" href="https://arifwidiyanto.web.id/prompt/">
 
   <!-- OpenGraph & Twitter Meta Tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Directives | Production AI Agent Hub, Studio & Sandbox">
-  <meta property="og:description" content="Flat dual-sidebar AI Agent workspace with real-time Invariant Compiler, testing Sandbox, and 1,000+ production directives.">
+  <meta property="og:title" content="Directives: Production AI Agent Hub & Compiler">
+  <meta property="og:description" content="1,000+ structured AI agent directives with zero-latency invariant compiler and testing sandbox.">
   <meta property="og:url" content="https://arifwidiyanto.web.id/prompt/">
   <meta name="theme-color" content="#000000">
 
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 
-  <!-- Typography: Geist (Sans + Mono) -->
+  <!-- Typography: Geist -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/core.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/mono.css">
@@ -25,21 +25,20 @@
   <style>
     :root {
       --bg-base: #000000;
-      --bg-rail: #08080a;
-      --bg-sidebar: #0f0f12;
-      --bg-panel: #141418;
-      --bg-surface: #1b1b20;
-      --bg-hover: #23232a;
-      --bg-active: #2b2b34;
-      --bg-input: #0a0a0d;
+      --bg-rail: #070709;
+      --bg-sidebar: #0c0c0f;
+      --bg-panel: #121216;
+      --bg-surface: #191920;
+      --bg-hover: #21212a;
+      --bg-input: #08080a;
 
-      --border-subtle: #1f1f26;
-      --border-medium: #2e2e38;
-      --border-strong: #444452;
+      --border-subtle: #1c1c24;
+      --border-medium: #2a2a36;
+      --border-strong: #404050;
 
       --text-main: #f4f4f6;
-      --text-muted: #8e8e99;
-      --text-dim: #5a5a66;
+      --text-muted: #8e8e9a;
+      --text-dim: #545462;
 
       --accent-white: #ffffff;
       --accent-blue: #3291ff;
@@ -61,51 +60,49 @@
       padding: 0;
     }
 
-    body {
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
       background-color: var(--bg-base);
       color: var(--text-main);
       font-family: var(--font-sans);
       font-size: 13px;
       line-height: 1.5;
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Precision Engineered Header */
-    header {
-      height: 48px;
-      background: rgba(8, 8, 10, 0.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+    /* Precision Clean Top Header (Single Row, Never Wraps) */
+    .app-header {
+      height: 46px;
+      background: var(--bg-rail);
       border-bottom: 1px solid var(--border-subtle);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 16px;
-      z-index: 50;
+      padding: 0 14px;
       flex-shrink: 0;
+      z-index: 50;
+      white-space: nowrap;
     }
-    .header-brand-wrap {
+    .header-left-group {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
+      flex-shrink: 0;
     }
-    .brand-mark {
+    .brand-avatar-box {
       font-size: 11px;
       font-weight: 700;
       font-family: var(--font-mono);
       color: #fff;
       background: var(--bg-surface);
       border: 1px solid var(--border-medium);
-      padding: 3px 7px;
+      padding: 2px 6px;
       border-radius: var(--radius-xs);
       text-decoration: none;
-      letter-spacing: 0.05em;
     }
-    .brand-title {
+    .brand-name-link {
       font-size: 13px;
       font-weight: 600;
       color: var(--text-main);
@@ -115,17 +112,18 @@
       align-items: center;
       gap: 6px;
     }
-    .header-breadcrumb-sep {
-      color: var(--text-dim);
-      font-weight: 400;
-    }
-    .header-breadcrumb-current {
+    .badge-count-pill {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      padding: 1px 5px;
+      border-radius: var(--radius-xs);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
       color: var(--text-muted);
-      font-weight: 500;
     }
 
     /* Central Segmented Header Tabs */
-    .header-center-nav {
+    .header-nav-segmented {
       display: flex;
       align-items: center;
       background: var(--bg-input);
@@ -133,9 +131,10 @@
       padding: 2px;
       border-radius: var(--radius-sm);
       gap: 2px;
+      flex-shrink: 0;
     }
-    .hdr-tab-item {
-      padding: 4px 10px;
+    .seg-tab-btn {
+      padding: 4px 12px;
       background: transparent;
       border: none;
       border-radius: var(--radius-xs);
@@ -148,32 +147,24 @@
       align-items: center;
       gap: 6px;
       transition: color 0.1s, background 0.1s;
+      user-select: none;
     }
-    .hdr-tab-item:hover {
+    .seg-tab-btn:hover {
       color: var(--text-main);
     }
-    .hdr-tab-item.active {
+    .seg-tab-btn.active {
       background: var(--bg-surface);
       color: #fff;
       font-weight: 600;
     }
 
-    .pill-badge {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      padding: 1px 5px;
-      border-radius: var(--radius-xs);
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-muted);
-    }
-
-    .header-actions {
+    .header-right-group {
       display: flex;
       align-items: center;
       gap: 6px;
+      flex-shrink: 0;
     }
-    .hdr-btn {
+    .header-btn {
       padding: 4px 8px;
       background: transparent;
       border: 1px solid var(--border-subtle);
@@ -188,19 +179,20 @@
       align-items: center;
       gap: 6px;
       transition: all 0.1s;
+      user-select: none;
     }
-    .hdr-btn:hover {
+    .header-btn:hover {
       color: var(--text-main);
       border-color: var(--border-medium);
       background: var(--bg-surface);
     }
-    .hdr-btn.active {
+    .header-btn.active {
       background: var(--bg-surface);
       color: #fff;
       border-color: var(--border-medium);
     }
 
-    /* Flat SVG Icons Helper */
+    /* Precision Flat SVG Icons */
     .icon {
       width: 14px;
       height: 14px;
@@ -211,6 +203,7 @@
       fill: none;
       stroke-linecap: round;
       stroke-linejoin: round;
+      flex-shrink: 0;
     }
 
     /* ======================================================== */
@@ -220,25 +213,26 @@
       flex: 1;
       display: flex;
       height: calc(100vh - 46px);
+      min-height: 0;
       overflow: hidden;
     }
 
-    /* Column 1: Primary Navigation Rail (ClickUp Style, 52px) */
+    /* Column 1: Primary Navigation Rail (ClickUp Style, 48px) */
     .nav-rail {
-      width: 52px;
+      width: 48px;
       background: var(--bg-rail);
       border-right: 1px solid var(--border-subtle);
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 10px 0;
-      gap: 6px;
+      padding: 8px 0;
+      gap: 4px;
       flex-shrink: 0;
-      z-index: 20;
+      z-index: 30;
     }
-    .rail-action {
-      width: 36px;
-      height: 36px;
+    .rail-btn-action {
+      width: 34px;
+      height: 34px;
       border-radius: var(--radius-sm);
       background: transparent;
       border: 1px solid transparent;
@@ -250,45 +244,45 @@
       transition: all 0.1s;
       position: relative;
     }
-    .rail-action:hover {
+    .rail-btn-action:hover {
       color: var(--text-main);
       background: var(--bg-panel);
     }
-    .rail-action.active {
+    .rail-btn-action.active {
       color: #fff;
       background: var(--bg-surface);
       border-color: var(--border-medium);
     }
-    .rail-action.active::before {
+    .rail-btn-action.active::before {
       content: '';
       position: absolute;
-      left: -8px;
+      left: -7px;
       top: 8px;
       bottom: 8px;
       width: 3px;
       background: var(--accent-white);
       border-radius: 0 2px 2px 0;
     }
-    .rail-action-studio.active {
+    .rail-btn-action-studio.active {
       color: var(--accent-cyan);
     }
-    .rail-action-studio.active::before {
+    .rail-btn-action-studio.active::before {
       background: var(--accent-cyan);
     }
-    .rail-action-sandbox.active {
+    .rail-btn-action-sandbox.active {
       color: var(--accent-green);
     }
-    .rail-action-sandbox.active::before {
+    .rail-btn-action-sandbox.active::before {
       background: var(--accent-green);
     }
-    .rail-divider {
-      width: 20px;
+    .rail-divider-line {
+      width: 18px;
       height: 1px;
       background: var(--border-subtle);
       margin: 4px 0;
     }
 
-    /* Column 2: Secondary Context Sidebar (Monday.com / ClickUp List, 240px) */
+    /* Column 2: Secondary Context Sidebar (Monday Style, 240px) */
     .context-sidebar {
       width: 240px;
       background: var(--bg-sidebar);
@@ -296,18 +290,20 @@
       display: flex;
       flex-direction: column;
       flex-shrink: 0;
+      min-height: 0;
       overflow-y: auto;
       scrollbar-width: thin;
       scrollbar-color: var(--border-subtle) transparent;
     }
-    .sidebar-section-header {
+    .sidebar-head-row {
       padding: 10px 12px 6px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid var(--border-subtle);
+      flex-shrink: 0;
     }
-    .sidebar-section-title {
+    .sidebar-head-caption {
       font-family: var(--font-mono);
       font-size: 10px;
       font-weight: 600;
@@ -315,20 +311,20 @@
       letter-spacing: 0.08em;
       color: var(--text-dim);
     }
-    .sidebar-tree-container {
+    .sidebar-inner-tree {
       padding: 8px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
       flex: 1;
     }
-    .tree-list {
+    .tree-nav-list {
       list-style: none;
       display: flex;
       flex-direction: column;
       gap: 1px;
     }
-    .tree-row-btn {
+    .tree-nav-btn {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -344,32 +340,32 @@
       text-align: left;
       transition: all 0.1s;
     }
-    .tree-row-btn:hover {
+    .tree-nav-btn:hover {
       color: var(--text-main);
       background: var(--bg-hover);
     }
-    .tree-row-btn.active {
+    .tree-nav-btn.active {
       color: #fff;
       background: var(--bg-surface);
       border-color: var(--border-medium);
       font-weight: 550;
     }
-    .tree-row-label {
+    .tree-label-truncate {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
       padding-right: 6px;
     }
-    .tree-row-count {
+    .tree-counter-num {
       font-family: var(--font-mono);
       font-size: 10px;
       color: var(--text-dim);
     }
-    .tree-row-btn.active .tree-row-count {
+    .tree-nav-btn.active .tree-counter-num {
       color: #fff;
     }
 
-    .form-select {
+    .sidebar-select-input {
       width: 100%;
       padding: 5px 8px;
       background: var(--bg-input);
@@ -381,17 +377,17 @@
       outline: none;
       cursor: pointer;
     }
-    .form-select:focus {
+    .sidebar-select-input:focus {
       border-color: var(--border-strong);
     }
 
-    /* Column 3: Main Workspace Center Content */
+    /* Column 3: Main Viewport Content */
     .viewport-content {
       flex: 1;
       display: flex;
       flex-direction: column;
+      min-height: 0;
       overflow-y: auto;
-      position: relative;
       background: var(--bg-base);
     }
 
@@ -401,7 +397,7 @@
       flex-direction: column;
       height: 100%;
       padding: 16px;
-      gap: 14px;
+      gap: 12px;
       overflow-y: auto;
     }
     .module-pane.active {
@@ -411,7 +407,7 @@
     /* ======================================================== */
     /* VIEW 1: DIRECTIVES CATALOG DECK                          */
     /* ======================================================== */
-    .catalog-toolbar {
+    .catalog-toolbar-panel {
       background: var(--bg-panel);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
@@ -420,6 +416,7 @@
       align-items: center;
       gap: 8px;
       flex-wrap: wrap;
+      flex-shrink: 0;
     }
     .search-input-wrap {
       flex: 1;
@@ -489,7 +486,7 @@
     /* Directives Grid */
     .directives-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
       gap: 10px;
     }
     .directives-grid.list-view {
@@ -657,9 +654,9 @@
     .studio-split-grid {
       display: grid;
       grid-template-columns: 1fr 1.2fr;
-      gap: 14px;
-      min-height: 520px;
+      gap: 12px;
       flex: 1;
+      min-height: 0;
     }
     .studio-panel-box {
       background: var(--bg-panel);
@@ -668,6 +665,7 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
+      min-height: 0;
     }
     .pane-top-bar {
       padding: 8px 12px;
@@ -677,6 +675,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 8px;
+      flex-shrink: 0;
     }
     .pane-title-label {
       font-family: var(--font-mono);
@@ -686,18 +685,19 @@
       letter-spacing: 0.05em;
       color: var(--text-muted);
     }
-    .pane-body {
+    .pane-body-scrollable {
       padding: 12px;
       flex: 1;
       display: flex;
       flex-direction: column;
       gap: 10px;
       overflow-y: auto;
+      min-height: 0;
     }
     .studio-textarea-input {
       width: 100%;
       flex: 1;
-      min-height: 200px;
+      min-height: 180px;
       background: var(--bg-input);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-xs);
@@ -707,7 +707,7 @@
       font-size: 13px;
       line-height: 1.6;
       outline: none;
-      resize: vertical;
+      resize: none;
     }
     .studio-textarea-input:focus {
       border-color: var(--border-strong);
@@ -786,7 +786,7 @@
       color: #e4e4e7;
       white-space: pre-wrap;
       overflow-y: auto;
-      min-height: 240px;
+      min-height: 200px;
     }
 
     /* ======================================================== */
@@ -794,10 +794,10 @@
     /* ======================================================== */
     .playground-split-grid {
       display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 14px;
-      min-height: 520px;
+      grid-template-columns: 280px 1fr;
+      gap: 12px;
       flex: 1;
+      min-height: 0;
     }
     .sandbox-panel {
       background: var(--bg-panel);
@@ -807,6 +807,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      overflow-y: auto;
     }
     .chat-display-area {
       background: var(--bg-panel);
@@ -815,6 +816,7 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
+      min-height: 0;
     }
     .chat-scroll-stream {
       flex: 1;
@@ -823,7 +825,7 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
-      min-height: 380px;
+      min-height: 0;
     }
     .chat-msg-row {
       display: flex;
@@ -859,6 +861,7 @@
       display: flex;
       gap: 8px;
       align-items: center;
+      flex-shrink: 0;
     }
     .chat-text-box {
       flex: 1;
@@ -999,118 +1002,114 @@
 </head>
 <body>
 
-  <!-- Top Navigation Bar -->
-  <header>
-    <div class="header-container">
-      <div class="header-brand-wrap">
-        <a href="https://arifwidiyanto.web.id" class="brand-mark">AW</a>
-        <a href="https://arifwidiyanto.web.id/prompt/" class="brand-title">
-          <span>Directives</span>
-          <span class="header-breadcrumb-sep">/</span>
-          <span class="header-breadcrumb-current" id="header-active-module-text">Catalog</span>
-        </a>
-        <span class="pill-badge">1,015</span>
-      </div>
+  <!-- Top Navigation Header -->
+  <header class="app-header">
+    <div class="header-left-group">
+      <a href="https://arifwidiyanto.web.id" class="brand-avatar-box">AW</a>
+      <a href="https://arifwidiyanto.web.id/prompt/" class="brand-name-link">
+        <span>Directives</span>
+      </a>
+      <span class="badge-count-pill">1,015</span>
+    </div>
 
-      <!-- Segmented Module Navigation in Header -->
-      <nav class="header-center-nav" role="tablist">
-        <button class="hdr-tab-item active" id="hdr-tab-catalog">
-          <svg class="icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-          <span>Catalog</span>
-        </button>
-        <button class="hdr-tab-item" id="hdr-tab-studio">
-          <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-          <span>Studio Compiler</span>
-        </button>
-        <button class="hdr-tab-item" id="hdr-tab-sandbox">
-          <svg class="icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-          <span>Sandbox</span>
-        </button>
-      </nav>
+    <!-- Central Segmented Navigation Tabs -->
+    <nav class="header-nav-segmented" role="tablist">
+      <button class="seg-tab-btn active" id="tab-catalog" role="tab" aria-selected="true">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        <span>Catalog</span>
+      </button>
+      <button class="seg-tab-btn" id="tab-studio" role="tab" aria-selected="false">
+        <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+        <span>Studio</span>
+      </button>
+      <button class="seg-tab-btn" id="tab-sandbox" role="tab" aria-selected="false">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        <span>Sandbox</span>
+      </button>
+    </nav>
 
-      <div class="header-actions">
-        <button class="hdr-btn" id="btn-shortcuts" title="Shortcuts (?)">
-          <span style="font-family: var(--font-mono); font-size: 11px;">?</span>
-        </button>
-        <button class="hdr-btn" id="btn-favorites">
-          <svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-          <span>Saved</span>
-          <span class="pill-badge" id="badge-favs">0</span>
-        </button>
-        <a href="https://arifwidiyanto.web.id" class="hdr-btn">
-          <span>Portfolio</span>
-          <svg class="icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-        </a>
-      </div>
+    <div class="header-right-group">
+      <button class="header-btn" id="btn-shortcuts" title="Shortcuts (?)">
+        <span style="font-family: var(--font-mono); font-size: 11px;">?</span>
+      </button>
+      <button class="header-btn" id="btn-favorites">
+        <svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        <span>Saved</span>
+        <span class="badge-count-pill" id="badge-favs">0</span>
+      </button>
+      <a href="https://arifwidiyanto.web.id" class="header-btn">
+        <span>Portfolio</span>
+        <svg class="icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+      </a>
     </div>
   </header>
 
   <!-- Main Workspace (Double Sidebar + Viewport) -->
   <div class="workspace-frame">
     
-    <!-- COLUMN 1: Primary Navigation Rail (52px ClickUp Style) -->
+    <!-- COLUMN 1: Primary Navigation Rail (48px) -->
     <nav class="nav-rail" aria-label="Main Module Rail">
-      <button class="rail-action active" id="rail-catalog-btn" title="Directives Catalog (1,015)">
+      <button class="rail-btn-action active" id="rail-catalog-btn" title="Directives Catalog (1,015)">
         <svg class="icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
       </button>
-      <button class="rail-action rail-action-studio" id="rail-studio-btn" title="Prompt-to-Agent Studio Compiler">
+      <button class="rail-btn-action rail-btn-action-studio" id="rail-studio-btn" title="Prompt-to-Agent Studio Compiler">
         <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
       </button>
-      <button class="rail-action rail-action-sandbox" id="rail-sandbox-btn" title="Agent Playground Sandbox">
+      <button class="rail-btn-action rail-btn-action-sandbox" id="rail-sandbox-btn" title="Agent Playground Sandbox">
         <svg class="icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
       </button>
-      <button class="rail-action" id="rail-fav-btn" title="Saved Favorites">
+      <button class="rail-btn-action" id="rail-fav-btn" title="Saved Favorites">
         <svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
       </button>
 
-      <div class="rail-divider"></div>
+      <div class="rail-divider-line"></div>
 
       <!-- Quick Domain Jumps on Rail -->
-      <button class="rail-action" data-rail-domain="Engineering, Tech & AI" title="Engineering & AI">
+      <button class="rail-btn-action" data-rail-domain="Engineering, Tech & AI" title="Engineering & AI">
         <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 600;">EN</span>
       </button>
-      <button class="rail-action" data-rail-domain="Business, Strategy & Management" title="Business & Strategy">
+      <button class="rail-btn-action" data-rail-domain="Business, Strategy & Management" title="Business & Strategy">
         <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 600;">BI</span>
       </button>
-      <button class="rail-action" data-rail-domain="Finance, Investing & Legal" title="Finance & Legal">
+      <button class="rail-btn-action" data-rail-domain="Finance, Investing & Legal" title="Finance & Legal">
         <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 600;">FN</span>
       </button>
-      <button class="rail-action" data-rail-domain="Marketing, Sales & Outreach" title="Marketing & Sales">
+      <button class="rail-btn-action" data-rail-domain="Marketing, Sales & Outreach" title="Marketing & Sales">
         <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 600;">MK</span>
       </button>
 
       <div style="margin-top: auto; display: flex; flex-direction: column; gap: 4px; align-items: center;">
-        <button class="rail-action" id="rail-help-btn" title="Keyboard Shortcuts (?)">
+        <button class="rail-btn-action" id="rail-help-btn" title="Keyboard Shortcuts (?)">
           <span style="font-family: var(--font-mono); font-size: 11px;">?</span>
         </button>
       </div>
     </nav>
 
-    <!-- COLUMN 2: Secondary Context Sidebar (240px Monday Style) -->
+    <!-- COLUMN 2: Secondary Context Sidebar (240px) -->
     <aside class="context-sidebar" id="context-sidebar" aria-label="Secondary Filters">
-      <div class="sidebar-section-header">
-        <span class="sidebar-section-title" id="context-title">Strategic Clusters</span>
-        <span class="pill-badge" id="context-total-badge">1,015</span>
+      <div class="sidebar-head-row">
+        <span class="sidebar-head-caption" id="context-title">Strategic Clusters</span>
+        <span class="badge-count-pill" id="context-total-badge">1,015</span>
       </div>
 
-      <div class="sidebar-tree-container">
+      <div class="sidebar-inner-tree">
         <div>
-          <div class="sidebar-section-title" style="margin-bottom: 6px;">Domains (8)</div>
-          <ul class="tree-list" id="domain-tree">
+          <div class="sidebar-head-caption" style="margin-bottom: 6px;">Domains (8)</div>
+          <ul class="tree-nav-list" id="domain-tree">
             <!-- Rendered via JS -->
           </ul>
         </div>
 
         <div>
-          <div class="sidebar-section-title" style="margin-bottom: 6px;">Subcategories (55)</div>
-          <select id="filter-subcat" class="form-select" aria-label="Select Subcategory">
+          <div class="sidebar-head-caption" style="margin-bottom: 6px;">Subcategories (55)</div>
+          <select id="filter-subcat" class="sidebar-select-input" aria-label="Select Subcategory">
             <option value="all">All Subcategories (55)</option>
           </select>
         </div>
 
         <div>
-          <div class="sidebar-section-title" style="margin-bottom: 6px;">Target Model</div>
-          <select id="filter-model" class="form-select" aria-label="Select Model">
+          <div class="sidebar-head-caption" style="margin-bottom: 6px;">Target Model</div>
+          <select id="filter-model" class="sidebar-select-input" aria-label="Select Model">
             <option value="all">All Models</option>
             <option value="claude">Claude 3.5 Sonnet (Coding / Tools)</option>
             <option value="r1">DeepSeek-R1 / o1 (Reasoning / Math)</option>
@@ -1134,7 +1133,7 @@
       <!-- ======================================================== -->
       <div class="module-pane active" id="pane-catalog">
         <!-- Controls Toolbar -->
-        <div class="catalog-toolbar">
+        <div class="catalog-toolbar-panel">
           <div class="search-input-wrap">
             <svg class="search-icon-svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             <input type="text" id="main-search-input" class="search-input-box" placeholder="Search directives by keyword, role, or workflow... (Press '/' to focus, 'j/k' to navigate)">
@@ -1146,18 +1145,18 @@
             <button class="toggle-btn" id="btn-list-mode">LIST</button>
           </div>
 
-          <button class="hdr-btn" id="btn-copy-master-playbook" title="Copy all saved favorites as a unified system directive">
+          <button class="header-btn" id="btn-copy-master-playbook" title="Copy all saved favorites as a unified system directive">
             <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
             <span>Copy Playbook</span>
           </button>
-          <button class="hdr-btn" id="btn-export-markdown" title="Export filtered directives as Markdown">
+          <button class="header-btn" id="btn-export-markdown" title="Export filtered directives as Markdown">
             <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             <span>Export (.md)</span>
           </button>
         </div>
 
         <!-- Active Filter Status -->
-        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-dim); padding: 0 4px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-dim); padding: 0 4px; flex-shrink: 0;">
           <div>
             Showing <strong style="color: var(--text-main);" id="status-count">1,015</strong> directives
           </div>
@@ -1171,7 +1170,7 @@
 
         <!-- Load More Pagination -->
         <div class="load-more-wrap" id="load-more-wrap" style="display: none; justify-content: center; padding: 20px 0;">
-          <button class="hdr-btn" id="btn-load-more" style="padding: 6px 16px;">Load More Directives</button>
+          <button class="header-btn" id="btn-load-more" style="padding: 6px 16px;">Load More Directives</button>
         </div>
       </div>
 
@@ -1186,7 +1185,7 @@
               <span class="pane-title-label">Raw Task / Prompt Input</span>
               <span style="font-size: 11px; color: var(--text-dim);" id="studio-char-counter">0 chars</span>
             </div>
-            <div class="pane-body">
+            <div class="pane-body-scrollable">
               <div class="presets-group">
                 <span style="font-size: 11px; color: var(--text-dim); align-self: center;">Presets:</span>
                 <button class="preset-button" data-preset="db-backup">PostgreSQL to S3 Backup</button>
@@ -1197,7 +1196,7 @@
 
               <textarea id="studio-task-input" class="studio-textarea-input" placeholder="Type or paste any task here... e.g. 'Build a high-availability Redis distributed rate limiter with sliding window counter for a multi-tenant API gateway'"></textarea>
 
-              <div style="display: flex; justify-content: flex-end; padding-top: 6px;">
+              <div style="display: flex; justify-content: flex-end; padding-top: 6px; flex-shrink: 0;">
                 <button id="btn-run-compile" class="studio-compile-btn">
                   <svg class="icon" viewBox="0 0 24 24" style="stroke: #000;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
                   <span>Compile Invariant Contract</span>
@@ -1218,19 +1217,19 @@
                 <button class="strip-tab" data-studio-fmt="modelfile">Modelfile</button>
                 <button class="strip-tab" data-studio-fmt="cli">CLI Snippet</button>
               </div>
-              <button class="hdr-btn" id="btn-studio-copy" style="padding: 2px 8px; font-size: 11px;">Copy</button>
+              <button class="header-btn" id="btn-studio-copy" style="padding: 2px 8px; font-size: 11px;">Copy</button>
             </div>
-            <div class="pane-body">
+            <div class="pane-body-scrollable">
               <pre id="studio-output-view" class="code-display-block">// Your compiled contract will appear here in real-time.
 // Type an objective on the left or select a preset to start.</pre>
               
-              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: var(--text-dim); flex-wrap: wrap; gap: 6px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: var(--text-dim); flex-wrap: wrap; gap: 6px; flex-shrink: 0;">
                 <div id="studio-cost-label">Est. Tokens: ~0 &middot; $0.000 / call</div>
                 <div style="display: flex; gap: 4px;">
-                  <button class="hdr-btn" id="btn-studio-test-sandbox" style="font-size: 11px;">Test in Sandbox</button>
-                  <button class="hdr-btn" id="btn-studio-chatgpt" style="font-size: 11px;">ChatGPT</button>
-                  <button class="hdr-btn" id="btn-studio-claude" style="font-size: 11px;">Claude</button>
-                  <button class="hdr-btn" id="btn-studio-dl" style="font-size: 11px;">Download</button>
+                  <button class="header-btn" id="btn-studio-test-sandbox" style="font-size: 11px;">Test in Sandbox</button>
+                  <button class="header-btn" id="btn-studio-chatgpt" style="font-size: 11px;">ChatGPT</button>
+                  <button class="header-btn" id="btn-studio-claude" style="font-size: 11px;">Claude</button>
+                  <button class="header-btn" id="btn-studio-dl" style="font-size: 11px;">Download</button>
                 </div>
               </div>
             </div>
@@ -1245,13 +1244,13 @@
         <div class="playground-split-grid">
           <!-- Left: Active Injected Directive -->
           <div class="sandbox-panel">
-            <div class="sidebar-section-title" style="padding: 0;">Active System Directive</div>
-            <textarea id="sandbox-system-directive" class="form-select" style="min-height: 200px; font-family: var(--font-mono); font-size: 11px; resize: vertical; line-height: 1.5;" placeholder="Active Agent Directive loaded here... (Click 'Test' on any prompt card or Studio Compiler to inject)"></textarea>
+            <div class="sidebar-head-caption" style="padding: 0;">Active System Directive</div>
+            <textarea id="sandbox-system-directive" class="sidebar-select-input" style="min-height: 180px; font-family: var(--font-mono); font-size: 11px; resize: none; line-height: 1.5;" placeholder="Active Agent Directive loaded here... (Click 'Test' on any prompt card or Studio Compiler to inject)"></textarea>
 
             <div style="display: flex; flex-direction: column; gap: 8px; padding-top: 8px; border-top: 1px solid var(--border-subtle);">
               <div>
-                <div class="sidebar-section-title" style="padding: 0; margin-bottom: 4px;">Execution Engine</div>
-                <select id="sandbox-engine-select" class="form-select">
+                <div class="sidebar-head-caption" style="padding: 0; margin-bottom: 4px;">Execution Engine</div>
+                <select id="sandbox-engine-select" class="sidebar-select-input">
                   <option value="simulated">Intelligent Agentic Simulator (Zero-Latency)</option>
                   <option value="ollama">Ollama Local (http://localhost:11434)</option>
                   <option value="openai">OpenAI (GPT-4o / o3-mini)</option>
@@ -1265,11 +1264,11 @@
               </label>
 
               <div id="sandbox-api-key-box" style="display: none; flex-direction: column; gap: 4px;">
-                <div class="sidebar-section-title" style="padding: 0;">API Key (Local only)</div>
-                <input type="password" id="sandbox-api-key" class="form-select" placeholder="sk-...">
+                <div class="sidebar-head-caption" style="padding: 0;">API Key (Local only)</div>
+                <input type="password" id="sandbox-api-key" class="sidebar-select-input" placeholder="sk-...">
               </div>
 
-              <button class="hdr-btn" id="btn-sandbox-clear-chat" style="justify-content: center;">Clear Chat</button>
+              <button class="header-btn" id="btn-sandbox-clear-chat" style="justify-content: center;">Clear Chat</button>
             </div>
           </div>
 
@@ -1349,23 +1348,23 @@ Send your task below or inject a prompt from the Catalog!
         <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 8px; background: var(--bg-input); border: 1px solid var(--border-subtle); border-radius: var(--radius-xs); font-size: 11px; color: var(--text-dim); flex-wrap: wrap; gap: 6px;">
           <span>Export Artifact:</span>
           <div style="display: flex; gap: 4px; flex-wrap: wrap;">
-            <button class="hdr-btn" id="dl-cursorrules" style="font-size: 11px; padding: 2px 6px;">.cursorrules</button>
-            <button class="hdr-btn" id="dl-skill" style="font-size: 11px; padding: 2px 6px;">SKILL.md</button>
-            <button class="hdr-btn" id="dl-modelfile" style="font-size: 11px; padding: 2px 6px;">Modelfile</button>
-            <button class="hdr-btn" id="dl-txt" style="font-size: 11px; padding: 2px 6px;">system_prompt.txt</button>
+            <button class="header-btn" id="dl-cursorrules" style="font-size: 11px; padding: 2px 6px;">.cursorrules</button>
+            <button class="header-btn" id="dl-skill" style="font-size: 11px; padding: 2px 6px;">SKILL.md</button>
+            <button class="header-btn" id="dl-modelfile" style="font-size: 11px; padding: 2px 6px;">Modelfile</button>
+            <button class="header-btn" id="dl-txt" style="font-size: 11px; padding: 2px 6px;">system_prompt.txt</button>
           </div>
         </div>
       </div>
 
       <div class="modal-footer">
         <div style="display: flex; align-items: center; gap: 6px;">
-          <button class="hdr-btn" id="btn-modal-test-sandbox">Test in Sandbox</button>
-          <button class="hdr-btn" id="btn-modal-chatgpt">ChatGPT</button>
-          <button class="hdr-btn" id="btn-modal-claude">Claude</button>
-          <button class="hdr-btn" id="btn-modal-share-link">Copy Link</button>
+          <button class="header-btn" id="btn-modal-test-sandbox">Test in Sandbox</button>
+          <button class="header-btn" id="btn-modal-chatgpt">ChatGPT</button>
+          <button class="header-btn" id="btn-modal-claude">Claude</button>
+          <button class="header-btn" id="btn-modal-share-link">Copy Link</button>
         </div>
         <div style="display: flex; align-items: center; gap: 6px;">
-          <button class="hdr-btn" id="btn-modal-dismiss">Dismiss</button>
+          <button class="header-btn" id="btn-modal-dismiss">Dismiss</button>
           <button class="card-btn card-btn-copy" id="btn-modal-copy-action" style="padding: 4px 12px;">Copy Directive</button>
         </div>
       </div>
@@ -1713,20 +1712,13 @@ ${rawBase}
       document.getElementById('pane-studio').classList.toggle('active', viewName === 'studio');
       document.getElementById('pane-sandbox').classList.toggle('active', viewName === 'sandbox');
 
+      document.getElementById('tab-catalog').classList.toggle('active', viewName === 'catalog');
+      document.getElementById('tab-studio').classList.toggle('active', viewName === 'studio');
+      document.getElementById('tab-sandbox').classList.toggle('active', viewName === 'sandbox');
+
       document.getElementById('rail-catalog-btn').classList.toggle('active', viewName === 'catalog');
       document.getElementById('rail-studio-btn').classList.toggle('active', viewName === 'studio');
       document.getElementById('rail-sandbox-btn').classList.toggle('active', viewName === 'sandbox');
-
-      document.getElementById('hdr-tab-catalog').classList.toggle('active', viewName === 'catalog');
-      document.getElementById('hdr-tab-studio').classList.toggle('active', viewName === 'studio');
-      document.getElementById('hdr-tab-sandbox').classList.toggle('active', viewName === 'sandbox');
-
-      const titleMap = {
-        catalog: "Catalog",
-        studio: "Studio Compiler",
-        sandbox: "Sandbox"
-      };
-      document.getElementById('header-active-module-text').textContent = titleMap[viewName] || "Catalog";
 
       if (viewName === 'studio') {
         document.getElementById('context-title').textContent = "Studio Engine";
@@ -1758,7 +1750,7 @@ ${rawBase}
       }
       if (domain && masterData.taxonomySummary[domain]) {
         filterState.domain = domain;
-        document.querySelectorAll('#domain-tree .tree-row-btn').forEach(b => {
+        document.querySelectorAll('#domain-tree .tree-nav-btn').forEach(b => {
           b.classList.toggle('active', b.dataset.domain === domain);
         });
         updateSubcatDropdown();
@@ -1803,9 +1795,9 @@ ${rawBase}
       const list = document.getElementById('domain-tree');
       list.innerHTML = `
         <li>
-          <button class="tree-row-btn ${filterState.domain === 'all' ? 'active' : ''}" data-domain="all">
-            <span class="tree-row-label">All Clusters</span>
-            <span class="tree-row-count">${allPrompts.length}</span>
+          <button class="tree-nav-btn ${filterState.domain === 'all' ? 'active' : ''}" data-domain="all">
+            <span class="tree-label-truncate">All Clusters</span>
+            <span class="tree-counter-num">${allPrompts.length}</span>
           </button>
         </li>
       `;
@@ -1813,9 +1805,9 @@ ${rawBase}
       for (const [domain, count] of Object.entries(masterData.taxonomySummary)) {
         const li = document.createElement('li');
         li.innerHTML = `
-          <button class="tree-row-btn ${filterState.domain === domain ? 'active' : ''}" data-domain="${domain}">
-            <span class="tree-row-label">${domain}</span>
-            <span class="tree-row-count">${count}</span>
+          <button class="tree-nav-btn ${filterState.domain === domain ? 'active' : ''}" data-domain="${domain}">
+            <span class="tree-label-truncate">${domain}</span>
+            <span class="tree-counter-num">${count}</span>
           </button>
         `;
         list.appendChild(li);
@@ -1971,12 +1963,11 @@ Executed task: "${userInput}" under active system directives.
     }
 
     function bindEvents() {
-      // Header segmented module tabs
-      document.getElementById('hdr-tab-catalog').addEventListener('click', () => switchModuleView('catalog'));
-      document.getElementById('hdr-tab-studio').addEventListener('click', () => switchModuleView('studio'));
-      document.getElementById('hdr-tab-sandbox').addEventListener('click', () => switchModuleView('sandbox'));
+      // Segmented Tabs & Rail Navigation
+      document.getElementById('tab-catalog').addEventListener('click', () => switchModuleView('catalog'));
+      document.getElementById('tab-studio').addEventListener('click', () => switchModuleView('studio'));
+      document.getElementById('tab-sandbox').addEventListener('click', () => switchModuleView('sandbox'));
 
-      // Primary Rail actions
       document.getElementById('rail-catalog-btn').addEventListener('click', () => switchModuleView('catalog'));
       document.getElementById('rail-studio-btn').addEventListener('click', () => switchModuleView('studio'));
       document.getElementById('rail-sandbox-btn').addEventListener('click', () => switchModuleView('sandbox'));
@@ -1988,7 +1979,7 @@ Executed task: "${userInput}" under active system directives.
           const targetDomain = btn.dataset.railDomain;
           filterState.domain = targetDomain;
           filterState.onlyFavs = false;
-          document.querySelectorAll('#domain-tree .tree-row-btn').forEach(b => {
+          document.querySelectorAll('#domain-tree .tree-nav-btn').forEach(b => {
             b.classList.toggle('active', b.dataset.domain === targetDomain);
           });
           updateSubcatDropdown();
@@ -2090,11 +2081,11 @@ Chat history cleared. Active system directives preserved.
         loadIntoSandbox(text, activeModalItem.title);
       });
 
-      // Sidebar Domain
+      // Sidebar Domain Selection
       document.getElementById('domain-tree').addEventListener('click', (e) => {
-        const btn = e.target.closest('.tree-row-btn');
+        const btn = e.target.closest('.tree-nav-btn');
         if (!btn) return;
-        document.querySelectorAll('#domain-tree .tree-row-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('#domain-tree .tree-nav-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         filterState.domain = btn.dataset.domain;
         filterState.onlyFavs = false;
@@ -2374,7 +2365,7 @@ Chat history cleared. Active system directives preserved.
       const tokens = estimateTokens(prompt.enhancedPrompt);
       const rec = getRecommendedModel(prompt);
 
-      document.getElementById('modal-heading-text').textContent = `#${prompt.id}: ${prompt.title}`;
+      document.getElementById('modal-heading-text').textContent = `#${prompt.id} — ${prompt.title}`;
       document.getElementById('modal-tags-row').innerHTML = `
         <span class="flat-chip">${prompt.mainCategory}</span>
         <span class="flat-chip">${prompt.subCategory}</span>
@@ -2397,7 +2388,7 @@ Chat history cleared. Active system directives preserved.
           cell.style.gap = '2px';
           cell.innerHTML = `
             <label style="font-size: 11px; font-family: var(--font-mono); color: var(--text-dim);">[${v}]</label>
-            <input type="text" class="form-select" placeholder="Enter ${v}..." data-var="${v}">
+            <input type="text" class="sidebar-select-input" placeholder="Enter ${v}..." data-var="${v}">
           `;
           cell.querySelector('input').addEventListener('input', (e) => {
             variableValues[v] = e.target.value;
@@ -2474,7 +2465,7 @@ Chat history cleared. Active system directives preserved.
           <div style="grid-column: 1 / -1; text-align: center; padding: 40px 16px; background: var(--bg-panel); border: 1px dashed var(--border-subtle); border-radius: var(--radius-md);">
             <div style="font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 4px;">No matching directives found</div>
             <div style="font-size: 12px; color: var(--text-dim); margin-bottom: 12px;">Try adjusting keywords or resetting filters.</div>
-            <button class="hdr-btn" id="btn-reset-filters" style="margin: 0 auto;">Reset Filters</button>
+            <button class="header-btn" id="btn-reset-filters" style="margin: 0 auto;">Reset Filters</button>
           </div>
         `;
         document.getElementById('btn-reset-filters').addEventListener('click', () => {
