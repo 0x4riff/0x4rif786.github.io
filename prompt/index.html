@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Agent Prompts Hub — 876 Production-Ready Directives</title>
-  <meta name="description" content="Curated & engineered directory of 876 structured AI Agent Prompts with live variable customizer, keyboard shortcuts, bookmarks, and instant search.">
+  <meta name="description" content="Curated & engineered directory of 876 structured AI Agent Prompts with pure Indonesian & English language modes, live variable customizer, keyboard shortcuts, bookmarks, and instant search.">
   <link rel="canonical" href="https://arifwidiyanto.web.id/prompt/">
   
   <!-- Fonts -->
@@ -78,7 +78,7 @@
       position: sticky;
       top: 0;
       z-index: 40;
-      background: rgba(9, 10, 15, 0.82);
+      background: rgba(9, 10, 15, 0.84);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-subtle);
@@ -129,6 +129,38 @@
       align-items: center;
       gap: 0.6rem;
     }
+
+    /* Language Switcher Button Segment */
+    .lang-switcher {
+      display: flex;
+      background: var(--bg-input);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-sm);
+      padding: 0.15rem;
+    }
+    .lang-btn {
+      padding: 0.3rem 0.65rem;
+      background: transparent;
+      border: none;
+      border-radius: 4px;
+      color: var(--text-secondary);
+      font-size: 0.775rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.15s ease;
+    }
+    .lang-btn:hover {
+      color: var(--text-primary);
+    }
+    .lang-btn.active {
+      background: var(--accent-primary);
+      color: #fff;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    }
+
     .nav-btn {
       display: inline-flex;
       align-items: center;
@@ -148,6 +180,11 @@
       color: var(--text-primary);
       background: var(--bg-surface);
       border-color: var(--border-subtle);
+    }
+    .nav-btn.active {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: rgba(245, 158, 11, 0.3);
+      color: #fbbf24;
     }
     .kbd-shortcut {
       display: inline-flex;
@@ -170,7 +207,7 @@
       margin: 0 auto;
       padding: 1.5rem;
       display: grid;
-      grid-template-columns: 280px 1fr;
+      grid-template-columns: 290px 1fr;
       gap: 2rem;
       align-items: start;
     }
@@ -211,7 +248,7 @@
       justify-content: space-between;
       padding: 0.5rem 0.65rem;
       border-radius: var(--radius-sm);
-      font-size: 0.85rem;
+      font-size: 0.835rem;
       font-weight: 500;
       color: var(--text-secondary);
       background: transparent;
@@ -252,10 +289,6 @@
       background: rgba(59, 130, 246, 0.2);
     }
 
-    /* Subcategory Pill Scroll */
-    .subcat-select-wrapper {
-      position: relative;
-    }
     .subcat-select {
       width: 100%;
       padding: 0.6rem 0.75rem;
@@ -293,7 +326,7 @@
       flex-wrap: wrap;
     }
     .hub-header-left {
-      max-width: 650px;
+      max-width: 680px;
     }
     .hub-badge {
       display: inline-flex;
@@ -447,55 +480,17 @@
       border-color: var(--text-tertiary);
     }
 
-    /* Quick Filter Chips */
-    .quick-chips {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      overflow-x: auto;
-      scrollbar-width: none;
-      padding-bottom: 0.25rem;
-    }
-    .quick-chips::-webkit-scrollbar {
-      display: none;
-    }
-    .chip-btn {
-      padding: 0.35rem 0.75rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: 999px;
-      font-size: 0.78rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.15s;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-    .chip-btn:hover {
-      background: var(--bg-surface);
-      color: var(--text-primary);
-    }
-    .chip-btn.active {
-      background: var(--accent-primary-subtle);
-      border-color: var(--accent-primary);
-      color: #93c5fd;
-      font-weight: 600;
-    }
-
     /* Stream Grid */
     .prompt-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
       gap: 1rem;
     }
     .prompt-grid.list-view {
       grid-template-columns: 1fr;
     }
 
-    /* Clean Modern Prompt Card */
+    /* Prompt Card */
     .p-card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
@@ -710,6 +705,30 @@
       gap: 1.25rem;
     }
 
+    /* Modal Tabs */
+    .modal-tabs {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 0.65rem;
+    }
+    .modal-tab-btn {
+      padding: 0.4rem 0.8rem;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
+      font-size: 0.825rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .modal-tab-btn.active {
+      background: var(--accent-primary-subtle);
+      border-color: rgba(59, 130, 246, 0.3);
+      color: #93c5fd;
+    }
+
     /* Variable Customizer Box in Modal */
     .customizer-box {
       background: var(--bg-subtle);
@@ -841,16 +860,7 @@
         grid-template-columns: 1fr;
       }
       .sidebar {
-        display: none; /* Can be toggled or in drawer */
-      }
-      .sidebar.mobile-open {
-        display: flex;
-        position: fixed;
-        inset: 0;
-        z-index: 90;
-        top: 0;
-        max-height: 100vh;
-        border-radius: 0;
+        display: none;
       }
     }
   </style>
@@ -864,22 +874,28 @@
         <div class="brand-logo">⚡</div>
         <div>
           <div class="brand-name">Arif Widiyanto</div>
-          <div class="brand-subtitle">AI & DevOps Systems</div>
+          <div class="brand-subtitle" id="nav-subtitle">AI & DevOps Systems</div>
         </div>
       </a>
 
       <div class="nav-actions">
-        <a href="https://arifwidiyanto.web.id" class="nav-btn">
-          <i data-lucide="arrow-left" style="width:14px;height:14px;"></i>
-          <span>Portfolio</span>
-        </a>
+        <!-- Language Switcher: Pure ID or Pure EN -->
+        <div class="lang-switcher">
+          <button class="lang-btn active" id="lang-id" data-lang="id">
+            <span>🇮🇩</span> <span>Bahasa Indonesia</span>
+          </button>
+          <button class="lang-btn" id="lang-en" data-lang="en">
+            <span>🇬🇧</span> <span>English</span>
+          </button>
+        </div>
+
         <button class="nav-btn" id="fav-filter-btn">
           <i data-lucide="star" style="width:14px;height:14px;"></i>
-          <span>Favorit (<span id="fav-count-badge">0</span>)</span>
+          <span id="fav-btn-label">Favorit</span> (<span id="fav-count-badge">0</span>)
         </button>
-        <a href="https://github.com/0x4riff" target="_blank" rel="noopener" class="nav-btn">
-          <i data-lucide="github" style="width:14px;height:14px;"></i>
-          <span>GitHub</span>
+        <a href="https://arifwidiyanto.web.id" class="nav-btn">
+          <i data-lucide="arrow-left" style="width:14px;height:14px;"></i>
+          <span id="nav-portfolio-label">Portfolio</span>
         </a>
       </div>
     </div>
@@ -891,14 +907,14 @@
     <!-- Sidebar Filters -->
     <aside class="sidebar" id="sidebar">
       <div>
-        <div class="sidebar-section-title">Strategic Domains</div>
+        <div class="sidebar-section-title" id="sidebar-domain-title">Strategic Domains</div>
         <ul class="sidebar-nav-list" id="cluster-sidebar-list">
           <!-- Populated by JS -->
         </ul>
       </div>
 
       <div>
-        <div class="sidebar-section-title">Subkategori Terarah (45)</div>
+        <div class="sidebar-section-title" id="sidebar-subcat-title">Subkategori Terarah (45)</div>
         <div class="subcat-select-wrapper">
           <select id="sidebar-subcat-select" class="subcat-select">
             <option value="all">Semua Subkategori (45)</option>
@@ -907,8 +923,8 @@
       </div>
 
       <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border-subtle);">
-        <div style="font-size: 0.75rem; color: var(--text-tertiary); line-height: 1.5;">
-          💡 Tip: Tekan <span class="kbd-shortcut">/</span> untuk fokus ke pencarian, dan <span class="kbd-shortcut">Esc</span> untuk menutup modal.
+        <div style="font-size: 0.75rem; color: var(--text-tertiary); line-height: 1.5;" id="sidebar-shortcut-tip">
+          💡 Tip: Tekan <span class="kbd-shortcut">/</span> untuk pencarian, dan <span class="kbd-shortcut">Esc</span> untuk menutup modal.
         </div>
       </div>
     </aside>
@@ -919,28 +935,28 @@
       <!-- Hero Header -->
       <section class="hub-header">
         <div class="hub-header-left">
-          <div class="hub-badge">
+          <div class="hub-badge" id="hero-badge">
             <i data-lucide="sparkles" style="width:12px;height:12px;"></i>
-            Autonomous AI Agent Directives
+            <span>Autonomous AI Agent Directives</span>
           </div>
-          <h1 class="hub-title">876 Master AI Agent Prompts</h1>
-          <p class="hub-desc">
-            Instruksi modular dengan standar industri (Role, Mission, Context, Output Protocol, Execution Workflow) yang siap dieksekusi oleh Claude Code, OpenClaw, ChatGPT, dan Automation Pipelines.
+          <h1 class="hub-title" id="hero-title">876 Master AI Agent Prompts</h1>
+          <p class="hub-desc" id="hero-desc">
+            Instruksi modular dengan standar industri (Peran, Sasaran, Konteks, Protokol Keluaran, Protokol Eksekusi) yang siap dieksekusi oleh Claude Code, OpenClaw, ChatGPT, dan Automation Pipelines.
           </p>
         </div>
 
         <div class="hub-metrics">
           <div class="metric-pill">
             <div class="metric-val">876</div>
-            <div class="metric-name">Directives</div>
+            <div class="metric-name" id="metric-directives-label">Directives</div>
           </div>
           <div class="metric-pill">
             <div class="metric-val">8</div>
-            <div class="metric-name">Domains</div>
+            <div class="metric-name" id="metric-domains-label">Domains</div>
           </div>
           <div class="metric-pill">
             <div class="metric-val">45</div>
-            <div class="metric-name">Categories</div>
+            <div class="metric-name" id="metric-categories-label">Categories</div>
           </div>
         </div>
       </section>
@@ -966,14 +982,14 @@
 
         <button class="export-btn" id="export-md-btn">
           <i data-lucide="download" style="width:14px;height:14px;"></i>
-          <span>Ekspor Filter (.md)</span>
+          <span id="export-btn-label">Ekspor Filter (.md)</span>
         </button>
       </div>
 
       <!-- Quick Status -->
       <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.825rem; color: var(--text-tertiary); padding: 0 0.25rem;">
         <div>
-          Menampilkan <strong style="color: var(--text-primary);" id="rendered-count">876</strong> prompt
+          <span id="status-showing-text">Menampilkan</span> <strong style="color: var(--text-primary);" id="rendered-count">876</strong> prompt
         </div>
         <div id="active-filter-label" style="color: var(--accent-primary);"></div>
       </div>
@@ -999,9 +1015,15 @@
       </div>
 
       <div class="modal-content">
+        <!-- Modal Tabs (Enhanced vs Raw) -->
+        <div class="modal-tabs">
+          <button class="modal-tab-btn active" data-modal-tab="enhanced" id="tab-btn-enhanced">⚡ Enhanced Agent Directive</button>
+          <button class="modal-tab-btn" data-modal-tab="raw" id="tab-btn-raw">📝 Raw Prompt Asli</button>
+        </div>
+
         <!-- Live Variable Form -->
         <div class="customizer-box" id="modal-customizer" style="display: none;">
-          <div class="customizer-title">
+          <div class="customizer-title" id="customizer-title-text">
             <i data-lucide="sliders" style="width:14px;height:14px;"></i>
             Kustomisasi Variabel Prompt Langsung
           </div>
@@ -1011,7 +1033,7 @@
         <!-- Live Code Block -->
         <div>
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-tertiary);">Directives Payload</span>
+            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-tertiary);" id="modal-payload-label">Directives Payload</span>
             <span style="font-size: 0.75rem; color: var(--text-tertiary);">Markdown format</span>
           </div>
           <pre class="code-container" id="modal-code-payload"></pre>
@@ -1022,7 +1044,7 @@
         <button class="p-btn p-btn-secondary" id="modal-close-btn" style="flex: 0 0 auto; min-width: 100px;">Tutup</button>
         <button class="p-btn p-btn-primary" id="modal-copy-btn" style="flex: 0 0 auto; min-width: 180px;">
           <i data-lucide="copy" style="width:14px;height:14px;"></i>
-          <span>Salin Prompt Kustom</span>
+          <span id="modal-copy-btn-text">Salin Prompt Kustom</span>
         </button>
       </div>
     </div>
@@ -1035,6 +1057,7 @@
     let masterPayload = null;
     let allPrompts = [];
     let favorites = new Set();
+    let currentLang = 'id'; // 'id' or 'en'
     let currentFilter = {
       search: '',
       domain: 'all',
@@ -1044,7 +1067,82 @@
     };
 
     let activeModalItem = null;
+    let activeModalTab = 'enhanced'; // 'enhanced' or 'raw'
     let variableValues = {};
+
+    // UI Dictionary for Full Pure Language Switch
+    const UI_I18N = {
+      id: {
+        pageTitle: "AI Agent Prompts Hub — 876 Directives Siap Pakai",
+        navSubtitle: "Sistem AI & DevOps",
+        navPortfolio: "Portfolio",
+        favBtn: "Favorit",
+        sidebarDomainTitle: "Domain Strategis",
+        sidebarSubcatTitle: "Subkategori Terarah (45)",
+        sidebarAllDomain: "Semua Domain",
+        sidebarAllSubcat: "Semua Subkategori (45)",
+        sidebarShortcutTip: "💡 Tip: Tekan <span class='kbd-shortcut'>/</span> untuk pencarian, dan <span class='kbd-shortcut'>Esc</span> untuk menutup modal.",
+        heroBadge: "Instruksi Agen AI Otonom",
+        heroTitle: "876 Master AI Agent Prompts",
+        heroDesc: "Koleksi instruksi modular dengan standar industri (Peran, Sasaran, Konteks, Protokol Keluaran, Protokol Eksekusi) yang siap dieksekusi oleh Claude Code, OpenClaw, ChatGPT, dan Otomasi AI.",
+        metricDirectives: "Instruksi",
+        metricDomains: "Domain",
+        metricCategories: "Kategori",
+        searchPlaceholder: "Cari prompt berdasarkan persona, kata kunci, atau fungsi... (Tekan '/' untuk fokus)",
+        exportBtn: "Ekspor Filter (.md)",
+        statusShowing: "Menampilkan",
+        btnDetail: "Detail & Kustomisasi",
+        btnCopy: "Salin",
+        btnCopied: "Tersalin!",
+        toastCopied: "Prompt berhasil disalin ke clipboard!",
+        tabEnhanced: "⚡ Enhanced Agent Directive",
+        tabRaw: "📝 Perintah Dasar (Raw)",
+        customizerTitle: "Kustomisasi Parameter Langsung",
+        customizerPlaceholder: "Isi nilai untuk",
+        modalPayloadLabel: "Struktur Prompt Agen",
+        modalClose: "Tutup",
+        modalCopyBtn: "Salin Prompt Kustom",
+        emptyTitle: "Tidak ada prompt yang sesuai",
+        emptyDesc: "Coba gunakan kata kunci lain atau reset filter domain.",
+        favStatusLabel: "Menampilkan Prompt Favorit",
+        exportSuccess: "prompt berhasil diekspor ke Markdown!"
+      },
+      en: {
+        pageTitle: "AI Agent Prompts Hub — 876 Production-Ready Directives",
+        navSubtitle: "AI & DevOps Systems",
+        navPortfolio: "Portfolio",
+        favBtn: "Favorites",
+        sidebarDomainTitle: "Strategic Domains",
+        sidebarSubcatTitle: "Curated Subcategories (45)",
+        sidebarAllDomain: "All Domains",
+        sidebarAllSubcat: "All Subcategories (45)",
+        sidebarShortcutTip: "💡 Tip: Press <span class='kbd-shortcut'>/</span> to search, and <span class='kbd-shortcut'>Esc</span> to close modal.",
+        heroBadge: "Autonomous AI Agent Directives",
+        heroTitle: "876 Master AI Agent Prompts",
+        heroDesc: "Industry-standard modular directives (Role, Mission, Context, Output Protocol, Execution Workflow) ready for Claude Code, OpenClaw, ChatGPT, and AI Automation Pipelines.",
+        metricDirectives: "Directives",
+        metricDomains: "Domains",
+        metricCategories: "Categories",
+        searchPlaceholder: "Search prompts by persona, keyword, or workflow... (Press '/' to focus)",
+        exportBtn: "Export Filter (.md)",
+        statusShowing: "Showing",
+        btnDetail: "Details & Customize",
+        btnCopy: "Copy",
+        btnCopied: "Copied!",
+        toastCopied: "Prompt successfully copied to clipboard!",
+        tabEnhanced: "⚡ Enhanced Agent Directive",
+        tabRaw: "📝 Raw Original Prompt",
+        customizerTitle: "Live Parameter Customizer",
+        customizerPlaceholder: "Enter value for",
+        modalPayloadLabel: "Agent Directives Payload",
+        modalClose: "Close",
+        modalCopyBtn: "Copy Customized Prompt",
+        emptyTitle: "No matching prompts found",
+        emptyDesc: "Try using different keywords or reset domain filters.",
+        favStatusLabel: "Showing Favorited Prompts",
+        exportSuccess: "prompts exported to Markdown!"
+      }
+    };
 
     // Load Favorites from LocalStorage
     try {
@@ -1052,8 +1150,12 @@
       if (savedFavs) {
         favorites = new Set(JSON.parse(savedFavs));
       }
+      const savedLang = localStorage.getItem('aw_prompt_lang');
+      if (savedLang === 'en' || savedLang === 'id') {
+        currentLang = savedLang;
+      }
     } catch (e) {
-      console.warn('Could not load favorites', e);
+      console.warn('LocalStorage error', e);
     }
 
     function saveFavorites() {
@@ -1077,12 +1179,13 @@
     }
 
     async function copyText(text, btn = null) {
+      const t = UI_I18N[currentLang];
       try {
         await navigator.clipboard.writeText(text);
         if (btn) {
           btn.classList.add('copied');
           const originalHTML = btn.innerHTML;
-          btn.innerHTML = `<i data-lucide="check" style="width:14px;height:14px;"></i><span>Tersalin!</span>`;
+          btn.innerHTML = `<i data-lucide="check" style="width:14px;height:14px;"></i><span>${t.btnCopied}</span>`;
           lucide.createIcons({ root: btn });
           setTimeout(() => {
             btn.classList.remove('copied');
@@ -1090,17 +1193,15 @@
             lucide.createIcons({ root: btn });
           }, 1800);
         }
-        showToast('Prompt berhasil disalin ke clipboard!');
+        showToast(t.toastCopied);
       } catch (err) {
         console.error('Copy failed', err);
       }
     }
 
-    // Extract Variables like [specific industry]
     function extractVariables(text) {
       const matches = text.match(/\[([^\]]+)\]/g);
       if (!matches) return [];
-      // Deduplicate
       return [...new Set(matches.map(m => m.slice(1, -1)))];
     }
 
@@ -1116,6 +1217,7 @@
 
         document.getElementById('fav-count-badge').textContent = favorites.size;
 
+        applyLanguageUI();
         renderSidebar();
         setupEvents();
         applyFilterAndRender();
@@ -1125,25 +1227,75 @@
       }
     }
 
+    function switchLanguage(lang) {
+      if (currentLang === lang) return;
+      currentLang = lang;
+      try {
+        localStorage.setItem('aw_prompt_lang', lang);
+      } catch (e) {}
+
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(`lang-${lang}`).classList.add('active');
+
+      applyLanguageUI();
+      renderSidebar();
+      applyFilterAndRender();
+      if (activeModalItem) {
+        openModal(activeModalItem);
+      }
+    }
+
+    function applyLanguageUI() {
+      const t = UI_I18N[currentLang];
+      document.title = t.pageTitle;
+      document.getElementById('nav-subtitle').textContent = t.navSubtitle;
+      document.getElementById('nav-portfolio-label').textContent = t.navPortfolio;
+      document.getElementById('fav-btn-label').textContent = t.favBtn;
+      document.getElementById('sidebar-domain-title').textContent = t.sidebarDomainTitle;
+      document.getElementById('sidebar-subcat-title').textContent = t.sidebarSubcatTitle;
+      document.getElementById('sidebar-shortcut-tip').innerHTML = t.sidebarShortcutTip;
+      
+      document.getElementById('hero-badge').querySelector('span').textContent = t.heroBadge;
+      document.getElementById('hero-title').textContent = t.heroTitle;
+      document.getElementById('hero-desc').textContent = t.heroDesc;
+
+      document.getElementById('metric-directives-label').textContent = t.metricDirectives;
+      document.getElementById('metric-domains-label').textContent = t.metricDomains;
+      document.getElementById('metric-categories-label').textContent = t.metricCategories;
+
+      document.getElementById('main-search').placeholder = t.searchPlaceholder;
+      document.getElementById('export-btn-label').textContent = t.exportBtn;
+      document.getElementById('status-showing-text').textContent = t.statusShowing;
+
+      document.getElementById('tab-btn-enhanced').textContent = t.tabEnhanced;
+      document.getElementById('tab-btn-raw').textContent = t.tabRaw;
+      document.getElementById('modal-close-btn').textContent = t.modalClose;
+      document.getElementById('modal-copy-btn-text').textContent = t.modalCopyBtn;
+      document.getElementById('modal-payload-label').textContent = t.modalPayloadLabel;
+    }
+
     function renderSidebar() {
-      // 1. Domains list
+      const t = UI_I18N[currentLang];
       const list = document.getElementById('cluster-sidebar-list');
+      const taxonomy = currentLang === 'id' ? masterPayload.taxonomySummary_id : masterPayload.taxonomySummary_en;
+
       list.innerHTML = `
         <li>
-          <button class="sidebar-item active" data-domain="all">
+          <button class="sidebar-item ${currentFilter.domain === 'all' ? 'active' : ''}" data-domain="all">
             <div class="sidebar-item-left">
               <i data-lucide="layers" style="width:14px;height:14px;"></i>
-              <span>Semua Domain</span>
+              <span>${t.sidebarAllDomain}</span>
             </div>
             <span class="sidebar-badge">${allPrompts.length}</span>
           </button>
         </li>
       `;
 
-      for (const [domain, count] of Object.entries(masterPayload.taxonomySummary)) {
+      for (const [domain, count] of Object.entries(taxonomy)) {
         const li = document.createElement('li');
+        const isActive = currentFilter.domain === domain;
         li.innerHTML = `
-          <button class="sidebar-item" data-domain="${domain}">
+          <button class="sidebar-item ${isActive ? 'active' : ''}" data-domain="${domain}">
             <div class="sidebar-item-left">
               <i data-lucide="folder" style="width:14px;height:14px;"></i>
               <span>${domain}</span>
@@ -1154,29 +1306,38 @@
         list.appendChild(li);
       }
 
-      // 2. Subcategory select
       updateSubcatSelect();
+      lucide.createIcons({ root: list });
     }
 
     function updateSubcatSelect() {
+      const t = UI_I18N[currentLang];
       const select = document.getElementById('sidebar-subcat-select');
-      select.innerHTML = '<option value="all">Semua Subkategori (45)</option>';
+      select.innerHTML = `<option value="all">${t.sidebarAllSubcat}</option>`;
 
       let availableCats = masterPayload.categories;
       if (currentFilter.domain !== 'all') {
-        availableCats = availableCats.filter(c => c.mainCategory === currentFilter.domain);
+        availableCats = availableCats.filter(c => {
+          return currentLang === 'id' ? c.mainCategory_id === currentFilter.domain : c.mainCategory_en === currentFilter.domain;
+        });
       }
 
       availableCats.forEach(c => {
         const opt = document.createElement('option');
-        opt.value = c.cleanTitle;
-        opt.textContent = `${c.categoryTitle} (${c.promptsCount})`;
+        const title = currentLang === 'id' ? c.cleanTitle_id : c.cleanTitle_en;
+        const numTitle = currentLang === 'id' ? c.categoryTitle_id : c.categoryTitle_en;
+        opt.value = title;
+        opt.textContent = `${numTitle} (${c.promptsCount})`;
         select.appendChild(opt);
       });
       currentFilter.subcat = 'all';
     }
 
     function setupEvents() {
+      // Language switchers
+      document.getElementById('lang-id').addEventListener('click', () => switchLanguage('id'));
+      document.getElementById('lang-en').addEventListener('click', () => switchLanguage('en'));
+
       // Sidebar click delegation
       document.getElementById('cluster-sidebar-list').addEventListener('click', (e) => {
         const btn = e.target.closest('.sidebar-item');
@@ -1259,6 +1420,16 @@
         exportFilteredToMarkdown();
       });
 
+      // Modal tabs (Enhanced vs Raw)
+      document.querySelectorAll('.modal-tab-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          document.querySelectorAll('.modal-tab-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeModalTab = btn.dataset.modalTab;
+          updateModalLivePreview();
+        });
+      });
+
       // Modal close handlers
       document.getElementById('modal-close-x').addEventListener('click', closeModal);
       document.getElementById('modal-close-btn').addEventListener('click', closeModal);
@@ -1269,7 +1440,11 @@
       // Modal copy with customized variables
       document.getElementById('modal-copy-btn').addEventListener('click', (e) => {
         if (!activeModalItem) return;
-        let finalPrompt = activeModalItem.enhancedPrompt;
+        const rawOrEnh = activeModalTab === 'enhanced' 
+          ? (currentLang === 'id' ? activeModalItem.enhancedPrompt_id : activeModalItem.enhancedPrompt_en)
+          : (currentLang === 'id' ? activeModalItem.rawPrompt_id : activeModalItem.rawPrompt_en);
+        
+        let finalPrompt = rawOrEnh;
         for (const [k, v] of Object.entries(variableValues)) {
           if (v.trim()) {
             finalPrompt = finalPrompt.split(`[${k}]`).join(v.trim());
@@ -1287,20 +1462,30 @@
     function openModal(prompt) {
       activeModalItem = prompt;
       variableValues = {};
+      const t = UI_I18N[currentLang];
 
-      document.getElementById('modal-heading').textContent = `#${prompt.id} — ${prompt.title}`;
+      const title = currentLang === 'id' ? prompt.title_id : prompt.title_en;
+      const mainCat = currentLang === 'id' ? prompt.mainCategory_id : prompt.mainCategory_en;
+      const subCat = currentLang === 'id' ? prompt.subCategory_id : prompt.subCategory_en;
+      const rawText = currentLang === 'id' ? prompt.rawPrompt_id : prompt.rawPrompt_en;
+
+      document.getElementById('modal-heading').textContent = `#${prompt.id} — ${title}`;
       document.getElementById('modal-tags').innerHTML = `
-        <span class="p-tag" style="color:var(--accent-primary); border-color:rgba(59,130,246,0.3);">${prompt.mainCategory}</span>
-        <span class="p-tag">${prompt.subCategory}</span>
+        <span class="p-tag" style="color:var(--accent-primary); border-color:rgba(59,130,246,0.3);">${mainCat}</span>
+        <span class="p-tag">${subCat}</span>
       `;
 
-      // Extract variables from raw/enhanced prompt
-      const vars = extractVariables(prompt.rawPrompt);
+      // Extract variables from prompt
+      const vars = extractVariables(rawText);
       const customizerBox = document.getElementById('modal-customizer');
       const inputsContainer = document.getElementById('customizer-inputs');
 
       if (vars.length > 0) {
         customizerBox.style.display = 'block';
+        document.getElementById('customizer-title-text').innerHTML = `
+          <i data-lucide="sliders" style="width:14px;height:14px;"></i>
+          ${t.customizerTitle}
+        `;
         inputsContainer.innerHTML = '';
         vars.forEach(vName => {
           variableValues[vName] = '';
@@ -1308,7 +1493,7 @@
           div.className = 'customizer-field';
           div.innerHTML = `
             <label class="customizer-label">[${vName}]</label>
-            <input type="text" class="customizer-input" placeholder="Isi nilai ${vName}..." data-var="${vName}">
+            <input type="text" class="customizer-input" placeholder="${t.customizerPlaceholder} ${vName}..." data-var="${vName}">
           `;
           div.querySelector('input').addEventListener('input', (e) => {
             variableValues[vName] = e.target.value;
@@ -1320,6 +1505,11 @@
         customizerBox.style.display = 'none';
       }
 
+      // Reset to enhanced tab by default
+      activeModalTab = 'enhanced';
+      document.querySelectorAll('.modal-tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-btn-enhanced').classList.add('active');
+
       updateModalLivePreview();
       document.getElementById('prompt-modal').classList.add('open');
       lucide.createIcons({ root: document.getElementById('prompt-modal') });
@@ -1327,7 +1517,11 @@
 
     function updateModalLivePreview() {
       if (!activeModalItem) return;
-      let text = activeModalItem.enhancedPrompt;
+      const rawOrEnh = activeModalTab === 'enhanced' 
+        ? (currentLang === 'id' ? activeModalItem.enhancedPrompt_id : activeModalItem.enhancedPrompt_en)
+        : (currentLang === 'id' ? activeModalItem.rawPrompt_id : activeModalItem.rawPrompt_en);
+
+      let text = rawOrEnh;
       for (const [k, v] of Object.entries(variableValues)) {
         if (v.trim()) {
           text = text.split(`[${k}]`).join(v.trim());
@@ -1337,27 +1531,30 @@
     }
 
     function applyFilterAndRender() {
+      const t = UI_I18N[currentLang];
       const filtered = allPrompts.filter(p => {
         // Favorites filter
         if (currentFilter.onlyFavorites && !favorites.has(p.id)) {
           return false;
         }
         // Domain filter
-        if (currentFilter.domain !== 'all' && p.mainCategory !== currentFilter.domain) {
+        const domainProp = currentLang === 'id' ? p.mainCategory_id : p.mainCategory_en;
+        if (currentFilter.domain !== 'all' && domainProp !== currentFilter.domain) {
           return false;
         }
         // Subcat filter
-        if (currentFilter.subcat !== 'all' && p.subCategory !== currentFilter.subcat) {
+        const subcatProp = currentLang === 'id' ? p.subCategory_id : p.subCategory_en;
+        if (currentFilter.subcat !== 'all' && subcatProp !== currentFilter.subcat) {
           return false;
         }
         // Search
         if (currentFilter.search) {
           const q = currentFilter.search;
-          const inTitle = p.title.toLowerCase().includes(q);
-          const inRaw = p.rawPrompt.toLowerCase().includes(q);
-          const inEnhanced = p.enhancedPrompt.toLowerCase().includes(q);
-          const inSub = p.subCategory.toLowerCase().includes(q);
-          if (!inTitle && !inRaw && !inEnhanced && !inSub) return false;
+          const title = (currentLang === 'id' ? p.title_id : p.title_en).toLowerCase();
+          const raw = (currentLang === 'id' ? p.rawPrompt_id : p.rawPrompt_en).toLowerCase();
+          const enh = (currentLang === 'id' ? p.enhancedPrompt_id : p.enhancedPrompt_en).toLowerCase();
+          const sub = (currentLang === 'id' ? p.subCategory_id : p.subCategory_en).toLowerCase();
+          if (!title.includes(q) && !raw.includes(q) && !enh.includes(q) && !sub.includes(q)) return false;
         }
         return true;
       });
@@ -1366,9 +1563,9 @@
       
       const filterLabel = document.getElementById('active-filter-label');
       if (currentFilter.onlyFavorites) {
-        filterLabel.textContent = 'Menampilkan Prompt Favorit';
+        filterLabel.textContent = t.favStatusLabel;
       } else if (currentFilter.domain !== 'all') {
-        filterLabel.textContent = `Domain: ${currentFilter.domain}`;
+        filterLabel.textContent = `${t.metricDomains}: ${currentFilter.domain}`;
       } else {
         filterLabel.textContent = '';
       }
@@ -1377,6 +1574,7 @@
     }
 
     function renderPrompts(prompts) {
+      const t = UI_I18N[currentLang];
       const container = document.getElementById('prompts-grid');
       container.innerHTML = '';
 
@@ -1384,8 +1582,8 @@
         container.innerHTML = `
           <div class="empty-prompt-state">
             <i data-lucide="search-x" style="width:36px;height:36px;color:var(--text-tertiary);margin-bottom:0.75rem;"></i>
-            <h3 class="empty-title">Tidak ada prompt yang sesuai</h3>
-            <p class="empty-desc">Coba gunakan kata kunci lain atau reset filter domain.</p>
+            <h3 class="empty-title">${t.emptyTitle}</h3>
+            <p class="empty-desc">${t.emptyDesc}</p>
           </div>
         `;
         lucide.createIcons({ root: container });
@@ -1399,40 +1597,43 @@
         card.className = 'p-card';
         const isFav = favorites.has(p.id);
 
+        const title = currentLang === 'id' ? p.title_id : p.title_en;
+        const subCat = currentLang === 'id' ? p.subCategory_id : p.subCategory_en;
+        const rawText = currentLang === 'id' ? p.rawPrompt_id : p.rawPrompt_en;
+        const enhancedText = currentLang === 'id' ? p.enhancedPrompt_id : p.enhancedPrompt_en;
+
         card.innerHTML = `
           <div>
             <div class="p-card-top">
               <div class="p-card-meta">
                 <span class="p-id">#${p.id}</span>
-                <span class="p-tag">${p.subCategory}</span>
+                <span class="p-tag">${subCat}</span>
               </div>
-              <button class="p-favorite-btn ${isFav ? 'favorited' : ''}" title="Simpan ke Favorit" data-fav-id="${p.id}">
+              <button class="p-favorite-btn ${isFav ? 'favorited' : ''}" title="${t.favBtn}" data-fav-id="${p.id}">
                 <i data-lucide="star" style="width:15px;height:15px; fill: ${isFav ? 'currentColor' : 'none'};"></i>
               </button>
             </div>
-            <h3 class="p-card-title">${p.title}</h3>
-            <div class="p-card-preview">${formatPreview(p.rawPrompt)}</div>
+            <h3 class="p-card-title">${title}</h3>
+            <div class="p-card-preview">${formatPreview(rawText)}</div>
           </div>
 
           <div class="p-card-actions">
             <button class="p-btn p-btn-secondary btn-detail">
               <i data-lucide="eye" style="width:13px;height:13px;"></i>
-              <span>Detail & Sesuaikan</span>
+              <span>${t.btnDetail}</span>
             </button>
             <button class="p-btn p-btn-primary btn-copy">
               <i data-lucide="copy" style="width:13px;height:13px;"></i>
-              <span>Salin</span>
+              <span>${t.btnCopy}</span>
             </button>
           </div>
         `;
 
-        // Card Click opens modal
         card.addEventListener('click', (e) => {
           if (e.target.closest('.p-favorite-btn') || e.target.closest('.btn-copy')) return;
           openModal(p);
         });
 
-        // Favorite Toggle
         card.querySelector('.p-favorite-btn').addEventListener('click', (e) => {
           e.stopPropagation();
           const btn = e.currentTarget;
@@ -1451,10 +1652,9 @@
           }
         });
 
-        // Copy button
         card.querySelector('.btn-copy').addEventListener('click', (e) => {
           e.stopPropagation();
-          copyText(p.enhancedPrompt, e.currentTarget);
+          copyText(enhancedText, e.currentTarget);
         });
 
         fragment.appendChild(card);
@@ -1465,39 +1665,44 @@
     }
 
     function exportFilteredToMarkdown() {
+      const t = UI_I18N[currentLang];
       const visibleCards = document.querySelectorAll('.p-card');
       if (visibleCards.length === 0) {
-        showToast('Tidak ada prompt untuk diekspor.');
+        showToast(t.emptyTitle);
         return;
       }
 
-      let md = `# AI Agent Prompts Export\n\n*Diekspor dari [arifwidiyanto.web.id/prompt](https://arifwidiyanto.web.id/prompt)*\n\n---\n\n`;
+      let md = `# AI Agent Prompts Export (${currentLang.toUpperCase()})\n\n*Exported from [arifwidiyanto.web.id/prompt](https://arifwidiyanto.web.id/prompt)*\n\n---\n\n`;
       
       const filtered = allPrompts.filter(p => {
         if (currentFilter.onlyFavorites && !favorites.has(p.id)) return false;
-        if (currentFilter.domain !== 'all' && p.mainCategory !== currentFilter.domain) return false;
-        if (currentFilter.subcat !== 'all' && p.subCategory !== currentFilter.subcat) return false;
-        if (currentFilter.search) {
-          const q = currentFilter.search;
-          if (!p.title.toLowerCase().includes(q) && !p.rawPrompt.toLowerCase().includes(q) && !p.enhancedPrompt.toLowerCase().includes(q)) return false;
-        }
+        const domainProp = currentLang === 'id' ? p.mainCategory_id : p.mainCategory_en;
+        if (currentFilter.domain !== 'all' && domainProp !== currentFilter.domain) return false;
+        const subcatProp = currentLang === 'id' ? p.subCategory_id : p.subCategory_en;
+        if (currentFilter.subcat !== 'all' && subcatProp !== currentFilter.subcat) return false;
         return true;
       });
 
       filtered.forEach(p => {
-        md += `## #${p.id} - ${p.title}\n**Domain**: ${p.mainCategory} | **Subkategori**: ${p.subCategory}\n\n### 📝 Raw Prompt\n> ${p.rawPrompt}\n\n### ⚡ Enhanced AI Directive\n\`\`\`markdown\n${p.enhancedPrompt}\n\`\`\`\n\n---\n\n`;
+        const title = currentLang === 'id' ? p.title_id : p.title_en;
+        const mainCat = currentLang === 'id' ? p.mainCategory_id : p.mainCategory_en;
+        const subCat = currentLang === 'id' ? p.subCategory_id : p.subCategory_en;
+        const raw = currentLang === 'id' ? p.rawPrompt_id : p.rawPrompt_en;
+        const enh = currentLang === 'id' ? p.enhancedPrompt_id : p.enhancedPrompt_en;
+
+        md += `## #${p.id} - ${title}\n**${t.metricDomains}**: ${mainCat} | **${t.metricCategories}**: ${subCat}\n\n### 📝 ${t.tabRaw}\n> ${raw}\n\n### ⚡ ${t.tabEnhanced}\n\`\`\`markdown\n${enh}\n\`\`\`\n\n---\n\n`;
       });
 
       const blob = new Blob([md], { type: 'text/markdown;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `ai-agent-prompts-export-${new Date().toISOString().slice(0, 10)}.md`;
+      a.download = `ai-agent-prompts-${currentLang}-${new Date().toISOString().slice(0, 10)}.md`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
-      showToast(`${filtered.length} prompt berhasil diekspor ke Markdown!`);
+      showToast(`${filtered.length} ${t.exportSuccess}`);
     }
 
     document.addEventListener('DOMContentLoaded', init);
