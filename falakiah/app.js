@@ -754,7 +754,7 @@
 
         const sunrise = new Date(utcBaseMs + sunUtc.sunriseUtc * 60 * 1000);
         const sunset = new Date(utcBaseMs + sunUtc.sunsetUtc * 60 * 1000);
-        const nextSunrise = new Date(nextUtcBaseMs + nextSunUtc.sunsetUtc * 60 * 1000);
+        const nextSunrise = new Date(nextUtcBaseMs + nextSunUtc.sunriseUtc * 60 * 1000);
 
         return { sunrise, sunset, nextSunrise, rawSunUtc: sunUtc, utcBaseMs };
     }
@@ -997,6 +997,11 @@
     }
 
     function renderAbjadAndWafaq() {
+        // Guard: seksi Abjad & Wafaq dihapus dari HTML pada redesign;
+        // lewati render jika elemennya tidak ada agar init tidak crash.
+        if (!elements.inputAbjadName || !elements.selectHajatPurpose || !elements.displayArabicScript) {
+            return;
+        }
         const val = elements.inputAbjadName.value || 'Arif';
         const purpose = elements.selectHajatPurpose.value || 'RIZQ';
         const res = calculateAbjadAndWafaq(val, purpose);
@@ -1441,8 +1446,10 @@
         document.getElementById('thPlanet').textContent = t.thPlanet;
         document.getElementById('thTime').textContent = t.thTime;
         document.getElementById('thStatus').textContent = t.thStatus;
-        document.getElementById('txtLegendTitle').childNodes[1].nodeValue = " " + t.legendTitle;
-        document.getElementById('txtDisclaimers').textContent = t.disclaimers;
+        const elLegendTitle = document.getElementById('txtLegendTitle');
+        if (elLegendTitle && elLegendTitle.childNodes[1]) elLegendTitle.childNodes[1].nodeValue = " " + t.legendTitle;
+        const elDisclaimers = document.getElementById('txtDisclaimers');
+        if (elDisclaimers) elDisclaimers.textContent = t.disclaimers;
 
         // Astronomy Plus Translations
         document.getElementById('txtAstroTitle').childNodes[1].nodeValue = " " + t.txtAstroTitle;
@@ -1648,6 +1655,8 @@
     }
 
     function renderLegend() {
+        // Guard: legend grid tidak tersedia di layout terbaru.
+        if (!elements.legendGrid) return;
         const t = TRANSLATIONS[currentLang] || TRANSLATIONS.id;
         elements.legendGrid.innerHTML = '';
 
@@ -1696,14 +1705,25 @@
     function updateActiveBanner(data, now) {
         const t = TRANSLATIONS[currentLang] || TRANSLATIONS.id;
 
+        // Pre-dawn fix: antara tengah malam dan sunrise, jam malam yang sedang
+        // berjalan adalah siklus malam milik tanggal kemarin (magraib kemarin
+        // sampai subuh hari ini), bukan siklus tanggal terpilih.
+        let effectiveData = data;
+        if (data && data.sun && now < data.sun.sunrise) {
+            const prevDate = new Date(selectedDate);
+            prevDate.setDate(prevDate.getDate() - 1);
+            const prevData = calculateSchedule(prevDate, currentCoords.lat, currentCoords.lon);
+            if (prevData) effectiveData = prevData;
+        }
+
         let activeSlot = null;
         let isNight = false;
 
-        const allSlots = [...data.daySlots, ...data.nightSlots];
+        const allSlots = [...effectiveData.daySlots, ...effectiveData.nightSlots];
         for (let s of allSlots) {
             if (now >= s.start && now < s.end) {
                 activeSlot = s;
-                isNight = s.start >= data.sun.sunset;
+                isNight = s.start >= effectiveData.sun.sunset;
                 break;
             }
         }
@@ -1711,14 +1731,14 @@
         if (!activeSlot) {
             elements.activeStatusCard.style.display = 'block';
             elements.dayNightBadge.innerHTML = `<i class="fa-solid fa-calendar"></i> ${selectedDate.toLocaleDateString()}`;
-            elements.currentChogadiaName.textContent = t.names[data.daySlots[0].name] || data.daySlots[0].name;
-            elements.qualityTag.textContent = t.qualities[data.daySlots[0].info.quality];
-            elements.qualityTag.className = `quality-tag ${data.daySlots[0].info.class}`;
-            elements.currentSlotRange.textContent = `${formatTime(data.daySlots[0].start)} - ${formatTime(data.daySlots[0].end)}`;
+            elements.currentChogadiaName.textContent = t.names[effectiveData.daySlots[0].name] || effectiveData.daySlots[0].name;
+            elements.qualityTag.textContent = t.qualities[effectiveData.daySlots[0].info.quality];
+            elements.qualityTag.className = `quality-tag ${effectiveData.daySlots[0].info.class}`;
+            elements.currentSlotRange.textContent = `${formatTime(effectiveData.daySlots[0].start)} - ${formatTime(effectiveData.daySlots[0].end)}`;
             elements.countdownTimer.textContent = "--:--:--";
-            elements.currentPlanet.textContent = t.qualities[data.daySlots[0].info.quality];
-            elements.displayActiveAsma.textContent = data.daySlots[0].info.asma || '--';
-            elements.displayActiveMetal.textContent = data.daySlots[0].info.metal || '--';
+            elements.currentPlanet.textContent = t.qualities[effectiveData.daySlots[0].info.quality];
+            elements.displayActiveAsma.textContent = effectiveData.daySlots[0].info.asma || '--';
+            elements.displayActiveMetal.textContent = effectiveData.daySlots[0].info.metal || '--';
             elements.slotProgressBar.style.width = '0%';
             return;
         }
@@ -1975,20 +1995,20 @@
             elements.btnModeSaat.classList.remove('active');
         }
 
-        // Abjad Hisab & Wafaq Controls
-        elements.btnCalcAbjad.addEventListener('click', renderAbjadAndWafaq);
-        elements.inputAbjadName.addEventListener('keyup', (e) => {
+        // Abjad Hisab & Wafaq Controls (opsional: elemen dihapus pada layout terbaru)
+        if (elements.btnCalcAbjad) elements.btnCalcAbjad.addEventListener('click', renderAbjadAndWafaq);
+        if (elements.inputAbjadName) elements.inputAbjadName.addEventListener('keyup', (e) => {
             if (e.key === 'Enter') renderAbjadAndWafaq();
         });
-        elements.selectHajatPurpose.addEventListener('change', renderAbjadAndWafaq);
-        elements.btnCopyWafaq.addEventListener('click', copyWafaqText);
-        elements.btnDownloadCardPng.addEventListener('click', exportWafaqCardPNG);
+        if (elements.selectHajatPurpose) elements.selectHajatPurpose.addEventListener('change', renderAbjadAndWafaq);
+        if (elements.btnCopyWafaq) elements.btnCopyWafaq.addEventListener('click', copyWafaqText);
+        if (elements.btnDownloadCardPng) elements.btnDownloadCardPng.addEventListener('click', exportWafaqCardPNG);
 
         // Tasbih Controls
         elements.btnTasbihCount.addEventListener('click', incrementTasbih);
         elements.btnTasbihReset.addEventListener('click', resetTasbih);
 
-        elements.btnToggleDigits.addEventListener('click', () => {
+        if (elements.btnToggleDigits) elements.btnToggleDigits.addEventListener('click', () => {
             wafaqDigitMode = wafaqDigitMode === 'arabic' ? 'latin' : 'arabic';
             localStorage.setItem('wafaq_digit', wafaqDigitMode);
             elements.btnToggleDigits.textContent = `Angka: ${wafaqDigitMode === 'arabic' ? 'Arab (١٢٣)' : 'Latin (123)'}`;
