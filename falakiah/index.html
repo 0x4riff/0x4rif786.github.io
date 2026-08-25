@@ -19,7 +19,7 @@
     <!-- Three.js for 3D Interactive Planet Orbs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-    <link rel="stylesheet" href="styles.css?v=13.1">
+    <link rel="stylesheet" href="styles.css?v=14.0">
 </head>
 <body>
     <div class="app-container">
@@ -372,6 +372,38 @@
             </div>
         </section>
 
+        <!-- Ushul Falakiah: Classical References -->
+        <section class="ushul-card" id="ushulFalakiah">
+            <div class="ushul-header">
+                <h3><i class="fa-solid fa-book-open text-amber"></i> <span id="txtUshulTitle">Ushul Hisab: Landasan Kitab Klasik</span></h3>
+                <small id="txtUshulSubtitle">Metode perhitungan aplikasi ini diselaraskan dengan otoritas falak & hikmah terdahulu:</small>
+            </div>
+            <div class="ushul-grid">
+                <div class="ushul-item">
+                    <div class="ushul-source"><strong>Syams al-Ma'arif al-Kubra</strong> <span>شمس المعارف</span></div>
+                    <small>Imam Ahmad al-Buni (w. 622 H). Urutan planet Chaldea untuk Sa'at al-Kawakib, Asmaul Husna penguat tiap jam, dan tabi'at logam.</small>
+                </div>
+                <div class="ushul-item">
+                    <div class="ushul-source"><strong>Ghayat al-Hakim</strong> <span>غاية الحكيم</span></div>
+                    <small>Abu al-Qasim Maslamah al-Qurtubi (w. 353 H). Praktik jam planet, pemilihan waktu hajat, dan wewangian per planet.</small>
+                </div>
+                <div class="ushul-item">
+                    <div class="ushul-source"><strong>Kaidah Falak Abu Ma'syar</strong> <span>أبو معشر البلخي</span></div>
+                    <small>Abu Ma'shar al-Balkhi (w. 272 H). Dasar hisab jam zamaniyah proporsional terbit-terbenam yang dipakai engine aplikasi ini.</small>
+                </div>
+                <div class="ushul-item">
+                    <div class="ushul-source"><strong>Muhurta Shastra / Jyotisha</strong> <span>चोघड़िया</span></div>
+                    <small>Konsensus panchang Gujarati-Bohra untuk Chogadia: siklus Udveg-Char-Labh-Amrit-Kaal-Shubh-Rog, pembagi 8 siang & 8 malam.</small>
+                </div>
+            </div>
+            <div class="ushul-principles">
+                <div><i class="fa-solid fa-circle-check text-emerald"></i> Jam siang dihitung dari terbit ke terbenam dibagi rata; jam malam dari terbenam ke terbit esok hari.</div>
+                <div><i class="fa-solid fa-circle-check text-emerald"></i> Urutan jam mengikuti siklus Chaldea: Zuhal → Mushtari → Mirrikh → Syams → Zuhrah → 'Utharid → Qamar.</div>
+                <div><i class="fa-solid fa-circle-check text-emerald"></i> Planet pertama tiap hari = penguasa hari (Syams Ahad, Zuhrah Senin, ... sesuai kaidah falak).</div>
+                <div><i class="fa-solid fa-circle-check text-emerald"></i> Hari hijriah berganti saat maghrib, bukan tengah malam.</div>
+            </div>
+        </section>
+
         <!-- Footer -->
         <footer class="app-footer">
             <p>© <span id="yearSpan"></span> Falakiah & Jam Planet. Developed with ❤️ by <a href="https://arifwidiyanto.web.id" target="_blank" rel="noopener">Arif Widiyanto</a></p>
@@ -430,7 +462,7 @@
         </div>
     </div>
 
-    <script src="app.js?v=13.1"></script>
+    <script src="app.js?v=14.0"></script>
     <script>
         document.getElementById('yearSpan').textContent = new Date().getFullYear();
         if ('serviceWorker' in navigator) {
