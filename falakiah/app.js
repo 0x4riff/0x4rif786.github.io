@@ -1150,12 +1150,12 @@
         link.click();
     }
 
-    // --- Astronomy Plus Precise Astronomical Calculations ---
+    // --- Astronomy Plus: High-Precision Jean Meeus (ELP2000-82 Truncated) ---
 
     function calculateMoonEclipticPosition(dateObj) {
         let year = dateObj.getFullYear();
         let month = dateObj.getMonth() + 1;
-        let day = dateObj.getDate();
+        let day = dateObj.getDate() + (dateObj.getHours() + dateObj.getMinutes() / 60 + dateObj.getSeconds() / 3600) / 24;
 
         if (month <= 2) {
             year -= 1;
@@ -1165,20 +1165,200 @@
         const A = Math.floor(year / 100);
         const B = 2 - A + Math.floor(A / 4);
         const JD = Math.floor(365.25 * (year + 4716)) + Math.floor(30.6001 * (month + 1)) + day + B - 1524.5;
-        const d = JD - 2451545.0;
+        const T = (JD - 2451545.0) / 36525;
 
-        const L_sun = (280.466 + 0.98564736 * d) % 360;
-        const g_sun = (357.529 + 0.98560028 * d) % 360;
-        const lambda_sun = (L_sun + 1.915 * Math.sin(toRad(g_sun)) + 0.020 * Math.sin(toRad(2 * g_sun)) + 360) % 360;
+        // Fundamental arguments (Meeus Ch. 47)
+        const Lp = (218.3164477 + 481267.88123421 * T - 0.0015786 * T * T + T * T * T / 538841.0 - T * T * T * T / 65194000.0) % 360;
+        const D  = (297.8501921 + 445267.1114034 * T - 0.0018819 * T * T + T * T * T / 545868.0 - T * T * T * T / 113065000.0) % 360;
+        const M  = (357.5291092 + 35999.0502909 * T - 0.0001536 * T * T + T * T * T / 24490000.0) % 360;
+        const Mp = (134.9633964 + 477198.8675055 * T + 0.0087414 * T * T + T * T * T / 69699.0 - T * T * T * T / 14712000.0) % 360;
+        const F  = (93.2720950 + 483202.0175233 * T - 0.0036539 * T * T - T * T * T / 3526000.0 + T * T * T * T / 863310000.0) % 360;
 
-        const L_moon = (218.316 + 13.176396 * d) % 360;
-        const M_moon = (134.963 + 13.064993 * d) % 360;
-        const D_moon = (297.850 + 12.190749 * d) % 360;
+        const E = 1 - 0.002516 * T - 0.0000074 * T * T;
+        const E2 = E * E;
 
-        const lambda_moon = (L_moon + 6.289 * Math.sin(toRad(M_moon)) -
-                             1.274 * Math.sin(toRad(M_moon - 2 * D_moon)) +
-                             0.658 * Math.sin(toRad(2 * D_moon)) -
-                             0.214 * Math.sin(toRad(2 * M_moon)) + 360) % 360;
+        // Periodic terms for Moon Longitude (Meeus Table 47.A)
+        // [D, M, Mp, F, coeff, E_power]
+        const lTerms = [
+            [0, 0, 1, 0, 6288774, 0],
+            [2, 0, -1, 0, 1274027, 0],
+            [2, 0, 0, 0, 658314, 0],
+            [0, 0, 2, 0, 213618, 0],
+            [0, 1, 0, 0, -185116, 1],
+            [0, 0, 0, 2, -114332, 0],
+            [2, 0, -2, 0, 58793, 0],
+            [2, -1, -1, 0, 57066, 1],
+            [2, 0, 1, 0, 53322, 0],
+            [2, -1, 0, 0, 45758, 1],
+            [0, 1, -1, 0, -40923, 1],
+            [1, 0, 0, 0, -34720, 0],
+            [0, 1, 1, 0, -30383, 1],
+            [2, 0, 0, -2, 15327, 0],
+            [0, 0, 1, 2, -12528, 0],
+            [0, 0, 1, -2, 10980, 0],
+            [4, 0, -1, 0, 10675, 0],
+            [0, 0, 3, 0, 10034, 0],
+            [4, 0, -2, 0, 8548, 0],
+            [2, 1, -1, 0, -7888, 1],
+            [2, 1, 0, 0, -6766, 1],
+            [1, 0, -1, 0, -5163, 0],
+            [1, 1, 0, 0, 4987, 1],
+            [2, -1, 1, 0, 4036, 1],
+            [2, 0, 2, 0, 3994, 0],
+            [4, 0, 0, 0, 3861, 0],
+            [2, 0, -3, 0, 3665, 0],
+            [0, 1, -2, 0, -2689, 1],
+            [2, 0, -1, 2, -2602, 0],
+            [2, -1, -2, 0, 2390, 1],
+            [1, 0, 1, 0, -2348, 0],
+            [2, -2, 0, 0, 2236, 2],
+            [0, 1, 2, 0, -2120, 1],
+            [0, 2, 0, 0, -2069, 2],
+            [2, -2, -1, 0, 2048, 2],
+            [2, 0, 1, -2, -1773, 0],
+            [2, 0, 0, 2, -1595, 0],
+            [4, -1, -1, 0, 1215, 1],
+            [0, 0, 2, 2, -1110, 0],
+            [3, 0, -1, 0, -892, 0],
+            [2, 1, 1, 0, -810, 1],
+            [4, -1, -2, 0, 759, 1],
+            [0, 2, -1, 0, -713, 2],
+            [2, 2, -1, 0, -700, 2],
+            [2, 1, -2, 0, 691, 1],
+            [2, -1, 0, -2, 596, 1],
+            [4, 0, 1, 0, 549, 0],
+            [0, 0, 4, 0, 537, 0],
+            [4, -1, 0, 0, 520, 1],
+            [1, 0, -2, 0, -487, 0],
+            [2, 1, 0, -2, -399, 1],
+            [0, 0, 2, -2, -381, 0],
+            [1, 1, 1, 0, 351, 1],
+            [3, 0, -2, 0, -340, 0],
+            [4, 0, -3, 0, 330, 0],
+            [2, -1, -1, -2, 327, 1],
+            [0, 2, 1, 0, -323, 2],
+            [0, 0, 3, -2, 299, 0],
+            [2, 0, -1, -2, 294, 0]
+        ];
+
+        // Periodic terms for Moon Latitude (Meeus Table 47.B)
+        const bTerms = [
+            [0, 0, 0, 1, 5128122, 0],
+            [0, 0, 1, 1, 280602, 0],
+            [0, 0, 1, -1, 277693, 0],
+            [2, 0, 0, -1, 173237, 0],
+            [2, 0, -1, 1, 55413, 0],
+            [2, 0, -1, -1, 46271, 0],
+            [2, 0, 0, 1, 32573, 0],
+            [0, 0, 2, 1, 17198, 0],
+            [2, 0, 1, -1, 9266, 0],
+            [0, 0, 2, -1, 8822, 0],
+            [2, -1, 0, -1, 8216, 1],
+            [2, 0, -2, -1, 4324, 0],
+            [2, 0, 1, 1, 4200, 0],
+            [2, 1, 0, -1, -3359, 1],
+            [2, -1, -1, 1, 2463, 1],
+            [2, -1, 0, 1, 2211, 1],
+            [2, -1, -1, -1, 2065, 1],
+            [0, 1, -1, -1, -1870, 1],
+            [4, 0, -1, -1, 1828, 0],
+            [0, 1, 0, 1, -1794, 1],
+            [0, 0, 0, 3, -1749, 0],
+            [0, 1, -1, 1, -1565, 1],
+            [1, 0, 0, 1, -1491, 0],
+            [0, 1, 1, 1, -1475, 1],
+            [0, 1, 1, -1, -1410, 1],
+            [0, 1, 0, -1, -1344, 1],
+            [1, 0, 0, -1, -1335, 0],
+            [0, 0, 3, 1, 1107, 0],
+            [4, 0, 0, -1, 1021, 0],
+            [4, 0, -1, 1, 833, 0]
+        ];
+
+        // Periodic terms for Moon Distance (in meters / 0.001 km)
+        const rTerms = [
+            [0, 0, 1, 0, -20954305, 0],
+            [2, 0, -1, 0, -3699111, 0],
+            [2, 0, 0, 0, -2955968, 0],
+            [0, 0, 2, 0, -569925, 0],
+            [0, 1, 0, 0, 48888, 1],
+            [0, 0, 0, 2, -3149, 0],
+            [2, 0, -2, 0, 246158, 0],
+            [2, -1, -1, 0, -152138, 1],
+            [2, 0, 1, 0, -170733, 0],
+            [2, -1, 0, 0, -204586, 1],
+            [0, 1, -1, 0, -129620, 1],
+            [1, 0, 0, 0, 108743, 0],
+            [0, 1, 1, 0, 104755, 1],
+            [2, 0, 0, -2, 10321, 0],
+            [0, 0, 1, -2, 79661, 0],
+            [4, 0, -1, 0, -34782, 0],
+            [0, 0, 3, 0, -23210, 0],
+            [4, 0, -2, 0, -21636, 0],
+            [2, 1, -1, 0, 24208, 1],
+            [2, 1, 0, 0, 30824, 1],
+            [1, 0, -1, 0, -8379, 0],
+            [1, 1, 0, 0, -16675, 1],
+            [2, -1, 1, 0, -12831, 1],
+            [2, 0, 2, 0, -10445, 0],
+            [4, 0, 0, 0, -11650, 0],
+            [2, 0, -3, 0, 14403, 0]
+        ];
+
+        let sigmaL = 0;
+        for (let term of lTerms) {
+            let arg = term[0] * D + term[1] * M + term[2] * Mp + term[3] * F;
+            let eMult = term[5] === 1 ? E : (term[5] === 2 ? E2 : 1);
+            sigmaL += term[4] * eMult * Math.sin(toRad(arg));
+        }
+
+        let sigmaB = 0;
+        for (let term of bTerms) {
+            let arg = term[0] * D + term[1] * M + term[2] * Mp + term[3] * F;
+            let eMult = term[5] === 1 ? E : (term[5] === 2 ? E2 : 1);
+            sigmaB += term[4] * eMult * Math.sin(toRad(arg));
+        }
+
+        let sigmaR = 0;
+        for (let term of rTerms) {
+            let arg = term[0] * D + term[1] * M + term[2] * Mp + term[3] * F;
+            let eMult = term[5] === 1 ? E : (term[5] === 2 ? E2 : 1);
+            sigmaR += term[4] * eMult * Math.cos(toRad(arg));
+        }
+
+        // Additional planetary / nutation corrections
+        const A1 = (119.75 + 131.849 * T) % 360;
+        const A2 = (53.09 + 479264.290 * T) % 360;
+        const A3 = (313.45 + 481266.484 * T) % 360;
+
+        sigmaL += 3958 * Math.sin(toRad(A1)) + 1962 * Math.sin(toRad(Lp - F)) + 318 * Math.sin(toRad(A2));
+        sigmaB += -2235 * Math.sin(toRad(Lp)) + 382 * Math.sin(toRad(A3)) + 175 * Math.sin(toRad(A1 - F)) + 175 * Math.sin(toRad(A1 + F)) + 127 * Math.sin(toRad(Lp - Mp)) - 115 * Math.sin(toRad(Lp + Mp));
+
+        const lambda_moon = (Lp + sigmaL / 1000000.0 + 360) % 360;
+        const beta_moon = (sigmaB / 1000000.0);
+        const distance_km = 385000.56 + sigmaR / 1000.0;
+
+        // High-precision Sun Position (Meeus Ch. 25)
+        const L0 = 280.46646 + 36000.76983 * T + 0.0003032 * T * T;
+        const M_sun = 357.52911 + 35999.05029 * T - 0.0001537 * T * T;
+        const C_sun = (1.914602 - 0.004817 * T - 0.000014 * T * T) * Math.sin(toRad(M_sun)) +
+                      (0.019993 - 0.000101 * T) * Math.sin(toRad(2 * M_sun)) +
+                      0.000289 * Math.sin(toRad(3 * M_sun));
+        const sun_true_long = L0 + C_sun;
+        const sun_app_long = (sun_true_long - 0.00569 - 0.00478 * Math.sin(toRad(125.04 - 1934.136 * T)) + 360) % 360;
+        const R_sun_km = (1.00014061 - 0.01670862 * Math.cos(toRad(M_sun)) - 0.000139589 * Math.cos(toRad(2 * M_sun))) * 149597870.7;
+
+        // Geocentric elongation & phase angle (Meeus Ch. 48)
+        const cosPsi = Math.cos(toRad(beta_moon)) * Math.cos(toRad(lambda_moon - sun_app_long));
+        const psi = toDeg(Math.acos(Math.max(-1, Math.min(1, cosPsi))));
+        const i_exact = 180 - psi - toDeg((distance_km / R_sun_km) * Math.sin(toRad(psi)));
+
+        // Illuminated fraction k = (1 + cos(i)) / 2
+        const illumination = Math.max(0, Math.min(100, (1 + Math.cos(toRad(i_exact))) / 2 * 100));
+
+        // Direct elongation for East/West crescent identification
+        const elongation = (lambda_moon - sun_app_long + 360) % 360;
+        const moonAgeDays = (elongation / 360) * 29.53058867;
 
         const manzilIdx = Math.floor(lambda_moon / 13.333333333) % 28;
         const manzil = MANAZIL_AL_QAMAR[manzilIdx];
@@ -1186,28 +1366,46 @@
         const zodiacIdx = Math.floor(lambda_moon / 30) % 12;
         const zodiac = ZODIACS_12[zodiacIdx];
 
-        const elongation = (lambda_moon - lambda_sun + 360) % 360;
-        const illumination = (1 - Math.cos(toRad(elongation))) / 2 * 100;
-        const moonAgeDays = (elongation / 360) * 29.53058867;
-
-        let phaseName = 'Bulan Baru (New Moon / Hilal Awal)';
-        if (elongation >= 10 && elongation < 80) phaseName = 'Bulan Sabit Muda (Waxing Crescent)';
-        else if (elongation >= 80 && elongation < 100) phaseName = 'Kuartal Pertama (First Quarter)';
-        else if (elongation >= 100 && elongation < 170) phaseName = 'Bulan Cembung (Waxing Gibbous)';
-        else if (elongation >= 170 && elongation < 190) phaseName = 'Purnama (Full Moon / Badr)';
-        else if (elongation >= 190 && elongation < 260) phaseName = 'Bulan Cembung Tua (Waning Gibbous)';
-        else if (elongation >= 260 && elongation < 280) phaseName = 'Kuartal Akhir (Third Quarter)';
-        else if (elongation >= 280 && elongation < 350) phaseName = 'Bulan Sabit Tua (Waning Crescent / Hilal Akhir)';
+        let phaseName = 'Bulan Baru (Muhaq / New Moon)';
+        let phaseIcon = '🌑';
+        if (elongation >= 355 || elongation < 5) {
+            phaseName = 'Bulan Baru (Muhaq / New Moon)';
+            phaseIcon = '🌑';
+        } else if (elongation >= 5 && elongation < 85) {
+            phaseName = 'Bulan Sabit Muda (Hilal Awal / Waxing Crescent)';
+            phaseIcon = '🌒';
+        } else if (elongation >= 85 && elongation < 95) {
+            phaseName = 'Kuartal Pertama (Tarbī\' Awwal / First Quarter)';
+            phaseIcon = '🌓';
+        } else if (elongation >= 95 && elongation < 175) {
+            phaseName = 'Bulan Cembung Awal (Ahdab / Waxing Gibbous)';
+            phaseIcon = '🌔';
+        } else if (elongation >= 175 && elongation < 185) {
+            phaseName = 'Bulan Purnama (Badr / Full Moon)';
+            phaseIcon = '🌕';
+        } else if (elongation >= 185 && elongation < 265) {
+            phaseName = 'Bulan Cembung Akhir (Ahdab Mutanaqis / Waning Gibbous)';
+            phaseIcon = '🌖';
+        } else if (elongation >= 265 && elongation < 275) {
+            phaseName = 'Kuartal Akhir (Tarbī\' Tsānī / Third Quarter)';
+            phaseIcon = '🌗';
+        } else {
+            phaseName = 'Bulan Sabit Tua (Hilal Akhir / Waning Crescent)';
+            phaseIcon = '🌘';
+        }
 
         return {
-            lambda_sun,
+            lambda_sun: sun_app_long,
             lambda_moon,
+            beta_moon,
+            distance_km,
             manzil,
             zodiac,
             elongation,
             illumination,
             moonAgeDays,
-            phaseName
+            phaseName,
+            phaseIcon
         };
     }
 
@@ -1636,9 +1834,9 @@
         elements.displayHijriDate.innerHTML = `<strong>${hijri.day} ${hijri.monthName} ${hijri.year} H</strong> <small style="display:inline; opacity:0.8;">${offsetBadge} (Berganti saat Maghrib)</small>`;
 
         const moon = calculateMoonEclipticPosition(selectedDate);
-        elements.displayMoonPhase.innerHTML = `<strong>${moon.phaseName}</strong> <small style="display:inline; opacity:0.9;">(${moon.illumination.toFixed(1)}% Terang, Umur ${moon.moonAgeDays.toFixed(1)} Hari)</small>`;
+        elements.displayMoonPhase.innerHTML = `<strong>${moon.phaseIcon} ${moon.phaseName}</strong> <small style="display:inline; opacity:0.9;">(${moon.illumination.toFixed(1)}% Terang · Umur ${moon.moonAgeDays.toFixed(1)} Hari · Jarak ${Math.round(moon.distance_km).toLocaleString('id-ID')} km)</small>`;
 
-        elements.displayManazil.innerHTML = `<strong>Ke-${moon.manzil.id}: ${moon.manzil.name}</strong> <small style="display:inline; opacity:0.9;">[Rentang: ${moon.manzil.range} | Zodiak: ${moon.zodiac.name}]</small><br><small style="display:block; color:var(--accent-gold); margin-top:2px;"><i class="fa-solid fa-sparkles"></i> <em>${moon.manzil.desc}</em></small>`;
+        elements.displayManazil.innerHTML = `<strong>Ke-${moon.manzil.id}: ${moon.manzil.name}</strong> <small style="display:inline; opacity:0.9;">[Bujur: ${moon.lambda_moon.toFixed(1)}° | Zodiak: ${moon.zodiac.name}]</small><br><small style="display:block; color:var(--accent-gold); margin-top:2px;"><i class="fa-solid fa-sparkles"></i> <em>${moon.manzil.desc}</em></small>`;
 
         const qibla = calculateQiblaAzimuth(currentCoords.lat, currentCoords.lon);
         elements.displayQiblaDegree.textContent = `${qibla.degree}° ${qibla.label}`;
@@ -1846,8 +2044,8 @@
         msg += `📍 *Lokasi:* ${currentCoords.name}\n`;
         msg += `📅 *Masehi:* ${selectedDate.toLocaleDateString()}\n`;
         msg += `🌙 *Hijriah:* ${hijri.day} ${hijri.monthName} ${hijri.year} H\n`;
-        msg += `🌕 *Fase Bulan:* ${moon.phaseName} (${moon.illumination.toFixed(1)}%)\n`;
-        msg += `⭐ *Manazil al-Qamar:* Ke-${moon.manzil.id}: ${moon.manzil.name}\n\n`;
+        msg += `🌕 *Fase Bulan (Meeus):* ${moon.phaseIcon} ${moon.phaseName} (${moon.illumination.toFixed(1)}% Terang, ${moon.moonAgeDays.toFixed(1)} Hari)\n`;
+        msg += `⭐ *Manazil al-Qamar:* Ke-${moon.manzil.id}: ${moon.manzil.name} (${moon.lambda_moon.toFixed(1)}°)\n\n`;
 
         msg += `☀️ *SA'AT SIANG (NAHAR):*\n`;
         data.daySlots.forEach(s => {

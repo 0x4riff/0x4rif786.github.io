@@ -19,7 +19,7 @@
     <!-- Three.js for 3D Interactive Planet Orbs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-    <link rel="stylesheet" href="styles.css?v=14.0">
+    <link rel="stylesheet" href="styles.css?v=15.0">
 </head>
 <body>
     <div class="app-container">
@@ -392,14 +392,14 @@
                     <small>Abu Ma'shar al-Balkhi (w. 272 H). Dasar hisab jam zamaniyah proporsional terbit-terbenam yang dipakai engine aplikasi ini.</small>
                 </div>
                 <div class="ushul-item">
-                    <div class="ushul-source"><strong>Muhurta Shastra / Jyotisha</strong> <span>चोघड़िया</span></div>
-                    <small>Konsensus panchang Gujarati-Bohra untuk Chogadia: siklus Udveg-Char-Labh-Amrit-Kaal-Shubh-Rog, pembagi 8 siang & 8 malam.</small>
+                    <div class="ushul-source"><strong>Astronomical Algorithms (Meeus)</strong> <span>Jean Meeus</span></div>
+                    <small>Standar hisab modern (ELP2000-82 truncated Ch. 47 & 48). Perhitungan fase bulan, iluminasi disk, jarak geosentris & posisi ekliptika presisi tinggi.</small>
                 </div>
             </div>
             <div class="ushul-principles">
                 <div><i class="fa-solid fa-circle-check text-emerald"></i> Jam siang dihitung dari terbit ke terbenam dibagi rata; jam malam dari terbenam ke terbit esok hari.</div>
                 <div><i class="fa-solid fa-circle-check text-emerald"></i> Urutan jam mengikuti siklus Chaldea: Zuhal → Mushtari → Mirrikh → Syams → Zuhrah → 'Utharid → Qamar.</div>
-                <div><i class="fa-solid fa-circle-check text-emerald"></i> Planet pertama tiap hari = penguasa hari (Syams Ahad, Zuhrah Senin, ... sesuai kaidah falak).</div>
+                <div><i class="fa-solid fa-circle-check text-emerald"></i> Posisi bulan & matahari dihitung dengan koreksi periodik multi-ordo Jean Meeus.</div>
                 <div><i class="fa-solid fa-circle-check text-emerald"></i> Hari hijriah berganti saat maghrib, bukan tengah malam.</div>
             </div>
         </section>
@@ -462,7 +462,7 @@
         </div>
     </div>
 
-    <script src="app.js?v=14.0"></script>
+    <script src="app.js?v=15.0"></script>
     <script>
         document.getElementById('yearSpan').textContent = new Date().getFullYear();
         if ('serviceWorker' in navigator) {
