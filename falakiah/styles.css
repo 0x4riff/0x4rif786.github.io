@@ -520,6 +520,550 @@ small { color: var(--text-muted); }
 
 #displayQiblaDegree { font-size: 0.95rem; font-variant-numeric: tabular-nums; }
 
+/* ============================================================ RASHDUL QIBLAH */
+.rashdul-card {
+    margin-top: 14px;
+    background: var(--bg-inset);
+    border: 1px solid var(--border-color);
+    border-left: 3px solid #38bdf8;
+    border-radius: var(--radius-md);
+    padding: 18px 20px;
+}
+
+.rashdul-header { margin-bottom: 14px; }
+.rashdul-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.rashdul-title-row h3 { font-size: 0.95rem; font-weight: 700; }
+.rashdul-badge {
+    background: rgba(56, 189, 248, 0.12);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 999px;
+    padding: 3px 10px;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+.rashdul-header small { display: block; margin-top: 3px; font-size: 0.74rem; color: var(--text-muted); }
+
+.rashdul-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.rashdul-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.rashdul-box.primary {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), rgba(232, 180, 74, 0.05));
+    border-color: rgba(56, 189, 248, 0.25);
+}
+
+.rashdul-box small { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; margin-bottom: 6px; }
+
+.rashdul-time-highlight {
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: var(--accent-gold);
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.rashdul-time-highlight small { font-size: 0.75rem; color: var(--text-secondary); font-weight: normal; margin-bottom: 0; }
+
+.rashdul-desc { font-size: 0.76rem; line-height: 1.45; color: var(--text-secondary); }
+
+.rashdul-params {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.r-param-item {
+    background: var(--bg-inset);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 6px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+}
+.r-param-item span { color: var(--text-muted); font-size: 0.7rem; }
+.r-param-item strong { color: var(--text-primary); font-size: 0.78rem; font-variant-numeric: tabular-nums; }
+
+/* ============================================================ ABJAD & WAFAQ 3X3 STUDIO */
+.abjad-wafaq-card {
+    padding: 22px;
+}
+
+.card-header-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.btn-compact {
+    padding: 6px 12px;
+    font-size: 0.76rem;
+}
+
+.abjad-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 16px;
+}
+
+.wafaq-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    background: var(--bg-inset);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.wafaq-table {
+    width: min(240px, 100%);
+    border-collapse: collapse;
+    margin: 12px auto 10px;
+}
+
+.wafaq-table td {
+    width: 33.33%;
+    height: 58px;
+    border: 1.5px solid var(--accent-gold);
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.35rem;
+    font-weight: 700;
+    font-family: var(--font-arabic), monospace;
+    background: rgba(232, 180, 74, 0.04);
+    color: var(--accent-gold);
+    transition: background 0.15s ease;
+}
+
+.wafaq-table td:hover {
+    background: rgba(232, 180, 74, 0.15);
+}
+
+.wafaq-purpose-note {
+    font-size: 0.76rem;
+    color: var(--accent-gold);
+    text-align: center;
+    margin-top: 6px;
+    line-height: 1.4;
+}
+
+/* ============================================================ KOMPATIBILITAS 4 TABI'AT */
+.compat-card {
+    padding: 22px;
+}
+
+.compat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.compat-inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.compat-result-stage {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 18px;
+}
+
+.compat-score-circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-gold);
+    background: radial-gradient(circle, rgba(232, 180, 74, 0.15) 0%, transparent 80%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 0 16px rgba(232, 180, 74, 0.15);
+}
+
+.compat-score-circle span {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent-gold);
+    line-height: 1;
+}
+
+.compat-score-circle small {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.compat-verdict h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.compat-verdict p {
+    font-size: 0.76rem;
+    color: var(--text-secondary);
+    line-height: 1.45;
+    margin-bottom: 8px;
+}
+
+.compat-tags {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.c-tag {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    background: var(--bg-inset);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 3px 8px;
+}
+
+/* ============================================================ KALENDER FALAKIAH BULANAN */
+.monthly-card {
+    padding: 22px;
+}
+
+.monthly-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.monthly-legend-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.m-pill {
+    font-size: 0.72rem;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: var(--bg-inset);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+}
+.m-pill.bidh { border-color: rgba(232, 180, 74, 0.5); color: var(--accent-gold); }
+.m-pill.sa'ad { border-color: rgba(52, 211, 153, 0.5); color: #34d399; }
+.m-pill.selected { border-color: rgba(56, 189, 248, 0.5); color: #38bdf8; }
+
+.monthly-calendar-wrapper {
+    margin-top: 14px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--bg-inset);
+}
+
+.monthly-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    padding: 8px 0;
+}
+
+.monthly-days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background: var(--border-color);
+}
+
+.m-day-cell {
+    background: var(--bg-card);
+    min-height: 68px;
+    padding: 6px 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.m-day-cell.empty {
+    background: var(--bg-inset);
+    cursor: default;
+}
+
+.m-day-cell:not(.empty):hover {
+    background: var(--bg-elevated);
+}
+
+.m-day-cell.today {
+    box-shadow: inset 0 0 0 1.5px var(--accent-gold);
+}
+
+.m-day-cell.selected {
+    background: rgba(56, 189, 248, 0.12) !important;
+    box-shadow: inset 0 0 0 1.5px #38bdf8;
+}
+
+.m-day-cell.bidh {
+    background: rgba(232, 180, 74, 0.05);
+}
+
+.m-cell-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.m-masehi-num {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.m-moon-glyph {
+    font-size: 0.82rem;
+}
+
+.m-hijri-num {
+    font-size: 0.65rem;
+    color: var(--accent-gold);
+    margin: 2px 0;
+}
+
+.m-planet-pill {
+    font-size: 0.62rem;
+    padding: 1px 4px;
+    border-radius: 3px;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    width: fit-content;
+}
+
+/* ============================================================ HILAL VISIBILITY */
+.hilal-card {
+    margin-top: 14px;
+    background: var(--bg-inset);
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--accent-gold);
+    border-radius: var(--radius-md);
+    padding: 18px 20px;
+}
+
+.hilal-header { text-align: left; margin-bottom: 14px; }
+.hilal-header h3 { font-size: 0.95rem; font-weight: 700; letter-spacing: -0.01em; }
+.hilal-header small { display: block; margin-top: 3px; font-size: 0.74rem; }
+
+.hilal-grid {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 18px;
+    align-items: stretch;
+}
+
+.hilal-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 18px 12px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    font-size: 0.85rem;
+    font-weight: 700;
+    gap: 8px;
+}
+
+.hilal-status i { font-size: 1.8rem; }
+
+.hilal-status.hilal-visible {
+    color: var(--q-amrit);
+    background: rgba(52, 211, 153, 0.08);
+    border-color: rgba(52, 211, 153, 0.35);
+}
+.hilal-status.hilal-marginal {
+    color: var(--q-labh);
+    background: rgba(251, 191, 36, 0.08);
+    border-color: rgba(251, 191, 36, 0.35);
+}
+.hilal-status.hilal-invisible {
+    color: var(--q-rog);
+    background: rgba(248, 113, 113, 0.08);
+    border-color: rgba(248, 113, 113, 0.35);
+}
+
+.hilal-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.hilal-metric {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 9px 11px;
+}
+
+.hilal-metric small {
+    display: block;
+    font-size: 0.68rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 2px;
+}
+
+.hilal-metric strong {
+    font-size: 0.92rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--accent-gold);
+}
+
+.hilal-legend {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.74rem;
+    color: var(--text-muted);
+}
+
+.hilal-legend > div {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.5;
+}
+
+.hilal-legend i { margin-top: 3px; }
+
+/* ============================================================ SKY MAP & VISUAL MOON */
+.sky-map-card { padding: 22px; }
+
+.sky-header { text-align: center; margin-bottom: 18px; }
+.sky-header h3 { font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; }
+.sky-header small { display: block; margin-top: 3px; font-size: 0.77rem; }
+
+.sky-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.sky-moon-box, .sky-planisphere-box {
+    background: var(--bg-inset);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.sky-moon-box h4, .sky-planisphere-box h4 {
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.moon-visual {
+    width: 160px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle, #050810 0%, #000 80%);
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(232, 180, 74, 0.08), inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.moon-visual svg {
+    width: 100%;
+    height: 100%;
+}
+
+.moon-visual-meta {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 0.74rem;
+}
+
+.moon-visual-meta small { display: block; }
+
+.planisphere {
+    width: min(220px, 100%);
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.planisphere svg {
+    width: 100%;
+    height: 100%;
+}
+
+.planisphere-meta {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 0.74rem;
+    width: 100%;
+}
+
+.planisphere-meta small {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 0;
+}
+
+@media (max-width: 700px) {
+    .hilal-grid { grid-template-columns: 1fr; }
+    .hilal-metrics { grid-template-columns: repeat(2, 1fr); }
+    .sky-grid { grid-template-columns: 1fr; }
+    .moon-visual, .planisphere { width: min(140px, 60vw); height: auto; }
+}
+
 /* ============================================================ TASBIH */
 .tasbih-header { text-align: center; margin-bottom: 18px; }
 .tasbih-header h3 { font-size: 1rem; font-weight: 700; }
@@ -831,7 +1375,7 @@ small { color: var(--text-muted); }
 
 .ushul-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 12px;
     margin-bottom: 16px;
 }
@@ -903,6 +1447,15 @@ small { color: var(--text-muted); }
     .modal-info-grid { grid-template-columns: 1fr; }
     .hikmah-item { min-width: 100%; }
     .hikmah-divider { width: auto; height: 1px; }
+    .abjad-grid { grid-template-columns: 1fr; }
+    .compat-grid { grid-template-columns: 1fr; }
+    .compat-result-stage { flex-direction: column; text-align: center; }
+    .rashdul-grid { grid-template-columns: 1fr; }
+    .monthly-weekdays span { font-size: 0.65rem; }
+    .m-day-cell { min-height: 54px; padding: 4px; }
+    .m-masehi-num { font-size: 0.74rem; }
+    .m-moon-glyph { font-size: 0.72rem; }
+    .m-planet-pill { font-size: 0.55rem; }
     .ushul-grid { grid-template-columns: 1fr; }
     .ushul-principles { grid-template-columns: 1fr; }
 }

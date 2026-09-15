@@ -19,7 +19,7 @@
     <!-- Three.js for 3D Interactive Planet Orbs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-    <link rel="stylesheet" href="styles.css?v=15.0">
+    <link rel="stylesheet" href="styles.css?v=17.0">
 </head>
 <body>
     <div class="app-container">
@@ -227,6 +227,140 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Solar Rashdul Qiblah Card (Kalibrasi Bayangan Kiblat Harian & Global) -->
+            <div class="rashdul-card" id="rashdulCard">
+                <div class="rashdul-header">
+                    <div class="rashdul-title-row">
+                        <h3><i class="fa-solid fa-sun text-amber"></i> <span id="txtRashdulTitle">Rashdul Qiblah & Kalibrasi Bayangan Matahari</span></h3>
+                        <span class="rashdul-badge" id="rashdulGlobalBadge">Istiwa A'zam: 28 Mei & 16 Juli</span>
+                    </div>
+                    <small id="txtRashdulSubtitle">Metode hisab akurat verifikasi arah Kiblat presisi menggunakan bayangan matahari tanpa gangguan distorsi kompas magnetik.</small>
+                </div>
+                <div class="rashdul-grid">
+                    <div class="rashdul-box primary">
+                        <small><i class="fa-solid fa-crosshairs text-amber"></i> Jam Kalibrasi Bayangan Hari Ini</small>
+                        <div class="rashdul-time-highlight" id="rashdulDailyTime">Memuat hisab...</div>
+                        <p class="rashdul-desc" id="rashdulDailyDesc">Mengarahkan patokan lurus tegak pada jam ini menghasilkan bayangan yang tepat segaris lurus dengan arah Ka'bah.</p>
+                    </div>
+                    <div class="rashdul-box">
+                        <small><i class="fa-solid fa-compass text-indigo"></i> Parameter Falakiah Kiblat Lokasi</small>
+                        <div class="rashdul-params">
+                            <div class="r-param-item"><span>Azimut Kiblat:</span> <strong id="rashdulAzimuth">--°</strong></div>
+                            <div class="r-param-item"><span>Azimut Bayang:</span> <strong id="rashdulShadowAz">--°</strong></div>
+                            <div class="r-param-item"><span>Status Terik:</span> <strong id="rashdulSunStatus">--</strong></div>
+                            <div class="r-param-item"><span>Tinggi Matahari:</span> <strong id="rashdulSunAlt">--°</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Hilal Visibility / Rukyat Card -->
+            <div class="hilal-card" id="hilalCard">
+                <div class="hilal-header">
+                    <h3><i class="fa-solid fa-eye text-amber"></i> <span id="txtHilalTitle">Rukyatul Hilal: Visibilitas Bulan Sabit</span></h3>
+                    <small id="txtHilalSubtitle">Estimasi visibilitas bulan sabit pada saat Maghrib (Jean Meeus · Kriteria Odeh & Indian)</small>
+                </div>
+                <div class="hilal-grid">
+                    <div class="hilal-status" id="hilalStatusBadge">
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+                        <span id="hilalStatusText">Menghitung...</span>
+                    </div>
+                    <div class="hilal-metrics" id="hilalMetrics">
+                        <div class="hilal-metric">
+                            <small>ARCV (Beda Tinggi)</small>
+                            <strong id="hilalArcv">--°</strong>
+                        </div>
+                        <div class="hilal-metric">
+                            <small>Lebar Sabit (W)</small>
+                            <strong id="hilalWidth">--'</strong>
+                        </div>
+                        <div class="hilal-metric">
+                            <small>Umur Bulan</small>
+                            <strong id="hilalAge">-- jam</strong>
+                        </div>
+                        <div class="hilal-metric">
+                            <small>Elongasi</small>
+                            <strong id="hilalElongation">--°</strong>
+                        </div>
+                        <div class="hilal-metric">
+                            <small>Bulan Terbenam</small>
+                            <strong id="hilalMoonset">--:--</strong>
+                        </div>
+                        <div class="hilal-metric">
+                            <small>Lag Time (Maghrib → Hilal)</small>
+                            <strong id="hilalLag">-- m</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="hilal-legend">
+                    <div><i class="fa-solid fa-circle-check text-emerald"></i> VISIBLE: Terlihat jelas dengan mata telanjang (kriteria: Odeh $V \geq 0.616$, Indian $D \geq 12°$)</div>
+                    <div><i class="fa-solid fa-binoculars text-amber"></i> MARGINAL: Bisa terlihat dengan bantuan optik (Odeh $-0.0005 \leq V < 0.293$)</div>
+                    <div><i class="fa-solid fa-circle-xmark text-rose"></i> INVISIBLE: Mustahil terlihat walaupun dengan alat (Odeh $V < -0.232$, Indian $D < 7°$)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visual Moon & Planisphere Sky Map Section -->
+        <section class="sky-map-card" id="skyMapCard">
+            <div class="sky-header">
+                <h3><i class="fa-solid fa-globe text-amber"></i> <span id="txtSkyTitle">Visual Langit Real-Time</span></h3>
+                <small id="txtSkySubtitle">Peta langit & posisi benda-benda langit relatif terhadap ufuk lokasi Anda</small>
+            </div>
+            <div class="sky-grid">
+                <div class="sky-moon-box">
+                    <h4><i class="fa-solid fa-moon text-amber"></i> <span id="txtMoonVisTitle">Fase Bulan Visual</span></h4>
+                    <div class="moon-visual" id="moonVisual">
+                        <svg viewBox="-50 -50 100 100" id="moonSvg" aria-label="Visual phase of the moon">
+                            <defs>
+                                <radialGradient id="moonShade" cx="0" cy="0" r="50" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#0a0a0f" />
+                                    <stop offset="100%" stop-color="#000000" />
+                                </radialGradient>
+                            </defs>
+                            <circle cx="0" cy="0" r="48" fill="#1a1d2e" />
+                            <path id="moonLit" d="" fill="url(#moonShade)" stroke="rgba(255,255,255,0.15)" stroke-width="0.3" />
+                            <circle cx="0" cy="0" r="48" fill="none" stroke="rgba(232, 180, 74, 0.4)" stroke-width="0.5" />
+                        </svg>
+                    </div>
+                    <div class="moon-visual-meta">
+                        <small id="moonVisualPhase">Fase: -</small>
+                        <small id="moonVisualIllum">Iluminasi: -</small>
+                    </div>
+                </div>
+                <div class="sky-planisphere-box">
+                    <h4><i class="fa-solid fa-compass text-indigo"></i> <span id="txtSkyMapTitle">Planisphere Azimut</span></h4>
+                    <div class="planisphere" id="planisphere">
+                        <svg viewBox="-110 -110 220 220" id="planisphereSvg" aria-label="Sky map relative to local horizon">
+                            <circle cx="0" cy="0" r="100" fill="rgba(14, 23, 39, 0.6)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" />
+                            <circle cx="0" cy="0" r="60" fill="none" stroke="rgba(255, 255, 255, 0.05)" stroke-width="0.5" stroke-dasharray="2,2" />
+                            <circle cx="0" cy="0" r="30" fill="none" stroke="rgba(255, 255, 255, 0.05)" stroke-width="0.5" stroke-dasharray="2,2" />
+                            <line x1="0" y1="-100" x2="0" y2="100" stroke="rgba(255, 255, 255, 0.06)" stroke-width="0.5" />
+                            <line x1="-100" y1="0" x2="100" y2="0" stroke="rgba(255, 255, 255, 0.06)" stroke-width="0.5" />
+                            <text x="0" y="-105" text-anchor="middle" font-size="8" fill="#93a0b8">U</text>
+                            <text x="0" y="113" text-anchor="middle" font-size="8" fill="#93a0b8">S</text>
+                            <text x="-108" y="3" text-anchor="middle" font-size="8" fill="#93a0b8">B</text>
+                            <text x="108" y="3" text-anchor="middle" font-size="8" fill="#93a0b8">T</text>
+                            <text x="0" y="5" text-anchor="middle" font-size="6" fill="#5b6779" id="planZenith">Zenith</text>
+                            <text x="0" y="108" text-anchor="middle" font-size="6" fill="#5b6779">Nadir</text>
+                            <g id="sunMarker">
+                                <circle cx="0" cy="0" r="6" fill="#fbbf24" opacity="0" id="sunDot" />
+                            </g>
+                            <g id="moonMarker">
+                                <circle cx="0" cy="0" r="5" fill="#c3cbdb" opacity="0" id="moonDot" stroke="rgba(232, 180, 74, 0.4)" stroke-width="0.5" />
+                            </g>
+                            <g id="qiblaMarker">
+                                <line x1="0" y1="0" x2="0" y2="0" stroke="#34d399" stroke-width="1.5" stroke-dasharray="3,2" id="qiblaLine" opacity="0" />
+                                <text x="0" y="0" text-anchor="middle" font-size="6" fill="#34d399" id="qiblaLabel" opacity="0">Kiblat</text>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="planisphere-meta">
+                        <small id="planSunPos">Matahari: -</small>
+                        <small id="planMoonPos">Bulan: -</small>
+                        <small id="planQiblaPos">Kiblat: -</small>
+                    </div>
+                </div>
+            </div>
         </section>
         <section class="tasbih-card" id="tasbihCard">
             <div class="tasbih-header">
@@ -268,6 +402,166 @@
             <div class="finder-result-box" id="finderResultBox" style="display: none;">
                 <i class="fa-solid fa-clock-rotate-left text-amber"></i>
                 <span id="finderResultText">Memuat rekomendasi jam...</span>
+            </div>
+        </section>
+
+        <!-- NEW: Abjad Hisab & Generator Wafaq 3x3 Interaktif Card -->
+        <section class="abjad-wafaq-card" id="abjadWafaqCard">
+            <div class="card-header-between">
+                <div>
+                    <h3 class="astronomy-title" style="margin-bottom:2px;">
+                        <i class="fa-solid fa-calculator text-amber"></i> Hisab Abjad Jumal & Penyelaras Wafaq 3x3 Buduh
+                    </h3>
+                    <small style="color:var(--text-muted); font-size:0.76rem;">Kaidah Syams al-Ma'arif al-Kubra (Imam al-Buni) · Magic Square 3x3 Equal Sum</small>
+                </div>
+                <div class="hijri-controls">
+                    <button id="btnToggleDigits" class="btn-secondary btn-compact" title="Ganti Format Angka"><i class="fa-solid fa-arrow-right-arrow-left"></i> <span id="txtToggleDigits">Angka: Arab (١٢٣)</span></button>
+                    <button id="btnCopyWafaq" class="btn-secondary btn-compact" title="Salin Ringkasan Wafaq"><i class="fa-solid fa-copy"></i> Salin</button>
+                    <button id="btnDownloadCardPng" class="btn-secondary btn-compact text-amber" title="Unduh Kartu Gambar PNG Emas"><i class="fa-solid fa-file-arrow-down"></i> Kartu PNG</button>
+                </div>
+            </div>
+
+            <div class="abjad-grid">
+                <!-- Input Box & Formulas -->
+                <div class="astro-box">
+                    <div class="input-group">
+                        <label for="inputAbjadName">
+                            <i class="fa-solid fa-user-pen text-amber"></i> Masukkan Nama atau Kalimat Hajat:
+                        </label>
+                        <div class="location-input-wrapper">
+                            <input type="text" id="inputAbjadName" class="custom-input" placeholder="Misal: Arif Widiyanto" value="Arif Widiyanto">
+                            <button id="btnCalcAbjad" class="btn-secondary" title="Hitung Adad">Hitung</button>
+                        </div>
+                    </div>
+
+                    <div class="input-group" style="margin-top:10px;">
+                        <label for="selectHajatPurpose">
+                            <i class="fa-solid fa-bullseye text-indigo"></i> Formula Hajat Khusus (Adad Penguat):
+                        </label>
+                        <select id="selectHajatPurpose" class="custom-select">
+                            <option value="RIZQ" selected>💰 Rezeki, Usaha & Pelaris (+308 Ya Rozzaq Ya Ghani)</option>
+                            <option value="MAHABBAH">❤️ Mahabbah, Kasih Sayang & Jodoh (+149 Ya Wadud Ya Latif)</option>
+                            <option value="HEALTH_ELEMS">🧠 Ketenangan Jiwa & Kebugaran (+111 Ya Kafi Ya Syafi)</option>
+                            <option value="CARRIER_HAIBAH">⭐ Kewibawaan & Karir (+300 Ya Aziz Ya Jabbar)</option>
+                            <option value="PROTECTION">🛡️ Benteng Ghaib & Tolak Bala (+818 Salamun Qaulam)</option>
+                        </select>
+                    </div>
+
+                    <div class="astro-body" style="margin-top:12px;">
+                        <div class="astro-row">
+                            <span>Transliterasi Arab:</span>
+                            <strong id="displayArabicScript" class="text-amber" style="font-family:var(--font-arabic); font-size:1.25rem;">--</strong>
+                        </div>
+                        <div class="astro-row">
+                            <span>Hisab Adad al-Jumal:</span>
+                            <strong id="displayAbjadTotal" class="text-amber">--</strong>
+                        </div>
+                        <div class="astro-row">
+                            <span>Khadim Ulwi (+51):</span>
+                            <strong id="displayAngelUlwi" class="text-emerald">--</strong>
+                        </div>
+                        <div class="astro-row">
+                            <span>Khadim Sufli (+319):</span>
+                            <strong id="displayAngelSufli" class="text-indigo">--</strong>
+                        </div>
+                        <div class="astro-row">
+                            <span>Tabi'at & Unsur Personal:</span>
+                            <strong id="displayPersonalElem">--</strong>
+                        </div>
+                        <div class="astro-row">
+                            <span>Sinkronisasi Jam Hari Ini:</span>
+                            <strong id="displayPersonalSync">--</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3x3 Magic Square Display Stage -->
+                <div class="astro-box wafaq-stage">
+                    <div class="astro-header" style="width:100%;">
+                        <h4 id="wafaqTitleHeader"><i class="fa-solid fa-border-all text-amber"></i> Wafaq Buduh 3x3</h4>
+                        <small style="font-size:0.75rem; color:var(--accent-gold);"><i class="fa-solid fa-shield-halved"></i> Al-Mutsallats</small>
+                    </div>
+
+                    <table class="wafaq-table" id="wafaqTable">
+                        <tbody>
+                            <tr><td id="w1">--</td><td id="w2">--</td><td id="w3">--</td></tr>
+                            <tr><td id="w4">--</td><td id="w5">--</td><td id="w6">--</td></tr>
+                            <tr><td id="w7">--</td><td id="w8">--</td><td id="w9">--</td></tr>
+                        </tbody>
+                    </table>
+
+                    <div class="wafaq-purpose-note" id="wafaqPurposeNote">
+                        *Formula Wafaq diselaraskan khusus untuk hajat rezeki & keberkahan usaha Anda.
+                    </div>
+                    <small style="color:var(--text-muted); font-size:0.72rem; text-align:center; display:block; margin-top:4px;">
+                        Jumlah angka pada setiap baris, kolom, dan diagonal bernilai 100% identik & seimbang sempurna.
+                    </small>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: Kompatibilitas 4 Tabi'at Elemen (Hisab Jodoh & Kemitraan) -->
+        <section class="compat-card" id="compatCard">
+            <div class="card-header-between">
+                <div>
+                    <h3 class="astronomy-title" style="margin-bottom:2px;">
+                        <i class="fa-solid fa-fire-flame-curved text-amber"></i> Kompatibilitas 4 Tabi'at Elemen (Jodoh & Kemitraan)
+                    </h3>
+                    <small style="color:var(--text-muted); font-size:0.76rem;">Analisis keselarasan unsur Nariyah (Api), Turabiyah (Tanah), Hawaiyah (Udara) & Ma'iyah (Air)</small>
+                </div>
+            </div>
+            <div class="compat-grid">
+                <div class="astro-box">
+                    <div class="compat-inputs">
+                        <div class="input-group">
+                            <label for="inputCompatName1"><i class="fa-solid fa-user text-amber"></i> Nama Pertama (Pria / Mitra 1):</label>
+                            <input type="text" id="inputCompatName1" class="custom-input" placeholder="Nama Anda" value="Arif">
+                        </div>
+                        <div class="input-group" style="margin-top:8px;">
+                            <label for="inputCompatName2"><i class="fa-solid fa-user text-indigo"></i> Nama Kedua (Wanita / Mitra 2):</label>
+                            <input type="text" id="inputCompatName2" class="custom-input" placeholder="Nama Pasangan / Mitra" value="Fatimah">
+                        </div>
+                        <button id="btnCalcCompat" class="btn-secondary" style="margin-top:10px; width:100%; justify-content:center;">
+                            <i class="fa-solid fa-wand-magic-sparkles text-amber"></i> Analisis Keselarasan Tabi'at
+                        </button>
+                    </div>
+                </div>
+                <div class="astro-box compat-result-stage" id="compatResultStage">
+                    <div class="compat-score-circle" id="compatScoreCircle">
+                        <span id="compatScoreVal">--%</span>
+                        <small id="compatScoreLabel">Selaras</small>
+                    </div>
+                    <div class="compat-verdict" id="compatVerdict">
+                        <h4 id="compatTitleVerdict">Masukkan nama kedua belah pihak</h4>
+                        <p id="compatDescVerdict">Sistem akan menghitung adad masing-masing nama dan menganalisis kecocokan tabi'at klasik.</p>
+                        <div class="compat-tags" id="compatTags"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: Kalender Falakiah & Fase Bulan Bulanan (Monthly Falak Grid) -->
+        <section class="monthly-card" id="monthlyFalakCard">
+            <div class="card-header-between">
+                <div class="monthly-nav">
+                    <button id="btnMonthPrev" class="btn-secondary btn-compact" title="Bulan Sebelumnya"><i class="fa-solid fa-chevron-left"></i></button>
+                    <h3 id="monthlyTitleHeader" style="margin:0; font-size:1.05rem; font-weight:700;">September 2026</h3>
+                    <button id="btnMonthNext" class="btn-secondary btn-compact" title="Bulan Berikutnya"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button id="btnMonthToday" class="btn-secondary btn-compact" title="Kembali ke Hari Ini">Bulan Ini</button>
+                </div>
+                <div class="monthly-legend-pills">
+                    <span class="m-pill bidh"><i class="fa-solid fa-circle"></i> Ayyamul Bidh</span>
+                    <span class="m-pill sa'ad"><i class="fa-solid fa-star text-amber"></i> Hari Penuh Berkah</span>
+                    <span class="m-pill selected"><i class="fa-solid fa-check"></i> Hari Terpilih</span>
+                </div>
+            </div>
+            <div class="monthly-calendar-wrapper">
+                <div class="monthly-weekdays">
+                    <span>Ahad</span><span>Senin</span><span>Selasa</span><span>Rabu</span><span>Kamis</span><span>Jum'at</span><span>Sabtu</span>
+                </div>
+                <div class="monthly-days-grid" id="monthlyDaysGrid">
+                    <!-- Dynamic Month Days Generated Here -->
+                </div>
             </div>
         </section>
 
@@ -395,6 +689,14 @@
                     <div class="ushul-source"><strong>Astronomical Algorithms (Meeus)</strong> <span>Jean Meeus</span></div>
                     <small>Standar hisab modern (ELP2000-82 truncated Ch. 47 & 48). Perhitungan fase bulan, iluminasi disk, jarak geosentris & posisi ekliptika presisi tinggi.</small>
                 </div>
+                <div class="ushul-item">
+                    <div class="ushul-source"><strong>Odeh Criterion / Yallop 1997</strong> <span>رؤية الهلال</span></div>
+                    <small>Mohammed Odeh (2005) & Bernard Yallop (1997). Kriteria visibilitas hilal melalui beda tinggi (ARCV), lebar sabit, dan iluminasi. Digunakan oleh banyak badan falak untuk rukyatul hilal.</small>
+                </div>
+                <div class="ushul-item">
+                    <div class="ushul-source"><strong>Indian Astronomical Soc.</strong> <span>चन्द्र दर्शन</span></div>
+                    <small>Karan Singh (1981) & Sultan (2002). Kriteria visibilitas hilal dengan beda deklinasi (D) dan lebar sabit (W). Standar hisab rukyat di Asia Tenggara.</small>
+                </div>
             </div>
             <div class="ushul-principles">
                 <div><i class="fa-solid fa-circle-check text-emerald"></i> Jam siang dihitung dari terbit ke terbenam dibagi rata; jam malam dari terbenam ke terbit esok hari.</div>
@@ -462,7 +764,7 @@
         </div>
     </div>
 
-    <script src="app.js?v=15.0"></script>
+    <script src="app.js?v=17.0"></script>
     <script>
         document.getElementById('yearSpan').textContent = new Date().getFullYear();
         if ('serviceWorker' in navigator) {

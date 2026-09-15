@@ -614,7 +614,7 @@
         sunsetTime: document.getElementById('sunsetTime'),
         dayDuration: document.getElementById('dayDuration'),
         txtDayDurationLabel: document.getElementById('txtDayDurationLabel'),
-        legendGrid: document.getElementById('legendGrid'),
+        // Legend removed
         // Astronomy Plus Elements
         btnHijriPrev: document.getElementById('btnHijriPrev'),
         btnHijriReset: document.getElementById('btnHijriReset'),
@@ -629,6 +629,26 @@
         timeAsr: document.getElementById('timeAsr'),
         timeMaghrib: document.getElementById('timeMaghrib'),
         timeIsha: document.getElementById('timeIsha'),
+        // Hilal Visibility Elements
+        hilalStatusBadge: document.getElementById('hilalStatusBadge'),
+        hilalStatusText: document.getElementById('hilalStatusText'),
+        hilalArcv: document.getElementById('hilalArcv'),
+        hilalWidth: document.getElementById('hilalWidth'),
+        hilalAge: document.getElementById('hilalAge'),
+        hilalElongation: document.getElementById('hilalElongation'),
+        hilalMoonset: document.getElementById('hilalMoonset'),
+        hilalLag: document.getElementById('hilalLag'),
+        // Visual Moon & Planisphere Elements
+        moonLit: document.getElementById('moonLit'),
+        moonVisualPhase: document.getElementById('moonVisualPhase'),
+        moonVisualIllum: document.getElementById('moonVisualIllum'),
+        sunDot: document.getElementById('sunDot'),
+        moonDot: document.getElementById('moonDot'),
+        qiblaLine: document.getElementById('qiblaLine'),
+        qiblaLabel: document.getElementById('qiblaLabel'),
+        planSunPos: document.getElementById('planSunPos'),
+        planMoonPos: document.getElementById('planMoonPos'),
+        planQiblaPos: document.getElementById('planQiblaPos'),
         // Purpose Finder Elements
         purposePills: document.getElementById('purposePills'),
         finderResultBox: document.getElementById('finderResultBox'),
@@ -659,6 +679,28 @@
         dialRing: document.getElementById('dialRing'),
         dialCenterPlanet: document.getElementById('dialCenterPlanet'),
         dialCenterStatus: document.getElementById('dialCenterStatus'),
+        // Rashdul Qiblah Elements
+        rashdulDailyTime: document.getElementById('rashdulDailyTime'),
+        rashdulDailyDesc: document.getElementById('rashdulDailyDesc'),
+        rashdulAzimuth: document.getElementById('rashdulAzimuth'),
+        rashdulShadowAz: document.getElementById('rashdulShadowAz'),
+        rashdulSunStatus: document.getElementById('rashdulSunStatus'),
+        rashdulSunAlt: document.getElementById('rashdulSunAlt'),
+        // Kompatibilitas Tabi'at Elements
+        inputCompatName1: document.getElementById('inputCompatName1'),
+        inputCompatName2: document.getElementById('inputCompatName2'),
+        btnCalcCompat: document.getElementById('btnCalcCompat'),
+        compatScoreVal: document.getElementById('compatScoreVal'),
+        compatScoreLabel: document.getElementById('compatScoreLabel'),
+        compatTitleVerdict: document.getElementById('compatTitleVerdict'),
+        compatDescVerdict: document.getElementById('compatDescVerdict'),
+        compatTags: document.getElementById('compatTags'),
+        // Monthly Falak Calendar Elements
+        monthlyTitleHeader: document.getElementById('monthlyTitleHeader'),
+        monthlyDaysGrid: document.getElementById('monthlyDaysGrid'),
+        btnMonthPrev: document.getElementById('btnMonthPrev'),
+        btnMonthNext: document.getElementById('btnMonthNext'),
+        btnMonthToday: document.getElementById('btnMonthToday'),
         // Modal 3D Elements
         planet3dModal: document.getElementById('planet3dModal'),
         btnCloseModal: document.getElementById('btnCloseModal'),
@@ -1644,10 +1686,7 @@
         document.getElementById('thPlanet').textContent = t.thPlanet;
         document.getElementById('thTime').textContent = t.thTime;
         document.getElementById('thStatus').textContent = t.thStatus;
-        const elLegendTitle = document.getElementById('txtLegendTitle');
-        if (elLegendTitle && elLegendTitle.childNodes[1]) elLegendTitle.childNodes[1].nodeValue = " " + t.legendTitle;
-        const elDisclaimers = document.getElementById('txtDisclaimers');
-        if (elDisclaimers) elDisclaimers.textContent = t.disclaimers;
+        // Legend grid removed in Clean Falak layout
 
         // Astronomy Plus Translations
         document.getElementById('txtAstroTitle').childNodes[1].nodeValue = " " + t.txtAstroTitle;
@@ -1763,7 +1802,6 @@
             });
         }
 
-        renderLegend();
         updateActiveBanner(data, now);
         updateFinderRecommendation(data);
     }
@@ -1850,55 +1888,442 @@
             elements.timeMaghrib.textContent = formatTime(p.maghrib);
             elements.timeIsha.textContent = formatTime(p.isha);
         }
+
+        // Trigger Hilal Visibility, Visual Moon & Planisphere renderers
+        renderHilalVisibility(moon, sunInfo);
+        renderVisualMoon(moon);
+        renderPlanisphere(moon, qibla, sunInfo);
+        renderRashdulQiblah(selectedDate, currentCoords.lat, currentCoords.lon);
     }
 
-    function renderLegend() {
-        // Guard: legend grid tidak tersedia di layout terbaru.
-        if (!elements.legendGrid) return;
-        const t = TRANSLATIONS[currentLang] || TRANSLATIONS.id;
-        elements.legendGrid.innerHTML = '';
+    // --- ENHANCEMENT #1: Hilal Visibility (Rukyat) ---
+    // Kriteria Odeh (Yallop 1997/2005) & Indian Astronomical Society (Karan Singh 1981)
+    function eclipticToEquatorial(lambdaEclDeg, betaEclDeg, dateObj) {
+        const epsilon = 23.4392911 - 0.0130042 * (((dateObj.getFullYear() + (dateObj.getMonth() + 1 - 0.5) / 12) - 2000) / 100);
+        const lambdaR = toRad(lambdaEclDeg);
+        const betaR = toRad(betaEclDeg);
+        const epsR = toRad(epsilon);
+        const sinDec = Math.sin(betaR) * Math.cos(epsR) + Math.cos(betaR) * Math.sin(epsR) * Math.sin(lambdaR);
+        const decDeg = toDeg(Math.asin(sinDec));
+        const y = Math.sin(lambdaR) * Math.cos(epsR) - Math.tan(betaR) * Math.sin(epsR);
+        const x = Math.cos(lambdaR);
+        let raDeg = toDeg(Math.atan2(y, x));
+        if (raDeg < 0) raDeg += 360;
+        return { ra: raDeg, dec: decDeg };
+    }
 
-        if (currentSystem === 'saat') {
-            CHALDEAN_PLANETS.forEach(p => {
-                const item = document.createElement('div');
-                item.className = `legend-item ${p.class}`;
-                const nameText = t.names[p.key];
-                const qualityText = t.qualities[p.quality];
-                let eff = currentLang === 'ar' ? p.efficacy_ar : (currentLang === 'en' ? p.efficacy_en : p.efficacy_id);
+    function equatorialToHorizontal(raDeg, decDeg, latDeg, dateObj) {
+        const JD = (dateObj.getTime() / 86400000) - 10957.5 + 2440587.5;
+        const T = (JD - 2451545.0) / 36525;
+        const gmst = (280.46061837 + 360.98564736629 * (JD - 2451545.0) + 0.000387933 * T * T - (T * T * T) / 38710000) % 360;
+        const lst = (gmst + (dateObj.getTimezoneOffset() === 0 ? 0 : (currentCoords.lon))) % 360;
+        let lstAdj = lst;
+        if (lstAdj < 0) lstAdj += 360;
+        const haDeg = (lstAdj - raDeg + 360) % 360;
+        const haR = toRad(haDeg);
+        const decR = toRad(decDeg);
+        const latR = toRad(latDeg);
+        const sinAlt = Math.sin(decR) * Math.sin(latR) + Math.cos(decR) * Math.cos(latR) * Math.cos(haR);
+        const altDeg = toDeg(Math.asin(Math.max(-1, Math.min(1, sinAlt))));
+        const cosAz = (Math.sin(decR) - Math.sin(toRad(altDeg)) * Math.sin(latR)) / (Math.cos(toRad(altDeg)) * Math.cos(latR));
+        let azDeg = toDeg(Math.acos(Math.max(-1, Math.min(1, cosAz))));
+        if (Math.sin(haR) > 0) azDeg = 360 - azDeg;
+        return { alt: altDeg, az: azDeg };
+    }
 
-                item.innerHTML = `
-                    <div class="legend-badge"><i class="fa-solid ${p.icon}"></i> ${nameText} - ${qualityText}</div>
-                    <p>${eff}</p>
-                    <small style="display:block; color:var(--accent-gold); margin-top:4px;"><strong>Zikir:</strong> ${p.asma}</small>
-                `;
-
-                item.addEventListener('click', () => {
-                    openPlanetModal(p.key, qualityText, p.class);
-                });
-
-                elements.legendGrid.appendChild(item);
-            });
+    function renderHilalVisibility(moon, sunInfo) {
+        if (!elements.hilalStatusBadge) return;
+        const sunsetTime = sunInfo.sunset;
+        const moonAtSunset = calculateMoonEclipticPosition(sunsetTime);
+        const moonEq = eclipticToEquatorial(moonAtSunset.lambda_moon, moonAtSunset.beta_moon, sunsetTime);
+        const moonHor = equatorialToHorizontal(moonEq.ra, moonEq.dec, currentCoords.lat, sunsetTime);
+        const sunAlt = -0.583;
+        const arcvDeg = moonHor.alt - sunAlt;
+        const k = moonAtSunset.illumination / 100;
+        const arcvRad = toRad(arcvDeg);
+        const crescentWidthDeg = (0.5 * (1 - Math.cos(arcvRad)) * 180 / Math.PI) * 0.5;
+        const crescentWidthArcmin = crescentWidthDeg * 60;
+        const phaseAngleRad = Math.acos(Math.max(-1, Math.min(1, 2 * k - 1)));
+        const odeh_W_arcmin = (0.49 * (k * 100) * arcvDeg);
+        let odehV;
+        if (odeh_W_arcmin <= 0) {
+            odehV = -10;
         } else {
-            Object.keys(CHOGADIYA_INFO).forEach(k => {
-                const c = CHOGADIYA_INFO[k];
-                const item = document.createElement('div');
-                item.className = `legend-item ${c.class}`;
-                const nameText = t.names[k];
-                const qualityText = t.qualities[c.quality];
+            odehV = arcvDeg - (11.8371 * Math.pow(odeh_W_arcmin, -0.3) - 2.5);
+        }
+        const moonAgeHours = moonAtSunset.moonAgeDays * 24;
+        const dDeclination = Math.abs(moonAtSunset.beta_moon);
+        const sunsetLocal = new Date(sunsetTime);
+        const moonSetLagMin = (moonHor.alt > 0) ? (moonHor.alt / 0.566) * 60 : 0;
+        const moonSetTime = new Date(sunsetTime.getTime() + moonSetLagMin * 60000);
 
-                item.innerHTML = `
-                    <div class="legend-badge"><i class="fa-solid ${c.icon}"></i> ${nameText} - ${qualityText}</div>
-                    <p>${c.desc_id}</p>
-                `;
+        let odehLabel, odehClass, odehIcon;
+        if (odehV >= 0.616) {
+            odehLabel = 'VISIBLE (Mata Telanjang)';
+            odehClass = 'hilal-visible';
+            odehIcon = 'fa-circle-check';
+        } else if (odehV >= 0.293) {
+            odehLabel = 'VISIBLE dengan Optik';
+            odehClass = 'hilal-marginal';
+            odehIcon = 'fa-binoculars';
+        } else if (odehV >= -0.0005) {
+            odehLabel = 'MARGINAL (Mungkin terlihat)';
+            odehClass = 'hilal-marginal';
+            odehIcon = 'fa-binoculars';
+        } else if (odehV >= -0.232) {
+            odehLabel = 'INVISIBLE (Mungkin dengan optik)';
+            odehClass = 'hilal-invisible';
+            odehIcon = 'fa-circle-xmark';
+        } else {
+            odehLabel = 'INVISIBLE (Mustahil)';
+            odehClass = 'hilal-invisible';
+            odehIcon = 'fa-circle-xmark';
+        }
 
-                item.addEventListener('click', () => {
-                    openPlanetModal(k, qualityText, c.class);
-                });
+        const indD = dDeclination;
+        let indLabel;
+        if (indD >= 12) {
+            indLabel = 'VISIBLE (Indian: D≥12°)';
+        } else if (indD >= 8) {
+            indLabel = 'VISIBLE dengan Optik (D≥8°)';
+        } else if (indD >= 7) {
+            indLabel = 'MARGINAL (D≥7°)';
+        } else {
+            indLabel = 'INVISIBLE (D<7°)';
+        }
 
-                elements.legendGrid.appendChild(item);
-            });
+        elements.hilalStatusBadge.className = `hilal-status ${odehClass}`;
+        elements.hilalStatusBadge.innerHTML = `<i class="fa-solid ${odehIcon}"></i><span id="hilalStatusText">${odehLabel}</span>`;
+        elements.hilalArcv.textContent = arcvDeg.toFixed(2) + '°';
+        elements.hilalWidth.textContent = odeh_W_arcmin.toFixed(2) + "'";
+        elements.hilalAge.textContent = moonAgeHours.toFixed(1) + ' jam';
+        elements.hilalElongation.textContent = moonAtSunset.elongation.toFixed(2) + '°';
+        elements.hilalMoonset.textContent = formatTime(moonSetTime);
+        elements.hilalLag.textContent = moonSetLagMin.toFixed(0) + ' m';
+    }
+
+    // --- ENHANCEMENT #2: Visual Moon Phase (SVG) ---
+    function renderVisualMoon(moon) {
+        if (!elements.moonLit) return;
+        const elongation = moon.elongation;
+        const k = moon.illumination / 100;
+        const r = 48;
+        let pathD;
+        if (elongation < 1 || elongation > 359) {
+            pathD = `M ${-r} 0 A ${r} ${r} 0 0 0 ${r} 0 A ${r} ${r} 0 0 0 ${-r} 0 Z`;
+        } else if (elongation < 90) {
+            const phaseAngle = Math.acos(Math.max(-1, Math.min(1, 2 * k - 1)));
+            const rx = r * Math.abs(Math.cos(phaseAngle));
+            const sweep = elongation < 90 ? 0 : 1;
+            pathD = `M 0 ${-r} A ${r} ${r} 0 0 ${sweep} 0 ${r} A ${rx} ${r} 0 0 ${sweep} 0 ${-r} Z`;
+        } else if (elongation < 180) {
+            const phaseAngle = Math.acos(Math.max(-1, Math.min(1, 2 * k - 1)));
+            const rx = r * Math.abs(Math.cos(phaseAngle));
+            pathD = `M 0 ${-r} A ${r} ${r} 0 0 1 0 ${r} A ${rx} ${r} 0 0 0 0 ${-r} Z`;
+        } else if (elongation < 270) {
+            const phaseAngle = Math.acos(Math.max(-1, Math.min(1, 2 * k - 1)));
+            const rx = r * Math.abs(Math.cos(phaseAngle));
+            pathD = `M 0 ${-r} A ${r} ${r} 0 0 0 0 ${r} A ${rx} ${r} 0 0 1 0 ${-r} Z`;
+        } else {
+            const phaseAngle = Math.acos(Math.max(-1, Math.min(1, 2 * k - 1)));
+            const rx = r * Math.abs(Math.cos(phaseAngle));
+            pathD = `M 0 ${-r} A ${r} ${r} 0 0 1 0 ${r} A ${rx} ${r} 0 0 1 0 ${-r} Z`;
+        }
+        elements.moonLit.setAttribute('d', pathD);
+        const gradient = document.createElementNS('http://www.w3.org/2000/svg', 'radialGradient');
+        gradient.setAttribute('id', 'moonShade');
+        gradient.setAttribute('cx', '0');
+        gradient.setAttribute('cy', '0');
+        gradient.setAttribute('r', '50');
+        gradient.setAttribute('gradientUnits', 'userSpaceOnUse');
+        const stop1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+        stop1.setAttribute('offset', '0%');
+        stop1.setAttribute('stop-color', '#1a1d2e');
+        const stop2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+        stop2.setAttribute('offset', '100%');
+        stop2.setAttribute('stop-color', '#000000');
+        gradient.appendChild(stop1);
+        gradient.appendChild(stop2);
+        elements.moonLit.setAttribute('fill', 'url(#moonShade)');
+        elements.moonVisualPhase.textContent = 'Fase: ' + moon.phaseName;
+        elements.moonVisualIllum.textContent = 'Iluminasi: ' + moon.illumination.toFixed(1) + '% | Jarak: ' + Math.round(moon.distance_km).toLocaleString('id-ID') + ' km';
+    }
+
+    // --- ENHANCEMENT #3: Planisphere Sky Map ---
+    function renderPlanisphere(moon, qibla, sunInfo) {
+        if (!elements.sunDot) return;
+        const sunsetTime = sunInfo.sunset;
+        const moonAtSunset = calculateMoonEclipticPosition(sunsetTime);
+        const sunEq = eclipticToEquatorial(moonAtSunset.lambda_sun, 0, sunsetTime);
+        const sunHor = equatorialToHorizontal(sunEq.ra, sunEq.dec, currentCoords.lat, sunsetTime);
+        const moonEq = eclipticToEquatorial(moonAtSunset.lambda_moon, moonAtSunset.beta_moon, sunsetTime);
+        const moonHor = equatorialToHorizontal(moonEq.ra, moonEq.dec, currentCoords.lat, sunsetTime);
+
+        const rMax = 95;
+        const sunR = rMax * (1 - Math.max(0, sunHor.alt) / 90);
+        const sunAzimuth = (sunHor.az + 180) % 360;
+        const sunX = sunR * Math.sin(toRad(sunAzimuth));
+        const sunY = -sunR * Math.cos(toRad(sunAzimuth));
+        elements.sunDot.setAttribute('cx', sunX);
+        elements.sunDot.setAttribute('cy', sunY);
+        elements.sunDot.setAttribute('opacity', sunHor.alt < 0 ? 0.3 : 1);
+
+        const moonR = rMax * (1 - Math.max(0, moonHor.alt) / 90);
+        const moonAzimuth = (moonHor.az + 180) % 360;
+        const moonX = moonR * Math.sin(toRad(moonAzimuth));
+        const moonY = -moonR * Math.cos(toRad(moonAzimuth));
+        elements.moonDot.setAttribute('cx', moonX);
+        elements.moonDot.setAttribute('cy', moonY);
+        elements.moonDot.setAttribute('opacity', moonHor.alt < 0 ? 0.3 : 1);
+
+        const qiblaAzRad = toRad(qibla.degree);
+        const qiblaX = rMax * Math.sin(qiblaAzRad);
+        const qiblaY = -rMax * Math.cos(qiblaAzRad);
+        elements.qiblaLine.setAttribute('x2', qiblaX);
+        elements.qiblaLine.setAttribute('y2', qiblaY);
+        elements.qiblaLine.setAttribute('opacity', 0.6);
+        elements.qiblaLabel.setAttribute('x', qiblaX * 1.05);
+        elements.qiblaLabel.setAttribute('y', qiblaY * 1.05);
+        elements.qiblaLabel.setAttribute('opacity', 0.9);
+
+        elements.planSunPos.textContent = `Matahari: Alt ${sunHor.alt.toFixed(1)}°, Az ${sunHor.az.toFixed(0)}°`;
+        elements.planMoonPos.textContent = `Bulan: Alt ${moonHor.alt.toFixed(1)}°, Az ${moonHor.az.toFixed(0)}°`;
+        elements.planQiblaPos.textContent = `Kiblat: ${qibla.degree}° ${qibla.label}`;
+    }
+
+    // --- ENHANCEMENT #4: Rashdul Qiblah & Solar Shadow Calibration ---
+    function renderRashdulQiblah(dateObj, lat, lon) {
+        if (!elements.rashdulDailyTime) return;
+
+        const qibla = calculateQiblaAzimuth(lat, lon);
+        const qiblaAz = qibla.degree;
+        const shadowAz = (qiblaAz + 180) % 360;
+
+        elements.rashdulAzimuth.textContent = `${qiblaAz}° ${qibla.label}`;
+        elements.rashdulShadowAz.textContent = `${shadowAz.toFixed(1)}°`;
+
+        // Scan local hours 05:00 to 18:30 for alignment
+        const baseDate = new Date(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate(), 0, 0, 0);
+        let bestMatch = null;
+        let minDiff = 999;
+
+        for (let m = 300; m <= 1110; m += 1) { // 05:00 to 18:30
+            const checkDate = new Date(baseDate.getTime() + m * 60000);
+            const sunEq = eclipticToEquatorial(calculateMoonEclipticPosition(checkDate).lambda_sun, 0, checkDate);
+            const sunHor = equatorialToHorizontal(sunEq.ra, sunEq.dec, lat, checkDate);
+
+            if (sunHor.alt > 3) {
+                // Check shadow alignment: when sun az matches (qiblaAz + 180), shadow points to Qibla
+                const diffShadow = Math.abs(sunHor.az - shadowAz);
+                if (diffShadow < minDiff) {
+                    minDiff = diffShadow;
+                    bestMatch = { time: checkDate, type: 'shadow', az: sunHor.az, alt: sunHor.alt, diff: diffShadow };
+                }
+
+                // Check direct sun alignment: when sun az matches qiblaAz, sun is directly above Qibla line
+                const diffDirect = Math.abs(sunHor.az - qiblaAz);
+                if (diffDirect < minDiff) {
+                    minDiff = diffDirect;
+                    bestMatch = { time: checkDate, type: 'direct', az: sunHor.az, alt: sunHor.alt, diff: diffDirect };
+                }
+            }
+        }
+
+        if (bestMatch && bestMatch.diff < 0.8) {
+            const timeStr = formatTime(bestMatch.time);
+            if (bestMatch.type === 'shadow') {
+                elements.rashdulDailyTime.innerHTML = `<i class="fa-solid fa-clock text-amber"></i> ${timeStr} <small>(Metode Bayangan)</small>`;
+                elements.rashdulDailyDesc.textContent = `Tepat pukul ${timeStr}, bayang-bayang benda tegak lurus mengarah tepat ke Ka'bah (Azimut Matahari: ${bestMatch.az.toFixed(1)}°, Tinggi: ${bestMatch.alt.toFixed(1)}°).`;
+                elements.rashdulSunStatus.innerHTML = `<span class="text-emerald"><i class="fa-solid fa-circle-check"></i> Tersedia Hari Ini</span>`;
+            } else {
+                elements.rashdulDailyTime.innerHTML = `<i class="fa-solid fa-sun text-amber"></i> ${timeStr} <small>(Arah Matahari Langsung)</small>`;
+                elements.rashdulDailyDesc.textContent = `Tepat pukul ${timeStr}, posisi matahari berada tepat di atas garis arah Kiblat (Azimut: ${bestMatch.az.toFixed(1)}°, Tinggi: ${bestMatch.alt.toFixed(1)}°).`;
+                elements.rashdulSunStatus.innerHTML = `<span class="text-emerald"><i class="fa-solid fa-circle-check"></i> Tersedia Hari Ini</span>`;
+            }
+            elements.rashdulSunAlt.textContent = `${bestMatch.alt.toFixed(1)}°`;
+        } else {
+            elements.rashdulDailyTime.innerHTML = `<span style="font-size:1.1rem; color:var(--text-muted);"><i class="fa-solid fa-circle-info"></i> Tidak Berpotongan Hari Ini</span>`;
+            elements.rashdulDailyDesc.textContent = `Pada deklinasi matahari tanggal ini di lintang lokasi Anda, azimut matahari tidak memotong garis kiblat saat matahari di atas ufuk. Gunakan kompas azimut ${qiblaAz}° atau tunggu momentum Istiwa A'zam.`;
+            elements.rashdulSunStatus.innerHTML = `<span class="text-amber">Gunakan Azimut Kiblat</span>`;
+            elements.rashdulSunAlt.textContent = `--`;
         }
     }
+
+    // --- ENHANCEMENT #5: Kompatibilitas 4 Tabi'at Elemen (Jodoh & Kemitraan) ---
+    function calculateElementsCompatibility(name1, name2) {
+        if (!name1 || !name1.trim() || !name2 || !name2.trim()) return null;
+
+        const arab1 = latinToArabicScript(name1);
+        const arab2 = latinToArabicScript(name2);
+
+        let adad1 = 0;
+        for (let c of arab1) {
+            if (ARABIC_JUMAL[c]) adad1 += ARABIC_JUMAL[c];
+        }
+        if (adad1 === 0) adad1 = 100;
+
+        let adad2 = 0;
+        for (let c of arab2) {
+            if (ARABIC_JUMAL[c]) adad2 += ARABIC_JUMAL[c];
+        }
+        if (adad2 === 0) adad2 = 100;
+
+        const ELEM_TYPES = [
+            { id: 1, name: 'Nariyah (Api / نار)', icon: 'fa-fire text-rose', nature: 'api', planet: 'Mirrikh / Syams' },
+            { id: 2, name: 'Turabiyah (Tanah / تراب)', icon: 'fa-mountain text-emerald', nature: 'tanah', planet: 'Zuhal' },
+            { id: 3, name: 'Hawaiyah (Udara / هواء)', icon: 'fa-wind text-indigo', nature: 'udara', planet: 'Mushtari / Utarid' },
+            { id: 4, name: 'Ma\'iyah (Air / ماء)', icon: 'fa-droplet text-blue', nature: 'air', planet: 'Zuhrah / Qamar' }
+        ];
+
+        // Modulo 4 kaidah Thaba'i
+        const mod1 = (adad1 % 4) === 0 ? 4 : (adad1 % 4);
+        const mod2 = (adad2 % 4) === 0 ? 4 : (adad2 % 4);
+
+        const elem1 = ELEM_TYPES[mod1 - 1];
+        const elem2 = ELEM_TYPES[mod2 - 1];
+
+        // Compatibility Matrix
+        // Api (1) + Udara (3) = Sangat Baik (Udara mengobarkan api)
+        // Tanah (2) + Air (4) = Sangat Baik (Air menyuburkan tanah)
+        // Air (4) + Api (1) = Nahas / Berlawanan
+        // Tanah (2) + Udara (3) = Sedang / Netral
+        // Identik = Sangat Harmonis
+        let score = 75;
+        let verdict = 'Harmonis & Saling Melengkapi';
+        let detail = 'Kombinasi kedua elemen memiliki energi alamiah yang saling menunjang.';
+
+        if (elem1.nature === elem2.nature) {
+            score = 92;
+            verdict = 'Satu Jiwa (Ittihad al-Unsur)';
+            detail = `Kedua pihak memiliki tabi'at dasar yang sama (${elem1.name}). Sangat mudah memahami sudut pandang satu sama lain, namun butuh kontrol emosi jika terjadi selisih paham.`;
+        } else if ((elem1.nature === 'api' && elem2.nature === 'udara') || (elem1.nature === 'udara' && elem2.nature === 'api')) {
+            score = 95;
+            verdict = 'Sangat Serasi & Menguntungkan (Kamil)';
+            detail = 'Unsur Udara menghembuskan gairah dan mengobarkan semangat Api. Hubungan atau kemitraan bisnis memiliki daya gerak cepat, kreatif, dan penuh inovasi.';
+        } else if ((elem1.nature === 'tanah' && elem2.nature === 'air') || (elem1.nature === 'air' && elem2.nature === 'tanah')) {
+            score = 90;
+            verdict = 'Subur & Penuh Berkah (Barakah)';
+            detail = 'Unsur Air melembutkan dan menyuburkan Tanah. Kemitraan atau pernikahan cenderung tenang, saling mengayomi, mengakar kokoh, dan mendatangkan kemakmuran materi.';
+        } else if ((elem1.nature === 'api' && elem2.nature === 'air') || (elem1.nature === 'air' && elem2.nature === 'api')) {
+            score = 58;
+            verdict = 'Kontradiktif (Tadhad / Butuh Penyelaras)';
+            detail = 'Unsur Api dan Air berlawanan secara tabiat dasar (Air memadamkan Api, Api menguapkan Air). Dianjurkan bermusyawarah di jam-jam Sa\'ad (Mushtari atau Zuhrah) dan memperbanyak zikir penyejuk Ya Wadud.';
+        } else if ((elem1.nature === 'tanah' && elem2.nature === 'api') || (elem1.nature === 'api' && elem2.nature === 'tanah')) {
+            score = 78;
+            verdict = 'Dinamis & Produktif';
+            detail = 'Api mengeraskan tanah menjadi bata yang kokoh. Hubungan memerlukan kesabaran dari pihak tanah dan kompromi dari pihak api.';
+        } else {
+            score = 72;
+            verdict = 'Netral & Butuh Komunikasi Aktif';
+            detail = 'Kedua unsur berjalan stabil tanpa banyak benturan, namun membutuhkan ikhtiar bersama dalam membangun kesamaan visi.';
+        }
+
+        return {
+            name1,
+            arab1,
+            adad1,
+            elem1,
+            name2,
+            arab2,
+            adad2,
+            elem2,
+            score,
+            verdict,
+            detail
+        };
+    }
+
+    function renderCompatibility() {
+        if (!elements.btnCalcCompat || !elements.inputCompatName1) return;
+
+        const n1 = elements.inputCompatName1.value.trim() || 'Arif';
+        const n2 = elements.inputCompatName2.value.trim() || 'Fatimah';
+        const res = calculateElementsCompatibility(n1, n2);
+        if (!res) return;
+
+        elements.compatScoreVal.textContent = `${res.score}%`;
+        elements.compatScoreLabel.textContent = res.score >= 85 ? 'Sangat Serasi' : (res.score >= 70 ? 'Harmonis' : 'Butuh Penyelaras');
+        elements.compatTitleVerdict.textContent = res.verdict;
+        elements.compatDescVerdict.textContent = res.detail;
+
+        elements.compatTags.innerHTML = `
+            <span class="c-tag"><i class="fa-solid ${res.elem1.icon}"></i> ${res.name1}: ${res.elem1.name} (Adad: ${res.adad1})</span>
+            <span class="c-tag"><i class="fa-solid ${res.elem2.icon}"></i> ${res.name2}: ${res.elem2.name} (Adad: ${res.adad2})</span>
+        `;
+    }
+
+    // --- ENHANCEMENT #6: Kalender Falakiah & Fase Bulan Bulanan (Monthly Grid) ---
+    let viewingMonthDate = new Date();
+
+    function renderMonthlyFalakCalendar() {
+        if (!elements.monthlyDaysGrid) return;
+
+        const year = viewingMonthDate.getFullYear();
+        const month = viewingMonthDate.getMonth();
+
+        const monthNames = [
+            'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+            'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+        ];
+
+        elements.monthlyTitleHeader.textContent = `${monthNames[month]} ${year}`;
+
+        const firstDayOfMonth = new Date(year, month, 1);
+        const lastDayOfMonth = new Date(year, month + 1, 0);
+        const daysInMonth = lastDayOfMonth.getDate();
+        const startDayIndex = firstDayOfMonth.getDay(); // 0 = Ahad
+
+        elements.monthlyDaysGrid.innerHTML = '';
+
+        // Empty padding cells
+        for (let i = 0; i < startDayIndex; i++) {
+            const emptyCell = document.createElement('div');
+            emptyCell.className = 'm-day-cell empty';
+            elements.monthlyDaysGrid.appendChild(emptyCell);
+        }
+
+        const today = new Date();
+
+        for (let d = 1; d <= daysInMonth; d++) {
+            const cellDate = new Date(year, month, d, 12, 0, 0);
+            const hijri = calculateHijriDate(cellDate, hijriOffset);
+            const moon = calculateMoonEclipticPosition(cellDate);
+
+            const isToday = cellDate.toDateString() === today.toDateString();
+            const isSelected = cellDate.toDateString() === selectedDate.toDateString();
+            const isAyyamulBidh = hijri.day === 13 || hijri.day === 14 || hijri.day === 15;
+
+            // Day ruler planet
+            const dayOfWeek = cellDate.getDay();
+            const planetIdx = SAAT_DAY_START_INDEX[dayOfWeek];
+            const planet = CHALDEAN_PLANETS[planetIdx];
+
+            const cell = document.createElement('div');
+            cell.className = `m-day-cell ${isToday ? 'today' : ''} ${isSelected ? 'selected' : ''} ${isAyyamulBidh ? 'bidh' : ''}`;
+
+            cell.innerHTML = `
+                <div class="m-cell-top">
+                    <span class="m-masehi-num">${d}</span>
+                    <span class="m-moon-glyph" title="${moon.phaseName}">${moon.phaseIcon}</span>
+                </div>
+                <div class="m-hijri-num">${hijri.day} ${hijri.monthName.slice(0, 4)}</div>
+                <div class="m-planet-pill ${planet.class}">
+                    <i class="fa-solid ${planet.icon}"></i> ${planet.name.split(' ')[0]}
+                </div>
+            `;
+
+            cell.addEventListener('click', () => {
+                selectedDate = new Date(year, month, d);
+                elements.dateInput.value = getLocalYmdStr(selectedDate);
+                renderApp();
+                renderMonthlyFalakCalendar();
+            });
+
+            elements.monthlyDaysGrid.appendChild(cell);
+        }
+    }
+
+
 
     function updateActiveBanner(data, now) {
         const t = TRANSLATIONS[currentLang] || TRANSLATIONS.id;
@@ -2323,6 +2748,35 @@
 
         applyLanguage(currentLang);
         startLiveClock();
+
+        // Kompatibilitas Tabi'at Event Listeners
+        if (elements.btnCalcCompat) {
+            elements.btnCalcCompat.addEventListener('click', renderCompatibility);
+            if (elements.inputCompatName1) {
+                elements.inputCompatName1.addEventListener('keyup', (e) => { if (e.key === 'Enter') renderCompatibility(); });
+            }
+            if (elements.inputCompatName2) {
+                elements.inputCompatName2.addEventListener('keyup', (e) => { if (e.key === 'Enter') renderCompatibility(); });
+            }
+            renderCompatibility();
+        }
+
+        // Monthly Falak Calendar Event Listeners
+        if (elements.btnMonthPrev) {
+            elements.btnMonthPrev.addEventListener('click', () => {
+                viewingMonthDate.setMonth(viewingMonthDate.getMonth() - 1);
+                renderMonthlyFalakCalendar();
+            });
+            elements.btnMonthNext.addEventListener('click', () => {
+                viewingMonthDate.setMonth(viewingMonthDate.getMonth() + 1);
+                renderMonthlyFalakCalendar();
+            });
+            elements.btnMonthToday.addEventListener('click', () => {
+                viewingMonthDate = new Date();
+                renderMonthlyFalakCalendar();
+            });
+            renderMonthlyFalakCalendar();
+        }
     }
 
     document.addEventListener('DOMContentLoaded', init);
